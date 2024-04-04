@@ -1,6 +1,6 @@
-# Braintrust Ruby API library
+# A ruby SDK API library
 
-The Braintrust Ruby library provides convenient access to the Braintrust REST API from any Ruby 3.0+
+The A ruby SDK library provides convenient access to the Braintrust REST API from any Ruby 3.0+
 application.
 
 It is generated with [Stainless](https://www.stainlessapi.com/).
