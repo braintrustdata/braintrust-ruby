@@ -9,6 +9,7 @@ Style/StringLiterals:
 # Most common style in Ruby.
 Style/RegexpLiteral:
   EnforcedStyle: slashes
+  AllowInnerSlashes: true
 
 # Prefer explicit symbols for clarity; you can search for `:the_symbol`.
 Style/SymbolArray:
@@ -16,6 +17,11 @@ Style/SymbolArray:
 
 # Nothing wrong with clear if statements.
 Style/IfUnlessModifier:
+  Enabled: false
+
+# We use these sparingly, where we anticipate future branches for the
+# inner conditional.
+Style/SoleNestedConditional:
   Enabled: false
 
 # Allow explicit empty elses, for clarity.
