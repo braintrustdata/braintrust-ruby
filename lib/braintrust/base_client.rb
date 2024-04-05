@@ -6,13 +6,13 @@ module Braintrust
     attr_accessor :requester
 
     def initialize(
-      server_uri_string:,
+      base_url:,
       headers: nil,
       max_retries: nil,
       idempotency_header: nil
     )
       self.requester = PooledNetRequester.new
-      env_uri = URI.parse(server_uri_string)
+      base_url_parsed = URI.parse(base_url)
       base_headers = {
         "X-Stainless-Lang" => "ruby",
         "X-Stainless-Package-Version" => Braintrust::VERSION,
@@ -22,10 +22,10 @@ module Braintrust
         "Accept" => "application/json"
       }
       @headers = base_headers.merge(headers || {})
-      @host = env_uri.host
-      @scheme = env_uri.scheme
-      @port = env_uri.port
-      @base_path = self.class.normalize_path env_uri.path
+      @host = base_url_parsed.host
+      @scheme = base_url_parsed.scheme
+      @port = base_url_parsed.port
+      @base_path = self.class.normalize_path(base_url_parsed.path)
       @max_retries = max_retries || 0
       @idempotency_header = idempotency_header
     end

@@ -156,7 +156,7 @@ module Braintrust
       value.is_a?(self)
     end
 
-     # @!visibility private
+    # @!visibility private
     def initialize
       @data = {}
     end
