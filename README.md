@@ -131,7 +131,7 @@ non-success status code (i.e., 4xx or 5xx response), a subclass of
 
 ```ruby
 begin
-  project = braintrust.project.create()
+  project = braintrust.project.create(name: "first model")
 rescue Braintrust::HTTP::Error => err
   puts err.code # 400
 end
@@ -168,7 +168,7 @@ max_retries: 0, # default is 2
 )
 
 # Or, configure per-request:
-braintrust.project.create(max_retries: 5);
+braintrust.project.create(name: "first model", max_retries: 5);
 ```
 
 ## Versioning
