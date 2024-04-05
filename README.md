@@ -41,7 +41,7 @@ require "braintrust"
 braintrust = Braintrust::Client.new(
 )
 
-project = braintrust.project.create();
+project = braintrust.project.create(name: "first model");
 
 puts project.id
 ```
