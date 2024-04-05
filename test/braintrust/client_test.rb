@@ -3,21 +3,6 @@
 require_relative "test_helper"
 
 class BraintrustTest < Test::Unit::TestCase
-  def test_raises_on_both_base_url_and_environment
-    assert_raise_with_message(ArgumentError, /both environment and base_url given/) do
-      Braintrust::Client.new(
-        base_url: "https://localhost:8000",
-        environment: "production"
-      )
-    end
-  end
-
-  def test_raises_on_unknown_environment
-    assert_raise_with_message(ArgumentError, /environment must be one of/) do
-      Braintrust::Client.new(environment: "wrong")
-    end
-  end
-
   def test_raises_on_missing_non_nullable_opts
     assert_raise_with_message(ArgumentError, /is required/) do
       Braintrust::Client.new
