@@ -8,7 +8,7 @@ class Braintrust::Test::Resources::TopLevelTest < Test::Unit::TestCase
   end
 
   def test_hello_world
-    response = @braintrust.top_level.hello_world()
-    assert(Braintrust::Converter.same_type?(String, response), response.class.to_s)
+    response = @braintrust.top_level.hello_world 
+    assert_kind_of(String, response)
   end
 end

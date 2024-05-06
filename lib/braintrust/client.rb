@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module Braintrust
-  class Client < Braintrust::BaseClient
+  class Client < BaseClient
     # Default max number of retries to attempt after a failed retryable request.
     DEFAULT_MAX_RETRIES = 2
 
@@ -17,7 +17,7 @@ module Braintrust
     end
 
     # Creates and returns a new client for interacting with the API.
-    def initialize(base_url:nil, api_key:nil, max_retries:nil)
+    def initialize(base_url: nil, api_key: nil, max_retries: nil)
       base_url ||= "https://api.braintrustdata.com"
 
       max_retries ||= DEFAULT_MAX_RETRIES

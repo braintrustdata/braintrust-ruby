@@ -19,6 +19,10 @@ Style/SymbolArray:
 Style/IfUnlessModifier:
   Enabled: false
 
+# Unless is not neccisarily clearer.
+Style/NegatedIf:
+  Enabled: false
+
 # We use these sparingly, where we anticipate future branches for the
 # inner conditional.
 Style/SoleNestedConditional:
@@ -35,6 +39,10 @@ Style/SafeNavigation:
 # We commonly use ENV['KEY'], it's OK.
 Style/FetchEnvVar:
   Enabled: false
+
+# Behaviour of alias_method is more predictable.
+Style/Alias:
+  EnforcedStyle: prefer_alias_method
 
 # We prefer nested modules in lib/, but are currently using compact style for tests.
 Style/ClassAndModuleChildren:

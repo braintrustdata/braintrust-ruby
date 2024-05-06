@@ -1,13 +1,14 @@
 # frozen_string_literal: true
 
 module Braintrust
-  # Use this to indicate that a value should be explicitly removed from a data structure
-  # when using `Braintrust::Util.deep_merge`.
-  # E.g. merging `{a: 1}` and `{a: OMIT}` should produce `{}`, where merging `{a: 1}` and
-  # `{}` would produce `{a: 1}`.
-  OMIT = Object.new.freeze
-
+  # @!visibility private
   class Util
+    # Use this to indicate that a value should be explicitly removed from a data structure
+    # when using `Braintrust::Util.deep_merge`.
+    # E.g. merging `{a: 1}` and `{a: OMIT}` should produce `{}`, where merging `{a: 1}` and
+    # `{}` would produce `{a: 1}`.
+    OMIT = Object.new.freeze
+
     # Recursively merge one hash with another.
     # If the values at a given key are not both hashes, just take the new value.
     # @param concat [true, false] whether to merge sequences by concatenation
@@ -28,6 +29,33 @@ module Braintrust
         left.concat(right_cleaned)
       else
         right_cleaned
+      end
+    end
+
+    def self.coerce_integer(str)
+      begin
+        Integer(str)
+      rescue
+        str
+      end
+    end
+
+    def self.coerce_float(str)
+      begin
+        Float(str)
+      rescue
+        str
+      end
+    end
+
+    def self.coerce_boolean(input)
+      case input
+      when "true"
+        true
+      when "false"
+        false
+      else
+        input
       end
     end
   end
