@@ -43,7 +43,7 @@ class Braintrust::Test::UtilTest < Test::Unit::TestCase
       {b: {b2: 1, b3: {d: 5}}},
       Braintrust::Util.deep_merge(
         {b: {b2: 1, b3: {c: 4, d: 5}}},
-        {b: {b2: 1, b3: {c: Braintrust::OMIT, d: 5}}}
+        {b: {b2: 1, b3: {c: Braintrust::Util::OMIT, d: 5}}}
       )
     )
   end

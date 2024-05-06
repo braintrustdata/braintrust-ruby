@@ -2,3 +2,4 @@
 .ruby-lsp/
 .yardoc/
 doc/
+Brewfile.lock.json

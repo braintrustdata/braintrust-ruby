@@ -66,6 +66,34 @@ module Braintrust
         @client.request(req, opts)
       end
 
+      # List out all datasets. The datasets are sorted by creation date, with the most
+      #   recently-created datasets coming first
+      # 
+      # @param params [Hash] Attributes to send in this request.
+      # @option params [String] :dataset_name Name of the dataset to search for
+      # @option params [String] :ending_before A cursor for pagination. For example, if the initial item in the last page you
+      #   fetched had an id of `foo`, pass `ending_before=foo` to fetch the previous page.
+      #   Note: you may only pass one of `starting_after` and `ending_before`
+      # @option params [Integer] :limit Limit the number of objects to return
+      # @option params [String] :org_name Filter search results to within a particular organization
+      # @option params [String] :project_name Name of the project to search for
+      # @option params [String] :starting_after A cursor for pagination. For example, if the final item in the last page you
+      #   fetched had an id of `foo`, pass `starting_after=foo` to fetch the next page.
+      #   Note: you may only pass one of `starting_after` and `ending_before`
+      # 
+      # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
+      # 
+      # @return [Braintrust::ListObjects<Braintrust::Models::Dataset>]
+      def list(params = {}, opts = {})
+        req = {}
+        req[:method] = :get
+        req[:path] = "/v1/dataset"
+        req[:query] = params
+        req[:page] = Braintrust::ListObjects
+        req[:model] = Braintrust::Models::Dataset
+        @client.request(req, opts)
+      end
+
       # Delete a dataset object by its id
       # 
       # @param dataset_id [String] Dataset id
@@ -89,7 +117,7 @@ module Braintrust
       # 
       # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
       # 
-      # @return [NilClass]
+      # @return [nil]
       def feedback(dataset_id, params = {}, opts = {})
         req = {}
         req[:method] = :post
@@ -192,7 +220,7 @@ module Braintrust
       # @param dataset_id [String] Dataset id
       # 
       # @param params [Hash] Attributes to send in this request.
-      # @option params [Array<Event::UnnamedTypeWithunionParent4,Event::UnnamedTypeWithunionParent5>] :events A list of dataset events to insert
+      # @option params [Array<Event::UnnamedTypeWithunionParent4|Event::UnnamedTypeWithunionParent5>] :events A list of dataset events to insert
       # 
       # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
       # 

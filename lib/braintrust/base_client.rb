@@ -90,10 +90,21 @@ module Braintrust
     end
 
     def prep_request(options)
-      headers = @headers.dup
-      headers.merge!(options[:headers]) if options[:headers]
+      method = options.fetch(:method)
 
-      method = options[:method].to_sym
+      headers = @headers.merge(auth_headers)
+      if options[:headers]
+        headers.merge!(options[:headers])
+      end
+      if options[:extra_headers]
+        headers.merge!(options[:extra_headers])
+      end
+      if @idempotency_header && !headers[@idempotency_header] && ![:get, :head, :options].include?(method)
+        headers[@idempotency_header] = options[:idempotency_key] || generate_idempotency_key
+      end
+      headers.filter! { |_k, v| !v.nil? }
+      headers.transform_values!(&:to_s)
+
       body =
         case method
         when :post, :put, :patch, :delete
@@ -108,29 +119,13 @@ module Braintrust
         else
           nil
         end
-
       if options[:extra_body]
         body = Util.deep_merge(body, options[:extra_body])
       end
 
-      full_headers = headers.merge(auth_headers)
+      url_elements = resolve_uri_elements(options)
 
-      if options[:extra_headers]
-        full_headers = Util.deep_merge(full_headers, options[:extra_headers])
-      end
-
-      if @idempotency_header && !headers[@idempotency_header] && ![:get, :head, :options].include?(method)
-        full_headers[@idempotency_header] = options[:idempotency_key] || generate_idempotency_key
-      end
-
-      {
-        method: method,
-        body: body,
-        headers:
-          full_headers
-            .filter { |_k, v| !v.nil? }
-            .transform_values(&:to_s)
-      }.merge(resolve_uri_elements(options))
+      {method: method, headers: headers, body: body}.merge(url_elements)
     end
 
     def generate_idempotency_key
@@ -245,12 +240,13 @@ module Braintrust
       validate_request(req, opts)
       options = req.merge(opts)
       request_args = prep_request(options)
-      response = with_retry(request_args, max_retries: options[:max_retries])
+      response = with_retry(request_args, max_retries: opts[:max_retries])
       raw_data =
         case response.content_type
         when "application/json"
           begin
-            JSON.parse(response.body)
+            data = JSON.parse(response.body, symbolize_names: true)
+            req[:unwrap] ? data[req[:unwrap]] : data
           rescue JSON::ParserError
             response.body
           end
@@ -259,9 +255,14 @@ module Braintrust
           response.body
         end
 
-      model = options[:model]
-
-      model ? Converter.convert(model, raw_data) : raw_data
+      if (page = req[:page])
+        model = req.fetch(:model)
+        page.new(model, raw_data, response, self, req, opts)
+      elsif (model = req[:model])
+        Converter.convert(model, raw_data)
+      else
+        raw_data
+      end
     end
   end
 

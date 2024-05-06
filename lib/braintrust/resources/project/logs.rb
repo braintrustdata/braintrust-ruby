@@ -17,7 +17,7 @@ module Braintrust
         # 
         # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
         # 
-        # @return [NilClass]
+        # @return [nil]
         def feedback(project_id, params = {}, opts = {})
           req = {}
           req[:method] = :post
@@ -120,7 +120,7 @@ module Braintrust
         # @param project_id [String] Project id
         # 
         # @param params [Hash] Attributes to send in this request.
-        # @option params [Array<Event::UnnamedTypeWithunionParent0,Event::UnnamedTypeWithunionParent1>] :events A list of project logs events to insert
+        # @option params [Array<Event::UnnamedTypeWithunionParent0|Event::UnnamedTypeWithunionParent1>] :events A list of project logs events to insert
         # 
         # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
         # 

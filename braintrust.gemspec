@@ -12,8 +12,8 @@ Gem::Specification.new do |s|
   s.extra_rdoc_files = ["README.md"]
   s.required_ruby_version = ">= 3.0.0"
   s.add_dependency "connection_pool"
-  s.homepage = "https://rubydoc.info/github/stainless-sdks/manugoyal/braintrust-sdk-kotlin-ruby"
+  s.homepage = "https://rubydoc.info/github/braintrustdata/braintrust-ruby"
   s.metadata["homepage_uri"] = s.homepage
-  s.metadata["source_code_uri"] = "https://github.com/stainless-sdks/manugoyal/braintrust-sdk-kotlin-ruby"
+  s.metadata["source_code_uri"] = "https://github.com/braintrustdata/braintrust-ruby"
   s.metadata["rubygems_mfa_required"] = "true"
 end

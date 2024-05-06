@@ -17,7 +17,7 @@ module Braintrust
         req = {}
         req[:method] = :get
         req[:path] = "/v1"
-        req[:headers] = {"Accept" => "text/plain", }
+        req[:headers] = {"Accept" => "text/plain"}
         req[:model] = String
         @client.request(req, opts)
       end
