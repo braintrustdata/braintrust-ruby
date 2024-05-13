@@ -17,7 +17,7 @@ To use this gem during the beta, install directly from GitHub with Bundler by
 adding the following to your application's `Gemfile`:
 
 ```ruby
-gem "braintrust", git: "https://github.com/braintrustdata/braintrust-ruby", branch: "main"
+gem "ruby", git: "https://github.com/braintrustdata/braintrust-ruby", branch: "main"
 ```
 
 To fetch an initial copy of the gem:
@@ -30,17 +30,17 @@ To update the version used by your application when updates are pushed to
 GitHub:
 
 ```sh
-bundle update braintrust
+bundle update ruby
 ```
 
 ## Usage
 
 ```ruby
-require "braintrust"
+require "ruby"
 
-braintrust = Braintrust::Client.new
+braintrust = Ruby::Client.new
 
-project = braintrust.project.create(name: "first model")
+project = braintrust.project.create
 
 puts project.id
 ```
@@ -49,12 +49,12 @@ puts project.id
 
 When the library is unable to connect to the API, or if the API returns a
 non-success status code (i.e., 4xx or 5xx response), a subclass of
-`Braintrust::HTTP::Error` will be thrown:
+`Ruby::HTTP::Error` will be thrown:
 
 ```ruby
 begin
-  project = braintrust.project.create(name: "first model")
-rescue Braintrust::HTTP::Error => e
+  project = braintrust.project.create
+rescue Ruby::HTTP::Error => e
   puts e.code # 400
 end
 ```
@@ -85,12 +85,12 @@ You can use the `max_retries` option to configure or disable this:
 
 ```ruby
 # Configure the default for all requests:
-braintrust = Braintrust::Client.new(
+braintrust = Ruby::Client.new(
   max_retries: 0 # default is 2
 )
 
 # Or, configure per-request:
-braintrust.project.create(name: "first model", max_retries: 5)
+braintrust.project.create(max_retries: 5)
 ```
 
 ## Versioning
