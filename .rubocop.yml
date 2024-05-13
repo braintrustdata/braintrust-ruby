@@ -54,8 +54,8 @@ Layout/LineLength:
   Max: 110
   AllowedPatterns:
     - '^(\s*#)' # Comments for YARD docs: @param and similar.
-    - '= Braintrust::Resources::\S+\.new\(client: (self|client)\)$' # Instantiating resources.
-    - '^\s*(-> { )?Braintrust::Models::[a-zA-Z0-9:]+( })?$' # Line is entirely a reference to a fully-qualified Model.
+    - '= Ruby::Resources::\S+\.new\(client: (self|client)\)$' # Instantiating resources.
+    - '^\s*(-> { )?Ruby::Models::[a-zA-Z0-9:]+( })?$' # Line is entirely a reference to a fully-qualified Model.
 
 # Start the assignment on the same line variable is mentioned.
 Layout/MultilineAssignmentLayout:
