@@ -60,5 +60,5 @@
     }
   ],
   "release-type": "ruby",
-  "version-file": "lib/ruby/version.rb"
+  "version-file": "lib/braintrust/version.rb"
 }
