@@ -34,7 +34,7 @@ bundle update braintrust
 ```
 
 ## Usage
-The library needs to be configured with your account's secret key which is available in your Braintrust Dashboard.
+The library needs to be configured with your account's secret key which is available in your [Braintrust Dashboard](https://braintrust.dev/app/settings?subroute=api-keys).
 
 ```ruby
 require "braintrust"
