@@ -34,11 +34,12 @@ bundle update braintrust
 ```
 
 ## Usage
+The library needs to be configured with your account's secret key which is available in your Braintrust Dashboard.
 
 ```ruby
 require "braintrust"
 
-braintrust = Braintrust::Client.new
+braintrust = Braintrust::Client.new(api_key: 'sk_test_...')
 
 project = braintrust.project.create
 
