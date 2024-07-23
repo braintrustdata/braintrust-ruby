@@ -54,6 +54,8 @@ module Braintrust
       # 
       # @param params [Hash] Attributes to send in this request.
       # @option params [String] :name Name of the project
+      # @option params [Settings] :settings Project settings. Patch operations replace all settings, so make sure you
+      #   include all settings you want to keep.
       # 
       # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
       # 
@@ -110,29 +112,6 @@ module Braintrust
         req = {}
         req[:method] = :delete
         req[:path] = "/v1/project/#{project_id}"
-        req[:model] = Braintrust::Models::Project
-        @client.request(req, opts)
-      end
-
-      # NOTE: This operation is deprecated and will be removed in a future revision of
-      #   the API. Create or replace a new project. If there is an existing project with
-      #   the same name as the one specified in the request, will return the existing
-      #   project unmodified, will replace the existing project with the provided fields
-      # 
-      # @param params [Hash] Attributes to send in this request.
-      # @option params [String] :name Name of the project
-      # @option params [String] :org_name For nearly all users, this parameter should be unnecessary. But in the rare case
-      #   that your API key belongs to multiple organizations, you may specify the name of
-      #   the organization the project belongs in.
-      # 
-      # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
-      # 
-      # @return [Braintrust::Models::Project]
-      def replace(params = {}, opts = {})
-        req = {}
-        req[:method] = :put
-        req[:path] = "/v1/project"
-        req[:body] = params
         req[:model] = Braintrust::Models::Project
         @client.request(req, opts)
       end

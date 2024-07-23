@@ -29,19 +29,9 @@ module Braintrust
       optional :description, String
 
       # @!attribute [rw] member_permissions
-      #   Permissions which belong to this role
-      #   @return [Array<Symbol>]
-      optional :member_permissions,
-               Braintrust::ArrayOf.new(Braintrust::Enum.new(
-                 :create,
-                 :read,
-                 :update,
-                 :delete,
-                 :create_acls,
-                 :read_acls,
-                 :update_acls,
-                 :delete_acls
-               ))
+      #   (permission, restrict_object_type) tuples which belong to this role
+      #   @return [Array<Braintrust::Models::Role::MemberPermission>]
+      optional :member_permissions, Braintrust::ArrayOf.new(-> { Braintrust::Models::Role::MemberPermission })
 
       # @!attribute [rw] member_roles
       #   Ids of the roles this role inherits from
@@ -63,6 +53,43 @@ module Braintrust
       #   Identifies the user who created the role
       #   @return [String]
       optional :user_id, String
+
+      class MemberPermission < BaseModel
+        # @!attribute [rw] permission
+        #   Each permission permits a certain type of operation on an object in the system
+        # 
+        # Permissions can be assigned to to objects on an individual basis, or grouped into roles
+        #   @return [Symbol]
+        required :permission,
+                 Braintrust::Enum.new(
+                   :create,
+                   :read,
+                   :update,
+                   :delete,
+                   :create_acls,
+                   :read_acls,
+                   :update_acls,
+                   :delete_acls
+                 )
+
+        # @!attribute [rw] restrict_object_type
+        #   The object type that the ACL applies to
+        #   @return [Symbol]
+        optional :restrict_object_type,
+                 Braintrust::Enum.new(
+                   :organization,
+                   :project,
+                   :experiment,
+                   :dataset,
+                   :prompt,
+                   :prompt_session,
+                   :group,
+                   :role,
+                   :org_member,
+                   :project_log,
+                   :org_project
+                 )
+      end
     end
   end
 end

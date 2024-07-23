@@ -55,13 +55,12 @@ module Braintrust
       # @param group_id [String] Group id
       # 
       # @param params [Hash] Attributes to send in this request.
+      # @option params [Array<String>] :add_member_groups A list of group IDs to add to the group's inheriting-from set
+      # @option params [Array<String>] :add_member_users A list of user IDs to add to the group
       # @option params [String] :description Textual description of the group
-      # @option params [Array<String>] :member_groups Ids of the groups this group inherits from
-      # 
-      #   An inheriting group has all the users contained in its member groups, as well as
-      #   all of their inherited users
-      # @option params [Array<String>] :member_users Ids of users which belong to this group
       # @option params [String] :name Name of the group
+      # @option params [Array<String>] :remove_member_groups A list of group IDs to remove from the group's inheriting-from set
+      # @option params [Array<String>] :remove_member_users A list of user IDs to remove from the group
       # 
       # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
       # 
@@ -122,10 +121,9 @@ module Braintrust
         @client.request(req, opts)
       end
 
-      # NOTE: This operation is deprecated and will be removed in a future revision of
-      #   the API. Create or replace a new group. If there is an existing group with the
-      #   same name as the one specified in the request, will return the existing group
-      #   unmodified, will replace the existing group with the provided fields
+      # Create or replace group. If there is an existing group with the same name as the
+      #   one specified in the request, will replace the existing group with the provided
+      #   fields
       # 
       # @param params [Hash] Attributes to send in this request.
       # @option params [String] :name Name of the group

@@ -28,6 +28,11 @@ module Braintrust
       #   @return [String]
       optional :description, String
 
+      # @!attribute [rw] metadata
+      #   User-controlled metadata about the dataset
+      #   @return [Hash]
+      optional :metadata, Hash
+
       # @!attribute [rw] project_id
       #   Unique identifier for the project that the dataset belongs under
       #   @return [String]
