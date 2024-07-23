@@ -9,7 +9,7 @@ class Braintrust::Test::Resources::ViewTest < Test::Unit::TestCase
 
   def test_create_required_params
     response = @braintrust.view.create(
-      {name: "string", object_id: "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e", object_type: "organization", view_type: "projects"}
+      {name: "name", object_id: "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e", object_type: "organization", view_type: "projects"}
     )
     assert_kind_of(Braintrust::Models::View, response)
   end
@@ -45,7 +45,7 @@ class Braintrust::Test::Resources::ViewTest < Test::Unit::TestCase
 
   def test_replace_required_params
     response = @braintrust.view.replace(
-      {name: "string", object_id: "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e", object_type: "organization", view_type: "projects"}
+      {name: "name", object_id: "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e", object_type: "organization", view_type: "projects"}
     )
     assert_kind_of(Braintrust::Models::View, response)
   end

@@ -8,7 +8,7 @@ class Braintrust::Test::Resources::DatasetTest < Test::Unit::TestCase
   end
 
   def test_create_required_params
-    response = @braintrust.dataset.create({name: "string"})
+    response = @braintrust.dataset.create({name: "name"})
     assert_kind_of(Braintrust::Models::Dataset, response)
   end
 
@@ -35,7 +35,7 @@ class Braintrust::Test::Resources::DatasetTest < Test::Unit::TestCase
   def test_feedback_required_params
     response = @braintrust.dataset.feedback(
       "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-      {feedback: [{"id" => "string"}, {"id" => "string"}, {"id" => "string"}]}
+      {feedback: [{"id" => "id"}, {"id" => "id"}, {"id" => "id"}]}
     )
     assert_nil(response)
   end
