@@ -35,6 +35,24 @@ module Braintrust
     # @return [Braintrust::Resources::User]
     attr_reader :user
 
+    # @return [Braintrust::Resources::ProjectScore]
+    attr_reader :project_score
+
+    # @return [Braintrust::Resources::ProjectTag]
+    attr_reader :project_tag
+
+    # @return [Braintrust::Resources::Function]
+    attr_reader :function
+
+    # @return [Braintrust::Resources::View]
+    attr_reader :view
+
+    # @return [Braintrust::Resources::Organization]
+    attr_reader :organization
+
+    # @return [Braintrust::Resources::APIKey]
+    attr_reader :api_key
+
     # @!visibility private
     def auth_headers
       {"Authorization" => "Bearer #{@api_key}"}
@@ -62,6 +80,12 @@ module Braintrust
       @group = Braintrust::Resources::Group.new(client: self)
       @acl = Braintrust::Resources::ACL.new(client: self)
       @user = Braintrust::Resources::User.new(client: self)
+      @project_score = Braintrust::Resources::ProjectScore.new(client: self)
+      @project_tag = Braintrust::Resources::ProjectTag.new(client: self)
+      @function = Braintrust::Resources::Function.new(client: self)
+      @view = Braintrust::Resources::View.new(client: self)
+      @organization = Braintrust::Resources::Organization.new(client: self)
+      @api_key = Braintrust::Resources::APIKey.new(client: self)
     end
 
     # @!visibility private
