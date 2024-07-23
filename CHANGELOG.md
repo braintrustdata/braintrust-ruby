@@ -1,5 +1,24 @@
 # Changelog
 
+## 0.1.0-alpha.2 (2024-07-23)
+
+Full Changelog: [v0.1.0-alpha.1...v0.1.0-alpha.2](https://github.com/braintrustdata/braintrust-ruby/compare/v0.1.0-alpha.1...v0.1.0-alpha.2)
+
+### Features
+
+* **api:** update via SDK Studio ([#13](https://github.com/braintrustdata/braintrust-ruby/issues/13)) ([7b31cac](https://github.com/braintrustdata/braintrust-ruby/commit/7b31cac36076d5ca85cfbf724612e91eac5a7c5c))
+* **api:** update via SDK Studio ([#5](https://github.com/braintrustdata/braintrust-ruby/issues/5)) ([7a9e51f](https://github.com/braintrustdata/braintrust-ruby/commit/7a9e51f36f6f875d9751b7843bb5396d8c20ce51))
+
+
+### Chores
+
+* **ci:** limit release doctor target branches ([#9](https://github.com/braintrustdata/braintrust-ruby/issues/9)) ([83fe1a1](https://github.com/braintrustdata/braintrust-ruby/commit/83fe1a1bf2741bbfaf1668088f37a7073f66441f))
+* **docs:** minor update to formatting of API link in README ([#8](https://github.com/braintrustdata/braintrust-ruby/issues/8)) ([5584e92](https://github.com/braintrustdata/braintrust-ruby/commit/5584e921215d5884807a7a71eb7e70f97f8afff8))
+* **internal:** codegen related update ([#7](https://github.com/braintrustdata/braintrust-ruby/issues/7)) ([be93432](https://github.com/braintrustdata/braintrust-ruby/commit/be93432853eee2e8a44a2898e901bc7c9bdf451c))
+* **internal:** refactor release doctor script ([#10](https://github.com/braintrustdata/braintrust-ruby/issues/10)) ([9549ea8](https://github.com/braintrustdata/braintrust-ruby/commit/9549ea8c02aee5a6bcb1d148e7bda26803191bf6))
+* **internal:** restore release-please configuration files ([#12](https://github.com/braintrustdata/braintrust-ruby/issues/12)) ([3a55911](https://github.com/braintrustdata/braintrust-ruby/commit/3a559111e44b3c2c69df8f9d7fc00808dd417bfd))
+* **tests:** update prism version ([#11](https://github.com/braintrustdata/braintrust-ruby/issues/11)) ([75bfb08](https://github.com/braintrustdata/braintrust-ruby/commit/75bfb08741957693cf6c35faeff7268c624588b8))
+
 ## 0.1.0-alpha.1 (2024-07-05)
 
 Full Changelog: [v0.0.1-alpha.0...v0.1.0-alpha.1](https://github.com/braintrustdata/braintrust-ruby/compare/v0.0.1-alpha.0...v0.1.0-alpha.1)
