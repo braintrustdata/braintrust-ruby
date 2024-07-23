@@ -281,7 +281,7 @@ module Braintrust
       # @param experiment_id [String] Experiment id
       # 
       # @param params [Hash] Attributes to send in this request.
-      # @option params [Array<Event::UnnamedTypeWithunionParent10|Event::UnnamedTypeWithunionParent9>] :events A list of experiment events to insert
+      # @option params [Array<Event::UnnamedTypeWithunionParent23|Event::UnnamedTypeWithunionParent24>] :events A list of experiment events to insert
       # 
       # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
       # 
@@ -292,42 +292,6 @@ module Braintrust
         req[:path] = "/v1/experiment/#{experiment_id}/insert"
         req[:body] = params
         req[:model] = Braintrust::Models::ExperimentInsertResponse
-        @client.request(req, opts)
-      end
-
-      # NOTE: This operation is deprecated and will be removed in a future revision of
-      #   the API. Create or replace a new experiment. If there is an existing experiment
-      #   in the project with the same name as the one specified in the request, will
-      #   return the existing experiment unmodified, will replace the existing experiment
-      #   with the provided fields
-      # 
-      # @param params [Hash] Attributes to send in this request.
-      # @option params [String] :project_id Unique identifier for the project that the experiment belongs under
-      # @option params [String] :base_exp_id Id of default base experiment to compare against when viewing this experiment
-      # @option params [String] :dataset_id Identifier of the linked dataset, or null if the experiment is not linked to a
-      #   dataset
-      # @option params [String] :dataset_version Version number of the linked dataset the experiment was run against. This can be
-      #   used to reproduce the experiment after the dataset has been modified.
-      # @option params [String] :description Textual description of the experiment
-      # @option params [Boolean] :ensure_new Normally, creating an experiment with the same name as an existing experiment
-      #   will return the existing one un-modified. But if `ensure_new` is true,
-      #   registration will generate a new experiment with a unique name in case of a
-      #   conflict.
-      # @option params [Hash] :metadata User-controlled metadata about the experiment
-      # @option params [String] :name Name of the experiment. Within a project, experiment names are unique
-      # @option params [Boolean] :public Whether or not the experiment is public. Public experiments can be viewed by
-      #   anybody inside or outside the organization
-      # @option params [RepoInfo] :repo_info Metadata about the state of the repo when the experiment was created
-      # 
-      # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
-      # 
-      # @return [Braintrust::Models::Experiment]
-      def replace(params = {}, opts = {})
-        req = {}
-        req[:method] = :put
-        req[:path] = "/v1/experiment"
-        req[:body] = params
-        req[:model] = Braintrust::Models::Experiment
         @client.request(req, opts)
       end
 

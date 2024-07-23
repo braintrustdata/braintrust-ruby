@@ -28,10 +28,21 @@ module Braintrust
       #   @return [String]
       optional :deleted_at, String
 
+      # @!attribute [rw] settings
+      #   @return [Braintrust::Models::Project::Settings]
+      optional :settings, -> { Braintrust::Models::Project::Settings }
+
       # @!attribute [rw] user_id
       #   Identifies the user who created the project
       #   @return [String]
       optional :user_id, String
+
+      class Settings < BaseModel
+        # @!attribute [rw] comparison_key
+        #   The key used to join two experiments (defaults to `input`).
+        #   @return [String]
+        optional :comparison_key, String
+      end
     end
   end
 end

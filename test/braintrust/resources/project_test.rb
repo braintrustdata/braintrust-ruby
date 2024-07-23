@@ -31,9 +31,4 @@ class Braintrust::Test::Resources::ProjectTest < Test::Unit::TestCase
     response = @braintrust.project.delete("182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e")
     assert_kind_of(Braintrust::Models::Project, response)
   end
-
-  def test_replace_required_params
-    response = @braintrust.project.replace({name: "string"})
-    assert_kind_of(Braintrust::Models::Project, response)
-  end
 end

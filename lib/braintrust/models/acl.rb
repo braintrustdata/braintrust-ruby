@@ -29,10 +29,11 @@ module Braintrust
                  :dataset,
                  :prompt,
                  :prompt_session,
-                 :project_score,
-                 :project_tag,
                  :group,
-                 :role
+                 :role,
+                 :org_member,
+                 :project_log,
+                 :org_project
                )
 
       # @!attribute [rw] created
@@ -61,7 +62,7 @@ module Braintrust
                )
 
       # @!attribute [rw] restrict_object_type
-      #   Optionally restricts the permission grant to just the specified object type
+      #   When setting a permission directly, optionally restricts the permission grant to just the specified object type. Cannot be set alongside a `role_id`.
       #   @return [Symbol]
       optional :restrict_object_type,
                Braintrust::Enum.new(
@@ -71,10 +72,11 @@ module Braintrust
                  :dataset,
                  :prompt,
                  :prompt_session,
-                 :project_score,
-                 :project_tag,
                  :group,
-                 :role
+                 :role,
+                 :org_member,
+                 :project_log,
+                 :org_project
                )
 
       # @!attribute [rw] role_id

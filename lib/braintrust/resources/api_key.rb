@@ -2,60 +2,51 @@
 
 module Braintrust
   module Resources
-    class ACL
+    class APIKey
       def initialize(client:)
         @client = client
       end
 
-      # Create a new acl. If there is an existing acl with the same contents as the one
-      #   specified in the request, will return the existing acl unmodified
+      # Create a new api_key. It is possible to have multiple API keys with the same
+      #   name. There is no de-duplication
       # 
       # @param params [Hash] Attributes to send in this request.
-      # @option params [String] :object_id The id of the object the ACL applies to
-      # @option params [Symbol] :object_type The object type that the ACL applies to
-      # @option params [String] :group_id Id of the group the ACL applies to. Exactly one of `user_id` and `group_id` will
-      #   be provided
-      # @option params [Symbol] :permission Permission the ACL grants. Exactly one of `permission` and `role_id` will be
-      #   provided
-      # @option params [Symbol] :restrict_object_type When setting a permission directly, optionally restricts the permission grant to
-      #   just the specified object type. Cannot be set alongside a `role_id`.
-      # @option params [String] :role_id Id of the role the ACL grants. Exactly one of `permission` and `role_id` will be
-      #   provided
-      # @option params [String] :user_id Id of the user the ACL applies to. Exactly one of `user_id` and `group_id` will
-      #   be provided
+      # @option params [String] :name Name of the api key. Does not have to be unique
+      # @option params [String] :org_name For nearly all users, this parameter should be unnecessary. But in the rare case
+      #   that your API key belongs to multiple organizations, you may specify the name of
+      #   the organization the API key belongs in.
       # 
       # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
       # 
-      # @return [Braintrust::Models::ACL]
+      # @return [Braintrust::Models::APIKeyCreateResponse]
       def create(params = {}, opts = {})
         req = {}
         req[:method] = :post
-        req[:path] = "/v1/acl"
+        req[:path] = "/v1/api_key"
         req[:body] = params
-        req[:model] = Braintrust::Models::ACL
+        req[:model] = Braintrust::Models::APIKeyCreateResponse
         @client.request(req, opts)
       end
 
-      # Get an acl object by its id
+      # Get an api_key object by its id
       # 
-      # @param acl_id [String] Acl id
+      # @param api_key_id [String] ApiKey id
       # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
       # 
-      # @return [Braintrust::Models::ACL]
-      def retrieve(acl_id, opts = {})
+      # @return [Braintrust::Models::APIKey]
+      def retrieve(api_key_id, opts = {})
         req = {}
         req[:method] = :get
-        req[:path] = "/v1/acl/#{acl_id}"
-        req[:model] = Braintrust::Models::ACL
+        req[:path] = "/v1/api_key/#{api_key_id}"
+        req[:model] = Braintrust::Models::APIKey
         @client.request(req, opts)
       end
 
-      # List out all acls. The acls are sorted by creation date, with the most
-      #   recently-created acls coming first
+      # List out all api_keys. The api_keys are sorted by creation date, with the most
+      #   recently-created api_keys coming first
       # 
       # @param params [Hash] Attributes to send in this request.
-      # @option params [String] :object_id The id of the object the ACL applies to
-      # @option params [Symbol] :object_type The object type that the ACL applies to
+      # @option params [String] :api_key_name Name of the api_key to search for
       # @option params [String] :ending_before Pagination cursor id.
       # 
       #   For example, if the initial item in the last page you fetched had an id of
@@ -64,6 +55,7 @@ module Braintrust
       # @option params [Array<String>|String] :ids Filter search results to a particular set of object IDs. To specify a list of
       #   IDs, include the query param multiple times
       # @option params [Integer] :limit Limit the number of objects to return
+      # @option params [String] :org_name Filter search results to within a particular organization
       # @option params [String] :starting_after Pagination cursor id.
       # 
       #   For example, if the final item in the last page you fetched had an id of `foo`,
@@ -72,28 +64,28 @@ module Braintrust
       # 
       # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
       # 
-      # @return [Braintrust::ListObjects<Braintrust::Models::ACL>]
+      # @return [Braintrust::ListObjects<Braintrust::Models::APIKey>]
       def list(params = {}, opts = {})
         req = {}
         req[:method] = :get
-        req[:path] = "/v1/acl"
+        req[:path] = "/v1/api_key"
         req[:query] = params
         req[:page] = Braintrust::ListObjects
-        req[:model] = Braintrust::Models::ACL
+        req[:model] = Braintrust::Models::APIKey
         @client.request(req, opts)
       end
 
-      # Delete an acl object by its id
+      # Delete an api_key object by its id
       # 
-      # @param acl_id [String] Acl id
+      # @param api_key_id [String] ApiKey id
       # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
       # 
-      # @return [Braintrust::Models::ACL]
-      def delete(acl_id, opts = {})
+      # @return [Braintrust::Models::APIKey]
+      def delete(api_key_id, opts = {})
         req = {}
         req[:method] = :delete
-        req[:path] = "/v1/acl/#{acl_id}"
-        req[:model] = Braintrust::Models::ACL
+        req[:path] = "/v1/api_key/#{api_key_id}"
+        req[:model] = Braintrust::Models::APIKey
         @client.request(req, opts)
       end
     end
