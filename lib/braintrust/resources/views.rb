@@ -2,7 +2,7 @@
 
 module Braintrust
   module Resources
-    class View
+    class Views
       def initialize(client:)
         @client = client
       end

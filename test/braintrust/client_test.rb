@@ -40,7 +40,7 @@ class BraintrustTest < Test::Unit::TestCase
     requester = MockRequester.new(500, {})
     braintrust.requester = requester
     assert_raise(Braintrust::HTTP::InternalServerError) do
-      braintrust.project.create({name: "name"})
+      braintrust.projects.create({name: "name"})
     end
     assert_equal(3, requester.attempts.length)
   end
@@ -50,7 +50,7 @@ class BraintrustTest < Test::Unit::TestCase
     requester = MockRequester.new(500, {})
     braintrust.requester = requester
     assert_raise(Braintrust::HTTP::InternalServerError) do
-      braintrust.project.create({name: "name"})
+      braintrust.projects.create({name: "name"})
     end
     assert_equal(4, requester.attempts.length)
   end
@@ -60,7 +60,7 @@ class BraintrustTest < Test::Unit::TestCase
     requester = MockRequester.new(500, {})
     braintrust.requester = requester
     assert_raise(Braintrust::HTTP::InternalServerError) do
-      braintrust.project.create({name: "name"}, max_retries: 3)
+      braintrust.projects.create({name: "name"}, max_retries: 3)
     end
     assert_equal(4, requester.attempts.length)
   end
@@ -70,7 +70,7 @@ class BraintrustTest < Test::Unit::TestCase
     requester = MockRequester.new(500, {})
     braintrust.requester = requester
     assert_raise(Braintrust::HTTP::InternalServerError) do
-      braintrust.project.create({name: "name"}, max_retries: 4)
+      braintrust.projects.create({name: "name"}, max_retries: 4)
     end
     assert_equal(5, requester.attempts.length)
   end
@@ -79,7 +79,7 @@ class BraintrustTest < Test::Unit::TestCase
     braintrust = Braintrust::Client.new(base_url: "http://localhost:4010", api_key: "My API Key")
     requester = MockRequester.new(200, {})
     braintrust.requester = requester
-    braintrust.project.create({name: "name"})
+    braintrust.projects.create({name: "name"})
     headers = requester.attempts[0][:headers]
     assert_not_empty(headers["X-Stainless-Lang"])
     assert_not_empty(headers["X-Stainless-Package-Version"])
