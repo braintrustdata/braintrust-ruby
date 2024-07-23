@@ -9,7 +9,7 @@ class Braintrust::Test::Resources::ProjectScoreTest < Test::Unit::TestCase
 
   def test_create_required_params
     response = @braintrust.project_score.create(
-      {name: "string", project_id: "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e", score_type: "slider"}
+      {name: "name", project_id: "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e", score_type: "slider"}
     )
     assert_kind_of(Braintrust::Models::ProjectScore, response)
   end
@@ -36,7 +36,7 @@ class Braintrust::Test::Resources::ProjectScoreTest < Test::Unit::TestCase
 
   def test_replace_required_params
     response = @braintrust.project_score.replace(
-      {name: "string", project_id: "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e", score_type: "slider"}
+      {name: "name", project_id: "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e", score_type: "slider"}
     )
     assert_kind_of(Braintrust::Models::ProjectScore, response)
   end

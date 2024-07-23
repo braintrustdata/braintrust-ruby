@@ -8,7 +8,7 @@ class Braintrust::Test::Resources::ProjectTest < Test::Unit::TestCase
   end
 
   def test_create_required_params
-    response = @braintrust.project.create({name: "string"})
+    response = @braintrust.project.create({name: "name"})
     assert_kind_of(Braintrust::Models::Project, response)
   end
 

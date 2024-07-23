@@ -8,7 +8,7 @@ class Braintrust::Test::Resources::RoleTest < Test::Unit::TestCase
   end
 
   def test_create_required_params
-    response = @braintrust.role.create({name: "string"})
+    response = @braintrust.role.create({name: "name"})
     assert_kind_of(Braintrust::Models::Role, response)
   end
 
@@ -33,7 +33,7 @@ class Braintrust::Test::Resources::RoleTest < Test::Unit::TestCase
   end
 
   def test_replace_required_params
-    response = @braintrust.role.replace({name: "string"})
+    response = @braintrust.role.replace({name: "name"})
     assert_kind_of(Braintrust::Models::Role, response)
   end
 end

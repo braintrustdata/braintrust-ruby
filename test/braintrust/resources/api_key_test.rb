@@ -8,7 +8,7 @@ class Braintrust::Test::Resources::APIKeyTest < Test::Unit::TestCase
   end
 
   def test_create_required_params
-    response = @braintrust.api_key.create({name: "string"})
+    response = @braintrust.api_key.create({name: "name"})
     assert_kind_of(Braintrust::Models::APIKeyCreateResponse, response)
   end
 
