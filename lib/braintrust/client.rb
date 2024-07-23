@@ -11,47 +11,47 @@ module Braintrust
     # @return [Braintrust::Resources::TopLevel]
     attr_reader :top_level
 
-    # @return [Braintrust::Resources::Project]
-    attr_reader :project
+    # @return [Braintrust::Resources::Projects]
+    attr_reader :projects
 
-    # @return [Braintrust::Resources::Experiment]
-    attr_reader :experiment
+    # @return [Braintrust::Resources::Experiments]
+    attr_reader :experiments
 
-    # @return [Braintrust::Resources::Dataset]
-    attr_reader :dataset
+    # @return [Braintrust::Resources::Datasets]
+    attr_reader :datasets
 
-    # @return [Braintrust::Resources::Prompt]
-    attr_reader :prompt
+    # @return [Braintrust::Resources::Prompts]
+    attr_reader :prompts
 
-    # @return [Braintrust::Resources::Role]
-    attr_reader :role
+    # @return [Braintrust::Resources::Roles]
+    attr_reader :roles
 
-    # @return [Braintrust::Resources::Group]
-    attr_reader :group
+    # @return [Braintrust::Resources::Groups]
+    attr_reader :groups
 
-    # @return [Braintrust::Resources::ACL]
-    attr_reader :acl
+    # @return [Braintrust::Resources::ACLs]
+    attr_reader :acls
 
-    # @return [Braintrust::Resources::User]
-    attr_reader :user
+    # @return [Braintrust::Resources::Users]
+    attr_reader :users
 
-    # @return [Braintrust::Resources::ProjectScore]
-    attr_reader :project_score
+    # @return [Braintrust::Resources::ProjectScores]
+    attr_reader :project_scores
 
-    # @return [Braintrust::Resources::ProjectTag]
-    attr_reader :project_tag
+    # @return [Braintrust::Resources::ProjectTags]
+    attr_reader :project_tags
 
-    # @return [Braintrust::Resources::Function]
-    attr_reader :function
+    # @return [Braintrust::Resources::Functions]
+    attr_reader :functions
 
-    # @return [Braintrust::Resources::View]
-    attr_reader :view
+    # @return [Braintrust::Resources::Views]
+    attr_reader :views
 
-    # @return [Braintrust::Resources::Organization]
-    attr_reader :organization
+    # @return [Braintrust::Resources::Organizations]
+    attr_reader :organizations
 
-    # @return [Braintrust::Resources::APIKey]
-    attr_reader :api_key
+    # @return [Braintrust::Resources::APIKeys]
+    attr_reader :api_keys
 
     # @!visibility private
     def auth_headers
@@ -72,20 +72,20 @@ module Braintrust
       super(base_url: base_url, max_retries: max_retries)
 
       @top_level = Braintrust::Resources::TopLevel.new(client: self)
-      @project = Braintrust::Resources::Project.new(client: self)
-      @experiment = Braintrust::Resources::Experiment.new(client: self)
-      @dataset = Braintrust::Resources::Dataset.new(client: self)
-      @prompt = Braintrust::Resources::Prompt.new(client: self)
-      @role = Braintrust::Resources::Role.new(client: self)
-      @group = Braintrust::Resources::Group.new(client: self)
-      @acl = Braintrust::Resources::ACL.new(client: self)
-      @user = Braintrust::Resources::User.new(client: self)
-      @project_score = Braintrust::Resources::ProjectScore.new(client: self)
-      @project_tag = Braintrust::Resources::ProjectTag.new(client: self)
-      @function = Braintrust::Resources::Function.new(client: self)
-      @view = Braintrust::Resources::View.new(client: self)
-      @organization = Braintrust::Resources::Organization.new(client: self)
-      @api_key = Braintrust::Resources::APIKey.new(client: self)
+      @projects = Braintrust::Resources::Projects.new(client: self)
+      @experiments = Braintrust::Resources::Experiments.new(client: self)
+      @datasets = Braintrust::Resources::Datasets.new(client: self)
+      @prompts = Braintrust::Resources::Prompts.new(client: self)
+      @roles = Braintrust::Resources::Roles.new(client: self)
+      @groups = Braintrust::Resources::Groups.new(client: self)
+      @acls = Braintrust::Resources::ACLs.new(client: self)
+      @users = Braintrust::Resources::Users.new(client: self)
+      @project_scores = Braintrust::Resources::ProjectScores.new(client: self)
+      @project_tags = Braintrust::Resources::ProjectTags.new(client: self)
+      @functions = Braintrust::Resources::Functions.new(client: self)
+      @views = Braintrust::Resources::Views.new(client: self)
+      @organizations = Braintrust::Resources::Organizations.new(client: self)
+      @api_keys = Braintrust::Resources::APIKeys.new(client: self)
     end
 
     # @!visibility private

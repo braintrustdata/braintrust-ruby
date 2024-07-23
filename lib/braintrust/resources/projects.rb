@@ -2,13 +2,13 @@
 
 module Braintrust
   module Resources
-    class Project
-      # @return [Braintrust::Resources::Project::Logs]
+    class Projects
+      # @return [Braintrust::Resources::Projects::Logs]
       attr_reader :logs
 
       def initialize(client:)
         @client = client
-        @logs = Braintrust::Resources::Project::Logs.new(client: client)
+        @logs = Braintrust::Resources::Projects::Logs.new(client: client)
       end
 
       # Create a new project. If there is an existing project with the same name as the
