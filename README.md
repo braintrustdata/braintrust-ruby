@@ -9,7 +9,7 @@ It is generated with [Stainless](https://www.stainlessapi.com/).
 
 Documentation for the most recent version of this gem can be found [on RubyDoc](https://rubydoc.info/github/braintrustdata/braintrust-ruby).
 
-The underlying REST API documentation can be found [on www.braintrustdata.com](https://www.braintrustdata.com/docs/api/spec).
+The underlying REST API documentation can be found on [www.braintrustdata.com](https://www.braintrustdata.com/docs/api/spec).
 
 ## Installation
 
