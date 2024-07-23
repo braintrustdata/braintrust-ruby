@@ -13,7 +13,7 @@ module Braintrust
       # @param params [Hash] Attributes to send in this request.
       # @option params [String] :name Name of the role
       # @option params [String] :description Textual description of the role
-      # @option params [Array<Symbol>] :member_permissions Permissions which belong to this role
+      # @option params [Array<MemberPermission>] :member_permissions (permission, restrict_object_type) tuples which belong to this role
       # @option params [Array<String>] :member_roles Ids of the roles this role inherits from
       # 
       #   An inheriting role has all the permissions contained in its member roles, as
@@ -55,13 +55,12 @@ module Braintrust
       # @param role_id [String] Role id
       # 
       # @param params [Hash] Attributes to send in this request.
+      # @option params [Array<AddMemberPermission>] :add_member_permissions A list of permissions to add to the role
+      # @option params [Array<String>] :add_member_roles A list of role IDs to add to the role's inheriting-from set
       # @option params [String] :description Textual description of the role
-      # @option params [Array<Symbol>] :member_permissions Permissions which belong to this role
-      # @option params [Array<String>] :member_roles Ids of the roles this role inherits from
-      # 
-      #   An inheriting role has all the permissions contained in its member roles, as
-      #   well as all of their inherited permissions
       # @option params [String] :name Name of the role
+      # @option params [Array<RemoveMemberPermission>] :remove_member_permissions A list of permissions to remove from the role
+      # @option params [Array<String>] :remove_member_roles A list of role IDs to remove from the role's inheriting-from set
       # 
       # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
       # 
@@ -122,15 +121,14 @@ module Braintrust
         @client.request(req, opts)
       end
 
-      # NOTE: This operation is deprecated and will be removed in a future revision of
-      #   the API. Create or replace a new role. If there is an existing role with the
-      #   same name as the one specified in the request, will return the existing role
-      #   unmodified, will replace the existing role with the provided fields
+      # Create or replace role. If there is an existing role with the same name as the
+      #   one specified in the request, will replace the existing role with the provided
+      #   fields
       # 
       # @param params [Hash] Attributes to send in this request.
       # @option params [String] :name Name of the role
       # @option params [String] :description Textual description of the role
-      # @option params [Array<Symbol>] :member_permissions Permissions which belong to this role
+      # @option params [Array<MemberPermission>] :member_permissions (permission, restrict_object_type) tuples which belong to this role
       # @option params [Array<String>] :member_roles Ids of the roles this role inherits from
       # 
       #   An inheriting role has all the permissions contained in its member roles, as

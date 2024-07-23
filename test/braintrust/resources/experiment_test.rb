@@ -55,11 +55,6 @@ class Braintrust::Test::Resources::ExperimentTest < Test::Unit::TestCase
     assert_kind_of(Braintrust::Models::ExperimentInsertResponse, response)
   end
 
-  def test_replace_required_params
-    response = @braintrust.experiment.replace({project_id: "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e"})
-    assert_kind_of(Braintrust::Models::Experiment, response)
-  end
-
   def test_summarize
     response = @braintrust.experiment.summarize("182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e")
     assert_kind_of(Braintrust::Models::ExperimentSummarizeResponse, response)

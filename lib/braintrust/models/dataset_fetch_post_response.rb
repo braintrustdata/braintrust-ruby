@@ -42,7 +42,7 @@ module Braintrust
         required :root_span_id, String
 
         # @!attribute [rw] span_id
-        #   A unique identifier used to link different dataset events together as part of a full trace. See the [tracing guide](https://www.braintrustdata.com/docs/guides/tracing) for full details on tracing
+        #   A unique identifier used to link different dataset events together as part of a full trace. See the [tracing guide](https://www.braintrust.dev/docs/guides/tracing) for full details on tracing
         #   @return [String]
         required :span_id, String
 

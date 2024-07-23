@@ -50,6 +50,7 @@ module Braintrust
       # 
       # @param params [Hash] Attributes to send in this request.
       # @option params [String] :description Textual description of the dataset
+      # @option params [Hash] :metadata User-controlled metadata about the dataset
       # @option params [String] :name Name of the dataset. Within a project, dataset names are unique
       # 
       # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
@@ -259,7 +260,7 @@ module Braintrust
       # @param dataset_id [String] Dataset id
       # 
       # @param params [Hash] Attributes to send in this request.
-      # @option params [Array<Event::UnnamedTypeWithunionParent11|Event::UnnamedTypeWithunionParent12>] :events A list of dataset events to insert
+      # @option params [Array<Event::UnnamedTypeWithunionParent25|Event::UnnamedTypeWithunionParent26>] :events A list of dataset events to insert
       # 
       # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
       # 
@@ -270,29 +271,6 @@ module Braintrust
         req[:path] = "/v1/dataset/#{dataset_id}/insert"
         req[:body] = params
         req[:model] = Braintrust::Models::DatasetInsertResponse
-        @client.request(req, opts)
-      end
-
-      # NOTE: This operation is deprecated and will be removed in a future revision of
-      #   the API. Create or replace a new dataset. If there is an existing dataset in the
-      #   project with the same name as the one specified in the request, will return the
-      #   existing dataset unmodified, will replace the existing dataset with the provided
-      #   fields
-      # 
-      # @param params [Hash] Attributes to send in this request.
-      # @option params [String] :name Name of the dataset. Within a project, dataset names are unique
-      # @option params [String] :description Textual description of the dataset
-      # @option params [String] :project_id Unique identifier for the project that the dataset belongs under
-      # 
-      # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
-      # 
-      # @return [Braintrust::Models::Dataset]
-      def replace(params = {}, opts = {})
-        req = {}
-        req[:method] = :put
-        req[:path] = "/v1/dataset"
-        req[:body] = params
-        req[:model] = Braintrust::Models::Dataset
         @client.request(req, opts)
       end
 

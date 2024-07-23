@@ -55,11 +55,6 @@ class Braintrust::Test::Resources::DatasetTest < Test::Unit::TestCase
     assert_kind_of(Braintrust::Models::DatasetInsertResponse, response)
   end
 
-  def test_replace_required_params
-    response = @braintrust.dataset.replace({name: "string"})
-    assert_kind_of(Braintrust::Models::Dataset, response)
-  end
-
   def test_summarize
     response = @braintrust.dataset.summarize("182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e")
     assert_kind_of(Braintrust::Models::DatasetSummarizeResponse, response)
