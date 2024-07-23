@@ -2,53 +2,51 @@
 
 module Braintrust
   module Resources
-    class Organization
+    class APIKeys
       def initialize(client:)
         @client = client
       end
 
-      # Get a organization object by its id
+      # Create a new api_key. It is possible to have multiple API keys with the same
+      #   name. There is no de-duplication
       # 
-      # @param organization_id [String] Organization id
+      # @param params [Hash] Attributes to send in this request.
+      # @option params [String] :name Name of the api key. Does not have to be unique
+      # @option params [String] :org_name For nearly all users, this parameter should be unnecessary. But in the rare case
+      #   that your API key belongs to multiple organizations, you may specify the name of
+      #   the organization the API key belongs in.
+      # 
       # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
       # 
-      # @return [Braintrust::Models::Organization]
-      def retrieve(organization_id, opts = {})
+      # @return [Braintrust::Models::APIKeyCreateResponse]
+      def create(params = {}, opts = {})
+        req = {}
+        req[:method] = :post
+        req[:path] = "/v1/api_key"
+        req[:body] = params
+        req[:model] = Braintrust::Models::APIKeyCreateResponse
+        @client.request(req, opts)
+      end
+
+      # Get an api_key object by its id
+      # 
+      # @param api_key_id [String] ApiKey id
+      # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
+      # 
+      # @return [Braintrust::Models::APIKey]
+      def retrieve(api_key_id, opts = {})
         req = {}
         req[:method] = :get
-        req[:path] = "/v1/organization/#{organization_id}"
-        req[:model] = Braintrust::Models::Organization
+        req[:path] = "/v1/api_key/#{api_key_id}"
+        req[:model] = Braintrust::Models::APIKey
         @client.request(req, opts)
       end
 
-      # Partially update a organization object. Specify the fields to update in the
-      #   payload. Any object-type fields will be deep-merged with existing content.
-      #   Currently we do not support removing fields or setting them to null.
-      # 
-      # @param organization_id [String] Organization id
+      # List out all api_keys. The api_keys are sorted by creation date, with the most
+      #   recently-created api_keys coming first
       # 
       # @param params [Hash] Attributes to send in this request.
-      # @option params [String] :api_url
-      # @option params [String] :name Name of the organization
-      # @option params [String] :proxy_url
-      # @option params [String] :realtime_url
-      # 
-      # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
-      # 
-      # @return [Braintrust::Models::Organization]
-      def update(organization_id, params = {}, opts = {})
-        req = {}
-        req[:method] = :patch
-        req[:path] = "/v1/organization/#{organization_id}"
-        req[:body] = params
-        req[:model] = Braintrust::Models::Organization
-        @client.request(req, opts)
-      end
-
-      # List out all organizations. The organizations are sorted by creation date, with
-      #   the most recently-created organizations coming first
-      # 
-      # @param params [Hash] Attributes to send in this request.
+      # @option params [String] :api_key_name Name of the api_key to search for
       # @option params [String] :ending_before Pagination cursor id.
       # 
       #   For example, if the initial item in the last page you fetched had an id of
@@ -58,7 +56,6 @@ module Braintrust
       #   IDs, include the query param multiple times
       # @option params [Integer] :limit Limit the number of objects to return
       # @option params [String] :org_name Filter search results to within a particular organization
-      # @option params [String] :organization_name Name of the organization to search for
       # @option params [String] :starting_after Pagination cursor id.
       # 
       #   For example, if the final item in the last page you fetched had an id of `foo`,
@@ -67,28 +64,28 @@ module Braintrust
       # 
       # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
       # 
-      # @return [Braintrust::ListObjects<Braintrust::Models::Organization>]
+      # @return [Braintrust::ListObjects<Braintrust::Models::APIKey>]
       def list(params = {}, opts = {})
         req = {}
         req[:method] = :get
-        req[:path] = "/v1/organization"
+        req[:path] = "/v1/api_key"
         req[:query] = params
         req[:page] = Braintrust::ListObjects
-        req[:model] = Braintrust::Models::Organization
+        req[:model] = Braintrust::Models::APIKey
         @client.request(req, opts)
       end
 
-      # Delete a organization object by its id
+      # Delete an api_key object by its id
       # 
-      # @param organization_id [String] Organization id
+      # @param api_key_id [String] ApiKey id
       # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
       # 
-      # @return [Braintrust::Models::Organization]
-      def delete(organization_id, opts = {})
+      # @return [Braintrust::Models::APIKey]
+      def delete(api_key_id, opts = {})
         req = {}
         req[:method] = :delete
-        req[:path] = "/v1/organization/#{organization_id}"
-        req[:model] = Braintrust::Models::Organization
+        req[:path] = "/v1/api_key/#{api_key_id}"
+        req[:model] = Braintrust::Models::APIKey
         @client.request(req, opts)
       end
     end

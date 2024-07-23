@@ -2,7 +2,7 @@
 
 module Braintrust
   module Resources
-    class ACL
+    class ACLs
       def initialize(client:)
         @client = client
       end

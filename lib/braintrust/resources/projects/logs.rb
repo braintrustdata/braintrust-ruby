@@ -2,7 +2,7 @@
 
 module Braintrust
   module Resources
-    class Project
+    class Projects
       class Logs
         def initialize(client:)
           @client = client
