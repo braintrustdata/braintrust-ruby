@@ -9,7 +9,7 @@ class Braintrust::Test::Resources::FunctionTest < Test::Unit::TestCase
 
   def test_create_required_params
     response = @braintrust.function.create(
-      {function_data: {"type" => "prompt"}, name: "string", project_id: "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e", slug: "string"}
+      {function_data: {"type" => "prompt"}, name: "name", project_id: "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e", slug: "slug"}
     )
     assert_kind_of(Braintrust::Models::Function, response)
   end
@@ -37,14 +37,14 @@ class Braintrust::Test::Resources::FunctionTest < Test::Unit::TestCase
   def test_feedback_required_params
     response = @braintrust.function.feedback(
       "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-      {feedback: [{"id" => "string"}, {"id" => "string"}, {"id" => "string"}]}
+      {feedback: [{"id" => "id"}, {"id" => "id"}, {"id" => "id"}]}
     )
     assert_nil(response)
   end
 
   def test_replace_required_params
     response = @braintrust.function.replace(
-      {function_data: {"type" => "prompt"}, name: "string", project_id: "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e", slug: "string"}
+      {function_data: {"type" => "prompt"}, name: "name", project_id: "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e", slug: "slug"}
     )
     assert_kind_of(Braintrust::Models::Function, response)
   end

@@ -8,7 +8,7 @@ class Braintrust::Test::Resources::ProjectTagTest < Test::Unit::TestCase
   end
 
   def test_create_required_params
-    response = @braintrust.project_tag.create({name: "string", project_id: "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e"})
+    response = @braintrust.project_tag.create({name: "name", project_id: "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e"})
     assert_kind_of(Braintrust::Models::ProjectTag, response)
   end
 
@@ -33,7 +33,7 @@ class Braintrust::Test::Resources::ProjectTagTest < Test::Unit::TestCase
   end
 
   def test_replace_required_params
-    response = @braintrust.project_tag.replace({name: "string", project_id: "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e"})
+    response = @braintrust.project_tag.replace({name: "name", project_id: "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e"})
     assert_kind_of(Braintrust::Models::ProjectTag, response)
   end
 end
