@@ -8,7 +8,7 @@ class Braintrust::Test::Resources::GroupTest < Test::Unit::TestCase
   end
 
   def test_create_required_params
-    response = @braintrust.group.create({name: "string"})
+    response = @braintrust.group.create({name: "name"})
     assert_kind_of(Braintrust::Models::Group, response)
   end
 
@@ -33,7 +33,7 @@ class Braintrust::Test::Resources::GroupTest < Test::Unit::TestCase
   end
 
   def test_replace_required_params
-    response = @braintrust.group.replace({name: "string"})
+    response = @braintrust.group.replace({name: "name"})
     assert_kind_of(Braintrust::Models::Group, response)
   end
 end
