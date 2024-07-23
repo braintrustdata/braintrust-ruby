@@ -2,7 +2,7 @@
 
 module Braintrust
   module Resources
-    class Group
+    class Groups
       def initialize(client:)
         @client = client
       end

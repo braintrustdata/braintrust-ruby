@@ -40,7 +40,7 @@ require "braintrust"
 
 braintrust = Braintrust::Client.new
 
-project = braintrust.project.create
+project = braintrust.projects.create
 
 puts project.id
 ```
@@ -53,7 +53,7 @@ non-success status code (i.e., 4xx or 5xx response), a subclass of
 
 ```ruby
 begin
-  project = braintrust.project.create
+  project = braintrust.projects.create
 rescue Braintrust::HTTP::Error => e
   puts e.code # 400
 end
@@ -90,7 +90,7 @@ braintrust = Braintrust::Client.new(
 )
 
 # Or, configure per-request:
-braintrust.project.create(max_retries: 5)
+braintrust.projects.create(max_retries: 5)
 ```
 
 ## Versioning

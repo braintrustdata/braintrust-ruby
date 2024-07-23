@@ -2,7 +2,7 @@
 
 module Braintrust
   module Resources
-    class ProjectTag
+    class ProjectTags
       def initialize(client:)
         @client = client
       end

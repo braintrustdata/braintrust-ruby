@@ -2,7 +2,7 @@
 
 module Braintrust
   module Resources
-    class ProjectScore
+    class ProjectScores
       def initialize(client:)
         @client = client
       end
