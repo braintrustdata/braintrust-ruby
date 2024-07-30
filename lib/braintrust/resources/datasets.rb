@@ -260,7 +260,7 @@ module Braintrust
       # @param dataset_id [String] Dataset id
       # 
       # @param params [Hash] Attributes to send in this request.
-      # @option params [Array<Event::UnnamedTypeWithunionParent24|Event::UnnamedTypeWithunionParent25>] :events A list of dataset events to insert
+      # @option params [Array<Event::UnnamedTypeWithunionParent25|Event::UnnamedTypeWithunionParent26>] :events A list of dataset events to insert
       # 
       # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
       # 
