@@ -14,7 +14,7 @@ module Braintrust
       required :_xact_id, String
 
       # @!attribute [rw] function_data
-      #   @return [Braintrust::Models::Function::FunctionData::UnnamedTypeWithunionParent17|Braintrust::Models::Function::FunctionData::UnnamedTypeWithunionParent18|Braintrust::Models::Function::FunctionData::UnnamedTypeWithunionParent19]
+      #   @return [Braintrust::Models::Function::FunctionData::UnnamedTypeWithunionParent18|Braintrust::Models::Function::FunctionData::UnnamedTypeWithunionParent19|Braintrust::Models::Function::FunctionData::UnnamedTypeWithunionParent20]
       required :function_data, Braintrust::Unknown
 
       # @!attribute [rw] log_id
@@ -77,7 +77,7 @@ module Braintrust
         optional :origin, -> { Braintrust::Models::Function::PromptData::Origin }
 
         # @!attribute [rw] prompt
-        #   @return [Braintrust::Models::Function::PromptData::Prompt::UnnamedTypeWithunionParent14|Braintrust::Models::Function::PromptData::Prompt::UnnamedTypeWithunionParent15|Braintrust::Models::Function::PromptData::Prompt::UnnamedTypeWithunionParent16]
+        #   @return [Braintrust::Models::Function::PromptData::Prompt::UnnamedTypeWithunionParent15|Braintrust::Models::Function::PromptData::Prompt::UnnamedTypeWithunionParent16|Braintrust::Models::Function::PromptData::Prompt::UnnamedTypeWithunionParent17]
         optional :prompt, Braintrust::Unknown
 
         class Options < BaseModel
@@ -86,7 +86,7 @@ module Braintrust
           optional :model, String
 
           # @!attribute [rw] params
-          #   @return [Braintrust::Models::Function::PromptData::Options::Params::UnnamedTypeWithunionParent10|Braintrust::Models::Function::PromptData::Options::Params::UnnamedTypeWithunionParent11|Braintrust::Models::Function::PromptData::Options::Params::UnnamedTypeWithunionParent12|Braintrust::Models::Function::PromptData::Options::Params::UnnamedTypeWithunionParent13|Braintrust::Models::Function::PromptData::Options::Params::UnnamedTypeWithunionParent9]
+          #   @return [Braintrust::Models::Function::PromptData::Options::Params::UnnamedTypeWithunionParent10|Braintrust::Models::Function::PromptData::Options::Params::UnnamedTypeWithunionParent11|Braintrust::Models::Function::PromptData::Options::Params::UnnamedTypeWithunionParent12|Braintrust::Models::Function::PromptData::Options::Params::UnnamedTypeWithunionParent13|Braintrust::Models::Function::PromptData::Options::Params::UnnamedTypeWithunionParent14]
           optional :params, Braintrust::Unknown
 
           # @!attribute [rw] position
