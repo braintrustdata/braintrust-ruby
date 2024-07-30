@@ -34,14 +34,6 @@ class Braintrust::Test::Resources::PromptsTest < Test::Unit::TestCase
     assert_kind_of(Braintrust::Models::Prompt, response)
   end
 
-  def test_feedback_required_params
-    response = @braintrust.prompts.feedback(
-      "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-      {feedback: [{"id" => "id"}, {"id" => "id"}, {"id" => "id"}]}
-    )
-    assert_nil(response)
-  end
-
   def test_replace_required_params
     response = @braintrust.prompts.replace(
       {name: "name", project_id: "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e", slug: "slug"}

@@ -122,25 +122,6 @@ module Braintrust
         @client.request(req, opts)
       end
 
-      # Log feedback for a set of prompt events
-      # 
-      # @param prompt_id [String] Prompt id
-      # 
-      # @param params [Hash] Attributes to send in this request.
-      # @option params [Array<Feedback>] :feedback A list of prompt feedback items
-      # 
-      # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
-      # 
-      # @return [nil]
-      def feedback(prompt_id, params = {}, opts = {})
-        req = {}
-        req[:method] = :post
-        req[:path] = "/v1/prompt/#{prompt_id}/feedback"
-        req[:body] = params
-        req[:model] = NilClass
-        @client.request(req, opts)
-      end
-
       # Create or replace prompt. If there is an existing prompt in the project with the
       #   same slug as the one specified in the request, will replace the existing prompt
       #   with the provided fields

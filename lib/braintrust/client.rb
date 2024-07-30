@@ -60,7 +60,7 @@ module Braintrust
 
     # Creates and returns a new client for interacting with the API.
     def initialize(base_url: nil, api_key: nil, max_retries: nil)
-      base_url ||= "https://api.braintrustdata.com"
+      base_url ||= "https://api.braintrust.dev"
 
       max_retries ||= DEFAULT_MAX_RETRIES
 

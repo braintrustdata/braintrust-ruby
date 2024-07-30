@@ -3,8 +3,12 @@
 module Braintrust
   module Resources
     class Organizations
+      # @return [Braintrust::Resources::Organizations::Members]
+      attr_reader :members
+
       def initialize(client:)
         @client = client
+        @members = Braintrust::Resources::Organizations::Members.new(client: client)
       end
 
       # Get a organization object by its id
@@ -29,6 +33,7 @@ module Braintrust
       # 
       # @param params [Hash] Attributes to send in this request.
       # @option params [String] :api_url
+      # @option params [Boolean] :is_universal_api
       # @option params [String] :name Name of the organization
       # @option params [String] :proxy_url
       # @option params [String] :realtime_url

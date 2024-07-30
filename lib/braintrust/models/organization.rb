@@ -22,6 +22,10 @@ module Braintrust
       #   @return [String]
       optional :created, String
 
+      # @!attribute [rw] is_universal_api
+      #   @return [Boolean]
+      optional :is_universal_api, Braintrust::BooleanModel
+
       # @!attribute [rw] proxy_url
       #   @return [String]
       optional :proxy_url, String

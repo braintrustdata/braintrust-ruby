@@ -124,25 +124,6 @@ module Braintrust
         @client.request(req, opts)
       end
 
-      # Log feedback for a set of function events
-      # 
-      # @param function_id [String] Function id
-      # 
-      # @param params [Hash] Attributes to send in this request.
-      # @option params [Array<Feedback>] :feedback A list of function feedback items
-      # 
-      # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
-      # 
-      # @return [nil]
-      def feedback(function_id, params = {}, opts = {})
-        req = {}
-        req[:method] = :post
-        req[:path] = "/v1/function/#{function_id}/feedback"
-        req[:body] = params
-        req[:model] = NilClass
-        @client.request(req, opts)
-      end
-
       # Create or replace function. If there is an existing function in the project with
       #   the same slug as the one specified in the request, will replace the existing
       #   function with the provided fields
