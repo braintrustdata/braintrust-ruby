@@ -29,7 +29,7 @@ module Braintrust
 
       # @!attribute [rw] categories
       #   For categorical-type project scores, the list of all categories
-      #   @return [Array<Braintrust::Models::ProjectScoreCategory>|Array<String>|Braintrust::Models::ProjectScore::Categories::UnnamedTypeWithunionParent8|Hash]
+      #   @return [Array<Braintrust::Models::ProjectScore::Categories::UnnamedTypeWithunionParent8>|Array<String>|Braintrust::Models::ProjectScore::Categories::UnnamedTypeWithunionParent9|Hash]
       optional :categories, Braintrust::Unknown
 
       # @!attribute [rw] config
