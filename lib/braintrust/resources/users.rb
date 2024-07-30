@@ -25,14 +25,17 @@ module Braintrust
       #   recently-created users coming first
       # 
       # @param params [Hash] Attributes to send in this request.
-      # @option params [String] :email Email of the user to search for
+      # @option params [Array<String>|String] :email Email of the user to search for. You may pass the param multiple times to filter
+      #   for more than one email
       # @option params [String] :ending_before Pagination cursor id.
       # 
       #   For example, if the initial item in the last page you fetched had an id of
       #   `foo`, pass `ending_before=foo` to fetch the previous page. Note: you may only
       #   pass one of `starting_after` and `ending_before`
-      # @option params [String] :family_name Family name of the user to search for
-      # @option params [String] :given_name Given name of the user to search for
+      # @option params [Array<String>|String] :family_name Family name of the user to search for. You may pass the param multiple times to
+      #   filter for more than one family name
+      # @option params [Array<String>|String] :given_name Given name of the user to search for. You may pass the param multiple times to
+      #   filter for more than one given name
       # @option params [Array<String>|String] :ids Filter search results to a particular set of object IDs. To specify a list of
       #   IDs, include the query param multiple times
       # @option params [Integer] :limit Limit the number of objects to return
