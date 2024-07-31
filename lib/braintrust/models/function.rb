@@ -14,7 +14,7 @@ module Braintrust
       required :_xact_id, String
 
       # @!attribute [rw] function_data
-      #   @return [Braintrust::Models::Function::FunctionData::UnnamedTypeWithunionParent18|Braintrust::Models::Function::FunctionData::UnnamedTypeWithunionParent19|Braintrust::Models::Function::FunctionData::UnnamedTypeWithunionParent20]
+      #   @return [Braintrust::Models::Function::FunctionData::UnnamedTypeWithunionParent10|Braintrust::Models::Function::FunctionData::UnnamedTypeWithunionParent11|Braintrust::Models::Function::FunctionData::UnnamedTypeWithunionParent12]
       required :function_data, Braintrust::Unknown
 
       # @!attribute [rw] log_id
@@ -59,55 +59,13 @@ module Braintrust
 
       # @!attribute [rw] prompt_data
       #   The prompt, model, and its parameters
-      #   @return [Braintrust::Models::Function::PromptData]
-      optional :prompt_data, -> { Braintrust::Models::Function::PromptData }
+      #   @return [Braintrust::Models::PromptData]
+      optional :prompt_data, -> { Braintrust::Models::PromptData }
 
       # @!attribute [rw] tags
       #   A list of tags for the prompt
       #   @return [Array<String>]
       optional :tags, Braintrust::ArrayOf.new(String)
-
-      class PromptData < BaseModel
-        # @!attribute [rw] options
-        #   @return [Braintrust::Models::Function::PromptData::Options]
-        optional :options, -> { Braintrust::Models::Function::PromptData::Options }
-
-        # @!attribute [rw] origin
-        #   @return [Braintrust::Models::Function::PromptData::Origin]
-        optional :origin, -> { Braintrust::Models::Function::PromptData::Origin }
-
-        # @!attribute [rw] prompt
-        #   @return [Braintrust::Models::Function::PromptData::Prompt::UnnamedTypeWithunionParent15|Braintrust::Models::Function::PromptData::Prompt::UnnamedTypeWithunionParent16|Braintrust::Models::Function::PromptData::Prompt::UnnamedTypeWithunionParent17]
-        optional :prompt, Braintrust::Unknown
-
-        class Options < BaseModel
-          # @!attribute [rw] model
-          #   @return [String]
-          optional :model, String
-
-          # @!attribute [rw] params
-          #   @return [Braintrust::Models::Function::PromptData::Options::Params::UnnamedTypeWithunionParent10|Braintrust::Models::Function::PromptData::Options::Params::UnnamedTypeWithunionParent11|Braintrust::Models::Function::PromptData::Options::Params::UnnamedTypeWithunionParent12|Braintrust::Models::Function::PromptData::Options::Params::UnnamedTypeWithunionParent13|Braintrust::Models::Function::PromptData::Options::Params::UnnamedTypeWithunionParent14]
-          optional :params, Braintrust::Unknown
-
-          # @!attribute [rw] position
-          #   @return [String]
-          optional :position, String
-        end
-
-        class Origin < BaseModel
-          # @!attribute [rw] project_id
-          #   @return [String]
-          optional :project_id, String
-
-          # @!attribute [rw] prompt_id
-          #   @return [String]
-          optional :prompt_id, String
-
-          # @!attribute [rw] prompt_version
-          #   @return [String]
-          optional :prompt_version, String
-        end
-      end
     end
   end
 end
