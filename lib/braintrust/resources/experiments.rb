@@ -281,7 +281,7 @@ module Braintrust
       # @param experiment_id [String] Experiment id
       # 
       # @param params [Hash] Attributes to send in this request.
-      # @option params [Array<Event::UnnamedTypeWithunionParent23|Event::UnnamedTypeWithunionParent24>] :events A list of experiment events to insert
+      # @option params [Array<Event::UnnamedTypeWithunionParent15|Event::UnnamedTypeWithunionParent16>] :events A list of experiment events to insert
       # 
       # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
       # 
