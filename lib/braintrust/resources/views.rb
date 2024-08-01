@@ -17,9 +17,9 @@ module Braintrust
       # @option params [Symbol] :object_type The object type that the ACL applies to
       # @option params [Symbol] :view_type Type of table that the view corresponds to.
       # @option params [String] :deleted_at Date of role deletion, or null if the role is still active
-      # @option params [Options] :options Options for the view in the app
+      # @option params [Braintrust::Models::ViewOptions] :options Options for the view in the app
       # @option params [String] :user_id Identifies the user who created the view
-      # @option params [ViewData] :view_data The view definition
+      # @option params [Braintrust::Models::ViewData] :view_data The view definition
       # 
       # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
       # 
@@ -63,9 +63,9 @@ module Braintrust
       # @option params [String] :object_id The id of the object the view applies to
       # @option params [Symbol] :object_type The object type that the ACL applies to
       # @option params [String] :name Name of the view
-      # @option params [Options] :options Options for the view in the app
+      # @option params [Braintrust::Models::ViewOptions] :options Options for the view in the app
       # @option params [String] :user_id Identifies the user who created the view
-      # @option params [ViewData] :view_data The view definition
+      # @option params [Braintrust::Models::ViewData] :view_data The view definition
       # @option params [Symbol] :view_type Type of table that the view corresponds to.
       # 
       # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
@@ -146,9 +146,9 @@ module Braintrust
       # @option params [Symbol] :object_type The object type that the ACL applies to
       # @option params [Symbol] :view_type Type of table that the view corresponds to.
       # @option params [String] :deleted_at Date of role deletion, or null if the role is still active
-      # @option params [Options] :options Options for the view in the app
+      # @option params [Braintrust::Models::ViewOptions] :options Options for the view in the app
       # @option params [String] :user_id Identifies the user who created the view
-      # @option params [ViewData] :view_data The view definition
+      # @option params [Braintrust::Models::ViewData] :view_data The view definition
       # 
       # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
       # 
