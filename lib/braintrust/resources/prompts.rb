@@ -16,7 +16,7 @@ module Braintrust
       # @option params [String] :project_id Unique identifier for the project that the prompt belongs under
       # @option params [String] :slug Unique identifier for the prompt
       # @option params [String] :description Textual description of the prompt
-      # @option params [Braintrust::Models::PromptData] :prompt_data The prompt, model, and its parameters
+      # @option params [PromptData] :prompt_data The prompt, model, and its parameters
       # @option params [Array<String>] :tags A list of tags for the prompt
       # 
       # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
@@ -54,7 +54,7 @@ module Braintrust
       # @param params [Hash] Attributes to send in this request.
       # @option params [String] :description Textual description of the prompt
       # @option params [String] :name Name of the prompt
-      # @option params [Braintrust::Models::PromptData] :prompt_data The prompt, model, and its parameters
+      # @option params [PromptData] :prompt_data The prompt, model, and its parameters
       # @option params [Array<String>] :tags A list of tags for the prompt
       # 
       # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
@@ -131,7 +131,7 @@ module Braintrust
       # @option params [String] :project_id Unique identifier for the project that the prompt belongs under
       # @option params [String] :slug Unique identifier for the prompt
       # @option params [String] :description Textual description of the prompt
-      # @option params [Braintrust::Models::PromptData] :prompt_data The prompt, model, and its parameters
+      # @option params [PromptData] :prompt_data The prompt, model, and its parameters
       # @option params [Array<String>] :tags A list of tags for the prompt
       # 
       # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
