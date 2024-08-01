@@ -12,12 +12,12 @@ module Braintrust
       #   unmodified
       # 
       # @param params [Hash] Attributes to send in this request.
-      # @option params [FunctionData::UnnamedTypeWithunionParent33|FunctionData::UnnamedTypeWithunionParent34|FunctionData::UnnamedTypeWithunionParent35] :function_data
+      # @option params [FunctionData::UnnamedTypeWithunionParent25|FunctionData::UnnamedTypeWithunionParent26|FunctionData::UnnamedTypeWithunionParent27] :function_data
       # @option params [String] :name Name of the prompt
       # @option params [String] :project_id Unique identifier for the project that the prompt belongs under
       # @option params [String] :slug Unique identifier for the prompt
       # @option params [String] :description Textual description of the prompt
-      # @option params [PromptData] :prompt_data The prompt, model, and its parameters
+      # @option params [Braintrust::Models::PromptData] :prompt_data The prompt, model, and its parameters
       # @option params [Array<String>] :tags A list of tags for the prompt
       # 
       # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
@@ -54,9 +54,9 @@ module Braintrust
       # 
       # @param params [Hash] Attributes to send in this request.
       # @option params [String] :description Textual description of the prompt
-      # @option params [FunctionData::UnnamedTypeWithunionParent36|FunctionData::UnnamedTypeWithunionParent37|FunctionData::UnnamedTypeWithunionParent38|FunctionData::UnnamedTypeWithunionParent39] :function_data
+      # @option params [FunctionData::UnnamedTypeWithunionParent28|FunctionData::UnnamedTypeWithunionParent29|FunctionData::UnnamedTypeWithunionParent30|FunctionData::UnnamedTypeWithunionParent31] :function_data
       # @option params [String] :name Name of the prompt
-      # @option params [PromptData] :prompt_data The prompt, model, and its parameters
+      # @option params [Braintrust::Models::PromptData] :prompt_data The prompt, model, and its parameters
       # @option params [Array<String>] :tags A list of tags for the prompt
       # 
       # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
@@ -129,12 +129,12 @@ module Braintrust
       #   function with the provided fields
       # 
       # @param params [Hash] Attributes to send in this request.
-      # @option params [FunctionData::UnnamedTypeWithunionParent40|FunctionData::UnnamedTypeWithunionParent41|FunctionData::UnnamedTypeWithunionParent42] :function_data
+      # @option params [FunctionData::UnnamedTypeWithunionParent32|FunctionData::UnnamedTypeWithunionParent33|FunctionData::UnnamedTypeWithunionParent34] :function_data
       # @option params [String] :name Name of the prompt
       # @option params [String] :project_id Unique identifier for the project that the prompt belongs under
       # @option params [String] :slug Unique identifier for the prompt
       # @option params [String] :description Textual description of the prompt
-      # @option params [PromptData] :prompt_data The prompt, model, and its parameters
+      # @option params [Braintrust::Models::PromptData] :prompt_data The prompt, model, and its parameters
       # @option params [Array<String>] :tags A list of tags for the prompt
       # 
       # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
