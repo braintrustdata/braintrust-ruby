@@ -55,55 +55,13 @@ module Braintrust
 
       # @!attribute [rw] prompt_data
       #   The prompt, model, and its parameters
-      #   @return [Braintrust::Models::Prompt::PromptData]
-      optional :prompt_data, -> { Braintrust::Models::Prompt::PromptData }
+      #   @return [Braintrust::Models::PromptData]
+      optional :prompt_data, -> { Braintrust::Models::PromptData }
 
       # @!attribute [rw] tags
       #   A list of tags for the prompt
       #   @return [Array<String>]
       optional :tags, Braintrust::ArrayOf.new(String)
-
-      class PromptData < BaseModel
-        # @!attribute [rw] options
-        #   @return [Braintrust::Models::Prompt::PromptData::Options]
-        optional :options, -> { Braintrust::Models::Prompt::PromptData::Options }
-
-        # @!attribute [rw] origin
-        #   @return [Braintrust::Models::Prompt::PromptData::Origin]
-        optional :origin, -> { Braintrust::Models::Prompt::PromptData::Origin }
-
-        # @!attribute [rw] prompt
-        #   @return [Braintrust::Models::Prompt::PromptData::Prompt::UnnamedTypeWithunionParent5|Braintrust::Models::Prompt::PromptData::Prompt::UnnamedTypeWithunionParent6|Braintrust::Models::Prompt::PromptData::Prompt::UnnamedTypeWithunionParent7]
-        optional :prompt, Braintrust::Unknown
-
-        class Options < BaseModel
-          # @!attribute [rw] model
-          #   @return [String]
-          optional :model, String
-
-          # @!attribute [rw] params
-          #   @return [Braintrust::Models::Prompt::PromptData::Options::Params::UnnamedTypeWithunionParent0|Braintrust::Models::Prompt::PromptData::Options::Params::UnnamedTypeWithunionParent1|Braintrust::Models::Prompt::PromptData::Options::Params::UnnamedTypeWithunionParent2|Braintrust::Models::Prompt::PromptData::Options::Params::UnnamedTypeWithunionParent3|Braintrust::Models::Prompt::PromptData::Options::Params::UnnamedTypeWithunionParent4]
-          optional :params, Braintrust::Unknown
-
-          # @!attribute [rw] position
-          #   @return [String]
-          optional :position, String
-        end
-
-        class Origin < BaseModel
-          # @!attribute [rw] project_id
-          #   @return [String]
-          optional :project_id, String
-
-          # @!attribute [rw] prompt_id
-          #   @return [String]
-          optional :prompt_id, String
-
-          # @!attribute [rw] prompt_version
-          #   @return [String]
-          optional :prompt_version, String
-        end
-      end
     end
   end
 end

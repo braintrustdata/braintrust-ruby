@@ -27,7 +27,7 @@ module Braintrust
       # @option params [String] :name Name of the experiment. Within a project, experiment names are unique
       # @option params [Boolean] :public Whether or not the experiment is public. Public experiments can be viewed by
       #   anybody inside or outside the organization
-      # @option params [RepoInfo] :repo_info Metadata about the state of the repo when the experiment was created
+      # @option params [Braintrust::Models::RepoInfo] :repo_info Metadata about the state of the repo when the experiment was created
       # 
       # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
       # 
@@ -72,7 +72,7 @@ module Braintrust
       # @option params [String] :name Name of the experiment. Within a project, experiment names are unique
       # @option params [Boolean] :public Whether or not the experiment is public. Public experiments can be viewed by
       #   anybody inside or outside the organization
-      # @option params [RepoInfo] :repo_info Metadata about the state of the repo when the experiment was created
+      # @option params [Braintrust::Models::RepoInfo] :repo_info Metadata about the state of the repo when the experiment was created
       # 
       # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
       # 
@@ -281,7 +281,7 @@ module Braintrust
       # @param experiment_id [String] Experiment id
       # 
       # @param params [Hash] Attributes to send in this request.
-      # @option params [Array<Event::UnnamedTypeWithunionParent23|Event::UnnamedTypeWithunionParent24>] :events A list of experiment events to insert
+      # @option params [Array<Event::UnnamedTypeWithunionParent15|Event::UnnamedTypeWithunionParent16>] :events A list of experiment events to insert
       # 
       # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
       # 
