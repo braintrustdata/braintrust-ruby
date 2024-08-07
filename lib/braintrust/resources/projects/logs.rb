@@ -155,7 +155,7 @@ module Braintrust
         # @param project_id [String] Project id
         # 
         # @param params [Hash] Attributes to send in this request.
-        # @option params [Array<Event::UnnamedTypeWithunionParent13|Event::UnnamedTypeWithunionParent14>] :events A list of project logs events to insert
+        # @option params [Array<Event::UnnamedTypeWithunionParent12|Event::UnnamedTypeWithunionParent13>] :events A list of project logs events to insert
         # 
         # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
         # 
