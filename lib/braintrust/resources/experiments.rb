@@ -100,6 +100,7 @@ module Braintrust
       #   IDs, include the query param multiple times
       # @option params [Integer] :limit Limit the number of objects to return
       # @option params [String] :org_name Filter search results to within a particular organization
+      # @option params [String] :project_id Project id
       # @option params [String] :project_name Name of the project to search for
       # @option params [String] :starting_after Pagination cursor id.
       #
@@ -139,7 +140,7 @@ module Braintrust
       # @param experiment_id [String] Experiment id
       #
       # @param params [Hash] Attributes to send in this request.
-      # @option params [Array<Feedback>] :feedback A list of experiment feedback items
+      # @option params [Array<Braintrust::Models::FeedbackExperimentItem>] :feedback A list of experiment feedback items
       #
       # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
       #
@@ -201,13 +202,13 @@ module Braintrust
       #
       # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
       #
-      # @return [Braintrust::Models::ExperimentFetchResponse]
+      # @return [Braintrust::Models::FetchExperimentEventsResponse]
       def fetch(experiment_id, params = {}, opts = {})
         req = {}
         req[:method] = :get
         req[:path] = "/v1/experiment/#{experiment_id}/fetch"
         req[:query] = params
-        req[:model] = Braintrust::Models::ExperimentFetchResponse
+        req[:model] = Braintrust::Models::FetchExperimentEventsResponse
         @client.request(req, opts)
       end
 
@@ -222,7 +223,7 @@ module Braintrust
       #
       #   The string can be obtained directly from the `cursor` property of the previous
       #   fetch query
-      # @option params [Array<Filter>] :filters A list of filters on the events to fetch. Currently, only path-lookup type
+      # @option params [Array<Braintrust::Models::PathLookupFilter>] :filters A list of filters on the events to fetch. Currently, only path-lookup type
       #   filters are supported, but we may add more in the future
       # @option params [Integer] :limit limit the number of traces fetched
       #
@@ -266,13 +267,13 @@ module Braintrust
       #
       # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
       #
-      # @return [Braintrust::Models::ExperimentFetchPostResponse]
+      # @return [Braintrust::Models::FetchExperimentEventsResponse]
       def fetch_post(experiment_id, params = {}, opts = {})
         req = {}
         req[:method] = :post
         req[:path] = "/v1/experiment/#{experiment_id}/fetch"
         req[:body] = params
-        req[:model] = Braintrust::Models::ExperimentFetchPostResponse
+        req[:model] = Braintrust::Models::FetchExperimentEventsResponse
         @client.request(req, opts)
       end
 
@@ -281,17 +282,17 @@ module Braintrust
       # @param experiment_id [String] Experiment id
       #
       # @param params [Hash] Attributes to send in this request.
-      # @option params [Array<Event::UnnamedTypeWithunionParent14|Event::UnnamedTypeWithunionParent15>] :events A list of experiment events to insert
+      # @option params [Array<Braintrust::Models::InsertExperimentEventMerge|Braintrust::Models::InsertExperimentEventReplace>] :events A list of experiment events to insert
       #
       # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
       #
-      # @return [Braintrust::Models::ExperimentInsertResponse]
+      # @return [Braintrust::Models::InsertEventsResponse]
       def insert(experiment_id, params = {}, opts = {})
         req = {}
         req[:method] = :post
         req[:path] = "/v1/experiment/#{experiment_id}/insert"
         req[:body] = params
-        req[:model] = Braintrust::Models::ExperimentInsertResponse
+        req[:model] = Braintrust::Models::InsertEventsResponse
         @client.request(req, opts)
       end
 
@@ -309,13 +310,13 @@ module Braintrust
       #
       # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
       #
-      # @return [Braintrust::Models::ExperimentSummarizeResponse]
+      # @return [Braintrust::Models::SummarizeExperimentResponse]
       def summarize(experiment_id, params = {}, opts = {})
         req = {}
         req[:method] = :get
         req[:path] = "/v1/experiment/#{experiment_id}/summarize"
         req[:query] = params
-        req[:model] = Braintrust::Models::ExperimentSummarizeResponse
+        req[:model] = Braintrust::Models::SummarizeExperimentResponse
         @client.request(req, opts)
       end
     end

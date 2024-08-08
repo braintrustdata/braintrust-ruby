@@ -7,9 +7,8 @@ module Braintrust
         @client = client
       end
 
-      # Create a new view. If there is an existing view in the project with the same
-      #   name as the one specified in the request, will return the existing view
-      #   unmodified
+      # Create a new view. If there is an existing view with the same name as the one
+      #   specified in the request, will return the existing view unmodified
       #
       # @param params [Hash] Attributes to send in this request.
       # @option params [String] :name Name of the view
@@ -94,7 +93,6 @@ module Braintrust
       # @option params [Array<String>|String] :ids Filter search results to a particular set of object IDs. To specify a list of
       #   IDs, include the query param multiple times
       # @option params [Integer] :limit Limit the number of objects to return
-      # @option params [String] :project_name Name of the project to search for
       # @option params [String] :starting_after Pagination cursor id.
       #
       #   For example, if the final item in the last page you fetched had an id of `foo`,
@@ -136,9 +134,9 @@ module Braintrust
         @client.request(req, opts)
       end
 
-      # Create or replace view. If there is an existing view in the project with the
-      #   same name as the one specified in the request, will replace the existing view
-      #   with the provided fields
+      # Create or replace view. If there is an existing view with the same name as the
+      #   one specified in the request, will replace the existing view with the provided
+      #   fields
       #
       # @param params [Hash] Attributes to send in this request.
       # @option params [String] :name Name of the view

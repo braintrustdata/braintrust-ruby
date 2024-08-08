@@ -79,6 +79,7 @@ module Braintrust
       #   IDs, include the query param multiple times
       # @option params [Integer] :limit Limit the number of objects to return
       # @option params [String] :org_name Filter search results to within a particular organization
+      # @option params [String] :project_id Project id
       # @option params [String] :project_name Name of the project to search for
       # @option params [String] :starting_after Pagination cursor id.
       #
@@ -118,7 +119,7 @@ module Braintrust
       # @param dataset_id [String] Dataset id
       #
       # @param params [Hash] Attributes to send in this request.
-      # @option params [Array<Feedback>] :feedback A list of dataset feedback items
+      # @option params [Array<Braintrust::Models::FeedbackDatasetItem>] :feedback A list of dataset feedback items
       #
       # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
       #
@@ -180,13 +181,13 @@ module Braintrust
       #
       # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
       #
-      # @return [Braintrust::Models::DatasetFetchResponse]
+      # @return [Braintrust::Models::FetchDatasetEventsResponse]
       def fetch(dataset_id, params = {}, opts = {})
         req = {}
         req[:method] = :get
         req[:path] = "/v1/dataset/#{dataset_id}/fetch"
         req[:query] = params
-        req[:model] = Braintrust::Models::DatasetFetchResponse
+        req[:model] = Braintrust::Models::FetchDatasetEventsResponse
         @client.request(req, opts)
       end
 
@@ -201,7 +202,7 @@ module Braintrust
       #
       #   The string can be obtained directly from the `cursor` property of the previous
       #   fetch query
-      # @option params [Array<Filter>] :filters A list of filters on the events to fetch. Currently, only path-lookup type
+      # @option params [Array<Braintrust::Models::PathLookupFilter>] :filters A list of filters on the events to fetch. Currently, only path-lookup type
       #   filters are supported, but we may add more in the future
       # @option params [Integer] :limit limit the number of traces fetched
       #
@@ -245,13 +246,13 @@ module Braintrust
       #
       # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
       #
-      # @return [Braintrust::Models::DatasetFetchPostResponse]
+      # @return [Braintrust::Models::FetchDatasetEventsResponse]
       def fetch_post(dataset_id, params = {}, opts = {})
         req = {}
         req[:method] = :post
         req[:path] = "/v1/dataset/#{dataset_id}/fetch"
         req[:body] = params
-        req[:model] = Braintrust::Models::DatasetFetchPostResponse
+        req[:model] = Braintrust::Models::FetchDatasetEventsResponse
         @client.request(req, opts)
       end
 
@@ -260,17 +261,17 @@ module Braintrust
       # @param dataset_id [String] Dataset id
       #
       # @param params [Hash] Attributes to send in this request.
-      # @option params [Array<Event::UnnamedTypeWithunionParent16|Event::UnnamedTypeWithunionParent17>] :events A list of dataset events to insert
+      # @option params [Array<Braintrust::Models::InsertDatasetEventMerge|Braintrust::Models::InsertDatasetEventReplace>] :events A list of dataset events to insert
       #
       # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
       #
-      # @return [Braintrust::Models::DatasetInsertResponse]
+      # @return [Braintrust::Models::InsertEventsResponse]
       def insert(dataset_id, params = {}, opts = {})
         req = {}
         req[:method] = :post
         req[:path] = "/v1/dataset/#{dataset_id}/insert"
         req[:body] = params
-        req[:model] = Braintrust::Models::DatasetInsertResponse
+        req[:model] = Braintrust::Models::InsertEventsResponse
         @client.request(req, opts)
       end
 
@@ -284,13 +285,13 @@ module Braintrust
       #
       # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
       #
-      # @return [Braintrust::Models::DatasetSummarizeResponse]
+      # @return [Braintrust::Models::SummarizeDatasetResponse]
       def summarize(dataset_id, params = {}, opts = {})
         req = {}
         req[:method] = :get
         req[:path] = "/v1/dataset/#{dataset_id}/summarize"
         req[:query] = params
-        req[:model] = Braintrust::Models::DatasetSummarizeResponse
+        req[:model] = Braintrust::Models::SummarizeDatasetResponse
         @client.request(req, opts)
       end
     end

@@ -18,13 +18,13 @@ module Braintrust
       #
       # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
       #
-      # @return [Braintrust::Models::APIKeyCreateResponse]
+      # @return [Braintrust::Models::CreateAPIKeyOutput]
       def create(params = {}, opts = {})
         req = {}
         req[:method] = :post
         req[:path] = "/v1/api_key"
         req[:body] = params
-        req[:model] = Braintrust::Models::APIKeyCreateResponse
+        req[:model] = Braintrust::Models::CreateAPIKeyOutput
         @client.request(req, opts)
       end
 
