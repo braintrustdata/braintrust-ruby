@@ -42,21 +42,21 @@ class Braintrust::Test::Resources::DatasetsTest < Test::Unit::TestCase
 
   def test_fetch
     response = @braintrust.datasets.fetch("182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e")
-    assert_kind_of(Braintrust::Models::DatasetFetchResponse, response)
+    assert_kind_of(Braintrust::Models::FetchDatasetEventsResponse, response)
   end
 
   def test_fetch_post
     response = @braintrust.datasets.fetch_post("182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e")
-    assert_kind_of(Braintrust::Models::DatasetFetchPostResponse, response)
+    assert_kind_of(Braintrust::Models::FetchDatasetEventsResponse, response)
   end
 
   def test_insert_required_params
     response = @braintrust.datasets.insert("182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e", {events: [{}, {}, {}]})
-    assert_kind_of(Braintrust::Models::DatasetInsertResponse, response)
+    assert_kind_of(Braintrust::Models::InsertEventsResponse, response)
   end
 
   def test_summarize
     response = @braintrust.datasets.summarize("182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e")
-    assert_kind_of(Braintrust::Models::DatasetSummarizeResponse, response)
+    assert_kind_of(Braintrust::Models::SummarizeDatasetResponse, response)
   end
 end

@@ -82,6 +82,7 @@ module Braintrust
       #   IDs, include the query param multiple times
       # @option params [Integer] :limit Limit the number of objects to return
       # @option params [String] :org_name Filter search results to within a particular organization
+      # @option params [String] :project_id Project id
       # @option params [String] :project_name Name of the project to search for
       # @option params [String] :prompt_name Name of the prompt to search for
       # @option params [String] :slug Retrieve prompt with a specific slug

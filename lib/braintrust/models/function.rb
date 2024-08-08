@@ -14,7 +14,7 @@ module Braintrust
       required :_xact_id, String
 
       # @!attribute [rw] function_data
-      #   @return [Braintrust::Models::Function::FunctionData::UnnamedTypeWithunionParent10|Braintrust::Models::Function::FunctionData::UnnamedTypeWithunionParent11|Braintrust::Models::Function::FunctionData::UnnamedTypeWithunionParent9]
+      #   @return [Braintrust::Models::Function::FunctionData::UnnamedTypeWithunionParent4|Braintrust::Models::Function::FunctionData::UnnamedTypeWithunionParent5|Braintrust::Models::Function::FunctionData::UnnamedTypeWithunionParent6]
       required :function_data, Braintrust::Unknown
 
       # @!attribute [rw] log_id

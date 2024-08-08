@@ -15,7 +15,7 @@ module Braintrust
       # @option params [String] :name Name of the project score
       # @option params [String] :project_id Unique identifier for the project that the project score belongs under
       # @option params [Symbol] :score_type The type of the configured score
-      # @option params [Array<Braintrust::Models::ProjectScoreCategory>|Array<String>|Categories::UnnamedTypeWithunionParent18|Hash] :categories For categorical-type project scores, the list of all categories
+      # @option params [Array<Braintrust::Models::ProjectScoreCategory>|Array<String>|Categories::UnnamedTypeWithunionParent21|Hash] :categories For categorical-type project scores, the list of all categories
       # @option params [String] :description Textual description of the project score
       #
       # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
@@ -51,7 +51,7 @@ module Braintrust
       # @param project_score_id [String] ProjectScore id
       #
       # @param params [Hash] Attributes to send in this request.
-      # @option params [Array<Braintrust::Models::ProjectScoreCategory>|Array<String>|Categories::UnnamedTypeWithunionParent19|Hash] :categories For categorical-type project scores, the list of all categories
+      # @option params [Array<Braintrust::Models::ProjectScoreCategory>|Array<String>|Categories::UnnamedTypeWithunionParent22|Hash] :categories For categorical-type project scores, the list of all categories
       # @option params [String] :description Textual description of the project score
       # @option params [String] :name Name of the project score
       # @option params [Symbol] :score_type The type of the configured score
@@ -81,6 +81,7 @@ module Braintrust
       #   IDs, include the query param multiple times
       # @option params [Integer] :limit Limit the number of objects to return
       # @option params [String] :org_name Filter search results to within a particular organization
+      # @option params [String] :project_id Project id
       # @option params [String] :project_name Name of the project to search for
       # @option params [String] :project_score_name Name of the project_score to search for
       # @option params [String] :starting_after Pagination cursor id.
@@ -124,7 +125,7 @@ module Braintrust
       # @option params [String] :name Name of the project score
       # @option params [String] :project_id Unique identifier for the project that the project score belongs under
       # @option params [Symbol] :score_type The type of the configured score
-      # @option params [Array<Braintrust::Models::ProjectScoreCategory>|Array<String>|Categories::UnnamedTypeWithunionParent20|Hash] :categories For categorical-type project scores, the list of all categories
+      # @option params [Array<Braintrust::Models::ProjectScoreCategory>|Array<String>|Categories::UnnamedTypeWithunionParent23|Hash] :categories For categorical-type project scores, the list of all categories
       # @option params [String] :description Textual description of the project score
       #
       # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.

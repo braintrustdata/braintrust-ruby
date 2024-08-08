@@ -13,7 +13,7 @@ module Braintrust
         # @param project_id [String] Project id
         #
         # @param params [Hash] Attributes to send in this request.
-        # @option params [Array<Feedback>] :feedback A list of project logs feedback items
+        # @option params [Array<Braintrust::Models::FeedbackProjectLogsItem>] :feedback A list of project logs feedback items
         #
         # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
         #
@@ -75,13 +75,13 @@ module Braintrust
         #
         # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
         #
-        # @return [Braintrust::Models::LogFetchResponse]
+        # @return [Braintrust::Models::FetchProjectLogsEventsResponse]
         def fetch(project_id, params = {}, opts = {})
           req = {}
           req[:method] = :get
           req[:path] = "/v1/project_logs/#{project_id}/fetch"
           req[:query] = params
-          req[:model] = Braintrust::Models::LogFetchResponse
+          req[:model] = Braintrust::Models::FetchProjectLogsEventsResponse
           @client.request(req, opts)
         end
 
@@ -96,7 +96,7 @@ module Braintrust
         #
         #   The string can be obtained directly from the `cursor` property of the previous
         #   fetch query
-        # @option params [Array<Filter>] :filters A list of filters on the events to fetch. Currently, only path-lookup type
+        # @option params [Array<Braintrust::Models::PathLookupFilter>] :filters A list of filters on the events to fetch. Currently, only path-lookup type
         #   filters are supported, but we may add more in the future
         # @option params [Integer] :limit limit the number of traces fetched
         #
@@ -140,13 +140,13 @@ module Braintrust
         #
         # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
         #
-        # @return [Braintrust::Models::LogFetchPostResponse]
+        # @return [Braintrust::Models::FetchProjectLogsEventsResponse]
         def fetch_post(project_id, params = {}, opts = {})
           req = {}
           req[:method] = :post
           req[:path] = "/v1/project_logs/#{project_id}/fetch"
           req[:body] = params
-          req[:model] = Braintrust::Models::LogFetchPostResponse
+          req[:model] = Braintrust::Models::FetchProjectLogsEventsResponse
           @client.request(req, opts)
         end
 
@@ -155,17 +155,17 @@ module Braintrust
         # @param project_id [String] Project id
         #
         # @param params [Hash] Attributes to send in this request.
-        # @option params [Array<Event::UnnamedTypeWithunionParent12|Event::UnnamedTypeWithunionParent13>] :events A list of project logs events to insert
+        # @option params [Array<Braintrust::Models::InsertProjectLogsEventMerge|Braintrust::Models::InsertProjectLogsEventReplace>] :events A list of project logs events to insert
         #
         # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
         #
-        # @return [Braintrust::Models::LogInsertResponse]
+        # @return [Braintrust::Models::InsertEventsResponse]
         def insert(project_id, params = {}, opts = {})
           req = {}
           req[:method] = :post
           req[:path] = "/v1/project_logs/#{project_id}/insert"
           req[:body] = params
-          req[:model] = Braintrust::Models::LogInsertResponse
+          req[:model] = Braintrust::Models::InsertEventsResponse
           @client.request(req, opts)
         end
       end
