@@ -46,7 +46,11 @@ class BraintrustTest < Test::Unit::TestCase
   end
 
   def test_client_given_request_default_retry_attempts
-    braintrust = Braintrust::Client.new(base_url: "http://localhost:4010", api_key: "My API Key", max_retries: 3)
+    braintrust = Braintrust::Client.new(
+      base_url: "http://localhost:4010",
+      api_key: "My API Key",
+      max_retries: 3
+    )
     requester = MockRequester.new(500, {})
     braintrust.requester = requester
     assert_raise(Braintrust::HTTP::InternalServerError) do
@@ -66,7 +70,11 @@ class BraintrustTest < Test::Unit::TestCase
   end
 
   def test_client_given_request_given_retry_attempts
-    braintrust = Braintrust::Client.new(base_url: "http://localhost:4010", api_key: "My API Key", max_retries: 3)
+    braintrust = Braintrust::Client.new(
+      base_url: "http://localhost:4010",
+      api_key: "My API Key",
+      max_retries: 3
+    )
     requester = MockRequester.new(500, {})
     braintrust.requester = requester
     assert_raise(Braintrust::HTTP::InternalServerError) do

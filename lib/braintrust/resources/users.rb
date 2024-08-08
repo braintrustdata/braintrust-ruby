@@ -8,10 +8,10 @@ module Braintrust
       end
 
       # Get a user object by its id
-      # 
+      #
       # @param user_id [String] User id
       # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
-      # 
+      #
       # @return [Braintrust::Models::User]
       def retrieve(user_id, opts = {})
         req = {}
@@ -23,12 +23,12 @@ module Braintrust
 
       # List out all users. The users are sorted by creation date, with the most
       #   recently-created users coming first
-      # 
+      #
       # @param params [Hash] Attributes to send in this request.
       # @option params [Array<String>|String] :email Email of the user to search for. You may pass the param multiple times to filter
       #   for more than one email
       # @option params [String] :ending_before Pagination cursor id.
-      # 
+      #
       #   For example, if the initial item in the last page you fetched had an id of
       #   `foo`, pass `ending_before=foo` to fetch the previous page. Note: you may only
       #   pass one of `starting_after` and `ending_before`
@@ -41,13 +41,13 @@ module Braintrust
       # @option params [Integer] :limit Limit the number of objects to return
       # @option params [String] :org_name Filter search results to within a particular organization
       # @option params [String] :starting_after Pagination cursor id.
-      # 
+      #
       #   For example, if the final item in the last page you fetched had an id of `foo`,
       #   pass `starting_after=foo` to fetch the next page. Note: you may only pass one of
       #   `starting_after` and `ending_before`
-      # 
+      #
       # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
-      # 
+      #
       # @return [Braintrust::ListObjects<Braintrust::Models::User>]
       def list(params = {}, opts = {})
         req = {}
