@@ -63,8 +63,8 @@ module Braintrust
 
       # @!attribute [rw] options
       #   Options for the view in the app
-      #   @return [Braintrust::Models::View::Options]
-      optional :options, -> { Braintrust::Models::View::Options }
+      #   @return [Braintrust::Models::ViewOptions]
+      optional :options, -> { Braintrust::Models::ViewOptions }
 
       # @!attribute [rw] user_id
       #   Identifies the user who created the view
@@ -73,46 +73,8 @@ module Braintrust
 
       # @!attribute [rw] view_data
       #   The view definition
-      #   @return [Braintrust::Models::View::ViewData]
-      optional :view_data, -> { Braintrust::Models::View::ViewData }
-
-      class Options < BaseModel
-        # @!attribute [rw] column_order
-        #   @return [Array<String>]
-        optional :column_order, Braintrust::ArrayOf.new(String)
-
-        # @!attribute [rw] column_sizing
-        #   @return [Hash]
-        optional :column_sizing, Hash
-
-        # @!attribute [rw] column_visibility
-        #   @return [Hash]
-        optional :column_visibility, Hash
-      end
-
-      class ViewData < BaseModel
-        # @!attribute [rw] search
-        #   @return [Braintrust::Models::View::ViewData::Search]
-        optional :search, -> { Braintrust::Models::View::ViewData::Search }
-
-        class Search < BaseModel
-          # @!attribute [rw] filter
-          #   @return [Array<Object>]
-          optional :filter, Braintrust::ArrayOf.new(Braintrust::Unknown)
-
-          # @!attribute [rw] match
-          #   @return [Array<Object>]
-          optional :match, Braintrust::ArrayOf.new(Braintrust::Unknown)
-
-          # @!attribute [rw] sort
-          #   @return [Array<Object>]
-          optional :sort, Braintrust::ArrayOf.new(Braintrust::Unknown)
-
-          # @!attribute [rw] tag
-          #   @return [Array<Object>]
-          optional :tag, Braintrust::ArrayOf.new(Braintrust::Unknown)
-        end
-      end
+      #   @return [Braintrust::Models::ViewData]
+      optional :view_data, -> { Braintrust::Models::ViewData }
     end
   end
 end

@@ -60,14 +60,11 @@ module Braintrust
 
     # Creates and returns a new client for interacting with the API.
     def initialize(base_url: nil, api_key: nil, max_retries: nil)
-      base_url ||= "https://api.braintrustdata.com"
+      base_url ||= "https://api.braintrust.dev"
 
       max_retries ||= DEFAULT_MAX_RETRIES
 
       @api_key = [api_key, ENV["BRAINTRUST_API_KEY"]].find { |v| !v.nil? }
-      if @api_key.nil?
-        raise ArgumentError, "api_key is required"
-      end
 
       super(base_url: base_url, max_retries: max_retries)
 

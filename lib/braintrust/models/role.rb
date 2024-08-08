@@ -35,16 +35,16 @@ module Braintrust
 
       # @!attribute [rw] member_roles
       #   Ids of the roles this role inherits from
-      # 
+      #
       # An inheriting role has all the permissions contained in its member roles, as well as all of their inherited permissions
       #   @return [Array<String>]
       optional :member_roles, Braintrust::ArrayOf.new(String)
 
       # @!attribute [rw] org_id
       #   Unique id for the organization that the role belongs under
-      # 
+      #
       # A null org_id indicates a system role, which may be assigned to anybody and inherited by any other role, but cannot be edited.
-      # 
+      #
       # It is forbidden to change the org after creating a role
       #   @return [String]
       optional :org_id, String
@@ -57,7 +57,7 @@ module Braintrust
       class MemberPermission < BaseModel
         # @!attribute [rw] permission
         #   Each permission permits a certain type of operation on an object in the system
-        # 
+        #
         # Permissions can be assigned to to objects on an individual basis, or grouped into roles
         #   @return [Symbol]
         required :permission,

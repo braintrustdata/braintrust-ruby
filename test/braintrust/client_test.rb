@@ -3,12 +3,6 @@
 require_relative "test_helper"
 
 class BraintrustTest < Test::Unit::TestCase
-  def test_raises_on_missing_non_nullable_opts
-    assert_raise_with_message(ArgumentError, /is required/) do
-      Braintrust::Client.new
-    end
-  end
-
   class MockResponse
     attr_accessor :code, :header, :body, :content_type
 
@@ -46,7 +40,11 @@ class BraintrustTest < Test::Unit::TestCase
   end
 
   def test_client_given_request_default_retry_attempts
-    braintrust = Braintrust::Client.new(base_url: "http://localhost:4010", api_key: "My API Key", max_retries: 3)
+    braintrust = Braintrust::Client.new(
+      base_url: "http://localhost:4010",
+      api_key: "My API Key",
+      max_retries: 3
+    )
     requester = MockRequester.new(500, {})
     braintrust.requester = requester
     assert_raise(Braintrust::HTTP::InternalServerError) do
@@ -66,7 +64,11 @@ class BraintrustTest < Test::Unit::TestCase
   end
 
   def test_client_given_request_given_retry_attempts
-    braintrust = Braintrust::Client.new(base_url: "http://localhost:4010", api_key: "My API Key", max_retries: 3)
+    braintrust = Braintrust::Client.new(
+      base_url: "http://localhost:4010",
+      api_key: "My API Key",
+      max_retries: 3
+    )
     requester = MockRequester.new(500, {})
     braintrust.requester = requester
     assert_raise(Braintrust::HTTP::InternalServerError) do

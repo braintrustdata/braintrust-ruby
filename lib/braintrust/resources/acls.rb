@@ -9,7 +9,7 @@ module Braintrust
 
       # Create a new acl. If there is an existing acl with the same contents as the one
       #   specified in the request, will return the existing acl unmodified
-      # 
+      #
       # @param params [Hash] Attributes to send in this request.
       # @option params [String] :object_id The id of the object the ACL applies to
       # @option params [Symbol] :object_type The object type that the ACL applies to
@@ -23,9 +23,9 @@ module Braintrust
       #   provided
       # @option params [String] :user_id Id of the user the ACL applies to. Exactly one of `user_id` and `group_id` will
       #   be provided
-      # 
+      #
       # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
-      # 
+      #
       # @return [Braintrust::Models::ACL]
       def create(params = {}, opts = {})
         req = {}
@@ -37,10 +37,10 @@ module Braintrust
       end
 
       # Get an acl object by its id
-      # 
+      #
       # @param acl_id [String] Acl id
       # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
-      # 
+      #
       # @return [Braintrust::Models::ACL]
       def retrieve(acl_id, opts = {})
         req = {}
@@ -52,12 +52,12 @@ module Braintrust
 
       # List out all acls. The acls are sorted by creation date, with the most
       #   recently-created acls coming first
-      # 
+      #
       # @param params [Hash] Attributes to send in this request.
       # @option params [String] :object_id The id of the object the ACL applies to
       # @option params [Symbol] :object_type The object type that the ACL applies to
       # @option params [String] :ending_before Pagination cursor id.
-      # 
+      #
       #   For example, if the initial item in the last page you fetched had an id of
       #   `foo`, pass `ending_before=foo` to fetch the previous page. Note: you may only
       #   pass one of `starting_after` and `ending_before`
@@ -65,13 +65,13 @@ module Braintrust
       #   IDs, include the query param multiple times
       # @option params [Integer] :limit Limit the number of objects to return
       # @option params [String] :starting_after Pagination cursor id.
-      # 
+      #
       #   For example, if the final item in the last page you fetched had an id of `foo`,
       #   pass `starting_after=foo` to fetch the next page. Note: you may only pass one of
       #   `starting_after` and `ending_before`
-      # 
+      #
       # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
-      # 
+      #
       # @return [Braintrust::ListObjects<Braintrust::Models::ACL>]
       def list(params = {}, opts = {})
         req = {}
@@ -84,10 +84,10 @@ module Braintrust
       end
 
       # Delete an acl object by its id
-      # 
+      #
       # @param acl_id [String] Acl id
       # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
-      # 
+      #
       # @return [Braintrust::Models::ACL]
       def delete(acl_id, opts = {})
         req = {}

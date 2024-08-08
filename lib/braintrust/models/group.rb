@@ -15,7 +15,7 @@ module Braintrust
 
       # @!attribute [rw] org_id
       #   Unique id for the organization that the group belongs under
-      # 
+      #
       # It is forbidden to change the org after creating a group
       #   @return [String]
       required :org_id, String
@@ -37,7 +37,7 @@ module Braintrust
 
       # @!attribute [rw] member_groups
       #   Ids of the groups this group inherits from
-      # 
+      #
       # An inheriting group has all the users contained in its member groups, as well as all of their inherited users
       #   @return [Array<String>]
       optional :member_groups, Braintrust::ArrayOf.new(String)

@@ -65,60 +65,13 @@ module Braintrust
 
       # @!attribute [rw] repo_info
       #   Metadata about the state of the repo when the experiment was created
-      #   @return [Braintrust::Models::Experiment::RepoInfo]
-      optional :repo_info, -> { Braintrust::Models::Experiment::RepoInfo }
+      #   @return [Braintrust::Models::RepoInfo]
+      optional :repo_info, -> { Braintrust::Models::RepoInfo }
 
       # @!attribute [rw] user_id
       #   Identifies the user who created the experiment
       #   @return [String]
       optional :user_id, String
-
-      class RepoInfo < BaseModel
-        # @!attribute [rw] author_email
-        #   Email of the author of the most recent commit
-        #   @return [String]
-        optional :author_email, String
-
-        # @!attribute [rw] author_name
-        #   Name of the author of the most recent commit
-        #   @return [String]
-        optional :author_name, String
-
-        # @!attribute [rw] branch
-        #   Name of the branch the most recent commit belongs to
-        #   @return [String]
-        optional :branch, String
-
-        # @!attribute [rw] commit
-        #   SHA of most recent commit
-        #   @return [String]
-        optional :commit, String
-
-        # @!attribute [rw] commit_message
-        #   Most recent commit message
-        #   @return [String]
-        optional :commit_message, String
-
-        # @!attribute [rw] commit_time
-        #   Time of the most recent commit
-        #   @return [String]
-        optional :commit_time, String
-
-        # @!attribute [rw] dirty
-        #   Whether or not the repo had uncommitted changes when snapshotted
-        #   @return [Boolean]
-        optional :dirty, Braintrust::BooleanModel
-
-        # @!attribute [rw] git_diff
-        #   If the repo was dirty when run, this includes the diff between the current state of the repo and the most recent commit.
-        #   @return [String]
-        optional :git_diff, String
-
-        # @!attribute [rw] tag
-        #   Name of the tag on the most recent commit
-        #   @return [String]
-        optional :tag, String
-      end
     end
   end
 end
