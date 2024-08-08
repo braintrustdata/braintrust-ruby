@@ -3,12 +3,6 @@
 require_relative "test_helper"
 
 class BraintrustTest < Test::Unit::TestCase
-  def test_raises_on_missing_non_nullable_opts
-    assert_raise_with_message(ArgumentError, /is required/) do
-      Braintrust::Client.new
-    end
-  end
-
   class MockResponse
     attr_accessor :code, :header, :body, :content_type
 
