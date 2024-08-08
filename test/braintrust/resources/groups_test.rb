@@ -23,7 +23,7 @@ class Braintrust::Test::Resources::GroupsTest < Test::Unit::TestCase
   end
 
   def test_list
-    response = @braintrust.groups.list 
+    response = @braintrust.groups.list
     assert_kind_of(Braintrust::ListObjects, response)
   end
 

@@ -25,7 +25,7 @@ class Braintrust::Test::Resources::PromptsTest < Test::Unit::TestCase
   end
 
   def test_list
-    response = @braintrust.prompts.list 
+    response = @braintrust.prompts.list
     assert_kind_of(Braintrust::ListObjects, response)
   end
 
