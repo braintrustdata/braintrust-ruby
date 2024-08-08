@@ -10,7 +10,7 @@ module Braintrust
 
       # @!attribute [rw] cursor
       #   Pagination cursor
-      # 
+      #
       # Pass this string directly as the `cursor` param to your next fetch request to get the next page of results. Not provided if the returned result set is empty.
       #   @return [String]
       optional :cursor, String
@@ -94,7 +94,10 @@ module Braintrust
         # @!attribute [rw] span_attributes
         #   Human-identifying attributes of the span, such as name, type, etc.
         #   @return [Braintrust::Models::ExperimentFetchPostResponse::Event::SpanAttributes]
-        optional :span_attributes, -> { Braintrust::Models::ExperimentFetchPostResponse::Event::SpanAttributes }
+        optional :span_attributes,
+                 lambda {
+                   Braintrust::Models::ExperimentFetchPostResponse::Event::SpanAttributes
+                 }
 
         # @!attribute [rw] span_parents
         #   An array of the parent `span_ids` of this experiment event. This should be empty for the root span of a trace, and should most often contain just one parent element for subspans
