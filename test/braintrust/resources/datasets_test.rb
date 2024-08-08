@@ -23,7 +23,7 @@ class Braintrust::Test::Resources::DatasetsTest < Test::Unit::TestCase
   end
 
   def test_list
-    response = @braintrust.datasets.list 
+    response = @braintrust.datasets.list
     assert_kind_of(Braintrust::ListObjects, response)
   end
 

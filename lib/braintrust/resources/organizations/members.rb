@@ -9,7 +9,7 @@ module Braintrust
         end
 
         # Modify organization membership
-        # 
+        #
         # @param params [Hash] Attributes to send in this request.
         # @option params [InviteUsers] :invite_users Users to invite to the organization
         # @option params [String] :org_id For nearly all users, this parameter should be unnecessary. But in the rare case
@@ -21,9 +21,9 @@ module Braintrust
         #   explicitly assert the organization you are modifying, you may specify the name
         #   of the organization.
         # @option params [RemoveUsers] :remove_users Users to remove from the organization
-        # 
+        #
         # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
-        # 
+        #
         # @return [Braintrust::Models::MemberUpdateResponse]
         def update(params = {}, opts = {})
           req = {}
