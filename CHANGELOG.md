@@ -1,5 +1,42 @@
 # Changelog
 
+## 0.1.0-alpha.3 (2024-08-09)
+
+Full Changelog: [v0.1.0-alpha.2...v0.1.0-alpha.3](https://github.com/braintrustdata/braintrust-ruby/compare/v0.1.0-alpha.2...v0.1.0-alpha.3)
+
+### Features
+
+* add model ProjectScoreCategory ([#37](https://github.com/braintrustdata/braintrust-ruby/issues/37)) ([a0594dc](https://github.com/braintrustdata/braintrust-ruby/commit/a0594dcd66fe3bf242e6803746e2be54bcd60e24))
+* **api:** manual updates ([#38](https://github.com/braintrustdata/braintrust-ruby/issues/38)) ([245d3ba](https://github.com/braintrustdata/braintrust-ruby/commit/245d3bacaa63d91b1a667c46b871914efa3691e6))
+* **api:** manual updates ([#39](https://github.com/braintrustdata/braintrust-ruby/issues/39)) ([ebdfc51](https://github.com/braintrustdata/braintrust-ruby/commit/ebdfc51359f324e0d4caefc57c0c4b23619e1a30))
+* **api:** manual updates ([#40](https://github.com/braintrustdata/braintrust-ruby/issues/40)) ([4bb26e2](https://github.com/braintrustdata/braintrust-ruby/commit/4bb26e26e714a459dc4cb136d44afbcf4619cc6e))
+* **api:** update via SDK Studio ([#15](https://github.com/braintrustdata/braintrust-ruby/issues/15)) ([d152518](https://github.com/braintrustdata/braintrust-ruby/commit/d15251886b557764c9a5828dd883e840d72d74f8))
+* **api:** update via SDK Studio ([#19](https://github.com/braintrustdata/braintrust-ruby/issues/19)) ([83e4b47](https://github.com/braintrustdata/braintrust-ruby/commit/83e4b4795852092e9c2f6ce696f4848fab782b23))
+* **api:** update via SDK Studio ([#20](https://github.com/braintrustdata/braintrust-ruby/issues/20)) ([b08faeb](https://github.com/braintrustdata/braintrust-ruby/commit/b08faeb5979b1b3854b6dc3c5cbd71ef5a96f432))
+* **api:** update via SDK Studio ([#21](https://github.com/braintrustdata/braintrust-ruby/issues/21)) ([1b31238](https://github.com/braintrustdata/braintrust-ruby/commit/1b3123879cc04f4e374472ac5fa4f691ed6aceb5))
+* **api:** update via SDK Studio ([#22](https://github.com/braintrustdata/braintrust-ruby/issues/22)) ([b2158d7](https://github.com/braintrustdata/braintrust-ruby/commit/b2158d7191a63f9fa111fcff663d33b1d034efc6))
+* **api:** update via SDK Studio ([#23](https://github.com/braintrustdata/braintrust-ruby/issues/23)) ([103d9b8](https://github.com/braintrustdata/braintrust-ruby/commit/103d9b85160cf6b6800ec68290cc521a1353f8fa))
+* **api:** update via SDK Studio ([#24](https://github.com/braintrustdata/braintrust-ruby/issues/24)) ([7b55528](https://github.com/braintrustdata/braintrust-ruby/commit/7b55528be850bbc7a22b5fe01e50abe7829416fc))
+* **api:** update via SDK Studio ([#25](https://github.com/braintrustdata/braintrust-ruby/issues/25)) ([413009c](https://github.com/braintrustdata/braintrust-ruby/commit/413009c99f93862470e3670b8f1dd5df47e406dd))
+* **api:** update via SDK Studio ([#26](https://github.com/braintrustdata/braintrust-ruby/issues/26)) ([a8aa624](https://github.com/braintrustdata/braintrust-ruby/commit/a8aa624802c13456c5cecc70f7fa46d33f44f656))
+* **api:** update via SDK Studio ([#27](https://github.com/braintrustdata/braintrust-ruby/issues/27)) ([c26184b](https://github.com/braintrustdata/braintrust-ruby/commit/c26184bb599d79dfff0b98f15ccf2f2b31413ec8))
+* **api:** update via SDK Studio ([#28](https://github.com/braintrustdata/braintrust-ruby/issues/28)) ([c6bd7df](https://github.com/braintrustdata/braintrust-ruby/commit/c6bd7dfecc8480fe0c620bdef156e1d9c1da8d6e))
+* **api:** update via SDK Studio ([#29](https://github.com/braintrustdata/braintrust-ruby/issues/29)) ([64bf2c9](https://github.com/braintrustdata/braintrust-ruby/commit/64bf2c9ea7bf086cbc9fc7856ec673b0e822c66b))
+* **api:** update via SDK Studio ([#30](https://github.com/braintrustdata/braintrust-ruby/issues/30)) ([7bd6fbc](https://github.com/braintrustdata/braintrust-ruby/commit/7bd6fbc54ce2acd75259baab421026baec3c3abe))
+* **api:** update via SDK Studio ([#31](https://github.com/braintrustdata/braintrust-ruby/issues/31)) ([56bc399](https://github.com/braintrustdata/braintrust-ruby/commit/56bc399e087660efe91c0a3f51907fd2e5cd3b2e))
+* **api:** update via SDK Studio ([#32](https://github.com/braintrustdata/braintrust-ruby/issues/32)) ([6b93d75](https://github.com/braintrustdata/braintrust-ruby/commit/6b93d7541b781ea03773ff794f8e1042e9c3ae70))
+* **api:** update via SDK Studio ([#33](https://github.com/braintrustdata/braintrust-ruby/issues/33)) ([9e0765a](https://github.com/braintrustdata/braintrust-ruby/commit/9e0765ae5dc333d96e50104189525a43c56cc58c))
+* **api:** update via SDK Studio ([#34](https://github.com/braintrustdata/braintrust-ruby/issues/34)) ([35c34a6](https://github.com/braintrustdata/braintrust-ruby/commit/35c34a6f4c158f7162332a1aed6d5a6bc316eef3))
+* **api:** update via SDK Studio ([#35](https://github.com/braintrustdata/braintrust-ruby/issues/35)) ([495e60e](https://github.com/braintrustdata/braintrust-ruby/commit/495e60e4d7546fad248ee4979528766923b94e14))
+* **api:** update via SDK Studio ([#36](https://github.com/braintrustdata/braintrust-ruby/issues/36)) ([31e910b](https://github.com/braintrustdata/braintrust-ruby/commit/31e910bfc3927212efaaace483be55bfe84278de))
+
+
+### Chores
+
+* **ci:** bump prism mock server version ([#41](https://github.com/braintrustdata/braintrust-ruby/issues/41)) ([a52d62b](https://github.com/braintrustdata/braintrust-ruby/commit/a52d62b8bc137c1dba6a512b12b4631dba8503bc))
+* **internal:** codegen related update ([#16](https://github.com/braintrustdata/braintrust-ruby/issues/16)) ([0c94e15](https://github.com/braintrustdata/braintrust-ruby/commit/0c94e150823fd258f6f541c95d274cfbbc060a84))
+* **internal:** codegen related update ([#18](https://github.com/braintrustdata/braintrust-ruby/issues/18)) ([3059c87](https://github.com/braintrustdata/braintrust-ruby/commit/3059c87dc41ea099e42ddadd26ade80dd5004eb5))
+
 ## 0.1.0-alpha.2 (2024-07-23)
 
 Full Changelog: [v0.1.0-alpha.1...v0.1.0-alpha.2](https://github.com/braintrustdata/braintrust-ruby/compare/v0.1.0-alpha.1...v0.1.0-alpha.2)
