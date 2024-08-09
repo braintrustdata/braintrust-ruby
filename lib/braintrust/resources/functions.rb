@@ -12,7 +12,7 @@ module Braintrust
       #   unmodified
       #
       # @param params [Hash] Attributes to send in this request.
-      # @option params [FunctionData::UnnamedTypeWithunionParent24|FunctionData::UnnamedTypeWithunionParent25|FunctionData::UnnamedTypeWithunionParent26] :function_data
+      # @option params [FunctionData::UnnamedTypeWithunionParent15|FunctionData::UnnamedTypeWithunionParent16|FunctionData::UnnamedTypeWithunionParent17] :function_data
       # @option params [String] :name Name of the prompt
       # @option params [String] :project_id Unique identifier for the project that the prompt belongs under
       # @option params [String] :slug Unique identifier for the prompt
@@ -54,7 +54,7 @@ module Braintrust
       #
       # @param params [Hash] Attributes to send in this request.
       # @option params [String] :description Textual description of the prompt
-      # @option params [FunctionData::UnnamedTypeWithunionParent27|FunctionData::UnnamedTypeWithunionParent28|FunctionData::UnnamedTypeWithunionParent29|FunctionData::UnnamedTypeWithunionParent30] :function_data
+      # @option params [FunctionData::UnnamedTypeWithunionParent18|FunctionData::UnnamedTypeWithunionParent19|FunctionData::UnnamedTypeWithunionParent20|FunctionData::UnnamedTypeWithunionParent21] :function_data
       # @option params [String] :name Name of the prompt
       # @option params [Braintrust::Models::PromptData] :prompt_data The prompt, model, and its parameters
       # @option params [Array<String>] :tags A list of tags for the prompt
@@ -130,7 +130,7 @@ module Braintrust
       #   function with the provided fields
       #
       # @param params [Hash] Attributes to send in this request.
-      # @option params [FunctionData::UnnamedTypeWithunionParent31|FunctionData::UnnamedTypeWithunionParent32|FunctionData::UnnamedTypeWithunionParent33] :function_data
+      # @option params [FunctionData::UnnamedTypeWithunionParent22|FunctionData::UnnamedTypeWithunionParent23|FunctionData::UnnamedTypeWithunionParent24] :function_data
       # @option params [String] :name Name of the prompt
       # @option params [String] :project_id Unique identifier for the project that the prompt belongs under
       # @option params [String] :slug Unique identifier for the prompt
