@@ -12,7 +12,7 @@ module Braintrust
       optional :origin, -> { Braintrust::Models::PromptData::Origin }
 
       # @!attribute [rw] prompt
-      #   @return [Braintrust::Models::PromptData::Prompt::UnnamedTypeWithunionParent18|Braintrust::Models::PromptData::Prompt::UnnamedTypeWithunionParent19|Braintrust::Models::PromptData::Prompt::UnnamedTypeWithunionParent20]
+      #   @return [Braintrust::Models::PromptData::Prompt::UnnamedTypeWithunionParent10|Braintrust::Models::PromptData::Prompt::UnnamedTypeWithunionParent11|Braintrust::Models::PromptData::Prompt::UnnamedTypeWithunionParent9]
       optional :prompt, Braintrust::Unknown
 
       class Options < BaseModel
@@ -21,7 +21,7 @@ module Braintrust
         optional :model, String
 
         # @!attribute [rw] params
-        #   @return [Braintrust::Models::PromptData::Options::Params::UnnamedTypeWithunionParent13|Braintrust::Models::PromptData::Options::Params::UnnamedTypeWithunionParent14|Braintrust::Models::PromptData::Options::Params::UnnamedTypeWithunionParent15|Braintrust::Models::PromptData::Options::Params::UnnamedTypeWithunionParent16|Braintrust::Models::PromptData::Options::Params::UnnamedTypeWithunionParent17]
+        #   @return [Braintrust::Models::PromptData::Options::Params::UnnamedTypeWithunionParent4|Braintrust::Models::PromptData::Options::Params::UnnamedTypeWithunionParent5|Braintrust::Models::PromptData::Options::Params::UnnamedTypeWithunionParent6|Braintrust::Models::PromptData::Options::Params::UnnamedTypeWithunionParent7|Braintrust::Models::PromptData::Options::Params::UnnamedTypeWithunionParent8]
         optional :params, Braintrust::Unknown
 
         # @!attribute [rw] position
