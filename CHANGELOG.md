@@ -1,5 +1,18 @@
 # Changelog
 
+## 0.1.0-alpha.4 (2024-08-09)
+
+Full Changelog: [v0.1.0-alpha.3...v0.1.0-alpha.4](https://github.com/braintrustdata/braintrust-ruby/compare/v0.1.0-alpha.3...v0.1.0-alpha.4)
+
+### Features
+
+* **api:** update via SDK Studio ([#44](https://github.com/braintrustdata/braintrust-ruby/issues/44)) ([49c4be5](https://github.com/braintrustdata/braintrust-ruby/commit/49c4be5a622edc60509a153e27dda2362b2cfebf))
+
+
+### Chores
+
+* **internal:** version bump ([#42](https://github.com/braintrustdata/braintrust-ruby/issues/42)) ([c7cba83](https://github.com/braintrustdata/braintrust-ruby/commit/c7cba8341b92c9ae019f91a06417a5bd25d194d7))
+
 ## 0.1.0-alpha.3 (2024-08-09)
 
 Full Changelog: [v0.1.0-alpha.2...v0.1.0-alpha.3](https://github.com/braintrustdata/braintrust-ruby/compare/v0.1.0-alpha.2...v0.1.0-alpha.3)
