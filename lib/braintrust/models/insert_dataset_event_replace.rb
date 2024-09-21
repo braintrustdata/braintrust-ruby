@@ -29,8 +29,8 @@ module Braintrust
 
       # @!attribute [rw] created
       #   The timestamp the dataset event was created
-      #   @return [String]
-      optional :created, String
+      #   @return [DateTime]
+      optional :created, DateTime
 
       # @!attribute [rw] expected
       #   The output of your application, including post-processing (an arbitrary, JSON serializable object)

@@ -20,13 +20,13 @@ module Braintrust
 
       # @!attribute [rw] created
       #   Date of project creation
-      #   @return [String]
-      optional :created, String
+      #   @return [DateTime]
+      optional :created, DateTime
 
       # @!attribute [rw] deleted_at
       #   Date of project deletion, or null if the project is still active
-      #   @return [String]
-      optional :deleted_at, String
+      #   @return [DateTime]
+      optional :deleted_at, DateTime
 
       # @!attribute [rw] settings
       #   @return [Braintrust::Models::Project::Settings]

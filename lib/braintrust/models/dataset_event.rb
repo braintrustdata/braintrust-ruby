@@ -15,8 +15,8 @@ module Braintrust
 
       # @!attribute [rw] created
       #   The timestamp the dataset event was created
-      #   @return [String]
-      required :created, String
+      #   @return [DateTime]
+      required :created, DateTime
 
       # @!attribute [rw] dataset_id
       #   Unique identifier for the dataset
