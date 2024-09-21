@@ -33,15 +33,19 @@ module Braintrust
     end
 
     def self.coerce_integer(str)
-      Integer(str)
-    rescue StandardError
-      str
+      begin
+        Integer(str)
+      rescue
+        str
+      end
     end
 
     def self.coerce_float(str)
-      Float(str)
-    rescue StandardError
-      str
+      begin
+        Float(str)
+      rescue
+        str
+      end
     end
 
     def self.coerce_boolean(input)

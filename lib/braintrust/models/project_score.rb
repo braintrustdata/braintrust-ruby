@@ -21,7 +21,7 @@ module Braintrust
       # @!attribute [rw] score_type
       #   The type of the configured score
       #   @return [Symbol]
-      required :score_type, Braintrust::Enum.new(:slider, :categorical, :weighted, :minimum)
+      required :score_type, Braintrust::Enum.new(:slider, :categorical, :weighted, :minimum, :online)
 
       # @!attribute [rw] user_id
       #   @return [String]
@@ -29,7 +29,7 @@ module Braintrust
 
       # @!attribute [rw] categories
       #   For categorical-type project scores, the list of all categories
-      #   @return [Array<Braintrust::Models::ProjectScoreCategory>|Array<String>|Braintrust::Models::ProjectScore::Categories::UnnamedTypeWithunionParent3|Hash]
+      #   @return [Array<Braintrust::Models::ProjectScoreCategory>|Array<String>|Braintrust::Models::ProjectScore::Categories::UnnamedTypeWithunionParent5|Hash]
       optional :categories, Braintrust::Unknown
 
       # @!attribute [rw] config
@@ -59,6 +59,32 @@ module Braintrust
         # @!attribute [rw] multi_select
         #   @return [Boolean]
         optional :multi_select, Braintrust::BooleanModel
+
+        # @!attribute [rw] online
+        #   @return [Braintrust::Models::ProjectScore::Config::Online]
+        optional :online, -> { Braintrust::Models::ProjectScore::Config::Online }
+
+        class Online < BaseModel
+          # @!attribute [rw] sampling_rate
+          #   The sampling rate for online scoring
+          #   @return [Float]
+          required :sampling_rate, Float
+
+          # @!attribute [rw] scorers
+          #   The list of scorers to use for online scoring
+          #   @return [Array<Braintrust::Models::ProjectScore::Config::Online::Scorer::UnnamedTypeWithunionParent3|Braintrust::Models::ProjectScore::Config::Online::Scorer::UnnamedTypeWithunionParent4>]
+          required :scorers, Braintrust::ArrayOf.new(Braintrust::Unknown)
+
+          # @!attribute [rw] apply_to_root_span
+          #   Whether to trigger online scoring on the root span of each trace
+          #   @return [Boolean]
+          optional :apply_to_root_span, Braintrust::BooleanModel
+
+          # @!attribute [rw] apply_to_span_names
+          #   Trigger online scoring on any spans with a name in this list
+          #   @return [Array<String>]
+          optional :apply_to_span_names, Braintrust::ArrayOf.new(String)
+        end
       end
     end
   end

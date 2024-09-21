@@ -9,7 +9,7 @@ module Braintrust
     attr_accessor :client, :req, :opts
 
     # @!visibility private
-    def initialize(model, raw_data, _response, client, req, opts)
+    def initialize(model, raw_data, response, client, req, opts)
       self.objects = (raw_data[:objects] || []).map { |e| model.convert(e) }
       self.client = client
       self.req = req

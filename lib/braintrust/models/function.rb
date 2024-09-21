@@ -20,7 +20,7 @@ module Braintrust
       # @!attribute [rw] log_id
       #   A literal 'p' which identifies the object as a project prompt
       #   @return [Symbol]
-      required :log_id, Braintrust::Enum.new(:p)
+      required :log_id, Braintrust::Enum.new(:'p')
 
       # @!attribute [rw] name_
       #   Name of the prompt
@@ -52,10 +52,18 @@ module Braintrust
       #   @return [String]
       optional :description, String
 
+      # @!attribute [rw] function_type
+      #   @return [Symbol]
+      optional :function_type, Braintrust::Enum.new(:task, :llm, :scorer)
+
       # @!attribute [rw] metadata
       #   User-controlled metadata about the prompt
       #   @return [Hash]
       optional :metadata, Hash
+
+      # @!attribute [rw] origin
+      #   @return [Braintrust::Models::Function::Origin]
+      optional :origin, -> { Braintrust::Models::Function::Origin }
 
       # @!attribute [rw] prompt_data
       #   The prompt, model, and its parameters
@@ -66,6 +74,36 @@ module Braintrust
       #   A list of tags for the prompt
       #   @return [Array<String>]
       optional :tags, Braintrust::ArrayOf.new(String)
+
+      class Origin < BaseModel
+        # @!attribute [rw] object_id_
+        #   Id of the object the function is originating from
+        #   @return [String]
+        required :object_id_, String
+
+        # @!attribute [rw] object_type
+        #   The object type that the ACL applies to
+        #   @return [Symbol]
+        required :object_type,
+                 Braintrust::Enum.new(
+                   :organization,
+                   :project,
+                   :experiment,
+                   :dataset,
+                   :prompt,
+                   :prompt_session,
+                   :group,
+                   :role,
+                   :org_member,
+                   :project_log,
+                   :org_project
+                 )
+
+        # @!attribute [rw] internal
+        #   The function exists for internal purposes and should not be displayed in the list of functions.
+        #   @return [Boolean]
+        optional :internal, Braintrust::BooleanModel
+      end
     end
   end
 end
