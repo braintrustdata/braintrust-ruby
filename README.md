@@ -42,7 +42,7 @@ braintrust = Braintrust::Client.new(
   api_key: "My API Key" # defaults to ENV["BRAINTRUST_API_KEY"]
 )
 
-project = braintrust.projects.create(name: "foobar")
+project = braintrust.project.create(name: "foobar")
 
 puts project.id
 ```
@@ -55,7 +55,7 @@ non-success status code (i.e., 4xx or 5xx response), a subclass of
 
 ```ruby
 begin
-  project = braintrust.projects.create(name: "foobar")
+  project = braintrust.project.create(name: "foobar")
 rescue Braintrust::HTTP::Error => e
   puts e.code # 400
 end
@@ -92,7 +92,7 @@ braintrust = Braintrust::Client.new(
 )
 
 # Or, configure per-request:
-braintrust.projects.create(name: "foobar", max_retries: 5)
+braintrust.project.create(name: "foobar", max_retries: 5)
 ```
 
 ## Versioning
