@@ -18,12 +18,15 @@ module Braintrust
 
     # @return [Boolean]
     def next_page?
-      raise NotImplementedError
+      !objects.empty?
     end
 
     # @return [ListObjects]
     def next_page
-      raise NotImplementedError
+      if !next_page?
+        raise "No more pages available; please check #next_page? before calling #next_page"
+      end
+      client.request(Util.deep_merge(req, {query: {starting_after: objects.last.id}}), opts)
     end
 
     # @return [nil]
