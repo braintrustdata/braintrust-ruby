@@ -19,8 +19,8 @@ module Braintrust
 
       # @!attribute [rw] created
       #   Date of organization creation
-      #   @return [String]
-      optional :created, String
+      #   @return [DateTime]
+      optional :created, DateTime
 
       # @!attribute [rw] is_universal_api
       #   @return [Boolean]

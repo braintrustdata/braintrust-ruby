@@ -34,8 +34,8 @@ module Braintrust
 
       # @!attribute [rw] created
       #   The timestamp the experiment event was created
-      #   @return [String]
-      optional :created, String
+      #   @return [DateTime]
+      optional :created, DateTime
 
       # @!attribute [rw] dataset_record_id
       #   If the experiment is associated to a dataset, this is the event-level dataset id this experiment event is tied to

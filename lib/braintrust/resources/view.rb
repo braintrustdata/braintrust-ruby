@@ -15,7 +15,7 @@ module Braintrust
       # @option params [String] :object_id The id of the object the view applies to
       # @option params [Symbol] :object_type The object type that the ACL applies to
       # @option params [Symbol] :view_type Type of table that the view corresponds to.
-      # @option params [String] :deleted_at Date of role deletion, or null if the role is still active
+      # @option params [DateTime] :deleted_at Date of role deletion, or null if the role is still active
       # @option params [Braintrust::Models::ViewOptions] :options Options for the view in the app
       # @option params [String] :user_id Identifies the user who created the view
       # @option params [Braintrust::Models::ViewData] :view_data The view definition
@@ -143,7 +143,7 @@ module Braintrust
       # @option params [String] :object_id The id of the object the view applies to
       # @option params [Symbol] :object_type The object type that the ACL applies to
       # @option params [Symbol] :view_type Type of table that the view corresponds to.
-      # @option params [String] :deleted_at Date of role deletion, or null if the role is still active
+      # @option params [DateTime] :deleted_at Date of role deletion, or null if the role is still active
       # @option params [Braintrust::Models::ViewOptions] :options Options for the view in the app
       # @option params [String] :user_id Identifies the user who created the view
       # @option params [Braintrust::Models::ViewData] :view_data The view definition

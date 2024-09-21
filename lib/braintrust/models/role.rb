@@ -15,13 +15,13 @@ module Braintrust
 
       # @!attribute [rw] created
       #   Date of role creation
-      #   @return [String]
-      optional :created, String
+      #   @return [DateTime]
+      optional :created, DateTime
 
       # @!attribute [rw] deleted_at
       #   Date of role deletion, or null if the role is still active
-      #   @return [String]
-      optional :deleted_at, String
+      #   @return [DateTime]
+      optional :deleted_at, DateTime
 
       # @!attribute [rw] description
       #   Textual description of the role
