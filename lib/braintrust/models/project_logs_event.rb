@@ -21,7 +21,7 @@ module Braintrust
       # @!attribute [rw] log_id
       #   A literal 'g' which identifies the log as a project log
       #   @return [Symbol]
-      required :log_id, Braintrust::Enum.new(:g)
+      required :log_id, Braintrust::Enum.new(:'g')
 
       # @!attribute [rw] org_id
       #   Unique id for the organization that the project belongs under

@@ -16,7 +16,7 @@ module Braintrust
       # @!attribute [rw] log_id
       #   A literal 'p' which identifies the object as a project prompt
       #   @return [Symbol]
-      required :log_id, Braintrust::Enum.new(:p)
+      required :log_id, Braintrust::Enum.new(:'p')
 
       # @!attribute [rw] name_
       #   Name of the prompt
@@ -47,6 +47,10 @@ module Braintrust
       #   Textual description of the prompt
       #   @return [String]
       optional :description, String
+
+      # @!attribute [rw] function_type
+      #   @return [Symbol]
+      optional :function_type, Braintrust::Enum.new(:task, :llm, :scorer)
 
       # @!attribute [rw] metadata
       #   User-controlled metadata about the prompt
