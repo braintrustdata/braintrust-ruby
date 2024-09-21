@@ -71,7 +71,7 @@ module Braintrust
             host: uri.host,
             scheme: uri.scheme,
             path: uri.path,
-            query: CGI.parse(uri.query),
+            query: CGI.parse(uri.query || ""),
             port: uri.port
           }
         else
@@ -171,43 +171,79 @@ module Braintrust
       make_status_error(message: message, body: err_body, response: response)
     end
 
-    # About the Retry-After header: https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Retry-After
-    #
-    # <http-date>". See https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Retry-After#syntax for
-    # details.
     def header_based_retry(response)
-      # TODO(STA-3371): accept retry-after-ms.
-      retry_after = response.header["retry-after"]
-      retry_after
-        .split(",")
-        .map do |element|
-          as_int =
-            begin
-              Float(element)
-            rescue StandardError # rubocop:disable Lint/SuppressedException
+      # Note the `retry-after-ms` header may not be standard, but is a good idea and we'd like proactive support for it.
+      retry_after_millis = Float(response.header["retry-after-ms"], exception: false)
+      if retry_after_millis
+        retry_after = retry_after_millis / 1000.0
+      elsif response.header["retry-after"]
+        retry_after = Float(response.header["retry-after"], exception: false)
+        if retry_after.nil?
+          begin
+            base = Time.now
+            if response.header["x-stainless-mock-sleep-base"]
+              base = Time.httpdate(response.header["x-stainless-mock-sleep-base"])
             end
-
-          as_datetime =
-            begin
-              Time.httpdate(element) - Time.now
-            rescue StandardError # rubocop:disable Lint/SuppressedException
-            end
-
-          [as_int, as_datetime].filter { |x| x }.max
+            retry_after = Time.httpdate(response.header["retry-after"]) - base
+          rescue StandardError # rubocop:disable Lint/SuppressedException
+          end
         end
+      end
+      retry_after
     rescue StandardError # rubocop:disable Lint/SuppressedException
     end
 
-    def with_retry(request, max_retries:)
+    def send_request(request, max_retries:, redirect_count:)
       delay = 0.5
       max_delay = 8.0
       retries = 0
       request_max_retries = max_retries || @max_retries
-      loop do
+      loop do # rubocop:disable Metrics/BlockLength
         begin
           response = @requester.execute(request)
-          is_ok = response.code.to_i < 400
-          return response if is_ok
+          status = response.code.to_i
+
+          if status < 300
+            return response
+          elsif status < 400
+            begin
+              prev_uri = URI.parse(Braintrust::Util.uri_from_req(request, absolute: true))
+              location = URI.join(prev_uri, response.header["location"])
+            rescue ArgumentError
+              message = "server responded with status #{status} but no valid location header"
+              raise HTTP::APIConnectionError.new(message: message, request: request)
+            end
+            # from whatwg fetch spec
+            if redirect_count == 20
+              message = "failed to complete the request within 20 redirects"
+              raise HTTP::APIConnectionError.new(message: message, request: request)
+            end
+            if location.scheme != "http" && location.scheme != "https"
+              message = "tried to redirect to a non-http URL"
+              raise HTTP::APIConnectionError.new(message: message, request: request)
+            end
+            request = request.merge(resolve_uri_elements({url: location}))
+            # from whatwg fetch spec
+            if ([301, 302].include?(status) && request[:method] == :post) ||
+               (status == 303 && request[:method] != :get && request[:method] != :head)
+              request[:method] = :get
+              request[:body] = nil
+              request[:headers] = request[:headers].reject do |k|
+                %w[content-encoding content-language content-location content-type content-length].include?(k.downcase)
+              end
+            end
+            # from undici
+            if Braintrust::Util.uri_origin(prev_uri) != Braintrust::Util.uri_origin(location)
+              request[:headers] = request[:headers].reject do |k|
+                %w[authorization cookie proxy-authorization host].include?(k.downcase)
+              end
+            end
+            return send_request(
+              request,
+              max_retries: max_retries,
+              redirect_count: redirect_count + 1
+            )
+          end
         rescue Net::HTTPBadResponse
           if retries >= request_max_retries
             message = "failed to complete the request within #{request_max_retries} retries"
@@ -225,10 +261,20 @@ module Braintrust
         end
 
         retries += 1
-        sleep delay
-        base_delay = header_based_retry(response) || (delay * (2**retries))
-        jitter_factor = 1 - (0.25 * rand)
-        (base_delay * jitter_factor).clamp(0, max_delay)
+        base_delay = header_based_retry(response)
+        if base_delay
+          delay = base_delay
+        else
+          base_delay = (delay * (2**retries))
+          jitter_factor = 1 - (0.25 * rand)
+          delay = (base_delay * jitter_factor).clamp(0, max_delay)
+        end
+
+        if response.header["x-stainless-mock-sleep"]
+          request[:headers]["X-Stainless-Mock-Slept"] = delay
+        else
+          sleep delay
+        end
       end
     end
 
@@ -240,7 +286,7 @@ module Braintrust
       validate_request(req, opts)
       options = req.merge(opts)
       request_args = prep_request(options)
-      response = with_retry(request_args, max_retries: opts[:max_retries])
+      response = send_request(request_args, max_retries: opts[:max_retries], redirect_count: 0)
       raw_data =
         case response.content_type
         when "application/json"

@@ -125,18 +125,13 @@ module Braintrust
 
     # @!visibility private
     def self.convert(data)
-      model = new
-      model.convert(data)
-      model
+      new(data)
     end
 
-    # @!visibility private
-    def initialize
+    # Create a new instance of a model.
+    # @param data [Hash] Model attributes.
+    def initialize(data = {})
       @data = {}
-    end
-
-    # @!visibility private
-    def convert(data)
       # TODO: what if data isn't a hash?
       data.each do |field_name, value|
         next if value.nil?
