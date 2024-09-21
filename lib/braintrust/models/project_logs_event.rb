@@ -20,8 +20,9 @@ module Braintrust
 
       # @!attribute [rw] log_id
       #   A literal 'g' which identifies the log as a project log
+      #   One of the constants defined in {Braintrust::Models::ProjectLogsEvent::LogID}
       #   @return [Symbol]
-      required :log_id, Braintrust::Enum.new(:g)
+      required :log_id, enum: -> { Braintrust::Models::ProjectLogsEvent::LogID }
 
       # @!attribute [rw] org_id
       #   Unique id for the organization that the project belongs under
@@ -98,6 +99,11 @@ module Braintrust
       #   @return [Array<String>]
       optional :tags, Braintrust::ArrayOf.new(String)
 
+      # A literal 'g' which identifies the log as a project log
+      class LogID < Braintrust::Enum
+        G = :g
+      end
+
       class Context < BaseModel
         # @!attribute [rw] caller_filename
         #   Name of the file in code where the project logs event was created
@@ -150,8 +156,19 @@ module Braintrust
 
         # @!attribute [rw] type
         #   Type of the span, for display purposes only
+        #   One of the constants defined in {Braintrust::Models::ProjectLogsEvent::SpanAttributes::Type}
         #   @return [Symbol]
-        optional :type, Braintrust::Enum.new(:llm, :score, :function, :eval, :task, :tool)
+        optional :type, enum: -> { Braintrust::Models::ProjectLogsEvent::SpanAttributes::Type }
+
+        # Type of the span, for display purposes only
+        class Type < Braintrust::Enum
+          LLM = :llm
+          SCORE = :score
+          FUNCTION = :function
+          EVAL = :eval
+          TASK = :task
+          TOOL = :tool
+        end
       end
     end
   end

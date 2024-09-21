@@ -53,12 +53,17 @@ module Braintrust
         required :choice_scores, Hash
 
         # @!attribute [rw] type
+        #   One of the constants defined in {Braintrust::Models::PromptData::Parser::Type}
         #   @return [Symbol]
-        required :type, Braintrust::Enum.new(:llm_classifier)
+        required :type, enum: -> { Braintrust::Models::PromptData::Parser::Type }
 
         # @!attribute [rw] use_cot
         #   @return [Boolean]
         required :use_cot, Braintrust::BooleanModel
+
+        class Type < Braintrust::Enum
+          LLM_CLASSIFIER = :llm_classifier
+        end
       end
     end
   end
