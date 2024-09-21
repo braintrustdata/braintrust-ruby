@@ -34,8 +34,7 @@ module Braintrust
       get_pool(req).with do |conn|
         # Net can't understand posting to a URI representing only path + query,
         # so we concatenate
-        query_string = ("?#{URI.encode_www_form(req[:query])}" if req[:query])
-        uri_string = (req[:path] || "/") + (query_string || "")
+        uri_string = Braintrust::Util.uri_from_req(req, absolute: false)
         case req[:method]
         when :get
           conn.get(uri_string, req[:headers])
