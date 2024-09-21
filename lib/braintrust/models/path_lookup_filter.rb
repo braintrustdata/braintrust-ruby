@@ -10,13 +10,19 @@ module Braintrust
 
       # @!attribute [rw] type
       #   Denotes the type of filter as a path-lookup filter
+      #   One of the constants defined in {Braintrust::Models::PathLookupFilter::Type}
       #   @return [Symbol]
-      required :type, Braintrust::Enum.new(:path_lookup)
+      required :type, enum: -> { Braintrust::Models::PathLookupFilter::Type }
 
       # @!attribute [rw] value
       #   The value to compare equality-wise against the event value at the specified `path`. The value must be a "primitive", that is, any JSON-serializable object except for objects and arrays. For instance, if you wish to filter on the value of "input.a.b.c" in the object `{"input": {"a": {"b": {"c": "hello"}}}}`, pass `value="hello"`
       #   @return [Object]
       optional :value, Braintrust::Unknown
+
+      # Denotes the type of filter as a path-lookup filter
+      class Type < Braintrust::Enum
+        PATH_LOOKUP = :path_lookup
+      end
     end
   end
 end

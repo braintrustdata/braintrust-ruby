@@ -20,36 +20,15 @@ module Braintrust
 
       # @!attribute [rw] object_type
       #   The object type that the ACL applies to
+      #   One of the constants defined in {Braintrust::Models::View::ObjectType}
       #   @return [Symbol]
-      required :object_type,
-               Braintrust::Enum.new(
-                 :organization,
-                 :project,
-                 :experiment,
-                 :dataset,
-                 :prompt,
-                 :prompt_session,
-                 :group,
-                 :role,
-                 :org_member,
-                 :project_log,
-                 :org_project
-               )
+      required :object_type, enum: -> { Braintrust::Models::View::ObjectType }
 
       # @!attribute [rw] view_type
       #   Type of table that the view corresponds to.
+      #   One of the constants defined in {Braintrust::Models::View::ViewType}
       #   @return [Symbol]
-      required :view_type,
-               Braintrust::Enum.new(
-                 :projects,
-                 :logs,
-                 :experiments,
-                 :datasets,
-                 :prompts,
-                 :playgrounds,
-                 :experiment,
-                 :dataset
-               )
+      required :view_type, enum: -> { Braintrust::Models::View::ViewType }
 
       # @!attribute [rw] created
       #   Date of view creation
@@ -75,6 +54,33 @@ module Braintrust
       #   The view definition
       #   @return [Braintrust::Models::ViewData]
       optional :view_data, -> { Braintrust::Models::ViewData }
+
+      # The object type that the ACL applies to
+      class ObjectType < Braintrust::Enum
+        ORGANIZATION = :organization
+        PROJECT = :project
+        EXPERIMENT = :experiment
+        DATASET = :dataset
+        PROMPT = :prompt
+        PROMPT_SESSION = :prompt_session
+        GROUP = :group
+        ROLE = :role
+        ORG_MEMBER = :org_member
+        PROJECT_LOG = :project_log
+        ORG_PROJECT = :org_project
+      end
+
+      # Type of table that the view corresponds to.
+      class ViewType < Braintrust::Enum
+        PROJECTS = :projects
+        LOGS = :logs
+        EXPERIMENTS = :experiments
+        DATASETS = :datasets
+        PROMPTS = :prompts
+        PLAYGROUNDS = :playgrounds
+        EXPERIMENT = :experiment
+        DATASET = :dataset
+      end
     end
   end
 end

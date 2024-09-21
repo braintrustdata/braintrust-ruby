@@ -63,18 +63,17 @@ module Braintrust
   class Enum
     include Converter
 
-    # NB we don't do runtime validation, so `options` is just an FYI
-    # for the reader.
-    def initialize(*options)
-      @options = options
-    end
-
-    def convert(value)
+    def self.convert(value)
       if value.is_a?(String)
         value.to_sym
       else
         value
       end
+    end
+
+    # @return [Array<Symbol>] All of the valid Symbol values for this enum.
+    def self.values
+      @values ||= constants.map { |c| const_get(c) }
     end
   end
 
@@ -83,8 +82,8 @@ module Braintrust
   class ArrayOf
     include Converter
 
-    def initialize(items_type_info)
-      @items_type_fn = items_type_info.is_a?(Proc) ? items_type_info : -> { items_type_info }
+    def initialize(items_type_info = nil, enum: nil)
+      @items_type_fn = enum || (items_type_info.is_a?(Proc) ? items_type_info : -> { items_type_info })
     end
 
     def convert(value)
@@ -113,14 +112,14 @@ module Braintrust
 
     # @!visibility private
     # NB `required` is just a signal to the reader. We don't do runtime validation anyway.
-    def self.required(name_sym, type_info, mode = :rw)
-      add_field(name_sym, type_info, mode)
+    def self.required(name_sym, type_info = nil, mode = :rw, enum: nil)
+      add_field(name_sym, enum || type_info, mode)
     end
 
     # @!visibility private
     # NB `optional` is just a signal to the reader. We don't do runtime validation anyway.
-    def self.optional(name_sym, type_info, mode = :rw)
-      add_field(name_sym, type_info, mode)
+    def self.optional(name_sym, type_info = nil, mode = :rw, enum: nil)
+      add_field(name_sym, enum || type_info, mode)
     end
 
     # @!visibility private
