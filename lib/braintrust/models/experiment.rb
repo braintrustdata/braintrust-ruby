@@ -35,8 +35,8 @@ module Braintrust
 
       # @!attribute [rw] created
       #   Date of experiment creation
-      #   @return [String]
-      optional :created, String
+      #   @return [DateTime]
+      optional :created, DateTime
 
       # @!attribute [rw] dataset_id
       #   Identifier of the linked dataset, or null if the experiment is not linked to a dataset
@@ -50,8 +50,8 @@ module Braintrust
 
       # @!attribute [rw] deleted_at
       #   Date of experiment deletion, or null if the experiment is still active
-      #   @return [String]
-      optional :deleted_at, String
+      #   @return [DateTime]
+      optional :deleted_at, DateTime
 
       # @!attribute [rw] description
       #   Textual description of the experiment

@@ -15,8 +15,8 @@ module Braintrust
 
       # @!attribute [rw] created
       #   The timestamp the project logs event was created
-      #   @return [String]
-      required :created, String
+      #   @return [DateTime]
+      required :created, DateTime
 
       # @!attribute [rw] log_id
       #   A literal 'g' which identifies the log as a project log

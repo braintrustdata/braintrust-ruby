@@ -26,8 +26,8 @@ module Braintrust
 
       # @!attribute [rw] created
       #   Date of acl creation
-      #   @return [String]
-      optional :created, String
+      #   @return [DateTime]
+      optional :created, DateTime
 
       # @!attribute [rw] group_id
       #   Id of the group the ACL applies to. Exactly one of `user_id` and `group_id` will be provided

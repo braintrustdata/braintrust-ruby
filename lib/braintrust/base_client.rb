@@ -224,9 +224,8 @@ module Braintrust
             end
             request = request.merge(resolve_uri_elements({url: location}))
             # from whatwg fetch spec
-            if ([301, 302].include?(status) && request[:method] == :post) ||
-               (status == 303 && request[:method] != :get && request[:method] != :head)
-              request[:method] = :get
+            if ([301, 302].include?(status) && request[:method] == :post) || (status == 303)
+              request[:method] = request[:method] == :head ? :head : :get
               request[:body] = nil
               request[:headers] = request[:headers].reject do |k|
                 %w[content-encoding content-language content-location content-type content-length].include?(k.downcase)
@@ -312,8 +311,11 @@ module Braintrust
     end
   end
 
+  class Error < StandardError
+  end
+
   module HTTP
-    class Error < StandardError
+    class Error < Braintrust::Error
     end
 
     class ResponseError < Error

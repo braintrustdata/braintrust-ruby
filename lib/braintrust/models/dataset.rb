@@ -15,13 +15,13 @@ module Braintrust
 
       # @!attribute [rw] created
       #   Date of dataset creation
-      #   @return [String]
-      optional :created, String
+      #   @return [DateTime]
+      optional :created, DateTime
 
       # @!attribute [rw] deleted_at
       #   Date of dataset deletion, or null if the dataset is still active
-      #   @return [String]
-      optional :deleted_at, String
+      #   @return [DateTime]
+      optional :deleted_at, DateTime
 
       # @!attribute [rw] description
       #   Textual description of the dataset

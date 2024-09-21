@@ -15,8 +15,8 @@ module Braintrust
 
       # @!attribute [rw] created
       #   The timestamp the experiment event was created
-      #   @return [String]
-      required :created, String
+      #   @return [DateTime]
+      required :created, DateTime
 
       # @!attribute [rw] experiment_id
       #   Unique identifier for the experiment
