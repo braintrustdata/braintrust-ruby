@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require "date"
+
 module Braintrust
   # @!visibility private
   module Converter
@@ -18,7 +20,10 @@ module Braintrust
       # directly.
       if type.is_a?(Converter) || type.include?(Converter)
         type.convert(value)
-
+      elsif type == Date
+        Date.parse(value)
+      elsif type == DateTime
+        DateTime.parse(value)
       elsif type == NilClass
         nil
       elsif type == Float
@@ -106,7 +111,14 @@ module Braintrust
       type_fn = type_info.is_a?(Proc) ? type_info : -> { type_info }
       fields[name_sym] = {type_fn: type_fn, mode: mode}
 
-      define_method(name_sym) { @data[name_sym] }
+      define_method(name_sym) do
+        field_type = type_fn.call
+        Converter.convert(field_type, @data[name_sym])
+      rescue StandardError
+        name = self.class.name.split('::').last
+        raise ConversionError,
+              "Failed to parse #{name}.#{name_sym} as #{field_type.inspect}. To get the unparsed API response, use #{name}[:#{name_sym}]."
+      end
       define_method("#{name_sym}=") { |val| @data[name_sym] = val }
     end
 
@@ -138,14 +150,8 @@ module Braintrust
         field = self.class.fields[field_name.to_sym]
         if field
           next if field[:mode] == :w
-
-          field_type = field[:type_fn].call
-          result = Converter.convert(field_type, value)
-          # TODO: error handling: if conversion throws, just put back whatever we got from the raw json?
-          @data[field_name.to_sym] = result
-        else
-          @data[field_name.to_sym] = value
         end
+        @data[field_name.to_sym] = value
       end
     end
 
@@ -190,5 +196,8 @@ module Braintrust
     def to_s
       @data.to_s
     end
+  end
+
+  class ConversionError < Error
   end
 end

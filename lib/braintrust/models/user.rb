@@ -15,8 +15,8 @@ module Braintrust
 
       # @!attribute [rw] created
       #   Date of user creation
-      #   @return [String]
-      optional :created, String
+      #   @return [DateTime]
+      optional :created, DateTime
 
       # @!attribute [rw] email
       #   The user's email

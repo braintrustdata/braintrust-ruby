@@ -24,8 +24,8 @@ module Braintrust
 
       # @!attribute [rw] created
       #   Date of api key creation
-      #   @return [String]
-      optional :created, String
+      #   @return [DateTime]
+      optional :created, DateTime
 
       # @!attribute [rw] org_id
       #   Unique identifier for the organization

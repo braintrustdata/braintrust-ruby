@@ -34,8 +34,8 @@ module Braintrust
 
       # @!attribute [rw] created
       #   The timestamp the project logs event was created
-      #   @return [String]
-      optional :created, String
+      #   @return [DateTime]
+      optional :created, DateTime
 
       # @!attribute [rw] error
       #   The error that occurred, if any.

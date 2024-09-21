@@ -20,8 +20,8 @@ module Braintrust
 
       # @!attribute [rw] created
       #   Date of org secret creation
-      #   @return [String]
-      optional :created, String
+      #   @return [DateTime]
+      optional :created, DateTime
 
       # @!attribute [rw] metadata
       #   @return [Hash]
