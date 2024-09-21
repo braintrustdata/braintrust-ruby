@@ -20,8 +20,9 @@ module Braintrust
 
       # @!attribute [rw] score_type
       #   The type of the configured score
+      #   One of the constants defined in {Braintrust::Models::ProjectScore::ScoreType}
       #   @return [Symbol]
-      required :score_type, Braintrust::Enum.new(:slider, :categorical, :weighted, :minimum, :online)
+      required :score_type, enum: -> { Braintrust::Models::ProjectScore::ScoreType }
 
       # @!attribute [rw] user_id
       #   @return [String]
@@ -51,10 +52,20 @@ module Braintrust
       #   @return [String]
       optional :position, String
 
+      # The type of the configured score
+      class ScoreType < Braintrust::Enum
+        SLIDER = :slider
+        CATEGORICAL = :categorical
+        WEIGHTED = :weighted
+        MINIMUM = :minimum
+        ONLINE = :online
+      end
+
       class Config < BaseModel
         # @!attribute [rw] destination
+        #   One of the constants defined in {Braintrust::Models::ProjectScore::Config::Destination}
         #   @return [Symbol]
-        optional :destination, Braintrust::Enum.new(:expected)
+        optional :destination, enum: -> { Braintrust::Models::ProjectScore::Config::Destination }
 
         # @!attribute [rw] multi_select
         #   @return [Boolean]
@@ -63,6 +74,10 @@ module Braintrust
         # @!attribute [rw] online
         #   @return [Braintrust::Models::ProjectScore::Config::Online]
         optional :online, -> { Braintrust::Models::ProjectScore::Config::Online }
+
+        class Destination < Braintrust::Enum
+          EXPECTED = :expected
+        end
 
         class Online < BaseModel
           # @!attribute [rw] sampling_rate

@@ -15,8 +15,9 @@ module Braintrust
 
       # @!attribute [rw] log_id
       #   A literal 'p' which identifies the object as a project prompt
+      #   One of the constants defined in {Braintrust::Models::Prompt::LogID}
       #   @return [Symbol]
-      required :log_id, Braintrust::Enum.new(:p)
+      required :log_id, enum: -> { Braintrust::Models::Prompt::LogID }
 
       # @!attribute [rw] name_
       #   Name of the prompt
@@ -49,8 +50,9 @@ module Braintrust
       optional :description, String
 
       # @!attribute [rw] function_type
+      #   One of the constants defined in {Braintrust::Models::Prompt::FunctionType}
       #   @return [Symbol]
-      optional :function_type, Braintrust::Enum.new(:task, :llm, :scorer)
+      optional :function_type, enum: -> { Braintrust::Models::Prompt::FunctionType }
 
       # @!attribute [rw] metadata
       #   User-controlled metadata about the prompt
@@ -66,6 +68,17 @@ module Braintrust
       #   A list of tags for the prompt
       #   @return [Array<String>]
       optional :tags, Braintrust::ArrayOf.new(String)
+
+      # A literal 'p' which identifies the object as a project prompt
+      class LogID < Braintrust::Enum
+        P = :p
+      end
+
+      class FunctionType < Braintrust::Enum
+        TASK = :task
+        LLM = :llm
+        SCORER = :scorer
+      end
     end
   end
 end

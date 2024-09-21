@@ -150,8 +150,19 @@ module Braintrust
 
         # @!attribute [rw] type
         #   Type of the span, for display purposes only
+        #   One of the constants defined in {Braintrust::Models::ExperimentEvent::SpanAttributes::Type}
         #   @return [Symbol]
-        optional :type, Braintrust::Enum.new(:llm, :score, :function, :eval, :task, :tool)
+        optional :type, enum: -> { Braintrust::Models::ExperimentEvent::SpanAttributes::Type }
+
+        # Type of the span, for display purposes only
+        class Type < Braintrust::Enum
+          LLM = :llm
+          SCORE = :score
+          FUNCTION = :function
+          EVAL = :eval
+          TASK = :task
+          TOOL = :tool
+        end
       end
     end
   end
