@@ -19,8 +19,9 @@ module Braintrust
 
       # @!attribute [rw] log_id
       #   A literal 'p' which identifies the object as a project prompt
+      #   One of the constants defined in {Braintrust::Models::Function::LogID}
       #   @return [Symbol]
-      required :log_id, Braintrust::Enum.new(:p)
+      required :log_id, enum: -> { Braintrust::Models::Function::LogID }
 
       # @!attribute [rw] name_
       #   Name of the prompt
@@ -53,8 +54,9 @@ module Braintrust
       optional :description, String
 
       # @!attribute [rw] function_type
+      #   One of the constants defined in {Braintrust::Models::Function::FunctionType}
       #   @return [Symbol]
-      optional :function_type, Braintrust::Enum.new(:task, :llm, :scorer)
+      optional :function_type, enum: -> { Braintrust::Models::Function::FunctionType }
 
       # @!attribute [rw] metadata
       #   User-controlled metadata about the prompt
@@ -75,6 +77,17 @@ module Braintrust
       #   @return [Array<String>]
       optional :tags, Braintrust::ArrayOf.new(String)
 
+      # A literal 'p' which identifies the object as a project prompt
+      class LogID < Braintrust::Enum
+        P = :p
+      end
+
+      class FunctionType < Braintrust::Enum
+        TASK = :task
+        LLM = :llm
+        SCORER = :scorer
+      end
+
       class Origin < BaseModel
         # @!attribute [rw] object_id_
         #   Id of the object the function is originating from
@@ -83,26 +96,29 @@ module Braintrust
 
         # @!attribute [rw] object_type
         #   The object type that the ACL applies to
+        #   One of the constants defined in {Braintrust::Models::Function::Origin::ObjectType}
         #   @return [Symbol]
-        required :object_type,
-                 Braintrust::Enum.new(
-                   :organization,
-                   :project,
-                   :experiment,
-                   :dataset,
-                   :prompt,
-                   :prompt_session,
-                   :group,
-                   :role,
-                   :org_member,
-                   :project_log,
-                   :org_project
-                 )
+        required :object_type, enum: -> { Braintrust::Models::Function::Origin::ObjectType }
 
         # @!attribute [rw] internal
         #   The function exists for internal purposes and should not be displayed in the list of functions.
         #   @return [Boolean]
         optional :internal, Braintrust::BooleanModel
+
+        # The object type that the ACL applies to
+        class ObjectType < Braintrust::Enum
+          ORGANIZATION = :organization
+          PROJECT = :project
+          EXPERIMENT = :experiment
+          DATASET = :dataset
+          PROMPT = :prompt
+          PROMPT_SESSION = :prompt_session
+          GROUP = :group
+          ROLE = :role
+          ORG_MEMBER = :org_member
+          PROJECT_LOG = :project_log
+          ORG_PROJECT = :org_project
+        end
       end
     end
   end

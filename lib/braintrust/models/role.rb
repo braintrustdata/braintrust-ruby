@@ -59,36 +59,45 @@ module Braintrust
         #   Each permission permits a certain type of operation on an object in the system
         # 
         # Permissions can be assigned to to objects on an individual basis, or grouped into roles
+        #   One of the constants defined in {Braintrust::Models::Role::MemberPermission::Permission}
         #   @return [Symbol]
-        required :permission,
-                 Braintrust::Enum.new(
-                   :create,
-                   :read,
-                   :update,
-                   :delete,
-                   :create_acls,
-                   :read_acls,
-                   :update_acls,
-                   :delete_acls
-                 )
+        required :permission, enum: -> { Braintrust::Models::Role::MemberPermission::Permission }
 
         # @!attribute [rw] restrict_object_type
         #   The object type that the ACL applies to
+        #   One of the constants defined in {Braintrust::Models::Role::MemberPermission::RestrictObjectType}
         #   @return [Symbol]
         optional :restrict_object_type,
-                 Braintrust::Enum.new(
-                   :organization,
-                   :project,
-                   :experiment,
-                   :dataset,
-                   :prompt,
-                   :prompt_session,
-                   :group,
-                   :role,
-                   :org_member,
-                   :project_log,
-                   :org_project
-                 )
+                 enum: -> { Braintrust::Models::Role::MemberPermission::RestrictObjectType }
+
+        # Each permission permits a certain type of operation on an object in the system
+        # 
+        # Permissions can be assigned to to objects on an individual basis, or grouped into roles
+        class Permission < Braintrust::Enum
+          CREATE = :create
+          READ = :read
+          UPDATE = :update
+          DELETE = :delete
+          CREATE_ACLS = :create_acls
+          READ_ACLS = :read_acls
+          UPDATE_ACLS = :update_acls
+          DELETE_ACLS = :delete_acls
+        end
+
+        # The object type that the ACL applies to
+        class RestrictObjectType < Braintrust::Enum
+          ORGANIZATION = :organization
+          PROJECT = :project
+          EXPERIMENT = :experiment
+          DATASET = :dataset
+          PROMPT = :prompt
+          PROMPT_SESSION = :prompt_session
+          GROUP = :group
+          ROLE = :role
+          ORG_MEMBER = :org_member
+          PROJECT_LOG = :project_log
+          ORG_PROJECT = :org_project
+        end
       end
     end
   end

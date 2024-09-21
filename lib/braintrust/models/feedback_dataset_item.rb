@@ -20,8 +20,16 @@ module Braintrust
 
       # @!attribute [rw] source
       #   The source of the feedback. Must be one of "external" (default), "app", or "api"
+      #   One of the constants defined in {Braintrust::Models::FeedbackDatasetItem::Source}
       #   @return [Symbol]
-      optional :source, Braintrust::Enum.new(:app, :api, :external)
+      optional :source, enum: -> { Braintrust::Models::FeedbackDatasetItem::Source }
+
+      # The source of the feedback. Must be one of "external" (default), "app", or "api"
+      class Source < Braintrust::Enum
+        APP = :app
+        API = :api
+        EXTERNAL = :external
+      end
     end
   end
 end
