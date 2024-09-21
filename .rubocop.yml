@@ -93,7 +93,7 @@ Layout/FirstMethodParameterLineBreak:
 Layout/SpaceInsideHashLiteralBraces:
   EnforcedStyle: no_space
 
-# These cops are not as applicaple to generated code.
+# These cops are not as applicable to generated code.
 Metrics/ParameterLists:
   Enabled: false
 Metrics/MethodLength:

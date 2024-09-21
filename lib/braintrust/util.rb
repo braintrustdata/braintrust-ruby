@@ -33,19 +33,15 @@ module Braintrust
     end
 
     def self.coerce_integer(str)
-      begin
-        Integer(str)
-      rescue
-        str
-      end
+      Integer(str)
+    rescue StandardError
+      str
     end
 
     def self.coerce_float(str)
-      begin
-        Float(str)
-      rescue
-        str
-      end
+      Float(str)
+    rescue StandardError
+      str
     end
 
     def self.coerce_boolean(input)
@@ -56,6 +52,26 @@ module Braintrust
         false
       else
         input
+      end
+    end
+
+    def self.uri_from_req(req, absolute:)
+      query_string = ("?#{URI.encode_www_form(req[:query])}" if req[:query])
+      uri = String.new
+      if absolute
+        uri << "#{req[:scheme]}://#{req[:host]}"
+        if req[:port]
+          uri << ":#{req[:port]}"
+        end
+      end
+      uri << ((req[:path] || "/") + (query_string || ""))
+    end
+
+    def self.uri_origin(uri)
+      if uri.respond_to?(:origin)
+        uri.origin
+      else
+        "#{uri.scheme}://#{uri.host}#{uri.port == uri.default_port ? '' : ":#{uri.port}"}"
       end
     end
   end
