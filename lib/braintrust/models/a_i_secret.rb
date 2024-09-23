@@ -2,14 +2,14 @@
 
 module Braintrust
   module Models
-    class OrgSecret < BaseModel
+    class AISecret < BaseModel
       # @!attribute [rw] id
-      #   Unique identifier for the org secret
+      #   Unique identifier for the AI secret
       #   @return [String]
       required :id, String
 
       # @!attribute [rw] name_
-      #   Name of the org secret
+      #   Name of the AI secret
       #   @return [String]
       required :name_, String
 
@@ -19,7 +19,7 @@ module Braintrust
       required :org_id, String
 
       # @!attribute [rw] created
-      #   Date of org secret creation
+      #   Date of AI secret creation
       #   @return [DateTime]
       optional :created, DateTime
 

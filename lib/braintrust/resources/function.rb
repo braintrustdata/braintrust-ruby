@@ -127,12 +127,35 @@ module Braintrust
         @client.request(req, opts)
       end
 
+      # Invoke a function.
+      # 
+      # @param function_id [String] Function id
+      # 
+      # @param params [Hash] Attributes to send in this request.
+      # @option params [Object] :input Argument to the function, which can be any JSON serializable value
+      # @option params [Parent::UnnamedTypeWithunionParent24|String] :parent Options for tracing the function call
+      # @option params [Boolean] :stream Whether to stream the response. If true, results will be returned in the
+      #   Braintrust SSE format.
+      # @option params [String] :version The version of the function
+      # 
+      # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
+      # 
+      # @return [Object]
+      def invoke(function_id, params = {}, opts = {})
+        req = {}
+        req[:method] = :post
+        req[:path] = "/v1/function/#{function_id}/invoke"
+        req[:body] = params
+        req[:model] = Braintrust::Unknown
+        @client.request(req, opts)
+      end
+
       # Create or replace function. If there is an existing function in the project with
       #   the same slug as the one specified in the request, will replace the existing
       #   function with the provided fields
       # 
       # @param params [Hash] Attributes to send in this request.
-      # @option params [FunctionData::UnnamedTypeWithunionParent24|FunctionData::UnnamedTypeWithunionParent25|FunctionData::UnnamedTypeWithunionParent26] :function_data
+      # @option params [FunctionData::UnnamedTypeWithunionParent25|FunctionData::UnnamedTypeWithunionParent26|FunctionData::UnnamedTypeWithunionParent27] :function_data
       # @option params [String] :name Name of the prompt
       # @option params [String] :project_id Unique identifier for the project that the prompt belongs under
       # @option params [String] :slug Unique identifier for the prompt
