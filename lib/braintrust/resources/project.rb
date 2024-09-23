@@ -22,13 +22,13 @@ module Braintrust
       # 
       # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
       # 
-      # @return [Braintrust::Models::Project]
+      # @return [Braintrust::Models::ProjectModel]
       def create(params = {}, opts = {})
         req = {}
         req[:method] = :post
         req[:path] = "/v1/project"
         req[:body] = params
-        req[:model] = Braintrust::Models::Project
+        req[:model] = Braintrust::Models::ProjectModel
         @client.request(req, opts)
       end
 
@@ -37,12 +37,12 @@ module Braintrust
       # @param project_id [String] Project id
       # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
       # 
-      # @return [Braintrust::Models::Project]
+      # @return [Braintrust::Models::ProjectModel]
       def retrieve(project_id, opts = {})
         req = {}
         req[:method] = :get
         req[:path] = "/v1/project/#{project_id}"
-        req[:model] = Braintrust::Models::Project
+        req[:model] = Braintrust::Models::ProjectModel
         @client.request(req, opts)
       end
 
@@ -59,13 +59,13 @@ module Braintrust
       # 
       # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
       # 
-      # @return [Braintrust::Models::Project]
+      # @return [Braintrust::Models::ProjectModel]
       def update(project_id, params = {}, opts = {})
         req = {}
         req[:method] = :patch
         req[:path] = "/v1/project/#{project_id}"
         req[:body] = params
-        req[:model] = Braintrust::Models::Project
+        req[:model] = Braintrust::Models::ProjectModel
         @client.request(req, opts)
       end
 
@@ -91,14 +91,14 @@ module Braintrust
       # 
       # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
       # 
-      # @return [Braintrust::ListObjects<Braintrust::Models::Project>]
+      # @return [Braintrust::ListObjects<Braintrust::Models::ProjectModel>]
       def list(params = {}, opts = {})
         req = {}
         req[:method] = :get
         req[:path] = "/v1/project"
         req[:query] = params
         req[:page] = Braintrust::ListObjects
-        req[:model] = Braintrust::Models::Project
+        req[:model] = Braintrust::Models::ProjectModel
         @client.request(req, opts)
       end
 
@@ -107,12 +107,12 @@ module Braintrust
       # @param project_id [String] Project id
       # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
       # 
-      # @return [Braintrust::Models::Project]
+      # @return [Braintrust::Models::ProjectModel]
       def delete(project_id, opts = {})
         req = {}
         req[:method] = :delete
         req[:path] = "/v1/project/#{project_id}"
-        req[:model] = Braintrust::Models::Project
+        req[:model] = Braintrust::Models::ProjectModel
         @client.request(req, opts)
       end
     end

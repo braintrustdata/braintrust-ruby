@@ -42,9 +42,9 @@ braintrust = Braintrust::Client.new(
   api_key: "My API Key" # defaults to ENV["BRAINTRUST_API_KEY"]
 )
 
-project = braintrust.project.create(name: "foobar")
+project_model = braintrust.project.create(name: "foobar")
 
-puts project.id
+puts project_model.id
 ```
 
 ### Errors
