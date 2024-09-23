@@ -96,6 +96,72 @@ module Braintrust
         req[:model] = Braintrust::Models::ACL
         @client.request(req, opts)
       end
+
+      # Batch update acls. This operation is idempotent, so adding acls which already
+      #   exist will have no effect, and removing acls which do not exist will have no
+      #   effect.
+      # 
+      # @param params [Hash] Attributes to send in this request.
+      # @option params [Array<AddACL>] :add_acls An ACL grants a certain permission or role to a certain user or group on an
+      #   object.
+      # 
+      #   ACLs are inherited across the object hierarchy. So for example, if a user has
+      #   read permissions on a project, they will also have read permissions on any
+      #   experiment, dataset, etc. created within that project.
+      # 
+      #   To restrict a grant to a particular sub-object, you may specify
+      #   `restrict_object_type` in the ACL, as part of a direct permission grant or as
+      #   part of a role.
+      # @option params [Array<RemoveACL>] :remove_acls An ACL grants a certain permission or role to a certain user or group on an
+      #   object.
+      # 
+      #   ACLs are inherited across the object hierarchy. So for example, if a user has
+      #   read permissions on a project, they will also have read permissions on any
+      #   experiment, dataset, etc. created within that project.
+      # 
+      #   To restrict a grant to a particular sub-object, you may specify
+      #   `restrict_object_type` in the ACL, as part of a direct permission grant or as
+      #   part of a role.
+      # 
+      # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
+      # 
+      # @return [Braintrust::Models::ACLBatchUpdateResponse]
+      def batch_update(params = {}, opts = {})
+        req = {}
+        req[:method] = :post
+        req[:path] = "/v1/acl/batch-update"
+        req[:body] = params
+        req[:model] = Braintrust::Models::ACLBatchUpdateResponse
+        @client.request(req, opts)
+      end
+
+      # Delete a single acl
+      # 
+      # @param params [Hash] Attributes to send in this request.
+      # @option params [String] :object_id The id of the object the ACL applies to
+      # @option params [Symbol] :object_type The object type that the ACL applies to
+      # @option params [String] :group_id Id of the group the ACL applies to. Exactly one of `user_id` and `group_id` will
+      #   be provided
+      # @option params [Symbol] :permission Permission the ACL grants. Exactly one of `permission` and `role_id` will be
+      #   provided
+      # @option params [Symbol] :restrict_object_type When setting a permission directly, optionally restricts the permission grant to
+      #   just the specified object type. Cannot be set alongside a `role_id`.
+      # @option params [String] :role_id Id of the role the ACL grants. Exactly one of `permission` and `role_id` will be
+      #   provided
+      # @option params [String] :user_id Id of the user the ACL applies to. Exactly one of `user_id` and `group_id` will
+      #   be provided
+      # 
+      # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
+      # 
+      # @return [Braintrust::Models::ACL]
+      def find_and_delete(params = {}, opts = {})
+        req = {}
+        req[:method] = :delete
+        req[:path] = "/v1/acl"
+        req[:body] = params
+        req[:model] = Braintrust::Models::ACL
+        @client.request(req, opts)
+      end
     end
   end
 end

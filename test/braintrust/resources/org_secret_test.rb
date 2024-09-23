@@ -32,6 +32,11 @@ class Braintrust::Test::Resources::OrgSecretTest < Test::Unit::TestCase
     assert_kind_of(Braintrust::Models::OrgSecret, response)
   end
 
+  def test_find_and_delete_required_params
+    response = @braintrust.org_secret.find_and_delete({name: "name"})
+    assert_kind_of(Braintrust::Models::OrgSecret, response)
+  end
+
   def test_replace_required_params
     response = @braintrust.org_secret.replace({name: "name"})
     assert_kind_of(Braintrust::Models::OrgSecret, response)
