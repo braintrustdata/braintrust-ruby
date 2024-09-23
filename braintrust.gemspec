@@ -7,7 +7,7 @@ Gem::Specification.new do |s|
   s.version = Braintrust::VERSION
   s.summary = "Ruby library to access the Braintrust API"
   s.authors = ["Braintrust"]
-  s.email = "info@braintrustdata.com"
+  s.email = "infotest@braintrustdata.com"
   s.files = Dir["lib/**/*.rb"]
   s.extra_rdoc_files = ["README.md"]
   s.required_ruby_version = ">= 3.0.0"
