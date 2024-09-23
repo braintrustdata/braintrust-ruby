@@ -119,6 +119,26 @@ module Braintrust
         @client.request(req, opts)
       end
 
+      # Delete a single org_secret
+      # 
+      # @param params [Hash] Attributes to send in this request.
+      # @option params [String] :name Name of the org secret
+      # @option params [String] :org_name For nearly all users, this parameter should be unnecessary. But in the rare case
+      #   that your API key belongs to multiple organizations, you may specify the name of
+      #   the organization the Org Secret belongs in.
+      # 
+      # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
+      # 
+      # @return [Braintrust::Models::OrgSecret]
+      def find_and_delete(params = {}, opts = {})
+        req = {}
+        req[:method] = :delete
+        req[:path] = "/v1/org_secret"
+        req[:body] = params
+        req[:model] = Braintrust::Models::OrgSecret
+        @client.request(req, opts)
+      end
+
       # Create or replace org_secret. If there is an existing org_secret with the same
       #   name as the one specified in the request, will replace the existing org_secret
       #   with the provided fields
