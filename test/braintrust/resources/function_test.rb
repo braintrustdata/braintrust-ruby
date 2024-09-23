@@ -34,6 +34,11 @@ class Braintrust::Test::Resources::FunctionTest < Test::Unit::TestCase
     assert_kind_of(Braintrust::Models::Function, response)
   end
 
+  def test_invoke
+    response = @braintrust.function.invoke("182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e")
+    refute_nil(Object, response)
+  end
+
   def test_replace_required_params
     response = @braintrust.function.replace(
       {function_data: {"type" => "prompt"}, name: "name", project_id: "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e", slug: "slug"}

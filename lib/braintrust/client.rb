@@ -53,8 +53,8 @@ module Braintrust
     # @return [Braintrust::Resources::APIKeyResource]
     attr_reader :api_key_resource
 
-    # @return [Braintrust::Resources::OrgSecret]
-    attr_reader :org_secret
+    # @return [Braintrust::Resources::AISecret]
+    attr_reader :ai_secret
 
     # @!visibility private
     def auth_headers
@@ -86,7 +86,7 @@ module Braintrust
       @view = Braintrust::Resources::View.new(client: self)
       @organization = Braintrust::Resources::Organization.new(client: self)
       @api_key_resource = Braintrust::Resources::APIKeyResource.new(client: self)
-      @org_secret = Braintrust::Resources::OrgSecret.new(client: self)
+      @ai_secret = Braintrust::Resources::AISecret.new(client: self)
     end
 
     # @!visibility private
