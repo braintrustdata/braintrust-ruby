@@ -26,4 +26,16 @@ class Braintrust::Test::Resources::ACLTest < Test::Unit::TestCase
     response = @braintrust.acl.delete("182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e")
     assert_kind_of(Braintrust::Models::ACL, response)
   end
+
+  def test_batch_update
+    response = @braintrust.acl.batch_update 
+    assert_kind_of(Braintrust::Models::ACLBatchUpdateResponse, response)
+  end
+
+  def test_find_and_delete_required_params
+    response = @braintrust.acl.find_and_delete(
+      {object_id: "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e", object_type: "organization"}
+    )
+    assert_kind_of(Braintrust::Models::ACL, response)
+  end
 end
