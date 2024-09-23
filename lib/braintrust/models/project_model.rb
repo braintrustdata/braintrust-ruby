@@ -2,7 +2,7 @@
 
 module Braintrust
   module Models
-    class Project < BaseModel
+    class ProjectModel < BaseModel
       # @!attribute [rw] id
       #   Unique identifier for the project
       #   @return [String]
@@ -29,8 +29,8 @@ module Braintrust
       optional :deleted_at, DateTime
 
       # @!attribute [rw] settings
-      #   @return [Braintrust::Models::Project::Settings]
-      optional :settings, -> { Braintrust::Models::Project::Settings }
+      #   @return [Braintrust::Models::ProjectModel::Settings]
+      optional :settings, -> { Braintrust::Models::ProjectModel::Settings }
 
       # @!attribute [rw] user_id
       #   Identifies the user who created the project
