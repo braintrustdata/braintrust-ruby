@@ -19,6 +19,10 @@ module Braintrust
       #   @return [Braintrust::Models::PromptData::Prompt::UnnamedTypeWithunionParent11|Braintrust::Models::PromptData::Prompt::UnnamedTypeWithunionParent12|Braintrust::Models::PromptData::Prompt::UnnamedTypeWithunionParent13]
       optional :prompt, Braintrust::Unknown
 
+      # @!attribute [rw] tool_functions
+      #   @return [Array<Braintrust::Models::PromptData::ToolFunction::UnnamedTypeWithunionParent14|Braintrust::Models::PromptData::ToolFunction::UnnamedTypeWithunionParent15>]
+      optional :tool_functions, Braintrust::ArrayOf.new(Braintrust::Unknown)
+
       class Options < BaseModel
         # @!attribute [rw] model
         #   @return [String]
