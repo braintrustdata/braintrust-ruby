@@ -75,9 +75,10 @@ module Braintrust
       end
 
       class FunctionType < Braintrust::Enum
-        TASK = :task
         LLM = :llm
         SCORER = :scorer
+        TASK = :task
+        TOOL = :tool
       end
     end
   end

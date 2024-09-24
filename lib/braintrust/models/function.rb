@@ -53,6 +53,11 @@ module Braintrust
       #   @return [String]
       optional :description, String
 
+      # @!attribute [rw] function_schema
+      #   JSON schema for the function's parameters and return type
+      #   @return [Braintrust::Models::Function::FunctionSchema]
+      optional :function_schema, -> { Braintrust::Models::Function::FunctionSchema }
+
       # @!attribute [rw] function_type
       #   One of the constants defined in {Braintrust::Models::Function::FunctionType}
       #   @return [Symbol]
@@ -82,10 +87,21 @@ module Braintrust
         P = :p
       end
 
+      class FunctionSchema < BaseModel
+        # @!attribute [rw] parameters
+        #   @return [Object]
+        optional :parameters, Braintrust::Unknown
+
+        # @!attribute [rw] returns
+        #   @return [Object]
+        optional :returns, Braintrust::Unknown
+      end
+
       class FunctionType < Braintrust::Enum
-        TASK = :task
         LLM = :llm
         SCORER = :scorer
+        TASK = :task
+        TOOL = :tool
       end
 
       class Origin < BaseModel
