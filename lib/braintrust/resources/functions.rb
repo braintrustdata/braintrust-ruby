@@ -57,7 +57,7 @@ module Braintrust
       # 
       # @param params [Hash] Attributes to send in this request.
       # @option params [String] :description Textual description of the prompt
-      # @option params [FunctionData] :function_data
+      # @option params [FunctionData::UnnamedTypeWithunionParent22|FunctionData::UnnamedTypeWithunionParent23|FunctionData::UnnamedTypeWithunionParent24|FunctionData::UnnamedTypeWithunionParent25] :function_data
       # @option params [String] :name Name of the prompt
       # @option params [Braintrust::Models::PromptData] :prompt_data The prompt, model, and its parameters
       # @option params [Array<String>] :tags A list of tags for the prompt
@@ -134,9 +134,9 @@ module Braintrust
       # 
       # @param params [Hash] Attributes to send in this request.
       # @option params [Object] :input Argument to the function, which can be any JSON serializable value
-      # @option params [Array<Message::UnnamedTypeWithunionParent22|Message::UnnamedTypeWithunionParent23|Message::UnnamedTypeWithunionParent24|Message::UnnamedTypeWithunionParent25|Message::UnnamedTypeWithunionParent26|Message::UnnamedTypeWithunionParent27>] :messages If the function is an LLM, additional messages to pass along to it
+      # @option params [Array<Message::UnnamedTypeWithunionParent26|Message::UnnamedTypeWithunionParent27|Message::UnnamedTypeWithunionParent28|Message::UnnamedTypeWithunionParent29|Message::UnnamedTypeWithunionParent30|Message::UnnamedTypeWithunionParent31>] :messages If the function is an LLM, additional messages to pass along to it
       # @option params [Symbol] :mode The mode format of the returned value (defaults to 'auto')
-      # @option params [Parent::UnnamedTypeWithunionParent28|String] :parent Options for tracing the function call
+      # @option params [Parent::UnnamedTypeWithunionParent32|String] :parent Options for tracing the function call
       # @option params [Boolean] :stream Whether to stream the response. If true, results will be returned in the
       #   Braintrust SSE format.
       # @option params [String] :version The version of the function
@@ -158,7 +158,7 @@ module Braintrust
       #   function with the provided fields
       # 
       # @param params [Hash] Attributes to send in this request.
-      # @option params [FunctionData::UnnamedTypeWithunionParent29|FunctionData::UnnamedTypeWithunionParent30|FunctionData::UnnamedTypeWithunionParent31] :function_data
+      # @option params [FunctionData::UnnamedTypeWithunionParent33|FunctionData::UnnamedTypeWithunionParent34|FunctionData::UnnamedTypeWithunionParent35] :function_data
       # @option params [String] :name Name of the prompt
       # @option params [String] :project_id Unique identifier for the project that the prompt belongs under
       # @option params [String] :slug Unique identifier for the prompt
