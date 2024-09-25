@@ -24,13 +24,13 @@ module Braintrust
         #
         # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
         #
-        # @return [Braintrust::Models::MemberUpdateResponse]
+        # @return [Braintrust::Models::PatchOrganizationMembersOutput]
         def update(params = {}, opts = {})
           req = {}
           req[:method] = :patch
           req[:path] = "/v1/organization/members"
           req[:body] = params
-          req[:model] = Braintrust::Models::MemberUpdateResponse
+          req[:model] = Braintrust::Models::PatchOrganizationMembersOutput
           @client.request(req, opts)
         end
       end

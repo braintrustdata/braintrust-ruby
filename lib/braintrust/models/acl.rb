@@ -35,13 +35,15 @@ module Braintrust
       optional :group_id, String
 
       # @!attribute [rw] permission
-      #   Permission the ACL grants. Exactly one of `permission` and `role_id` will be provided
+      #   Each permission permits a certain type of operation on an object in the system
+      #
+      # Permissions can be assigned to to objects on an individual basis, or grouped into roles
       #   One of the constants defined in {Braintrust::Models::ACL::Permission}
       #   @return [Symbol]
       optional :permission, enum: -> { Braintrust::Models::ACL::Permission }
 
       # @!attribute [rw] restrict_object_type
-      #   When setting a permission directly, optionally restricts the permission grant to just the specified object type. Cannot be set alongside a `role_id`.
+      #   The object type that the ACL applies to
       #   One of the constants defined in {Braintrust::Models::ACL::RestrictObjectType}
       #   @return [Symbol]
       optional :restrict_object_type, enum: -> { Braintrust::Models::ACL::RestrictObjectType }
@@ -71,7 +73,9 @@ module Braintrust
         ORG_PROJECT = :org_project
       end
 
-      # Permission the ACL grants. Exactly one of `permission` and `role_id` will be provided
+      # Each permission permits a certain type of operation on an object in the system
+      #
+      # Permissions can be assigned to to objects on an individual basis, or grouped into roles
       class Permission < Braintrust::Enum
         CREATE = :create
         READ = :read
@@ -83,7 +87,7 @@ module Braintrust
         DELETE_ACLS = :delete_acls
       end
 
-      # When setting a permission directly, optionally restricts the permission grant to just the specified object type. Cannot be set alongside a `role_id`.
+      # The object type that the ACL applies to
       class RestrictObjectType < Braintrust::Enum
         ORGANIZATION = :organization
         PROJECT = :project
