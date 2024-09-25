@@ -54,7 +54,7 @@ module Braintrust
       #
       # @param params [Hash] Attributes to send in this request.
       # @option params [String] :name Name of the project
-      # @option params [Settings] :settings Project settings. Patch operations replace all settings, so make sure you
+      # @option params [Braintrust::Models::ProjectSettings] :settings Project settings. Patch operations replace all settings, so make sure you
       #   include all settings you want to keep.
       #
       # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
