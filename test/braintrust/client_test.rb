@@ -27,7 +27,8 @@ class BraintrustTest < Test::Unit::TestCase
     end
 
     def execute(req)
-      attempts.push(req)
+      # Deep copy the request because it is mutated on each retry.
+      attempts.push(Marshal.load(Marshal.dump(req)))
       MockResponse.new(response_code, response_data, response_headers)
     end
   end
@@ -131,6 +132,45 @@ class BraintrustTest < Test::Unit::TestCase
     end
     assert_equal(2, requester.attempts.length)
     assert_equal(requester.attempts.last[:headers]["X-Stainless-Mock-Slept"], 1.3)
+  end
+
+  def test_retry_count_header
+    braintrust = Braintrust::Client.new(base_url: "http://localhost:4010", api_key: "My API Key")
+    requester = MockRequester.new(500, {}, {"x-stainless-mock-sleep" => "true"})
+    braintrust.requester = requester
+
+    assert_raise(Braintrust::HTTP::InternalServerError) do
+      braintrust.projects.create({name: "name"})
+    end
+
+    retry_count_headers = requester.attempts.map { |a| a[:headers]["X-Stainless-Retry-Count"] }
+    assert_equal(%w[0 1 2], retry_count_headers)
+  end
+
+  def test_omit_retry_count_header
+    braintrust = Braintrust::Client.new(base_url: "http://localhost:4010", api_key: "My API Key")
+    requester = MockRequester.new(500, {}, {"x-stainless-mock-sleep" => "true"})
+    braintrust.requester = requester
+
+    assert_raise(Braintrust::HTTP::InternalServerError) do
+      braintrust.projects.create({name: "name"}, extra_headers: {"X-Stainless-Retry-Count" => nil})
+    end
+
+    retry_count_headers = requester.attempts.map { |a| a[:headers]["X-Stainless-Retry-Count"] }
+    assert_equal([nil, nil, nil], retry_count_headers)
+  end
+
+  def test_overwrite_retry_count_header
+    braintrust = Braintrust::Client.new(base_url: "http://localhost:4010", api_key: "My API Key")
+    requester = MockRequester.new(500, {}, {"x-stainless-mock-sleep" => "true"})
+    braintrust.requester = requester
+
+    assert_raise(Braintrust::HTTP::InternalServerError) do
+      braintrust.projects.create({name: "name"}, extra_headers: {"X-Stainless-Retry-Count" => "42"})
+    end
+
+    retry_count_headers = requester.attempts.map { |a| a[:headers]["X-Stainless-Retry-Count"] }
+    assert_equal(%w[42 42 42], retry_count_headers)
   end
 
   def test_client_redirect_307
