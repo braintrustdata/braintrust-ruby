@@ -16,11 +16,11 @@ module Braintrust
       optional :parser, -> { Braintrust::Models::PromptData::Parser }
 
       # @!attribute [rw] prompt
-      #   @return [Braintrust::Models::PromptData::Prompt::UnnamedTypeWithunionParent12|Braintrust::Models::PromptData::Prompt::UnnamedTypeWithunionParent13|Braintrust::Models::PromptData::Prompt::UnnamedTypeWithunionParent14]
+      #   @return [Braintrust::Models::PromptData::Prompt::UnnamedTypeWithunionParent13|Braintrust::Models::PromptData::Prompt::UnnamedTypeWithunionParent14|Braintrust::Models::PromptData::Prompt::UnnamedTypeWithunionParent15]
       optional :prompt, Braintrust::Unknown
 
       # @!attribute [rw] tool_functions
-      #   @return [Array<Braintrust::Models::PromptData::ToolFunction::UnnamedTypeWithunionParent15|Braintrust::Models::PromptData::ToolFunction::UnnamedTypeWithunionParent16>]
+      #   @return [Array<Braintrust::Models::PromptData::ToolFunction::UnnamedTypeWithunionParent16|Braintrust::Models::PromptData::ToolFunction::UnnamedTypeWithunionParent17>]
       optional :tool_functions, Braintrust::ArrayOf.new(Braintrust::Unknown)
 
       class Options < BaseModel
@@ -29,7 +29,7 @@ module Braintrust
         optional :model, String
 
         # @!attribute [rw] params
-        #   @return [Braintrust::Models::PromptData::Options::Params::UnnamedTypeWithunionParent10|Braintrust::Models::PromptData::Options::Params::UnnamedTypeWithunionParent11|Braintrust::Models::PromptData::Options::Params::UnnamedTypeWithunionParent7|Braintrust::Models::PromptData::Options::Params::UnnamedTypeWithunionParent8|Braintrust::Models::PromptData::Options::Params::UnnamedTypeWithunionParent9]
+        #   @return [Braintrust::Models::PromptData::Options::Params::UnnamedTypeWithunionParent10|Braintrust::Models::PromptData::Options::Params::UnnamedTypeWithunionParent11|Braintrust::Models::PromptData::Options::Params::UnnamedTypeWithunionParent12|Braintrust::Models::PromptData::Options::Params::UnnamedTypeWithunionParent8|Braintrust::Models::PromptData::Options::Params::UnnamedTypeWithunionParent9]
         optional :params, Braintrust::Unknown
 
         # @!attribute [rw] position

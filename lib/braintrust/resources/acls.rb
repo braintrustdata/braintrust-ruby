@@ -15,10 +15,11 @@ module Braintrust
       # @option params [Symbol] :object_type The object type that the ACL applies to
       # @option params [String] :group_id Id of the group the ACL applies to. Exactly one of `user_id` and `group_id` will
       #   be provided
-      # @option params [Symbol] :permission Permission the ACL grants. Exactly one of `permission` and `role_id` will be
-      #   provided
-      # @option params [Symbol] :restrict_object_type When setting a permission directly, optionally restricts the permission grant to
-      #   just the specified object type. Cannot be set alongside a `role_id`.
+      # @option params [Symbol] :permission Each permission permits a certain type of operation on an object in the system
+      #
+      #   Permissions can be assigned to to objects on an individual basis, or grouped
+      #   into roles
+      # @option params [Symbol] :restrict_object_type The object type that the ACL applies to
       # @option params [String] :role_id Id of the role the ACL grants. Exactly one of `permission` and `role_id` will be
       #   provided
       # @option params [String] :user_id Id of the user the ACL applies to. Exactly one of `user_id` and `group_id` will
@@ -142,10 +143,11 @@ module Braintrust
       # @option params [Symbol] :object_type The object type that the ACL applies to
       # @option params [String] :group_id Id of the group the ACL applies to. Exactly one of `user_id` and `group_id` will
       #   be provided
-      # @option params [Symbol] :permission Permission the ACL grants. Exactly one of `permission` and `role_id` will be
-      #   provided
-      # @option params [Symbol] :restrict_object_type When setting a permission directly, optionally restricts the permission grant to
-      #   just the specified object type. Cannot be set alongside a `role_id`.
+      # @option params [Symbol] :permission Each permission permits a certain type of operation on an object in the system
+      #
+      #   Permissions can be assigned to to objects on an individual basis, or grouped
+      #   into roles
+      # @option params [Symbol] :restrict_object_type The object type that the ACL applies to
       # @option params [String] :role_id Id of the role the ACL grants. Exactly one of `permission` and `role_id` will be
       #   provided
       # @option params [String] :user_id Id of the user the ACL applies to. Exactly one of `user_id` and `group_id` will
