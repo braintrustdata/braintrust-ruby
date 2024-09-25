@@ -10,9 +10,9 @@ module Braintrust
       # Create a new function. If there is an existing function in the project with the
       #   same slug as the one specified in the request, will return the existing function
       #   unmodified
-      # 
+      #
       # @param params [Hash] Attributes to send in this request.
-      # @option params [FunctionData::UnnamedTypeWithunionParent19|FunctionData::UnnamedTypeWithunionParent20|FunctionData::UnnamedTypeWithunionParent21] :function_data
+      # @option params [Braintrust::Models::Code|FunctionData::UnnamedTypeWithunionParent20|FunctionData::UnnamedTypeWithunionParent21] :function_data
       # @option params [String] :name Name of the prompt
       # @option params [String] :project_id Unique identifier for the project that the prompt belongs under
       # @option params [String] :slug Unique identifier for the prompt
@@ -22,9 +22,9 @@ module Braintrust
       # @option params [Origin] :origin
       # @option params [Braintrust::Models::PromptData] :prompt_data The prompt, model, and its parameters
       # @option params [Array<String>] :tags A list of tags for the prompt
-      # 
+      #
       # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
-      # 
+      #
       # @return [Braintrust::Models::Function]
       def create(params = {}, opts = {})
         req = {}
@@ -36,10 +36,10 @@ module Braintrust
       end
 
       # Get a function object by its id
-      # 
+      #
       # @param function_id [String] Function id
       # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
-      # 
+      #
       # @return [Braintrust::Models::Function]
       def retrieve(function_id, opts = {})
         req = {}
@@ -52,18 +52,18 @@ module Braintrust
       # Partially update a function object. Specify the fields to update in the payload.
       #   Any object-type fields will be deep-merged with existing content. Currently we
       #   do not support removing fields or setting them to null.
-      # 
+      #
       # @param function_id [String] Function id
-      # 
+      #
       # @param params [Hash] Attributes to send in this request.
       # @option params [String] :description Textual description of the prompt
-      # @option params [FunctionData::UnnamedTypeWithunionParent22|FunctionData::UnnamedTypeWithunionParent23|FunctionData::UnnamedTypeWithunionParent24|FunctionData::UnnamedTypeWithunionParent25] :function_data
+      # @option params [Braintrust::Models::Code|FunctionData::UnnamedTypeWithunionParent22|FunctionData::UnnamedTypeWithunionParent23|FunctionData::UnnamedTypeWithunionParent24] :function_data
       # @option params [String] :name Name of the prompt
       # @option params [Braintrust::Models::PromptData] :prompt_data The prompt, model, and its parameters
       # @option params [Array<String>] :tags A list of tags for the prompt
-      # 
+      #
       # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
-      # 
+      #
       # @return [Braintrust::Models::Function]
       def update(function_id, params = {}, opts = {})
         req = {}
@@ -76,10 +76,10 @@ module Braintrust
 
       # List out all functions. The functions are sorted by creation date, with the most
       #   recently-created functions coming first
-      # 
+      #
       # @param params [Hash] Attributes to send in this request.
       # @option params [String] :ending_before Pagination cursor id.
-      # 
+      #
       #   For example, if the initial item in the last page you fetched had an id of
       #   `foo`, pass `ending_before=foo` to fetch the previous page. Note: you may only
       #   pass one of `starting_after` and `ending_before`
@@ -92,17 +92,17 @@ module Braintrust
       # @option params [String] :project_name Name of the project to search for
       # @option params [String] :slug Retrieve prompt with a specific slug
       # @option params [String] :starting_after Pagination cursor id.
-      # 
+      #
       #   For example, if the final item in the last page you fetched had an id of `foo`,
       #   pass `starting_after=foo` to fetch the next page. Note: you may only pass one of
       #   `starting_after` and `ending_before`
       # @option params [String] :version Retrieve prompt at a specific version.
-      # 
+      #
       #   The version id can either be a transaction id (e.g. '1000192656880881099') or a
       #   version identifier (e.g. '81cd05ee665fdfb3').
-      # 
+      #
       # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
-      # 
+      #
       # @return [Braintrust::ListObjects<Braintrust::Models::Function>]
       def list(params = {}, opts = {})
         req = {}
@@ -115,10 +115,10 @@ module Braintrust
       end
 
       # Delete a function object by its id
-      # 
+      #
       # @param function_id [String] Function id
       # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
-      # 
+      #
       # @return [Braintrust::Models::Function]
       def delete(function_id, opts = {})
         req = {}
@@ -129,20 +129,20 @@ module Braintrust
       end
 
       # Invoke a function.
-      # 
+      #
       # @param function_id [String] Function id
-      # 
+      #
       # @param params [Hash] Attributes to send in this request.
       # @option params [Object] :input Argument to the function, which can be any JSON serializable value
-      # @option params [Array<Message::UnnamedTypeWithunionParent26|Message::UnnamedTypeWithunionParent27|Message::UnnamedTypeWithunionParent28|Message::UnnamedTypeWithunionParent29|Message::UnnamedTypeWithunionParent30|Message::UnnamedTypeWithunionParent31>] :messages If the function is an LLM, additional messages to pass along to it
+      # @option params [Array<Braintrust::Models::Messages::UnnamedTypeWithunionParent25|Braintrust::Models::Messages::UnnamedTypeWithunionParent26|Braintrust::Models::Messages::UnnamedTypeWithunionParent27|Braintrust::Models::Messages::UnnamedTypeWithunionParent28|Braintrust::Models::Messages::UnnamedTypeWithunionParent29|Braintrust::Models::Messages::UnnamedTypeWithunionParent30>] :messages If the function is an LLM, additional messages to pass along to it
       # @option params [Symbol] :mode The mode format of the returned value (defaults to 'auto')
-      # @option params [Parent::UnnamedTypeWithunionParent32|String] :parent Options for tracing the function call
+      # @option params [Parent::UnnamedTypeWithunionParent31|String] :parent Options for tracing the function call
       # @option params [Boolean] :stream Whether to stream the response. If true, results will be returned in the
       #   Braintrust SSE format.
       # @option params [String] :version The version of the function
-      # 
+      #
       # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
-      # 
+      #
       # @return [Object]
       def invoke(function_id, params = {}, opts = {})
         req = {}
@@ -156,9 +156,9 @@ module Braintrust
       # Create or replace function. If there is an existing function in the project with
       #   the same slug as the one specified in the request, will replace the existing
       #   function with the provided fields
-      # 
+      #
       # @param params [Hash] Attributes to send in this request.
-      # @option params [FunctionData::UnnamedTypeWithunionParent33|FunctionData::UnnamedTypeWithunionParent34|FunctionData::UnnamedTypeWithunionParent35] :function_data
+      # @option params [Braintrust::Models::Code|FunctionData::UnnamedTypeWithunionParent32|FunctionData::UnnamedTypeWithunionParent33] :function_data
       # @option params [String] :name Name of the prompt
       # @option params [String] :project_id Unique identifier for the project that the prompt belongs under
       # @option params [String] :slug Unique identifier for the prompt
@@ -168,9 +168,9 @@ module Braintrust
       # @option params [Origin] :origin
       # @option params [Braintrust::Models::PromptData] :prompt_data The prompt, model, and its parameters
       # @option params [Array<String>] :tags A list of tags for the prompt
-      # 
+      #
       # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
-      # 
+      #
       # @return [Braintrust::Models::Function]
       def replace(params = {}, opts = {})
         req = {}

@@ -115,7 +115,7 @@ module Braintrust
         field_type = type_fn.call
         Converter.convert(field_type, @data[name_sym])
       rescue StandardError
-        name = self.class.name.split('::').last
+        name = self.class.name.split("::").last
         raise ConversionError,
               "Failed to parse #{name}.#{name_sym} as #{field_type.inspect}. To get the unparsed API response, use #{name}[:#{name_sym}]."
       end

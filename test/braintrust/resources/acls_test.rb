@@ -8,7 +8,12 @@ class Braintrust::Test::Resources::ACLsTest < Test::Unit::TestCase
   end
 
   def test_create_required_params
-    response = @braintrust.acls.create({object_id: "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e", object_type: "organization"})
+    response = @braintrust.acls.create(
+      {
+        object_id: "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+        object_type: "organization"
+      }
+    )
     assert_kind_of(Braintrust::Models::ACL, response)
   end
 
@@ -18,7 +23,12 @@ class Braintrust::Test::Resources::ACLsTest < Test::Unit::TestCase
   end
 
   def test_list_required_params
-    response = @braintrust.acls.list({object_id: "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e", object_type: "organization"})
+    response = @braintrust.acls.list(
+      {
+        object_id: "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+        object_type: "organization"
+      }
+    )
     assert_kind_of(Braintrust::ListObjects, response)
   end
 
@@ -28,7 +38,7 @@ class Braintrust::Test::Resources::ACLsTest < Test::Unit::TestCase
   end
 
   def test_batch_update
-    response = @braintrust.acls.batch_update 
+    response = @braintrust.acls.batch_update
     assert_kind_of(Braintrust::Models::ACLBatchUpdateResponse, response)
   end
 
