@@ -18,7 +18,7 @@ class Braintrust::Test::Resources::APIKeysTest < Test::Unit::TestCase
   end
 
   def test_list
-    response = @braintrust.api_keys.list 
+    response = @braintrust.api_keys.list
     assert_kind_of(Braintrust::ListObjects, response)
   end
 

@@ -1,3 +1,9 @@
+PATH
+  remote: .
+  specs:
+    braintrust (0.1.0.pre.alpha.4)
+      connection_pool
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -37,11 +43,12 @@ PLATFORMS
   x86_64-linux
 
 DEPENDENCIES
-  connection_pool
+  braintrust!
   rake
   rubocop
-  syntax_tree
   test-unit
+  webrick
+  yard
 
 BUNDLED WITH
    2.4.10

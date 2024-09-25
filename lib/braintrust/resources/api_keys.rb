@@ -9,15 +9,15 @@ module Braintrust
 
       # Create a new api_key. It is possible to have multiple API keys with the same
       #   name. There is no de-duplication
-      # 
+      #
       # @param params [Hash] Attributes to send in this request.
       # @option params [String] :name Name of the api key. Does not have to be unique
       # @option params [String] :org_name For nearly all users, this parameter should be unnecessary. But in the rare case
       #   that your API key belongs to multiple organizations, you may specify the name of
       #   the organization the API key belongs in.
-      # 
+      #
       # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
-      # 
+      #
       # @return [Braintrust::Models::CreateAPIKeyOutput]
       def create(params = {}, opts = {})
         req = {}
@@ -29,10 +29,10 @@ module Braintrust
       end
 
       # Get an api_key object by its id
-      # 
+      #
       # @param api_key_id [String] ApiKey id
       # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
-      # 
+      #
       # @return [Braintrust::Models::APIKey]
       def retrieve(api_key_id, opts = {})
         req = {}
@@ -44,11 +44,11 @@ module Braintrust
 
       # List out all api_keys. The api_keys are sorted by creation date, with the most
       #   recently-created api_keys coming first
-      # 
+      #
       # @param params [Hash] Attributes to send in this request.
       # @option params [String] :api_key_name Name of the api_key to search for
       # @option params [String] :ending_before Pagination cursor id.
-      # 
+      #
       #   For example, if the initial item in the last page you fetched had an id of
       #   `foo`, pass `ending_before=foo` to fetch the previous page. Note: you may only
       #   pass one of `starting_after` and `ending_before`
@@ -57,13 +57,13 @@ module Braintrust
       # @option params [Integer] :limit Limit the number of objects to return
       # @option params [String] :org_name Filter search results to within a particular organization
       # @option params [String] :starting_after Pagination cursor id.
-      # 
+      #
       #   For example, if the final item in the last page you fetched had an id of `foo`,
       #   pass `starting_after=foo` to fetch the next page. Note: you may only pass one of
       #   `starting_after` and `ending_before`
-      # 
+      #
       # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
-      # 
+      #
       # @return [Braintrust::ListObjects<Braintrust::Models::APIKey>]
       def list(params = {}, opts = {})
         req = {}
@@ -76,10 +76,10 @@ module Braintrust
       end
 
       # Delete an api_key object by its id
-      # 
+      #
       # @param api_key_id [String] ApiKey id
       # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
-      # 
+      #
       # @return [Braintrust::Models::APIKey]
       def delete(api_key_id, opts = {})
         req = {}

@@ -2,6 +2,5 @@
 
 module Braintrust
   module Models
-
   end
 end
