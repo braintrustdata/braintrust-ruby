@@ -9,6 +9,6 @@ class Braintrust::Test::Resources::MembersTest < Test::Unit::TestCase
 
   def test_update
     response = @braintrust.organizations.members.update
-    assert_kind_of(Braintrust::Models::MemberUpdateResponse, response)
+    assert_kind_of(Braintrust::Models::PatchOrganizationMembersOutput, response)
   end
 end
