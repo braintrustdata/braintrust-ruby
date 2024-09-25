@@ -102,7 +102,10 @@ module Braintrust
       if @idempotency_header && !headers[@idempotency_header] && ![:get, :head, :options].include?(method)
         headers[@idempotency_header] = options[:idempotency_key] || generate_idempotency_key
       end
-      headers.filter! { |_k, v| !v.nil? }
+      if !headers.key?("X-Stainless-Retry-Count")
+        headers["X-Stainless-Retry-Count"] = "0"
+      end
+      headers.reject! { |_k, v| v.nil? }
       headers.transform_values!(&:to_s)
 
       body =
@@ -196,9 +199,15 @@ module Braintrust
     def send_request(request, max_retries:, redirect_count:)
       delay = 0.5
       max_delay = 8.0
+      # Don't send the current retry count in the headers if the caller modified the header defaults.
+      should_send_retry_count = request[:headers]["X-Stainless-Retry-Count"] == "0"
       retries = 0
       request_max_retries = max_retries || @max_retries
       loop do # rubocop:disable Metrics/BlockLength
+        if should_send_retry_count
+          request[:headers]["X-Stainless-Retry-Count"] = retries.to_s
+        end
+
         begin
           response = @requester.execute(request)
           status = response.code.to_i
