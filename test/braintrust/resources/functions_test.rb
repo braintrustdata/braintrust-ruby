@@ -9,7 +9,12 @@ class Braintrust::Test::Resources::FunctionsTest < Test::Unit::TestCase
 
   def test_create_required_params
     response = @braintrust.functions.create(
-      {function_data: {"type" => "prompt"}, name: "name", project_id: "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e", slug: "slug"}
+      {
+        function_data: {"type" => "prompt"},
+        name: "name",
+        project_id: "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+        slug: "slug"
+      }
     )
     assert_kind_of(Braintrust::Models::Function, response)
   end
@@ -25,7 +30,7 @@ class Braintrust::Test::Resources::FunctionsTest < Test::Unit::TestCase
   end
 
   def test_list
-    response = @braintrust.functions.list 
+    response = @braintrust.functions.list
     assert_kind_of(Braintrust::ListObjects, response)
   end
 
@@ -41,7 +46,12 @@ class Braintrust::Test::Resources::FunctionsTest < Test::Unit::TestCase
 
   def test_replace_required_params
     response = @braintrust.functions.replace(
-      {function_data: {"type" => "prompt"}, name: "name", project_id: "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e", slug: "slug"}
+      {
+        function_data: {"type" => "prompt"},
+        name: "name",
+        project_id: "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+        slug: "slug"
+      }
     )
     assert_kind_of(Braintrust::Models::Function, response)
   end
