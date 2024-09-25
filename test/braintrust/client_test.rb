@@ -43,7 +43,11 @@ class BraintrustTest < Test::Unit::TestCase
   end
 
   def test_client_given_request_default_retry_attempts
-    braintrust = Braintrust::Client.new(base_url: "http://localhost:4010", api_key: "My API Key", max_retries: 3)
+    braintrust = Braintrust::Client.new(
+      base_url: "http://localhost:4010",
+      api_key: "My API Key",
+      max_retries: 3
+    )
     requester = MockRequester.new(500, {}, {"x-stainless-mock-sleep" => "true"})
     braintrust.requester = requester
     assert_raise(Braintrust::HTTP::InternalServerError) do
@@ -63,7 +67,11 @@ class BraintrustTest < Test::Unit::TestCase
   end
 
   def test_client_given_request_given_retry_attempts
-    braintrust = Braintrust::Client.new(base_url: "http://localhost:4010", api_key: "My API Key", max_retries: 3)
+    braintrust = Braintrust::Client.new(
+      base_url: "http://localhost:4010",
+      api_key: "My API Key",
+      max_retries: 3
+    )
     requester = MockRequester.new(500, {}, {"x-stainless-mock-sleep" => "true"})
     braintrust.requester = requester
     assert_raise(Braintrust::HTTP::InternalServerError) do
@@ -73,7 +81,11 @@ class BraintrustTest < Test::Unit::TestCase
   end
 
   def test_client_retry_after_seconds
-    braintrust = Braintrust::Client.new(base_url: "http://localhost:4010", api_key: "My API Key", max_retries: 1)
+    braintrust = Braintrust::Client.new(
+      base_url: "http://localhost:4010",
+      api_key: "My API Key",
+      max_retries: 1
+    )
     requester = MockRequester.new(500, {}, {"retry-after" => "1.3", "x-stainless-mock-sleep" => "true"})
     braintrust.requester = requester
     assert_raise(Braintrust::HTTP::InternalServerError) do
@@ -84,8 +96,20 @@ class BraintrustTest < Test::Unit::TestCase
   end
 
   def test_client_retry_after_date
-    braintrust = Braintrust::Client.new(base_url: "http://localhost:4010", api_key: "My API Key", max_retries: 1)
-    requester = MockRequester.new(500, {}, {"retry-after" => (Time.now + 2).httpdate, "x-stainless-mock-sleep" => "true", "x-stainless-mock-sleep-base" => (Time.now).httpdate})
+    braintrust = Braintrust::Client.new(
+      base_url: "http://localhost:4010",
+      api_key: "My API Key",
+      max_retries: 1
+    )
+    requester = MockRequester.new(
+      500,
+      {},
+      {
+        "retry-after" => (Time.now + 2).httpdate,
+        "x-stainless-mock-sleep" => "true",
+        "x-stainless-mock-sleep-base" => Time.now.httpdate
+      }
+    )
     braintrust.requester = requester
     assert_raise(Braintrust::HTTP::InternalServerError) do
       braintrust.projects.create({name: "name"})
@@ -95,7 +119,11 @@ class BraintrustTest < Test::Unit::TestCase
   end
 
   def test_client_retry_after_ms
-    braintrust = Braintrust::Client.new(base_url: "http://localhost:4010", api_key: "My API Key", max_retries: 1)
+    braintrust = Braintrust::Client.new(
+      base_url: "http://localhost:4010",
+      api_key: "My API Key",
+      max_retries: 1
+    )
     requester = MockRequester.new(500, {}, {"retry-after-ms" => "1300", "x-stainless-mock-sleep" => "true"})
     braintrust.requester = requester
     assert_raise(Braintrust::HTTP::InternalServerError) do
@@ -115,7 +143,10 @@ class BraintrustTest < Test::Unit::TestCase
     assert_equal(requester.attempts[1][:path], "/redirected")
     assert_equal(requester.attempts[1][:method], requester.attempts[0][:method])
     assert_equal(requester.attempts[1][:body], requester.attempts[0][:body])
-    assert_equal(requester.attempts[1][:headers]["Content-Type"], requester.attempts[0][:headers]["Content-Type"])
+    assert_equal(
+      requester.attempts[1][:headers]["Content-Type"],
+      requester.attempts[0][:headers]["Content-Type"]
+    )
   end
 
   def test_client_redirect_303
@@ -138,7 +169,10 @@ class BraintrustTest < Test::Unit::TestCase
     assert_raise(Braintrust::HTTP::APIConnectionError) do
       braintrust.projects.create({name: "name"}, extra_headers: {"Authorization" => "Bearer xyz"})
     end
-    assert_equal(requester.attempts[1][:headers]["Authorization"], requester.attempts[0][:headers]["Authorization"])
+    assert_equal(
+      requester.attempts[1][:headers]["Authorization"],
+      requester.attempts[0][:headers]["Authorization"]
+    )
   end
 
   def test_client_redirect_auth_strip_cross_origin

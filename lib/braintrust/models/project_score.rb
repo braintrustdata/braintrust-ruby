@@ -30,7 +30,7 @@ module Braintrust
 
       # @!attribute [rw] categories
       #   For categorical-type project scores, the list of all categories
-      #   @return [Array<Braintrust::Models::ProjectScoreCategory>|Array<String>|Braintrust::Models::ProjectScore::Categories::UnnamedTypeWithunionParent5|Hash]
+      #   @return [Array<Braintrust::Models::ProjectScoreCategory>|Array<String>|Braintrust::Models::ProjectScore::Categories::UnnamedTypeWithunionParent6|Hash]
       optional :categories, Braintrust::Unknown
 
       # @!attribute [rw] config
@@ -87,7 +87,7 @@ module Braintrust
 
           # @!attribute [rw] scorers
           #   The list of scorers to use for online scoring
-          #   @return [Array<Braintrust::Models::ProjectScore::Config::Online::Scorer::UnnamedTypeWithunionParent3|Braintrust::Models::ProjectScore::Config::Online::Scorer::UnnamedTypeWithunionParent4>]
+          #   @return [Array<Braintrust::Models::ProjectScore::Config::Online::Scorer::UnnamedTypeWithunionParent4|Braintrust::Models::ProjectScore::Config::Online::Scorer::UnnamedTypeWithunionParent5>]
           required :scorers, Braintrust::ArrayOf.new(Braintrust::Unknown)
 
           # @!attribute [rw] apply_to_root_span

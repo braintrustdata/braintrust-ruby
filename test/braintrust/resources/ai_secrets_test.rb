@@ -23,7 +23,7 @@ class Braintrust::Test::Resources::AISecretsTest < Test::Unit::TestCase
   end
 
   def test_list
-    response = @braintrust.ai_secrets.list 
+    response = @braintrust.ai_secrets.list
     assert_kind_of(Braintrust::ListObjects, response)
   end
 
