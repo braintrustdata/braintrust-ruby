@@ -34,8 +34,8 @@ module Braintrust
       optional :categories, Braintrust::Unknown
 
       # @!attribute [rw] config
-      #   @return [Braintrust::Models::ProjectScore::Config]
-      optional :config, -> { Braintrust::Models::ProjectScore::Config }
+      #   @return [Braintrust::Models::ProjectScoreConfig]
+      optional :config, -> { Braintrust::Models::ProjectScoreConfig }
 
       # @!attribute [rw] created
       #   Date of project score creation
@@ -59,25 +59,6 @@ module Braintrust
         WEIGHTED = :weighted
         MINIMUM = :minimum
         ONLINE = :online
-      end
-
-      class Config < BaseModel
-        # @!attribute [rw] destination
-        #   One of the constants defined in {Braintrust::Models::ProjectScore::Config::Destination}
-        #   @return [Symbol]
-        optional :destination, enum: -> { Braintrust::Models::ProjectScore::Config::Destination }
-
-        # @!attribute [rw] multi_select
-        #   @return [Boolean]
-        optional :multi_select, Braintrust::BooleanModel
-
-        # @!attribute [rw] online
-        #   @return [Braintrust::Models::OnlineScoreConfig]
-        optional :online, -> { Braintrust::Models::OnlineScoreConfig }
-
-        class Destination < Braintrust::Enum
-          EXPECTED = :expected
-        end
       end
     end
   end
