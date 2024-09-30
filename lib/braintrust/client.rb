@@ -56,6 +56,12 @@ module Braintrust
     # @return [Braintrust::Resources::AISecrets]
     attr_reader :ai_secrets
 
+    # @return [Braintrust::Resources::EnvVars]
+    attr_reader :env_vars
+
+    # @return [Braintrust::Resources::Evals]
+    attr_reader :evals
+
     # @!visibility private
     def auth_headers
       {"Authorization" => "Bearer #{@api_key}"}
@@ -87,6 +93,8 @@ module Braintrust
       @organizations = Braintrust::Resources::Organizations.new(client: self)
       @api_keys = Braintrust::Resources::APIKeys.new(client: self)
       @ai_secrets = Braintrust::Resources::AISecrets.new(client: self)
+      @env_vars = Braintrust::Resources::EnvVars.new(client: self)
+      @evals = Braintrust::Resources::Evals.new(client: self)
     end
 
     # @!visibility private
