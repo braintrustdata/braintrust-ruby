@@ -16,6 +16,7 @@ module Braintrust
       # @option params [String] :project_id Unique identifier for the project that the project score belongs under
       # @option params [Symbol] :score_type The type of the configured score
       # @option params [Array<Braintrust::Models::ProjectScoreCategory>|Array<String>|Categories::UnnamedTypeWithunionParent18|Hash] :categories For categorical-type project scores, the list of all categories
+      # @option params [Braintrust::Models::ProjectScoreConfig] :config
       # @option params [String] :description Textual description of the project score
       #
       # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
@@ -52,6 +53,7 @@ module Braintrust
       #
       # @param params [Hash] Attributes to send in this request.
       # @option params [Array<Braintrust::Models::ProjectScoreCategory>|Array<String>|Categories::UnnamedTypeWithunionParent19|Hash] :categories For categorical-type project scores, the list of all categories
+      # @option params [Braintrust::Models::ProjectScoreConfig] :config
       # @option params [String] :description Textual description of the project score
       # @option params [String] :name Name of the project score
       # @option params [Symbol] :score_type The type of the configured score
@@ -127,6 +129,7 @@ module Braintrust
       # @option params [String] :project_id Unique identifier for the project that the project score belongs under
       # @option params [Symbol] :score_type The type of the configured score
       # @option params [Array<Braintrust::Models::ProjectScoreCategory>|Array<String>|Categories::UnnamedTypeWithunionParent20|Hash] :categories For categorical-type project scores, the list of all categories
+      # @option params [Braintrust::Models::ProjectScoreConfig] :config
       # @option params [String] :description Textual description of the project score
       #
       # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.

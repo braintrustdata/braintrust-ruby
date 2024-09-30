@@ -13,6 +13,11 @@ module Braintrust
       #   @return [String]
       required :name_, String
 
+      # @!attribute [rw] project_id
+      #   Unique identifier for the project that the dataset belongs under
+      #   @return [String]
+      required :project_id, String
+
       # @!attribute [rw] created
       #   Date of dataset creation
       #   @return [DateTime]
@@ -32,11 +37,6 @@ module Braintrust
       #   User-controlled metadata about the dataset
       #   @return [Hash]
       optional :metadata, Hash
-
-      # @!attribute [rw] project_id
-      #   Unique identifier for the project that the dataset belongs under
-      #   @return [String]
-      optional :project_id, String
 
       # @!attribute [rw] user_id
       #   Identifies the user who created the dataset
