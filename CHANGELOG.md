@@ -1,5 +1,41 @@
 # Changelog
 
+## 0.1.0-alpha.5 (2024-10-01)
+
+Full Changelog: [v0.1.0-alpha.4...v0.1.0-alpha.5](https://github.com/braintrustdata/braintrust-ruby/compare/v0.1.0-alpha.4...v0.1.0-alpha.5)
+
+### Features
+
+* **api:** deduplication ([#61](https://github.com/braintrustdata/braintrust-ruby/issues/61)) ([0e5e24f](https://github.com/braintrustdata/braintrust-ruby/commit/0e5e24fc91f44b827289e7b3ef4298451376dd03))
+* **api:** manual updates ([#64](https://github.com/braintrustdata/braintrust-ruby/issues/64)) ([dd69e2d](https://github.com/braintrustdata/braintrust-ruby/commit/dd69e2d4ccc13b0b2f718c5928a9cdbcd16c5b2c))
+* **api:** manual updates ([#65](https://github.com/braintrustdata/braintrust-ruby/issues/65)) ([3552e48](https://github.com/braintrustdata/braintrust-ruby/commit/3552e48ce98ebdec82419cf24b3d39ad2efe77cc))
+* **api:** manual updates ([#66](https://github.com/braintrustdata/braintrust-ruby/issues/66)) ([ed594e0](https://github.com/braintrustdata/braintrust-ruby/commit/ed594e011b90587c1460b412f86456e78106b189))
+* **api:** update via SDK Studio ([#47](https://github.com/braintrustdata/braintrust-ruby/issues/47)) ([d6793d1](https://github.com/braintrustdata/braintrust-ruby/commit/d6793d17dd237c2f02ee9f1977f691e14b5f1127))
+* **api:** update via SDK Studio ([#53](https://github.com/braintrustdata/braintrust-ruby/issues/53)) ([5bd6b35](https://github.com/braintrustdata/braintrust-ruby/commit/5bd6b35de52f58f7b678e25540e87ed00a0d7eef))
+* **api:** update via SDK Studio ([#54](https://github.com/braintrustdata/braintrust-ruby/issues/54)) ([c8e6118](https://github.com/braintrustdata/braintrust-ruby/commit/c8e61184ae6ffeb5ee5ab1e0daa8e1a6cfdaab72))
+* **api:** update via SDK Studio ([#55](https://github.com/braintrustdata/braintrust-ruby/issues/55)) ([45bd674](https://github.com/braintrustdata/braintrust-ruby/commit/45bd6741a532ab91cdeaba2a169ad903e958c21a))
+* **api:** update via SDK Studio ([#56](https://github.com/braintrustdata/braintrust-ruby/issues/56)) ([b2619d7](https://github.com/braintrustdata/braintrust-ruby/commit/b2619d7066df63ecf0e3cf4f163b2b4404451578))
+* **api:** update via SDK Studio ([#57](https://github.com/braintrustdata/braintrust-ruby/issues/57)) ([f5a52c9](https://github.com/braintrustdata/braintrust-ruby/commit/f5a52c96b5846c8c3ec1c9e680a672784dbe3436))
+* **api:** update via SDK Studio ([#58](https://github.com/braintrustdata/braintrust-ruby/issues/58)) ([e6fec77](https://github.com/braintrustdata/braintrust-ruby/commit/e6fec7784e6c49385b7d87a3c0d091eacb175a95))
+* **api:** update via SDK Studio ([#59](https://github.com/braintrustdata/braintrust-ruby/issues/59)) ([141b050](https://github.com/braintrustdata/braintrust-ruby/commit/141b0501a2cbcbc55a9dbee247243e12f333f4dc))
+* **client:** generate classes for enums ([#49](https://github.com/braintrustdata/braintrust-ruby/issues/49)) ([d67f7bc](https://github.com/braintrustdata/braintrust-ruby/commit/d67f7bc45866385a50069c82abc313e5cf215ef8))
+* **client:** parse dates in responses ([#52](https://github.com/braintrustdata/braintrust-ruby/issues/52)) ([e5829b7](https://github.com/braintrustdata/braintrust-ruby/commit/e5829b7b1c72123152676fcb53c40fb958a806a5))
+* **client:** support cursor_id pagination ([#50](https://github.com/braintrustdata/braintrust-ruby/issues/50)) ([0092d96](https://github.com/braintrustdata/braintrust-ruby/commit/0092d96eb691b48d38a4cfa99855c6df7f732c2b))
+
+
+### Bug Fixes
+
+* **api:** fix go build ([#60](https://github.com/braintrustdata/braintrust-ruby/issues/60)) ([d9ec853](https://github.com/braintrustdata/braintrust-ruby/commit/d9ec85381a68ad3154b5889f9b16cd7c644d4b62))
+
+
+### Chores
+
+* **internal:** bump webrick dependency ([#62](https://github.com/braintrustdata/braintrust-ruby/issues/62)) ([8da3438](https://github.com/braintrustdata/braintrust-ruby/commit/8da343886da411e92f8474cc42c150b8da1f87e8))
+* **internal:** codegen related update ([#48](https://github.com/braintrustdata/braintrust-ruby/issues/48)) ([ef1bba4](https://github.com/braintrustdata/braintrust-ruby/commit/ef1bba40da14e648aebbaff13777c06482cc01ef))
+* **internal:** codegen related update ([#63](https://github.com/braintrustdata/braintrust-ruby/issues/63)) ([239528a](https://github.com/braintrustdata/braintrust-ruby/commit/239528ae5e959a1a91613e5f801dd3d873f4ddd3))
+* **internal:** make lint rules more strict ([#51](https://github.com/braintrustdata/braintrust-ruby/issues/51)) ([dafeb7b](https://github.com/braintrustdata/braintrust-ruby/commit/dafeb7b9566a3ebe27e75a871a819b4c58a5d41f))
+* **internal:** version bump ([#45](https://github.com/braintrustdata/braintrust-ruby/issues/45)) ([bfc0c6a](https://github.com/braintrustdata/braintrust-ruby/commit/bfc0c6a75d1c26067a42818a03b686924c079af4))
+
 ## 0.1.0-alpha.4 (2024-08-09)
 
 Full Changelog: [v0.1.0-alpha.3...v0.1.0-alpha.4](https://github.com/braintrustdata/braintrust-ruby/compare/v0.1.0-alpha.3...v0.1.0-alpha.4)
