@@ -11,7 +11,7 @@ module Braintrust
       # Create a new view. If there is an existing view with the same name as the one
       #   specified in the request, will return the existing view unmodified
       #
-      # @param params [Hash] Attributes to send in this request.
+      # @param params [Hash{Symbol => Object}] Attributes to send in this request.
       #   @option params [String] :name Name of the view
       #   @option params [String] :object_id The id of the object the view applies to
       #   @option params [Symbol, ObjectType] :object_type The object type that the ACL applies to
@@ -39,7 +39,7 @@ module Braintrust
       #
       # @param view_id [String] View id
       #
-      # @param params [Hash] Attributes to send in this request.
+      # @param params [Hash{Symbol => Object}] Attributes to send in this request.
       #   @option params [String] :object_id The id of the object the ACL applies to
       #   @option params [Symbol, ObjectType] :object_type The object type that the ACL applies to
       #
@@ -62,7 +62,7 @@ module Braintrust
       #
       # @param view_id [String] View id
       #
-      # @param params [Hash] Attributes to send in this request.
+      # @param params [Hash{Symbol => Object}] Attributes to send in this request.
       #   @option params [String] :object_id The id of the object the view applies to
       #   @option params [Symbol, ObjectType] :object_type The object type that the ACL applies to
       #   @option params [String, nil] :name Name of the view
@@ -88,7 +88,7 @@ module Braintrust
       # List out all views. The views are sorted by creation date, with the most
       #   recently-created views coming first
       #
-      # @param params [Hash] Attributes to send in this request.
+      # @param params [Hash{Symbol => Object}] Attributes to send in this request.
       #   @option params [String] :object_id The id of the object the ACL applies to
       #   @option params [Symbol, ObjectType] :object_type The object type that the ACL applies to
       #   @option params [String, nil] :ending_before Pagination cursor id.
@@ -125,7 +125,7 @@ module Braintrust
       #
       # @param view_id [String] View id
       #
-      # @param params [Hash] Attributes to send in this request.
+      # @param params [Hash{Symbol => Object}] Attributes to send in this request.
       #   @option params [String] :object_id The id of the object the view applies to
       #   @option params [Symbol, ObjectType] :object_type The object type that the ACL applies to
       #
@@ -147,7 +147,7 @@ module Braintrust
       #   one specified in the request, will replace the existing view with the provided
       #   fields
       #
-      # @param params [Hash] Attributes to send in this request.
+      # @param params [Hash{Symbol => Object}] Attributes to send in this request.
       #   @option params [String] :name Name of the view
       #   @option params [String] :object_id The id of the object the view applies to
       #   @option params [Symbol, ObjectType] :object_type The object type that the ACL applies to

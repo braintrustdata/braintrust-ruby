@@ -12,7 +12,7 @@ module Braintrust
       #   the same name as the one specified in the request, will return the existing
       #   experiment unmodified
       #
-      # @param params [Hash] Attributes to send in this request.
+      # @param params [Hash{Symbol => Object}] Attributes to send in this request.
       #   @option params [String] :project_id Unique identifier for the project that the experiment belongs under
       #   @option params [String, nil] :base_exp_id Id of default base experiment to compare against when viewing this experiment
       #   @option params [String, nil] :dataset_id Identifier of the linked dataset, or null if the experiment is not linked to a
@@ -65,7 +65,7 @@ module Braintrust
       #
       # @param experiment_id [String] Experiment id
       #
-      # @param params [Hash] Attributes to send in this request.
+      # @param params [Hash{Symbol => Object}] Attributes to send in this request.
       #   @option params [String, nil] :base_exp_id Id of default base experiment to compare against when viewing this experiment
       #   @option params [String, nil] :dataset_id Identifier of the linked dataset, or null if the experiment is not linked to a
       #     dataset
@@ -95,7 +95,7 @@ module Braintrust
       # List out all experiments. The experiments are sorted by creation date, with the
       #   most recently-created experiments coming first
       #
-      # @param params [Hash] Attributes to send in this request.
+      # @param params [Hash{Symbol => Object}] Attributes to send in this request.
       #   @option params [String, nil] :ending_before Pagination cursor id.
       #
       #     For example, if the initial item in the last page you fetched had an id of
@@ -147,7 +147,7 @@ module Braintrust
       #
       # @param experiment_id [String] Experiment id
       #
-      # @param params [Hash] Attributes to send in this request.
+      # @param params [Hash{Symbol => Object}] Attributes to send in this request.
       #   @option params [Array<Braintrust::Models::FeedbackExperimentItem>] :feedback A list of experiment feedback items
       #
       # @param opts [Hash, Braintrust::RequestOptions] Options to specify HTTP behaviour for this request.
@@ -169,7 +169,7 @@ module Braintrust
       #
       # @param experiment_id [String] Experiment id
       #
-      # @param params [Hash] Attributes to send in this request.
+      # @param params [Hash{Symbol => Object}] Attributes to send in this request.
       #   @option params [Integer, nil] :limit limit the number of traces fetched
       #
       #     Fetch queries may be paginated if the total result size is expected to be large
@@ -228,7 +228,7 @@ module Braintrust
       #
       # @param experiment_id [String] Experiment id
       #
-      # @param params [Hash] Attributes to send in this request.
+      # @param params [Hash{Symbol => Object}] Attributes to send in this request.
       #   @option params [String, nil] :cursor An opaque string to be used as a cursor for the next page of results, in order
       #     from latest to earliest.
       #
@@ -298,7 +298,7 @@ module Braintrust
       #
       # @param experiment_id [String] Experiment id
       #
-      # @param params [Hash] Attributes to send in this request.
+      # @param params [Hash{Symbol => Object}] Attributes to send in this request.
       #   @option params [Array<Braintrust::Models::InsertExperimentEventMerge, Braintrust::Models::InsertExperimentEventReplace>] :events A list of experiment events to insert
       #
       # @param opts [Hash, Braintrust::RequestOptions] Options to specify HTTP behaviour for this request.
@@ -319,7 +319,7 @@ module Braintrust
       #
       # @param experiment_id [String] Experiment id
       #
-      # @param params [Hash] Attributes to send in this request.
+      # @param params [Hash{Symbol => Object}] Attributes to send in this request.
       #   @option params [String, nil] :comparison_experiment_id The experiment to compare against, if summarizing scores and metrics. If
       #     omitted, will fall back to the `base_exp_id` stored in the experiment metadata,
       #     and then to the most recent experiment run in the same project. Must pass
