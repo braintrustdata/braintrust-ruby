@@ -11,7 +11,7 @@ module Braintrust
       # Create a new env_var. If there is an existing env_var with the same name as the
       #   one specified in the request, will return the existing env_var unmodified
       #
-      # @param params [Hash] Attributes to send in this request.
+      # @param params [Hash{Symbol => Object}] Attributes to send in this request.
       #   @option params [String] :name The name of the environment variable
       #   @option params [String] :object_id The id of the object the environment variable is scoped for
       #   @option params [Symbol, ObjectType] :object_type The type of the object the environment variable is scoped for
@@ -52,7 +52,7 @@ module Braintrust
       #
       # @param env_var_id [String] EnvVar id
       #
-      # @param params [Hash] Attributes to send in this request.
+      # @param params [Hash{Symbol => Object}] Attributes to send in this request.
       #   @option params [String] :name The name of the environment variable
       #   @option params [String, nil] :value The value of the environment variable. Will be encrypted at rest.
       #
@@ -73,7 +73,7 @@ module Braintrust
       # List out all env_vars. The env_vars are sorted by creation date, with the most
       #   recently-created env_vars coming first
       #
-      # @param params [Hash] Attributes to send in this request.
+      # @param params [Hash{Symbol => Object}] Attributes to send in this request.
       #   @option params [String, nil] :env_var_name Name of the env_var to search for
       #   @option params [Array<String>, String, nil] :ids Filter search results to a particular set of object IDs. To specify a list of
       #     IDs, include the query param multiple times
@@ -113,7 +113,7 @@ module Braintrust
       #   the one specified in the request, will replace the existing env_var with the
       #   provided fields
       #
-      # @param params [Hash] Attributes to send in this request.
+      # @param params [Hash{Symbol => Object}] Attributes to send in this request.
       #   @option params [String] :name The name of the environment variable
       #   @option params [String] :object_id The id of the object the environment variable is scoped for
       #   @option params [Symbol, ObjectType] :object_type The type of the object the environment variable is scoped for

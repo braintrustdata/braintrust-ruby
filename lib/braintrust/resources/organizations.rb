@@ -33,7 +33,7 @@ module Braintrust
       #
       # @param organization_id [String] Organization id
       #
-      # @param params [Hash] Attributes to send in this request.
+      # @param params [Hash{Symbol => Object}] Attributes to send in this request.
       #   @option params [String, nil] :api_url
       #   @option params [Boolean, nil] :is_universal_api
       #   @option params [String, nil] :name Name of the organization
@@ -57,7 +57,7 @@ module Braintrust
       # List out all organizations. The organizations are sorted by creation date, with
       #   the most recently-created organizations coming first
       #
-      # @param params [Hash] Attributes to send in this request.
+      # @param params [Hash{Symbol => Object}] Attributes to send in this request.
       #   @option params [String, nil] :ending_before Pagination cursor id.
       #
       #     For example, if the initial item in the last page you fetched had an id of

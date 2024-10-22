@@ -11,7 +11,7 @@ module Braintrust
       # Create a new acl. If there is an existing acl with the same contents as the one
       #   specified in the request, will return the existing acl unmodified
       #
-      # @param params [Hash] Attributes to send in this request.
+      # @param params [Hash{Symbol => Object}] Attributes to send in this request.
       #   @option params [String] :object_id The id of the object the ACL applies to
       #   @option params [Symbol, ObjectType] :object_type The object type that the ACL applies to
       #   @option params [String, nil] :group_id Id of the group the ACL applies to. Exactly one of `user_id` and `group_id` will
@@ -58,7 +58,7 @@ module Braintrust
       # List out all acls. The acls are sorted by creation date, with the most
       #   recently-created acls coming first
       #
-      # @param params [Hash] Attributes to send in this request.
+      # @param params [Hash{Symbol => Object}] Attributes to send in this request.
       #   @option params [String] :object_id The id of the object the ACL applies to
       #   @option params [Symbol, ObjectType] :object_type The object type that the ACL applies to
       #   @option params [String, nil] :ending_before Pagination cursor id.
@@ -108,7 +108,7 @@ module Braintrust
       #   exist will have no effect, and removing acls which do not exist will have no
       #   effect.
       #
-      # @param params [Hash] Attributes to send in this request.
+      # @param params [Hash{Symbol => Object}] Attributes to send in this request.
       #   @option params [Array<AddACL>, nil] :add_acls An ACL grants a certain permission or role to a certain user or group on an
       #     object.
       #
@@ -146,7 +146,7 @@ module Braintrust
 
       # Delete a single acl
       #
-      # @param params [Hash] Attributes to send in this request.
+      # @param params [Hash{Symbol => Object}] Attributes to send in this request.
       #   @option params [String] :object_id The id of the object the ACL applies to
       #   @option params [Symbol, ObjectType] :object_type The object type that the ACL applies to
       #   @option params [String, nil] :group_id Id of the group the ACL applies to. Exactly one of `user_id` and `group_id` will

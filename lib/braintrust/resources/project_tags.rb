@@ -12,7 +12,7 @@ module Braintrust
       #   with the same name as the one specified in the request, will return the existing
       #   project_tag unmodified
       #
-      # @param params [Hash] Attributes to send in this request.
+      # @param params [Hash{Symbol => Object}] Attributes to send in this request.
       #   @option params [String] :name Name of the project tag
       #   @option params [String] :project_id Unique identifier for the project that the project tag belongs under
       #   @option params [String, nil] :color Color of the tag for the UI
@@ -53,7 +53,7 @@ module Braintrust
       #
       # @param project_tag_id [String] ProjectTag id
       #
-      # @param params [Hash] Attributes to send in this request.
+      # @param params [Hash{Symbol => Object}] Attributes to send in this request.
       #   @option params [String, nil] :color Color of the tag for the UI
       #   @option params [String, nil] :description Textual description of the project tag
       #   @option params [String, nil] :name Name of the project tag
@@ -75,7 +75,7 @@ module Braintrust
       # List out all project_tags. The project_tags are sorted by creation date, with
       #   the most recently-created project_tags coming first
       #
-      # @param params [Hash] Attributes to send in this request.
+      # @param params [Hash{Symbol => Object}] Attributes to send in this request.
       #   @option params [String, nil] :ending_before Pagination cursor id.
       #
       #     For example, if the initial item in the last page you fetched had an id of
@@ -127,7 +127,7 @@ module Braintrust
       #   project with the same name as the one specified in the request, will replace the
       #   existing project_tag with the provided fields
       #
-      # @param params [Hash] Attributes to send in this request.
+      # @param params [Hash{Symbol => Object}] Attributes to send in this request.
       #   @option params [String] :name Name of the project tag
       #   @option params [String] :project_id Unique identifier for the project that the project tag belongs under
       #   @option params [String, nil] :color Color of the tag for the UI

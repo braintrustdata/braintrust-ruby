@@ -11,7 +11,7 @@ module Braintrust
       # Create a new role. If there is an existing role with the same name as the one
       #   specified in the request, will return the existing role unmodified
       #
-      # @param params [Hash] Attributes to send in this request.
+      # @param params [Hash{Symbol => Object}] Attributes to send in this request.
       #   @option params [String] :name Name of the role
       #   @option params [String, nil] :description Textual description of the role
       #   @option params [Array<MemberPermission>, nil] :member_permissions (permission, restrict_object_type) tuples which belong to this role
@@ -58,7 +58,7 @@ module Braintrust
       #
       # @param role_id [String] Role id
       #
-      # @param params [Hash] Attributes to send in this request.
+      # @param params [Hash{Symbol => Object}] Attributes to send in this request.
       #   @option params [Array<AddMemberPermission>, nil] :add_member_permissions A list of permissions to add to the role
       #   @option params [Array<String>, nil] :add_member_roles A list of role IDs to add to the role's inheriting-from set
       #   @option params [String, nil] :description Textual description of the role
@@ -83,7 +83,7 @@ module Braintrust
       # List out all roles. The roles are sorted by creation date, with the most
       #   recently-created roles coming first
       #
-      # @param params [Hash] Attributes to send in this request.
+      # @param params [Hash{Symbol => Object}] Attributes to send in this request.
       #   @option params [String, nil] :ending_before Pagination cursor id.
       #
       #     For example, if the initial item in the last page you fetched had an id of
@@ -133,7 +133,7 @@ module Braintrust
       #   one specified in the request, will replace the existing role with the provided
       #   fields
       #
-      # @param params [Hash] Attributes to send in this request.
+      # @param params [Hash{Symbol => Object}] Attributes to send in this request.
       #   @option params [String] :name Name of the role
       #   @option params [String, nil] :description Textual description of the role
       #   @option params [Array<MemberPermission>, nil] :member_permissions (permission, restrict_object_type) tuples which belong to this role

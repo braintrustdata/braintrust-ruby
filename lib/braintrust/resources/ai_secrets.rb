@@ -11,7 +11,7 @@ module Braintrust
       # Create a new ai_secret. If there is an existing ai_secret with the same name as
       #   the one specified in the request, will return the existing ai_secret unmodified
       #
-      # @param params [Hash] Attributes to send in this request.
+      # @param params [Hash{Symbol => Object}] Attributes to send in this request.
       #   @option params [String] :name Name of the AI secret
       #   @option params [Hash, nil] :metadata
       #   @option params [String, nil] :org_name For nearly all users, this parameter should be unnecessary. But in the rare case
@@ -56,7 +56,7 @@ module Braintrust
       #
       # @param ai_secret_id [String] AiSecret id
       #
-      # @param params [Hash] Attributes to send in this request.
+      # @param params [Hash{Symbol => Object}] Attributes to send in this request.
       #   @option params [Hash, nil] :metadata
       #   @option params [String, nil] :name Name of the AI secret
       #   @option params [String, nil] :secret
@@ -79,7 +79,7 @@ module Braintrust
       # List out all ai_secrets. The ai_secrets are sorted by creation date, with the
       #   most recently-created ai_secrets coming first
       #
-      # @param params [Hash] Attributes to send in this request.
+      # @param params [Hash{Symbol => Object}] Attributes to send in this request.
       #   @option params [String, nil] :ai_secret_name Name of the ai_secret to search for
       #   @option params [Array<String>, String, nil] :ai_secret_type
       #   @option params [String, nil] :ending_before Pagination cursor id.
@@ -128,7 +128,7 @@ module Braintrust
 
       # Delete a single ai_secret
       #
-      # @param params [Hash] Attributes to send in this request.
+      # @param params [Hash{Symbol => Object}] Attributes to send in this request.
       #   @option params [String] :name Name of the AI secret
       #   @option params [String, nil] :org_name For nearly all users, this parameter should be unnecessary. But in the rare case
       #     that your API key belongs to multiple organizations, you may specify the name of
@@ -152,7 +152,7 @@ module Braintrust
       #   name as the one specified in the request, will replace the existing ai_secret
       #   with the provided fields
       #
-      # @param params [Hash] Attributes to send in this request.
+      # @param params [Hash{Symbol => Object}] Attributes to send in this request.
       #   @option params [String] :name Name of the AI secret
       #   @option params [Hash, nil] :metadata
       #   @option params [String, nil] :org_name For nearly all users, this parameter should be unnecessary. But in the rare case

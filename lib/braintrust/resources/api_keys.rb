@@ -11,7 +11,7 @@ module Braintrust
       # Create a new api_key. It is possible to have multiple API keys with the same
       #   name. There is no de-duplication
       #
-      # @param params [Hash] Attributes to send in this request.
+      # @param params [Hash{Symbol => Object}] Attributes to send in this request.
       #   @option params [String] :name Name of the api key. Does not have to be unique
       #   @option params [String, nil] :org_name For nearly all users, this parameter should be unnecessary. But in the rare case
       #     that your API key belongs to multiple organizations, you may specify the name of
@@ -49,7 +49,7 @@ module Braintrust
       # List out all api_keys. The api_keys are sorted by creation date, with the most
       #   recently-created api_keys coming first
       #
-      # @param params [Hash] Attributes to send in this request.
+      # @param params [Hash{Symbol => Object}] Attributes to send in this request.
       #   @option params [String, nil] :api_key_name Name of the api_key to search for
       #   @option params [String, nil] :ending_before Pagination cursor id.
       #
