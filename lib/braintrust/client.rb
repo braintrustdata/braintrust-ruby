@@ -5,7 +5,8 @@ module Braintrust
     # Default max number of retries to attempt after a failed retryable request.
     DEFAULT_MAX_RETRIES = 2
 
-    # Client options.
+    # Client option
+    # @return [String]
     attr_reader :api_key
 
     # @return [Braintrust::Resources::TopLevel]
@@ -68,14 +69,18 @@ module Braintrust
     end
 
     # Creates and returns a new client for interacting with the API.
-    def initialize(base_url: nil, api_key: nil, max_retries: nil)
+    #
+    # @param base_url [String, nil] Override the default base URL for the API, e.g., `"https://api.example.com/v2/"`
+    # @param api_key [String, nil] Defaults to `ENV["BRAINTRUST_API_KEY"]`
+    # @param max_retries [Integer] Max number of retries to attempt after a failed retryable request.
+    #
+    # @return [Braintrust::Client]
+    def initialize(base_url: nil, api_key: nil, max_retries: DEFAULT_MAX_RETRIES, timeout: 60)
       base_url ||= "https://api.braintrust.dev"
-
-      max_retries ||= DEFAULT_MAX_RETRIES
 
       @api_key = [api_key, ENV["BRAINTRUST_API_KEY"]].find { |v| !v.nil? }
 
-      super(base_url: base_url, max_retries: max_retries)
+      super(base_url: base_url, max_retries: max_retries, timeout: timeout)
 
       @top_level = Braintrust::Resources::TopLevel.new(client: self)
       @projects = Braintrust::Resources::Projects.new(client: self)

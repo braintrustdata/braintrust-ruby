@@ -8,7 +8,7 @@ module Braintrust
       @pools = {}
     end
 
-    def get_pool(req)
+    def get_pool(req, timeout:)
       hostname = req[:host]
       scheme = req[:scheme]
       port =
@@ -23,6 +23,8 @@ module Braintrust
         @pools[hostname] ||= ConnectionPool.new do
           conn = Net::HTTP.new(hostname, port)
           conn.use_ssl = scheme.to_sym == :https
+          conn.max_retries = 0
+          conn.open_timeout = timeout
           conn.start
           conn
         end
@@ -30,33 +32,40 @@ module Braintrust
       end
     end
 
-    def execute(req)
-      get_pool(req).with do |conn|
+    def execute(req, timeout:)
+      method, headers, body = req.values_at(:method, :headers, :body)
+      get_pool(req, timeout: timeout).with do |conn|
         # Net can't understand posting to a URI representing only path + query,
         # so we concatenate
         uri_string = Braintrust::Util.uri_from_req(req, absolute: false)
-        case req[:method]
-        when :get
-          conn.get(uri_string, req[:headers])
-        when :patch
-          conn.patch(uri_string, req[:body], req[:headers])
-        when :put
-          conn.put(uri_string, req[:body], req[:headers])
-        when :post
-          conn.post(uri_string, req[:body], req[:headers])
-          # TODO: more verbs
-        when :delete
-          # `Net::HTTP`'s "convenience method" for delete doesn't accept a body
-          request = Net::HTTP::Delete.new(uri_string)
-          request.body = req[:body] if req[:body]
-          if req[:headers]
-            req[:headers].each { |k, v| request[k] = v }
-          end
 
-          conn.request(request)
+        request = Net::HTTPGenericRequest.new(
+          method.to_s.upcase,
+          !body.nil?,
+          method != :head,
+          uri_string
+        )
+
+        content_type = headers["content-type"]
+        if content_type == "multipart/form-data" && body
+          form_data =
+            body.filter_map do |k, v|
+              next if v.nil?
+              [k.to_s, v].flatten
+            end
+          request.set_form(form_data, content_type)
+          headers = headers.merge("content-type" => nil)
         else
-          raise NotImplementedError.new, req[:method]
+          request.body = body
         end
+
+        headers.each do |k, v|
+          request[k] = v
+        end
+
+        conn.read_timeout = timeout
+        conn.write_timeout = timeout
+        conn.request(request)
       end
     end
   end

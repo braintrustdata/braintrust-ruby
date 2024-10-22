@@ -8,8 +8,7 @@ module Braintrust
       required :image_url, -> { Braintrust::Models::ChatCompletionContentPartImage::ImageURL }
 
       # @!attribute [rw] type
-      #   One of the constants defined in {Braintrust::Models::ChatCompletionContentPartImage::Type}
-      #   @return [Symbol]
+      #   @return [Symbol, Braintrust::Models::ChatCompletionContentPartImage::Type]
       required :type, enum: -> { Braintrust::Models::ChatCompletionContentPartImage::Type }
 
       class ImageURL < BaseModel
@@ -18,8 +17,7 @@ module Braintrust
         required :url, String
 
         # @!attribute [rw] detail
-        #   One of the constants defined in {Braintrust::Models::ChatCompletionContentPartImage::ImageURL::Detail}
-        #   @return [Symbol]
+        #   @return [Symbol, Braintrust::Models::ChatCompletionContentPartImage::ImageURL::Detail]
         optional :detail, enum: -> { Braintrust::Models::ChatCompletionContentPartImage::ImageURL::Detail }
 
         class Detail < Braintrust::Enum
@@ -27,11 +25,27 @@ module Braintrust
           LOW = :low
           HIGH = :high
         end
+
+        # @!parse
+        #   # Create a new instance of ImageURL from a Hash of raw data.
+        #   #
+        #   # @param data [Hash{Symbol => Object}] .
+        #   #   @option data [String] :url
+        #   #   @option data [String, nil] :detail
+        #   def initialize(data = {}) = super
       end
 
       class Type < Braintrust::Enum
         IMAGE_URL = :image_url
       end
+
+      # @!parse
+      #   # Create a new instance of ChatCompletionContentPartImage from a Hash of raw data.
+      #   #
+      #   # @param data [Hash{Symbol => Object}] .
+      #   #   @option data [Object] :image_url
+      #   #   @option data [String] :type
+      #   def initialize(data = {}) = super
     end
   end
 end

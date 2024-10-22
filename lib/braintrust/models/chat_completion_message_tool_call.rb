@@ -12,8 +12,7 @@ module Braintrust
       required :function, -> { Braintrust::Models::ChatCompletionMessageToolCall::Function }
 
       # @!attribute [rw] type
-      #   One of the constants defined in {Braintrust::Models::ChatCompletionMessageToolCall::Type}
-      #   @return [Symbol]
+      #   @return [Symbol, Braintrust::Models::ChatCompletionMessageToolCall::Type]
       required :type, enum: -> { Braintrust::Models::ChatCompletionMessageToolCall::Type }
 
       class Function < BaseModel
@@ -23,12 +22,29 @@ module Braintrust
 
         # @!attribute [rw] name_
         #   @return [String]
-        required :name_, String
+        required :name_, String, api_name: :name
+
+        # @!parse
+        #   # Create a new instance of Function from a Hash of raw data.
+        #   #
+        #   # @param data [Hash{Symbol => Object}] .
+        #   #   @option data [String] :arguments
+        #   #   @option data [String] :name
+        #   def initialize(data = {}) = super
       end
 
       class Type < Braintrust::Enum
         FUNCTION = :function
       end
+
+      # @!parse
+      #   # Create a new instance of ChatCompletionMessageToolCall from a Hash of raw data.
+      #   #
+      #   # @param data [Hash{Symbol => Object}] .
+      #   #   @option data [String] :id
+      #   #   @option data [Object] :function
+      #   #   @option data [String] :type
+      #   def initialize(data = {}) = super
     end
   end
 end

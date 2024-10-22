@@ -3,6 +3,7 @@
 module Braintrust
   module Resources
     class Roles
+      # @param client [Braintrust::Client]
       def initialize(client:)
         @client = client
       end
@@ -11,40 +12,43 @@ module Braintrust
       #   specified in the request, will return the existing role unmodified
       #
       # @param params [Hash] Attributes to send in this request.
-      # @option params [String] :name Name of the role
-      # @option params [String] :description Textual description of the role
-      # @option params [Array<MemberPermission>] :member_permissions (permission, restrict_object_type) tuples which belong to this role
-      # @option params [Array<String>] :member_roles Ids of the roles this role inherits from
+      #   @option params [String] :name Name of the role
+      #   @option params [String, nil] :description Textual description of the role
+      #   @option params [Array<MemberPermission>, nil] :member_permissions (permission, restrict_object_type) tuples which belong to this role
+      #   @option params [Array<String>, nil] :member_roles Ids of the roles this role inherits from
       #
-      #   An inheriting role has all the permissions contained in its member roles, as
-      #   well as all of their inherited permissions
-      # @option params [String] :org_name For nearly all users, this parameter should be unnecessary. But in the rare case
-      #   that your API key belongs to multiple organizations, you may specify the name of
-      #   the organization the role belongs in.
+      #     An inheriting role has all the permissions contained in its member roles, as
+      #     well as all of their inherited permissions
+      #   @option params [String, nil] :org_name For nearly all users, this parameter should be unnecessary. But in the rare case
+      #     that your API key belongs to multiple organizations, you may specify the name of
+      #     the organization the role belongs in.
       #
-      # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash, Braintrust::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Braintrust::Models::Role]
       def create(params = {}, opts = {})
-        req = {}
-        req[:method] = :post
-        req[:path] = "/v1/role"
-        req[:body] = params
-        req[:model] = Braintrust::Models::Role
+        req = {
+          method: :post,
+          path: "/v1/role",
+          body: params,
+          headers: {"Content-Type" => "application/json"},
+          model: Braintrust::Models::Role
+        }
         @client.request(req, opts)
       end
 
       # Get a role object by its id
       #
       # @param role_id [String] Role id
-      # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash, Braintrust::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Braintrust::Models::Role]
       def retrieve(role_id, opts = {})
-        req = {}
-        req[:method] = :get
-        req[:path] = "/v1/role/#{role_id}"
-        req[:model] = Braintrust::Models::Role
+        req = {
+          method: :get,
+          path: "/v1/role/#{role_id}",
+          model: Braintrust::Models::Role
+        }
         @client.request(req, opts)
       end
 
@@ -55,22 +59,24 @@ module Braintrust
       # @param role_id [String] Role id
       #
       # @param params [Hash] Attributes to send in this request.
-      # @option params [Array<AddMemberPermission>] :add_member_permissions A list of permissions to add to the role
-      # @option params [Array<String>] :add_member_roles A list of role IDs to add to the role's inheriting-from set
-      # @option params [String] :description Textual description of the role
-      # @option params [String] :name Name of the role
-      # @option params [Array<RemoveMemberPermission>] :remove_member_permissions A list of permissions to remove from the role
-      # @option params [Array<String>] :remove_member_roles A list of role IDs to remove from the role's inheriting-from set
+      #   @option params [Array<AddMemberPermission>, nil] :add_member_permissions A list of permissions to add to the role
+      #   @option params [Array<String>, nil] :add_member_roles A list of role IDs to add to the role's inheriting-from set
+      #   @option params [String, nil] :description Textual description of the role
+      #   @option params [String, nil] :name Name of the role
+      #   @option params [Array<RemoveMemberPermission>, nil] :remove_member_permissions A list of permissions to remove from the role
+      #   @option params [Array<String>, nil] :remove_member_roles A list of role IDs to remove from the role's inheriting-from set
       #
-      # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash, Braintrust::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Braintrust::Models::Role]
       def update(role_id, params = {}, opts = {})
-        req = {}
-        req[:method] = :patch
-        req[:path] = "/v1/role/#{role_id}"
-        req[:body] = params
-        req[:model] = Braintrust::Models::Role
+        req = {
+          method: :patch,
+          path: "/v1/role/#{role_id}",
+          body: params,
+          headers: {"Content-Type" => "application/json"},
+          model: Braintrust::Models::Role
+        }
         @client.request(req, opts)
       end
 
@@ -78,46 +84,48 @@ module Braintrust
       #   recently-created roles coming first
       #
       # @param params [Hash] Attributes to send in this request.
-      # @option params [String] :ending_before Pagination cursor id.
+      #   @option params [String, nil] :ending_before Pagination cursor id.
       #
-      #   For example, if the initial item in the last page you fetched had an id of
-      #   `foo`, pass `ending_before=foo` to fetch the previous page. Note: you may only
-      #   pass one of `starting_after` and `ending_before`
-      # @option params [Array<String>|String] :ids Filter search results to a particular set of object IDs. To specify a list of
-      #   IDs, include the query param multiple times
-      # @option params [Integer] :limit Limit the number of objects to return
-      # @option params [String] :org_name Filter search results to within a particular organization
-      # @option params [String] :role_name Name of the role to search for
-      # @option params [String] :starting_after Pagination cursor id.
+      #     For example, if the initial item in the last page you fetched had an id of
+      #     `foo`, pass `ending_before=foo` to fetch the previous page. Note: you may only
+      #     pass one of `starting_after` and `ending_before`
+      #   @option params [Array<String>, String, nil] :ids Filter search results to a particular set of object IDs. To specify a list of
+      #     IDs, include the query param multiple times
+      #   @option params [Integer, nil] :limit Limit the number of objects to return
+      #   @option params [String, nil] :org_name Filter search results to within a particular organization
+      #   @option params [String, nil] :role_name Name of the role to search for
+      #   @option params [String, nil] :starting_after Pagination cursor id.
       #
-      #   For example, if the final item in the last page you fetched had an id of `foo`,
-      #   pass `starting_after=foo` to fetch the next page. Note: you may only pass one of
-      #   `starting_after` and `ending_before`
+      #     For example, if the final item in the last page you fetched had an id of `foo`,
+      #     pass `starting_after=foo` to fetch the next page. Note: you may only pass one of
+      #     `starting_after` and `ending_before`
       #
-      # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash, Braintrust::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Braintrust::ListObjects<Braintrust::Models::Role>]
       def list(params = {}, opts = {})
-        req = {}
-        req[:method] = :get
-        req[:path] = "/v1/role"
-        req[:query] = params
-        req[:page] = Braintrust::ListObjects
-        req[:model] = Braintrust::Models::Role
+        req = {
+          method: :get,
+          path: "/v1/role",
+          query: params,
+          page: Braintrust::ListObjects,
+          model: Braintrust::Models::Role
+        }
         @client.request(req, opts)
       end
 
       # Delete a role object by its id
       #
       # @param role_id [String] Role id
-      # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash, Braintrust::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Braintrust::Models::Role]
       def delete(role_id, opts = {})
-        req = {}
-        req[:method] = :delete
-        req[:path] = "/v1/role/#{role_id}"
-        req[:model] = Braintrust::Models::Role
+        req = {
+          method: :delete,
+          path: "/v1/role/#{role_id}",
+          model: Braintrust::Models::Role
+        }
         @client.request(req, opts)
       end
 
@@ -126,26 +134,28 @@ module Braintrust
       #   fields
       #
       # @param params [Hash] Attributes to send in this request.
-      # @option params [String] :name Name of the role
-      # @option params [String] :description Textual description of the role
-      # @option params [Array<MemberPermission>] :member_permissions (permission, restrict_object_type) tuples which belong to this role
-      # @option params [Array<String>] :member_roles Ids of the roles this role inherits from
+      #   @option params [String] :name Name of the role
+      #   @option params [String, nil] :description Textual description of the role
+      #   @option params [Array<MemberPermission>, nil] :member_permissions (permission, restrict_object_type) tuples which belong to this role
+      #   @option params [Array<String>, nil] :member_roles Ids of the roles this role inherits from
       #
-      #   An inheriting role has all the permissions contained in its member roles, as
-      #   well as all of their inherited permissions
-      # @option params [String] :org_name For nearly all users, this parameter should be unnecessary. But in the rare case
-      #   that your API key belongs to multiple organizations, you may specify the name of
-      #   the organization the role belongs in.
+      #     An inheriting role has all the permissions contained in its member roles, as
+      #     well as all of their inherited permissions
+      #   @option params [String, nil] :org_name For nearly all users, this parameter should be unnecessary. But in the rare case
+      #     that your API key belongs to multiple organizations, you may specify the name of
+      #     the organization the role belongs in.
       #
-      # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash, Braintrust::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Braintrust::Models::Role]
       def replace(params = {}, opts = {})
-        req = {}
-        req[:method] = :put
-        req[:path] = "/v1/role"
-        req[:body] = params
-        req[:model] = Braintrust::Models::Role
+        req = {
+          method: :put,
+          path: "/v1/role",
+          body: params,
+          headers: {"Content-Type" => "application/json"},
+          model: Braintrust::Models::Role
+        }
         @client.request(req, opts)
       end
     end

@@ -2,9 +2,9 @@
 
 require_relative "test_helper"
 
-class Braintrust::Test::UtilTest < Test::Unit::TestCase
+class Braintrust::Test::UtilTest < Minitest::Test
   def test_left_map
-    assert_equal(Braintrust::Util.deep_merge({a: 1}, nil), nil)
+    assert_nil(Braintrust::Util.deep_merge({a: 1}, nil))
   end
 
   def test_right_map

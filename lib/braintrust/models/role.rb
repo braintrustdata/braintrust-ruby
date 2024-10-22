@@ -11,17 +11,17 @@ module Braintrust
       # @!attribute [rw] name_
       #   Name of the role
       #   @return [String]
-      required :name_, String
+      required :name_, String, api_name: :name
 
       # @!attribute [rw] created
       #   Date of role creation
-      #   @return [DateTime]
-      optional :created, DateTime
+      #   @return [Time]
+      optional :created, Time
 
       # @!attribute [rw] deleted_at
       #   Date of role deletion, or null if the role is still active
-      #   @return [DateTime]
-      optional :deleted_at, DateTime
+      #   @return [Time]
+      optional :deleted_at, Time
 
       # @!attribute [rw] description
       #   Textual description of the role
@@ -59,14 +59,12 @@ module Braintrust
         #   Each permission permits a certain type of operation on an object in the system
         #
         # Permissions can be assigned to to objects on an individual basis, or grouped into roles
-        #   One of the constants defined in {Braintrust::Models::Role::MemberPermission::Permission}
-        #   @return [Symbol]
+        #   @return [Symbol, Braintrust::Models::Role::MemberPermission::Permission]
         required :permission, enum: -> { Braintrust::Models::Role::MemberPermission::Permission }
 
         # @!attribute [rw] restrict_object_type
         #   The object type that the ACL applies to
-        #   One of the constants defined in {Braintrust::Models::Role::MemberPermission::RestrictObjectType}
-        #   @return [Symbol]
+        #   @return [Symbol, Braintrust::Models::Role::MemberPermission::RestrictObjectType]
         optional :restrict_object_type,
                  enum: -> { Braintrust::Models::Role::MemberPermission::RestrictObjectType }
 
@@ -98,7 +96,41 @@ module Braintrust
           PROJECT_LOG = :project_log
           ORG_PROJECT = :org_project
         end
+
+        # @!parse
+        #   # Create a new instance of MemberPermission from a Hash of raw data.
+        #   #
+        #   # @param data [Hash{Symbol => Object}] .
+        #   #   @option data [String] :permission Each permission permits a certain type of operation on an object in the system
+        #   #
+        #   #     Permissions can be assigned to to objects on an individual basis, or grouped
+        #   #     into roles
+        #   #   @option data [String, nil] :restrict_object_type The object type that the ACL applies to
+        #   def initialize(data = {}) = super
       end
+
+      # @!parse
+      #   # Create a new instance of Role from a Hash of raw data.
+      #   #
+      #   # @param data [Hash{Symbol => Object}] .
+      #   #   @option data [String] :id Unique identifier for the role
+      #   #   @option data [String] :name Name of the role
+      #   #   @option data [String, nil] :created Date of role creation
+      #   #   @option data [String, nil] :deleted_at Date of role deletion, or null if the role is still active
+      #   #   @option data [String, nil] :description Textual description of the role
+      #   #   @option data [Array<Object>, nil] :member_permissions (permission, restrict_object_type) tuples which belong to this role
+      #   #   @option data [Array<String>, nil] :member_roles Ids of the roles this role inherits from
+      #   #
+      #   #     An inheriting role has all the permissions contained in its member roles, as
+      #   #     well as all of their inherited permissions
+      #   #   @option data [String, nil] :org_id Unique id for the organization that the role belongs under
+      #   #
+      #   #     A null org_id indicates a system role, which may be assigned to anybody and
+      #   #     inherited by any other role, but cannot be edited.
+      #   #
+      #   #     It is forbidden to change the org after creating a role
+      #   #   @option data [String, nil] :user_id Identifies the user who created the role
+      #   def initialize(data = {}) = super
     end
   end
 end

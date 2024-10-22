@@ -7,12 +7,7 @@
 # - Define shared testing namespace so that we don't need to indent test files as much
 
 require "braintrust"
+require_relative "test_namespaces"
 
-require "test/unit"
-
-module Braintrust
-  module Test
-    module Resources
-    end
-  end
-end
+require "minitest"
+require "stringio"

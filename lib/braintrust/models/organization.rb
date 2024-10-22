@@ -11,7 +11,7 @@ module Braintrust
       # @!attribute [rw] name_
       #   Name of the organization
       #   @return [String]
-      required :name_, String
+      required :name_, String, api_name: :name
 
       # @!attribute [rw] api_url
       #   @return [String]
@@ -19,8 +19,8 @@ module Braintrust
 
       # @!attribute [rw] created
       #   Date of organization creation
-      #   @return [DateTime]
-      optional :created, DateTime
+      #   @return [Time]
+      optional :created, Time
 
       # @!attribute [rw] is_universal_api
       #   @return [Boolean]
@@ -33,6 +33,19 @@ module Braintrust
       # @!attribute [rw] realtime_url
       #   @return [String]
       optional :realtime_url, String
+
+      # @!parse
+      #   # Create a new instance of Organization from a Hash of raw data.
+      #   #
+      #   # @param data [Hash{Symbol => Object}] .
+      #   #   @option data [String] :id Unique identifier for the organization
+      #   #   @option data [String] :name Name of the organization
+      #   #   @option data [String, nil] :api_url
+      #   #   @option data [String, nil] :created Date of organization creation
+      #   #   @option data [Hash, nil] :is_universal_api
+      #   #   @option data [String, nil] :proxy_url
+      #   #   @option data [String, nil] :realtime_url
+      #   def initialize(data = {}) = super
     end
   end
 end

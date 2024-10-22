@@ -6,6 +6,7 @@ module Braintrust
       # @return [Braintrust::Resources::Projects::Logs]
       attr_reader :logs
 
+      # @param client [Braintrust::Client]
       def initialize(client:)
         @client = client
         @logs = Braintrust::Resources::Projects::Logs.new(client: client)
@@ -15,34 +16,37 @@ module Braintrust
       #   one specified in the request, will return the existing project unmodified
       #
       # @param params [Hash] Attributes to send in this request.
-      # @option params [String] :name Name of the project
-      # @option params [String] :org_name For nearly all users, this parameter should be unnecessary. But in the rare case
-      #   that your API key belongs to multiple organizations, you may specify the name of
-      #   the organization the project belongs in.
+      #   @option params [String] :name Name of the project
+      #   @option params [String, nil] :org_name For nearly all users, this parameter should be unnecessary. But in the rare case
+      #     that your API key belongs to multiple organizations, you may specify the name of
+      #     the organization the project belongs in.
       #
-      # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash, Braintrust::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Braintrust::Models::Project]
       def create(params = {}, opts = {})
-        req = {}
-        req[:method] = :post
-        req[:path] = "/v1/project"
-        req[:body] = params
-        req[:model] = Braintrust::Models::Project
+        req = {
+          method: :post,
+          path: "/v1/project",
+          body: params,
+          headers: {"Content-Type" => "application/json"},
+          model: Braintrust::Models::Project
+        }
         @client.request(req, opts)
       end
 
       # Get a project object by its id
       #
       # @param project_id [String] Project id
-      # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash, Braintrust::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Braintrust::Models::Project]
       def retrieve(project_id, opts = {})
-        req = {}
-        req[:method] = :get
-        req[:path] = "/v1/project/#{project_id}"
-        req[:model] = Braintrust::Models::Project
+        req = {
+          method: :get,
+          path: "/v1/project/#{project_id}",
+          model: Braintrust::Models::Project
+        }
         @client.request(req, opts)
       end
 
@@ -53,19 +57,21 @@ module Braintrust
       # @param project_id [String] Project id
       #
       # @param params [Hash] Attributes to send in this request.
-      # @option params [String] :name Name of the project
-      # @option params [Braintrust::Models::ProjectSettings] :settings Project settings. Patch operations replace all settings, so make sure you
-      #   include all settings you want to keep.
+      #   @option params [String, nil] :name Name of the project
+      #   @option params [Braintrust::Models::ProjectSettings, nil] :settings Project settings. Patch operations replace all settings, so make sure you
+      #     include all settings you want to keep.
       #
-      # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash, Braintrust::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Braintrust::Models::Project]
       def update(project_id, params = {}, opts = {})
-        req = {}
-        req[:method] = :patch
-        req[:path] = "/v1/project/#{project_id}"
-        req[:body] = params
-        req[:model] = Braintrust::Models::Project
+        req = {
+          method: :patch,
+          path: "/v1/project/#{project_id}",
+          body: params,
+          headers: {"Content-Type" => "application/json"},
+          model: Braintrust::Models::Project
+        }
         @client.request(req, opts)
       end
 
@@ -73,46 +79,48 @@ module Braintrust
       #   recently-created projects coming first
       #
       # @param params [Hash] Attributes to send in this request.
-      # @option params [String] :ending_before Pagination cursor id.
+      #   @option params [String, nil] :ending_before Pagination cursor id.
       #
-      #   For example, if the initial item in the last page you fetched had an id of
-      #   `foo`, pass `ending_before=foo` to fetch the previous page. Note: you may only
-      #   pass one of `starting_after` and `ending_before`
-      # @option params [Array<String>|String] :ids Filter search results to a particular set of object IDs. To specify a list of
-      #   IDs, include the query param multiple times
-      # @option params [Integer] :limit Limit the number of objects to return
-      # @option params [String] :org_name Filter search results to within a particular organization
-      # @option params [String] :project_name Name of the project to search for
-      # @option params [String] :starting_after Pagination cursor id.
+      #     For example, if the initial item in the last page you fetched had an id of
+      #     `foo`, pass `ending_before=foo` to fetch the previous page. Note: you may only
+      #     pass one of `starting_after` and `ending_before`
+      #   @option params [Array<String>, String, nil] :ids Filter search results to a particular set of object IDs. To specify a list of
+      #     IDs, include the query param multiple times
+      #   @option params [Integer, nil] :limit Limit the number of objects to return
+      #   @option params [String, nil] :org_name Filter search results to within a particular organization
+      #   @option params [String, nil] :project_name Name of the project to search for
+      #   @option params [String, nil] :starting_after Pagination cursor id.
       #
-      #   For example, if the final item in the last page you fetched had an id of `foo`,
-      #   pass `starting_after=foo` to fetch the next page. Note: you may only pass one of
-      #   `starting_after` and `ending_before`
+      #     For example, if the final item in the last page you fetched had an id of `foo`,
+      #     pass `starting_after=foo` to fetch the next page. Note: you may only pass one of
+      #     `starting_after` and `ending_before`
       #
-      # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash, Braintrust::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Braintrust::ListObjects<Braintrust::Models::Project>]
       def list(params = {}, opts = {})
-        req = {}
-        req[:method] = :get
-        req[:path] = "/v1/project"
-        req[:query] = params
-        req[:page] = Braintrust::ListObjects
-        req[:model] = Braintrust::Models::Project
+        req = {
+          method: :get,
+          path: "/v1/project",
+          query: params,
+          page: Braintrust::ListObjects,
+          model: Braintrust::Models::Project
+        }
         @client.request(req, opts)
       end
 
       # Delete a project object by its id
       #
       # @param project_id [String] Project id
-      # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash, Braintrust::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Braintrust::Models::Project]
       def delete(project_id, opts = {})
-        req = {}
-        req[:method] = :delete
-        req[:path] = "/v1/project/#{project_id}"
-        req[:model] = Braintrust::Models::Project
+        req = {
+          method: :delete,
+          path: "/v1/project/#{project_id}",
+          model: Braintrust::Models::Project
+        }
         @client.request(req, opts)
       end
     end

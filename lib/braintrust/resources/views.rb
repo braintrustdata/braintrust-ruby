@@ -3,6 +3,7 @@
 module Braintrust
   module Resources
     class Views
+      # @param client [Braintrust::Client]
       def initialize(client:)
         @client = client
       end
@@ -11,24 +12,26 @@ module Braintrust
       #   specified in the request, will return the existing view unmodified
       #
       # @param params [Hash] Attributes to send in this request.
-      # @option params [String] :name Name of the view
-      # @option params [String] :object_id The id of the object the view applies to
-      # @option params [Symbol] :object_type The object type that the ACL applies to
-      # @option params [Symbol] :view_type Type of table that the view corresponds to.
-      # @option params [DateTime] :deleted_at Date of role deletion, or null if the role is still active
-      # @option params [Braintrust::Models::ViewOptions] :options Options for the view in the app
-      # @option params [String] :user_id Identifies the user who created the view
-      # @option params [Braintrust::Models::ViewData] :view_data The view definition
+      #   @option params [String] :name Name of the view
+      #   @option params [String] :object_id The id of the object the view applies to
+      #   @option params [Symbol, ObjectType] :object_type The object type that the ACL applies to
+      #   @option params [Symbol, ViewType] :view_type Type of table that the view corresponds to.
+      #   @option params [Time, nil] :deleted_at Date of role deletion, or null if the role is still active
+      #   @option params [Braintrust::Models::ViewOptions, nil] :options Options for the view in the app
+      #   @option params [String, nil] :user_id Identifies the user who created the view
+      #   @option params [Braintrust::Models::ViewData, nil] :view_data The view definition
       #
-      # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash, Braintrust::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Braintrust::Models::View]
       def create(params = {}, opts = {})
-        req = {}
-        req[:method] = :post
-        req[:path] = "/v1/view"
-        req[:body] = params
-        req[:model] = Braintrust::Models::View
+        req = {
+          method: :post,
+          path: "/v1/view",
+          body: params,
+          headers: {"Content-Type" => "application/json"},
+          model: Braintrust::Models::View
+        }
         @client.request(req, opts)
       end
 
@@ -37,18 +40,19 @@ module Braintrust
       # @param view_id [String] View id
       #
       # @param params [Hash] Attributes to send in this request.
-      # @option params [String] :object_id The id of the object the ACL applies to
-      # @option params [Symbol] :object_type The object type that the ACL applies to
+      #   @option params [String] :object_id The id of the object the ACL applies to
+      #   @option params [Symbol, ObjectType] :object_type The object type that the ACL applies to
       #
-      # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash, Braintrust::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Braintrust::Models::View]
       def retrieve(view_id, params = {}, opts = {})
-        req = {}
-        req[:method] = :get
-        req[:path] = "/v1/view/#{view_id}"
-        req[:query] = params
-        req[:model] = Braintrust::Models::View
+        req = {
+          method: :get,
+          path: "/v1/view/#{view_id}",
+          query: params,
+          model: Braintrust::Models::View
+        }
         @client.request(req, opts)
       end
 
@@ -59,23 +63,25 @@ module Braintrust
       # @param view_id [String] View id
       #
       # @param params [Hash] Attributes to send in this request.
-      # @option params [String] :object_id The id of the object the view applies to
-      # @option params [Symbol] :object_type The object type that the ACL applies to
-      # @option params [String] :name Name of the view
-      # @option params [Braintrust::Models::ViewOptions] :options Options for the view in the app
-      # @option params [String] :user_id Identifies the user who created the view
-      # @option params [Braintrust::Models::ViewData] :view_data The view definition
-      # @option params [Symbol] :view_type Type of table that the view corresponds to.
+      #   @option params [String] :object_id The id of the object the view applies to
+      #   @option params [Symbol, ObjectType] :object_type The object type that the ACL applies to
+      #   @option params [String, nil] :name Name of the view
+      #   @option params [Braintrust::Models::ViewOptions, nil] :options Options for the view in the app
+      #   @option params [String, nil] :user_id Identifies the user who created the view
+      #   @option params [Braintrust::Models::ViewData, nil] :view_data The view definition
+      #   @option params [Symbol, ViewType, nil] :view_type Type of table that the view corresponds to.
       #
-      # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash, Braintrust::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Braintrust::Models::View]
       def update(view_id, params = {}, opts = {})
-        req = {}
-        req[:method] = :patch
-        req[:path] = "/v1/view/#{view_id}"
-        req[:body] = params
-        req[:model] = Braintrust::Models::View
+        req = {
+          method: :patch,
+          path: "/v1/view/#{view_id}",
+          body: params,
+          headers: {"Content-Type" => "application/json"},
+          model: Braintrust::Models::View
+        }
         @client.request(req, opts)
       end
 
@@ -83,34 +89,35 @@ module Braintrust
       #   recently-created views coming first
       #
       # @param params [Hash] Attributes to send in this request.
-      # @option params [String] :object_id The id of the object the ACL applies to
-      # @option params [Symbol] :object_type The object type that the ACL applies to
-      # @option params [String] :ending_before Pagination cursor id.
+      #   @option params [String] :object_id The id of the object the ACL applies to
+      #   @option params [Symbol, ObjectType] :object_type The object type that the ACL applies to
+      #   @option params [String, nil] :ending_before Pagination cursor id.
       #
-      #   For example, if the initial item in the last page you fetched had an id of
-      #   `foo`, pass `ending_before=foo` to fetch the previous page. Note: you may only
-      #   pass one of `starting_after` and `ending_before`
-      # @option params [Array<String>|String] :ids Filter search results to a particular set of object IDs. To specify a list of
-      #   IDs, include the query param multiple times
-      # @option params [Integer] :limit Limit the number of objects to return
-      # @option params [String] :starting_after Pagination cursor id.
+      #     For example, if the initial item in the last page you fetched had an id of
+      #     `foo`, pass `ending_before=foo` to fetch the previous page. Note: you may only
+      #     pass one of `starting_after` and `ending_before`
+      #   @option params [Array<String>, String, nil] :ids Filter search results to a particular set of object IDs. To specify a list of
+      #     IDs, include the query param multiple times
+      #   @option params [Integer, nil] :limit Limit the number of objects to return
+      #   @option params [String, nil] :starting_after Pagination cursor id.
       #
-      #   For example, if the final item in the last page you fetched had an id of `foo`,
-      #   pass `starting_after=foo` to fetch the next page. Note: you may only pass one of
-      #   `starting_after` and `ending_before`
-      # @option params [String] :view_name Name of the view to search for
-      # @option params [Symbol] :view_type Type of table that the view corresponds to.
+      #     For example, if the final item in the last page you fetched had an id of `foo`,
+      #     pass `starting_after=foo` to fetch the next page. Note: you may only pass one of
+      #     `starting_after` and `ending_before`
+      #   @option params [String, nil] :view_name Name of the view to search for
+      #   @option params [Symbol, ViewType, nil] :view_type Type of table that the view corresponds to.
       #
-      # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash, Braintrust::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Braintrust::ListObjects<Braintrust::Models::View>]
       def list(params = {}, opts = {})
-        req = {}
-        req[:method] = :get
-        req[:path] = "/v1/view"
-        req[:query] = params
-        req[:page] = Braintrust::ListObjects
-        req[:model] = Braintrust::Models::View
+        req = {
+          method: :get,
+          path: "/v1/view",
+          query: params,
+          page: Braintrust::ListObjects,
+          model: Braintrust::Models::View
+        }
         @client.request(req, opts)
       end
 
@@ -119,18 +126,20 @@ module Braintrust
       # @param view_id [String] View id
       #
       # @param params [Hash] Attributes to send in this request.
-      # @option params [String] :object_id The id of the object the view applies to
-      # @option params [Symbol] :object_type The object type that the ACL applies to
+      #   @option params [String] :object_id The id of the object the view applies to
+      #   @option params [Symbol, ObjectType] :object_type The object type that the ACL applies to
       #
-      # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash, Braintrust::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Braintrust::Models::View]
       def delete(view_id, params = {}, opts = {})
-        req = {}
-        req[:method] = :delete
-        req[:path] = "/v1/view/#{view_id}"
-        req[:body] = params
-        req[:model] = Braintrust::Models::View
+        req = {
+          method: :delete,
+          path: "/v1/view/#{view_id}",
+          body: params,
+          headers: {"Content-Type" => "application/json"},
+          model: Braintrust::Models::View
+        }
         @client.request(req, opts)
       end
 
@@ -139,24 +148,26 @@ module Braintrust
       #   fields
       #
       # @param params [Hash] Attributes to send in this request.
-      # @option params [String] :name Name of the view
-      # @option params [String] :object_id The id of the object the view applies to
-      # @option params [Symbol] :object_type The object type that the ACL applies to
-      # @option params [Symbol] :view_type Type of table that the view corresponds to.
-      # @option params [DateTime] :deleted_at Date of role deletion, or null if the role is still active
-      # @option params [Braintrust::Models::ViewOptions] :options Options for the view in the app
-      # @option params [String] :user_id Identifies the user who created the view
-      # @option params [Braintrust::Models::ViewData] :view_data The view definition
+      #   @option params [String] :name Name of the view
+      #   @option params [String] :object_id The id of the object the view applies to
+      #   @option params [Symbol, ObjectType] :object_type The object type that the ACL applies to
+      #   @option params [Symbol, ViewType] :view_type Type of table that the view corresponds to.
+      #   @option params [Time, nil] :deleted_at Date of role deletion, or null if the role is still active
+      #   @option params [Braintrust::Models::ViewOptions, nil] :options Options for the view in the app
+      #   @option params [String, nil] :user_id Identifies the user who created the view
+      #   @option params [Braintrust::Models::ViewData, nil] :view_data The view definition
       #
-      # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash, Braintrust::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Braintrust::Models::View]
       def replace(params = {}, opts = {})
-        req = {}
-        req[:method] = :put
-        req[:path] = "/v1/view"
-        req[:body] = params
-        req[:model] = Braintrust::Models::View
+        req = {
+          method: :put,
+          path: "/v1/view",
+          body: params,
+          headers: {"Content-Type" => "application/json"},
+          model: Braintrust::Models::View
+        }
         @client.request(req, opts)
       end
     end

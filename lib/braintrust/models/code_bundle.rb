@@ -8,7 +8,7 @@ module Braintrust
       required :bundle_id, String
 
       # @!attribute [rw] location
-      #   @return [Braintrust::Models::CodeBundle::Location::UnnamedTypeWithunionParent0|Braintrust::Models::CodeBundle::Location::UnnamedTypeWithunionParent1]
+      #   @return [Braintrust::Models::CodeBundle::Location::UnnamedTypeWithunionParent0, Braintrust::Models::CodeBundle::Location::UnnamedTypeWithunionParent1]
       required :location, Braintrust::Unknown
 
       # @!attribute [rw] runtime_context
@@ -22,8 +22,7 @@ module Braintrust
 
       class RuntimeContext < BaseModel
         # @!attribute [rw] runtime
-        #   One of the constants defined in {Braintrust::Models::CodeBundle::RuntimeContext::Runtime}
-        #   @return [Symbol]
+        #   @return [Symbol, Braintrust::Models::CodeBundle::RuntimeContext::Runtime]
         required :runtime, enum: -> { Braintrust::Models::CodeBundle::RuntimeContext::Runtime }
 
         # @!attribute [rw] version
@@ -34,7 +33,25 @@ module Braintrust
           NODE = :node
           PYTHON = :python
         end
+
+        # @!parse
+        #   # Create a new instance of RuntimeContext from a Hash of raw data.
+        #   #
+        #   # @param data [Hash{Symbol => Object}] .
+        #   #   @option data [String] :runtime
+        #   #   @option data [String] :version
+        #   def initialize(data = {}) = super
       end
+
+      # @!parse
+      #   # Create a new instance of CodeBundle from a Hash of raw data.
+      #   #
+      #   # @param data [Hash{Symbol => Object}] .
+      #   #   @option data [String] :bundle_id
+      #   #   @option data [Object] :location
+      #   #   @option data [Object] :runtime_context
+      #   #   @option data [String, nil] :preview A preview of the code
+      #   def initialize(data = {}) = super
     end
   end
 end

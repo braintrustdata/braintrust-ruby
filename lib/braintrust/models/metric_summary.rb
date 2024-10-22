@@ -16,7 +16,7 @@ module Braintrust
       # @!attribute [rw] name_
       #   Name of the metric
       #   @return [String]
-      required :name_, String
+      required :name_, String, api_name: :name
 
       # @!attribute [rw] regressions
       #   Number of regressions in the metric
@@ -32,6 +32,18 @@ module Braintrust
       #   Difference in metric between the current and comparison experiment
       #   @return [Float]
       optional :diff, Float
+
+      # @!parse
+      #   # Create a new instance of MetricSummary from a Hash of raw data.
+      #   #
+      #   # @param data [Hash{Symbol => Object}] .
+      #   #   @option data [Integer] :improvements Number of improvements in the metric
+      #   #   @option data [Float] :metric Average metric across all examples
+      #   #   @option data [String] :name Name of the metric
+      #   #   @option data [Integer] :regressions Number of regressions in the metric
+      #   #   @option data [String] :unit Unit label for the metric
+      #   #   @option data [Float, nil] :diff Difference in metric between the current and comparison experiment
+      #   def initialize(data = {}) = super
     end
   end
 end

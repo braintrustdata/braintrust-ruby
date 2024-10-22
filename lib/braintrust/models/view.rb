@@ -11,34 +11,32 @@ module Braintrust
       # @!attribute [rw] name_
       #   Name of the view
       #   @return [String]
-      required :name_, String
+      required :name_, String, api_name: :name
 
       # @!attribute [rw] object_id_
       #   The id of the object the view applies to
       #   @return [String]
-      required :object_id_, String
+      required :object_id_, String, api_name: :object_id
 
       # @!attribute [rw] object_type
       #   The object type that the ACL applies to
-      #   One of the constants defined in {Braintrust::Models::View::ObjectType}
-      #   @return [Symbol]
+      #   @return [Symbol, Braintrust::Models::View::ObjectType]
       required :object_type, enum: -> { Braintrust::Models::View::ObjectType }
 
       # @!attribute [rw] view_type
       #   Type of table that the view corresponds to.
-      #   One of the constants defined in {Braintrust::Models::View::ViewType}
-      #   @return [Symbol]
+      #   @return [Symbol, Braintrust::Models::View::ViewType]
       required :view_type, enum: -> { Braintrust::Models::View::ViewType }
 
       # @!attribute [rw] created
       #   Date of view creation
-      #   @return [DateTime]
-      optional :created, DateTime
+      #   @return [Time]
+      optional :created, Time
 
       # @!attribute [rw] deleted_at
       #   Date of role deletion, or null if the role is still active
-      #   @return [DateTime]
-      optional :deleted_at, DateTime
+      #   @return [Time]
+      optional :deleted_at, Time
 
       # @!attribute [rw] options
       #   Options for the view in the app
@@ -81,6 +79,22 @@ module Braintrust
         EXPERIMENT = :experiment
         DATASET = :dataset
       end
+
+      # @!parse
+      #   # Create a new instance of View from a Hash of raw data.
+      #   #
+      #   # @param data [Hash{Symbol => Object}] .
+      #   #   @option data [String] :id Unique identifier for the view
+      #   #   @option data [String] :name Name of the view
+      #   #   @option data [String] :object_id The id of the object the view applies to
+      #   #   @option data [String] :object_type The object type that the ACL applies to
+      #   #   @option data [String] :view_type Type of table that the view corresponds to.
+      #   #   @option data [String, nil] :created Date of view creation
+      #   #   @option data [String, nil] :deleted_at Date of role deletion, or null if the role is still active
+      #   #   @option data [Object, nil] :options Options for the view in the app
+      #   #   @option data [String, nil] :user_id Identifies the user who created the view
+      #   #   @option data [Object, nil] :view_data The view definition
+      #   def initialize(data = {}) = super
     end
   end
 end
