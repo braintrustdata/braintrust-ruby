@@ -12,7 +12,7 @@ module Braintrust
       #   same slug as the one specified in the request, will return the existing function
       #   unmodified
       #
-      # @param params [Hash] Attributes to send in this request.
+      # @param params [Hash{Symbol => Object}] Attributes to send in this request.
       #   @option params [FunctionData::UnnamedTypeWithunionParent21, FunctionData::UnnamedTypeWithunionParent22, FunctionData::UnnamedTypeWithunionParent23] :function_data
       #   @option params [String] :name Name of the prompt
       #   @option params [String] :project_id Unique identifier for the project that the prompt belongs under
@@ -59,7 +59,7 @@ module Braintrust
       #
       # @param function_id [String] Function id
       #
-      # @param params [Hash] Attributes to send in this request.
+      # @param params [Hash{Symbol => Object}] Attributes to send in this request.
       #   @option params [String, nil] :description Textual description of the prompt
       #   @option params [FunctionData::UnnamedTypeWithunionParent24, FunctionData::UnnamedTypeWithunionParent25, FunctionData::UnnamedTypeWithunionParent26, FunctionData::UnnamedTypeWithunionParent27, nil] :function_data
       #   @option params [String, nil] :name Name of the prompt
@@ -83,7 +83,7 @@ module Braintrust
       # List out all functions. The functions are sorted by creation date, with the most
       #   recently-created functions coming first
       #
-      # @param params [Hash] Attributes to send in this request.
+      # @param params [Hash{Symbol => Object}] Attributes to send in this request.
       #   @option params [String, nil] :ending_before Pagination cursor id.
       #
       #     For example, if the initial item in the last page you fetched had an id of
@@ -140,7 +140,7 @@ module Braintrust
       #
       # @param function_id [String] Function id
       #
-      # @param params [Hash] Attributes to send in this request.
+      # @param params [Hash{Symbol => Object}] Attributes to send in this request.
       #   @option params [Object, nil] :input Argument to the function, which can be any JSON serializable value
       #   @option params [Array<Message::UnnamedTypeWithunionParent28, Message::UnnamedTypeWithunionParent29, Message::UnnamedTypeWithunionParent30, Message::UnnamedTypeWithunionParent31, Message::UnnamedTypeWithunionParent32, Message::UnnamedTypeWithunionParent33>, nil] :messages If the function is an LLM, additional messages to pass along to it
       #   @option params [Symbol, Mode, nil] :mode The mode format of the returned value (defaults to 'auto')
@@ -167,7 +167,7 @@ module Braintrust
       #   the same slug as the one specified in the request, will replace the existing
       #   function with the provided fields
       #
-      # @param params [Hash] Attributes to send in this request.
+      # @param params [Hash{Symbol => Object}] Attributes to send in this request.
       #   @option params [FunctionData::UnnamedTypeWithunionParent35, FunctionData::UnnamedTypeWithunionParent36, FunctionData::UnnamedTypeWithunionParent37] :function_data
       #   @option params [String] :name Name of the prompt
       #   @option params [String] :project_id Unique identifier for the project that the prompt belongs under

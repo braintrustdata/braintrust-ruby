@@ -13,7 +13,7 @@ module Braintrust
         #
         # @param project_id [String] Project id
         #
-        # @param params [Hash] Attributes to send in this request.
+        # @param params [Hash{Symbol => Object}] Attributes to send in this request.
         #   @option params [Array<Braintrust::Models::FeedbackProjectLogsItem>] :feedback A list of project logs feedback items
         #
         # @param opts [Hash, Braintrust::RequestOptions] Options to specify HTTP behaviour for this request.
@@ -35,7 +35,7 @@ module Braintrust
         #
         # @param project_id [String] Project id
         #
-        # @param params [Hash] Attributes to send in this request.
+        # @param params [Hash{Symbol => Object}] Attributes to send in this request.
         #   @option params [Integer, nil] :limit limit the number of traces fetched
         #
         #     Fetch queries may be paginated if the total result size is expected to be large
@@ -94,7 +94,7 @@ module Braintrust
         #
         # @param project_id [String] Project id
         #
-        # @param params [Hash] Attributes to send in this request.
+        # @param params [Hash{Symbol => Object}] Attributes to send in this request.
         #   @option params [String, nil] :cursor An opaque string to be used as a cursor for the next page of results, in order
         #     from latest to earliest.
         #
@@ -164,7 +164,7 @@ module Braintrust
         #
         # @param project_id [String] Project id
         #
-        # @param params [Hash] Attributes to send in this request.
+        # @param params [Hash{Symbol => Object}] Attributes to send in this request.
         #   @option params [Array<Braintrust::Models::InsertProjectLogsEventMerge, Braintrust::Models::InsertProjectLogsEventReplace>] :events A list of project logs events to insert
         #
         # @param opts [Hash, Braintrust::RequestOptions] Options to specify HTTP behaviour for this request.
