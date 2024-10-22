@@ -21,7 +21,7 @@ module Braintrust
       !objects.empty?
     end
 
-    # @return [ListObjects]
+    # @return [Braintrust::ListObjects]
     def next_page
       if !next_page?
         raise "No more pages available; please check #next_page? before calling #next_page"
@@ -40,6 +40,11 @@ module Braintrust
         break if !page.next_page?
         page = page.next_page
       end
+    end
+
+    # @return String
+    def inspect
+      "#<#{selfl.class}:0x#{object_id.to_s(16)} objects=#{objects.inspect}>"
     end
   end
 end

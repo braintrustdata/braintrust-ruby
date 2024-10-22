@@ -15,8 +15,8 @@ module Braintrust
 
       # @!attribute [rw] created
       #   Date of user creation
-      #   @return [DateTime]
-      optional :created, DateTime
+      #   @return [Time]
+      optional :created, Time
 
       # @!attribute [rw] email
       #   The user's email
@@ -32,6 +32,18 @@ module Braintrust
       #   Given name of the user
       #   @return [String]
       optional :given_name, String
+
+      # @!parse
+      #   # Create a new instance of User from a Hash of raw data.
+      #   #
+      #   # @param data [Hash{Symbol => Object}] .
+      #   #   @option data [String] :id Unique identifier for the user
+      #   #   @option data [String, nil] :avatar_url URL of the user's Avatar image
+      #   #   @option data [String, nil] :created Date of user creation
+      #   #   @option data [String, nil] :email The user's email
+      #   #   @option data [String, nil] :family_name Family name of the user
+      #   #   @option data [String, nil] :given_name Given name of the user
+      #   def initialize(data = {}) = super
     end
   end
 end

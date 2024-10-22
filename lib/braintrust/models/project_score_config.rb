@@ -4,8 +4,7 @@ module Braintrust
   module Models
     class ProjectScoreConfig < BaseModel
       # @!attribute [rw] destination
-      #   One of the constants defined in {Braintrust::Models::ProjectScoreConfig::Destination}
-      #   @return [Symbol]
+      #   @return [Symbol, Braintrust::Models::ProjectScoreConfig::Destination]
       optional :destination, enum: -> { Braintrust::Models::ProjectScoreConfig::Destination }
 
       # @!attribute [rw] multi_select
@@ -19,6 +18,15 @@ module Braintrust
       class Destination < Braintrust::Enum
         EXPECTED = :expected
       end
+
+      # @!parse
+      #   # Create a new instance of ProjectScoreConfig from a Hash of raw data.
+      #   #
+      #   # @param data [Hash{Symbol => Object}] .
+      #   #   @option data [String, nil] :destination
+      #   #   @option data [Hash, nil] :multi_select
+      #   #   @option data [Object, nil] :online
+      #   def initialize(data = {}) = super
     end
   end
 end

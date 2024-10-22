@@ -2,7 +2,9 @@
 
 require_relative "test_helper"
 
-class Braintrust::Test::BaseClientTest < Test::Unit::TestCase
+class Braintrust::Test::BaseClientTest < Minitest::Test
+  parallelize_me!
+
   def test_from_uri_string
     assert_equal(
       {

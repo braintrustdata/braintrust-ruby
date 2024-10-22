@@ -19,6 +19,14 @@ Style/RegexpLiteral:
 Style/SymbolArray:
   EnforcedStyle: brackets
 
+# Prefer consistency in method calling syntax
+Style/MethodCallWithArgsParentheses:
+  Enabled: true
+  Exclude:
+    - '**/*.gemspec'
+  IgnoredMethods:
+    - raise
+
 # Nothing wrong with clear if statements.
 Style/IfUnlessModifier:
   Enabled: false
@@ -52,6 +60,10 @@ Style/Alias:
 Style/ClassAndModuleChildren:
   Exclude:
     - test/**/*
+
+# Rubocop is pretty bad about mangling single line lambdas
+Style/Lambda:
+  Enabled: false
 
 # Set a reasonable line length; rely on other cops to correct long lines.
 Layout/LineLength:

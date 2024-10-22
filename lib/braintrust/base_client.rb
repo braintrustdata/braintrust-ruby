@@ -5,31 +5,40 @@ module Braintrust
   class BaseClient
     attr_accessor :requester
 
+    # @param base_url [String]
+    # @param timeout [Integer, nil]
+    # @param headers [Hash{String => String}]
+    # @param max_retries [Integer]
+    # @param idempotency_header [String, nil]
     def initialize(
       base_url:,
-      headers: nil,
-      max_retries: nil,
+      timeout: nil,
+      headers: {},
+      max_retries: 0,
       idempotency_header: nil
     )
       self.requester = PooledNetRequester.new
       base_url_parsed = URI.parse(base_url)
-      base_headers = {
-        "X-Stainless-Lang" => "ruby",
-        "X-Stainless-Package-Version" => Braintrust::VERSION,
-        "X-Stainless-Runtime" => RUBY_ENGINE,
-        "X-Stainless-Runtime-Version" => RUBY_ENGINE_VERSION,
-        "Content-Type" => "application/json",
-        "Accept" => "application/json"
-      }
-      @headers = base_headers.merge(headers || {})
+      @headers = Util.normalized_headers(
+        {
+          "X-Stainless-Lang" => "ruby",
+          "X-Stainless-Package-Version" => Braintrust::VERSION,
+          "X-Stainless-Runtime" => RUBY_ENGINE,
+          "X-Stainless-Runtime-Version" => RUBY_ENGINE_VERSION,
+          "Accept" => "application/json"
+        },
+        headers
+      )
       @host = base_url_parsed.host
       @scheme = base_url_parsed.scheme
       @port = base_url_parsed.port
       @base_path = self.class.normalize_path(base_url_parsed.path)
-      @max_retries = max_retries || 0
+      @max_retries = max_retries
+      @timeout = timeout
       @idempotency_header = idempotency_header
     end
 
+    # @return [Hash{String => String}]
     def auth_headers
       {}
     end
@@ -92,20 +101,14 @@ module Braintrust
     def prep_request(options)
       method = options.fetch(:method)
 
-      headers = @headers.merge(auth_headers)
-      if options[:headers]
-        headers.merge!(options[:headers])
-      end
-      if options[:extra_headers]
-        headers.merge!(options[:extra_headers])
-      end
+      headers = Util.normalized_headers(@headers, auth_headers, options[:headers], options[:extra_headers])
       if @idempotency_header && !headers[@idempotency_header] && ![:get, :head, :options].include?(method)
-        headers[@idempotency_header] = options[:idempotency_key] || generate_idempotency_key
+        headers[@idempotency_header.to_s.downcase] = options[:idempotency_key] || generate_idempotency_key
       end
-      if !headers.key?("X-Stainless-Retry-Count")
-        headers["X-Stainless-Retry-Count"] = "0"
+      if !headers.key?("x-stainless-retry-count")
+        headers["x-stainless-retry-count"] = "0"
       end
-      headers.reject! { |_k, v| v.nil? }
+      headers.compact!
       headers.transform_values!(&:to_s)
 
       body =
@@ -113,7 +116,7 @@ module Braintrust
         when :post, :put, :patch, :delete
           body = options[:body]
           if body
-            if headers["Content-Type"] == "application/json"
+            if headers["content-type"] == "application/json"
               JSON.dump(body)
             else
               body
@@ -136,7 +139,7 @@ module Braintrust
     end
 
     def should_retry?(response)
-      should_retry_header = response.header["x-should-retry"]
+      should_retry_header = response["x-should-retry"]
 
       case should_retry_header
       when "true"
@@ -176,18 +179,18 @@ module Braintrust
 
     def header_based_retry(response)
       # Note the `retry-after-ms` header may not be standard, but is a good idea and we'd like proactive support for it.
-      retry_after_millis = Float(response.header["retry-after-ms"], exception: false)
+      retry_after_millis = Float(response["retry-after-ms"], exception: false)
       if retry_after_millis
         retry_after = retry_after_millis / 1000.0
-      elsif response.header["retry-after"]
-        retry_after = Float(response.header["retry-after"], exception: false)
+      elsif response["retry-after"]
+        retry_after = Float(response["retry-after"], exception: false)
         if retry_after.nil?
           begin
             base = Time.now
-            if response.header["x-stainless-mock-sleep-base"]
-              base = Time.httpdate(response.header["x-stainless-mock-sleep-base"])
+            if response["x-stainless-mock-sleep-base"]
+              base = Time.httpdate(response["x-stainless-mock-sleep-base"])
             end
-            retry_after = Time.httpdate(response.header["retry-after"]) - base
+            retry_after = Time.httpdate(response["retry-after"]) - base
           rescue StandardError # rubocop:disable Lint/SuppressedException
           end
         end
@@ -196,28 +199,27 @@ module Braintrust
     rescue StandardError # rubocop:disable Lint/SuppressedException
     end
 
-    def send_request(request, max_retries:, redirect_count:)
+    def send_request(request, max_retries:, timeout:, redirect_count:)
       delay = 0.5
       max_delay = 8.0
       # Don't send the current retry count in the headers if the caller modified the header defaults.
-      should_send_retry_count = request[:headers]["X-Stainless-Retry-Count"] == "0"
+      should_send_retry_count = request[:headers]["x-stainless-retry-count"] == "0"
       retries = 0
-      request_max_retries = max_retries || @max_retries
       loop do # rubocop:disable Metrics/BlockLength
         if should_send_retry_count
-          request[:headers]["X-Stainless-Retry-Count"] = retries.to_s
+          request[:headers]["x-stainless-retry-count"] = retries.to_s
         end
 
         begin
-          response = @requester.execute(request)
+          response = @requester.execute(request, timeout: timeout)
           status = response.code.to_i
 
           if status < 300
             return response
           elsif status < 400
             begin
-              prev_uri = URI.parse(Braintrust::Util.uri_from_req(request, absolute: true))
-              location = URI.join(prev_uri, response.header["location"])
+              prev_uri = URI.parse(Util.uri_from_req(request, absolute: true))
+              location = URI.join(prev_uri, response["location"])
             rescue ArgumentError
               message = "server responded with status #{status} but no valid location header"
               raise HTTP::APIConnectionError.new(message: message, request: request)
@@ -237,34 +239,35 @@ module Braintrust
               request[:method] = request[:method] == :head ? :head : :get
               request[:body] = nil
               request[:headers] = request[:headers].reject do |k|
-                %w[content-encoding content-language content-location content-type content-length].include?(k.downcase)
+                %w[content-encoding content-language content-location content-type content-length].include?(k)
               end
             end
             # from undici
             if Braintrust::Util.uri_origin(prev_uri) != Braintrust::Util.uri_origin(location)
               request[:headers] = request[:headers].reject do |k|
-                %w[authorization cookie proxy-authorization host].include?(k.downcase)
+                %w[authorization cookie proxy-authorization host].include?(k)
               end
             end
             return send_request(
               request,
               max_retries: max_retries,
+              timeout: timeout,
               redirect_count: redirect_count + 1
             )
           end
         rescue Net::HTTPBadResponse
-          if retries >= request_max_retries
-            message = "failed to complete the request within #{request_max_retries} retries"
+          if retries >= max_retries
+            message = "failed to complete the request within #{max_retries} retries"
             raise HTTP::APIConnectionError.new(message: message, request: request)
           end
         rescue Timeout::Error
-          if retries >= request_max_retries
-            message = "failed to complete the request within #{request_max_retries} retries"
+          if retries >= max_retries
+            message = "failed to complete the request within #{max_retries} retries"
             raise HTTP::APITimeoutError.new(message: message, request: request)
           end
         end
 
-        if !should_retry?(response) || retries >= request_max_retries
+        if (response && !should_retry?(response)) || retries >= max_retries
           raise make_status_error_from_response(response)
         end
 
@@ -278,10 +281,10 @@ module Braintrust
           delay = (base_delay * jitter_factor).clamp(0, max_delay)
         end
 
-        if response.header["x-stainless-mock-sleep"]
-          request[:headers]["X-Stainless-Mock-Slept"] = delay
+        if response&.key?("x-stainless-mock-sleep")
+          request[:headers]["x-stainless-mock-slept"] = delay
         else
-          sleep delay
+          sleep(delay)
         end
       end
     end
@@ -292,9 +295,14 @@ module Braintrust
     # validate opts as it was given to us by the user.
     def request(req, opts)
       validate_request(req, opts)
-      options = req.merge(opts)
+      options = Util.deep_merge(req, opts)
       request_args = prep_request(options)
-      response = send_request(request_args, max_retries: opts[:max_retries], redirect_count: 0)
+      response = send_request(
+        request_args,
+        max_retries: opts.fetch(:max_retries, @max_retries),
+        timeout: opts.fetch(:timeout, @timeout),
+        redirect_count: 0
+      )
       raw_data =
         case response.content_type
         when "application/json"
@@ -318,6 +326,15 @@ module Braintrust
         raw_data
       end
     end
+
+    # @return [String]
+    def inspect
+      base_url = Util.uri_from_req(
+        {host: @host, scheme: @scheme, port: @port, path: @base_path},
+        absolute: true
+      )
+      "#<#{self.class.name}:0x#{object_id.to_s(16)} base_url=#{base_url.inspect} max_retries=#{@max_retries.inspect} timeout=#{@timeout.inspect}>"
+    end
   end
 
   class Error < StandardError
@@ -328,7 +345,11 @@ module Braintrust
     end
 
     class ResponseError < Error
-      attr_reader :response, :body, :code
+      attr_reader :response, :body
+
+      # @!attribute [r] code
+      #   @return [Integer]
+      attr_reader :code
 
       def initialize(message:, response:, body:)
         super(message)
