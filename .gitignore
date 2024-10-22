@@ -4,3 +4,4 @@
 .yardoc/
 doc/
 Brewfile.lock.json
+*.gem

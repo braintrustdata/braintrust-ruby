@@ -11,7 +11,7 @@ module Braintrust
       # @!attribute [rw] name_
       #   Name of the api key
       #   @return [String]
-      required :name_, String
+      required :name_, String, api_name: :name
 
       # @!attribute [rw] preview_name
       #   @return [String]
@@ -19,8 +19,8 @@ module Braintrust
 
       # @!attribute [rw] created
       #   Date of api key creation
-      #   @return [DateTime]
-      optional :created, DateTime
+      #   @return [Time]
+      optional :created, Time
 
       # @!attribute [rw] org_id
       #   Unique identifier for the organization
@@ -31,6 +31,18 @@ module Braintrust
       #   Unique identifier for the user
       #   @return [String]
       optional :user_id, String
+
+      # @!parse
+      #   # Create a new instance of APIKey from a Hash of raw data.
+      #   #
+      #   # @param data [Hash{Symbol => Object}] .
+      #   #   @option data [String] :id Unique identifier for the api key
+      #   #   @option data [String] :name Name of the api key
+      #   #   @option data [String] :preview_name
+      #   #   @option data [String, nil] :created Date of api key creation
+      #   #   @option data [String, nil] :org_id Unique identifier for the organization
+      #   #   @option data [String, nil] :user_id Unique identifier for the user
+      #   def initialize(data = {}) = super
     end
   end
 end

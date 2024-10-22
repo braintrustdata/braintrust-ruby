@@ -4,13 +4,19 @@ module Braintrust
   module Models
     class Task < BaseModel
       # @!attribute [rw] type
-      #   One of the constants defined in {Braintrust::Models::Task::Type}
-      #   @return [Symbol]
+      #   @return [Symbol, Braintrust::Models::Task::Type]
       required :type, enum: -> { Braintrust::Models::Task::Type }
 
       class Type < Braintrust::Enum
         TASK = :task
       end
+
+      # @!parse
+      #   # Create a new instance of Task from a Hash of raw data.
+      #   #
+      #   # @param data [Hash{Symbol => Object}] .
+      #   #   @option data [String] :type
+      #   def initialize(data = {}) = super
     end
   end
 end
