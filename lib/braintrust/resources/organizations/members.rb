@@ -11,7 +11,7 @@ module Braintrust
 
         # Modify organization membership
         #
-        # @param params [Hash] Attributes to send in this request.
+        # @param params [Hash{Symbol => Object}] Attributes to send in this request.
         #   @option params [InviteUsers, nil] :invite_users Users to invite to the organization
         #   @option params [String, nil] :org_id For nearly all users, this parameter should be unnecessary. But in the rare case
         #     that your API key belongs to multiple organizations, or in case you want to

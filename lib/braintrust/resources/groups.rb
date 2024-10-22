@@ -11,7 +11,7 @@ module Braintrust
       # Create a new group. If there is an existing group with the same name as the one
       #   specified in the request, will return the existing group unmodified
       #
-      # @param params [Hash] Attributes to send in this request.
+      # @param params [Hash{Symbol => Object}] Attributes to send in this request.
       #   @option params [String] :name Name of the group
       #   @option params [String, nil] :description Textual description of the group
       #   @option params [Array<String>, nil] :member_groups Ids of the groups this group inherits from
@@ -58,7 +58,7 @@ module Braintrust
       #
       # @param group_id [String] Group id
       #
-      # @param params [Hash] Attributes to send in this request.
+      # @param params [Hash{Symbol => Object}] Attributes to send in this request.
       #   @option params [Array<String>, nil] :add_member_groups A list of group IDs to add to the group's inheriting-from set
       #   @option params [Array<String>, nil] :add_member_users A list of user IDs to add to the group
       #   @option params [String, nil] :description Textual description of the group
@@ -83,7 +83,7 @@ module Braintrust
       # List out all groups. The groups are sorted by creation date, with the most
       #   recently-created groups coming first
       #
-      # @param params [Hash] Attributes to send in this request.
+      # @param params [Hash{Symbol => Object}] Attributes to send in this request.
       #   @option params [String, nil] :ending_before Pagination cursor id.
       #
       #     For example, if the initial item in the last page you fetched had an id of
@@ -133,7 +133,7 @@ module Braintrust
       #   one specified in the request, will replace the existing group with the provided
       #   fields
       #
-      # @param params [Hash] Attributes to send in this request.
+      # @param params [Hash{Symbol => Object}] Attributes to send in this request.
       #   @option params [String] :name Name of the group
       #   @option params [String, nil] :description Textual description of the group
       #   @option params [Array<String>, nil] :member_groups Ids of the groups this group inherits from

@@ -26,7 +26,7 @@ module Braintrust
       # List out all users. The users are sorted by creation date, with the most
       #   recently-created users coming first
       #
-      # @param params [Hash] Attributes to send in this request.
+      # @param params [Hash{Symbol => Object}] Attributes to send in this request.
       #   @option params [Array<String>, String, nil] :email Email of the user to search for. You may pass the param multiple times to filter
       #     for more than one email
       #   @option params [String, nil] :ending_before Pagination cursor id.

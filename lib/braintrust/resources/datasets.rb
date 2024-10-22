@@ -12,7 +12,7 @@ module Braintrust
       #   same name as the one specified in the request, will return the existing dataset
       #   unmodified
       #
-      # @param params [Hash] Attributes to send in this request.
+      # @param params [Hash{Symbol => Object}] Attributes to send in this request.
       #   @option params [String] :name Name of the dataset. Within a project, dataset names are unique
       #   @option params [String] :project_id Unique identifier for the project that the dataset belongs under
       #   @option params [String, nil] :description Textual description of the dataset
@@ -52,7 +52,7 @@ module Braintrust
       #
       # @param dataset_id [String] Dataset id
       #
-      # @param params [Hash] Attributes to send in this request.
+      # @param params [Hash{Symbol => Object}] Attributes to send in this request.
       #   @option params [String, nil] :description Textual description of the dataset
       #   @option params [Hash, nil] :metadata User-controlled metadata about the dataset
       #   @option params [String, nil] :name Name of the dataset. Within a project, dataset names are unique
@@ -74,7 +74,7 @@ module Braintrust
       # List out all datasets. The datasets are sorted by creation date, with the most
       #   recently-created datasets coming first
       #
-      # @param params [Hash] Attributes to send in this request.
+      # @param params [Hash{Symbol => Object}] Attributes to send in this request.
       #   @option params [String, nil] :dataset_name Name of the dataset to search for
       #   @option params [String, nil] :ending_before Pagination cursor id.
       #
@@ -126,7 +126,7 @@ module Braintrust
       #
       # @param dataset_id [String] Dataset id
       #
-      # @param params [Hash] Attributes to send in this request.
+      # @param params [Hash{Symbol => Object}] Attributes to send in this request.
       #   @option params [Array<Braintrust::Models::FeedbackDatasetItem>] :feedback A list of dataset feedback items
       #
       # @param opts [Hash, Braintrust::RequestOptions] Options to specify HTTP behaviour for this request.
@@ -148,7 +148,7 @@ module Braintrust
       #
       # @param dataset_id [String] Dataset id
       #
-      # @param params [Hash] Attributes to send in this request.
+      # @param params [Hash{Symbol => Object}] Attributes to send in this request.
       #   @option params [Integer, nil] :limit limit the number of traces fetched
       #
       #     Fetch queries may be paginated if the total result size is expected to be large
@@ -207,7 +207,7 @@ module Braintrust
       #
       # @param dataset_id [String] Dataset id
       #
-      # @param params [Hash] Attributes to send in this request.
+      # @param params [Hash{Symbol => Object}] Attributes to send in this request.
       #   @option params [String, nil] :cursor An opaque string to be used as a cursor for the next page of results, in order
       #     from latest to earliest.
       #
@@ -277,7 +277,7 @@ module Braintrust
       #
       # @param dataset_id [String] Dataset id
       #
-      # @param params [Hash] Attributes to send in this request.
+      # @param params [Hash{Symbol => Object}] Attributes to send in this request.
       #   @option params [Array<Braintrust::Models::InsertDatasetEventMerge, Braintrust::Models::InsertDatasetEventReplace>] :events A list of dataset events to insert
       #
       # @param opts [Hash, Braintrust::RequestOptions] Options to specify HTTP behaviour for this request.
@@ -298,7 +298,7 @@ module Braintrust
       #
       # @param dataset_id [String] Dataset id
       #
-      # @param params [Hash] Attributes to send in this request.
+      # @param params [Hash{Symbol => Object}] Attributes to send in this request.
       #   @option params [Boolean, nil] :summarize_data Whether to summarize the data. If false (or omitted), only the metadata will be
       #     returned.
       #

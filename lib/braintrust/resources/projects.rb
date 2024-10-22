@@ -15,7 +15,7 @@ module Braintrust
       # Create a new project. If there is an existing project with the same name as the
       #   one specified in the request, will return the existing project unmodified
       #
-      # @param params [Hash] Attributes to send in this request.
+      # @param params [Hash{Symbol => Object}] Attributes to send in this request.
       #   @option params [String] :name Name of the project
       #   @option params [String, nil] :org_name For nearly all users, this parameter should be unnecessary. But in the rare case
       #     that your API key belongs to multiple organizations, you may specify the name of
@@ -56,7 +56,7 @@ module Braintrust
       #
       # @param project_id [String] Project id
       #
-      # @param params [Hash] Attributes to send in this request.
+      # @param params [Hash{Symbol => Object}] Attributes to send in this request.
       #   @option params [String, nil] :name Name of the project
       #   @option params [Braintrust::Models::ProjectSettings, nil] :settings Project settings. Patch operations replace all settings, so make sure you
       #     include all settings you want to keep.
@@ -78,7 +78,7 @@ module Braintrust
       # List out all projects. The projects are sorted by creation date, with the most
       #   recently-created projects coming first
       #
-      # @param params [Hash] Attributes to send in this request.
+      # @param params [Hash{Symbol => Object}] Attributes to send in this request.
       #   @option params [String, nil] :ending_before Pagination cursor id.
       #
       #     For example, if the initial item in the last page you fetched had an id of

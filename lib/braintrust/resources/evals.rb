@@ -15,7 +15,7 @@ module Braintrust
       #   the experiment. To learn more about evals, see the
       #   [Evals guide](https://www.braintrust.dev/docs/guides/evals).
       #
-      # @param params [Hash] Attributes to send in this request.
+      # @param params [Hash{Symbol => Object}] Attributes to send in this request.
       #   @option params [Data::UnnamedTypeWithunionParent38, Data::UnnamedTypeWithunionParent39] :data The dataset to use
       #   @option params [String] :project_id Unique identifier for the project to run the eval in
       #   @option params [Array<Score::UnnamedTypeWithunionParent40, Score::UnnamedTypeWithunionParent41, Score::UnnamedTypeWithunionParent42, Score::UnnamedTypeWithunionParent43, Score::UnnamedTypeWithunionParent44, Score::UnnamedTypeWithunionParent45>] :scores The functions to score the eval on
