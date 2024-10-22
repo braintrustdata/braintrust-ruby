@@ -16,18 +16,17 @@ module Braintrust
       # @!attribute [rw] object_id_
       #   The id of the object the ACL applies to
       #   @return [String]
-      required :object_id_, String
+      required :object_id_, String, api_name: :object_id
 
       # @!attribute [rw] object_type
       #   The object type that the ACL applies to
-      #   One of the constants defined in {Braintrust::Models::ACL::ObjectType}
-      #   @return [Symbol]
+      #   @return [Symbol, Braintrust::Models::ACL::ObjectType]
       required :object_type, enum: -> { Braintrust::Models::ACL::ObjectType }
 
       # @!attribute [rw] created
       #   Date of acl creation
-      #   @return [DateTime]
-      optional :created, DateTime
+      #   @return [Time]
+      optional :created, Time
 
       # @!attribute [rw] group_id
       #   Id of the group the ACL applies to. Exactly one of `user_id` and `group_id` will be provided
@@ -38,14 +37,12 @@ module Braintrust
       #   Each permission permits a certain type of operation on an object in the system
       #
       # Permissions can be assigned to to objects on an individual basis, or grouped into roles
-      #   One of the constants defined in {Braintrust::Models::ACL::Permission}
-      #   @return [Symbol]
+      #   @return [Symbol, Braintrust::Models::ACL::Permission]
       optional :permission, enum: -> { Braintrust::Models::ACL::Permission }
 
       # @!attribute [rw] restrict_object_type
       #   The object type that the ACL applies to
-      #   One of the constants defined in {Braintrust::Models::ACL::RestrictObjectType}
-      #   @return [Symbol]
+      #   @return [Symbol, Braintrust::Models::ACL::RestrictObjectType]
       optional :restrict_object_type, enum: -> { Braintrust::Models::ACL::RestrictObjectType }
 
       # @!attribute [rw] role_id
@@ -101,6 +98,28 @@ module Braintrust
         PROJECT_LOG = :project_log
         ORG_PROJECT = :org_project
       end
+
+      # @!parse
+      #   # Create a new instance of ACL from a Hash of raw data.
+      #   #
+      #   # @param data [Hash{Symbol => Object}] .
+      #   #   @option data [String] :id Unique identifier for the acl
+      #   #   @option data [String] :_object_org_id The organization the ACL's referred object belongs to
+      #   #   @option data [String] :object_id The id of the object the ACL applies to
+      #   #   @option data [String] :object_type The object type that the ACL applies to
+      #   #   @option data [String, nil] :created Date of acl creation
+      #   #   @option data [String, nil] :group_id Id of the group the ACL applies to. Exactly one of `user_id` and `group_id` will
+      #   #     be provided
+      #   #   @option data [String, nil] :permission Each permission permits a certain type of operation on an object in the system
+      #   #
+      #   #     Permissions can be assigned to to objects on an individual basis, or grouped
+      #   #     into roles
+      #   #   @option data [String, nil] :restrict_object_type The object type that the ACL applies to
+      #   #   @option data [String, nil] :role_id Id of the role the ACL grants. Exactly one of `permission` and `role_id` will be
+      #   #     provided
+      #   #   @option data [String, nil] :user_id Id of the user the ACL applies to. Exactly one of `user_id` and `group_id` will
+      #   #     be provided
+      #   def initialize(data = {}) = super
     end
   end
 end

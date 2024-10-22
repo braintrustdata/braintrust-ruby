@@ -1,14 +1,29 @@
 # frozen_string_literal: true
 
-require "rake/testtask"
+require "minitest/test_task"
 require "rubocop/rake_task"
 
-task default: [:test, :format]
+task(default: [:test, :format])
 
-Rake::TestTask.new { |t| t.pattern = "./test/**/*_test.rb" }
-
-RuboCop::RakeTask.new(:rubocop) do |t|
-  t.options = ["-a", "--fail-level", "E"]
+Minitest::TestTask.create do |t|
+  t.libs = %w[.]
 end
 
-task format: [:rubocop]
+RuboCop::RakeTask.new(:rubocop) do |t|
+  t.options = %w[--fail-level E --autocorrect]
+  if ENV.key?("CI")
+    t.options += %w[--format github]
+  end
+end
+
+RuboCop::RakeTask.new(:format) do |t|
+  t.options = %w[--fail-level F --autocorrect --format offenses]
+end
+
+task(:build) do
+  sh(*%w[gem build -- braintrust.gemspec])
+end
+
+task(release: [:build]) do
+  sh(*%w[gem push], *FileList["braintrust-*.gem"])
+end

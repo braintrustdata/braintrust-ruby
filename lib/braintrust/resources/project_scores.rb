@@ -3,6 +3,7 @@
 module Braintrust
   module Resources
     class ProjectScores
+      # @param client [Braintrust::Client]
       def initialize(client:)
         @client = client
       end
@@ -11,37 +12,40 @@ module Braintrust
       #   with the same name as the one specified in the request, will return the existing
       #   project_score unmodified
       #
-      # @param params [Hash] Attributes to send in this request.
-      # @option params [String] :name Name of the project score
-      # @option params [String] :project_id Unique identifier for the project that the project score belongs under
-      # @option params [Symbol] :score_type The type of the configured score
-      # @option params [Array<Braintrust::Models::ProjectScoreCategory>|Array<String>|Categories::UnnamedTypeWithunionParent18|Hash] :categories For categorical-type project scores, the list of all categories
-      # @option params [Braintrust::Models::ProjectScoreConfig] :config
-      # @option params [String] :description Textual description of the project score
+      # @param params [Hash{Symbol => Object}] Attributes to send in this request.
+      #   @option params [String] :name Name of the project score
+      #   @option params [String] :project_id Unique identifier for the project that the project score belongs under
+      #   @option params [Symbol, Braintrust::Models::ProjectScoreType] :score_type The type of the configured score
+      #   @option params [Array<Braintrust::Models::ProjectScoreCategory>, Array<String>, Categories::UnnamedTypeWithunionParent18, Hash, nil] :categories For categorical-type project scores, the list of all categories
+      #   @option params [Braintrust::Models::ProjectScoreConfig, nil] :config
+      #   @option params [String, nil] :description Textual description of the project score
       #
-      # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash, Braintrust::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Braintrust::Models::ProjectScore]
       def create(params = {}, opts = {})
-        req = {}
-        req[:method] = :post
-        req[:path] = "/v1/project_score"
-        req[:body] = params
-        req[:model] = Braintrust::Models::ProjectScore
+        req = {
+          method: :post,
+          path: "/v1/project_score",
+          body: params,
+          headers: {"Content-Type" => "application/json"},
+          model: Braintrust::Models::ProjectScore
+        }
         @client.request(req, opts)
       end
 
       # Get a project_score object by its id
       #
       # @param project_score_id [String] ProjectScore id
-      # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash, Braintrust::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Braintrust::Models::ProjectScore]
       def retrieve(project_score_id, opts = {})
-        req = {}
-        req[:method] = :get
-        req[:path] = "/v1/project_score/#{project_score_id}"
-        req[:model] = Braintrust::Models::ProjectScore
+        req = {
+          method: :get,
+          path: "/v1/project_score/#{project_score_id}",
+          model: Braintrust::Models::ProjectScore
+        }
         @client.request(req, opts)
       end
 
@@ -51,72 +55,76 @@ module Braintrust
       #
       # @param project_score_id [String] ProjectScore id
       #
-      # @param params [Hash] Attributes to send in this request.
-      # @option params [Array<Braintrust::Models::ProjectScoreCategory>|Array<String>|Categories::UnnamedTypeWithunionParent19|Hash] :categories For categorical-type project scores, the list of all categories
-      # @option params [Braintrust::Models::ProjectScoreConfig] :config
-      # @option params [String] :description Textual description of the project score
-      # @option params [String] :name Name of the project score
-      # @option params [Symbol] :score_type The type of the configured score
+      # @param params [Hash{Symbol => Object}] Attributes to send in this request.
+      #   @option params [Array<Braintrust::Models::ProjectScoreCategory>, Array<String>, Categories::UnnamedTypeWithunionParent19, Hash, nil] :categories For categorical-type project scores, the list of all categories
+      #   @option params [Braintrust::Models::ProjectScoreConfig, nil] :config
+      #   @option params [String, nil] :description Textual description of the project score
+      #   @option params [String, nil] :name Name of the project score
+      #   @option params [Symbol, Braintrust::Models::ProjectScoreType, nil] :score_type The type of the configured score
       #
-      # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash, Braintrust::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Braintrust::Models::ProjectScore]
       def update(project_score_id, params = {}, opts = {})
-        req = {}
-        req[:method] = :patch
-        req[:path] = "/v1/project_score/#{project_score_id}"
-        req[:body] = params
-        req[:model] = Braintrust::Models::ProjectScore
+        req = {
+          method: :patch,
+          path: "/v1/project_score/#{project_score_id}",
+          body: params,
+          headers: {"Content-Type" => "application/json"},
+          model: Braintrust::Models::ProjectScore
+        }
         @client.request(req, opts)
       end
 
       # List out all project_scores. The project_scores are sorted by creation date,
       #   with the most recently-created project_scores coming first
       #
-      # @param params [Hash] Attributes to send in this request.
-      # @option params [String] :ending_before Pagination cursor id.
+      # @param params [Hash{Symbol => Object}] Attributes to send in this request.
+      #   @option params [String, nil] :ending_before Pagination cursor id.
       #
-      #   For example, if the initial item in the last page you fetched had an id of
-      #   `foo`, pass `ending_before=foo` to fetch the previous page. Note: you may only
-      #   pass one of `starting_after` and `ending_before`
-      # @option params [Array<String>|String] :ids Filter search results to a particular set of object IDs. To specify a list of
-      #   IDs, include the query param multiple times
-      # @option params [Integer] :limit Limit the number of objects to return
-      # @option params [String] :org_name Filter search results to within a particular organization
-      # @option params [String] :project_id Project id
-      # @option params [String] :project_name Name of the project to search for
-      # @option params [String] :project_score_name Name of the project_score to search for
-      # @option params [Array<Symbol>|Symbol] :score_type The type of the configured score
-      # @option params [String] :starting_after Pagination cursor id.
+      #     For example, if the initial item in the last page you fetched had an id of
+      #     `foo`, pass `ending_before=foo` to fetch the previous page. Note: you may only
+      #     pass one of `starting_after` and `ending_before`
+      #   @option params [Array<String>, String, nil] :ids Filter search results to a particular set of object IDs. To specify a list of
+      #     IDs, include the query param multiple times
+      #   @option params [Integer, nil] :limit Limit the number of objects to return
+      #   @option params [String, nil] :org_name Filter search results to within a particular organization
+      #   @option params [String, nil] :project_id Project id
+      #   @option params [String, nil] :project_name Name of the project to search for
+      #   @option params [String, nil] :project_score_name Name of the project_score to search for
+      #   @option params [Array<Symbol, Braintrust::Models::ProjectScoreType>, Symbol, Braintrust::Models::ProjectScoreType, nil] :score_type The type of the configured score
+      #   @option params [String, nil] :starting_after Pagination cursor id.
       #
-      #   For example, if the final item in the last page you fetched had an id of `foo`,
-      #   pass `starting_after=foo` to fetch the next page. Note: you may only pass one of
-      #   `starting_after` and `ending_before`
+      #     For example, if the final item in the last page you fetched had an id of `foo`,
+      #     pass `starting_after=foo` to fetch the next page. Note: you may only pass one of
+      #     `starting_after` and `ending_before`
       #
-      # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash, Braintrust::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Braintrust::ListObjects<Braintrust::Models::ProjectScore>]
       def list(params = {}, opts = {})
-        req = {}
-        req[:method] = :get
-        req[:path] = "/v1/project_score"
-        req[:query] = params
-        req[:page] = Braintrust::ListObjects
-        req[:model] = Braintrust::Models::ProjectScore
+        req = {
+          method: :get,
+          path: "/v1/project_score",
+          query: params,
+          page: Braintrust::ListObjects,
+          model: Braintrust::Models::ProjectScore
+        }
         @client.request(req, opts)
       end
 
       # Delete a project_score object by its id
       #
       # @param project_score_id [String] ProjectScore id
-      # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash, Braintrust::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Braintrust::Models::ProjectScore]
       def delete(project_score_id, opts = {})
-        req = {}
-        req[:method] = :delete
-        req[:path] = "/v1/project_score/#{project_score_id}"
-        req[:model] = Braintrust::Models::ProjectScore
+        req = {
+          method: :delete,
+          path: "/v1/project_score/#{project_score_id}",
+          model: Braintrust::Models::ProjectScore
+        }
         @client.request(req, opts)
       end
 
@@ -124,23 +132,25 @@ module Braintrust
       #   project with the same name as the one specified in the request, will replace the
       #   existing project_score with the provided fields
       #
-      # @param params [Hash] Attributes to send in this request.
-      # @option params [String] :name Name of the project score
-      # @option params [String] :project_id Unique identifier for the project that the project score belongs under
-      # @option params [Symbol] :score_type The type of the configured score
-      # @option params [Array<Braintrust::Models::ProjectScoreCategory>|Array<String>|Categories::UnnamedTypeWithunionParent20|Hash] :categories For categorical-type project scores, the list of all categories
-      # @option params [Braintrust::Models::ProjectScoreConfig] :config
-      # @option params [String] :description Textual description of the project score
+      # @param params [Hash{Symbol => Object}] Attributes to send in this request.
+      #   @option params [String] :name Name of the project score
+      #   @option params [String] :project_id Unique identifier for the project that the project score belongs under
+      #   @option params [Symbol, Braintrust::Models::ProjectScoreType] :score_type The type of the configured score
+      #   @option params [Array<Braintrust::Models::ProjectScoreCategory>, Array<String>, Categories::UnnamedTypeWithunionParent20, Hash, nil] :categories For categorical-type project scores, the list of all categories
+      #   @option params [Braintrust::Models::ProjectScoreConfig, nil] :config
+      #   @option params [String, nil] :description Textual description of the project score
       #
-      # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash, Braintrust::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Braintrust::Models::ProjectScore]
       def replace(params = {}, opts = {})
-        req = {}
-        req[:method] = :put
-        req[:path] = "/v1/project_score"
-        req[:body] = params
-        req[:model] = Braintrust::Models::ProjectScore
+        req = {
+          method: :put,
+          path: "/v1/project_score",
+          body: params,
+          headers: {"Content-Type" => "application/json"},
+          model: Braintrust::Models::ProjectScore
+        }
         @client.request(req, opts)
       end
     end

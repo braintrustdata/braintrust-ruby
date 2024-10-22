@@ -17,3 +17,6 @@ jobs:
       - name: Check release environment
         run: |
           bash ./bin/check-release-environment
+        env:
+          RUBYGEMS_HOST: ${{ secrets.BRAINTRUST_RUBYGEMS_HOST || secrets.RUBYGEMS_HOST }}
+          GEM_HOST_API_KEY: ${{ secrets.BRAINTRUST_GEM_HOST_API_KEY || secrets.GEM_HOST_API_KEY }}
