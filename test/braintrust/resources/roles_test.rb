@@ -2,9 +2,14 @@
 
 require_relative "../test_helper"
 
-class Braintrust::Test::Resources::RolesTest < Test::Unit::TestCase
+class Braintrust::Test::Resources::RolesTest < Minitest::Test
+  parallelize_me!
+
   def setup
-    @braintrust = Braintrust::Client.new(base_url: "http://localhost:4010", api_key: "My API Key")
+    @braintrust = Braintrust::Client.new(
+      base_url: ENV.fetch("TEST_API_BASE_URL", "http://localhost:4010"),
+      api_key: "My API Key"
+    )
   end
 
   def test_create_required_params

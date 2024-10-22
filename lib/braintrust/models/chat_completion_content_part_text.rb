@@ -4,8 +4,7 @@ module Braintrust
   module Models
     class ChatCompletionContentPartText < BaseModel
       # @!attribute [rw] type
-      #   One of the constants defined in {Braintrust::Models::ChatCompletionContentPartText::Type}
-      #   @return [Symbol]
+      #   @return [Symbol, Braintrust::Models::ChatCompletionContentPartText::Type]
       required :type, enum: -> { Braintrust::Models::ChatCompletionContentPartText::Type }
 
       # @!attribute [rw] text
@@ -15,6 +14,14 @@ module Braintrust
       class Type < Braintrust::Enum
         TEXT = :text
       end
+
+      # @!parse
+      #   # Create a new instance of ChatCompletionContentPartText from a Hash of raw data.
+      #   #
+      #   # @param data [Hash{Symbol => Object}] .
+      #   #   @option data [String] :type
+      #   #   @option data [String, nil] :text
+      #   def initialize(data = {}) = super
     end
   end
 end
