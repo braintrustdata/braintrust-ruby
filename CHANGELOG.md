@@ -1,5 +1,15 @@
 # Changelog
 
+## 0.1.0-alpha.6 (2024-10-22)
+
+Full Changelog: [v0.1.0-alpha.5...v0.1.0-alpha.6](https://github.com/braintrustdata/braintrust-ruby/compare/v0.1.0-alpha.5...v0.1.0-alpha.6)
+
+### Features
+
+* **api:** api update ([#68](https://github.com/braintrustdata/braintrust-ruby/issues/68)) ([3e5b2a6](https://github.com/braintrustdata/braintrust-ruby/commit/3e5b2a6ea25345251c170e46278c24f98e818c2f))
+* **api:** api update ([#70](https://github.com/braintrustdata/braintrust-ruby/issues/70)) ([5d6f20e](https://github.com/braintrustdata/braintrust-ruby/commit/5d6f20e3ef41e7aef15d1779a02be8792af2dbac))
+* **api:** api update ([#71](https://github.com/braintrustdata/braintrust-ruby/issues/71)) ([5a6d084](https://github.com/braintrustdata/braintrust-ruby/commit/5a6d0840f8b840ff52b228033c9007f0f7478dd8))
+
 ## 0.1.0-alpha.5 (2024-10-01)
 
 Full Changelog: [v0.1.0-alpha.4...v0.1.0-alpha.5](https://github.com/braintrustdata/braintrust-ruby/compare/v0.1.0-alpha.4...v0.1.0-alpha.5)
