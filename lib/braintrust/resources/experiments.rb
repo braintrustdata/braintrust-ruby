@@ -30,7 +30,7 @@ module Braintrust
       #     anybody inside or outside the organization
       #   @option params [Braintrust::Models::RepoInfo, nil] :repo_info Metadata about the state of the repo when the experiment was created
       #
-      # @param opts [Hash, Braintrust::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash{Symbol => Object}, Braintrust::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Braintrust::Models::Experiment]
       def create(params = {}, opts = {})
@@ -47,7 +47,7 @@ module Braintrust
       # Get an experiment object by its id
       #
       # @param experiment_id [String] Experiment id
-      # @param opts [Hash, Braintrust::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash{Symbol => Object}, Braintrust::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Braintrust::Models::Experiment]
       def retrieve(experiment_id, opts = {})
@@ -78,7 +78,7 @@ module Braintrust
       #     anybody inside or outside the organization
       #   @option params [Braintrust::Models::RepoInfo, nil] :repo_info Metadata about the state of the repo when the experiment was created
       #
-      # @param opts [Hash, Braintrust::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash{Symbol => Object}, Braintrust::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Braintrust::Models::Experiment]
       def update(experiment_id, params = {}, opts = {})
@@ -114,7 +114,7 @@ module Braintrust
       #     pass `starting_after=foo` to fetch the next page. Note: you may only pass one of
       #     `starting_after` and `ending_before`
       #
-      # @param opts [Hash, Braintrust::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash{Symbol => Object}, Braintrust::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Braintrust::ListObjects<Braintrust::Models::Experiment>]
       def list(params = {}, opts = {})
@@ -131,7 +131,7 @@ module Braintrust
       # Delete an experiment object by its id
       #
       # @param experiment_id [String] Experiment id
-      # @param opts [Hash, Braintrust::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash{Symbol => Object}, Braintrust::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Braintrust::Models::Experiment]
       def delete(experiment_id, opts = {})
@@ -150,7 +150,7 @@ module Braintrust
       # @param params [Hash{Symbol => Object}] Attributes to send in this request.
       #   @option params [Array<Braintrust::Models::FeedbackExperimentItem>] :feedback A list of experiment feedback items
       #
-      # @param opts [Hash, Braintrust::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash{Symbol => Object}, Braintrust::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Braintrust::Models::FeedbackResponseSchema]
       def feedback(experiment_id, params = {}, opts = {})
@@ -210,7 +210,7 @@ module Braintrust
       #     can use the `max_xact_id` returned by a past fetch as the version to reproduce
       #     that exact fetch.
       #
-      # @param opts [Hash, Braintrust::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash{Symbol => Object}, Braintrust::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Braintrust::Models::FetchExperimentEventsResponse]
       def fetch(experiment_id, params = {}, opts = {})
@@ -280,7 +280,7 @@ module Braintrust
       #     can use the `max_xact_id` returned by a past fetch as the version to reproduce
       #     that exact fetch.
       #
-      # @param opts [Hash, Braintrust::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash{Symbol => Object}, Braintrust::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Braintrust::Models::FetchExperimentEventsResponse]
       def fetch_post(experiment_id, params = {}, opts = {})
@@ -301,7 +301,7 @@ module Braintrust
       # @param params [Hash{Symbol => Object}] Attributes to send in this request.
       #   @option params [Array<Braintrust::Models::InsertExperimentEventMerge, Braintrust::Models::InsertExperimentEventReplace>] :events A list of experiment events to insert
       #
-      # @param opts [Hash, Braintrust::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash{Symbol => Object}, Braintrust::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Braintrust::Models::InsertEventsResponse]
       def insert(experiment_id, params = {}, opts = {})
@@ -327,7 +327,7 @@ module Braintrust
       #   @option params [Boolean, nil] :summarize_scores Whether to summarize the scores and metrics. If false (or omitted), only the
       #     metadata will be returned.
       #
-      # @param opts [Hash, Braintrust::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash{Symbol => Object}, Braintrust::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Braintrust::Models::SummarizeExperimentResponse]
       def summarize(experiment_id, params = {}, opts = {})

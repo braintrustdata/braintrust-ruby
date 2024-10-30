@@ -21,7 +21,7 @@ module Braintrust
       #     left intact, not replaced with null.
       #   @option params [String, nil] :type
       #
-      # @param opts [Hash, Braintrust::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash{Symbol => Object}, Braintrust::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Braintrust::Models::AISecret]
       def create(params = {}, opts = {})
@@ -38,7 +38,7 @@ module Braintrust
       # Get an ai_secret object by its id
       #
       # @param ai_secret_id [String] AiSecret id
-      # @param opts [Hash, Braintrust::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash{Symbol => Object}, Braintrust::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Braintrust::Models::AISecret]
       def retrieve(ai_secret_id, opts = {})
@@ -62,7 +62,7 @@ module Braintrust
       #   @option params [String, nil] :secret
       #   @option params [String, nil] :type
       #
-      # @param opts [Hash, Braintrust::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash{Symbol => Object}, Braintrust::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Braintrust::Models::AISecret]
       def update(ai_secret_id, params = {}, opts = {})
@@ -97,7 +97,7 @@ module Braintrust
       #     pass `starting_after=foo` to fetch the next page. Note: you may only pass one of
       #     `starting_after` and `ending_before`
       #
-      # @param opts [Hash, Braintrust::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash{Symbol => Object}, Braintrust::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Braintrust::ListObjects<Braintrust::Models::AISecret>]
       def list(params = {}, opts = {})
@@ -114,7 +114,7 @@ module Braintrust
       # Delete an ai_secret object by its id
       #
       # @param ai_secret_id [String] AiSecret id
-      # @param opts [Hash, Braintrust::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash{Symbol => Object}, Braintrust::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Braintrust::Models::AISecret]
       def delete(ai_secret_id, opts = {})
@@ -134,7 +134,7 @@ module Braintrust
       #     that your API key belongs to multiple organizations, you may specify the name of
       #     the organization the AI Secret belongs in.
       #
-      # @param opts [Hash, Braintrust::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash{Symbol => Object}, Braintrust::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Braintrust::Models::AISecret]
       def find_and_delete(params = {}, opts = {})
@@ -162,7 +162,7 @@ module Braintrust
       #     left intact, not replaced with null.
       #   @option params [String, nil] :type
       #
-      # @param opts [Hash, Braintrust::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash{Symbol => Object}, Braintrust::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Braintrust::Models::AISecret]
       def replace(params = {}, opts = {})

@@ -15,7 +15,7 @@ module Braintrust
       # Get an organization object by its id
       #
       # @param organization_id [String] Organization id
-      # @param opts [Hash, Braintrust::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash{Symbol => Object}, Braintrust::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Braintrust::Models::Organization]
       def retrieve(organization_id, opts = {})
@@ -40,7 +40,7 @@ module Braintrust
       #   @option params [String, nil] :proxy_url
       #   @option params [String, nil] :realtime_url
       #
-      # @param opts [Hash, Braintrust::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash{Symbol => Object}, Braintrust::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Braintrust::Models::Organization]
       def update(organization_id, params = {}, opts = {})
@@ -73,7 +73,7 @@ module Braintrust
       #     pass `starting_after=foo` to fetch the next page. Note: you may only pass one of
       #     `starting_after` and `ending_before`
       #
-      # @param opts [Hash, Braintrust::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash{Symbol => Object}, Braintrust::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Braintrust::ListObjects<Braintrust::Models::Organization>]
       def list(params = {}, opts = {})
@@ -90,7 +90,7 @@ module Braintrust
       # Delete an organization object by its id
       #
       # @param organization_id [String] Organization id
-      # @param opts [Hash, Braintrust::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash{Symbol => Object}, Braintrust::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Braintrust::Models::Organization]
       def delete(organization_id, opts = {})

@@ -11,7 +11,7 @@ module Braintrust
       # Default endpoint. Simply replies with 'Hello, World!'. Authorization is not
       #   required
       #
-      # @param opts [Hash, Braintrust::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash{Symbol => Object}, Braintrust::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [String]
       def hello_world(opts = {})

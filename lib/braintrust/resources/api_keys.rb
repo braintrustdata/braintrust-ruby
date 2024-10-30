@@ -17,7 +17,7 @@ module Braintrust
       #     that your API key belongs to multiple organizations, you may specify the name of
       #     the organization the API key belongs in.
       #
-      # @param opts [Hash, Braintrust::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash{Symbol => Object}, Braintrust::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Braintrust::Models::CreateAPIKeyOutput]
       def create(params = {}, opts = {})
@@ -34,7 +34,7 @@ module Braintrust
       # Get an api_key object by its id
       #
       # @param api_key_id [String] ApiKey id
-      # @param opts [Hash, Braintrust::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash{Symbol => Object}, Braintrust::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Braintrust::Models::APIKey]
       def retrieve(api_key_id, opts = {})
@@ -66,7 +66,7 @@ module Braintrust
       #     pass `starting_after=foo` to fetch the next page. Note: you may only pass one of
       #     `starting_after` and `ending_before`
       #
-      # @param opts [Hash, Braintrust::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash{Symbol => Object}, Braintrust::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Braintrust::ListObjects<Braintrust::Models::APIKey>]
       def list(params = {}, opts = {})
@@ -83,7 +83,7 @@ module Braintrust
       # Delete an api_key object by its id
       #
       # @param api_key_id [String] ApiKey id
-      # @param opts [Hash, Braintrust::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash{Symbol => Object}, Braintrust::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Braintrust::Models::APIKey]
       def delete(api_key_id, opts = {})

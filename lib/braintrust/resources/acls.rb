@@ -26,7 +26,7 @@ module Braintrust
       #   @option params [String, nil] :user_id Id of the user the ACL applies to. Exactly one of `user_id` and `group_id` will
       #     be provided
       #
-      # @param opts [Hash, Braintrust::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash{Symbol => Object}, Braintrust::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Braintrust::Models::ACL]
       def create(params = {}, opts = {})
@@ -43,7 +43,7 @@ module Braintrust
       # Get an acl object by its id
       #
       # @param acl_id [String] Acl id
-      # @param opts [Hash, Braintrust::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash{Symbol => Object}, Braintrust::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Braintrust::Models::ACL]
       def retrieve(acl_id, opts = {})
@@ -75,7 +75,7 @@ module Braintrust
       #     pass `starting_after=foo` to fetch the next page. Note: you may only pass one of
       #     `starting_after` and `ending_before`
       #
-      # @param opts [Hash, Braintrust::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash{Symbol => Object}, Braintrust::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Braintrust::ListObjects<Braintrust::Models::ACL>]
       def list(params = {}, opts = {})
@@ -92,7 +92,7 @@ module Braintrust
       # Delete an acl object by its id
       #
       # @param acl_id [String] Acl id
-      # @param opts [Hash, Braintrust::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash{Symbol => Object}, Braintrust::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Braintrust::Models::ACL]
       def delete(acl_id, opts = {})
@@ -130,7 +130,7 @@ module Braintrust
       #     `restrict_object_type` in the ACL, as part of a direct permission grant or as
       #     part of a role.
       #
-      # @param opts [Hash, Braintrust::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash{Symbol => Object}, Braintrust::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Braintrust::Models::ACLBatchUpdateResponse]
       def batch_update(params = {}, opts = {})
@@ -161,7 +161,7 @@ module Braintrust
       #   @option params [String, nil] :user_id Id of the user the ACL applies to. Exactly one of `user_id` and `group_id` will
       #     be provided
       #
-      # @param opts [Hash, Braintrust::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash{Symbol => Object}, Braintrust::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Braintrust::Models::ACL]
       def find_and_delete(params = {}, opts = {})

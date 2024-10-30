@@ -21,7 +21,7 @@ module Braintrust
       #     that your API key belongs to multiple organizations, you may specify the name of
       #     the organization the project belongs in.
       #
-      # @param opts [Hash, Braintrust::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash{Symbol => Object}, Braintrust::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Braintrust::Models::Project]
       def create(params = {}, opts = {})
@@ -38,7 +38,7 @@ module Braintrust
       # Get a project object by its id
       #
       # @param project_id [String] Project id
-      # @param opts [Hash, Braintrust::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash{Symbol => Object}, Braintrust::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Braintrust::Models::Project]
       def retrieve(project_id, opts = {})
@@ -61,7 +61,7 @@ module Braintrust
       #   @option params [Braintrust::Models::ProjectSettings, nil] :settings Project settings. Patch operations replace all settings, so make sure you
       #     include all settings you want to keep.
       #
-      # @param opts [Hash, Braintrust::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash{Symbol => Object}, Braintrust::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Braintrust::Models::Project]
       def update(project_id, params = {}, opts = {})
@@ -95,7 +95,7 @@ module Braintrust
       #     pass `starting_after=foo` to fetch the next page. Note: you may only pass one of
       #     `starting_after` and `ending_before`
       #
-      # @param opts [Hash, Braintrust::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash{Symbol => Object}, Braintrust::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Braintrust::ListObjects<Braintrust::Models::Project>]
       def list(params = {}, opts = {})
@@ -112,7 +112,7 @@ module Braintrust
       # Delete a project object by its id
       #
       # @param project_id [String] Project id
-      # @param opts [Hash, Braintrust::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash{Symbol => Object}, Braintrust::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Braintrust::Models::Project]
       def delete(project_id, opts = {})
