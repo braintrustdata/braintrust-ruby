@@ -21,7 +21,7 @@ module Braintrust
       #   @option params [Braintrust::Models::PromptData, nil] :prompt_data The prompt, model, and its parameters
       #   @option params [Array<String>, nil] :tags A list of tags for the prompt
       #
-      # @param opts [Hash, Braintrust::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash{Symbol => Object}, Braintrust::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Braintrust::Models::Prompt]
       def create(params = {}, opts = {})
@@ -38,7 +38,7 @@ module Braintrust
       # Get a prompt object by its id
       #
       # @param prompt_id [String] Prompt id
-      # @param opts [Hash, Braintrust::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash{Symbol => Object}, Braintrust::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Braintrust::Models::Prompt]
       def retrieve(prompt_id, opts = {})
@@ -63,7 +63,7 @@ module Braintrust
       #   @option params [String, nil] :slug Unique identifier for the prompt
       #   @option params [Array<String>, nil] :tags A list of tags for the prompt
       #
-      # @param opts [Hash, Braintrust::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash{Symbol => Object}, Braintrust::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Braintrust::Models::Prompt]
       def update(prompt_id, params = {}, opts = {})
@@ -104,7 +104,7 @@ module Braintrust
       #     The version id can either be a transaction id (e.g. '1000192656880881099') or a
       #     version identifier (e.g. '81cd05ee665fdfb3').
       #
-      # @param opts [Hash, Braintrust::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash{Symbol => Object}, Braintrust::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Braintrust::ListObjects<Braintrust::Models::Prompt>]
       def list(params = {}, opts = {})
@@ -121,7 +121,7 @@ module Braintrust
       # Delete a prompt object by its id
       #
       # @param prompt_id [String] Prompt id
-      # @param opts [Hash, Braintrust::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash{Symbol => Object}, Braintrust::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Braintrust::Models::Prompt]
       def delete(prompt_id, opts = {})
@@ -146,7 +146,7 @@ module Braintrust
       #   @option params [Braintrust::Models::PromptData, nil] :prompt_data The prompt, model, and its parameters
       #   @option params [Array<String>, nil] :tags A list of tags for the prompt
       #
-      # @param opts [Hash, Braintrust::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash{Symbol => Object}, Braintrust::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Braintrust::Models::Prompt]
       def replace(params = {}, opts = {})

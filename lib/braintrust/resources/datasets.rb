@@ -17,7 +17,7 @@ module Braintrust
       #   @option params [String] :project_id Unique identifier for the project that the dataset belongs under
       #   @option params [String, nil] :description Textual description of the dataset
       #
-      # @param opts [Hash, Braintrust::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash{Symbol => Object}, Braintrust::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Braintrust::Models::Dataset]
       def create(params = {}, opts = {})
@@ -34,7 +34,7 @@ module Braintrust
       # Get a dataset object by its id
       #
       # @param dataset_id [String] Dataset id
-      # @param opts [Hash, Braintrust::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash{Symbol => Object}, Braintrust::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Braintrust::Models::Dataset]
       def retrieve(dataset_id, opts = {})
@@ -57,7 +57,7 @@ module Braintrust
       #   @option params [Hash, nil] :metadata User-controlled metadata about the dataset
       #   @option params [String, nil] :name Name of the dataset. Within a project, dataset names are unique
       #
-      # @param opts [Hash, Braintrust::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash{Symbol => Object}, Braintrust::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Braintrust::Models::Dataset]
       def update(dataset_id, params = {}, opts = {})
@@ -93,7 +93,7 @@ module Braintrust
       #     pass `starting_after=foo` to fetch the next page. Note: you may only pass one of
       #     `starting_after` and `ending_before`
       #
-      # @param opts [Hash, Braintrust::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash{Symbol => Object}, Braintrust::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Braintrust::ListObjects<Braintrust::Models::Dataset>]
       def list(params = {}, opts = {})
@@ -110,7 +110,7 @@ module Braintrust
       # Delete a dataset object by its id
       #
       # @param dataset_id [String] Dataset id
-      # @param opts [Hash, Braintrust::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash{Symbol => Object}, Braintrust::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Braintrust::Models::Dataset]
       def delete(dataset_id, opts = {})
@@ -129,7 +129,7 @@ module Braintrust
       # @param params [Hash{Symbol => Object}] Attributes to send in this request.
       #   @option params [Array<Braintrust::Models::FeedbackDatasetItem>] :feedback A list of dataset feedback items
       #
-      # @param opts [Hash, Braintrust::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash{Symbol => Object}, Braintrust::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Braintrust::Models::FeedbackResponseSchema]
       def feedback(dataset_id, params = {}, opts = {})
@@ -189,7 +189,7 @@ module Braintrust
       #     can use the `max_xact_id` returned by a past fetch as the version to reproduce
       #     that exact fetch.
       #
-      # @param opts [Hash, Braintrust::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash{Symbol => Object}, Braintrust::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Braintrust::Models::FetchDatasetEventsResponse]
       def fetch(dataset_id, params = {}, opts = {})
@@ -259,7 +259,7 @@ module Braintrust
       #     can use the `max_xact_id` returned by a past fetch as the version to reproduce
       #     that exact fetch.
       #
-      # @param opts [Hash, Braintrust::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash{Symbol => Object}, Braintrust::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Braintrust::Models::FetchDatasetEventsResponse]
       def fetch_post(dataset_id, params = {}, opts = {})
@@ -280,7 +280,7 @@ module Braintrust
       # @param params [Hash{Symbol => Object}] Attributes to send in this request.
       #   @option params [Array<Braintrust::Models::InsertDatasetEventMerge, Braintrust::Models::InsertDatasetEventReplace>] :events A list of dataset events to insert
       #
-      # @param opts [Hash, Braintrust::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash{Symbol => Object}, Braintrust::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Braintrust::Models::InsertEventsResponse]
       def insert(dataset_id, params = {}, opts = {})
@@ -302,7 +302,7 @@ module Braintrust
       #   @option params [Boolean, nil] :summarize_data Whether to summarize the data. If false (or omitted), only the metadata will be
       #     returned.
       #
-      # @param opts [Hash, Braintrust::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash{Symbol => Object}, Braintrust::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Braintrust::Models::SummarizeDatasetResponse]
       def summarize(dataset_id, params = {}, opts = {})

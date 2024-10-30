@@ -18,7 +18,7 @@ module Braintrust
       #   @option params [String, nil] :color Color of the tag for the UI
       #   @option params [String, nil] :description Textual description of the project tag
       #
-      # @param opts [Hash, Braintrust::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash{Symbol => Object}, Braintrust::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Braintrust::Models::ProjectTag]
       def create(params = {}, opts = {})
@@ -35,7 +35,7 @@ module Braintrust
       # Get a project_tag object by its id
       #
       # @param project_tag_id [String] ProjectTag id
-      # @param opts [Hash, Braintrust::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash{Symbol => Object}, Braintrust::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Braintrust::Models::ProjectTag]
       def retrieve(project_tag_id, opts = {})
@@ -58,7 +58,7 @@ module Braintrust
       #   @option params [String, nil] :description Textual description of the project tag
       #   @option params [String, nil] :name Name of the project tag
       #
-      # @param opts [Hash, Braintrust::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash{Symbol => Object}, Braintrust::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Braintrust::Models::ProjectTag]
       def update(project_tag_id, params = {}, opts = {})
@@ -94,7 +94,7 @@ module Braintrust
       #     pass `starting_after=foo` to fetch the next page. Note: you may only pass one of
       #     `starting_after` and `ending_before`
       #
-      # @param opts [Hash, Braintrust::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash{Symbol => Object}, Braintrust::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Braintrust::ListObjects<Braintrust::Models::ProjectTag>]
       def list(params = {}, opts = {})
@@ -111,7 +111,7 @@ module Braintrust
       # Delete a project_tag object by its id
       #
       # @param project_tag_id [String] ProjectTag id
-      # @param opts [Hash, Braintrust::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash{Symbol => Object}, Braintrust::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Braintrust::Models::ProjectTag]
       def delete(project_tag_id, opts = {})
@@ -133,7 +133,7 @@ module Braintrust
       #   @option params [String, nil] :color Color of the tag for the UI
       #   @option params [String, nil] :description Textual description of the project tag
       #
-      # @param opts [Hash, Braintrust::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash{Symbol => Object}, Braintrust::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Braintrust::Models::ProjectTag]
       def replace(params = {}, opts = {})

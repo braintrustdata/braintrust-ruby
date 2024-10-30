@@ -16,7 +16,7 @@ module Braintrust
         # @param params [Hash{Symbol => Object}] Attributes to send in this request.
         #   @option params [Array<Braintrust::Models::FeedbackProjectLogsItem>] :feedback A list of project logs feedback items
         #
-        # @param opts [Hash, Braintrust::RequestOptions] Options to specify HTTP behaviour for this request.
+        # @param opts [Hash{Symbol => Object}, Braintrust::RequestOptions] Options to specify HTTP behaviour for this request.
         #
         # @return [Braintrust::Models::FeedbackResponseSchema]
         def feedback(project_id, params = {}, opts = {})
@@ -76,7 +76,7 @@ module Braintrust
         #     can use the `max_xact_id` returned by a past fetch as the version to reproduce
         #     that exact fetch.
         #
-        # @param opts [Hash, Braintrust::RequestOptions] Options to specify HTTP behaviour for this request.
+        # @param opts [Hash{Symbol => Object}, Braintrust::RequestOptions] Options to specify HTTP behaviour for this request.
         #
         # @return [Braintrust::Models::FetchProjectLogsEventsResponse]
         def fetch(project_id, params = {}, opts = {})
@@ -146,7 +146,7 @@ module Braintrust
         #     can use the `max_xact_id` returned by a past fetch as the version to reproduce
         #     that exact fetch.
         #
-        # @param opts [Hash, Braintrust::RequestOptions] Options to specify HTTP behaviour for this request.
+        # @param opts [Hash{Symbol => Object}, Braintrust::RequestOptions] Options to specify HTTP behaviour for this request.
         #
         # @return [Braintrust::Models::FetchProjectLogsEventsResponse]
         def fetch_post(project_id, params = {}, opts = {})
@@ -167,7 +167,7 @@ module Braintrust
         # @param params [Hash{Symbol => Object}] Attributes to send in this request.
         #   @option params [Array<Braintrust::Models::InsertProjectLogsEventMerge, Braintrust::Models::InsertProjectLogsEventReplace>] :events A list of project logs events to insert
         #
-        # @param opts [Hash, Braintrust::RequestOptions] Options to specify HTTP behaviour for this request.
+        # @param opts [Hash{Symbol => Object}, Braintrust::RequestOptions] Options to specify HTTP behaviour for this request.
         #
         # @return [Braintrust::Models::InsertEventsResponse]
         def insert(project_id, params = {}, opts = {})
