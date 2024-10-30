@@ -21,7 +21,7 @@ module Braintrust
       #   @option params [String, nil] :user_id Identifies the user who created the view
       #   @option params [Braintrust::Models::ViewData, nil] :view_data The view definition
       #
-      # @param opts [Hash, Braintrust::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash{Symbol => Object}, Braintrust::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Braintrust::Models::View]
       def create(params = {}, opts = {})
@@ -43,7 +43,7 @@ module Braintrust
       #   @option params [String] :object_id The id of the object the ACL applies to
       #   @option params [Symbol, ObjectType] :object_type The object type that the ACL applies to
       #
-      # @param opts [Hash, Braintrust::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash{Symbol => Object}, Braintrust::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Braintrust::Models::View]
       def retrieve(view_id, params = {}, opts = {})
@@ -71,7 +71,7 @@ module Braintrust
       #   @option params [Braintrust::Models::ViewData, nil] :view_data The view definition
       #   @option params [Symbol, ViewType, nil] :view_type Type of table that the view corresponds to.
       #
-      # @param opts [Hash, Braintrust::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash{Symbol => Object}, Braintrust::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Braintrust::Models::View]
       def update(view_id, params = {}, opts = {})
@@ -107,7 +107,7 @@ module Braintrust
       #   @option params [String, nil] :view_name Name of the view to search for
       #   @option params [Symbol, ViewType, nil] :view_type Type of table that the view corresponds to.
       #
-      # @param opts [Hash, Braintrust::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash{Symbol => Object}, Braintrust::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Braintrust::ListObjects<Braintrust::Models::View>]
       def list(params = {}, opts = {})
@@ -129,7 +129,7 @@ module Braintrust
       #   @option params [String] :object_id The id of the object the view applies to
       #   @option params [Symbol, ObjectType] :object_type The object type that the ACL applies to
       #
-      # @param opts [Hash, Braintrust::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash{Symbol => Object}, Braintrust::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Braintrust::Models::View]
       def delete(view_id, params = {}, opts = {})
@@ -157,7 +157,7 @@ module Braintrust
       #   @option params [String, nil] :user_id Identifies the user who created the view
       #   @option params [Braintrust::Models::ViewData, nil] :view_data The view definition
       #
-      # @param opts [Hash, Braintrust::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash{Symbol => Object}, Braintrust::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Braintrust::Models::View]
       def replace(params = {}, opts = {})
