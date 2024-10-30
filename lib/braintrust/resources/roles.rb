@@ -23,7 +23,7 @@ module Braintrust
       #     that your API key belongs to multiple organizations, you may specify the name of
       #     the organization the role belongs in.
       #
-      # @param opts [Hash, Braintrust::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash{Symbol => Object}, Braintrust::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Braintrust::Models::Role]
       def create(params = {}, opts = {})
@@ -40,7 +40,7 @@ module Braintrust
       # Get a role object by its id
       #
       # @param role_id [String] Role id
-      # @param opts [Hash, Braintrust::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash{Symbol => Object}, Braintrust::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Braintrust::Models::Role]
       def retrieve(role_id, opts = {})
@@ -66,7 +66,7 @@ module Braintrust
       #   @option params [Array<RemoveMemberPermission>, nil] :remove_member_permissions A list of permissions to remove from the role
       #   @option params [Array<String>, nil] :remove_member_roles A list of role IDs to remove from the role's inheriting-from set
       #
-      # @param opts [Hash, Braintrust::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash{Symbol => Object}, Braintrust::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Braintrust::Models::Role]
       def update(role_id, params = {}, opts = {})
@@ -100,7 +100,7 @@ module Braintrust
       #     pass `starting_after=foo` to fetch the next page. Note: you may only pass one of
       #     `starting_after` and `ending_before`
       #
-      # @param opts [Hash, Braintrust::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash{Symbol => Object}, Braintrust::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Braintrust::ListObjects<Braintrust::Models::Role>]
       def list(params = {}, opts = {})
@@ -117,7 +117,7 @@ module Braintrust
       # Delete a role object by its id
       #
       # @param role_id [String] Role id
-      # @param opts [Hash, Braintrust::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash{Symbol => Object}, Braintrust::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Braintrust::Models::Role]
       def delete(role_id, opts = {})
@@ -145,7 +145,7 @@ module Braintrust
       #     that your API key belongs to multiple organizations, you may specify the name of
       #     the organization the role belongs in.
       #
-      # @param opts [Hash, Braintrust::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash{Symbol => Object}, Braintrust::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Braintrust::Models::Role]
       def replace(params = {}, opts = {})

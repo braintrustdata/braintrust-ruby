@@ -8,13 +8,17 @@ module Braintrust
       @pools = {}
     end
 
+    # @param req [Hash{Symbol => Object}]
+    # @param timeout [Float]
+    #
+    # @return [ConnectionPool]
     def get_pool(req, timeout:)
       hostname = req[:host]
       scheme = req[:scheme]
       port =
         req[:port] ||
         case scheme.to_sym
-        when :https
+        in :https
           Net::HTTP.https_default_port
         else
           Net::HTTP.http_default_port
@@ -32,6 +36,10 @@ module Braintrust
       end
     end
 
+    # @param req [Hash{Symbol => Object}]
+    # @param timeout [Float]
+    #
+    # @return [Net::HTTPResponse]
     def execute(req, timeout:)
       method, headers, body = req.values_at(:method, :headers, :body)
       get_pool(req, timeout: timeout).with do |conn|

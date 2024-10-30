@@ -17,7 +17,7 @@ module Braintrust
       #   @option params [Symbol, ObjectType] :object_type The type of the object the environment variable is scoped for
       #   @option params [String, nil] :value The value of the environment variable. Will be encrypted at rest.
       #
-      # @param opts [Hash, Braintrust::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash{Symbol => Object}, Braintrust::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Braintrust::Models::EnvVar]
       def create(params = {}, opts = {})
@@ -34,7 +34,7 @@ module Braintrust
       # Get an env_var object by its id
       #
       # @param env_var_id [String] EnvVar id
-      # @param opts [Hash, Braintrust::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash{Symbol => Object}, Braintrust::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Braintrust::Models::EnvVar]
       def retrieve(env_var_id, opts = {})
@@ -56,7 +56,7 @@ module Braintrust
       #   @option params [String] :name The name of the environment variable
       #   @option params [String, nil] :value The value of the environment variable. Will be encrypted at rest.
       #
-      # @param opts [Hash, Braintrust::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash{Symbol => Object}, Braintrust::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Braintrust::Models::EnvVar]
       def update(env_var_id, params = {}, opts = {})
@@ -81,7 +81,7 @@ module Braintrust
       #   @option params [String, nil] :object_id The id of the object the environment variable is scoped for
       #   @option params [Symbol, ObjectType, nil] :object_type The type of the object the environment variable is scoped for
       #
-      # @param opts [Hash, Braintrust::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash{Symbol => Object}, Braintrust::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Braintrust::Models::EnvVarListResponse]
       def list(params = {}, opts = {})
@@ -97,7 +97,7 @@ module Braintrust
       # Delete an env_var object by its id
       #
       # @param env_var_id [String] EnvVar id
-      # @param opts [Hash, Braintrust::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash{Symbol => Object}, Braintrust::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Braintrust::Models::EnvVar]
       def delete(env_var_id, opts = {})
@@ -119,7 +119,7 @@ module Braintrust
       #   @option params [Symbol, ObjectType] :object_type The type of the object the environment variable is scoped for
       #   @option params [String, nil] :value The value of the environment variable. Will be encrypted at rest.
       #
-      # @param opts [Hash, Braintrust::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash{Symbol => Object}, Braintrust::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Braintrust::Models::EnvVar]
       def replace(params = {}, opts = {})

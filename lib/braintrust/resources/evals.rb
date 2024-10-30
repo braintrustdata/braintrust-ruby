@@ -28,7 +28,7 @@ module Braintrust
       #     events: one to indicate the experiment has started, and another upon completion.
       #     If false, the request will return the evaluation's summary upon completion.
       #
-      # @param opts [Hash, Braintrust::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash{Symbol => Object}, Braintrust::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Braintrust::Models::SummarizeExperimentResponse]
       def create(params = {}, opts = {})

@@ -23,7 +23,7 @@ module Braintrust
       #     that your API key belongs to multiple organizations, you may specify the name of
       #     the organization the group belongs in.
       #
-      # @param opts [Hash, Braintrust::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash{Symbol => Object}, Braintrust::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Braintrust::Models::Group]
       def create(params = {}, opts = {})
@@ -40,7 +40,7 @@ module Braintrust
       # Get a group object by its id
       #
       # @param group_id [String] Group id
-      # @param opts [Hash, Braintrust::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash{Symbol => Object}, Braintrust::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Braintrust::Models::Group]
       def retrieve(group_id, opts = {})
@@ -66,7 +66,7 @@ module Braintrust
       #   @option params [Array<String>, nil] :remove_member_groups A list of group IDs to remove from the group's inheriting-from set
       #   @option params [Array<String>, nil] :remove_member_users A list of user IDs to remove from the group
       #
-      # @param opts [Hash, Braintrust::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash{Symbol => Object}, Braintrust::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Braintrust::Models::Group]
       def update(group_id, params = {}, opts = {})
@@ -100,7 +100,7 @@ module Braintrust
       #     pass `starting_after=foo` to fetch the next page. Note: you may only pass one of
       #     `starting_after` and `ending_before`
       #
-      # @param opts [Hash, Braintrust::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash{Symbol => Object}, Braintrust::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Braintrust::ListObjects<Braintrust::Models::Group>]
       def list(params = {}, opts = {})
@@ -117,7 +117,7 @@ module Braintrust
       # Delete a group object by its id
       #
       # @param group_id [String] Group id
-      # @param opts [Hash, Braintrust::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash{Symbol => Object}, Braintrust::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Braintrust::Models::Group]
       def delete(group_id, opts = {})
@@ -145,7 +145,7 @@ module Braintrust
       #     that your API key belongs to multiple organizations, you may specify the name of
       #     the organization the group belongs in.
       #
-      # @param opts [Hash, Braintrust::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash{Symbol => Object}, Braintrust::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Braintrust::Models::Group]
       def replace(params = {}, opts = {})

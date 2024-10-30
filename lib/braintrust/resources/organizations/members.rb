@@ -23,7 +23,7 @@ module Braintrust
         #     of the organization.
         #   @option params [RemoveUsers, nil] :remove_users Users to remove from the organization
         #
-        # @param opts [Hash, Braintrust::RequestOptions] Options to specify HTTP behaviour for this request.
+        # @param opts [Hash{Symbol => Object}, Braintrust::RequestOptions] Options to specify HTTP behaviour for this request.
         #
         # @return [Braintrust::Models::PatchOrganizationMembersOutput]
         def update(params = {}, opts = {})

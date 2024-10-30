@@ -20,7 +20,7 @@ module Braintrust
       #   @option params [Braintrust::Models::ProjectScoreConfig, nil] :config
       #   @option params [String, nil] :description Textual description of the project score
       #
-      # @param opts [Hash, Braintrust::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash{Symbol => Object}, Braintrust::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Braintrust::Models::ProjectScore]
       def create(params = {}, opts = {})
@@ -37,7 +37,7 @@ module Braintrust
       # Get a project_score object by its id
       #
       # @param project_score_id [String] ProjectScore id
-      # @param opts [Hash, Braintrust::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash{Symbol => Object}, Braintrust::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Braintrust::Models::ProjectScore]
       def retrieve(project_score_id, opts = {})
@@ -62,7 +62,7 @@ module Braintrust
       #   @option params [String, nil] :name Name of the project score
       #   @option params [Symbol, Braintrust::Models::ProjectScoreType, nil] :score_type The type of the configured score
       #
-      # @param opts [Hash, Braintrust::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash{Symbol => Object}, Braintrust::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Braintrust::Models::ProjectScore]
       def update(project_score_id, params = {}, opts = {})
@@ -99,7 +99,7 @@ module Braintrust
       #     pass `starting_after=foo` to fetch the next page. Note: you may only pass one of
       #     `starting_after` and `ending_before`
       #
-      # @param opts [Hash, Braintrust::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash{Symbol => Object}, Braintrust::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Braintrust::ListObjects<Braintrust::Models::ProjectScore>]
       def list(params = {}, opts = {})
@@ -116,7 +116,7 @@ module Braintrust
       # Delete a project_score object by its id
       #
       # @param project_score_id [String] ProjectScore id
-      # @param opts [Hash, Braintrust::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash{Symbol => Object}, Braintrust::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Braintrust::Models::ProjectScore]
       def delete(project_score_id, opts = {})
@@ -140,7 +140,7 @@ module Braintrust
       #   @option params [Braintrust::Models::ProjectScoreConfig, nil] :config
       #   @option params [String, nil] :description Textual description of the project score
       #
-      # @param opts [Hash, Braintrust::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash{Symbol => Object}, Braintrust::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Braintrust::Models::ProjectScore]
       def replace(params = {}, opts = {})

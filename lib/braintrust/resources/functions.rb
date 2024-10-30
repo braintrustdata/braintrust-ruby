@@ -24,7 +24,7 @@ module Braintrust
       #   @option params [Braintrust::Models::PromptData, nil] :prompt_data The prompt, model, and its parameters
       #   @option params [Array<String>, nil] :tags A list of tags for the prompt
       #
-      # @param opts [Hash, Braintrust::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash{Symbol => Object}, Braintrust::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Braintrust::Models::Function]
       def create(params = {}, opts = {})
@@ -41,7 +41,7 @@ module Braintrust
       # Get a function object by its id
       #
       # @param function_id [String] Function id
-      # @param opts [Hash, Braintrust::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash{Symbol => Object}, Braintrust::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Braintrust::Models::Function]
       def retrieve(function_id, opts = {})
@@ -66,7 +66,7 @@ module Braintrust
       #   @option params [Braintrust::Models::PromptData, nil] :prompt_data The prompt, model, and its parameters
       #   @option params [Array<String>, nil] :tags A list of tags for the prompt
       #
-      # @param opts [Hash, Braintrust::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash{Symbol => Object}, Braintrust::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Braintrust::Models::Function]
       def update(function_id, params = {}, opts = {})
@@ -107,7 +107,7 @@ module Braintrust
       #     The version id can either be a transaction id (e.g. '1000192656880881099') or a
       #     version identifier (e.g. '81cd05ee665fdfb3').
       #
-      # @param opts [Hash, Braintrust::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash{Symbol => Object}, Braintrust::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Braintrust::ListObjects<Braintrust::Models::Function>]
       def list(params = {}, opts = {})
@@ -124,7 +124,7 @@ module Braintrust
       # Delete a function object by its id
       #
       # @param function_id [String] Function id
-      # @param opts [Hash, Braintrust::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash{Symbol => Object}, Braintrust::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Braintrust::Models::Function]
       def delete(function_id, opts = {})
@@ -149,7 +149,7 @@ module Braintrust
       #     Braintrust SSE format.
       #   @option params [String, nil] :version The version of the function
       #
-      # @param opts [Hash, Braintrust::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash{Symbol => Object}, Braintrust::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Object]
       def invoke(function_id, params = {}, opts = {})
@@ -179,7 +179,7 @@ module Braintrust
       #   @option params [Braintrust::Models::PromptData, nil] :prompt_data The prompt, model, and its parameters
       #   @option params [Array<String>, nil] :tags A list of tags for the prompt
       #
-      # @param opts [Hash, Braintrust::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash{Symbol => Object}, Braintrust::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Braintrust::Models::Function]
       def replace(params = {}, opts = {})
