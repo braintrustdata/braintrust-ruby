@@ -114,39 +114,37 @@ module Braintrust
     # @return [Hash{Symbol => Object}]
     def prep_request(options)
       method = options.fetch(:method)
+      body, extra_body = options.values_at(:body, :extra_body)
 
       headers = Braintrust::Util.normalized_headers(
         @headers,
         auth_headers,
-        options[:headers],
-        options[:extra_headers]
+        *options.values_at(:headers, :extra_headers)
       )
-      if @idempotency_header && !headers[@idempotency_header] && ![:get, :head, :options].include?(method)
-        headers[@idempotency_header.to_s.downcase] = options[:idempotency_key] || generate_idempotency_key
+      if @idempotency_header &&
+         !headers.key?(@idempotency_header) &&
+         ![:get, :head, :options].include?(method)
+        headers[@idempotency_header] = options.fetch(:idempotency_key) { generate_idempotency_key }
       end
-      if !headers.key?("x-stainless-retry-count")
+
+      unless headers.key?("x-stainless-retry-count")
         headers["x-stainless-retry-count"] = "0"
       end
-      headers.compact!
-      headers.transform_values!(&:to_s)
+      headers.reject! { |_, v| v.nil? || v == "" }
+
+      if [:get, :head, :options].include?(method)
+        body = nil
+      elsif extra_body
+        body = Braintrust::Util.deep_merge(body, extra_body)
+      end
 
       body =
-        case method
-        when :post, :put, :patch, :delete
-          body = options[:body]
-          if body
-            if headers["content-type"] == "application/json"
-              JSON.dump(body)
-            else
-              body
-            end
-          end
+        case headers["content-type"]
+        in "application/json"
+          JSON.dump(body)
         else
-          nil
+          body
         end
-      if options[:extra_body]
-        body = Braintrust::Util.deep_merge(body, options[:extra_body])
-      end
 
       url_elements = resolve_uri_elements(options)
 
