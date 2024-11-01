@@ -8,11 +8,11 @@ class Braintrust::Test::BaseClientTest < Minitest::Test
   def test_from_uri_string
     assert_equal(
       {
-        host: "a.b",
         scheme: "h",
+        host: "a.b",
+        port: nil,
         path: "/c",
-        query: {"d" => ["e"]},
-        port: nil
+        query: {"d" => ["e"]}
       },
       Braintrust::BaseClient.new(
         base_url: "h://nope/ignored"
@@ -25,11 +25,11 @@ class Braintrust::Test::BaseClientTest < Minitest::Test
   def test_extra_query
     assert_equal(
       {
-        host: "a.b",
         scheme: "h",
+        host: "a.b",
+        port: nil,
         path: "/c",
-        query: {"d" => ["e"], "f" => ["g"]},
-        port: nil
+        query: {"d" => ["e"], "f" => ["g"]}
       },
       Braintrust::BaseClient.new(
         base_url: "h://nope"
@@ -48,10 +48,11 @@ class Braintrust::Test::BaseClientTest < Minitest::Test
   def test_path_merged
     assert_equal(
       {
-        host: "a.b",
         scheme: "h",
+        host: "a.b",
+        port: nil,
         path: "/c/c2",
-        port: nil
+        query: {}
       },
       Braintrust::BaseClient.new(
         base_url: "h://a.b/c"
