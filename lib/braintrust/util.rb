@@ -39,6 +39,16 @@ module Braintrust
       end
     end
 
+    # @param exceptions [Array<Exception>]
+    # @param blk [Proc]
+    #
+    # @return [Object, nil]
+    def self.suppress(*exceptions, &blk)
+      blk.call
+    rescue *exceptions
+      nil
+    end
+
     # @param str [String]
     #
     # @return [Integer, String]
