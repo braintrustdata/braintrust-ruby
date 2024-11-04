@@ -412,11 +412,11 @@ module Braintrust
           response.body
         end
 
-      if (page = req[:page])
-        model = req.fetch(:model)
+      page, model = req.values_at(:page, :model)
+      if page
         page.new(model, raw_data, response, self, req, opts)
-      elsif (model = req[:model])
-        Converter.convert(model, raw_data)
+      elsif model
+        Braintrust::Converter.convert(model, raw_data)
       else
         raw_data
       end

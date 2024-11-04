@@ -2,13 +2,32 @@
 
 module Braintrust
   class ListObjects
-    # @return [Array]
+    # @return [Array<Object>]
     attr_accessor :objects
 
     # @!visibility private
-    attr_accessor :client, :req, :opts
+    #
+    # @return [Braintrust::Client]
+    attr_accessor :client
 
     # @!visibility private
+    #
+    # @return [Hash{Symbol => Object}]
+    attr_accessor :req
+
+    # @!visibility private
+    #
+    # @return [Hash{Symbol => Object}]
+    attr_accessor :opts
+
+    # @!visibility private
+    #
+    # @param model [Object]
+    # @param raw_data [Hash{Symbol => Object}]
+    # @param response [Net::HTTPResponse]
+    # @param client [Braintrust::Client]
+    # @param req [Hash{Symbol => Object}]
+    # @param opts [Hash{Symbol => Object}]
     def initialize(model, raw_data, _response, client, req, opts)
       self.objects = (raw_data[:objects] || []).map { |e| model.convert(e) }
       self.client = client
@@ -21,28 +40,31 @@ module Braintrust
       !objects.empty?
     end
 
+    # @raise [Braintrust::HTTP::Error]
     # @return [Braintrust::ListObjects]
     def next_page
-      if !next_page?
+      unless next_page?
         raise "No more pages available; please check #next_page? before calling #next_page"
       end
-      client.request(Util.deep_merge(req, {query: {starting_after: objects.last.id}}), opts)
+      client.request(Braintrust::Util.deep_merge(req, {query: {starting_after: objects.last.id}}), opts)
     end
 
+    # @param blk [Proc]
+    #
     # @return [nil]
     def auto_paging_each(&blk)
-      if !blk
+      unless block_given?
         raise "A block must be given to #auto_paging_each"
       end
       page = self
       loop do
         page.objects.each { |e| blk.call(e) }
-        break if !page.next_page?
+        break unless page.next_page?
         page = page.next_page
       end
     end
 
-    # @return String
+    # @return [String]
     def inspect
       "#<#{selfl.class}:0x#{object_id.to_s(16)} objects=#{objects.inspect}>"
     end
