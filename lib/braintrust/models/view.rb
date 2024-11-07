@@ -2,7 +2,7 @@
 
 module Braintrust
   module Models
-    class View < BaseModel
+    class View < Braintrust::BaseModel
       # @!attribute [rw] id
       #   Unique identifier for the view
       #   @return [String]

@@ -2,7 +2,7 @@
 
 module Braintrust
   module Models
-    class Prompt < BaseModel
+    class Prompt < Braintrust::BaseModel
       # @!attribute [rw] id
       #   Unique identifier for the prompt
       #   @return [String]

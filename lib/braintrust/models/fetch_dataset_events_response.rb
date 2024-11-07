@@ -2,7 +2,7 @@
 
 module Braintrust
   module Models
-    class FetchDatasetEventsResponse < BaseModel
+    class FetchDatasetEventsResponse < Braintrust::BaseModel
       # @!attribute [rw] events
       #   A list of fetched events
       #   @return [Array<Braintrust::Models::DatasetEvent>]

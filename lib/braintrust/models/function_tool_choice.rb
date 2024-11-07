@@ -2,7 +2,7 @@
 
 module Braintrust
   module Models
-    class FunctionToolChoice < BaseModel
+    class FunctionToolChoice < Braintrust::BaseModel
       # @!attribute [rw] name_
       #   @return [String]
       required :name_, String, api_name: :name

@@ -2,7 +2,7 @@
 
 module Braintrust
   module Models
-    class ViewDataSearch < BaseModel
+    class ViewDataSearch < Braintrust::BaseModel
       # @!attribute [rw] filter
       #   @return [Array<Object>]
       optional :filter, Braintrust::ArrayOf.new(Braintrust::Unknown)

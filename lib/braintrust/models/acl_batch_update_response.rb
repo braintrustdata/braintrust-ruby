@@ -2,7 +2,7 @@
 
 module Braintrust
   module Models
-    class ACLBatchUpdateResponse < BaseModel
+    class ACLBatchUpdateResponse < Braintrust::BaseModel
       # @!attribute [rw] added_acls
       #   An ACL grants a certain permission or role to a certain user or group on an object.
       #

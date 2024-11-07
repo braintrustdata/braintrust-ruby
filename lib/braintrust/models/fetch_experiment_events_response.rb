@@ -2,7 +2,7 @@
 
 module Braintrust
   module Models
-    class FetchExperimentEventsResponse < BaseModel
+    class FetchExperimentEventsResponse < Braintrust::BaseModel
       # @!attribute [rw] events
       #   A list of fetched events
       #   @return [Array<Braintrust::Models::ExperimentEvent>]

@@ -2,7 +2,7 @@
 
 module Braintrust
   module Models
-    class Organization < BaseModel
+    class Organization < Braintrust::BaseModel
       # @!attribute [rw] id
       #   Unique identifier for the organization
       #   @return [String]

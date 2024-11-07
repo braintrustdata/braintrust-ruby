@@ -2,7 +2,7 @@
 
 module Braintrust
   module Models
-    class EnvVar < BaseModel
+    class EnvVar < Braintrust::BaseModel
       # @!attribute [rw] id
       #   Unique identifier for the environment variable
       #   @return [String]

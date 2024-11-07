@@ -2,7 +2,7 @@
 
 module Braintrust
   module Models
-    class ACL < BaseModel
+    class ACL < Braintrust::BaseModel
       # @!attribute [rw] id
       #   Unique identifier for the acl
       #   @return [String]

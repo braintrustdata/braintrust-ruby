@@ -2,7 +2,7 @@
 
 module Braintrust
   module Models
-    class InsertDatasetEventMerge < BaseModel
+    class InsertDatasetEventMerge < Braintrust::BaseModel
       # @!attribute [rw] _is_merge
       #   The `_is_merge` field controls how the row is merged with any existing row with the same id in the DB. By default (or when set to `false`), the existing row is completely replaced by the new row. When set to `true`, the new row is deep-merged into the existing row
       #

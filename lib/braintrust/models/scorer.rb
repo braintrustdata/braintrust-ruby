@@ -2,7 +2,7 @@
 
 module Braintrust
   module Models
-    class Scorer < BaseModel
+    class Scorer < Braintrust::BaseModel
       # @!attribute [rw] index
       #   @return [Integer]
       required :index, Integer

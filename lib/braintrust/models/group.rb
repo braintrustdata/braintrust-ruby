@@ -2,7 +2,7 @@
 
 module Braintrust
   module Models
-    class Group < BaseModel
+    class Group < Braintrust::BaseModel
       # @!attribute [rw] id
       #   Unique identifier for the group
       #   @return [String]

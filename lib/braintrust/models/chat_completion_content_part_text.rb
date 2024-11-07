@@ -2,7 +2,7 @@
 
 module Braintrust
   module Models
-    class ChatCompletionContentPartText < BaseModel
+    class ChatCompletionContentPartText < Braintrust::BaseModel
       # @!attribute [rw] type
       #   @return [Symbol, Braintrust::Models::ChatCompletionContentPartText::Type]
       required :type, enum: -> { Braintrust::Models::ChatCompletionContentPartText::Type }

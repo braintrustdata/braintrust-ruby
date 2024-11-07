@@ -2,7 +2,7 @@
 
 module Braintrust
   module Models
-    class User < BaseModel
+    class User < Braintrust::BaseModel
       # @!attribute [rw] id
       #   Unique identifier for the user
       #   @return [String]
