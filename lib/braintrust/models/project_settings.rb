@@ -2,7 +2,7 @@
 
 module Braintrust
   module Models
-    class ProjectSettings < BaseModel
+    class ProjectSettings < Braintrust::BaseModel
       # @!attribute [rw] comparison_key
       #   The key used to join two experiments (defaults to `input`).
       #   @return [String]

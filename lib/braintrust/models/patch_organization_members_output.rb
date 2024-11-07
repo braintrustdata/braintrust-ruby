@@ -2,7 +2,7 @@
 
 module Braintrust
   module Models
-    class PatchOrganizationMembersOutput < BaseModel
+    class PatchOrganizationMembersOutput < Braintrust::BaseModel
       # @!attribute [rw] status
       #   @return [Symbol, Braintrust::Models::PatchOrganizationMembersOutput::Status]
       required :status, enum: -> { Braintrust::Models::PatchOrganizationMembersOutput::Status }

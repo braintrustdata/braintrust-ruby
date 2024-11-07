@@ -2,7 +2,7 @@
 
 module Braintrust
   module Models
-    class PathLookupFilter < BaseModel
+    class PathLookupFilter < Braintrust::BaseModel
       # @!attribute [rw] path
       #   List of fields describing the path to the value to be checked against. For instance, if you wish to filter on the value of `c` in `{"input": {"a": {"b": {"c": "hello"}}}}`, pass `path=["input", "a", "b", "c"]`
       #   @return [Array<String>]

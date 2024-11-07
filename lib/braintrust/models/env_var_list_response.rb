@@ -2,7 +2,7 @@
 
 module Braintrust
   module Models
-    class EnvVarListResponse < BaseModel
+    class EnvVarListResponse < Braintrust::BaseModel
       # @!attribute [rw] objects
       #   A list of env_var objects
       #   @return [Array<Braintrust::Models::EnvVar>]

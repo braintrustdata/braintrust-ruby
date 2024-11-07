@@ -2,7 +2,7 @@
 
 module Braintrust
   module Models
-    class ChatCompletionMessageToolCall < BaseModel
+    class ChatCompletionMessageToolCall < Braintrust::BaseModel
       # @!attribute [rw] id
       #   @return [String]
       required :id, String
@@ -15,7 +15,7 @@ module Braintrust
       #   @return [Symbol, Braintrust::Models::ChatCompletionMessageToolCall::Type]
       required :type, enum: -> { Braintrust::Models::ChatCompletionMessageToolCall::Type }
 
-      class Function < BaseModel
+      class Function < Braintrust::BaseModel
         # @!attribute [rw] arguments
         #   @return [String]
         required :arguments, String

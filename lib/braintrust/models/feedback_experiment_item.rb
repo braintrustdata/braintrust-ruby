@@ -2,7 +2,7 @@
 
 module Braintrust
   module Models
-    class FeedbackExperimentItem < BaseModel
+    class FeedbackExperimentItem < Braintrust::BaseModel
       # @!attribute [rw] id
       #   The id of the experiment event to log feedback for. This is the row `id` returned by `POST /v1/experiment/{experiment_id}/insert`
       #   @return [String]

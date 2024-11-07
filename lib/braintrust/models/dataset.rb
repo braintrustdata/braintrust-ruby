@@ -2,7 +2,7 @@
 
 module Braintrust
   module Models
-    class Dataset < BaseModel
+    class Dataset < Braintrust::BaseModel
       # @!attribute [rw] id
       #   Unique identifier for the dataset
       #   @return [String]

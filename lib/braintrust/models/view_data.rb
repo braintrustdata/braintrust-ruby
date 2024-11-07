@@ -2,7 +2,7 @@
 
 module Braintrust
   module Models
-    class ViewData < BaseModel
+    class ViewData < Braintrust::BaseModel
       # @!attribute [rw] search
       #   @return [Braintrust::Models::ViewDataSearch]
       optional :search, -> { Braintrust::Models::ViewDataSearch }

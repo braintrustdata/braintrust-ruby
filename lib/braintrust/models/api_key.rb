@@ -2,7 +2,7 @@
 
 module Braintrust
   module Models
-    class APIKey < BaseModel
+    class APIKey < Braintrust::BaseModel
       # @!attribute [rw] id
       #   Unique identifier for the api key
       #   @return [String]

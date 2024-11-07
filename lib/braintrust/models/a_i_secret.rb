@@ -2,7 +2,7 @@
 
 module Braintrust
   module Models
-    class AISecret < BaseModel
+    class AISecret < Braintrust::BaseModel
       # @!attribute [rw] id
       #   Unique identifier for the AI secret
       #   @return [String]

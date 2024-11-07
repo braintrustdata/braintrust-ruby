@@ -2,7 +2,7 @@
 
 module Braintrust
   module Models
-    class DatasetEvent < BaseModel
+    class DatasetEvent < Braintrust::BaseModel
       # @!attribute [rw] id
       #   A unique identifier for the dataset event. If you don't provide one, BrainTrust will generate one for you
       #   @return [String]

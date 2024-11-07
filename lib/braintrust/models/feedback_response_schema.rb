@@ -2,7 +2,7 @@
 
 module Braintrust
   module Models
-    class FeedbackResponseSchema < BaseModel
+    class FeedbackResponseSchema < Braintrust::BaseModel
       # @!attribute [rw] status
       #   @return [Symbol, Braintrust::Models::FeedbackResponseSchema::Status]
       required :status, enum: -> { Braintrust::Models::FeedbackResponseSchema::Status }
