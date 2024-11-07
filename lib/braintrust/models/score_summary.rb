@@ -2,7 +2,7 @@
 
 module Braintrust
   module Models
-    class ScoreSummary < BaseModel
+    class ScoreSummary < Braintrust::BaseModel
       # @!attribute [rw] improvements
       #   Number of improvements in the score
       #   @return [Integer]

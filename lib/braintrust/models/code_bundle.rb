@@ -2,7 +2,7 @@
 
 module Braintrust
   module Models
-    class CodeBundle < BaseModel
+    class CodeBundle < Braintrust::BaseModel
       # @!attribute [rw] bundle_id
       #   @return [String]
       required :bundle_id, String
@@ -20,7 +20,7 @@ module Braintrust
       #   @return [String]
       optional :preview, String
 
-      class RuntimeContext < BaseModel
+      class RuntimeContext < Braintrust::BaseModel
         # @!attribute [rw] runtime
         #   @return [Symbol, Braintrust::Models::CodeBundle::RuntimeContext::Runtime]
         required :runtime, enum: -> { Braintrust::Models::CodeBundle::RuntimeContext::Runtime }

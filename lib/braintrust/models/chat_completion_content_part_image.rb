@@ -2,7 +2,7 @@
 
 module Braintrust
   module Models
-    class ChatCompletionContentPartImage < BaseModel
+    class ChatCompletionContentPartImage < Braintrust::BaseModel
       # @!attribute [rw] image_url
       #   @return [Braintrust::Models::ChatCompletionContentPartImage::ImageURL]
       required :image_url, -> { Braintrust::Models::ChatCompletionContentPartImage::ImageURL }
@@ -11,7 +11,7 @@ module Braintrust
       #   @return [Symbol, Braintrust::Models::ChatCompletionContentPartImage::Type]
       required :type, enum: -> { Braintrust::Models::ChatCompletionContentPartImage::Type }
 
-      class ImageURL < BaseModel
+      class ImageURL < Braintrust::BaseModel
         # @!attribute [rw] url
         #   @return [String]
         required :url, String

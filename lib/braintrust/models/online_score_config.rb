@@ -2,7 +2,7 @@
 
 module Braintrust
   module Models
-    class OnlineScoreConfig < BaseModel
+    class OnlineScoreConfig < Braintrust::BaseModel
       # @!attribute [rw] sampling_rate
       #   The sampling rate for online scoring
       #   @return [Float]

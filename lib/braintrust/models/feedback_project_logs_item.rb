@@ -2,7 +2,7 @@
 
 module Braintrust
   module Models
-    class FeedbackProjectLogsItem < BaseModel
+    class FeedbackProjectLogsItem < Braintrust::BaseModel
       # @!attribute [rw] id
       #   The id of the project logs event to log feedback for. This is the row `id` returned by `POST /v1/project_logs/{project_id}/insert`
       #   @return [String]

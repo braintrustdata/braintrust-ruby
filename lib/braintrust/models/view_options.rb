@@ -2,7 +2,7 @@
 
 module Braintrust
   module Models
-    class ViewOptions < BaseModel
+    class ViewOptions < Braintrust::BaseModel
       # @!attribute [rw] column_order
       #   @return [Array<String>]
       optional :column_order, Braintrust::ArrayOf.new(String), api_name: :columnOrder

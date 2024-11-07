@@ -2,7 +2,7 @@
 
 module Braintrust
   module Models
-    class ProjectScoreConfig < BaseModel
+    class ProjectScoreConfig < Braintrust::BaseModel
       # @!attribute [rw] destination
       #   @return [Symbol, Braintrust::Models::ProjectScoreConfig::Destination]
       optional :destination, enum: -> { Braintrust::Models::ProjectScoreConfig::Destination }

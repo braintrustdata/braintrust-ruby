@@ -2,7 +2,7 @@
 
 module Braintrust
   module Models
-    class Function < BaseModel
+    class Function < Braintrust::BaseModel
       # @!attribute [rw] id
       #   Unique identifier for the prompt
       #   @return [String]
@@ -85,7 +85,7 @@ module Braintrust
         P = :p
       end
 
-      class FunctionSchema < BaseModel
+      class FunctionSchema < Braintrust::BaseModel
         # @!attribute [rw] parameters
         #   @return [Object]
         optional :parameters, Braintrust::Unknown
@@ -110,7 +110,7 @@ module Braintrust
         TOOL = :tool
       end
 
-      class Origin < BaseModel
+      class Origin < Braintrust::BaseModel
         # @!attribute [rw] object_id_
         #   Id of the object the function is originating from
         #   @return [String]

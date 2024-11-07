@@ -2,7 +2,7 @@
 
 module Braintrust
   module Models
-    class FetchProjectLogsEventsResponse < BaseModel
+    class FetchProjectLogsEventsResponse < Braintrust::BaseModel
       # @!attribute [rw] events
       #   A list of fetched events
       #   @return [Array<Braintrust::Models::ProjectLogsEvent>]

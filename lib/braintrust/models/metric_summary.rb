@@ -2,7 +2,7 @@
 
 module Braintrust
   module Models
-    class MetricSummary < BaseModel
+    class MetricSummary < Braintrust::BaseModel
       # @!attribute [rw] improvements
       #   Number of improvements in the metric
       #   @return [Integer]

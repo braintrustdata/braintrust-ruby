@@ -2,7 +2,7 @@
 
 module Braintrust
   module Models
-    class SummarizeDatasetResponse < BaseModel
+    class SummarizeDatasetResponse < Braintrust::BaseModel
       # @!attribute [rw] dataset_name
       #   Name of the dataset
       #   @return [String]

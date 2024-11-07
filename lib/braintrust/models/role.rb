@@ -2,7 +2,7 @@
 
 module Braintrust
   module Models
-    class Role < BaseModel
+    class Role < Braintrust::BaseModel
       # @!attribute [rw] id
       #   Unique identifier for the role
       #   @return [String]
@@ -54,7 +54,7 @@ module Braintrust
       #   @return [String]
       optional :user_id, String
 
-      class MemberPermission < BaseModel
+      class MemberPermission < Braintrust::BaseModel
         # @!attribute [rw] permission
         #   Each permission permits a certain type of operation on an object in the system
         #
