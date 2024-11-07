@@ -2,7 +2,7 @@
 
 module Braintrust
   module Models
-    class FeedbackDatasetItem < BaseModel
+    class FeedbackDatasetItem < Braintrust::BaseModel
       # @!attribute [rw] id
       #   The id of the dataset event to log feedback for. This is the row `id` returned by `POST /v1/dataset/{dataset_id}/insert`
       #   @return [String]

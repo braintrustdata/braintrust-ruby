@@ -2,7 +2,7 @@
 
 module Braintrust
   module Models
-    class Task < BaseModel
+    class Task < Braintrust::BaseModel
       # @!attribute [rw] type
       #   @return [Symbol, Braintrust::Models::Task::Type]
       required :type, enum: -> { Braintrust::Models::Task::Type }

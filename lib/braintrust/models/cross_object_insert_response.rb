@@ -2,7 +2,7 @@
 
 module Braintrust
   module Models
-    class CrossObjectInsertResponse < BaseModel
+    class CrossObjectInsertResponse < Braintrust::BaseModel
       # @!attribute [rw] dataset
       #   A mapping from dataset id to row ids for inserted `events`
       #   @return [Hash]

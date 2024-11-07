@@ -2,7 +2,7 @@
 
 module Braintrust
   module Models
-    class DataSummary < BaseModel
+    class DataSummary < Braintrust::BaseModel
       # @!attribute [rw] total_records
       #   Total number of records in the dataset
       #   @return [Integer]

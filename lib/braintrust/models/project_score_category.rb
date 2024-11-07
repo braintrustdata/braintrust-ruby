@@ -2,7 +2,7 @@
 
 module Braintrust
   module Models
-    class ProjectScoreCategory < BaseModel
+    class ProjectScoreCategory < Braintrust::BaseModel
       # @!attribute [rw] name_
       #   Name of the category
       #   @return [String]

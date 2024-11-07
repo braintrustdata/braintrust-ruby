@@ -2,7 +2,7 @@
 
 module Braintrust
   module Models
-    class PromptData < BaseModel
+    class PromptData < Braintrust::BaseModel
       # @!attribute [rw] options
       #   @return [Braintrust::Models::PromptData::Options]
       optional :options, -> { Braintrust::Models::PromptData::Options }
@@ -23,7 +23,7 @@ module Braintrust
       #   @return [Array<Braintrust::Models::PromptData::ToolFunction::UnnamedTypeWithunionParent16, Braintrust::Models::PromptData::ToolFunction::UnnamedTypeWithunionParent17>]
       optional :tool_functions, Braintrust::ArrayOf.new(Braintrust::Unknown)
 
-      class Options < BaseModel
+      class Options < Braintrust::BaseModel
         # @!attribute [rw] model
         #   @return [String]
         optional :model, String
@@ -46,7 +46,7 @@ module Braintrust
         #   def initialize(data = {}) = super
       end
 
-      class Origin < BaseModel
+      class Origin < Braintrust::BaseModel
         # @!attribute [rw] project_id
         #   @return [String]
         optional :project_id, String
@@ -69,7 +69,7 @@ module Braintrust
         #   def initialize(data = {}) = super
       end
 
-      class Parser < BaseModel
+      class Parser < Braintrust::BaseModel
         # @!attribute [rw] choice_scores
         #   @return [Hash]
         required :choice_scores, Hash

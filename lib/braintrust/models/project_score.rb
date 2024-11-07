@@ -2,7 +2,7 @@
 
 module Braintrust
   module Models
-    class ProjectScore < BaseModel
+    class ProjectScore < Braintrust::BaseModel
       # @!attribute [rw] id
       #   Unique identifier for the project score
       #   @return [String]

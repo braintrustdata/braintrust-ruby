@@ -2,7 +2,7 @@
 
 module Braintrust
   module Models
-    class SummarizeExperimentResponse < BaseModel
+    class SummarizeExperimentResponse < Braintrust::BaseModel
       # @!attribute [rw] experiment_name
       #   Name of the experiment
       #   @return [String]

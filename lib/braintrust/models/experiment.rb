@@ -2,7 +2,7 @@
 
 module Braintrust
   module Models
-    class Experiment < BaseModel
+    class Experiment < Braintrust::BaseModel
       # @!attribute [rw] id
       #   Unique identifier for the experiment
       #   @return [String]

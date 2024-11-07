@@ -2,7 +2,7 @@
 
 module Braintrust
   module Models
-    class RepoInfo < BaseModel
+    class RepoInfo < Braintrust::BaseModel
       # @!attribute [rw] author_email
       #   Email of the author of the most recent commit
       #   @return [String]
