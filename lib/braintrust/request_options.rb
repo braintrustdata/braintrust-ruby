@@ -10,17 +10,35 @@ module Braintrust
     # @!visibility private
     #
     # @return [Array<Symbol>]
-    def self.options
+    private_class_method def self.options
       @options ||= []
     end
 
     # @!visibility private
     #
     # @param name [Symbol]
-    def self.option(name)
-      define_method(name) { @_values[name] }
+    private_class_method def self.option(name)
       define_method("#{name}=") { |val| @_values[name] = val }
-      options.push(name)
+      define_method(name) { @_values[name] }
+      options << name
+    end
+
+    # @!visibility private
+    #
+    # @param opts [Braintrust::RequestOptions, Hash{Symbol => Object}]
+    #
+    # @raise [ArgumentError]
+    def self.validate!(opts)
+      case opts
+      in Braintrust::RequestOptions | Hash
+        opts.to_h.each_key do |k|
+          unless options.include?(k)
+            raise ArgumentError, "Request `opts` keys must be one of #{options}, got #{k.inspect}"
+          end
+        end
+      else
+        raise ArgumentError, "Request `opts` must be a Hash or RequestOptions, got #{opts.inspect}"
+      end
     end
 
     # Returns a new instance of RequestOptions.
