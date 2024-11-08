@@ -7,32 +7,17 @@ module Braintrust
 
     # @!visibility private
     #
-    # @return [Braintrust::Client]
-    attr_accessor :client
-
-    # @!visibility private
-    #
-    # @return [Hash{Symbol => Object}]
-    attr_accessor :req
-
-    # @!visibility private
-    #
-    # @return [Hash{Symbol => Object}]
-    attr_accessor :opts
-
-    # @!visibility private
-    #
     # @param model [Object]
     # @param raw_data [Hash{Symbol => Object}]
     # @param response [Net::HTTPResponse]
     # @param client [Braintrust::Client]
     # @param req [Hash{Symbol => Object}]
     # @param opts [Hash{Symbol => Object}]
-    def initialize(model, raw_data, _response, client, req, opts)
+    def initialize(client:, model:, req:, opts:, response:, raw_data:)
       self.objects = (raw_data[:objects] || []).map { |e| model.convert(e) }
-      self.client = client
-      self.req = req
-      self.opts = opts
+      @client = client
+      @req = req
+      @opts = opts
     end
 
     # @return [Boolean]
@@ -46,7 +31,9 @@ module Braintrust
       unless next_page?
         raise "No more pages available; please check #next_page? before calling #next_page"
       end
-      client.request(Braintrust::Util.deep_merge(req, {query: {starting_after: objects.last.id}}), opts)
+
+      req = Braintrust::Util.deep_merge(@req, {query: {starting_after: objects.last.id}})
+      @client.request(req, @opts)
     end
 
     # @param blk [Proc]
@@ -66,7 +53,7 @@ module Braintrust
 
     # @return [String]
     def inspect
-      "#<#{selfl.class}:0x#{object_id.to_s(16)} objects=#{objects.inspect}>"
+      "#<#{self.class}:0x#{object_id.to_s(16)} objects=#{objects.inspect}>"
     end
   end
 end
