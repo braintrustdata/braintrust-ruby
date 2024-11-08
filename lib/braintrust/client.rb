@@ -101,23 +101,23 @@ module Braintrust
     end
 
     # @!visibility private
-    def make_status_error(message:, body:, response:)
+    private def make_status_error(message:, body:, response:)
       case response.code.to_i
-      when 400
+      in 400
         Braintrust::HTTP::BadRequestError.new(message: message, response: response, body: body)
-      when 401
+      in 401
         Braintrust::HTTP::AuthenticationError.new(message: message, response: response, body: body)
-      when 403
+      in 403
         Braintrust::HTTP::PermissionDeniedError.new(message: message, response: response, body: body)
-      when 404
+      in 404
         Braintrust::HTTP::NotFoundError.new(message: message, response: response, body: body)
-      when 409
+      in 409
         Braintrust::HTTP::ConflictError.new(message: message, response: response, body: body)
-      when 422
+      in 422
         Braintrust::HTTP::UnprocessableEntityError.new(message: message, response: response, body: body)
-      when 429
+      in 429
         Braintrust::HTTP::RateLimitError.new(message: message, response: response, body: body)
-      when 500..599
+      in 500..599
         Braintrust::HTTP::InternalServerError.new(message: message, response: response, body: body)
       else
         Braintrust::HTTP::APIStatusError.new(message: message, response: response, body: body)

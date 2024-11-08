@@ -70,6 +70,23 @@ class Braintrust::Test::UtilTest < Minitest::Test
     )
   end
 
+  def test_dig
+    assert_equal(1, Braintrust::Util.dig(1, nil))
+    assert_nil(Braintrust::Util.dig({a: 1}, :b))
+    assert_equal(1, Braintrust::Util.dig({a: 1}, :a))
+    assert_equal(1, Braintrust::Util.dig({a: {b: 1}}, [:a, :b]))
+    assert_nil(Braintrust::Util.dig([], 1))
+    assert_equal(1, Braintrust::Util.dig([nil, [nil, 1]], [1, 1]))
+    assert_equal(1, Braintrust::Util.dig({a: [nil, 1]}, [:a, 1]))
+
+    assert_raises(NoMatchingPatternError) do
+      Braintrust::Util.dig([], 1.0)
+    end
+    assert_raises(NoMatchingPatternError) do
+      Braintrust::Util.dig(Object, 1)
+    end
+  end
+
   def test_uri_parsing
     %w[
       http://example.com
