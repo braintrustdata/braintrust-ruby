@@ -47,12 +47,16 @@ module Braintrust
       {}
     end
 
+    # @return [String]
+    def generate_idempotency_key
+      "stainless-ruby-retry-#{SecureRandom.uuid}"
+    end
+
     # @param req [Hash{Symbol => Object}]
     #   @option req [Hash{Symbol => Object}, Array, Object, nil] :body
-    # @param opts [Hash{Symbol => Object}, Braintrust::RequestOptions]
     #
     # @raise [ArgumentError]
-    def validate_request(req, opts)
+    private def validate_request!(req)
       case (body = req[:body])
       in Hash
         body.each_key do |k|
@@ -62,18 +66,6 @@ module Braintrust
         end
       else
         # Body can be at least a Hash or Array, just check for Hash shape for now.
-      end
-
-      case opts
-      in Braintrust::RequestOptions | Hash
-        valid_keys = Braintrust::RequestOptions.options
-        opts.to_h.each_key do |k|
-          unless valid_keys.include?(k)
-            raise ArgumentError, "Request `opts` keys must be one of #{valid_keys}, got #{k.inspect}"
-          end
-        end
-      else
-        raise ArgumentError, "Request `opts` must be a Hash or RequestOptions, got #{opts.inspect}"
       end
     end
 
@@ -110,14 +102,12 @@ module Braintrust
       }
     end
 
-    # @param options [Hash{Symbol => Object}]
-    #   @option options [Symbol] :method
-    #   @option options [Hash{String => String}] :headers
-    #   @option options [Hash{String => String}] :extra_headers
-    #   @option options [Hash{Symbol => Object}, Array, Object, nil] :body
+    # @param req [Hash{Symbol => Object}]
+    # @param opts [Braintrust::RequestOptions, Hash{Symbol => Object}]
     #
     # @return [Hash{Symbol => Object}]
-    def prep_request(options)
+    private def build_request(req, opts)
+      options = Braintrust::Util.deep_merge(req, opts)
       method = options.fetch(:method)
       body, extra_body = options.values_at(:body, :extra_body)
 
@@ -155,15 +145,10 @@ module Braintrust
       {method: method, headers: headers, body: body, **url_elements}
     end
 
-    # @return [String]
-    def generate_idempotency_key
-      "stainless-ruby-retry-#{SecureRandom.uuid}"
-    end
-
     # @param response [Net::HTTPResponse]
     #
     # @return [Boolean]
-    def should_retry?(response)
+    private def should_retry?(response)
       case response["x-should-retry"]
       in "true"
         true
@@ -187,12 +172,12 @@ module Braintrust
     # @param message [String]
     # @param body [Object]
     # @param response [Net::HTTPResponse]
-    def make_status_error(message:, body:, response:)
+    private def make_status_error(message:, body:, response:)
       raise NotImplementedError
     end
 
     # @param response [Net::HTTPResponse]
-    def make_status_error_from_response(response)
+    private def make_status_error_from_response(response)
       err_body =
         begin
           # TODO(SDK-36): symbolize_names: true
@@ -213,7 +198,7 @@ module Braintrust
     # @param retry_count [Integer]
     #
     # @return [Float]
-    def retry_delay(response, retry_count:)
+    private def retry_delay(response, retry_count:)
       # Note the `retry-after-ms` header may not be standard, but is a good idea and we'd like proactive support for it.
       span = Float(response["retry-after-ms"], exception: false)&.then { |v| v / 1000 }
       return span if span
@@ -252,7 +237,7 @@ module Braintrust
     #
     # @raise [Braintrust::HTTP::Error]
     # @return [Hash{Symbol => Object}]
-    def follow_redirect(request, status:, location_header:)
+    private def follow_redirect(request, status:, location_header:)
       uri = Braintrust::Util.unparse_uri(request)
       location =
         Braintrust::Util.suppress(ArgumentError) do
@@ -310,7 +295,14 @@ module Braintrust
     #
     # @raise [Braintrust::HTTP::Error]
     # @return [Net::HTTPResponse]
-    def send_request(request, max_retries:, timeout:, redirect_count:, retry_count:, send_retry_header:)
+    private def send_request(
+      request,
+      max_retries:,
+      timeout:,
+      redirect_count:,
+      retry_count:,
+      send_retry_header:
+    )
       if send_retry_header
         request.fetch(:headers)["x-stainless-retry-count"] = retry_count.to_s
       end
@@ -373,31 +365,11 @@ module Braintrust
       end
     end
 
-    # Execute the request specified by req + opts. This is the method that all
-    # resource methods call into.
-    # Params req & opts are kept separate up until this point so that we can
-    # validate opts as it was given to us by the user.
     # @param req [Hash{Symbol => Object}]
     # @param opts [Braintrust::RequestOptions, Hash{Symbol => Object}]
     #
-    # @raise [Braintrust::HTTP::Error]
     # @return [Object]
-    def request(req, opts)
-      validate_request(req, opts)
-      options = Braintrust::Util.deep_merge(req, opts)
-      request_args = prep_request(options)
-
-      # Don't send the current retry count in the headers if the caller modified the header defaults.
-      send_retry_header = request_args.fetch(:headers)["x-stainless-retry-count"] == "0"
-
-      response = send_request(
-        request_args,
-        max_retries: opts.fetch(:max_retries, @max_retries),
-        timeout: opts.fetch(:timeout, @timeout),
-        redirect_count: 0,
-        retry_count: 0,
-        send_retry_header: send_retry_header
-      )
+    private def parse_response(req, opts, response)
       raw_data =
         case response.content_type
         in "application/json"
@@ -413,13 +385,41 @@ module Braintrust
         end
 
       page, model = req.values_at(:page, :model)
-      if page
-        page.new(model, raw_data, response, self, req, opts)
-      elsif model
+      case [page, model]
+      in [Class, _]
+        page.new(client: self, model: model, req: req, opts: opts, response: response, raw_data: raw_data)
+      in [nil, _] unless model.nil?
         Braintrust::Converter.convert(model, raw_data)
-      else
+      in [nil, nil]
         raw_data
       end
+    end
+
+    # Execute the request specified by req + opts. This is the method that all
+    # resource methods call into.
+    # Params req & opts are kept separate up until this point so that we can
+    # validate opts as it was given to us by the user.
+    # @param req [Hash{Symbol => Object}]
+    # @param opts [Braintrust::RequestOptions, Hash{Symbol => Object}]
+    #
+    # @raise [Braintrust::HTTP::Error]
+    # @return [Object]
+    def request(req, opts)
+      Braintrust::RequestOptions.validate!(opts)
+      validate_request!(req)
+      request = build_request(req, opts)
+
+      # Don't send the current retry count in the headers if the caller modified the header defaults.
+      send_retry_header = request.fetch(:headers)["x-stainless-retry-count"] == "0"
+      response = send_request(
+        request,
+        max_retries: opts.fetch(:max_retries, @max_retries),
+        timeout: opts.fetch(:timeout, @timeout),
+        redirect_count: 0,
+        retry_count: 0,
+        send_retry_header: send_retry_header
+      )
+      parse_response(req, opts, response)
     end
 
     # @return [String]
