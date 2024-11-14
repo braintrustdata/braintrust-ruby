@@ -48,15 +48,67 @@ module Braintrust
       #   @return [Object]
       optional :input, Braintrust::Unknown
 
+      # @!attribute [rw] is_root
+      #   Whether this span is a root span
+      #   @return [Boolean]
+      optional :is_root, Braintrust::BooleanModel
+
       # @!attribute [rw] metadata
       #   A dictionary with additional data about the test example, model outputs, or just about anything else that's relevant, that you can use to help find and analyze examples later. For example, you could log the `prompt`, example's `id`, or anything else that would be useful to slice/dice later. The values in `metadata` can be any JSON-serializable type, but its keys must be strings
       #   @return [Hash]
       optional :metadata, Hash
 
+      # @!attribute [rw] origin
+      #   Indicates the event was copied from another object.
+      #   @return [Braintrust::Models::DatasetEvent::Origin]
+      optional :origin, -> { Braintrust::Models::DatasetEvent::Origin }
+
       # @!attribute [rw] tags
       #   A list of tags to log
       #   @return [Array<String>]
       optional :tags, Braintrust::ArrayOf.new(String)
+
+      class Origin < Braintrust::BaseModel
+        # @!attribute [rw] id
+        #   ID of the original event.
+        #   @return [String]
+        required :id, String
+
+        # @!attribute [rw] _xact_id
+        #   Transaction ID of the original event.
+        #   @return [String]
+        required :_xact_id, String
+
+        # @!attribute [rw] object_id_
+        #   ID of the object the event is originating from.
+        #   @return [String]
+        required :object_id_, String, api_name: :object_id
+
+        # @!attribute [rw] object_type
+        #   Type of the object the event is originating from.
+        #   @return [Symbol, Braintrust::Models::DatasetEvent::Origin::ObjectType]
+        required :object_type, enum: -> { Braintrust::Models::DatasetEvent::Origin::ObjectType }
+
+        # Type of the object the event is originating from.
+        class ObjectType < Braintrust::Enum
+          EXPERIMENT = :experiment
+          DATASET = :dataset
+          PROMPT = :prompt
+          FUNCTION = :function
+          PROMPT_SESSION = :prompt_session
+          PROJECT_LOGS = :project_logs
+        end
+
+        # @!parse
+        #   # Create a new instance of Origin from a Hash of raw data.
+        #   #
+        #   # @param data [Hash{Symbol => Object}] .
+        #   #   @option data [String] :id ID of the original event.
+        #   #   @option data [String] :_xact_id Transaction ID of the original event.
+        #   #   @option data [String] :object_id ID of the object the event is originating from.
+        #   #   @option data [String] :object_type Type of the object the event is originating from.
+        #   def initialize(data = {}) = super
+      end
 
       # @!parse
       #   # Create a new instance of DatasetEvent from a Hash of raw data.
@@ -80,11 +132,13 @@ module Braintrust
       #   #     serializable object)
       #   #   @option data [Object, nil] :input The argument that uniquely define an input case (an arbitrary, JSON serializable
       #   #     object)
+      #   #   @option data [Hash, nil] :is_root Whether this span is a root span
       #   #   @option data [Hash, nil] :metadata A dictionary with additional data about the test example, model outputs, or just
       #   #     about anything else that's relevant, that you can use to help find and analyze
       #   #     examples later. For example, you could log the `prompt`, example's `id`, or
       #   #     anything else that would be useful to slice/dice later. The values in `metadata`
       #   #     can be any JSON-serializable type, but its keys must be strings
+      #   #   @option data [Object, nil] :origin Indicates the event was copied from another object.
       #   #   @option data [Array<String>, nil] :tags A list of tags to log
       #   def initialize(data = {}) = super
     end

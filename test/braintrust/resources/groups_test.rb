@@ -13,7 +13,7 @@ class Braintrust::Test::Resources::GroupsTest < Minitest::Test
   end
 
   def test_create_required_params
-    response = @braintrust.groups.create({name: "name"})
+    response = @braintrust.groups.create({name: "x"})
     assert_kind_of(Braintrust::Models::Group, response)
   end
 
@@ -38,7 +38,7 @@ class Braintrust::Test::Resources::GroupsTest < Minitest::Test
   end
 
   def test_replace_required_params
-    response = @braintrust.groups.replace({name: "name"})
+    response = @braintrust.groups.replace({name: "x"})
     assert_kind_of(Braintrust::Models::Group, response)
   end
 end

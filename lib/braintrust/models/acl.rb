@@ -34,14 +34,12 @@ module Braintrust
       optional :group_id, String
 
       # @!attribute [rw] permission
-      #   Each permission permits a certain type of operation on an object in the system
-      #
-      # Permissions can be assigned to to objects on an individual basis, or grouped into roles
+      #   Permission the ACL grants. Exactly one of `permission` and `role_id` will be provided
       #   @return [Symbol, Braintrust::Models::ACL::Permission]
       optional :permission, enum: -> { Braintrust::Models::ACL::Permission }
 
       # @!attribute [rw] restrict_object_type
-      #   The object type that the ACL applies to
+      #   When setting a permission directly, optionally restricts the permission grant to just the specified object type. Cannot be set alongside a `role_id`.
       #   @return [Symbol, Braintrust::Models::ACL::RestrictObjectType]
       optional :restrict_object_type, enum: -> { Braintrust::Models::ACL::RestrictObjectType }
 
@@ -70,9 +68,7 @@ module Braintrust
         ORG_PROJECT = :org_project
       end
 
-      # Each permission permits a certain type of operation on an object in the system
-      #
-      # Permissions can be assigned to to objects on an individual basis, or grouped into roles
+      # Permission the ACL grants. Exactly one of `permission` and `role_id` will be provided
       class Permission < Braintrust::Enum
         CREATE = :create
         READ = :read
@@ -84,7 +80,7 @@ module Braintrust
         DELETE_ACLS = :delete_acls
       end
 
-      # The object type that the ACL applies to
+      # When setting a permission directly, optionally restricts the permission grant to just the specified object type. Cannot be set alongside a `role_id`.
       class RestrictObjectType < Braintrust::Enum
         ORGANIZATION = :organization
         PROJECT = :project
@@ -110,11 +106,10 @@ module Braintrust
       #   #   @option data [String, nil] :created Date of acl creation
       #   #   @option data [String, nil] :group_id Id of the group the ACL applies to. Exactly one of `user_id` and `group_id` will
       #   #     be provided
-      #   #   @option data [String, nil] :permission Each permission permits a certain type of operation on an object in the system
-      #   #
-      #   #     Permissions can be assigned to to objects on an individual basis, or grouped
-      #   #     into roles
-      #   #   @option data [String, nil] :restrict_object_type The object type that the ACL applies to
+      #   #   @option data [String, nil] :permission Permission the ACL grants. Exactly one of `permission` and `role_id` will be
+      #   #     provided
+      #   #   @option data [String, nil] :restrict_object_type When setting a permission directly, optionally restricts the permission grant to
+      #   #     just the specified object type. Cannot be set alongside a `role_id`.
       #   #   @option data [String, nil] :role_id Id of the role the ACL grants. Exactly one of `permission` and `role_id` will be
       #   #     provided
       #   #   @option data [String, nil] :user_id Id of the user the ACL applies to. Exactly one of `user_id` and `group_id` will

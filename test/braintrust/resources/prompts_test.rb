@@ -14,7 +14,11 @@ class Braintrust::Test::Resources::PromptsTest < Minitest::Test
 
   def test_create_required_params
     response = @braintrust.prompts.create(
-      {name: "name", project_id: "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e", slug: "slug"}
+      {
+        name: "x",
+        project_id: "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+        slug: "x"
+      }
     )
     assert_kind_of(Braintrust::Models::Prompt, response)
   end
@@ -41,7 +45,11 @@ class Braintrust::Test::Resources::PromptsTest < Minitest::Test
 
   def test_replace_required_params
     response = @braintrust.prompts.replace(
-      {name: "name", project_id: "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e", slug: "slug"}
+      {
+        name: "x",
+        project_id: "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+        slug: "x"
+      }
     )
     assert_kind_of(Braintrust::Models::Prompt, response)
   end
