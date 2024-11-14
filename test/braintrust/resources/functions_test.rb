@@ -16,9 +16,9 @@ class Braintrust::Test::Resources::FunctionsTest < Minitest::Test
     response = @braintrust.functions.create(
       {
         function_data: {"type" => "prompt"},
-        name: "name",
+        name: "x",
         project_id: "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-        slug: "slug"
+        slug: "x"
       }
     )
     assert_kind_of(Braintrust::Models::Function, response)
@@ -53,9 +53,9 @@ class Braintrust::Test::Resources::FunctionsTest < Minitest::Test
     response = @braintrust.functions.replace(
       {
         function_data: {"type" => "prompt"},
-        name: "name",
+        name: "x",
         project_id: "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-        slug: "slug"
+        slug: "x"
       }
     )
     assert_kind_of(Braintrust::Models::Function, response)

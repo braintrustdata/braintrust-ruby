@@ -20,8 +20,8 @@ module Braintrust
 
       # @!attribute [rw] score_type
       #   The type of the configured score
-      #   @return [Symbol, Braintrust::Models::ProjectScoreType]
-      required :score_type, enum: -> { Braintrust::Models::ProjectScoreType }
+      #   @return [Symbol, Braintrust::Models::ProjectScore::ScoreType]
+      required :score_type, enum: -> { Braintrust::Models::ProjectScore::ScoreType }
 
       # @!attribute [rw] user_id
       #   @return [String]
@@ -50,6 +50,16 @@ module Braintrust
       #   An optional LexoRank-based string that sets the sort position for the score in the UI
       #   @return [String]
       optional :position, String
+
+      # The type of the configured score
+      class ScoreType < Braintrust::Enum
+        SLIDER = :slider
+        CATEGORICAL = :categorical
+        WEIGHTED = :weighted
+        MINIMUM = :minimum
+        MAXIMUM = :maximum
+        ONLINE = :online
+      end
 
       # @!parse
       #   # Create a new instance of ProjectScore from a Hash of raw data.

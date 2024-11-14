@@ -16,6 +16,7 @@ module Braintrust
       #   @option params [String] :name Name of the dataset. Within a project, dataset names are unique
       #   @option params [String] :project_id Unique identifier for the project that the dataset belongs under
       #   @option params [String, nil] :description Textual description of the dataset
+      #   @option params [Hash, nil] :metadata User-controlled metadata about the dataset
       #
       # @param opts [Hash{Symbol => Object}, Braintrust::RequestOptions] Options to specify HTTP behaviour for this request.
       #

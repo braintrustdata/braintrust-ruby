@@ -15,7 +15,7 @@ module Braintrust
       # @param params [Hash{Symbol => Object}] Attributes to send in this request.
       #   @option params [String] :name Name of the project score
       #   @option params [String] :project_id Unique identifier for the project that the project score belongs under
-      #   @option params [Symbol, Braintrust::Models::ProjectScoreType] :score_type The type of the configured score
+      #   @option params [Symbol, ScoreType] :score_type The type of the configured score
       #   @option params [Array<Braintrust::Models::ProjectScoreCategory>, Array<String>, Categories::UnnamedTypeWithunionParent18, Hash, nil] :categories For categorical-type project scores, the list of all categories
       #   @option params [Braintrust::Models::ProjectScoreConfig, nil] :config
       #   @option params [String, nil] :description Textual description of the project score
@@ -60,7 +60,7 @@ module Braintrust
       #   @option params [Braintrust::Models::ProjectScoreConfig, nil] :config
       #   @option params [String, nil] :description Textual description of the project score
       #   @option params [String, nil] :name Name of the project score
-      #   @option params [Symbol, Braintrust::Models::ProjectScoreType, nil] :score_type The type of the configured score
+      #   @option params [Symbol, ScoreType, nil] :score_type The type of the configured score
       #
       # @param opts [Hash{Symbol => Object}, Braintrust::RequestOptions] Options to specify HTTP behaviour for this request.
       #
@@ -92,7 +92,7 @@ module Braintrust
       #   @option params [String, nil] :project_id Project id
       #   @option params [String, nil] :project_name Name of the project to search for
       #   @option params [String, nil] :project_score_name Name of the project_score to search for
-      #   @option params [Array<Symbol, Braintrust::Models::ProjectScoreType>, Symbol, Braintrust::Models::ProjectScoreType, nil] :score_type The type of the configured score
+      #   @option params [Array<Symbol, ScoreType::UnnamedTypeWithunionParent21>, Symbol, ScoreType::UnnamedTypeWithunionParent20, nil] :score_type The type of the configured score
       #   @option params [String, nil] :starting_after Pagination cursor id.
       #
       #     For example, if the final item in the last page you fetched had an id of `foo`,
@@ -135,8 +135,8 @@ module Braintrust
       # @param params [Hash{Symbol => Object}] Attributes to send in this request.
       #   @option params [String] :name Name of the project score
       #   @option params [String] :project_id Unique identifier for the project that the project score belongs under
-      #   @option params [Symbol, Braintrust::Models::ProjectScoreType] :score_type The type of the configured score
-      #   @option params [Array<Braintrust::Models::ProjectScoreCategory>, Array<String>, Categories::UnnamedTypeWithunionParent20, Hash, nil] :categories For categorical-type project scores, the list of all categories
+      #   @option params [Symbol, ScoreType] :score_type The type of the configured score
+      #   @option params [Array<Braintrust::Models::ProjectScoreCategory>, Array<String>, Categories::UnnamedTypeWithunionParent22, Hash, nil] :categories For categorical-type project scores, the list of all categories
       #   @option params [Braintrust::Models::ProjectScoreConfig, nil] :config
       #   @option params [String, nil] :description Textual description of the project score
       #

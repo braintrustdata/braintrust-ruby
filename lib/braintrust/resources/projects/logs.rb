@@ -169,14 +169,14 @@ module Braintrust
         #
         # @param opts [Hash{Symbol => Object}, Braintrust::RequestOptions] Options to specify HTTP behaviour for this request.
         #
-        # @return [Braintrust::Models::InsertEventsResponse]
+        # @return [Braintrust::Models::LogInsertResponse]
         def insert(project_id, params = {}, opts = {})
           req = {
             method: :post,
             path: "/v1/project_logs/#{project_id}/insert",
             body: params,
             headers: {"Content-Type" => "application/json"},
-            model: Braintrust::Models::InsertEventsResponse
+            model: Braintrust::Models::LogInsertResponse
           }
           @client.request(req, opts)
         end

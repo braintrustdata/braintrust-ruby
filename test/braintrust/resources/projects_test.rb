@@ -13,7 +13,7 @@ class Braintrust::Test::Resources::ProjectsTest < Minitest::Test
   end
 
   def test_create_required_params
-    response = @braintrust.projects.create({name: "name"})
+    response = @braintrust.projects.create({name: "x"})
     assert_kind_of(Braintrust::Models::Project, response)
   end
 
