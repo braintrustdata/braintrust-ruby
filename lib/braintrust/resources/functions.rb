@@ -13,7 +13,7 @@ module Braintrust
       #   unmodified
       #
       # @param params [Hash{Symbol => Object}] Attributes to send in this request.
-      #   @option params [FunctionData::UnnamedTypeWithunionParent21, FunctionData::UnnamedTypeWithunionParent22, FunctionData::UnnamedTypeWithunionParent23] :function_data
+      #   @option params [FunctionData::UnnamedTypeWithunionParent23, FunctionData::UnnamedTypeWithunionParent24, FunctionData::UnnamedTypeWithunionParent25] :function_data
       #   @option params [String] :name Name of the prompt
       #   @option params [String] :project_id Unique identifier for the project that the prompt belongs under
       #   @option params [String] :slug Unique identifier for the prompt
@@ -61,7 +61,7 @@ module Braintrust
       #
       # @param params [Hash{Symbol => Object}] Attributes to send in this request.
       #   @option params [String, nil] :description Textual description of the prompt
-      #   @option params [FunctionData::UnnamedTypeWithunionParent24, FunctionData::UnnamedTypeWithunionParent25, FunctionData::UnnamedTypeWithunionParent26, FunctionData::UnnamedTypeWithunionParent27, nil] :function_data
+      #   @option params [FunctionData::UnnamedTypeWithunionParent26, FunctionData::UnnamedTypeWithunionParent27, FunctionData::UnnamedTypeWithunionParent28, FunctionData::UnnamedTypeWithunionParent29, nil] :function_data
       #   @option params [String, nil] :name Name of the prompt
       #   @option params [Braintrust::Models::PromptData, nil] :prompt_data The prompt, model, and its parameters
       #   @option params [Array<String>, nil] :tags A list of tags for the prompt
@@ -142,9 +142,9 @@ module Braintrust
       #
       # @param params [Hash{Symbol => Object}] Attributes to send in this request.
       #   @option params [Object, nil] :input Argument to the function, which can be any JSON serializable value
-      #   @option params [Array<Message::UnnamedTypeWithunionParent28, Message::UnnamedTypeWithunionParent29, Message::UnnamedTypeWithunionParent30, Message::UnnamedTypeWithunionParent31, Message::UnnamedTypeWithunionParent32, Message::UnnamedTypeWithunionParent33>, nil] :messages If the function is an LLM, additional messages to pass along to it
+      #   @option params [Array<Message::UnnamedTypeWithunionParent30, Message::UnnamedTypeWithunionParent31, Message::UnnamedTypeWithunionParent32, Message::UnnamedTypeWithunionParent33, Message::UnnamedTypeWithunionParent34, Message::UnnamedTypeWithunionParent35>, nil] :messages If the function is an LLM, additional messages to pass along to it
       #   @option params [Symbol, Mode, nil] :mode The mode format of the returned value (defaults to 'auto')
-      #   @option params [Parent::UnnamedTypeWithunionParent34, String, nil] :parent Options for tracing the function call
+      #   @option params [Parent::UnnamedTypeWithunionParent36, String, nil] :parent Options for tracing the function call
       #   @option params [Boolean, nil] :stream Whether to stream the response. If true, results will be returned in the
       #     Braintrust SSE format.
       #   @option params [String, nil] :version The version of the function
@@ -168,7 +168,7 @@ module Braintrust
       #   function with the provided fields
       #
       # @param params [Hash{Symbol => Object}] Attributes to send in this request.
-      #   @option params [FunctionData::UnnamedTypeWithunionParent35, FunctionData::UnnamedTypeWithunionParent36, FunctionData::UnnamedTypeWithunionParent37] :function_data
+      #   @option params [FunctionData::UnnamedTypeWithunionParent37, FunctionData::UnnamedTypeWithunionParent38, FunctionData::UnnamedTypeWithunionParent39] :function_data
       #   @option params [String] :name Name of the prompt
       #   @option params [String] :project_id Unique identifier for the project that the prompt belongs under
       #   @option params [String] :slug Unique identifier for the prompt

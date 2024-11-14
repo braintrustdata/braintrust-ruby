@@ -52,6 +52,9 @@ module Braintrust
     # @return [Braintrust::Resources::ProjectTags]
     attr_reader :project_tags
 
+    # @return [Braintrust::Resources::SpanIframes]
+    attr_reader :span_iframes
+
     # @return [Braintrust::Resources::Functions]
     attr_reader :functions
 
@@ -114,6 +117,7 @@ module Braintrust
       @users = Braintrust::Resources::Users.new(client: self)
       @project_scores = Braintrust::Resources::ProjectScores.new(client: self)
       @project_tags = Braintrust::Resources::ProjectTags.new(client: self)
+      @span_iframes = Braintrust::Resources::SpanIframes.new(client: self)
       @functions = Braintrust::Resources::Functions.new(client: self)
       @views = Braintrust::Resources::Views.new(client: self)
       @organizations = Braintrust::Resources::Organizations.new(client: self)
