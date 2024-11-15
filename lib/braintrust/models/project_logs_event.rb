@@ -34,7 +34,7 @@ module Braintrust
       required :project_id, String
 
       # @!attribute [rw] root_span_id
-      #   The `span_id` of the root of the trace this project logs event belongs to
+      #   A unique identifier for the trace this project logs event belongs to
       #   @return [String]
       required :root_span_id, String
 
@@ -95,8 +95,8 @@ module Braintrust
 
       # @!attribute [rw] span_attributes
       #   Human-identifying attributes of the span, such as name, type, etc.
-      #   @return [Braintrust::Models::ProjectLogsEvent::SpanAttributes]
-      optional :span_attributes, -> { Braintrust::Models::ProjectLogsEvent::SpanAttributes }
+      #   @return [Braintrust::Models::SpanAttributes]
+      optional :span_attributes, -> { Braintrust::Models::SpanAttributes }
 
       # @!attribute [rw] span_parents
       #   An array of the parent `span_ids` of this project logs event. This should be empty for the root span of a trace, and should most often contain just one parent element for subspans
@@ -241,36 +241,6 @@ module Braintrust
         #   def initialize(data = {}) = super
       end
 
-      class SpanAttributes < Braintrust::BaseModel
-        # @!attribute [rw] name_
-        #   Name of the span, for display purposes only
-        #   @return [String]
-        optional :name_, String, api_name: :name
-
-        # @!attribute [rw] type
-        #   Type of the span, for display purposes only
-        #   @return [Symbol, Braintrust::Models::ProjectLogsEvent::SpanAttributes::Type]
-        optional :type, enum: -> { Braintrust::Models::ProjectLogsEvent::SpanAttributes::Type }
-
-        # Type of the span, for display purposes only
-        class Type < Braintrust::Enum
-          LLM = :llm
-          SCORE = :score
-          FUNCTION = :function
-          EVAL = :eval
-          TASK = :task
-          TOOL = :tool
-        end
-
-        # @!parse
-        #   # Create a new instance of SpanAttributes from a Hash of raw data.
-        #   #
-        #   # @param data [Hash{Symbol => Object}] .
-        #   #   @option data [String, nil] :name Name of the span, for display purposes only
-        #   #   @option data [String, nil] :type Type of the span, for display purposes only
-        #   def initialize(data = {}) = super
-      end
-
       # @!parse
       #   # Create a new instance of ProjectLogsEvent from a Hash of raw data.
       #   #
@@ -285,7 +255,7 @@ module Braintrust
       #   #   @option data [String] :log_id A literal 'g' which identifies the log as a project log
       #   #   @option data [String] :org_id Unique id for the organization that the project belongs under
       #   #   @option data [String] :project_id Unique identifier for the project
-      #   #   @option data [String] :root_span_id The `span_id` of the root of the trace this project logs event belongs to
+      #   #   @option data [String] :root_span_id A unique identifier for the trace this project logs event belongs to
       #   #   @option data [String] :span_id A unique identifier used to link different project logs events together as part
       #   #     of a full trace. See the
       #   #     [tracing guide](https://www.braintrust.dev/docs/guides/tracing) for full details
