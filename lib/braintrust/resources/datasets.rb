@@ -279,7 +279,7 @@ module Braintrust
       # @param dataset_id [String] Dataset id
       #
       # @param params [Hash{Symbol => Object}] Attributes to send in this request.
-      #   @option params [Array<Braintrust::Models::InsertDatasetEventMerge, Braintrust::Models::InsertDatasetEventReplace>] :events A list of dataset events to insert
+      #   @option params [Array<Braintrust::Models::InsertDatasetEvent>] :events A list of dataset events to insert
       #
       # @param opts [Hash{Symbol => Object}, Braintrust::RequestOptions] Options to specify HTTP behaviour for this request.
       #
