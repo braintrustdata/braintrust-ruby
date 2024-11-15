@@ -299,7 +299,7 @@ module Braintrust
       # @param experiment_id [String] Experiment id
       #
       # @param params [Hash{Symbol => Object}] Attributes to send in this request.
-      #   @option params [Array<Braintrust::Models::InsertExperimentEventMerge, Braintrust::Models::InsertExperimentEventReplace>] :events A list of experiment events to insert
+      #   @option params [Array<Braintrust::Models::InsertExperimentEvent>] :events A list of experiment events to insert
       #
       # @param opts [Hash{Symbol => Object}, Braintrust::RequestOptions] Options to specify HTTP behaviour for this request.
       #

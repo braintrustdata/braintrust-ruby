@@ -2,21 +2,21 @@
 
 module Braintrust
   module Models
-    class InsertProjectLogsEventMerge < Braintrust::BaseModel
-      # @!attribute [rw] _is_merge
-      #   The `_is_merge` field controls how the row is merged with any existing row with the same id in the DB. By default (or when set to `false`), the existing row is completely replaced by the new row. When set to `true`, the new row is deep-merged into the existing row
-      #
-      # For example, say there is an existing row in the DB `{"id": "foo", "input": {"a": 5, "b": 10}}`. If we merge a new row as `{"_is_merge": true, "id": "foo", "input": {"b": 11, "c": 20}}`, the new row will be `{"id": "foo", "input": {"a": 5, "b": 11, "c": 20}}`. If we replace the new row as `{"id": "foo", "input": {"b": 11, "c": 20}}`, the new row will be `{"id": "foo", "input": {"b": 11, "c": 20}}`
-      #   @return [Boolean]
-      required :_is_merge, Braintrust::BooleanModel
-
+    class InsertProjectLogsEvent < Braintrust::BaseModel
       # @!attribute [rw] id
       #   A unique identifier for the project logs event. If you don't provide one, BrainTrust will generate one for you
       #   @return [String]
       optional :id, String
 
+      # @!attribute [rw] _is_merge
+      #   The `_is_merge` field controls how the row is merged with any existing row with the same id in the DB. By default (or when set to `false`), the existing row is completely replaced by the new row. When set to `true`, the new row is deep-merged into the existing row, if one is found. If no existing row is found, the new row is inserted as is.
+      #
+      # For example, say there is an existing row in the DB `{"id": "foo", "input": {"a": 5, "b": 10}}`. If we merge a new row as `{"_is_merge": true, "id": "foo", "input": {"b": 11, "c": 20}}`, the new row will be `{"id": "foo", "input": {"a": 5, "b": 11, "c": 20}}`. If we replace the new row as `{"id": "foo", "input": {"b": 11, "c": 20}}`, the new row will be `{"id": "foo", "input": {"b": 11, "c": 20}}`
+      #   @return [Boolean]
+      optional :_is_merge, Braintrust::BooleanModel
+
       # @!attribute [rw] _merge_paths
-      #   The `_merge_paths` field allows controlling the depth of the merge. It can only be specified alongside `_is_merge=true`. `_merge_paths` is a list of paths, where each path is a list of field names. The deep merge will not descend below any of the specified merge paths.
+      #   The `_merge_paths` field allows controlling the depth of the merge, when `_is_merge=true`. `_merge_paths` is a list of paths, where each path is a list of field names. The deep merge will not descend below any of the specified merge paths.
       #
       # For example, say there is an existing row in the DB `{"id": "foo", "input": {"a": {"b": 10}, "c": {"d": 20}}, "output": {"a": 20}}`. If we merge a new row as `{"_is_merge": true, "_merge_paths": [["input", "a"], ["output"]], "input": {"a": {"q": 30}, "c": {"e": 30}, "bar": "baz"}, "output": {"d": 40}}`, the new row will be `{"id": "foo": "input": {"a": {"q": 30}, "c": {"d": 20, "e": 30}, "bar": "baz"}, "output": {"d": 40}}`. In this case, due to the merge paths, we have replaced `input.a` and `output`, but have still deep-merged `input` and `input.c`.
       #   @return [Array<Array<String>>]
@@ -27,10 +27,19 @@ module Braintrust
       #   @return [Boolean]
       optional :_object_delete, Braintrust::BooleanModel
 
+      # @!attribute [rw] _parent_id
+      #   Use the `_parent_id` field to create this row as a subspan of an existing row. Tracking hierarchical relationships are important for tracing (see the [guide](https://www.braintrust.dev/docs/guides/tracing) for full details).
+      #
+      # For example, say we have logged a row `{"id": "abc", "input": "foo", "output": "bar", "expected": "boo", "scores": {"correctness": 0.33}}`. We can create a sub-span of the parent row by logging `{"_parent_id": "abc", "id": "llm_call", "input": {"prompt": "What comes after foo?"}, "output": "bar", "metrics": {"tokens": 1}}`. In the webapp, only the root span row `"abc"` will show up in the summary view. You can view the full trace hierarchy (in this case, the `"llm_call"` row) by clicking on the "abc" row.
+      #
+      # If the row is being merged into an existing row, this field will be ignored.
+      #   @return [String]
+      optional :_parent_id, String
+
       # @!attribute [rw] context
       #   Context is additional information about the code that produced the project logs event. It is essentially the textual counterpart to `metrics`. Use the `caller_*` attributes to track the location in code which produced the project logs event
-      #   @return [Braintrust::Models::InsertProjectLogsEventMerge::Context]
-      optional :context, -> { Braintrust::Models::InsertProjectLogsEventMerge::Context }
+      #   @return [Braintrust::Models::InsertProjectLogsEvent::Context]
+      optional :context, -> { Braintrust::Models::InsertProjectLogsEvent::Context }
 
       # @!attribute [rw] created
       #   The timestamp the project logs event was created
@@ -59,13 +68,22 @@ module Braintrust
 
       # @!attribute [rw] metrics
       #   Metrics are numerical measurements tracking the execution of the code that produced the project logs event. Use "start" and "end" to track the time span over which the project logs event was produced
-      #   @return [Braintrust::Models::InsertProjectLogsEventMerge::Metrics]
-      optional :metrics, -> { Braintrust::Models::InsertProjectLogsEventMerge::Metrics }
+      #   @return [Braintrust::Models::InsertProjectLogsEvent::Metrics]
+      optional :metrics, -> { Braintrust::Models::InsertProjectLogsEvent::Metrics }
 
       # @!attribute [rw] output
       #   The output of your application, including post-processing (an arbitrary, JSON serializable object), that allows you to determine whether the result is correct or not. For example, in an app that generates SQL queries, the `output` should be the _result_ of the SQL query generated by the model, not the query itself, because there may be multiple valid queries that answer a single question.
       #   @return [Object]
       optional :output, Braintrust::Unknown
+
+      # @!attribute [rw] root_span_id
+      #   Use span_id, root_span_id, and span_parents as a more explicit alternative to _parent_id. The span_id is a unique identifier describing the row's place in the a trace, and the root_span_id is a unique identifier for the whole trace. See the [guide](https://www.braintrust.dev/docs/guides/tracing) for full details.
+      #
+      # For example, say we have logged a row `{"id": "abc", "span_id": "span0", "root_span_id": "root_span0", "input": "foo", "output": "bar", "expected": "boo", "scores": {"correctness": 0.33}}`. We can create a sub-span of the parent row by logging `{"id": "llm_call", "span_id": "span1", "root_span_id": "root_span0", "span_parents": ["span0"], "input": {"prompt": "What comes after foo?"}, "output": "bar", "metrics": {"tokens": 1}}`. In the webapp, only the root span row `"abc"` will show up in the summary view. You can view the full trace hierarchy (in this case, the `"llm_call"` row) by clicking on the "abc" row.
+      #
+      # If the row is being merged into an existing row, this field will be ignored.
+      #   @return [String]
+      optional :root_span_id, String
 
       # @!attribute [rw] scores
       #   A dictionary of numeric values (between 0 and 1) to log. The scores should give you a variety of signals that help you determine how accurate the outputs are compared to what you expect and diagnose failures. For example, a summarization app might have one score that tells you how accurate the summary is, and another that measures the word similarity between the generated and grouth truth summary. The word similarity score could help you determine whether the summarization was covering similar concepts or not. You can use these scores to help you sort, filter, and compare logs.
@@ -74,8 +92,26 @@ module Braintrust
 
       # @!attribute [rw] span_attributes
       #   Human-identifying attributes of the span, such as name, type, etc.
-      #   @return [Braintrust::Models::InsertProjectLogsEventMerge::SpanAttributes]
-      optional :span_attributes, -> { Braintrust::Models::InsertProjectLogsEventMerge::SpanAttributes }
+      #   @return [Braintrust::Models::SpanAttributes]
+      optional :span_attributes, -> { Braintrust::Models::SpanAttributes }
+
+      # @!attribute [rw] span_id
+      #   Use span_id, root_span_id, and span_parents as a more explicit alternative to _parent_id. The span_id is a unique identifier describing the row's place in the a trace, and the root_span_id is a unique identifier for the whole trace. See the [guide](https://www.braintrust.dev/docs/guides/tracing) for full details.
+      #
+      # For example, say we have logged a row `{"id": "abc", "span_id": "span0", "root_span_id": "root_span0", "input": "foo", "output": "bar", "expected": "boo", "scores": {"correctness": 0.33}}`. We can create a sub-span of the parent row by logging `{"id": "llm_call", "span_id": "span1", "root_span_id": "root_span0", "span_parents": ["span0"], "input": {"prompt": "What comes after foo?"}, "output": "bar", "metrics": {"tokens": 1}}`. In the webapp, only the root span row `"abc"` will show up in the summary view. You can view the full trace hierarchy (in this case, the `"llm_call"` row) by clicking on the "abc" row.
+      #
+      # If the row is being merged into an existing row, this field will be ignored.
+      #   @return [String]
+      optional :span_id, String
+
+      # @!attribute [rw] span_parents
+      #   Use span_id, root_span_id, and span_parents as a more explicit alternative to _parent_id. The span_id is a unique identifier describing the row's place in the a trace, and the root_span_id is a unique identifier for the whole trace. See the [guide](https://www.braintrust.dev/docs/guides/tracing) for full details.
+      #
+      # For example, say we have logged a row `{"id": "abc", "span_id": "span0", "root_span_id": "root_span0", "input": "foo", "output": "bar", "expected": "boo", "scores": {"correctness": 0.33}}`. We can create a sub-span of the parent row by logging `{"id": "llm_call", "span_id": "span1", "root_span_id": "root_span0", "span_parents": ["span0"], "input": {"prompt": "What comes after foo?"}, "output": "bar", "metrics": {"tokens": 1}}`. In the webapp, only the root span row `"abc"` will show up in the summary view. You can view the full trace hierarchy (in this case, the `"llm_call"` row) by clicking on the "abc" row.
+      #
+      # If the row is being merged into an existing row, this field will be ignored.
+      #   @return [Array<String>]
+      optional :span_parents, Braintrust::ArrayOf.new(String)
 
       # @!attribute [rw] tags
       #   A list of tags to log
@@ -168,44 +204,17 @@ module Braintrust
         #   def initialize(data = {}) = super
       end
 
-      class SpanAttributes < Braintrust::BaseModel
-        # @!attribute [rw] name_
-        #   Name of the span, for display purposes only
-        #   @return [String]
-        optional :name_, String, api_name: :name
-
-        # @!attribute [rw] type
-        #   Type of the span, for display purposes only
-        #   @return [Symbol, Braintrust::Models::InsertProjectLogsEventMerge::SpanAttributes::Type]
-        optional :type, enum: -> { Braintrust::Models::InsertProjectLogsEventMerge::SpanAttributes::Type }
-
-        # Type of the span, for display purposes only
-        class Type < Braintrust::Enum
-          LLM = :llm
-          SCORE = :score
-          FUNCTION = :function
-          EVAL = :eval
-          TASK = :task
-          TOOL = :tool
-        end
-
-        # @!parse
-        #   # Create a new instance of SpanAttributes from a Hash of raw data.
-        #   #
-        #   # @param data [Hash{Symbol => Object}] .
-        #   #   @option data [String, nil] :name Name of the span, for display purposes only
-        #   #   @option data [String, nil] :type Type of the span, for display purposes only
-        #   def initialize(data = {}) = super
-      end
-
       # @!parse
-      #   # Create a new instance of InsertProjectLogsEventMerge from a Hash of raw data.
+      #   # Create a new instance of InsertProjectLogsEvent from a Hash of raw data.
       #   #
       #   # @param data [Hash{Symbol => Object}] .
-      #   #   @option data [Hash] :_is_merge The `_is_merge` field controls how the row is merged with any existing row with
+      #   #   @option data [String, nil] :id A unique identifier for the project logs event. If you don't provide one,
+      #   #     BrainTrust will generate one for you
+      #   #   @option data [Hash, nil] :_is_merge The `_is_merge` field controls how the row is merged with any existing row with
       #   #     the same id in the DB. By default (or when set to `false`), the existing row is
       #   #     completely replaced by the new row. When set to `true`, the new row is
-      #   #     deep-merged into the existing row
+      #   #     deep-merged into the existing row, if one is found. If no existing row is found,
+      #   #     the new row is inserted as is.
       #   #
       #   #     For example, say there is an existing row in the DB
       #   #     `{"id": "foo", "input": {"a": 5, "b": 10}}`. If we merge a new row as
@@ -213,12 +222,10 @@ module Braintrust
       #   #     will be `{"id": "foo", "input": {"a": 5, "b": 11, "c": 20}}`. If we replace the
       #   #     new row as `{"id": "foo", "input": {"b": 11, "c": 20}}`, the new row will be
       #   #     `{"id": "foo", "input": {"b": 11, "c": 20}}`
-      #   #   @option data [String, nil] :id A unique identifier for the project logs event. If you don't provide one,
-      #   #     BrainTrust will generate one for you
-      #   #   @option data [Array<Array<String>>, nil] :_merge_paths The `_merge_paths` field allows controlling the depth of the merge. It can only
-      #   #     be specified alongside `_is_merge=true`. `_merge_paths` is a list of paths,
-      #   #     where each path is a list of field names. The deep merge will not descend below
-      #   #     any of the specified merge paths.
+      #   #   @option data [Array<Array<String>>, nil] :_merge_paths The `_merge_paths` field allows controlling the depth of the merge, when
+      #   #     `_is_merge=true`. `_merge_paths` is a list of paths, where each path is a list
+      #   #     of field names. The deep merge will not descend below any of the specified merge
+      #   #     paths.
       #   #
       #   #     For example, say there is an existing row in the DB
       #   #     `{"id": "foo", "input": {"a": {"b": 10}, "c": {"d": 20}}, "output": {"a": 20}}`.
@@ -230,6 +237,19 @@ module Braintrust
       #   #     but have still deep-merged `input` and `input.c`.
       #   #   @option data [Hash, nil] :_object_delete Pass `_object_delete=true` to mark the project logs event deleted. Deleted
       #   #     events will not show up in subsequent fetches for this project logs
+      #   #   @option data [String, nil] :_parent_id Use the `_parent_id` field to create this row as a subspan of an existing row.
+      #   #     Tracking hierarchical relationships are important for tracing (see the
+      #   #     [guide](https://www.braintrust.dev/docs/guides/tracing) for full details).
+      #   #
+      #   #     For example, say we have logged a row
+      #   #     `{"id": "abc", "input": "foo", "output": "bar", "expected": "boo", "scores": {"correctness": 0.33}}`.
+      #   #     We can create a sub-span of the parent row by logging
+      #   #     `{"_parent_id": "abc", "id": "llm_call", "input": {"prompt": "What comes after foo?"}, "output": "bar", "metrics": {"tokens": 1}}`.
+      #   #     In the webapp, only the root span row `"abc"` will show up in the summary view.
+      #   #     You can view the full trace hierarchy (in this case, the `"llm_call"` row) by
+      #   #     clicking on the "abc" row.
+      #   #
+      #   #     If the row is being merged into an existing row, this field will be ignored.
       #   #   @option data [Object, nil] :context Context is additional information about the code that produced the project logs
       #   #     event. It is essentially the textual counterpart to `metrics`. Use the
       #   #     `caller_*` attributes to track the location in code which produced the project
@@ -257,6 +277,21 @@ module Braintrust
       #   #     or not. For example, in an app that generates SQL queries, the `output` should
       #   #     be the _result_ of the SQL query generated by the model, not the query itself,
       #   #     because there may be multiple valid queries that answer a single question.
+      #   #   @option data [String, nil] :root_span_id Use span_id, root_span_id, and span_parents as a more explicit alternative to
+      #   #     \_parent_id. The span_id is a unique identifier describing the row's place in
+      #   #     the a trace, and the root_span_id is a unique identifier for the whole trace.
+      #   #     See the [guide](https://www.braintrust.dev/docs/guides/tracing) for full
+      #   #     details.
+      #   #
+      #   #     For example, say we have logged a row
+      #   #     `{"id": "abc", "span_id": "span0", "root_span_id": "root_span0", "input": "foo", "output": "bar", "expected": "boo", "scores": {"correctness": 0.33}}`.
+      #   #     We can create a sub-span of the parent row by logging
+      #   #     `{"id": "llm_call", "span_id": "span1", "root_span_id": "root_span0", "span_parents": ["span0"], "input": {"prompt": "What comes after foo?"}, "output": "bar", "metrics": {"tokens": 1}}`.
+      #   #     In the webapp, only the root span row `"abc"` will show up in the summary view.
+      #   #     You can view the full trace hierarchy (in this case, the `"llm_call"` row) by
+      #   #     clicking on the "abc" row.
+      #   #
+      #   #     If the row is being merged into an existing row, this field will be ignored.
       #   #   @option data [Hash, nil] :scores A dictionary of numeric values (between 0 and 1) to log. The scores should give
       #   #     you a variety of signals that help you determine how accurate the outputs are
       #   #     compared to what you expect and diagnose failures. For example, a summarization
@@ -266,6 +301,36 @@ module Braintrust
       #   #     summarization was covering similar concepts or not. You can use these scores to
       #   #     help you sort, filter, and compare logs.
       #   #   @option data [Object, nil] :span_attributes Human-identifying attributes of the span, such as name, type, etc.
+      #   #   @option data [String, nil] :span_id Use span_id, root_span_id, and span_parents as a more explicit alternative to
+      #   #     \_parent_id. The span_id is a unique identifier describing the row's place in
+      #   #     the a trace, and the root_span_id is a unique identifier for the whole trace.
+      #   #     See the [guide](https://www.braintrust.dev/docs/guides/tracing) for full
+      #   #     details.
+      #   #
+      #   #     For example, say we have logged a row
+      #   #     `{"id": "abc", "span_id": "span0", "root_span_id": "root_span0", "input": "foo", "output": "bar", "expected": "boo", "scores": {"correctness": 0.33}}`.
+      #   #     We can create a sub-span of the parent row by logging
+      #   #     `{"id": "llm_call", "span_id": "span1", "root_span_id": "root_span0", "span_parents": ["span0"], "input": {"prompt": "What comes after foo?"}, "output": "bar", "metrics": {"tokens": 1}}`.
+      #   #     In the webapp, only the root span row `"abc"` will show up in the summary view.
+      #   #     You can view the full trace hierarchy (in this case, the `"llm_call"` row) by
+      #   #     clicking on the "abc" row.
+      #   #
+      #   #     If the row is being merged into an existing row, this field will be ignored.
+      #   #   @option data [Array<String>, nil] :span_parents Use span_id, root_span_id, and span_parents as a more explicit alternative to
+      #   #     \_parent_id. The span_id is a unique identifier describing the row's place in
+      #   #     the a trace, and the root_span_id is a unique identifier for the whole trace.
+      #   #     See the [guide](https://www.braintrust.dev/docs/guides/tracing) for full
+      #   #     details.
+      #   #
+      #   #     For example, say we have logged a row
+      #   #     `{"id": "abc", "span_id": "span0", "root_span_id": "root_span0", "input": "foo", "output": "bar", "expected": "boo", "scores": {"correctness": 0.33}}`.
+      #   #     We can create a sub-span of the parent row by logging
+      #   #     `{"id": "llm_call", "span_id": "span1", "root_span_id": "root_span0", "span_parents": ["span0"], "input": {"prompt": "What comes after foo?"}, "output": "bar", "metrics": {"tokens": 1}}`.
+      #   #     In the webapp, only the root span row `"abc"` will show up in the summary view.
+      #   #     You can view the full trace hierarchy (in this case, the `"llm_call"` row) by
+      #   #     clicking on the "abc" row.
+      #   #
+      #   #     If the row is being merged into an existing row, this field will be ignored.
       #   #   @option data [Array<String>, nil] :tags A list of tags to log
       #   def initialize(data = {}) = super
     end

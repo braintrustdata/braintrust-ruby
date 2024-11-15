@@ -165,7 +165,7 @@ module Braintrust
         # @param project_id [String] Project id
         #
         # @param params [Hash{Symbol => Object}] Attributes to send in this request.
-        #   @option params [Array<Braintrust::Models::InsertProjectLogsEventMerge, Braintrust::Models::InsertProjectLogsEventReplace>] :events A list of project logs events to insert
+        #   @option params [Array<Braintrust::Models::InsertProjectLogsEvent>] :events A list of project logs events to insert
         #
         # @param opts [Hash{Symbol => Object}, Braintrust::RequestOptions] Options to specify HTTP behaviour for this request.
         #

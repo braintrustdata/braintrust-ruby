@@ -29,7 +29,7 @@ module Braintrust
       required :project_id, String
 
       # @!attribute [rw] root_span_id
-      #   The `span_id` of the root of the trace this dataset event belongs to
+      #   A unique identifier for the trace this dataset event belongs to
       #   @return [String]
       required :root_span_id, String
 
@@ -123,7 +123,7 @@ module Braintrust
       #   #   @option data [String] :created The timestamp the dataset event was created
       #   #   @option data [String] :dataset_id Unique identifier for the dataset
       #   #   @option data [String] :project_id Unique identifier for the project that the dataset belongs under
-      #   #   @option data [String] :root_span_id The `span_id` of the root of the trace this dataset event belongs to
+      #   #   @option data [String] :root_span_id A unique identifier for the trace this dataset event belongs to
       #   #   @option data [String] :span_id A unique identifier used to link different dataset events together as part of a
       #   #     full trace. See the
       #   #     [tracing guide](https://www.braintrust.dev/docs/guides/tracing) for full details
