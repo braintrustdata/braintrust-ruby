@@ -8,10 +8,10 @@ module Braintrust
       #   @return [String]
       required :id, String
 
-      # @!attribute [rw] name_
+      # @!attribute [rw] name
       #   Name of the dataset. Within a project, dataset names are unique
       #   @return [String]
-      required :name_, String, api_name: :name
+      required :name, String
 
       # @!attribute [rw] project_id
       #   Unique identifier for the project that the dataset belongs under

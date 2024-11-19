@@ -8,10 +8,10 @@ module Braintrust
       #   @return [String]
       required :id, String
 
-      # @!attribute [rw] name_
+      # @!attribute [rw] name
       #   Name of the AI secret
       #   @return [String]
-      required :name_, String, api_name: :name
+      required :name, String
 
       # @!attribute [rw] org_id
       #   Unique identifier for the organization

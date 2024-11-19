@@ -13,10 +13,10 @@ module Braintrust
       #   @return [Float]
       required :metric, Float
 
-      # @!attribute [rw] name_
+      # @!attribute [rw] name
       #   Name of the metric
       #   @return [String]
-      required :name_, String, api_name: :name
+      required :name, String
 
       # @!attribute [rw] regressions
       #   Number of regressions in the metric

@@ -18,10 +18,10 @@ module Braintrust
       #   @return [Symbol, Braintrust::Models::Prompt::LogID]
       required :log_id, enum: -> { Braintrust::Models::Prompt::LogID }
 
-      # @!attribute [rw] name_
+      # @!attribute [rw] name
       #   Name of the prompt
       #   @return [String]
-      required :name_, String, api_name: :name
+      required :name, String
 
       # @!attribute [rw] org_id
       #   Unique identifier for the organization
