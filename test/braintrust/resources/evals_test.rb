@@ -17,11 +17,7 @@ class Braintrust::Test::Resources::EvalsTest < Minitest::Test
       {
         data: {"dataset_id" => "dataset_id"},
         project_id: "project_id",
-        scores: [
-          {"function_id" => "function_id"},
-          {"function_id" => "function_id"},
-          {"function_id" => "function_id"}
-        ],
+        scores: [{"function_id" => "function_id"}],
         task: {"function_id" => "function_id"}
       }
     )
