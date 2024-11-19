@@ -14,7 +14,7 @@ module Braintrust
     # @param req [Hash{Symbol => Object}]
     # @param opts [Hash{Symbol => Object}]
     def initialize(client:, model:, req:, opts:, response:, raw_data:)
-      self.objects = (raw_data[:objects] || []).map { |e| model.convert(e) }
+      @objects = (raw_data[:objects] || []).map { |e| model.convert(e) }
       @client = client
       @req = req
       @opts = opts
