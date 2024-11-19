@@ -15,7 +15,7 @@ class Braintrust::Test::Resources::Projects::LogsTest < Minitest::Test
   def test_feedback_required_params
     response = @braintrust.projects.logs.feedback(
       "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-      {feedback: [{"id" => "id"}, {"id" => "id"}, {"id" => "id"}]}
+      {feedback: [{"id" => "id"}]}
     )
     assert_kind_of(Braintrust::Models::FeedbackResponseSchema, response)
   end
@@ -31,10 +31,7 @@ class Braintrust::Test::Resources::Projects::LogsTest < Minitest::Test
   end
 
   def test_insert_required_params
-    response = @braintrust.projects.logs.insert(
-      "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-      {events: [{}, {}, {}]}
-    )
+    response = @braintrust.projects.logs.insert("182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e", {events: [{}]})
     assert_kind_of(Braintrust::Models::LogInsertResponse, response)
   end
 end
