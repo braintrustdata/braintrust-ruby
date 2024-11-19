@@ -3,10 +3,10 @@
 module Braintrust
   module Models
     class SpanAttributes < Braintrust::BaseModel
-      # @!attribute [rw] name_
+      # @!attribute [rw] name
       #   Name of the span, for display purposes only
       #   @return [String]
-      optional :name_, String, api_name: :name
+      optional :name, String
 
       # @!attribute [rw] type
       #   Type of the span, for display purposes only

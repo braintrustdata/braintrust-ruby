@@ -8,10 +8,10 @@ module Braintrust
       #   @return [String]
       required :id, String
 
-      # @!attribute [rw] name_
+      # @!attribute [rw] name
       #   Name of the group
       #   @return [String]
-      required :name_, String, api_name: :name
+      required :name, String
 
       # @!attribute [rw] org_id
       #   Unique id for the organization that the group belongs under
