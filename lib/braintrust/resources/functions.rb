@@ -142,7 +142,7 @@ module Braintrust
       #
       # @param params [Hash{Symbol => Object}] Attributes to send in this request.
       #   @option params [Object, nil] :input Argument to the function, which can be any JSON serializable value
-      #   @option params [Array<Message::UnnamedTypeWithunionParent30, Message::UnnamedTypeWithunionParent31, Message::UnnamedTypeWithunionParent32, Message::UnnamedTypeWithunionParent33, Message::UnnamedTypeWithunionParent34, Message::UnnamedTypeWithunionParent35>, nil] :messages If the function is an LLM, additional messages to pass along to it
+      #   @option params [Array<Braintrust::Models::ChatCompletionMessage::UnnamedTypeWithunionParent30, Braintrust::Models::ChatCompletionMessage::UnnamedTypeWithunionParent31, Braintrust::Models::ChatCompletionMessage::UnnamedTypeWithunionParent32, Braintrust::Models::ChatCompletionMessage::UnnamedTypeWithunionParent33, Braintrust::Models::ChatCompletionMessage::UnnamedTypeWithunionParent34, Braintrust::Models::ChatCompletionMessage::UnnamedTypeWithunionParent35>, nil] :messages If the function is an LLM, additional messages to pass along to it
       #   @option params [Symbol, Mode, nil] :mode The mode format of the returned value (defaults to 'auto')
       #   @option params [Parent::UnnamedTypeWithunionParent36, String, nil] :parent Options for tracing the function call
       #   @option params [Boolean, nil] :stream Whether to stream the response. If true, results will be returned in the
