@@ -20,9 +20,9 @@ module Braintrust
         #   @return [String]
         required :arguments, String
 
-        # @!attribute [rw] name_
+        # @!attribute [rw] name
         #   @return [String]
-        required :name_, String, api_name: :name
+        required :name, String
 
         # @!parse
         #   # Create a new instance of Function from a Hash of raw data.

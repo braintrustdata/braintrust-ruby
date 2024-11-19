@@ -8,10 +8,10 @@ module Braintrust
       #   @return [Integer]
       required :improvements, Integer
 
-      # @!attribute [rw] name_
+      # @!attribute [rw] name
       #   Name of the score
       #   @return [String]
-      required :name_, String, api_name: :name
+      required :name, String
 
       # @!attribute [rw] regressions
       #   Number of regressions in the score

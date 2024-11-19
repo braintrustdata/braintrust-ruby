@@ -3,10 +3,10 @@
 module Braintrust
   module Models
     class ProjectScoreCategory < Braintrust::BaseModel
-      # @!attribute [rw] name_
+      # @!attribute [rw] name
       #   Name of the category
       #   @return [String]
-      required :name_, String, api_name: :name
+      required :name, String
 
       # @!attribute [rw] value
       #   Numerical value of the category. Must be between 0 and 1, inclusive
