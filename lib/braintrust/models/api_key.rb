@@ -8,10 +8,10 @@ module Braintrust
       #   @return [String]
       required :id, String
 
-      # @!attribute [rw] name_
+      # @!attribute [rw] name
       #   Name of the api key
       #   @return [String]
-      required :name_, String, api_name: :name
+      required :name, String
 
       # @!attribute [rw] preview_name
       #   @return [String]
