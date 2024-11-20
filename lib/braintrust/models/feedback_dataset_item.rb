@@ -14,7 +14,7 @@ module Braintrust
       optional :comment, String
 
       # @!attribute [rw] metadata
-      #   A dictionary with additional data about the feedback. If you have a `user_id`, you can log it here and access it in the Braintrust UI.
+      #   A dictionary with additional data about the feedback. If you have a `user_id`, you can log it here and access it in the Braintrust UI. Note, this metadata does not correspond to the main event itself, but rather the audit log attached to the event.
       #   @return [Hash]
       optional :metadata, Hash
 
@@ -22,6 +22,11 @@ module Braintrust
       #   The source of the feedback. Must be one of "external" (default), "app", or "api"
       #   @return [Symbol, Braintrust::Models::FeedbackDatasetItem::Source]
       optional :source, enum: -> { Braintrust::Models::FeedbackDatasetItem::Source }
+
+      # @!attribute [rw] tags
+      #   A list of tags to log
+      #   @return [Array<String>]
+      optional :tags, Braintrust::ArrayOf.new(String)
 
       # The source of the feedback. Must be one of "external" (default), "app", or "api"
       class Source < Braintrust::Enum
@@ -38,8 +43,11 @@ module Braintrust
       #   #     by `POST /v1/dataset/{dataset_id}/insert`
       #   #   @option data [String, nil] :comment An optional comment string to log about the dataset event
       #   #   @option data [Hash, nil] :metadata A dictionary with additional data about the feedback. If you have a `user_id`,
-      #   #     you can log it here and access it in the Braintrust UI.
+      #   #     you can log it here and access it in the Braintrust UI. Note, this metadata does
+      #   #     not correspond to the main event itself, but rather the audit log attached to
+      #   #     the event.
       #   #   @option data [String, nil] :source The source of the feedback. Must be one of "external" (default), "app", or "api"
+      #   #   @option data [Array<String>, nil] :tags A list of tags to log
       #   def initialize(data = {}) = super
     end
   end
