@@ -3,6 +3,11 @@
 module Braintrust
   module Models
     class PatchOrganizationMembersOutput < Braintrust::BaseModel
+      # @!attribute [rw] org_id
+      #   The id of the org that was modified.
+      #   @return [String]
+      required :org_id, String
+
       # @!attribute [rw] status
       #   @return [Symbol, Braintrust::Models::PatchOrganizationMembersOutput::Status]
       required :status, enum: -> { Braintrust::Models::PatchOrganizationMembersOutput::Status }
@@ -20,6 +25,7 @@ module Braintrust
       #   # Create a new instance of PatchOrganizationMembersOutput from a Hash of raw data.
       #   #
       #   # @param data [Hash{Symbol => Object}] .
+      #   #   @option data [String] :org_id The id of the org that was modified.
       #   #   @option data [String] :status
       #   #   @option data [String, nil] :send_email_error If invite emails failed to send for some reason, the patch operation will still
       #   #     complete, but we will return an error message here
