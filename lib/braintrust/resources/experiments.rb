@@ -165,8 +165,7 @@ module Braintrust
       end
 
       # Fetch the events in an experiment. Equivalent to the POST form of the same path,
-      #   but with the parameters in the URL query rather than in the request body. For
-      #   more complex queries, use the `POST /btql` endpoint.
+      #   but with the parameters in the URL query rather than in the request body
       #
       # @param experiment_id [String] Experiment id
       #
@@ -225,8 +224,7 @@ module Braintrust
       end
 
       # Fetch the events in an experiment. Equivalent to the GET form of the same path,
-      #   but with the parameters in the request body rather than in the URL query. For
-      #   more complex queries, use the `POST /btql` endpoint.
+      #   but with the parameters in the request body rather than in the URL query
       #
       # @param experiment_id [String] Experiment id
       #
@@ -236,6 +234,12 @@ module Braintrust
       #
       #     The string can be obtained directly from the `cursor` property of the previous
       #     fetch query
+      #   @option params [Array<Braintrust::Models::PathLookupFilter>, nil] :filters NOTE: This parameter is deprecated and will be removed in a future revision.
+      #     Consider using the `/btql` endpoint
+      #     (https://www.braintrust.dev/docs/reference/btql) for more advanced filtering.
+      #
+      #     A list of filters on the events to fetch. Currently, only path-lookup type
+      #     filters are supported.
       #   @option params [Integer, nil] :limit limit the number of traces fetched
       #
       #     Fetch queries may be paginated if the total result size is expected to be large
@@ -299,14 +303,14 @@ module Braintrust
       #
       # @param opts [Hash{Symbol => Object}, Braintrust::RequestOptions] Options to specify HTTP behaviour for this request.
       #
-      # @return [Braintrust::Models::InsertEventsResponse]
+      # @return [Braintrust::Models::ExperimentInsertResponse]
       def insert(experiment_id, params = {}, opts = {})
         req = {
           method: :post,
           path: "/v1/experiment/#{experiment_id}/insert",
           body: params,
           headers: {"Content-Type" => "application/json"},
-          model: Braintrust::Models::InsertEventsResponse
+          model: Braintrust::Models::ExperimentInsertResponse
         }
         @client.request(req, opts)
       end
