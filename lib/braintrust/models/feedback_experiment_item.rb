@@ -19,7 +19,7 @@ module Braintrust
       optional :expected, Braintrust::Unknown
 
       # @!attribute [rw] metadata
-      #   A dictionary with additional data about the feedback. If you have a `user_id`, you can log it here and access it in the Braintrust UI.
+      #   A dictionary with additional data about the feedback. If you have a `user_id`, you can log it here and access it in the Braintrust UI. Note, this metadata does not correspond to the main event itself, but rather the audit log attached to the event.
       #   @return [Hash]
       optional :metadata, Hash
 
@@ -32,6 +32,11 @@ module Braintrust
       #   The source of the feedback. Must be one of "external" (default), "app", or "api"
       #   @return [Symbol, Braintrust::Models::FeedbackExperimentItem::Source]
       optional :source, enum: -> { Braintrust::Models::FeedbackExperimentItem::Source }
+
+      # @!attribute [rw] tags
+      #   A list of tags to log
+      #   @return [Array<String>]
+      optional :tags, Braintrust::ArrayOf.new(String)
 
       # The source of the feedback. Must be one of "external" (default), "app", or "api"
       class Source < Braintrust::Enum
@@ -50,10 +55,13 @@ module Braintrust
       #   #   @option data [Object, nil] :expected The ground truth value (an arbitrary, JSON serializable object) that you'd
       #   #     compare to `output` to determine if your `output` value is correct or not
       #   #   @option data [Hash, nil] :metadata A dictionary with additional data about the feedback. If you have a `user_id`,
-      #   #     you can log it here and access it in the Braintrust UI.
+      #   #     you can log it here and access it in the Braintrust UI. Note, this metadata does
+      #   #     not correspond to the main event itself, but rather the audit log attached to
+      #   #     the event.
       #   #   @option data [Hash, nil] :scores A dictionary of numeric values (between 0 and 1) to log. These scores will be
       #   #     merged into the existing scores for the experiment event
       #   #   @option data [String, nil] :source The source of the feedback. Must be one of "external" (default), "app", or "api"
+      #   #   @option data [Array<String>, nil] :tags A list of tags to log
       #   def initialize(data = {}) = super
     end
   end
