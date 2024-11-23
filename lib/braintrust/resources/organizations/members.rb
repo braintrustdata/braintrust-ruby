@@ -30,8 +30,8 @@ module Braintrust
           req = {
             method: :patch,
             path: "/v1/organization/members",
-            body: params,
             headers: {"Content-Type" => "application/json"},
+            body: params,
             model: Braintrust::Models::PatchOrganizationMembersOutput
           }
           @client.request(req, opts)

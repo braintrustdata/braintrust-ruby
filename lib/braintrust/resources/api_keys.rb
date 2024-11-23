@@ -24,8 +24,8 @@ module Braintrust
         req = {
           method: :post,
           path: "/v1/api_key",
-          body: params,
           headers: {"Content-Type" => "application/json"},
+          body: params,
           model: Braintrust::Models::CreateAPIKeyOutput
         }
         @client.request(req, opts)
