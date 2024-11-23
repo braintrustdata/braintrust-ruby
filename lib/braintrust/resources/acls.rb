@@ -32,8 +32,8 @@ module Braintrust
         req = {
           method: :post,
           path: "/v1/acl",
-          body: params,
           headers: {"Content-Type" => "application/json"},
+          body: params,
           model: Braintrust::Models::ACL
         }
         @client.request(req, opts)
@@ -136,8 +136,8 @@ module Braintrust
         req = {
           method: :post,
           path: "/v1/acl/batch-update",
-          body: params,
           headers: {"Content-Type" => "application/json"},
+          body: params,
           model: Braintrust::Models::ACLBatchUpdateResponse
         }
         @client.request(req, opts)
@@ -166,8 +166,8 @@ module Braintrust
         req = {
           method: :delete,
           path: "/v1/acl",
-          body: params,
           headers: {"Content-Type" => "application/json"},
+          body: params,
           model: Braintrust::Models::ACL
         }
         @client.request(req, opts)

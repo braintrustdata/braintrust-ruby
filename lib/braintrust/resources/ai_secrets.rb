@@ -28,8 +28,8 @@ module Braintrust
         req = {
           method: :post,
           path: "/v1/ai_secret",
-          body: params,
           headers: {"Content-Type" => "application/json"},
+          body: params,
           model: Braintrust::Models::AISecret
         }
         @client.request(req, opts)
@@ -69,8 +69,8 @@ module Braintrust
         req = {
           method: :patch,
           path: "/v1/ai_secret/#{ai_secret_id}",
-          body: params,
           headers: {"Content-Type" => "application/json"},
+          body: params,
           model: Braintrust::Models::AISecret
         }
         @client.request(req, opts)
@@ -141,8 +141,8 @@ module Braintrust
         req = {
           method: :delete,
           path: "/v1/ai_secret",
-          body: params,
           headers: {"Content-Type" => "application/json"},
+          body: params,
           model: Braintrust::Models::AISecret
         }
         @client.request(req, opts)
@@ -169,8 +169,8 @@ module Braintrust
         req = {
           method: :put,
           path: "/v1/ai_secret",
-          body: params,
           headers: {"Content-Type" => "application/json"},
+          body: params,
           model: Braintrust::Models::AISecret
         }
         @client.request(req, opts)
