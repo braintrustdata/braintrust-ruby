@@ -27,8 +27,8 @@ module Braintrust
         req = {
           method: :post,
           path: "/v1/project_score",
-          body: params,
           headers: {"Content-Type" => "application/json"},
+          body: params,
           model: Braintrust::Models::ProjectScore
         }
         @client.request(req, opts)
@@ -69,8 +69,8 @@ module Braintrust
         req = {
           method: :patch,
           path: "/v1/project_score/#{project_score_id}",
-          body: params,
           headers: {"Content-Type" => "application/json"},
+          body: params,
           model: Braintrust::Models::ProjectScore
         }
         @client.request(req, opts)
@@ -147,8 +147,8 @@ module Braintrust
         req = {
           method: :put,
           path: "/v1/project_score",
-          body: params,
           headers: {"Content-Type" => "application/json"},
+          body: params,
           model: Braintrust::Models::ProjectScore
         }
         @client.request(req, opts)
