@@ -25,8 +25,8 @@ module Braintrust
         req = {
           method: :post,
           path: "/v1/dataset",
-          body: params,
           headers: {"Content-Type" => "application/json"},
+          body: params,
           model: Braintrust::Models::Dataset
         }
         @client.request(req, opts)
@@ -65,8 +65,8 @@ module Braintrust
         req = {
           method: :patch,
           path: "/v1/dataset/#{dataset_id}",
-          body: params,
           headers: {"Content-Type" => "application/json"},
+          body: params,
           model: Braintrust::Models::Dataset
         }
         @client.request(req, opts)
@@ -137,8 +137,8 @@ module Braintrust
         req = {
           method: :post,
           path: "/v1/dataset/#{dataset_id}/feedback",
-          body: params,
           headers: {"Content-Type" => "application/json"},
+          body: params,
           model: Braintrust::Models::FeedbackResponseSchema
         }
         @client.request(req, opts)
@@ -263,8 +263,8 @@ module Braintrust
         req = {
           method: :post,
           path: "/v1/dataset/#{dataset_id}/fetch",
-          body: params,
           headers: {"Content-Type" => "application/json"},
+          body: params,
           model: Braintrust::Models::FetchDatasetEventsResponse
         }
         @client.request(req, opts)
@@ -284,8 +284,8 @@ module Braintrust
         req = {
           method: :post,
           path: "/v1/dataset/#{dataset_id}/insert",
-          body: params,
           headers: {"Content-Type" => "application/json"},
+          body: params,
           model: Braintrust::Models::InsertEventsResponse
         }
         @client.request(req, opts)

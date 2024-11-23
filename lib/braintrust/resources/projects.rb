@@ -28,8 +28,8 @@ module Braintrust
         req = {
           method: :post,
           path: "/v1/project",
-          body: params,
           headers: {"Content-Type" => "application/json"},
+          body: params,
           model: Braintrust::Models::Project
         }
         @client.request(req, opts)
@@ -68,8 +68,8 @@ module Braintrust
         req = {
           method: :patch,
           path: "/v1/project/#{project_id}",
-          body: params,
           headers: {"Content-Type" => "application/json"},
+          body: params,
           model: Braintrust::Models::Project
         }
         @client.request(req, opts)

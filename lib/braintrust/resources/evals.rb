@@ -50,8 +50,8 @@ module Braintrust
         req = {
           method: :post,
           path: "/v1/eval",
-          body: params,
           headers: {"Content-Type" => "application/json"},
+          body: params,
           model: Braintrust::Models::SummarizeExperimentResponse
         }
         @client.request(req, opts)

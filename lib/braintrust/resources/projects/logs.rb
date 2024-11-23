@@ -23,8 +23,8 @@ module Braintrust
           req = {
             method: :post,
             path: "/v1/project_logs/#{project_id}/feedback",
-            body: params,
             headers: {"Content-Type" => "application/json"},
+            body: params,
             model: Braintrust::Models::FeedbackResponseSchema
           }
           @client.request(req, opts)
@@ -149,8 +149,8 @@ module Braintrust
           req = {
             method: :post,
             path: "/v1/project_logs/#{project_id}/fetch",
-            body: params,
             headers: {"Content-Type" => "application/json"},
+            body: params,
             model: Braintrust::Models::FetchProjectLogsEventsResponse
           }
           @client.request(req, opts)
@@ -170,8 +170,8 @@ module Braintrust
           req = {
             method: :post,
             path: "/v1/project_logs/#{project_id}/insert",
-            body: params,
             headers: {"Content-Type" => "application/json"},
+            body: params,
             model: Braintrust::Models::InsertEventsResponse
           }
           @client.request(req, opts)
