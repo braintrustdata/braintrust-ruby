@@ -13,7 +13,7 @@ module Braintrust
       #
       # @param params [Hash{Symbol => Object}] Attributes to send in this request.
       #   @option params [String] :name Name of the view
-      #   @option params [String] :object_id The id of the object the view applies to
+      #   @option params [String] :object_id_ The id of the object the view applies to
       #   @option params [Symbol, ObjectType] :object_type The object type that the ACL applies to
       #   @option params [Symbol, ViewType] :view_type Type of table that the view corresponds to.
       #   @option params [Time, nil] :deleted_at Date of role deletion, or null if the role is still active
@@ -40,7 +40,7 @@ module Braintrust
       # @param view_id [String] View id
       #
       # @param params [Hash{Symbol => Object}] Attributes to send in this request.
-      #   @option params [String] :object_id The id of the object the ACL applies to
+      #   @option params [String] :object_id_ The id of the object the ACL applies to
       #   @option params [Symbol, ObjectType] :object_type The object type that the ACL applies to
       #
       # @param opts [Hash{Symbol => Object}, Braintrust::RequestOptions] Options to specify HTTP behaviour for this request.
@@ -63,7 +63,7 @@ module Braintrust
       # @param view_id [String] View id
       #
       # @param params [Hash{Symbol => Object}] Attributes to send in this request.
-      #   @option params [String] :object_id The id of the object the view applies to
+      #   @option params [String] :object_id_ The id of the object the view applies to
       #   @option params [Symbol, ObjectType] :object_type The object type that the ACL applies to
       #   @option params [String, nil] :name Name of the view
       #   @option params [Braintrust::Models::ViewOptions, nil] :options Options for the view in the app
@@ -89,7 +89,7 @@ module Braintrust
       #   recently-created views coming first
       #
       # @param params [Hash{Symbol => Object}] Attributes to send in this request.
-      #   @option params [String] :object_id The id of the object the ACL applies to
+      #   @option params [String] :object_id_ The id of the object the ACL applies to
       #   @option params [Symbol, ObjectType] :object_type The object type that the ACL applies to
       #   @option params [String, nil] :ending_before Pagination cursor id.
       #
@@ -126,7 +126,7 @@ module Braintrust
       # @param view_id [String] View id
       #
       # @param params [Hash{Symbol => Object}] Attributes to send in this request.
-      #   @option params [String] :object_id The id of the object the view applies to
+      #   @option params [String] :object_id_ The id of the object the view applies to
       #   @option params [Symbol, ObjectType] :object_type The object type that the ACL applies to
       #
       # @param opts [Hash{Symbol => Object}, Braintrust::RequestOptions] Options to specify HTTP behaviour for this request.
@@ -149,7 +149,7 @@ module Braintrust
       #
       # @param params [Hash{Symbol => Object}] Attributes to send in this request.
       #   @option params [String] :name Name of the view
-      #   @option params [String] :object_id The id of the object the view applies to
+      #   @option params [String] :object_id_ The id of the object the view applies to
       #   @option params [Symbol, ObjectType] :object_type The object type that the ACL applies to
       #   @option params [Symbol, ViewType] :view_type Type of table that the view corresponds to.
       #   @option params [Time, nil] :deleted_at Date of role deletion, or null if the role is still active
