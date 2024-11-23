@@ -13,7 +13,7 @@ module Braintrust
       #
       # @param params [Hash{Symbol => Object}] Attributes to send in this request.
       #   @option params [String] :name The name of the environment variable
-      #   @option params [String] :object_id The id of the object the environment variable is scoped for
+      #   @option params [String] :object_id_ The id of the object the environment variable is scoped for
       #   @option params [Symbol, ObjectType] :object_type The type of the object the environment variable is scoped for
       #   @option params [String, nil] :value The value of the environment variable. Will be encrypted at rest.
       #
@@ -78,7 +78,7 @@ module Braintrust
       #   @option params [Array<String>, String, nil] :ids Filter search results to a particular set of object IDs. To specify a list of
       #     IDs, include the query param multiple times
       #   @option params [Integer, nil] :limit Limit the number of objects to return
-      #   @option params [String, nil] :object_id The id of the object the environment variable is scoped for
+      #   @option params [String, nil] :object_id_ The id of the object the environment variable is scoped for
       #   @option params [Symbol, ObjectType, nil] :object_type The type of the object the environment variable is scoped for
       #
       # @param opts [Hash{Symbol => Object}, Braintrust::RequestOptions] Options to specify HTTP behaviour for this request.
@@ -115,7 +115,7 @@ module Braintrust
       #
       # @param params [Hash{Symbol => Object}] Attributes to send in this request.
       #   @option params [String] :name The name of the environment variable
-      #   @option params [String] :object_id The id of the object the environment variable is scoped for
+      #   @option params [String] :object_id_ The id of the object the environment variable is scoped for
       #   @option params [Symbol, ObjectType] :object_type The type of the object the environment variable is scoped for
       #   @option params [String, nil] :value The value of the environment variable. Will be encrypted at rest.
       #

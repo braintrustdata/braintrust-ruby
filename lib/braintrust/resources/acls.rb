@@ -12,7 +12,7 @@ module Braintrust
       #   specified in the request, will return the existing acl unmodified
       #
       # @param params [Hash{Symbol => Object}] Attributes to send in this request.
-      #   @option params [String] :object_id The id of the object the ACL applies to
+      #   @option params [String] :object_id_ The id of the object the ACL applies to
       #   @option params [Symbol, ObjectType] :object_type The object type that the ACL applies to
       #   @option params [String, nil] :group_id Id of the group the ACL applies to. Exactly one of `user_id` and `group_id` will
       #     be provided
@@ -58,7 +58,7 @@ module Braintrust
       #   recently-created acls coming first
       #
       # @param params [Hash{Symbol => Object}] Attributes to send in this request.
-      #   @option params [String] :object_id The id of the object the ACL applies to
+      #   @option params [String] :object_id_ The id of the object the ACL applies to
       #   @option params [Symbol, ObjectType] :object_type The object type that the ACL applies to
       #   @option params [String, nil] :ending_before Pagination cursor id.
       #
@@ -146,7 +146,7 @@ module Braintrust
       # Delete a single acl
       #
       # @param params [Hash{Symbol => Object}] Attributes to send in this request.
-      #   @option params [String] :object_id The id of the object the ACL applies to
+      #   @option params [String] :object_id_ The id of the object the ACL applies to
       #   @option params [Symbol, ObjectType] :object_type The object type that the ACL applies to
       #   @option params [String, nil] :group_id Id of the group the ACL applies to. Exactly one of `user_id` and `group_id` will
       #     be provided
