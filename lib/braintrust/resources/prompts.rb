@@ -17,7 +17,7 @@ module Braintrust
       #   @option params [String] :project_id Unique identifier for the project that the prompt belongs under
       #   @option params [String] :slug Unique identifier for the prompt
       #   @option params [String, nil] :description Textual description of the prompt
-      #   @option params [Symbol, FunctionType, nil] :function_type
+      #   @option params [Symbol, Braintrust::Models::PromptCreateParams::FunctionType, nil] :function_type
       #   @option params [Braintrust::Models::PromptData, nil] :prompt_data The prompt, model, and its parameters
       #   @option params [Array<String>, nil] :tags A list of tags for the prompt
       #
@@ -142,7 +142,7 @@ module Braintrust
       #   @option params [String] :project_id Unique identifier for the project that the prompt belongs under
       #   @option params [String] :slug Unique identifier for the prompt
       #   @option params [String, nil] :description Textual description of the prompt
-      #   @option params [Symbol, FunctionType, nil] :function_type
+      #   @option params [Symbol, Braintrust::Models::PromptReplaceParams::FunctionType, nil] :function_type
       #   @option params [Braintrust::Models::PromptData, nil] :prompt_data The prompt, model, and its parameters
       #   @option params [Array<String>, nil] :tags A list of tags for the prompt
       #

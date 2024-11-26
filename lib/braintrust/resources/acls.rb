@@ -13,12 +13,12 @@ module Braintrust
       #
       # @param params [Hash{Symbol => Object}] Attributes to send in this request.
       #   @option params [String] :object_id_ The id of the object the ACL applies to
-      #   @option params [Symbol, ObjectType] :object_type The object type that the ACL applies to
+      #   @option params [Symbol, Braintrust::Models::ACLCreateParams::ObjectType] :object_type The object type that the ACL applies to
       #   @option params [String, nil] :group_id Id of the group the ACL applies to. Exactly one of `user_id` and `group_id` will
       #     be provided
-      #   @option params [Symbol, Permission, nil] :permission Permission the ACL grants. Exactly one of `permission` and `role_id` will be
+      #   @option params [Symbol, Braintrust::Models::ACLCreateParams::Permission, nil] :permission Permission the ACL grants. Exactly one of `permission` and `role_id` will be
       #     provided
-      #   @option params [Symbol, RestrictObjectType, nil] :restrict_object_type When setting a permission directly, optionally restricts the permission grant to
+      #   @option params [Symbol, Braintrust::Models::ACLCreateParams::RestrictObjectType, nil] :restrict_object_type When setting a permission directly, optionally restricts the permission grant to
       #     just the specified object type. Cannot be set alongside a `role_id`.
       #   @option params [String, nil] :role_id Id of the role the ACL grants. Exactly one of `permission` and `role_id` will be
       #     provided
@@ -59,7 +59,7 @@ module Braintrust
       #
       # @param params [Hash{Symbol => Object}] Attributes to send in this request.
       #   @option params [String] :object_id_ The id of the object the ACL applies to
-      #   @option params [Symbol, ObjectType] :object_type The object type that the ACL applies to
+      #   @option params [Symbol, Braintrust::Models::ACLListParams::ObjectType] :object_type The object type that the ACL applies to
       #   @option params [String, nil] :ending_before Pagination cursor id.
       #
       #     For example, if the initial item in the last page you fetched had an id of
@@ -108,7 +108,7 @@ module Braintrust
       #   effect.
       #
       # @param params [Hash{Symbol => Object}] Attributes to send in this request.
-      #   @option params [Array<AddACL>, nil] :add_acls An ACL grants a certain permission or role to a certain user or group on an
+      #   @option params [Array<Braintrust::Models::ACLBatchUpdateParams::AddACL>, nil] :add_acls An ACL grants a certain permission or role to a certain user or group on an
       #     object.
       #
       #     ACLs are inherited across the object hierarchy. So for example, if a user has
@@ -118,7 +118,7 @@ module Braintrust
       #     To restrict a grant to a particular sub-object, you may specify
       #     `restrict_object_type` in the ACL, as part of a direct permission grant or as
       #     part of a role.
-      #   @option params [Array<RemoveACL>, nil] :remove_acls An ACL grants a certain permission or role to a certain user or group on an
+      #   @option params [Array<Braintrust::Models::ACLBatchUpdateParams::RemoveACL>, nil] :remove_acls An ACL grants a certain permission or role to a certain user or group on an
       #     object.
       #
       #     ACLs are inherited across the object hierarchy. So for example, if a user has
@@ -147,12 +147,12 @@ module Braintrust
       #
       # @param params [Hash{Symbol => Object}] Attributes to send in this request.
       #   @option params [String] :object_id_ The id of the object the ACL applies to
-      #   @option params [Symbol, ObjectType] :object_type The object type that the ACL applies to
+      #   @option params [Symbol, Braintrust::Models::ACLFindAndDeleteParams::ObjectType] :object_type The object type that the ACL applies to
       #   @option params [String, nil] :group_id Id of the group the ACL applies to. Exactly one of `user_id` and `group_id` will
       #     be provided
-      #   @option params [Symbol, Permission, nil] :permission Permission the ACL grants. Exactly one of `permission` and `role_id` will be
+      #   @option params [Symbol, Braintrust::Models::ACLFindAndDeleteParams::Permission, nil] :permission Permission the ACL grants. Exactly one of `permission` and `role_id` will be
       #     provided
-      #   @option params [Symbol, RestrictObjectType, nil] :restrict_object_type When setting a permission directly, optionally restricts the permission grant to
+      #   @option params [Symbol, Braintrust::Models::ACLFindAndDeleteParams::RestrictObjectType, nil] :restrict_object_type When setting a permission directly, optionally restricts the permission grant to
       #     just the specified object type. Cannot be set alongside a `role_id`.
       #   @option params [String, nil] :role_id Id of the role the ACL grants. Exactly one of `permission` and `role_id` will be
       #     provided

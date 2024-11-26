@@ -14,8 +14,8 @@ module Braintrust
       # @param params [Hash{Symbol => Object}] Attributes to send in this request.
       #   @option params [String] :name Name of the view
       #   @option params [String] :object_id_ The id of the object the view applies to
-      #   @option params [Symbol, ObjectType] :object_type The object type that the ACL applies to
-      #   @option params [Symbol, ViewType] :view_type Type of table that the view corresponds to.
+      #   @option params [Symbol, Braintrust::Models::ViewCreateParams::ObjectType] :object_type The object type that the ACL applies to
+      #   @option params [Symbol, Braintrust::Models::ViewCreateParams::ViewType] :view_type Type of table that the view corresponds to.
       #   @option params [Time, nil] :deleted_at Date of role deletion, or null if the role is still active
       #   @option params [Braintrust::Models::ViewOptions, nil] :options Options for the view in the app
       #   @option params [String, nil] :user_id Identifies the user who created the view
@@ -41,7 +41,7 @@ module Braintrust
       #
       # @param params [Hash{Symbol => Object}] Attributes to send in this request.
       #   @option params [String] :object_id_ The id of the object the ACL applies to
-      #   @option params [Symbol, ObjectType] :object_type The object type that the ACL applies to
+      #   @option params [Symbol, Braintrust::Models::ViewRetrieveParams::ObjectType] :object_type The object type that the ACL applies to
       #
       # @param opts [Hash{Symbol => Object}, Braintrust::RequestOptions] Options to specify HTTP behaviour for this request.
       #
@@ -64,12 +64,12 @@ module Braintrust
       #
       # @param params [Hash{Symbol => Object}] Attributes to send in this request.
       #   @option params [String] :object_id_ The id of the object the view applies to
-      #   @option params [Symbol, ObjectType] :object_type The object type that the ACL applies to
+      #   @option params [Symbol, Braintrust::Models::ViewUpdateParams::ObjectType] :object_type The object type that the ACL applies to
       #   @option params [String, nil] :name Name of the view
       #   @option params [Braintrust::Models::ViewOptions, nil] :options Options for the view in the app
       #   @option params [String, nil] :user_id Identifies the user who created the view
       #   @option params [Braintrust::Models::ViewData, nil] :view_data The view definition
-      #   @option params [Symbol, ViewType, nil] :view_type Type of table that the view corresponds to.
+      #   @option params [Symbol, Braintrust::Models::ViewUpdateParams::ViewType, nil] :view_type Type of table that the view corresponds to.
       #
       # @param opts [Hash{Symbol => Object}, Braintrust::RequestOptions] Options to specify HTTP behaviour for this request.
       #
@@ -90,7 +90,7 @@ module Braintrust
       #
       # @param params [Hash{Symbol => Object}] Attributes to send in this request.
       #   @option params [String] :object_id_ The id of the object the ACL applies to
-      #   @option params [Symbol, ObjectType] :object_type The object type that the ACL applies to
+      #   @option params [Symbol, Braintrust::Models::ViewListParams::ObjectType] :object_type The object type that the ACL applies to
       #   @option params [String, nil] :ending_before Pagination cursor id.
       #
       #     For example, if the initial item in the last page you fetched had an id of
@@ -105,7 +105,7 @@ module Braintrust
       #     pass `starting_after=foo` to fetch the next page. Note: you may only pass one of
       #     `starting_after` and `ending_before`
       #   @option params [String, nil] :view_name Name of the view to search for
-      #   @option params [Symbol, ViewType, nil] :view_type Type of table that the view corresponds to.
+      #   @option params [Symbol, Braintrust::Models::ViewListParams::ViewType, nil] :view_type Type of table that the view corresponds to.
       #
       # @param opts [Hash{Symbol => Object}, Braintrust::RequestOptions] Options to specify HTTP behaviour for this request.
       #
@@ -127,7 +127,7 @@ module Braintrust
       #
       # @param params [Hash{Symbol => Object}] Attributes to send in this request.
       #   @option params [String] :object_id_ The id of the object the view applies to
-      #   @option params [Symbol, ObjectType] :object_type The object type that the ACL applies to
+      #   @option params [Symbol, Braintrust::Models::ViewDeleteParams::ObjectType] :object_type The object type that the ACL applies to
       #
       # @param opts [Hash{Symbol => Object}, Braintrust::RequestOptions] Options to specify HTTP behaviour for this request.
       #
@@ -150,8 +150,8 @@ module Braintrust
       # @param params [Hash{Symbol => Object}] Attributes to send in this request.
       #   @option params [String] :name Name of the view
       #   @option params [String] :object_id_ The id of the object the view applies to
-      #   @option params [Symbol, ObjectType] :object_type The object type that the ACL applies to
-      #   @option params [Symbol, ViewType] :view_type Type of table that the view corresponds to.
+      #   @option params [Symbol, Braintrust::Models::ViewReplaceParams::ObjectType] :object_type The object type that the ACL applies to
+      #   @option params [Symbol, Braintrust::Models::ViewReplaceParams::ViewType] :view_type Type of table that the view corresponds to.
       #   @option params [Time, nil] :deleted_at Date of role deletion, or null if the role is still active
       #   @option params [Braintrust::Models::ViewOptions, nil] :options Options for the view in the app
       #   @option params [String, nil] :user_id Identifies the user who created the view

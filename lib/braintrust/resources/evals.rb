@@ -16,17 +16,17 @@ module Braintrust
       #   [Evals guide](https://www.braintrust.dev/docs/guides/evals).
       #
       # @param params [Hash{Symbol => Object}] Attributes to send in this request.
-      #   @option params [Data::UnnamedTypeWithunionParent40, Data::UnnamedTypeWithunionParent41] :data The dataset to use
+      #   @option params [Braintrust::Models::EvalCreateParams::Data::UnnamedTypeWithunionParent40, Braintrust::Models::EvalCreateParams::Data::UnnamedTypeWithunionParent41] :data The dataset to use
       #   @option params [String] :project_id Unique identifier for the project to run the eval in
-      #   @option params [Array<Score::UnnamedTypeWithunionParent42, Score::UnnamedTypeWithunionParent43, Score::UnnamedTypeWithunionParent44, Score::UnnamedTypeWithunionParent45, Score::UnnamedTypeWithunionParent46, Score::UnnamedTypeWithunionParent47>] :scores The functions to score the eval on
-      #   @option params [Task::UnnamedTypeWithunionParent48, Task::UnnamedTypeWithunionParent49, Task::UnnamedTypeWithunionParent50, Task::UnnamedTypeWithunionParent51, Task::UnnamedTypeWithunionParent52, Task::UnnamedTypeWithunionParent53] :task The function to evaluate
+      #   @option params [Array<Braintrust::Models::EvalCreateParams::Score::UnnamedTypeWithunionParent42, Braintrust::Models::EvalCreateParams::Score::UnnamedTypeWithunionParent43, Braintrust::Models::EvalCreateParams::Score::UnnamedTypeWithunionParent44, Braintrust::Models::EvalCreateParams::Score::UnnamedTypeWithunionParent45, Braintrust::Models::EvalCreateParams::Score::UnnamedTypeWithunionParent46, Braintrust::Models::EvalCreateParams::Score::UnnamedTypeWithunionParent47>] :scores The functions to score the eval on
+      #   @option params [Braintrust::Models::EvalCreateParams::Task::UnnamedTypeWithunionParent48, Braintrust::Models::EvalCreateParams::Task::UnnamedTypeWithunionParent49, Braintrust::Models::EvalCreateParams::Task::UnnamedTypeWithunionParent50, Braintrust::Models::EvalCreateParams::Task::UnnamedTypeWithunionParent51, Braintrust::Models::EvalCreateParams::Task::UnnamedTypeWithunionParent52, Braintrust::Models::EvalCreateParams::Task::UnnamedTypeWithunionParent53] :task The function to evaluate
       #   @option params [String, nil] :base_experiment_id An optional experiment id to use as a base. If specified, the new experiment
       #     will be summarized and compared to this experiment.
       #   @option params [String, nil] :base_experiment_name An optional experiment name to use as a base. If specified, the new experiment
       #     will be summarized and compared to this experiment.
       #   @option params [String, nil] :experiment_name An optional name for the experiment created by this eval. If it conflicts with
       #     an existing experiment, it will be suffixed with a unique identifier.
-      #   @option params [GitMetadataSettings, nil] :git_metadata_settings Optional settings for collecting git metadata. By default, will collect all git
+      #   @option params [Braintrust::Models::EvalCreateParams::GitMetadataSettings, nil] :git_metadata_settings Optional settings for collecting git metadata. By default, will collect all git
       #     metadata fields allowed in org-level settings.
       #   @option params [Boolean, nil] :is_public Whether the experiment should be public. Defaults to false.
       #   @option params [Float, nil] :max_concurrency The maximum number of tasks/scorers that will be run concurrently. Defaults to

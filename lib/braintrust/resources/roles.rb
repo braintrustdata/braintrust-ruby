@@ -14,7 +14,7 @@ module Braintrust
       # @param params [Hash{Symbol => Object}] Attributes to send in this request.
       #   @option params [String] :name Name of the role
       #   @option params [String, nil] :description Textual description of the role
-      #   @option params [Array<MemberPermission>, nil] :member_permissions (permission, restrict_object_type) tuples which belong to this role
+      #   @option params [Array<Braintrust::Models::RoleCreateParams::MemberPermission>, nil] :member_permissions (permission, restrict_object_type) tuples which belong to this role
       #   @option params [Array<String>, nil] :member_roles Ids of the roles this role inherits from
       #
       #     An inheriting role has all the permissions contained in its member roles, as
@@ -59,11 +59,11 @@ module Braintrust
       # @param role_id [String] Role id
       #
       # @param params [Hash{Symbol => Object}] Attributes to send in this request.
-      #   @option params [Array<AddMemberPermission>, nil] :add_member_permissions A list of permissions to add to the role
+      #   @option params [Array<Braintrust::Models::RoleUpdateParams::AddMemberPermission>, nil] :add_member_permissions A list of permissions to add to the role
       #   @option params [Array<String>, nil] :add_member_roles A list of role IDs to add to the role's inheriting-from set
       #   @option params [String, nil] :description Textual description of the role
       #   @option params [String, nil] :name Name of the role
-      #   @option params [Array<RemoveMemberPermission>, nil] :remove_member_permissions A list of permissions to remove from the role
+      #   @option params [Array<Braintrust::Models::RoleUpdateParams::RemoveMemberPermission>, nil] :remove_member_permissions A list of permissions to remove from the role
       #   @option params [Array<String>, nil] :remove_member_roles A list of role IDs to remove from the role's inheriting-from set
       #
       # @param opts [Hash{Symbol => Object}, Braintrust::RequestOptions] Options to specify HTTP behaviour for this request.
@@ -136,7 +136,7 @@ module Braintrust
       # @param params [Hash{Symbol => Object}] Attributes to send in this request.
       #   @option params [String] :name Name of the role
       #   @option params [String, nil] :description Textual description of the role
-      #   @option params [Array<MemberPermission>, nil] :member_permissions (permission, restrict_object_type) tuples which belong to this role
+      #   @option params [Array<Braintrust::Models::RoleReplaceParams::MemberPermission>, nil] :member_permissions (permission, restrict_object_type) tuples which belong to this role
       #   @option params [Array<String>, nil] :member_roles Ids of the roles this role inherits from
       #
       #     An inheriting role has all the permissions contained in its member roles, as
