@@ -1,0 +1,50 @@
+module Braintrust
+  module Models
+    type env_var_replace_params =
+      {
+        name: String,
+        object_id_: String,
+        object_type: Braintrust::Models::EnvVarReplaceParams::object_type,
+        value: String?
+      }
+      & Braintrust::request_parameters
+
+    class EnvVarReplaceParams < Braintrust::BaseModel
+      extend Braintrust::RequestParameters::Converter
+      include Braintrust::RequestParameters
+
+      attr_accessor name: String
+
+      attr_accessor object_id_: String
+
+      attr_accessor object_type: Braintrust::Models::EnvVarReplaceParams::object_type
+
+      attr_accessor value: String?
+
+      def initialize:
+        (
+          name: String,
+          object_id_: String,
+          object_type: Braintrust::Models::EnvVarReplaceParams::object_type,
+          value: String?,
+          request_options: Braintrust::request_opts
+        ) -> void
+        | (
+          ?Braintrust::Models::env_var_replace_params
+          | Braintrust::BaseModel data
+        ) -> void
+
+      def to_hash: -> Braintrust::Models::env_var_replace_params
+
+      type object_type = :organization | :project | :function
+
+      class ObjectType < Braintrust::Enum
+        ORGANIZATION: :organization
+        PROJECT: :project
+        FUNCTION: :function
+
+        def self.values: -> ::Array[Braintrust::Models::EnvVarReplaceParams::object_type]
+      end
+    end
+  end
+end

@@ -1,0 +1,255 @@
+# frozen_string_literal: true
+
+module Braintrust
+  module Models
+    class ProjectScoreListParams < Braintrust::BaseModel
+      # @!parse
+      #   extend Braintrust::RequestParameters::Converter
+      include Braintrust::RequestParameters
+
+      # @!attribute [r] ending_before
+      #   Pagination cursor id.
+      #
+      #     For example, if the initial item in the last page you fetched had an id of
+      #     `foo`, pass `ending_before=foo` to fetch the previous page. Note: you may only
+      #     pass one of `starting_after` and `ending_before`
+      #
+      #   @return [String, nil]
+      optional :ending_before, String
+
+      # @!parse
+      #   # @return [String]
+      #   attr_writer :ending_before
+
+      # @!attribute [r] ids
+      #   Filter search results to a particular set of object IDs. To specify a list of
+      #     IDs, include the query param multiple times
+      #
+      #   @return [String, Array<String>, nil]
+      optional :ids, union: -> { Braintrust::Models::ProjectScoreListParams::IDs }
+
+      # @!parse
+      #   # @return [String, Array<String>]
+      #   attr_writer :ids
+
+      # @!attribute limit
+      #   Limit the number of objects to return
+      #
+      #   @return [Integer, nil]
+      optional :limit, Integer, nil?: true
+
+      # @!attribute [r] org_name
+      #   Filter search results to within a particular organization
+      #
+      #   @return [String, nil]
+      optional :org_name, String
+
+      # @!parse
+      #   # @return [String]
+      #   attr_writer :org_name
+
+      # @!attribute [r] project_id
+      #   Project id
+      #
+      #   @return [String, nil]
+      optional :project_id, String
+
+      # @!parse
+      #   # @return [String]
+      #   attr_writer :project_id
+
+      # @!attribute [r] project_name
+      #   Name of the project to search for
+      #
+      #   @return [String, nil]
+      optional :project_name, String
+
+      # @!parse
+      #   # @return [String]
+      #   attr_writer :project_name
+
+      # @!attribute [r] project_score_name
+      #   Name of the project_score to search for
+      #
+      #   @return [String, nil]
+      optional :project_score_name, String
+
+      # @!parse
+      #   # @return [String]
+      #   attr_writer :project_score_name
+
+      # @!attribute [r] score_type
+      #   The type of the configured score
+      #
+      #   @return [Symbol, Braintrust::Models::ProjectScoreListParams::ScoreType::ProjectScoreType, Array<Symbol, Braintrust::Models::ProjectScoreListParams::ScoreType::UnionMember1>, nil]
+      optional :score_type, union: -> { Braintrust::Models::ProjectScoreListParams::ScoreType }
+
+      # @!parse
+      #   # @return [Symbol, Braintrust::Models::ProjectScoreListParams::ScoreType::ProjectScoreType, Array<Symbol, Braintrust::Models::ProjectScoreListParams::ScoreType::UnionMember1>]
+      #   attr_writer :score_type
+
+      # @!attribute [r] starting_after
+      #   Pagination cursor id.
+      #
+      #     For example, if the final item in the last page you fetched had an id of `foo`,
+      #     pass `starting_after=foo` to fetch the next page. Note: you may only pass one of
+      #     `starting_after` and `ending_before`
+      #
+      #   @return [String, nil]
+      optional :starting_after, String
+
+      # @!parse
+      #   # @return [String]
+      #   attr_writer :starting_after
+
+      # @!parse
+      #   # @param ending_before [String]
+      #   # @param ids [String, Array<String>]
+      #   # @param limit [Integer, nil]
+      #   # @param org_name [String]
+      #   # @param project_id [String]
+      #   # @param project_name [String]
+      #   # @param project_score_name [String]
+      #   # @param score_type [Symbol, Braintrust::Models::ProjectScoreListParams::ScoreType::ProjectScoreType, Array<Symbol, Braintrust::Models::ProjectScoreListParams::ScoreType::UnionMember1>]
+      #   # @param starting_after [String]
+      #   # @param request_options [Braintrust::RequestOptions, Hash{Symbol=>Object}]
+      #   #
+      #   def initialize(
+      #     ending_before: nil,
+      #     ids: nil,
+      #     limit: nil,
+      #     org_name: nil,
+      #     project_id: nil,
+      #     project_name: nil,
+      #     project_score_name: nil,
+      #     score_type: nil,
+      #     starting_after: nil,
+      #     request_options: {},
+      #     **
+      #   )
+      #     super
+      #   end
+
+      # def initialize: (Hash | Braintrust::BaseModel) -> void
+
+      # @abstract
+      #
+      # Filter search results to a particular set of object IDs. To specify a list of
+      #   IDs, include the query param multiple times
+      #
+      # @example
+      # ```ruby
+      # case ids
+      # in String
+      #   # ...
+      # in Braintrust::Models::ProjectScoreListParams::IDs::StringArray
+      #   # ...
+      # end
+      # ```
+      class IDs < Braintrust::Union
+        StringArray = Braintrust::ArrayOf[String]
+
+        variant String
+
+        variant Braintrust::Models::ProjectScoreListParams::IDs::StringArray
+      end
+
+      # @abstract
+      #
+      # The type of the configured score
+      #
+      # @example
+      # ```ruby
+      # case score_type
+      # in Braintrust::Models::ProjectScoreListParams::ScoreType::ProjectScoreType
+      #   # ...
+      # in Braintrust::Models::ProjectScoreListParams::ScoreType::UnionMember1Array
+      #   # ...
+      # end
+      # ```
+      class ScoreType < Braintrust::Union
+        UnionMember1Array = Braintrust::ArrayOf[enum: -> { Braintrust::Models::ProjectScoreListParams::ScoreType::UnionMember1 }]
+
+        # The type of the configured score
+        variant enum: -> { Braintrust::Models::ProjectScoreListParams::ScoreType::ProjectScoreType }
+
+        # The type of the configured score
+        variant Braintrust::Models::ProjectScoreListParams::ScoreType::UnionMember1Array
+
+        # @abstract
+        #
+        # The type of the configured score
+        #
+        # @example
+        # ```ruby
+        # case project_score_type
+        # in :slider
+        #   # ...
+        # in :categorical
+        #   # ...
+        # in :weighted
+        #   # ...
+        # in :minimum
+        #   # ...
+        # in :maximum
+        #   # ...
+        # in ...
+        #   #...
+        # end
+        # ```
+        class ProjectScoreType < Braintrust::Enum
+          SLIDER = :slider
+          CATEGORICAL = :categorical
+          WEIGHTED = :weighted
+          MINIMUM = :minimum
+          MAXIMUM = :maximum
+          ONLINE = :online
+
+          finalize!
+
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   #
+          #   def self.values; end
+        end
+
+        # @abstract
+        #
+        # The type of the configured score
+        #
+        # @example
+        # ```ruby
+        # case union_member1
+        # in :slider
+        #   # ...
+        # in :categorical
+        #   # ...
+        # in :weighted
+        #   # ...
+        # in :minimum
+        #   # ...
+        # in :maximum
+        #   # ...
+        # in ...
+        #   #...
+        # end
+        # ```
+        class UnionMember1 < Braintrust::Enum
+          SLIDER = :slider
+          CATEGORICAL = :categorical
+          WEIGHTED = :weighted
+          MINIMUM = :minimum
+          MAXIMUM = :maximum
+          ONLINE = :online
+
+          finalize!
+
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   #
+          #   def self.values; end
+        end
+      end
+    end
+  end
+end

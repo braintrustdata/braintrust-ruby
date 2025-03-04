@@ -1,0 +1,30 @@
+module Braintrust
+  module Models
+    type view_options =
+      {
+        column_order: ::Array[String]?,
+        column_sizing: ::Hash[Symbol, Float]?,
+        column_visibility: ::Hash[Symbol, bool]?
+      }
+
+    class ViewOptions < Braintrust::BaseModel
+      attr_accessor column_order: ::Array[String]?
+
+      attr_accessor column_sizing: ::Hash[Symbol, Float]?
+
+      attr_accessor column_visibility: ::Hash[Symbol, bool]?
+
+      def initialize:
+        (
+          column_order: ::Array[String]?,
+          column_sizing: ::Hash[Symbol, Float]?,
+          column_visibility: ::Hash[Symbol, bool]?
+        ) -> void
+        | (
+          ?Braintrust::Models::view_options | Braintrust::BaseModel data
+        ) -> void
+
+      def to_hash: -> Braintrust::Models::view_options
+    end
+  end
+end

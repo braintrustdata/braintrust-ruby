@@ -3,74 +3,97 @@
 module Braintrust
   module Models
     class Group < Braintrust::BaseModel
-      # @!attribute [rw] id
+      # @!attribute id
       #   Unique identifier for the group
+      #
       #   @return [String]
       required :id, String
 
-      # @!attribute [rw] name
+      # @!attribute name
       #   Name of the group
+      #
       #   @return [String]
       required :name, String
 
-      # @!attribute [rw] org_id
+      # @!attribute org_id
       #   Unique id for the organization that the group belongs under
       #
-      # It is forbidden to change the org after creating a group
+      #     It is forbidden to change the org after creating a group
+      #
       #   @return [String]
       required :org_id, String
 
-      # @!attribute [rw] created
+      # @!attribute created
       #   Date of group creation
-      #   @return [Time]
-      optional :created, Time
+      #
+      #   @return [Time, nil]
+      optional :created, Time, nil?: true
 
-      # @!attribute [rw] deleted_at
+      # @!attribute deleted_at
       #   Date of group deletion, or null if the group is still active
-      #   @return [Time]
-      optional :deleted_at, Time
+      #
+      #   @return [Time, nil]
+      optional :deleted_at, Time, nil?: true
 
-      # @!attribute [rw] description
+      # @!attribute description
       #   Textual description of the group
-      #   @return [String]
-      optional :description, String
+      #
+      #   @return [String, nil]
+      optional :description, String, nil?: true
 
-      # @!attribute [rw] member_groups
+      # @!attribute member_groups
       #   Ids of the groups this group inherits from
       #
-      # An inheriting group has all the users contained in its member groups, as well as all of their inherited users
-      #   @return [Array<String>]
-      optional :member_groups, Braintrust::ArrayOf.new(String)
+      #     An inheriting group has all the users contained in its member groups, as well as
+      #     all of their inherited users
+      #
+      #   @return [Array<String>, nil]
+      optional :member_groups, Braintrust::ArrayOf[String], nil?: true
 
-      # @!attribute [rw] member_users
+      # @!attribute member_users
       #   Ids of users which belong to this group
-      #   @return [Array<String>]
-      optional :member_users, Braintrust::ArrayOf.new(String)
+      #
+      #   @return [Array<String>, nil]
+      optional :member_users, Braintrust::ArrayOf[String], nil?: true
 
-      # @!attribute [rw] user_id
+      # @!attribute user_id
       #   Identifies the user who created the group
-      #   @return [String]
-      optional :user_id, String
+      #
+      #   @return [String, nil]
+      optional :user_id, String, nil?: true
 
       # @!parse
-      #   # Create a new instance of Group from a Hash of raw data.
+      #   # A group is a collection of users which can be assigned an ACL
       #   #
-      #   # @param data [Hash{Symbol => Object}] .
-      #   #   @option data [String] :id Unique identifier for the group
-      #   #   @option data [String] :name Name of the group
-      #   #   @option data [String] :org_id Unique id for the organization that the group belongs under
+      #   #   Groups can consist of individual users, as well as a set of groups they inherit
+      #   #   from
       #   #
-      #   #     It is forbidden to change the org after creating a group
-      #   #   @option data [String, nil] :created Date of group creation
-      #   #   @option data [String, nil] :deleted_at Date of group deletion, or null if the group is still active
-      #   #   @option data [String, nil] :description Textual description of the group
-      #   #   @option data [Array<String>, nil] :member_groups Ids of the groups this group inherits from
+      #   # @param id [String]
+      #   # @param name [String]
+      #   # @param org_id [String]
+      #   # @param created [Time, nil]
+      #   # @param deleted_at [Time, nil]
+      #   # @param description [String, nil]
+      #   # @param member_groups [Array<String>, nil]
+      #   # @param member_users [Array<String>, nil]
+      #   # @param user_id [String, nil]
       #   #
-      #   #     An inheriting group has all the users contained in its member groups, as well as
-      #   #     all of their inherited users
-      #   #   @option data [Array<String>, nil] :member_users Ids of users which belong to this group
-      #   #   @option data [String, nil] :user_id Identifies the user who created the group
-      #   def initialize(data = {}) = super
+      #   def initialize(
+      #     id:,
+      #     name:,
+      #     org_id:,
+      #     created: nil,
+      #     deleted_at: nil,
+      #     description: nil,
+      #     member_groups: nil,
+      #     member_users: nil,
+      #     user_id: nil,
+      #     **
+      #   )
+      #     super
+      #   end
+
+      # def initialize: (Hash | Braintrust::BaseModel) -> void
     end
   end
 end

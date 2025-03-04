@@ -1,0 +1,17 @@
+module Braintrust
+  module Models
+    type project_settings = { comparison_key: String? }
+
+    class ProjectSettings < Braintrust::BaseModel
+      attr_accessor comparison_key: String?
+
+      def initialize:
+        (comparison_key: String?) -> void
+        | (
+          ?Braintrust::Models::project_settings | Braintrust::BaseModel data
+        ) -> void
+
+      def to_hash: -> Braintrust::Models::project_settings
+    end
+  end
+end

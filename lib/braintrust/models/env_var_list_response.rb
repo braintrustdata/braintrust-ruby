@@ -3,17 +3,18 @@
 module Braintrust
   module Models
     class EnvVarListResponse < Braintrust::BaseModel
-      # @!attribute [rw] objects
+      # @!attribute objects
       #   A list of env_var objects
+      #
       #   @return [Array<Braintrust::Models::EnvVar>]
-      required :objects, Braintrust::ArrayOf.new(-> { Braintrust::Models::EnvVar })
+      required :objects, -> { Braintrust::ArrayOf[Braintrust::Models::EnvVar] }
 
       # @!parse
-      #   # Create a new instance of EnvVarListResponse from a Hash of raw data.
+      #   # @param objects [Array<Braintrust::Models::EnvVar>]
       #   #
-      #   # @param data [Hash{Symbol => Object}] .
-      #   #   @option data [Array<Object>] :objects A list of env_var objects
-      #   def initialize(data = {}) = super
+      #   def initialize(objects:, **) = super
+
+      # def initialize: (Hash | Braintrust::BaseModel) -> void
     end
   end
 end

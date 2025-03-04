@@ -1,0 +1,64 @@
+module Braintrust
+  module Models
+    type experiment_create_params =
+      {
+        project_id: String,
+        base_exp_id: String?,
+        dataset_id: String?,
+        dataset_version: String?,
+        description: String?,
+        ensure_new: bool?,
+        metadata: ::Hash[Symbol, top?]?,
+        name: String?,
+        public: bool?,
+        repo_info: Braintrust::Models::RepoInfo?
+      }
+      & Braintrust::request_parameters
+
+    class ExperimentCreateParams < Braintrust::BaseModel
+      extend Braintrust::RequestParameters::Converter
+      include Braintrust::RequestParameters
+
+      attr_accessor project_id: String
+
+      attr_accessor base_exp_id: String?
+
+      attr_accessor dataset_id: String?
+
+      attr_accessor dataset_version: String?
+
+      attr_accessor description: String?
+
+      attr_accessor ensure_new: bool?
+
+      attr_accessor metadata: ::Hash[Symbol, top?]?
+
+      attr_accessor name: String?
+
+      attr_accessor public: bool?
+
+      attr_accessor repo_info: Braintrust::Models::RepoInfo?
+
+      def initialize:
+        (
+          project_id: String,
+          base_exp_id: String?,
+          dataset_id: String?,
+          dataset_version: String?,
+          description: String?,
+          ensure_new: bool?,
+          metadata: ::Hash[Symbol, top?]?,
+          name: String?,
+          public: bool?,
+          repo_info: Braintrust::Models::RepoInfo?,
+          request_options: Braintrust::request_opts
+        ) -> void
+        | (
+          ?Braintrust::Models::experiment_create_params
+          | Braintrust::BaseModel data
+        ) -> void
+
+      def to_hash: -> Braintrust::Models::experiment_create_params
+    end
+  end
+end

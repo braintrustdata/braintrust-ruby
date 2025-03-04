@@ -1,0 +1,18 @@
+module Braintrust
+  module Models
+    type insert_events_response = { row_ids: ::Array[String] }
+
+    class InsertEventsResponse < Braintrust::BaseModel
+      attr_accessor row_ids: ::Array[String]
+
+      def initialize:
+        (row_ids: ::Array[String]) -> void
+        | (
+          ?Braintrust::Models::insert_events_response
+          | Braintrust::BaseModel data
+        ) -> void
+
+      def to_hash: -> Braintrust::Models::insert_events_response
+    end
+  end
+end

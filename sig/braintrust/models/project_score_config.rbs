@@ -1,0 +1,38 @@
+module Braintrust
+  module Models
+    type project_score_config =
+      {
+        destination: Braintrust::Models::ProjectScoreConfig::destination?,
+        multi_select: bool?,
+        online: Braintrust::Models::OnlineScoreConfig?
+      }
+
+    class ProjectScoreConfig < Braintrust::BaseModel
+      attr_accessor destination: Braintrust::Models::ProjectScoreConfig::destination?
+
+      attr_accessor multi_select: bool?
+
+      attr_accessor online: Braintrust::Models::OnlineScoreConfig?
+
+      def initialize:
+        (
+          destination: Braintrust::Models::ProjectScoreConfig::destination?,
+          multi_select: bool?,
+          online: Braintrust::Models::OnlineScoreConfig?
+        ) -> void
+        | (
+          ?Braintrust::Models::project_score_config | Braintrust::BaseModel data
+        ) -> void
+
+      def to_hash: -> Braintrust::Models::project_score_config
+
+      type destination = :expected
+
+      class Destination < Braintrust::Enum
+        EXPECTED: :expected
+
+        def self.values: -> ::Array[Braintrust::Models::ProjectScoreConfig::destination]
+      end
+    end
+  end
+end

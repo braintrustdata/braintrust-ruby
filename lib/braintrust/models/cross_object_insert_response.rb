@@ -3,29 +3,32 @@
 module Braintrust
   module Models
     class CrossObjectInsertResponse < Braintrust::BaseModel
-      # @!attribute [rw] dataset
+      # @!attribute dataset
       #   A mapping from dataset id to row ids for inserted `events`
-      #   @return [Hash]
-      optional :dataset, Hash
+      #
+      #   @return [Hash{Symbol=>Braintrust::Models::InsertEventsResponse}, nil]
+      optional :dataset, -> { Braintrust::HashOf[Braintrust::Models::InsertEventsResponse] }, nil?: true
 
-      # @!attribute [rw] experiment
+      # @!attribute experiment
       #   A mapping from experiment id to row ids for inserted `events`
-      #   @return [Hash]
-      optional :experiment, Hash
+      #
+      #   @return [Hash{Symbol=>Braintrust::Models::InsertEventsResponse}, nil]
+      optional :experiment, -> { Braintrust::HashOf[Braintrust::Models::InsertEventsResponse] }, nil?: true
 
-      # @!attribute [rw] project_logs
+      # @!attribute project_logs
       #   A mapping from project id to row ids for inserted `events`
-      #   @return [Hash]
-      optional :project_logs, Hash
+      #
+      #   @return [Hash{Symbol=>Braintrust::Models::InsertEventsResponse}, nil]
+      optional :project_logs, -> { Braintrust::HashOf[Braintrust::Models::InsertEventsResponse] }, nil?: true
 
       # @!parse
-      #   # Create a new instance of CrossObjectInsertResponse from a Hash of raw data.
+      #   # @param dataset [Hash{Symbol=>Braintrust::Models::InsertEventsResponse}, nil]
+      #   # @param experiment [Hash{Symbol=>Braintrust::Models::InsertEventsResponse}, nil]
+      #   # @param project_logs [Hash{Symbol=>Braintrust::Models::InsertEventsResponse}, nil]
       #   #
-      #   # @param data [Hash{Symbol => Object}] .
-      #   #   @option data [Hash, nil] :dataset A mapping from dataset id to row ids for inserted `events`
-      #   #   @option data [Hash, nil] :experiment A mapping from experiment id to row ids for inserted `events`
-      #   #   @option data [Hash, nil] :project_logs A mapping from project id to row ids for inserted `events`
-      #   def initialize(data = {}) = super
+      #   def initialize(dataset: nil, experiment: nil, project_logs: nil, **) = super
+
+      # def initialize: (Hash | Braintrust::BaseModel) -> void
     end
   end
 end

@@ -1,0 +1,19 @@
+module Braintrust
+  module Models
+    type top_level_hello_world_params = {  } & Braintrust::request_parameters
+
+    class TopLevelHelloWorldParams < Braintrust::BaseModel
+      extend Braintrust::RequestParameters::Converter
+      include Braintrust::RequestParameters
+
+      def initialize:
+        (request_options: Braintrust::request_opts) -> void
+        | (
+          ?Braintrust::Models::top_level_hello_world_params
+          | Braintrust::BaseModel data
+        ) -> void
+
+      def to_hash: -> Braintrust::Models::top_level_hello_world_params
+    end
+  end
+end

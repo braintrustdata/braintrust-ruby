@@ -3,5 +3,7 @@
 .ruby-lsp/
 .yardoc/
 doc/
+sorbet/
 Brewfile.lock.json
+bin/tapioca
 *.gem

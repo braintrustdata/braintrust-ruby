@@ -1,0 +1,524 @@
+module Braintrust
+  module Models
+    type prompt_options =
+      {
+        model: String,
+        params: Braintrust::Models::PromptOptions::params,
+        position: String
+      }
+
+    class PromptOptions < Braintrust::BaseModel
+      attr_reader model: String?
+
+      def model=: (String) -> String
+
+      attr_reader params: Braintrust::Models::PromptOptions::params?
+
+      def params=: (
+        Braintrust::Models::PromptOptions::params
+      ) -> Braintrust::Models::PromptOptions::params
+
+      attr_reader position: String?
+
+      def position=: (String) -> String
+
+      def initialize:
+        (
+          model: String,
+          params: Braintrust::Models::PromptOptions::params,
+          position: String
+        ) -> void
+        | (
+          ?Braintrust::Models::prompt_options | Braintrust::BaseModel data
+        ) -> void
+
+      def to_hash: -> Braintrust::Models::prompt_options
+
+      type params =
+        Braintrust::Models::PromptOptions::Params::OpenAIModelParams
+        | Braintrust::Models::PromptOptions::Params::AnthropicModelParams
+        | Braintrust::Models::PromptOptions::Params::GoogleModelParams
+        | Braintrust::Models::PromptOptions::Params::WindowAIModelParams
+        | Braintrust::Models::PromptOptions::Params::JsCompletionParams
+
+      class Params < Braintrust::Union
+        type openai_model_params =
+          {
+            frequency_penalty: Float,
+            function_call: Braintrust::Models::PromptOptions::Params::OpenAIModelParams::function_call,
+            max_tokens: Float,
+            n: Float,
+            presence_penalty: Float,
+            response_format: Braintrust::Models::PromptOptions::Params::OpenAIModelParams::response_format?,
+            stop: ::Array[String],
+            temperature: Float,
+            tool_choice: Braintrust::Models::PromptOptions::Params::OpenAIModelParams::tool_choice,
+            top_p: Float,
+            use_cache: bool
+          }
+
+        class OpenAIModelParams < Braintrust::BaseModel
+          attr_reader frequency_penalty: Float?
+
+          def frequency_penalty=: (Float) -> Float
+
+          attr_reader function_call: Braintrust::Models::PromptOptions::Params::OpenAIModelParams::function_call?
+
+          def function_call=: (
+            Braintrust::Models::PromptOptions::Params::OpenAIModelParams::function_call
+          ) -> Braintrust::Models::PromptOptions::Params::OpenAIModelParams::function_call
+
+          attr_reader max_tokens: Float?
+
+          def max_tokens=: (Float) -> Float
+
+          attr_reader n: Float?
+
+          def n=: (Float) -> Float
+
+          attr_reader presence_penalty: Float?
+
+          def presence_penalty=: (Float) -> Float
+
+          attr_reader response_format: Braintrust::Models::PromptOptions::Params::OpenAIModelParams::response_format?
+
+          def response_format=: (
+            Braintrust::Models::PromptOptions::Params::OpenAIModelParams::response_format?
+          ) -> Braintrust::Models::PromptOptions::Params::OpenAIModelParams::response_format?
+
+          attr_reader stop: ::Array[String]?
+
+          def stop=: (::Array[String]) -> ::Array[String]
+
+          attr_reader temperature: Float?
+
+          def temperature=: (Float) -> Float
+
+          attr_reader tool_choice: Braintrust::Models::PromptOptions::Params::OpenAIModelParams::tool_choice?
+
+          def tool_choice=: (
+            Braintrust::Models::PromptOptions::Params::OpenAIModelParams::tool_choice
+          ) -> Braintrust::Models::PromptOptions::Params::OpenAIModelParams::tool_choice
+
+          attr_reader top_p: Float?
+
+          def top_p=: (Float) -> Float
+
+          attr_reader use_cache: bool?
+
+          def use_cache=: (bool) -> bool
+
+          def initialize:
+            (
+              frequency_penalty: Float,
+              function_call: Braintrust::Models::PromptOptions::Params::OpenAIModelParams::function_call,
+              max_tokens: Float,
+              n: Float,
+              presence_penalty: Float,
+              response_format: Braintrust::Models::PromptOptions::Params::OpenAIModelParams::response_format?,
+              stop: ::Array[String],
+              temperature: Float,
+              tool_choice: Braintrust::Models::PromptOptions::Params::OpenAIModelParams::tool_choice,
+              top_p: Float,
+              use_cache: bool
+            ) -> void
+            | (
+              ?Braintrust::Models::PromptOptions::Params::openai_model_params
+              | Braintrust::BaseModel data
+            ) -> void
+
+          def to_hash: -> Braintrust::Models::PromptOptions::Params::openai_model_params
+
+          type function_call =
+            Braintrust::Models::PromptOptions::Params::OpenAIModelParams::FunctionCall::union_member0
+            | Braintrust::Models::PromptOptions::Params::OpenAIModelParams::FunctionCall::Function
+
+          class FunctionCall < Braintrust::Union
+            type union_member0 = :auto | :none
+
+            class UnionMember0 < Braintrust::Enum
+              AUTO: :auto
+              NONE: :none
+
+              def self.values: -> ::Array[Braintrust::Models::PromptOptions::Params::OpenAIModelParams::FunctionCall::union_member0]
+            end
+
+            type function = { name: String }
+
+            class Function < Braintrust::BaseModel
+              attr_accessor name: String
+
+              def initialize:
+                (name: String) -> void
+                | (
+                  ?Braintrust::Models::PromptOptions::Params::OpenAIModelParams::FunctionCall::function
+                  | Braintrust::BaseModel data
+                ) -> void
+
+              def to_hash: -> Braintrust::Models::PromptOptions::Params::OpenAIModelParams::FunctionCall::function
+            end
+
+            private def self.variants: -> [[nil, Braintrust::Models::PromptOptions::Params::OpenAIModelParams::FunctionCall::union_member0], [nil, Braintrust::Models::PromptOptions::Params::OpenAIModelParams::FunctionCall::Function]]
+          end
+
+          type response_format =
+            (Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ResponseFormat::JsonObject
+            | Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ResponseFormat::JsonSchema
+            | Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ResponseFormat::Text
+            | Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ResponseFormat::NullableVariant)?
+
+          class ResponseFormat < Braintrust::Union
+            type json_object =
+              {
+                type: Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ResponseFormat::JsonObject::type_
+              }
+
+            class JsonObject < Braintrust::BaseModel
+              attr_accessor type: Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ResponseFormat::JsonObject::type_
+
+              def initialize:
+                (
+                  type: Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ResponseFormat::JsonObject::type_
+                ) -> void
+                | (
+                  ?Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ResponseFormat::json_object
+                  | Braintrust::BaseModel data
+                ) -> void
+
+              def to_hash: -> Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ResponseFormat::json_object
+
+              type type_ = :json_object
+
+              class Type < Braintrust::Enum
+                JSON_OBJECT: :json_object
+
+                def self.values: -> ::Array[Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ResponseFormat::JsonObject::type_]
+              end
+            end
+
+            type json_schema =
+              {
+                json_schema: Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ResponseFormat::JsonSchema::JsonSchema,
+                type: Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ResponseFormat::JsonSchema::type_
+              }
+
+            class JsonSchema < Braintrust::BaseModel
+              attr_accessor json_schema: Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ResponseFormat::JsonSchema::JsonSchema
+
+              attr_accessor type: Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ResponseFormat::JsonSchema::type_
+
+              def initialize:
+                (
+                  json_schema: Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ResponseFormat::JsonSchema::JsonSchema,
+                  type: Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ResponseFormat::JsonSchema::type_
+                ) -> void
+                | (
+                  ?Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ResponseFormat::json_schema
+                  | Braintrust::BaseModel data
+                ) -> void
+
+              def to_hash: -> Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ResponseFormat::json_schema
+
+              type json_schema =
+                {
+                  name: String,
+                  description: String,
+                  schema: ::Hash[Symbol, top?],
+                  strict: bool?
+                }
+
+              class JsonSchema < Braintrust::BaseModel
+                attr_accessor name: String
+
+                attr_reader description: String?
+
+                def description=: (String) -> String
+
+                attr_reader schema: ::Hash[Symbol, top?]?
+
+                def schema=: (::Hash[Symbol, top?]) -> ::Hash[Symbol, top?]
+
+                attr_accessor strict: bool?
+
+                def initialize:
+                  (
+                    name: String,
+                    description: String,
+                    schema: ::Hash[Symbol, top?],
+                    strict: bool?
+                  ) -> void
+                  | (
+                    ?Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ResponseFormat::JsonSchema::json_schema
+                    | Braintrust::BaseModel data
+                  ) -> void
+
+                def to_hash: -> Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ResponseFormat::JsonSchema::json_schema
+              end
+
+              type type_ = :json_schema
+
+              class Type < Braintrust::Enum
+                JSON_SCHEMA: :json_schema
+
+                def self.values: -> ::Array[Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ResponseFormat::JsonSchema::type_]
+              end
+            end
+
+            type text =
+              {
+                type: Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ResponseFormat::Text::type_
+              }
+
+            class Text < Braintrust::BaseModel
+              attr_accessor type: Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ResponseFormat::Text::type_
+
+              def initialize:
+                (
+                  type: Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ResponseFormat::Text::type_
+                ) -> void
+                | (
+                  ?Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ResponseFormat::text
+                  | Braintrust::BaseModel data
+                ) -> void
+
+              def to_hash: -> Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ResponseFormat::text
+
+              type type_ = :text
+
+              class Type < Braintrust::Enum
+                TEXT: :text
+
+                def self.values: -> ::Array[Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ResponseFormat::Text::type_]
+              end
+            end
+
+            type nullable_variant = {  }
+
+            class NullableVariant < Braintrust::BaseModel
+              def initialize:
+                -> void
+                | (
+                  ?Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ResponseFormat::nullable_variant
+                  | Braintrust::BaseModel data
+                ) -> void
+
+              def to_hash: -> Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ResponseFormat::nullable_variant
+            end
+
+            private def self.variants: -> [[nil, Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ResponseFormat::JsonObject], [nil, Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ResponseFormat::JsonSchema], [nil, Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ResponseFormat::Text], [nil, Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ResponseFormat::NullableVariant]]
+          end
+
+          type tool_choice =
+            Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ToolChoice::union_member0
+            | Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ToolChoice::Function
+
+          class ToolChoice < Braintrust::Union
+            type union_member0 = :auto | :none | :required
+
+            class UnionMember0 < Braintrust::Enum
+              AUTO: :auto
+              NONE: :none
+              REQUIRED: :required
+
+              def self.values: -> ::Array[Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ToolChoice::union_member0]
+            end
+
+            type function =
+              {
+                function: Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ToolChoice::Function::Function,
+                type: Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ToolChoice::Function::type_
+              }
+
+            class Function < Braintrust::BaseModel
+              attr_accessor function: Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ToolChoice::Function::Function
+
+              attr_accessor type: Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ToolChoice::Function::type_
+
+              def initialize:
+                (
+                  function: Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ToolChoice::Function::Function,
+                  type: Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ToolChoice::Function::type_
+                ) -> void
+                | (
+                  ?Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ToolChoice::function
+                  | Braintrust::BaseModel data
+                ) -> void
+
+              def to_hash: -> Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ToolChoice::function
+
+              type function = { name: String }
+
+              class Function < Braintrust::BaseModel
+                attr_accessor name: String
+
+                def initialize:
+                  (name: String) -> void
+                  | (
+                    ?Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ToolChoice::Function::function
+                    | Braintrust::BaseModel data
+                  ) -> void
+
+                def to_hash: -> Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ToolChoice::Function::function
+              end
+
+              type type_ = :function
+
+              class Type < Braintrust::Enum
+                FUNCTION: :function
+
+                def self.values: -> ::Array[Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ToolChoice::Function::type_]
+              end
+            end
+
+            private def self.variants: -> [[nil, Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ToolChoice::union_member0], [nil, Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ToolChoice::Function]]
+          end
+        end
+
+        type anthropic_model_params =
+          {
+            max_tokens: Float,
+            temperature: Float,
+            max_tokens_to_sample: Float,
+            stop_sequences: ::Array[String],
+            top_k: Float,
+            top_p: Float,
+            use_cache: bool
+          }
+
+        class AnthropicModelParams < Braintrust::BaseModel
+          attr_accessor max_tokens: Float
+
+          attr_accessor temperature: Float
+
+          attr_reader max_tokens_to_sample: Float?
+
+          def max_tokens_to_sample=: (Float) -> Float
+
+          attr_reader stop_sequences: ::Array[String]?
+
+          def stop_sequences=: (::Array[String]) -> ::Array[String]
+
+          attr_reader top_k: Float?
+
+          def top_k=: (Float) -> Float
+
+          attr_reader top_p: Float?
+
+          def top_p=: (Float) -> Float
+
+          attr_reader use_cache: bool?
+
+          def use_cache=: (bool) -> bool
+
+          def initialize:
+            (
+              max_tokens: Float,
+              temperature: Float,
+              max_tokens_to_sample: Float,
+              stop_sequences: ::Array[String],
+              top_k: Float,
+              top_p: Float,
+              use_cache: bool
+            ) -> void
+            | (
+              ?Braintrust::Models::PromptOptions::Params::anthropic_model_params
+              | Braintrust::BaseModel data
+            ) -> void
+
+          def to_hash: -> Braintrust::Models::PromptOptions::Params::anthropic_model_params
+        end
+
+        type google_model_params =
+          {
+            max_output_tokens: Float,
+            temperature: Float,
+            top_k: Float,
+            top_p: Float,
+            use_cache: bool
+          }
+
+        class GoogleModelParams < Braintrust::BaseModel
+          attr_reader max_output_tokens: Float?
+
+          def max_output_tokens=: (Float) -> Float
+
+          attr_reader temperature: Float?
+
+          def temperature=: (Float) -> Float
+
+          attr_reader top_k: Float?
+
+          def top_k=: (Float) -> Float
+
+          attr_reader top_p: Float?
+
+          def top_p=: (Float) -> Float
+
+          attr_reader use_cache: bool?
+
+          def use_cache=: (bool) -> bool
+
+          def initialize:
+            (
+              max_output_tokens: Float,
+              temperature: Float,
+              top_k: Float,
+              top_p: Float,
+              use_cache: bool
+            ) -> void
+            | (
+              ?Braintrust::Models::PromptOptions::Params::google_model_params
+              | Braintrust::BaseModel data
+            ) -> void
+
+          def to_hash: -> Braintrust::Models::PromptOptions::Params::google_model_params
+        end
+
+        type window_ai_model_params =
+          { temperature: Float, top_k: Float, use_cache: bool }
+
+        class WindowAIModelParams < Braintrust::BaseModel
+          attr_reader temperature: Float?
+
+          def temperature=: (Float) -> Float
+
+          attr_reader top_k: Float?
+
+          def top_k=: (Float) -> Float
+
+          attr_reader use_cache: bool?
+
+          def use_cache=: (bool) -> bool
+
+          def initialize:
+            (temperature: Float, top_k: Float, use_cache: bool) -> void
+            | (
+              ?Braintrust::Models::PromptOptions::Params::window_ai_model_params
+              | Braintrust::BaseModel data
+            ) -> void
+
+          def to_hash: -> Braintrust::Models::PromptOptions::Params::window_ai_model_params
+        end
+
+        type js_completion_params = { use_cache: bool }
+
+        class JsCompletionParams < Braintrust::BaseModel
+          attr_reader use_cache: bool?
+
+          def use_cache=: (bool) -> bool
+
+          def initialize:
+            (use_cache: bool) -> void
+            | (
+              ?Braintrust::Models::PromptOptions::Params::js_completion_params
+              | Braintrust::BaseModel data
+            ) -> void
+
+          def to_hash: -> Braintrust::Models::PromptOptions::Params::js_completion_params
+        end
+
+        private def self.variants: -> [[nil, Braintrust::Models::PromptOptions::Params::OpenAIModelParams], [nil, Braintrust::Models::PromptOptions::Params::AnthropicModelParams], [nil, Braintrust::Models::PromptOptions::Params::GoogleModelParams], [nil, Braintrust::Models::PromptOptions::Params::WindowAIModelParams], [nil, Braintrust::Models::PromptOptions::Params::JsCompletionParams]]
+      end
+    end
+  end
+end

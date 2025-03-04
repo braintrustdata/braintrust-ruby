@@ -1,0 +1,106 @@
+module Braintrust
+  module Models
+    type online_score_config =
+      {
+        sampling_rate: Float,
+        scorers: ::Array[Braintrust::Models::OnlineScoreConfig::scorer],
+        apply_to_root_span: bool?,
+        apply_to_span_names: ::Array[String]?
+      }
+
+    class OnlineScoreConfig < Braintrust::BaseModel
+      attr_accessor sampling_rate: Float
+
+      attr_accessor scorers: ::Array[Braintrust::Models::OnlineScoreConfig::scorer]
+
+      attr_accessor apply_to_root_span: bool?
+
+      attr_accessor apply_to_span_names: ::Array[String]?
+
+      def initialize:
+        (
+          sampling_rate: Float,
+          scorers: ::Array[Braintrust::Models::OnlineScoreConfig::scorer],
+          apply_to_root_span: bool?,
+          apply_to_span_names: ::Array[String]?
+        ) -> void
+        | (
+          ?Braintrust::Models::online_score_config | Braintrust::BaseModel data
+        ) -> void
+
+      def to_hash: -> Braintrust::Models::online_score_config
+
+      type scorer =
+        Braintrust::Models::OnlineScoreConfig::Scorer::Function
+        | Braintrust::Models::OnlineScoreConfig::Scorer::Global
+
+      class Scorer < Braintrust::Union
+        type function =
+          {
+            id: String,
+            type: Braintrust::Models::OnlineScoreConfig::Scorer::Function::type_
+          }
+
+        class Function < Braintrust::BaseModel
+          attr_accessor id: String
+
+          attr_accessor type: Braintrust::Models::OnlineScoreConfig::Scorer::Function::type_
+
+          def initialize:
+            (
+              id: String,
+              type: Braintrust::Models::OnlineScoreConfig::Scorer::Function::type_
+            ) -> void
+            | (
+              ?Braintrust::Models::OnlineScoreConfig::Scorer::function
+              | Braintrust::BaseModel data
+            ) -> void
+
+          def to_hash: -> Braintrust::Models::OnlineScoreConfig::Scorer::function
+
+          type type_ = :function
+
+          class Type < Braintrust::Enum
+            FUNCTION: :function
+
+            def self.values: -> ::Array[Braintrust::Models::OnlineScoreConfig::Scorer::Function::type_]
+          end
+        end
+
+        type global =
+          {
+            name: String,
+            type: Braintrust::Models::OnlineScoreConfig::Scorer::Global::type_
+          }
+
+        class Global < Braintrust::BaseModel
+          attr_accessor name: String
+
+          attr_accessor type: Braintrust::Models::OnlineScoreConfig::Scorer::Global::type_
+
+          def initialize:
+            (
+              name: String,
+              type: Braintrust::Models::OnlineScoreConfig::Scorer::Global::type_
+            ) -> void
+            | (
+              ?Braintrust::Models::OnlineScoreConfig::Scorer::global
+              | Braintrust::BaseModel data
+            ) -> void
+
+          def to_hash: -> Braintrust::Models::OnlineScoreConfig::Scorer::global
+
+          type type_ = :global
+
+          class Type < Braintrust::Enum
+            GLOBAL: :global
+
+            def self.values: -> ::Array[Braintrust::Models::OnlineScoreConfig::Scorer::Global::type_]
+          end
+        end
+
+        private def self.variants: -> [[nil, Braintrust::Models::OnlineScoreConfig::Scorer::Function], [nil, Braintrust::Models::OnlineScoreConfig::Scorer::Global]]
+      end
+    end
+  end
+end

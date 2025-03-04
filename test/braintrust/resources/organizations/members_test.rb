@@ -2,18 +2,20 @@
 
 require_relative "../../test_helper"
 
-class Braintrust::Test::Resources::Organizations::MembersTest < Minitest::Test
-  parallelize_me!
-
-  def setup
-    @braintrust = Braintrust::Client.new(
-      base_url: ENV.fetch("TEST_API_BASE_URL", "http://localhost:4010"),
-      api_key: "My API Key"
-    )
-  end
-
+class Braintrust::Test::Resources::Organizations::MembersTest < Braintrust::Test::ResourceTest
   def test_update
     response = @braintrust.organizations.members.update
-    assert_kind_of(Braintrust::Models::PatchOrganizationMembersOutput, response)
+
+    assert_pattern do
+      response => Braintrust::Models::PatchOrganizationMembersOutput
+    end
+
+    assert_pattern do
+      response => {
+        org_id: String,
+        status: Braintrust::Models::PatchOrganizationMembersOutput::Status,
+        send_email_error: String | nil
+      }
+    end
   end
 end

@@ -1,0 +1,31 @@
+module Braintrust
+  module Models
+    type experiment_summarize_params =
+      { comparison_experiment_id: String, summarize_scores: bool? }
+      & Braintrust::request_parameters
+
+    class ExperimentSummarizeParams < Braintrust::BaseModel
+      extend Braintrust::RequestParameters::Converter
+      include Braintrust::RequestParameters
+
+      attr_reader comparison_experiment_id: String?
+
+      def comparison_experiment_id=: (String) -> String
+
+      attr_accessor summarize_scores: bool?
+
+      def initialize:
+        (
+          comparison_experiment_id: String,
+          summarize_scores: bool?,
+          request_options: Braintrust::request_opts
+        ) -> void
+        | (
+          ?Braintrust::Models::experiment_summarize_params
+          | Braintrust::BaseModel data
+        ) -> void
+
+      def to_hash: -> Braintrust::Models::experiment_summarize_params
+    end
+  end
+end

@@ -1,0 +1,131 @@
+module Braintrust
+  module Models
+    type project_score_list_params =
+      {
+        ending_before: String,
+        ids: Braintrust::Models::ProjectScoreListParams::ids,
+        limit: Integer?,
+        org_name: String,
+        project_id: String,
+        project_name: String,
+        project_score_name: String,
+        score_type: Braintrust::Models::ProjectScoreListParams::score_type,
+        starting_after: String
+      }
+      & Braintrust::request_parameters
+
+    class ProjectScoreListParams < Braintrust::BaseModel
+      extend Braintrust::RequestParameters::Converter
+      include Braintrust::RequestParameters
+
+      attr_reader ending_before: String?
+
+      def ending_before=: (String) -> String
+
+      attr_reader ids: Braintrust::Models::ProjectScoreListParams::ids?
+
+      def ids=: (
+        Braintrust::Models::ProjectScoreListParams::ids
+      ) -> Braintrust::Models::ProjectScoreListParams::ids
+
+      attr_accessor limit: Integer?
+
+      attr_reader org_name: String?
+
+      def org_name=: (String) -> String
+
+      attr_reader project_id: String?
+
+      def project_id=: (String) -> String
+
+      attr_reader project_name: String?
+
+      def project_name=: (String) -> String
+
+      attr_reader project_score_name: String?
+
+      def project_score_name=: (String) -> String
+
+      attr_reader score_type: Braintrust::Models::ProjectScoreListParams::score_type?
+
+      def score_type=: (
+        Braintrust::Models::ProjectScoreListParams::score_type
+      ) -> Braintrust::Models::ProjectScoreListParams::score_type
+
+      attr_reader starting_after: String?
+
+      def starting_after=: (String) -> String
+
+      def initialize:
+        (
+          ending_before: String,
+          ids: Braintrust::Models::ProjectScoreListParams::ids,
+          limit: Integer?,
+          org_name: String,
+          project_id: String,
+          project_name: String,
+          project_score_name: String,
+          score_type: Braintrust::Models::ProjectScoreListParams::score_type,
+          starting_after: String,
+          request_options: Braintrust::request_opts
+        ) -> void
+        | (
+          ?Braintrust::Models::project_score_list_params
+          | Braintrust::BaseModel data
+        ) -> void
+
+      def to_hash: -> Braintrust::Models::project_score_list_params
+
+      type ids = String | ::Array[String]
+
+      class IDs < Braintrust::Union
+        type string_array = ::Array[String]
+
+        StringArray: string_array
+
+        private def self.variants: -> [[nil, String], [nil, ::Array[String]]]
+      end
+
+      type score_type =
+        Braintrust::Models::ProjectScoreListParams::ScoreType::project_score_type
+        | ::Array[Braintrust::Models::ProjectScoreListParams::ScoreType::union_member1]
+
+      class ScoreType < Braintrust::Union
+        type union_member1_array =
+          ::Array[Braintrust::Models::ProjectScoreListParams::ScoreType::union_member1]
+
+        UnionMember1Array: union_member1_array
+
+        type project_score_type =
+          :slider | :categorical | :weighted | :minimum | :maximum | :online
+
+        class ProjectScoreType < Braintrust::Enum
+          SLIDER: :slider
+          CATEGORICAL: :categorical
+          WEIGHTED: :weighted
+          MINIMUM: :minimum
+          MAXIMUM: :maximum
+          ONLINE: :online
+
+          def self.values: -> ::Array[Braintrust::Models::ProjectScoreListParams::ScoreType::project_score_type]
+        end
+
+        type union_member1 =
+          :slider | :categorical | :weighted | :minimum | :maximum | :online
+
+        class UnionMember1 < Braintrust::Enum
+          SLIDER: :slider
+          CATEGORICAL: :categorical
+          WEIGHTED: :weighted
+          MINIMUM: :minimum
+          MAXIMUM: :maximum
+          ONLINE: :online
+
+          def self.values: -> ::Array[Braintrust::Models::ProjectScoreListParams::ScoreType::union_member1]
+        end
+
+        private def self.variants: -> [[nil, Braintrust::Models::ProjectScoreListParams::ScoreType::project_score_type], [nil, ::Array[Braintrust::Models::ProjectScoreListParams::ScoreType::union_member1]]]
+      end
+    end
+  end
+end

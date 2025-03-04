@@ -1,0 +1,59 @@
+module Braintrust
+  module Models
+    type feedback_project_logs_item =
+      {
+        id: String,
+        comment: String?,
+        expected: top,
+        metadata: ::Hash[Symbol, top?]?,
+        scores: ::Hash[Symbol, Float?]?,
+        source: Braintrust::Models::FeedbackProjectLogsItem::source?,
+        tags: ::Array[String]?
+      }
+
+    class FeedbackProjectLogsItem < Braintrust::BaseModel
+      attr_accessor id: String
+
+      attr_accessor comment: String?
+
+      attr_reader expected: top?
+
+      def expected=: (top) -> top
+
+      attr_accessor metadata: ::Hash[Symbol, top?]?
+
+      attr_accessor scores: ::Hash[Symbol, Float?]?
+
+      attr_accessor source: Braintrust::Models::FeedbackProjectLogsItem::source?
+
+      attr_accessor tags: ::Array[String]?
+
+      def initialize:
+        (
+          id: String,
+          comment: String?,
+          expected: top,
+          metadata: ::Hash[Symbol, top?]?,
+          scores: ::Hash[Symbol, Float?]?,
+          source: Braintrust::Models::FeedbackProjectLogsItem::source?,
+          tags: ::Array[String]?
+        ) -> void
+        | (
+          ?Braintrust::Models::feedback_project_logs_item
+          | Braintrust::BaseModel data
+        ) -> void
+
+      def to_hash: -> Braintrust::Models::feedback_project_logs_item
+
+      type source = :app | :api | :external
+
+      class Source < Braintrust::Enum
+        APP: :app
+        API: :api
+        EXTERNAL: :external
+
+        def self.values: -> ::Array[Braintrust::Models::FeedbackProjectLogsItem::source]
+      end
+    end
+  end
+end

@@ -1,0 +1,44 @@
+module Braintrust
+  module Models
+    type organization_update_params =
+      {
+        api_url: String?,
+        is_universal_api: bool?,
+        name: String?,
+        proxy_url: String?,
+        realtime_url: String?
+      }
+      & Braintrust::request_parameters
+
+    class OrganizationUpdateParams < Braintrust::BaseModel
+      extend Braintrust::RequestParameters::Converter
+      include Braintrust::RequestParameters
+
+      attr_accessor api_url: String?
+
+      attr_accessor is_universal_api: bool?
+
+      attr_accessor name: String?
+
+      attr_accessor proxy_url: String?
+
+      attr_accessor realtime_url: String?
+
+      def initialize:
+        (
+          api_url: String?,
+          is_universal_api: bool?,
+          name: String?,
+          proxy_url: String?,
+          realtime_url: String?,
+          request_options: Braintrust::request_opts
+        ) -> void
+        | (
+          ?Braintrust::Models::organization_update_params
+          | Braintrust::BaseModel data
+        ) -> void
+
+      def to_hash: -> Braintrust::Models::organization_update_params
+    end
+  end
+end

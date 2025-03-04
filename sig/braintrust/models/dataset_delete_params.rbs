@@ -1,0 +1,19 @@
+module Braintrust
+  module Models
+    type dataset_delete_params = {  } & Braintrust::request_parameters
+
+    class DatasetDeleteParams < Braintrust::BaseModel
+      extend Braintrust::RequestParameters::Converter
+      include Braintrust::RequestParameters
+
+      def initialize:
+        (request_options: Braintrust::request_opts) -> void
+        | (
+          ?Braintrust::Models::dataset_delete_params
+          | Braintrust::BaseModel data
+        ) -> void
+
+      def to_hash: -> Braintrust::Models::dataset_delete_params
+    end
+  end
+end

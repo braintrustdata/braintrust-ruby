@@ -1,0 +1,98 @@
+module Braintrust
+  module Models
+    type project_score_update_params =
+      {
+        categories: Braintrust::Models::ProjectScoreUpdateParams::categories?,
+        config: Braintrust::Models::ProjectScoreConfig?,
+        description: String?,
+        name: String?,
+        score_type: Braintrust::Models::ProjectScoreUpdateParams::score_type?
+      }
+      & Braintrust::request_parameters
+
+    class ProjectScoreUpdateParams < Braintrust::BaseModel
+      extend Braintrust::RequestParameters::Converter
+      include Braintrust::RequestParameters
+
+      attr_reader categories: Braintrust::Models::ProjectScoreUpdateParams::categories?
+
+      def categories=: (
+        Braintrust::Models::ProjectScoreUpdateParams::categories?
+      ) -> Braintrust::Models::ProjectScoreUpdateParams::categories?
+
+      attr_accessor config: Braintrust::Models::ProjectScoreConfig?
+
+      attr_accessor description: String?
+
+      attr_accessor name: String?
+
+      attr_accessor score_type: Braintrust::Models::ProjectScoreUpdateParams::score_type?
+
+      def initialize:
+        (
+          categories: Braintrust::Models::ProjectScoreUpdateParams::categories?,
+          config: Braintrust::Models::ProjectScoreConfig?,
+          description: String?,
+          name: String?,
+          score_type: Braintrust::Models::ProjectScoreUpdateParams::score_type?,
+          request_options: Braintrust::request_opts
+        ) -> void
+        | (
+          ?Braintrust::Models::project_score_update_params
+          | Braintrust::BaseModel data
+        ) -> void
+
+      def to_hash: -> Braintrust::Models::project_score_update_params
+
+      type categories =
+        (::Array[Braintrust::Models::ProjectScoreCategory]
+        | ::Hash[Symbol, Float]
+        | ::Array[String]
+        | Braintrust::Models::ProjectScoreUpdateParams::Categories::NullableVariant)?
+
+      class Categories < Braintrust::Union
+        type project_score_category_array =
+          ::Array[Braintrust::Models::ProjectScoreCategory]
+
+        ProjectScoreCategoryArray: project_score_category_array
+
+        type float_map = ::Hash[Symbol, Float]
+
+        FloatMap: float_map
+
+        type string_array = ::Array[String]
+
+        StringArray: string_array
+
+        type nullable_variant = {  }
+
+        class NullableVariant < Braintrust::BaseModel
+          def initialize:
+            -> void
+            | (
+              ?Braintrust::Models::ProjectScoreUpdateParams::Categories::nullable_variant
+              | Braintrust::BaseModel data
+            ) -> void
+
+          def to_hash: -> Braintrust::Models::ProjectScoreUpdateParams::Categories::nullable_variant
+        end
+
+        private def self.variants: -> [[nil, ::Array[Braintrust::Models::ProjectScoreCategory]], [nil, ::Hash[Symbol, Float]], [nil, ::Array[String]], [nil, Braintrust::Models::ProjectScoreUpdateParams::Categories::NullableVariant]]
+      end
+
+      type score_type =
+        :slider | :categorical | :weighted | :minimum | :maximum | :online
+
+      class ScoreType < Braintrust::Enum
+        SLIDER: :slider
+        CATEGORICAL: :categorical
+        WEIGHTED: :weighted
+        MINIMUM: :minimum
+        MAXIMUM: :maximum
+        ONLINE: :online
+
+        def self.values: -> ::Array[Braintrust::Models::ProjectScoreUpdateParams::score_type]
+      end
+    end
+  end
+end

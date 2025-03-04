@@ -1,0 +1,423 @@
+module Braintrust
+  module Models
+    type function_invoke_params =
+      {
+        input: top,
+        messages: ::Array[Braintrust::Models::FunctionInvokeParams::message],
+        mode: Braintrust::Models::FunctionInvokeParams::mode?,
+        parent: Braintrust::Models::FunctionInvokeParams::parent,
+        stream: bool?,
+        version: String
+      }
+      & Braintrust::request_parameters
+
+    class FunctionInvokeParams < Braintrust::BaseModel
+      extend Braintrust::RequestParameters::Converter
+      include Braintrust::RequestParameters
+
+      attr_reader input: top?
+
+      def input=: (top) -> top
+
+      attr_reader messages: ::Array[Braintrust::Models::FunctionInvokeParams::message]?
+
+      def messages=: (
+        ::Array[Braintrust::Models::FunctionInvokeParams::message]
+      ) -> ::Array[Braintrust::Models::FunctionInvokeParams::message]
+
+      attr_accessor mode: Braintrust::Models::FunctionInvokeParams::mode?
+
+      attr_reader parent: Braintrust::Models::FunctionInvokeParams::parent?
+
+      def parent=: (
+        Braintrust::Models::FunctionInvokeParams::parent
+      ) -> Braintrust::Models::FunctionInvokeParams::parent
+
+      attr_accessor stream: bool?
+
+      attr_reader version: String?
+
+      def version=: (String) -> String
+
+      def initialize:
+        (
+          input: top,
+          messages: ::Array[Braintrust::Models::FunctionInvokeParams::message],
+          mode: Braintrust::Models::FunctionInvokeParams::mode?,
+          parent: Braintrust::Models::FunctionInvokeParams::parent,
+          stream: bool?,
+          version: String,
+          request_options: Braintrust::request_opts
+        ) -> void
+        | (
+          ?Braintrust::Models::function_invoke_params
+          | Braintrust::BaseModel data
+        ) -> void
+
+      def to_hash: -> Braintrust::Models::function_invoke_params
+
+      type message =
+        Braintrust::Models::FunctionInvokeParams::Message::System
+        | Braintrust::Models::FunctionInvokeParams::Message::User
+        | Braintrust::Models::FunctionInvokeParams::Message::Assistant
+        | Braintrust::Models::FunctionInvokeParams::Message::Tool
+        | Braintrust::Models::FunctionInvokeParams::Message::Function
+        | Braintrust::Models::FunctionInvokeParams::Message::Fallback
+
+      class Message < Braintrust::Union
+        type system_ =
+          {
+            role: Braintrust::Models::FunctionInvokeParams::Message::System::role,
+            content: String,
+            name: String
+          }
+
+        class System < Braintrust::BaseModel
+          attr_accessor role: Braintrust::Models::FunctionInvokeParams::Message::System::role
+
+          attr_reader content: String?
+
+          def content=: (String) -> String
+
+          attr_reader name: String?
+
+          def name=: (String) -> String
+
+          def initialize:
+            (
+              role: Braintrust::Models::FunctionInvokeParams::Message::System::role,
+              content: String,
+              name: String
+            ) -> void
+            | (
+              ?Braintrust::Models::FunctionInvokeParams::Message::system_
+              | Braintrust::BaseModel data
+            ) -> void
+
+          def to_hash: -> Braintrust::Models::FunctionInvokeParams::Message::system_
+
+          type role = :system
+
+          class Role < Braintrust::Enum
+            SYSTEM: :system
+
+            def self.values: -> ::Array[Braintrust::Models::FunctionInvokeParams::Message::System::role]
+          end
+        end
+
+        type user =
+          {
+            role: Braintrust::Models::FunctionInvokeParams::Message::User::role,
+            content: Braintrust::Models::FunctionInvokeParams::Message::User::content,
+            name: String
+          }
+
+        class User < Braintrust::BaseModel
+          attr_accessor role: Braintrust::Models::FunctionInvokeParams::Message::User::role
+
+          attr_reader content: Braintrust::Models::FunctionInvokeParams::Message::User::content?
+
+          def content=: (
+            Braintrust::Models::FunctionInvokeParams::Message::User::content
+          ) -> Braintrust::Models::FunctionInvokeParams::Message::User::content
+
+          attr_reader name: String?
+
+          def name=: (String) -> String
+
+          def initialize:
+            (
+              role: Braintrust::Models::FunctionInvokeParams::Message::User::role,
+              content: Braintrust::Models::FunctionInvokeParams::Message::User::content,
+              name: String
+            ) -> void
+            | (
+              ?Braintrust::Models::FunctionInvokeParams::Message::user
+              | Braintrust::BaseModel data
+            ) -> void
+
+          def to_hash: -> Braintrust::Models::FunctionInvokeParams::Message::user
+
+          type role = :user
+
+          class Role < Braintrust::Enum
+            USER: :user
+
+            def self.values: -> ::Array[Braintrust::Models::FunctionInvokeParams::Message::User::role]
+          end
+
+          type content =
+            String
+            | ::Array[Braintrust::Models::FunctionInvokeParams::Message::User::Content::array]
+
+          class Content < Braintrust::Union
+            type nested2_d_array =
+              ::Array[Braintrust::Models::FunctionInvokeParams::Message::User::Content::array]
+
+            Nested2DArray: nested2_d_array
+
+            type array =
+              Braintrust::Models::ChatCompletionContentPartText
+              | Braintrust::Models::ChatCompletionContentPartImage
+
+            class Array < Braintrust::Union
+              private def self.variants: -> [[nil, Braintrust::Models::ChatCompletionContentPartText], [nil, Braintrust::Models::ChatCompletionContentPartImage]]
+            end
+
+            private def self.variants: -> [[nil, String], [nil, ::Array[Braintrust::Models::FunctionInvokeParams::Message::User::Content::array]]]
+          end
+        end
+
+        type assistant =
+          {
+            role: Braintrust::Models::FunctionInvokeParams::Message::Assistant::role,
+            content: String?,
+            function_call: Braintrust::Models::FunctionInvokeParams::Message::Assistant::FunctionCall?,
+            name: String?,
+            tool_calls: ::Array[Braintrust::Models::ChatCompletionMessageToolCall]?
+          }
+
+        class Assistant < Braintrust::BaseModel
+          attr_accessor role: Braintrust::Models::FunctionInvokeParams::Message::Assistant::role
+
+          attr_accessor content: String?
+
+          attr_accessor function_call: Braintrust::Models::FunctionInvokeParams::Message::Assistant::FunctionCall?
+
+          attr_accessor name: String?
+
+          attr_accessor tool_calls: ::Array[Braintrust::Models::ChatCompletionMessageToolCall]?
+
+          def initialize:
+            (
+              role: Braintrust::Models::FunctionInvokeParams::Message::Assistant::role,
+              content: String?,
+              function_call: Braintrust::Models::FunctionInvokeParams::Message::Assistant::FunctionCall?,
+              name: String?,
+              tool_calls: ::Array[Braintrust::Models::ChatCompletionMessageToolCall]?
+            ) -> void
+            | (
+              ?Braintrust::Models::FunctionInvokeParams::Message::assistant
+              | Braintrust::BaseModel data
+            ) -> void
+
+          def to_hash: -> Braintrust::Models::FunctionInvokeParams::Message::assistant
+
+          type role = :assistant
+
+          class Role < Braintrust::Enum
+            ASSISTANT: :assistant
+
+            def self.values: -> ::Array[Braintrust::Models::FunctionInvokeParams::Message::Assistant::role]
+          end
+
+          type function_call = { arguments: String, name: String }
+
+          class FunctionCall < Braintrust::BaseModel
+            attr_accessor arguments: String
+
+            attr_accessor name: String
+
+            def initialize:
+              (arguments: String, name: String) -> void
+              | (
+                ?Braintrust::Models::FunctionInvokeParams::Message::Assistant::function_call
+                | Braintrust::BaseModel data
+              ) -> void
+
+            def to_hash: -> Braintrust::Models::FunctionInvokeParams::Message::Assistant::function_call
+          end
+        end
+
+        type tool =
+          {
+            role: Braintrust::Models::FunctionInvokeParams::Message::Tool::role,
+            content: String,
+            tool_call_id: String
+          }
+
+        class Tool < Braintrust::BaseModel
+          attr_accessor role: Braintrust::Models::FunctionInvokeParams::Message::Tool::role
+
+          attr_reader content: String?
+
+          def content=: (String) -> String
+
+          attr_reader tool_call_id: String?
+
+          def tool_call_id=: (String) -> String
+
+          def initialize:
+            (
+              role: Braintrust::Models::FunctionInvokeParams::Message::Tool::role,
+              content: String,
+              tool_call_id: String
+            ) -> void
+            | (
+              ?Braintrust::Models::FunctionInvokeParams::Message::tool
+              | Braintrust::BaseModel data
+            ) -> void
+
+          def to_hash: -> Braintrust::Models::FunctionInvokeParams::Message::tool
+
+          type role = :tool
+
+          class Role < Braintrust::Enum
+            TOOL: :tool
+
+            def self.values: -> ::Array[Braintrust::Models::FunctionInvokeParams::Message::Tool::role]
+          end
+        end
+
+        type function =
+          {
+            name: String,
+            role: Braintrust::Models::FunctionInvokeParams::Message::Function::role,
+            content: String
+          }
+
+        class Function < Braintrust::BaseModel
+          attr_accessor name: String
+
+          attr_accessor role: Braintrust::Models::FunctionInvokeParams::Message::Function::role
+
+          attr_reader content: String?
+
+          def content=: (String) -> String
+
+          def initialize:
+            (
+              name: String,
+              role: Braintrust::Models::FunctionInvokeParams::Message::Function::role,
+              content: String
+            ) -> void
+            | (
+              ?Braintrust::Models::FunctionInvokeParams::Message::function
+              | Braintrust::BaseModel data
+            ) -> void
+
+          def to_hash: -> Braintrust::Models::FunctionInvokeParams::Message::function
+
+          type role = :function
+
+          class Role < Braintrust::Enum
+            FUNCTION: :function
+
+            def self.values: -> ::Array[Braintrust::Models::FunctionInvokeParams::Message::Function::role]
+          end
+        end
+
+        type fallback =
+          {
+            role: Braintrust::Models::FunctionInvokeParams::Message::Fallback::role,
+            content: String?
+          }
+
+        class Fallback < Braintrust::BaseModel
+          attr_accessor role: Braintrust::Models::FunctionInvokeParams::Message::Fallback::role
+
+          attr_accessor content: String?
+
+          def initialize:
+            (
+              role: Braintrust::Models::FunctionInvokeParams::Message::Fallback::role,
+              content: String?
+            ) -> void
+            | (
+              ?Braintrust::Models::FunctionInvokeParams::Message::fallback
+              | Braintrust::BaseModel data
+            ) -> void
+
+          def to_hash: -> Braintrust::Models::FunctionInvokeParams::Message::fallback
+
+          type role = :model
+
+          class Role < Braintrust::Enum
+            MODEL: :model
+
+            def self.values: -> ::Array[Braintrust::Models::FunctionInvokeParams::Message::Fallback::role]
+          end
+        end
+
+        private def self.variants: -> [[nil, Braintrust::Models::FunctionInvokeParams::Message::System], [nil, Braintrust::Models::FunctionInvokeParams::Message::User], [nil, Braintrust::Models::FunctionInvokeParams::Message::Assistant], [nil, Braintrust::Models::FunctionInvokeParams::Message::Tool], [nil, Braintrust::Models::FunctionInvokeParams::Message::Function], [nil, Braintrust::Models::FunctionInvokeParams::Message::Fallback]]
+      end
+
+      type mode = :auto | :parallel
+
+      class Mode < Braintrust::Enum
+        AUTO: :auto
+        PARALLEL: :parallel
+
+        def self.values: -> ::Array[Braintrust::Models::FunctionInvokeParams::mode]
+      end
+
+      type parent =
+        Braintrust::Models::FunctionInvokeParams::Parent::SpanParentStruct
+        | String
+
+      class Parent < Braintrust::Union
+        type span_parent_struct =
+          {
+            object_id_: String,
+            object_type: Braintrust::Models::FunctionInvokeParams::Parent::SpanParentStruct::object_type,
+            propagated_event: ::Hash[Symbol, top?]?,
+            row_ids: Braintrust::Models::FunctionInvokeParams::Parent::SpanParentStruct::RowIDs?
+          }
+
+        class SpanParentStruct < Braintrust::BaseModel
+          attr_accessor object_id_: String
+
+          attr_accessor object_type: Braintrust::Models::FunctionInvokeParams::Parent::SpanParentStruct::object_type
+
+          attr_accessor propagated_event: ::Hash[Symbol, top?]?
+
+          attr_accessor row_ids: Braintrust::Models::FunctionInvokeParams::Parent::SpanParentStruct::RowIDs?
+
+          def initialize:
+            (
+              object_id_: String,
+              object_type: Braintrust::Models::FunctionInvokeParams::Parent::SpanParentStruct::object_type,
+              propagated_event: ::Hash[Symbol, top?]?,
+              row_ids: Braintrust::Models::FunctionInvokeParams::Parent::SpanParentStruct::RowIDs?
+            ) -> void
+            | (
+              ?Braintrust::Models::FunctionInvokeParams::Parent::span_parent_struct
+              | Braintrust::BaseModel data
+            ) -> void
+
+          def to_hash: -> Braintrust::Models::FunctionInvokeParams::Parent::span_parent_struct
+
+          type object_type = :project_logs | :experiment
+
+          class ObjectType < Braintrust::Enum
+            PROJECT_LOGS: :project_logs
+            EXPERIMENT: :experiment
+
+            def self.values: -> ::Array[Braintrust::Models::FunctionInvokeParams::Parent::SpanParentStruct::object_type]
+          end
+
+          type row_ids = { id: String, root_span_id: String, span_id: String }
+
+          class RowIDs < Braintrust::BaseModel
+            attr_accessor id: String
+
+            attr_accessor root_span_id: String
+
+            attr_accessor span_id: String
+
+            def initialize:
+              (id: String, root_span_id: String, span_id: String) -> void
+              | (
+                ?Braintrust::Models::FunctionInvokeParams::Parent::SpanParentStruct::row_ids
+                | Braintrust::BaseModel data
+              ) -> void
+
+            def to_hash: -> Braintrust::Models::FunctionInvokeParams::Parent::SpanParentStruct::row_ids
+          end
+        end
+
+        private def self.variants: -> [[nil, Braintrust::Models::FunctionInvokeParams::Parent::SpanParentStruct], [nil, String]]
+      end
+    end
+  end
+end

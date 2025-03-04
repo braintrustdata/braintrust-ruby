@@ -1,0 +1,20 @@
+module Braintrust
+  module Models
+    type project_score_category = { name: String, value: Float }
+
+    class ProjectScoreCategory < Braintrust::BaseModel
+      attr_accessor name: String
+
+      attr_accessor value: Float
+
+      def initialize:
+        (name: String, value: Float) -> void
+        | (
+          ?Braintrust::Models::project_score_category
+          | Braintrust::BaseModel data
+        ) -> void
+
+      def to_hash: -> Braintrust::Models::project_score_category
+    end
+  end
+end

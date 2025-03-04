@@ -1,0 +1,32 @@
+module Braintrust
+  module Models
+    type span_iframe_update_params =
+      { name: String?, post_message: bool?, url: String? }
+      & Braintrust::request_parameters
+
+    class SpanIframeUpdateParams < Braintrust::BaseModel
+      extend Braintrust::RequestParameters::Converter
+      include Braintrust::RequestParameters
+
+      attr_accessor name: String?
+
+      attr_accessor post_message: bool?
+
+      attr_accessor url: String?
+
+      def initialize:
+        (
+          name: String?,
+          post_message: bool?,
+          url: String?,
+          request_options: Braintrust::request_opts
+        ) -> void
+        | (
+          ?Braintrust::Models::span_iframe_update_params
+          | Braintrust::BaseModel data
+        ) -> void
+
+      def to_hash: -> Braintrust::Models::span_iframe_update_params
+    end
+  end
+end

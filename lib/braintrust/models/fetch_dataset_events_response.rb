@@ -3,28 +3,28 @@
 module Braintrust
   module Models
     class FetchDatasetEventsResponse < Braintrust::BaseModel
-      # @!attribute [rw] events
+      # @!attribute events
       #   A list of fetched events
+      #
       #   @return [Array<Braintrust::Models::DatasetEvent>]
-      required :events, Braintrust::ArrayOf.new(-> { Braintrust::Models::DatasetEvent })
+      required :events, -> { Braintrust::ArrayOf[Braintrust::Models::DatasetEvent] }
 
-      # @!attribute [rw] cursor
+      # @!attribute cursor
       #   Pagination cursor
       #
-      # Pass this string directly as the `cursor` param to your next fetch request to get the next page of results. Not provided if the returned result set is empty.
-      #   @return [String]
-      optional :cursor, String
+      #     Pass this string directly as the `cursor` param to your next fetch request to
+      #     get the next page of results. Not provided if the returned result set is empty.
+      #
+      #   @return [String, nil]
+      optional :cursor, String, nil?: true
 
       # @!parse
-      #   # Create a new instance of FetchDatasetEventsResponse from a Hash of raw data.
+      #   # @param events [Array<Braintrust::Models::DatasetEvent>]
+      #   # @param cursor [String, nil]
       #   #
-      #   # @param data [Hash{Symbol => Object}] .
-      #   #   @option data [Array<Object>] :events A list of fetched events
-      #   #   @option data [String, nil] :cursor Pagination cursor
-      #   #
-      #   #     Pass this string directly as the `cursor` param to your next fetch request to
-      #   #     get the next page of results. Not provided if the returned result set is empty.
-      #   def initialize(data = {}) = super
+      #   def initialize(events:, cursor: nil, **) = super
+
+      # def initialize: (Hash | Braintrust::BaseModel) -> void
     end
   end
 end

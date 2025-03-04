@@ -3,66 +3,90 @@
 module Braintrust
   module Models
     class RepoInfo < Braintrust::BaseModel
-      # @!attribute [rw] author_email
+      # @!attribute author_email
       #   Email of the author of the most recent commit
-      #   @return [String]
-      optional :author_email, String
+      #
+      #   @return [String, nil]
+      optional :author_email, String, nil?: true
 
-      # @!attribute [rw] author_name
+      # @!attribute author_name
       #   Name of the author of the most recent commit
-      #   @return [String]
-      optional :author_name, String
+      #
+      #   @return [String, nil]
+      optional :author_name, String, nil?: true
 
-      # @!attribute [rw] branch
+      # @!attribute branch
       #   Name of the branch the most recent commit belongs to
-      #   @return [String]
-      optional :branch, String
+      #
+      #   @return [String, nil]
+      optional :branch, String, nil?: true
 
-      # @!attribute [rw] commit
+      # @!attribute commit
       #   SHA of most recent commit
-      #   @return [String]
-      optional :commit, String
+      #
+      #   @return [String, nil]
+      optional :commit, String, nil?: true
 
-      # @!attribute [rw] commit_message
+      # @!attribute commit_message
       #   Most recent commit message
-      #   @return [String]
-      optional :commit_message, String
+      #
+      #   @return [String, nil]
+      optional :commit_message, String, nil?: true
 
-      # @!attribute [rw] commit_time
+      # @!attribute commit_time
       #   Time of the most recent commit
-      #   @return [String]
-      optional :commit_time, String
+      #
+      #   @return [String, nil]
+      optional :commit_time, String, nil?: true
 
-      # @!attribute [rw] dirty
+      # @!attribute dirty
       #   Whether or not the repo had uncommitted changes when snapshotted
-      #   @return [Boolean]
-      optional :dirty, Braintrust::BooleanModel
+      #
+      #   @return [Boolean, nil]
+      optional :dirty, Braintrust::BooleanModel, nil?: true
 
-      # @!attribute [rw] git_diff
-      #   If the repo was dirty when run, this includes the diff between the current state of the repo and the most recent commit.
-      #   @return [String]
-      optional :git_diff, String
+      # @!attribute git_diff
+      #   If the repo was dirty when run, this includes the diff between the current state
+      #     of the repo and the most recent commit.
+      #
+      #   @return [String, nil]
+      optional :git_diff, String, nil?: true
 
-      # @!attribute [rw] tag
+      # @!attribute tag
       #   Name of the tag on the most recent commit
-      #   @return [String]
-      optional :tag, String
+      #
+      #   @return [String, nil]
+      optional :tag, String, nil?: true
 
       # @!parse
-      #   # Create a new instance of RepoInfo from a Hash of raw data.
+      #   # Metadata about the state of the repo when the experiment was created
       #   #
-      #   # @param data [Hash{Symbol => Object}] .
-      #   #   @option data [String, nil] :author_email Email of the author of the most recent commit
-      #   #   @option data [String, nil] :author_name Name of the author of the most recent commit
-      #   #   @option data [String, nil] :branch Name of the branch the most recent commit belongs to
-      #   #   @option data [String, nil] :commit SHA of most recent commit
-      #   #   @option data [String, nil] :commit_message Most recent commit message
-      #   #   @option data [String, nil] :commit_time Time of the most recent commit
-      #   #   @option data [Hash, nil] :dirty Whether or not the repo had uncommitted changes when snapshotted
-      #   #   @option data [String, nil] :git_diff If the repo was dirty when run, this includes the diff between the current state
-      #   #     of the repo and the most recent commit.
-      #   #   @option data [String, nil] :tag Name of the tag on the most recent commit
-      #   def initialize(data = {}) = super
+      #   # @param author_email [String, nil]
+      #   # @param author_name [String, nil]
+      #   # @param branch [String, nil]
+      #   # @param commit [String, nil]
+      #   # @param commit_message [String, nil]
+      #   # @param commit_time [String, nil]
+      #   # @param dirty [Boolean, nil]
+      #   # @param git_diff [String, nil]
+      #   # @param tag [String, nil]
+      #   #
+      #   def initialize(
+      #     author_email: nil,
+      #     author_name: nil,
+      #     branch: nil,
+      #     commit: nil,
+      #     commit_message: nil,
+      #     commit_time: nil,
+      #     dirty: nil,
+      #     git_diff: nil,
+      #     tag: nil,
+      #     **
+      #   )
+      #     super
+      #   end
+
+      # def initialize: (Hash | Braintrust::BaseModel) -> void
     end
   end
 end

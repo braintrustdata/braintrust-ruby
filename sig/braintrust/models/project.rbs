@@ -1,0 +1,44 @@
+module Braintrust
+  module Models
+    type project =
+      {
+        id: String,
+        name: String,
+        org_id: String,
+        created: Time?,
+        deleted_at: Time?,
+        settings: Braintrust::Models::ProjectSettings?,
+        user_id: String?
+      }
+
+    class Project < Braintrust::BaseModel
+      attr_accessor id: String
+
+      attr_accessor name: String
+
+      attr_accessor org_id: String
+
+      attr_accessor created: Time?
+
+      attr_accessor deleted_at: Time?
+
+      attr_accessor settings: Braintrust::Models::ProjectSettings?
+
+      attr_accessor user_id: String?
+
+      def initialize:
+        (
+          id: String,
+          name: String,
+          org_id: String,
+          created: Time?,
+          deleted_at: Time?,
+          settings: Braintrust::Models::ProjectSettings?,
+          user_id: String?
+        ) -> void
+        | (?Braintrust::Models::project | Braintrust::BaseModel data) -> void
+
+      def to_hash: -> Braintrust::Models::project
+    end
+  end
+end

@@ -3,18 +3,19 @@
 module Braintrust
   module Models
     class InsertEventsResponse < Braintrust::BaseModel
-      # @!attribute [rw] row_ids
-      #   The ids of all rows that were inserted, aligning one-to-one with the rows provided as input
+      # @!attribute row_ids
+      #   The ids of all rows that were inserted, aligning one-to-one with the rows
+      #     provided as input
+      #
       #   @return [Array<String>]
-      required :row_ids, Braintrust::ArrayOf.new(String)
+      required :row_ids, Braintrust::ArrayOf[String]
 
       # @!parse
-      #   # Create a new instance of InsertEventsResponse from a Hash of raw data.
+      #   # @param row_ids [Array<String>]
       #   #
-      #   # @param data [Hash{Symbol => Object}] .
-      #   #   @option data [Array<String>] :row_ids The ids of all rows that were inserted, aligning one-to-one with the rows
-      #   #     provided as input
-      #   def initialize(data = {}) = super
+      #   def initialize(row_ids:, **) = super
+
+      # def initialize: (Hash | Braintrust::BaseModel) -> void
     end
   end
 end
