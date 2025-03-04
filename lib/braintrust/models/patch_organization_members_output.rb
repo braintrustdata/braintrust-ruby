@@ -3,33 +3,52 @@
 module Braintrust
   module Models
     class PatchOrganizationMembersOutput < Braintrust::BaseModel
-      # @!attribute [rw] org_id
+      # @!attribute org_id
       #   The id of the org that was modified.
+      #
       #   @return [String]
       required :org_id, String
 
-      # @!attribute [rw] status
+      # @!attribute status
+      #
       #   @return [Symbol, Braintrust::Models::PatchOrganizationMembersOutput::Status]
       required :status, enum: -> { Braintrust::Models::PatchOrganizationMembersOutput::Status }
 
-      # @!attribute [rw] send_email_error
-      #   If invite emails failed to send for some reason, the patch operation will still complete, but we will return an error message here
-      #   @return [String]
-      optional :send_email_error, String
-
-      class Status < Braintrust::Enum
-        SUCCESS = :success
-      end
+      # @!attribute send_email_error
+      #   If invite emails failed to send for some reason, the patch operation will still
+      #     complete, but we will return an error message here
+      #
+      #   @return [String, nil]
+      optional :send_email_error, String, nil?: true
 
       # @!parse
-      #   # Create a new instance of PatchOrganizationMembersOutput from a Hash of raw data.
+      #   # @param org_id [String]
+      #   # @param status [Symbol, Braintrust::Models::PatchOrganizationMembersOutput::Status]
+      #   # @param send_email_error [String, nil]
       #   #
-      #   # @param data [Hash{Symbol => Object}] .
-      #   #   @option data [String] :org_id The id of the org that was modified.
-      #   #   @option data [String] :status
-      #   #   @option data [String, nil] :send_email_error If invite emails failed to send for some reason, the patch operation will still
-      #   #     complete, but we will return an error message here
-      #   def initialize(data = {}) = super
+      #   def initialize(org_id:, status:, send_email_error: nil, **) = super
+
+      # def initialize: (Hash | Braintrust::BaseModel) -> void
+
+      # @abstract
+      #
+      # @example
+      # ```ruby
+      # case status
+      # in :success
+      #   # ...
+      # end
+      # ```
+      class Status < Braintrust::Enum
+        SUCCESS = :success
+
+        finalize!
+
+        # @!parse
+        #   # @return [Array<Symbol>]
+        #   #
+        #   def self.values; end
+      end
     end
   end
 end

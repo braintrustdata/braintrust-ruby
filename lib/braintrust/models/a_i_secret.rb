@@ -3,50 +3,57 @@
 module Braintrust
   module Models
     class AISecret < Braintrust::BaseModel
-      # @!attribute [rw] id
+      # @!attribute id
       #   Unique identifier for the AI secret
+      #
       #   @return [String]
       required :id, String
 
-      # @!attribute [rw] name
+      # @!attribute name
       #   Name of the AI secret
+      #
       #   @return [String]
       required :name, String
 
-      # @!attribute [rw] org_id
+      # @!attribute org_id
       #   Unique identifier for the organization
+      #
       #   @return [String]
       required :org_id, String
 
-      # @!attribute [rw] created
+      # @!attribute created
       #   Date of AI secret creation
-      #   @return [Time]
-      optional :created, Time
+      #
+      #   @return [Time, nil]
+      optional :created, Time, nil?: true
 
-      # @!attribute [rw] metadata
-      #   @return [Hash]
-      optional :metadata, Hash
+      # @!attribute metadata
+      #
+      #   @return [Hash{Symbol=>Object, nil}, nil]
+      optional :metadata, Braintrust::HashOf[Braintrust::Unknown, nil?: true], nil?: true
 
-      # @!attribute [rw] preview_secret
-      #   @return [String]
-      optional :preview_secret, String
+      # @!attribute preview_secret
+      #
+      #   @return [String, nil]
+      optional :preview_secret, String, nil?: true
 
-      # @!attribute [rw] type
-      #   @return [String]
-      optional :type, String
+      # @!attribute type
+      #
+      #   @return [String, nil]
+      optional :type, String, nil?: true
 
       # @!parse
-      #   # Create a new instance of AISecret from a Hash of raw data.
+      #   # @param id [String]
+      #   # @param name [String]
+      #   # @param org_id [String]
+      #   # @param created [Time, nil]
+      #   # @param metadata [Hash{Symbol=>Object, nil}, nil]
+      #   # @param preview_secret [String, nil]
+      #   # @param type [String, nil]
       #   #
-      #   # @param data [Hash{Symbol => Object}] .
-      #   #   @option data [String] :id Unique identifier for the AI secret
-      #   #   @option data [String] :name Name of the AI secret
-      #   #   @option data [String] :org_id Unique identifier for the organization
-      #   #   @option data [String, nil] :created Date of AI secret creation
-      #   #   @option data [Hash, nil] :metadata
-      #   #   @option data [String, nil] :preview_secret
-      #   #   @option data [String, nil] :type
-      #   def initialize(data = {}) = super
+      #   def initialize(id:, name:, org_id:, created: nil, metadata: nil, preview_secret: nil, type: nil, **) = super
+
+      # def initialize: (Hash | Braintrust::BaseModel) -> void
     end
   end
 end

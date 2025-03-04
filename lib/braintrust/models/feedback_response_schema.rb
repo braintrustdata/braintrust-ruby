@@ -3,20 +3,37 @@
 module Braintrust
   module Models
     class FeedbackResponseSchema < Braintrust::BaseModel
-      # @!attribute [rw] status
+      # @!attribute status
+      #
       #   @return [Symbol, Braintrust::Models::FeedbackResponseSchema::Status]
       required :status, enum: -> { Braintrust::Models::FeedbackResponseSchema::Status }
 
+      # @!parse
+      #   # @param status [Symbol, Braintrust::Models::FeedbackResponseSchema::Status]
+      #   #
+      #   def initialize(status:, **) = super
+
+      # def initialize: (Hash | Braintrust::BaseModel) -> void
+
+      # @abstract
+      #
+      # @example
+      # ```ruby
+      # case status
+      # in :success
+      #   # ...
+      # end
+      # ```
       class Status < Braintrust::Enum
         SUCCESS = :success
-      end
 
-      # @!parse
-      #   # Create a new instance of FeedbackResponseSchema from a Hash of raw data.
-      #   #
-      #   # @param data [Hash{Symbol => Object}] .
-      #   #   @option data [String] :status
-      #   def initialize(data = {}) = super
+        finalize!
+
+        # @!parse
+        #   # @return [Array<Symbol>]
+        #   #
+        #   def self.values; end
+      end
     end
   end
 end

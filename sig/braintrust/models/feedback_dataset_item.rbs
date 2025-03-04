@@ -1,0 +1,49 @@
+module Braintrust
+  module Models
+    type feedback_dataset_item =
+      {
+        id: String,
+        comment: String?,
+        metadata: ::Hash[Symbol, top?]?,
+        source: Braintrust::Models::FeedbackDatasetItem::source?,
+        tags: ::Array[String]?
+      }
+
+    class FeedbackDatasetItem < Braintrust::BaseModel
+      attr_accessor id: String
+
+      attr_accessor comment: String?
+
+      attr_accessor metadata: ::Hash[Symbol, top?]?
+
+      attr_accessor source: Braintrust::Models::FeedbackDatasetItem::source?
+
+      attr_accessor tags: ::Array[String]?
+
+      def initialize:
+        (
+          id: String,
+          comment: String?,
+          metadata: ::Hash[Symbol, top?]?,
+          source: Braintrust::Models::FeedbackDatasetItem::source?,
+          tags: ::Array[String]?
+        ) -> void
+        | (
+          ?Braintrust::Models::feedback_dataset_item
+          | Braintrust::BaseModel data
+        ) -> void
+
+      def to_hash: -> Braintrust::Models::feedback_dataset_item
+
+      type source = :app | :api | :external
+
+      class Source < Braintrust::Enum
+        APP: :app
+        API: :api
+        EXTERNAL: :external
+
+        def self.values: -> ::Array[Braintrust::Models::FeedbackDatasetItem::source]
+      end
+    end
+  end
+end

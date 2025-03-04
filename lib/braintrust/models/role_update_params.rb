@@ -1,0 +1,298 @@
+# frozen_string_literal: true
+
+module Braintrust
+  module Models
+    class RoleUpdateParams < Braintrust::BaseModel
+      # @!parse
+      #   extend Braintrust::RequestParameters::Converter
+      include Braintrust::RequestParameters
+
+      # @!attribute add_member_permissions
+      #   A list of permissions to add to the role
+      #
+      #   @return [Array<Braintrust::Models::RoleUpdateParams::AddMemberPermission>, nil]
+      optional :add_member_permissions,
+               -> { Braintrust::ArrayOf[Braintrust::Models::RoleUpdateParams::AddMemberPermission] },
+               nil?: true
+
+      # @!attribute add_member_roles
+      #   A list of role IDs to add to the role's inheriting-from set
+      #
+      #   @return [Array<String>, nil]
+      optional :add_member_roles, Braintrust::ArrayOf[String], nil?: true
+
+      # @!attribute description
+      #   Textual description of the role
+      #
+      #   @return [String, nil]
+      optional :description, String, nil?: true
+
+      # @!attribute name
+      #   Name of the role
+      #
+      #   @return [String, nil]
+      optional :name, String, nil?: true
+
+      # @!attribute remove_member_permissions
+      #   A list of permissions to remove from the role
+      #
+      #   @return [Array<Braintrust::Models::RoleUpdateParams::RemoveMemberPermission>, nil]
+      optional :remove_member_permissions,
+               -> { Braintrust::ArrayOf[Braintrust::Models::RoleUpdateParams::RemoveMemberPermission] },
+               nil?: true
+
+      # @!attribute remove_member_roles
+      #   A list of role IDs to remove from the role's inheriting-from set
+      #
+      #   @return [Array<String>, nil]
+      optional :remove_member_roles, Braintrust::ArrayOf[String], nil?: true
+
+      # @!parse
+      #   # @param add_member_permissions [Array<Braintrust::Models::RoleUpdateParams::AddMemberPermission>, nil]
+      #   # @param add_member_roles [Array<String>, nil]
+      #   # @param description [String, nil]
+      #   # @param name [String, nil]
+      #   # @param remove_member_permissions [Array<Braintrust::Models::RoleUpdateParams::RemoveMemberPermission>, nil]
+      #   # @param remove_member_roles [Array<String>, nil]
+      #   # @param request_options [Braintrust::RequestOptions, Hash{Symbol=>Object}]
+      #   #
+      #   def initialize(
+      #     add_member_permissions: nil,
+      #     add_member_roles: nil,
+      #     description: nil,
+      #     name: nil,
+      #     remove_member_permissions: nil,
+      #     remove_member_roles: nil,
+      #     request_options: {},
+      #     **
+      #   )
+      #     super
+      #   end
+
+      # def initialize: (Hash | Braintrust::BaseModel) -> void
+
+      class AddMemberPermission < Braintrust::BaseModel
+        # @!attribute permission
+        #   Each permission permits a certain type of operation on an object in the system
+        #
+        #     Permissions can be assigned to to objects on an individual basis, or grouped
+        #     into roles
+        #
+        #   @return [Symbol, Braintrust::Models::RoleUpdateParams::AddMemberPermission::Permission]
+        required :permission, enum: -> { Braintrust::Models::RoleUpdateParams::AddMemberPermission::Permission }
+
+        # @!attribute restrict_object_type
+        #   The object type that the ACL applies to
+        #
+        #   @return [Symbol, Braintrust::Models::RoleUpdateParams::AddMemberPermission::RestrictObjectType, nil]
+        optional :restrict_object_type,
+                 enum: -> { Braintrust::Models::RoleUpdateParams::AddMemberPermission::RestrictObjectType },
+                 nil?: true
+
+        # @!parse
+        #   # @param permission [Symbol, Braintrust::Models::RoleUpdateParams::AddMemberPermission::Permission]
+        #   # @param restrict_object_type [Symbol, Braintrust::Models::RoleUpdateParams::AddMemberPermission::RestrictObjectType, nil]
+        #   #
+        #   def initialize(permission:, restrict_object_type: nil, **) = super
+
+        # def initialize: (Hash | Braintrust::BaseModel) -> void
+
+        # @abstract
+        #
+        # Each permission permits a certain type of operation on an object in the system
+        #
+        #   Permissions can be assigned to to objects on an individual basis, or grouped
+        #   into roles
+        #
+        # @example
+        # ```ruby
+        # case permission
+        # in :create
+        #   # ...
+        # in :read
+        #   # ...
+        # in :update
+        #   # ...
+        # in :delete
+        #   # ...
+        # in :create_acls
+        #   # ...
+        # in ...
+        #   #...
+        # end
+        # ```
+        class Permission < Braintrust::Enum
+          CREATE = :create
+          READ = :read
+          UPDATE = :update
+          DELETE = :delete
+          CREATE_ACLS = :create_acls
+          READ_ACLS = :read_acls
+          UPDATE_ACLS = :update_acls
+          DELETE_ACLS = :delete_acls
+
+          finalize!
+
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   #
+          #   def self.values; end
+        end
+
+        # @abstract
+        #
+        # The object type that the ACL applies to
+        #
+        # @example
+        # ```ruby
+        # case restrict_object_type
+        # in :organization
+        #   # ...
+        # in :project
+        #   # ...
+        # in :experiment
+        #   # ...
+        # in :dataset
+        #   # ...
+        # in :prompt
+        #   # ...
+        # in ...
+        #   #...
+        # end
+        # ```
+        class RestrictObjectType < Braintrust::Enum
+          ORGANIZATION = :organization
+          PROJECT = :project
+          EXPERIMENT = :experiment
+          DATASET = :dataset
+          PROMPT = :prompt
+          PROMPT_SESSION = :prompt_session
+          GROUP = :group
+          ROLE = :role
+          ORG_MEMBER = :org_member
+          PROJECT_LOG = :project_log
+          ORG_PROJECT = :org_project
+
+          finalize!
+
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   #
+          #   def self.values; end
+        end
+      end
+
+      class RemoveMemberPermission < Braintrust::BaseModel
+        # @!attribute permission
+        #   Each permission permits a certain type of operation on an object in the system
+        #
+        #     Permissions can be assigned to to objects on an individual basis, or grouped
+        #     into roles
+        #
+        #   @return [Symbol, Braintrust::Models::RoleUpdateParams::RemoveMemberPermission::Permission]
+        required :permission,
+                 enum: -> { Braintrust::Models::RoleUpdateParams::RemoveMemberPermission::Permission }
+
+        # @!attribute restrict_object_type
+        #   The object type that the ACL applies to
+        #
+        #   @return [Symbol, Braintrust::Models::RoleUpdateParams::RemoveMemberPermission::RestrictObjectType, nil]
+        optional :restrict_object_type,
+                 enum: -> { Braintrust::Models::RoleUpdateParams::RemoveMemberPermission::RestrictObjectType },
+                 nil?: true
+
+        # @!parse
+        #   # @param permission [Symbol, Braintrust::Models::RoleUpdateParams::RemoveMemberPermission::Permission]
+        #   # @param restrict_object_type [Symbol, Braintrust::Models::RoleUpdateParams::RemoveMemberPermission::RestrictObjectType, nil]
+        #   #
+        #   def initialize(permission:, restrict_object_type: nil, **) = super
+
+        # def initialize: (Hash | Braintrust::BaseModel) -> void
+
+        # @abstract
+        #
+        # Each permission permits a certain type of operation on an object in the system
+        #
+        #   Permissions can be assigned to to objects on an individual basis, or grouped
+        #   into roles
+        #
+        # @example
+        # ```ruby
+        # case permission
+        # in :create
+        #   # ...
+        # in :read
+        #   # ...
+        # in :update
+        #   # ...
+        # in :delete
+        #   # ...
+        # in :create_acls
+        #   # ...
+        # in ...
+        #   #...
+        # end
+        # ```
+        class Permission < Braintrust::Enum
+          CREATE = :create
+          READ = :read
+          UPDATE = :update
+          DELETE = :delete
+          CREATE_ACLS = :create_acls
+          READ_ACLS = :read_acls
+          UPDATE_ACLS = :update_acls
+          DELETE_ACLS = :delete_acls
+
+          finalize!
+
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   #
+          #   def self.values; end
+        end
+
+        # @abstract
+        #
+        # The object type that the ACL applies to
+        #
+        # @example
+        # ```ruby
+        # case restrict_object_type
+        # in :organization
+        #   # ...
+        # in :project
+        #   # ...
+        # in :experiment
+        #   # ...
+        # in :dataset
+        #   # ...
+        # in :prompt
+        #   # ...
+        # in ...
+        #   #...
+        # end
+        # ```
+        class RestrictObjectType < Braintrust::Enum
+          ORGANIZATION = :organization
+          PROJECT = :project
+          EXPERIMENT = :experiment
+          DATASET = :dataset
+          PROMPT = :prompt
+          PROMPT_SESSION = :prompt_session
+          GROUP = :group
+          ROLE = :role
+          ORG_MEMBER = :org_member
+          PROJECT_LOG = :project_log
+          ORG_PROJECT = :org_project
+
+          finalize!
+
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   #
+          #   def self.values; end
+        end
+      end
+    end
+  end
+end

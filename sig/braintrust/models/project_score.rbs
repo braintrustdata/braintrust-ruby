@@ -1,0 +1,112 @@
+module Braintrust
+  module Models
+    type project_score =
+      {
+        id: String,
+        name: String,
+        project_id: String,
+        score_type: Braintrust::Models::ProjectScore::score_type,
+        user_id: String,
+        categories: Braintrust::Models::ProjectScore::categories?,
+        config: Braintrust::Models::ProjectScoreConfig?,
+        created: Time?,
+        description: String?,
+        position: String?
+      }
+
+    class ProjectScore < Braintrust::BaseModel
+      attr_accessor id: String
+
+      attr_accessor name: String
+
+      attr_accessor project_id: String
+
+      attr_accessor score_type: Braintrust::Models::ProjectScore::score_type
+
+      attr_accessor user_id: String
+
+      attr_reader categories: Braintrust::Models::ProjectScore::categories?
+
+      def categories=: (
+        Braintrust::Models::ProjectScore::categories?
+      ) -> Braintrust::Models::ProjectScore::categories?
+
+      attr_accessor config: Braintrust::Models::ProjectScoreConfig?
+
+      attr_accessor created: Time?
+
+      attr_accessor description: String?
+
+      attr_accessor position: String?
+
+      def initialize:
+        (
+          id: String,
+          name: String,
+          project_id: String,
+          score_type: Braintrust::Models::ProjectScore::score_type,
+          user_id: String,
+          categories: Braintrust::Models::ProjectScore::categories?,
+          config: Braintrust::Models::ProjectScoreConfig?,
+          created: Time?,
+          description: String?,
+          position: String?
+        ) -> void
+        | (
+          ?Braintrust::Models::project_score | Braintrust::BaseModel data
+        ) -> void
+
+      def to_hash: -> Braintrust::Models::project_score
+
+      type score_type =
+        :slider | :categorical | :weighted | :minimum | :maximum | :online
+
+      class ScoreType < Braintrust::Enum
+        SLIDER: :slider
+        CATEGORICAL: :categorical
+        WEIGHTED: :weighted
+        MINIMUM: :minimum
+        MAXIMUM: :maximum
+        ONLINE: :online
+
+        def self.values: -> ::Array[Braintrust::Models::ProjectScore::score_type]
+      end
+
+      type categories =
+        (::Array[Braintrust::Models::ProjectScoreCategory]
+        | ::Hash[Symbol, Float]
+        | ::Array[String]
+        | Braintrust::Models::ProjectScore::Categories::NullableVariant)?
+
+      class Categories < Braintrust::Union
+        type project_score_category_array =
+          ::Array[Braintrust::Models::ProjectScoreCategory]
+
+        ProjectScoreCategoryArray: project_score_category_array
+
+        type float_map = ::Hash[Symbol, Float]
+
+        FloatMap: float_map
+
+        type string_array = ::Array[String]
+
+        StringArray: string_array
+
+        type nullable_variant = {  }
+
+        class NullableVariant < Braintrust::BaseModel
+          def initialize:
+            -> void
+            | (
+              ?Braintrust::Models::ProjectScore::Categories::nullable_variant
+              | Braintrust::BaseModel data
+            ) -> void
+
+          def to_hash: -> Braintrust::Models::ProjectScore::Categories::nullable_variant
+        end
+
+        private def self.variants: -> [[nil, ::Array[Braintrust::Models::ProjectScoreCategory]], [nil, ::Hash[Symbol, Float]], [nil, ::Array[String]], [nil, Braintrust::Models::ProjectScore::Categories::NullableVariant]]
+      end
+    end
+  end
+end

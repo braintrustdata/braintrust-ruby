@@ -3,103 +3,172 @@
 module Braintrust
   module Models
     class Prompt < Braintrust::BaseModel
-      # @!attribute [rw] id
+      # @!attribute id
       #   Unique identifier for the prompt
+      #
       #   @return [String]
       required :id, String
 
-      # @!attribute [rw] _xact_id
-      #   The transaction id of an event is unique to the network operation that processed the event insertion. Transaction ids are monotonically increasing over time and can be used to retrieve a versioned snapshot of the prompt (see the `version` parameter)
+      # @!attribute _xact_id
+      #   The transaction id of an event is unique to the network operation that processed
+      #     the event insertion. Transaction ids are monotonically increasing over time and
+      #     can be used to retrieve a versioned snapshot of the prompt (see the `version`
+      #     parameter)
+      #
       #   @return [String]
       required :_xact_id, String
 
-      # @!attribute [rw] log_id
+      # @!attribute log_id
       #   A literal 'p' which identifies the object as a project prompt
+      #
       #   @return [Symbol, Braintrust::Models::Prompt::LogID]
       required :log_id, enum: -> { Braintrust::Models::Prompt::LogID }
 
-      # @!attribute [rw] name
+      # @!attribute name
       #   Name of the prompt
+      #
       #   @return [String]
       required :name, String
 
-      # @!attribute [rw] org_id
+      # @!attribute org_id
       #   Unique identifier for the organization
+      #
       #   @return [String]
       required :org_id, String
 
-      # @!attribute [rw] project_id
+      # @!attribute project_id
       #   Unique identifier for the project that the prompt belongs under
+      #
       #   @return [String]
       required :project_id, String
 
-      # @!attribute [rw] slug
+      # @!attribute slug
       #   Unique identifier for the prompt
+      #
       #   @return [String]
       required :slug, String
 
-      # @!attribute [rw] created
+      # @!attribute created
       #   Date of prompt creation
-      #   @return [Time]
-      optional :created, Time
+      #
+      #   @return [Time, nil]
+      optional :created, Time, nil?: true
 
-      # @!attribute [rw] description
+      # @!attribute description
       #   Textual description of the prompt
-      #   @return [String]
-      optional :description, String
+      #
+      #   @return [String, nil]
+      optional :description, String, nil?: true
 
-      # @!attribute [rw] function_type
-      #   @return [Symbol, Braintrust::Models::Prompt::FunctionType]
-      optional :function_type, enum: -> { Braintrust::Models::Prompt::FunctionType }
+      # @!attribute function_type
+      #
+      #   @return [Symbol, Braintrust::Models::Prompt::FunctionType, nil]
+      optional :function_type, enum: -> { Braintrust::Models::Prompt::FunctionType }, nil?: true
 
-      # @!attribute [rw] metadata
+      # @!attribute metadata
       #   User-controlled metadata about the prompt
-      #   @return [Hash]
-      optional :metadata, Hash
+      #
+      #   @return [Hash{Symbol=>Object, nil}, nil]
+      optional :metadata, Braintrust::HashOf[Braintrust::Unknown, nil?: true], nil?: true
 
-      # @!attribute [rw] prompt_data
+      # @!attribute prompt_data
       #   The prompt, model, and its parameters
-      #   @return [Braintrust::Models::PromptData]
-      optional :prompt_data, -> { Braintrust::Models::PromptData }
+      #
+      #   @return [Braintrust::Models::PromptData, nil]
+      optional :prompt_data, -> { Braintrust::Models::PromptData }, nil?: true
 
-      # @!attribute [rw] tags
+      # @!attribute tags
       #   A list of tags for the prompt
-      #   @return [Array<String>]
-      optional :tags, Braintrust::ArrayOf.new(String)
+      #
+      #   @return [Array<String>, nil]
+      optional :tags, Braintrust::ArrayOf[String], nil?: true
 
+      # @!parse
+      #   # @param id [String]
+      #   # @param _xact_id [String]
+      #   # @param log_id [Symbol, Braintrust::Models::Prompt::LogID]
+      #   # @param name [String]
+      #   # @param org_id [String]
+      #   # @param project_id [String]
+      #   # @param slug [String]
+      #   # @param created [Time, nil]
+      #   # @param description [String, nil]
+      #   # @param function_type [Symbol, Braintrust::Models::Prompt::FunctionType, nil]
+      #   # @param metadata [Hash{Symbol=>Object, nil}, nil]
+      #   # @param prompt_data [Braintrust::Models::PromptData, nil]
+      #   # @param tags [Array<String>, nil]
+      #   #
+      #   def initialize(
+      #     id:,
+      #     _xact_id:,
+      #     log_id:,
+      #     name:,
+      #     org_id:,
+      #     project_id:,
+      #     slug:,
+      #     created: nil,
+      #     description: nil,
+      #     function_type: nil,
+      #     metadata: nil,
+      #     prompt_data: nil,
+      #     tags: nil,
+      #     **
+      #   )
+      #     super
+      #   end
+
+      # def initialize: (Hash | Braintrust::BaseModel) -> void
+
+      # @abstract
+      #
       # A literal 'p' which identifies the object as a project prompt
+      #
+      # @example
+      # ```ruby
+      # case log_id
+      # in :p
+      #   # ...
+      # end
+      # ```
       class LogID < Braintrust::Enum
         P = :p
+
+        finalize!
+
+        # @!parse
+        #   # @return [Array<Symbol>]
+        #   #
+        #   def self.values; end
       end
 
+      # @abstract
+      #
+      # @example
+      # ```ruby
+      # case function_type
+      # in :llm
+      #   # ...
+      # in :scorer
+      #   # ...
+      # in :task
+      #   # ...
+      # in :tool
+      #   # ...
+      # end
+      # ```
       class FunctionType < Braintrust::Enum
         LLM = :llm
         SCORER = :scorer
         TASK = :task
         TOOL = :tool
-      end
 
-      # @!parse
-      #   # Create a new instance of Prompt from a Hash of raw data.
-      #   #
-      #   # @param data [Hash{Symbol => Object}] .
-      #   #   @option data [String] :id Unique identifier for the prompt
-      #   #   @option data [String] :_xact_id The transaction id of an event is unique to the network operation that processed
-      #   #     the event insertion. Transaction ids are monotonically increasing over time and
-      #   #     can be used to retrieve a versioned snapshot of the prompt (see the `version`
-      #   #     parameter)
-      #   #   @option data [String] :log_id A literal 'p' which identifies the object as a project prompt
-      #   #   @option data [String] :name Name of the prompt
-      #   #   @option data [String] :org_id Unique identifier for the organization
-      #   #   @option data [String] :project_id Unique identifier for the project that the prompt belongs under
-      #   #   @option data [String] :slug Unique identifier for the prompt
-      #   #   @option data [String, nil] :created Date of prompt creation
-      #   #   @option data [String, nil] :description Textual description of the prompt
-      #   #   @option data [String, nil] :function_type
-      #   #   @option data [Hash, nil] :metadata User-controlled metadata about the prompt
-      #   #   @option data [Object, nil] :prompt_data The prompt, model, and its parameters
-      #   #   @option data [Array<String>, nil] :tags A list of tags for the prompt
-      #   def initialize(data = {}) = super
+        finalize!
+
+        # @!parse
+        #   # @return [Array<Symbol>]
+        #   #
+        #   def self.values; end
+      end
     end
   end
 end

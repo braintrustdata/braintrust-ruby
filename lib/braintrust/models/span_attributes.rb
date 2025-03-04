@@ -3,17 +3,49 @@
 module Braintrust
   module Models
     class SpanAttributes < Braintrust::BaseModel
-      # @!attribute [rw] name
+      # @!attribute name
       #   Name of the span, for display purposes only
-      #   @return [String]
-      optional :name, String
+      #
+      #   @return [String, nil]
+      optional :name, String, nil?: true
 
-      # @!attribute [rw] type
+      # @!attribute type
       #   Type of the span, for display purposes only
-      #   @return [Symbol, Braintrust::Models::SpanAttributes::Type]
-      optional :type, enum: -> { Braintrust::Models::SpanAttributes::Type }
+      #
+      #   @return [Symbol, Braintrust::Models::SpanAttributes::Type, nil]
+      optional :type, enum: -> { Braintrust::Models::SpanAttributes::Type }, nil?: true
 
+      # @!parse
+      #   # Human-identifying attributes of the span, such as name, type, etc.
+      #   #
+      #   # @param name [String, nil]
+      #   # @param type [Symbol, Braintrust::Models::SpanAttributes::Type, nil]
+      #   #
+      #   def initialize(name: nil, type: nil, **) = super
+
+      # def initialize: (Hash | Braintrust::BaseModel) -> void
+
+      # @abstract
+      #
       # Type of the span, for display purposes only
+      #
+      # @example
+      # ```ruby
+      # case type
+      # in :llm
+      #   # ...
+      # in :score
+      #   # ...
+      # in :function
+      #   # ...
+      # in :eval
+      #   # ...
+      # in :task
+      #   # ...
+      # in ...
+      #   #...
+      # end
+      # ```
       class Type < Braintrust::Enum
         LLM = :llm
         SCORE = :score
@@ -21,15 +53,14 @@ module Braintrust
         EVAL = :eval
         TASK = :task
         TOOL = :tool
-      end
 
-      # @!parse
-      #   # Create a new instance of SpanAttributes from a Hash of raw data.
-      #   #
-      #   # @param data [Hash{Symbol => Object}] .
-      #   #   @option data [String, nil] :name Name of the span, for display purposes only
-      #   #   @option data [String, nil] :type Type of the span, for display purposes only
-      #   def initialize(data = {}) = super
+        finalize!
+
+        # @!parse
+        #   # @return [Array<Symbol>]
+        #   #
+        #   def self.values; end
+      end
     end
   end
 end

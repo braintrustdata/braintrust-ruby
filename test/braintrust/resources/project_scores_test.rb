@@ -2,47 +2,160 @@
 
 require_relative "../test_helper"
 
-class Braintrust::Test::Resources::ProjectScoresTest < Minitest::Test
-  parallelize_me!
-
-  def setup
-    @braintrust = Braintrust::Client.new(
-      base_url: ENV.fetch("TEST_API_BASE_URL", "http://localhost:4010"),
-      api_key: "My API Key"
-    )
-  end
-
+class Braintrust::Test::Resources::ProjectScoresTest < Braintrust::Test::ResourceTest
   def test_create_required_params
     response = @braintrust.project_scores.create(
-      {name: "name", project_id: "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e", score_type: "slider"}
+      name: "name",
+      project_id: "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+      score_type: :slider
     )
-    assert_kind_of(Braintrust::Models::ProjectScore, response)
+
+    assert_pattern do
+      response => Braintrust::Models::ProjectScore
+    end
+
+    assert_pattern do
+      response => {
+        id: String,
+        name: String,
+        project_id: String,
+        score_type: Braintrust::Models::ProjectScore::ScoreType,
+        user_id: String,
+        categories: Braintrust::Models::ProjectScore::Categories | nil,
+        config: Braintrust::Models::ProjectScoreConfig | nil,
+        created: Time | nil,
+        description: String | nil,
+        position: String | nil
+      }
+    end
   end
 
   def test_retrieve
     response = @braintrust.project_scores.retrieve("182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e")
-    assert_kind_of(Braintrust::Models::ProjectScore, response)
+
+    assert_pattern do
+      response => Braintrust::Models::ProjectScore
+    end
+
+    assert_pattern do
+      response => {
+        id: String,
+        name: String,
+        project_id: String,
+        score_type: Braintrust::Models::ProjectScore::ScoreType,
+        user_id: String,
+        categories: Braintrust::Models::ProjectScore::Categories | nil,
+        config: Braintrust::Models::ProjectScoreConfig | nil,
+        created: Time | nil,
+        description: String | nil,
+        position: String | nil
+      }
+    end
   end
 
   def test_update
     response = @braintrust.project_scores.update("182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e")
-    assert_kind_of(Braintrust::Models::ProjectScore, response)
+
+    assert_pattern do
+      response => Braintrust::Models::ProjectScore
+    end
+
+    assert_pattern do
+      response => {
+        id: String,
+        name: String,
+        project_id: String,
+        score_type: Braintrust::Models::ProjectScore::ScoreType,
+        user_id: String,
+        categories: Braintrust::Models::ProjectScore::Categories | nil,
+        config: Braintrust::Models::ProjectScoreConfig | nil,
+        created: Time | nil,
+        description: String | nil,
+        position: String | nil
+      }
+    end
   end
 
   def test_list
     response = @braintrust.project_scores.list
-    assert_kind_of(Braintrust::ListObjects, response)
+
+    assert_pattern do
+      response => Braintrust::ListObjects
+    end
+
+    page = response.next_page
+    assert_pattern do
+      page => Braintrust::ListObjects
+    end
+
+    row = response.to_enum.first
+    assert_pattern do
+      row => Braintrust::Models::ProjectScore
+    end
+
+    assert_pattern do
+      row => {
+        id: String,
+        name: String,
+        project_id: String,
+        score_type: Braintrust::Models::ProjectScore::ScoreType,
+        user_id: String,
+        categories: Braintrust::Models::ProjectScore::Categories | nil,
+        config: Braintrust::Models::ProjectScoreConfig | nil,
+        created: Time | nil,
+        description: String | nil,
+        position: String | nil
+      }
+    end
   end
 
   def test_delete
     response = @braintrust.project_scores.delete("182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e")
-    assert_kind_of(Braintrust::Models::ProjectScore, response)
+
+    assert_pattern do
+      response => Braintrust::Models::ProjectScore
+    end
+
+    assert_pattern do
+      response => {
+        id: String,
+        name: String,
+        project_id: String,
+        score_type: Braintrust::Models::ProjectScore::ScoreType,
+        user_id: String,
+        categories: Braintrust::Models::ProjectScore::Categories | nil,
+        config: Braintrust::Models::ProjectScoreConfig | nil,
+        created: Time | nil,
+        description: String | nil,
+        position: String | nil
+      }
+    end
   end
 
   def test_replace_required_params
     response = @braintrust.project_scores.replace(
-      {name: "name", project_id: "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e", score_type: "slider"}
+      name: "name",
+      project_id: "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+      score_type: :slider
     )
-    assert_kind_of(Braintrust::Models::ProjectScore, response)
+
+    assert_pattern do
+      response => Braintrust::Models::ProjectScore
+    end
+
+    assert_pattern do
+      response => {
+        id: String,
+        name: String,
+        project_id: String,
+        score_type: Braintrust::Models::ProjectScore::ScoreType,
+        user_id: String,
+        categories: Braintrust::Models::ProjectScore::Categories | nil,
+        config: Braintrust::Models::ProjectScoreConfig | nil,
+        created: Time | nil,
+        description: String | nil,
+        position: String | nil
+      }
+    end
   end
 end

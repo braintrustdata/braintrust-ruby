@@ -1,0 +1,75 @@
+module Braintrust
+  module Models
+    type env_var_list_params =
+      {
+        env_var_name: String,
+        ids: Braintrust::Models::EnvVarListParams::ids,
+        limit: Integer?,
+        object_id_: String,
+        object_type: Braintrust::Models::EnvVarListParams::object_type
+      }
+      & Braintrust::request_parameters
+
+    class EnvVarListParams < Braintrust::BaseModel
+      extend Braintrust::RequestParameters::Converter
+      include Braintrust::RequestParameters
+
+      attr_reader env_var_name: String?
+
+      def env_var_name=: (String) -> String
+
+      attr_reader ids: Braintrust::Models::EnvVarListParams::ids?
+
+      def ids=: (
+        Braintrust::Models::EnvVarListParams::ids
+      ) -> Braintrust::Models::EnvVarListParams::ids
+
+      attr_accessor limit: Integer?
+
+      attr_reader object_id_: String?
+
+      def object_id_=: (String) -> String
+
+      attr_reader object_type: Braintrust::Models::EnvVarListParams::object_type?
+
+      def object_type=: (
+        Braintrust::Models::EnvVarListParams::object_type
+      ) -> Braintrust::Models::EnvVarListParams::object_type
+
+      def initialize:
+        (
+          env_var_name: String,
+          ids: Braintrust::Models::EnvVarListParams::ids,
+          limit: Integer?,
+          object_id_: String,
+          object_type: Braintrust::Models::EnvVarListParams::object_type,
+          request_options: Braintrust::request_opts
+        ) -> void
+        | (
+          ?Braintrust::Models::env_var_list_params | Braintrust::BaseModel data
+        ) -> void
+
+      def to_hash: -> Braintrust::Models::env_var_list_params
+
+      type ids = String | ::Array[String]
+
+      class IDs < Braintrust::Union
+        type string_array = ::Array[String]
+
+        StringArray: string_array
+
+        private def self.variants: -> [[nil, String], [nil, ::Array[String]]]
+      end
+
+      type object_type = :organization | :project | :function
+
+      class ObjectType < Braintrust::Enum
+        ORGANIZATION: :organization
+        PROJECT: :project
+        FUNCTION: :function
+
+        def self.values: -> ::Array[Braintrust::Models::EnvVarListParams::object_type]
+      end
+    end
+  end
+end

@@ -1,0 +1,48 @@
+module Braintrust
+  module Models
+    module Projects
+      type log_fetch_params =
+        {
+          limit: Integer?,
+          max_root_span_id: String,
+          max_xact_id: String,
+          version: String
+        }
+        & Braintrust::request_parameters
+
+      class LogFetchParams < Braintrust::BaseModel
+        extend Braintrust::RequestParameters::Converter
+        include Braintrust::RequestParameters
+
+        attr_accessor limit: Integer?
+
+        attr_reader max_root_span_id: String?
+
+        def max_root_span_id=: (String) -> String
+
+        attr_reader max_xact_id: String?
+
+        def max_xact_id=: (String) -> String
+
+        attr_reader version: String?
+
+        def version=: (String) -> String
+
+        def initialize:
+          (
+            limit: Integer?,
+            max_root_span_id: String,
+            max_xact_id: String,
+            version: String,
+            request_options: Braintrust::request_opts
+          ) -> void
+          | (
+            ?Braintrust::Models::Projects::log_fetch_params
+            | Braintrust::BaseModel data
+          ) -> void
+
+        def to_hash: -> Braintrust::Models::Projects::log_fetch_params
+      end
+    end
+  end
+end

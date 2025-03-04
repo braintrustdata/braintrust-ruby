@@ -1,0 +1,18 @@
+module Braintrust
+  module Models
+    type prompt_delete_params = {  } & Braintrust::request_parameters
+
+    class PromptDeleteParams < Braintrust::BaseModel
+      extend Braintrust::RequestParameters::Converter
+      include Braintrust::RequestParameters
+
+      def initialize:
+        (request_options: Braintrust::request_opts) -> void
+        | (
+          ?Braintrust::Models::prompt_delete_params | Braintrust::BaseModel data
+        ) -> void
+
+      def to_hash: -> Braintrust::Models::prompt_delete_params
+    end
+  end
+end

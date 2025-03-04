@@ -1,0 +1,76 @@
+module Braintrust
+  module Resources
+    class EnvVars
+      def create:
+        (
+          Braintrust::Models::EnvVarCreateParams | ::Hash[Symbol, top] params
+        ) -> Braintrust::Models::EnvVar
+        | (
+          name: String,
+          object_id_: String,
+          object_type: Braintrust::Models::EnvVarCreateParams::object_type,
+          value: String?,
+          request_options: Braintrust::request_opts
+        ) -> Braintrust::Models::EnvVar
+
+      def retrieve:
+        (
+          String env_var_id,
+          ?Braintrust::Models::EnvVarRetrieveParams | ::Hash[Symbol, top] params
+        ) -> Braintrust::Models::EnvVar
+        | (
+          String env_var_id,
+          request_options: Braintrust::request_opts
+        ) -> Braintrust::Models::EnvVar
+
+      def update:
+        (
+          String env_var_id,
+          Braintrust::Models::EnvVarUpdateParams | ::Hash[Symbol, top] params
+        ) -> Braintrust::Models::EnvVar
+        | (
+          String env_var_id,
+          name: String,
+          value: String?,
+          request_options: Braintrust::request_opts
+        ) -> Braintrust::Models::EnvVar
+
+      def list:
+        (
+          ?Braintrust::Models::EnvVarListParams | ::Hash[Symbol, top] params
+        ) -> Braintrust::Models::EnvVarListResponse
+        | (
+          env_var_name: String,
+          ids: Braintrust::Models::EnvVarListParams::ids,
+          limit: Integer?,
+          object_id_: String,
+          object_type: Braintrust::Models::EnvVarListParams::object_type,
+          request_options: Braintrust::request_opts
+        ) -> Braintrust::Models::EnvVarListResponse
+
+      def delete:
+        (
+          String env_var_id,
+          ?Braintrust::Models::EnvVarDeleteParams | ::Hash[Symbol, top] params
+        ) -> Braintrust::Models::EnvVar
+        | (
+          String env_var_id,
+          request_options: Braintrust::request_opts
+        ) -> Braintrust::Models::EnvVar
+
+      def replace:
+        (
+          Braintrust::Models::EnvVarReplaceParams | ::Hash[Symbol, top] params
+        ) -> Braintrust::Models::EnvVar
+        | (
+          name: String,
+          object_id_: String,
+          object_type: Braintrust::Models::EnvVarReplaceParams::object_type,
+          value: String?,
+          request_options: Braintrust::request_opts
+        ) -> Braintrust::Models::EnvVar
+
+      def initialize: (client: Braintrust::Client) -> void
+    end
+  end
+end

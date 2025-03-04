@@ -1,0 +1,93 @@
+module Braintrust
+  module Resources
+    class ProjectScores
+      def create:
+        (
+          Braintrust::Models::ProjectScoreCreateParams
+          | ::Hash[Symbol, top] params
+        ) -> Braintrust::Models::ProjectScore
+        | (
+          name: String,
+          project_id: String,
+          score_type: Braintrust::Models::ProjectScoreCreateParams::score_type,
+          categories: Braintrust::Models::ProjectScoreCreateParams::categories?,
+          config: Braintrust::Models::ProjectScoreConfig?,
+          description: String?,
+          request_options: Braintrust::request_opts
+        ) -> Braintrust::Models::ProjectScore
+
+      def retrieve:
+        (
+          String project_score_id,
+          ?Braintrust::Models::ProjectScoreRetrieveParams
+          | ::Hash[Symbol, top] params
+        ) -> Braintrust::Models::ProjectScore
+        | (
+          String project_score_id,
+          request_options: Braintrust::request_opts
+        ) -> Braintrust::Models::ProjectScore
+
+      def update:
+        (
+          String project_score_id,
+          ?Braintrust::Models::ProjectScoreUpdateParams
+          | ::Hash[Symbol, top] params
+        ) -> Braintrust::Models::ProjectScore
+        | (
+          String project_score_id,
+          categories: Braintrust::Models::ProjectScoreUpdateParams::categories?,
+          config: Braintrust::Models::ProjectScoreConfig?,
+          description: String?,
+          name: String?,
+          score_type: Braintrust::Models::ProjectScoreUpdateParams::score_type?,
+          request_options: Braintrust::request_opts
+        ) -> Braintrust::Models::ProjectScore
+
+      def list:
+        (
+          ?Braintrust::Models::ProjectScoreListParams
+          | ::Hash[Symbol, top] params
+        ) -> Braintrust::ListObjects[Braintrust::Models::ProjectScore]
+        | (
+          ending_before: String,
+          ids: Braintrust::Models::ProjectScoreListParams::ids,
+          limit: Integer?,
+          org_name: String,
+          project_id: String,
+          project_name: String,
+          project_score_name: String,
+          score_type: Braintrust::Models::ProjectScoreListParams::score_type,
+          starting_after: String,
+          request_options: Braintrust::request_opts
+        ) -> Braintrust::ListObjects[Braintrust::Models::ProjectScore]
+
+      def delete:
+        (
+          String project_score_id,
+          ?Braintrust::Models::ProjectScoreDeleteParams
+          | ::Hash[Symbol, top] params
+        ) -> Braintrust::Models::ProjectScore
+        | (
+          String project_score_id,
+          request_options: Braintrust::request_opts
+        ) -> Braintrust::Models::ProjectScore
+
+      def replace:
+        (
+          Braintrust::Models::ProjectScoreReplaceParams
+          | ::Hash[Symbol, top] params
+        ) -> Braintrust::Models::ProjectScore
+        | (
+          name: String,
+          project_id: String,
+          score_type: Braintrust::Models::ProjectScoreReplaceParams::score_type,
+          categories: Braintrust::Models::ProjectScoreReplaceParams::categories?,
+          config: Braintrust::Models::ProjectScoreConfig?,
+          description: String?,
+          request_options: Braintrust::request_opts
+        ) -> Braintrust::Models::ProjectScore
+
+      def initialize: (client: Braintrust::Client) -> void
+    end
+  end
+end

@@ -1,0 +1,39 @@
+module Braintrust
+  module Models
+    type summarize_dataset_response =
+      {
+        dataset_name: String,
+        dataset_url: String,
+        project_name: String,
+        project_url: String,
+        data_summary: Braintrust::Models::DataSummary?
+      }
+
+    class SummarizeDatasetResponse < Braintrust::BaseModel
+      attr_accessor dataset_name: String
+
+      attr_accessor dataset_url: String
+
+      attr_accessor project_name: String
+
+      attr_accessor project_url: String
+
+      attr_accessor data_summary: Braintrust::Models::DataSummary?
+
+      def initialize:
+        (
+          dataset_name: String,
+          dataset_url: String,
+          project_name: String,
+          project_url: String,
+          data_summary: Braintrust::Models::DataSummary?
+        ) -> void
+        | (
+          ?Braintrust::Models::summarize_dataset_response
+          | Braintrust::BaseModel data
+        ) -> void
+
+      def to_hash: -> Braintrust::Models::summarize_dataset_response
+    end
+  end
+end

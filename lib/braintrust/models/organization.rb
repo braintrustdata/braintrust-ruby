@@ -3,49 +3,56 @@
 module Braintrust
   module Models
     class Organization < Braintrust::BaseModel
-      # @!attribute [rw] id
+      # @!attribute id
       #   Unique identifier for the organization
+      #
       #   @return [String]
       required :id, String
 
-      # @!attribute [rw] name
+      # @!attribute name
       #   Name of the organization
+      #
       #   @return [String]
       required :name, String
 
-      # @!attribute [rw] api_url
-      #   @return [String]
-      optional :api_url, String
+      # @!attribute api_url
+      #
+      #   @return [String, nil]
+      optional :api_url, String, nil?: true
 
-      # @!attribute [rw] created
+      # @!attribute created
       #   Date of organization creation
-      #   @return [Time]
-      optional :created, Time
+      #
+      #   @return [Time, nil]
+      optional :created, Time, nil?: true
 
-      # @!attribute [rw] is_universal_api
-      #   @return [Boolean]
-      optional :is_universal_api, Braintrust::BooleanModel
+      # @!attribute is_universal_api
+      #
+      #   @return [Boolean, nil]
+      optional :is_universal_api, Braintrust::BooleanModel, nil?: true
 
-      # @!attribute [rw] proxy_url
-      #   @return [String]
-      optional :proxy_url, String
+      # @!attribute proxy_url
+      #
+      #   @return [String, nil]
+      optional :proxy_url, String, nil?: true
 
-      # @!attribute [rw] realtime_url
-      #   @return [String]
-      optional :realtime_url, String
+      # @!attribute realtime_url
+      #
+      #   @return [String, nil]
+      optional :realtime_url, String, nil?: true
 
       # @!parse
-      #   # Create a new instance of Organization from a Hash of raw data.
+      #   # @param id [String]
+      #   # @param name [String]
+      #   # @param api_url [String, nil]
+      #   # @param created [Time, nil]
+      #   # @param is_universal_api [Boolean, nil]
+      #   # @param proxy_url [String, nil]
+      #   # @param realtime_url [String, nil]
       #   #
-      #   # @param data [Hash{Symbol => Object}] .
-      #   #   @option data [String] :id Unique identifier for the organization
-      #   #   @option data [String] :name Name of the organization
-      #   #   @option data [String, nil] :api_url
-      #   #   @option data [String, nil] :created Date of organization creation
-      #   #   @option data [Hash, nil] :is_universal_api
-      #   #   @option data [String, nil] :proxy_url
-      #   #   @option data [String, nil] :realtime_url
-      #   def initialize(data = {}) = super
+      #   def initialize(id:, name:, api_url: nil, created: nil, is_universal_api: nil, proxy_url: nil, realtime_url: nil, **) = super
+
+      # def initialize: (Hash | Braintrust::BaseModel) -> void
     end
   end
 end

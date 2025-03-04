@@ -1,0 +1,85 @@
+module Braintrust
+  module Resources
+    class ProjectTags
+      def create:
+        (
+          Braintrust::Models::ProjectTagCreateParams
+          | ::Hash[Symbol, top] params
+        ) -> Braintrust::Models::ProjectTag
+        | (
+          name: String,
+          project_id: String,
+          color: String?,
+          description: String?,
+          request_options: Braintrust::request_opts
+        ) -> Braintrust::Models::ProjectTag
+
+      def retrieve:
+        (
+          String project_tag_id,
+          ?Braintrust::Models::ProjectTagRetrieveParams
+          | ::Hash[Symbol, top] params
+        ) -> Braintrust::Models::ProjectTag
+        | (
+          String project_tag_id,
+          request_options: Braintrust::request_opts
+        ) -> Braintrust::Models::ProjectTag
+
+      def update:
+        (
+          String project_tag_id,
+          ?Braintrust::Models::ProjectTagUpdateParams
+          | ::Hash[Symbol, top] params
+        ) -> Braintrust::Models::ProjectTag
+        | (
+          String project_tag_id,
+          color: String?,
+          description: String?,
+          name: String?,
+          request_options: Braintrust::request_opts
+        ) -> Braintrust::Models::ProjectTag
+
+      def list:
+        (
+          ?Braintrust::Models::ProjectTagListParams | ::Hash[Symbol, top] params
+        ) -> Braintrust::ListObjects[Braintrust::Models::ProjectTag]
+        | (
+          ending_before: String,
+          ids: Braintrust::Models::ProjectTagListParams::ids,
+          limit: Integer?,
+          org_name: String,
+          project_id: String,
+          project_name: String,
+          project_tag_name: String,
+          starting_after: String,
+          request_options: Braintrust::request_opts
+        ) -> Braintrust::ListObjects[Braintrust::Models::ProjectTag]
+
+      def delete:
+        (
+          String project_tag_id,
+          ?Braintrust::Models::ProjectTagDeleteParams
+          | ::Hash[Symbol, top] params
+        ) -> Braintrust::Models::ProjectTag
+        | (
+          String project_tag_id,
+          request_options: Braintrust::request_opts
+        ) -> Braintrust::Models::ProjectTag
+
+      def replace:
+        (
+          Braintrust::Models::ProjectTagReplaceParams
+          | ::Hash[Symbol, top] params
+        ) -> Braintrust::Models::ProjectTag
+        | (
+          name: String,
+          project_id: String,
+          color: String?,
+          description: String?,
+          request_options: Braintrust::request_opts
+        ) -> Braintrust::Models::ProjectTag
+
+      def initialize: (client: Braintrust::Client) -> void
+    end
+  end
+end

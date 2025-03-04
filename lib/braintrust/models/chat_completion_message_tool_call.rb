@@ -3,48 +3,69 @@
 module Braintrust
   module Models
     class ChatCompletionMessageToolCall < Braintrust::BaseModel
-      # @!attribute [rw] id
+      # @!attribute id
+      #
       #   @return [String]
       required :id, String
 
-      # @!attribute [rw] function
+      # @!attribute function
+      #
       #   @return [Braintrust::Models::ChatCompletionMessageToolCall::Function]
       required :function, -> { Braintrust::Models::ChatCompletionMessageToolCall::Function }
 
-      # @!attribute [rw] type
+      # @!attribute type
+      #
       #   @return [Symbol, Braintrust::Models::ChatCompletionMessageToolCall::Type]
       required :type, enum: -> { Braintrust::Models::ChatCompletionMessageToolCall::Type }
 
+      # @!parse
+      #   # @param id [String]
+      #   # @param function [Braintrust::Models::ChatCompletionMessageToolCall::Function]
+      #   # @param type [Symbol, Braintrust::Models::ChatCompletionMessageToolCall::Type]
+      #   #
+      #   def initialize(id:, function:, type:, **) = super
+
+      # def initialize: (Hash | Braintrust::BaseModel) -> void
+
       class Function < Braintrust::BaseModel
-        # @!attribute [rw] arguments
+        # @!attribute arguments
+        #
         #   @return [String]
         required :arguments, String
 
-        # @!attribute [rw] name
+        # @!attribute name
+        #
         #   @return [String]
         required :name, String
 
         # @!parse
-        #   # Create a new instance of Function from a Hash of raw data.
+        #   # @param arguments [String]
+        #   # @param name [String]
         #   #
-        #   # @param data [Hash{Symbol => Object}] .
-        #   #   @option data [String] :arguments
-        #   #   @option data [String] :name
-        #   def initialize(data = {}) = super
+        #   def initialize(arguments:, name:, **) = super
+
+        # def initialize: (Hash | Braintrust::BaseModel) -> void
       end
 
+      # @abstract
+      #
+      # @example
+      # ```ruby
+      # case type
+      # in :function
+      #   # ...
+      # end
+      # ```
       class Type < Braintrust::Enum
         FUNCTION = :function
-      end
 
-      # @!parse
-      #   # Create a new instance of ChatCompletionMessageToolCall from a Hash of raw data.
-      #   #
-      #   # @param data [Hash{Symbol => Object}] .
-      #   #   @option data [String] :id
-      #   #   @option data [Object] :function
-      #   #   @option data [String] :type
-      #   def initialize(data = {}) = super
+        finalize!
+
+        # @!parse
+        #   # @return [Array<Symbol>]
+        #   #
+        #   def self.values; end
+      end
     end
   end
 end

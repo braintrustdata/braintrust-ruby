@@ -3,47 +3,59 @@
 module Braintrust
   module Models
     class MetricSummary < Braintrust::BaseModel
-      # @!attribute [rw] improvements
+      # @!attribute improvements
       #   Number of improvements in the metric
+      #
       #   @return [Integer]
       required :improvements, Integer
 
-      # @!attribute [rw] metric
+      # @!attribute metric
       #   Average metric across all examples
+      #
       #   @return [Float]
       required :metric, Float
 
-      # @!attribute [rw] name
+      # @!attribute name
       #   Name of the metric
+      #
       #   @return [String]
       required :name, String
 
-      # @!attribute [rw] regressions
+      # @!attribute regressions
       #   Number of regressions in the metric
+      #
       #   @return [Integer]
       required :regressions, Integer
 
-      # @!attribute [rw] unit
+      # @!attribute unit
       #   Unit label for the metric
+      #
       #   @return [String]
       required :unit, String
 
-      # @!attribute [rw] diff
+      # @!attribute [r] diff
       #   Difference in metric between the current and comparison experiment
-      #   @return [Float]
+      #
+      #   @return [Float, nil]
       optional :diff, Float
 
       # @!parse
-      #   # Create a new instance of MetricSummary from a Hash of raw data.
+      #   # @return [Float]
+      #   attr_writer :diff
+
+      # @!parse
+      #   # Summary of a metric's performance
       #   #
-      #   # @param data [Hash{Symbol => Object}] .
-      #   #   @option data [Integer] :improvements Number of improvements in the metric
-      #   #   @option data [Float] :metric Average metric across all examples
-      #   #   @option data [String] :name Name of the metric
-      #   #   @option data [Integer] :regressions Number of regressions in the metric
-      #   #   @option data [String] :unit Unit label for the metric
-      #   #   @option data [Float, nil] :diff Difference in metric between the current and comparison experiment
-      #   def initialize(data = {}) = super
+      #   # @param improvements [Integer]
+      #   # @param metric [Float]
+      #   # @param name [String]
+      #   # @param regressions [Integer]
+      #   # @param unit [String]
+      #   # @param diff [Float]
+      #   #
+      #   def initialize(improvements:, metric:, name:, regressions:, unit:, diff: nil, **) = super
+
+      # def initialize: (Hash | Braintrust::BaseModel) -> void
     end
   end
 end

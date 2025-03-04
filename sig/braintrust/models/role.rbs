@@ -1,0 +1,128 @@
+module Braintrust
+  module Models
+    type role =
+      {
+        id: String,
+        name: String,
+        created: Time?,
+        deleted_at: Time?,
+        description: String?,
+        member_permissions: ::Array[Braintrust::Models::Role::MemberPermission]?,
+        member_roles: ::Array[String]?,
+        org_id: String?,
+        user_id: String?
+      }
+
+    class Role < Braintrust::BaseModel
+      attr_accessor id: String
+
+      attr_accessor name: String
+
+      attr_accessor created: Time?
+
+      attr_accessor deleted_at: Time?
+
+      attr_accessor description: String?
+
+      attr_accessor member_permissions: ::Array[Braintrust::Models::Role::MemberPermission]?
+
+      attr_accessor member_roles: ::Array[String]?
+
+      attr_accessor org_id: String?
+
+      attr_accessor user_id: String?
+
+      def initialize:
+        (
+          id: String,
+          name: String,
+          created: Time?,
+          deleted_at: Time?,
+          description: String?,
+          member_permissions: ::Array[Braintrust::Models::Role::MemberPermission]?,
+          member_roles: ::Array[String]?,
+          org_id: String?,
+          user_id: String?
+        ) -> void
+        | (?Braintrust::Models::role | Braintrust::BaseModel data) -> void
+
+      def to_hash: -> Braintrust::Models::role
+
+      type member_permission =
+        {
+          permission: Braintrust::Models::Role::MemberPermission::permission,
+          restrict_object_type: Braintrust::Models::Role::MemberPermission::restrict_object_type?
+        }
+
+      class MemberPermission < Braintrust::BaseModel
+        attr_accessor permission: Braintrust::Models::Role::MemberPermission::permission
+
+        attr_accessor restrict_object_type: Braintrust::Models::Role::MemberPermission::restrict_object_type?
+
+        def initialize:
+          (
+            permission: Braintrust::Models::Role::MemberPermission::permission,
+            restrict_object_type: Braintrust::Models::Role::MemberPermission::restrict_object_type?
+          ) -> void
+          | (
+            ?Braintrust::Models::Role::member_permission
+            | Braintrust::BaseModel data
+          ) -> void
+
+        def to_hash: -> Braintrust::Models::Role::member_permission
+
+        type permission =
+          :create
+          | :read
+          | :update
+          | :delete
+          | :create_acls
+          | :read_acls
+          | :update_acls
+          | :delete_acls
+
+        class Permission < Braintrust::Enum
+          CREATE: :create
+          READ: :read
+          UPDATE: :update
+          DELETE: :delete
+          CREATE_ACLS: :create_acls
+          READ_ACLS: :read_acls
+          UPDATE_ACLS: :update_acls
+          DELETE_ACLS: :delete_acls
+
+          def self.values: -> ::Array[Braintrust::Models::Role::MemberPermission::permission]
+        end
+
+        type restrict_object_type =
+          :organization
+          | :project
+          | :experiment
+          | :dataset
+          | :prompt
+          | :prompt_session
+          | :group
+          | :role
+          | :org_member
+          | :project_log
+          | :org_project
+
+        class RestrictObjectType < Braintrust::Enum
+          ORGANIZATION: :organization
+          PROJECT: :project
+          EXPERIMENT: :experiment
+          DATASET: :dataset
+          PROMPT: :prompt
+          PROMPT_SESSION: :prompt_session
+          GROUP: :group
+          ROLE: :role
+          ORG_MEMBER: :org_member
+          PROJECT_LOG: :project_log
+          ORG_PROJECT: :org_project
+
+          def self.values: -> ::Array[Braintrust::Models::Role::MemberPermission::restrict_object_type]
+        end
+      end
+    end
+  end
+end

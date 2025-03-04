@@ -3,74 +3,153 @@
 module Braintrust
   module Models
     class Role < Braintrust::BaseModel
-      # @!attribute [rw] id
+      # @!attribute id
       #   Unique identifier for the role
+      #
       #   @return [String]
       required :id, String
 
-      # @!attribute [rw] name
+      # @!attribute name
       #   Name of the role
+      #
       #   @return [String]
       required :name, String
 
-      # @!attribute [rw] created
+      # @!attribute created
       #   Date of role creation
-      #   @return [Time]
-      optional :created, Time
+      #
+      #   @return [Time, nil]
+      optional :created, Time, nil?: true
 
-      # @!attribute [rw] deleted_at
+      # @!attribute deleted_at
       #   Date of role deletion, or null if the role is still active
-      #   @return [Time]
-      optional :deleted_at, Time
+      #
+      #   @return [Time, nil]
+      optional :deleted_at, Time, nil?: true
 
-      # @!attribute [rw] description
+      # @!attribute description
       #   Textual description of the role
-      #   @return [String]
-      optional :description, String
+      #
+      #   @return [String, nil]
+      optional :description, String, nil?: true
 
-      # @!attribute [rw] member_permissions
+      # @!attribute member_permissions
       #   (permission, restrict_object_type) tuples which belong to this role
-      #   @return [Array<Braintrust::Models::Role::MemberPermission>]
-      optional :member_permissions, Braintrust::ArrayOf.new(-> { Braintrust::Models::Role::MemberPermission })
+      #
+      #   @return [Array<Braintrust::Models::Role::MemberPermission>, nil]
+      optional :member_permissions,
+               -> { Braintrust::ArrayOf[Braintrust::Models::Role::MemberPermission] },
+               nil?: true
 
-      # @!attribute [rw] member_roles
+      # @!attribute member_roles
       #   Ids of the roles this role inherits from
       #
-      # An inheriting role has all the permissions contained in its member roles, as well as all of their inherited permissions
-      #   @return [Array<String>]
-      optional :member_roles, Braintrust::ArrayOf.new(String)
+      #     An inheriting role has all the permissions contained in its member roles, as
+      #     well as all of their inherited permissions
+      #
+      #   @return [Array<String>, nil]
+      optional :member_roles, Braintrust::ArrayOf[String], nil?: true
 
-      # @!attribute [rw] org_id
+      # @!attribute org_id
       #   Unique id for the organization that the role belongs under
       #
-      # A null org_id indicates a system role, which may be assigned to anybody and inherited by any other role, but cannot be edited.
+      #     A null org_id indicates a system role, which may be assigned to anybody and
+      #     inherited by any other role, but cannot be edited.
       #
-      # It is forbidden to change the org after creating a role
-      #   @return [String]
-      optional :org_id, String
+      #     It is forbidden to change the org after creating a role
+      #
+      #   @return [String, nil]
+      optional :org_id, String, nil?: true
 
-      # @!attribute [rw] user_id
+      # @!attribute user_id
       #   Identifies the user who created the role
-      #   @return [String]
-      optional :user_id, String
+      #
+      #   @return [String, nil]
+      optional :user_id, String, nil?: true
+
+      # @!parse
+      #   # A role is a collection of permissions which can be granted as part of an ACL
+      #   #
+      #   #   Roles can consist of individual permissions, as well as a set of roles they
+      #   #   inherit from
+      #   #
+      #   # @param id [String]
+      #   # @param name [String]
+      #   # @param created [Time, nil]
+      #   # @param deleted_at [Time, nil]
+      #   # @param description [String, nil]
+      #   # @param member_permissions [Array<Braintrust::Models::Role::MemberPermission>, nil]
+      #   # @param member_roles [Array<String>, nil]
+      #   # @param org_id [String, nil]
+      #   # @param user_id [String, nil]
+      #   #
+      #   def initialize(
+      #     id:,
+      #     name:,
+      #     created: nil,
+      #     deleted_at: nil,
+      #     description: nil,
+      #     member_permissions: nil,
+      #     member_roles: nil,
+      #     org_id: nil,
+      #     user_id: nil,
+      #     **
+      #   )
+      #     super
+      #   end
+
+      # def initialize: (Hash | Braintrust::BaseModel) -> void
 
       class MemberPermission < Braintrust::BaseModel
-        # @!attribute [rw] permission
+        # @!attribute permission
         #   Each permission permits a certain type of operation on an object in the system
         #
-        # Permissions can be assigned to to objects on an individual basis, or grouped into roles
+        #     Permissions can be assigned to to objects on an individual basis, or grouped
+        #     into roles
+        #
         #   @return [Symbol, Braintrust::Models::Role::MemberPermission::Permission]
         required :permission, enum: -> { Braintrust::Models::Role::MemberPermission::Permission }
 
-        # @!attribute [rw] restrict_object_type
+        # @!attribute restrict_object_type
         #   The object type that the ACL applies to
-        #   @return [Symbol, Braintrust::Models::Role::MemberPermission::RestrictObjectType]
+        #
+        #   @return [Symbol, Braintrust::Models::Role::MemberPermission::RestrictObjectType, nil]
         optional :restrict_object_type,
-                 enum: -> { Braintrust::Models::Role::MemberPermission::RestrictObjectType }
+                 enum: -> { Braintrust::Models::Role::MemberPermission::RestrictObjectType },
+                 nil?: true
 
+        # @!parse
+        #   # @param permission [Symbol, Braintrust::Models::Role::MemberPermission::Permission]
+        #   # @param restrict_object_type [Symbol, Braintrust::Models::Role::MemberPermission::RestrictObjectType, nil]
+        #   #
+        #   def initialize(permission:, restrict_object_type: nil, **) = super
+
+        # def initialize: (Hash | Braintrust::BaseModel) -> void
+
+        # @abstract
+        #
         # Each permission permits a certain type of operation on an object in the system
         #
-        # Permissions can be assigned to to objects on an individual basis, or grouped into roles
+        #   Permissions can be assigned to to objects on an individual basis, or grouped
+        #   into roles
+        #
+        # @example
+        # ```ruby
+        # case permission
+        # in :create
+        #   # ...
+        # in :read
+        #   # ...
+        # in :update
+        #   # ...
+        # in :delete
+        #   # ...
+        # in :create_acls
+        #   # ...
+        # in ...
+        #   #...
+        # end
+        # ```
         class Permission < Braintrust::Enum
           CREATE = :create
           READ = :read
@@ -80,9 +159,36 @@ module Braintrust
           READ_ACLS = :read_acls
           UPDATE_ACLS = :update_acls
           DELETE_ACLS = :delete_acls
+
+          finalize!
+
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   #
+          #   def self.values; end
         end
 
+        # @abstract
+        #
         # The object type that the ACL applies to
+        #
+        # @example
+        # ```ruby
+        # case restrict_object_type
+        # in :organization
+        #   # ...
+        # in :project
+        #   # ...
+        # in :experiment
+        #   # ...
+        # in :dataset
+        #   # ...
+        # in :prompt
+        #   # ...
+        # in ...
+        #   #...
+        # end
+        # ```
         class RestrictObjectType < Braintrust::Enum
           ORGANIZATION = :organization
           PROJECT = :project
@@ -95,42 +201,15 @@ module Braintrust
           ORG_MEMBER = :org_member
           PROJECT_LOG = :project_log
           ORG_PROJECT = :org_project
+
+          finalize!
+
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   #
+          #   def self.values; end
         end
-
-        # @!parse
-        #   # Create a new instance of MemberPermission from a Hash of raw data.
-        #   #
-        #   # @param data [Hash{Symbol => Object}] .
-        #   #   @option data [String] :permission Each permission permits a certain type of operation on an object in the system
-        #   #
-        #   #     Permissions can be assigned to to objects on an individual basis, or grouped
-        #   #     into roles
-        #   #   @option data [String, nil] :restrict_object_type The object type that the ACL applies to
-        #   def initialize(data = {}) = super
       end
-
-      # @!parse
-      #   # Create a new instance of Role from a Hash of raw data.
-      #   #
-      #   # @param data [Hash{Symbol => Object}] .
-      #   #   @option data [String] :id Unique identifier for the role
-      #   #   @option data [String] :name Name of the role
-      #   #   @option data [String, nil] :created Date of role creation
-      #   #   @option data [String, nil] :deleted_at Date of role deletion, or null if the role is still active
-      #   #   @option data [String, nil] :description Textual description of the role
-      #   #   @option data [Array<Object>, nil] :member_permissions (permission, restrict_object_type) tuples which belong to this role
-      #   #   @option data [Array<String>, nil] :member_roles Ids of the roles this role inherits from
-      #   #
-      #   #     An inheriting role has all the permissions contained in its member roles, as
-      #   #     well as all of their inherited permissions
-      #   #   @option data [String, nil] :org_id Unique id for the organization that the role belongs under
-      #   #
-      #   #     A null org_id indicates a system role, which may be assigned to anybody and
-      #   #     inherited by any other role, but cannot be edited.
-      #   #
-      #   #     It is forbidden to change the org after creating a role
-      #   #   @option data [String, nil] :user_id Identifies the user who created the role
-      #   def initialize(data = {}) = super
     end
   end
 end

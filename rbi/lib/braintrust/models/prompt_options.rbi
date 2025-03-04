@@ -1,0 +1,884 @@
+# typed: strong
+
+module Braintrust
+  module Models
+    class PromptOptions < Braintrust::BaseModel
+      sig { returns(T.nilable(String)) }
+      def model
+      end
+
+      sig { params(_: String).returns(String) }
+      def model=(_)
+      end
+
+      sig do
+        returns(
+          T.nilable(
+            T.any(
+              Braintrust::Models::PromptOptions::Params::OpenAIModelParams,
+              Braintrust::Models::PromptOptions::Params::AnthropicModelParams,
+              Braintrust::Models::PromptOptions::Params::GoogleModelParams,
+              Braintrust::Models::PromptOptions::Params::WindowAIModelParams,
+              Braintrust::Models::PromptOptions::Params::JsCompletionParams
+            )
+          )
+        )
+      end
+      def params
+      end
+
+      sig do
+        params(
+          _: T.any(
+            Braintrust::Models::PromptOptions::Params::OpenAIModelParams,
+            Braintrust::Models::PromptOptions::Params::AnthropicModelParams,
+            Braintrust::Models::PromptOptions::Params::GoogleModelParams,
+            Braintrust::Models::PromptOptions::Params::WindowAIModelParams,
+            Braintrust::Models::PromptOptions::Params::JsCompletionParams
+          )
+        )
+          .returns(
+            T.any(
+              Braintrust::Models::PromptOptions::Params::OpenAIModelParams,
+              Braintrust::Models::PromptOptions::Params::AnthropicModelParams,
+              Braintrust::Models::PromptOptions::Params::GoogleModelParams,
+              Braintrust::Models::PromptOptions::Params::WindowAIModelParams,
+              Braintrust::Models::PromptOptions::Params::JsCompletionParams
+            )
+          )
+      end
+      def params=(_)
+      end
+
+      sig { returns(T.nilable(String)) }
+      def position
+      end
+
+      sig { params(_: String).returns(String) }
+      def position=(_)
+      end
+
+      sig do
+        params(
+          model: String,
+          params: T.any(
+            Braintrust::Models::PromptOptions::Params::OpenAIModelParams,
+            Braintrust::Models::PromptOptions::Params::AnthropicModelParams,
+            Braintrust::Models::PromptOptions::Params::GoogleModelParams,
+            Braintrust::Models::PromptOptions::Params::WindowAIModelParams,
+            Braintrust::Models::PromptOptions::Params::JsCompletionParams
+          ),
+          position: String
+        )
+          .void
+      end
+      def initialize(model: nil, params: nil, position: nil)
+      end
+
+      sig do
+        override
+          .returns(
+            {
+              model: String,
+              params: T.any(
+                Braintrust::Models::PromptOptions::Params::OpenAIModelParams,
+                Braintrust::Models::PromptOptions::Params::AnthropicModelParams,
+                Braintrust::Models::PromptOptions::Params::GoogleModelParams,
+                Braintrust::Models::PromptOptions::Params::WindowAIModelParams,
+                Braintrust::Models::PromptOptions::Params::JsCompletionParams
+              ),
+              position: String
+            }
+          )
+      end
+      def to_hash
+      end
+
+      class Params < Braintrust::Union
+        abstract!
+
+        class OpenAIModelParams < Braintrust::BaseModel
+          sig { returns(T.nilable(Float)) }
+          def frequency_penalty
+          end
+
+          sig { params(_: Float).returns(Float) }
+          def frequency_penalty=(_)
+          end
+
+          sig do
+            returns(
+              T.nilable(
+                T.any(Symbol, Braintrust::Models::PromptOptions::Params::OpenAIModelParams::FunctionCall::Function)
+              )
+            )
+          end
+          def function_call
+          end
+
+          sig do
+            params(
+              _: T.any(Symbol, Braintrust::Models::PromptOptions::Params::OpenAIModelParams::FunctionCall::Function)
+            )
+              .returns(
+                T.any(Symbol, Braintrust::Models::PromptOptions::Params::OpenAIModelParams::FunctionCall::Function)
+              )
+          end
+          def function_call=(_)
+          end
+
+          sig { returns(T.nilable(Float)) }
+          def max_tokens
+          end
+
+          sig { params(_: Float).returns(Float) }
+          def max_tokens=(_)
+          end
+
+          sig { returns(T.nilable(Float)) }
+          def n
+          end
+
+          sig { params(_: Float).returns(Float) }
+          def n=(_)
+          end
+
+          sig { returns(T.nilable(Float)) }
+          def presence_penalty
+          end
+
+          sig { params(_: Float).returns(Float) }
+          def presence_penalty=(_)
+          end
+
+          sig do
+            returns(
+              T.nilable(
+                T.any(
+                  Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ResponseFormat::JsonObject,
+                  Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ResponseFormat::JsonSchema,
+                  Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ResponseFormat::Text,
+                  Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ResponseFormat::NullableVariant
+                )
+              )
+            )
+          end
+          def response_format
+          end
+
+          sig do
+            params(
+              _: T.nilable(
+                T.any(
+                  Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ResponseFormat::JsonObject,
+                  Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ResponseFormat::JsonSchema,
+                  Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ResponseFormat::Text,
+                  Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ResponseFormat::NullableVariant
+                )
+              )
+            )
+              .returns(
+                T.nilable(
+                  T.any(
+                    Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ResponseFormat::JsonObject,
+                    Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ResponseFormat::JsonSchema,
+                    Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ResponseFormat::Text,
+                    Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ResponseFormat::NullableVariant
+                  )
+                )
+              )
+          end
+          def response_format=(_)
+          end
+
+          sig { returns(T.nilable(T::Array[String])) }
+          def stop
+          end
+
+          sig { params(_: T::Array[String]).returns(T::Array[String]) }
+          def stop=(_)
+          end
+
+          sig { returns(T.nilable(Float)) }
+          def temperature
+          end
+
+          sig { params(_: Float).returns(Float) }
+          def temperature=(_)
+          end
+
+          sig do
+            returns(
+              T.nilable(
+                T.any(Symbol, Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ToolChoice::Function)
+              )
+            )
+          end
+          def tool_choice
+          end
+
+          sig do
+            params(
+              _: T.any(Symbol, Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ToolChoice::Function)
+            )
+              .returns(T.any(Symbol, Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ToolChoice::Function))
+          end
+          def tool_choice=(_)
+          end
+
+          sig { returns(T.nilable(Float)) }
+          def top_p
+          end
+
+          sig { params(_: Float).returns(Float) }
+          def top_p=(_)
+          end
+
+          sig { returns(T.nilable(T::Boolean)) }
+          def use_cache
+          end
+
+          sig { params(_: T::Boolean).returns(T::Boolean) }
+          def use_cache=(_)
+          end
+
+          sig do
+            params(
+              frequency_penalty: Float,
+              function_call: T.any(Symbol, Braintrust::Models::PromptOptions::Params::OpenAIModelParams::FunctionCall::Function),
+              max_tokens: Float,
+              n: Float,
+              presence_penalty: Float,
+              response_format: T.nilable(
+                T.any(
+                  Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ResponseFormat::JsonObject,
+                  Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ResponseFormat::JsonSchema,
+                  Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ResponseFormat::Text,
+                  Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ResponseFormat::NullableVariant
+                )
+              ),
+              stop: T::Array[String],
+              temperature: Float,
+              tool_choice: T.any(Symbol, Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ToolChoice::Function),
+              top_p: Float,
+              use_cache: T::Boolean
+            )
+              .void
+          end
+          def initialize(
+            frequency_penalty: nil,
+            function_call: nil,
+            max_tokens: nil,
+            n: nil,
+            presence_penalty: nil,
+            response_format: nil,
+            stop: nil,
+            temperature: nil,
+            tool_choice: nil,
+            top_p: nil,
+            use_cache: nil
+          )
+          end
+
+          sig do
+            override
+              .returns(
+                {
+                  frequency_penalty: Float,
+                  function_call: T.any(Symbol, Braintrust::Models::PromptOptions::Params::OpenAIModelParams::FunctionCall::Function),
+                  max_tokens: Float,
+                  n: Float,
+                  presence_penalty: Float,
+                  response_format: T.nilable(
+                    T.any(
+                      Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ResponseFormat::JsonObject,
+                      Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ResponseFormat::JsonSchema,
+                      Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ResponseFormat::Text,
+                      Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ResponseFormat::NullableVariant
+                    )
+                  ),
+                  stop: T::Array[String],
+                  temperature: Float,
+                  tool_choice: T.any(Symbol, Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ToolChoice::Function),
+                  top_p: Float,
+                  use_cache: T::Boolean
+                }
+              )
+          end
+          def to_hash
+          end
+
+          class FunctionCall < Braintrust::Union
+            abstract!
+
+            class UnionMember0 < Braintrust::Enum
+              abstract!
+
+              AUTO = :auto
+              NONE = :none
+
+              sig { override.returns(T::Array[Symbol]) }
+              def self.values
+              end
+            end
+
+            class Function < Braintrust::BaseModel
+              sig { returns(String) }
+              def name
+              end
+
+              sig { params(_: String).returns(String) }
+              def name=(_)
+              end
+
+              sig { params(name: String).void }
+              def initialize(name:)
+              end
+
+              sig { override.returns({name: String}) }
+              def to_hash
+              end
+            end
+
+            sig do
+              override
+                .returns(
+                  [[NilClass, Symbol], [NilClass, Braintrust::Models::PromptOptions::Params::OpenAIModelParams::FunctionCall::Function]]
+                )
+            end
+            private_class_method def self.variants
+            end
+          end
+
+          class ResponseFormat < Braintrust::Union
+            abstract!
+
+            class JsonObject < Braintrust::BaseModel
+              sig { returns(Symbol) }
+              def type
+              end
+
+              sig { params(_: Symbol).returns(Symbol) }
+              def type=(_)
+              end
+
+              sig { params(type: Symbol).void }
+              def initialize(type:)
+              end
+
+              sig { override.returns({type: Symbol}) }
+              def to_hash
+              end
+
+              class Type < Braintrust::Enum
+                abstract!
+
+                JSON_OBJECT = :json_object
+
+                sig { override.returns(T::Array[Symbol]) }
+                def self.values
+                end
+              end
+            end
+
+            class JsonSchema < Braintrust::BaseModel
+              sig do
+                returns(
+                  Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ResponseFormat::JsonSchema::JsonSchema
+                )
+              end
+              def json_schema
+              end
+
+              sig do
+                params(
+                  _: Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ResponseFormat::JsonSchema::JsonSchema
+                )
+                  .returns(
+                    Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ResponseFormat::JsonSchema::JsonSchema
+                  )
+              end
+              def json_schema=(_)
+              end
+
+              sig { returns(Symbol) }
+              def type
+              end
+
+              sig { params(_: Symbol).returns(Symbol) }
+              def type=(_)
+              end
+
+              sig do
+                params(
+                  json_schema: Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ResponseFormat::JsonSchema::JsonSchema,
+                  type: Symbol
+                )
+                  .void
+              end
+              def initialize(json_schema:, type:)
+              end
+
+              sig do
+                override
+                  .returns(
+                    {
+                      json_schema: Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ResponseFormat::JsonSchema::JsonSchema,
+                      type: Symbol
+                    }
+                  )
+              end
+              def to_hash
+              end
+
+              class JsonSchema < Braintrust::BaseModel
+                sig { returns(String) }
+                def name
+                end
+
+                sig { params(_: String).returns(String) }
+                def name=(_)
+                end
+
+                sig { returns(T.nilable(String)) }
+                def description
+                end
+
+                sig { params(_: String).returns(String) }
+                def description=(_)
+                end
+
+                sig { returns(T.nilable(T::Hash[Symbol, T.nilable(T.anything)])) }
+                def schema
+                end
+
+                sig do
+                  params(
+                    _: T::Hash[Symbol,
+                               T.nilable(T.anything)]
+                  ).returns(T::Hash[Symbol, T.nilable(T.anything)])
+                end
+                def schema=(_)
+                end
+
+                sig { returns(T.nilable(T::Boolean)) }
+                def strict
+                end
+
+                sig { params(_: T.nilable(T::Boolean)).returns(T.nilable(T::Boolean)) }
+                def strict=(_)
+                end
+
+                sig do
+                  params(
+                    name: String,
+                    description: String,
+                    schema: T::Hash[Symbol, T.nilable(T.anything)],
+                    strict: T.nilable(T::Boolean)
+                  )
+                    .void
+                end
+                def initialize(name:, description: nil, schema: nil, strict: nil)
+                end
+
+                sig do
+                  override
+                    .returns(
+                      {
+                        name: String,
+                        description: String,
+                        schema: T::Hash[Symbol, T.nilable(T.anything)],
+                        strict: T.nilable(T::Boolean)
+                      }
+                    )
+                end
+                def to_hash
+                end
+              end
+
+              class Type < Braintrust::Enum
+                abstract!
+
+                JSON_SCHEMA = :json_schema
+
+                sig { override.returns(T::Array[Symbol]) }
+                def self.values
+                end
+              end
+            end
+
+            class Text < Braintrust::BaseModel
+              sig { returns(Symbol) }
+              def type
+              end
+
+              sig { params(_: Symbol).returns(Symbol) }
+              def type=(_)
+              end
+
+              sig { params(type: Symbol).void }
+              def initialize(type:)
+              end
+
+              sig { override.returns({type: Symbol}) }
+              def to_hash
+              end
+
+              class Type < Braintrust::Enum
+                abstract!
+
+                TEXT = :text
+
+                sig { override.returns(T::Array[Symbol]) }
+                def self.values
+                end
+              end
+            end
+
+            class NullableVariant < Braintrust::BaseModel
+              sig { void }
+              def initialize
+              end
+
+              sig { override.returns({}) }
+              def to_hash
+              end
+            end
+
+            sig do
+              override
+                .returns(
+                  [[NilClass, Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ResponseFormat::JsonObject], [NilClass, Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ResponseFormat::JsonSchema], [NilClass, Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ResponseFormat::Text], [NilClass, Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ResponseFormat::NullableVariant]]
+                )
+            end
+            private_class_method def self.variants
+            end
+          end
+
+          class ToolChoice < Braintrust::Union
+            abstract!
+
+            class UnionMember0 < Braintrust::Enum
+              abstract!
+
+              AUTO = :auto
+              NONE = :none
+              REQUIRED = :required
+
+              sig { override.returns(T::Array[Symbol]) }
+              def self.values
+              end
+            end
+
+            class Function < Braintrust::BaseModel
+              sig { returns(Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ToolChoice::Function::Function) }
+              def function
+              end
+
+              sig do
+                params(_: Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ToolChoice::Function::Function)
+                  .returns(Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ToolChoice::Function::Function)
+              end
+              def function=(_)
+              end
+
+              sig { returns(Symbol) }
+              def type
+              end
+
+              sig { params(_: Symbol).returns(Symbol) }
+              def type=(_)
+              end
+
+              sig do
+                params(
+                  function: Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ToolChoice::Function::Function,
+                  type: Symbol
+                )
+                  .void
+              end
+              def initialize(function:, type:)
+              end
+
+              sig do
+                override
+                  .returns(
+                    {
+                      function: Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ToolChoice::Function::Function,
+                      type: Symbol
+                    }
+                  )
+              end
+              def to_hash
+              end
+
+              class Function < Braintrust::BaseModel
+                sig { returns(String) }
+                def name
+                end
+
+                sig { params(_: String).returns(String) }
+                def name=(_)
+                end
+
+                sig { params(name: String).void }
+                def initialize(name:)
+                end
+
+                sig { override.returns({name: String}) }
+                def to_hash
+                end
+              end
+
+              class Type < Braintrust::Enum
+                abstract!
+
+                FUNCTION = :function
+
+                sig { override.returns(T::Array[Symbol]) }
+                def self.values
+                end
+              end
+            end
+
+            sig do
+              override
+                .returns(
+                  [[NilClass, Symbol], [NilClass, Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ToolChoice::Function]]
+                )
+            end
+            private_class_method def self.variants
+            end
+          end
+        end
+
+        class AnthropicModelParams < Braintrust::BaseModel
+          sig { returns(Float) }
+          def max_tokens
+          end
+
+          sig { params(_: Float).returns(Float) }
+          def max_tokens=(_)
+          end
+
+          sig { returns(Float) }
+          def temperature
+          end
+
+          sig { params(_: Float).returns(Float) }
+          def temperature=(_)
+          end
+
+          sig { returns(T.nilable(Float)) }
+          def max_tokens_to_sample
+          end
+
+          sig { params(_: Float).returns(Float) }
+          def max_tokens_to_sample=(_)
+          end
+
+          sig { returns(T.nilable(T::Array[String])) }
+          def stop_sequences
+          end
+
+          sig { params(_: T::Array[String]).returns(T::Array[String]) }
+          def stop_sequences=(_)
+          end
+
+          sig { returns(T.nilable(Float)) }
+          def top_k
+          end
+
+          sig { params(_: Float).returns(Float) }
+          def top_k=(_)
+          end
+
+          sig { returns(T.nilable(Float)) }
+          def top_p
+          end
+
+          sig { params(_: Float).returns(Float) }
+          def top_p=(_)
+          end
+
+          sig { returns(T.nilable(T::Boolean)) }
+          def use_cache
+          end
+
+          sig { params(_: T::Boolean).returns(T::Boolean) }
+          def use_cache=(_)
+          end
+
+          sig do
+            params(
+              max_tokens: Float,
+              temperature: Float,
+              max_tokens_to_sample: Float,
+              stop_sequences: T::Array[String],
+              top_k: Float,
+              top_p: Float,
+              use_cache: T::Boolean
+            )
+              .void
+          end
+          def initialize(
+            max_tokens:,
+            temperature:,
+            max_tokens_to_sample: nil,
+            stop_sequences: nil,
+            top_k: nil,
+            top_p: nil,
+            use_cache: nil
+          )
+          end
+
+          sig do
+            override
+              .returns(
+                {
+                  max_tokens: Float,
+                  temperature: Float,
+                  max_tokens_to_sample: Float,
+                  stop_sequences: T::Array[String],
+                  top_k: Float,
+                  top_p: Float,
+                  use_cache: T::Boolean
+                }
+              )
+          end
+          def to_hash
+          end
+        end
+
+        class GoogleModelParams < Braintrust::BaseModel
+          sig { returns(T.nilable(Float)) }
+          def max_output_tokens
+          end
+
+          sig { params(_: Float).returns(Float) }
+          def max_output_tokens=(_)
+          end
+
+          sig { returns(T.nilable(Float)) }
+          def temperature
+          end
+
+          sig { params(_: Float).returns(Float) }
+          def temperature=(_)
+          end
+
+          sig { returns(T.nilable(Float)) }
+          def top_k
+          end
+
+          sig { params(_: Float).returns(Float) }
+          def top_k=(_)
+          end
+
+          sig { returns(T.nilable(Float)) }
+          def top_p
+          end
+
+          sig { params(_: Float).returns(Float) }
+          def top_p=(_)
+          end
+
+          sig { returns(T.nilable(T::Boolean)) }
+          def use_cache
+          end
+
+          sig { params(_: T::Boolean).returns(T::Boolean) }
+          def use_cache=(_)
+          end
+
+          sig do
+            params(
+              max_output_tokens: Float,
+              temperature: Float,
+              top_k: Float,
+              top_p: Float,
+              use_cache: T::Boolean
+            )
+              .void
+          end
+          def initialize(max_output_tokens: nil, temperature: nil, top_k: nil, top_p: nil, use_cache: nil)
+          end
+
+          sig do
+            override
+              .returns({
+                         max_output_tokens: Float,
+                         temperature: Float,
+                         top_k: Float,
+                         top_p: Float,
+                         use_cache: T::Boolean
+                       })
+          end
+          def to_hash
+          end
+        end
+
+        class WindowAIModelParams < Braintrust::BaseModel
+          sig { returns(T.nilable(Float)) }
+          def temperature
+          end
+
+          sig { params(_: Float).returns(Float) }
+          def temperature=(_)
+          end
+
+          sig { returns(T.nilable(Float)) }
+          def top_k
+          end
+
+          sig { params(_: Float).returns(Float) }
+          def top_k=(_)
+          end
+
+          sig { returns(T.nilable(T::Boolean)) }
+          def use_cache
+          end
+
+          sig { params(_: T::Boolean).returns(T::Boolean) }
+          def use_cache=(_)
+          end
+
+          sig { params(temperature: Float, top_k: Float, use_cache: T::Boolean).void }
+          def initialize(temperature: nil, top_k: nil, use_cache: nil)
+          end
+
+          sig { override.returns({temperature: Float, top_k: Float, use_cache: T::Boolean}) }
+          def to_hash
+          end
+        end
+
+        class JsCompletionParams < Braintrust::BaseModel
+          sig { returns(T.nilable(T::Boolean)) }
+          def use_cache
+          end
+
+          sig { params(_: T::Boolean).returns(T::Boolean) }
+          def use_cache=(_)
+          end
+
+          sig { params(use_cache: T::Boolean).void }
+          def initialize(use_cache: nil)
+          end
+
+          sig { override.returns({use_cache: T::Boolean}) }
+          def to_hash
+          end
+        end
+
+        sig do
+          override
+            .returns(
+              [[NilClass, Braintrust::Models::PromptOptions::Params::OpenAIModelParams], [NilClass, Braintrust::Models::PromptOptions::Params::AnthropicModelParams], [NilClass, Braintrust::Models::PromptOptions::Params::GoogleModelParams], [NilClass, Braintrust::Models::PromptOptions::Params::WindowAIModelParams], [NilClass, Braintrust::Models::PromptOptions::Params::JsCompletionParams]]
+            )
+        end
+        private_class_method def self.variants
+        end
+      end
+    end
+  end
+end

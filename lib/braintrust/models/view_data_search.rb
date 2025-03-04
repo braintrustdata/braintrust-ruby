@@ -3,31 +3,35 @@
 module Braintrust
   module Models
     class ViewDataSearch < Braintrust::BaseModel
-      # @!attribute [rw] filter
-      #   @return [Array<Object>]
-      optional :filter, Braintrust::ArrayOf.new(Braintrust::Unknown)
+      # @!attribute filter
+      #
+      #   @return [Array<Object, nil>, nil]
+      optional :filter, Braintrust::ArrayOf[Braintrust::Unknown, nil?: true], nil?: true
 
-      # @!attribute [rw] match
-      #   @return [Array<Object>]
-      optional :match, Braintrust::ArrayOf.new(Braintrust::Unknown)
+      # @!attribute match
+      #
+      #   @return [Array<Object, nil>, nil]
+      optional :match, Braintrust::ArrayOf[Braintrust::Unknown, nil?: true], nil?: true
 
-      # @!attribute [rw] sort
-      #   @return [Array<Object>]
-      optional :sort, Braintrust::ArrayOf.new(Braintrust::Unknown)
+      # @!attribute sort
+      #
+      #   @return [Array<Object, nil>, nil]
+      optional :sort, Braintrust::ArrayOf[Braintrust::Unknown, nil?: true], nil?: true
 
-      # @!attribute [rw] tag
-      #   @return [Array<Object>]
-      optional :tag, Braintrust::ArrayOf.new(Braintrust::Unknown)
+      # @!attribute tag
+      #
+      #   @return [Array<Object, nil>, nil]
+      optional :tag, Braintrust::ArrayOf[Braintrust::Unknown, nil?: true], nil?: true
 
       # @!parse
-      #   # Create a new instance of ViewDataSearch from a Hash of raw data.
+      #   # @param filter [Array<Object, nil>, nil]
+      #   # @param match [Array<Object, nil>, nil]
+      #   # @param sort [Array<Object, nil>, nil]
+      #   # @param tag [Array<Object, nil>, nil]
       #   #
-      #   # @param data [Hash{Symbol => Object}] .
-      #   #   @option data [Array<Object>, nil] :filter
-      #   #   @option data [Array<Object>, nil] :match
-      #   #   @option data [Array<Object>, nil] :sort
-      #   #   @option data [Array<Object>, nil] :tag
-      #   def initialize(data = {}) = super
+      #   def initialize(filter: nil, match: nil, sort: nil, tag: nil, **) = super
+
+      # def initialize: (Hash | Braintrust::BaseModel) -> void
     end
   end
 end

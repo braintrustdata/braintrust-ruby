@@ -1,0 +1,52 @@
+module Braintrust
+  module Models
+    type repo_info =
+      {
+        author_email: String?,
+        author_name: String?,
+        branch: String?,
+        commit: String?,
+        commit_message: String?,
+        commit_time: String?,
+        dirty: bool?,
+        git_diff: String?,
+        tag: String?
+      }
+
+    class RepoInfo < Braintrust::BaseModel
+      attr_accessor author_email: String?
+
+      attr_accessor author_name: String?
+
+      attr_accessor branch: String?
+
+      attr_accessor commit: String?
+
+      attr_accessor commit_message: String?
+
+      attr_accessor commit_time: String?
+
+      attr_accessor dirty: bool?
+
+      attr_accessor git_diff: String?
+
+      attr_accessor tag: String?
+
+      def initialize:
+        (
+          author_email: String?,
+          author_name: String?,
+          branch: String?,
+          commit: String?,
+          commit_message: String?,
+          commit_time: String?,
+          dirty: bool?,
+          git_diff: String?,
+          tag: String?
+        ) -> void
+        | (?Braintrust::Models::repo_info | Braintrust::BaseModel data) -> void
+
+      def to_hash: -> Braintrust::Models::repo_info
+    end
+  end
+end

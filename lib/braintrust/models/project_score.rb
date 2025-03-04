@@ -3,55 +3,123 @@
 module Braintrust
   module Models
     class ProjectScore < Braintrust::BaseModel
-      # @!attribute [rw] id
+      # @!attribute id
       #   Unique identifier for the project score
+      #
       #   @return [String]
       required :id, String
 
-      # @!attribute [rw] name
+      # @!attribute name
       #   Name of the project score
+      #
       #   @return [String]
       required :name, String
 
-      # @!attribute [rw] project_id
+      # @!attribute project_id
       #   Unique identifier for the project that the project score belongs under
+      #
       #   @return [String]
       required :project_id, String
 
-      # @!attribute [rw] score_type
+      # @!attribute score_type
       #   The type of the configured score
+      #
       #   @return [Symbol, Braintrust::Models::ProjectScore::ScoreType]
       required :score_type, enum: -> { Braintrust::Models::ProjectScore::ScoreType }
 
-      # @!attribute [rw] user_id
+      # @!attribute user_id
+      #
       #   @return [String]
       required :user_id, String
 
-      # @!attribute [rw] categories
+      # @!attribute [r] categories
       #   For categorical-type project scores, the list of all categories
-      #   @return [Array<Braintrust::Models::ProjectScoreCategory>, Array<String>, Braintrust::Models::ProjectScore::Categories::UnnamedTypeWithunionParent7, Hash]
-      optional :categories, Braintrust::Unknown
+      #
+      #   @return [Array<Braintrust::Models::ProjectScoreCategory>, Hash{Symbol=>Float}, Array<String>, Braintrust::Models::ProjectScore::Categories::NullableVariant, nil]
+      optional :categories, union: -> { Braintrust::Models::ProjectScore::Categories }
 
-      # @!attribute [rw] config
-      #   @return [Braintrust::Models::ProjectScoreConfig]
-      optional :config, -> { Braintrust::Models::ProjectScoreConfig }
+      # @!parse
+      #   # @return [Array<Braintrust::Models::ProjectScoreCategory>, Hash{Symbol=>Float}, Array<String>, Braintrust::Models::ProjectScore::Categories::NullableVariant, nil]
+      #   attr_writer :categories
 
-      # @!attribute [rw] created
+      # @!attribute config
+      #
+      #   @return [Braintrust::Models::ProjectScoreConfig, nil]
+      optional :config, -> { Braintrust::Models::ProjectScoreConfig }, nil?: true
+
+      # @!attribute created
       #   Date of project score creation
-      #   @return [Time]
-      optional :created, Time
+      #
+      #   @return [Time, nil]
+      optional :created, Time, nil?: true
 
-      # @!attribute [rw] description
+      # @!attribute description
       #   Textual description of the project score
-      #   @return [String]
-      optional :description, String
+      #
+      #   @return [String, nil]
+      optional :description, String, nil?: true
 
-      # @!attribute [rw] position
-      #   An optional LexoRank-based string that sets the sort position for the score in the UI
-      #   @return [String]
-      optional :position, String
+      # @!attribute position
+      #   An optional LexoRank-based string that sets the sort position for the score in
+      #     the UI
+      #
+      #   @return [String, nil]
+      optional :position, String, nil?: true
 
+      # @!parse
+      #   # A project score is a user-configured score, which can be manually-labeled
+      #   #   through the UI
+      #   #
+      #   # @param id [String]
+      #   # @param name [String]
+      #   # @param project_id [String]
+      #   # @param score_type [Symbol, Braintrust::Models::ProjectScore::ScoreType]
+      #   # @param user_id [String]
+      #   # @param categories [Array<Braintrust::Models::ProjectScoreCategory>, Hash{Symbol=>Float}, Array<String>, Braintrust::Models::ProjectScore::Categories::NullableVariant, nil]
+      #   # @param config [Braintrust::Models::ProjectScoreConfig, nil]
+      #   # @param created [Time, nil]
+      #   # @param description [String, nil]
+      #   # @param position [String, nil]
+      #   #
+      #   def initialize(
+      #     id:,
+      #     name:,
+      #     project_id:,
+      #     score_type:,
+      #     user_id:,
+      #     categories: nil,
+      #     config: nil,
+      #     created: nil,
+      #     description: nil,
+      #     position: nil,
+      #     **
+      #   )
+      #     super
+      #   end
+
+      # def initialize: (Hash | Braintrust::BaseModel) -> void
+
+      # @abstract
+      #
       # The type of the configured score
+      #
+      # @example
+      # ```ruby
+      # case score_type
+      # in :slider
+      #   # ...
+      # in :categorical
+      #   # ...
+      # in :weighted
+      #   # ...
+      # in :minimum
+      #   # ...
+      # in :maximum
+      #   # ...
+      # in ...
+      #   #...
+      # end
+      # ```
       class ScoreType < Braintrust::Enum
         SLIDER = :slider
         CATEGORICAL = :categorical
@@ -59,24 +127,57 @@ module Braintrust
         MINIMUM = :minimum
         MAXIMUM = :maximum
         ONLINE = :online
+
+        finalize!
+
+        # @!parse
+        #   # @return [Array<Symbol>]
+        #   #
+        #   def self.values; end
       end
 
-      # @!parse
-      #   # Create a new instance of ProjectScore from a Hash of raw data.
-      #   #
-      #   # @param data [Hash{Symbol => Object}] .
-      #   #   @option data [String] :id Unique identifier for the project score
-      #   #   @option data [String] :name Name of the project score
-      #   #   @option data [String] :project_id Unique identifier for the project that the project score belongs under
-      #   #   @option data [String] :score_type The type of the configured score
-      #   #   @option data [String] :user_id
-      #   #   @option data [Array<Object>, Array<String>, Hash, Object, nil] :categories For categorical-type project scores, the list of all categories
-      #   #   @option data [Object, nil] :config
-      #   #   @option data [String, nil] :created Date of project score creation
-      #   #   @option data [String, nil] :description Textual description of the project score
-      #   #   @option data [String, nil] :position An optional LexoRank-based string that sets the sort position for the score in
-      #   #     the UI
-      #   def initialize(data = {}) = super
+      # @abstract
+      #
+      # For categorical-type project scores, the list of all categories
+      #
+      # @example
+      # ```ruby
+      # case categories
+      # in Braintrust::Models::ProjectScore::Categories::ProjectScoreCategoryArray
+      #   # ...
+      # in Braintrust::Models::ProjectScore::Categories::FloatMap
+      #   # ...
+      # in Braintrust::Models::ProjectScore::Categories::StringArray
+      #   # ...
+      # in Braintrust::Models::ProjectScore::Categories::NullableVariant
+      #   # ...
+      # end
+      # ```
+      class Categories < Braintrust::Union
+        ProjectScoreCategoryArray = Braintrust::ArrayOf[-> { Braintrust::Models::ProjectScoreCategory }]
+
+        FloatMap = Braintrust::HashOf[Float]
+
+        StringArray = Braintrust::ArrayOf[String]
+
+        # For categorical-type project scores, the list of all categories
+        variant Braintrust::Models::ProjectScore::Categories::ProjectScoreCategoryArray
+
+        # For weighted-type project scores, the weights of each score
+        variant Braintrust::Models::ProjectScore::Categories::FloatMap
+
+        # For minimum-type project scores, the list of included scores
+        variant Braintrust::Models::ProjectScore::Categories::StringArray
+
+        variant -> { Braintrust::Models::ProjectScore::Categories::NullableVariant }
+
+        class NullableVariant < Braintrust::BaseModel
+          # @!parse
+          #   def initialize(**) = super
+
+          # def initialize: (Hash | Braintrust::BaseModel) -> void
+        end
+      end
     end
   end
 end

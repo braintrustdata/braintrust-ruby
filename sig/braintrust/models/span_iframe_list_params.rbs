@@ -1,0 +1,70 @@
+module Braintrust
+  module Models
+    type span_iframe_list_params =
+      {
+        ending_before: String,
+        ids: Braintrust::Models::SpanIframeListParams::ids,
+        limit: Integer?,
+        org_name: String,
+        span_iframe_name: String,
+        starting_after: String
+      }
+      & Braintrust::request_parameters
+
+    class SpanIframeListParams < Braintrust::BaseModel
+      extend Braintrust::RequestParameters::Converter
+      include Braintrust::RequestParameters
+
+      attr_reader ending_before: String?
+
+      def ending_before=: (String) -> String
+
+      attr_reader ids: Braintrust::Models::SpanIframeListParams::ids?
+
+      def ids=: (
+        Braintrust::Models::SpanIframeListParams::ids
+      ) -> Braintrust::Models::SpanIframeListParams::ids
+
+      attr_accessor limit: Integer?
+
+      attr_reader org_name: String?
+
+      def org_name=: (String) -> String
+
+      attr_reader span_iframe_name: String?
+
+      def span_iframe_name=: (String) -> String
+
+      attr_reader starting_after: String?
+
+      def starting_after=: (String) -> String
+
+      def initialize:
+        (
+          ending_before: String,
+          ids: Braintrust::Models::SpanIframeListParams::ids,
+          limit: Integer?,
+          org_name: String,
+          span_iframe_name: String,
+          starting_after: String,
+          request_options: Braintrust::request_opts
+        ) -> void
+        | (
+          ?Braintrust::Models::span_iframe_list_params
+          | Braintrust::BaseModel data
+        ) -> void
+
+      def to_hash: -> Braintrust::Models::span_iframe_list_params
+
+      type ids = String | ::Array[String]
+
+      class IDs < Braintrust::Union
+        type string_array = ::Array[String]
+
+        StringArray: string_array
+
+        private def self.variants: -> [[nil, String], [nil, ::Array[String]]]
+      end
+    end
+  end
+end

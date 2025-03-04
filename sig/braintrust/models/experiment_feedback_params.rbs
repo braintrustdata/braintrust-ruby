@@ -1,0 +1,26 @@
+module Braintrust
+  module Models
+    type experiment_feedback_params =
+      { feedback: ::Array[Braintrust::Models::FeedbackExperimentItem] }
+      & Braintrust::request_parameters
+
+    class ExperimentFeedbackParams < Braintrust::BaseModel
+      extend Braintrust::RequestParameters::Converter
+      include Braintrust::RequestParameters
+
+      attr_accessor feedback: ::Array[Braintrust::Models::FeedbackExperimentItem]
+
+      def initialize:
+        (
+          feedback: ::Array[Braintrust::Models::FeedbackExperimentItem],
+          request_options: Braintrust::request_opts
+        ) -> void
+        | (
+          ?Braintrust::Models::experiment_feedback_params
+          | Braintrust::BaseModel data
+        ) -> void
+
+      def to_hash: -> Braintrust::Models::experiment_feedback_params
+    end
+  end
+end

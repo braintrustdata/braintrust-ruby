@@ -1,0 +1,27 @@
+module Braintrust
+  module Models
+    type feedback_response_schema =
+      { status: Braintrust::Models::FeedbackResponseSchema::status }
+
+    class FeedbackResponseSchema < Braintrust::BaseModel
+      attr_accessor status: Braintrust::Models::FeedbackResponseSchema::status
+
+      def initialize:
+        (status: Braintrust::Models::FeedbackResponseSchema::status) -> void
+        | (
+          ?Braintrust::Models::feedback_response_schema
+          | Braintrust::BaseModel data
+        ) -> void
+
+      def to_hash: -> Braintrust::Models::feedback_response_schema
+
+      type status = :success
+
+      class Status < Braintrust::Enum
+        SUCCESS: :success
+
+        def self.values: -> ::Array[Braintrust::Models::FeedbackResponseSchema::status]
+      end
+    end
+  end
+end

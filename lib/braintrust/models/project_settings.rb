@@ -3,17 +3,18 @@
 module Braintrust
   module Models
     class ProjectSettings < Braintrust::BaseModel
-      # @!attribute [rw] comparison_key
+      # @!attribute comparison_key
       #   The key used to join two experiments (defaults to `input`).
-      #   @return [String]
-      optional :comparison_key, String
+      #
+      #   @return [String, nil]
+      optional :comparison_key, String, nil?: true
 
       # @!parse
-      #   # Create a new instance of ProjectSettings from a Hash of raw data.
+      #   # @param comparison_key [String, nil]
       #   #
-      #   # @param data [Hash{Symbol => Object}] .
-      #   #   @option data [String, nil] :comparison_key The key used to join two experiments (defaults to `input`).
-      #   def initialize(data = {}) = super
+      #   def initialize(comparison_key: nil, **) = super
+
+      # def initialize: (Hash | Braintrust::BaseModel) -> void
     end
   end
 end

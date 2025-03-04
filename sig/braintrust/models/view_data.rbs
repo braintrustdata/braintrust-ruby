@@ -1,0 +1,15 @@
+module Braintrust
+  module Models
+    type view_data = { search: Braintrust::Models::ViewDataSearch? }
+
+    class ViewData < Braintrust::BaseModel
+      attr_accessor search: Braintrust::Models::ViewDataSearch?
+
+      def initialize:
+        (search: Braintrust::Models::ViewDataSearch?) -> void
+        | (?Braintrust::Models::view_data | Braintrust::BaseModel data) -> void
+
+      def to_hash: -> Braintrust::Models::view_data
+    end
+  end
+end

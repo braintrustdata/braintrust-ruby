@@ -3,54 +3,81 @@
 module Braintrust
   module Models
     class EnvVar < Braintrust::BaseModel
-      # @!attribute [rw] id
+      # @!attribute id
       #   Unique identifier for the environment variable
+      #
       #   @return [String]
       required :id, String
 
-      # @!attribute [rw] name
+      # @!attribute name
       #   The name of the environment variable
+      #
       #   @return [String]
       required :name, String
 
-      # @!attribute [rw] object_id_
+      # @!attribute object_id_
       #   The id of the object the environment variable is scoped for
+      #
       #   @return [String]
       required :object_id_, String, api_name: :object_id
 
-      # @!attribute [rw] object_type
+      # @!attribute object_type
       #   The type of the object the environment variable is scoped for
+      #
       #   @return [Symbol, Braintrust::Models::EnvVar::ObjectType]
       required :object_type, enum: -> { Braintrust::Models::EnvVar::ObjectType }
 
-      # @!attribute [rw] created
+      # @!attribute created
       #   Date of environment variable creation
-      #   @return [Time]
-      optional :created, Time
+      #
+      #   @return [Time, nil]
+      optional :created, Time, nil?: true
 
-      # @!attribute [rw] used
+      # @!attribute used
       #   Date the environment variable was last used
-      #   @return [Time]
-      optional :used, Time
+      #
+      #   @return [Time, nil]
+      optional :used, Time, nil?: true
 
+      # @!parse
+      #   # @param id [String]
+      #   # @param name [String]
+      #   # @param object_id_ [String]
+      #   # @param object_type [Symbol, Braintrust::Models::EnvVar::ObjectType]
+      #   # @param created [Time, nil]
+      #   # @param used [Time, nil]
+      #   #
+      #   def initialize(id:, name:, object_id_:, object_type:, created: nil, used: nil, **) = super
+
+      # def initialize: (Hash | Braintrust::BaseModel) -> void
+
+      # @abstract
+      #
       # The type of the object the environment variable is scoped for
+      #
+      # @example
+      # ```ruby
+      # case object_type
+      # in :organization
+      #   # ...
+      # in :project
+      #   # ...
+      # in :function
+      #   # ...
+      # end
+      # ```
       class ObjectType < Braintrust::Enum
         ORGANIZATION = :organization
         PROJECT = :project
         FUNCTION = :function
-      end
 
-      # @!parse
-      #   # Create a new instance of EnvVar from a Hash of raw data.
-      #   #
-      #   # @param data [Hash{Symbol => Object}] .
-      #   #   @option data [String] :id Unique identifier for the environment variable
-      #   #   @option data [String] :name The name of the environment variable
-      #   #   @option data [String] :object_id The id of the object the environment variable is scoped for
-      #   #   @option data [String] :object_type The type of the object the environment variable is scoped for
-      #   #   @option data [String, nil] :created Date of environment variable creation
-      #   #   @option data [String, nil] :used Date the environment variable was last used
-      #   def initialize(data = {}) = super
+        finalize!
+
+        # @!parse
+        #   # @return [Array<Symbol>]
+        #   #
+        #   def self.values; end
+      end
     end
   end
 end
