@@ -21,7 +21,8 @@ module Braintrust
         ),
         body: T.nilable(T.anything),
         unwrap: T.nilable(Symbol),
-        page: T.nilable(T::Class[Braintrust::BaseModel]),
+        page: T.nilable(T::Class[Braintrust::BasePage[Braintrust::BaseModel]]),
+        stream: T.nilable(T::Class[T.anything]),
         model: T.nilable(Braintrust::Converter::Input),
         options: T.nilable(T.any(Braintrust::RequestOptions, T::Hash[Symbol, T.anything]))
       }
@@ -122,20 +123,9 @@ module Braintrust
         retry_count: Integer,
         send_retry_header: T::Boolean
       )
-        .returns([Net::HTTPResponse, T::Enumerable[String]])
+        .returns([Integer, Net::HTTPResponse, T::Enumerable[String]])
     end
     private def send_request(request, redirect_count:, retry_count:, send_retry_header:)
-    end
-
-    sig do
-      params(
-        req: Braintrust::BaseClient::RequestComponentsShape,
-        headers: T.any(T::Hash[String, String], Net::HTTPHeader),
-        stream: T::Enumerable[String]
-      )
-        .returns(T.anything)
-    end
-    private def parse_response(req, headers:, stream:)
     end
 
     sig do
@@ -155,7 +145,8 @@ module Braintrust
         ),
         body: T.nilable(T.anything),
         unwrap: T.nilable(Symbol),
-        page: T.nilable(T::Class[Braintrust::BaseModel]),
+        page: T.nilable(T::Class[Braintrust::BasePage[Braintrust::BaseModel]]),
+        stream: T.nilable(T::Class[T.anything]),
         model: T.nilable(Braintrust::Converter::Input),
         options: T.nilable(T.any(Braintrust::RequestOptions, T::Hash[Symbol, T.anything]))
       )
@@ -169,6 +160,7 @@ module Braintrust
       body: nil,
       unwrap: nil,
       page: nil,
+      stream: nil,
       model: Braintrust::Unknown,
       options: {}
     )
