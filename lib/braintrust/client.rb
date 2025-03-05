@@ -6,7 +6,7 @@ module Braintrust
     DEFAULT_MAX_RETRIES = 2
 
     # Default per-request timeout.
-    DEFAULT_TIMEOUT_IN_SECONDS = 60
+    DEFAULT_TIMEOUT_IN_SECONDS = 60.0
 
     # Default initial retry delay in seconds.
     # Overall delay is calculated using exponential backoff + jitter.
@@ -15,7 +15,6 @@ module Braintrust
     # Default max retry delay in seconds.
     DEFAULT_MAX_RETRY_DELAY = 8.0
 
-    # Client option
     # @return [String, nil]
     attr_reader :api_key
 
@@ -76,16 +75,30 @@ module Braintrust
     # @return [Braintrust::Resources::Evals]
     attr_reader :evals
 
-    # @!visibility private
-    def auth_headers
-      {"Authorization" => "Bearer #{@api_key}"}
+    # @private
+    #
+    # @return [Hash{String=>String}]
+    #
+    private def auth_headers
+      return {} if @api_key.nil?
+
+      {"authorization" => "Bearer #{@api_key}"}
     end
 
     # Creates and returns a new client for interacting with the API.
     #
     # @param base_url [String, nil] Override the default base URL for the API, e.g., `"https://api.example.com/v2/"`
+    #
     # @param api_key [String, nil] Defaults to `ENV["BRAINTRUST_API_KEY"]`
+    #
     # @param max_retries [Integer] Max number of retries to attempt after a failed retryable request.
+    #
+    # @param timeout [Float]
+    #
+    # @param initial_retry_delay [Float]
+    #
+    # @param max_retry_delay [Float]
+    #
     def initialize(
       base_url: nil,
       api_key: ENV["BRAINTRUST_API_KEY"],
@@ -125,30 +138,6 @@ module Braintrust
       @ai_secrets = Braintrust::Resources::AISecrets.new(client: self)
       @env_vars = Braintrust::Resources::EnvVars.new(client: self)
       @evals = Braintrust::Resources::Evals.new(client: self)
-    end
-
-    # @!visibility private
-    private def make_status_error(message:, body:, response:)
-      case response.code.to_i
-      in 400
-        Braintrust::HTTP::BadRequestError.new(message: message, response: response, body: body)
-      in 401
-        Braintrust::HTTP::AuthenticationError.new(message: message, response: response, body: body)
-      in 403
-        Braintrust::HTTP::PermissionDeniedError.new(message: message, response: response, body: body)
-      in 404
-        Braintrust::HTTP::NotFoundError.new(message: message, response: response, body: body)
-      in 409
-        Braintrust::HTTP::ConflictError.new(message: message, response: response, body: body)
-      in 422
-        Braintrust::HTTP::UnprocessableEntityError.new(message: message, response: response, body: body)
-      in 429
-        Braintrust::HTTP::RateLimitError.new(message: message, response: response, body: body)
-      in 500..599
-        Braintrust::HTTP::InternalServerError.new(message: message, response: response, body: body)
-      else
-        Braintrust::HTTP::APIStatusError.new(message: message, response: response, body: body)
-      end
     end
   end
 end

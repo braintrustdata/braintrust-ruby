@@ -3,26 +3,34 @@
 module Braintrust
   module Models
     class ViewOptions < Braintrust::BaseModel
-      # @!attribute [rw] column_order
-      #   @return [Array<String>]
-      optional :column_order, Braintrust::ArrayOf.new(String), api_name: :columnOrder
+      # @!attribute column_order
+      #
+      #   @return [Array<String>, nil]
+      optional :column_order, Braintrust::ArrayOf[String], api_name: :columnOrder, nil?: true
 
-      # @!attribute [rw] column_sizing
-      #   @return [Hash]
-      optional :column_sizing, Hash, api_name: :columnSizing
+      # @!attribute column_sizing
+      #
+      #   @return [Hash{Symbol=>Float}, nil]
+      optional :column_sizing, Braintrust::HashOf[Float], api_name: :columnSizing, nil?: true
 
-      # @!attribute [rw] column_visibility
-      #   @return [Hash]
-      optional :column_visibility, Hash, api_name: :columnVisibility
+      # @!attribute column_visibility
+      #
+      #   @return [Hash{Symbol=>Boolean}, nil]
+      optional :column_visibility,
+               Braintrust::HashOf[Braintrust::BooleanModel],
+               api_name: :columnVisibility,
+               nil?: true
 
       # @!parse
-      #   # Create a new instance of ViewOptions from a Hash of raw data.
+      #   # Options for the view in the app
       #   #
-      #   # @param data [Hash{Symbol => Object}] .
-      #   #   @option data [Array<String>, nil] :columnOrder
-      #   #   @option data [Hash, nil] :columnSizing
-      #   #   @option data [Hash, nil] :columnVisibility
-      #   def initialize(data = {}) = super
+      #   # @param column_order [Array<String>, nil]
+      #   # @param column_sizing [Hash{Symbol=>Float}, nil]
+      #   # @param column_visibility [Hash{Symbol=>Boolean}, nil]
+      #   #
+      #   def initialize(column_order: nil, column_sizing: nil, column_visibility: nil, **) = super
+
+      # def initialize: (Hash | Braintrust::BaseModel) -> void
     end
   end
 end

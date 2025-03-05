@@ -1,0 +1,47 @@
+module Braintrust
+  module Models
+    type group_update_params =
+      {
+        add_member_groups: ::Array[String]?,
+        add_member_users: ::Array[String]?,
+        description: String?,
+        name: String?,
+        remove_member_groups: ::Array[String]?,
+        remove_member_users: ::Array[String]?
+      }
+      & Braintrust::request_parameters
+
+    class GroupUpdateParams < Braintrust::BaseModel
+      extend Braintrust::RequestParameters::Converter
+      include Braintrust::RequestParameters
+
+      attr_accessor add_member_groups: ::Array[String]?
+
+      attr_accessor add_member_users: ::Array[String]?
+
+      attr_accessor description: String?
+
+      attr_accessor name: String?
+
+      attr_accessor remove_member_groups: ::Array[String]?
+
+      attr_accessor remove_member_users: ::Array[String]?
+
+      def initialize:
+        (
+          add_member_groups: ::Array[String]?,
+          add_member_users: ::Array[String]?,
+          description: String?,
+          name: String?,
+          remove_member_groups: ::Array[String]?,
+          remove_member_users: ::Array[String]?,
+          request_options: Braintrust::request_opts
+        ) -> void
+        | (
+          ?Braintrust::Models::group_update_params | Braintrust::BaseModel data
+        ) -> void
+
+      def to_hash: -> Braintrust::Models::group_update_params
+    end
+  end
+end

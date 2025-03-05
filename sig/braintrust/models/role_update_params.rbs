@@ -1,0 +1,199 @@
+module Braintrust
+  module Models
+    type role_update_params =
+      {
+        add_member_permissions: ::Array[Braintrust::Models::RoleUpdateParams::AddMemberPermission]?,
+        add_member_roles: ::Array[String]?,
+        description: String?,
+        name: String?,
+        remove_member_permissions: ::Array[Braintrust::Models::RoleUpdateParams::RemoveMemberPermission]?,
+        remove_member_roles: ::Array[String]?
+      }
+      & Braintrust::request_parameters
+
+    class RoleUpdateParams < Braintrust::BaseModel
+      extend Braintrust::RequestParameters::Converter
+      include Braintrust::RequestParameters
+
+      attr_accessor add_member_permissions: ::Array[Braintrust::Models::RoleUpdateParams::AddMemberPermission]?
+
+      attr_accessor add_member_roles: ::Array[String]?
+
+      attr_accessor description: String?
+
+      attr_accessor name: String?
+
+      attr_accessor remove_member_permissions: ::Array[Braintrust::Models::RoleUpdateParams::RemoveMemberPermission]?
+
+      attr_accessor remove_member_roles: ::Array[String]?
+
+      def initialize:
+        (
+          add_member_permissions: ::Array[Braintrust::Models::RoleUpdateParams::AddMemberPermission]?,
+          add_member_roles: ::Array[String]?,
+          description: String?,
+          name: String?,
+          remove_member_permissions: ::Array[Braintrust::Models::RoleUpdateParams::RemoveMemberPermission]?,
+          remove_member_roles: ::Array[String]?,
+          request_options: Braintrust::request_opts
+        ) -> void
+        | (
+          ?Braintrust::Models::role_update_params | Braintrust::BaseModel data
+        ) -> void
+
+      def to_hash: -> Braintrust::Models::role_update_params
+
+      type add_member_permission =
+        {
+          permission: Braintrust::Models::RoleUpdateParams::AddMemberPermission::permission,
+          restrict_object_type: Braintrust::Models::RoleUpdateParams::AddMemberPermission::restrict_object_type?
+        }
+
+      class AddMemberPermission < Braintrust::BaseModel
+        attr_accessor permission: Braintrust::Models::RoleUpdateParams::AddMemberPermission::permission
+
+        attr_accessor restrict_object_type: Braintrust::Models::RoleUpdateParams::AddMemberPermission::restrict_object_type?
+
+        def initialize:
+          (
+            permission: Braintrust::Models::RoleUpdateParams::AddMemberPermission::permission,
+            restrict_object_type: Braintrust::Models::RoleUpdateParams::AddMemberPermission::restrict_object_type?
+          ) -> void
+          | (
+            ?Braintrust::Models::RoleUpdateParams::add_member_permission
+            | Braintrust::BaseModel data
+          ) -> void
+
+        def to_hash: -> Braintrust::Models::RoleUpdateParams::add_member_permission
+
+        type permission =
+          :create
+          | :read
+          | :update
+          | :delete
+          | :create_acls
+          | :read_acls
+          | :update_acls
+          | :delete_acls
+
+        class Permission < Braintrust::Enum
+          CREATE: :create
+          READ: :read
+          UPDATE: :update
+          DELETE: :delete
+          CREATE_ACLS: :create_acls
+          READ_ACLS: :read_acls
+          UPDATE_ACLS: :update_acls
+          DELETE_ACLS: :delete_acls
+
+          def self.values: -> ::Array[Braintrust::Models::RoleUpdateParams::AddMemberPermission::permission]
+        end
+
+        type restrict_object_type =
+          :organization
+          | :project
+          | :experiment
+          | :dataset
+          | :prompt
+          | :prompt_session
+          | :group
+          | :role
+          | :org_member
+          | :project_log
+          | :org_project
+
+        class RestrictObjectType < Braintrust::Enum
+          ORGANIZATION: :organization
+          PROJECT: :project
+          EXPERIMENT: :experiment
+          DATASET: :dataset
+          PROMPT: :prompt
+          PROMPT_SESSION: :prompt_session
+          GROUP: :group
+          ROLE: :role
+          ORG_MEMBER: :org_member
+          PROJECT_LOG: :project_log
+          ORG_PROJECT: :org_project
+
+          def self.values: -> ::Array[Braintrust::Models::RoleUpdateParams::AddMemberPermission::restrict_object_type]
+        end
+      end
+
+      type remove_member_permission =
+        {
+          permission: Braintrust::Models::RoleUpdateParams::RemoveMemberPermission::permission,
+          restrict_object_type: Braintrust::Models::RoleUpdateParams::RemoveMemberPermission::restrict_object_type?
+        }
+
+      class RemoveMemberPermission < Braintrust::BaseModel
+        attr_accessor permission: Braintrust::Models::RoleUpdateParams::RemoveMemberPermission::permission
+
+        attr_accessor restrict_object_type: Braintrust::Models::RoleUpdateParams::RemoveMemberPermission::restrict_object_type?
+
+        def initialize:
+          (
+            permission: Braintrust::Models::RoleUpdateParams::RemoveMemberPermission::permission,
+            restrict_object_type: Braintrust::Models::RoleUpdateParams::RemoveMemberPermission::restrict_object_type?
+          ) -> void
+          | (
+            ?Braintrust::Models::RoleUpdateParams::remove_member_permission
+            | Braintrust::BaseModel data
+          ) -> void
+
+        def to_hash: -> Braintrust::Models::RoleUpdateParams::remove_member_permission
+
+        type permission =
+          :create
+          | :read
+          | :update
+          | :delete
+          | :create_acls
+          | :read_acls
+          | :update_acls
+          | :delete_acls
+
+        class Permission < Braintrust::Enum
+          CREATE: :create
+          READ: :read
+          UPDATE: :update
+          DELETE: :delete
+          CREATE_ACLS: :create_acls
+          READ_ACLS: :read_acls
+          UPDATE_ACLS: :update_acls
+          DELETE_ACLS: :delete_acls
+
+          def self.values: -> ::Array[Braintrust::Models::RoleUpdateParams::RemoveMemberPermission::permission]
+        end
+
+        type restrict_object_type =
+          :organization
+          | :project
+          | :experiment
+          | :dataset
+          | :prompt
+          | :prompt_session
+          | :group
+          | :role
+          | :org_member
+          | :project_log
+          | :org_project
+
+        class RestrictObjectType < Braintrust::Enum
+          ORGANIZATION: :organization
+          PROJECT: :project
+          EXPERIMENT: :experiment
+          DATASET: :dataset
+          PROMPT: :prompt
+          PROMPT_SESSION: :prompt_session
+          GROUP: :group
+          ROLE: :role
+          ORG_MEMBER: :org_member
+          PROJECT_LOG: :project_log
+          ORG_PROJECT: :org_project
+
+          def self.values: -> ::Array[Braintrust::Models::RoleUpdateParams::RemoveMemberPermission::restrict_object_type]
+        end
+      end
+    end
+  end
+end

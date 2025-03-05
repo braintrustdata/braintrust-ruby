@@ -1,203 +1,59 @@
 # frozen_string_literal: true
 
 module Braintrust
-  # @!visibility private
+  # @private
+  #
+  # @abstract
+  #
   class BaseClient
-    MAX_REDIRECTS = 20 # from whatwg fetch spec
+    # from whatwg fetch spec
+    MAX_REDIRECTS = 20
 
-    # @!attribute requester
-    # @return [Braintrust::PooledNetRequester]
-    attr_accessor :requester
+    # rubocop:disable Style/MutableConstant
+    PLATFORM_HEADERS = {
+      "x-stainless-arch" => Braintrust::Util.arch,
+      "x-stainless-lang" => "ruby",
+      "x-stainless-os" => Braintrust::Util.os,
+      "x-stainless-package-version" => Braintrust::VERSION,
+      "x-stainless-runtime" => ::RUBY_ENGINE,
+      "x-stainless-runtime-version" => ::RUBY_ENGINE_VERSION
+    }
+    # rubocop:enable Style/MutableConstant
 
-    # @param base_url [String]
-    # @param timeout [Float]
-    # @param max_retries [Integer]
-    # @param initial_retry_delay [Float]
-    # @param max_retry_delay [Float]
-    # @param headers [Hash{String => String}]
-    # @param idempotency_header [String, nil]
-    def initialize(
-      base_url:,
-      timeout: 0.0,
-      max_retries: 0,
-      initial_retry_delay: 0,
-      max_retry_delay: 0,
-      headers: {},
-      idempotency_header: nil
-    )
-      @requester = Braintrust::PooledNetRequester.new
-      @headers = Braintrust::Util.normalized_headers(
-        {
-          "X-Stainless-Lang" => "ruby",
-          "X-Stainless-Package-Version" => Braintrust::VERSION,
-          "X-Stainless-Runtime" => RUBY_ENGINE,
-          "X-Stainless-Runtime-Version" => RUBY_ENGINE_VERSION,
-          "Accept" => "application/json"
-        },
-        headers
-      )
-      parsed = Braintrust::Util.parse_uri(base_url)
-      @scheme, @host, @port, path = parsed.fetch_values(:scheme, :host, :port, :path)
-      @base_path = Braintrust::Util.normalize_path(path)
-      @idempotency_header = idempotency_header&.to_s&.downcase
-      @max_retries = max_retries
-      @timeout = timeout
-      @initial_retry_delay = initial_retry_delay
-      @max_retry_delay = max_retry_delay
-    end
-
-    # @return [Hash{String => String}]
-    def auth_headers
-      {}
-    end
-
-    # @return [String]
-    def generate_idempotency_key
-      "stainless-ruby-retry-#{SecureRandom.uuid}"
-    end
-
-    # @param req [Hash{Symbol => Object}]
-    #   @option req [Hash{Symbol => Object}, Array, Object, nil] :body
-    #
-    # @raise [ArgumentError]
-    private def validate_request!(req)
-      case (body = req[:body])
-      in Hash
-        body.each_key do |k|
-          unless k.is_a?(Symbol)
-            raise ArgumentError, "Request body keys must be Symbols, got #{k.inspect}"
+    class << self
+      # @private
+      #
+      # @param req [Hash{Symbol=>Object}]
+      #
+      # @raise [ArgumentError]
+      #
+      def validate!(req)
+        keys = [:method, :path, :query, :headers, :body, :unwrap, :page, :model, :options]
+        case req
+        in Hash
+          req.each_key do |k|
+            unless keys.include?(k)
+              raise ArgumentError.new("Request `req` keys must be one of #{keys}, got #{k.inspect}")
+            end
           end
-        end
-      else
-        # Body can be at least a Hash or Array, just check for Hash shape for now.
-      end
-    end
-
-    # @param req [Hash{Symbol => Object}]
-    #   @option req [String] :url
-    #   @option req [String] :host
-    #   @option req [String] :scheme
-    #   @option req [String] :path
-    #   @option req [String] :port
-    #   @option req [Hash{String => Array<String>}] :query
-    #   @option req [Hash{String => Array<String>}] :extra_query
-    #
-    # @return [Hash{Symbol => Object}]
-    def resolve_uri_elements(req)
-      from_args =
-        if (url = req[:url])
-          Braintrust::Util.parse_uri(url)
         else
-          path = Braintrust::Util.normalize_path("/#{@base_path}/#{req.fetch(:path)}")
-          req.slice(:scheme, :host, :port, :query).merge(path: path)
+          raise ArgumentError.new("Request `req` must be a Hash or RequestOptions, got #{req.inspect}")
         end
-
-      query = Braintrust::Util.deep_merge(
-        from_args[:query] || {},
-        req[:extra_query] || {},
-        concat: true
-      )
-      {
-        host: @host,
-        scheme: @scheme,
-        port: @port,
-        **from_args,
-        query: query
-      }
-    end
-
-    # @param req [Hash{Symbol => Object}]
-    # @param opts [Braintrust::RequestOptions, Hash{Symbol => Object}]
-    #
-    # @return [Hash{Symbol => Object}]
-    private def build_request(req, opts)
-      options = Braintrust::Util.deep_merge(req, opts)
-      method = options.fetch(:method)
-      body, extra_body = options.values_at(:body, :extra_body)
-
-      headers = Braintrust::Util.normalized_headers(
-        @headers,
-        auth_headers,
-        *options.values_at(:headers, :extra_headers)
-      )
-      if @idempotency_header &&
-         !headers.key?(@idempotency_header) &&
-         ![:get, :head, :options].include?(method)
-        headers[@idempotency_header] = options.fetch(:idempotency_key) { generate_idempotency_key }
       end
 
-      unless headers.key?("x-stainless-retry-count")
-        headers["x-stainless-retry-count"] = "0"
-      end
-      headers.reject! { |_, v| v.nil? || v == "" }
-
-      if [:get, :head, :options].include?(method)
-        body = nil
-      elsif extra_body
-        body = Braintrust::Util.deep_merge(body, extra_body)
-      end
-
-      body =
-        case headers["content-type"]
-        in "application/json"
-          JSON.dump(body)
-        else
-          body
-        end
-
-      url_elements = resolve_uri_elements(options)
-      {method: method, headers: headers, body: body, **url_elements}
-    end
-
-    # @param response [Net::HTTPResponse]
-    #
-    # @raise [JSON::ParserError]
-    # @return [Object]
-    private def parse_body(response)
-      case response.content_type
-      in "application/json"
-        JSON.parse(response.body, symbolize_names: true)
-      else
-        # TODO: parsing other response types
-        response.body
-      end
-    end
-
-    # @param message [String]
-    # @param body [Object]
-    # @param response [Net::HTTPResponse]
-    private def make_status_error(message:, body:, response:)
-      raise NotImplementedError
-    end
-
-    # @param response [Net::HTTPResponse]
-    private def make_status_error_from_response(response)
-      err_body =
-        begin
-          parse_body(response)
-        rescue JSON::ParserError
-          response
-        end
-
-      # We include the body in the error message as well as returning it
-      # since logging error messages is a common and quick way to assess what's
-      # wrong with a response.
-      message = "Error code: #{response.code}; Response: #{response.body}"
-      make_status_error(message: message, body: err_body, response: response)
-    end
-
-    # @param response [Net::HTTPResponse]
-    #
-    # @return [Boolean]
-    private def should_retry?(response)
-      case response["x-should-retry"]
-      in "true"
-        true
-      in "false"
-        false
-      else
-        case response.code.to_i
-        in 408 | 409 | 429 | (500..)
+      # @private
+      #
+      # @param status [Integer]
+      # @param headers [Hash{String=>String}, Net::HTTPHeader]
+      #
+      # @return [Boolean]
+      #
+      def should_retry?(status, headers:)
+        coerced = Braintrust::Util.coerce_boolean(headers["x-should-retry"])
+        case [coerced, status]
+        in [true | false, _]
+          coerced
+        in [_, 408 | 409 | 429 | (500..)]
           # retry on:
           # 408: timeouts
           # 409: locks
@@ -208,34 +64,231 @@ module Braintrust
           false
         end
       end
+
+      # @private
+      #
+      # @param request [Hash{Symbol=>Object}] .
+      #
+      #   @option request [Symbol] :method
+      #
+      #   @option request [URI::Generic] :url
+      #
+      #   @option request [Hash{String=>String}] :headers
+      #
+      #   @option request [Object] :body
+      #
+      #   @option request [Integer] :max_retries
+      #
+      #   @option request [Float] :timeout
+      #
+      # @param status [Integer]
+      #
+      # @param response_headers [Hash{String=>String}, Net::HTTPHeader]
+      #
+      # @return [Hash{Symbol=>Object}]
+      #
+      def follow_redirect(request, status:, response_headers:)
+        method, url, headers = request.fetch_values(:method, :url, :headers)
+        location =
+          Kernel.then do
+            URI.join(url, response_headers["location"])
+          rescue ArgumentError
+            message = "Server responded with status #{status} but no valid location header."
+            raise Braintrust::APIConnectionError.new(url: url, message: message)
+          end
+
+        request = {**request, url: location}
+
+        case [url.scheme, location.scheme]
+        in ["https", "http"]
+          message = "Tried to redirect to a insecure URL"
+          raise Braintrust::APIConnectionError.new(url: url, message: message)
+        else
+          nil
+        end
+
+        # from whatwg fetch spec
+        case [status, method]
+        in [301 | 302, :post] | [303, _]
+          drop = %w[content-encoding content-language content-length content-location content-type]
+          request = {
+            **request,
+            method: method == :head ? :head : :get,
+            headers: headers.except(*drop),
+            body: nil
+          }
+        else
+        end
+
+        # from undici
+        if Braintrust::Util.uri_origin(url) != Braintrust::Util.uri_origin(location)
+          drop = %w[authorization cookie host proxy-authorization]
+          request = {**request, headers: request.fetch(:headers).except(*drop)}
+        end
+
+        request
+      end
     end
 
-    # @param response [Net::HTTPResponse]
+    # @private
+    #
+    # @return [Braintrust::PooledNetRequester]
+    attr_accessor :requester
+
+    # @private
+    #
+    # @param base_url [String]
+    # @param timeout [Float]
+    # @param max_retries [Integer]
+    # @param initial_retry_delay [Float]
+    # @param max_retry_delay [Float]
+    # @param headers [Hash{String=>String, Integer, Array<String, Integer, nil>, nil}]
+    # @param idempotency_header [String, nil]
+    #
+    def initialize(
+      base_url:,
+      timeout: 0.0,
+      max_retries: 0,
+      initial_retry_delay: 0.0,
+      max_retry_delay: 0.0,
+      headers: {},
+      idempotency_header: nil
+    )
+      @requester = Braintrust::PooledNetRequester.new
+      @headers = Braintrust::Util.normalized_headers(
+        self.class::PLATFORM_HEADERS,
+        {
+          "accept" => "application/json",
+          "content-type" => "application/json"
+        },
+        headers
+      )
+      @base_url = Braintrust::Util.parse_uri(base_url)
+      @idempotency_header = idempotency_header&.to_s&.downcase
+      @max_retries = max_retries
+      @timeout = timeout
+      @initial_retry_delay = initial_retry_delay
+      @max_retry_delay = max_retry_delay
+    end
+
+    # @private
+    #
+    # @return [Hash{String=>String}]
+    #
+    private def auth_headers = {}
+
+    # @private
+    #
+    # @return [String]
+    #
+    private def generate_idempotency_key = "stainless-ruby-retry-#{SecureRandom.uuid}"
+
+    # @private
+    #
+    # @param req [Hash{Symbol=>Object}] .
+    #
+    #   @option req [Symbol] :method
+    #
+    #   @option req [String, Array<String>] :path
+    #
+    #   @option req [Hash{String=>Array<String>, String, nil}, nil] :query
+    #
+    #   @option req [Hash{String=>String, Integer, Array<String, Integer, nil>, nil}, nil] :headers
+    #
+    #   @option req [Object, nil] :body
+    #
+    #   @option req [Symbol, nil] :unwrap
+    #
+    #   @option req [Class, nil] :page
+    #
+    #   @option req [Braintrust::Converter, Class, nil] :model
+    #
+    # @param opts [Hash{Symbol=>Object}] .
+    #
+    #   @option opts [String, nil] :idempotency_key
+    #
+    #   @option opts [Hash{String=>Array<String>, String, nil}, nil] :extra_query
+    #
+    #   @option opts [Hash{String=>String, nil}, nil] :extra_headers
+    #
+    #   @option opts [Hash{Symbol=>Object}, nil] :extra_body
+    #
+    #   @option opts [Integer, nil] :max_retries
+    #
+    #   @option opts [Float, nil] :timeout
+    #
+    # @return [Hash{Symbol=>Object}]
+    #
+    private def build_request(req, opts)
+      method, uninterpolated_path = req.fetch_values(:method, :path)
+
+      path = Braintrust::Util.interpolate_path(uninterpolated_path)
+
+      query = Braintrust::Util.deep_merge(req[:query].to_h, opts[:extra_query].to_h)
+
+      headers = Braintrust::Util.normalized_headers(
+        @headers,
+        auth_headers,
+        req[:headers].to_h,
+        opts[:extra_headers].to_h
+      )
+
+      if @idempotency_header &&
+         !headers.key?(@idempotency_header) &&
+         !Net::HTTP::IDEMPOTENT_METHODS_.include?(method.to_s.upcase)
+        headers[@idempotency_header] = opts.fetch(:idempotency_key) { generate_idempotency_key }
+      end
+
+      unless headers.key?("x-stainless-retry-count")
+        headers["x-stainless-retry-count"] = "0"
+      end
+
+      timeout = opts.fetch(:timeout, @timeout).to_f.clamp((0..))
+      unless headers.key?("x-stainless-read-timeout") || timeout.zero?
+        headers["x-stainless-read-timeout"] = timeout.to_s
+      end
+
+      headers.reject! { |_, v| v.to_s.empty? }
+
+      body =
+        case method
+        in :get | :head | :options | :trace
+          nil
+        else
+          Braintrust::Util.deep_merge(*[req[:body], opts[:extra_body]].compact)
+        end
+
+      headers, encoded = Braintrust::Util.encode_content(headers, body)
+      {
+        method: method,
+        url: Braintrust::Util.join_parsed_uri(@base_url, {**req, path: path, query: query}),
+        headers: headers,
+        body: encoded,
+        max_retries: opts.fetch(:max_retries, @max_retries),
+        timeout: timeout
+      }
+    end
+
+    # @private
+    #
+    # @param headers [Hash{String=>String}]
     # @param retry_count [Integer]
     #
     # @return [Float]
-    private def retry_delay(response, retry_count:)
-      # Note the `retry-after-ms` header may not be standard, but is a good idea and we'd like proactive support for it.
-      span = Float(response["retry-after-ms"], exception: false)&.then { |v| v / 1000 }
+    #
+    private def retry_delay(headers, retry_count:)
+      # Non-standard extension
+      span = Float(headers["retry-after-ms"], exception: false)&.then { _1 / 1000 }
       return span if span
 
-      retry_header = response["retry-after"]
+      retry_header = headers["retry-after"]
       return span if (span = Float(retry_header, exception: false))
 
-      # TODO(ruby) - this should be removed when we support middlewares
-      now =
-        if response["x-stainless-mock-sleep-base"]
-          Time.httpdate(response["x-stainless-mock-sleep-base"])
-        else
-          Time.now
-        end
-
-      span =
-        if retry_header
-          Braintrust::Util.suppress(ArgumentError) do
-            Time.httpdate(retry_header) - now
-          end
-        end
+      span = retry_header&.then do
+        Time.httpdate(_1) - Time.now
+      rescue ArgumentError
+        nil
+      end
       return span if span
 
       scale = retry_count**2
@@ -243,137 +296,92 @@ module Braintrust
       (@initial_retry_delay * scale * jitter).clamp(0, @max_retry_delay)
     end
 
-    # @param request [Hash{Symbol => Object}]
-    #   @option options [Symbol] :method
-    #   @option options [Hash{String => String}] :headers
-    #   @option options [String, nil] :body
+    # @private
     #
-    # @param status [Integer]
-    # @param location_header [URI::Generic]
+    # @param request [Hash{Symbol=>Object}] .
     #
-    # @raise [Braintrust::HTTP::Error]
-    # @return [Hash{Symbol => Object}]
-    private def follow_redirect(request, status:, location_header:)
-      uri = Braintrust::Util.unparse_uri(request)
-      location =
-        Braintrust::Util.suppress(ArgumentError) do
-          URI.join(uri, location_header)
-        end
-
-      # TODO(ruby): these should be response errors
-      unless location
-        message = "server responded with status #{status} but no valid location header"
-        raise HTTP::APIConnectionError.new(message: message, request: request)
-      end
-
-      request = {**request, **resolve_uri_elements(url: location)}
-
-      case [uri.scheme, location.scheme]
-      in ["https", "http"]
-        message = "tried to redirect to a insecure URL"
-        raise HTTP::APIConnectionError.new(message: message, request: request)
-      else
-        nil
-      end
-
-      # from whatwg fetch spec
-      case [status, (method = request.fetch(:method))]
-      in [301 | 302, :post] | [303, _]
-        drop = %w[content-encoding content-language content-location content-type content-length]
-        request = {
-          **request,
-          method: method == :head ? :head : :get,
-          headers: request.fetch(:headers).except(*drop),
-          body: nil
-        }
-      else
-      end
-
-      # from undici
-      if Braintrust::Util.uri_origin(uri) != Braintrust::Util.uri_origin(location)
-        drop = %w[authorization cookie proxy-authorization host]
-        request = {**request, headers: request.fetch(:headers).except(*drop)}
-      end
-
-      request
-    end
-
-    # @param request [Hash{Symbol => Object}]
-    #   @option options [Symbol] :method
-    #   @option options [Hash{String => String}] :headers
-    #   @option options [String, nil] :body
+    #   @option request [Symbol] :method
     #
-    # @param max_retries [Integer]
-    # @param timeout [Float]
+    #   @option request [URI::Generic] :url
+    #
+    #   @option request [Hash{String=>String}] :headers
+    #
+    #   @option request [Object] :body
+    #
+    #   @option request [Integer] :max_retries
+    #
+    #   @option request [Float] :timeout
+    #
     # @param redirect_count [Integer]
+    #
     # @param retry_count [Integer]
+    #
     # @param send_retry_header [Boolean]
     #
-    # @raise [Braintrust::HTTP::Error]
-    # @return [Net::HTTPResponse]
-    private def send_request(
-      request,
-      max_retries:,
-      timeout:,
-      redirect_count:,
-      retry_count:,
-      send_retry_header:
-    )
+    # @raise [Braintrust::APIError]
+    # @return [Array(Net::HTTPResponse, Enumerable)]
+    #
+    private def send_request(request, redirect_count:, retry_count:, send_retry_header:)
+      url, headers, max_retries, timeout = request.fetch_values(:url, :headers, :max_retries, :timeout)
+      input = {**request.except(:timeout), deadline: Braintrust::Util.monotonic_secs + timeout}
+
       if send_retry_header
-        request.fetch(:headers)["x-stainless-retry-count"] = retry_count.to_s
+        headers["x-stainless-retry-count"] = retry_count.to_s
       end
 
       begin
-        response = @requester.execute(request, timeout: timeout)
-        status = response.code.to_i
-      rescue Timeout::Error, Net::HTTPBadResponse => e
+        response, stream = @requester.execute(input)
+        status = Integer(response.code)
+      rescue Braintrust::APIConnectionError => e
         status = e
       end
 
+      # normally we want to drain the response body and reuse the HTTP session by clearing the socket buffers
+      # unless we hit a server error
+      srv_fault = (500...).include?(status)
+
       case status
       in ..299
-        response
-      in 300..399
-        if redirect_count >= MAX_REDIRECTS
-          message = "failed to complete the request within #{MAX_REDIRECTS} redirects"
-          raise HTTP::APIConnectionError.new(message: message, request: request)
-        end
+        [response, stream]
+      in 300..399 if redirect_count >= self.class::MAX_REDIRECTS
+        message = "Failed to complete the request within #{self.class::MAX_REDIRECTS} redirects."
 
-        request = follow_redirect(request, status: status, location_header: response["location"])
+        stream.each { next }
+        raise Braintrust::APIConnectionError.new(url: url, message: message)
+      in 300..399
+        request = self.class.follow_redirect(request, status: status, response_headers: response)
+
+        stream.each { next }
         send_request(
           request,
-          max_retries: max_retries,
-          timeout: timeout,
           redirect_count: redirect_count + 1,
           retry_count: retry_count,
           send_retry_header: send_retry_header
         )
-      in 400.. | Timeout::Error | Net::HTTPBadResponse
-        if response && !should_retry?(response)
-          raise make_status_error_from_response(response)
-        end
+      in Braintrust::APIConnectionError if retry_count >= max_retries
+        raise status
+      in (400..) if retry_count >= max_retries || (response && !self.class.should_retry?(
+        status,
+        headers: response
+      ))
+        decoded = Braintrust::Util.decode_content(response, stream: stream, suppress_error: true)
 
-        if retry_count >= max_retries
-          message = "failed to complete the request within #{max_retries} retries"
-          case status
-          in Timeout::Error
-            raise HTTP::APITimeoutError.new(message: message, request: request)
-          else
-            raise HTTP::InternalServerError.new(message: message, response: response, body: response.body)
-          end
-        end
-
+        stream.each { srv_fault ? break : next }
+        raise Braintrust::APIStatusError.for(
+          url: url,
+          status: status,
+          body: decoded,
+          request: nil,
+          response: response
+        )
+      in (400..) | Braintrust::APIConnectionError
         delay = retry_delay(response, retry_count: retry_count)
-        if response&.key?("x-stainless-mock-sleep")
-          request.fetch(:headers)["x-stainless-mock-slept"] = delay
-        else
-          sleep(delay)
-        end
+
+        stream&.each { srv_fault ? break : next }
+        sleep(delay)
 
         send_request(
           request,
-          max_retries: max_retries,
-          timeout: timeout,
           redirect_count: redirect_count,
           retry_count: retry_count + 1,
           send_retry_header: send_retry_header
@@ -381,134 +389,96 @@ module Braintrust
       end
     end
 
-    # @param req [Hash{Symbol => Object}]
-    # @param opts [Braintrust::RequestOptions, Hash{Symbol => Object}]
+    # @private
+    #
+    # @param req [Hash{Symbol=>Object}] .
+    #
+    #   @option req [Symbol] :method
+    #
+    #   @option req [String, Array<String>] :path
+    #
+    #   @option req [Hash{String=>Array<String>, String, nil}, nil] :query
+    #
+    #   @option req [Hash{String=>String, Integer, Array<String, Integer, nil>, nil}, nil] :headers
+    #
+    #   @option req [Object, nil] :body
+    #
+    #   @option req [Symbol, nil] :unwrap
+    #
+    #   @option req [Class, nil] :page
+    #
+    #   @option req [Braintrust::Converter, Class, nil] :model
+    #
+    #   @option req [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil] :options
+    #
+    # @param headers [Hash{String=>String}, Net::HTTPHeader]
+    #
+    # @param stream [Enumerable]
     #
     # @return [Object]
-    private def parse_response(req, opts, response)
-      parsed = parse_body(response)
-      raw_data = Braintrust::Util.dig(parsed, req[:unwrap])
+    #
+    private def parse_response(req, headers:, stream:)
+      decoded = Braintrust::Util.decode_content(headers, stream: stream)
+      unwrapped = Braintrust::Util.dig(decoded, req[:unwrap])
 
-      page, model = req.values_at(:page, :model)
-      case [page, model]
-      in [Class, _]
-        page.new(client: self, model: model, req: req, opts: opts, response: response, raw_data: raw_data)
-      in [nil, _] unless model.nil?
-        Braintrust::Converter.convert(model, raw_data)
+      case [req[:page], req.fetch(:model, Braintrust::Unknown)]
+      in [Class => page, _]
+        page.new(client: self, req: req, headers: headers, unwrapped: unwrapped)
+      in [nil, Class | Braintrust::Converter => model]
+        Braintrust::Converter.coerce(model, unwrapped)
       in [nil, nil]
-        raw_data
+        unwrapped
       end
     end
 
-    # Execute the request specified by req + opts. This is the method that all
-    # resource methods call into.
-    # Params req & opts are kept separate up until this point so that we can
-    # validate opts as it was given to us by the user.
-    # @param req [Hash{Symbol => Object}]
-    # @param opts [Braintrust::RequestOptions, Hash{Symbol => Object}]
+    # Execute the request specified by `req`. This is the method that all resource
+    #   methods call into.
     #
-    # @raise [Braintrust::HTTP::Error]
+    # @param req [Hash{Symbol=>Object}] .
+    #
+    #   @option req [Symbol] :method
+    #
+    #   @option req [String, Array<String>] :path
+    #
+    #   @option req [Hash{String=>Array<String>, String, nil}, nil] :query
+    #
+    #   @option req [Hash{String=>String, Integer, Array<String, Integer, nil>, nil}, nil] :headers
+    #
+    #   @option req [Object, nil] :body
+    #
+    #   @option req [Symbol, nil] :unwrap
+    #
+    #   @option req [Class, nil] :page
+    #
+    #   @option req [Braintrust::Converter, Class, nil] :model
+    #
+    #   @option req [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil] :options
+    #
+    # @raise [Braintrust::APIError]
     # @return [Object]
-    def request(req, opts)
+    #
+    def request(req)
+      self.class.validate!(req)
+      opts = req[:options].to_h
       Braintrust::RequestOptions.validate!(opts)
-      validate_request!(req)
-      request = build_request(req, opts)
+      request = build_request(req.except(:options), opts)
 
       # Don't send the current retry count in the headers if the caller modified the header defaults.
       send_retry_header = request.fetch(:headers)["x-stainless-retry-count"] == "0"
-      response = send_request(
+      response, stream = send_request(
         request,
-        max_retries: opts.fetch(:max_retries, @max_retries),
-        timeout: opts.fetch(:timeout, @timeout),
         redirect_count: 0,
         retry_count: 0,
         send_retry_header: send_retry_header
       )
-      parse_response(req, opts, response)
+      parse_response(req, headers: response, stream: stream)
     end
 
     # @return [String]
+    #
     def inspect
-      base_url = Braintrust::Util.unparse_uri(scheme: @scheme, host: @host, port: @port, path: @base_path)
+      base_url = Braintrust::Util.unparse_uri(@base_url)
       "#<#{self.class.name}:0x#{object_id.to_s(16)} base_url=#{base_url} max_retries=#{@max_retries} timeout=#{@timeout}>"
-    end
-  end
-
-  class Error < StandardError
-  end
-
-  module HTTP
-    class Error < Braintrust::Error
-    end
-
-    class ResponseError < Error
-      # @!attribute [r] response
-      #   @return [Net::HTTPResponse]
-      attr_reader :response
-
-      # @!attribute [r] body
-      #   @return [Object]
-      attr_reader :body
-
-      # @!attribute [r] code
-      #   @return [Integer]
-      attr_reader :code
-
-      # @param message [String]
-      # @param response [Net::HTTPResponse]
-      # @param body [Object]
-      def initialize(message:, response:, body:)
-        super(message)
-        @response = response
-        @body = body
-        @code = response.code.to_i
-      end
-    end
-
-    class RequestError < Error
-      # @!attribute [r] request
-      #   @return [Hash{Symbol => Object}]
-      attr_reader :request
-
-      # @param message [String]
-      # @param request [Hash{Symbol => Object}]
-      def initialize(message:, request:)
-        super(message)
-        @request = request
-      end
-    end
-
-    class BadRequestError < ResponseError
-    end
-
-    class AuthenticationError < ResponseError
-    end
-
-    class PermissionDeniedError < ResponseError
-    end
-
-    class NotFoundError < ResponseError
-    end
-
-    class ConflictError < ResponseError
-    end
-
-    class UnprocessableEntityError < ResponseError
-    end
-
-    class RateLimitError < ResponseError
-    end
-
-    class InternalServerError < ResponseError
-    end
-
-    class APIStatusError < ResponseError
-    end
-
-    class APIConnectionError < RequestError
-    end
-
-    class APITimeoutError < RequestError
     end
   end
 end

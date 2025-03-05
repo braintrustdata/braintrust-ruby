@@ -3,219 +3,428 @@
 module Braintrust
   module Models
     class ExperimentEvent < Braintrust::BaseModel
-      # @!attribute [rw] id
-      #   A unique identifier for the experiment event. If you don't provide one, BrainTrust will generate one for you
+      # @!attribute id
+      #   A unique identifier for the experiment event. If you don't provide one,
+      #     BrainTrust will generate one for you
+      #
       #   @return [String]
       required :id, String
 
-      # @!attribute [rw] _xact_id
-      #   The transaction id of an event is unique to the network operation that processed the event insertion. Transaction ids are monotonically increasing over time and can be used to retrieve a versioned snapshot of the experiment (see the `version` parameter)
+      # @!attribute _xact_id
+      #   The transaction id of an event is unique to the network operation that processed
+      #     the event insertion. Transaction ids are monotonically increasing over time and
+      #     can be used to retrieve a versioned snapshot of the experiment (see the
+      #     `version` parameter)
+      #
       #   @return [String]
       required :_xact_id, String
 
-      # @!attribute [rw] created
+      # @!attribute created
       #   The timestamp the experiment event was created
+      #
       #   @return [Time]
       required :created, Time
 
-      # @!attribute [rw] experiment_id
+      # @!attribute experiment_id
       #   Unique identifier for the experiment
+      #
       #   @return [String]
       required :experiment_id, String
 
-      # @!attribute [rw] project_id
+      # @!attribute project_id
       #   Unique identifier for the project that the experiment belongs under
+      #
       #   @return [String]
       required :project_id, String
 
-      # @!attribute [rw] root_span_id
+      # @!attribute root_span_id
       #   A unique identifier for the trace this experiment event belongs to
+      #
       #   @return [String]
       required :root_span_id, String
 
-      # @!attribute [rw] span_id
-      #   A unique identifier used to link different experiment events together as part of a full trace. See the [tracing guide](https://www.braintrust.dev/docs/guides/tracing) for full details on tracing
+      # @!attribute span_id
+      #   A unique identifier used to link different experiment events together as part of
+      #     a full trace. See the
+      #     [tracing guide](https://www.braintrust.dev/docs/guides/tracing) for full details
+      #     on tracing
+      #
       #   @return [String]
       required :span_id, String
 
-      # @!attribute [rw] context
-      #   Context is additional information about the code that produced the experiment event. It is essentially the textual counterpart to `metrics`. Use the `caller_*` attributes to track the location in code which produced the experiment event
-      #   @return [Braintrust::Models::ExperimentEvent::Context]
-      optional :context, -> { Braintrust::Models::ExperimentEvent::Context }
+      # @!attribute context
+      #   Context is additional information about the code that produced the experiment
+      #     event. It is essentially the textual counterpart to `metrics`. Use the
+      #     `caller_*` attributes to track the location in code which produced the
+      #     experiment event
+      #
+      #   @return [Braintrust::Models::ExperimentEvent::Context, nil]
+      optional :context, -> { Braintrust::Models::ExperimentEvent::Context }, nil?: true
 
-      # @!attribute [rw] dataset_record_id
-      #   If the experiment is associated to a dataset, this is the event-level dataset id this experiment event is tied to
-      #   @return [String]
-      optional :dataset_record_id, String
+      # @!attribute dataset_record_id
+      #   If the experiment is associated to a dataset, this is the event-level dataset id
+      #     this experiment event is tied to
+      #
+      #   @return [String, nil]
+      optional :dataset_record_id, String, nil?: true
 
-      # @!attribute [rw] error
+      # @!attribute [r] error
       #   The error that occurred, if any.
-      #   @return [Object]
+      #
+      #   @return [Object, nil]
       optional :error, Braintrust::Unknown
 
-      # @!attribute [rw] expected
-      #   The ground truth value (an arbitrary, JSON serializable object) that you'd compare to `output` to determine if your `output` value is correct or not. Braintrust currently does not compare `output` to `expected` for you, since there are so many different ways to do that correctly. Instead, these values are just used to help you navigate your experiments while digging into analyses. However, we may later use these values to re-score outputs or fine-tune your models
-      #   @return [Object]
+      # @!parse
+      #   # @return [Object]
+      #   attr_writer :error
+
+      # @!attribute [r] expected
+      #   The ground truth value (an arbitrary, JSON serializable object) that you'd
+      #     compare to `output` to determine if your `output` value is correct or not.
+      #     Braintrust currently does not compare `output` to `expected` for you, since
+      #     there are so many different ways to do that correctly. Instead, these values are
+      #     just used to help you navigate your experiments while digging into analyses.
+      #     However, we may later use these values to re-score outputs or fine-tune your
+      #     models
+      #
+      #   @return [Object, nil]
       optional :expected, Braintrust::Unknown
 
-      # @!attribute [rw] input
-      #   The arguments that uniquely define a test case (an arbitrary, JSON serializable object). Later on, Braintrust will use the `input` to know whether two test cases are the same between experiments, so they should not contain experiment-specific state. A simple rule of thumb is that if you run the same experiment twice, the `input` should be identical
-      #   @return [Object]
+      # @!parse
+      #   # @return [Object]
+      #   attr_writer :expected
+
+      # @!attribute [r] input
+      #   The arguments that uniquely define a test case (an arbitrary, JSON serializable
+      #     object). Later on, Braintrust will use the `input` to know whether two test
+      #     cases are the same between experiments, so they should not contain
+      #     experiment-specific state. A simple rule of thumb is that if you run the same
+      #     experiment twice, the `input` should be identical
+      #
+      #   @return [Object, nil]
       optional :input, Braintrust::Unknown
 
-      # @!attribute [rw] is_root
+      # @!parse
+      #   # @return [Object]
+      #   attr_writer :input
+
+      # @!attribute is_root
       #   Whether this span is a root span
-      #   @return [Boolean]
-      optional :is_root, Braintrust::BooleanModel
+      #
+      #   @return [Boolean, nil]
+      optional :is_root, Braintrust::BooleanModel, nil?: true
 
-      # @!attribute [rw] metadata
-      #   A dictionary with additional data about the test example, model outputs, or just about anything else that's relevant, that you can use to help find and analyze examples later. For example, you could log the `prompt`, example's `id`, or anything else that would be useful to slice/dice later. The values in `metadata` can be any JSON-serializable type, but its keys must be strings
-      #   @return [Hash]
-      optional :metadata, Hash
+      # @!attribute metadata
+      #   A dictionary with additional data about the test example, model outputs, or just
+      #     about anything else that's relevant, that you can use to help find and analyze
+      #     examples later. For example, you could log the `prompt`, example's `id`, or
+      #     anything else that would be useful to slice/dice later. The values in `metadata`
+      #     can be any JSON-serializable type, but its keys must be strings
+      #
+      #   @return [Hash{Symbol=>Object, nil}, nil]
+      optional :metadata, Braintrust::HashOf[Braintrust::Unknown, nil?: true], nil?: true
 
-      # @!attribute [rw] metrics
-      #   Metrics are numerical measurements tracking the execution of the code that produced the experiment event. Use "start" and "end" to track the time span over which the experiment event was produced
-      #   @return [Braintrust::Models::ExperimentEvent::Metrics]
-      optional :metrics, -> { Braintrust::Models::ExperimentEvent::Metrics }
+      # @!attribute metrics
+      #   Metrics are numerical measurements tracking the execution of the code that
+      #     produced the experiment event. Use "start" and "end" to track the time span over
+      #     which the experiment event was produced
+      #
+      #   @return [Braintrust::Models::ExperimentEvent::Metrics, nil]
+      optional :metrics, -> { Braintrust::Models::ExperimentEvent::Metrics }, nil?: true
 
-      # @!attribute [rw] origin
+      # @!attribute origin
       #   Indicates the event was copied from another object.
-      #   @return [Braintrust::Models::ExperimentEvent::Origin]
-      optional :origin, -> { Braintrust::Models::ExperimentEvent::Origin }
+      #
+      #   @return [Braintrust::Models::ExperimentEvent::Origin, nil]
+      optional :origin, -> { Braintrust::Models::ExperimentEvent::Origin }, nil?: true
 
-      # @!attribute [rw] output
-      #   The output of your application, including post-processing (an arbitrary, JSON serializable object), that allows you to determine whether the result is correct or not. For example, in an app that generates SQL queries, the `output` should be the _result_ of the SQL query generated by the model, not the query itself, because there may be multiple valid queries that answer a single question
-      #   @return [Object]
+      # @!attribute [r] output
+      #   The output of your application, including post-processing (an arbitrary, JSON
+      #     serializable object), that allows you to determine whether the result is correct
+      #     or not. For example, in an app that generates SQL queries, the `output` should
+      #     be the _result_ of the SQL query generated by the model, not the query itself,
+      #     because there may be multiple valid queries that answer a single question
+      #
+      #   @return [Object, nil]
       optional :output, Braintrust::Unknown
 
-      # @!attribute [rw] scores
-      #   A dictionary of numeric values (between 0 and 1) to log. The scores should give you a variety of signals that help you determine how accurate the outputs are compared to what you expect and diagnose failures. For example, a summarization app might have one score that tells you how accurate the summary is, and another that measures the word similarity between the generated and grouth truth summary. The word similarity score could help you determine whether the summarization was covering similar concepts or not. You can use these scores to help you sort, filter, and compare experiments
-      #   @return [Hash]
-      optional :scores, Hash
+      # @!parse
+      #   # @return [Object]
+      #   attr_writer :output
 
-      # @!attribute [rw] span_attributes
+      # @!attribute scores
+      #   A dictionary of numeric values (between 0 and 1) to log. The scores should give
+      #     you a variety of signals that help you determine how accurate the outputs are
+      #     compared to what you expect and diagnose failures. For example, a summarization
+      #     app might have one score that tells you how accurate the summary is, and another
+      #     that measures the word similarity between the generated and grouth truth
+      #     summary. The word similarity score could help you determine whether the
+      #     summarization was covering similar concepts or not. You can use these scores to
+      #     help you sort, filter, and compare experiments
+      #
+      #   @return [Hash{Symbol=>Float, nil}, nil]
+      optional :scores, Braintrust::HashOf[Float, nil?: true], nil?: true
+
+      # @!attribute span_attributes
       #   Human-identifying attributes of the span, such as name, type, etc.
-      #   @return [Braintrust::Models::SpanAttributes]
-      optional :span_attributes, -> { Braintrust::Models::SpanAttributes }
+      #
+      #   @return [Braintrust::Models::SpanAttributes, nil]
+      optional :span_attributes, -> { Braintrust::Models::SpanAttributes }, nil?: true
 
-      # @!attribute [rw] span_parents
-      #   An array of the parent `span_ids` of this experiment event. This should be empty for the root span of a trace, and should most often contain just one parent element for subspans
-      #   @return [Array<String>]
-      optional :span_parents, Braintrust::ArrayOf.new(String)
+      # @!attribute span_parents
+      #   An array of the parent `span_ids` of this experiment event. This should be empty
+      #     for the root span of a trace, and should most often contain just one parent
+      #     element for subspans
+      #
+      #   @return [Array<String>, nil]
+      optional :span_parents, Braintrust::ArrayOf[String], nil?: true
 
-      # @!attribute [rw] tags
+      # @!attribute tags
       #   A list of tags to log
-      #   @return [Array<String>]
-      optional :tags, Braintrust::ArrayOf.new(String)
+      #
+      #   @return [Array<String>, nil]
+      optional :tags, Braintrust::ArrayOf[String], nil?: true
+
+      # @!parse
+      #   # @param id [String]
+      #   # @param _xact_id [String]
+      #   # @param created [Time]
+      #   # @param experiment_id [String]
+      #   # @param project_id [String]
+      #   # @param root_span_id [String]
+      #   # @param span_id [String]
+      #   # @param context [Braintrust::Models::ExperimentEvent::Context, nil]
+      #   # @param dataset_record_id [String, nil]
+      #   # @param error [Object]
+      #   # @param expected [Object]
+      #   # @param input [Object]
+      #   # @param is_root [Boolean, nil]
+      #   # @param metadata [Hash{Symbol=>Object, nil}, nil]
+      #   # @param metrics [Braintrust::Models::ExperimentEvent::Metrics, nil]
+      #   # @param origin [Braintrust::Models::ExperimentEvent::Origin, nil]
+      #   # @param output [Object]
+      #   # @param scores [Hash{Symbol=>Float, nil}, nil]
+      #   # @param span_attributes [Braintrust::Models::SpanAttributes, nil]
+      #   # @param span_parents [Array<String>, nil]
+      #   # @param tags [Array<String>, nil]
+      #   #
+      #   def initialize(
+      #     id:,
+      #     _xact_id:,
+      #     created:,
+      #     experiment_id:,
+      #     project_id:,
+      #     root_span_id:,
+      #     span_id:,
+      #     context: nil,
+      #     dataset_record_id: nil,
+      #     error: nil,
+      #     expected: nil,
+      #     input: nil,
+      #     is_root: nil,
+      #     metadata: nil,
+      #     metrics: nil,
+      #     origin: nil,
+      #     output: nil,
+      #     scores: nil,
+      #     span_attributes: nil,
+      #     span_parents: nil,
+      #     tags: nil,
+      #     **
+      #   )
+      #     super
+      #   end
+
+      # def initialize: (Hash | Braintrust::BaseModel) -> void
 
       class Context < Braintrust::BaseModel
-        # @!attribute [rw] caller_filename
+        # @!attribute caller_filename
         #   Name of the file in code where the experiment event was created
-        #   @return [String]
-        optional :caller_filename, String
+        #
+        #   @return [String, nil]
+        optional :caller_filename, String, nil?: true
 
-        # @!attribute [rw] caller_functionname
+        # @!attribute caller_functionname
         #   The function in code which created the experiment event
-        #   @return [String]
-        optional :caller_functionname, String
+        #
+        #   @return [String, nil]
+        optional :caller_functionname, String, nil?: true
 
-        # @!attribute [rw] caller_lineno
+        # @!attribute caller_lineno
         #   Line of code where the experiment event was created
-        #   @return [Integer]
-        optional :caller_lineno, Integer
+        #
+        #   @return [Integer, nil]
+        optional :caller_lineno, Integer, nil?: true
 
         # @!parse
-        #   # Create a new instance of Context from a Hash of raw data.
+        #   # Context is additional information about the code that produced the experiment
+        #   #   event. It is essentially the textual counterpart to `metrics`. Use the
+        #   #   `caller_*` attributes to track the location in code which produced the
+        #   #   experiment event
         #   #
-        #   # @param data [Hash{Symbol => Object}] .
-        #   #   @option data [String, nil] :caller_filename Name of the file in code where the experiment event was created
-        #   #   @option data [String, nil] :caller_functionname The function in code which created the experiment event
-        #   #   @option data [Integer, nil] :caller_lineno Line of code where the experiment event was created
-        #   def initialize(data = {}) = super
+        #   # @param caller_filename [String, nil]
+        #   # @param caller_functionname [String, nil]
+        #   # @param caller_lineno [Integer, nil]
+        #   #
+        #   def initialize(caller_filename: nil, caller_functionname: nil, caller_lineno: nil, **) = super
+
+        # def initialize: (Hash | Braintrust::BaseModel) -> void
       end
 
       class Metrics < Braintrust::BaseModel
-        # @!attribute [rw] caller_filename
+        # @!attribute [r] caller_filename
         #   This metric is deprecated
-        #   @return [Object]
+        #
+        #   @return [Object, nil]
         optional :caller_filename, Braintrust::Unknown
 
-        # @!attribute [rw] caller_functionname
+        # @!parse
+        #   # @return [Object]
+        #   attr_writer :caller_filename
+
+        # @!attribute [r] caller_functionname
         #   This metric is deprecated
-        #   @return [Object]
+        #
+        #   @return [Object, nil]
         optional :caller_functionname, Braintrust::Unknown
 
-        # @!attribute [rw] caller_lineno
+        # @!parse
+        #   # @return [Object]
+        #   attr_writer :caller_functionname
+
+        # @!attribute [r] caller_lineno
         #   This metric is deprecated
-        #   @return [Object]
+        #
+        #   @return [Object, nil]
         optional :caller_lineno, Braintrust::Unknown
 
-        # @!attribute [rw] completion_tokens
-        #   The number of tokens in the completion generated by the model (only set if this is an LLM span)
-        #   @return [Integer]
-        optional :completion_tokens, Integer
+        # @!parse
+        #   # @return [Object]
+        #   attr_writer :caller_lineno
 
-        # @!attribute [rw] end_
-        #   A unix timestamp recording when the section of code which produced the experiment event finished
-        #   @return [Float]
-        optional :end_, Float, api_name: :end
+        # @!attribute completion_tokens
+        #   The number of tokens in the completion generated by the model (only set if this
+        #     is an LLM span)
+        #
+        #   @return [Integer, nil]
+        optional :completion_tokens, Integer, nil?: true
 
-        # @!attribute [rw] prompt_tokens
-        #   The number of tokens in the prompt used to generate the experiment event (only set if this is an LLM span)
-        #   @return [Integer]
-        optional :prompt_tokens, Integer
+        # @!attribute end_
+        #   A unix timestamp recording when the section of code which produced the
+        #     experiment event finished
+        #
+        #   @return [Float, nil]
+        optional :end_, Float, api_name: :end, nil?: true
 
-        # @!attribute [rw] start
-        #   A unix timestamp recording when the section of code which produced the experiment event started
-        #   @return [Float]
-        optional :start, Float
+        # @!attribute prompt_tokens
+        #   The number of tokens in the prompt used to generate the experiment event (only
+        #     set if this is an LLM span)
+        #
+        #   @return [Integer, nil]
+        optional :prompt_tokens, Integer, nil?: true
 
-        # @!attribute [rw] tokens
+        # @!attribute start
+        #   A unix timestamp recording when the section of code which produced the
+        #     experiment event started
+        #
+        #   @return [Float, nil]
+        optional :start, Float, nil?: true
+
+        # @!attribute tokens
         #   The total number of tokens in the input and output of the experiment event.
-        #   @return [Integer]
-        optional :tokens, Integer
+        #
+        #   @return [Integer, nil]
+        optional :tokens, Integer, nil?: true
 
         # @!parse
-        #   # Create a new instance of Metrics from a Hash of raw data.
+        #   # Metrics are numerical measurements tracking the execution of the code that
+        #   #   produced the experiment event. Use "start" and "end" to track the time span over
+        #   #   which the experiment event was produced
         #   #
-        #   # @param data [Hash{Symbol => Object}] .
-        #   #   @option data [Object, nil] :caller_filename This metric is deprecated
-        #   #   @option data [Object, nil] :caller_functionname This metric is deprecated
-        #   #   @option data [Object, nil] :caller_lineno This metric is deprecated
-        #   #   @option data [Integer, nil] :completion_tokens The number of tokens in the completion generated by the model (only set if this
-        #   #     is an LLM span)
-        #   #   @option data [Float, nil] :end A unix timestamp recording when the section of code which produced the
-        #   #     experiment event finished
-        #   #   @option data [Integer, nil] :prompt_tokens The number of tokens in the prompt used to generate the experiment event (only
-        #   #     set if this is an LLM span)
-        #   #   @option data [Float, nil] :start A unix timestamp recording when the section of code which produced the
-        #   #     experiment event started
-        #   #   @option data [Integer, nil] :tokens The total number of tokens in the input and output of the experiment event.
-        #   def initialize(data = {}) = super
+        #   # @param caller_filename [Object]
+        #   # @param caller_functionname [Object]
+        #   # @param caller_lineno [Object]
+        #   # @param completion_tokens [Integer, nil]
+        #   # @param end_ [Float, nil]
+        #   # @param prompt_tokens [Integer, nil]
+        #   # @param start [Float, nil]
+        #   # @param tokens [Integer, nil]
+        #   #
+        #   def initialize(
+        #     caller_filename: nil,
+        #     caller_functionname: nil,
+        #     caller_lineno: nil,
+        #     completion_tokens: nil,
+        #     end_: nil,
+        #     prompt_tokens: nil,
+        #     start: nil,
+        #     tokens: nil,
+        #     **
+        #   )
+        #     super
+        #   end
+
+        # def initialize: (Hash | Braintrust::BaseModel) -> void
       end
 
       class Origin < Braintrust::BaseModel
-        # @!attribute [rw] id
+        # @!attribute id
         #   ID of the original event.
+        #
         #   @return [String]
         required :id, String
 
-        # @!attribute [rw] _xact_id
+        # @!attribute _xact_id
         #   Transaction ID of the original event.
+        #
         #   @return [String]
         required :_xact_id, String
 
-        # @!attribute [rw] object_id_
+        # @!attribute object_id_
         #   ID of the object the event is originating from.
+        #
         #   @return [String]
         required :object_id_, String, api_name: :object_id
 
-        # @!attribute [rw] object_type
+        # @!attribute object_type
         #   Type of the object the event is originating from.
+        #
         #   @return [Symbol, Braintrust::Models::ExperimentEvent::Origin::ObjectType]
         required :object_type, enum: -> { Braintrust::Models::ExperimentEvent::Origin::ObjectType }
 
+        # @!parse
+        #   # Indicates the event was copied from another object.
+        #   #
+        #   # @param id [String]
+        #   # @param _xact_id [String]
+        #   # @param object_id_ [String]
+        #   # @param object_type [Symbol, Braintrust::Models::ExperimentEvent::Origin::ObjectType]
+        #   #
+        #   def initialize(id:, _xact_id:, object_id_:, object_type:, **) = super
+
+        # def initialize: (Hash | Braintrust::BaseModel) -> void
+
+        # @abstract
+        #
         # Type of the object the event is originating from.
+        #
+        # @example
+        # ```ruby
+        # case object_type
+        # in :experiment
+        #   # ...
+        # in :dataset
+        #   # ...
+        # in :prompt
+        #   # ...
+        # in :function
+        #   # ...
+        # in :prompt_session
+        #   # ...
+        # in ...
+        #   #...
+        # end
+        # ```
         class ObjectType < Braintrust::Enum
           EXPERIMENT = :experiment
           DATASET = :dataset
@@ -223,85 +432,15 @@ module Braintrust
           FUNCTION = :function
           PROMPT_SESSION = :prompt_session
           PROJECT_LOGS = :project_logs
+
+          finalize!
+
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   #
+          #   def self.values; end
         end
-
-        # @!parse
-        #   # Create a new instance of Origin from a Hash of raw data.
-        #   #
-        #   # @param data [Hash{Symbol => Object}] .
-        #   #   @option data [String] :id ID of the original event.
-        #   #   @option data [String] :_xact_id Transaction ID of the original event.
-        #   #   @option data [String] :object_id ID of the object the event is originating from.
-        #   #   @option data [String] :object_type Type of the object the event is originating from.
-        #   def initialize(data = {}) = super
       end
-
-      # @!parse
-      #   # Create a new instance of ExperimentEvent from a Hash of raw data.
-      #   #
-      #   # @param data [Hash{Symbol => Object}] .
-      #   #   @option data [String] :id A unique identifier for the experiment event. If you don't provide one,
-      #   #     BrainTrust will generate one for you
-      #   #   @option data [String] :_xact_id The transaction id of an event is unique to the network operation that processed
-      #   #     the event insertion. Transaction ids are monotonically increasing over time and
-      #   #     can be used to retrieve a versioned snapshot of the experiment (see the
-      #   #     `version` parameter)
-      #   #   @option data [String] :created The timestamp the experiment event was created
-      #   #   @option data [String] :experiment_id Unique identifier for the experiment
-      #   #   @option data [String] :project_id Unique identifier for the project that the experiment belongs under
-      #   #   @option data [String] :root_span_id A unique identifier for the trace this experiment event belongs to
-      #   #   @option data [String] :span_id A unique identifier used to link different experiment events together as part of
-      #   #     a full trace. See the
-      #   #     [tracing guide](https://www.braintrust.dev/docs/guides/tracing) for full details
-      #   #     on tracing
-      #   #   @option data [Object, nil] :context Context is additional information about the code that produced the experiment
-      #   #     event. It is essentially the textual counterpart to `metrics`. Use the
-      #   #     `caller_*` attributes to track the location in code which produced the
-      #   #     experiment event
-      #   #   @option data [String, nil] :dataset_record_id If the experiment is associated to a dataset, this is the event-level dataset id
-      #   #     this experiment event is tied to
-      #   #   @option data [Object, nil] :error The error that occurred, if any.
-      #   #   @option data [Object, nil] :expected The ground truth value (an arbitrary, JSON serializable object) that you'd
-      #   #     compare to `output` to determine if your `output` value is correct or not.
-      #   #     Braintrust currently does not compare `output` to `expected` for you, since
-      #   #     there are so many different ways to do that correctly. Instead, these values are
-      #   #     just used to help you navigate your experiments while digging into analyses.
-      #   #     However, we may later use these values to re-score outputs or fine-tune your
-      #   #     models
-      #   #   @option data [Object, nil] :input The arguments that uniquely define a test case (an arbitrary, JSON serializable
-      #   #     object). Later on, Braintrust will use the `input` to know whether two test
-      #   #     cases are the same between experiments, so they should not contain
-      #   #     experiment-specific state. A simple rule of thumb is that if you run the same
-      #   #     experiment twice, the `input` should be identical
-      #   #   @option data [Hash, nil] :is_root Whether this span is a root span
-      #   #   @option data [Hash, nil] :metadata A dictionary with additional data about the test example, model outputs, or just
-      #   #     about anything else that's relevant, that you can use to help find and analyze
-      #   #     examples later. For example, you could log the `prompt`, example's `id`, or
-      #   #     anything else that would be useful to slice/dice later. The values in `metadata`
-      #   #     can be any JSON-serializable type, but its keys must be strings
-      #   #   @option data [Object, nil] :metrics Metrics are numerical measurements tracking the execution of the code that
-      #   #     produced the experiment event. Use "start" and "end" to track the time span over
-      #   #     which the experiment event was produced
-      #   #   @option data [Object, nil] :origin Indicates the event was copied from another object.
-      #   #   @option data [Object, nil] :output The output of your application, including post-processing (an arbitrary, JSON
-      #   #     serializable object), that allows you to determine whether the result is correct
-      #   #     or not. For example, in an app that generates SQL queries, the `output` should
-      #   #     be the _result_ of the SQL query generated by the model, not the query itself,
-      #   #     because there may be multiple valid queries that answer a single question
-      #   #   @option data [Hash, nil] :scores A dictionary of numeric values (between 0 and 1) to log. The scores should give
-      #   #     you a variety of signals that help you determine how accurate the outputs are
-      #   #     compared to what you expect and diagnose failures. For example, a summarization
-      #   #     app might have one score that tells you how accurate the summary is, and another
-      #   #     that measures the word similarity between the generated and grouth truth
-      #   #     summary. The word similarity score could help you determine whether the
-      #   #     summarization was covering similar concepts or not. You can use these scores to
-      #   #     help you sort, filter, and compare experiments
-      #   #   @option data [Object, nil] :span_attributes Human-identifying attributes of the span, such as name, type, etc.
-      #   #   @option data [Array<String>, nil] :span_parents An array of the parent `span_ids` of this experiment event. This should be empty
-      #   #     for the root span of a trace, and should most often contain just one parent
-      #   #     element for subspans
-      #   #   @option data [Array<String>, nil] :tags A list of tags to log
-      #   def initialize(data = {}) = super
     end
   end
 end

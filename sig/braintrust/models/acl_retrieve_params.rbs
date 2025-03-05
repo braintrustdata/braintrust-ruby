@@ -1,0 +1,18 @@
+module Braintrust
+  module Models
+    type acl_retrieve_params = {  } & Braintrust::request_parameters
+
+    class ACLRetrieveParams < Braintrust::BaseModel
+      extend Braintrust::RequestParameters::Converter
+      include Braintrust::RequestParameters
+
+      def initialize:
+        (request_options: Braintrust::request_opts) -> void
+        | (
+          ?Braintrust::Models::acl_retrieve_params | Braintrust::BaseModel data
+        ) -> void
+
+      def to_hash: -> Braintrust::Models::acl_retrieve_params
+    end
+  end
+end

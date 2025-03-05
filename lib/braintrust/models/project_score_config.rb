@@ -3,30 +3,49 @@
 module Braintrust
   module Models
     class ProjectScoreConfig < Braintrust::BaseModel
-      # @!attribute [rw] destination
-      #   @return [Symbol, Braintrust::Models::ProjectScoreConfig::Destination]
-      optional :destination, enum: -> { Braintrust::Models::ProjectScoreConfig::Destination }
+      # @!attribute destination
+      #
+      #   @return [Symbol, Braintrust::Models::ProjectScoreConfig::Destination, nil]
+      optional :destination, enum: -> { Braintrust::Models::ProjectScoreConfig::Destination }, nil?: true
 
-      # @!attribute [rw] multi_select
-      #   @return [Boolean]
-      optional :multi_select, Braintrust::BooleanModel
+      # @!attribute multi_select
+      #
+      #   @return [Boolean, nil]
+      optional :multi_select, Braintrust::BooleanModel, nil?: true
 
-      # @!attribute [rw] online
-      #   @return [Braintrust::Models::OnlineScoreConfig]
-      optional :online, -> { Braintrust::Models::OnlineScoreConfig }
-
-      class Destination < Braintrust::Enum
-        EXPECTED = :expected
-      end
+      # @!attribute online
+      #
+      #   @return [Braintrust::Models::OnlineScoreConfig, nil]
+      optional :online, -> { Braintrust::Models::OnlineScoreConfig }, nil?: true
 
       # @!parse
-      #   # Create a new instance of ProjectScoreConfig from a Hash of raw data.
+      #   # @param destination [Symbol, Braintrust::Models::ProjectScoreConfig::Destination, nil]
+      #   # @param multi_select [Boolean, nil]
+      #   # @param online [Braintrust::Models::OnlineScoreConfig, nil]
       #   #
-      #   # @param data [Hash{Symbol => Object}] .
-      #   #   @option data [String, nil] :destination
-      #   #   @option data [Hash, nil] :multi_select
-      #   #   @option data [Object, nil] :online
-      #   def initialize(data = {}) = super
+      #   def initialize(destination: nil, multi_select: nil, online: nil, **) = super
+
+      # def initialize: (Hash | Braintrust::BaseModel) -> void
+
+      # @abstract
+      #
+      # @example
+      # ```ruby
+      # case destination
+      # in :expected
+      #   # ...
+      # end
+      # ```
+      class Destination < Braintrust::Enum
+        EXPECTED = :expected
+
+        finalize!
+
+        # @!parse
+        #   # @return [Array<Symbol>]
+        #   #
+        #   def self.values; end
+      end
     end
   end
 end

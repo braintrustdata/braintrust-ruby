@@ -1,0 +1,50 @@
+module Braintrust
+  module Models
+    type env_var =
+      {
+        id: String,
+        name: String,
+        object_id_: String,
+        object_type: Braintrust::Models::EnvVar::object_type,
+        created: Time?,
+        used: Time?
+      }
+
+    class EnvVar < Braintrust::BaseModel
+      attr_accessor id: String
+
+      attr_accessor name: String
+
+      attr_accessor object_id_: String
+
+      attr_accessor object_type: Braintrust::Models::EnvVar::object_type
+
+      attr_accessor created: Time?
+
+      attr_accessor used: Time?
+
+      def initialize:
+        (
+          id: String,
+          name: String,
+          object_id_: String,
+          object_type: Braintrust::Models::EnvVar::object_type,
+          created: Time?,
+          used: Time?
+        ) -> void
+        | (?Braintrust::Models::env_var | Braintrust::BaseModel data) -> void
+
+      def to_hash: -> Braintrust::Models::env_var
+
+      type object_type = :organization | :project | :function
+
+      class ObjectType < Braintrust::Enum
+        ORGANIZATION: :organization
+        PROJECT: :project
+        FUNCTION: :function
+
+        def self.values: -> ::Array[Braintrust::Models::EnvVar::object_type]
+      end
+    end
+  end
+end

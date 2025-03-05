@@ -1,0 +1,90 @@
+module Braintrust
+  module Resources
+    class Prompts
+      def create:
+        (
+          Braintrust::Models::PromptCreateParams | ::Hash[Symbol, top] params
+        ) -> Braintrust::Models::Prompt
+        | (
+          name: String,
+          project_id: String,
+          slug: String,
+          description: String?,
+          function_type: Braintrust::Models::PromptCreateParams::function_type?,
+          prompt_data: Braintrust::Models::PromptData?,
+          tags: ::Array[String]?,
+          request_options: Braintrust::request_opts
+        ) -> Braintrust::Models::Prompt
+
+      def retrieve:
+        (
+          String prompt_id,
+          ?Braintrust::Models::PromptRetrieveParams | ::Hash[Symbol, top] params
+        ) -> Braintrust::Models::Prompt
+        | (
+          String prompt_id,
+          request_options: Braintrust::request_opts
+        ) -> Braintrust::Models::Prompt
+
+      def update:
+        (
+          String prompt_id,
+          ?Braintrust::Models::PromptUpdateParams | ::Hash[Symbol, top] params
+        ) -> Braintrust::Models::Prompt
+        | (
+          String prompt_id,
+          description: String?,
+          name: String?,
+          prompt_data: Braintrust::Models::PromptData?,
+          slug: String?,
+          tags: ::Array[String]?,
+          request_options: Braintrust::request_opts
+        ) -> Braintrust::Models::Prompt
+
+      def list:
+        (
+          ?Braintrust::Models::PromptListParams | ::Hash[Symbol, top] params
+        ) -> Braintrust::ListObjects[Braintrust::Models::Prompt]
+        | (
+          ending_before: String,
+          ids: Braintrust::Models::PromptListParams::ids,
+          limit: Integer?,
+          org_name: String,
+          project_id: String,
+          project_name: String,
+          prompt_name: String,
+          slug: String,
+          starting_after: String,
+          version: String,
+          request_options: Braintrust::request_opts
+        ) -> Braintrust::ListObjects[Braintrust::Models::Prompt]
+
+      def delete:
+        (
+          String prompt_id,
+          ?Braintrust::Models::PromptDeleteParams | ::Hash[Symbol, top] params
+        ) -> Braintrust::Models::Prompt
+        | (
+          String prompt_id,
+          request_options: Braintrust::request_opts
+        ) -> Braintrust::Models::Prompt
+
+      def replace:
+        (
+          Braintrust::Models::PromptReplaceParams | ::Hash[Symbol, top] params
+        ) -> Braintrust::Models::Prompt
+        | (
+          name: String,
+          project_id: String,
+          slug: String,
+          description: String?,
+          function_type: Braintrust::Models::PromptReplaceParams::function_type?,
+          prompt_data: Braintrust::Models::PromptData?,
+          tags: ::Array[String]?,
+          request_options: Braintrust::request_opts
+        ) -> Braintrust::Models::Prompt
+
+      def initialize: (client: Braintrust::Client) -> void
+    end
+  end
+end

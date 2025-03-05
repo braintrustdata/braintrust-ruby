@@ -1,0 +1,27 @@
+module Braintrust
+  module Models
+    type acl_batch_update_response =
+      {
+        added_acls: ::Array[Braintrust::Models::ACL],
+        removed_acls: ::Array[Braintrust::Models::ACL]
+      }
+
+    class ACLBatchUpdateResponse < Braintrust::BaseModel
+      attr_accessor added_acls: ::Array[Braintrust::Models::ACL]
+
+      attr_accessor removed_acls: ::Array[Braintrust::Models::ACL]
+
+      def initialize:
+        (
+          added_acls: ::Array[Braintrust::Models::ACL],
+          removed_acls: ::Array[Braintrust::Models::ACL]
+        ) -> void
+        | (
+          ?Braintrust::Models::acl_batch_update_response
+          | Braintrust::BaseModel data
+        ) -> void
+
+      def to_hash: -> Braintrust::Models::acl_batch_update_response
+    end
+  end
+end

@@ -1,0 +1,36 @@
+module Braintrust
+  module Models
+    type span_attributes =
+      { name: String?, type: Braintrust::Models::SpanAttributes::type_? }
+
+    class SpanAttributes < Braintrust::BaseModel
+      attr_accessor name: String?
+
+      attr_accessor type: Braintrust::Models::SpanAttributes::type_?
+
+      def initialize:
+        (
+          name: String?,
+          type: Braintrust::Models::SpanAttributes::type_?
+        ) -> void
+        | (
+          ?Braintrust::Models::span_attributes | Braintrust::BaseModel data
+        ) -> void
+
+      def to_hash: -> Braintrust::Models::span_attributes
+
+      type type_ = :llm | :score | :function | :eval | :task | :tool
+
+      class Type < Braintrust::Enum
+        LLM: :llm
+        SCORE: :score
+        FUNCTION: :function
+        EVAL: :eval
+        TASK: :task
+        TOOL: :tool
+
+        def self.values: -> ::Array[Braintrust::Models::SpanAttributes::type_]
+      end
+    end
+  end
+end

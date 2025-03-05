@@ -1,0 +1,132 @@
+module Braintrust
+  module Models
+    type acl_create_params =
+      {
+        object_id_: String,
+        object_type: Braintrust::Models::ACLCreateParams::object_type,
+        group_id: String?,
+        permission: Braintrust::Models::ACLCreateParams::permission?,
+        restrict_object_type: Braintrust::Models::ACLCreateParams::restrict_object_type?,
+        role_id: String?,
+        user_id: String?
+      }
+      & Braintrust::request_parameters
+
+    class ACLCreateParams < Braintrust::BaseModel
+      extend Braintrust::RequestParameters::Converter
+      include Braintrust::RequestParameters
+
+      attr_accessor object_id_: String
+
+      attr_accessor object_type: Braintrust::Models::ACLCreateParams::object_type
+
+      attr_accessor group_id: String?
+
+      attr_accessor permission: Braintrust::Models::ACLCreateParams::permission?
+
+      attr_accessor restrict_object_type: Braintrust::Models::ACLCreateParams::restrict_object_type?
+
+      attr_accessor role_id: String?
+
+      attr_accessor user_id: String?
+
+      def initialize:
+        (
+          object_id_: String,
+          object_type: Braintrust::Models::ACLCreateParams::object_type,
+          group_id: String?,
+          permission: Braintrust::Models::ACLCreateParams::permission?,
+          restrict_object_type: Braintrust::Models::ACLCreateParams::restrict_object_type?,
+          role_id: String?,
+          user_id: String?,
+          request_options: Braintrust::request_opts
+        ) -> void
+        | (
+          ?Braintrust::Models::acl_create_params | Braintrust::BaseModel data
+        ) -> void
+
+      def to_hash: -> Braintrust::Models::acl_create_params
+
+      type object_type =
+        :organization
+        | :project
+        | :experiment
+        | :dataset
+        | :prompt
+        | :prompt_session
+        | :group
+        | :role
+        | :org_member
+        | :project_log
+        | :org_project
+
+      class ObjectType < Braintrust::Enum
+        ORGANIZATION: :organization
+        PROJECT: :project
+        EXPERIMENT: :experiment
+        DATASET: :dataset
+        PROMPT: :prompt
+        PROMPT_SESSION: :prompt_session
+        GROUP: :group
+        ROLE: :role
+        ORG_MEMBER: :org_member
+        PROJECT_LOG: :project_log
+        ORG_PROJECT: :org_project
+
+        def self.values: -> ::Array[Braintrust::Models::ACLCreateParams::object_type]
+      end
+
+      type permission =
+        :create
+        | :read
+        | :update
+        | :delete
+        | :create_acls
+        | :read_acls
+        | :update_acls
+        | :delete_acls
+
+      class Permission < Braintrust::Enum
+        CREATE: :create
+        READ: :read
+        UPDATE: :update
+        DELETE: :delete
+        CREATE_ACLS: :create_acls
+        READ_ACLS: :read_acls
+        UPDATE_ACLS: :update_acls
+        DELETE_ACLS: :delete_acls
+
+        def self.values: -> ::Array[Braintrust::Models::ACLCreateParams::permission]
+      end
+
+      type restrict_object_type =
+        :organization
+        | :project
+        | :experiment
+        | :dataset
+        | :prompt
+        | :prompt_session
+        | :group
+        | :role
+        | :org_member
+        | :project_log
+        | :org_project
+
+      class RestrictObjectType < Braintrust::Enum
+        ORGANIZATION: :organization
+        PROJECT: :project
+        EXPERIMENT: :experiment
+        DATASET: :dataset
+        PROMPT: :prompt
+        PROMPT_SESSION: :prompt_session
+        GROUP: :group
+        ROLE: :role
+        ORG_MEMBER: :org_member
+        PROJECT_LOG: :project_log
+        ORG_PROJECT: :org_project
+
+        def self.values: -> ::Array[Braintrust::Models::ACLCreateParams::restrict_object_type]
+      end
+    end
+  end
+end

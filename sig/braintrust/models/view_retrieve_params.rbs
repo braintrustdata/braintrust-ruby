@@ -1,0 +1,60 @@
+module Braintrust
+  module Models
+    type view_retrieve_params =
+      {
+        object_id_: String,
+        object_type: Braintrust::Models::ViewRetrieveParams::object_type
+      }
+      & Braintrust::request_parameters
+
+    class ViewRetrieveParams < Braintrust::BaseModel
+      extend Braintrust::RequestParameters::Converter
+      include Braintrust::RequestParameters
+
+      attr_accessor object_id_: String
+
+      attr_accessor object_type: Braintrust::Models::ViewRetrieveParams::object_type
+
+      def initialize:
+        (
+          object_id_: String,
+          object_type: Braintrust::Models::ViewRetrieveParams::object_type,
+          request_options: Braintrust::request_opts
+        ) -> void
+        | (
+          ?Braintrust::Models::view_retrieve_params | Braintrust::BaseModel data
+        ) -> void
+
+      def to_hash: -> Braintrust::Models::view_retrieve_params
+
+      type object_type =
+        :organization
+        | :project
+        | :experiment
+        | :dataset
+        | :prompt
+        | :prompt_session
+        | :group
+        | :role
+        | :org_member
+        | :project_log
+        | :org_project
+
+      class ObjectType < Braintrust::Enum
+        ORGANIZATION: :organization
+        PROJECT: :project
+        EXPERIMENT: :experiment
+        DATASET: :dataset
+        PROMPT: :prompt
+        PROMPT_SESSION: :prompt_session
+        GROUP: :group
+        ROLE: :role
+        ORG_MEMBER: :org_member
+        PROJECT_LOG: :project_log
+        ORG_PROJECT: :org_project
+
+        def self.values: -> ::Array[Braintrust::Models::ViewRetrieveParams::object_type]
+      end
+    end
+  end
+end

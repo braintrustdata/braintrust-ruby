@@ -1,0 +1,62 @@
+module Braintrust
+  class Client < Braintrust::BaseClient
+    DEFAULT_MAX_RETRIES: 2
+
+    DEFAULT_TIMEOUT_IN_SECONDS: Float
+
+    DEFAULT_INITIAL_RETRY_DELAY: Float
+
+    DEFAULT_MAX_RETRY_DELAY: Float
+
+    attr_reader api_key: String?
+
+    attr_reader top_level: Braintrust::Resources::TopLevel
+
+    attr_reader projects: Braintrust::Resources::Projects
+
+    attr_reader experiments: Braintrust::Resources::Experiments
+
+    attr_reader datasets: Braintrust::Resources::Datasets
+
+    attr_reader prompts: Braintrust::Resources::Prompts
+
+    attr_reader roles: Braintrust::Resources::Roles
+
+    attr_reader groups: Braintrust::Resources::Groups
+
+    attr_reader acls: Braintrust::Resources::ACLs
+
+    attr_reader users: Braintrust::Resources::Users
+
+    attr_reader project_scores: Braintrust::Resources::ProjectScores
+
+    attr_reader project_tags: Braintrust::Resources::ProjectTags
+
+    attr_reader span_iframes: Braintrust::Resources::SpanIframes
+
+    attr_reader functions: Braintrust::Resources::Functions
+
+    attr_reader views: Braintrust::Resources::Views
+
+    attr_reader organizations: Braintrust::Resources::Organizations
+
+    attr_reader api_keys: Braintrust::Resources::APIKeys
+
+    attr_reader ai_secrets: Braintrust::Resources::AISecrets
+
+    attr_reader env_vars: Braintrust::Resources::EnvVars
+
+    attr_reader evals: Braintrust::Resources::Evals
+
+    private def auth_headers: -> ::Hash[String, String]
+
+    def initialize: (
+      base_url: String?,
+      api_key: String?,
+      max_retries: Integer,
+      timeout: Float,
+      initial_retry_delay: Float,
+      max_retry_delay: Float
+    ) -> void
+  end
+end

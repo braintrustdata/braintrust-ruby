@@ -3,25 +3,29 @@
 module Braintrust
   module Resources
     class TopLevel
-      # @param client [Braintrust::Client]
-      def initialize(client:)
-        @client = client
-      end
-
       # Default endpoint. Simply replies with 'Hello, World!'. Authorization is not
       #   required
       #
-      # @param opts [Hash{Symbol => Object}, Braintrust::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param params [Braintrust::Models::TopLevelHelloWorldParams, Hash{Symbol=>Object}] .
+      #
+      #   @option params [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [String]
-      def hello_world(opts = {})
-        req = {
+      #
+      def hello_world(params = {})
+        @client.request(
           method: :get,
-          path: "/v1",
-          headers: {"Accept" => "text/plain"},
-          model: String
-        }
-        @client.request(req, opts)
+          path: "v1",
+          headers: {"accept" => "text/plain"},
+          model: String,
+          options: params[:request_options]
+        )
+      end
+
+      # @param client [Braintrust::Client]
+      #
+      def initialize(client:)
+        @client = client
       end
     end
   end

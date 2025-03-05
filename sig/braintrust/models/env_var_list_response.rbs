@@ -1,0 +1,19 @@
+module Braintrust
+  module Models
+    type env_var_list_response =
+      { objects: ::Array[Braintrust::Models::EnvVar] }
+
+    class EnvVarListResponse < Braintrust::BaseModel
+      attr_accessor objects: ::Array[Braintrust::Models::EnvVar]
+
+      def initialize:
+        (objects: ::Array[Braintrust::Models::EnvVar]) -> void
+        | (
+          ?Braintrust::Models::env_var_list_response
+          | Braintrust::BaseModel data
+        ) -> void
+
+      def to_hash: -> Braintrust::Models::env_var_list_response
+    end
+  end
+end

@@ -1,0 +1,102 @@
+module Braintrust
+  module Models
+    type project_score_replace_params =
+      {
+        name: String,
+        project_id: String,
+        score_type: Braintrust::Models::ProjectScoreReplaceParams::score_type,
+        categories: Braintrust::Models::ProjectScoreReplaceParams::categories?,
+        config: Braintrust::Models::ProjectScoreConfig?,
+        description: String?
+      }
+      & Braintrust::request_parameters
+
+    class ProjectScoreReplaceParams < Braintrust::BaseModel
+      extend Braintrust::RequestParameters::Converter
+      include Braintrust::RequestParameters
+
+      attr_accessor name: String
+
+      attr_accessor project_id: String
+
+      attr_accessor score_type: Braintrust::Models::ProjectScoreReplaceParams::score_type
+
+      attr_reader categories: Braintrust::Models::ProjectScoreReplaceParams::categories?
+
+      def categories=: (
+        Braintrust::Models::ProjectScoreReplaceParams::categories?
+      ) -> Braintrust::Models::ProjectScoreReplaceParams::categories?
+
+      attr_accessor config: Braintrust::Models::ProjectScoreConfig?
+
+      attr_accessor description: String?
+
+      def initialize:
+        (
+          name: String,
+          project_id: String,
+          score_type: Braintrust::Models::ProjectScoreReplaceParams::score_type,
+          categories: Braintrust::Models::ProjectScoreReplaceParams::categories?,
+          config: Braintrust::Models::ProjectScoreConfig?,
+          description: String?,
+          request_options: Braintrust::request_opts
+        ) -> void
+        | (
+          ?Braintrust::Models::project_score_replace_params
+          | Braintrust::BaseModel data
+        ) -> void
+
+      def to_hash: -> Braintrust::Models::project_score_replace_params
+
+      type score_type =
+        :slider | :categorical | :weighted | :minimum | :maximum | :online
+
+      class ScoreType < Braintrust::Enum
+        SLIDER: :slider
+        CATEGORICAL: :categorical
+        WEIGHTED: :weighted
+        MINIMUM: :minimum
+        MAXIMUM: :maximum
+        ONLINE: :online
+
+        def self.values: -> ::Array[Braintrust::Models::ProjectScoreReplaceParams::score_type]
+      end
+
+      type categories =
+        (::Array[Braintrust::Models::ProjectScoreCategory]
+        | ::Hash[Symbol, Float]
+        | ::Array[String]
+        | Braintrust::Models::ProjectScoreReplaceParams::Categories::NullableVariant)?
+
+      class Categories < Braintrust::Union
+        type project_score_category_array =
+          ::Array[Braintrust::Models::ProjectScoreCategory]
+
+        ProjectScoreCategoryArray: project_score_category_array
+
+        type float_map = ::Hash[Symbol, Float]
+
+        FloatMap: float_map
+
+        type string_array = ::Array[String]
+
+        StringArray: string_array
+
+        type nullable_variant = {  }
+
+        class NullableVariant < Braintrust::BaseModel
+          def initialize:
+            -> void
+            | (
+              ?Braintrust::Models::ProjectScoreReplaceParams::Categories::nullable_variant
+              | Braintrust::BaseModel data
+            ) -> void
+
+          def to_hash: -> Braintrust::Models::ProjectScoreReplaceParams::Categories::nullable_variant
+        end
+
+        private def self.variants: -> [[nil, ::Array[Braintrust::Models::ProjectScoreCategory]], [nil, ::Hash[Symbol, Float]], [nil, ::Array[String]], [nil, Braintrust::Models::ProjectScoreReplaceParams::Categories::NullableVariant]]
+      end
+    end
+  end
+end

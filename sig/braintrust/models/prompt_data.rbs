@@ -1,0 +1,556 @@
+module Braintrust
+  module Models
+    type prompt_data =
+      {
+        options: Braintrust::Models::PromptOptions?,
+        origin: Braintrust::Models::PromptData::Origin?,
+        parser: Braintrust::Models::PromptData::Parser?,
+        prompt: Braintrust::Models::PromptData::prompt?,
+        tool_functions: ::Array[Braintrust::Models::PromptData::tool_function]?
+      }
+
+    class PromptData < Braintrust::BaseModel
+      attr_accessor options: Braintrust::Models::PromptOptions?
+
+      attr_accessor origin: Braintrust::Models::PromptData::Origin?
+
+      attr_accessor parser: Braintrust::Models::PromptData::Parser?
+
+      attr_reader prompt: Braintrust::Models::PromptData::prompt?
+
+      def prompt=: (
+        Braintrust::Models::PromptData::prompt?
+      ) -> Braintrust::Models::PromptData::prompt?
+
+      attr_accessor tool_functions: ::Array[Braintrust::Models::PromptData::tool_function]?
+
+      def initialize:
+        (
+          options: Braintrust::Models::PromptOptions?,
+          origin: Braintrust::Models::PromptData::Origin?,
+          parser: Braintrust::Models::PromptData::Parser?,
+          prompt: Braintrust::Models::PromptData::prompt?,
+          tool_functions: ::Array[Braintrust::Models::PromptData::tool_function]?
+        ) -> void
+        | (
+          ?Braintrust::Models::prompt_data | Braintrust::BaseModel data
+        ) -> void
+
+      def to_hash: -> Braintrust::Models::prompt_data
+
+      type origin =
+        { project_id: String, prompt_id: String, prompt_version: String }
+
+      class Origin < Braintrust::BaseModel
+        attr_reader project_id: String?
+
+        def project_id=: (String) -> String
+
+        attr_reader prompt_id: String?
+
+        def prompt_id=: (String) -> String
+
+        attr_reader prompt_version: String?
+
+        def prompt_version=: (String) -> String
+
+        def initialize:
+          (
+            project_id: String,
+            prompt_id: String,
+            prompt_version: String
+          ) -> void
+          | (
+            ?Braintrust::Models::PromptData::origin | Braintrust::BaseModel data
+          ) -> void
+
+        def to_hash: -> Braintrust::Models::PromptData::origin
+      end
+
+      type parser =
+        {
+          choice_scores: ::Hash[Symbol, Float],
+          type: Braintrust::Models::PromptData::Parser::type_,
+          use_cot: bool
+        }
+
+      class Parser < Braintrust::BaseModel
+        attr_accessor choice_scores: ::Hash[Symbol, Float]
+
+        attr_accessor type: Braintrust::Models::PromptData::Parser::type_
+
+        attr_accessor use_cot: bool
+
+        def initialize:
+          (
+            choice_scores: ::Hash[Symbol, Float],
+            type: Braintrust::Models::PromptData::Parser::type_,
+            use_cot: bool
+          ) -> void
+          | (
+            ?Braintrust::Models::PromptData::parser | Braintrust::BaseModel data
+          ) -> void
+
+        def to_hash: -> Braintrust::Models::PromptData::parser
+
+        type type_ = :llm_classifier
+
+        class Type < Braintrust::Enum
+          LLM_CLASSIFIER: :llm_classifier
+
+          def self.values: -> ::Array[Braintrust::Models::PromptData::Parser::type_]
+        end
+      end
+
+      type prompt =
+        (Braintrust::Models::PromptData::Prompt::Completion
+        | Braintrust::Models::PromptData::Prompt::Chat
+        | Braintrust::Models::PromptData::Prompt::NullableVariant)?
+
+      class Prompt < Braintrust::Union
+        type completion =
+          {
+            content: String,
+            type: Braintrust::Models::PromptData::Prompt::Completion::type_
+          }
+
+        class Completion < Braintrust::BaseModel
+          attr_accessor content: String
+
+          attr_accessor type: Braintrust::Models::PromptData::Prompt::Completion::type_
+
+          def initialize:
+            (
+              content: String,
+              type: Braintrust::Models::PromptData::Prompt::Completion::type_
+            ) -> void
+            | (
+              ?Braintrust::Models::PromptData::Prompt::completion
+              | Braintrust::BaseModel data
+            ) -> void
+
+          def to_hash: -> Braintrust::Models::PromptData::Prompt::completion
+
+          type type_ = :completion
+
+          class Type < Braintrust::Enum
+            COMPLETION: :completion
+
+            def self.values: -> ::Array[Braintrust::Models::PromptData::Prompt::Completion::type_]
+          end
+        end
+
+        type chat =
+          {
+            messages: ::Array[Braintrust::Models::PromptData::Prompt::Chat::message],
+            type: Braintrust::Models::PromptData::Prompt::Chat::type_,
+            tools: String
+          }
+
+        class Chat < Braintrust::BaseModel
+          attr_accessor messages: ::Array[Braintrust::Models::PromptData::Prompt::Chat::message]
+
+          attr_accessor type: Braintrust::Models::PromptData::Prompt::Chat::type_
+
+          attr_reader tools: String?
+
+          def tools=: (String) -> String
+
+          def initialize:
+            (
+              messages: ::Array[Braintrust::Models::PromptData::Prompt::Chat::message],
+              type: Braintrust::Models::PromptData::Prompt::Chat::type_,
+              tools: String
+            ) -> void
+            | (
+              ?Braintrust::Models::PromptData::Prompt::chat
+              | Braintrust::BaseModel data
+            ) -> void
+
+          def to_hash: -> Braintrust::Models::PromptData::Prompt::chat
+
+          type message =
+            Braintrust::Models::PromptData::Prompt::Chat::Message::System
+            | Braintrust::Models::PromptData::Prompt::Chat::Message::User
+            | Braintrust::Models::PromptData::Prompt::Chat::Message::Assistant
+            | Braintrust::Models::PromptData::Prompt::Chat::Message::Tool
+            | Braintrust::Models::PromptData::Prompt::Chat::Message::Function
+            | Braintrust::Models::PromptData::Prompt::Chat::Message::Fallback
+
+          class Message < Braintrust::Union
+            type system_ =
+              {
+                role: Braintrust::Models::PromptData::Prompt::Chat::Message::System::role,
+                content: String,
+                name: String
+              }
+
+            class System < Braintrust::BaseModel
+              attr_accessor role: Braintrust::Models::PromptData::Prompt::Chat::Message::System::role
+
+              attr_reader content: String?
+
+              def content=: (String) -> String
+
+              attr_reader name: String?
+
+              def name=: (String) -> String
+
+              def initialize:
+                (
+                  role: Braintrust::Models::PromptData::Prompt::Chat::Message::System::role,
+                  content: String,
+                  name: String
+                ) -> void
+                | (
+                  ?Braintrust::Models::PromptData::Prompt::Chat::Message::system_
+                  | Braintrust::BaseModel data
+                ) -> void
+
+              def to_hash: -> Braintrust::Models::PromptData::Prompt::Chat::Message::system_
+
+              type role = :system
+
+              class Role < Braintrust::Enum
+                SYSTEM: :system
+
+                def self.values: -> ::Array[Braintrust::Models::PromptData::Prompt::Chat::Message::System::role]
+              end
+            end
+
+            type user =
+              {
+                role: Braintrust::Models::PromptData::Prompt::Chat::Message::User::role,
+                content: Braintrust::Models::PromptData::Prompt::Chat::Message::User::content,
+                name: String
+              }
+
+            class User < Braintrust::BaseModel
+              attr_accessor role: Braintrust::Models::PromptData::Prompt::Chat::Message::User::role
+
+              attr_reader content: Braintrust::Models::PromptData::Prompt::Chat::Message::User::content?
+
+              def content=: (
+                Braintrust::Models::PromptData::Prompt::Chat::Message::User::content
+              ) -> Braintrust::Models::PromptData::Prompt::Chat::Message::User::content
+
+              attr_reader name: String?
+
+              def name=: (String) -> String
+
+              def initialize:
+                (
+                  role: Braintrust::Models::PromptData::Prompt::Chat::Message::User::role,
+                  content: Braintrust::Models::PromptData::Prompt::Chat::Message::User::content,
+                  name: String
+                ) -> void
+                | (
+                  ?Braintrust::Models::PromptData::Prompt::Chat::Message::user
+                  | Braintrust::BaseModel data
+                ) -> void
+
+              def to_hash: -> Braintrust::Models::PromptData::Prompt::Chat::Message::user
+
+              type role = :user
+
+              class Role < Braintrust::Enum
+                USER: :user
+
+                def self.values: -> ::Array[Braintrust::Models::PromptData::Prompt::Chat::Message::User::role]
+              end
+
+              type content =
+                String
+                | ::Array[Braintrust::Models::PromptData::Prompt::Chat::Message::User::Content::array]
+
+              class Content < Braintrust::Union
+                type nested2_d_array =
+                  ::Array[Braintrust::Models::PromptData::Prompt::Chat::Message::User::Content::array]
+
+                Nested2DArray: nested2_d_array
+
+                type array =
+                  Braintrust::Models::ChatCompletionContentPartText
+                  | Braintrust::Models::ChatCompletionContentPartImage
+
+                class Array < Braintrust::Union
+                  private def self.variants: -> [[nil, Braintrust::Models::ChatCompletionContentPartText], [nil, Braintrust::Models::ChatCompletionContentPartImage]]
+                end
+
+                private def self.variants: -> [[nil, String], [nil, ::Array[Braintrust::Models::PromptData::Prompt::Chat::Message::User::Content::array]]]
+              end
+            end
+
+            type assistant =
+              {
+                role: Braintrust::Models::PromptData::Prompt::Chat::Message::Assistant::role,
+                content: String?,
+                function_call: Braintrust::Models::PromptData::Prompt::Chat::Message::Assistant::FunctionCall?,
+                name: String?,
+                tool_calls: ::Array[Braintrust::Models::ChatCompletionMessageToolCall]?
+              }
+
+            class Assistant < Braintrust::BaseModel
+              attr_accessor role: Braintrust::Models::PromptData::Prompt::Chat::Message::Assistant::role
+
+              attr_accessor content: String?
+
+              attr_accessor function_call: Braintrust::Models::PromptData::Prompt::Chat::Message::Assistant::FunctionCall?
+
+              attr_accessor name: String?
+
+              attr_accessor tool_calls: ::Array[Braintrust::Models::ChatCompletionMessageToolCall]?
+
+              def initialize:
+                (
+                  role: Braintrust::Models::PromptData::Prompt::Chat::Message::Assistant::role,
+                  content: String?,
+                  function_call: Braintrust::Models::PromptData::Prompt::Chat::Message::Assistant::FunctionCall?,
+                  name: String?,
+                  tool_calls: ::Array[Braintrust::Models::ChatCompletionMessageToolCall]?
+                ) -> void
+                | (
+                  ?Braintrust::Models::PromptData::Prompt::Chat::Message::assistant
+                  | Braintrust::BaseModel data
+                ) -> void
+
+              def to_hash: -> Braintrust::Models::PromptData::Prompt::Chat::Message::assistant
+
+              type role = :assistant
+
+              class Role < Braintrust::Enum
+                ASSISTANT: :assistant
+
+                def self.values: -> ::Array[Braintrust::Models::PromptData::Prompt::Chat::Message::Assistant::role]
+              end
+
+              type function_call = { arguments: String, name: String }
+
+              class FunctionCall < Braintrust::BaseModel
+                attr_accessor arguments: String
+
+                attr_accessor name: String
+
+                def initialize:
+                  (arguments: String, name: String) -> void
+                  | (
+                    ?Braintrust::Models::PromptData::Prompt::Chat::Message::Assistant::function_call
+                    | Braintrust::BaseModel data
+                  ) -> void
+
+                def to_hash: -> Braintrust::Models::PromptData::Prompt::Chat::Message::Assistant::function_call
+              end
+            end
+
+            type tool =
+              {
+                role: Braintrust::Models::PromptData::Prompt::Chat::Message::Tool::role,
+                content: String,
+                tool_call_id: String
+              }
+
+            class Tool < Braintrust::BaseModel
+              attr_accessor role: Braintrust::Models::PromptData::Prompt::Chat::Message::Tool::role
+
+              attr_reader content: String?
+
+              def content=: (String) -> String
+
+              attr_reader tool_call_id: String?
+
+              def tool_call_id=: (String) -> String
+
+              def initialize:
+                (
+                  role: Braintrust::Models::PromptData::Prompt::Chat::Message::Tool::role,
+                  content: String,
+                  tool_call_id: String
+                ) -> void
+                | (
+                  ?Braintrust::Models::PromptData::Prompt::Chat::Message::tool
+                  | Braintrust::BaseModel data
+                ) -> void
+
+              def to_hash: -> Braintrust::Models::PromptData::Prompt::Chat::Message::tool
+
+              type role = :tool
+
+              class Role < Braintrust::Enum
+                TOOL: :tool
+
+                def self.values: -> ::Array[Braintrust::Models::PromptData::Prompt::Chat::Message::Tool::role]
+              end
+            end
+
+            type function =
+              {
+                name: String,
+                role: Braintrust::Models::PromptData::Prompt::Chat::Message::Function::role,
+                content: String
+              }
+
+            class Function < Braintrust::BaseModel
+              attr_accessor name: String
+
+              attr_accessor role: Braintrust::Models::PromptData::Prompt::Chat::Message::Function::role
+
+              attr_reader content: String?
+
+              def content=: (String) -> String
+
+              def initialize:
+                (
+                  name: String,
+                  role: Braintrust::Models::PromptData::Prompt::Chat::Message::Function::role,
+                  content: String
+                ) -> void
+                | (
+                  ?Braintrust::Models::PromptData::Prompt::Chat::Message::function
+                  | Braintrust::BaseModel data
+                ) -> void
+
+              def to_hash: -> Braintrust::Models::PromptData::Prompt::Chat::Message::function
+
+              type role = :function
+
+              class Role < Braintrust::Enum
+                FUNCTION: :function
+
+                def self.values: -> ::Array[Braintrust::Models::PromptData::Prompt::Chat::Message::Function::role]
+              end
+            end
+
+            type fallback =
+              {
+                role: Braintrust::Models::PromptData::Prompt::Chat::Message::Fallback::role,
+                content: String?
+              }
+
+            class Fallback < Braintrust::BaseModel
+              attr_accessor role: Braintrust::Models::PromptData::Prompt::Chat::Message::Fallback::role
+
+              attr_accessor content: String?
+
+              def initialize:
+                (
+                  role: Braintrust::Models::PromptData::Prompt::Chat::Message::Fallback::role,
+                  content: String?
+                ) -> void
+                | (
+                  ?Braintrust::Models::PromptData::Prompt::Chat::Message::fallback
+                  | Braintrust::BaseModel data
+                ) -> void
+
+              def to_hash: -> Braintrust::Models::PromptData::Prompt::Chat::Message::fallback
+
+              type role = :model
+
+              class Role < Braintrust::Enum
+                MODEL: :model
+
+                def self.values: -> ::Array[Braintrust::Models::PromptData::Prompt::Chat::Message::Fallback::role]
+              end
+            end
+
+            private def self.variants: -> [[nil, Braintrust::Models::PromptData::Prompt::Chat::Message::System], [nil, Braintrust::Models::PromptData::Prompt::Chat::Message::User], [nil, Braintrust::Models::PromptData::Prompt::Chat::Message::Assistant], [nil, Braintrust::Models::PromptData::Prompt::Chat::Message::Tool], [nil, Braintrust::Models::PromptData::Prompt::Chat::Message::Function], [nil, Braintrust::Models::PromptData::Prompt::Chat::Message::Fallback]]
+          end
+
+          type type_ = :chat
+
+          class Type < Braintrust::Enum
+            CHAT: :chat
+
+            def self.values: -> ::Array[Braintrust::Models::PromptData::Prompt::Chat::type_]
+          end
+        end
+
+        type nullable_variant = {  }
+
+        class NullableVariant < Braintrust::BaseModel
+          def initialize:
+            -> void
+            | (
+              ?Braintrust::Models::PromptData::Prompt::nullable_variant
+              | Braintrust::BaseModel data
+            ) -> void
+
+          def to_hash: -> Braintrust::Models::PromptData::Prompt::nullable_variant
+        end
+
+        private def self.variants: -> [[nil, Braintrust::Models::PromptData::Prompt::Completion], [nil, Braintrust::Models::PromptData::Prompt::Chat], [nil, Braintrust::Models::PromptData::Prompt::NullableVariant]]
+      end
+
+      type tool_function =
+        Braintrust::Models::PromptData::ToolFunction::Function
+        | Braintrust::Models::PromptData::ToolFunction::Global
+
+      class ToolFunction < Braintrust::Union
+        type function =
+          {
+            id: String,
+            type: Braintrust::Models::PromptData::ToolFunction::Function::type_
+          }
+
+        class Function < Braintrust::BaseModel
+          attr_accessor id: String
+
+          attr_accessor type: Braintrust::Models::PromptData::ToolFunction::Function::type_
+
+          def initialize:
+            (
+              id: String,
+              type: Braintrust::Models::PromptData::ToolFunction::Function::type_
+            ) -> void
+            | (
+              ?Braintrust::Models::PromptData::ToolFunction::function
+              | Braintrust::BaseModel data
+            ) -> void
+
+          def to_hash: -> Braintrust::Models::PromptData::ToolFunction::function
+
+          type type_ = :function
+
+          class Type < Braintrust::Enum
+            FUNCTION: :function
+
+            def self.values: -> ::Array[Braintrust::Models::PromptData::ToolFunction::Function::type_]
+          end
+        end
+
+        type global =
+          {
+            name: String,
+            type: Braintrust::Models::PromptData::ToolFunction::Global::type_
+          }
+
+        class Global < Braintrust::BaseModel
+          attr_accessor name: String
+
+          attr_accessor type: Braintrust::Models::PromptData::ToolFunction::Global::type_
+
+          def initialize:
+            (
+              name: String,
+              type: Braintrust::Models::PromptData::ToolFunction::Global::type_
+            ) -> void
+            | (
+              ?Braintrust::Models::PromptData::ToolFunction::global
+              | Braintrust::BaseModel data
+            ) -> void
+
+          def to_hash: -> Braintrust::Models::PromptData::ToolFunction::global
+
+          type type_ = :global
+
+          class Type < Braintrust::Enum
+            GLOBAL: :global
+
+            def self.values: -> ::Array[Braintrust::Models::PromptData::ToolFunction::Global::type_]
+          end
+        end
+
+        private def self.variants: -> [[nil, Braintrust::Models::PromptData::ToolFunction::Function], [nil, Braintrust::Models::PromptData::ToolFunction::Global]]
+      end
+    end
+  end
+end

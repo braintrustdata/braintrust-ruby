@@ -1,0 +1,35 @@
+module Braintrust
+  module Models
+    type project_tag_replace_params =
+      { name: String, project_id: String, color: String?, description: String? }
+      & Braintrust::request_parameters
+
+    class ProjectTagReplaceParams < Braintrust::BaseModel
+      extend Braintrust::RequestParameters::Converter
+      include Braintrust::RequestParameters
+
+      attr_accessor name: String
+
+      attr_accessor project_id: String
+
+      attr_accessor color: String?
+
+      attr_accessor description: String?
+
+      def initialize:
+        (
+          name: String,
+          project_id: String,
+          color: String?,
+          description: String?,
+          request_options: Braintrust::request_opts
+        ) -> void
+        | (
+          ?Braintrust::Models::project_tag_replace_params
+          | Braintrust::BaseModel data
+        ) -> void
+
+      def to_hash: -> Braintrust::Models::project_tag_replace_params
+    end
+  end
+end

@@ -1,81 +1,170 @@
 # frozen_string_literal: true
 
 module Braintrust
-  # @!visibility private
+  # @private
+  #
   class PooledNetRequester
-    def initialize
-      @mutex = Mutex.new
-      @pools = {}
-    end
+    class << self
+      # @private
+      #
+      # @param url [URI::Generic]
+      #
+      # @return [Net::HTTP]
+      #
+      def connect(url)
+        port =
+          case [url.port, url.scheme]
+          in [Integer, _]
+            url.port
+          in [nil, "http" | "ws"]
+            Net::HTTP.http_default_port
+          in [nil, "https" | "wss"]
+            Net::HTTP.https_default_port
+          end
 
-    # @param req [Hash{Symbol => Object}]
-    # @param timeout [Float]
-    #
-    # @return [ConnectionPool]
-    private def get_pool(req, timeout:)
-      scheme, hostname = req.fetch_values(:scheme, :host)
-      scheme = scheme.to_sym
-      port = req.fetch(:port) do
-        case scheme
-        in :http
-          Net::HTTP.http_default_port
-        else
-          Net::HTTP.https_default_port
+        Net::HTTP.new(url.host, port).tap do
+          _1.use_ssl = %w[https wss].include?(url.scheme)
+          _1.max_retries = 0
         end
       end
 
-      @mutex.synchronize do
-        @pools[hostname] ||= ConnectionPool.new do
-          conn = Net::HTTP.new(hostname, port)
-          conn.use_ssl = scheme == :https
-          conn.max_retries = 0
-          conn.open_timeout = timeout
-          conn.start
-          conn
-        end
-        @pools[hostname]
+      # @private
+      #
+      # @param conn [Net::HTTP]
+      # @param deadline [Float]
+      #
+      def calibrate_socket_timeout(conn, deadline)
+        timeout = deadline - Braintrust::Util.monotonic_secs
+        conn.open_timeout = conn.read_timeout = conn.write_timeout = conn.continue_timeout = timeout
       end
-    end
 
-    # @param req [Hash{Symbol => Object}]
-    # @param timeout [Float]
-    #
-    # @return [Net::HTTPResponse]
-    def execute(req, timeout:)
-      method, headers, body = req.fetch_values(:method, :headers, :body)
-      content_type = headers["content-type"]
-
-      get_pool(req, timeout: timeout).with do |conn|
-        uri = Braintrust::Util.unparse_uri(req, absolute: false)
-
-        request = Net::HTTPGenericRequest.new(
+      # @private
+      #
+      # @param request [Hash{Symbol=>Object}] .
+      #
+      #   @option request [Symbol] :method
+      #
+      #   @option request [URI::Generic] :url
+      #
+      #   @option request [Hash{String=>String}] :headers
+      #
+      # @return [Net::HTTPGenericRequest]
+      #
+      def build_request(request)
+        method, url, headers, body = request.fetch_values(:method, :url, :headers, :body)
+        req = Net::HTTPGenericRequest.new(
           method.to_s.upcase,
           !body.nil?,
           method != :head,
-          uri.to_s
+          url.to_s
         )
 
-        case [content_type, body]
-        in ["multipart/form-data", Hash]
-          form_data =
-            body.filter_map do |k, v|
-              next if v.nil?
-              [k.to_s, v].flatten
-            end
-          request.set_form(form_data, content_type)
-          headers = headers.merge("content-type" => nil)
-        else
-          request.body = body
+        headers.each { req[_1] = _2 }
+
+        case body
+        in nil
+        in String
+          req.body = body
+        in StringIO
+          req.body = body.string
+        in IO
+          body.rewind
+          req.body_stream = body
         end
 
-        headers.each do |k, v|
-          request[k] = v
-        end
-
-        conn.read_timeout = timeout
-        conn.write_timeout = timeout
-        conn.request(request)
+        req
       end
+    end
+
+    # @private
+    #
+    # @param url [URI::Generic]
+    # @param blk [Proc]
+    #
+    private def with_pool(url, &blk)
+      origin = Braintrust::Util.uri_origin(url)
+      th = Thread.current
+      key = :"#{object_id}-#{self.class.name}-connection_in_use_for_#{origin}"
+
+      if th[key]
+        tap do
+          conn = self.class.connect(url)
+          return blk.call(conn)
+        ensure
+          conn.finish if conn&.started?
+        end
+      end
+
+      pool =
+        @mutex.synchronize do
+          @pools[origin] ||= ConnectionPool.new(size: Etc.nprocessors) do
+            self.class.connect(url)
+          end
+        end
+
+      pool.with do |conn|
+        th[key] = true
+        blk.call(conn)
+      ensure
+        th[key] = nil
+      end
+    end
+
+    # @private
+    #
+    # @param request [Hash{Symbol=>Object}] .
+    #
+    #   @option request [Symbol] :method
+    #
+    #   @option request [URI::Generic] :url
+    #
+    #   @option request [Hash{String=>String}] :headers
+    #
+    #   @option request [Object] :body
+    #
+    #   @option request [Float] :deadline
+    #
+    # @return [Array(Net::HTTPResponse, Enumerable)]
+    #
+    def execute(request)
+      url, deadline = request.fetch_values(:url, :deadline)
+      req = self.class.build_request(request)
+
+      eof = false
+      enum = Enumerator.new do |y|
+        with_pool(url) do |conn|
+          self.class.calibrate_socket_timeout(conn, deadline)
+          conn.start unless conn.started?
+
+          self.class.calibrate_socket_timeout(conn, deadline)
+          conn.request(req) do |rsp|
+            y << [conn, rsp]
+            rsp.read_body do |bytes|
+              y << bytes
+              self.class.calibrate_socket_timeout(conn, deadline)
+            end
+            eof = true
+          end
+        end
+      end
+
+      # need to protect the `Enumerator` against `#.rewind`
+      fused = false
+      conn, response = enum.next
+      body = Enumerator.new do |y|
+        next if fused
+
+        fused = true
+        loop { y << enum.next }
+      ensure
+        conn.finish if !eof && conn.started?
+      end
+      [response, (response.body = body)]
+    end
+
+    def initialize
+      @mutex = Mutex.new
+      @pools = {}
     end
   end
 end

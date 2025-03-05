@@ -3,52 +3,62 @@
 module Braintrust
   module Models
     class ProjectTag < Braintrust::BaseModel
-      # @!attribute [rw] id
+      # @!attribute id
       #   Unique identifier for the project tag
+      #
       #   @return [String]
       required :id, String
 
-      # @!attribute [rw] name
+      # @!attribute name
       #   Name of the project tag
+      #
       #   @return [String]
       required :name, String
 
-      # @!attribute [rw] project_id
+      # @!attribute project_id
       #   Unique identifier for the project that the project tag belongs under
+      #
       #   @return [String]
       required :project_id, String
 
-      # @!attribute [rw] user_id
+      # @!attribute user_id
+      #
       #   @return [String]
       required :user_id, String
 
-      # @!attribute [rw] color
+      # @!attribute color
       #   Color of the tag for the UI
-      #   @return [String]
-      optional :color, String
+      #
+      #   @return [String, nil]
+      optional :color, String, nil?: true
 
-      # @!attribute [rw] created
+      # @!attribute created
       #   Date of project tag creation
-      #   @return [Time]
-      optional :created, Time
+      #
+      #   @return [Time, nil]
+      optional :created, Time, nil?: true
 
-      # @!attribute [rw] description
+      # @!attribute description
       #   Textual description of the project tag
-      #   @return [String]
-      optional :description, String
+      #
+      #   @return [String, nil]
+      optional :description, String, nil?: true
 
       # @!parse
-      #   # Create a new instance of ProjectTag from a Hash of raw data.
+      #   # A project tag is a user-configured tag for tracking and filtering your
+      #   #   experiments, logs, and other data
       #   #
-      #   # @param data [Hash{Symbol => Object}] .
-      #   #   @option data [String] :id Unique identifier for the project tag
-      #   #   @option data [String] :name Name of the project tag
-      #   #   @option data [String] :project_id Unique identifier for the project that the project tag belongs under
-      #   #   @option data [String] :user_id
-      #   #   @option data [String, nil] :color Color of the tag for the UI
-      #   #   @option data [String, nil] :created Date of project tag creation
-      #   #   @option data [String, nil] :description Textual description of the project tag
-      #   def initialize(data = {}) = super
+      #   # @param id [String]
+      #   # @param name [String]
+      #   # @param project_id [String]
+      #   # @param user_id [String]
+      #   # @param color [String, nil]
+      #   # @param created [Time, nil]
+      #   # @param description [String, nil]
+      #   #
+      #   def initialize(id:, name:, project_id:, user_id:, color: nil, created: nil, description: nil, **) = super
+
+      # def initialize: (Hash | Braintrust::BaseModel) -> void
     end
   end
 end

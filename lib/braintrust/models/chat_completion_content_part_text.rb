@@ -3,25 +3,47 @@
 module Braintrust
   module Models
     class ChatCompletionContentPartText < Braintrust::BaseModel
-      # @!attribute [rw] type
+      # @!attribute type
+      #
       #   @return [Symbol, Braintrust::Models::ChatCompletionContentPartText::Type]
       required :type, enum: -> { Braintrust::Models::ChatCompletionContentPartText::Type }
 
-      # @!attribute [rw] text
-      #   @return [String]
+      # @!attribute [r] text
+      #
+      #   @return [String, nil]
       optional :text, String
 
-      class Type < Braintrust::Enum
-        TEXT = :text
-      end
+      # @!parse
+      #   # @return [String]
+      #   attr_writer :text
 
       # @!parse
-      #   # Create a new instance of ChatCompletionContentPartText from a Hash of raw data.
+      #   # @param type [Symbol, Braintrust::Models::ChatCompletionContentPartText::Type]
+      #   # @param text [String]
       #   #
-      #   # @param data [Hash{Symbol => Object}] .
-      #   #   @option data [String] :type
-      #   #   @option data [String, nil] :text
-      #   def initialize(data = {}) = super
+      #   def initialize(type:, text: nil, **) = super
+
+      # def initialize: (Hash | Braintrust::BaseModel) -> void
+
+      # @abstract
+      #
+      # @example
+      # ```ruby
+      # case type
+      # in :text
+      #   # ...
+      # end
+      # ```
+      class Type < Braintrust::Enum
+        TEXT = :text
+
+        finalize!
+
+        # @!parse
+        #   # @return [Array<Symbol>]
+        #   #
+        #   def self.values; end
+      end
     end
   end
 end

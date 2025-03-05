@@ -1,0 +1,133 @@
+module Braintrust
+  module Resources
+    class Datasets
+      def create:
+        (
+          Braintrust::Models::DatasetCreateParams | ::Hash[Symbol, top] params
+        ) -> Braintrust::Models::Dataset
+        | (
+          name: String,
+          project_id: String,
+          description: String?,
+          metadata: ::Hash[Symbol, top?]?,
+          request_options: Braintrust::request_opts
+        ) -> Braintrust::Models::Dataset
+
+      def retrieve:
+        (
+          String dataset_id,
+          ?Braintrust::Models::DatasetRetrieveParams
+          | ::Hash[Symbol, top] params
+        ) -> Braintrust::Models::Dataset
+        | (
+          String dataset_id,
+          request_options: Braintrust::request_opts
+        ) -> Braintrust::Models::Dataset
+
+      def update:
+        (
+          String dataset_id,
+          ?Braintrust::Models::DatasetUpdateParams | ::Hash[Symbol, top] params
+        ) -> Braintrust::Models::Dataset
+        | (
+          String dataset_id,
+          description: String?,
+          metadata: ::Hash[Symbol, top?]?,
+          name: String?,
+          request_options: Braintrust::request_opts
+        ) -> Braintrust::Models::Dataset
+
+      def list:
+        (
+          ?Braintrust::Models::DatasetListParams | ::Hash[Symbol, top] params
+        ) -> Braintrust::ListObjects[Braintrust::Models::Dataset]
+        | (
+          dataset_name: String,
+          ending_before: String,
+          ids: Braintrust::Models::DatasetListParams::ids,
+          limit: Integer?,
+          org_name: String,
+          project_id: String,
+          project_name: String,
+          starting_after: String,
+          request_options: Braintrust::request_opts
+        ) -> Braintrust::ListObjects[Braintrust::Models::Dataset]
+
+      def delete:
+        (
+          String dataset_id,
+          ?Braintrust::Models::DatasetDeleteParams | ::Hash[Symbol, top] params
+        ) -> Braintrust::Models::Dataset
+        | (
+          String dataset_id,
+          request_options: Braintrust::request_opts
+        ) -> Braintrust::Models::Dataset
+
+      def feedback:
+        (
+          String dataset_id,
+          Braintrust::Models::DatasetFeedbackParams | ::Hash[Symbol, top] params
+        ) -> Braintrust::Models::FeedbackResponseSchema
+        | (
+          String dataset_id,
+          feedback: ::Array[Braintrust::Models::FeedbackDatasetItem],
+          request_options: Braintrust::request_opts
+        ) -> Braintrust::Models::FeedbackResponseSchema
+
+      def fetch:
+        (
+          String dataset_id,
+          ?Braintrust::Models::DatasetFetchParams | ::Hash[Symbol, top] params
+        ) -> Braintrust::Models::FetchDatasetEventsResponse
+        | (
+          String dataset_id,
+          limit: Integer?,
+          max_root_span_id: String,
+          max_xact_id: String,
+          version: String,
+          request_options: Braintrust::request_opts
+        ) -> Braintrust::Models::FetchDatasetEventsResponse
+
+      def fetch_post:
+        (
+          String dataset_id,
+          ?Braintrust::Models::DatasetFetchPostParams
+          | ::Hash[Symbol, top] params
+        ) -> Braintrust::Models::FetchDatasetEventsResponse
+        | (
+          String dataset_id,
+          cursor: String?,
+          limit: Integer?,
+          max_root_span_id: String?,
+          max_xact_id: String?,
+          version: String?,
+          request_options: Braintrust::request_opts
+        ) -> Braintrust::Models::FetchDatasetEventsResponse
+
+      def insert:
+        (
+          String dataset_id,
+          Braintrust::Models::DatasetInsertParams | ::Hash[Symbol, top] params
+        ) -> Braintrust::Models::InsertEventsResponse
+        | (
+          String dataset_id,
+          events: ::Array[Braintrust::Models::InsertDatasetEvent],
+          request_options: Braintrust::request_opts
+        ) -> Braintrust::Models::InsertEventsResponse
+
+      def summarize:
+        (
+          String dataset_id,
+          ?Braintrust::Models::DatasetSummarizeParams
+          | ::Hash[Symbol, top] params
+        ) -> Braintrust::Models::SummarizeDatasetResponse
+        | (
+          String dataset_id,
+          summarize_data: bool?,
+          request_options: Braintrust::request_opts
+        ) -> Braintrust::Models::SummarizeDatasetResponse
+
+      def initialize: (client: Braintrust::Client) -> void
+    end
+  end
+end

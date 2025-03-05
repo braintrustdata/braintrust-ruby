@@ -3,41 +3,48 @@
 module Braintrust
   module Models
     class SummarizeDatasetResponse < Braintrust::BaseModel
-      # @!attribute [rw] dataset_name
+      # @!attribute dataset_name
       #   Name of the dataset
+      #
       #   @return [String]
       required :dataset_name, String
 
-      # @!attribute [rw] dataset_url
+      # @!attribute dataset_url
       #   URL to the dataset's page in the Braintrust app
+      #
       #   @return [String]
       required :dataset_url, String
 
-      # @!attribute [rw] project_name
+      # @!attribute project_name
       #   Name of the project that the dataset belongs to
+      #
       #   @return [String]
       required :project_name, String
 
-      # @!attribute [rw] project_url
+      # @!attribute project_url
       #   URL to the project's page in the Braintrust app
+      #
       #   @return [String]
       required :project_url, String
 
-      # @!attribute [rw] data_summary
+      # @!attribute data_summary
       #   Summary of a dataset's data
-      #   @return [Braintrust::Models::DataSummary]
-      optional :data_summary, -> { Braintrust::Models::DataSummary }
+      #
+      #   @return [Braintrust::Models::DataSummary, nil]
+      optional :data_summary, -> { Braintrust::Models::DataSummary }, nil?: true
 
       # @!parse
-      #   # Create a new instance of SummarizeDatasetResponse from a Hash of raw data.
+      #   # Summary of a dataset
       #   #
-      #   # @param data [Hash{Symbol => Object}] .
-      #   #   @option data [String] :dataset_name Name of the dataset
-      #   #   @option data [String] :dataset_url URL to the dataset's page in the Braintrust app
-      #   #   @option data [String] :project_name Name of the project that the dataset belongs to
-      #   #   @option data [String] :project_url URL to the project's page in the Braintrust app
-      #   #   @option data [Object, nil] :data_summary Summary of a dataset's data
-      #   def initialize(data = {}) = super
+      #   # @param dataset_name [String]
+      #   # @param dataset_url [String]
+      #   # @param project_name [String]
+      #   # @param project_url [String]
+      #   # @param data_summary [Braintrust::Models::DataSummary, nil]
+      #   #
+      #   def initialize(dataset_name:, dataset_url:, project_name:, project_url:, data_summary: nil, **) = super
+
+      # def initialize: (Hash | Braintrust::BaseModel) -> void
     end
   end
 end

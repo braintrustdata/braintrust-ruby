@@ -3,66 +3,88 @@
 module Braintrust
   module Models
     class SpanIFrame < Braintrust::BaseModel
-      # @!attribute [rw] id
+      # @!attribute id
       #   Unique identifier for the span iframe
+      #
       #   @return [String]
       required :id, String
 
-      # @!attribute [rw] name
+      # @!attribute name
       #   Name of the span iframe
+      #
       #   @return [String]
       required :name, String
 
-      # @!attribute [rw] project_id
+      # @!attribute project_id
       #   Unique identifier for the project that the span iframe belongs under
+      #
       #   @return [String]
       required :project_id, String
 
-      # @!attribute [rw] url
+      # @!attribute url
       #   URL to embed the project viewer in an iframe
+      #
       #   @return [String]
       required :url, String
 
-      # @!attribute [rw] created
+      # @!attribute created
       #   Date of span iframe creation
-      #   @return [Time]
-      optional :created, Time
+      #
+      #   @return [Time, nil]
+      optional :created, Time, nil?: true
 
-      # @!attribute [rw] deleted_at
+      # @!attribute deleted_at
       #   Date of span iframe deletion, or null if the span iframe is still active
-      #   @return [Time]
-      optional :deleted_at, Time
+      #
+      #   @return [Time, nil]
+      optional :deleted_at, Time, nil?: true
 
-      # @!attribute [rw] description
+      # @!attribute description
       #   Textual description of the span iframe
-      #   @return [String]
-      optional :description, String
+      #
+      #   @return [String, nil]
+      optional :description, String, nil?: true
 
-      # @!attribute [rw] post_message
-      #   Whether to post messages to the iframe containing the span's data. This is useful when you want to render more data than fits in the URL.
-      #   @return [Boolean]
-      optional :post_message, Braintrust::BooleanModel
+      # @!attribute post_message
+      #   Whether to post messages to the iframe containing the span's data. This is
+      #     useful when you want to render more data than fits in the URL.
+      #
+      #   @return [Boolean, nil]
+      optional :post_message, Braintrust::BooleanModel, nil?: true
 
-      # @!attribute [rw] user_id
+      # @!attribute user_id
       #   Identifies the user who created the span iframe
-      #   @return [String]
-      optional :user_id, String
+      #
+      #   @return [String, nil]
+      optional :user_id, String, nil?: true
 
       # @!parse
-      #   # Create a new instance of SpanIFrame from a Hash of raw data.
+      #   # @param id [String]
+      #   # @param name [String]
+      #   # @param project_id [String]
+      #   # @param url [String]
+      #   # @param created [Time, nil]
+      #   # @param deleted_at [Time, nil]
+      #   # @param description [String, nil]
+      #   # @param post_message [Boolean, nil]
+      #   # @param user_id [String, nil]
       #   #
-      #   # @param data [Hash{Symbol => Object}] .
-      #   #   @option data [String] :id Unique identifier for the span iframe
-      #   #   @option data [String] :name Name of the span iframe
-      #   #   @option data [String] :project_id Unique identifier for the project that the span iframe belongs under
-      #   #   @option data [String] :url URL to embed the project viewer in an iframe
-      #   #   @option data [String, nil] :created Date of span iframe creation
-      #   #   @option data [String, nil] :deleted_at Date of span iframe deletion, or null if the span iframe is still active
-      #   #   @option data [String, nil] :description Textual description of the span iframe
-      #   #   @option data [Hash, nil] :post_message Whether to post messages to the iframe containing the span's data. This is
-      #   #     useful when you want to render more data than fits in the URL.
-      #   #   @option data [String, nil] :user_id Identifies the user who created the span iframe
-      #   def initialize(data = {}) = super
+      #   def initialize(
+      #     id:,
+      #     name:,
+      #     project_id:,
+      #     url:,
+      #     created: nil,
+      #     deleted_at: nil,
+      #     description: nil,
+      #     post_message: nil,
+      #     user_id: nil,
+      #     **
+      #   )
+      #     super
+      #   end
+
+      # def initialize: (Hash | Braintrust::BaseModel) -> void
     end
   end
 end

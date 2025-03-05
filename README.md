@@ -1,13 +1,13 @@
 # Braintrust Ruby API library
 
-The Braintrust Ruby library provides convenient access to the Braintrust REST API from any Ruby 3.0+
+The Braintrust Ruby library provides convenient access to the Braintrust REST API from any Ruby 3.0.0+
 application.
 
-It is generated with [Stainless](https://www.stainlessapi.com/).
+It is generated with [Stainless](https://www.stainless.com/).
 
 ## Documentation
 
-Documentation for the most recent version of this gem can be found [on RubyDoc](https://rubydoc.info/github/braintrustdata/braintrust-ruby).
+Documentation for the most recent release of this gem can be found [on RubyDoc](https://gemdocs.org/gems/braintrust/latest).
 
 The underlying REST API documentation can be found on [www.braintrustdata.com](https://www.braintrustdata.com/docs/api/spec).
 
@@ -36,6 +36,7 @@ bundle update braintrust
 ## Usage
 
 ```ruby
+require "bundler/setup"
 require "braintrust"
 
 braintrust = Braintrust::Client.new(
@@ -51,13 +52,13 @@ puts(project.id)
 
 When the library is unable to connect to the API, or if the API returns a
 non-success status code (i.e., 4xx or 5xx response), a subclass of
-`Braintrust::HTTP::Error` will be thrown:
+`Braintrust::Error` will be thrown:
 
 ```ruby
 begin
   project = braintrust.projects.create(name: "foobar")
-rescue Braintrust::HTTP::Error => e
-  puts(e.code) # 400
+rescue Braintrust::Error => e
+  puts(e.status) # 400
 end
 ```
 
@@ -93,7 +94,7 @@ braintrust = Braintrust::Client.new(
 )
 
 # Or, configure per-request:
-braintrust.projects.create(name: "foobar", max_retries: 5)
+braintrust.projects.create(name: "foobar", request_options: {max_retries: 5})
 ```
 
 ### Timeouts
@@ -111,7 +112,7 @@ braintrust = Braintrust::Client.new(
 )
 
 # Or, configure per-request:
-braintrust.projects.create(name: "foobar", timeout: 5)
+braintrust.projects.create(name: "foobar", request_options: {timeout: 5})
 ```
 
 ## Versioning
