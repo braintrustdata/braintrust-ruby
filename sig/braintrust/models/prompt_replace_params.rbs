@@ -1,0 +1,63 @@
+module Braintrust
+  module Models
+    type prompt_replace_params =
+      {
+        name: String,
+        project_id: String,
+        slug: String,
+        description: String?,
+        function_type: Braintrust::Models::PromptReplaceParams::function_type?,
+        prompt_data: Braintrust::Models::PromptData?,
+        tags: ::Array[String]?
+      }
+      & Braintrust::request_parameters
+
+    class PromptReplaceParams < Braintrust::BaseModel
+      extend Braintrust::RequestParameters::Converter
+      include Braintrust::RequestParameters
+
+      attr_accessor name: String
+
+      attr_accessor project_id: String
+
+      attr_accessor slug: String
+
+      attr_accessor description: String?
+
+      attr_accessor function_type: Braintrust::Models::PromptReplaceParams::function_type?
+
+      attr_accessor prompt_data: Braintrust::Models::PromptData?
+
+      attr_accessor tags: ::Array[String]?
+
+      def initialize:
+        (
+          name: String,
+          project_id: String,
+          slug: String,
+          description: String?,
+          function_type: Braintrust::Models::PromptReplaceParams::function_type?,
+          prompt_data: Braintrust::Models::PromptData?,
+          tags: ::Array[String]?,
+          request_options: Braintrust::request_opts
+        ) -> void
+        | (
+          ?Braintrust::Models::prompt_replace_params
+          | Braintrust::BaseModel data
+        ) -> void
+
+      def to_hash: -> Braintrust::Models::prompt_replace_params
+
+      type function_type = :llm | :scorer | :task | :tool
+
+      class FunctionType < Braintrust::Enum
+        LLM: :llm
+        SCORER: :scorer
+        TASK: :task
+        TOOL: :tool
+
+        def self.values: -> ::Array[Braintrust::Models::PromptReplaceParams::function_type]
+      end
+    end
+  end
+end

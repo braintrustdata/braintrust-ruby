@@ -3,52 +3,59 @@
 module Braintrust
   module Models
     class Project < Braintrust::BaseModel
-      # @!attribute [rw] id
+      # @!attribute id
       #   Unique identifier for the project
+      #
       #   @return [String]
       required :id, String
 
-      # @!attribute [rw] name
+      # @!attribute name
       #   Name of the project
+      #
       #   @return [String]
       required :name, String
 
-      # @!attribute [rw] org_id
+      # @!attribute org_id
       #   Unique id for the organization that the project belongs under
+      #
       #   @return [String]
       required :org_id, String
 
-      # @!attribute [rw] created
+      # @!attribute created
       #   Date of project creation
-      #   @return [Time]
-      optional :created, Time
+      #
+      #   @return [Time, nil]
+      optional :created, Time, nil?: true
 
-      # @!attribute [rw] deleted_at
+      # @!attribute deleted_at
       #   Date of project deletion, or null if the project is still active
-      #   @return [Time]
-      optional :deleted_at, Time
+      #
+      #   @return [Time, nil]
+      optional :deleted_at, Time, nil?: true
 
-      # @!attribute [rw] settings
-      #   @return [Braintrust::Models::ProjectSettings]
-      optional :settings, -> { Braintrust::Models::ProjectSettings }
+      # @!attribute settings
+      #
+      #   @return [Braintrust::Models::ProjectSettings, nil]
+      optional :settings, -> { Braintrust::Models::ProjectSettings }, nil?: true
 
-      # @!attribute [rw] user_id
+      # @!attribute user_id
       #   Identifies the user who created the project
-      #   @return [String]
-      optional :user_id, String
+      #
+      #   @return [String, nil]
+      optional :user_id, String, nil?: true
 
       # @!parse
-      #   # Create a new instance of Project from a Hash of raw data.
+      #   # @param id [String]
+      #   # @param name [String]
+      #   # @param org_id [String]
+      #   # @param created [Time, nil]
+      #   # @param deleted_at [Time, nil]
+      #   # @param settings [Braintrust::Models::ProjectSettings, nil]
+      #   # @param user_id [String, nil]
       #   #
-      #   # @param data [Hash{Symbol => Object}] .
-      #   #   @option data [String] :id Unique identifier for the project
-      #   #   @option data [String] :name Name of the project
-      #   #   @option data [String] :org_id Unique id for the organization that the project belongs under
-      #   #   @option data [String, nil] :created Date of project creation
-      #   #   @option data [String, nil] :deleted_at Date of project deletion, or null if the project is still active
-      #   #   @option data [Object, nil] :settings
-      #   #   @option data [String, nil] :user_id Identifies the user who created the project
-      #   def initialize(data = {}) = super
+      #   def initialize(id:, name:, org_id:, created: nil, deleted_at: nil, settings: nil, user_id: nil, **) = super
+
+      # def initialize: (Hash | Braintrust::BaseModel) -> void
     end
   end
 end

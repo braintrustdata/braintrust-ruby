@@ -3,23 +3,27 @@
 module Braintrust
   module Models
     class ProjectScoreCategory < Braintrust::BaseModel
-      # @!attribute [rw] name
+      # @!attribute name
       #   Name of the category
+      #
       #   @return [String]
       required :name, String
 
-      # @!attribute [rw] value
+      # @!attribute value
       #   Numerical value of the category. Must be between 0 and 1, inclusive
+      #
       #   @return [Float]
       required :value, Float
 
       # @!parse
-      #   # Create a new instance of ProjectScoreCategory from a Hash of raw data.
+      #   # For categorical-type project scores, defines a single category
       #   #
-      #   # @param data [Hash{Symbol => Object}] .
-      #   #   @option data [String] :name Name of the category
-      #   #   @option data [Float] :value Numerical value of the category. Must be between 0 and 1, inclusive
-      #   def initialize(data = {}) = super
+      #   # @param name [String]
+      #   # @param value [Float]
+      #   #
+      #   def initialize(name:, value:, **) = super
+
+      # def initialize: (Hash | Braintrust::BaseModel) -> void
     end
   end
 end

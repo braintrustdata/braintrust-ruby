@@ -3,16 +3,19 @@
 module Braintrust
   module Models
     class ViewData < Braintrust::BaseModel
-      # @!attribute [rw] search
-      #   @return [Braintrust::Models::ViewDataSearch]
-      optional :search, -> { Braintrust::Models::ViewDataSearch }
+      # @!attribute search
+      #
+      #   @return [Braintrust::Models::ViewDataSearch, nil]
+      optional :search, -> { Braintrust::Models::ViewDataSearch }, nil?: true
 
       # @!parse
-      #   # Create a new instance of ViewData from a Hash of raw data.
+      #   # The view definition
       #   #
-      #   # @param data [Hash{Symbol => Object}] .
-      #   #   @option data [Object, nil] :search
-      #   def initialize(data = {}) = super
+      #   # @param search [Braintrust::Models::ViewDataSearch, nil]
+      #   #
+      #   def initialize(search: nil, **) = super
+
+      # def initialize: (Hash | Braintrust::BaseModel) -> void
     end
   end
 end

@@ -1,0 +1,47 @@
+module Braintrust
+  module Models
+    type summarize_experiment_response =
+      {
+        experiment_name: String,
+        experiment_url: String,
+        project_name: String,
+        project_url: String,
+        comparison_experiment_name: String?,
+        metrics: ::Hash[Symbol, Braintrust::Models::MetricSummary]?,
+        scores: ::Hash[Symbol, Braintrust::Models::ScoreSummary]?
+      }
+
+    class SummarizeExperimentResponse < Braintrust::BaseModel
+      attr_accessor experiment_name: String
+
+      attr_accessor experiment_url: String
+
+      attr_accessor project_name: String
+
+      attr_accessor project_url: String
+
+      attr_accessor comparison_experiment_name: String?
+
+      attr_accessor metrics: ::Hash[Symbol, Braintrust::Models::MetricSummary]?
+
+      attr_accessor scores: ::Hash[Symbol, Braintrust::Models::ScoreSummary]?
+
+      def initialize:
+        (
+          experiment_name: String,
+          experiment_url: String,
+          project_name: String,
+          project_url: String,
+          comparison_experiment_name: String?,
+          metrics: ::Hash[Symbol, Braintrust::Models::MetricSummary]?,
+          scores: ::Hash[Symbol, Braintrust::Models::ScoreSummary]?
+        ) -> void
+        | (
+          ?Braintrust::Models::summarize_experiment_response
+          | Braintrust::BaseModel data
+        ) -> void
+
+      def to_hash: -> Braintrust::Models::summarize_experiment_response
+    end
+  end
+end

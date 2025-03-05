@@ -3,98 +3,130 @@
 module Braintrust
   module Models
     class Experiment < Braintrust::BaseModel
-      # @!attribute [rw] id
+      # @!attribute id
       #   Unique identifier for the experiment
+      #
       #   @return [String]
       required :id, String
 
-      # @!attribute [rw] name
+      # @!attribute name
       #   Name of the experiment. Within a project, experiment names are unique
+      #
       #   @return [String]
       required :name, String
 
-      # @!attribute [rw] project_id
+      # @!attribute project_id
       #   Unique identifier for the project that the experiment belongs under
+      #
       #   @return [String]
       required :project_id, String
 
-      # @!attribute [rw] public
-      #   Whether or not the experiment is public. Public experiments can be viewed by anybody inside or outside the organization
+      # @!attribute public
+      #   Whether or not the experiment is public. Public experiments can be viewed by
+      #     anybody inside or outside the organization
+      #
       #   @return [Boolean]
       required :public, Braintrust::BooleanModel
 
-      # @!attribute [rw] base_exp_id
+      # @!attribute base_exp_id
       #   Id of default base experiment to compare against when viewing this experiment
-      #   @return [String]
-      optional :base_exp_id, String
+      #
+      #   @return [String, nil]
+      optional :base_exp_id, String, nil?: true
 
-      # @!attribute [rw] commit
+      # @!attribute commit
       #   Commit, taken directly from `repo_info.commit`
-      #   @return [String]
-      optional :commit, String
+      #
+      #   @return [String, nil]
+      optional :commit, String, nil?: true
 
-      # @!attribute [rw] created
+      # @!attribute created
       #   Date of experiment creation
-      #   @return [Time]
-      optional :created, Time
+      #
+      #   @return [Time, nil]
+      optional :created, Time, nil?: true
 
-      # @!attribute [rw] dataset_id
-      #   Identifier of the linked dataset, or null if the experiment is not linked to a dataset
-      #   @return [String]
-      optional :dataset_id, String
+      # @!attribute dataset_id
+      #   Identifier of the linked dataset, or null if the experiment is not linked to a
+      #     dataset
+      #
+      #   @return [String, nil]
+      optional :dataset_id, String, nil?: true
 
-      # @!attribute [rw] dataset_version
-      #   Version number of the linked dataset the experiment was run against. This can be used to reproduce the experiment after the dataset has been modified.
-      #   @return [String]
-      optional :dataset_version, String
+      # @!attribute dataset_version
+      #   Version number of the linked dataset the experiment was run against. This can be
+      #     used to reproduce the experiment after the dataset has been modified.
+      #
+      #   @return [String, nil]
+      optional :dataset_version, String, nil?: true
 
-      # @!attribute [rw] deleted_at
+      # @!attribute deleted_at
       #   Date of experiment deletion, or null if the experiment is still active
-      #   @return [Time]
-      optional :deleted_at, Time
+      #
+      #   @return [Time, nil]
+      optional :deleted_at, Time, nil?: true
 
-      # @!attribute [rw] description
+      # @!attribute description
       #   Textual description of the experiment
-      #   @return [String]
-      optional :description, String
+      #
+      #   @return [String, nil]
+      optional :description, String, nil?: true
 
-      # @!attribute [rw] metadata
+      # @!attribute metadata
       #   User-controlled metadata about the experiment
-      #   @return [Hash]
-      optional :metadata, Hash
+      #
+      #   @return [Hash{Symbol=>Object, nil}, nil]
+      optional :metadata, Braintrust::HashOf[Braintrust::Unknown, nil?: true], nil?: true
 
-      # @!attribute [rw] repo_info
+      # @!attribute repo_info
       #   Metadata about the state of the repo when the experiment was created
-      #   @return [Braintrust::Models::RepoInfo]
-      optional :repo_info, -> { Braintrust::Models::RepoInfo }
+      #
+      #   @return [Braintrust::Models::RepoInfo, nil]
+      optional :repo_info, -> { Braintrust::Models::RepoInfo }, nil?: true
 
-      # @!attribute [rw] user_id
+      # @!attribute user_id
       #   Identifies the user who created the experiment
-      #   @return [String]
-      optional :user_id, String
+      #
+      #   @return [String, nil]
+      optional :user_id, String, nil?: true
 
       # @!parse
-      #   # Create a new instance of Experiment from a Hash of raw data.
+      #   # @param id [String]
+      #   # @param name [String]
+      #   # @param project_id [String]
+      #   # @param public [Boolean]
+      #   # @param base_exp_id [String, nil]
+      #   # @param commit [String, nil]
+      #   # @param created [Time, nil]
+      #   # @param dataset_id [String, nil]
+      #   # @param dataset_version [String, nil]
+      #   # @param deleted_at [Time, nil]
+      #   # @param description [String, nil]
+      #   # @param metadata [Hash{Symbol=>Object, nil}, nil]
+      #   # @param repo_info [Braintrust::Models::RepoInfo, nil]
+      #   # @param user_id [String, nil]
       #   #
-      #   # @param data [Hash{Symbol => Object}] .
-      #   #   @option data [String] :id Unique identifier for the experiment
-      #   #   @option data [String] :name Name of the experiment. Within a project, experiment names are unique
-      #   #   @option data [String] :project_id Unique identifier for the project that the experiment belongs under
-      #   #   @option data [Hash] :public Whether or not the experiment is public. Public experiments can be viewed by
-      #   #     anybody inside or outside the organization
-      #   #   @option data [String, nil] :base_exp_id Id of default base experiment to compare against when viewing this experiment
-      #   #   @option data [String, nil] :commit Commit, taken directly from `repo_info.commit`
-      #   #   @option data [String, nil] :created Date of experiment creation
-      #   #   @option data [String, nil] :dataset_id Identifier of the linked dataset, or null if the experiment is not linked to a
-      #   #     dataset
-      #   #   @option data [String, nil] :dataset_version Version number of the linked dataset the experiment was run against. This can be
-      #   #     used to reproduce the experiment after the dataset has been modified.
-      #   #   @option data [String, nil] :deleted_at Date of experiment deletion, or null if the experiment is still active
-      #   #   @option data [String, nil] :description Textual description of the experiment
-      #   #   @option data [Hash, nil] :metadata User-controlled metadata about the experiment
-      #   #   @option data [Object, nil] :repo_info Metadata about the state of the repo when the experiment was created
-      #   #   @option data [String, nil] :user_id Identifies the user who created the experiment
-      #   def initialize(data = {}) = super
+      #   def initialize(
+      #     id:,
+      #     name:,
+      #     project_id:,
+      #     public:,
+      #     base_exp_id: nil,
+      #     commit: nil,
+      #     created: nil,
+      #     dataset_id: nil,
+      #     dataset_version: nil,
+      #     deleted_at: nil,
+      #     description: nil,
+      #     metadata: nil,
+      #     repo_info: nil,
+      #     user_id: nil,
+      #     **
+      #   )
+      #     super
+      #   end
+
+      # def initialize: (Hash | Braintrust::BaseModel) -> void
     end
   end
 end

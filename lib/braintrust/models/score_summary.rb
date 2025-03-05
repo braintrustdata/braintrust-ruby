@@ -3,41 +3,52 @@
 module Braintrust
   module Models
     class ScoreSummary < Braintrust::BaseModel
-      # @!attribute [rw] improvements
+      # @!attribute improvements
       #   Number of improvements in the score
+      #
       #   @return [Integer]
       required :improvements, Integer
 
-      # @!attribute [rw] name
+      # @!attribute name
       #   Name of the score
+      #
       #   @return [String]
       required :name, String
 
-      # @!attribute [rw] regressions
+      # @!attribute regressions
       #   Number of regressions in the score
+      #
       #   @return [Integer]
       required :regressions, Integer
 
-      # @!attribute [rw] score
+      # @!attribute score
       #   Average score across all examples
+      #
       #   @return [Float]
       required :score, Float
 
-      # @!attribute [rw] diff
+      # @!attribute [r] diff
       #   Difference in score between the current and comparison experiment
-      #   @return [Float]
+      #
+      #   @return [Float, nil]
       optional :diff, Float
 
       # @!parse
-      #   # Create a new instance of ScoreSummary from a Hash of raw data.
+      #   # @return [Float]
+      #   attr_writer :diff
+
+      # @!parse
+      #   # Summary of a score's performance
       #   #
-      #   # @param data [Hash{Symbol => Object}] .
-      #   #   @option data [Integer] :improvements Number of improvements in the score
-      #   #   @option data [String] :name Name of the score
-      #   #   @option data [Integer] :regressions Number of regressions in the score
-      #   #   @option data [Float] :score Average score across all examples
-      #   #   @option data [Float, nil] :diff Difference in score between the current and comparison experiment
-      #   def initialize(data = {}) = super
+      #   # @param improvements [Integer]
+      #   # @param name [String]
+      #   # @param regressions [Integer]
+      #   # @param score [Float]
+      #   # @param diff [Float]
+      #   #
+      #   def initialize(improvements:, name:, regressions:, score:, diff: nil, **) = super
+
+      # def initialize: (Hash | Braintrust::BaseModel) -> void
     end
   end
 end

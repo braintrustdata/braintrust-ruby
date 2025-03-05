@@ -1,0 +1,44 @@
+module Braintrust
+  module Models
+    type span_iframe_create_params =
+      {
+        name: String,
+        project_id: String,
+        url: String,
+        description: String?,
+        post_message: bool?
+      }
+      & Braintrust::request_parameters
+
+    class SpanIframeCreateParams < Braintrust::BaseModel
+      extend Braintrust::RequestParameters::Converter
+      include Braintrust::RequestParameters
+
+      attr_accessor name: String
+
+      attr_accessor project_id: String
+
+      attr_accessor url: String
+
+      attr_accessor description: String?
+
+      attr_accessor post_message: bool?
+
+      def initialize:
+        (
+          name: String,
+          project_id: String,
+          url: String,
+          description: String?,
+          post_message: bool?,
+          request_options: Braintrust::request_opts
+        ) -> void
+        | (
+          ?Braintrust::Models::span_iframe_create_params
+          | Braintrust::BaseModel data
+        ) -> void
+
+      def to_hash: -> Braintrust::Models::span_iframe_create_params
+    end
+  end
+end

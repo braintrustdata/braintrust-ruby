@@ -1,0 +1,151 @@
+module Braintrust
+  module Resources
+    class Experiments
+      def create:
+        (
+          Braintrust::Models::ExperimentCreateParams
+          | ::Hash[Symbol, top] params
+        ) -> Braintrust::Models::Experiment
+        | (
+          project_id: String,
+          base_exp_id: String?,
+          dataset_id: String?,
+          dataset_version: String?,
+          description: String?,
+          ensure_new: bool?,
+          metadata: ::Hash[Symbol, top?]?,
+          name: String?,
+          public: bool?,
+          repo_info: Braintrust::Models::RepoInfo?,
+          request_options: Braintrust::request_opts
+        ) -> Braintrust::Models::Experiment
+
+      def retrieve:
+        (
+          String experiment_id,
+          ?Braintrust::Models::ExperimentRetrieveParams
+          | ::Hash[Symbol, top] params
+        ) -> Braintrust::Models::Experiment
+        | (
+          String experiment_id,
+          request_options: Braintrust::request_opts
+        ) -> Braintrust::Models::Experiment
+
+      def update:
+        (
+          String experiment_id,
+          ?Braintrust::Models::ExperimentUpdateParams
+          | ::Hash[Symbol, top] params
+        ) -> Braintrust::Models::Experiment
+        | (
+          String experiment_id,
+          base_exp_id: String?,
+          dataset_id: String?,
+          dataset_version: String?,
+          description: String?,
+          metadata: ::Hash[Symbol, top?]?,
+          name: String?,
+          public: bool?,
+          repo_info: Braintrust::Models::RepoInfo?,
+          request_options: Braintrust::request_opts
+        ) -> Braintrust::Models::Experiment
+
+      def list:
+        (
+          ?Braintrust::Models::ExperimentListParams | ::Hash[Symbol, top] params
+        ) -> Braintrust::ListObjects[Braintrust::Models::Experiment]
+        | (
+          ending_before: String,
+          experiment_name: String,
+          ids: Braintrust::Models::ExperimentListParams::ids,
+          limit: Integer?,
+          org_name: String,
+          project_id: String,
+          project_name: String,
+          starting_after: String,
+          request_options: Braintrust::request_opts
+        ) -> Braintrust::ListObjects[Braintrust::Models::Experiment]
+
+      def delete:
+        (
+          String experiment_id,
+          ?Braintrust::Models::ExperimentDeleteParams
+          | ::Hash[Symbol, top] params
+        ) -> Braintrust::Models::Experiment
+        | (
+          String experiment_id,
+          request_options: Braintrust::request_opts
+        ) -> Braintrust::Models::Experiment
+
+      def feedback:
+        (
+          String experiment_id,
+          Braintrust::Models::ExperimentFeedbackParams
+          | ::Hash[Symbol, top] params
+        ) -> Braintrust::Models::FeedbackResponseSchema
+        | (
+          String experiment_id,
+          feedback: ::Array[Braintrust::Models::FeedbackExperimentItem],
+          request_options: Braintrust::request_opts
+        ) -> Braintrust::Models::FeedbackResponseSchema
+
+      def fetch:
+        (
+          String experiment_id,
+          ?Braintrust::Models::ExperimentFetchParams
+          | ::Hash[Symbol, top] params
+        ) -> Braintrust::Models::FetchExperimentEventsResponse
+        | (
+          String experiment_id,
+          limit: Integer?,
+          max_root_span_id: String,
+          max_xact_id: String,
+          version: String,
+          request_options: Braintrust::request_opts
+        ) -> Braintrust::Models::FetchExperimentEventsResponse
+
+      def fetch_post:
+        (
+          String experiment_id,
+          ?Braintrust::Models::ExperimentFetchPostParams
+          | ::Hash[Symbol, top] params
+        ) -> Braintrust::Models::FetchExperimentEventsResponse
+        | (
+          String experiment_id,
+          cursor: String?,
+          limit: Integer?,
+          max_root_span_id: String?,
+          max_xact_id: String?,
+          version: String?,
+          request_options: Braintrust::request_opts
+        ) -> Braintrust::Models::FetchExperimentEventsResponse
+
+      def insert:
+        (
+          String experiment_id,
+          Braintrust::Models::ExperimentInsertParams
+          | ::Hash[Symbol, top] params
+        ) -> Braintrust::Models::InsertEventsResponse
+        | (
+          String experiment_id,
+          events: ::Array[Braintrust::Models::InsertExperimentEvent],
+          request_options: Braintrust::request_opts
+        ) -> Braintrust::Models::InsertEventsResponse
+
+      def summarize:
+        (
+          String experiment_id,
+          ?Braintrust::Models::ExperimentSummarizeParams
+          | ::Hash[Symbol, top] params
+        ) -> Braintrust::Models::SummarizeExperimentResponse
+        | (
+          String experiment_id,
+          comparison_experiment_id: String,
+          summarize_scores: bool?,
+          request_options: Braintrust::request_opts
+        ) -> Braintrust::Models::SummarizeExperimentResponse
+
+      def initialize: (client: Braintrust::Client) -> void
+    end
+  end
+end

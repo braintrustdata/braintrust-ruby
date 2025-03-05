@@ -1,0 +1,83 @@
+module Braintrust
+  module Resources
+    class Roles
+      def create:
+        (
+          Braintrust::Models::RoleCreateParams | ::Hash[Symbol, top] params
+        ) -> Braintrust::Models::Role
+        | (
+          name: String,
+          description: String?,
+          member_permissions: ::Array[Braintrust::Models::RoleCreateParams::MemberPermission]?,
+          member_roles: ::Array[String]?,
+          org_name: String?,
+          request_options: Braintrust::request_opts
+        ) -> Braintrust::Models::Role
+
+      def retrieve:
+        (
+          String role_id,
+          ?Braintrust::Models::RoleRetrieveParams | ::Hash[Symbol, top] params
+        ) -> Braintrust::Models::Role
+        | (
+          String role_id,
+          request_options: Braintrust::request_opts
+        ) -> Braintrust::Models::Role
+
+      def update:
+        (
+          String role_id,
+          ?Braintrust::Models::RoleUpdateParams | ::Hash[Symbol, top] params
+        ) -> Braintrust::Models::Role
+        | (
+          String role_id,
+          add_member_permissions: ::Array[Braintrust::Models::RoleUpdateParams::AddMemberPermission]?,
+          add_member_roles: ::Array[String]?,
+          description: String?,
+          name: String?,
+          remove_member_permissions: ::Array[Braintrust::Models::RoleUpdateParams::RemoveMemberPermission]?,
+          remove_member_roles: ::Array[String]?,
+          request_options: Braintrust::request_opts
+        ) -> Braintrust::Models::Role
+
+      def list:
+        (
+          ?Braintrust::Models::RoleListParams | ::Hash[Symbol, top] params
+        ) -> Braintrust::ListObjects[Braintrust::Models::Role]
+        | (
+          ending_before: String,
+          ids: Braintrust::Models::RoleListParams::ids,
+          limit: Integer?,
+          org_name: String,
+          role_name: String,
+          starting_after: String,
+          request_options: Braintrust::request_opts
+        ) -> Braintrust::ListObjects[Braintrust::Models::Role]
+
+      def delete:
+        (
+          String role_id,
+          ?Braintrust::Models::RoleDeleteParams | ::Hash[Symbol, top] params
+        ) -> Braintrust::Models::Role
+        | (
+          String role_id,
+          request_options: Braintrust::request_opts
+        ) -> Braintrust::Models::Role
+
+      def replace:
+        (
+          Braintrust::Models::RoleReplaceParams | ::Hash[Symbol, top] params
+        ) -> Braintrust::Models::Role
+        | (
+          name: String,
+          description: String?,
+          member_permissions: ::Array[Braintrust::Models::RoleReplaceParams::MemberPermission]?,
+          member_roles: ::Array[String]?,
+          org_name: String?,
+          request_options: Braintrust::request_opts
+        ) -> Braintrust::Models::Role
+
+      def initialize: (client: Braintrust::Client) -> void
+    end
+  end
+end

@@ -1,0 +1,73 @@
+module Braintrust
+  module Models
+    type chat_completion_content_part_image =
+      {
+        image_url: Braintrust::Models::ChatCompletionContentPartImage::ImageURL,
+        type: Braintrust::Models::ChatCompletionContentPartImage::type_
+      }
+
+    class ChatCompletionContentPartImage < Braintrust::BaseModel
+      attr_accessor image_url: Braintrust::Models::ChatCompletionContentPartImage::ImageURL
+
+      attr_accessor type: Braintrust::Models::ChatCompletionContentPartImage::type_
+
+      def initialize:
+        (
+          image_url: Braintrust::Models::ChatCompletionContentPartImage::ImageURL,
+          type: Braintrust::Models::ChatCompletionContentPartImage::type_
+        ) -> void
+        | (
+          ?Braintrust::Models::chat_completion_content_part_image
+          | Braintrust::BaseModel data
+        ) -> void
+
+      def to_hash: -> Braintrust::Models::chat_completion_content_part_image
+
+      type image_url =
+        {
+          url: String,
+          detail: Braintrust::Models::ChatCompletionContentPartImage::ImageURL::detail
+        }
+
+      class ImageURL < Braintrust::BaseModel
+        attr_accessor url: String
+
+        attr_reader detail: Braintrust::Models::ChatCompletionContentPartImage::ImageURL::detail?
+
+        def detail=: (
+          Braintrust::Models::ChatCompletionContentPartImage::ImageURL::detail
+        ) -> Braintrust::Models::ChatCompletionContentPartImage::ImageURL::detail
+
+        def initialize:
+          (
+            url: String,
+            detail: Braintrust::Models::ChatCompletionContentPartImage::ImageURL::detail
+          ) -> void
+          | (
+            ?Braintrust::Models::ChatCompletionContentPartImage::image_url
+            | Braintrust::BaseModel data
+          ) -> void
+
+        def to_hash: -> Braintrust::Models::ChatCompletionContentPartImage::image_url
+
+        type detail = :auto | :low | :high
+
+        class Detail < Braintrust::Enum
+          AUTO: :auto
+          LOW: :low
+          HIGH: :high
+
+          def self.values: -> ::Array[Braintrust::Models::ChatCompletionContentPartImage::ImageURL::detail]
+        end
+      end
+
+      type type_ = :image_url
+
+      class Type < Braintrust::Enum
+        IMAGE_URL: :image_url
+
+        def self.values: -> ::Array[Braintrust::Models::ChatCompletionContentPartImage::type_]
+      end
+    end
+  end
+end

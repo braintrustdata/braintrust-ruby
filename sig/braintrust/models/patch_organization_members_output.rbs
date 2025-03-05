@@ -1,0 +1,39 @@
+module Braintrust
+  module Models
+    type patch_organization_members_output =
+      {
+        org_id: String,
+        status: Braintrust::Models::PatchOrganizationMembersOutput::status,
+        send_email_error: String?
+      }
+
+    class PatchOrganizationMembersOutput < Braintrust::BaseModel
+      attr_accessor org_id: String
+
+      attr_accessor status: Braintrust::Models::PatchOrganizationMembersOutput::status
+
+      attr_accessor send_email_error: String?
+
+      def initialize:
+        (
+          org_id: String,
+          status: Braintrust::Models::PatchOrganizationMembersOutput::status,
+          send_email_error: String?
+        ) -> void
+        | (
+          ?Braintrust::Models::patch_organization_members_output
+          | Braintrust::BaseModel data
+        ) -> void
+
+      def to_hash: -> Braintrust::Models::patch_organization_members_output
+
+      type status = :success
+
+      class Status < Braintrust::Enum
+        SUCCESS: :success
+
+        def self.values: -> ::Array[Braintrust::Models::PatchOrganizationMembersOutput::status]
+      end
+    end
+  end
+end

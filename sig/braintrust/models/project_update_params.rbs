@@ -1,0 +1,29 @@
+module Braintrust
+  module Models
+    type project_update_params =
+      { name: String?, settings: Braintrust::Models::ProjectSettings? }
+      & Braintrust::request_parameters
+
+    class ProjectUpdateParams < Braintrust::BaseModel
+      extend Braintrust::RequestParameters::Converter
+      include Braintrust::RequestParameters
+
+      attr_accessor name: String?
+
+      attr_accessor settings: Braintrust::Models::ProjectSettings?
+
+      def initialize:
+        (
+          name: String?,
+          settings: Braintrust::Models::ProjectSettings?,
+          request_options: Braintrust::request_opts
+        ) -> void
+        | (
+          ?Braintrust::Models::project_update_params
+          | Braintrust::BaseModel data
+        ) -> void
+
+      def to_hash: -> Braintrust::Models::project_update_params
+    end
+  end
+end

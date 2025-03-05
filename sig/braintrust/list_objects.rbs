@@ -1,0 +1,14 @@
+module Braintrust
+  class ListObjects[Elem]
+    include Braintrust::BasePage[Elem]
+
+    attr_accessor objects: ::Array[Elem]
+
+    def initialize: (
+      client: Braintrust::BaseClient,
+      req: Braintrust::BaseClient::request_components,
+      headers: ::Hash[String, String],
+      unwrapped: ::Hash[Symbol, top]
+    ) -> void
+  end
+end

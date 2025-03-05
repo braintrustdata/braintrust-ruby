@@ -3,49 +3,93 @@
 module Braintrust
   module Models
     class ChatCompletionContentPartImage < Braintrust::BaseModel
-      # @!attribute [rw] image_url
+      # @!attribute image_url
+      #
       #   @return [Braintrust::Models::ChatCompletionContentPartImage::ImageURL]
       required :image_url, -> { Braintrust::Models::ChatCompletionContentPartImage::ImageURL }
 
-      # @!attribute [rw] type
+      # @!attribute type
+      #
       #   @return [Symbol, Braintrust::Models::ChatCompletionContentPartImage::Type]
       required :type, enum: -> { Braintrust::Models::ChatCompletionContentPartImage::Type }
 
+      # @!parse
+      #   # @param image_url [Braintrust::Models::ChatCompletionContentPartImage::ImageURL]
+      #   # @param type [Symbol, Braintrust::Models::ChatCompletionContentPartImage::Type]
+      #   #
+      #   def initialize(image_url:, type:, **) = super
+
+      # def initialize: (Hash | Braintrust::BaseModel) -> void
+
       class ImageURL < Braintrust::BaseModel
-        # @!attribute [rw] url
+        # @!attribute url
+        #
         #   @return [String]
         required :url, String
 
-        # @!attribute [rw] detail
-        #   @return [Symbol, Braintrust::Models::ChatCompletionContentPartImage::ImageURL::Detail]
+        # @!attribute [r] detail
+        #
+        #   @return [Symbol, Braintrust::Models::ChatCompletionContentPartImage::ImageURL::Detail, nil]
         optional :detail, enum: -> { Braintrust::Models::ChatCompletionContentPartImage::ImageURL::Detail }
 
+        # @!parse
+        #   # @return [Symbol, Braintrust::Models::ChatCompletionContentPartImage::ImageURL::Detail]
+        #   attr_writer :detail
+
+        # @!parse
+        #   # @param url [String]
+        #   # @param detail [Symbol, Braintrust::Models::ChatCompletionContentPartImage::ImageURL::Detail]
+        #   #
+        #   def initialize(url:, detail: nil, **) = super
+
+        # def initialize: (Hash | Braintrust::BaseModel) -> void
+
+        # @abstract
+        #
+        # @example
+        # ```ruby
+        # case detail
+        # in :auto
+        #   # ...
+        # in :low
+        #   # ...
+        # in :high
+        #   # ...
+        # end
+        # ```
         class Detail < Braintrust::Enum
           AUTO = :auto
           LOW = :low
           HIGH = :high
-        end
 
-        # @!parse
-        #   # Create a new instance of ImageURL from a Hash of raw data.
-        #   #
-        #   # @param data [Hash{Symbol => Object}] .
-        #   #   @option data [String] :url
-        #   #   @option data [String, nil] :detail
-        #   def initialize(data = {}) = super
+          finalize!
+
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   #
+          #   def self.values; end
+        end
       end
 
+      # @abstract
+      #
+      # @example
+      # ```ruby
+      # case type
+      # in :image_url
+      #   # ...
+      # end
+      # ```
       class Type < Braintrust::Enum
         IMAGE_URL = :image_url
-      end
 
-      # @!parse
-      #   # Create a new instance of ChatCompletionContentPartImage from a Hash of raw data.
-      #   #
-      #   # @param data [Hash{Symbol => Object}] .
-      #   #   @option data [Object] :image_url
-      #   #   @option data [String] :type
-      #   def initialize(data = {}) = super
+        finalize!
+
+        # @!parse
+        #   # @return [Array<Symbol>]
+        #   #
+        #   def self.values; end
+      end
     end
   end
 end

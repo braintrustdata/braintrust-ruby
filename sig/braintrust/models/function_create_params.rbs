@@ -1,0 +1,359 @@
+module Braintrust
+  module Models
+    type function_create_params =
+      {
+        function_data: Braintrust::Models::FunctionCreateParams::function_data,
+        name: String,
+        project_id: String,
+        slug: String,
+        description: String?,
+        function_schema: Braintrust::Models::FunctionCreateParams::FunctionSchema?,
+        function_type: Braintrust::Models::FunctionCreateParams::function_type?,
+        origin: Braintrust::Models::FunctionCreateParams::Origin?,
+        prompt_data: Braintrust::Models::PromptData?,
+        tags: ::Array[String]?
+      }
+      & Braintrust::request_parameters
+
+    class FunctionCreateParams < Braintrust::BaseModel
+      extend Braintrust::RequestParameters::Converter
+      include Braintrust::RequestParameters
+
+      attr_accessor function_data: Braintrust::Models::FunctionCreateParams::function_data
+
+      attr_accessor name: String
+
+      attr_accessor project_id: String
+
+      attr_accessor slug: String
+
+      attr_accessor description: String?
+
+      attr_accessor function_schema: Braintrust::Models::FunctionCreateParams::FunctionSchema?
+
+      attr_accessor function_type: Braintrust::Models::FunctionCreateParams::function_type?
+
+      attr_accessor origin: Braintrust::Models::FunctionCreateParams::Origin?
+
+      attr_accessor prompt_data: Braintrust::Models::PromptData?
+
+      attr_accessor tags: ::Array[String]?
+
+      def initialize:
+        (
+          function_data: Braintrust::Models::FunctionCreateParams::function_data,
+          name: String,
+          project_id: String,
+          slug: String,
+          description: String?,
+          function_schema: Braintrust::Models::FunctionCreateParams::FunctionSchema?,
+          function_type: Braintrust::Models::FunctionCreateParams::function_type?,
+          origin: Braintrust::Models::FunctionCreateParams::Origin?,
+          prompt_data: Braintrust::Models::PromptData?,
+          tags: ::Array[String]?,
+          request_options: Braintrust::request_opts
+        ) -> void
+        | (
+          ?Braintrust::Models::function_create_params
+          | Braintrust::BaseModel data
+        ) -> void
+
+      def to_hash: -> Braintrust::Models::function_create_params
+
+      type function_data =
+        Braintrust::Models::FunctionCreateParams::FunctionData::Prompt
+        | Braintrust::Models::FunctionCreateParams::FunctionData::Code
+        | Braintrust::Models::FunctionCreateParams::FunctionData::Global
+
+      class FunctionData < Braintrust::Union
+        type prompt =
+          {
+            type: Braintrust::Models::FunctionCreateParams::FunctionData::Prompt::type_
+          }
+
+        class Prompt < Braintrust::BaseModel
+          attr_accessor type: Braintrust::Models::FunctionCreateParams::FunctionData::Prompt::type_
+
+          def initialize:
+            (
+              type: Braintrust::Models::FunctionCreateParams::FunctionData::Prompt::type_
+            ) -> void
+            | (
+              ?Braintrust::Models::FunctionCreateParams::FunctionData::prompt
+              | Braintrust::BaseModel data
+            ) -> void
+
+          def to_hash: -> Braintrust::Models::FunctionCreateParams::FunctionData::prompt
+
+          type type_ = :prompt
+
+          class Type < Braintrust::Enum
+            PROMPT: :prompt
+
+            def self.values: -> ::Array[Braintrust::Models::FunctionCreateParams::FunctionData::Prompt::type_]
+          end
+        end
+
+        type code =
+          {
+            data: Braintrust::Models::FunctionCreateParams::FunctionData::Code::data,
+            type: Braintrust::Models::FunctionCreateParams::FunctionData::Code::type_
+          }
+
+        class Code < Braintrust::BaseModel
+          attr_accessor data: Braintrust::Models::FunctionCreateParams::FunctionData::Code::data
+
+          attr_accessor type: Braintrust::Models::FunctionCreateParams::FunctionData::Code::type_
+
+          def initialize:
+            (
+              data: Braintrust::Models::FunctionCreateParams::FunctionData::Code::data,
+              type: Braintrust::Models::FunctionCreateParams::FunctionData::Code::type_
+            ) -> void
+            | (
+              ?Braintrust::Models::FunctionCreateParams::FunctionData::code
+              | Braintrust::BaseModel data
+            ) -> void
+
+          def to_hash: -> Braintrust::Models::FunctionCreateParams::FunctionData::code
+
+          type data =
+            Braintrust::Models::FunctionCreateParams::FunctionData::Code::Data::Bundle
+            | Braintrust::Models::FunctionCreateParams::FunctionData::Code::Data::Inline
+
+          class Data < Braintrust::Union
+            type bundle =
+              {
+                type: Braintrust::Models::FunctionCreateParams::FunctionData::Code::Data::Bundle::type_
+              }
+
+            class Bundle < Braintrust::Models::CodeBundle
+              attr_accessor type: Braintrust::Models::FunctionCreateParams::FunctionData::Code::Data::Bundle::type_
+
+              def initialize:
+                (
+                  type: Braintrust::Models::FunctionCreateParams::FunctionData::Code::Data::Bundle::type_
+                ) -> void
+                | (
+                  ?Braintrust::Models::FunctionCreateParams::FunctionData::Code::Data::bundle
+                  | Braintrust::BaseModel data
+                ) -> void
+
+              def to_hash: -> Braintrust::Models::FunctionCreateParams::FunctionData::Code::Data::bundle
+
+              type type_ = :bundle
+
+              class Type < Braintrust::Enum
+                BUNDLE: :bundle
+
+                def self.values: -> ::Array[Braintrust::Models::FunctionCreateParams::FunctionData::Code::Data::Bundle::type_]
+              end
+            end
+
+            type inline =
+              {
+                code: String,
+                runtime_context: Braintrust::Models::FunctionCreateParams::FunctionData::Code::Data::Inline::RuntimeContext,
+                type: Braintrust::Models::FunctionCreateParams::FunctionData::Code::Data::Inline::type_
+              }
+
+            class Inline < Braintrust::BaseModel
+              attr_accessor code: String
+
+              attr_accessor runtime_context: Braintrust::Models::FunctionCreateParams::FunctionData::Code::Data::Inline::RuntimeContext
+
+              attr_accessor type: Braintrust::Models::FunctionCreateParams::FunctionData::Code::Data::Inline::type_
+
+              def initialize:
+                (
+                  code: String,
+                  runtime_context: Braintrust::Models::FunctionCreateParams::FunctionData::Code::Data::Inline::RuntimeContext,
+                  type: Braintrust::Models::FunctionCreateParams::FunctionData::Code::Data::Inline::type_
+                ) -> void
+                | (
+                  ?Braintrust::Models::FunctionCreateParams::FunctionData::Code::Data::inline
+                  | Braintrust::BaseModel data
+                ) -> void
+
+              def to_hash: -> Braintrust::Models::FunctionCreateParams::FunctionData::Code::Data::inline
+
+              type runtime_context =
+                {
+                  runtime: Braintrust::Models::FunctionCreateParams::FunctionData::Code::Data::Inline::RuntimeContext::runtime,
+                  version: String
+                }
+
+              class RuntimeContext < Braintrust::BaseModel
+                attr_accessor runtime: Braintrust::Models::FunctionCreateParams::FunctionData::Code::Data::Inline::RuntimeContext::runtime
+
+                attr_accessor version: String
+
+                def initialize:
+                  (
+                    runtime: Braintrust::Models::FunctionCreateParams::FunctionData::Code::Data::Inline::RuntimeContext::runtime,
+                    version: String
+                  ) -> void
+                  | (
+                    ?Braintrust::Models::FunctionCreateParams::FunctionData::Code::Data::Inline::runtime_context
+                    | Braintrust::BaseModel data
+                  ) -> void
+
+                def to_hash: -> Braintrust::Models::FunctionCreateParams::FunctionData::Code::Data::Inline::runtime_context
+
+                type runtime = :node | :python
+
+                class Runtime < Braintrust::Enum
+                  NODE: :node
+                  PYTHON: :python
+
+                  def self.values: -> ::Array[Braintrust::Models::FunctionCreateParams::FunctionData::Code::Data::Inline::RuntimeContext::runtime]
+                end
+              end
+
+              type type_ = :inline
+
+              class Type < Braintrust::Enum
+                INLINE: :inline
+
+                def self.values: -> ::Array[Braintrust::Models::FunctionCreateParams::FunctionData::Code::Data::Inline::type_]
+              end
+            end
+
+            private def self.variants: -> [[nil, Braintrust::Models::FunctionCreateParams::FunctionData::Code::Data::Bundle], [nil, Braintrust::Models::FunctionCreateParams::FunctionData::Code::Data::Inline]]
+          end
+
+          type type_ = :code
+
+          class Type < Braintrust::Enum
+            CODE: :code
+
+            def self.values: -> ::Array[Braintrust::Models::FunctionCreateParams::FunctionData::Code::type_]
+          end
+        end
+
+        type global =
+          {
+            name: String,
+            type: Braintrust::Models::FunctionCreateParams::FunctionData::Global::type_
+          }
+
+        class Global < Braintrust::BaseModel
+          attr_accessor name: String
+
+          attr_accessor type: Braintrust::Models::FunctionCreateParams::FunctionData::Global::type_
+
+          def initialize:
+            (
+              name: String,
+              type: Braintrust::Models::FunctionCreateParams::FunctionData::Global::type_
+            ) -> void
+            | (
+              ?Braintrust::Models::FunctionCreateParams::FunctionData::global
+              | Braintrust::BaseModel data
+            ) -> void
+
+          def to_hash: -> Braintrust::Models::FunctionCreateParams::FunctionData::global
+
+          type type_ = :global
+
+          class Type < Braintrust::Enum
+            GLOBAL: :global
+
+            def self.values: -> ::Array[Braintrust::Models::FunctionCreateParams::FunctionData::Global::type_]
+          end
+        end
+
+        private def self.variants: -> [[nil, Braintrust::Models::FunctionCreateParams::FunctionData::Prompt], [nil, Braintrust::Models::FunctionCreateParams::FunctionData::Code], [nil, Braintrust::Models::FunctionCreateParams::FunctionData::Global]]
+      end
+
+      type function_schema = { parameters: top, returns: top }
+
+      class FunctionSchema < Braintrust::BaseModel
+        attr_reader parameters: top?
+
+        def parameters=: (top) -> top
+
+        attr_reader returns: top?
+
+        def returns=: (top) -> top
+
+        def initialize:
+          (parameters: top, returns: top) -> void
+          | (
+            ?Braintrust::Models::FunctionCreateParams::function_schema
+            | Braintrust::BaseModel data
+          ) -> void
+
+        def to_hash: -> Braintrust::Models::FunctionCreateParams::function_schema
+      end
+
+      type function_type = :llm | :scorer | :task | :tool
+
+      class FunctionType < Braintrust::Enum
+        LLM: :llm
+        SCORER: :scorer
+        TASK: :task
+        TOOL: :tool
+
+        def self.values: -> ::Array[Braintrust::Models::FunctionCreateParams::function_type]
+      end
+
+      type origin =
+        {
+          object_id_: String,
+          object_type: Braintrust::Models::FunctionCreateParams::Origin::object_type,
+          internal: bool?
+        }
+
+      class Origin < Braintrust::BaseModel
+        attr_accessor object_id_: String
+
+        attr_accessor object_type: Braintrust::Models::FunctionCreateParams::Origin::object_type
+
+        attr_accessor internal: bool?
+
+        def initialize:
+          (
+            object_id_: String,
+            object_type: Braintrust::Models::FunctionCreateParams::Origin::object_type,
+            internal: bool?
+          ) -> void
+          | (
+            ?Braintrust::Models::FunctionCreateParams::origin
+            | Braintrust::BaseModel data
+          ) -> void
+
+        def to_hash: -> Braintrust::Models::FunctionCreateParams::origin
+
+        type object_type =
+          :organization
+          | :project
+          | :experiment
+          | :dataset
+          | :prompt
+          | :prompt_session
+          | :group
+          | :role
+          | :org_member
+          | :project_log
+          | :org_project
+
+        class ObjectType < Braintrust::Enum
+          ORGANIZATION: :organization
+          PROJECT: :project
+          EXPERIMENT: :experiment
+          DATASET: :dataset
+          PROMPT: :prompt
+          PROMPT_SESSION: :prompt_session
+          GROUP: :group
+          ROLE: :role
+          ORG_MEMBER: :org_member
+          PROJECT_LOG: :project_log
+          ORG_PROJECT: :org_project
+
+          def self.values: -> ::Array[Braintrust::Models::FunctionCreateParams::Origin::object_type]
+        end
+      end
+    end
+  end
+end

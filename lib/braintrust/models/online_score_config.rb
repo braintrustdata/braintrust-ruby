@@ -3,35 +3,136 @@
 module Braintrust
   module Models
     class OnlineScoreConfig < Braintrust::BaseModel
-      # @!attribute [rw] sampling_rate
+      # @!attribute sampling_rate
       #   The sampling rate for online scoring
+      #
       #   @return [Float]
       required :sampling_rate, Float
 
-      # @!attribute [rw] scorers
+      # @!attribute scorers
       #   The list of scorers to use for online scoring
-      #   @return [Array<Braintrust::Models::OnlineScoreConfig::Scorer::UnnamedTypeWithunionParent5, Braintrust::Models::OnlineScoreConfig::Scorer::UnnamedTypeWithunionParent6>]
-      required :scorers, Braintrust::ArrayOf.new(Braintrust::Unknown)
+      #
+      #   @return [Array<Braintrust::Models::OnlineScoreConfig::Scorer::Function, Braintrust::Models::OnlineScoreConfig::Scorer::Global>]
+      required :scorers, -> { Braintrust::ArrayOf[union: Braintrust::Models::OnlineScoreConfig::Scorer] }
 
-      # @!attribute [rw] apply_to_root_span
+      # @!attribute apply_to_root_span
       #   Whether to trigger online scoring on the root span of each trace
-      #   @return [Boolean]
-      optional :apply_to_root_span, Braintrust::BooleanModel
+      #
+      #   @return [Boolean, nil]
+      optional :apply_to_root_span, Braintrust::BooleanModel, nil?: true
 
-      # @!attribute [rw] apply_to_span_names
+      # @!attribute apply_to_span_names
       #   Trigger online scoring on any spans with a name in this list
-      #   @return [Array<String>]
-      optional :apply_to_span_names, Braintrust::ArrayOf.new(String)
+      #
+      #   @return [Array<String>, nil]
+      optional :apply_to_span_names, Braintrust::ArrayOf[String], nil?: true
 
       # @!parse
-      #   # Create a new instance of OnlineScoreConfig from a Hash of raw data.
+      #   # @param sampling_rate [Float]
+      #   # @param scorers [Array<Braintrust::Models::OnlineScoreConfig::Scorer::Function, Braintrust::Models::OnlineScoreConfig::Scorer::Global>]
+      #   # @param apply_to_root_span [Boolean, nil]
+      #   # @param apply_to_span_names [Array<String>, nil]
       #   #
-      #   # @param data [Hash{Symbol => Object}] .
-      #   #   @option data [Float] :sampling_rate The sampling rate for online scoring
-      #   #   @option data [Array<Object>] :scorers The list of scorers to use for online scoring
-      #   #   @option data [Hash, nil] :apply_to_root_span Whether to trigger online scoring on the root span of each trace
-      #   #   @option data [Array<String>, nil] :apply_to_span_names Trigger online scoring on any spans with a name in this list
-      #   def initialize(data = {}) = super
+      #   def initialize(sampling_rate:, scorers:, apply_to_root_span: nil, apply_to_span_names: nil, **) = super
+
+      # def initialize: (Hash | Braintrust::BaseModel) -> void
+
+      # @abstract
+      #
+      # @example
+      # ```ruby
+      # case scorer
+      # in Braintrust::Models::OnlineScoreConfig::Scorer::Function
+      #   # ...
+      # in Braintrust::Models::OnlineScoreConfig::Scorer::Global
+      #   # ...
+      # end
+      # ```
+      class Scorer < Braintrust::Union
+        variant -> { Braintrust::Models::OnlineScoreConfig::Scorer::Function }
+
+        variant -> { Braintrust::Models::OnlineScoreConfig::Scorer::Global }
+
+        class Function < Braintrust::BaseModel
+          # @!attribute id
+          #
+          #   @return [String]
+          required :id, String
+
+          # @!attribute type
+          #
+          #   @return [Symbol, Braintrust::Models::OnlineScoreConfig::Scorer::Function::Type]
+          required :type, enum: -> { Braintrust::Models::OnlineScoreConfig::Scorer::Function::Type }
+
+          # @!parse
+          #   # @param id [String]
+          #   # @param type [Symbol, Braintrust::Models::OnlineScoreConfig::Scorer::Function::Type]
+          #   #
+          #   def initialize(id:, type:, **) = super
+
+          # def initialize: (Hash | Braintrust::BaseModel) -> void
+
+          # @abstract
+          #
+          # @example
+          # ```ruby
+          # case type
+          # in :function
+          #   # ...
+          # end
+          # ```
+          class Type < Braintrust::Enum
+            FUNCTION = :function
+
+            finalize!
+
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   #
+            #   def self.values; end
+          end
+        end
+
+        class Global < Braintrust::BaseModel
+          # @!attribute name
+          #
+          #   @return [String]
+          required :name, String
+
+          # @!attribute type
+          #
+          #   @return [Symbol, Braintrust::Models::OnlineScoreConfig::Scorer::Global::Type]
+          required :type, enum: -> { Braintrust::Models::OnlineScoreConfig::Scorer::Global::Type }
+
+          # @!parse
+          #   # @param name [String]
+          #   # @param type [Symbol, Braintrust::Models::OnlineScoreConfig::Scorer::Global::Type]
+          #   #
+          #   def initialize(name:, type:, **) = super
+
+          # def initialize: (Hash | Braintrust::BaseModel) -> void
+
+          # @abstract
+          #
+          # @example
+          # ```ruby
+          # case type
+          # in :global
+          #   # ...
+          # end
+          # ```
+          class Type < Braintrust::Enum
+            GLOBAL = :global
+
+            finalize!
+
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   #
+            #   def self.values; end
+          end
+        end
+      end
     end
   end
 end

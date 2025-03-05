@@ -3,47 +3,53 @@
 module Braintrust
   module Models
     class User < Braintrust::BaseModel
-      # @!attribute [rw] id
+      # @!attribute id
       #   Unique identifier for the user
+      #
       #   @return [String]
       required :id, String
 
-      # @!attribute [rw] avatar_url
+      # @!attribute avatar_url
       #   URL of the user's Avatar image
-      #   @return [String]
-      optional :avatar_url, String
+      #
+      #   @return [String, nil]
+      optional :avatar_url, String, nil?: true
 
-      # @!attribute [rw] created
+      # @!attribute created
       #   Date of user creation
-      #   @return [Time]
-      optional :created, Time
+      #
+      #   @return [Time, nil]
+      optional :created, Time, nil?: true
 
-      # @!attribute [rw] email
+      # @!attribute email
       #   The user's email
-      #   @return [String]
-      optional :email, String
+      #
+      #   @return [String, nil]
+      optional :email, String, nil?: true
 
-      # @!attribute [rw] family_name
+      # @!attribute family_name
       #   Family name of the user
-      #   @return [String]
-      optional :family_name, String
+      #
+      #   @return [String, nil]
+      optional :family_name, String, nil?: true
 
-      # @!attribute [rw] given_name
+      # @!attribute given_name
       #   Given name of the user
-      #   @return [String]
-      optional :given_name, String
+      #
+      #   @return [String, nil]
+      optional :given_name, String, nil?: true
 
       # @!parse
-      #   # Create a new instance of User from a Hash of raw data.
+      #   # @param id [String]
+      #   # @param avatar_url [String, nil]
+      #   # @param created [Time, nil]
+      #   # @param email [String, nil]
+      #   # @param family_name [String, nil]
+      #   # @param given_name [String, nil]
       #   #
-      #   # @param data [Hash{Symbol => Object}] .
-      #   #   @option data [String] :id Unique identifier for the user
-      #   #   @option data [String, nil] :avatar_url URL of the user's Avatar image
-      #   #   @option data [String, nil] :created Date of user creation
-      #   #   @option data [String, nil] :email The user's email
-      #   #   @option data [String, nil] :family_name Family name of the user
-      #   #   @option data [String, nil] :given_name Given name of the user
-      #   def initialize(data = {}) = super
+      #   def initialize(id:, avatar_url: nil, created: nil, email: nil, family_name: nil, given_name: nil, **) = super
+
+      # def initialize: (Hash | Braintrust::BaseModel) -> void
     end
   end
 end

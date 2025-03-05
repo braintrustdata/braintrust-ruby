@@ -3,57 +3,133 @@
 module Braintrust
   module Models
     class ACL < Braintrust::BaseModel
-      # @!attribute [rw] id
+      # @!attribute id
       #   Unique identifier for the acl
+      #
       #   @return [String]
       required :id, String
 
-      # @!attribute [rw] _object_org_id
+      # @!attribute _object_org_id
       #   The organization the ACL's referred object belongs to
+      #
       #   @return [String]
       required :_object_org_id, String
 
-      # @!attribute [rw] object_id_
+      # @!attribute object_id_
       #   The id of the object the ACL applies to
+      #
       #   @return [String]
       required :object_id_, String, api_name: :object_id
 
-      # @!attribute [rw] object_type
+      # @!attribute object_type
       #   The object type that the ACL applies to
+      #
       #   @return [Symbol, Braintrust::Models::ACL::ObjectType]
       required :object_type, enum: -> { Braintrust::Models::ACL::ObjectType }
 
-      # @!attribute [rw] created
+      # @!attribute created
       #   Date of acl creation
-      #   @return [Time]
-      optional :created, Time
+      #
+      #   @return [Time, nil]
+      optional :created, Time, nil?: true
 
-      # @!attribute [rw] group_id
-      #   Id of the group the ACL applies to. Exactly one of `user_id` and `group_id` will be provided
-      #   @return [String]
-      optional :group_id, String
+      # @!attribute group_id
+      #   Id of the group the ACL applies to. Exactly one of `user_id` and `group_id` will
+      #     be provided
+      #
+      #   @return [String, nil]
+      optional :group_id, String, nil?: true
 
-      # @!attribute [rw] permission
-      #   Permission the ACL grants. Exactly one of `permission` and `role_id` will be provided
-      #   @return [Symbol, Braintrust::Models::ACL::Permission]
-      optional :permission, enum: -> { Braintrust::Models::ACL::Permission }
+      # @!attribute permission
+      #   Permission the ACL grants. Exactly one of `permission` and `role_id` will be
+      #     provided
+      #
+      #   @return [Symbol, Braintrust::Models::ACL::Permission, nil]
+      optional :permission, enum: -> { Braintrust::Models::ACL::Permission }, nil?: true
 
-      # @!attribute [rw] restrict_object_type
-      #   When setting a permission directly, optionally restricts the permission grant to just the specified object type. Cannot be set alongside a `role_id`.
-      #   @return [Symbol, Braintrust::Models::ACL::RestrictObjectType]
-      optional :restrict_object_type, enum: -> { Braintrust::Models::ACL::RestrictObjectType }
+      # @!attribute restrict_object_type
+      #   When setting a permission directly, optionally restricts the permission grant to
+      #     just the specified object type. Cannot be set alongside a `role_id`.
+      #
+      #   @return [Symbol, Braintrust::Models::ACL::RestrictObjectType, nil]
+      optional :restrict_object_type, enum: -> { Braintrust::Models::ACL::RestrictObjectType }, nil?: true
 
-      # @!attribute [rw] role_id
-      #   Id of the role the ACL grants. Exactly one of `permission` and `role_id` will be provided
-      #   @return [String]
-      optional :role_id, String
+      # @!attribute role_id
+      #   Id of the role the ACL grants. Exactly one of `permission` and `role_id` will be
+      #     provided
+      #
+      #   @return [String, nil]
+      optional :role_id, String, nil?: true
 
-      # @!attribute [rw] user_id
-      #   Id of the user the ACL applies to. Exactly one of `user_id` and `group_id` will be provided
-      #   @return [String]
-      optional :user_id, String
+      # @!attribute user_id
+      #   Id of the user the ACL applies to. Exactly one of `user_id` and `group_id` will
+      #     be provided
+      #
+      #   @return [String, nil]
+      optional :user_id, String, nil?: true
 
+      # @!parse
+      #   # An ACL grants a certain permission or role to a certain user or group on an
+      #   #   object.
+      #   #
+      #   #   ACLs are inherited across the object hierarchy. So for example, if a user has
+      #   #   read permissions on a project, they will also have read permissions on any
+      #   #   experiment, dataset, etc. created within that project.
+      #   #
+      #   #   To restrict a grant to a particular sub-object, you may specify
+      #   #   `restrict_object_type` in the ACL, as part of a direct permission grant or as
+      #   #   part of a role.
+      #   #
+      #   # @param id [String]
+      #   # @param _object_org_id [String]
+      #   # @param object_id_ [String]
+      #   # @param object_type [Symbol, Braintrust::Models::ACL::ObjectType]
+      #   # @param created [Time, nil]
+      #   # @param group_id [String, nil]
+      #   # @param permission [Symbol, Braintrust::Models::ACL::Permission, nil]
+      #   # @param restrict_object_type [Symbol, Braintrust::Models::ACL::RestrictObjectType, nil]
+      #   # @param role_id [String, nil]
+      #   # @param user_id [String, nil]
+      #   #
+      #   def initialize(
+      #     id:,
+      #     _object_org_id:,
+      #     object_id_:,
+      #     object_type:,
+      #     created: nil,
+      #     group_id: nil,
+      #     permission: nil,
+      #     restrict_object_type: nil,
+      #     role_id: nil,
+      #     user_id: nil,
+      #     **
+      #   )
+      #     super
+      #   end
+
+      # def initialize: (Hash | Braintrust::BaseModel) -> void
+
+      # @abstract
+      #
       # The object type that the ACL applies to
+      #
+      # @example
+      # ```ruby
+      # case object_type
+      # in :organization
+      #   # ...
+      # in :project
+      #   # ...
+      # in :experiment
+      #   # ...
+      # in :dataset
+      #   # ...
+      # in :prompt
+      #   # ...
+      # in ...
+      #   #...
+      # end
+      # ```
       class ObjectType < Braintrust::Enum
         ORGANIZATION = :organization
         PROJECT = :project
@@ -66,9 +142,37 @@ module Braintrust
         ORG_MEMBER = :org_member
         PROJECT_LOG = :project_log
         ORG_PROJECT = :org_project
+
+        finalize!
+
+        # @!parse
+        #   # @return [Array<Symbol>]
+        #   #
+        #   def self.values; end
       end
 
-      # Permission the ACL grants. Exactly one of `permission` and `role_id` will be provided
+      # @abstract
+      #
+      # Permission the ACL grants. Exactly one of `permission` and `role_id` will be
+      #   provided
+      #
+      # @example
+      # ```ruby
+      # case permission
+      # in :create
+      #   # ...
+      # in :read
+      #   # ...
+      # in :update
+      #   # ...
+      # in :delete
+      #   # ...
+      # in :create_acls
+      #   # ...
+      # in ...
+      #   #...
+      # end
+      # ```
       class Permission < Braintrust::Enum
         CREATE = :create
         READ = :read
@@ -78,9 +182,37 @@ module Braintrust
         READ_ACLS = :read_acls
         UPDATE_ACLS = :update_acls
         DELETE_ACLS = :delete_acls
+
+        finalize!
+
+        # @!parse
+        #   # @return [Array<Symbol>]
+        #   #
+        #   def self.values; end
       end
 
-      # When setting a permission directly, optionally restricts the permission grant to just the specified object type. Cannot be set alongside a `role_id`.
+      # @abstract
+      #
+      # When setting a permission directly, optionally restricts the permission grant to
+      #   just the specified object type. Cannot be set alongside a `role_id`.
+      #
+      # @example
+      # ```ruby
+      # case restrict_object_type
+      # in :organization
+      #   # ...
+      # in :project
+      #   # ...
+      # in :experiment
+      #   # ...
+      # in :dataset
+      #   # ...
+      # in :prompt
+      #   # ...
+      # in ...
+      #   #...
+      # end
+      # ```
       class RestrictObjectType < Braintrust::Enum
         ORGANIZATION = :organization
         PROJECT = :project
@@ -93,28 +225,14 @@ module Braintrust
         ORG_MEMBER = :org_member
         PROJECT_LOG = :project_log
         ORG_PROJECT = :org_project
-      end
 
-      # @!parse
-      #   # Create a new instance of ACL from a Hash of raw data.
-      #   #
-      #   # @param data [Hash{Symbol => Object}] .
-      #   #   @option data [String] :id Unique identifier for the acl
-      #   #   @option data [String] :_object_org_id The organization the ACL's referred object belongs to
-      #   #   @option data [String] :object_id The id of the object the ACL applies to
-      #   #   @option data [String] :object_type The object type that the ACL applies to
-      #   #   @option data [String, nil] :created Date of acl creation
-      #   #   @option data [String, nil] :group_id Id of the group the ACL applies to. Exactly one of `user_id` and `group_id` will
-      #   #     be provided
-      #   #   @option data [String, nil] :permission Permission the ACL grants. Exactly one of `permission` and `role_id` will be
-      #   #     provided
-      #   #   @option data [String, nil] :restrict_object_type When setting a permission directly, optionally restricts the permission grant to
-      #   #     just the specified object type. Cannot be set alongside a `role_id`.
-      #   #   @option data [String, nil] :role_id Id of the role the ACL grants. Exactly one of `permission` and `role_id` will be
-      #   #     provided
-      #   #   @option data [String, nil] :user_id Id of the user the ACL applies to. Exactly one of `user_id` and `group_id` will
-      #   #     be provided
-      #   def initialize(data = {}) = super
+        finalize!
+
+        # @!parse
+        #   # @return [Array<Symbol>]
+        #   #
+        #   def self.values; end
+      end
     end
   end
 end

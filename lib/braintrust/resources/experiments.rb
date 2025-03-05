@@ -3,60 +3,70 @@
 module Braintrust
   module Resources
     class Experiments
-      # @param client [Braintrust::Client]
-      def initialize(client:)
-        @client = client
-      end
-
       # Create a new experiment. If there is an existing experiment in the project with
       #   the same name as the one specified in the request, will return the existing
       #   experiment unmodified
       #
-      # @param params [Hash{Symbol => Object}] Attributes to send in this request.
+      # @param params [Braintrust::Models::ExperimentCreateParams, Hash{Symbol=>Object}] .
+      #
       #   @option params [String] :project_id Unique identifier for the project that the experiment belongs under
+      #
       #   @option params [String, nil] :base_exp_id Id of default base experiment to compare against when viewing this experiment
+      #
       #   @option params [String, nil] :dataset_id Identifier of the linked dataset, or null if the experiment is not linked to a
       #     dataset
+      #
       #   @option params [String, nil] :dataset_version Version number of the linked dataset the experiment was run against. This can be
       #     used to reproduce the experiment after the dataset has been modified.
+      #
       #   @option params [String, nil] :description Textual description of the experiment
+      #
       #   @option params [Boolean, nil] :ensure_new Normally, creating an experiment with the same name as an existing experiment
       #     will return the existing one un-modified. But if `ensure_new` is true,
       #     registration will generate a new experiment with a unique name in case of a
       #     conflict.
-      #   @option params [Hash, nil] :metadata User-controlled metadata about the experiment
+      #
+      #   @option params [Hash{Symbol=>Object, nil}, nil] :metadata User-controlled metadata about the experiment
+      #
       #   @option params [String, nil] :name Name of the experiment. Within a project, experiment names are unique
+      #
       #   @option params [Boolean, nil] :public Whether or not the experiment is public. Public experiments can be viewed by
       #     anybody inside or outside the organization
+      #
       #   @option params [Braintrust::Models::RepoInfo, nil] :repo_info Metadata about the state of the repo when the experiment was created
       #
-      # @param opts [Hash{Symbol => Object}, Braintrust::RequestOptions] Options to specify HTTP behaviour for this request.
+      #   @option params [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Braintrust::Models::Experiment]
-      def create(params = {}, opts = {})
-        req = {
+      #
+      def create(params)
+        parsed, options = Braintrust::Models::ExperimentCreateParams.dump_request(params)
+        @client.request(
           method: :post,
-          path: "/v1/experiment",
-          headers: {"Content-Type" => "application/json"},
-          body: params,
-          model: Braintrust::Models::Experiment
-        }
-        @client.request(req, opts)
+          path: "v1/experiment",
+          body: parsed,
+          model: Braintrust::Models::Experiment,
+          options: options
+        )
       end
 
       # Get an experiment object by its id
       #
       # @param experiment_id [String] Experiment id
-      # @param opts [Hash{Symbol => Object}, Braintrust::RequestOptions] Options to specify HTTP behaviour for this request.
+      #
+      # @param params [Braintrust::Models::ExperimentRetrieveParams, Hash{Symbol=>Object}] .
+      #
+      #   @option params [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Braintrust::Models::Experiment]
-      def retrieve(experiment_id, opts = {})
-        req = {
+      #
+      def retrieve(experiment_id, params = {})
+        @client.request(
           method: :get,
-          path: "/v1/experiment/#{experiment_id}",
-          model: Braintrust::Models::Experiment
-        }
-        @client.request(req, opts)
+          path: ["v1/experiment/%0s", experiment_id],
+          model: Braintrust::Models::Experiment,
+          options: params[:request_options]
+        )
       end
 
       # Partially update an experiment object. Specify the fields to update in the
@@ -65,103 +75,128 @@ module Braintrust
       #
       # @param experiment_id [String] Experiment id
       #
-      # @param params [Hash{Symbol => Object}] Attributes to send in this request.
+      # @param params [Braintrust::Models::ExperimentUpdateParams, Hash{Symbol=>Object}] .
+      #
       #   @option params [String, nil] :base_exp_id Id of default base experiment to compare against when viewing this experiment
+      #
       #   @option params [String, nil] :dataset_id Identifier of the linked dataset, or null if the experiment is not linked to a
       #     dataset
+      #
       #   @option params [String, nil] :dataset_version Version number of the linked dataset the experiment was run against. This can be
       #     used to reproduce the experiment after the dataset has been modified.
+      #
       #   @option params [String, nil] :description Textual description of the experiment
-      #   @option params [Hash, nil] :metadata User-controlled metadata about the experiment
+      #
+      #   @option params [Hash{Symbol=>Object, nil}, nil] :metadata User-controlled metadata about the experiment
+      #
       #   @option params [String, nil] :name Name of the experiment. Within a project, experiment names are unique
+      #
       #   @option params [Boolean, nil] :public Whether or not the experiment is public. Public experiments can be viewed by
       #     anybody inside or outside the organization
+      #
       #   @option params [Braintrust::Models::RepoInfo, nil] :repo_info Metadata about the state of the repo when the experiment was created
       #
-      # @param opts [Hash{Symbol => Object}, Braintrust::RequestOptions] Options to specify HTTP behaviour for this request.
+      #   @option params [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Braintrust::Models::Experiment]
-      def update(experiment_id, params = {}, opts = {})
-        req = {
+      #
+      def update(experiment_id, params = {})
+        parsed, options = Braintrust::Models::ExperimentUpdateParams.dump_request(params)
+        @client.request(
           method: :patch,
-          path: "/v1/experiment/#{experiment_id}",
-          headers: {"Content-Type" => "application/json"},
-          body: params,
-          model: Braintrust::Models::Experiment
-        }
-        @client.request(req, opts)
+          path: ["v1/experiment/%0s", experiment_id],
+          body: parsed,
+          model: Braintrust::Models::Experiment,
+          options: options
+        )
       end
 
       # List out all experiments. The experiments are sorted by creation date, with the
       #   most recently-created experiments coming first
       #
-      # @param params [Hash{Symbol => Object}] Attributes to send in this request.
-      #   @option params [String, nil] :ending_before Pagination cursor id.
+      # @param params [Braintrust::Models::ExperimentListParams, Hash{Symbol=>Object}] .
+      #
+      #   @option params [String] :ending_before Pagination cursor id.
       #
       #     For example, if the initial item in the last page you fetched had an id of
       #     `foo`, pass `ending_before=foo` to fetch the previous page. Note: you may only
       #     pass one of `starting_after` and `ending_before`
-      #   @option params [String, nil] :experiment_name Name of the experiment to search for
-      #   @option params [Array<String>, String, nil] :ids Filter search results to a particular set of object IDs. To specify a list of
+      #
+      #   @option params [String] :experiment_name Name of the experiment to search for
+      #
+      #   @option params [String, Array<String>] :ids Filter search results to a particular set of object IDs. To specify a list of
       #     IDs, include the query param multiple times
+      #
       #   @option params [Integer, nil] :limit Limit the number of objects to return
-      #   @option params [String, nil] :org_name Filter search results to within a particular organization
-      #   @option params [String, nil] :project_id Project id
-      #   @option params [String, nil] :project_name Name of the project to search for
-      #   @option params [String, nil] :starting_after Pagination cursor id.
+      #
+      #   @option params [String] :org_name Filter search results to within a particular organization
+      #
+      #   @option params [String] :project_id Project id
+      #
+      #   @option params [String] :project_name Name of the project to search for
+      #
+      #   @option params [String] :starting_after Pagination cursor id.
       #
       #     For example, if the final item in the last page you fetched had an id of `foo`,
       #     pass `starting_after=foo` to fetch the next page. Note: you may only pass one of
       #     `starting_after` and `ending_before`
       #
-      # @param opts [Hash{Symbol => Object}, Braintrust::RequestOptions] Options to specify HTTP behaviour for this request.
+      #   @option params [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Braintrust::ListObjects<Braintrust::Models::Experiment>]
-      def list(params = {}, opts = {})
-        req = {
+      #
+      def list(params = {})
+        parsed, options = Braintrust::Models::ExperimentListParams.dump_request(params)
+        @client.request(
           method: :get,
-          path: "/v1/experiment",
-          query: params,
+          path: "v1/experiment",
+          query: parsed,
           page: Braintrust::ListObjects,
-          model: Braintrust::Models::Experiment
-        }
-        @client.request(req, opts)
+          model: Braintrust::Models::Experiment,
+          options: options
+        )
       end
 
       # Delete an experiment object by its id
       #
       # @param experiment_id [String] Experiment id
-      # @param opts [Hash{Symbol => Object}, Braintrust::RequestOptions] Options to specify HTTP behaviour for this request.
+      #
+      # @param params [Braintrust::Models::ExperimentDeleteParams, Hash{Symbol=>Object}] .
+      #
+      #   @option params [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Braintrust::Models::Experiment]
-      def delete(experiment_id, opts = {})
-        req = {
+      #
+      def delete(experiment_id, params = {})
+        @client.request(
           method: :delete,
-          path: "/v1/experiment/#{experiment_id}",
-          model: Braintrust::Models::Experiment
-        }
-        @client.request(req, opts)
+          path: ["v1/experiment/%0s", experiment_id],
+          model: Braintrust::Models::Experiment,
+          options: params[:request_options]
+        )
       end
 
       # Log feedback for a set of experiment events
       #
       # @param experiment_id [String] Experiment id
       #
-      # @param params [Hash{Symbol => Object}] Attributes to send in this request.
+      # @param params [Braintrust::Models::ExperimentFeedbackParams, Hash{Symbol=>Object}] .
+      #
       #   @option params [Array<Braintrust::Models::FeedbackExperimentItem>] :feedback A list of experiment feedback items
       #
-      # @param opts [Hash{Symbol => Object}, Braintrust::RequestOptions] Options to specify HTTP behaviour for this request.
+      #   @option params [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Braintrust::Models::FeedbackResponseSchema]
-      def feedback(experiment_id, params = {}, opts = {})
-        req = {
+      #
+      def feedback(experiment_id, params)
+        parsed, options = Braintrust::Models::ExperimentFeedbackParams.dump_request(params)
+        @client.request(
           method: :post,
-          path: "/v1/experiment/#{experiment_id}/feedback",
-          headers: {"Content-Type" => "application/json"},
-          body: params,
-          model: Braintrust::Models::FeedbackResponseSchema
-        }
-        @client.request(req, opts)
+          path: ["v1/experiment/%0s/feedback", experiment_id],
+          body: parsed,
+          model: Braintrust::Models::FeedbackResponseSchema,
+          options: options
+        )
       end
 
       # Fetch the events in an experiment. Equivalent to the POST form of the same path,
@@ -170,7 +205,8 @@ module Braintrust
       #
       # @param experiment_id [String] Experiment id
       #
-      # @param params [Hash{Symbol => Object}] Attributes to send in this request.
+      # @param params [Braintrust::Models::ExperimentFetchParams, Hash{Symbol=>Object}] .
+      #
       #   @option params [Integer, nil] :limit limit the number of traces fetched
       #
       #     Fetch queries may be paginated if the total result size is expected to be large
@@ -185,7 +221,8 @@ module Braintrust
       #     The `limit` parameter controls the number of full traces to return. So you may
       #     end up with more individual rows than the specified limit if you are fetching
       #     events containing traces.
-      #   @option params [String, nil] :max_root_span_id DEPRECATION NOTICE: The manually-constructed pagination cursor is deprecated in
+      #
+      #   @option params [String] :max_root_span_id DEPRECATION NOTICE: The manually-constructed pagination cursor is deprecated in
       #     favor of the explicit 'cursor' returned by object fetch requests. Please prefer
       #     the 'cursor' argument going forwards.
       #
@@ -195,7 +232,8 @@ module Braintrust
       #     the cursor for the next page can be found as the row with the minimum (earliest)
       #     value of the tuple `(_xact_id, root_span_id)`. See the documentation of `limit`
       #     for an overview of paginating fetch queries.
-      #   @option params [String, nil] :max_xact_id DEPRECATION NOTICE: The manually-constructed pagination cursor is deprecated in
+      #
+      #   @option params [String] :max_xact_id DEPRECATION NOTICE: The manually-constructed pagination cursor is deprecated in
       #     favor of the explicit 'cursor' returned by object fetch requests. Please prefer
       #     the 'cursor' argument going forwards.
       #
@@ -205,23 +243,26 @@ module Braintrust
       #     the cursor for the next page can be found as the row with the minimum (earliest)
       #     value of the tuple `(_xact_id, root_span_id)`. See the documentation of `limit`
       #     for an overview of paginating fetch queries.
-      #   @option params [String, nil] :version Retrieve a snapshot of events from a past time
+      #
+      #   @option params [String] :version Retrieve a snapshot of events from a past time
       #
       #     The version id is essentially a filter on the latest event transaction id. You
       #     can use the `max_xact_id` returned by a past fetch as the version to reproduce
       #     that exact fetch.
       #
-      # @param opts [Hash{Symbol => Object}, Braintrust::RequestOptions] Options to specify HTTP behaviour for this request.
+      #   @option params [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Braintrust::Models::FetchExperimentEventsResponse]
-      def fetch(experiment_id, params = {}, opts = {})
-        req = {
+      #
+      def fetch(experiment_id, params = {})
+        parsed, options = Braintrust::Models::ExperimentFetchParams.dump_request(params)
+        @client.request(
           method: :get,
-          path: "/v1/experiment/#{experiment_id}/fetch",
-          query: params,
-          model: Braintrust::Models::FetchExperimentEventsResponse
-        }
-        @client.request(req, opts)
+          path: ["v1/experiment/%0s/fetch", experiment_id],
+          query: parsed,
+          model: Braintrust::Models::FetchExperimentEventsResponse,
+          options: options
+        )
       end
 
       # Fetch the events in an experiment. Equivalent to the GET form of the same path,
@@ -230,12 +271,14 @@ module Braintrust
       #
       # @param experiment_id [String] Experiment id
       #
-      # @param params [Hash{Symbol => Object}] Attributes to send in this request.
+      # @param params [Braintrust::Models::ExperimentFetchPostParams, Hash{Symbol=>Object}] .
+      #
       #   @option params [String, nil] :cursor An opaque string to be used as a cursor for the next page of results, in order
       #     from latest to earliest.
       #
       #     The string can be obtained directly from the `cursor` property of the previous
       #     fetch query
+      #
       #   @option params [Integer, nil] :limit limit the number of traces fetched
       #
       #     Fetch queries may be paginated if the total result size is expected to be large
@@ -250,6 +293,7 @@ module Braintrust
       #     The `limit` parameter controls the number of full traces to return. So you may
       #     end up with more individual rows than the specified limit if you are fetching
       #     events containing traces.
+      #
       #   @option params [String, nil] :max_root_span_id DEPRECATION NOTICE: The manually-constructed pagination cursor is deprecated in
       #     favor of the explicit 'cursor' returned by object fetch requests. Please prefer
       #     the 'cursor' argument going forwards.
@@ -260,6 +304,7 @@ module Braintrust
       #     the cursor for the next page can be found as the row with the minimum (earliest)
       #     value of the tuple `(_xact_id, root_span_id)`. See the documentation of `limit`
       #     for an overview of paginating fetch queries.
+      #
       #   @option params [String, nil] :max_xact_id DEPRECATION NOTICE: The manually-constructed pagination cursor is deprecated in
       #     favor of the explicit 'cursor' returned by object fetch requests. Please prefer
       #     the 'cursor' argument going forwards.
@@ -270,70 +315,84 @@ module Braintrust
       #     the cursor for the next page can be found as the row with the minimum (earliest)
       #     value of the tuple `(_xact_id, root_span_id)`. See the documentation of `limit`
       #     for an overview of paginating fetch queries.
+      #
       #   @option params [String, nil] :version Retrieve a snapshot of events from a past time
       #
       #     The version id is essentially a filter on the latest event transaction id. You
       #     can use the `max_xact_id` returned by a past fetch as the version to reproduce
       #     that exact fetch.
       #
-      # @param opts [Hash{Symbol => Object}, Braintrust::RequestOptions] Options to specify HTTP behaviour for this request.
+      #   @option params [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Braintrust::Models::FetchExperimentEventsResponse]
-      def fetch_post(experiment_id, params = {}, opts = {})
-        req = {
+      #
+      def fetch_post(experiment_id, params = {})
+        parsed, options = Braintrust::Models::ExperimentFetchPostParams.dump_request(params)
+        @client.request(
           method: :post,
-          path: "/v1/experiment/#{experiment_id}/fetch",
-          headers: {"Content-Type" => "application/json"},
-          body: params,
-          model: Braintrust::Models::FetchExperimentEventsResponse
-        }
-        @client.request(req, opts)
+          path: ["v1/experiment/%0s/fetch", experiment_id],
+          body: parsed,
+          model: Braintrust::Models::FetchExperimentEventsResponse,
+          options: options
+        )
       end
 
       # Insert a set of events into the experiment
       #
       # @param experiment_id [String] Experiment id
       #
-      # @param params [Hash{Symbol => Object}] Attributes to send in this request.
+      # @param params [Braintrust::Models::ExperimentInsertParams, Hash{Symbol=>Object}] .
+      #
       #   @option params [Array<Braintrust::Models::InsertExperimentEvent>] :events A list of experiment events to insert
       #
-      # @param opts [Hash{Symbol => Object}, Braintrust::RequestOptions] Options to specify HTTP behaviour for this request.
+      #   @option params [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Braintrust::Models::InsertEventsResponse]
-      def insert(experiment_id, params = {}, opts = {})
-        req = {
+      #
+      def insert(experiment_id, params)
+        parsed, options = Braintrust::Models::ExperimentInsertParams.dump_request(params)
+        @client.request(
           method: :post,
-          path: "/v1/experiment/#{experiment_id}/insert",
-          headers: {"Content-Type" => "application/json"},
-          body: params,
-          model: Braintrust::Models::InsertEventsResponse
-        }
-        @client.request(req, opts)
+          path: ["v1/experiment/%0s/insert", experiment_id],
+          body: parsed,
+          model: Braintrust::Models::InsertEventsResponse,
+          options: options
+        )
       end
 
       # Summarize experiment
       #
       # @param experiment_id [String] Experiment id
       #
-      # @param params [Hash{Symbol => Object}] Attributes to send in this request.
-      #   @option params [String, nil] :comparison_experiment_id The experiment to compare against, if summarizing scores and metrics. If
+      # @param params [Braintrust::Models::ExperimentSummarizeParams, Hash{Symbol=>Object}] .
+      #
+      #   @option params [String] :comparison_experiment_id The experiment to compare against, if summarizing scores and metrics. If
       #     omitted, will fall back to the `base_exp_id` stored in the experiment metadata,
       #     and then to the most recent experiment run in the same project. Must pass
       #     `summarize_scores=true` for this id to be used
+      #
       #   @option params [Boolean, nil] :summarize_scores Whether to summarize the scores and metrics. If false (or omitted), only the
       #     metadata will be returned.
       #
-      # @param opts [Hash{Symbol => Object}, Braintrust::RequestOptions] Options to specify HTTP behaviour for this request.
+      #   @option params [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Braintrust::Models::SummarizeExperimentResponse]
-      def summarize(experiment_id, params = {}, opts = {})
-        req = {
+      #
+      def summarize(experiment_id, params = {})
+        parsed, options = Braintrust::Models::ExperimentSummarizeParams.dump_request(params)
+        @client.request(
           method: :get,
-          path: "/v1/experiment/#{experiment_id}/summarize",
-          query: params,
-          model: Braintrust::Models::SummarizeExperimentResponse
-        }
-        @client.request(req, opts)
+          path: ["v1/experiment/%0s/summarize", experiment_id],
+          query: parsed,
+          model: Braintrust::Models::SummarizeExperimentResponse,
+          options: options
+        )
+      end
+
+      # @param client [Braintrust::Client]
+      #
+      def initialize(client:)
+        @client = client
       end
     end
   end

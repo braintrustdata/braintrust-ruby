@@ -1,0 +1,26 @@
+module Braintrust
+  module Models
+    type experiment_insert_params =
+      { events: ::Array[Braintrust::Models::InsertExperimentEvent] }
+      & Braintrust::request_parameters
+
+    class ExperimentInsertParams < Braintrust::BaseModel
+      extend Braintrust::RequestParameters::Converter
+      include Braintrust::RequestParameters
+
+      attr_accessor events: ::Array[Braintrust::Models::InsertExperimentEvent]
+
+      def initialize:
+        (
+          events: ::Array[Braintrust::Models::InsertExperimentEvent],
+          request_options: Braintrust::request_opts
+        ) -> void
+        | (
+          ?Braintrust::Models::experiment_insert_params
+          | Braintrust::BaseModel data
+        ) -> void
+
+      def to_hash: -> Braintrust::Models::experiment_insert_params
+    end
+  end
+end

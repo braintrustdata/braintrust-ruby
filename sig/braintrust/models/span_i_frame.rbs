@@ -1,0 +1,54 @@
+module Braintrust
+  module Models
+    type span_i_frame =
+      {
+        id: String,
+        name: String,
+        project_id: String,
+        url: String,
+        created: Time?,
+        deleted_at: Time?,
+        description: String?,
+        post_message: bool?,
+        user_id: String?
+      }
+
+    class SpanIFrame < Braintrust::BaseModel
+      attr_accessor id: String
+
+      attr_accessor name: String
+
+      attr_accessor project_id: String
+
+      attr_accessor url: String
+
+      attr_accessor created: Time?
+
+      attr_accessor deleted_at: Time?
+
+      attr_accessor description: String?
+
+      attr_accessor post_message: bool?
+
+      attr_accessor user_id: String?
+
+      def initialize:
+        (
+          id: String,
+          name: String,
+          project_id: String,
+          url: String,
+          created: Time?,
+          deleted_at: Time?,
+          description: String?,
+          post_message: bool?,
+          user_id: String?
+        ) -> void
+        | (
+          ?Braintrust::Models::span_i_frame | Braintrust::BaseModel data
+        ) -> void
+
+      def to_hash: -> Braintrust::Models::span_i_frame
+    end
+  end
+end

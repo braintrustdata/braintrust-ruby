@@ -1,0 +1,93 @@
+module Braintrust
+  module Models
+    type prompt_list_params =
+      {
+        ending_before: String,
+        ids: Braintrust::Models::PromptListParams::ids,
+        limit: Integer?,
+        org_name: String,
+        project_id: String,
+        project_name: String,
+        prompt_name: String,
+        slug: String,
+        starting_after: String,
+        version: String
+      }
+      & Braintrust::request_parameters
+
+    class PromptListParams < Braintrust::BaseModel
+      extend Braintrust::RequestParameters::Converter
+      include Braintrust::RequestParameters
+
+      attr_reader ending_before: String?
+
+      def ending_before=: (String) -> String
+
+      attr_reader ids: Braintrust::Models::PromptListParams::ids?
+
+      def ids=: (
+        Braintrust::Models::PromptListParams::ids
+      ) -> Braintrust::Models::PromptListParams::ids
+
+      attr_accessor limit: Integer?
+
+      attr_reader org_name: String?
+
+      def org_name=: (String) -> String
+
+      attr_reader project_id: String?
+
+      def project_id=: (String) -> String
+
+      attr_reader project_name: String?
+
+      def project_name=: (String) -> String
+
+      attr_reader prompt_name: String?
+
+      def prompt_name=: (String) -> String
+
+      attr_reader slug: String?
+
+      def slug=: (String) -> String
+
+      attr_reader starting_after: String?
+
+      def starting_after=: (String) -> String
+
+      attr_reader version: String?
+
+      def version=: (String) -> String
+
+      def initialize:
+        (
+          ending_before: String,
+          ids: Braintrust::Models::PromptListParams::ids,
+          limit: Integer?,
+          org_name: String,
+          project_id: String,
+          project_name: String,
+          prompt_name: String,
+          slug: String,
+          starting_after: String,
+          version: String,
+          request_options: Braintrust::request_opts
+        ) -> void
+        | (
+          ?Braintrust::Models::prompt_list_params | Braintrust::BaseModel data
+        ) -> void
+
+      def to_hash: -> Braintrust::Models::prompt_list_params
+
+      type ids = String | ::Array[String]
+
+      class IDs < Braintrust::Union
+        type string_array = ::Array[String]
+
+        StringArray: string_array
+
+        private def self.variants: -> [[nil, String], [nil, ::Array[String]]]
+      end
+    end
+  end
+end
