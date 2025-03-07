@@ -33,14 +33,14 @@ module Braintrust
     # @param client [Braintrust::BaseClient]
     # @param req [Hash{Symbol=>Object}]
     # @param headers [Hash{String=>String}, Net::HTTPHeader]
-    # @param unwrapped [Hash{Symbol=>Object}]
+    # @param page_data [Hash{Symbol=>Object}]
     #
-    def initialize(client:, req:, headers:, unwrapped:)
+    def initialize(client:, req:, headers:, page_data:)
       @client = client
       @req = req
       model = req.fetch(:model)
 
-      case unwrapped
+      case page_data
       in {objects: Array | nil => objects}
         @objects = objects&.map { model.coerce(_1) }
       else
