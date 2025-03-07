@@ -76,19 +76,6 @@ module Braintrust
 
       # @abstract
       #
-      # @example
-      # ```ruby
-      # case function_type
-      # in :llm
-      #   # ...
-      # in :scorer
-      #   # ...
-      # in :task
-      #   # ...
-      # in :tool
-      #   # ...
-      # end
-      # ```
       class FunctionType < Braintrust::Enum
         LLM = :llm
         SCORER = :scorer

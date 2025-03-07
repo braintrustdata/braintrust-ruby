@@ -178,24 +178,6 @@ module Braintrust
         # @abstract
         #
         # Type of the object the event is originating from.
-        #
-        # @example
-        # ```ruby
-        # case object_type
-        # in :experiment
-        #   # ...
-        # in :dataset
-        #   # ...
-        # in :prompt
-        #   # ...
-        # in :function
-        #   # ...
-        # in :prompt_session
-        #   # ...
-        # in ...
-        #   #...
-        # end
-        # ```
         class ObjectType < Braintrust::Enum
           EXPERIMENT = :experiment
           DATASET = :dataset

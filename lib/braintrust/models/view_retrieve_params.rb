@@ -31,24 +31,6 @@ module Braintrust
       # @abstract
       #
       # The object type that the ACL applies to
-      #
-      # @example
-      # ```ruby
-      # case object_type
-      # in :organization
-      #   # ...
-      # in :project
-      #   # ...
-      # in :experiment
-      #   # ...
-      # in :dataset
-      #   # ...
-      # in :prompt
-      #   # ...
-      # in ...
-      #   #...
-      # end
-      # ```
       class ObjectType < Braintrust::Enum
         ORGANIZATION = :organization
         PROJECT = :project

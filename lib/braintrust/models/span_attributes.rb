@@ -28,24 +28,6 @@ module Braintrust
       # @abstract
       #
       # Type of the span, for display purposes only
-      #
-      # @example
-      # ```ruby
-      # case type
-      # in :llm
-      #   # ...
-      # in :score
-      #   # ...
-      # in :function
-      #   # ...
-      # in :eval
-      #   # ...
-      # in :task
-      #   # ...
-      # in ...
-      #   #...
-      # end
-      # ```
       class Type < Braintrust::Enum
         LLM = :llm
         SCORE = :score

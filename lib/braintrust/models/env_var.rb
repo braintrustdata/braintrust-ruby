@@ -54,18 +54,6 @@ module Braintrust
       # @abstract
       #
       # The type of the object the environment variable is scoped for
-      #
-      # @example
-      # ```ruby
-      # case object_type
-      # in :organization
-      #   # ...
-      # in :project
-      #   # ...
-      # in :function
-      #   # ...
-      # end
-      # ```
       class ObjectType < Braintrust::Enum
         ORGANIZATION = :organization
         PROJECT = :project
