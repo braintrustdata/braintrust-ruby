@@ -39,15 +39,6 @@ module Braintrust
 
       # @abstract
       #
-      # @example
-      # ```ruby
-      # case scorer
-      # in Braintrust::Models::OnlineScoreConfig::Scorer::Function
-      #   # ...
-      # in Braintrust::Models::OnlineScoreConfig::Scorer::Global
-      #   # ...
-      # end
-      # ```
       class Scorer < Braintrust::Union
         variant -> { Braintrust::Models::OnlineScoreConfig::Scorer::Function }
 
@@ -74,13 +65,6 @@ module Braintrust
 
           # @abstract
           #
-          # @example
-          # ```ruby
-          # case type
-          # in :function
-          #   # ...
-          # end
-          # ```
           class Type < Braintrust::Enum
             FUNCTION = :function
 
@@ -114,13 +98,6 @@ module Braintrust
 
           # @abstract
           #
-          # @example
-          # ```ruby
-          # case type
-          # in :global
-          #   # ...
-          # end
-          # ```
           class Type < Braintrust::Enum
             GLOBAL = :global
 

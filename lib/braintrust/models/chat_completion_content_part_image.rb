@@ -46,17 +46,6 @@ module Braintrust
 
         # @abstract
         #
-        # @example
-        # ```ruby
-        # case detail
-        # in :auto
-        #   # ...
-        # in :low
-        #   # ...
-        # in :high
-        #   # ...
-        # end
-        # ```
         class Detail < Braintrust::Enum
           AUTO = :auto
           LOW = :low
@@ -73,13 +62,6 @@ module Braintrust
 
       # @abstract
       #
-      # @example
-      # ```ruby
-      # case type
-      # in :image_url
-      #   # ...
-      # end
-      # ```
       class Type < Braintrust::Enum
         IMAGE_URL = :image_url
 

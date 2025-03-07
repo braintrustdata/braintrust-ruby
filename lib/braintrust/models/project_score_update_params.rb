@@ -55,20 +55,6 @@ module Braintrust
       # @abstract
       #
       # For categorical-type project scores, the list of all categories
-      #
-      # @example
-      # ```ruby
-      # case categories
-      # in Braintrust::Models::ProjectScoreUpdateParams::Categories::ProjectScoreCategoryArray
-      #   # ...
-      # in Braintrust::Models::ProjectScoreUpdateParams::Categories::FloatMap
-      #   # ...
-      # in Braintrust::Models::ProjectScoreUpdateParams::Categories::StringArray
-      #   # ...
-      # in Braintrust::Models::ProjectScoreUpdateParams::Categories::NullableVariant
-      #   # ...
-      # end
-      # ```
       class Categories < Braintrust::Union
         ProjectScoreCategoryArray = Braintrust::ArrayOf[-> { Braintrust::Models::ProjectScoreCategory }]
 
@@ -98,24 +84,6 @@ module Braintrust
       # @abstract
       #
       # The type of the configured score
-      #
-      # @example
-      # ```ruby
-      # case score_type
-      # in :slider
-      #   # ...
-      # in :categorical
-      #   # ...
-      # in :weighted
-      #   # ...
-      # in :minimum
-      #   # ...
-      # in :maximum
-      #   # ...
-      # in ...
-      #   #...
-      # end
-      # ```
       class ScoreType < Braintrust::Enum
         SLIDER = :slider
         CATEGORICAL = :categorical

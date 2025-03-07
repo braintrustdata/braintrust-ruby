@@ -27,13 +27,6 @@ module Braintrust
 
       # @abstract
       #
-      # @example
-      # ```ruby
-      # case type
-      # in :text
-      #   # ...
-      # end
-      # ```
       class Type < Braintrust::Enum
         TEXT = :text
 

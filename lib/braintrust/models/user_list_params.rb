@@ -127,16 +127,6 @@ module Braintrust
       #
       # Email of the user to search for. You may pass the param multiple times to filter
       #   for more than one email
-      #
-      # @example
-      # ```ruby
-      # case email
-      # in String
-      #   # ...
-      # in Braintrust::Models::UserListParams::Email::StringArray
-      #   # ...
-      # end
-      # ```
       class Email < Braintrust::Union
         StringArray = Braintrust::ArrayOf[String]
 
@@ -149,16 +139,6 @@ module Braintrust
       #
       # Family name of the user to search for. You may pass the param multiple times to
       #   filter for more than one family name
-      #
-      # @example
-      # ```ruby
-      # case family_name
-      # in String
-      #   # ...
-      # in Braintrust::Models::UserListParams::FamilyName::StringArray
-      #   # ...
-      # end
-      # ```
       class FamilyName < Braintrust::Union
         StringArray = Braintrust::ArrayOf[String]
 
@@ -171,16 +151,6 @@ module Braintrust
       #
       # Given name of the user to search for. You may pass the param multiple times to
       #   filter for more than one given name
-      #
-      # @example
-      # ```ruby
-      # case given_name
-      # in String
-      #   # ...
-      # in Braintrust::Models::UserListParams::GivenName::StringArray
-      #   # ...
-      # end
-      # ```
       class GivenName < Braintrust::Union
         StringArray = Braintrust::ArrayOf[String]
 
@@ -193,16 +163,6 @@ module Braintrust
       #
       # Filter search results to a particular set of object IDs. To specify a list of
       #   IDs, include the query param multiple times
-      #
-      # @example
-      # ```ruby
-      # case ids
-      # in String
-      #   # ...
-      # in Braintrust::Models::UserListParams::IDs::StringArray
-      #   # ...
-      # end
-      # ```
       class IDs < Braintrust::Union
         StringArray = Braintrust::ArrayOf[String]
 

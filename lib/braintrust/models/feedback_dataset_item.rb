@@ -51,18 +51,6 @@ module Braintrust
       # @abstract
       #
       # The source of the feedback. Must be one of "external" (default), "app", or "api"
-      #
-      # @example
-      # ```ruby
-      # case source
-      # in :app
-      #   # ...
-      # in :api
-      #   # ...
-      # in :external
-      #   # ...
-      # end
-      # ```
       class Source < Braintrust::Enum
         APP = :app
         API = :api

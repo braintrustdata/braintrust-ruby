@@ -111,24 +111,6 @@ module Braintrust
       # @abstract
       #
       # The object type that the ACL applies to
-      #
-      # @example
-      # ```ruby
-      # case object_type
-      # in :organization
-      #   # ...
-      # in :project
-      #   # ...
-      # in :experiment
-      #   # ...
-      # in :dataset
-      #   # ...
-      # in :prompt
-      #   # ...
-      # in ...
-      #   #...
-      # end
-      # ```
       class ObjectType < Braintrust::Enum
         ORGANIZATION = :organization
         PROJECT = :project
@@ -154,16 +136,6 @@ module Braintrust
       #
       # Filter search results to a particular set of object IDs. To specify a list of
       #   IDs, include the query param multiple times
-      #
-      # @example
-      # ```ruby
-      # case ids
-      # in String
-      #   # ...
-      # in Braintrust::Models::ViewListParams::IDs::StringArray
-      #   # ...
-      # end
-      # ```
       class IDs < Braintrust::Union
         StringArray = Braintrust::ArrayOf[String]
 
@@ -175,24 +147,6 @@ module Braintrust
       # @abstract
       #
       # Type of table that the view corresponds to.
-      #
-      # @example
-      # ```ruby
-      # case view_type
-      # in :projects
-      #   # ...
-      # in :logs
-      #   # ...
-      # in :experiments
-      #   # ...
-      # in :datasets
-      #   # ...
-      # in :prompts
-      #   # ...
-      # in ...
-      #   #...
-      # end
-      # ```
       class ViewType < Braintrust::Enum
         PROJECTS = :projects
         LOGS = :logs

@@ -54,19 +54,6 @@ module Braintrust
 
       # @abstract
       #
-      # @example
-      # ```ruby
-      # case function_data
-      # in Braintrust::Models::FunctionUpdateParams::FunctionData::Prompt
-      #   # ...
-      # in Braintrust::Models::FunctionUpdateParams::FunctionData::Code
-      #   # ...
-      # in Braintrust::Models::FunctionUpdateParams::FunctionData::Global
-      #   # ...
-      # in Braintrust::Models::FunctionUpdateParams::FunctionData::NullableVariant
-      #   # ...
-      # end
-      # ```
       class FunctionData < Braintrust::Union
         variant -> { Braintrust::Models::FunctionUpdateParams::FunctionData::Prompt }
 
@@ -91,13 +78,6 @@ module Braintrust
 
           # @abstract
           #
-          # @example
-          # ```ruby
-          # case type
-          # in :prompt
-          #   # ...
-          # end
-          # ```
           class Type < Braintrust::Enum
             PROMPT = :prompt
 
@@ -131,15 +111,6 @@ module Braintrust
 
           # @abstract
           #
-          # @example
-          # ```ruby
-          # case data
-          # in Braintrust::Models::FunctionUpdateParams::FunctionData::Code::Data::Bundle
-          #   # ...
-          # in Braintrust::Models::FunctionUpdateParams::FunctionData::Code::Data::Inline
-          #   # ...
-          # end
-          # ```
           class Data < Braintrust::Union
             variant -> { Braintrust::Models::FunctionUpdateParams::FunctionData::Code::Data::Bundle }
 
@@ -161,13 +132,6 @@ module Braintrust
 
               # @abstract
               #
-              # @example
-              # ```ruby
-              # case type
-              # in :bundle
-              #   # ...
-              # end
-              # ```
               class Type < Braintrust::Enum
                 BUNDLE = :bundle
 
@@ -229,15 +193,6 @@ module Braintrust
 
                 # @abstract
                 #
-                # @example
-                # ```ruby
-                # case runtime
-                # in :node
-                #   # ...
-                # in :python
-                #   # ...
-                # end
-                # ```
                 class Runtime < Braintrust::Enum
                   NODE = :node
                   PYTHON = :python
@@ -253,13 +208,6 @@ module Braintrust
 
               # @abstract
               #
-              # @example
-              # ```ruby
-              # case type
-              # in :inline
-              #   # ...
-              # end
-              # ```
               class Type < Braintrust::Enum
                 INLINE = :inline
 
@@ -275,13 +223,6 @@ module Braintrust
 
           # @abstract
           #
-          # @example
-          # ```ruby
-          # case type
-          # in :code
-          #   # ...
-          # end
-          # ```
           class Type < Braintrust::Enum
             CODE = :code
 
@@ -315,13 +256,6 @@ module Braintrust
 
           # @abstract
           #
-          # @example
-          # ```ruby
-          # case type
-          # in :global
-          #   # ...
-          # end
-          # ```
           class Type < Braintrust::Enum
             GLOBAL = :global
 

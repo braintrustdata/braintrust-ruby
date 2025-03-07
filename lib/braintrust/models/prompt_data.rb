@@ -112,13 +112,6 @@ module Braintrust
 
         # @abstract
         #
-        # @example
-        # ```ruby
-        # case type
-        # in :llm_classifier
-        #   # ...
-        # end
-        # ```
         class Type < Braintrust::Enum
           LLM_CLASSIFIER = :llm_classifier
 
@@ -133,17 +126,6 @@ module Braintrust
 
       # @abstract
       #
-      # @example
-      # ```ruby
-      # case prompt
-      # in Braintrust::Models::PromptData::Prompt::Completion
-      #   # ...
-      # in Braintrust::Models::PromptData::Prompt::Chat
-      #   # ...
-      # in Braintrust::Models::PromptData::Prompt::NullableVariant
-      #   # ...
-      # end
-      # ```
       class Prompt < Braintrust::Union
         variant -> { Braintrust::Models::PromptData::Prompt::Completion }
 
@@ -172,13 +154,6 @@ module Braintrust
 
           # @abstract
           #
-          # @example
-          # ```ruby
-          # case type
-          # in :completion
-          #   # ...
-          # end
-          # ```
           class Type < Braintrust::Enum
             COMPLETION = :completion
 
@@ -223,23 +198,6 @@ module Braintrust
 
           # @abstract
           #
-          # @example
-          # ```ruby
-          # case message
-          # in Braintrust::Models::PromptData::Prompt::Chat::Message::System
-          #   # ...
-          # in Braintrust::Models::PromptData::Prompt::Chat::Message::User
-          #   # ...
-          # in Braintrust::Models::PromptData::Prompt::Chat::Message::Assistant
-          #   # ...
-          # in Braintrust::Models::PromptData::Prompt::Chat::Message::Tool
-          #   # ...
-          # in Braintrust::Models::PromptData::Prompt::Chat::Message::Function
-          #   # ...
-          # in Braintrust::Models::PromptData::Prompt::Chat::Message::Fallback
-          #   # ...
-          # end
-          # ```
           class Message < Braintrust::Union
             variant -> { Braintrust::Models::PromptData::Prompt::Chat::Message::System }
 
@@ -288,13 +246,6 @@ module Braintrust
 
               # @abstract
               #
-              # @example
-              # ```ruby
-              # case role
-              # in :system
-              #   # ...
-              # end
-              # ```
               class Role < Braintrust::Enum
                 SYSTEM = :system
 
@@ -342,13 +293,6 @@ module Braintrust
 
               # @abstract
               #
-              # @example
-              # ```ruby
-              # case role
-              # in :user
-              #   # ...
-              # end
-              # ```
               class Role < Braintrust::Enum
                 USER = :user
 
@@ -362,15 +306,6 @@ module Braintrust
 
               # @abstract
               #
-              # @example
-              # ```ruby
-              # case content
-              # in String
-              #   # ...
-              # in Braintrust::Models::PromptData::Prompt::Chat::Message::User::Content::Nested2DArray
-              #   # ...
-              # end
-              # ```
               class Content < Braintrust::Union
                 Nested2DArray = Braintrust::ArrayOf[union: -> { Braintrust::Models::PromptData::Prompt::Chat::Message::User::Content::Array }]
 
@@ -380,15 +315,6 @@ module Braintrust
 
                 # @abstract
                 #
-                # @example
-                # ```ruby
-                # case array
-                # in Braintrust::Models::ChatCompletionContentPartText
-                #   # ...
-                # in Braintrust::Models::ChatCompletionContentPartImage
-                #   # ...
-                # end
-                # ```
                 class Array < Braintrust::Union
                   variant -> { Braintrust::Models::ChatCompletionContentPartText }
 
@@ -440,13 +366,6 @@ module Braintrust
 
               # @abstract
               #
-              # @example
-              # ```ruby
-              # case role
-              # in :assistant
-              #   # ...
-              # end
-              # ```
               class Role < Braintrust::Enum
                 ASSISTANT = :assistant
 
@@ -514,13 +433,6 @@ module Braintrust
 
               # @abstract
               #
-              # @example
-              # ```ruby
-              # case role
-              # in :tool
-              #   # ...
-              # end
-              # ```
               class Role < Braintrust::Enum
                 TOOL = :tool
 
@@ -564,13 +476,6 @@ module Braintrust
 
               # @abstract
               #
-              # @example
-              # ```ruby
-              # case role
-              # in :function
-              #   # ...
-              # end
-              # ```
               class Role < Braintrust::Enum
                 FUNCTION = :function
 
@@ -604,13 +509,6 @@ module Braintrust
 
               # @abstract
               #
-              # @example
-              # ```ruby
-              # case role
-              # in :model
-              #   # ...
-              # end
-              # ```
               class Role < Braintrust::Enum
                 MODEL = :model
 
@@ -626,13 +524,6 @@ module Braintrust
 
           # @abstract
           #
-          # @example
-          # ```ruby
-          # case type
-          # in :chat
-          #   # ...
-          # end
-          # ```
           class Type < Braintrust::Enum
             CHAT = :chat
 
@@ -655,15 +546,6 @@ module Braintrust
 
       # @abstract
       #
-      # @example
-      # ```ruby
-      # case tool_function
-      # in Braintrust::Models::PromptData::ToolFunction::Function
-      #   # ...
-      # in Braintrust::Models::PromptData::ToolFunction::Global
-      #   # ...
-      # end
-      # ```
       class ToolFunction < Braintrust::Union
         variant -> { Braintrust::Models::PromptData::ToolFunction::Function }
 
@@ -690,13 +572,6 @@ module Braintrust
 
           # @abstract
           #
-          # @example
-          # ```ruby
-          # case type
-          # in :function
-          #   # ...
-          # end
-          # ```
           class Type < Braintrust::Enum
             FUNCTION = :function
 
@@ -730,13 +605,6 @@ module Braintrust
 
           # @abstract
           #
-          # @example
-          # ```ruby
-          # case type
-          # in :global
-          #   # ...
-          # end
-          # ```
           class Type < Braintrust::Enum
             GLOBAL = :global
 

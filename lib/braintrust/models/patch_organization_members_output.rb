@@ -32,13 +32,6 @@ module Braintrust
 
       # @abstract
       #
-      # @example
-      # ```ruby
-      # case status
-      # in :success
-      #   # ...
-      # end
-      # ```
       class Status < Braintrust::Enum
         SUCCESS = :success
 

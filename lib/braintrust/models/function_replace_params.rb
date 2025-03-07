@@ -98,17 +98,6 @@ module Braintrust
 
       # @abstract
       #
-      # @example
-      # ```ruby
-      # case function_data
-      # in Braintrust::Models::FunctionReplaceParams::FunctionData::Prompt
-      #   # ...
-      # in Braintrust::Models::FunctionReplaceParams::FunctionData::Code
-      #   # ...
-      # in Braintrust::Models::FunctionReplaceParams::FunctionData::Global
-      #   # ...
-      # end
-      # ```
       class FunctionData < Braintrust::Union
         variant -> { Braintrust::Models::FunctionReplaceParams::FunctionData::Prompt }
 
@@ -131,13 +120,6 @@ module Braintrust
 
           # @abstract
           #
-          # @example
-          # ```ruby
-          # case type
-          # in :prompt
-          #   # ...
-          # end
-          # ```
           class Type < Braintrust::Enum
             PROMPT = :prompt
 
@@ -171,15 +153,6 @@ module Braintrust
 
           # @abstract
           #
-          # @example
-          # ```ruby
-          # case data
-          # in Braintrust::Models::FunctionReplaceParams::FunctionData::Code::Data::Bundle
-          #   # ...
-          # in Braintrust::Models::FunctionReplaceParams::FunctionData::Code::Data::Inline
-          #   # ...
-          # end
-          # ```
           class Data < Braintrust::Union
             variant -> { Braintrust::Models::FunctionReplaceParams::FunctionData::Code::Data::Bundle }
 
@@ -201,13 +174,6 @@ module Braintrust
 
               # @abstract
               #
-              # @example
-              # ```ruby
-              # case type
-              # in :bundle
-              #   # ...
-              # end
-              # ```
               class Type < Braintrust::Enum
                 BUNDLE = :bundle
 
@@ -269,15 +235,6 @@ module Braintrust
 
                 # @abstract
                 #
-                # @example
-                # ```ruby
-                # case runtime
-                # in :node
-                #   # ...
-                # in :python
-                #   # ...
-                # end
-                # ```
                 class Runtime < Braintrust::Enum
                   NODE = :node
                   PYTHON = :python
@@ -293,13 +250,6 @@ module Braintrust
 
               # @abstract
               #
-              # @example
-              # ```ruby
-              # case type
-              # in :inline
-              #   # ...
-              # end
-              # ```
               class Type < Braintrust::Enum
                 INLINE = :inline
 
@@ -315,13 +265,6 @@ module Braintrust
 
           # @abstract
           #
-          # @example
-          # ```ruby
-          # case type
-          # in :code
-          #   # ...
-          # end
-          # ```
           class Type < Braintrust::Enum
             CODE = :code
 
@@ -355,13 +298,6 @@ module Braintrust
 
           # @abstract
           #
-          # @example
-          # ```ruby
-          # case type
-          # in :global
-          #   # ...
-          # end
-          # ```
           class Type < Braintrust::Enum
             GLOBAL = :global
 
@@ -407,19 +343,6 @@ module Braintrust
 
       # @abstract
       #
-      # @example
-      # ```ruby
-      # case function_type
-      # in :llm
-      #   # ...
-      # in :scorer
-      #   # ...
-      # in :task
-      #   # ...
-      # in :tool
-      #   # ...
-      # end
-      # ```
       class FunctionType < Braintrust::Enum
         LLM = :llm
         SCORER = :scorer
@@ -466,24 +389,6 @@ module Braintrust
         # @abstract
         #
         # The object type that the ACL applies to
-        #
-        # @example
-        # ```ruby
-        # case object_type
-        # in :organization
-        #   # ...
-        # in :project
-        #   # ...
-        # in :experiment
-        #   # ...
-        # in :dataset
-        #   # ...
-        # in :prompt
-        #   # ...
-        # in ...
-        #   #...
-        # end
-        # ```
         class ObjectType < Braintrust::Enum
           ORGANIZATION = :organization
           PROJECT = :project
