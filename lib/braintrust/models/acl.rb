@@ -112,24 +112,6 @@ module Braintrust
       # @abstract
       #
       # The object type that the ACL applies to
-      #
-      # @example
-      # ```ruby
-      # case object_type
-      # in :organization
-      #   # ...
-      # in :project
-      #   # ...
-      # in :experiment
-      #   # ...
-      # in :dataset
-      #   # ...
-      # in :prompt
-      #   # ...
-      # in ...
-      #   #...
-      # end
-      # ```
       class ObjectType < Braintrust::Enum
         ORGANIZATION = :organization
         PROJECT = :project
@@ -155,24 +137,6 @@ module Braintrust
       #
       # Permission the ACL grants. Exactly one of `permission` and `role_id` will be
       #   provided
-      #
-      # @example
-      # ```ruby
-      # case permission
-      # in :create
-      #   # ...
-      # in :read
-      #   # ...
-      # in :update
-      #   # ...
-      # in :delete
-      #   # ...
-      # in :create_acls
-      #   # ...
-      # in ...
-      #   #...
-      # end
-      # ```
       class Permission < Braintrust::Enum
         CREATE = :create
         READ = :read
@@ -195,24 +159,6 @@ module Braintrust
       #
       # When setting a permission directly, optionally restricts the permission grant to
       #   just the specified object type. Cannot be set alongside a `role_id`.
-      #
-      # @example
-      # ```ruby
-      # case restrict_object_type
-      # in :organization
-      #   # ...
-      # in :project
-      #   # ...
-      # in :experiment
-      #   # ...
-      # in :dataset
-      #   # ...
-      # in :prompt
-      #   # ...
-      # in ...
-      #   #...
-      # end
-      # ```
       class RestrictObjectType < Braintrust::Enum
         ORGANIZATION = :organization
         PROJECT = :project

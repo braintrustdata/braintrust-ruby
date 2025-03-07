@@ -109,15 +109,6 @@ module Braintrust
 
       # @abstract
       #
-      # @example
-      # ```ruby
-      # case ai_secret_type
-      # in String
-      #   # ...
-      # in Braintrust::Models::AISecretListParams::AISecretType::StringArray
-      #   # ...
-      # end
-      # ```
       class AISecretType < Braintrust::Union
         StringArray = Braintrust::ArrayOf[String]
 
@@ -130,16 +121,6 @@ module Braintrust
       #
       # Filter search results to a particular set of object IDs. To specify a list of
       #   IDs, include the query param multiple times
-      #
-      # @example
-      # ```ruby
-      # case ids
-      # in String
-      #   # ...
-      # in Braintrust::Models::AISecretListParams::IDs::StringArray
-      #   # ...
-      # end
-      # ```
       class IDs < Braintrust::Union
         StringArray = Braintrust::ArrayOf[String]
 

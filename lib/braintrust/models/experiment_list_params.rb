@@ -124,16 +124,6 @@ module Braintrust
       #
       # Filter search results to a particular set of object IDs. To specify a list of
       #   IDs, include the query param multiple times
-      #
-      # @example
-      # ```ruby
-      # case ids
-      # in String
-      #   # ...
-      # in Braintrust::Models::ExperimentListParams::IDs::StringArray
-      #   # ...
-      # end
-      # ```
       class IDs < Braintrust::Union
         StringArray = Braintrust::ArrayOf[String]
 

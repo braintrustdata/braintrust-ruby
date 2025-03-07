@@ -839,6 +839,15 @@ module Braintrust
   #
   # @abstract
   #
+  # @example
+  # ```ruby
+  # # `ai_secret` is a `Braintrust::Models::AISecret`
+  # ai_secret => {
+  #   id: id,
+  #   name: name,
+  #   org_id: org_id
+  # }
+  # ```
   class BaseModel
     extend Braintrust::Converter
 

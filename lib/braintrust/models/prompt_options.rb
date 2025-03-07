@@ -41,21 +41,6 @@ module Braintrust
 
       # @abstract
       #
-      # @example
-      # ```ruby
-      # case params
-      # in Braintrust::Models::PromptOptions::Params::OpenAIModelParams
-      #   # ...
-      # in Braintrust::Models::PromptOptions::Params::AnthropicModelParams
-      #   # ...
-      # in Braintrust::Models::PromptOptions::Params::GoogleModelParams
-      #   # ...
-      # in Braintrust::Models::PromptOptions::Params::WindowAIModelParams
-      #   # ...
-      # in Braintrust::Models::PromptOptions::Params::JsCompletionParams
-      #   # ...
-      # end
-      # ```
       class Params < Braintrust::Union
         variant -> { Braintrust::Models::PromptOptions::Params::OpenAIModelParams }
 
@@ -204,15 +189,6 @@ module Braintrust
 
           # @abstract
           #
-          # @example
-          # ```ruby
-          # case function_call
-          # in Braintrust::Models::PromptOptions::Params::OpenAIModelParams::FunctionCall::UnionMember0
-          #   # ...
-          # in Braintrust::Models::PromptOptions::Params::OpenAIModelParams::FunctionCall::Function
-          #   # ...
-          # end
-          # ```
           class FunctionCall < Braintrust::Union
             variant enum: -> { Braintrust::Models::PromptOptions::Params::OpenAIModelParams::FunctionCall::UnionMember0 }
 
@@ -220,15 +196,6 @@ module Braintrust
 
             # @abstract
             #
-            # @example
-            # ```ruby
-            # case union_member0
-            # in :auto
-            #   # ...
-            # in :none
-            #   # ...
-            # end
-            # ```
             class UnionMember0 < Braintrust::Enum
               AUTO = :auto
               NONE = :none
@@ -258,19 +225,6 @@ module Braintrust
 
           # @abstract
           #
-          # @example
-          # ```ruby
-          # case response_format
-          # in Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ResponseFormat::JsonObject
-          #   # ...
-          # in Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ResponseFormat::JsonSchema
-          #   # ...
-          # in Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ResponseFormat::Text
-          #   # ...
-          # in Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ResponseFormat::NullableVariant
-          #   # ...
-          # end
-          # ```
           class ResponseFormat < Braintrust::Union
             variant -> { Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ResponseFormat::JsonObject }
 
@@ -296,13 +250,6 @@ module Braintrust
 
               # @abstract
               #
-              # @example
-              # ```ruby
-              # case type
-              # in :json_object
-              #   # ...
-              # end
-              # ```
               class Type < Braintrust::Enum
                 JSON_OBJECT = :json_object
 
@@ -378,13 +325,6 @@ module Braintrust
 
               # @abstract
               #
-              # @example
-              # ```ruby
-              # case type
-              # in :json_schema
-              #   # ...
-              # end
-              # ```
               class Type < Braintrust::Enum
                 JSON_SCHEMA = :json_schema
 
@@ -413,13 +353,6 @@ module Braintrust
 
               # @abstract
               #
-              # @example
-              # ```ruby
-              # case type
-              # in :text
-              #   # ...
-              # end
-              # ```
               class Type < Braintrust::Enum
                 TEXT = :text
 
@@ -442,15 +375,6 @@ module Braintrust
 
           # @abstract
           #
-          # @example
-          # ```ruby
-          # case tool_choice
-          # in Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ToolChoice::UnionMember0
-          #   # ...
-          # in Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ToolChoice::Function
-          #   # ...
-          # end
-          # ```
           class ToolChoice < Braintrust::Union
             variant enum: -> { Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ToolChoice::UnionMember0 }
 
@@ -458,17 +382,6 @@ module Braintrust
 
             # @abstract
             #
-            # @example
-            # ```ruby
-            # case union_member0
-            # in :auto
-            #   # ...
-            # in :none
-            #   # ...
-            # in :required
-            #   # ...
-            # end
-            # ```
             class UnionMember0 < Braintrust::Enum
               AUTO = :auto
               NONE = :none
@@ -519,13 +432,6 @@ module Braintrust
 
               # @abstract
               #
-              # @example
-              # ```ruby
-              # case type
-              # in :function
-              #   # ...
-              # end
-              # ```
               class Type < Braintrust::Enum
                 FUNCTION = :function
 

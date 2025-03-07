@@ -167,16 +167,6 @@ module Braintrust
       # @abstract
       #
       # The dataset to use
-      #
-      # @example
-      # ```ruby
-      # case data
-      # in Braintrust::Models::EvalCreateParams::Data::DatasetID
-      #   # ...
-      # in Braintrust::Models::EvalCreateParams::Data::ProjectDatasetName
-      #   # ...
-      # end
-      # ```
       class Data < Braintrust::Union
         # Dataset id
         variant -> { Braintrust::Models::EvalCreateParams::Data::DatasetID }
@@ -226,24 +216,6 @@ module Braintrust
       # @abstract
       #
       # The function to evaluate
-      #
-      # @example
-      # ```ruby
-      # case score
-      # in Braintrust::Models::EvalCreateParams::Score::FunctionID
-      #   # ...
-      # in Braintrust::Models::EvalCreateParams::Score::ProjectSlug
-      #   # ...
-      # in Braintrust::Models::EvalCreateParams::Score::GlobalFunction
-      #   # ...
-      # in Braintrust::Models::EvalCreateParams::Score::PromptSessionID
-      #   # ...
-      # in Braintrust::Models::EvalCreateParams::Score::InlineCode
-      #   # ...
-      # in Braintrust::Models::EvalCreateParams::Score::InlinePrompt
-      #   # ...
-      # end
-      # ```
       class Score < Braintrust::Union
         # Function id
         variant -> { Braintrust::Models::EvalCreateParams::Score::FunctionID }
@@ -430,15 +402,6 @@ module Braintrust
 
             # @abstract
             #
-            # @example
-            # ```ruby
-            # case runtime
-            # in :node
-            #   # ...
-            # in :python
-            #   # ...
-            # end
-            # ```
             class Runtime < Braintrust::Enum
               NODE = :node
               PYTHON = :python
@@ -481,24 +444,6 @@ module Braintrust
       # @abstract
       #
       # The function to evaluate
-      #
-      # @example
-      # ```ruby
-      # case task
-      # in Braintrust::Models::EvalCreateParams::Task::FunctionID
-      #   # ...
-      # in Braintrust::Models::EvalCreateParams::Task::ProjectSlug
-      #   # ...
-      # in Braintrust::Models::EvalCreateParams::Task::GlobalFunction
-      #   # ...
-      # in Braintrust::Models::EvalCreateParams::Task::PromptSessionID
-      #   # ...
-      # in Braintrust::Models::EvalCreateParams::Task::InlineCode
-      #   # ...
-      # in Braintrust::Models::EvalCreateParams::Task::InlinePrompt
-      #   # ...
-      # end
-      # ```
       class Task < Braintrust::Union
         # Function id
         variant -> { Braintrust::Models::EvalCreateParams::Task::FunctionID }
@@ -685,15 +630,6 @@ module Braintrust
 
             # @abstract
             #
-            # @example
-            # ```ruby
-            # case runtime
-            # in :node
-            #   # ...
-            # in :python
-            #   # ...
-            # end
-            # ```
             class Runtime < Braintrust::Enum
               NODE = :node
               PYTHON = :python
@@ -762,17 +698,6 @@ module Braintrust
 
         # @abstract
         #
-        # @example
-        # ```ruby
-        # case collect
-        # in :all
-        #   # ...
-        # in :none
-        #   # ...
-        # in :some
-        #   # ...
-        # end
-        # ```
         class Collect < Braintrust::Enum
           ALL = :all
           NONE = :none
@@ -788,23 +713,6 @@ module Braintrust
 
         # @abstract
         #
-        # @example
-        # ```ruby
-        # case field
-        # in :commit
-        #   # ...
-        # in :branch
-        #   # ...
-        # in :tag
-        #   # ...
-        # in :dirty
-        #   # ...
-        # in :author_name
-        #   # ...
-        # in ...
-        #   #...
-        # end
-        # ```
         class Field < Braintrust::Enum
           COMMIT = :commit
           BRANCH = :branch

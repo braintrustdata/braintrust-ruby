@@ -136,16 +136,6 @@ module Braintrust
       #
       # Filter search results to a particular set of object IDs. To specify a list of
       #   IDs, include the query param multiple times
-      #
-      # @example
-      # ```ruby
-      # case ids
-      # in String
-      #   # ...
-      # in Braintrust::Models::ProjectScoreListParams::IDs::StringArray
-      #   # ...
-      # end
-      # ```
       class IDs < Braintrust::Union
         StringArray = Braintrust::ArrayOf[String]
 
@@ -157,16 +147,6 @@ module Braintrust
       # @abstract
       #
       # The type of the configured score
-      #
-      # @example
-      # ```ruby
-      # case score_type
-      # in Braintrust::Models::ProjectScoreListParams::ScoreType::ProjectScoreType
-      #   # ...
-      # in Braintrust::Models::ProjectScoreListParams::ScoreType::UnionMember1Array
-      #   # ...
-      # end
-      # ```
       class ScoreType < Braintrust::Union
         UnionMember1Array = Braintrust::ArrayOf[enum: -> { Braintrust::Models::ProjectScoreListParams::ScoreType::UnionMember1 }]
 
@@ -179,24 +159,6 @@ module Braintrust
         # @abstract
         #
         # The type of the configured score
-        #
-        # @example
-        # ```ruby
-        # case project_score_type
-        # in :slider
-        #   # ...
-        # in :categorical
-        #   # ...
-        # in :weighted
-        #   # ...
-        # in :minimum
-        #   # ...
-        # in :maximum
-        #   # ...
-        # in ...
-        #   #...
-        # end
-        # ```
         class ProjectScoreType < Braintrust::Enum
           SLIDER = :slider
           CATEGORICAL = :categorical
@@ -216,24 +178,6 @@ module Braintrust
         # @abstract
         #
         # The type of the configured score
-        #
-        # @example
-        # ```ruby
-        # case union_member1
-        # in :slider
-        #   # ...
-        # in :categorical
-        #   # ...
-        # in :weighted
-        #   # ...
-        # in :minimum
-        #   # ...
-        # in :maximum
-        #   # ...
-        # in ...
-        #   #...
-        # end
-        # ```
         class UnionMember1 < Braintrust::Enum
           SLIDER = :slider
           CATEGORICAL = :categorical
