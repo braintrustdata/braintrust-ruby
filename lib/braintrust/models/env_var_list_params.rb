@@ -70,16 +70,6 @@ module Braintrust
       #
       # Filter search results to a particular set of object IDs. To specify a list of
       #   IDs, include the query param multiple times
-      #
-      # @example
-      # ```ruby
-      # case ids
-      # in String
-      #   # ...
-      # in Braintrust::Models::EnvVarListParams::IDs::StringArray
-      #   # ...
-      # end
-      # ```
       class IDs < Braintrust::Union
         StringArray = Braintrust::ArrayOf[String]
 
@@ -91,18 +81,6 @@ module Braintrust
       # @abstract
       #
       # The type of the object the environment variable is scoped for
-      #
-      # @example
-      # ```ruby
-      # case object_type
-      # in :organization
-      #   # ...
-      # in :project
-      #   # ...
-      # in :function
-      #   # ...
-      # end
-      # ```
       class ObjectType < Braintrust::Enum
         ORGANIZATION = :organization
         PROJECT = :project

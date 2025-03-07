@@ -29,13 +29,6 @@ module Braintrust
 
       # @abstract
       #
-      # @example
-      # ```ruby
-      # case destination
-      # in :expected
-      #   # ...
-      # end
-      # ```
       class Destination < Braintrust::Enum
         EXPECTED = :expected
 

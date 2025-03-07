@@ -36,15 +36,6 @@ module Braintrust
 
       # @abstract
       #
-      # @example
-      # ```ruby
-      # case location
-      # in Braintrust::Models::CodeBundle::Location::Experiment
-      #   # ...
-      # in Braintrust::Models::CodeBundle::Location::Function
-      #   # ...
-      # end
-      # ```
       class Location < Braintrust::Union
         variant -> { Braintrust::Models::CodeBundle::Location::Experiment }
 
@@ -77,15 +68,6 @@ module Braintrust
 
           # @abstract
           #
-          # @example
-          # ```ruby
-          # case position
-          # in Braintrust::Models::CodeBundle::Location::Experiment::Position::Type
-          #   # ...
-          # in Braintrust::Models::CodeBundle::Location::Experiment::Position::Scorer
-          #   # ...
-          # end
-          # ```
           class Position < Braintrust::Union
             variant -> { Braintrust::Models::CodeBundle::Location::Experiment::Position::Type }
 
@@ -106,13 +88,6 @@ module Braintrust
 
               # @abstract
               #
-              # @example
-              # ```ruby
-              # case type
-              # in :task
-              #   # ...
-              # end
-              # ```
               class Type < Braintrust::Enum
                 TASK = :task
 
@@ -146,13 +121,6 @@ module Braintrust
 
               # @abstract
               #
-              # @example
-              # ```ruby
-              # case type
-              # in :scorer
-              #   # ...
-              # end
-              # ```
               class Type < Braintrust::Enum
                 SCORER = :scorer
 
@@ -168,13 +136,6 @@ module Braintrust
 
           # @abstract
           #
-          # @example
-          # ```ruby
-          # case type
-          # in :experiment
-          #   # ...
-          # end
-          # ```
           class Type < Braintrust::Enum
             EXPERIMENT = :experiment
 
@@ -208,13 +169,6 @@ module Braintrust
 
           # @abstract
           #
-          # @example
-          # ```ruby
-          # case type
-          # in :function
-          #   # ...
-          # end
-          # ```
           class Type < Braintrust::Enum
             FUNCTION = :function
 
@@ -249,15 +203,6 @@ module Braintrust
 
         # @abstract
         #
-        # @example
-        # ```ruby
-        # case runtime
-        # in :node
-        #   # ...
-        # in :python
-        #   # ...
-        # end
-        # ```
         class Runtime < Braintrust::Enum
           NODE = :node
           PYTHON = :python

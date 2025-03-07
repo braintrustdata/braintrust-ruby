@@ -122,14 +122,6 @@ module Braintrust
       # @abstract
       #
       # A literal 'p' which identifies the object as a project prompt
-      #
-      # @example
-      # ```ruby
-      # case log_id
-      # in :p
-      #   # ...
-      # end
-      # ```
       class LogID < Braintrust::Enum
         P = :p
 
@@ -143,19 +135,6 @@ module Braintrust
 
       # @abstract
       #
-      # @example
-      # ```ruby
-      # case function_type
-      # in :llm
-      #   # ...
-      # in :scorer
-      #   # ...
-      # in :task
-      #   # ...
-      # in :tool
-      #   # ...
-      # end
-      # ```
       class FunctionType < Braintrust::Enum
         LLM = :llm
         SCORER = :scorer

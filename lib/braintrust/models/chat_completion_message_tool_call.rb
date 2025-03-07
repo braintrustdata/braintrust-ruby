@@ -49,13 +49,6 @@ module Braintrust
 
       # @abstract
       #
-      # @example
-      # ```ruby
-      # case type
-      # in :function
-      #   # ...
-      # end
-      # ```
       class Type < Braintrust::Enum
         FUNCTION = :function
 

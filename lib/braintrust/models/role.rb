@@ -132,24 +132,6 @@ module Braintrust
         #
         #   Permissions can be assigned to to objects on an individual basis, or grouped
         #   into roles
-        #
-        # @example
-        # ```ruby
-        # case permission
-        # in :create
-        #   # ...
-        # in :read
-        #   # ...
-        # in :update
-        #   # ...
-        # in :delete
-        #   # ...
-        # in :create_acls
-        #   # ...
-        # in ...
-        #   #...
-        # end
-        # ```
         class Permission < Braintrust::Enum
           CREATE = :create
           READ = :read
@@ -171,24 +153,6 @@ module Braintrust
         # @abstract
         #
         # The object type that the ACL applies to
-        #
-        # @example
-        # ```ruby
-        # case restrict_object_type
-        # in :organization
-        #   # ...
-        # in :project
-        #   # ...
-        # in :experiment
-        #   # ...
-        # in :dataset
-        #   # ...
-        # in :prompt
-        #   # ...
-        # in ...
-        #   #...
-        # end
-        # ```
         class RestrictObjectType < Braintrust::Enum
           ORGANIZATION = :organization
           PROJECT = :project

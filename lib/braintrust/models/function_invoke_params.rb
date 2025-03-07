@@ -75,23 +75,6 @@ module Braintrust
 
       # @abstract
       #
-      # @example
-      # ```ruby
-      # case message
-      # in Braintrust::Models::FunctionInvokeParams::Message::System
-      #   # ...
-      # in Braintrust::Models::FunctionInvokeParams::Message::User
-      #   # ...
-      # in Braintrust::Models::FunctionInvokeParams::Message::Assistant
-      #   # ...
-      # in Braintrust::Models::FunctionInvokeParams::Message::Tool
-      #   # ...
-      # in Braintrust::Models::FunctionInvokeParams::Message::Function
-      #   # ...
-      # in Braintrust::Models::FunctionInvokeParams::Message::Fallback
-      #   # ...
-      # end
-      # ```
       class Message < Braintrust::Union
         variant -> { Braintrust::Models::FunctionInvokeParams::Message::System }
 
@@ -140,13 +123,6 @@ module Braintrust
 
           # @abstract
           #
-          # @example
-          # ```ruby
-          # case role
-          # in :system
-          #   # ...
-          # end
-          # ```
           class Role < Braintrust::Enum
             SYSTEM = :system
 
@@ -194,13 +170,6 @@ module Braintrust
 
           # @abstract
           #
-          # @example
-          # ```ruby
-          # case role
-          # in :user
-          #   # ...
-          # end
-          # ```
           class Role < Braintrust::Enum
             USER = :user
 
@@ -214,15 +183,6 @@ module Braintrust
 
           # @abstract
           #
-          # @example
-          # ```ruby
-          # case content
-          # in String
-          #   # ...
-          # in Braintrust::Models::FunctionInvokeParams::Message::User::Content::Nested2DArray
-          #   # ...
-          # end
-          # ```
           class Content < Braintrust::Union
             Nested2DArray = Braintrust::ArrayOf[union: -> { Braintrust::Models::FunctionInvokeParams::Message::User::Content::Array }]
 
@@ -232,15 +192,6 @@ module Braintrust
 
             # @abstract
             #
-            # @example
-            # ```ruby
-            # case array
-            # in Braintrust::Models::ChatCompletionContentPartText
-            #   # ...
-            # in Braintrust::Models::ChatCompletionContentPartImage
-            #   # ...
-            # end
-            # ```
             class Array < Braintrust::Union
               variant -> { Braintrust::Models::ChatCompletionContentPartText }
 
@@ -292,13 +243,6 @@ module Braintrust
 
           # @abstract
           #
-          # @example
-          # ```ruby
-          # case role
-          # in :assistant
-          #   # ...
-          # end
-          # ```
           class Role < Braintrust::Enum
             ASSISTANT = :assistant
 
@@ -366,13 +310,6 @@ module Braintrust
 
           # @abstract
           #
-          # @example
-          # ```ruby
-          # case role
-          # in :tool
-          #   # ...
-          # end
-          # ```
           class Role < Braintrust::Enum
             TOOL = :tool
 
@@ -416,13 +353,6 @@ module Braintrust
 
           # @abstract
           #
-          # @example
-          # ```ruby
-          # case role
-          # in :function
-          #   # ...
-          # end
-          # ```
           class Role < Braintrust::Enum
             FUNCTION = :function
 
@@ -456,13 +386,6 @@ module Braintrust
 
           # @abstract
           #
-          # @example
-          # ```ruby
-          # case role
-          # in :model
-          #   # ...
-          # end
-          # ```
           class Role < Braintrust::Enum
             MODEL = :model
 
@@ -479,16 +402,6 @@ module Braintrust
       # @abstract
       #
       # The mode format of the returned value (defaults to 'auto')
-      #
-      # @example
-      # ```ruby
-      # case mode
-      # in :auto
-      #   # ...
-      # in :parallel
-      #   # ...
-      # end
-      # ```
       class Mode < Braintrust::Enum
         AUTO = :auto
         PARALLEL = :parallel
@@ -504,16 +417,6 @@ module Braintrust
       # @abstract
       #
       # Options for tracing the function call
-      #
-      # @example
-      # ```ruby
-      # case parent
-      # in Braintrust::Models::FunctionInvokeParams::Parent::SpanParentStruct
-      #   # ...
-      # in String
-      #   # ...
-      # end
-      # ```
       class Parent < Braintrust::Union
         # Span parent properties
         variant -> { Braintrust::Models::FunctionInvokeParams::Parent::SpanParentStruct }
@@ -562,15 +465,6 @@ module Braintrust
 
           # @abstract
           #
-          # @example
-          # ```ruby
-          # case object_type
-          # in :project_logs
-          #   # ...
-          # in :experiment
-          #   # ...
-          # end
-          # ```
           class ObjectType < Braintrust::Enum
             PROJECT_LOGS = :project_logs
             EXPERIMENT = :experiment
