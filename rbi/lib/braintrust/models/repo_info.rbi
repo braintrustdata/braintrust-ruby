@@ -87,9 +87,9 @@ module Braintrust
           git_diff: T.nilable(String),
           tag: T.nilable(String)
         )
-          .void
+          .returns(T.attached_class)
       end
-      def initialize(
+      def self.new(
         author_email: nil,
         author_name: nil,
         branch: nil,

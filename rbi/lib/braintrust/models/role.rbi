@@ -90,9 +90,9 @@ module Braintrust
           org_id: T.nilable(String),
           user_id: T.nilable(String)
         )
-          .void
+          .returns(T.attached_class)
       end
-      def initialize(
+      def self.new(
         id:,
         name:,
         created: nil,
@@ -141,8 +141,8 @@ module Braintrust
         def restrict_object_type=(_)
         end
 
-        sig { params(permission: Symbol, restrict_object_type: T.nilable(Symbol)).void }
-        def initialize(permission:, restrict_object_type: nil)
+        sig { params(permission: Symbol, restrict_object_type: T.nilable(Symbol)).returns(T.attached_class) }
+        def self.new(permission:, restrict_object_type: nil)
         end
 
         sig { override.returns({permission: Symbol, restrict_object_type: T.nilable(Symbol)}) }

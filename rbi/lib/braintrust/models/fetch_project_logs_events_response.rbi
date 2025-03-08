@@ -22,8 +22,11 @@ module Braintrust
       def cursor=(_)
       end
 
-      sig { params(events: T::Array[Braintrust::Models::ProjectLogsEvent], cursor: T.nilable(String)).void }
-      def initialize(events:, cursor: nil)
+      sig do
+        params(events: T::Array[Braintrust::Models::ProjectLogsEvent], cursor: T.nilable(String))
+          .returns(T.attached_class)
+      end
+      def self.new(events:, cursor: nil)
       end
 
       sig { override.returns({events: T::Array[Braintrust::Models::ProjectLogsEvent], cursor: T.nilable(String)}) }

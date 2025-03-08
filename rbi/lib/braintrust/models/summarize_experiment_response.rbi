@@ -75,9 +75,9 @@ module Braintrust
           metrics: T.nilable(T::Hash[Symbol, Braintrust::Models::MetricSummary]),
           scores: T.nilable(T::Hash[Symbol, Braintrust::Models::ScoreSummary])
         )
-          .void
+          .returns(T.attached_class)
       end
-      def initialize(
+      def self.new(
         experiment_name:,
         experiment_url:,
         project_name:,

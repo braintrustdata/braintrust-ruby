@@ -32,9 +32,9 @@ module Braintrust
 
       sig do
         params(id: String, function: Braintrust::Models::ChatCompletionMessageToolCall::Function, type: Symbol)
-          .void
+          .returns(T.attached_class)
       end
-      def initialize(id:, function:, type:)
+      def self.new(id:, function:, type:)
       end
 
       sig do
@@ -61,8 +61,8 @@ module Braintrust
         def name=(_)
         end
 
-        sig { params(arguments: String, name: String).void }
-        def initialize(arguments:, name:)
+        sig { params(arguments: String, name: String).returns(T.attached_class) }
+        def self.new(arguments:, name:)
         end
 
         sig { override.returns({arguments: String, name: String}) }

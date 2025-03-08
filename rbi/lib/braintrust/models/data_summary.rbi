@@ -11,8 +11,8 @@ module Braintrust
       def total_records=(_)
       end
 
-      sig { params(total_records: Integer).void }
-      def initialize(total_records:)
+      sig { params(total_records: Integer).returns(T.attached_class) }
+      def self.new(total_records:)
       end
 
       sig { override.returns({total_records: Integer}) }

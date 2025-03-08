@@ -19,8 +19,8 @@ module Braintrust
       def text=(_)
       end
 
-      sig { params(type: Symbol, text: String).void }
-      def initialize(type:, text: nil)
+      sig { params(type: Symbol, text: String).returns(T.attached_class) }
+      def self.new(type:, text: nil)
       end
 
       sig { override.returns({type: Symbol, text: String}) }

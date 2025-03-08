@@ -73,9 +73,9 @@ module Braintrust
           apply_to_root_span: T.nilable(T::Boolean),
           apply_to_span_names: T.nilable(T::Array[String])
         )
-          .void
+          .returns(T.attached_class)
       end
-      def initialize(sampling_rate:, scorers:, apply_to_root_span: nil, apply_to_span_names: nil)
+      def self.new(sampling_rate:, scorers:, apply_to_root_span: nil, apply_to_span_names: nil)
       end
 
       sig do
@@ -117,8 +117,8 @@ module Braintrust
           def type=(_)
           end
 
-          sig { params(id: String, type: Symbol).void }
-          def initialize(id:, type:)
+          sig { params(id: String, type: Symbol).returns(T.attached_class) }
+          def self.new(id:, type:)
           end
 
           sig { override.returns({id: String, type: Symbol}) }
@@ -155,8 +155,8 @@ module Braintrust
           def type=(_)
           end
 
-          sig { params(name: String, type: Symbol).void }
-          def initialize(name:, type:)
+          sig { params(name: String, type: Symbol).returns(T.attached_class) }
+          def self.new(name:, type:)
           end
 
           sig { override.returns({name: String, type: Symbol}) }

@@ -53,9 +53,9 @@ module Braintrust
             remove_users: T.nilable(Braintrust::Models::Organizations::MemberUpdateParams::RemoveUsers),
             request_options: T.any(Braintrust::RequestOptions, T::Hash[Symbol, T.anything])
           )
-            .void
+            .returns(T.attached_class)
         end
-        def initialize(invite_users: nil, org_id: nil, org_name: nil, remove_users: nil, request_options: {})
+        def self.new(invite_users: nil, org_id: nil, org_name: nil, remove_users: nil, request_options: {})
         end
 
         sig do
@@ -140,9 +140,9 @@ module Braintrust
               ids: T.nilable(T::Array[String]),
               send_invite_emails: T.nilable(T::Boolean)
             )
-              .void
+              .returns(T.attached_class)
           end
-          def initialize(
+          def self.new(
             emails: nil,
             group_id: nil,
             group_ids: nil,
@@ -188,8 +188,13 @@ module Braintrust
           def ids=(_)
           end
 
-          sig { params(emails: T.nilable(T::Array[String]), ids: T.nilable(T::Array[String])).void }
-          def initialize(emails: nil, ids: nil)
+          sig do
+            params(
+              emails: T.nilable(T::Array[String]),
+              ids: T.nilable(T::Array[String])
+            ).returns(T.attached_class)
+          end
+          def self.new(emails: nil, ids: nil)
           end
 
           sig { override.returns({emails: T.nilable(T::Array[String]), ids: T.nilable(T::Array[String])}) }

@@ -103,9 +103,9 @@ module Braintrust
         initial_retry_delay: Float,
         max_retry_delay: Float
       )
-        .void
+        .returns(T.attached_class)
     end
-    def initialize(
+    def self.new(
       base_url: nil,
       api_key: ENV["BRAINTRUST_API_KEY"],
       max_retries: DEFAULT_MAX_RETRIES,

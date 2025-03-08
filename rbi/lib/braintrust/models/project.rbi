@@ -72,9 +72,9 @@ module Braintrust
           settings: T.nilable(Braintrust::Models::ProjectSettings),
           user_id: T.nilable(String)
         )
-          .void
+          .returns(T.attached_class)
       end
-      def initialize(id:, name:, org_id:, created: nil, deleted_at: nil, settings: nil, user_id: nil)
+      def self.new(id:, name:, org_id:, created: nil, deleted_at: nil, settings: nil, user_id: nil)
       end
 
       sig do

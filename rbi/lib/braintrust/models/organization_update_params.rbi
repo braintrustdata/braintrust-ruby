@@ -55,16 +55,9 @@ module Braintrust
           realtime_url: T.nilable(String),
           request_options: T.any(Braintrust::RequestOptions, T::Hash[Symbol, T.anything])
         )
-          .void
+          .returns(T.attached_class)
       end
-      def initialize(
-        api_url: nil,
-        is_universal_api: nil,
-        name: nil,
-        proxy_url: nil,
-        realtime_url: nil,
-        request_options: {}
-      )
+      def self.new(api_url: nil, is_universal_api: nil, name: nil, proxy_url: nil, realtime_url: nil, request_options: {})
       end
 
       sig do
