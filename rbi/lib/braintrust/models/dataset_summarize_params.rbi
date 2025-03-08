@@ -19,9 +19,9 @@ module Braintrust
           summarize_data: T.nilable(T::Boolean),
           request_options: T.any(Braintrust::RequestOptions, T::Hash[Symbol, T.anything])
         )
-          .void
+          .returns(T.attached_class)
       end
-      def initialize(summarize_data: nil, request_options: {})
+      def self.new(summarize_data: nil, request_options: {})
       end
 
       sig do

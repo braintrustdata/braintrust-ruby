@@ -60,9 +60,9 @@ module Braintrust
           unit: String,
           diff: Float
         )
-          .void
+          .returns(T.attached_class)
       end
-      def initialize(improvements:, metric:, name:, regressions:, unit:, diff: nil)
+      def self.new(improvements:, metric:, name:, regressions:, unit:, diff: nil)
       end
 
       sig do

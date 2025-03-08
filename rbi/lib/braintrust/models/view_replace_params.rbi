@@ -82,9 +82,9 @@ module Braintrust
           view_data: T.nilable(Braintrust::Models::ViewData),
           request_options: T.any(Braintrust::RequestOptions, T::Hash[Symbol, T.anything])
         )
-          .void
+          .returns(T.attached_class)
       end
-      def initialize(
+      def self.new(
         name:,
         object_id_:,
         object_type:,

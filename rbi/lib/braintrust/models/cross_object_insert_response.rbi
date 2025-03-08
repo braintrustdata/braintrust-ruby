@@ -42,9 +42,9 @@ module Braintrust
           experiment: T.nilable(T::Hash[Symbol, Braintrust::Models::InsertEventsResponse]),
           project_logs: T.nilable(T::Hash[Symbol, Braintrust::Models::InsertEventsResponse])
         )
-          .void
+          .returns(T.attached_class)
       end
-      def initialize(dataset: nil, experiment: nil, project_logs: nil)
+      def self.new(dataset: nil, experiment: nil, project_logs: nil)
       end
 
       sig do

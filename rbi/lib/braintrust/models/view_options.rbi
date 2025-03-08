@@ -35,9 +35,9 @@ module Braintrust
           column_sizing: T.nilable(T::Hash[Symbol, Float]),
           column_visibility: T.nilable(T::Hash[Symbol, T::Boolean])
         )
-          .void
+          .returns(T.attached_class)
       end
-      def initialize(column_order: nil, column_sizing: nil, column_visibility: nil)
+      def self.new(column_order: nil, column_sizing: nil, column_visibility: nil)
       end
 
       sig do

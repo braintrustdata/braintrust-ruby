@@ -70,9 +70,9 @@ module Braintrust
           ),
           position: String
         )
-          .void
+          .returns(T.attached_class)
       end
-      def initialize(model: nil, params: nil, position: nil)
+      def self.new(model: nil, params: nil, position: nil)
       end
 
       sig do
@@ -263,9 +263,9 @@ module Braintrust
               top_p: Float,
               use_cache: T::Boolean
             )
-              .void
+              .returns(T.attached_class)
           end
-          def initialize(
+          def self.new(
             frequency_penalty: nil,
             function_call: nil,
             max_tokens: nil,
@@ -333,8 +333,8 @@ module Braintrust
               def name=(_)
               end
 
-              sig { params(name: String).void }
-              def initialize(name:)
+              sig { params(name: String).returns(T.attached_class) }
+              def self.new(name:)
               end
 
               sig { override.returns({name: String}) }
@@ -366,8 +366,8 @@ module Braintrust
               def type=(_)
               end
 
-              sig { params(type: Symbol).void }
-              def initialize(type:)
+              sig { params(type: Symbol).returns(T.attached_class) }
+              def self.new(type:)
               end
 
               sig { override.returns({type: Symbol}) }
@@ -420,9 +420,9 @@ module Braintrust
                   json_schema: Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ResponseFormat::JsonSchema::JsonSchema,
                   type: Symbol
                 )
-                  .void
+                  .returns(T.attached_class)
               end
-              def initialize(json_schema:, type:)
+              def self.new(json_schema:, type:)
               end
 
               sig do
@@ -482,9 +482,9 @@ module Braintrust
                     schema: T::Hash[Symbol, T.nilable(T.anything)],
                     strict: T.nilable(T::Boolean)
                   )
-                    .void
+                    .returns(T.attached_class)
                 end
-                def initialize(name:, description: nil, schema: nil, strict: nil)
+                def self.new(name:, description: nil, schema: nil, strict: nil)
                 end
 
                 sig do
@@ -524,8 +524,8 @@ module Braintrust
               def type=(_)
               end
 
-              sig { params(type: Symbol).void }
-              def initialize(type:)
+              sig { params(type: Symbol).returns(T.attached_class) }
+              def self.new(type:)
               end
 
               sig { override.returns({type: Symbol}) }
@@ -546,8 +546,8 @@ module Braintrust
             end
 
             class NullableVariant < Braintrust::BaseModel
-              sig { void }
-              def initialize
+              sig { returns(T.attached_class) }
+              def self.new
               end
 
               sig { override.returns({}) }
@@ -609,9 +609,9 @@ module Braintrust
                   function: Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ToolChoice::Function::Function,
                   type: Symbol
                 )
-                  .void
+                  .returns(T.attached_class)
               end
-              def initialize(function:, type:)
+              def self.new(function:, type:)
               end
 
               sig do
@@ -635,8 +635,8 @@ module Braintrust
                 def name=(_)
                 end
 
-                sig { params(name: String).void }
-                def initialize(name:)
+                sig { params(name: String).returns(T.attached_class) }
+                def self.new(name:)
                 end
 
                 sig { override.returns({name: String}) }
@@ -737,9 +737,9 @@ module Braintrust
               top_p: Float,
               use_cache: T::Boolean
             )
-              .void
+              .returns(T.attached_class)
           end
-          def initialize(
+          def self.new(
             max_tokens:,
             temperature:,
             max_tokens_to_sample: nil,
@@ -817,9 +817,9 @@ module Braintrust
               top_p: Float,
               use_cache: T::Boolean
             )
-              .void
+              .returns(T.attached_class)
           end
-          def initialize(max_output_tokens: nil, temperature: nil, top_k: nil, top_p: nil, use_cache: nil)
+          def self.new(max_output_tokens: nil, temperature: nil, top_k: nil, top_p: nil, use_cache: nil)
           end
 
           sig do
@@ -861,8 +861,8 @@ module Braintrust
           def use_cache=(_)
           end
 
-          sig { params(temperature: Float, top_k: Float, use_cache: T::Boolean).void }
-          def initialize(temperature: nil, top_k: nil, use_cache: nil)
+          sig { params(temperature: Float, top_k: Float, use_cache: T::Boolean).returns(T.attached_class) }
+          def self.new(temperature: nil, top_k: nil, use_cache: nil)
           end
 
           sig { override.returns({temperature: Float, top_k: Float, use_cache: T::Boolean}) }
@@ -879,8 +879,8 @@ module Braintrust
           def use_cache=(_)
           end
 
-          sig { params(use_cache: T::Boolean).void }
-          def initialize(use_cache: nil)
+          sig { params(use_cache: T::Boolean).returns(T.attached_class) }
+          def self.new(use_cache: nil)
           end
 
           sig { override.returns({use_cache: T::Boolean}) }

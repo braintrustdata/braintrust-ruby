@@ -11,8 +11,8 @@ module Braintrust
       def status=(_)
       end
 
-      sig { params(status: Symbol).void }
-      def initialize(status:)
+      sig { params(status: Symbol).returns(T.attached_class) }
+      def self.new(status:)
       end
 
       sig { override.returns({status: Symbol}) }

@@ -96,9 +96,9 @@ module Braintrust
           user_id: T.nilable(String),
           view_data: T.nilable(Braintrust::Models::ViewData)
         )
-          .void
+          .returns(T.attached_class)
       end
-      def initialize(
+      def self.new(
         id:,
         name:,
         object_id_:,

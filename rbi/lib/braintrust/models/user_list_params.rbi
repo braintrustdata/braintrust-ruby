@@ -82,9 +82,9 @@ module Braintrust
           starting_after: String,
           request_options: T.any(Braintrust::RequestOptions, T::Hash[Symbol, T.anything])
         )
-          .void
+          .returns(T.attached_class)
       end
-      def initialize(
+      def self.new(
         email: nil,
         ending_before: nil,
         family_name: nil,

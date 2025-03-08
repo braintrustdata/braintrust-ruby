@@ -38,5 +38,9 @@ module Braintrust
     attr_accessor max_retries: Integer?
 
     attr_accessor timeout: Float?
+
+    def initialize: (
+      ?Braintrust::request_options | ::Hash[Symbol, top] values
+    ) -> void
   end
 end

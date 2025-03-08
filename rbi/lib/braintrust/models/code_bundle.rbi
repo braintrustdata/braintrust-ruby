@@ -68,9 +68,9 @@ module Braintrust
           runtime_context: Braintrust::Models::CodeBundle::RuntimeContext,
           preview: T.nilable(String)
         )
-          .void
+          .returns(T.attached_class)
       end
-      def initialize(bundle_id:, location:, runtime_context:, preview: nil)
+      def self.new(bundle_id:, location:, runtime_context:, preview: nil)
       end
 
       sig do
@@ -147,9 +147,9 @@ module Braintrust
               ),
               type: Symbol
             )
-              .void
+              .returns(T.attached_class)
           end
-          def initialize(eval_name:, position:, type:)
+          def self.new(eval_name:, position:, type:)
           end
 
           sig do
@@ -180,8 +180,8 @@ module Braintrust
               def type=(_)
               end
 
-              sig { params(type: Symbol).void }
-              def initialize(type:)
+              sig { params(type: Symbol).returns(T.attached_class) }
+              def self.new(type:)
               end
 
               sig { override.returns({type: Symbol}) }
@@ -218,8 +218,8 @@ module Braintrust
               def type=(_)
               end
 
-              sig { params(index: Integer, type: Symbol).void }
-              def initialize(index:, type:)
+              sig { params(index: Integer, type: Symbol).returns(T.attached_class) }
+              def self.new(index:, type:)
               end
 
               sig { override.returns({index: Integer, type: Symbol}) }
@@ -281,8 +281,8 @@ module Braintrust
           def type=(_)
           end
 
-          sig { params(index: Integer, type: Symbol).void }
-          def initialize(index:, type:)
+          sig { params(index: Integer, type: Symbol).returns(T.attached_class) }
+          def self.new(index:, type:)
           end
 
           sig { override.returns({index: Integer, type: Symbol}) }
@@ -331,8 +331,8 @@ module Braintrust
         def version=(_)
         end
 
-        sig { params(runtime: Symbol, version: String).void }
-        def initialize(runtime:, version:)
+        sig { params(runtime: Symbol, version: String).returns(T.attached_class) }
+        def self.new(runtime:, version:)
         end
 
         sig { override.returns({runtime: Symbol, version: String}) }

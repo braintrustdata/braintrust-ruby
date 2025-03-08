@@ -201,9 +201,9 @@ module Braintrust
           span_parents: T.nilable(T::Array[String]),
           tags: T.nilable(T::Array[String])
         )
-          .void
+          .returns(T.attached_class)
       end
-      def initialize(
+      def self.new(
         id: nil,
         _is_merge: nil,
         _merge_paths: nil,
@@ -288,9 +288,9 @@ module Braintrust
             caller_functionname: T.nilable(String),
             caller_lineno: T.nilable(Integer)
           )
-            .void
+            .returns(T.attached_class)
         end
-        def initialize(caller_filename: nil, caller_functionname: nil, caller_lineno: nil)
+        def self.new(caller_filename: nil, caller_functionname: nil, caller_lineno: nil)
         end
 
         sig do
@@ -383,9 +383,9 @@ module Braintrust
             start: T.nilable(Float),
             tokens: T.nilable(Integer)
           )
-            .void
+            .returns(T.attached_class)
         end
-        def initialize(
+        def self.new(
           caller_filename: nil,
           caller_functionname: nil,
           caller_lineno: nil,

@@ -55,9 +55,9 @@ module Braintrust
           post_message: T.nilable(T::Boolean),
           request_options: T.any(Braintrust::RequestOptions, T::Hash[Symbol, T.anything])
         )
-          .void
+          .returns(T.attached_class)
       end
-      def initialize(name:, project_id:, url:, description: nil, post_message: nil, request_options: {})
+      def self.new(name:, project_id:, url:, description: nil, post_message: nil, request_options: {})
       end
 
       sig do

@@ -50,9 +50,9 @@ module Braintrust
           sort: T.nilable(T::Array[T.nilable(T.anything)]),
           tag: T.nilable(T::Array[T.nilable(T.anything)])
         )
-          .void
+          .returns(T.attached_class)
       end
-      def initialize(filter: nil, match: nil, sort: nil, tag: nil)
+      def self.new(filter: nil, match: nil, sort: nil, tag: nil)
       end
 
       sig do

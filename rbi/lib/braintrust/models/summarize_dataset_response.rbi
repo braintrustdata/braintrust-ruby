@@ -51,9 +51,9 @@ module Braintrust
           project_url: String,
           data_summary: T.nilable(Braintrust::Models::DataSummary)
         )
-          .void
+          .returns(T.attached_class)
       end
-      def initialize(dataset_name:, dataset_url:, project_name:, project_url:, data_summary: nil)
+      def self.new(dataset_name:, dataset_url:, project_name:, project_url:, data_summary: nil)
       end
 
       sig do

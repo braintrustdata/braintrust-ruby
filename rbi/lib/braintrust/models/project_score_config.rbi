@@ -36,9 +36,9 @@ module Braintrust
           multi_select: T.nilable(T::Boolean),
           online: T.nilable(Braintrust::Models::OnlineScoreConfig)
         )
-          .void
+          .returns(T.attached_class)
       end
-      def initialize(destination: nil, multi_select: nil, online: nil)
+      def self.new(destination: nil, multi_select: nil, online: nil)
       end
 
       sig do

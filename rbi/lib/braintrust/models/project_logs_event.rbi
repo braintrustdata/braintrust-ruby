@@ -213,9 +213,9 @@ module Braintrust
           span_parents: T.nilable(T::Array[String]),
           tags: T.nilable(T::Array[String])
         )
-          .void
+          .returns(T.attached_class)
       end
-      def initialize(
+      def self.new(
         id:,
         _xact_id:,
         created:,
@@ -314,9 +314,9 @@ module Braintrust
             caller_functionname: T.nilable(String),
             caller_lineno: T.nilable(Integer)
           )
-            .void
+            .returns(T.attached_class)
         end
-        def initialize(caller_filename: nil, caller_functionname: nil, caller_lineno: nil)
+        def self.new(caller_filename: nil, caller_functionname: nil, caller_lineno: nil)
         end
 
         sig do
@@ -409,9 +409,9 @@ module Braintrust
             start: T.nilable(Float),
             tokens: T.nilable(Integer)
           )
-            .void
+            .returns(T.attached_class)
         end
-        def initialize(
+        def self.new(
           caller_filename: nil,
           caller_functionname: nil,
           caller_lineno: nil,
@@ -475,8 +475,15 @@ module Braintrust
         def object_type=(_)
         end
 
-        sig { params(id: String, _xact_id: String, object_id_: String, object_type: Symbol).void }
-        def initialize(id:, _xact_id:, object_id_:, object_type:)
+        sig do
+          params(
+            id: String,
+            _xact_id: String,
+            object_id_: String,
+            object_type: Symbol
+          ).returns(T.attached_class)
+        end
+        def self.new(id:, _xact_id:, object_id_:, object_type:)
         end
 
         sig { override.returns({id: String, _xact_id: String, object_id_: String, object_type: Symbol}) }

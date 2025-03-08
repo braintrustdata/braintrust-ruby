@@ -135,9 +135,9 @@ module Braintrust
           repo_info: T.nilable(Braintrust::Models::RepoInfo),
           user_id: T.nilable(String)
         )
-          .void
+          .returns(T.attached_class)
       end
-      def initialize(
+      def self.new(
         id:,
         name:,
         project_id:,
