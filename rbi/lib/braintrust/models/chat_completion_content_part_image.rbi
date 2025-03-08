@@ -62,8 +62,10 @@ module Braintrust
           LOW = :low
           HIGH = :high
 
-          sig { override.returns(T::Array[Symbol]) }
-          def self.values
+          class << self
+            sig { override.returns(T::Array[Symbol]) }
+            def values
+            end
           end
         end
       end
@@ -73,8 +75,10 @@ module Braintrust
 
         IMAGE_URL = :image_url
 
-        sig { override.returns(T::Array[Symbol]) }
-        def self.values
+        class << self
+          sig { override.returns(T::Array[Symbol]) }
+          def values
+          end
         end
       end
     end

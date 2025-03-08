@@ -92,11 +92,6 @@ module Braintrust
                 TASK = :task
 
                 finalize!
-
-                # @!parse
-                #   # @return [Array<Symbol>]
-                #   #
-                #   def self.values; end
               end
             end
 
@@ -125,11 +120,6 @@ module Braintrust
                 SCORER = :scorer
 
                 finalize!
-
-                # @!parse
-                #   # @return [Array<Symbol>]
-                #   #
-                #   def self.values; end
               end
             end
           end
@@ -140,11 +130,6 @@ module Braintrust
             EXPERIMENT = :experiment
 
             finalize!
-
-            # @!parse
-            #   # @return [Array<Symbol>]
-            #   #
-            #   def self.values; end
           end
         end
 
@@ -173,11 +158,6 @@ module Braintrust
             FUNCTION = :function
 
             finalize!
-
-            # @!parse
-            #   # @return [Array<Symbol>]
-            #   #
-            #   def self.values; end
           end
         end
       end
@@ -208,11 +188,6 @@ module Braintrust
           PYTHON = :python
 
           finalize!
-
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   #
-          #   def self.values; end
         end
       end
     end

@@ -407,11 +407,6 @@ module Braintrust
               PYTHON = :python
 
               finalize!
-
-              # @!parse
-              #   # @return [Array<Symbol>]
-              #   #
-              #   def self.values; end
             end
           end
         end
@@ -635,11 +630,6 @@ module Braintrust
               PYTHON = :python
 
               finalize!
-
-              # @!parse
-              #   # @return [Array<Symbol>]
-              #   #
-              #   def self.values; end
             end
           end
         end
@@ -704,11 +694,6 @@ module Braintrust
           SOME = :some
 
           finalize!
-
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   #
-          #   def self.values; end
         end
 
         # @abstract
@@ -725,11 +710,6 @@ module Braintrust
           GIT_DIFF = :git_diff
 
           finalize!
-
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   #
-          #   def self.values; end
         end
       end
     end

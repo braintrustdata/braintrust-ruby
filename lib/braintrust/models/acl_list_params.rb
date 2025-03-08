@@ -105,11 +105,6 @@ module Braintrust
         ORG_PROJECT = :org_project
 
         finalize!
-
-        # @!parse
-        #   # @return [Array<Symbol>]
-        #   #
-        #   def self.values; end
       end
 
       # @abstract

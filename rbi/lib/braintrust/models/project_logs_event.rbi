@@ -276,8 +276,10 @@ module Braintrust
 
         G = :g
 
-        sig { override.returns(T::Array[Symbol]) }
-        def self.values
+        class << self
+          sig { override.returns(T::Array[Symbol]) }
+          def values
+          end
         end
       end
 
@@ -491,8 +493,10 @@ module Braintrust
           PROMPT_SESSION = :prompt_session
           PROJECT_LOGS = :project_logs
 
-          sig { override.returns(T::Array[Symbol]) }
-          def self.values
+          class << self
+            sig { override.returns(T::Array[Symbol]) }
+            def values
+            end
           end
         end
       end

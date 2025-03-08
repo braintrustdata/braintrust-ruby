@@ -121,8 +121,10 @@ module Braintrust
 
         StringArray = T.type_alias { T::Array[String] }
 
-        sig { override.returns([[NilClass, String], [NilClass, T::Array[String]]]) }
-        private_class_method def self.variants
+        class << self
+          sig { override.returns([[NilClass, String], [NilClass, T::Array[String]]]) }
+          private def variants
+          end
         end
       end
 
@@ -131,8 +133,10 @@ module Braintrust
 
         StringArray = T.type_alias { T::Array[String] }
 
-        sig { override.returns([[NilClass, String], [NilClass, T::Array[String]]]) }
-        private_class_method def self.variants
+        class << self
+          sig { override.returns([[NilClass, String], [NilClass, T::Array[String]]]) }
+          private def variants
+          end
         end
       end
 
@@ -141,8 +145,10 @@ module Braintrust
 
         StringArray = T.type_alias { T::Array[String] }
 
-        sig { override.returns([[NilClass, String], [NilClass, T::Array[String]]]) }
-        private_class_method def self.variants
+        class << self
+          sig { override.returns([[NilClass, String], [NilClass, T::Array[String]]]) }
+          private def variants
+          end
         end
       end
 
@@ -151,8 +157,10 @@ module Braintrust
 
         StringArray = T.type_alias { T::Array[String] }
 
-        sig { override.returns([[NilClass, String], [NilClass, T::Array[String]]]) }
-        private_class_method def self.variants
+        class << self
+          sig { override.returns([[NilClass, String], [NilClass, T::Array[String]]]) }
+          private def variants
+          end
         end
       end
     end

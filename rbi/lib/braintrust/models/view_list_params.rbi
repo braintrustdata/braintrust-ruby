@@ -131,8 +131,10 @@ module Braintrust
         PROJECT_LOG = :project_log
         ORG_PROJECT = :org_project
 
-        sig { override.returns(T::Array[Symbol]) }
-        def self.values
+        class << self
+          sig { override.returns(T::Array[Symbol]) }
+          def values
+          end
         end
       end
 
@@ -141,8 +143,10 @@ module Braintrust
 
         StringArray = T.type_alias { T::Array[String] }
 
-        sig { override.returns([[NilClass, String], [NilClass, T::Array[String]]]) }
-        private_class_method def self.variants
+        class << self
+          sig { override.returns([[NilClass, String], [NilClass, T::Array[String]]]) }
+          private def variants
+          end
         end
       end
 
@@ -158,8 +162,10 @@ module Braintrust
         EXPERIMENT = T.let(:experiment, T.nilable(Symbol))
         DATASET = T.let(:dataset, T.nilable(Symbol))
 
-        sig { override.returns(T::Array[Symbol]) }
-        def self.values
+        class << self
+          sig { override.returns(T::Array[Symbol]) }
+          def values
+          end
         end
       end
     end

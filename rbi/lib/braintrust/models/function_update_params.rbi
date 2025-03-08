@@ -154,8 +154,10 @@ module Braintrust
 
             PROMPT = :prompt
 
-            sig { override.returns(T::Array[Symbol]) }
-            def self.values
+            class << self
+              sig { override.returns(T::Array[Symbol]) }
+              def values
+              end
             end
           end
         end
@@ -250,8 +252,10 @@ module Braintrust
 
                 BUNDLE = :bundle
 
-                sig { override.returns(T::Array[Symbol]) }
-                def self.values
+                class << self
+                  sig { override.returns(T::Array[Symbol]) }
+                  def values
+                  end
                 end
               end
             end
@@ -339,8 +343,10 @@ module Braintrust
                   NODE = :node
                   PYTHON = :python
 
-                  sig { override.returns(T::Array[Symbol]) }
-                  def self.values
+                  class << self
+                    sig { override.returns(T::Array[Symbol]) }
+                    def values
+                    end
                   end
                 end
               end
@@ -350,19 +356,23 @@ module Braintrust
 
                 INLINE = :inline
 
-                sig { override.returns(T::Array[Symbol]) }
-                def self.values
+                class << self
+                  sig { override.returns(T::Array[Symbol]) }
+                  def values
+                  end
                 end
               end
             end
 
-            sig do
-              override
-                .returns(
-                  [[NilClass, Braintrust::Models::FunctionUpdateParams::FunctionData::Code::Data::Bundle], [NilClass, Braintrust::Models::FunctionUpdateParams::FunctionData::Code::Data::Inline]]
-                )
-            end
-            private_class_method def self.variants
+            class << self
+              sig do
+                override
+                  .returns(
+                    [[NilClass, Braintrust::Models::FunctionUpdateParams::FunctionData::Code::Data::Bundle], [NilClass, Braintrust::Models::FunctionUpdateParams::FunctionData::Code::Data::Inline]]
+                  )
+              end
+              private def variants
+              end
             end
           end
 
@@ -371,8 +381,10 @@ module Braintrust
 
             CODE = :code
 
-            sig { override.returns(T::Array[Symbol]) }
-            def self.values
+            class << self
+              sig { override.returns(T::Array[Symbol]) }
+              def values
+              end
             end
           end
         end
@@ -407,8 +419,10 @@ module Braintrust
 
             GLOBAL = :global
 
-            sig { override.returns(T::Array[Symbol]) }
-            def self.values
+            class << self
+              sig { override.returns(T::Array[Symbol]) }
+              def values
+              end
             end
           end
         end
@@ -423,13 +437,15 @@ module Braintrust
           end
         end
 
-        sig do
-          override
-            .returns(
-              [[NilClass, Braintrust::Models::FunctionUpdateParams::FunctionData::Prompt], [NilClass, Braintrust::Models::FunctionUpdateParams::FunctionData::Code], [NilClass, Braintrust::Models::FunctionUpdateParams::FunctionData::Global], [NilClass, Braintrust::Models::FunctionUpdateParams::FunctionData::NullableVariant]]
-            )
-        end
-        private_class_method def self.variants
+        class << self
+          sig do
+            override
+              .returns(
+                [[NilClass, Braintrust::Models::FunctionUpdateParams::FunctionData::Prompt], [NilClass, Braintrust::Models::FunctionUpdateParams::FunctionData::Code], [NilClass, Braintrust::Models::FunctionUpdateParams::FunctionData::Global], [NilClass, Braintrust::Models::FunctionUpdateParams::FunctionData::NullableVariant]]
+              )
+          end
+          private def variants
+          end
         end
       end
     end
