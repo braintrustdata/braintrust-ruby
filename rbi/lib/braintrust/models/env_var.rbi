@@ -60,9 +60,9 @@ module Braintrust
           created: T.nilable(Time),
           used: T.nilable(Time)
         )
-          .void
+          .returns(T.attached_class)
       end
-      def initialize(id:, name:, object_id_:, object_type:, created: nil, used: nil)
+      def self.new(id:, name:, object_id_:, object_type:, created: nil, used: nil)
       end
 
       sig do

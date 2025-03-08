@@ -73,9 +73,9 @@ module Braintrust
           tags: T.nilable(T::Array[String]),
           request_options: T.any(Braintrust::RequestOptions, T::Hash[Symbol, T.anything])
         )
-          .void
+          .returns(T.attached_class)
       end
-      def initialize(
+      def self.new(
         name:,
         project_id:,
         slug:,

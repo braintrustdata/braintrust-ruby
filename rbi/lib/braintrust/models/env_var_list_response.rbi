@@ -11,8 +11,8 @@ module Braintrust
       def objects=(_)
       end
 
-      sig { params(objects: T::Array[Braintrust::Models::EnvVar]).void }
-      def initialize(objects:)
+      sig { params(objects: T::Array[Braintrust::Models::EnvVar]).returns(T.attached_class) }
+      def self.new(objects:)
       end
 
       sig { override.returns({objects: T::Array[Braintrust::Models::EnvVar]}) }

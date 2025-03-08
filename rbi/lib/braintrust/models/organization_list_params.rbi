@@ -55,16 +55,9 @@ module Braintrust
           starting_after: String,
           request_options: T.any(Braintrust::RequestOptions, T::Hash[Symbol, T.anything])
         )
-          .void
+          .returns(T.attached_class)
       end
-      def initialize(
-        ending_before: nil,
-        ids: nil,
-        limit: nil,
-        org_name: nil,
-        starting_after: nil,
-        request_options: {}
-      )
+      def self.new(ending_before: nil, ids: nil, limit: nil, org_name: nil, starting_after: nil, request_options: {})
       end
 
       sig do

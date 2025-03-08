@@ -37,9 +37,9 @@ module Braintrust
           name: T.nilable(String),
           request_options: T.any(Braintrust::RequestOptions, T::Hash[Symbol, T.anything])
         )
-          .void
+          .returns(T.attached_class)
       end
-      def initialize(color: nil, description: nil, name: nil, request_options: {})
+      def self.new(color: nil, description: nil, name: nil, request_options: {})
       end
 
       sig do

@@ -75,9 +75,9 @@ module Braintrust
           source: T.nilable(Symbol),
           tags: T.nilable(T::Array[String])
         )
-          .void
+          .returns(T.attached_class)
       end
-      def initialize(id:, comment: nil, expected: nil, metadata: nil, scores: nil, source: nil, tags: nil)
+      def self.new(id:, comment: nil, expected: nil, metadata: nil, scores: nil, source: nil, tags: nil)
       end
 
       sig do

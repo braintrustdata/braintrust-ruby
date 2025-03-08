@@ -87,9 +87,9 @@ module Braintrust
           member_users: T.nilable(T::Array[String]),
           user_id: T.nilable(String)
         )
-          .void
+          .returns(T.attached_class)
       end
-      def initialize(
+      def self.new(
         id:,
         name:,
         org_id:,

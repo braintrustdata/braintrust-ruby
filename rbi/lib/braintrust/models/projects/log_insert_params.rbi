@@ -23,9 +23,9 @@ module Braintrust
             events: T::Array[Braintrust::Models::InsertProjectLogsEvent],
             request_options: T.any(Braintrust::RequestOptions, T::Hash[Symbol, T.anything])
           )
-            .void
+            .returns(T.attached_class)
         end
-        def initialize(events:, request_options: {})
+        def self.new(events:, request_options: {})
         end
 
         sig do

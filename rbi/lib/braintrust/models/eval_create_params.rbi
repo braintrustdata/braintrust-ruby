@@ -259,9 +259,9 @@ module Braintrust
           trial_count: T.nilable(Float),
           request_options: T.any(Braintrust::RequestOptions, T::Hash[Symbol, T.anything])
         )
-          .void
+          .returns(T.attached_class)
       end
-      def initialize(
+      def self.new(
         data:,
         project_id:,
         scores:,
@@ -338,8 +338,8 @@ module Braintrust
           def dataset_id=(_)
           end
 
-          sig { params(dataset_id: String).void }
-          def initialize(dataset_id:)
+          sig { params(dataset_id: String).returns(T.attached_class) }
+          def self.new(dataset_id:)
           end
 
           sig { override.returns({dataset_id: String}) }
@@ -364,8 +364,8 @@ module Braintrust
           def project_name=(_)
           end
 
-          sig { params(dataset_name: String, project_name: String).void }
-          def initialize(dataset_name:, project_name:)
+          sig { params(dataset_name: String, project_name: String).returns(T.attached_class) }
+          def self.new(dataset_name:, project_name:)
           end
 
           sig { override.returns({dataset_name: String, project_name: String}) }
@@ -405,8 +405,8 @@ module Braintrust
           def version=(_)
           end
 
-          sig { params(function_id: String, version: String).void }
-          def initialize(function_id:, version: nil)
+          sig { params(function_id: String, version: String).returns(T.attached_class) }
+          def self.new(function_id:, version: nil)
           end
 
           sig { override.returns({function_id: String, version: String}) }
@@ -439,8 +439,8 @@ module Braintrust
           def version=(_)
           end
 
-          sig { params(project_name: String, slug: String, version: String).void }
-          def initialize(project_name:, slug:, version: nil)
+          sig { params(project_name: String, slug: String, version: String).returns(T.attached_class) }
+          def self.new(project_name:, slug:, version: nil)
           end
 
           sig { override.returns({project_name: String, slug: String, version: String}) }
@@ -457,8 +457,8 @@ module Braintrust
           def global_function=(_)
           end
 
-          sig { params(global_function: String).void }
-          def initialize(global_function:)
+          sig { params(global_function: String).returns(T.attached_class) }
+          def self.new(global_function:)
           end
 
           sig { override.returns({global_function: String}) }
@@ -491,8 +491,11 @@ module Braintrust
           def version=(_)
           end
 
-          sig { params(prompt_session_function_id: String, prompt_session_id: String, version: String).void }
-          def initialize(prompt_session_function_id:, prompt_session_id:, version: nil)
+          sig do
+            params(prompt_session_function_id: String, prompt_session_id: String, version: String)
+              .returns(T.attached_class)
+          end
+          def self.new(prompt_session_function_id:, prompt_session_id:, version: nil)
           end
 
           sig do
@@ -536,9 +539,9 @@ module Braintrust
               inline_context: Braintrust::Models::EvalCreateParams::Score::InlineCode::InlineContext,
               name: T.nilable(String)
             )
-              .void
+              .returns(T.attached_class)
           end
-          def initialize(code:, inline_context:, name: nil)
+          def self.new(code:, inline_context:, name: nil)
           end
 
           sig do
@@ -571,8 +574,8 @@ module Braintrust
             def version=(_)
             end
 
-            sig { params(runtime: Symbol, version: String).void }
-            def initialize(runtime:, version:)
+            sig { params(runtime: Symbol, version: String).returns(T.attached_class) }
+            def self.new(runtime:, version:)
             end
 
             sig { override.returns({runtime: Symbol, version: String}) }
@@ -611,8 +614,11 @@ module Braintrust
           def name=(_)
           end
 
-          sig { params(inline_prompt: T.nilable(Braintrust::Models::PromptData), name: T.nilable(String)).void }
-          def initialize(inline_prompt:, name: nil)
+          sig do
+            params(inline_prompt: T.nilable(Braintrust::Models::PromptData), name: T.nilable(String))
+              .returns(T.attached_class)
+          end
+          def self.new(inline_prompt:, name: nil)
           end
 
           sig { override.returns({inline_prompt: T.nilable(Braintrust::Models::PromptData), name: T.nilable(String)}) }
@@ -652,8 +658,8 @@ module Braintrust
           def version=(_)
           end
 
-          sig { params(function_id: String, version: String).void }
-          def initialize(function_id:, version: nil)
+          sig { params(function_id: String, version: String).returns(T.attached_class) }
+          def self.new(function_id:, version: nil)
           end
 
           sig { override.returns({function_id: String, version: String}) }
@@ -686,8 +692,8 @@ module Braintrust
           def version=(_)
           end
 
-          sig { params(project_name: String, slug: String, version: String).void }
-          def initialize(project_name:, slug:, version: nil)
+          sig { params(project_name: String, slug: String, version: String).returns(T.attached_class) }
+          def self.new(project_name:, slug:, version: nil)
           end
 
           sig { override.returns({project_name: String, slug: String, version: String}) }
@@ -704,8 +710,8 @@ module Braintrust
           def global_function=(_)
           end
 
-          sig { params(global_function: String).void }
-          def initialize(global_function:)
+          sig { params(global_function: String).returns(T.attached_class) }
+          def self.new(global_function:)
           end
 
           sig { override.returns({global_function: String}) }
@@ -738,8 +744,11 @@ module Braintrust
           def version=(_)
           end
 
-          sig { params(prompt_session_function_id: String, prompt_session_id: String, version: String).void }
-          def initialize(prompt_session_function_id:, prompt_session_id:, version: nil)
+          sig do
+            params(prompt_session_function_id: String, prompt_session_id: String, version: String)
+              .returns(T.attached_class)
+          end
+          def self.new(prompt_session_function_id:, prompt_session_id:, version: nil)
           end
 
           sig do
@@ -783,9 +792,9 @@ module Braintrust
               inline_context: Braintrust::Models::EvalCreateParams::Task::InlineCode::InlineContext,
               name: T.nilable(String)
             )
-              .void
+              .returns(T.attached_class)
           end
-          def initialize(code:, inline_context:, name: nil)
+          def self.new(code:, inline_context:, name: nil)
           end
 
           sig do
@@ -818,8 +827,8 @@ module Braintrust
             def version=(_)
             end
 
-            sig { params(runtime: Symbol, version: String).void }
-            def initialize(runtime:, version:)
+            sig { params(runtime: Symbol, version: String).returns(T.attached_class) }
+            def self.new(runtime:, version:)
             end
 
             sig { override.returns({runtime: Symbol, version: String}) }
@@ -858,8 +867,11 @@ module Braintrust
           def name=(_)
           end
 
-          sig { params(inline_prompt: T.nilable(Braintrust::Models::PromptData), name: T.nilable(String)).void }
-          def initialize(inline_prompt:, name: nil)
+          sig do
+            params(inline_prompt: T.nilable(Braintrust::Models::PromptData), name: T.nilable(String))
+              .returns(T.attached_class)
+          end
+          def self.new(inline_prompt:, name: nil)
           end
 
           sig { override.returns({inline_prompt: T.nilable(Braintrust::Models::PromptData), name: T.nilable(String)}) }
@@ -896,8 +908,8 @@ module Braintrust
         def fields=(_)
         end
 
-        sig { params(collect: Symbol, fields: T::Array[Symbol]).void }
-        def initialize(collect:, fields: nil)
+        sig { params(collect: Symbol, fields: T::Array[Symbol]).returns(T.attached_class) }
+        def self.new(collect:, fields: nil)
         end
 
         sig { override.returns({collect: Symbol, fields: T::Array[Symbol]}) }

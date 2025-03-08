@@ -69,17 +69,9 @@ module Braintrust
           proxy_url: T.nilable(String),
           realtime_url: T.nilable(String)
         )
-          .void
+          .returns(T.attached_class)
       end
-      def initialize(
-        id:,
-        name:,
-        api_url: nil,
-        created: nil,
-        is_universal_api: nil,
-        proxy_url: nil,
-        realtime_url: nil
-      )
+      def self.new(id:, name:, api_url: nil, created: nil, is_universal_api: nil, proxy_url: nil, realtime_url: nil)
       end
 
       sig do

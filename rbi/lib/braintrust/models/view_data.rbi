@@ -14,8 +14,8 @@ module Braintrust
       def search=(_)
       end
 
-      sig { params(search: T.nilable(Braintrust::Models::ViewDataSearch)).void }
-      def initialize(search: nil)
+      sig { params(search: T.nilable(Braintrust::Models::ViewDataSearch)).returns(T.attached_class) }
+      def self.new(search: nil)
       end
 
       sig { override.returns({search: T.nilable(Braintrust::Models::ViewDataSearch)}) }

@@ -60,9 +60,9 @@ module Braintrust
           org_id: T.nilable(String),
           user_id: T.nilable(String)
         )
-          .void
+          .returns(T.attached_class)
       end
-      def initialize(id:, name:, preview_name:, created: nil, org_id: nil, user_id: nil)
+      def self.new(id:, name:, preview_name:, created: nil, org_id: nil, user_id: nil)
       end
 
       sig do

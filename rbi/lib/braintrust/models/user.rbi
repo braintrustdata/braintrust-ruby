@@ -60,9 +60,9 @@ module Braintrust
           family_name: T.nilable(String),
           given_name: T.nilable(String)
         )
-          .void
+          .returns(T.attached_class)
       end
-      def initialize(id:, avatar_url: nil, created: nil, email: nil, family_name: nil, given_name: nil)
+      def self.new(id:, avatar_url: nil, created: nil, email: nil, family_name: nil, given_name: nil)
       end
 
       sig do

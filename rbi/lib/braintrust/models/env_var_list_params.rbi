@@ -55,16 +55,9 @@ module Braintrust
           object_type: Symbol,
           request_options: T.any(Braintrust::RequestOptions, T::Hash[Symbol, T.anything])
         )
-          .void
+          .returns(T.attached_class)
       end
-      def initialize(
-        env_var_name: nil,
-        ids: nil,
-        limit: nil,
-        object_id_: nil,
-        object_type: nil,
-        request_options: {}
-      )
+      def self.new(env_var_name: nil, ids: nil, limit: nil, object_id_: nil, object_type: nil, request_options: {})
       end
 
       sig do

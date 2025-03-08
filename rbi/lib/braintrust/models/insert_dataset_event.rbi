@@ -126,9 +126,9 @@ module Braintrust
           span_parents: T.nilable(T::Array[String]),
           tags: T.nilable(T::Array[String])
         )
-          .void
+          .returns(T.attached_class)
       end
-      def initialize(
+      def self.new(
         id: nil,
         _is_merge: nil,
         _merge_paths: nil,

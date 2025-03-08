@@ -22,9 +22,9 @@ module Braintrust
           feedback: T::Array[Braintrust::Models::FeedbackExperimentItem],
           request_options: T.any(Braintrust::RequestOptions, T::Hash[Symbol, T.anything])
         )
-          .void
+          .returns(T.attached_class)
       end
-      def initialize(feedback:, request_options: {})
+      def self.new(feedback:, request_options: {})
       end
 
       sig do

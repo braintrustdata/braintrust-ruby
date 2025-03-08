@@ -19,8 +19,8 @@ module Braintrust
       def value=(_)
       end
 
-      sig { params(name: String, value: Float).void }
-      def initialize(name:, value:)
+      sig { params(name: String, value: Float).returns(T.attached_class) }
+      def self.new(name:, value:)
       end
 
       sig { override.returns({name: String, value: Float}) }

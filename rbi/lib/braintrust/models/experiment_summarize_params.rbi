@@ -28,9 +28,9 @@ module Braintrust
           summarize_scores: T.nilable(T::Boolean),
           request_options: T.any(Braintrust::RequestOptions, T::Hash[Symbol, T.anything])
         )
-          .void
+          .returns(T.attached_class)
       end
-      def initialize(comparison_experiment_id: nil, summarize_scores: nil, request_options: {})
+      def self.new(comparison_experiment_id: nil, summarize_scores: nil, request_options: {})
       end
 
       sig do

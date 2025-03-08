@@ -100,9 +100,9 @@ module Braintrust
           version: String,
           request_options: T.any(Braintrust::RequestOptions, T::Hash[Symbol, T.anything])
         )
-          .void
+          .returns(T.attached_class)
       end
-      def initialize(
+      def self.new(
         ending_before: nil,
         function_name: nil,
         ids: nil,

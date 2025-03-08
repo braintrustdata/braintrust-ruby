@@ -34,9 +34,9 @@ module Braintrust
           remove_acls: T.nilable(T::Array[Braintrust::Models::ACLBatchUpdateParams::RemoveACL]),
           request_options: T.any(Braintrust::RequestOptions, T::Hash[Symbol, T.anything])
         )
-          .void
+          .returns(T.attached_class)
       end
-      def initialize(add_acls: nil, remove_acls: nil, request_options: {})
+      def self.new(add_acls: nil, remove_acls: nil, request_options: {})
       end
 
       sig do
@@ -119,9 +119,9 @@ module Braintrust
             role_id: T.nilable(String),
             user_id: T.nilable(String)
           )
-            .void
+            .returns(T.attached_class)
         end
-        def initialize(
+        def self.new(
           object_id_:,
           object_type:,
           group_id: nil,
@@ -280,9 +280,9 @@ module Braintrust
             role_id: T.nilable(String),
             user_id: T.nilable(String)
           )
-            .void
+            .returns(T.attached_class)
         end
-        def initialize(
+        def self.new(
           object_id_:,
           object_type:,
           group_id: nil,

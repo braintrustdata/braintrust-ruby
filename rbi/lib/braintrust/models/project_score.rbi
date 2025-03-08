@@ -138,9 +138,9 @@ module Braintrust
           description: T.nilable(String),
           position: T.nilable(String)
         )
-          .void
+          .returns(T.attached_class)
       end
-      def initialize(
+      def self.new(
         id:,
         name:,
         project_id:,
@@ -208,8 +208,8 @@ module Braintrust
         StringArray = T.type_alias { T::Array[String] }
 
         class NullableVariant < Braintrust::BaseModel
-          sig { void }
-          def initialize
+          sig { returns(T.attached_class) }
+          def self.new
           end
 
           sig { override.returns({}) }

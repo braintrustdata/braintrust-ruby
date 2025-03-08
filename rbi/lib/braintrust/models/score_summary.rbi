@@ -44,9 +44,10 @@ module Braintrust
       end
 
       sig do
-        params(improvements: Integer, name: String, regressions: Integer, score: Float, diff: Float).void
+        params(improvements: Integer, name: String, regressions: Integer, score: Float, diff: Float)
+          .returns(T.attached_class)
       end
-      def initialize(improvements:, name:, regressions:, score:, diff: nil)
+      def self.new(improvements:, name:, regressions:, score:, diff: nil)
       end
 
       sig do

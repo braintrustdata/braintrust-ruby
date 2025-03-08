@@ -87,8 +87,8 @@ module Braintrust
       def replace(name:, project_id:, url:, description: nil, post_message: nil, request_options: {})
       end
 
-      sig { params(client: Braintrust::Client).void }
-      def initialize(client:)
+      sig { params(client: Braintrust::Client).returns(T.attached_class) }
+      def self.new(client:)
       end
     end
   end
