@@ -88,8 +88,10 @@ module Braintrust
 
         StringArray = T.type_alias { T::Array[String] }
 
-        sig { override.returns([[NilClass, String], [NilClass, T::Array[String]]]) }
-        private_class_method def self.variants
+        class << self
+          sig { override.returns([[NilClass, String], [NilClass, T::Array[String]]]) }
+          private def variants
+          end
         end
       end
 
@@ -100,8 +102,10 @@ module Braintrust
         PROJECT = :project
         FUNCTION = :function
 
-        sig { override.returns(T::Array[Symbol]) }
-        def self.values
+        class << self
+          sig { override.returns(T::Array[Symbol]) }
+          def values
+          end
         end
       end
     end

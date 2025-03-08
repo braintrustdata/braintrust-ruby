@@ -373,13 +373,15 @@ module Braintrust
           end
         end
 
-        sig do
-          override
-            .returns(
-              [[NilClass, Braintrust::Models::EvalCreateParams::Data::DatasetID], [NilClass, Braintrust::Models::EvalCreateParams::Data::ProjectDatasetName]]
-            )
-        end
-        private_class_method def self.variants
+        class << self
+          sig do
+            override
+              .returns(
+                [[NilClass, Braintrust::Models::EvalCreateParams::Data::DatasetID], [NilClass, Braintrust::Models::EvalCreateParams::Data::ProjectDatasetName]]
+              )
+          end
+          private def variants
+          end
         end
       end
 
@@ -583,8 +585,10 @@ module Braintrust
               NODE = :node
               PYTHON = :python
 
-              sig { override.returns(T::Array[Symbol]) }
-              def self.values
+              class << self
+                sig { override.returns(T::Array[Symbol]) }
+                def values
+                end
               end
             end
           end
@@ -616,13 +620,15 @@ module Braintrust
           end
         end
 
-        sig do
-          override
-            .returns(
-              [[NilClass, Braintrust::Models::EvalCreateParams::Score::FunctionID], [NilClass, Braintrust::Models::EvalCreateParams::Score::ProjectSlug], [NilClass, Braintrust::Models::EvalCreateParams::Score::GlobalFunction], [NilClass, Braintrust::Models::EvalCreateParams::Score::PromptSessionID], [NilClass, Braintrust::Models::EvalCreateParams::Score::InlineCode], [NilClass, Braintrust::Models::EvalCreateParams::Score::InlinePrompt]]
-            )
-        end
-        private_class_method def self.variants
+        class << self
+          sig do
+            override
+              .returns(
+                [[NilClass, Braintrust::Models::EvalCreateParams::Score::FunctionID], [NilClass, Braintrust::Models::EvalCreateParams::Score::ProjectSlug], [NilClass, Braintrust::Models::EvalCreateParams::Score::GlobalFunction], [NilClass, Braintrust::Models::EvalCreateParams::Score::PromptSessionID], [NilClass, Braintrust::Models::EvalCreateParams::Score::InlineCode], [NilClass, Braintrust::Models::EvalCreateParams::Score::InlinePrompt]]
+              )
+          end
+          private def variants
+          end
         end
       end
 
@@ -826,8 +832,10 @@ module Braintrust
               NODE = :node
               PYTHON = :python
 
-              sig { override.returns(T::Array[Symbol]) }
-              def self.values
+              class << self
+                sig { override.returns(T::Array[Symbol]) }
+                def values
+                end
               end
             end
           end
@@ -859,13 +867,15 @@ module Braintrust
           end
         end
 
-        sig do
-          override
-            .returns(
-              [[NilClass, Braintrust::Models::EvalCreateParams::Task::FunctionID], [NilClass, Braintrust::Models::EvalCreateParams::Task::ProjectSlug], [NilClass, Braintrust::Models::EvalCreateParams::Task::GlobalFunction], [NilClass, Braintrust::Models::EvalCreateParams::Task::PromptSessionID], [NilClass, Braintrust::Models::EvalCreateParams::Task::InlineCode], [NilClass, Braintrust::Models::EvalCreateParams::Task::InlinePrompt]]
-            )
-        end
-        private_class_method def self.variants
+        class << self
+          sig do
+            override
+              .returns(
+                [[NilClass, Braintrust::Models::EvalCreateParams::Task::FunctionID], [NilClass, Braintrust::Models::EvalCreateParams::Task::ProjectSlug], [NilClass, Braintrust::Models::EvalCreateParams::Task::GlobalFunction], [NilClass, Braintrust::Models::EvalCreateParams::Task::PromptSessionID], [NilClass, Braintrust::Models::EvalCreateParams::Task::InlineCode], [NilClass, Braintrust::Models::EvalCreateParams::Task::InlinePrompt]]
+              )
+          end
+          private def variants
+          end
         end
       end
 
@@ -901,8 +911,10 @@ module Braintrust
           NONE = :none
           SOME = :some
 
-          sig { override.returns(T::Array[Symbol]) }
-          def self.values
+          class << self
+            sig { override.returns(T::Array[Symbol]) }
+            def values
+            end
           end
         end
 
@@ -919,8 +931,10 @@ module Braintrust
           COMMIT_TIME = :commit_time
           GIT_DIFF = :git_diff
 
-          sig { override.returns(T::Array[Symbol]) }
-          def self.values
+          class << self
+            sig { override.returns(T::Array[Symbol]) }
+            def values
+            end
           end
         end
       end

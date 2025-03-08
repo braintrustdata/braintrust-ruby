@@ -193,8 +193,10 @@ module Braintrust
 
                 TASK = :task
 
-                sig { override.returns(T::Array[Symbol]) }
-                def self.values
+                class << self
+                  sig { override.returns(T::Array[Symbol]) }
+                  def values
+                  end
                 end
               end
             end
@@ -229,19 +231,23 @@ module Braintrust
 
                 SCORER = :scorer
 
-                sig { override.returns(T::Array[Symbol]) }
-                def self.values
+                class << self
+                  sig { override.returns(T::Array[Symbol]) }
+                  def values
+                  end
                 end
               end
             end
 
-            sig do
-              override
-                .returns(
-                  [[NilClass, Braintrust::Models::CodeBundle::Location::Experiment::Position::Type], [NilClass, Braintrust::Models::CodeBundle::Location::Experiment::Position::Scorer]]
-                )
-            end
-            private_class_method def self.variants
+            class << self
+              sig do
+                override
+                  .returns(
+                    [[NilClass, Braintrust::Models::CodeBundle::Location::Experiment::Position::Type], [NilClass, Braintrust::Models::CodeBundle::Location::Experiment::Position::Scorer]]
+                  )
+              end
+              private def variants
+              end
             end
           end
 
@@ -250,8 +256,10 @@ module Braintrust
 
             EXPERIMENT = :experiment
 
-            sig { override.returns(T::Array[Symbol]) }
-            def self.values
+            class << self
+              sig { override.returns(T::Array[Symbol]) }
+              def values
+              end
             end
           end
         end
@@ -286,19 +294,23 @@ module Braintrust
 
             FUNCTION = :function
 
-            sig { override.returns(T::Array[Symbol]) }
-            def self.values
+            class << self
+              sig { override.returns(T::Array[Symbol]) }
+              def values
+              end
             end
           end
         end
 
-        sig do
-          override
-            .returns(
-              [[NilClass, Braintrust::Models::CodeBundle::Location::Experiment], [NilClass, Braintrust::Models::CodeBundle::Location::Function]]
-            )
-        end
-        private_class_method def self.variants
+        class << self
+          sig do
+            override
+              .returns(
+                [[NilClass, Braintrust::Models::CodeBundle::Location::Experiment], [NilClass, Braintrust::Models::CodeBundle::Location::Function]]
+              )
+          end
+          private def variants
+          end
         end
       end
 
@@ -333,8 +345,10 @@ module Braintrust
           NODE = :node
           PYTHON = :python
 
-          sig { override.returns(T::Array[Symbol]) }
-          def self.values
+          class << self
+            sig { override.returns(T::Array[Symbol]) }
+            def values
+            end
           end
         end
       end

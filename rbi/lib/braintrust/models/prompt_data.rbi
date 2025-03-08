@@ -239,8 +239,10 @@ module Braintrust
 
           LLM_CLASSIFIER = :llm_classifier
 
-          sig { override.returns(T::Array[Symbol]) }
-          def self.values
+          class << self
+            sig { override.returns(T::Array[Symbol]) }
+            def values
+            end
           end
         end
       end
@@ -278,8 +280,10 @@ module Braintrust
 
             COMPLETION = :completion
 
-            sig { override.returns(T::Array[Symbol]) }
-            def self.values
+            class << self
+              sig { override.returns(T::Array[Symbol]) }
+              def values
+              end
             end
           end
         end
@@ -430,8 +434,10 @@ module Braintrust
 
                 SYSTEM = :system
 
-                sig { override.returns(T::Array[Symbol]) }
-                def self.values
+                class << self
+                  sig { override.returns(T::Array[Symbol]) }
+                  def values
+                  end
                 end
               end
             end
@@ -543,8 +549,10 @@ module Braintrust
 
                 USER = :user
 
-                sig { override.returns(T::Array[Symbol]) }
-                def self.values
+                class << self
+                  sig { override.returns(T::Array[Symbol]) }
+                  def values
+                  end
                 end
               end
 
@@ -563,34 +571,38 @@ module Braintrust
                 class Array < Braintrust::Union
                   abstract!
 
-                  sig do
-                    override
-                      .returns(
-                        [[NilClass, Braintrust::Models::ChatCompletionContentPartText], [NilClass, Braintrust::Models::ChatCompletionContentPartImage]]
-                      )
-                  end
-                  private_class_method def self.variants
+                  class << self
+                    sig do
+                      override
+                        .returns(
+                          [[NilClass, Braintrust::Models::ChatCompletionContentPartText], [NilClass, Braintrust::Models::ChatCompletionContentPartImage]]
+                        )
+                    end
+                    private def variants
+                    end
                   end
                 end
 
-                sig do
-                  override
-                    .returns(
-                      [
-                        [NilClass, String],
+                class << self
+                  sig do
+                    override
+                      .returns(
                         [
-                          NilClass,
-                          T::Array[
-                                                T.any(
-                                                  Braintrust::Models::ChatCompletionContentPartText,
-                                                  Braintrust::Models::ChatCompletionContentPartImage
-                                                )
-                                                ]
+                          [NilClass, String],
+                          [
+                            NilClass,
+                            T::Array[
+                                                    T.any(
+                                                      Braintrust::Models::ChatCompletionContentPartText,
+                                                      Braintrust::Models::ChatCompletionContentPartImage
+                                                    )
+                                                    ]
+                          ]
                         ]
-                      ]
-                    )
-                end
-                private_class_method def self.variants
+                      )
+                  end
+                  private def variants
+                  end
                 end
               end
             end
@@ -675,8 +687,10 @@ module Braintrust
 
                 ASSISTANT = :assistant
 
-                sig { override.returns(T::Array[Symbol]) }
-                def self.values
+                class << self
+                  sig { override.returns(T::Array[Symbol]) }
+                  def values
+                  end
                 end
               end
 
@@ -745,8 +759,10 @@ module Braintrust
 
                 TOOL = :tool
 
-                sig { override.returns(T::Array[Symbol]) }
-                def self.values
+                class << self
+                  sig { override.returns(T::Array[Symbol]) }
+                  def values
+                  end
                 end
               end
             end
@@ -789,8 +805,10 @@ module Braintrust
 
                 FUNCTION = :function
 
-                sig { override.returns(T::Array[Symbol]) }
-                def self.values
+                class << self
+                  sig { override.returns(T::Array[Symbol]) }
+                  def values
+                  end
                 end
               end
             end
@@ -825,19 +843,23 @@ module Braintrust
 
                 MODEL = :model
 
-                sig { override.returns(T::Array[Symbol]) }
-                def self.values
+                class << self
+                  sig { override.returns(T::Array[Symbol]) }
+                  def values
+                  end
                 end
               end
             end
 
-            sig do
-              override
-                .returns(
-                  [[NilClass, Braintrust::Models::PromptData::Prompt::Chat::Message::System], [NilClass, Braintrust::Models::PromptData::Prompt::Chat::Message::User], [NilClass, Braintrust::Models::PromptData::Prompt::Chat::Message::Assistant], [NilClass, Braintrust::Models::PromptData::Prompt::Chat::Message::Tool], [NilClass, Braintrust::Models::PromptData::Prompt::Chat::Message::Function], [NilClass, Braintrust::Models::PromptData::Prompt::Chat::Message::Fallback]]
-                )
-            end
-            private_class_method def self.variants
+            class << self
+              sig do
+                override
+                  .returns(
+                    [[NilClass, Braintrust::Models::PromptData::Prompt::Chat::Message::System], [NilClass, Braintrust::Models::PromptData::Prompt::Chat::Message::User], [NilClass, Braintrust::Models::PromptData::Prompt::Chat::Message::Assistant], [NilClass, Braintrust::Models::PromptData::Prompt::Chat::Message::Tool], [NilClass, Braintrust::Models::PromptData::Prompt::Chat::Message::Function], [NilClass, Braintrust::Models::PromptData::Prompt::Chat::Message::Fallback]]
+                  )
+              end
+              private def variants
+              end
             end
           end
 
@@ -846,8 +868,10 @@ module Braintrust
 
             CHAT = :chat
 
-            sig { override.returns(T::Array[Symbol]) }
-            def self.values
+            class << self
+              sig { override.returns(T::Array[Symbol]) }
+              def values
+              end
             end
           end
         end
@@ -862,13 +886,15 @@ module Braintrust
           end
         end
 
-        sig do
-          override
-            .returns(
-              [[NilClass, Braintrust::Models::PromptData::Prompt::Completion], [NilClass, Braintrust::Models::PromptData::Prompt::Chat], [NilClass, Braintrust::Models::PromptData::Prompt::NullableVariant]]
-            )
-        end
-        private_class_method def self.variants
+        class << self
+          sig do
+            override
+              .returns(
+                [[NilClass, Braintrust::Models::PromptData::Prompt::Completion], [NilClass, Braintrust::Models::PromptData::Prompt::Chat], [NilClass, Braintrust::Models::PromptData::Prompt::NullableVariant]]
+              )
+          end
+          private def variants
+          end
         end
       end
 
@@ -905,8 +931,10 @@ module Braintrust
 
             FUNCTION = :function
 
-            sig { override.returns(T::Array[Symbol]) }
-            def self.values
+            class << self
+              sig { override.returns(T::Array[Symbol]) }
+              def values
+              end
             end
           end
         end
@@ -941,19 +969,23 @@ module Braintrust
 
             GLOBAL = :global
 
-            sig { override.returns(T::Array[Symbol]) }
-            def self.values
+            class << self
+              sig { override.returns(T::Array[Symbol]) }
+              def values
+              end
             end
           end
         end
 
-        sig do
-          override
-            .returns(
-              [[NilClass, Braintrust::Models::PromptData::ToolFunction::Function], [NilClass, Braintrust::Models::PromptData::ToolFunction::Global]]
-            )
-        end
-        private_class_method def self.variants
+        class << self
+          sig do
+            override
+              .returns(
+                [[NilClass, Braintrust::Models::PromptData::ToolFunction::Function], [NilClass, Braintrust::Models::PromptData::ToolFunction::Global]]
+              )
+          end
+          private def variants
+          end
         end
       end
     end

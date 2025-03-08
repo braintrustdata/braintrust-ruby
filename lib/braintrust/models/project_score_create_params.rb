@@ -71,11 +71,6 @@ module Braintrust
         ONLINE = :online
 
         finalize!
-
-        # @!parse
-        #   # @return [Array<Symbol>]
-        #   #
-        #   def self.values; end
       end
 
       # @abstract

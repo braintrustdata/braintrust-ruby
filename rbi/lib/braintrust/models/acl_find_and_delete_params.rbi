@@ -120,8 +120,10 @@ module Braintrust
         PROJECT_LOG = :project_log
         ORG_PROJECT = :org_project
 
-        sig { override.returns(T::Array[Symbol]) }
-        def self.values
+        class << self
+          sig { override.returns(T::Array[Symbol]) }
+          def values
+          end
         end
       end
 
@@ -137,8 +139,10 @@ module Braintrust
         UPDATE_ACLS = T.let(:update_acls, T.nilable(Symbol))
         DELETE_ACLS = T.let(:delete_acls, T.nilable(Symbol))
 
-        sig { override.returns(T::Array[Symbol]) }
-        def self.values
+        class << self
+          sig { override.returns(T::Array[Symbol]) }
+          def values
+          end
         end
       end
 
@@ -157,8 +161,10 @@ module Braintrust
         PROJECT_LOG = T.let(:project_log, T.nilable(Symbol))
         ORG_PROJECT = T.let(:org_project, T.nilable(Symbol))
 
-        sig { override.returns(T::Array[Symbol]) }
-        def self.values
+        class << self
+          sig { override.returns(T::Array[Symbol]) }
+          def values
+          end
         end
       end
     end

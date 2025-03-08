@@ -82,11 +82,6 @@ module Braintrust
             PROMPT = :prompt
 
             finalize!
-
-            # @!parse
-            #   # @return [Array<Symbol>]
-            #   #
-            #   def self.values; end
           end
         end
 
@@ -136,11 +131,6 @@ module Braintrust
                 BUNDLE = :bundle
 
                 finalize!
-
-                # @!parse
-                #   # @return [Array<Symbol>]
-                #   #
-                #   def self.values; end
               end
             end
 
@@ -198,11 +188,6 @@ module Braintrust
                   PYTHON = :python
 
                   finalize!
-
-                  # @!parse
-                  #   # @return [Array<Symbol>]
-                  #   #
-                  #   def self.values; end
                 end
               end
 
@@ -212,11 +197,6 @@ module Braintrust
                 INLINE = :inline
 
                 finalize!
-
-                # @!parse
-                #   # @return [Array<Symbol>]
-                #   #
-                #   def self.values; end
               end
             end
           end
@@ -227,11 +207,6 @@ module Braintrust
             CODE = :code
 
             finalize!
-
-            # @!parse
-            #   # @return [Array<Symbol>]
-            #   #
-            #   def self.values; end
           end
         end
 
@@ -260,11 +235,6 @@ module Braintrust
             GLOBAL = :global
 
             finalize!
-
-            # @!parse
-            #   # @return [Array<Symbol>]
-            #   #
-            #   def self.values; end
           end
         end
 

@@ -173,8 +173,10 @@ module Braintrust
 
         P = :p
 
-        sig { override.returns(T::Array[Symbol]) }
-        def self.values
+        class << self
+          sig { override.returns(T::Array[Symbol]) }
+          def values
+          end
         end
       end
 
@@ -186,8 +188,10 @@ module Braintrust
         TASK = T.let(:task, T.nilable(Symbol))
         TOOL = T.let(:tool, T.nilable(Symbol))
 
-        sig { override.returns(T::Array[Symbol]) }
-        def self.values
+        class << self
+          sig { override.returns(T::Array[Symbol]) }
+          def values
+          end
         end
       end
     end

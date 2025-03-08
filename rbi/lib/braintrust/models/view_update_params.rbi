@@ -120,8 +120,10 @@ module Braintrust
         PROJECT_LOG = :project_log
         ORG_PROJECT = :org_project
 
-        sig { override.returns(T::Array[Symbol]) }
-        def self.values
+        class << self
+          sig { override.returns(T::Array[Symbol]) }
+          def values
+          end
         end
       end
 
@@ -137,8 +139,10 @@ module Braintrust
         EXPERIMENT = T.let(:experiment, T.nilable(Symbol))
         DATASET = T.let(:dataset, T.nilable(Symbol))
 
-        sig { override.returns(T::Array[Symbol]) }
-        def self.values
+        class << self
+          sig { override.returns(T::Array[Symbol]) }
+          def values
+          end
         end
       end
     end
