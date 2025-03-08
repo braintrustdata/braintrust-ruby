@@ -60,8 +60,10 @@ module Braintrust
         PROJECT_LOG = :project_log
         ORG_PROJECT = :org_project
 
-        sig { override.returns(T::Array[Symbol]) }
-        def self.values
+        class << self
+          sig { override.returns(T::Array[Symbol]) }
+          def values
+          end
         end
       end
     end

@@ -201,11 +201,6 @@ module Braintrust
               NONE = :none
 
               finalize!
-
-              # @!parse
-              #   # @return [Array<Symbol>]
-              #   #
-              #   def self.values; end
             end
 
             class Function < Braintrust::BaseModel
@@ -254,11 +249,6 @@ module Braintrust
                 JSON_OBJECT = :json_object
 
                 finalize!
-
-                # @!parse
-                #   # @return [Array<Symbol>]
-                #   #
-                #   def self.values; end
               end
             end
 
@@ -329,11 +319,6 @@ module Braintrust
                 JSON_SCHEMA = :json_schema
 
                 finalize!
-
-                # @!parse
-                #   # @return [Array<Symbol>]
-                #   #
-                #   def self.values; end
               end
             end
 
@@ -357,11 +342,6 @@ module Braintrust
                 TEXT = :text
 
                 finalize!
-
-                # @!parse
-                #   # @return [Array<Symbol>]
-                #   #
-                #   def self.values; end
               end
             end
 
@@ -388,11 +368,6 @@ module Braintrust
               REQUIRED = :required
 
               finalize!
-
-              # @!parse
-              #   # @return [Array<Symbol>]
-              #   #
-              #   def self.values; end
             end
 
             class Function < Braintrust::BaseModel
@@ -436,11 +411,6 @@ module Braintrust
                 FUNCTION = :function
 
                 finalize!
-
-                # @!parse
-                #   # @return [Array<Symbol>]
-                #   #
-                #   def self.values; end
               end
             end
           end

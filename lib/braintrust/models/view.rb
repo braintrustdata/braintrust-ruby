@@ -110,11 +110,6 @@ module Braintrust
         ORG_PROJECT = :org_project
 
         finalize!
-
-        # @!parse
-        #   # @return [Array<Symbol>]
-        #   #
-        #   def self.values; end
       end
 
       # @abstract
@@ -131,11 +126,6 @@ module Braintrust
         DATASET = :dataset
 
         finalize!
-
-        # @!parse
-        #   # @return [Array<Symbol>]
-        #   #
-        #   def self.values; end
       end
     end
   end

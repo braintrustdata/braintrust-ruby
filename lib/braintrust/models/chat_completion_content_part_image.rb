@@ -52,11 +52,6 @@ module Braintrust
           HIGH = :high
 
           finalize!
-
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   #
-          #   def self.values; end
         end
       end
 
@@ -66,11 +61,6 @@ module Braintrust
         IMAGE_URL = :image_url
 
         finalize!
-
-        # @!parse
-        #   # @return [Array<Symbol>]
-        #   #
-        #   def self.values; end
       end
     end
   end

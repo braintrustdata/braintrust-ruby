@@ -33,11 +33,6 @@ module Braintrust
         EXPECTED = :expected
 
         finalize!
-
-        # @!parse
-        #   # @return [Array<Symbol>]
-        #   #
-        #   def self.values; end
       end
     end
   end

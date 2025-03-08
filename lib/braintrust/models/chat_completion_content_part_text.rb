@@ -31,11 +31,6 @@ module Braintrust
         TEXT = :text
 
         finalize!
-
-        # @!parse
-        #   # @return [Array<Symbol>]
-        #   #
-        #   def self.values; end
       end
     end
   end
