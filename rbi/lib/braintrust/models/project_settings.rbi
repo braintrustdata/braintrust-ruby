@@ -11,8 +11,8 @@ module Braintrust
       def comparison_key=(_)
       end
 
-      sig { params(comparison_key: T.nilable(String)).void }
-      def initialize(comparison_key: nil)
+      sig { params(comparison_key: T.nilable(String)).returns(T.attached_class) }
+      def self.new(comparison_key: nil)
       end
 
       sig { override.returns({comparison_key: T.nilable(String)}) }

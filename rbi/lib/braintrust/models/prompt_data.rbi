@@ -134,9 +134,9 @@ module Braintrust
             ]
           )
         )
-          .void
+          .returns(T.attached_class)
       end
-      def initialize(options: nil, origin: nil, parser: nil, prompt: nil, tool_functions: nil)
+      def self.new(options: nil, origin: nil, parser: nil, prompt: nil, tool_functions: nil)
       end
 
       sig do
@@ -192,8 +192,10 @@ module Braintrust
         def prompt_version=(_)
         end
 
-        sig { params(project_id: String, prompt_id: String, prompt_version: String).void }
-        def initialize(project_id: nil, prompt_id: nil, prompt_version: nil)
+        sig do
+          params(project_id: String, prompt_id: String, prompt_version: String).returns(T.attached_class)
+        end
+        def self.new(project_id: nil, prompt_id: nil, prompt_version: nil)
         end
 
         sig { override.returns({project_id: String, prompt_id: String, prompt_version: String}) }
@@ -226,8 +228,14 @@ module Braintrust
         def use_cot=(_)
         end
 
-        sig { params(choice_scores: T::Hash[Symbol, Float], type: Symbol, use_cot: T::Boolean).void }
-        def initialize(choice_scores:, type:, use_cot:)
+        sig do
+          params(
+            choice_scores: T::Hash[Symbol, Float],
+            type: Symbol,
+            use_cot: T::Boolean
+          ).returns(T.attached_class)
+        end
+        def self.new(choice_scores:, type:, use_cot:)
         end
 
         sig { override.returns({choice_scores: T::Hash[Symbol, Float], type: Symbol, use_cot: T::Boolean}) }
@@ -267,8 +275,8 @@ module Braintrust
           def type=(_)
           end
 
-          sig { params(content: String, type: Symbol).void }
-          def initialize(content:, type:)
+          sig { params(content: String, type: Symbol).returns(T.attached_class) }
+          def self.new(content:, type:)
           end
 
           sig { override.returns({content: String, type: Symbol}) }
@@ -366,9 +374,9 @@ module Braintrust
               type: Symbol,
               tools: String
             )
-              .void
+              .returns(T.attached_class)
           end
-          def initialize(messages:, type:, tools: nil)
+          def self.new(messages:, type:, tools: nil)
           end
 
           sig do
@@ -421,8 +429,8 @@ module Braintrust
               def name=(_)
               end
 
-              sig { params(role: Symbol, content: String, name: String).void }
-              def initialize(role:, content: nil, name: nil)
+              sig { params(role: Symbol, content: String, name: String).returns(T.attached_class) }
+              def self.new(role:, content: nil, name: nil)
               end
 
               sig { override.returns({role: Symbol, content: String, name: String}) }
@@ -518,9 +526,9 @@ module Braintrust
                   ),
                   name: String
                 )
-                  .void
+                  .returns(T.attached_class)
               end
-              def initialize(role:, content: nil, name: nil)
+              def self.new(role:, content: nil, name: nil)
               end
 
               sig do
@@ -662,9 +670,9 @@ module Braintrust
                   name: T.nilable(String),
                   tool_calls: T.nilable(T::Array[Braintrust::Models::ChatCompletionMessageToolCall])
                 )
-                  .void
+                  .returns(T.attached_class)
               end
-              def initialize(role:, content: nil, function_call: nil, name: nil, tool_calls: nil)
+              def self.new(role:, content: nil, function_call: nil, name: nil, tool_calls: nil)
               end
 
               sig do
@@ -711,8 +719,8 @@ module Braintrust
                 def name=(_)
                 end
 
-                sig { params(arguments: String, name: String).void }
-                def initialize(arguments:, name:)
+                sig { params(arguments: String, name: String).returns(T.attached_class) }
+                def self.new(arguments:, name:)
                 end
 
                 sig { override.returns({arguments: String, name: String}) }
@@ -746,8 +754,8 @@ module Braintrust
               def tool_call_id=(_)
               end
 
-              sig { params(role: Symbol, content: String, tool_call_id: String).void }
-              def initialize(role:, content: nil, tool_call_id: nil)
+              sig { params(role: Symbol, content: String, tool_call_id: String).returns(T.attached_class) }
+              def self.new(role:, content: nil, tool_call_id: nil)
               end
 
               sig { override.returns({role: Symbol, content: String, tool_call_id: String}) }
@@ -792,8 +800,8 @@ module Braintrust
               def content=(_)
               end
 
-              sig { params(name: String, role: Symbol, content: String).void }
-              def initialize(name:, role:, content: nil)
+              sig { params(name: String, role: Symbol, content: String).returns(T.attached_class) }
+              def self.new(name:, role:, content: nil)
               end
 
               sig { override.returns({name: String, role: Symbol, content: String}) }
@@ -830,8 +838,8 @@ module Braintrust
               def content=(_)
               end
 
-              sig { params(role: Symbol, content: T.nilable(String)).void }
-              def initialize(role:, content: nil)
+              sig { params(role: Symbol, content: T.nilable(String)).returns(T.attached_class) }
+              def self.new(role:, content: nil)
               end
 
               sig { override.returns({role: Symbol, content: T.nilable(String)}) }
@@ -877,8 +885,8 @@ module Braintrust
         end
 
         class NullableVariant < Braintrust::BaseModel
-          sig { void }
-          def initialize
+          sig { returns(T.attached_class) }
+          def self.new
           end
 
           sig { override.returns({}) }
@@ -918,8 +926,8 @@ module Braintrust
           def type=(_)
           end
 
-          sig { params(id: String, type: Symbol).void }
-          def initialize(id:, type:)
+          sig { params(id: String, type: Symbol).returns(T.attached_class) }
+          def self.new(id:, type:)
           end
 
           sig { override.returns({id: String, type: Symbol}) }
@@ -956,8 +964,8 @@ module Braintrust
           def type=(_)
           end
 
-          sig { params(name: String, type: Symbol).void }
-          def initialize(name:, type:)
+          sig { params(name: String, type: Symbol).returns(T.attached_class) }
+          def self.new(name:, type:)
           end
 
           sig { override.returns({name: String, type: Symbol}) }

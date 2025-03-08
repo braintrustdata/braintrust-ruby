@@ -85,9 +85,9 @@ module Braintrust
           repo_info: T.nilable(Braintrust::Models::RepoInfo),
           request_options: T.any(Braintrust::RequestOptions, T::Hash[Symbol, T.anything])
         )
-          .void
+          .returns(T.attached_class)
       end
-      def initialize(
+      def self.new(
         base_exp_id: nil,
         dataset_id: nil,
         dataset_version: nil,

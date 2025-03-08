@@ -55,16 +55,9 @@ module Braintrust
           version: T.nilable(String),
           request_options: T.any(Braintrust::RequestOptions, T::Hash[Symbol, T.anything])
         )
-          .void
+          .returns(T.attached_class)
       end
-      def initialize(
-        cursor: nil,
-        limit: nil,
-        max_root_span_id: nil,
-        max_xact_id: nil,
-        version: nil,
-        request_options: {}
-      )
+      def self.new(cursor: nil, limit: nil, max_root_span_id: nil, max_xact_id: nil, version: nil, request_options: {})
       end
 
       sig do

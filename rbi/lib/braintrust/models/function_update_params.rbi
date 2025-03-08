@@ -94,16 +94,9 @@ module Braintrust
           tags: T.nilable(T::Array[String]),
           request_options: T.any(Braintrust::RequestOptions, T::Hash[Symbol, T.anything])
         )
-          .void
+          .returns(T.attached_class)
       end
-      def initialize(
-        description: nil,
-        function_data: nil,
-        name: nil,
-        prompt_data: nil,
-        tags: nil,
-        request_options: {}
-      )
+      def self.new(description: nil, function_data: nil, name: nil, prompt_data: nil, tags: nil, request_options: {})
       end
 
       sig do
@@ -141,8 +134,8 @@ module Braintrust
           def type=(_)
           end
 
-          sig { params(type: Symbol).void }
-          def initialize(type:)
+          sig { params(type: Symbol).returns(T.attached_class) }
+          def self.new(type:)
           end
 
           sig { override.returns({type: Symbol}) }
@@ -207,9 +200,9 @@ module Braintrust
               ),
               type: Symbol
             )
-              .void
+              .returns(T.attached_class)
           end
-          def initialize(data:, type:)
+          def self.new(data:, type:)
           end
 
           sig do
@@ -239,8 +232,8 @@ module Braintrust
               def type=(_)
               end
 
-              sig { params(type: Symbol).void }
-              def initialize(type:)
+              sig { params(type: Symbol).returns(T.attached_class) }
+              def self.new(type:)
               end
 
               sig { override.returns({type: Symbol}) }
@@ -294,9 +287,9 @@ module Braintrust
                   runtime_context: Braintrust::Models::FunctionUpdateParams::FunctionData::Code::Data::Inline::RuntimeContext,
                   type: Symbol
                 )
-                  .void
+                  .returns(T.attached_class)
               end
-              def initialize(code:, runtime_context:, type:)
+              def self.new(code:, runtime_context:, type:)
               end
 
               sig do
@@ -329,8 +322,8 @@ module Braintrust
                 def version=(_)
                 end
 
-                sig { params(runtime: Symbol, version: String).void }
-                def initialize(runtime:, version:)
+                sig { params(runtime: Symbol, version: String).returns(T.attached_class) }
+                def self.new(runtime:, version:)
                 end
 
                 sig { override.returns({runtime: Symbol, version: String}) }
@@ -406,8 +399,8 @@ module Braintrust
           def type=(_)
           end
 
-          sig { params(name: String, type: Symbol).void }
-          def initialize(name:, type:)
+          sig { params(name: String, type: Symbol).returns(T.attached_class) }
+          def self.new(name:, type:)
           end
 
           sig { override.returns({name: String, type: Symbol}) }
@@ -428,8 +421,8 @@ module Braintrust
         end
 
         class NullableVariant < Braintrust::BaseModel
-          sig { void }
-          def initialize
+          sig { returns(T.attached_class) }
+          def self.new
           end
 
           sig { override.returns({}) }

@@ -96,9 +96,9 @@ module Braintrust
           role_id: T.nilable(String),
           user_id: T.nilable(String)
         )
-          .void
+          .returns(T.attached_class)
       end
-      def initialize(
+      def self.new(
         id:,
         _object_org_id:,
         object_id_:,

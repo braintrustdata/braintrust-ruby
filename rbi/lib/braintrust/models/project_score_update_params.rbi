@@ -97,16 +97,9 @@ module Braintrust
           score_type: T.nilable(Symbol),
           request_options: T.any(Braintrust::RequestOptions, T::Hash[Symbol, T.anything])
         )
-          .void
+          .returns(T.attached_class)
       end
-      def initialize(
-        categories: nil,
-        config: nil,
-        description: nil,
-        name: nil,
-        score_type: nil,
-        request_options: {}
-      )
+      def self.new(categories: nil, config: nil, description: nil, name: nil, score_type: nil, request_options: {})
       end
 
       sig do
@@ -142,8 +135,8 @@ module Braintrust
         StringArray = T.type_alias { T::Array[String] }
 
         class NullableVariant < Braintrust::BaseModel
-          sig { void }
-          def initialize
+          sig { returns(T.attached_class) }
+          def self.new
           end
 
           sig { override.returns({}) }

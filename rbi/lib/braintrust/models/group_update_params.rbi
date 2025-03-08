@@ -64,9 +64,9 @@ module Braintrust
           remove_member_users: T.nilable(T::Array[String]),
           request_options: T.any(Braintrust::RequestOptions, T::Hash[Symbol, T.anything])
         )
-          .void
+          .returns(T.attached_class)
       end
-      def initialize(
+      def self.new(
         add_member_groups: nil,
         add_member_users: nil,
         description: nil,

@@ -20,9 +20,10 @@ module Braintrust
       end
 
       sig do
-        params(added_acls: T::Array[Braintrust::Models::ACL], removed_acls: T::Array[Braintrust::Models::ACL]).void
+        params(added_acls: T::Array[Braintrust::Models::ACL], removed_acls: T::Array[Braintrust::Models::ACL])
+          .returns(T.attached_class)
       end
-      def initialize(added_acls:, removed_acls:)
+      def self.new(added_acls:, removed_acls:)
       end
 
       sig do

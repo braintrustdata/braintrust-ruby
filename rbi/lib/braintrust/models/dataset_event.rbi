@@ -129,9 +129,9 @@ module Braintrust
           origin: T.nilable(Braintrust::Models::DatasetEvent::Origin),
           tags: T.nilable(T::Array[String])
         )
-          .void
+          .returns(T.attached_class)
       end
-      def initialize(
+      def self.new(
         id:,
         _xact_id:,
         created:,
@@ -204,8 +204,15 @@ module Braintrust
         def object_type=(_)
         end
 
-        sig { params(id: String, _xact_id: String, object_id_: String, object_type: Symbol).void }
-        def initialize(id:, _xact_id:, object_id_:, object_type:)
+        sig do
+          params(
+            id: String,
+            _xact_id: String,
+            object_id_: String,
+            object_type: Symbol
+          ).returns(T.attached_class)
+        end
+        def self.new(id:, _xact_id:, object_id_:, object_type:)
         end
 
         sig { override.returns({id: String, _xact_id: String, object_id_: String, object_type: Symbol}) }

@@ -72,9 +72,9 @@ module Braintrust
           preview_secret: T.nilable(String),
           type: T.nilable(String)
         )
-          .void
+          .returns(T.attached_class)
       end
-      def initialize(id:, name:, org_id:, created: nil, metadata: nil, preview_secret: nil, type: nil)
+      def self.new(id:, name:, org_id:, created: nil, metadata: nil, preview_secret: nil, type: nil)
       end
 
       sig do

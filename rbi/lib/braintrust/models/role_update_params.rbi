@@ -70,9 +70,9 @@ module Braintrust
           remove_member_roles: T.nilable(T::Array[String]),
           request_options: T.any(Braintrust::RequestOptions, T::Hash[Symbol, T.anything])
         )
-          .void
+          .returns(T.attached_class)
       end
-      def initialize(
+      def self.new(
         add_member_permissions: nil,
         add_member_roles: nil,
         description: nil,
@@ -117,8 +117,8 @@ module Braintrust
         def restrict_object_type=(_)
         end
 
-        sig { params(permission: Symbol, restrict_object_type: T.nilable(Symbol)).void }
-        def initialize(permission:, restrict_object_type: nil)
+        sig { params(permission: Symbol, restrict_object_type: T.nilable(Symbol)).returns(T.attached_class) }
+        def self.new(permission:, restrict_object_type: nil)
         end
 
         sig { override.returns({permission: Symbol, restrict_object_type: T.nilable(Symbol)}) }
@@ -184,8 +184,8 @@ module Braintrust
         def restrict_object_type=(_)
         end
 
-        sig { params(permission: Symbol, restrict_object_type: T.nilable(Symbol)).void }
-        def initialize(permission:, restrict_object_type: nil)
+        sig { params(permission: Symbol, restrict_object_type: T.nilable(Symbol)).returns(T.attached_class) }
+        def self.new(permission:, restrict_object_type: nil)
         end
 
         sig { override.returns({permission: Symbol, restrict_object_type: T.nilable(Symbol)}) }

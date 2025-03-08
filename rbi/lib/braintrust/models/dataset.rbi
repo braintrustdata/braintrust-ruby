@@ -81,18 +81,9 @@ module Braintrust
           metadata: T.nilable(T::Hash[Symbol, T.nilable(T.anything)]),
           user_id: T.nilable(String)
         )
-          .void
+          .returns(T.attached_class)
       end
-      def initialize(
-        id:,
-        name:,
-        project_id:,
-        created: nil,
-        deleted_at: nil,
-        description: nil,
-        metadata: nil,
-        user_id: nil
-      )
+      def self.new(id:, name:, project_id:, created: nil, deleted_at: nil, description: nil, metadata: nil, user_id: nil)
       end
 
       sig do

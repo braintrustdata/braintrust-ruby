@@ -19,8 +19,8 @@ module Braintrust
       def type=(_)
       end
 
-      sig { params(name: T.nilable(String), type: T.nilable(Symbol)).void }
-      def initialize(name: nil, type: nil)
+      sig { params(name: T.nilable(String), type: T.nilable(Symbol)).returns(T.attached_class) }
+      def self.new(name: nil, type: nil)
       end
 
       sig { override.returns({name: T.nilable(String), type: T.nilable(Symbol)}) }

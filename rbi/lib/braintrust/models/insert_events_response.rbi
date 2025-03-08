@@ -11,8 +11,8 @@ module Braintrust
       def row_ids=(_)
       end
 
-      sig { params(row_ids: T::Array[String]).void }
-      def initialize(row_ids:)
+      sig { params(row_ids: T::Array[String]).returns(T.attached_class) }
+      def self.new(row_ids:)
       end
 
       sig { override.returns({row_ids: T::Array[String]}) }

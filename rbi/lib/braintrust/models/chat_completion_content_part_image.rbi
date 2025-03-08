@@ -22,8 +22,11 @@ module Braintrust
       def type=(_)
       end
 
-      sig { params(image_url: Braintrust::Models::ChatCompletionContentPartImage::ImageURL, type: Symbol).void }
-      def initialize(image_url:, type:)
+      sig do
+        params(image_url: Braintrust::Models::ChatCompletionContentPartImage::ImageURL, type: Symbol)
+          .returns(T.attached_class)
+      end
+      def self.new(image_url:, type:)
       end
 
       sig { override.returns({image_url: Braintrust::Models::ChatCompletionContentPartImage::ImageURL, type: Symbol}) }
@@ -47,8 +50,8 @@ module Braintrust
         def detail=(_)
         end
 
-        sig { params(url: String, detail: Symbol).void }
-        def initialize(url:, detail: nil)
+        sig { params(url: String, detail: Symbol).returns(T.attached_class) }
+        def self.new(url:, detail: nil)
         end
 
         sig { override.returns({url: String, detail: Symbol}) }

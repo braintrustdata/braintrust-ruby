@@ -17,8 +17,8 @@ module Braintrust
         def update(invite_users: nil, org_id: nil, org_name: nil, remove_users: nil, request_options: {})
         end
 
-        sig { params(client: Braintrust::Client).void }
-        def initialize(client:)
+        sig { params(client: Braintrust::Client).returns(T.attached_class) }
+        def self.new(client:)
         end
       end
     end

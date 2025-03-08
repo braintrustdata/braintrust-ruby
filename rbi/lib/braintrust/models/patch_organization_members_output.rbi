@@ -27,8 +27,10 @@ module Braintrust
       def send_email_error=(_)
       end
 
-      sig { params(org_id: String, status: Symbol, send_email_error: T.nilable(String)).void }
-      def initialize(org_id:, status:, send_email_error: nil)
+      sig do
+        params(org_id: String, status: Symbol, send_email_error: T.nilable(String)).returns(T.attached_class)
+      end
+      def self.new(org_id:, status:, send_email_error: nil)
       end
 
       sig { override.returns({org_id: String, status: Symbol, send_email_error: T.nilable(String)}) }
