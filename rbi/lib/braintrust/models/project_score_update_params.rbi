@@ -151,13 +151,15 @@ module Braintrust
           end
         end
 
-        sig do
-          override
-            .returns(
-              [[NilClass, T::Array[Braintrust::Models::ProjectScoreCategory]], [NilClass, T::Hash[Symbol, Float]], [NilClass, T::Array[String]], [NilClass, Braintrust::Models::ProjectScoreUpdateParams::Categories::NullableVariant]]
-            )
-        end
-        private_class_method def self.variants
+        class << self
+          sig do
+            override
+              .returns(
+                [[NilClass, T::Array[Braintrust::Models::ProjectScoreCategory]], [NilClass, T::Hash[Symbol, Float]], [NilClass, T::Array[String]], [NilClass, Braintrust::Models::ProjectScoreUpdateParams::Categories::NullableVariant]]
+              )
+          end
+          private def variants
+          end
         end
       end
 
@@ -171,8 +173,10 @@ module Braintrust
         MAXIMUM = T.let(:maximum, T.nilable(Symbol))
         ONLINE = T.let(:online, T.nilable(Symbol))
 
-        sig { override.returns(T::Array[Symbol]) }
-        def self.values
+        class << self
+          sig { override.returns(T::Array[Symbol]) }
+          def values
+          end
         end
       end
     end

@@ -317,8 +317,10 @@ module Braintrust
               AUTO = :auto
               NONE = :none
 
-              sig { override.returns(T::Array[Symbol]) }
-              def self.values
+              class << self
+                sig { override.returns(T::Array[Symbol]) }
+                def values
+                end
               end
             end
 
@@ -340,13 +342,15 @@ module Braintrust
               end
             end
 
-            sig do
-              override
-                .returns(
-                  [[NilClass, Symbol], [NilClass, Braintrust::Models::PromptOptions::Params::OpenAIModelParams::FunctionCall::Function]]
-                )
-            end
-            private_class_method def self.variants
+            class << self
+              sig do
+                override
+                  .returns(
+                    [[NilClass, Symbol], [NilClass, Braintrust::Models::PromptOptions::Params::OpenAIModelParams::FunctionCall::Function]]
+                  )
+              end
+              private def variants
+              end
             end
           end
 
@@ -375,8 +379,10 @@ module Braintrust
 
                 JSON_OBJECT = :json_object
 
-                sig { override.returns(T::Array[Symbol]) }
-                def self.values
+                class << self
+                  sig { override.returns(T::Array[Symbol]) }
+                  def values
+                  end
                 end
               end
             end
@@ -501,8 +507,10 @@ module Braintrust
 
                 JSON_SCHEMA = :json_schema
 
-                sig { override.returns(T::Array[Symbol]) }
-                def self.values
+                class << self
+                  sig { override.returns(T::Array[Symbol]) }
+                  def values
+                  end
                 end
               end
             end
@@ -529,8 +537,10 @@ module Braintrust
 
                 TEXT = :text
 
-                sig { override.returns(T::Array[Symbol]) }
-                def self.values
+                class << self
+                  sig { override.returns(T::Array[Symbol]) }
+                  def values
+                  end
                 end
               end
             end
@@ -545,13 +555,15 @@ module Braintrust
               end
             end
 
-            sig do
-              override
-                .returns(
-                  [[NilClass, Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ResponseFormat::JsonObject], [NilClass, Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ResponseFormat::JsonSchema], [NilClass, Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ResponseFormat::Text], [NilClass, Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ResponseFormat::NullableVariant]]
-                )
-            end
-            private_class_method def self.variants
+            class << self
+              sig do
+                override
+                  .returns(
+                    [[NilClass, Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ResponseFormat::JsonObject], [NilClass, Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ResponseFormat::JsonSchema], [NilClass, Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ResponseFormat::Text], [NilClass, Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ResponseFormat::NullableVariant]]
+                  )
+              end
+              private def variants
+              end
             end
           end
 
@@ -565,8 +577,10 @@ module Braintrust
               NONE = :none
               REQUIRED = :required
 
-              sig { override.returns(T::Array[Symbol]) }
-              def self.values
+              class << self
+                sig { override.returns(T::Array[Symbol]) }
+                def values
+                end
               end
             end
 
@@ -635,19 +649,23 @@ module Braintrust
 
                 FUNCTION = :function
 
-                sig { override.returns(T::Array[Symbol]) }
-                def self.values
+                class << self
+                  sig { override.returns(T::Array[Symbol]) }
+                  def values
+                  end
                 end
               end
             end
 
-            sig do
-              override
-                .returns(
-                  [[NilClass, Symbol], [NilClass, Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ToolChoice::Function]]
-                )
-            end
-            private_class_method def self.variants
+            class << self
+              sig do
+                override
+                  .returns(
+                    [[NilClass, Symbol], [NilClass, Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ToolChoice::Function]]
+                  )
+              end
+              private def variants
+              end
             end
           end
         end
@@ -870,13 +888,15 @@ module Braintrust
           end
         end
 
-        sig do
-          override
-            .returns(
-              [[NilClass, Braintrust::Models::PromptOptions::Params::OpenAIModelParams], [NilClass, Braintrust::Models::PromptOptions::Params::AnthropicModelParams], [NilClass, Braintrust::Models::PromptOptions::Params::GoogleModelParams], [NilClass, Braintrust::Models::PromptOptions::Params::WindowAIModelParams], [NilClass, Braintrust::Models::PromptOptions::Params::JsCompletionParams]]
-            )
-        end
-        private_class_method def self.variants
+        class << self
+          sig do
+            override
+              .returns(
+                [[NilClass, Braintrust::Models::PromptOptions::Params::OpenAIModelParams], [NilClass, Braintrust::Models::PromptOptions::Params::AnthropicModelParams], [NilClass, Braintrust::Models::PromptOptions::Params::GoogleModelParams], [NilClass, Braintrust::Models::PromptOptions::Params::WindowAIModelParams], [NilClass, Braintrust::Models::PromptOptions::Params::JsCompletionParams]]
+              )
+          end
+          private def variants
+          end
         end
       end
     end

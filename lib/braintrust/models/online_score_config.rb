@@ -69,11 +69,6 @@ module Braintrust
             FUNCTION = :function
 
             finalize!
-
-            # @!parse
-            #   # @return [Array<Symbol>]
-            #   #
-            #   def self.values; end
           end
         end
 
@@ -102,11 +97,6 @@ module Braintrust
             GLOBAL = :global
 
             finalize!
-
-            # @!parse
-            #   # @return [Array<Symbol>]
-            #   #
-            #   def self.values; end
           end
         end
       end

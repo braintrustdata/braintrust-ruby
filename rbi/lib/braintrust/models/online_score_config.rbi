@@ -130,8 +130,10 @@ module Braintrust
 
             FUNCTION = :function
 
-            sig { override.returns(T::Array[Symbol]) }
-            def self.values
+            class << self
+              sig { override.returns(T::Array[Symbol]) }
+              def values
+              end
             end
           end
         end
@@ -166,19 +168,23 @@ module Braintrust
 
             GLOBAL = :global
 
-            sig { override.returns(T::Array[Symbol]) }
-            def self.values
+            class << self
+              sig { override.returns(T::Array[Symbol]) }
+              def values
+              end
             end
           end
         end
 
-        sig do
-          override
-            .returns(
-              [[NilClass, Braintrust::Models::OnlineScoreConfig::Scorer::Function], [NilClass, Braintrust::Models::OnlineScoreConfig::Scorer::Global]]
-            )
-        end
-        private_class_method def self.variants
+        class << self
+          sig do
+            override
+              .returns(
+                [[NilClass, Braintrust::Models::OnlineScoreConfig::Scorer::Function], [NilClass, Braintrust::Models::OnlineScoreConfig::Scorer::Global]]
+              )
+          end
+          private def variants
+          end
         end
       end
     end

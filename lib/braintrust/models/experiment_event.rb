@@ -416,11 +416,6 @@ module Braintrust
           PROJECT_LOGS = :project_logs
 
           finalize!
-
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   #
-          #   def self.values; end
         end
       end
     end
