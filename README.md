@@ -45,6 +45,25 @@ project = braintrust.projects.create(name: "foobar")
 puts(project.id)
 ```
 
+## Pagination
+
+List methods in the Braintrust API are paginated.
+
+This library provides auto-paginating iterators with each list response, so you do not have to request successive pages manually:
+
+```ruby
+page = braintrust.projects.list
+
+# Fetch single item from page.
+project = page.objects[0]
+puts(project.id)
+
+# Automatically fetches more pages as needed.
+page.auto_paging_each do |project|
+  puts(project.id)
+end
+```
+
 ### Errors
 
 When the library is unable to connect to the API, or if the API returns a non-success status code (i.e., 4xx or 5xx response), a subclass of `Braintrust::Error` will be thrown:
@@ -111,9 +130,9 @@ braintrust.projects.create(name: "foobar", request_options: {timeout: 5})
 
 ## Sorbet Support
 
-This library is written with [Sorbet type definitions](https://sorbet.org/docs/rbi). However, there is no runtime dependency on the Sorbet runtime.
+This library is written with [Sorbet type definitions](https://sorbet.org/docs/rbi). However, there is no runtime dependency on the `sorbet-runtime`.
 
-What this means is that while you can use Sorbet to type check your code statically, and benefit from the [Sorbet Language Server](https://sorbet.org/docs/lsp) in your editor, there is no runtime type checking and execution overhead from Sorbet.
+What this means is that while you can use Sorbet to type check your code statically, and benefit from the [Sorbet Language Server](https://sorbet.org/docs/lsp) in your editor, there is no runtime type checking and execution overhead from Sorbet itself.
 
 Due to limitations with the Sorbet type system, where a method otherwise can take an instance of `Braintrust::BaseModel` class, you will need to use the `**` splat operator to pass the arguments:
 
