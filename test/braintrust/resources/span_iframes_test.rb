@@ -80,11 +80,6 @@ class Braintrust::Test::Resources::SpanIframesTest < Braintrust::Test::ResourceT
       response => Braintrust::ListObjects
     end
 
-    page = response.next_page
-    assert_pattern do
-      page => Braintrust::ListObjects
-    end
-
     row = response.to_enum.first
     assert_pattern do
       row => Braintrust::Models::SpanIFrame

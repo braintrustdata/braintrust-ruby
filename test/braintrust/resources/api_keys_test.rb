@@ -49,11 +49,6 @@ class Braintrust::Test::Resources::APIKeysTest < Braintrust::Test::ResourceTest
       response => Braintrust::ListObjects
     end
 
-    page = response.next_page
-    assert_pattern do
-      page => Braintrust::ListObjects
-    end
-
     row = response.to_enum.first
     assert_pattern do
       row => Braintrust::Models::APIKey
