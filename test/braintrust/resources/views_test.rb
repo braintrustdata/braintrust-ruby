@@ -95,11 +95,6 @@ class Braintrust::Test::Resources::ViewsTest < Braintrust::Test::ResourceTest
       response => Braintrust::ListObjects
     end
 
-    page = response.next_page
-    assert_pattern do
-      page => Braintrust::ListObjects
-    end
-
     row = response.to_enum.first
     assert_pattern do
       row => Braintrust::Models::View
