@@ -55,11 +55,11 @@ module Braintrust
           type_info(spec.slice(:const, :enum, :union).first&.last)
         in Proc
           spec
-        in Braintrust::Converter | Class
+        in Braintrust::Converter | Class | Symbol
           -> { spec }
         in true | false
           -> { Braintrust::BooleanModel }
-        in NilClass | true | false | Symbol | Integer | Float
+        in NilClass | Integer | Float
           -> { spec.class }
         end
       end
@@ -82,6 +82,13 @@ module Braintrust
         case target
         in Braintrust::Converter
           target.coerce(value)
+        in Symbol
+          case value
+          in Symbol | String if (val = value.to_sym) == target
+            val
+          else
+            value
+          end
         in Class
           case target
           in -> { _1 <= NilClass }
@@ -140,6 +147,13 @@ module Braintrust
         case target
         in Braintrust::Converter
           target.try_strict_coerce(value)
+        in Symbol
+          case value
+          in Symbol | String if (val = value.to_sym) == target
+            [true, val, 1]
+          else
+            [false, false, 0]
+          end
         in Class
           case [target, value]
           in [-> { _1 <= NilClass }, _]
@@ -338,7 +352,14 @@ module Braintrust
       #
       # @return [Symbol, Object]
       #
-      def coerce(value) = (value.is_a?(String) ? value.to_sym : value)
+      def coerce(value)
+        case value
+        in Symbol | String if values.include?(val = value.to_sym)
+          val
+        else
+          value
+        end
+      end
 
       # @!parse
       #   # @private
@@ -359,7 +380,7 @@ module Braintrust
         return [true, value, 1] if values.include?(value)
 
         case value
-        in String if values.include?(val = value.to_sym)
+        in Symbol | String if values.include?(val = value.to_sym)
           [true, val, 1]
         else
           case [value, values.first]
