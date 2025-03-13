@@ -45,7 +45,7 @@ project = braintrust.projects.create(name: "foobar")
 puts(project.id)
 ```
 
-## Pagination
+### Pagination
 
 List methods in the Braintrust API are paginated.
 
