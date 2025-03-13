@@ -5,6 +5,26 @@ module Braintrust
   #
   # @abstract
   #
+  # @example
+  # ```ruby
+  # if page.has_next?
+  #   page = page.next_page
+  # end
+  # ```
+  #
+  # @example
+  # ```ruby
+  # page.auto_paging_each do |top_level|
+  #   puts(top_level)
+  # end
+  # ```
+  #
+  # @example
+  # ```ruby
+  # top_levels = page.to_enum.take(2)
+  #
+  # top_levels => Array
+  # ```
   module BasePage
     # @return [Boolean]
     #

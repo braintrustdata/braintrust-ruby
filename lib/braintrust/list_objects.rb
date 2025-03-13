@@ -4,22 +4,22 @@ module Braintrust
   # @example
   # ```ruby
   # if list_objects.has_next?
-  #   page = list_objects.next_page
+  #   list_objects = list_objects.next_page
   # end
   # ```
   #
   # @example
   # ```ruby
-  # list_objects.auto_paging_each do |item|
-  # #   item ...
+  # list_objects.auto_paging_each do |project|
+  #   puts(project)
   # end
   # ```
   #
   # @example
   # ```ruby
-  # items = list_objects.to_enum.take(2)
+  # projects = list_objects.to_enum.take(2)
   #
-  # items => Array
+  # projects => Array
   # ```
   class ListObjects
     include Braintrust::BasePage
