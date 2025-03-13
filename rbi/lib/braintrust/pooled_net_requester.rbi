@@ -15,8 +15,11 @@ module Braintrust
       def calibrate_socket_timeout(conn, deadline)
       end
 
-      sig { params(request: Braintrust::PooledNetRequester::RequestShape).returns(Net::HTTPGenericRequest) }
-      def build_request(request)
+      sig do
+        params(request: Braintrust::PooledNetRequester::RequestShape, blk: T.proc.params(arg0: String).void)
+          .returns(Net::HTTPGenericRequest)
+      end
+      def build_request(request, &blk)
       end
     end
 
@@ -31,8 +34,8 @@ module Braintrust
     def execute(request)
     end
 
-    sig { returns(T.attached_class) }
-    def self.new
+    sig { params(size: Integer).returns(T.attached_class) }
+    def self.new(size: Etc.nprocessors)
     end
   end
 end

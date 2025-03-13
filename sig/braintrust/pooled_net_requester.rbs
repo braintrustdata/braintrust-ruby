@@ -15,7 +15,9 @@ module Braintrust
 
     def self.build_request: (
       Braintrust::PooledNetRequester::request request
-    ) -> top
+    ) {
+      (String arg0) -> void
+    } -> top
 
     private def with_pool: (URI::Generic url) { (top arg0) -> void } -> void
 
@@ -23,6 +25,6 @@ module Braintrust
       Braintrust::PooledNetRequester::request request
     ) -> [top, Enumerable[String]]
 
-    def initialize: -> void
+    def initialize: (size: Integer) -> void
   end
 end
