@@ -106,6 +106,21 @@ class Braintrust::Test::Resources::ACLsTest < Braintrust::Test::ResourceTest
     end
   end
 
+  def test_batch_update
+    response = @braintrust.acls.batch_update
+
+    assert_pattern do
+      response => Braintrust::Models::ACLBatchUpdateResponse
+    end
+
+    assert_pattern do
+      response => {
+        added_acls: ^(Braintrust::ArrayOf[Braintrust::Models::ACL]),
+        removed_acls: ^(Braintrust::ArrayOf[Braintrust::Models::ACL])
+      }
+    end
+  end
+
   def test_find_and_delete_required_params
     response = @braintrust.acls.find_and_delete(
       object_id_: "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
