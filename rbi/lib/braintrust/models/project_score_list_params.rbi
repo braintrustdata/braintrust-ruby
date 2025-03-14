@@ -153,6 +153,7 @@ module Braintrust
           MINIMUM = :minimum
           MAXIMUM = :maximum
           ONLINE = :online
+          FREE_FORM = :"free-form"
 
           class << self
             sig { override.returns(T::Array[Symbol]) }
@@ -170,6 +171,7 @@ module Braintrust
           MINIMUM = :minimum
           MAXIMUM = :maximum
           ONLINE = :online
+          FREE_FORM = :"free-form"
 
           class << self
             sig { override.returns(T::Array[Symbol]) }

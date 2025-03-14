@@ -13,14 +13,10 @@ module Braintrust
       #   @return [String, nil]
       optional :description, String, nil?: true
 
-      # @!attribute [r] function_data
+      # @!attribute function_data
       #
-      #   @return [Braintrust::Models::FunctionUpdateParams::FunctionData::Prompt, Braintrust::Models::FunctionUpdateParams::FunctionData::Code, Braintrust::Models::FunctionUpdateParams::FunctionData::Global, Braintrust::Models::FunctionUpdateParams::FunctionData::NullableVariant, nil]
-      optional :function_data, union: -> { Braintrust::Models::FunctionUpdateParams::FunctionData }
-
-      # @!parse
-      #   # @return [Braintrust::Models::FunctionUpdateParams::FunctionData::Prompt, Braintrust::Models::FunctionUpdateParams::FunctionData::Code, Braintrust::Models::FunctionUpdateParams::FunctionData::Global, Braintrust::Models::FunctionUpdateParams::FunctionData::NullableVariant, nil]
-      #   attr_writer :function_data
+      #   @return [Braintrust::Models::FunctionUpdateParams::FunctionData::Prompt, Braintrust::Models::FunctionUpdateParams::FunctionData::Code, Braintrust::Models::FunctionUpdateParams::FunctionData::Global, nil]
+      optional :function_data, union: -> { Braintrust::Models::FunctionUpdateParams::FunctionData }, nil?: true
 
       # @!attribute name
       #   Name of the prompt
@@ -42,7 +38,7 @@ module Braintrust
 
       # @!parse
       #   # @param description [String, nil]
-      #   # @param function_data [Braintrust::Models::FunctionUpdateParams::FunctionData::Prompt, Braintrust::Models::FunctionUpdateParams::FunctionData::Code, Braintrust::Models::FunctionUpdateParams::FunctionData::Global, Braintrust::Models::FunctionUpdateParams::FunctionData::NullableVariant, nil]
+      #   # @param function_data [Braintrust::Models::FunctionUpdateParams::FunctionData::Prompt, Braintrust::Models::FunctionUpdateParams::FunctionData::Code, Braintrust::Models::FunctionUpdateParams::FunctionData::Global, nil]
       #   # @param name [String, nil]
       #   # @param prompt_data [Braintrust::Models::PromptData, nil]
       #   # @param tags [Array<String>, nil]
@@ -60,8 +56,6 @@ module Braintrust
         variant -> { Braintrust::Models::FunctionUpdateParams::FunctionData::Code }
 
         variant -> { Braintrust::Models::FunctionUpdateParams::FunctionData::Global }
-
-        variant -> { Braintrust::Models::FunctionUpdateParams::FunctionData::NullableVariant }
 
         class Prompt < Braintrust::BaseModel
           # @!attribute type
@@ -236,13 +230,6 @@ module Braintrust
 
             finalize!
           end
-        end
-
-        class NullableVariant < Braintrust::BaseModel
-          # @!parse
-          #   def initialize(**) = super
-
-          # def initialize: (Hash | Braintrust::BaseModel) -> void
         end
       end
     end

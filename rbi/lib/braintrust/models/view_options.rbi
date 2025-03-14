@@ -29,15 +29,42 @@ module Braintrust
       def column_visibility=(_)
       end
 
+      sig { returns(T.nilable(String)) }
+      def grouping
+      end
+
+      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+      def grouping=(_)
+      end
+
+      sig { returns(T.nilable(String)) }
+      def layout
+      end
+
+      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+      def layout=(_)
+      end
+
+      sig { returns(T.nilable(String)) }
+      def row_height
+      end
+
+      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+      def row_height=(_)
+      end
+
       sig do
         params(
           column_order: T.nilable(T::Array[String]),
           column_sizing: T.nilable(T::Hash[Symbol, Float]),
-          column_visibility: T.nilable(T::Hash[Symbol, T::Boolean])
+          column_visibility: T.nilable(T::Hash[Symbol, T::Boolean]),
+          grouping: T.nilable(String),
+          layout: T.nilable(String),
+          row_height: T.nilable(String)
         )
           .returns(T.attached_class)
       end
-      def self.new(column_order: nil, column_sizing: nil, column_visibility: nil)
+      def self.new(column_order: nil, column_sizing: nil, column_visibility: nil, grouping: nil, layout: nil, row_height: nil)
       end
 
       sig do
@@ -46,7 +73,10 @@ module Braintrust
             {
               column_order: T.nilable(T::Array[String]),
               column_sizing: T.nilable(T::Hash[Symbol, Float]),
-              column_visibility: T.nilable(T::Hash[Symbol, T::Boolean])
+              column_visibility: T.nilable(T::Hash[Symbol, T::Boolean]),
+              grouping: T.nilable(String),
+              layout: T.nilable(String),
+              row_height: T.nilable(String)
             }
           )
       end

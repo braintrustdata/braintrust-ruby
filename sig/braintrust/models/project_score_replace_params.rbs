@@ -21,11 +21,7 @@ module Braintrust
 
       attr_accessor score_type: Braintrust::Models::ProjectScoreReplaceParams::score_type
 
-      attr_reader categories: Braintrust::Models::ProjectScoreReplaceParams::categories?
-
-      def categories=: (
-        Braintrust::Models::ProjectScoreReplaceParams::categories?
-      ) -> Braintrust::Models::ProjectScoreReplaceParams::categories?
+      attr_accessor categories: Braintrust::Models::ProjectScoreReplaceParams::categories?
 
       attr_accessor config: Braintrust::Models::ProjectScoreConfig?
 
@@ -49,7 +45,13 @@ module Braintrust
       def to_hash: -> Braintrust::Models::project_score_replace_params
 
       type score_type =
-        :slider | :categorical | :weighted | :minimum | :maximum | :online
+        :slider
+        | :categorical
+        | :weighted
+        | :minimum
+        | :maximum
+        | :online
+        | :"free-form"
 
       class ScoreType < Braintrust::Enum
         SLIDER: :slider
@@ -58,15 +60,15 @@ module Braintrust
         MINIMUM: :minimum
         MAXIMUM: :maximum
         ONLINE: :online
+        FREE_FORM: :"free-form"
 
         def self.values: -> ::Array[Braintrust::Models::ProjectScoreReplaceParams::score_type]
       end
 
       type categories =
-        (::Array[Braintrust::Models::ProjectScoreCategory]
+        ::Array[Braintrust::Models::ProjectScoreCategory]
         | ::Hash[Symbol, Float]
         | ::Array[String]
-        | Braintrust::Models::ProjectScoreReplaceParams::Categories::NullableVariant)?
 
       class Categories < Braintrust::Union
         type project_score_category_array =
@@ -82,20 +84,7 @@ module Braintrust
 
         StringArray: string_array
 
-        type nullable_variant = {  }
-
-        class NullableVariant < Braintrust::BaseModel
-          def initialize:
-            -> void
-            | (
-              ?Braintrust::Models::ProjectScoreReplaceParams::Categories::nullable_variant
-              | Braintrust::BaseModel data
-            ) -> void
-
-          def to_hash: -> Braintrust::Models::ProjectScoreReplaceParams::Categories::nullable_variant
-        end
-
-        private def self.variants: -> [[nil, ::Array[Braintrust::Models::ProjectScoreCategory]], [nil, ::Hash[Symbol, Float]], [nil, ::Array[String]], [nil, Braintrust::Models::ProjectScoreReplaceParams::Categories::NullableVariant]]
+        private def self.variants: -> [[nil, ::Array[Braintrust::Models::ProjectScoreCategory]], [nil, ::Hash[Symbol, Float]], [nil, ::Array[String]]]
       end
     end
   end

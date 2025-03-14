@@ -25,15 +25,11 @@ module Braintrust
       #   @return [Symbol, Braintrust::Models::ProjectScoreReplaceParams::ScoreType]
       required :score_type, enum: -> { Braintrust::Models::ProjectScoreReplaceParams::ScoreType }
 
-      # @!attribute [r] categories
+      # @!attribute categories
       #   For categorical-type project scores, the list of all categories
       #
-      #   @return [Array<Braintrust::Models::ProjectScoreCategory>, Hash{Symbol=>Float}, Array<String>, Braintrust::Models::ProjectScoreReplaceParams::Categories::NullableVariant, nil]
-      optional :categories, union: -> { Braintrust::Models::ProjectScoreReplaceParams::Categories }
-
-      # @!parse
-      #   # @return [Array<Braintrust::Models::ProjectScoreCategory>, Hash{Symbol=>Float}, Array<String>, Braintrust::Models::ProjectScoreReplaceParams::Categories::NullableVariant, nil]
-      #   attr_writer :categories
+      #   @return [Array<Braintrust::Models::ProjectScoreCategory>, Hash{Symbol=>Float}, Array<String>, nil]
+      optional :categories, union: -> { Braintrust::Models::ProjectScoreReplaceParams::Categories }, nil?: true
 
       # @!attribute config
       #
@@ -50,7 +46,7 @@ module Braintrust
       #   # @param name [String]
       #   # @param project_id [String]
       #   # @param score_type [Symbol, Braintrust::Models::ProjectScoreReplaceParams::ScoreType]
-      #   # @param categories [Array<Braintrust::Models::ProjectScoreCategory>, Hash{Symbol=>Float}, Array<String>, Braintrust::Models::ProjectScoreReplaceParams::Categories::NullableVariant, nil]
+      #   # @param categories [Array<Braintrust::Models::ProjectScoreCategory>, Hash{Symbol=>Float}, Array<String>, nil]
       #   # @param config [Braintrust::Models::ProjectScoreConfig, nil]
       #   # @param description [String, nil]
       #   # @param request_options [Braintrust::RequestOptions, Hash{Symbol=>Object}]
@@ -69,6 +65,7 @@ module Braintrust
         MINIMUM = :minimum
         MAXIMUM = :maximum
         ONLINE = :online
+        FREE_FORM = :"free-form"
 
         finalize!
       end
@@ -91,15 +88,6 @@ module Braintrust
 
         # For minimum-type project scores, the list of included scores
         variant Braintrust::Models::ProjectScoreReplaceParams::Categories::StringArray
-
-        variant -> { Braintrust::Models::ProjectScoreReplaceParams::Categories::NullableVariant }
-
-        class NullableVariant < Braintrust::BaseModel
-          # @!parse
-          #   def initialize(**) = super
-
-          # def initialize: (Hash | Braintrust::BaseModel) -> void
-        end
       end
     end
   end

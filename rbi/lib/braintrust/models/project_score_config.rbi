@@ -3,11 +3,11 @@
 module Braintrust
   module Models
     class ProjectScoreConfig < Braintrust::BaseModel
-      sig { returns(T.nilable(Symbol)) }
+      sig { returns(T.nilable(String)) }
       def destination
       end
 
-      sig { params(_: T.nilable(Symbol)).returns(T.nilable(Symbol)) }
+      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
       def destination=(_)
       end
 
@@ -32,7 +32,7 @@ module Braintrust
 
       sig do
         params(
-          destination: T.nilable(Symbol),
+          destination: T.nilable(String),
           multi_select: T.nilable(T::Boolean),
           online: T.nilable(Braintrust::Models::OnlineScoreConfig)
         )
@@ -45,25 +45,13 @@ module Braintrust
         override
           .returns(
             {
-              destination: T.nilable(Symbol),
+              destination: T.nilable(String),
               multi_select: T.nilable(T::Boolean),
               online: T.nilable(Braintrust::Models::OnlineScoreConfig)
             }
           )
       end
       def to_hash
-      end
-
-      class Destination < Braintrust::Enum
-        abstract!
-
-        EXPECTED = T.let(:expected, T.nilable(Symbol))
-
-        class << self
-          sig { override.returns(T::Array[Symbol]) }
-          def values
-          end
-        end
       end
     end
   end

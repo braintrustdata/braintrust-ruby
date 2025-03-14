@@ -30,6 +30,7 @@ module Braintrust
       sig do
         params(
           span_iframe_id: String,
+          description: T.nilable(String),
           name: T.nilable(String),
           post_message: T.nilable(T::Boolean),
           url: T.nilable(String),
@@ -37,7 +38,14 @@ module Braintrust
         )
           .returns(Braintrust::Models::SpanIFrame)
       end
-      def update(span_iframe_id, name: nil, post_message: nil, url: nil, request_options: {})
+      def update(
+        span_iframe_id,
+        description: nil,
+        name: nil,
+        post_message: nil,
+        url: nil,
+        request_options: {}
+      )
       end
 
       sig do

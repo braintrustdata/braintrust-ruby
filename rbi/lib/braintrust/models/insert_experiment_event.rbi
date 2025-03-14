@@ -62,14 +62,6 @@ module Braintrust
       def created=(_)
       end
 
-      sig { returns(T.nilable(String)) }
-      def dataset_record_id
-      end
-
-      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-      def dataset_record_id=(_)
-      end
-
       sig { returns(T.nilable(T.anything)) }
       def error
       end
@@ -94,13 +86,13 @@ module Braintrust
       def input=(_)
       end
 
-      sig { returns(T.nilable(T::Hash[Symbol, T.nilable(T.anything)])) }
+      sig { returns(T.nilable(Braintrust::Models::InsertExperimentEvent::Metadata)) }
       def metadata
       end
 
       sig do
-        params(_: T.nilable(T::Hash[Symbol, T.nilable(T.anything)]))
-          .returns(T.nilable(T::Hash[Symbol, T.nilable(T.anything)]))
+        params(_: T.nilable(Braintrust::Models::InsertExperimentEvent::Metadata))
+          .returns(T.nilable(Braintrust::Models::InsertExperimentEvent::Metadata))
       end
       def metadata=(_)
       end
@@ -114,6 +106,17 @@ module Braintrust
           .returns(T.nilable(Braintrust::Models::InsertExperimentEvent::Metrics))
       end
       def metrics=(_)
+      end
+
+      sig { returns(T.nilable(Braintrust::Models::ObjectReference)) }
+      def origin
+      end
+
+      sig do
+        params(_: T.nilable(Braintrust::Models::ObjectReference))
+          .returns(T.nilable(Braintrust::Models::ObjectReference))
+      end
+      def origin=(_)
       end
 
       sig { returns(T.nilable(T.anything)) }
@@ -187,12 +190,12 @@ module Braintrust
           _parent_id: T.nilable(String),
           context: T.nilable(Braintrust::Models::InsertExperimentEvent::Context),
           created: T.nilable(Time),
-          dataset_record_id: T.nilable(String),
           error: T.anything,
           expected: T.anything,
           input: T.anything,
-          metadata: T.nilable(T::Hash[Symbol, T.nilable(T.anything)]),
+          metadata: T.nilable(Braintrust::Models::InsertExperimentEvent::Metadata),
           metrics: T.nilable(Braintrust::Models::InsertExperimentEvent::Metrics),
+          origin: T.nilable(Braintrust::Models::ObjectReference),
           output: T.anything,
           root_span_id: T.nilable(String),
           scores: T.nilable(T::Hash[Symbol, T.nilable(Float)]),
@@ -211,12 +214,12 @@ module Braintrust
         _parent_id: nil,
         context: nil,
         created: nil,
-        dataset_record_id: nil,
         error: nil,
         expected: nil,
         input: nil,
         metadata: nil,
         metrics: nil,
+        origin: nil,
         output: nil,
         root_span_id: nil,
         scores: nil,
@@ -238,12 +241,12 @@ module Braintrust
               _parent_id: T.nilable(String),
               context: T.nilable(Braintrust::Models::InsertExperimentEvent::Context),
               created: T.nilable(Time),
-              dataset_record_id: T.nilable(String),
               error: T.anything,
               expected: T.anything,
               input: T.anything,
-              metadata: T.nilable(T::Hash[Symbol, T.nilable(T.anything)]),
+              metadata: T.nilable(Braintrust::Models::InsertExperimentEvent::Metadata),
               metrics: T.nilable(Braintrust::Models::InsertExperimentEvent::Metrics),
+              origin: T.nilable(Braintrust::Models::ObjectReference),
               output: T.anything,
               root_span_id: T.nilable(String),
               scores: T.nilable(T::Hash[Symbol, T.nilable(Float)]),
@@ -303,6 +306,24 @@ module Braintrust
               }
             )
         end
+        def to_hash
+        end
+      end
+
+      class Metadata < Braintrust::BaseModel
+        sig { returns(T.nilable(String)) }
+        def model
+        end
+
+        sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+        def model=(_)
+        end
+
+        sig { params(model: T.nilable(String)).returns(T.attached_class) }
+        def self.new(model: nil)
+        end
+
+        sig { override.returns({model: T.nilable(String)}) }
         def to_hash
         end
       end

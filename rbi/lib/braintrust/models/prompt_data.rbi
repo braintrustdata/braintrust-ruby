@@ -39,11 +39,7 @@ module Braintrust
       sig do
         returns(
           T.nilable(
-            T.any(
-              Braintrust::Models::PromptData::Prompt::Completion,
-              Braintrust::Models::PromptData::Prompt::Chat,
-              Braintrust::Models::PromptData::Prompt::NullableVariant
-            )
+            T.any(Braintrust::Models::PromptData::Prompt::Completion, Braintrust::Models::PromptData::Prompt::Chat)
           )
         )
       end
@@ -53,20 +49,12 @@ module Braintrust
       sig do
         params(
           _: T.nilable(
-            T.any(
-              Braintrust::Models::PromptData::Prompt::Completion,
-              Braintrust::Models::PromptData::Prompt::Chat,
-              Braintrust::Models::PromptData::Prompt::NullableVariant
-            )
+            T.any(Braintrust::Models::PromptData::Prompt::Completion, Braintrust::Models::PromptData::Prompt::Chat)
           )
         )
           .returns(
             T.nilable(
-              T.any(
-                Braintrust::Models::PromptData::Prompt::Completion,
-                Braintrust::Models::PromptData::Prompt::Chat,
-                Braintrust::Models::PromptData::Prompt::NullableVariant
-              )
+              T.any(Braintrust::Models::PromptData::Prompt::Completion, Braintrust::Models::PromptData::Prompt::Chat)
             )
           )
       end
@@ -119,11 +107,7 @@ module Braintrust
           origin: T.nilable(Braintrust::Models::PromptData::Origin),
           parser: T.nilable(Braintrust::Models::PromptData::Parser),
           prompt: T.nilable(
-            T.any(
-              Braintrust::Models::PromptData::Prompt::Completion,
-              Braintrust::Models::PromptData::Prompt::Chat,
-              Braintrust::Models::PromptData::Prompt::NullableVariant
-            )
+            T.any(Braintrust::Models::PromptData::Prompt::Completion, Braintrust::Models::PromptData::Prompt::Chat)
           ),
           tool_functions: T.nilable(
             T::Array[
@@ -147,11 +131,7 @@ module Braintrust
               origin: T.nilable(Braintrust::Models::PromptData::Origin),
               parser: T.nilable(Braintrust::Models::PromptData::Parser),
               prompt: T.nilable(
-                T.any(
-                  Braintrust::Models::PromptData::Prompt::Completion,
-                  Braintrust::Models::PromptData::Prompt::Chat,
-                  Braintrust::Models::PromptData::Prompt::NullableVariant
-                )
+                T.any(Braintrust::Models::PromptData::Prompt::Completion, Braintrust::Models::PromptData::Prompt::Chat)
               ),
               tool_functions: T.nilable(
                 T::Array[
@@ -884,21 +864,11 @@ module Braintrust
           end
         end
 
-        class NullableVariant < Braintrust::BaseModel
-          sig { returns(T.attached_class) }
-          def self.new
-          end
-
-          sig { override.returns({}) }
-          def to_hash
-          end
-        end
-
         class << self
           sig do
             override
               .returns(
-                [[NilClass, Braintrust::Models::PromptData::Prompt::Completion], [NilClass, Braintrust::Models::PromptData::Prompt::Chat], [NilClass, Braintrust::Models::PromptData::Prompt::NullableVariant]]
+                [[NilClass, Braintrust::Models::PromptData::Prompt::Completion], [NilClass, Braintrust::Models::PromptData::Prompt::Chat]]
               )
           end
           private def variants

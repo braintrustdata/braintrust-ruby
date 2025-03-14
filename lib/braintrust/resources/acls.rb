@@ -122,49 +122,6 @@ module Braintrust
         )
       end
 
-      # Batch update acls. This operation is idempotent, so adding acls which already
-      #   exist will have no effect, and removing acls which do not exist will have no
-      #   effect.
-      #
-      # @param params [Braintrust::Models::ACLBatchUpdateParams, Hash{Symbol=>Object}] .
-      #
-      #   @option params [Array<Braintrust::Models::ACLBatchUpdateParams::AddACL>, nil] :add_acls An ACL grants a certain permission or role to a certain user or group on an
-      #     object.
-      #
-      #     ACLs are inherited across the object hierarchy. So for example, if a user has
-      #     read permissions on a project, they will also have read permissions on any
-      #     experiment, dataset, etc. created within that project.
-      #
-      #     To restrict a grant to a particular sub-object, you may specify
-      #     `restrict_object_type` in the ACL, as part of a direct permission grant or as
-      #     part of a role.
-      #
-      #   @option params [Array<Braintrust::Models::ACLBatchUpdateParams::RemoveACL>, nil] :remove_acls An ACL grants a certain permission or role to a certain user or group on an
-      #     object.
-      #
-      #     ACLs are inherited across the object hierarchy. So for example, if a user has
-      #     read permissions on a project, they will also have read permissions on any
-      #     experiment, dataset, etc. created within that project.
-      #
-      #     To restrict a grant to a particular sub-object, you may specify
-      #     `restrict_object_type` in the ACL, as part of a direct permission grant or as
-      #     part of a role.
-      #
-      #   @option params [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
-      #
-      # @return [Braintrust::Models::ACLBatchUpdateResponse]
-      #
-      def batch_update(params = {})
-        parsed, options = Braintrust::Models::ACLBatchUpdateParams.dump_request(params)
-        @client.request(
-          method: :post,
-          path: "v1/acl/batch-update",
-          body: parsed,
-          model: Braintrust::Models::ACLBatchUpdateResponse,
-          options: options
-        )
-      end
-
       # Delete a single acl
       #
       # @param params [Braintrust::Models::ACLFindAndDeleteParams, Hash{Symbol=>Object}] .

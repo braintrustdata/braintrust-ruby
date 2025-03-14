@@ -18,14 +18,10 @@ module Braintrust
       #   @return [Braintrust::Models::PromptData::Parser, nil]
       optional :parser, -> { Braintrust::Models::PromptData::Parser }, nil?: true
 
-      # @!attribute [r] prompt
+      # @!attribute prompt
       #
-      #   @return [Braintrust::Models::PromptData::Prompt::Completion, Braintrust::Models::PromptData::Prompt::Chat, Braintrust::Models::PromptData::Prompt::NullableVariant, nil]
-      optional :prompt, union: -> { Braintrust::Models::PromptData::Prompt }
-
-      # @!parse
-      #   # @return [Braintrust::Models::PromptData::Prompt::Completion, Braintrust::Models::PromptData::Prompt::Chat, Braintrust::Models::PromptData::Prompt::NullableVariant, nil]
-      #   attr_writer :prompt
+      #   @return [Braintrust::Models::PromptData::Prompt::Completion, Braintrust::Models::PromptData::Prompt::Chat, nil]
+      optional :prompt, union: -> { Braintrust::Models::PromptData::Prompt }, nil?: true
 
       # @!attribute tool_functions
       #
@@ -40,7 +36,7 @@ module Braintrust
       #   # @param options [Braintrust::Models::PromptOptions, nil]
       #   # @param origin [Braintrust::Models::PromptData::Origin, nil]
       #   # @param parser [Braintrust::Models::PromptData::Parser, nil]
-      #   # @param prompt [Braintrust::Models::PromptData::Prompt::Completion, Braintrust::Models::PromptData::Prompt::Chat, Braintrust::Models::PromptData::Prompt::NullableVariant, nil]
+      #   # @param prompt [Braintrust::Models::PromptData::Prompt::Completion, Braintrust::Models::PromptData::Prompt::Chat, nil]
       #   # @param tool_functions [Array<Braintrust::Models::PromptData::ToolFunction::Function, Braintrust::Models::PromptData::ToolFunction::Global>, nil]
       #   #
       #   def initialize(options: nil, origin: nil, parser: nil, prompt: nil, tool_functions: nil, **) = super
@@ -125,8 +121,6 @@ module Braintrust
         variant -> { Braintrust::Models::PromptData::Prompt::Completion }
 
         variant -> { Braintrust::Models::PromptData::Prompt::Chat }
-
-        variant -> { Braintrust::Models::PromptData::Prompt::NullableVariant }
 
         class Completion < Braintrust::BaseModel
           # @!attribute content
@@ -489,13 +483,6 @@ module Braintrust
 
             finalize!
           end
-        end
-
-        class NullableVariant < Braintrust::BaseModel
-          # @!parse
-          #   def initialize(**) = super
-
-          # def initialize: (Hash | Braintrust::BaseModel) -> void
         end
       end
 

@@ -7,6 +7,16 @@ module Braintrust
       #   extend Braintrust::RequestParameters::Converter
       include Braintrust::RequestParameters
 
+      # @!attribute [r] expected
+      #   The expected output of the function
+      #
+      #   @return [Object, nil]
+      optional :expected, Braintrust::Unknown
+
+      # @!parse
+      #   # @return [Object]
+      #   attr_writer :expected
+
       # @!attribute [r] input
       #   Argument to the function, which can be any JSON serializable value
       #
@@ -26,6 +36,12 @@ module Braintrust
       # @!parse
       #   # @return [Array<Braintrust::Models::FunctionInvokeParams::Message::System, Braintrust::Models::FunctionInvokeParams::Message::User, Braintrust::Models::FunctionInvokeParams::Message::Assistant, Braintrust::Models::FunctionInvokeParams::Message::Tool, Braintrust::Models::FunctionInvokeParams::Message::Function, Braintrust::Models::FunctionInvokeParams::Message::Fallback>]
       #   attr_writer :messages
+
+      # @!attribute metadata
+      #   Any relevant metadata
+      #
+      #   @return [Hash{Symbol=>Object, nil}, nil]
+      optional :metadata, Braintrust::HashOf[Braintrust::Unknown, nil?: true], nil?: true
 
       # @!attribute mode
       #   The mode format of the returned value (defaults to 'auto')
@@ -61,15 +77,30 @@ module Braintrust
       #   attr_writer :version
 
       # @!parse
+      #   # @param expected [Object]
       #   # @param input [Object]
       #   # @param messages [Array<Braintrust::Models::FunctionInvokeParams::Message::System, Braintrust::Models::FunctionInvokeParams::Message::User, Braintrust::Models::FunctionInvokeParams::Message::Assistant, Braintrust::Models::FunctionInvokeParams::Message::Tool, Braintrust::Models::FunctionInvokeParams::Message::Function, Braintrust::Models::FunctionInvokeParams::Message::Fallback>]
+      #   # @param metadata [Hash{Symbol=>Object, nil}, nil]
       #   # @param mode [Symbol, Braintrust::Models::FunctionInvokeParams::Mode, nil]
       #   # @param parent [Braintrust::Models::FunctionInvokeParams::Parent::SpanParentStruct, String]
       #   # @param stream [Boolean, nil]
       #   # @param version [String]
       #   # @param request_options [Braintrust::RequestOptions, Hash{Symbol=>Object}]
       #   #
-      #   def initialize(input: nil, messages: nil, mode: nil, parent: nil, stream: nil, version: nil, request_options: {}, **) = super
+      #   def initialize(
+      #     expected: nil,
+      #     input: nil,
+      #     messages: nil,
+      #     metadata: nil,
+      #     mode: nil,
+      #     parent: nil,
+      #     stream: nil,
+      #     version: nil,
+      #     request_options: {},
+      #     **
+      #   )
+      #     super
+      #   end
 
       # def initialize: (Hash | Braintrust::BaseModel) -> void
 
@@ -433,6 +464,7 @@ module Braintrust
           class ObjectType < Braintrust::Enum
             PROJECT_LOGS = :project_logs
             EXPERIMENT = :experiment
+            PLAYGROUND_LOGS = :playground_logs
 
             finalize!
           end
