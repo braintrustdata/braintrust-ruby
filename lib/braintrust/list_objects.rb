@@ -27,7 +27,6 @@ module Braintrust
     # @return [Array<Object>]
     attr_accessor :objects
 
-    # rubocop:disable Lint/UnusedMethodArgument
     # @private
     #
     # @param client [Braintrust::BaseClient]
@@ -36,8 +35,7 @@ module Braintrust
     # @param page_data [Hash{Symbol=>Object}]
     #
     def initialize(client:, req:, headers:, page_data:)
-      @client = client
-      @req = req
+      super
       model = req.fetch(:model)
 
       case page_data
@@ -46,10 +44,8 @@ module Braintrust
       else
       end
     end
-    # rubocop:enable Lint/UnusedMethodArgument
 
     # @return [Boolean]
-    #
     def next_page?
       !objects.to_a.empty?
     end
