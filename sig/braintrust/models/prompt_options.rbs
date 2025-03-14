@@ -278,9 +278,9 @@ module Braintrust
                 type schema = ::Hash[Symbol, top?] | String
 
                 class Schema < Braintrust::Union
-                  type union_member0_map = ::Hash[Symbol, top?]
+                  type object_map = ::Hash[Symbol, top?]
 
-                  UnionMember0Map: union_member0_map
+                  ObjectMap: object_map
 
                   private def self.variants: -> [[nil, ::Hash[Symbol, top?]], [nil, String]]
                 end
