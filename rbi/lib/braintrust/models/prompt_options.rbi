@@ -533,7 +533,7 @@ module Braintrust
                 class Schema < Braintrust::Union
                   abstract!
 
-                  UnionMember0Map = T.type_alias { T::Hash[Symbol, T.nilable(T.anything)] }
+                  ObjectMap = T.type_alias { T::Hash[Symbol, T.nilable(T.anything)] }
 
                   class << self
                     sig do
