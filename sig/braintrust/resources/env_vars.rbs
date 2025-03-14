@@ -44,7 +44,7 @@ module Braintrust
           ids: Braintrust::Models::EnvVarListParams::ids,
           limit: Integer?,
           object_id_: String,
-          object_type: Braintrust::Models::EnvVarListParams::object_type,
+          object_type: Braintrust::Models::env_var_object_type,
           request_options: Braintrust::request_opts
         ) -> Braintrust::Models::EnvVarListResponse
 

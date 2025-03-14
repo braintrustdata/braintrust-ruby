@@ -18,11 +18,11 @@ class Braintrust::Test::Resources::ACLsTest < Braintrust::Test::ResourceTest
         id: String,
         _object_org_id: String,
         object_id_: String,
-        object_type: Braintrust::Models::ACL::ObjectType,
+        object_type: Braintrust::Models::ACLObjectType,
         created: Time | nil,
         group_id: String | nil,
-        permission: Braintrust::Models::ACL::Permission | nil,
-        restrict_object_type: Braintrust::Models::ACL::RestrictObjectType | nil,
+        permission: Braintrust::Models::Permission | nil,
+        restrict_object_type: Braintrust::Models::ACLObjectType | nil,
         role_id: String | nil,
         user_id: String | nil
       }
@@ -41,11 +41,11 @@ class Braintrust::Test::Resources::ACLsTest < Braintrust::Test::ResourceTest
         id: String,
         _object_org_id: String,
         object_id_: String,
-        object_type: Braintrust::Models::ACL::ObjectType,
+        object_type: Braintrust::Models::ACLObjectType,
         created: Time | nil,
         group_id: String | nil,
-        permission: Braintrust::Models::ACL::Permission | nil,
-        restrict_object_type: Braintrust::Models::ACL::RestrictObjectType | nil,
+        permission: Braintrust::Models::Permission | nil,
+        restrict_object_type: Braintrust::Models::ACLObjectType | nil,
         role_id: String | nil,
         user_id: String | nil
       }
@@ -72,11 +72,11 @@ class Braintrust::Test::Resources::ACLsTest < Braintrust::Test::ResourceTest
         id: String,
         _object_org_id: String,
         object_id_: String,
-        object_type: Braintrust::Models::ACL::ObjectType,
+        object_type: Braintrust::Models::ACLObjectType,
         created: Time | nil,
         group_id: String | nil,
-        permission: Braintrust::Models::ACL::Permission | nil,
-        restrict_object_type: Braintrust::Models::ACL::RestrictObjectType | nil,
+        permission: Braintrust::Models::Permission | nil,
+        restrict_object_type: Braintrust::Models::ACLObjectType | nil,
         role_id: String | nil,
         user_id: String | nil
       }
@@ -95,11 +95,11 @@ class Braintrust::Test::Resources::ACLsTest < Braintrust::Test::ResourceTest
         id: String,
         _object_org_id: String,
         object_id_: String,
-        object_type: Braintrust::Models::ACL::ObjectType,
+        object_type: Braintrust::Models::ACLObjectType,
         created: Time | nil,
         group_id: String | nil,
-        permission: Braintrust::Models::ACL::Permission | nil,
-        restrict_object_type: Braintrust::Models::ACL::RestrictObjectType | nil,
+        permission: Braintrust::Models::Permission | nil,
+        restrict_object_type: Braintrust::Models::ACLObjectType | nil,
         role_id: String | nil,
         user_id: String | nil
       }
@@ -136,11 +136,11 @@ class Braintrust::Test::Resources::ACLsTest < Braintrust::Test::ResourceTest
         id: String,
         _object_org_id: String,
         object_id_: String,
-        object_type: Braintrust::Models::ACL::ObjectType,
+        object_type: Braintrust::Models::ACLObjectType,
         created: Time | nil,
         group_id: String | nil,
-        permission: Braintrust::Models::ACL::Permission | nil,
-        restrict_object_type: Braintrust::Models::ACL::RestrictObjectType | nil,
+        permission: Braintrust::Models::Permission | nil,
+        restrict_object_type: Braintrust::Models::ACLObjectType | nil,
         role_id: String | nil,
         user_id: String | nil
       }

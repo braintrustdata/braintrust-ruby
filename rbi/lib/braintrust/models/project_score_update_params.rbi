@@ -120,24 +120,6 @@ module Braintrust
           end
         end
       end
-
-      class ScoreType < Braintrust::Enum
-        abstract!
-
-        SLIDER = T.let(:slider, T.nilable(Symbol))
-        CATEGORICAL = T.let(:categorical, T.nilable(Symbol))
-        WEIGHTED = T.let(:weighted, T.nilable(Symbol))
-        MINIMUM = T.let(:minimum, T.nilable(Symbol))
-        MAXIMUM = T.let(:maximum, T.nilable(Symbol))
-        ONLINE = T.let(:online, T.nilable(Symbol))
-        FREE_FORM = T.let(:"free-form", T.nilable(Symbol))
-
-        class << self
-          sig { override.returns(T::Array[Symbol]) }
-          def values
-          end
-        end
-      end
     end
   end
 end

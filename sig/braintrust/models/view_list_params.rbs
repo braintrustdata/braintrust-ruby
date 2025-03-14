@@ -3,13 +3,13 @@ module Braintrust
     type view_list_params =
       {
         object_id_: String,
-        object_type: Braintrust::Models::ViewListParams::object_type,
+        object_type: Braintrust::Models::acl_object_type,
         ending_before: String,
         ids: Braintrust::Models::ViewListParams::ids,
         limit: Integer?,
         starting_after: String,
         view_name: String,
-        view_type: Braintrust::Models::ViewListParams::view_type?
+        view_type: Braintrust::Models::view_type?
       }
       & Braintrust::request_parameters
 
@@ -19,7 +19,7 @@ module Braintrust
 
       attr_accessor object_id_: String
 
-      attr_accessor object_type: Braintrust::Models::ViewListParams::object_type
+      attr_accessor object_type: Braintrust::Models::acl_object_type
 
       attr_reader ending_before: String?
 
@@ -41,18 +41,18 @@ module Braintrust
 
       def view_name=: (String) -> String
 
-      attr_accessor view_type: Braintrust::Models::ViewListParams::view_type?
+      attr_accessor view_type: Braintrust::Models::view_type?
 
       def initialize:
         (
           object_id_: String,
-          object_type: Braintrust::Models::ViewListParams::object_type,
+          object_type: Braintrust::Models::acl_object_type,
           ending_before: String,
           ids: Braintrust::Models::ViewListParams::ids,
           limit: Integer?,
           starting_after: String,
           view_name: String,
-          view_type: Braintrust::Models::ViewListParams::view_type?,
+          view_type: Braintrust::Models::view_type?,
           request_options: Braintrust::request_opts
         ) -> void
         | (
@@ -60,35 +60,6 @@ module Braintrust
         ) -> void
 
       def to_hash: -> Braintrust::Models::view_list_params
-
-      type object_type =
-        :organization
-        | :project
-        | :experiment
-        | :dataset
-        | :prompt
-        | :prompt_session
-        | :group
-        | :role
-        | :org_member
-        | :project_log
-        | :org_project
-
-      class ObjectType < Braintrust::Enum
-        ORGANIZATION: :organization
-        PROJECT: :project
-        EXPERIMENT: :experiment
-        DATASET: :dataset
-        PROMPT: :prompt
-        PROMPT_SESSION: :prompt_session
-        GROUP: :group
-        ROLE: :role
-        ORG_MEMBER: :org_member
-        PROJECT_LOG: :project_log
-        ORG_PROJECT: :org_project
-
-        def self.values: -> ::Array[Braintrust::Models::ViewListParams::object_type]
-      end
 
       type ids = String | ::Array[String]
 
@@ -98,35 +69,6 @@ module Braintrust
         StringArray: string_array
 
         private def self.variants: -> [[nil, String], [nil, ::Array[String]]]
-      end
-
-      type view_type =
-        :projects
-        | :experiments
-        | :experiment
-        | :playgrounds
-        | :playground
-        | :datasets
-        | :dataset
-        | :prompts
-        | :tools
-        | :scorers
-        | :logs
-
-      class ViewType < Braintrust::Enum
-        PROJECTS: :projects
-        EXPERIMENTS: :experiments
-        EXPERIMENT: :experiment
-        PLAYGROUNDS: :playgrounds
-        PLAYGROUND: :playground
-        DATASETS: :datasets
-        DATASET: :dataset
-        PROMPTS: :prompts
-        TOOLS: :tools
-        SCORERS: :scorers
-        LOGS: :logs
-
-        def self.values: -> ::Array[Braintrust::Models::ViewListParams::view_type]
       end
     end
   end

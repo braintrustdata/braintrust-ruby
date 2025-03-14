@@ -5,7 +5,7 @@ module Braintrust
         id: String,
         name: String,
         project_id: String,
-        score_type: Braintrust::Models::ProjectScore::score_type,
+        score_type: Braintrust::Models::project_score_type,
         user_id: String,
         categories: Braintrust::Models::ProjectScore::categories?,
         config: Braintrust::Models::ProjectScoreConfig?,
@@ -21,7 +21,7 @@ module Braintrust
 
       attr_accessor project_id: String
 
-      attr_accessor score_type: Braintrust::Models::ProjectScore::score_type
+      attr_accessor score_type: Braintrust::Models::project_score_type
 
       attr_accessor user_id: String
 
@@ -40,7 +40,7 @@ module Braintrust
           id: String,
           name: String,
           project_id: String,
-          score_type: Braintrust::Models::ProjectScore::score_type,
+          score_type: Braintrust::Models::project_score_type,
           user_id: String,
           categories: Braintrust::Models::ProjectScore::categories?,
           config: Braintrust::Models::ProjectScoreConfig?,
@@ -53,27 +53,6 @@ module Braintrust
         ) -> void
 
       def to_hash: -> Braintrust::Models::project_score
-
-      type score_type =
-        :slider
-        | :categorical
-        | :weighted
-        | :minimum
-        | :maximum
-        | :online
-        | :"free-form"
-
-      class ScoreType < Braintrust::Enum
-        SLIDER: :slider
-        CATEGORICAL: :categorical
-        WEIGHTED: :weighted
-        MINIMUM: :minimum
-        MAXIMUM: :maximum
-        ONLINE: :online
-        FREE_FORM: :"free-form"
-
-        def self.values: -> ::Array[Braintrust::Models::ProjectScore::score_type]
-      end
 
       type categories =
         ::Array[Braintrust::Models::ProjectScoreCategory]

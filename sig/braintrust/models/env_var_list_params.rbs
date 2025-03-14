@@ -6,7 +6,7 @@ module Braintrust
         ids: Braintrust::Models::EnvVarListParams::ids,
         limit: Integer?,
         object_id_: String,
-        object_type: Braintrust::Models::EnvVarListParams::object_type
+        object_type: Braintrust::Models::env_var_object_type
       }
       & Braintrust::request_parameters
 
@@ -30,11 +30,11 @@ module Braintrust
 
       def object_id_=: (String) -> String
 
-      attr_reader object_type: Braintrust::Models::EnvVarListParams::object_type?
+      attr_reader object_type: Braintrust::Models::env_var_object_type?
 
       def object_type=: (
-        Braintrust::Models::EnvVarListParams::object_type
-      ) -> Braintrust::Models::EnvVarListParams::object_type
+        Braintrust::Models::env_var_object_type
+      ) -> Braintrust::Models::env_var_object_type
 
       def initialize:
         (
@@ -42,7 +42,7 @@ module Braintrust
           ids: Braintrust::Models::EnvVarListParams::ids,
           limit: Integer?,
           object_id_: String,
-          object_type: Braintrust::Models::EnvVarListParams::object_type,
+          object_type: Braintrust::Models::env_var_object_type,
           request_options: Braintrust::request_opts
         ) -> void
         | (
@@ -59,16 +59,6 @@ module Braintrust
         StringArray: string_array
 
         private def self.variants: -> [[nil, String], [nil, ::Array[String]]]
-      end
-
-      type object_type = :organization | :project | :function
-
-      class ObjectType < Braintrust::Enum
-        ORGANIZATION: :organization
-        PROJECT: :project
-        FUNCTION: :function
-
-        def self.values: -> ::Array[Braintrust::Models::EnvVarListParams::object_type]
       end
     end
   end

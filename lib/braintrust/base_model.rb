@@ -312,6 +312,35 @@ module Braintrust
   #
   #   We can therefore convert string values to Symbols, but can't convert other
   #   values safely.
+  #
+  # @example
+  # ```ruby
+  # # `acl_object_type` is a `Braintrust::Models::ACLObjectType`
+  # case acl_object_type
+  # when Braintrust::Models::ACLObjectType::ORGANIZATION
+  #   # ...
+  # when Braintrust::Models::ACLObjectType::PROJECT
+  #   # ...
+  # when Braintrust::Models::ACLObjectType::EXPERIMENT
+  #   # ...
+  # else
+  #   # ...
+  # end
+  # ```
+  #
+  # @example
+  # ```ruby
+  # case acl_object_type
+  # in :organization
+  #   # ...
+  # in :project
+  #   # ...
+  # in :experiment
+  #   # ...
+  # else
+  #   # ...
+  # end
+  # ```
   class Enum
     extend Braintrust::Converter
 

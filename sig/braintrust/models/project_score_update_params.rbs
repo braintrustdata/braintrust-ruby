@@ -6,7 +6,7 @@ module Braintrust
         config: Braintrust::Models::ProjectScoreConfig?,
         description: String?,
         name: String?,
-        score_type: Braintrust::Models::ProjectScoreUpdateParams::score_type?
+        score_type: Braintrust::Models::project_score_type?
       }
       & Braintrust::request_parameters
 
@@ -22,7 +22,7 @@ module Braintrust
 
       attr_accessor name: String?
 
-      attr_accessor score_type: Braintrust::Models::ProjectScoreUpdateParams::score_type?
+      attr_accessor score_type: Braintrust::Models::project_score_type?
 
       def initialize:
         (
@@ -30,7 +30,7 @@ module Braintrust
           config: Braintrust::Models::ProjectScoreConfig?,
           description: String?,
           name: String?,
-          score_type: Braintrust::Models::ProjectScoreUpdateParams::score_type?,
+          score_type: Braintrust::Models::project_score_type?,
           request_options: Braintrust::request_opts
         ) -> void
         | (
@@ -60,27 +60,6 @@ module Braintrust
         StringArray: string_array
 
         private def self.variants: -> [[nil, ::Array[Braintrust::Models::ProjectScoreCategory]], [nil, ::Hash[Symbol, Float]], [nil, ::Array[String]]]
-      end
-
-      type score_type =
-        :slider
-        | :categorical
-        | :weighted
-        | :minimum
-        | :maximum
-        | :online
-        | :"free-form"
-
-      class ScoreType < Braintrust::Enum
-        SLIDER: :slider
-        CATEGORICAL: :categorical
-        WEIGHTED: :weighted
-        MINIMUM: :minimum
-        MAXIMUM: :maximum
-        ONLINE: :online
-        FREE_FORM: :"free-form"
-
-        def self.values: -> ::Array[Braintrust::Models::ProjectScoreUpdateParams::score_type]
       end
     end
   end

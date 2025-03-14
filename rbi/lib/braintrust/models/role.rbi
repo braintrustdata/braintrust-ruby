@@ -148,47 +148,6 @@ module Braintrust
         sig { override.returns({permission: Symbol, restrict_object_type: T.nilable(Symbol)}) }
         def to_hash
         end
-
-        class Permission < Braintrust::Enum
-          abstract!
-
-          CREATE = :create
-          READ = :read
-          UPDATE = :update
-          DELETE = :delete
-          CREATE_ACLS = :create_acls
-          READ_ACLS = :read_acls
-          UPDATE_ACLS = :update_acls
-          DELETE_ACLS = :delete_acls
-
-          class << self
-            sig { override.returns(T::Array[Symbol]) }
-            def values
-            end
-          end
-        end
-
-        class RestrictObjectType < Braintrust::Enum
-          abstract!
-
-          ORGANIZATION = T.let(:organization, T.nilable(Symbol))
-          PROJECT = T.let(:project, T.nilable(Symbol))
-          EXPERIMENT = T.let(:experiment, T.nilable(Symbol))
-          DATASET = T.let(:dataset, T.nilable(Symbol))
-          PROMPT = T.let(:prompt, T.nilable(Symbol))
-          PROMPT_SESSION = T.let(:prompt_session, T.nilable(Symbol))
-          GROUP = T.let(:group, T.nilable(Symbol))
-          ROLE = T.let(:role, T.nilable(Symbol))
-          ORG_MEMBER = T.let(:org_member, T.nilable(Symbol))
-          PROJECT_LOG = T.let(:project_log, T.nilable(Symbol))
-          ORG_PROJECT = T.let(:org_project, T.nilable(Symbol))
-
-          class << self
-            sig { override.returns(T::Array[Symbol]) }
-            def values
-            end
-          end
-        end
       end
     end
   end

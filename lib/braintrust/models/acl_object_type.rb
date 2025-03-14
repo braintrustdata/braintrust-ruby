@@ -1,0 +1,24 @@
+# frozen_string_literal: true
+
+module Braintrust
+  module Models
+    # @abstract
+    #
+    # The object type that the ACL applies to
+    class ACLObjectType < Braintrust::Enum
+      ORGANIZATION = :organization
+      PROJECT = :project
+      EXPERIMENT = :experiment
+      DATASET = :dataset
+      PROMPT = :prompt
+      PROMPT_SESSION = :prompt_session
+      GROUP = :group
+      ROLE = :role
+      ORG_MEMBER = :org_member
+      PROJECT_LOG = :project_log
+      ORG_PROJECT = :org_project
+
+      finalize!
+    end
+  end
+end

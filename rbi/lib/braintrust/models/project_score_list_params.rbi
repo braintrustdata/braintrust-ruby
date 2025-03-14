@@ -142,43 +142,7 @@ module Braintrust
       class ScoreType < Braintrust::Union
         abstract!
 
-        UnionMember1Array = T.type_alias { T::Array[Symbol] }
-
-        class ProjectScoreType < Braintrust::Enum
-          abstract!
-
-          SLIDER = :slider
-          CATEGORICAL = :categorical
-          WEIGHTED = :weighted
-          MINIMUM = :minimum
-          MAXIMUM = :maximum
-          ONLINE = :online
-          FREE_FORM = :"free-form"
-
-          class << self
-            sig { override.returns(T::Array[Symbol]) }
-            def values
-            end
-          end
-        end
-
-        class UnionMember1 < Braintrust::Enum
-          abstract!
-
-          SLIDER = :slider
-          CATEGORICAL = :categorical
-          WEIGHTED = :weighted
-          MINIMUM = :minimum
-          MAXIMUM = :maximum
-          ONLINE = :online
-          FREE_FORM = :"free-form"
-
-          class << self
-            sig { override.returns(T::Array[Symbol]) }
-            def values
-            end
-          end
-        end
+        ProjectScoreTypeArray = T.type_alias { T::Array[Symbol] }
 
         class << self
           sig { override.returns([[NilClass, Symbol], [NilClass, T::Array[Symbol]]]) }

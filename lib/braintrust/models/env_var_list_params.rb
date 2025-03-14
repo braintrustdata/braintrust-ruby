@@ -47,11 +47,11 @@ module Braintrust
       # @!attribute [r] object_type
       #   The type of the object the environment variable is scoped for
       #
-      #   @return [Symbol, Braintrust::Models::EnvVarListParams::ObjectType, nil]
-      optional :object_type, enum: -> { Braintrust::Models::EnvVarListParams::ObjectType }
+      #   @return [Symbol, Braintrust::Models::EnvVarObjectType, nil]
+      optional :object_type, enum: -> { Braintrust::Models::EnvVarObjectType }
 
       # @!parse
-      #   # @return [Symbol, Braintrust::Models::EnvVarListParams::ObjectType]
+      #   # @return [Symbol, Braintrust::Models::EnvVarObjectType]
       #   attr_writer :object_type
 
       # @!parse
@@ -59,7 +59,7 @@ module Braintrust
       #   # @param ids [String, Array<String>]
       #   # @param limit [Integer, nil]
       #   # @param object_id_ [String]
-      #   # @param object_type [Symbol, Braintrust::Models::EnvVarListParams::ObjectType]
+      #   # @param object_type [Symbol, Braintrust::Models::EnvVarObjectType]
       #   # @param request_options [Braintrust::RequestOptions, Hash{Symbol=>Object}]
       #   #
       #   def initialize(env_var_name: nil, ids: nil, limit: nil, object_id_: nil, object_type: nil, request_options: {}, **) = super
@@ -76,17 +76,6 @@ module Braintrust
         variant String
 
         variant Braintrust::Models::EnvVarListParams::IDs::StringArray
-      end
-
-      # @abstract
-      #
-      # The type of the object the environment variable is scoped for
-      class ObjectType < Braintrust::Enum
-        ORGANIZATION = :organization
-        PROJECT = :project
-        FUNCTION = :function
-
-        finalize!
       end
     end
   end
