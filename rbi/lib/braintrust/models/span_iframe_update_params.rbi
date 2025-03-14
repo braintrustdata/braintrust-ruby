@@ -7,6 +7,14 @@ module Braintrust
       include Braintrust::RequestParameters
 
       sig { returns(T.nilable(String)) }
+      def description
+      end
+
+      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+      def description=(_)
+      end
+
+      sig { returns(T.nilable(String)) }
       def name
       end
 
@@ -32,6 +40,7 @@ module Braintrust
 
       sig do
         params(
+          description: T.nilable(String),
           name: T.nilable(String),
           post_message: T.nilable(T::Boolean),
           url: T.nilable(String),
@@ -39,13 +48,14 @@ module Braintrust
         )
           .returns(T.attached_class)
       end
-      def self.new(name: nil, post_message: nil, url: nil, request_options: {})
+      def self.new(description: nil, name: nil, post_message: nil, url: nil, request_options: {})
       end
 
       sig do
         override
           .returns(
             {
+              description: T.nilable(String),
               name: T.nilable(String),
               post_message: T.nilable(T::Boolean),
               url: T.nilable(String),

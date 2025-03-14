@@ -10,7 +10,8 @@ module Braintrust
         returns(
           T.any(
             Braintrust::Models::EvalCreateParams::Data::DatasetID,
-            Braintrust::Models::EvalCreateParams::Data::ProjectDatasetName
+            Braintrust::Models::EvalCreateParams::Data::ProjectDatasetName,
+            Braintrust::Models::EvalCreateParams::Data::DatasetRows
           )
         )
       end
@@ -21,13 +22,15 @@ module Braintrust
         params(
           _: T.any(
             Braintrust::Models::EvalCreateParams::Data::DatasetID,
-            Braintrust::Models::EvalCreateParams::Data::ProjectDatasetName
+            Braintrust::Models::EvalCreateParams::Data::ProjectDatasetName,
+            Braintrust::Models::EvalCreateParams::Data::DatasetRows
           )
         )
           .returns(
             T.any(
               Braintrust::Models::EvalCreateParams::Data::DatasetID,
-              Braintrust::Models::EvalCreateParams::Data::ProjectDatasetName
+              Braintrust::Models::EvalCreateParams::Data::ProjectDatasetName,
+              Braintrust::Models::EvalCreateParams::Data::DatasetRows
             )
           )
       end
@@ -189,6 +192,17 @@ module Braintrust
       def metadata=(_)
       end
 
+      sig { returns(T.nilable(T.any(Braintrust::Models::EvalCreateParams::Parent::SpanParentStruct, String))) }
+      def parent
+      end
+
+      sig do
+        params(_: T.any(Braintrust::Models::EvalCreateParams::Parent::SpanParentStruct, String))
+          .returns(T.any(Braintrust::Models::EvalCreateParams::Parent::SpanParentStruct, String))
+      end
+      def parent=(_)
+      end
+
       sig { returns(T.nilable(Braintrust::Models::RepoInfo)) }
       def repo_info
       end
@@ -225,7 +239,8 @@ module Braintrust
         params(
           data: T.any(
             Braintrust::Models::EvalCreateParams::Data::DatasetID,
-            Braintrust::Models::EvalCreateParams::Data::ProjectDatasetName
+            Braintrust::Models::EvalCreateParams::Data::ProjectDatasetName,
+            Braintrust::Models::EvalCreateParams::Data::DatasetRows
           ),
           project_id: String,
           scores: T::Array[
@@ -253,6 +268,7 @@ module Braintrust
           is_public: T.nilable(T::Boolean),
           max_concurrency: T.nilable(Float),
           metadata: T::Hash[Symbol, T.nilable(T.anything)],
+          parent: T.any(Braintrust::Models::EvalCreateParams::Parent::SpanParentStruct, String),
           repo_info: T.nilable(Braintrust::Models::RepoInfo),
           stream: T::Boolean,
           timeout: T.nilable(Float),
@@ -273,6 +289,7 @@ module Braintrust
         is_public: nil,
         max_concurrency: nil,
         metadata: nil,
+        parent: nil,
         repo_info: nil,
         stream: nil,
         timeout: nil,
@@ -287,7 +304,8 @@ module Braintrust
             {
               data: T.any(
                 Braintrust::Models::EvalCreateParams::Data::DatasetID,
-                Braintrust::Models::EvalCreateParams::Data::ProjectDatasetName
+                Braintrust::Models::EvalCreateParams::Data::ProjectDatasetName,
+                Braintrust::Models::EvalCreateParams::Data::DatasetRows
               ),
               project_id: String,
               scores: T::Array[
@@ -315,6 +333,7 @@ module Braintrust
               is_public: T.nilable(T::Boolean),
               max_concurrency: T.nilable(Float),
               metadata: T::Hash[Symbol, T.nilable(T.anything)],
+              parent: T.any(Braintrust::Models::EvalCreateParams::Parent::SpanParentStruct, String),
               repo_info: T.nilable(Braintrust::Models::RepoInfo),
               stream: T::Boolean,
               timeout: T.nilable(Float),
@@ -338,11 +357,32 @@ module Braintrust
           def dataset_id=(_)
           end
 
-          sig { params(dataset_id: String).returns(T.attached_class) }
-          def self.new(dataset_id:)
+          sig { returns(T.nilable(T::Hash[Symbol, T.nilable(T.anything)])) }
+          def _internal_btql
           end
 
-          sig { override.returns({dataset_id: String}) }
+          sig do
+            params(_: T.nilable(T::Hash[Symbol, T.nilable(T.anything)]))
+              .returns(T.nilable(T::Hash[Symbol, T.nilable(T.anything)]))
+          end
+          def _internal_btql=(_)
+          end
+
+          sig do
+            params(dataset_id: String, _internal_btql: T.nilable(T::Hash[Symbol, T.nilable(T.anything)]))
+              .returns(T.attached_class)
+          end
+          def self.new(dataset_id:, _internal_btql: nil)
+          end
+
+          sig do
+            override.returns(
+              {
+                dataset_id: String,
+                _internal_btql: T.nilable(T::Hash[Symbol, T.nilable(T.anything)])
+              }
+            )
+          end
           def to_hash
           end
         end
@@ -364,11 +404,56 @@ module Braintrust
           def project_name=(_)
           end
 
-          sig { params(dataset_name: String, project_name: String).returns(T.attached_class) }
-          def self.new(dataset_name:, project_name:)
+          sig { returns(T.nilable(T::Hash[Symbol, T.nilable(T.anything)])) }
+          def _internal_btql
           end
 
-          sig { override.returns({dataset_name: String, project_name: String}) }
+          sig do
+            params(_: T.nilable(T::Hash[Symbol, T.nilable(T.anything)]))
+              .returns(T.nilable(T::Hash[Symbol, T.nilable(T.anything)]))
+          end
+          def _internal_btql=(_)
+          end
+
+          sig do
+            params(
+              dataset_name: String,
+              project_name: String,
+              _internal_btql: T.nilable(T::Hash[Symbol, T.nilable(T.anything)])
+            )
+              .returns(T.attached_class)
+          end
+          def self.new(dataset_name:, project_name:, _internal_btql: nil)
+          end
+
+          sig do
+            override
+              .returns(
+                {
+                  dataset_name: String,
+                  project_name: String,
+                  _internal_btql: T.nilable(T::Hash[Symbol, T.nilable(T.anything)])
+                }
+              )
+          end
+          def to_hash
+          end
+        end
+
+        class DatasetRows < Braintrust::BaseModel
+          sig { returns(T::Array[T.nilable(T.anything)]) }
+          def data
+          end
+
+          sig { params(_: T::Array[T.nilable(T.anything)]).returns(T::Array[T.nilable(T.anything)]) }
+          def data=(_)
+          end
+
+          sig { params(data: T::Array[T.nilable(T.anything)]).returns(T.attached_class) }
+          def self.new(data:)
+          end
+
+          sig { override.returns({data: T::Array[T.nilable(T.anything)]}) }
           def to_hash
           end
         end
@@ -377,7 +462,7 @@ module Braintrust
           sig do
             override
               .returns(
-                [[NilClass, Braintrust::Models::EvalCreateParams::Data::DatasetID], [NilClass, Braintrust::Models::EvalCreateParams::Data::ProjectDatasetName]]
+                [[NilClass, Braintrust::Models::EvalCreateParams::Data::DatasetID], [NilClass, Braintrust::Models::EvalCreateParams::Data::ProjectDatasetName], [NilClass, Braintrust::Models::EvalCreateParams::Data::DatasetRows]]
               )
           end
           private def variants
@@ -947,6 +1032,133 @@ module Braintrust
             sig { override.returns(T::Array[Symbol]) }
             def values
             end
+          end
+        end
+      end
+
+      class Parent < Braintrust::Union
+        abstract!
+
+        class SpanParentStruct < Braintrust::BaseModel
+          sig { returns(String) }
+          def object_id_
+          end
+
+          sig { params(_: String).returns(String) }
+          def object_id_=(_)
+          end
+
+          sig { returns(Symbol) }
+          def object_type
+          end
+
+          sig { params(_: Symbol).returns(Symbol) }
+          def object_type=(_)
+          end
+
+          sig { returns(T.nilable(T::Hash[Symbol, T.nilable(T.anything)])) }
+          def propagated_event
+          end
+
+          sig do
+            params(_: T.nilable(T::Hash[Symbol, T.nilable(T.anything)]))
+              .returns(T.nilable(T::Hash[Symbol, T.nilable(T.anything)]))
+          end
+          def propagated_event=(_)
+          end
+
+          sig { returns(T.nilable(Braintrust::Models::EvalCreateParams::Parent::SpanParentStruct::RowIDs)) }
+          def row_ids
+          end
+
+          sig do
+            params(_: T.nilable(Braintrust::Models::EvalCreateParams::Parent::SpanParentStruct::RowIDs))
+              .returns(T.nilable(Braintrust::Models::EvalCreateParams::Parent::SpanParentStruct::RowIDs))
+          end
+          def row_ids=(_)
+          end
+
+          sig do
+            params(
+              object_id_: String,
+              object_type: Symbol,
+              propagated_event: T.nilable(T::Hash[Symbol, T.nilable(T.anything)]),
+              row_ids: T.nilable(Braintrust::Models::EvalCreateParams::Parent::SpanParentStruct::RowIDs)
+            )
+              .returns(T.attached_class)
+          end
+          def self.new(object_id_:, object_type:, propagated_event: nil, row_ids: nil)
+          end
+
+          sig do
+            override
+              .returns(
+                {
+                  object_id_: String,
+                  object_type: Symbol,
+                  propagated_event: T.nilable(T::Hash[Symbol, T.nilable(T.anything)]),
+                  row_ids: T.nilable(Braintrust::Models::EvalCreateParams::Parent::SpanParentStruct::RowIDs)
+                }
+              )
+          end
+          def to_hash
+          end
+
+          class ObjectType < Braintrust::Enum
+            abstract!
+
+            PROJECT_LOGS = :project_logs
+            EXPERIMENT = :experiment
+            PLAYGROUND_LOGS = :playground_logs
+
+            class << self
+              sig { override.returns(T::Array[Symbol]) }
+              def values
+              end
+            end
+          end
+
+          class RowIDs < Braintrust::BaseModel
+            sig { returns(String) }
+            def id
+            end
+
+            sig { params(_: String).returns(String) }
+            def id=(_)
+            end
+
+            sig { returns(String) }
+            def root_span_id
+            end
+
+            sig { params(_: String).returns(String) }
+            def root_span_id=(_)
+            end
+
+            sig { returns(String) }
+            def span_id
+            end
+
+            sig { params(_: String).returns(String) }
+            def span_id=(_)
+            end
+
+            sig { params(id: String, root_span_id: String, span_id: String).returns(T.attached_class) }
+            def self.new(id:, root_span_id:, span_id:)
+            end
+
+            sig { override.returns({id: String, root_span_id: String, span_id: String}) }
+            def to_hash
+            end
+          end
+        end
+
+        class << self
+          sig do
+            override
+              .returns([[NilClass, Braintrust::Models::EvalCreateParams::Parent::SpanParentStruct], [NilClass, String]])
+          end
+          private def variants
           end
         end
       end

@@ -116,8 +116,8 @@ module Braintrust
       #     anything else that would be useful to slice/dice later. The values in `metadata`
       #     can be any JSON-serializable type, but its keys must be strings
       #
-      #   @return [Hash{Symbol=>Object, nil}, nil]
-      optional :metadata, Braintrust::HashOf[Braintrust::Unknown, nil?: true], nil?: true
+      #   @return [Braintrust::Models::ProjectLogsEvent::Metadata, nil]
+      optional :metadata, -> { Braintrust::Models::ProjectLogsEvent::Metadata }, nil?: true
 
       # @!attribute metrics
       #   Metrics are numerical measurements tracking the execution of the code that
@@ -130,8 +130,8 @@ module Braintrust
       # @!attribute origin
       #   Indicates the event was copied from another object.
       #
-      #   @return [Braintrust::Models::ProjectLogsEvent::Origin, nil]
-      optional :origin, -> { Braintrust::Models::ProjectLogsEvent::Origin }, nil?: true
+      #   @return [Braintrust::Models::ObjectReference, nil]
+      optional :origin, -> { Braintrust::Models::ObjectReference }, nil?: true
 
       # @!attribute [r] output
       #   The output of your application, including post-processing (an arbitrary, JSON
@@ -194,9 +194,9 @@ module Braintrust
       #   # @param expected [Object]
       #   # @param input [Object]
       #   # @param is_root [Boolean, nil]
-      #   # @param metadata [Hash{Symbol=>Object, nil}, nil]
+      #   # @param metadata [Braintrust::Models::ProjectLogsEvent::Metadata, nil]
       #   # @param metrics [Braintrust::Models::ProjectLogsEvent::Metrics, nil]
-      #   # @param origin [Braintrust::Models::ProjectLogsEvent::Origin, nil]
+      #   # @param origin [Braintrust::Models::ObjectReference, nil]
       #   # @param output [Object]
       #   # @param scores [Hash{Symbol=>Float, nil}, nil]
       #   # @param span_attributes [Braintrust::Models::SpanAttributes, nil]
@@ -271,6 +271,27 @@ module Braintrust
         #   # @param caller_lineno [Integer, nil]
         #   #
         #   def initialize(caller_filename: nil, caller_functionname: nil, caller_lineno: nil, **) = super
+
+        # def initialize: (Hash | Braintrust::BaseModel) -> void
+      end
+
+      class Metadata < Braintrust::BaseModel
+        # @!attribute model
+        #   The model used for this example
+        #
+        #   @return [String, nil]
+        optional :model, String, nil?: true
+
+        # @!parse
+        #   # A dictionary with additional data about the test example, model outputs, or just
+        #   #   about anything else that's relevant, that you can use to help find and analyze
+        #   #   examples later. For example, you could log the `prompt`, example's `id`, or
+        #   #   anything else that would be useful to slice/dice later. The values in `metadata`
+        #   #   can be any JSON-serializable type, but its keys must be strings
+        #   #
+        #   # @param model [String, nil]
+        #   #
+        #   def initialize(model: nil, **) = super
 
         # def initialize: (Hash | Braintrust::BaseModel) -> void
       end
@@ -369,58 +390,6 @@ module Braintrust
         #   end
 
         # def initialize: (Hash | Braintrust::BaseModel) -> void
-      end
-
-      class Origin < Braintrust::BaseModel
-        # @!attribute id
-        #   ID of the original event.
-        #
-        #   @return [String]
-        required :id, String
-
-        # @!attribute _xact_id
-        #   Transaction ID of the original event.
-        #
-        #   @return [String]
-        required :_xact_id, String
-
-        # @!attribute object_id_
-        #   ID of the object the event is originating from.
-        #
-        #   @return [String]
-        required :object_id_, String, api_name: :object_id
-
-        # @!attribute object_type
-        #   Type of the object the event is originating from.
-        #
-        #   @return [Symbol, Braintrust::Models::ProjectLogsEvent::Origin::ObjectType]
-        required :object_type, enum: -> { Braintrust::Models::ProjectLogsEvent::Origin::ObjectType }
-
-        # @!parse
-        #   # Indicates the event was copied from another object.
-        #   #
-        #   # @param id [String]
-        #   # @param _xact_id [String]
-        #   # @param object_id_ [String]
-        #   # @param object_type [Symbol, Braintrust::Models::ProjectLogsEvent::Origin::ObjectType]
-        #   #
-        #   def initialize(id:, _xact_id:, object_id_:, object_type:, **) = super
-
-        # def initialize: (Hash | Braintrust::BaseModel) -> void
-
-        # @abstract
-        #
-        # Type of the object the event is originating from.
-        class ObjectType < Braintrust::Enum
-          EXPERIMENT = :experiment
-          DATASET = :dataset
-          PROMPT = :prompt
-          FUNCTION = :function
-          PROMPT_SESSION = :prompt_session
-          PROJECT_LOGS = :project_logs
-
-          finalize!
-        end
       end
     end
   end

@@ -10,7 +10,7 @@ module Braintrust
       # @!attribute data
       #   The dataset to use
       #
-      #   @return [Braintrust::Models::EvalCreateParams::Data::DatasetID, Braintrust::Models::EvalCreateParams::Data::ProjectDatasetName]
+      #   @return [Braintrust::Models::EvalCreateParams::Data::DatasetID, Braintrust::Models::EvalCreateParams::Data::ProjectDatasetName, Braintrust::Models::EvalCreateParams::Data::DatasetRows]
       required :data, union: -> { Braintrust::Models::EvalCreateParams::Data }
 
       # @!attribute project_id
@@ -89,6 +89,16 @@ module Braintrust
       #   # @return [Hash{Symbol=>Object, nil}]
       #   attr_writer :metadata
 
+      # @!attribute [r] parent
+      #   Options for tracing the evaluation
+      #
+      #   @return [Braintrust::Models::EvalCreateParams::Parent::SpanParentStruct, String, nil]
+      optional :parent, union: -> { Braintrust::Models::EvalCreateParams::Parent }
+
+      # @!parse
+      #   # @return [Braintrust::Models::EvalCreateParams::Parent::SpanParentStruct, String]
+      #   attr_writer :parent
+
       # @!attribute repo_info
       #   Metadata about the state of the repo when the experiment was created
       #
@@ -123,7 +133,7 @@ module Braintrust
       optional :trial_count, Float, nil?: true
 
       # @!parse
-      #   # @param data [Braintrust::Models::EvalCreateParams::Data::DatasetID, Braintrust::Models::EvalCreateParams::Data::ProjectDatasetName]
+      #   # @param data [Braintrust::Models::EvalCreateParams::Data::DatasetID, Braintrust::Models::EvalCreateParams::Data::ProjectDatasetName, Braintrust::Models::EvalCreateParams::Data::DatasetRows]
       #   # @param project_id [String]
       #   # @param scores [Array<Braintrust::Models::EvalCreateParams::Score::FunctionID, Braintrust::Models::EvalCreateParams::Score::ProjectSlug, Braintrust::Models::EvalCreateParams::Score::GlobalFunction, Braintrust::Models::EvalCreateParams::Score::PromptSessionID, Braintrust::Models::EvalCreateParams::Score::InlineCode, Braintrust::Models::EvalCreateParams::Score::InlinePrompt>]
       #   # @param task [Braintrust::Models::EvalCreateParams::Task::FunctionID, Braintrust::Models::EvalCreateParams::Task::ProjectSlug, Braintrust::Models::EvalCreateParams::Task::GlobalFunction, Braintrust::Models::EvalCreateParams::Task::PromptSessionID, Braintrust::Models::EvalCreateParams::Task::InlineCode, Braintrust::Models::EvalCreateParams::Task::InlinePrompt]
@@ -134,6 +144,7 @@ module Braintrust
       #   # @param is_public [Boolean, nil]
       #   # @param max_concurrency [Float, nil]
       #   # @param metadata [Hash{Symbol=>Object, nil}]
+      #   # @param parent [Braintrust::Models::EvalCreateParams::Parent::SpanParentStruct, String]
       #   # @param repo_info [Braintrust::Models::RepoInfo, nil]
       #   # @param stream [Boolean]
       #   # @param timeout [Float, nil]
@@ -152,6 +163,7 @@ module Braintrust
       #     is_public: nil,
       #     max_concurrency: nil,
       #     metadata: nil,
+      #     parent: nil,
       #     repo_info: nil,
       #     stream: nil,
       #     timeout: nil,
@@ -174,18 +186,27 @@ module Braintrust
         # Project and dataset name
         variant -> { Braintrust::Models::EvalCreateParams::Data::ProjectDatasetName }
 
+        # Dataset rows
+        variant -> { Braintrust::Models::EvalCreateParams::Data::DatasetRows }
+
         class DatasetID < Braintrust::BaseModel
           # @!attribute dataset_id
           #
           #   @return [String]
           required :dataset_id, String
 
+          # @!attribute _internal_btql
+          #
+          #   @return [Hash{Symbol=>Object, nil}, nil]
+          optional :_internal_btql, Braintrust::HashOf[Braintrust::Unknown, nil?: true], nil?: true
+
           # @!parse
           #   # Dataset id
           #   #
           #   # @param dataset_id [String]
+          #   # @param _internal_btql [Hash{Symbol=>Object, nil}, nil]
           #   #
-          #   def initialize(dataset_id:, **) = super
+          #   def initialize(dataset_id:, _internal_btql: nil, **) = super
 
           # def initialize: (Hash | Braintrust::BaseModel) -> void
         end
@@ -201,13 +222,35 @@ module Braintrust
           #   @return [String]
           required :project_name, String
 
+          # @!attribute _internal_btql
+          #
+          #   @return [Hash{Symbol=>Object, nil}, nil]
+          optional :_internal_btql, Braintrust::HashOf[Braintrust::Unknown, nil?: true], nil?: true
+
           # @!parse
           #   # Project and dataset name
           #   #
           #   # @param dataset_name [String]
           #   # @param project_name [String]
+          #   # @param _internal_btql [Hash{Symbol=>Object, nil}, nil]
           #   #
-          #   def initialize(dataset_name:, project_name:, **) = super
+          #   def initialize(dataset_name:, project_name:, _internal_btql: nil, **) = super
+
+          # def initialize: (Hash | Braintrust::BaseModel) -> void
+        end
+
+        class DatasetRows < Braintrust::BaseModel
+          # @!attribute data
+          #
+          #   @return [Array<Object, nil>]
+          required :data, Braintrust::ArrayOf[Braintrust::Unknown, nil?: true]
+
+          # @!parse
+          #   # Dataset rows
+          #   #
+          #   # @param data [Array<Object, nil>]
+          #   #
+          #   def initialize(data:, **) = super
 
           # def initialize: (Hash | Braintrust::BaseModel) -> void
         end
@@ -710,6 +753,98 @@ module Braintrust
           GIT_DIFF = :git_diff
 
           finalize!
+        end
+      end
+
+      # @abstract
+      #
+      # Options for tracing the evaluation
+      class Parent < Braintrust::Union
+        # Span parent properties
+        variant -> { Braintrust::Models::EvalCreateParams::Parent::SpanParentStruct }
+
+        # The parent's span identifier, created by calling `.export()` on a span
+        variant String
+
+        class SpanParentStruct < Braintrust::BaseModel
+          # @!attribute object_id_
+          #   The id of the container object you are logging to
+          #
+          #   @return [String]
+          required :object_id_, String, api_name: :object_id
+
+          # @!attribute object_type
+          #
+          #   @return [Symbol, Braintrust::Models::EvalCreateParams::Parent::SpanParentStruct::ObjectType]
+          required :object_type,
+                   enum: -> { Braintrust::Models::EvalCreateParams::Parent::SpanParentStruct::ObjectType }
+
+          # @!attribute propagated_event
+          #   Include these properties in every span created under this parent
+          #
+          #   @return [Hash{Symbol=>Object, nil}, nil]
+          optional :propagated_event, Braintrust::HashOf[Braintrust::Unknown, nil?: true], nil?: true
+
+          # @!attribute row_ids
+          #   Identifiers for the row to to log a subspan under
+          #
+          #   @return [Braintrust::Models::EvalCreateParams::Parent::SpanParentStruct::RowIDs, nil]
+          optional :row_ids,
+                   -> { Braintrust::Models::EvalCreateParams::Parent::SpanParentStruct::RowIDs },
+                   nil?: true
+
+          # @!parse
+          #   # Span parent properties
+          #   #
+          #   # @param object_id_ [String]
+          #   # @param object_type [Symbol, Braintrust::Models::EvalCreateParams::Parent::SpanParentStruct::ObjectType]
+          #   # @param propagated_event [Hash{Symbol=>Object, nil}, nil]
+          #   # @param row_ids [Braintrust::Models::EvalCreateParams::Parent::SpanParentStruct::RowIDs, nil]
+          #   #
+          #   def initialize(object_id_:, object_type:, propagated_event: nil, row_ids: nil, **) = super
+
+          # def initialize: (Hash | Braintrust::BaseModel) -> void
+
+          # @abstract
+          #
+          class ObjectType < Braintrust::Enum
+            PROJECT_LOGS = :project_logs
+            EXPERIMENT = :experiment
+            PLAYGROUND_LOGS = :playground_logs
+
+            finalize!
+          end
+
+          class RowIDs < Braintrust::BaseModel
+            # @!attribute id
+            #   The id of the row
+            #
+            #   @return [String]
+            required :id, String
+
+            # @!attribute root_span_id
+            #   The root_span_id of the row
+            #
+            #   @return [String]
+            required :root_span_id, String
+
+            # @!attribute span_id
+            #   The span_id of the row
+            #
+            #   @return [String]
+            required :span_id, String
+
+            # @!parse
+            #   # Identifiers for the row to to log a subspan under
+            #   #
+            #   # @param id [String]
+            #   # @param root_span_id [String]
+            #   # @param span_id [String]
+            #   #
+            #   def initialize(id:, root_span_id:, span_id:, **) = super
+
+            # def initialize: (Hash | Braintrust::BaseModel) -> void
+          end
         end
       end
     end

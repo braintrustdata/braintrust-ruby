@@ -1,17 +1,71 @@
 module Braintrust
   module Models
-    type project_settings = { comparison_key: String? }
+    type project_settings =
+      {
+        baseline_experiment_id: String?,
+        comparison_key: String?,
+        span_field_order: ::Array[Braintrust::Models::ProjectSettings::SpanFieldOrder]?
+      }
 
     class ProjectSettings < Braintrust::BaseModel
+      attr_accessor baseline_experiment_id: String?
+
       attr_accessor comparison_key: String?
 
+      attr_accessor span_field_order: ::Array[Braintrust::Models::ProjectSettings::SpanFieldOrder]?
+
       def initialize:
-        (comparison_key: String?) -> void
+        (
+          baseline_experiment_id: String?,
+          comparison_key: String?,
+          span_field_order: ::Array[Braintrust::Models::ProjectSettings::SpanFieldOrder]?
+        ) -> void
         | (
           ?Braintrust::Models::project_settings | Braintrust::BaseModel data
         ) -> void
 
       def to_hash: -> Braintrust::Models::project_settings
+
+      type span_field_order =
+        {
+          column_id: String,
+          object_type: String,
+          position: String,
+          layout: Braintrust::Models::ProjectSettings::SpanFieldOrder::layout?
+        }
+
+      class SpanFieldOrder < Braintrust::BaseModel
+        attr_accessor column_id: String
+
+        attr_accessor object_type: String
+
+        attr_accessor position: String
+
+        attr_accessor layout: Braintrust::Models::ProjectSettings::SpanFieldOrder::layout?
+
+        def initialize:
+          (
+            column_id: String,
+            object_type: String,
+            position: String,
+            layout: Braintrust::Models::ProjectSettings::SpanFieldOrder::layout?
+          ) -> void
+          | (
+            ?Braintrust::Models::ProjectSettings::span_field_order
+            | Braintrust::BaseModel data
+          ) -> void
+
+        def to_hash: -> Braintrust::Models::ProjectSettings::span_field_order
+
+        type layout = :full | :two_column
+
+        class Layout < Braintrust::Enum
+          FULL: :full
+          TWO_COLUMN: :two_column
+
+          def self.values: -> ::Array[Braintrust::Models::ProjectSettings::SpanFieldOrder::layout]
+        end
+      end
     end
   end
 end

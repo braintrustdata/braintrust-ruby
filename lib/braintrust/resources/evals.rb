@@ -12,7 +12,7 @@ module Braintrust
       #
       # @param params [Braintrust::Models::EvalCreateParams, Hash{Symbol=>Object}] .
       #
-      #   @option params [Braintrust::Models::EvalCreateParams::Data::DatasetID, Braintrust::Models::EvalCreateParams::Data::ProjectDatasetName] :data The dataset to use
+      #   @option params [Braintrust::Models::EvalCreateParams::Data::DatasetID, Braintrust::Models::EvalCreateParams::Data::ProjectDatasetName, Braintrust::Models::EvalCreateParams::Data::DatasetRows] :data The dataset to use
       #
       #   @option params [String] :project_id Unique identifier for the project to run the eval in
       #
@@ -39,6 +39,8 @@ module Braintrust
       #
       #   @option params [Hash{Symbol=>Object, nil}] :metadata Optional experiment-level metadata to store about the evaluation. You can later
       #     use this to slice & dice across experiments.
+      #
+      #   @option params [Braintrust::Models::EvalCreateParams::Parent::SpanParentStruct, String] :parent Options for tracing the evaluation
       #
       #   @option params [Braintrust::Models::RepoInfo, nil] :repo_info Metadata about the state of the repo when the experiment was created
       #

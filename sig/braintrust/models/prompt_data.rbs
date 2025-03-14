@@ -16,11 +16,7 @@ module Braintrust
 
       attr_accessor parser: Braintrust::Models::PromptData::Parser?
 
-      attr_reader prompt: Braintrust::Models::PromptData::prompt?
-
-      def prompt=: (
-        Braintrust::Models::PromptData::prompt?
-      ) -> Braintrust::Models::PromptData::prompt?
+      attr_accessor prompt: Braintrust::Models::PromptData::prompt?
 
       attr_accessor tool_functions: ::Array[Braintrust::Models::PromptData::tool_function]?
 
@@ -103,9 +99,8 @@ module Braintrust
       end
 
       type prompt =
-        (Braintrust::Models::PromptData::Prompt::Completion
+        Braintrust::Models::PromptData::Prompt::Completion
         | Braintrust::Models::PromptData::Prompt::Chat
-        | Braintrust::Models::PromptData::Prompt::NullableVariant)?
 
       class Prompt < Braintrust::Union
         type completion =
@@ -464,20 +459,7 @@ module Braintrust
           end
         end
 
-        type nullable_variant = {  }
-
-        class NullableVariant < Braintrust::BaseModel
-          def initialize:
-            -> void
-            | (
-              ?Braintrust::Models::PromptData::Prompt::nullable_variant
-              | Braintrust::BaseModel data
-            ) -> void
-
-          def to_hash: -> Braintrust::Models::PromptData::Prompt::nullable_variant
-        end
-
-        private def self.variants: -> [[nil, Braintrust::Models::PromptData::Prompt::Completion], [nil, Braintrust::Models::PromptData::Prompt::Chat], [nil, Braintrust::Models::PromptData::Prompt::NullableVariant]]
+        private def self.variants: -> [[nil, Braintrust::Models::PromptData::Prompt::Completion], [nil, Braintrust::Models::PromptData::Prompt::Chat]]
       end
 
       type tool_function =

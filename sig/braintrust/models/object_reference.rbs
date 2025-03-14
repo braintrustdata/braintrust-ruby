@@ -1,0 +1,57 @@
+module Braintrust
+  module Models
+    type object_reference =
+      {
+        id: String,
+        _xact_id: String,
+        object_id_: String,
+        object_type: Braintrust::Models::ObjectReference::object_type,
+        created: String?
+      }
+
+    class ObjectReference < Braintrust::BaseModel
+      attr_accessor id: String
+
+      attr_accessor _xact_id: String
+
+      attr_accessor object_id_: String
+
+      attr_accessor object_type: Braintrust::Models::ObjectReference::object_type
+
+      attr_accessor created: String?
+
+      def initialize:
+        (
+          id: String,
+          _xact_id: String,
+          object_id_: String,
+          object_type: Braintrust::Models::ObjectReference::object_type,
+          created: String?
+        ) -> void
+        | (
+          ?Braintrust::Models::object_reference | Braintrust::BaseModel data
+        ) -> void
+
+      def to_hash: -> Braintrust::Models::object_reference
+
+      type object_type =
+        :experiment
+        | :dataset
+        | :prompt
+        | :function
+        | :prompt_session
+        | :project_logs
+
+      class ObjectType < Braintrust::Enum
+        EXPERIMENT: :experiment
+        DATASET: :dataset
+        PROMPT: :prompt
+        FUNCTION: :function
+        PROMPT_SESSION: :prompt_session
+        PROJECT_LOGS: :project_logs
+
+        def self.values: -> ::Array[Braintrust::Models::ObjectReference::object_type]
+      end
+    end
+  end
+end

@@ -42,6 +42,12 @@ module Braintrust
       #   @return [String, nil]
       optional :type, String, nil?: true
 
+      # @!attribute updated_at
+      #   Date of last AI secret update
+      #
+      #   @return [Time, nil]
+      optional :updated_at, Time, nil?: true
+
       # @!parse
       #   # @param id [String]
       #   # @param name [String]
@@ -50,8 +56,9 @@ module Braintrust
       #   # @param metadata [Hash{Symbol=>Object, nil}, nil]
       #   # @param preview_secret [String, nil]
       #   # @param type [String, nil]
+      #   # @param updated_at [Time, nil]
       #   #
-      #   def initialize(id:, name:, org_id:, created: nil, metadata: nil, preview_secret: nil, type: nil, **) = super
+      #   def initialize(id:, name:, org_id:, created: nil, metadata: nil, preview_secret: nil, type: nil, updated_at: nil, **) = super
 
       # def initialize: (Hash | Braintrust::BaseModel) -> void
     end

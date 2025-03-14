@@ -62,6 +62,14 @@ module Braintrust
       def type=(_)
       end
 
+      sig { returns(T.nilable(Time)) }
+      def updated_at
+      end
+
+      sig { params(_: T.nilable(Time)).returns(T.nilable(Time)) }
+      def updated_at=(_)
+      end
+
       sig do
         params(
           id: String,
@@ -70,11 +78,12 @@ module Braintrust
           created: T.nilable(Time),
           metadata: T.nilable(T::Hash[Symbol, T.nilable(T.anything)]),
           preview_secret: T.nilable(String),
-          type: T.nilable(String)
+          type: T.nilable(String),
+          updated_at: T.nilable(Time)
         )
           .returns(T.attached_class)
       end
-      def self.new(id:, name:, org_id:, created: nil, metadata: nil, preview_secret: nil, type: nil)
+      def self.new(id:, name:, org_id:, created: nil, metadata: nil, preview_secret: nil, type: nil, updated_at: nil)
       end
 
       sig do
@@ -87,7 +96,8 @@ module Braintrust
               created: T.nilable(Time),
               metadata: T.nilable(T::Hash[Symbol, T.nilable(T.anything)]),
               preview_secret: T.nilable(String),
-              type: T.nilable(String)
+              type: T.nilable(String),
+              updated_at: T.nilable(Time)
             }
           )
       end

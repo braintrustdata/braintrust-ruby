@@ -34,6 +34,7 @@ module Braintrust
         ) -> Braintrust::Models::SpanIFrame
         | (
           String span_iframe_id,
+          description: String?,
           name: String?,
           post_message: bool?,
           url: String?,
