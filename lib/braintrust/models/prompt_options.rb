@@ -345,9 +345,9 @@ module Braintrust
                 # @abstract
                 #
                 class Schema < Braintrust::Union
-                  UnionMember0Map = Braintrust::HashOf[Braintrust::Unknown, nil?: true]
+                  ObjectMap = Braintrust::HashOf[Braintrust::Unknown, nil?: true]
 
-                  variant Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ResponseFormat::JsonSchema::JsonSchema::Schema::UnionMember0Map
+                  variant Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ResponseFormat::JsonSchema::JsonSchema::Schema::ObjectMap
 
                   variant String
                 end
