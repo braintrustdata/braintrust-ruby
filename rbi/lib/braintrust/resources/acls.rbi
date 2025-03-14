@@ -73,6 +73,17 @@ module Braintrust
 
       sig do
         params(
+          add_acls: T.nilable(T::Array[Braintrust::Models::ACLBatchUpdateParams::AddACL]),
+          remove_acls: T.nilable(T::Array[Braintrust::Models::ACLBatchUpdateParams::RemoveACL]),
+          request_options: T.nilable(T.any(Braintrust::RequestOptions, T::Hash[Symbol, T.anything]))
+        )
+          .returns(Braintrust::Models::ACLBatchUpdateResponse)
+      end
+      def batch_update(add_acls: nil, remove_acls: nil, request_options: {})
+      end
+
+      sig do
+        params(
           object_id_: String,
           object_type: Symbol,
           group_id: T.nilable(String),
