@@ -5,11 +5,11 @@ module Braintrust
         id: String,
         _object_org_id: String,
         object_id_: String,
-        object_type: Braintrust::Models::ACL::object_type,
+        object_type: Braintrust::Models::acl_object_type,
         created: Time?,
         group_id: String?,
-        permission: Braintrust::Models::ACL::permission?,
-        restrict_object_type: Braintrust::Models::ACL::restrict_object_type?,
+        permission: Braintrust::Models::permission?,
+        restrict_object_type: Braintrust::Models::acl_object_type?,
         role_id: String?,
         user_id: String?
       }
@@ -21,15 +21,15 @@ module Braintrust
 
       attr_accessor object_id_: String
 
-      attr_accessor object_type: Braintrust::Models::ACL::object_type
+      attr_accessor object_type: Braintrust::Models::acl_object_type
 
       attr_accessor created: Time?
 
       attr_accessor group_id: String?
 
-      attr_accessor permission: Braintrust::Models::ACL::permission?
+      attr_accessor permission: Braintrust::Models::permission?
 
-      attr_accessor restrict_object_type: Braintrust::Models::ACL::restrict_object_type?
+      attr_accessor restrict_object_type: Braintrust::Models::acl_object_type?
 
       attr_accessor role_id: String?
 
@@ -40,98 +40,17 @@ module Braintrust
           id: String,
           _object_org_id: String,
           object_id_: String,
-          object_type: Braintrust::Models::ACL::object_type,
+          object_type: Braintrust::Models::acl_object_type,
           created: Time?,
           group_id: String?,
-          permission: Braintrust::Models::ACL::permission?,
-          restrict_object_type: Braintrust::Models::ACL::restrict_object_type?,
+          permission: Braintrust::Models::permission?,
+          restrict_object_type: Braintrust::Models::acl_object_type?,
           role_id: String?,
           user_id: String?
         ) -> void
         | (?Braintrust::Models::acl | Braintrust::BaseModel data) -> void
 
       def to_hash: -> Braintrust::Models::acl
-
-      type object_type =
-        :organization
-        | :project
-        | :experiment
-        | :dataset
-        | :prompt
-        | :prompt_session
-        | :group
-        | :role
-        | :org_member
-        | :project_log
-        | :org_project
-
-      class ObjectType < Braintrust::Enum
-        ORGANIZATION: :organization
-        PROJECT: :project
-        EXPERIMENT: :experiment
-        DATASET: :dataset
-        PROMPT: :prompt
-        PROMPT_SESSION: :prompt_session
-        GROUP: :group
-        ROLE: :role
-        ORG_MEMBER: :org_member
-        PROJECT_LOG: :project_log
-        ORG_PROJECT: :org_project
-
-        def self.values: -> ::Array[Braintrust::Models::ACL::object_type]
-      end
-
-      type permission =
-        :create
-        | :read
-        | :update
-        | :delete
-        | :create_acls
-        | :read_acls
-        | :update_acls
-        | :delete_acls
-
-      class Permission < Braintrust::Enum
-        CREATE: :create
-        READ: :read
-        UPDATE: :update
-        DELETE: :delete
-        CREATE_ACLS: :create_acls
-        READ_ACLS: :read_acls
-        UPDATE_ACLS: :update_acls
-        DELETE_ACLS: :delete_acls
-
-        def self.values: -> ::Array[Braintrust::Models::ACL::permission]
-      end
-
-      type restrict_object_type =
-        :organization
-        | :project
-        | :experiment
-        | :dataset
-        | :prompt
-        | :prompt_session
-        | :group
-        | :role
-        | :org_member
-        | :project_log
-        | :org_project
-
-      class RestrictObjectType < Braintrust::Enum
-        ORGANIZATION: :organization
-        PROJECT: :project
-        EXPERIMENT: :experiment
-        DATASET: :dataset
-        PROMPT: :prompt
-        PROMPT_SESSION: :prompt_session
-        GROUP: :group
-        ROLE: :role
-        ORG_MEMBER: :org_member
-        PROJECT_LOG: :project_log
-        ORG_PROJECT: :org_project
-
-        def self.values: -> ::Array[Braintrust::Models::ACL::restrict_object_type]
-      end
     end
   end
 end

@@ -12,7 +12,7 @@ module Braintrust
       #
       #   @option params [String] :object_id_ The id of the object the view applies to
       #
-      #   @option params [Symbol, Braintrust::Models::ViewCreateParams::ObjectType] :object_type The object type that the ACL applies to
+      #   @option params [Symbol, Braintrust::Models::ACLObjectType] :object_type The object type that the ACL applies to
       #
       #   @option params [Symbol, Braintrust::Models::ViewCreateParams::ViewType, nil] :view_type Type of table that the view corresponds to.
       #
@@ -47,7 +47,7 @@ module Braintrust
       #
       #   @option params [String] :object_id_ The id of the object the ACL applies to
       #
-      #   @option params [Symbol, Braintrust::Models::ViewRetrieveParams::ObjectType] :object_type The object type that the ACL applies to
+      #   @option params [Symbol, Braintrust::Models::ACLObjectType] :object_type The object type that the ACL applies to
       #
       #   @option params [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
@@ -74,7 +74,7 @@ module Braintrust
       #
       #   @option params [String] :object_id_ The id of the object the view applies to
       #
-      #   @option params [Symbol, Braintrust::Models::ViewUpdateParams::ObjectType] :object_type The object type that the ACL applies to
+      #   @option params [Symbol, Braintrust::Models::ACLObjectType] :object_type The object type that the ACL applies to
       #
       #   @option params [String, nil] :name Name of the view
       #
@@ -108,7 +108,7 @@ module Braintrust
       #
       #   @option params [String] :object_id_ The id of the object the ACL applies to
       #
-      #   @option params [Symbol, Braintrust::Models::ViewListParams::ObjectType] :object_type The object type that the ACL applies to
+      #   @option params [Symbol, Braintrust::Models::ACLObjectType] :object_type The object type that the ACL applies to
       #
       #   @option params [String] :ending_before Pagination cursor id.
       #
@@ -129,7 +129,7 @@ module Braintrust
       #
       #   @option params [String] :view_name Name of the view to search for
       #
-      #   @option params [Symbol, Braintrust::Models::ViewListParams::ViewType, nil] :view_type Type of table that the view corresponds to.
+      #   @option params [Symbol, Braintrust::Models::ViewType, nil] :view_type Type of table that the view corresponds to.
       #
       #   @option params [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
@@ -155,7 +155,7 @@ module Braintrust
       #
       #   @option params [String] :object_id_ The id of the object the view applies to
       #
-      #   @option params [Symbol, Braintrust::Models::ViewDeleteParams::ObjectType] :object_type The object type that the ACL applies to
+      #   @option params [Symbol, Braintrust::Models::ACLObjectType] :object_type The object type that the ACL applies to
       #
       #   @option params [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
@@ -182,7 +182,7 @@ module Braintrust
       #
       #   @option params [String] :object_id_ The id of the object the view applies to
       #
-      #   @option params [Symbol, Braintrust::Models::ViewReplaceParams::ObjectType] :object_type The object type that the ACL applies to
+      #   @option params [Symbol, Braintrust::Models::ACLObjectType] :object_type The object type that the ACL applies to
       #
       #   @option params [Symbol, Braintrust::Models::ViewReplaceParams::ViewType, nil] :view_type Type of table that the view corresponds to.
       #

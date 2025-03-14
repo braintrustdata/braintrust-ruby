@@ -1,0 +1,13 @@
+module Braintrust
+  module Models
+    type env_var_object_type = :organization | :project | :function
+
+    class EnvVarObjectType < Braintrust::Enum
+      ORGANIZATION: :organization
+      PROJECT: :project
+      FUNCTION: :function
+
+      def self.values: -> ::Array[Braintrust::Models::env_var_object_type]
+    end
+  end
+end

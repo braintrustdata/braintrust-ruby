@@ -16,8 +16,8 @@ module Braintrust
       # @!attribute object_type
       #   The object type that the ACL applies to
       #
-      #   @return [Symbol, Braintrust::Models::ViewListParams::ObjectType]
-      required :object_type, enum: -> { Braintrust::Models::ViewListParams::ObjectType }
+      #   @return [Symbol, Braintrust::Models::ACLObjectType]
+      required :object_type, enum: -> { Braintrust::Models::ACLObjectType }
 
       # @!attribute [r] ending_before
       #   Pagination cursor id.
@@ -77,18 +77,18 @@ module Braintrust
       # @!attribute view_type
       #   Type of table that the view corresponds to.
       #
-      #   @return [Symbol, Braintrust::Models::ViewListParams::ViewType, nil]
-      optional :view_type, enum: -> { Braintrust::Models::ViewListParams::ViewType }, nil?: true
+      #   @return [Symbol, Braintrust::Models::ViewType, nil]
+      optional :view_type, enum: -> { Braintrust::Models::ViewType }, nil?: true
 
       # @!parse
       #   # @param object_id_ [String]
-      #   # @param object_type [Symbol, Braintrust::Models::ViewListParams::ObjectType]
+      #   # @param object_type [Symbol, Braintrust::Models::ACLObjectType]
       #   # @param ending_before [String]
       #   # @param ids [String, Array<String>]
       #   # @param limit [Integer, nil]
       #   # @param starting_after [String]
       #   # @param view_name [String]
-      #   # @param view_type [Symbol, Braintrust::Models::ViewListParams::ViewType, nil]
+      #   # @param view_type [Symbol, Braintrust::Models::ViewType, nil]
       #   # @param request_options [Braintrust::RequestOptions, Hash{Symbol=>Object}]
       #   #
       #   def initialize(
@@ -110,25 +110,6 @@ module Braintrust
 
       # @abstract
       #
-      # The object type that the ACL applies to
-      class ObjectType < Braintrust::Enum
-        ORGANIZATION = :organization
-        PROJECT = :project
-        EXPERIMENT = :experiment
-        DATASET = :dataset
-        PROMPT = :prompt
-        PROMPT_SESSION = :prompt_session
-        GROUP = :group
-        ROLE = :role
-        ORG_MEMBER = :org_member
-        PROJECT_LOG = :project_log
-        ORG_PROJECT = :org_project
-
-        finalize!
-      end
-
-      # @abstract
-      #
       # Filter search results to a particular set of object IDs. To specify a list of
       #   IDs, include the query param multiple times
       class IDs < Braintrust::Union
@@ -137,25 +118,6 @@ module Braintrust
         variant String
 
         variant Braintrust::Models::ViewListParams::IDs::StringArray
-      end
-
-      # @abstract
-      #
-      # Type of table that the view corresponds to.
-      class ViewType < Braintrust::Enum
-        PROJECTS = :projects
-        EXPERIMENTS = :experiments
-        EXPERIMENT = :experiment
-        PLAYGROUNDS = :playgrounds
-        PLAYGROUND = :playground
-        DATASETS = :datasets
-        DATASET = :dataset
-        PROMPTS = :prompts
-        TOOLS = :tools
-        SCORERS = :scorers
-        LOGS = :logs
-
-        finalize!
       end
     end
   end

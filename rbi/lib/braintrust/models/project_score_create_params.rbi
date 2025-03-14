@@ -110,24 +110,6 @@ module Braintrust
       def to_hash
       end
 
-      class ScoreType < Braintrust::Enum
-        abstract!
-
-        SLIDER = :slider
-        CATEGORICAL = :categorical
-        WEIGHTED = :weighted
-        MINIMUM = :minimum
-        MAXIMUM = :maximum
-        ONLINE = :online
-        FREE_FORM = :"free-form"
-
-        class << self
-          sig { override.returns(T::Array[Symbol]) }
-          def values
-          end
-        end
-      end
-
       class Categories < Braintrust::Union
         abstract!
 

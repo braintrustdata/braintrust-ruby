@@ -7,10 +7,10 @@ module Braintrust
         ) -> Braintrust::Models::ACL
         | (
           object_id_: String,
-          object_type: Braintrust::Models::ACLCreateParams::object_type,
+          object_type: Braintrust::Models::acl_object_type,
           group_id: String?,
-          permission: Braintrust::Models::ACLCreateParams::permission?,
-          restrict_object_type: Braintrust::Models::ACLCreateParams::restrict_object_type?,
+          permission: Braintrust::Models::permission?,
+          restrict_object_type: Braintrust::Models::acl_object_type?,
           role_id: String?,
           user_id: String?,
           request_options: Braintrust::request_opts
@@ -32,7 +32,7 @@ module Braintrust
         ) -> Braintrust::ListObjects[Braintrust::Models::ACL]
         | (
           object_id_: String,
-          object_type: Braintrust::Models::ACLListParams::object_type,
+          object_type: Braintrust::Models::acl_object_type,
           ending_before: String,
           ids: Braintrust::Models::ACLListParams::ids,
           limit: Integer?,
@@ -67,10 +67,10 @@ module Braintrust
         ) -> Braintrust::Models::ACL
         | (
           object_id_: String,
-          object_type: Braintrust::Models::ACLFindAndDeleteParams::object_type,
+          object_type: Braintrust::Models::acl_object_type,
           group_id: String?,
-          permission: Braintrust::Models::ACLFindAndDeleteParams::permission?,
-          restrict_object_type: Braintrust::Models::ACLFindAndDeleteParams::restrict_object_type?,
+          permission: Braintrust::Models::permission?,
+          restrict_object_type: Braintrust::Models::acl_object_type?,
           role_id: String?,
           user_id: String?,
           request_options: Braintrust::request_opts

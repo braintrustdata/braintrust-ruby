@@ -4,7 +4,7 @@ module Braintrust
       {
         name: String,
         object_id_: String,
-        object_type: Braintrust::Models::ViewReplaceParams::object_type,
+        object_type: Braintrust::Models::acl_object_type,
         view_type: Braintrust::Models::ViewReplaceParams::view_type?,
         deleted_at: Time?,
         options: Braintrust::Models::ViewOptions?,
@@ -21,7 +21,7 @@ module Braintrust
 
       attr_accessor object_id_: String
 
-      attr_accessor object_type: Braintrust::Models::ViewReplaceParams::object_type
+      attr_accessor object_type: Braintrust::Models::acl_object_type
 
       attr_accessor view_type: Braintrust::Models::ViewReplaceParams::view_type?
 
@@ -37,7 +37,7 @@ module Braintrust
         (
           name: String,
           object_id_: String,
-          object_type: Braintrust::Models::ViewReplaceParams::object_type,
+          object_type: Braintrust::Models::acl_object_type,
           view_type: Braintrust::Models::ViewReplaceParams::view_type?,
           deleted_at: Time?,
           options: Braintrust::Models::ViewOptions?,
@@ -50,35 +50,6 @@ module Braintrust
         ) -> void
 
       def to_hash: -> Braintrust::Models::view_replace_params
-
-      type object_type =
-        :organization
-        | :project
-        | :experiment
-        | :dataset
-        | :prompt
-        | :prompt_session
-        | :group
-        | :role
-        | :org_member
-        | :project_log
-        | :org_project
-
-      class ObjectType < Braintrust::Enum
-        ORGANIZATION: :organization
-        PROJECT: :project
-        EXPERIMENT: :experiment
-        DATASET: :dataset
-        PROMPT: :prompt
-        PROMPT_SESSION: :prompt_session
-        GROUP: :group
-        ROLE: :role
-        ORG_MEMBER: :org_member
-        PROJECT_LOG: :project_log
-        ORG_PROJECT: :org_project
-
-        def self.values: -> ::Array[Braintrust::Models::ViewReplaceParams::object_type]
-      end
 
       type view_type =
         :projects

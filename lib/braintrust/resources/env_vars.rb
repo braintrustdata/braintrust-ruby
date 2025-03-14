@@ -91,7 +91,7 @@ module Braintrust
       #
       #   @option params [String] :object_id_ The id of the object the environment variable is scoped for
       #
-      #   @option params [Symbol, Braintrust::Models::EnvVarListParams::ObjectType] :object_type The type of the object the environment variable is scoped for
+      #   @option params [Symbol, Braintrust::Models::EnvVarObjectType] :object_type The type of the object the environment variable is scoped for
       #
       #   @option params [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
