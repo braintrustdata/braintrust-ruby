@@ -80,8 +80,10 @@ module Braintrust
         ) -> top?
         | (
           String function_id,
+          expected: top,
           input: top,
           messages: ::Array[Braintrust::Models::FunctionInvokeParams::message],
+          metadata: ::Hash[Symbol, top?]?,
           mode: Braintrust::Models::FunctionInvokeParams::mode?,
           parent: Braintrust::Models::FunctionInvokeParams::parent,
           stream: bool?,

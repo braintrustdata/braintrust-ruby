@@ -32,15 +32,11 @@ module Braintrust
       #   @return [String]
       required :user_id, String
 
-      # @!attribute [r] categories
+      # @!attribute categories
       #   For categorical-type project scores, the list of all categories
       #
-      #   @return [Array<Braintrust::Models::ProjectScoreCategory>, Hash{Symbol=>Float}, Array<String>, Braintrust::Models::ProjectScore::Categories::NullableVariant, nil]
-      optional :categories, union: -> { Braintrust::Models::ProjectScore::Categories }
-
-      # @!parse
-      #   # @return [Array<Braintrust::Models::ProjectScoreCategory>, Hash{Symbol=>Float}, Array<String>, Braintrust::Models::ProjectScore::Categories::NullableVariant, nil]
-      #   attr_writer :categories
+      #   @return [Array<Braintrust::Models::ProjectScoreCategory>, Hash{Symbol=>Float}, Array<String>, nil]
+      optional :categories, union: -> { Braintrust::Models::ProjectScore::Categories }, nil?: true
 
       # @!attribute config
       #
@@ -75,7 +71,7 @@ module Braintrust
       #   # @param project_id [String]
       #   # @param score_type [Symbol, Braintrust::Models::ProjectScore::ScoreType]
       #   # @param user_id [String]
-      #   # @param categories [Array<Braintrust::Models::ProjectScoreCategory>, Hash{Symbol=>Float}, Array<String>, Braintrust::Models::ProjectScore::Categories::NullableVariant, nil]
+      #   # @param categories [Array<Braintrust::Models::ProjectScoreCategory>, Hash{Symbol=>Float}, Array<String>, nil]
       #   # @param config [Braintrust::Models::ProjectScoreConfig, nil]
       #   # @param created [Time, nil]
       #   # @param description [String, nil]
@@ -109,6 +105,7 @@ module Braintrust
         MINIMUM = :minimum
         MAXIMUM = :maximum
         ONLINE = :online
+        FREE_FORM = :"free-form"
 
         finalize!
       end
@@ -131,15 +128,6 @@ module Braintrust
 
         # For minimum-type project scores, the list of included scores
         variant Braintrust::Models::ProjectScore::Categories::StringArray
-
-        variant -> { Braintrust::Models::ProjectScore::Categories::NullableVariant }
-
-        class NullableVariant < Braintrust::BaseModel
-          # @!parse
-          #   def initialize(**) = super
-
-          # def initialize: (Hash | Braintrust::BaseModel) -> void
-        end
       end
     end
   end

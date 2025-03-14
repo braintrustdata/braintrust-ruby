@@ -86,13 +86,13 @@ module Braintrust
       def input=(_)
       end
 
-      sig { returns(T.nilable(T::Hash[Symbol, T.nilable(T.anything)])) }
+      sig { returns(T.nilable(Braintrust::Models::InsertProjectLogsEvent::Metadata)) }
       def metadata
       end
 
       sig do
-        params(_: T.nilable(T::Hash[Symbol, T.nilable(T.anything)]))
-          .returns(T.nilable(T::Hash[Symbol, T.nilable(T.anything)]))
+        params(_: T.nilable(Braintrust::Models::InsertProjectLogsEvent::Metadata))
+          .returns(T.nilable(Braintrust::Models::InsertProjectLogsEvent::Metadata))
       end
       def metadata=(_)
       end
@@ -106,6 +106,17 @@ module Braintrust
           .returns(T.nilable(Braintrust::Models::InsertProjectLogsEvent::Metrics))
       end
       def metrics=(_)
+      end
+
+      sig { returns(T.nilable(Braintrust::Models::ObjectReference)) }
+      def origin
+      end
+
+      sig do
+        params(_: T.nilable(Braintrust::Models::ObjectReference))
+          .returns(T.nilable(Braintrust::Models::ObjectReference))
+      end
+      def origin=(_)
       end
 
       sig { returns(T.nilable(T.anything)) }
@@ -182,8 +193,9 @@ module Braintrust
           error: T.anything,
           expected: T.anything,
           input: T.anything,
-          metadata: T.nilable(T::Hash[Symbol, T.nilable(T.anything)]),
+          metadata: T.nilable(Braintrust::Models::InsertProjectLogsEvent::Metadata),
           metrics: T.nilable(Braintrust::Models::InsertProjectLogsEvent::Metrics),
+          origin: T.nilable(Braintrust::Models::ObjectReference),
           output: T.anything,
           root_span_id: T.nilable(String),
           scores: T.nilable(T::Hash[Symbol, T.nilable(Float)]),
@@ -207,6 +219,7 @@ module Braintrust
         input: nil,
         metadata: nil,
         metrics: nil,
+        origin: nil,
         output: nil,
         root_span_id: nil,
         scores: nil,
@@ -231,8 +244,9 @@ module Braintrust
               error: T.anything,
               expected: T.anything,
               input: T.anything,
-              metadata: T.nilable(T::Hash[Symbol, T.nilable(T.anything)]),
+              metadata: T.nilable(Braintrust::Models::InsertProjectLogsEvent::Metadata),
               metrics: T.nilable(Braintrust::Models::InsertProjectLogsEvent::Metrics),
+              origin: T.nilable(Braintrust::Models::ObjectReference),
               output: T.anything,
               root_span_id: T.nilable(String),
               scores: T.nilable(T::Hash[Symbol, T.nilable(Float)]),
@@ -292,6 +306,24 @@ module Braintrust
               }
             )
         end
+        def to_hash
+        end
+      end
+
+      class Metadata < Braintrust::BaseModel
+        sig { returns(T.nilable(String)) }
+        def model
+        end
+
+        sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+        def model=(_)
+        end
+
+        sig { params(model: T.nilable(String)).returns(T.attached_class) }
+        def self.new(model: nil)
+        end
+
+        sig { override.returns({model: T.nilable(String)}) }
         def to_hash
         end
       end

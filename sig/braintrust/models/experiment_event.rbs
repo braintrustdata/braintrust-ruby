@@ -10,14 +10,13 @@ module Braintrust
         root_span_id: String,
         span_id: String,
         context: Braintrust::Models::ExperimentEvent::Context?,
-        dataset_record_id: String?,
         error: top,
         expected: top,
         input: top,
         is_root: bool?,
-        metadata: ::Hash[Symbol, top?]?,
+        metadata: Braintrust::Models::ExperimentEvent::Metadata?,
         metrics: Braintrust::Models::ExperimentEvent::Metrics?,
-        origin: Braintrust::Models::ExperimentEvent::Origin?,
+        origin: Braintrust::Models::ObjectReference?,
         output: top,
         scores: ::Hash[Symbol, Float?]?,
         span_attributes: Braintrust::Models::SpanAttributes?,
@@ -42,8 +41,6 @@ module Braintrust
 
       attr_accessor context: Braintrust::Models::ExperimentEvent::Context?
 
-      attr_accessor dataset_record_id: String?
-
       attr_reader error: top?
 
       def error=: (top) -> top
@@ -58,11 +55,11 @@ module Braintrust
 
       attr_accessor is_root: bool?
 
-      attr_accessor metadata: ::Hash[Symbol, top?]?
+      attr_accessor metadata: Braintrust::Models::ExperimentEvent::Metadata?
 
       attr_accessor metrics: Braintrust::Models::ExperimentEvent::Metrics?
 
-      attr_accessor origin: Braintrust::Models::ExperimentEvent::Origin?
+      attr_accessor origin: Braintrust::Models::ObjectReference?
 
       attr_reader output: top?
 
@@ -86,14 +83,13 @@ module Braintrust
           root_span_id: String,
           span_id: String,
           context: Braintrust::Models::ExperimentEvent::Context?,
-          dataset_record_id: String?,
           error: top,
           expected: top,
           input: top,
           is_root: bool?,
-          metadata: ::Hash[Symbol, top?]?,
+          metadata: Braintrust::Models::ExperimentEvent::Metadata?,
           metrics: Braintrust::Models::ExperimentEvent::Metrics?,
-          origin: Braintrust::Models::ExperimentEvent::Origin?,
+          origin: Braintrust::Models::ObjectReference?,
           output: top,
           scores: ::Hash[Symbol, Float?]?,
           span_attributes: Braintrust::Models::SpanAttributes?,
@@ -132,6 +128,21 @@ module Braintrust
           ) -> void
 
         def to_hash: -> Braintrust::Models::ExperimentEvent::context
+      end
+
+      type metadata = { model: String? }
+
+      class Metadata < Braintrust::BaseModel
+        attr_accessor model: String?
+
+        def initialize:
+          (model: String?) -> void
+          | (
+            ?Braintrust::Models::ExperimentEvent::metadata
+            | Braintrust::BaseModel data
+          ) -> void
+
+        def to_hash: -> Braintrust::Models::ExperimentEvent::metadata
       end
 
       type metrics =
@@ -186,57 +197,6 @@ module Braintrust
           ) -> void
 
         def to_hash: -> Braintrust::Models::ExperimentEvent::metrics
-      end
-
-      type origin =
-        {
-          id: String,
-          _xact_id: String,
-          object_id_: String,
-          object_type: Braintrust::Models::ExperimentEvent::Origin::object_type
-        }
-
-      class Origin < Braintrust::BaseModel
-        attr_accessor id: String
-
-        attr_accessor _xact_id: String
-
-        attr_accessor object_id_: String
-
-        attr_accessor object_type: Braintrust::Models::ExperimentEvent::Origin::object_type
-
-        def initialize:
-          (
-            id: String,
-            _xact_id: String,
-            object_id_: String,
-            object_type: Braintrust::Models::ExperimentEvent::Origin::object_type
-          ) -> void
-          | (
-            ?Braintrust::Models::ExperimentEvent::origin
-            | Braintrust::BaseModel data
-          ) -> void
-
-        def to_hash: -> Braintrust::Models::ExperimentEvent::origin
-
-        type object_type =
-          :experiment
-          | :dataset
-          | :prompt
-          | :function
-          | :prompt_session
-          | :project_logs
-
-        class ObjectType < Braintrust::Enum
-          EXPERIMENT: :experiment
-          DATASET: :dataset
-          PROMPT: :prompt
-          FUNCTION: :function
-          PROMPT_SESSION: :prompt_session
-          PROJECT_LOGS: :project_logs
-
-          def self.values: -> ::Array[Braintrust::Models::ExperimentEvent::Origin::object_type]
-        end
       end
     end
   end

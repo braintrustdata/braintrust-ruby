@@ -83,24 +83,24 @@ module Braintrust
       def is_root=(_)
       end
 
-      sig { returns(T.nilable(T::Hash[Symbol, T.nilable(T.anything)])) }
+      sig { returns(T.nilable(Braintrust::Models::DatasetEvent::Metadata)) }
       def metadata
       end
 
       sig do
-        params(_: T.nilable(T::Hash[Symbol, T.nilable(T.anything)]))
-          .returns(T.nilable(T::Hash[Symbol, T.nilable(T.anything)]))
+        params(_: T.nilable(Braintrust::Models::DatasetEvent::Metadata))
+          .returns(T.nilable(Braintrust::Models::DatasetEvent::Metadata))
       end
       def metadata=(_)
       end
 
-      sig { returns(T.nilable(Braintrust::Models::DatasetEvent::Origin)) }
+      sig { returns(T.nilable(Braintrust::Models::ObjectReference)) }
       def origin
       end
 
       sig do
-        params(_: T.nilable(Braintrust::Models::DatasetEvent::Origin))
-          .returns(T.nilable(Braintrust::Models::DatasetEvent::Origin))
+        params(_: T.nilable(Braintrust::Models::ObjectReference))
+          .returns(T.nilable(Braintrust::Models::ObjectReference))
       end
       def origin=(_)
       end
@@ -125,8 +125,8 @@ module Braintrust
           expected: T.anything,
           input: T.anything,
           is_root: T.nilable(T::Boolean),
-          metadata: T.nilable(T::Hash[Symbol, T.nilable(T.anything)]),
-          origin: T.nilable(Braintrust::Models::DatasetEvent::Origin),
+          metadata: T.nilable(Braintrust::Models::DatasetEvent::Metadata),
+          origin: T.nilable(Braintrust::Models::ObjectReference),
           tags: T.nilable(T::Array[String])
         )
           .returns(T.attached_class)
@@ -162,8 +162,8 @@ module Braintrust
               expected: T.anything,
               input: T.anything,
               is_root: T.nilable(T::Boolean),
-              metadata: T.nilable(T::Hash[Symbol, T.nilable(T.anything)]),
-              origin: T.nilable(Braintrust::Models::DatasetEvent::Origin),
+              metadata: T.nilable(Braintrust::Models::DatasetEvent::Metadata),
+              origin: T.nilable(Braintrust::Models::ObjectReference),
               tags: T.nilable(T::Array[String])
             }
           )
@@ -171,69 +171,21 @@ module Braintrust
       def to_hash
       end
 
-      class Origin < Braintrust::BaseModel
-        sig { returns(String) }
-        def id
+      class Metadata < Braintrust::BaseModel
+        sig { returns(T.nilable(String)) }
+        def model
         end
 
-        sig { params(_: String).returns(String) }
-        def id=(_)
+        sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+        def model=(_)
         end
 
-        sig { returns(String) }
-        def _xact_id
+        sig { params(model: T.nilable(String)).returns(T.attached_class) }
+        def self.new(model: nil)
         end
 
-        sig { params(_: String).returns(String) }
-        def _xact_id=(_)
-        end
-
-        sig { returns(String) }
-        def object_id_
-        end
-
-        sig { params(_: String).returns(String) }
-        def object_id_=(_)
-        end
-
-        sig { returns(Symbol) }
-        def object_type
-        end
-
-        sig { params(_: Symbol).returns(Symbol) }
-        def object_type=(_)
-        end
-
-        sig do
-          params(
-            id: String,
-            _xact_id: String,
-            object_id_: String,
-            object_type: Symbol
-          ).returns(T.attached_class)
-        end
-        def self.new(id:, _xact_id:, object_id_:, object_type:)
-        end
-
-        sig { override.returns({id: String, _xact_id: String, object_id_: String, object_type: Symbol}) }
+        sig { override.returns({model: T.nilable(String)}) }
         def to_hash
-        end
-
-        class ObjectType < Braintrust::Enum
-          abstract!
-
-          EXPERIMENT = :experiment
-          DATASET = :dataset
-          PROMPT = :prompt
-          FUNCTION = :function
-          PROMPT_SESSION = :prompt_session
-          PROJECT_LOGS = :project_logs
-
-          class << self
-            sig { override.returns(T::Array[Symbol]) }
-            def values
-            end
-          end
         end
       end
     end

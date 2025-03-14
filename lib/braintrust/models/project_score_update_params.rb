@@ -7,15 +7,11 @@ module Braintrust
       #   extend Braintrust::RequestParameters::Converter
       include Braintrust::RequestParameters
 
-      # @!attribute [r] categories
+      # @!attribute categories
       #   For categorical-type project scores, the list of all categories
       #
-      #   @return [Array<Braintrust::Models::ProjectScoreCategory>, Hash{Symbol=>Float}, Array<String>, Braintrust::Models::ProjectScoreUpdateParams::Categories::NullableVariant, nil]
-      optional :categories, union: -> { Braintrust::Models::ProjectScoreUpdateParams::Categories }
-
-      # @!parse
-      #   # @return [Array<Braintrust::Models::ProjectScoreCategory>, Hash{Symbol=>Float}, Array<String>, Braintrust::Models::ProjectScoreUpdateParams::Categories::NullableVariant, nil]
-      #   attr_writer :categories
+      #   @return [Array<Braintrust::Models::ProjectScoreCategory>, Hash{Symbol=>Float}, Array<String>, nil]
+      optional :categories, union: -> { Braintrust::Models::ProjectScoreUpdateParams::Categories }, nil?: true
 
       # @!attribute config
       #
@@ -41,7 +37,7 @@ module Braintrust
       optional :score_type, enum: -> { Braintrust::Models::ProjectScoreUpdateParams::ScoreType }, nil?: true
 
       # @!parse
-      #   # @param categories [Array<Braintrust::Models::ProjectScoreCategory>, Hash{Symbol=>Float}, Array<String>, Braintrust::Models::ProjectScoreUpdateParams::Categories::NullableVariant, nil]
+      #   # @param categories [Array<Braintrust::Models::ProjectScoreCategory>, Hash{Symbol=>Float}, Array<String>, nil]
       #   # @param config [Braintrust::Models::ProjectScoreConfig, nil]
       #   # @param description [String, nil]
       #   # @param name [String, nil]
@@ -70,15 +66,6 @@ module Braintrust
 
         # For minimum-type project scores, the list of included scores
         variant Braintrust::Models::ProjectScoreUpdateParams::Categories::StringArray
-
-        variant -> { Braintrust::Models::ProjectScoreUpdateParams::Categories::NullableVariant }
-
-        class NullableVariant < Braintrust::BaseModel
-          # @!parse
-          #   def initialize(**) = super
-
-          # def initialize: (Hash | Braintrust::BaseModel) -> void
-        end
       end
 
       # @abstract
@@ -91,6 +78,7 @@ module Braintrust
         MINIMUM = :minimum
         MAXIMUM = :maximum
         ONLINE = :online
+        FREE_FORM = :"free-form"
 
         finalize!
       end

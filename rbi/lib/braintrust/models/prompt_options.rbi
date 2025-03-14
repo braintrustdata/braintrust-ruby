@@ -128,6 +128,14 @@ module Braintrust
           end
 
           sig { returns(T.nilable(Float)) }
+          def max_completion_tokens
+          end
+
+          sig { params(_: Float).returns(Float) }
+          def max_completion_tokens=(_)
+          end
+
+          sig { returns(T.nilable(Float)) }
           def max_tokens
           end
 
@@ -151,14 +159,21 @@ module Braintrust
           def presence_penalty=(_)
           end
 
+          sig { returns(T.nilable(Symbol)) }
+          def reasoning_effort
+          end
+
+          sig { params(_: Symbol).returns(Symbol) }
+          def reasoning_effort=(_)
+          end
+
           sig do
             returns(
               T.nilable(
                 T.any(
                   Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ResponseFormat::JsonObject,
                   Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ResponseFormat::JsonSchema,
-                  Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ResponseFormat::Text,
-                  Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ResponseFormat::NullableVariant
+                  Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ResponseFormat::Text
                 )
               )
             )
@@ -172,8 +187,7 @@ module Braintrust
                 T.any(
                   Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ResponseFormat::JsonObject,
                   Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ResponseFormat::JsonSchema,
-                  Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ResponseFormat::Text,
-                  Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ResponseFormat::NullableVariant
+                  Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ResponseFormat::Text
                 )
               )
             )
@@ -182,8 +196,7 @@ module Braintrust
                   T.any(
                     Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ResponseFormat::JsonObject,
                     Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ResponseFormat::JsonSchema,
-                    Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ResponseFormat::Text,
-                    Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ResponseFormat::NullableVariant
+                    Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ResponseFormat::Text
                   )
                 )
               )
@@ -246,15 +259,16 @@ module Braintrust
             params(
               frequency_penalty: Float,
               function_call: T.any(Symbol, Braintrust::Models::PromptOptions::Params::OpenAIModelParams::FunctionCall::Function),
+              max_completion_tokens: Float,
               max_tokens: Float,
               n: Float,
               presence_penalty: Float,
+              reasoning_effort: Symbol,
               response_format: T.nilable(
                 T.any(
                   Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ResponseFormat::JsonObject,
                   Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ResponseFormat::JsonSchema,
-                  Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ResponseFormat::Text,
-                  Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ResponseFormat::NullableVariant
+                  Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ResponseFormat::Text
                 )
               ),
               stop: T::Array[String],
@@ -268,9 +282,11 @@ module Braintrust
           def self.new(
             frequency_penalty: nil,
             function_call: nil,
+            max_completion_tokens: nil,
             max_tokens: nil,
             n: nil,
             presence_penalty: nil,
+            reasoning_effort: nil,
             response_format: nil,
             stop: nil,
             temperature: nil,
@@ -286,15 +302,16 @@ module Braintrust
                 {
                   frequency_penalty: Float,
                   function_call: T.any(Symbol, Braintrust::Models::PromptOptions::Params::OpenAIModelParams::FunctionCall::Function),
+                  max_completion_tokens: Float,
                   max_tokens: Float,
                   n: Float,
                   presence_penalty: Float,
+                  reasoning_effort: Symbol,
                   response_format: T.nilable(
                     T.any(
                       Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ResponseFormat::JsonObject,
                       Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ResponseFormat::JsonSchema,
-                      Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ResponseFormat::Text,
-                      Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ResponseFormat::NullableVariant
+                      Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ResponseFormat::Text
                     )
                   ),
                   stop: T::Array[String],
@@ -350,6 +367,20 @@ module Braintrust
                   )
               end
               private def variants
+              end
+            end
+          end
+
+          class ReasoningEffort < Braintrust::Enum
+            abstract!
+
+            LOW = :low
+            MEDIUM = :medium
+            HIGH = :high
+
+            class << self
+              sig { override.returns(T::Array[Symbol]) }
+              def values
               end
             end
           end
@@ -454,15 +485,13 @@ module Braintrust
                 def description=(_)
                 end
 
-                sig { returns(T.nilable(T::Hash[Symbol, T.nilable(T.anything)])) }
+                sig { returns(T.nilable(T.any(T::Hash[Symbol, T.nilable(T.anything)], String))) }
                 def schema
                 end
 
                 sig do
-                  params(
-                    _: T::Hash[Symbol,
-                               T.nilable(T.anything)]
-                  ).returns(T::Hash[Symbol, T.nilable(T.anything)])
+                  params(_: T.any(T::Hash[Symbol, T.nilable(T.anything)], String))
+                    .returns(T.any(T::Hash[Symbol, T.nilable(T.anything)], String))
                 end
                 def schema=(_)
                 end
@@ -479,7 +508,7 @@ module Braintrust
                   params(
                     name: String,
                     description: String,
-                    schema: T::Hash[Symbol, T.nilable(T.anything)],
+                    schema: T.any(T::Hash[Symbol, T.nilable(T.anything)], String),
                     strict: T.nilable(T::Boolean)
                   )
                     .returns(T.attached_class)
@@ -493,12 +522,31 @@ module Braintrust
                       {
                         name: String,
                         description: String,
-                        schema: T::Hash[Symbol, T.nilable(T.anything)],
+                        schema: T.any(T::Hash[Symbol, T.nilable(T.anything)], String),
                         strict: T.nilable(T::Boolean)
                       }
                     )
                 end
                 def to_hash
+                end
+
+                class Schema < Braintrust::Union
+                  abstract!
+
+                  UnionMember0Map = T.type_alias { T::Hash[Symbol, T.nilable(T.anything)] }
+
+                  class << self
+                    sig do
+                      override.returns(
+                        [
+                          [NilClass, T::Hash[Symbol, T.nilable(T.anything)]],
+                          [NilClass, String]
+                        ]
+                      )
+                    end
+                    private def variants
+                    end
+                  end
                 end
               end
 
@@ -545,21 +593,11 @@ module Braintrust
               end
             end
 
-            class NullableVariant < Braintrust::BaseModel
-              sig { returns(T.attached_class) }
-              def self.new
-              end
-
-              sig { override.returns({}) }
-              def to_hash
-              end
-            end
-
             class << self
               sig do
                 override
                   .returns(
-                    [[NilClass, Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ResponseFormat::JsonObject], [NilClass, Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ResponseFormat::JsonSchema], [NilClass, Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ResponseFormat::Text], [NilClass, Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ResponseFormat::NullableVariant]]
+                    [[NilClass, Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ResponseFormat::JsonObject], [NilClass, Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ResponseFormat::JsonSchema], [NilClass, Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ResponseFormat::Text]]
                   )
               end
               private def variants

@@ -144,13 +144,16 @@ module Braintrust
       # Type of table that the view corresponds to.
       class ViewType < Braintrust::Enum
         PROJECTS = :projects
-        LOGS = :logs
         EXPERIMENTS = :experiments
-        DATASETS = :datasets
-        PROMPTS = :prompts
-        PLAYGROUNDS = :playgrounds
         EXPERIMENT = :experiment
+        PLAYGROUNDS = :playgrounds
+        PLAYGROUND = :playground
+        DATASETS = :datasets
         DATASET = :dataset
+        PROMPTS = :prompts
+        TOOLS = :tools
+        SCORERS = :scorers
+        LOGS = :logs
 
         finalize!
       end

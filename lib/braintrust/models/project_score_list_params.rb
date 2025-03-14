@@ -166,6 +166,7 @@ module Braintrust
           MINIMUM = :minimum
           MAXIMUM = :maximum
           ONLINE = :online
+          FREE_FORM = :"free-form"
 
           finalize!
         end
@@ -180,6 +181,7 @@ module Braintrust
           MINIMUM = :minimum
           MAXIMUM = :maximum
           ONLINE = :online
+          FREE_FORM = :"free-form"
 
           finalize!
         end

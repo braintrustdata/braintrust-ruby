@@ -7,6 +7,14 @@ module Braintrust
       include Braintrust::RequestParameters
 
       sig { returns(T.nilable(T.anything)) }
+      def expected
+      end
+
+      sig { params(_: T.anything).returns(T.anything) }
+      def expected=(_)
+      end
+
+      sig { returns(T.nilable(T.anything)) }
       def input
       end
 
@@ -62,6 +70,17 @@ module Braintrust
       def messages=(_)
       end
 
+      sig { returns(T.nilable(T::Hash[Symbol, T.nilable(T.anything)])) }
+      def metadata
+      end
+
+      sig do
+        params(_: T.nilable(T::Hash[Symbol, T.nilable(T.anything)]))
+          .returns(T.nilable(T::Hash[Symbol, T.nilable(T.anything)]))
+      end
+      def metadata=(_)
+      end
+
       sig { returns(T.nilable(Symbol)) }
       def mode
       end
@@ -99,6 +118,7 @@ module Braintrust
 
       sig do
         params(
+          expected: T.anything,
           input: T.anything,
           messages: T::Array[
           T.any(
@@ -110,6 +130,7 @@ module Braintrust
             Braintrust::Models::FunctionInvokeParams::Message::Fallback
           )
           ],
+          metadata: T.nilable(T::Hash[Symbol, T.nilable(T.anything)]),
           mode: T.nilable(Symbol),
           parent: T.any(Braintrust::Models::FunctionInvokeParams::Parent::SpanParentStruct, String),
           stream: T.nilable(T::Boolean),
@@ -118,13 +139,24 @@ module Braintrust
         )
           .returns(T.attached_class)
       end
-      def self.new(input: nil, messages: nil, mode: nil, parent: nil, stream: nil, version: nil, request_options: {})
+      def self.new(
+        expected: nil,
+        input: nil,
+        messages: nil,
+        metadata: nil,
+        mode: nil,
+        parent: nil,
+        stream: nil,
+        version: nil,
+        request_options: {}
+      )
       end
 
       sig do
         override
           .returns(
             {
+              expected: T.anything,
               input: T.anything,
               messages: T::Array[
               T.any(
@@ -136,6 +168,7 @@ module Braintrust
                 Braintrust::Models::FunctionInvokeParams::Message::Fallback
               )
               ],
+              metadata: T.nilable(T::Hash[Symbol, T.nilable(T.anything)]),
               mode: T.nilable(Symbol),
               parent: T.any(Braintrust::Models::FunctionInvokeParams::Parent::SpanParentStruct, String),
               stream: T.nilable(T::Boolean),
@@ -703,6 +736,7 @@ module Braintrust
 
             PROJECT_LOGS = :project_logs
             EXPERIMENT = :experiment
+            PLAYGROUND_LOGS = :playground_logs
 
             class << self
               sig { override.returns(T::Array[Symbol]) }

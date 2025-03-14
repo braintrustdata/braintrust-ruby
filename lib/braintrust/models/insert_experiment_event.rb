@@ -53,7 +53,11 @@ module Braintrust
       optional :_object_delete, Braintrust::BooleanModel, nil?: true
 
       # @!attribute _parent_id
-      #   Use the `_parent_id` field to create this row as a subspan of an existing row.
+      #   DEPRECATED: The `_parent_id` field is deprecated and should not be used. Support
+      #     for `_parent_id` will be dropped in a future version of Braintrust. Log
+      #     `span_id`, `root_span_id`, and `span_parents` explicitly instead.
+      #
+      #     Use the `_parent_id` field to create this row as a subspan of an existing row.
       #     Tracking hierarchical relationships are important for tracing (see the
       #     [guide](https://www.braintrust.dev/docs/guides/tracing) for full details).
       #
@@ -84,13 +88,6 @@ module Braintrust
       #
       #   @return [Time, nil]
       optional :created, Time, nil?: true
-
-      # @!attribute dataset_record_id
-      #   If the experiment is associated to a dataset, this is the event-level dataset id
-      #     this experiment event is tied to
-      #
-      #   @return [String, nil]
-      optional :dataset_record_id, String, nil?: true
 
       # @!attribute [r] error
       #   The error that occurred, if any.
@@ -139,8 +136,8 @@ module Braintrust
       #     anything else that would be useful to slice/dice later. The values in `metadata`
       #     can be any JSON-serializable type, but its keys must be strings
       #
-      #   @return [Hash{Symbol=>Object, nil}, nil]
-      optional :metadata, Braintrust::HashOf[Braintrust::Unknown, nil?: true], nil?: true
+      #   @return [Braintrust::Models::InsertExperimentEvent::Metadata, nil]
+      optional :metadata, -> { Braintrust::Models::InsertExperimentEvent::Metadata }, nil?: true
 
       # @!attribute metrics
       #   Metrics are numerical measurements tracking the execution of the code that
@@ -149,6 +146,12 @@ module Braintrust
       #
       #   @return [Braintrust::Models::InsertExperimentEvent::Metrics, nil]
       optional :metrics, -> { Braintrust::Models::InsertExperimentEvent::Metrics }, nil?: true
+
+      # @!attribute origin
+      #   Indicates the event was copied from another object.
+      #
+      #   @return [Braintrust::Models::ObjectReference, nil]
+      optional :origin, -> { Braintrust::Models::ObjectReference }, nil?: true
 
       # @!attribute [r] output
       #   The output of your application, including post-processing (an arbitrary, JSON
@@ -165,9 +168,9 @@ module Braintrust
       #   attr_writer :output
 
       # @!attribute root_span_id
-      #   Use span_id, root_span_id, and span_parents as a more explicit alternative to
-      #     \_parent_id. The span_id is a unique identifier describing the row's place in
-      #     the a trace, and the root_span_id is a unique identifier for the whole trace.
+      #   Use `span_id`, `root_span_id`, and `span_parents` instead of `_parent_id`, which
+      #     is now deprecated. The span_id is a unique identifier describing the row's place
+      #     in the a trace, and the root_span_id is a unique identifier for the whole trace.
       #     See the [guide](https://www.braintrust.dev/docs/guides/tracing) for full
       #     details.
       #
@@ -204,9 +207,9 @@ module Braintrust
       optional :span_attributes, -> { Braintrust::Models::SpanAttributes }, nil?: true
 
       # @!attribute span_id
-      #   Use span_id, root_span_id, and span_parents as a more explicit alternative to
-      #     \_parent_id. The span_id is a unique identifier describing the row's place in
-      #     the a trace, and the root_span_id is a unique identifier for the whole trace.
+      #   Use `span_id`, `root_span_id`, and `span_parents` instead of `_parent_id`, which
+      #     is now deprecated. The span_id is a unique identifier describing the row's place
+      #     in the a trace, and the root_span_id is a unique identifier for the whole trace.
       #     See the [guide](https://www.braintrust.dev/docs/guides/tracing) for full
       #     details.
       #
@@ -224,9 +227,9 @@ module Braintrust
       optional :span_id, String, nil?: true
 
       # @!attribute span_parents
-      #   Use span_id, root_span_id, and span_parents as a more explicit alternative to
-      #     \_parent_id. The span_id is a unique identifier describing the row's place in
-      #     the a trace, and the root_span_id is a unique identifier for the whole trace.
+      #   Use `span_id`, `root_span_id`, and `span_parents` instead of `_parent_id`, which
+      #     is now deprecated. The span_id is a unique identifier describing the row's place
+      #     in the a trace, and the root_span_id is a unique identifier for the whole trace.
       #     See the [guide](https://www.braintrust.dev/docs/guides/tracing) for full
       #     details.
       #
@@ -259,12 +262,12 @@ module Braintrust
       #   # @param _parent_id [String, nil]
       #   # @param context [Braintrust::Models::InsertExperimentEvent::Context, nil]
       #   # @param created [Time, nil]
-      #   # @param dataset_record_id [String, nil]
       #   # @param error [Object]
       #   # @param expected [Object]
       #   # @param input [Object]
-      #   # @param metadata [Hash{Symbol=>Object, nil}, nil]
+      #   # @param metadata [Braintrust::Models::InsertExperimentEvent::Metadata, nil]
       #   # @param metrics [Braintrust::Models::InsertExperimentEvent::Metrics, nil]
+      #   # @param origin [Braintrust::Models::ObjectReference, nil]
       #   # @param output [Object]
       #   # @param root_span_id [String, nil]
       #   # @param scores [Hash{Symbol=>Float, nil}, nil]
@@ -281,12 +284,12 @@ module Braintrust
       #     _parent_id: nil,
       #     context: nil,
       #     created: nil,
-      #     dataset_record_id: nil,
       #     error: nil,
       #     expected: nil,
       #     input: nil,
       #     metadata: nil,
       #     metrics: nil,
+      #     origin: nil,
       #     output: nil,
       #     root_span_id: nil,
       #     scores: nil,
@@ -331,6 +334,27 @@ module Braintrust
         #   # @param caller_lineno [Integer, nil]
         #   #
         #   def initialize(caller_filename: nil, caller_functionname: nil, caller_lineno: nil, **) = super
+
+        # def initialize: (Hash | Braintrust::BaseModel) -> void
+      end
+
+      class Metadata < Braintrust::BaseModel
+        # @!attribute model
+        #   The model used for this example
+        #
+        #   @return [String, nil]
+        optional :model, String, nil?: true
+
+        # @!parse
+        #   # A dictionary with additional data about the test example, model outputs, or just
+        #   #   about anything else that's relevant, that you can use to help find and analyze
+        #   #   examples later. For example, you could log the `prompt`, example's `id`, or
+        #   #   anything else that would be useful to slice/dice later. The values in `metadata`
+        #   #   can be any JSON-serializable type, but its keys must be strings
+        #   #
+        #   # @param model [String, nil]
+        #   #
+        #   def initialize(model: nil, **) = super
 
         # def initialize: (Hash | Braintrust::BaseModel) -> void
       end

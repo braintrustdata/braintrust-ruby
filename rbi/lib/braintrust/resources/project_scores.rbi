@@ -9,12 +9,7 @@ module Braintrust
           project_id: String,
           score_type: Symbol,
           categories: T.nilable(
-            T.any(
-              T::Array[Braintrust::Models::ProjectScoreCategory],
-              T::Hash[Symbol, Float],
-              T::Array[String],
-              Braintrust::Models::ProjectScoreCreateParams::Categories::NullableVariant
-            )
+            T.any(T::Array[Braintrust::Models::ProjectScoreCategory], T::Hash[Symbol, Float], T::Array[String])
           ),
           config: T.nilable(Braintrust::Models::ProjectScoreConfig),
           description: T.nilable(String),
@@ -47,12 +42,7 @@ module Braintrust
         params(
           project_score_id: String,
           categories: T.nilable(
-            T.any(
-              T::Array[Braintrust::Models::ProjectScoreCategory],
-              T::Hash[Symbol, Float],
-              T::Array[String],
-              Braintrust::Models::ProjectScoreUpdateParams::Categories::NullableVariant
-            )
+            T.any(T::Array[Braintrust::Models::ProjectScoreCategory], T::Hash[Symbol, Float], T::Array[String])
           ),
           config: T.nilable(Braintrust::Models::ProjectScoreConfig),
           description: T.nilable(String),
@@ -118,12 +108,7 @@ module Braintrust
           project_id: String,
           score_type: Symbol,
           categories: T.nilable(
-            T.any(
-              T::Array[Braintrust::Models::ProjectScoreCategory],
-              T::Hash[Symbol, Float],
-              T::Array[String],
-              Braintrust::Models::ProjectScoreReplaceParams::Categories::NullableVariant
-            )
+            T.any(T::Array[Braintrust::Models::ProjectScoreCategory], T::Hash[Symbol, Float], T::Array[String])
           ),
           config: T.nilable(Braintrust::Models::ProjectScoreConfig),
           description: T.nilable(String),

@@ -2,8 +2,10 @@ module Braintrust
   module Models
     type function_invoke_params =
       {
+        expected: top,
         input: top,
         messages: ::Array[Braintrust::Models::FunctionInvokeParams::message],
+        metadata: ::Hash[Symbol, top?]?,
         mode: Braintrust::Models::FunctionInvokeParams::mode?,
         parent: Braintrust::Models::FunctionInvokeParams::parent,
         stream: bool?,
@@ -15,6 +17,10 @@ module Braintrust
       extend Braintrust::RequestParameters::Converter
       include Braintrust::RequestParameters
 
+      attr_reader expected: top?
+
+      def expected=: (top) -> top
+
       attr_reader input: top?
 
       def input=: (top) -> top
@@ -24,6 +30,8 @@ module Braintrust
       def messages=: (
         ::Array[Braintrust::Models::FunctionInvokeParams::message]
       ) -> ::Array[Braintrust::Models::FunctionInvokeParams::message]
+
+      attr_accessor metadata: ::Hash[Symbol, top?]?
 
       attr_accessor mode: Braintrust::Models::FunctionInvokeParams::mode?
 
@@ -41,8 +49,10 @@ module Braintrust
 
       def initialize:
         (
+          expected: top,
           input: top,
           messages: ::Array[Braintrust::Models::FunctionInvokeParams::message],
+          metadata: ::Hash[Symbol, top?]?,
           mode: Braintrust::Models::FunctionInvokeParams::mode?,
           parent: Braintrust::Models::FunctionInvokeParams::parent,
           stream: bool?,
@@ -387,11 +397,12 @@ module Braintrust
 
           def to_hash: -> Braintrust::Models::FunctionInvokeParams::Parent::span_parent_struct
 
-          type object_type = :project_logs | :experiment
+          type object_type = :project_logs | :experiment | :playground_logs
 
           class ObjectType < Braintrust::Enum
             PROJECT_LOGS: :project_logs
             EXPERIMENT: :experiment
+            PLAYGROUND_LOGS: :playground_logs
 
             def self.values: -> ::Array[Braintrust::Models::FunctionInvokeParams::Parent::SpanParentStruct::object_type]
           end

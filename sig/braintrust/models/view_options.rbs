@@ -4,7 +4,10 @@ module Braintrust
       {
         column_order: ::Array[String]?,
         column_sizing: ::Hash[Symbol, Float]?,
-        column_visibility: ::Hash[Symbol, bool]?
+        column_visibility: ::Hash[Symbol, bool]?,
+        grouping: String?,
+        layout: String?,
+        row_height: String?
       }
 
     class ViewOptions < Braintrust::BaseModel
@@ -14,11 +17,20 @@ module Braintrust
 
       attr_accessor column_visibility: ::Hash[Symbol, bool]?
 
+      attr_accessor grouping: String?
+
+      attr_accessor layout: String?
+
+      attr_accessor row_height: String?
+
       def initialize:
         (
           column_order: ::Array[String]?,
           column_sizing: ::Hash[Symbol, Float]?,
-          column_visibility: ::Hash[Symbol, bool]?
+          column_visibility: ::Hash[Symbol, bool]?,
+          grouping: String?,
+          layout: String?,
+          row_height: String?
         ) -> void
         | (
           ?Braintrust::Models::view_options | Braintrust::BaseModel data

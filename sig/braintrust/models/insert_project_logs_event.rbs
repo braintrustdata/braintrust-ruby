@@ -12,8 +12,9 @@ module Braintrust
         error: top,
         expected: top,
         input: top,
-        metadata: ::Hash[Symbol, top?]?,
+        metadata: Braintrust::Models::InsertProjectLogsEvent::Metadata?,
         metrics: Braintrust::Models::InsertProjectLogsEvent::Metrics?,
+        origin: Braintrust::Models::ObjectReference?,
         output: top,
         root_span_id: String?,
         scores: ::Hash[Symbol, Float?]?,
@@ -50,9 +51,11 @@ module Braintrust
 
       def input=: (top) -> top
 
-      attr_accessor metadata: ::Hash[Symbol, top?]?
+      attr_accessor metadata: Braintrust::Models::InsertProjectLogsEvent::Metadata?
 
       attr_accessor metrics: Braintrust::Models::InsertProjectLogsEvent::Metrics?
+
+      attr_accessor origin: Braintrust::Models::ObjectReference?
 
       attr_reader output: top?
 
@@ -82,8 +85,9 @@ module Braintrust
           error: top,
           expected: top,
           input: top,
-          metadata: ::Hash[Symbol, top?]?,
+          metadata: Braintrust::Models::InsertProjectLogsEvent::Metadata?,
           metrics: Braintrust::Models::InsertProjectLogsEvent::Metrics?,
+          origin: Braintrust::Models::ObjectReference?,
           output: top,
           root_span_id: String?,
           scores: ::Hash[Symbol, Float?]?,
@@ -125,6 +129,21 @@ module Braintrust
           ) -> void
 
         def to_hash: -> Braintrust::Models::InsertProjectLogsEvent::context
+      end
+
+      type metadata = { model: String? }
+
+      class Metadata < Braintrust::BaseModel
+        attr_accessor model: String?
+
+        def initialize:
+          (model: String?) -> void
+          | (
+            ?Braintrust::Models::InsertProjectLogsEvent::metadata
+            | Braintrust::BaseModel data
+          ) -> void
+
+        def to_hash: -> Braintrust::Models::InsertProjectLogsEvent::metadata
       end
 
       type metrics =

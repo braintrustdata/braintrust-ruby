@@ -17,6 +17,7 @@ module Braintrust
           is_public: bool?,
           max_concurrency: Float?,
           metadata: ::Hash[Symbol, top?],
+          parent: Braintrust::Models::EvalCreateParams::parent,
           repo_info: Braintrust::Models::RepoInfo?,
           stream: bool,
           timeout: Float?,

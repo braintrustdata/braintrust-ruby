@@ -18,7 +18,8 @@ class Braintrust::Test::Resources::AISecretsTest < Braintrust::Test::ResourceTes
         created: Time | nil,
         metadata: ^(Braintrust::HashOf[Braintrust::Unknown, nil?: true]) | nil,
         preview_secret: String | nil,
-        type: String | nil
+        type: String | nil,
+        updated_at: Time | nil
       }
     end
   end
@@ -38,7 +39,8 @@ class Braintrust::Test::Resources::AISecretsTest < Braintrust::Test::ResourceTes
         created: Time | nil,
         metadata: ^(Braintrust::HashOf[Braintrust::Unknown, nil?: true]) | nil,
         preview_secret: String | nil,
-        type: String | nil
+        type: String | nil,
+        updated_at: Time | nil
       }
     end
   end
@@ -58,7 +60,8 @@ class Braintrust::Test::Resources::AISecretsTest < Braintrust::Test::ResourceTes
         created: Time | nil,
         metadata: ^(Braintrust::HashOf[Braintrust::Unknown, nil?: true]) | nil,
         preview_secret: String | nil,
-        type: String | nil
+        type: String | nil,
+        updated_at: Time | nil
       }
     end
   end
@@ -83,7 +86,8 @@ class Braintrust::Test::Resources::AISecretsTest < Braintrust::Test::ResourceTes
         created: Time | nil,
         metadata: ^(Braintrust::HashOf[Braintrust::Unknown, nil?: true]) | nil,
         preview_secret: String | nil,
-        type: String | nil
+        type: String | nil,
+        updated_at: Time | nil
       }
     end
   end
@@ -103,7 +107,8 @@ class Braintrust::Test::Resources::AISecretsTest < Braintrust::Test::ResourceTes
         created: Time | nil,
         metadata: ^(Braintrust::HashOf[Braintrust::Unknown, nil?: true]) | nil,
         preview_secret: String | nil,
-        type: String | nil
+        type: String | nil,
+        updated_at: Time | nil
       }
     end
   end
@@ -123,7 +128,8 @@ class Braintrust::Test::Resources::AISecretsTest < Braintrust::Test::ResourceTes
         created: Time | nil,
         metadata: ^(Braintrust::HashOf[Braintrust::Unknown, nil?: true]) | nil,
         preview_secret: String | nil,
-        type: String | nil
+        type: String | nil,
+        updated_at: Time | nil
       }
     end
   end
@@ -143,7 +149,8 @@ class Braintrust::Test::Resources::AISecretsTest < Braintrust::Test::ResourceTes
         created: Time | nil,
         metadata: ^(Braintrust::HashOf[Braintrust::Unknown, nil?: true]) | nil,
         preview_secret: String | nil,
-        type: String | nil
+        type: String | nil,
+        updated_at: Time | nil
       }
     end
   end

@@ -73,7 +73,7 @@ module Braintrust
       #
       #   @option params [String, nil] :description Textual description of the prompt
       #
-      #   @option params [Braintrust::Models::FunctionUpdateParams::FunctionData::Prompt, Braintrust::Models::FunctionUpdateParams::FunctionData::Code, Braintrust::Models::FunctionUpdateParams::FunctionData::Global, Braintrust::Models::FunctionUpdateParams::FunctionData::NullableVariant, nil] :function_data
+      #   @option params [Braintrust::Models::FunctionUpdateParams::FunctionData::Prompt, Braintrust::Models::FunctionUpdateParams::FunctionData::Code, Braintrust::Models::FunctionUpdateParams::FunctionData::Global, nil] :function_data
       #
       #   @option params [String, nil] :name Name of the prompt
       #
@@ -174,9 +174,13 @@ module Braintrust
       #
       # @param params [Braintrust::Models::FunctionInvokeParams, Hash{Symbol=>Object}] .
       #
+      #   @option params [Object] :expected The expected output of the function
+      #
       #   @option params [Object] :input Argument to the function, which can be any JSON serializable value
       #
       #   @option params [Array<Braintrust::Models::FunctionInvokeParams::Message::System, Braintrust::Models::FunctionInvokeParams::Message::User, Braintrust::Models::FunctionInvokeParams::Message::Assistant, Braintrust::Models::FunctionInvokeParams::Message::Tool, Braintrust::Models::FunctionInvokeParams::Message::Function, Braintrust::Models::FunctionInvokeParams::Message::Fallback>] :messages If the function is an LLM, additional messages to pass along to it
+      #
+      #   @option params [Hash{Symbol=>Object, nil}, nil] :metadata Any relevant metadata
       #
       #   @option params [Symbol, Braintrust::Models::FunctionInvokeParams::Mode, nil] :mode The mode format of the returned value (defaults to 'auto')
       #
