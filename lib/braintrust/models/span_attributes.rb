@@ -12,32 +12,18 @@ module Braintrust
       # @!attribute type
       #   Type of the span, for display purposes only
       #
-      #   @return [Symbol, Braintrust::Models::SpanAttributes::Type, nil]
-      optional :type, enum: -> { Braintrust::Models::SpanAttributes::Type }, nil?: true
+      #   @return [Symbol, Braintrust::Models::SpanType, nil]
+      optional :type, enum: -> { Braintrust::Models::SpanType }, nil?: true
 
       # @!parse
       #   # Human-identifying attributes of the span, such as name, type, etc.
       #   #
       #   # @param name [String, nil]
-      #   # @param type [Symbol, Braintrust::Models::SpanAttributes::Type, nil]
+      #   # @param type [Symbol, Braintrust::Models::SpanType, nil]
       #   #
       #   def initialize(name: nil, type: nil, **) = super
 
       # def initialize: (Hash | Braintrust::BaseModel) -> void
-
-      # @abstract
-      #
-      # Type of the span, for display purposes only
-      class Type < Braintrust::Enum
-        LLM = :llm
-        SCORE = :score
-        FUNCTION = :function
-        EVAL = :eval
-        TASK = :task
-        TOOL = :tool
-
-        finalize!
-      end
     end
   end
 end

@@ -116,28 +116,6 @@ module Braintrust
       def to_hash
       end
 
-      class ObjectType < Braintrust::Enum
-        abstract!
-
-        ORGANIZATION = :organization
-        PROJECT = :project
-        EXPERIMENT = :experiment
-        DATASET = :dataset
-        PROMPT = :prompt
-        PROMPT_SESSION = :prompt_session
-        GROUP = :group
-        ROLE = :role
-        ORG_MEMBER = :org_member
-        PROJECT_LOG = :project_log
-        ORG_PROJECT = :org_project
-
-        class << self
-          sig { override.returns(T::Array[Symbol]) }
-          def values
-          end
-        end
-      end
-
       class IDs < Braintrust::Union
         abstract!
 
@@ -146,28 +124,6 @@ module Braintrust
         class << self
           sig { override.returns([[NilClass, String], [NilClass, T::Array[String]]]) }
           private def variants
-          end
-        end
-      end
-
-      class ViewType < Braintrust::Enum
-        abstract!
-
-        PROJECTS = T.let(:projects, T.nilable(Symbol))
-        EXPERIMENTS = T.let(:experiments, T.nilable(Symbol))
-        EXPERIMENT = T.let(:experiment, T.nilable(Symbol))
-        PLAYGROUNDS = T.let(:playgrounds, T.nilable(Symbol))
-        PLAYGROUND = T.let(:playground, T.nilable(Symbol))
-        DATASETS = T.let(:datasets, T.nilable(Symbol))
-        DATASET = T.let(:dataset, T.nilable(Symbol))
-        PROMPTS = T.let(:prompts, T.nilable(Symbol))
-        TOOLS = T.let(:tools, T.nilable(Symbol))
-        SCORERS = T.let(:scorers, T.nilable(Symbol))
-        LOGS = T.let(:logs, T.nilable(Symbol))
-
-        class << self
-          sig { override.returns(T::Array[Symbol]) }
-          def values
           end
         end
       end

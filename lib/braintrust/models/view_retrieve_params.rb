@@ -16,36 +16,17 @@ module Braintrust
       # @!attribute object_type
       #   The object type that the ACL applies to
       #
-      #   @return [Symbol, Braintrust::Models::ViewRetrieveParams::ObjectType]
-      required :object_type, enum: -> { Braintrust::Models::ViewRetrieveParams::ObjectType }
+      #   @return [Symbol, Braintrust::Models::ACLObjectType]
+      required :object_type, enum: -> { Braintrust::Models::ACLObjectType }
 
       # @!parse
       #   # @param object_id_ [String]
-      #   # @param object_type [Symbol, Braintrust::Models::ViewRetrieveParams::ObjectType]
+      #   # @param object_type [Symbol, Braintrust::Models::ACLObjectType]
       #   # @param request_options [Braintrust::RequestOptions, Hash{Symbol=>Object}]
       #   #
       #   def initialize(object_id_:, object_type:, request_options: {}, **) = super
 
       # def initialize: (Hash | Braintrust::BaseModel) -> void
-
-      # @abstract
-      #
-      # The object type that the ACL applies to
-      class ObjectType < Braintrust::Enum
-        ORGANIZATION = :organization
-        PROJECT = :project
-        EXPERIMENT = :experiment
-        DATASET = :dataset
-        PROMPT = :prompt
-        PROMPT_SESSION = :prompt_session
-        GROUP = :group
-        ROLE = :role
-        ORG_MEMBER = :org_member
-        PROJECT_LOG = :project_log
-        ORG_PROJECT = :org_project
-
-        finalize!
-      end
     end
   end
 end

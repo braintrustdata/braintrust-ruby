@@ -384,8 +384,8 @@ module Braintrust
         # @!attribute object_type
         #   The object type that the ACL applies to
         #
-        #   @return [Symbol, Braintrust::Models::Function::Origin::ObjectType]
-        required :object_type, enum: -> { Braintrust::Models::Function::Origin::ObjectType }
+        #   @return [Symbol, Braintrust::Models::ACLObjectType]
+        required :object_type, enum: -> { Braintrust::Models::ACLObjectType }
 
         # @!attribute internal
         #   The function exists for internal purposes and should not be displayed in the
@@ -396,31 +396,12 @@ module Braintrust
 
         # @!parse
         #   # @param object_id_ [String]
-        #   # @param object_type [Symbol, Braintrust::Models::Function::Origin::ObjectType]
+        #   # @param object_type [Symbol, Braintrust::Models::ACLObjectType]
         #   # @param internal [Boolean, nil]
         #   #
         #   def initialize(object_id_:, object_type:, internal: nil, **) = super
 
         # def initialize: (Hash | Braintrust::BaseModel) -> void
-
-        # @abstract
-        #
-        # The object type that the ACL applies to
-        class ObjectType < Braintrust::Enum
-          ORGANIZATION = :organization
-          PROJECT = :project
-          EXPERIMENT = :experiment
-          DATASET = :dataset
-          PROMPT = :prompt
-          PROMPT_SESSION = :prompt_session
-          GROUP = :group
-          ROLE = :role
-          ORG_MEMBER = :org_member
-          PROJECT_LOG = :project_log
-          ORG_PROJECT = :org_project
-
-          finalize!
-        end
       end
     end
   end

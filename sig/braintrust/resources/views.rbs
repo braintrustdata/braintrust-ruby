@@ -8,7 +8,7 @@ module Braintrust
         | (
           name: String,
           object_id_: String,
-          object_type: Braintrust::Models::ViewCreateParams::object_type,
+          object_type: Braintrust::Models::acl_object_type,
           view_type: Braintrust::Models::ViewCreateParams::view_type?,
           deleted_at: Time?,
           options: Braintrust::Models::ViewOptions?,
@@ -25,7 +25,7 @@ module Braintrust
         | (
           String view_id,
           object_id_: String,
-          object_type: Braintrust::Models::ViewRetrieveParams::object_type,
+          object_type: Braintrust::Models::acl_object_type,
           request_options: Braintrust::request_opts
         ) -> Braintrust::Models::View
 
@@ -37,7 +37,7 @@ module Braintrust
         | (
           String view_id,
           object_id_: String,
-          object_type: Braintrust::Models::ViewUpdateParams::object_type,
+          object_type: Braintrust::Models::acl_object_type,
           name: String?,
           options: Braintrust::Models::ViewOptions?,
           user_id: String?,
@@ -52,13 +52,13 @@ module Braintrust
         ) -> Braintrust::ListObjects[Braintrust::Models::View]
         | (
           object_id_: String,
-          object_type: Braintrust::Models::ViewListParams::object_type,
+          object_type: Braintrust::Models::acl_object_type,
           ending_before: String,
           ids: Braintrust::Models::ViewListParams::ids,
           limit: Integer?,
           starting_after: String,
           view_name: String,
-          view_type: Braintrust::Models::ViewListParams::view_type?,
+          view_type: Braintrust::Models::view_type?,
           request_options: Braintrust::request_opts
         ) -> Braintrust::ListObjects[Braintrust::Models::View]
 
@@ -70,7 +70,7 @@ module Braintrust
         | (
           String view_id,
           object_id_: String,
-          object_type: Braintrust::Models::ViewDeleteParams::object_type,
+          object_type: Braintrust::Models::acl_object_type,
           request_options: Braintrust::request_opts
         ) -> Braintrust::Models::View
 
@@ -81,7 +81,7 @@ module Braintrust
         | (
           name: String,
           object_id_: String,
-          object_type: Braintrust::Models::ViewReplaceParams::object_type,
+          object_type: Braintrust::Models::acl_object_type,
           view_type: Braintrust::Models::ViewReplaceParams::view_type?,
           deleted_at: Time?,
           options: Braintrust::Models::ViewOptions?,

@@ -87,20 +87,6 @@ module Braintrust
           end
         end
       end
-
-      class ObjectType < Braintrust::Enum
-        abstract!
-
-        ORGANIZATION = :organization
-        PROJECT = :project
-        FUNCTION = :function
-
-        class << self
-          sig { override.returns(T::Array[Symbol]) }
-          def values
-          end
-        end
-      end
     end
   end
 end

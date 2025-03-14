@@ -1,0 +1,24 @@
+module Braintrust
+  module Models
+    type project_score_type =
+      :slider
+      | :categorical
+      | :weighted
+      | :minimum
+      | :maximum
+      | :online
+      | :"free-form"
+
+    class ProjectScoreType < Braintrust::Enum
+      SLIDER: :slider
+      CATEGORICAL: :categorical
+      WEIGHTED: :weighted
+      MINIMUM: :minimum
+      MAXIMUM: :maximum
+      ONLINE: :online
+      FREE_FORM: :"free-form"
+
+      def self.values: -> ::Array[Braintrust::Models::project_score_type]
+    end
+  end
+end

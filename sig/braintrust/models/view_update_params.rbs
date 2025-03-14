@@ -3,7 +3,7 @@ module Braintrust
     type view_update_params =
       {
         object_id_: String,
-        object_type: Braintrust::Models::ViewUpdateParams::object_type,
+        object_type: Braintrust::Models::acl_object_type,
         name: String?,
         options: Braintrust::Models::ViewOptions?,
         user_id: String?,
@@ -18,7 +18,7 @@ module Braintrust
 
       attr_accessor object_id_: String
 
-      attr_accessor object_type: Braintrust::Models::ViewUpdateParams::object_type
+      attr_accessor object_type: Braintrust::Models::acl_object_type
 
       attr_accessor name: String?
 
@@ -33,7 +33,7 @@ module Braintrust
       def initialize:
         (
           object_id_: String,
-          object_type: Braintrust::Models::ViewUpdateParams::object_type,
+          object_type: Braintrust::Models::acl_object_type,
           name: String?,
           options: Braintrust::Models::ViewOptions?,
           user_id: String?,
@@ -46,35 +46,6 @@ module Braintrust
         ) -> void
 
       def to_hash: -> Braintrust::Models::view_update_params
-
-      type object_type =
-        :organization
-        | :project
-        | :experiment
-        | :dataset
-        | :prompt
-        | :prompt_session
-        | :group
-        | :role
-        | :org_member
-        | :project_log
-        | :org_project
-
-      class ObjectType < Braintrust::Enum
-        ORGANIZATION: :organization
-        PROJECT: :project
-        EXPERIMENT: :experiment
-        DATASET: :dataset
-        PROMPT: :prompt
-        PROMPT_SESSION: :prompt_session
-        GROUP: :group
-        ROLE: :role
-        ORG_MEMBER: :org_member
-        PROJECT_LOG: :project_log
-        ORG_PROJECT: :org_project
-
-        def self.values: -> ::Array[Braintrust::Models::ViewUpdateParams::object_type]
-      end
 
       type view_type =
         :projects

@@ -13,7 +13,7 @@ module Braintrust
       #
       #   @option params [String] :project_id Unique identifier for the project that the project score belongs under
       #
-      #   @option params [Symbol, Braintrust::Models::ProjectScoreCreateParams::ScoreType] :score_type The type of the configured score
+      #   @option params [Symbol, Braintrust::Models::ProjectScoreType] :score_type The type of the configured score
       #
       #   @option params [Array<Braintrust::Models::ProjectScoreCategory>, Hash{Symbol=>Float}, Array<String>, nil] :categories For categorical-type project scores, the list of all categories
       #
@@ -71,7 +71,7 @@ module Braintrust
       #
       #   @option params [String, nil] :name Name of the project score
       #
-      #   @option params [Symbol, Braintrust::Models::ProjectScoreUpdateParams::ScoreType, nil] :score_type The type of the configured score
+      #   @option params [Symbol, Braintrust::Models::ProjectScoreType, nil] :score_type The type of the configured score
       #
       #   @option params [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
@@ -112,7 +112,7 @@ module Braintrust
       #
       #   @option params [String] :project_score_name Name of the project_score to search for
       #
-      #   @option params [Symbol, Braintrust::Models::ProjectScoreListParams::ScoreType::ProjectScoreType, Array<Symbol, Braintrust::Models::ProjectScoreListParams::ScoreType::UnionMember1>] :score_type The type of the configured score
+      #   @option params [Symbol, Braintrust::Models::ProjectScoreType, Array<Symbol, Braintrust::Models::ProjectScoreType>] :score_type The type of the configured score
       #
       #   @option params [String] :starting_after Pagination cursor id.
       #
@@ -165,7 +165,7 @@ module Braintrust
       #
       #   @option params [String] :project_id Unique identifier for the project that the project score belongs under
       #
-      #   @option params [Symbol, Braintrust::Models::ProjectScoreReplaceParams::ScoreType] :score_type The type of the configured score
+      #   @option params [Symbol, Braintrust::Models::ProjectScoreType] :score_type The type of the configured score
       #
       #   @option params [Array<Braintrust::Models::ProjectScoreCategory>, Hash{Symbol=>Float}, Array<String>, nil] :categories For categorical-type project scores, the list of all categories
       #

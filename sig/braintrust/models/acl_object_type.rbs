@@ -1,0 +1,32 @@
+module Braintrust
+  module Models
+    type acl_object_type =
+      :organization
+      | :project
+      | :experiment
+      | :dataset
+      | :prompt
+      | :prompt_session
+      | :group
+      | :role
+      | :org_member
+      | :project_log
+      | :org_project
+
+    class ACLObjectType < Braintrust::Enum
+      ORGANIZATION: :organization
+      PROJECT: :project
+      EXPERIMENT: :experiment
+      DATASET: :dataset
+      PROMPT: :prompt
+      PROMPT_SESSION: :prompt_session
+      GROUP: :group
+      ROLE: :role
+      ORG_MEMBER: :org_member
+      PROJECT_LOG: :project_log
+      ORG_PROJECT: :org_project
+
+      def self.values: -> ::Array[Braintrust::Models::acl_object_type]
+    end
+  end
+end

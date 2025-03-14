@@ -87,58 +87,16 @@ module Braintrust
       end
 
       type score_type =
-        Braintrust::Models::ProjectScoreListParams::ScoreType::project_score_type
-        | ::Array[Braintrust::Models::ProjectScoreListParams::ScoreType::union_member1]
+        Braintrust::Models::project_score_type
+        | ::Array[Braintrust::Models::project_score_type]
 
       class ScoreType < Braintrust::Union
-        type union_member1_array =
-          ::Array[Braintrust::Models::ProjectScoreListParams::ScoreType::union_member1]
+        type project_score_type_array =
+          ::Array[Braintrust::Models::project_score_type]
 
-        UnionMember1Array: union_member1_array
+        ProjectScoreTypeArray: project_score_type_array
 
-        type project_score_type =
-          :slider
-          | :categorical
-          | :weighted
-          | :minimum
-          | :maximum
-          | :online
-          | :"free-form"
-
-        class ProjectScoreType < Braintrust::Enum
-          SLIDER: :slider
-          CATEGORICAL: :categorical
-          WEIGHTED: :weighted
-          MINIMUM: :minimum
-          MAXIMUM: :maximum
-          ONLINE: :online
-          FREE_FORM: :"free-form"
-
-          def self.values: -> ::Array[Braintrust::Models::ProjectScoreListParams::ScoreType::project_score_type]
-        end
-
-        type union_member1 =
-          :slider
-          | :categorical
-          | :weighted
-          | :minimum
-          | :maximum
-          | :online
-          | :"free-form"
-
-        class UnionMember1 < Braintrust::Enum
-          SLIDER: :slider
-          CATEGORICAL: :categorical
-          WEIGHTED: :weighted
-          MINIMUM: :minimum
-          MAXIMUM: :maximum
-          ONLINE: :online
-          FREE_FORM: :"free-form"
-
-          def self.values: -> ::Array[Braintrust::Models::ProjectScoreListParams::ScoreType::union_member1]
-        end
-
-        private def self.variants: -> [[nil, Braintrust::Models::ProjectScoreListParams::ScoreType::project_score_type], [nil, ::Array[Braintrust::Models::ProjectScoreListParams::ScoreType::union_member1]]]
+        private def self.variants: -> [[nil, Braintrust::Models::project_score_type], [nil, ::Array[Braintrust::Models::project_score_type]]]
       end
     end
   end

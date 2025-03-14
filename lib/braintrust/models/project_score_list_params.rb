@@ -81,11 +81,11 @@ module Braintrust
       # @!attribute [r] score_type
       #   The type of the configured score
       #
-      #   @return [Symbol, Braintrust::Models::ProjectScoreListParams::ScoreType::ProjectScoreType, Array<Symbol, Braintrust::Models::ProjectScoreListParams::ScoreType::UnionMember1>, nil]
+      #   @return [Symbol, Braintrust::Models::ProjectScoreType, Array<Symbol, Braintrust::Models::ProjectScoreType>, nil]
       optional :score_type, union: -> { Braintrust::Models::ProjectScoreListParams::ScoreType }
 
       # @!parse
-      #   # @return [Symbol, Braintrust::Models::ProjectScoreListParams::ScoreType::ProjectScoreType, Array<Symbol, Braintrust::Models::ProjectScoreListParams::ScoreType::UnionMember1>]
+      #   # @return [Symbol, Braintrust::Models::ProjectScoreType, Array<Symbol, Braintrust::Models::ProjectScoreType>]
       #   attr_writer :score_type
 
       # @!attribute [r] starting_after
@@ -110,7 +110,7 @@ module Braintrust
       #   # @param project_id [String]
       #   # @param project_name [String]
       #   # @param project_score_name [String]
-      #   # @param score_type [Symbol, Braintrust::Models::ProjectScoreListParams::ScoreType::ProjectScoreType, Array<Symbol, Braintrust::Models::ProjectScoreListParams::ScoreType::UnionMember1>]
+      #   # @param score_type [Symbol, Braintrust::Models::ProjectScoreType, Array<Symbol, Braintrust::Models::ProjectScoreType>]
       #   # @param starting_after [String]
       #   # @param request_options [Braintrust::RequestOptions, Hash{Symbol=>Object}]
       #   #
@@ -148,43 +148,13 @@ module Braintrust
       #
       # The type of the configured score
       class ScoreType < Braintrust::Union
-        UnionMember1Array = Braintrust::ArrayOf[enum: -> { Braintrust::Models::ProjectScoreListParams::ScoreType::UnionMember1 }]
+        ProjectScoreTypeArray = Braintrust::ArrayOf[enum: -> { Braintrust::Models::ProjectScoreType }]
 
         # The type of the configured score
-        variant enum: -> { Braintrust::Models::ProjectScoreListParams::ScoreType::ProjectScoreType }
+        variant enum: -> { Braintrust::Models::ProjectScoreType }
 
         # The type of the configured score
-        variant Braintrust::Models::ProjectScoreListParams::ScoreType::UnionMember1Array
-
-        # @abstract
-        #
-        # The type of the configured score
-        class ProjectScoreType < Braintrust::Enum
-          SLIDER = :slider
-          CATEGORICAL = :categorical
-          WEIGHTED = :weighted
-          MINIMUM = :minimum
-          MAXIMUM = :maximum
-          ONLINE = :online
-          FREE_FORM = :"free-form"
-
-          finalize!
-        end
-
-        # @abstract
-        #
-        # The type of the configured score
-        class UnionMember1 < Braintrust::Enum
-          SLIDER = :slider
-          CATEGORICAL = :categorical
-          WEIGHTED = :weighted
-          MINIMUM = :minimum
-          MAXIMUM = :maximum
-          ONLINE = :online
-          FREE_FORM = :"free-form"
-
-          finalize!
-        end
+        variant Braintrust::Models::ProjectScoreListParams::ScoreType::ProjectScoreTypeArray
       end
     end
   end
