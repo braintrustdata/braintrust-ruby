@@ -131,69 +131,6 @@ module Braintrust
       end
       def to_hash
       end
-
-      class ObjectType < Braintrust::Enum
-        abstract!
-
-        ORGANIZATION = :organization
-        PROJECT = :project
-        EXPERIMENT = :experiment
-        DATASET = :dataset
-        PROMPT = :prompt
-        PROMPT_SESSION = :prompt_session
-        GROUP = :group
-        ROLE = :role
-        ORG_MEMBER = :org_member
-        PROJECT_LOG = :project_log
-        ORG_PROJECT = :org_project
-
-        class << self
-          sig { override.returns(T::Array[Symbol]) }
-          def values
-          end
-        end
-      end
-
-      class Permission < Braintrust::Enum
-        abstract!
-
-        CREATE = T.let(:create, T.nilable(Symbol))
-        READ = T.let(:read, T.nilable(Symbol))
-        UPDATE = T.let(:update, T.nilable(Symbol))
-        DELETE = T.let(:delete, T.nilable(Symbol))
-        CREATE_ACLS = T.let(:create_acls, T.nilable(Symbol))
-        READ_ACLS = T.let(:read_acls, T.nilable(Symbol))
-        UPDATE_ACLS = T.let(:update_acls, T.nilable(Symbol))
-        DELETE_ACLS = T.let(:delete_acls, T.nilable(Symbol))
-
-        class << self
-          sig { override.returns(T::Array[Symbol]) }
-          def values
-          end
-        end
-      end
-
-      class RestrictObjectType < Braintrust::Enum
-        abstract!
-
-        ORGANIZATION = T.let(:organization, T.nilable(Symbol))
-        PROJECT = T.let(:project, T.nilable(Symbol))
-        EXPERIMENT = T.let(:experiment, T.nilable(Symbol))
-        DATASET = T.let(:dataset, T.nilable(Symbol))
-        PROMPT = T.let(:prompt, T.nilable(Symbol))
-        PROMPT_SESSION = T.let(:prompt_session, T.nilable(Symbol))
-        GROUP = T.let(:group, T.nilable(Symbol))
-        ROLE = T.let(:role, T.nilable(Symbol))
-        ORG_MEMBER = T.let(:org_member, T.nilable(Symbol))
-        PROJECT_LOG = T.let(:project_log, T.nilable(Symbol))
-        ORG_PROJECT = T.let(:org_project, T.nilable(Symbol))
-
-        class << self
-          sig { override.returns(T::Array[Symbol]) }
-          def values
-          end
-        end
-      end
     end
   end
 end

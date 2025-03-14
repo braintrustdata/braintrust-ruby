@@ -9,7 +9,7 @@ module Braintrust
         | (
           name: String,
           project_id: String,
-          score_type: Braintrust::Models::ProjectScoreCreateParams::score_type,
+          score_type: Braintrust::Models::project_score_type,
           categories: Braintrust::Models::ProjectScoreCreateParams::categories?,
           config: Braintrust::Models::ProjectScoreConfig?,
           description: String?,
@@ -39,7 +39,7 @@ module Braintrust
           config: Braintrust::Models::ProjectScoreConfig?,
           description: String?,
           name: String?,
-          score_type: Braintrust::Models::ProjectScoreUpdateParams::score_type?,
+          score_type: Braintrust::Models::project_score_type?,
           request_options: Braintrust::request_opts
         ) -> Braintrust::Models::ProjectScore
 
@@ -80,7 +80,7 @@ module Braintrust
         | (
           name: String,
           project_id: String,
-          score_type: Braintrust::Models::ProjectScoreReplaceParams::score_type,
+          score_type: Braintrust::Models::project_score_type,
           categories: Braintrust::Models::ProjectScoreReplaceParams::categories?,
           config: Braintrust::Models::ProjectScoreConfig?,
           description: String?,

@@ -24,8 +24,8 @@ module Braintrust
       # @!attribute score_type
       #   The type of the configured score
       #
-      #   @return [Symbol, Braintrust::Models::ProjectScore::ScoreType]
-      required :score_type, enum: -> { Braintrust::Models::ProjectScore::ScoreType }
+      #   @return [Symbol, Braintrust::Models::ProjectScoreType]
+      required :score_type, enum: -> { Braintrust::Models::ProjectScoreType }
 
       # @!attribute user_id
       #
@@ -69,7 +69,7 @@ module Braintrust
       #   # @param id [String]
       #   # @param name [String]
       #   # @param project_id [String]
-      #   # @param score_type [Symbol, Braintrust::Models::ProjectScore::ScoreType]
+      #   # @param score_type [Symbol, Braintrust::Models::ProjectScoreType]
       #   # @param user_id [String]
       #   # @param categories [Array<Braintrust::Models::ProjectScoreCategory>, Hash{Symbol=>Float}, Array<String>, nil]
       #   # @param config [Braintrust::Models::ProjectScoreConfig, nil]
@@ -94,21 +94,6 @@ module Braintrust
       #   end
 
       # def initialize: (Hash | Braintrust::BaseModel) -> void
-
-      # @abstract
-      #
-      # The type of the configured score
-      class ScoreType < Braintrust::Enum
-        SLIDER = :slider
-        CATEGORICAL = :categorical
-        WEIGHTED = :weighted
-        MINIMUM = :minimum
-        MAXIMUM = :maximum
-        ONLINE = :online
-        FREE_FORM = :"free-form"
-
-        finalize!
-      end
 
       # @abstract
       #

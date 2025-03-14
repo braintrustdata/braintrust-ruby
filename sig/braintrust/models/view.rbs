@@ -5,7 +5,7 @@ module Braintrust
         id: String,
         name: String,
         object_id_: String,
-        object_type: Braintrust::Models::View::object_type,
+        object_type: Braintrust::Models::acl_object_type,
         view_type: Braintrust::Models::View::view_type?,
         created: Time?,
         deleted_at: Time?,
@@ -21,7 +21,7 @@ module Braintrust
 
       attr_accessor object_id_: String
 
-      attr_accessor object_type: Braintrust::Models::View::object_type
+      attr_accessor object_type: Braintrust::Models::acl_object_type
 
       attr_accessor view_type: Braintrust::Models::View::view_type?
 
@@ -40,7 +40,7 @@ module Braintrust
           id: String,
           name: String,
           object_id_: String,
-          object_type: Braintrust::Models::View::object_type,
+          object_type: Braintrust::Models::acl_object_type,
           view_type: Braintrust::Models::View::view_type?,
           created: Time?,
           deleted_at: Time?,
@@ -51,35 +51,6 @@ module Braintrust
         | (?Braintrust::Models::view | Braintrust::BaseModel data) -> void
 
       def to_hash: -> Braintrust::Models::view
-
-      type object_type =
-        :organization
-        | :project
-        | :experiment
-        | :dataset
-        | :prompt
-        | :prompt_session
-        | :group
-        | :role
-        | :org_member
-        | :project_log
-        | :org_project
-
-      class ObjectType < Braintrust::Enum
-        ORGANIZATION: :organization
-        PROJECT: :project
-        EXPERIMENT: :experiment
-        DATASET: :dataset
-        PROMPT: :prompt
-        PROMPT_SESSION: :prompt_session
-        GROUP: :group
-        ROLE: :role
-        ORG_MEMBER: :org_member
-        PROJECT_LOG: :project_log
-        ORG_PROJECT: :org_project
-
-        def self.values: -> ::Array[Braintrust::Models::View::object_type]
-      end
 
       type view_type =
         :projects

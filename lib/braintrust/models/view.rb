@@ -24,8 +24,8 @@ module Braintrust
       # @!attribute object_type
       #   The object type that the ACL applies to
       #
-      #   @return [Symbol, Braintrust::Models::View::ObjectType]
-      required :object_type, enum: -> { Braintrust::Models::View::ObjectType }
+      #   @return [Symbol, Braintrust::Models::ACLObjectType]
+      required :object_type, enum: -> { Braintrust::Models::ACLObjectType }
 
       # @!attribute view_type
       #   Type of table that the view corresponds to.
@@ -67,7 +67,7 @@ module Braintrust
       #   # @param id [String]
       #   # @param name [String]
       #   # @param object_id_ [String]
-      #   # @param object_type [Symbol, Braintrust::Models::View::ObjectType]
+      #   # @param object_type [Symbol, Braintrust::Models::ACLObjectType]
       #   # @param view_type [Symbol, Braintrust::Models::View::ViewType, nil]
       #   # @param created [Time, nil]
       #   # @param deleted_at [Time, nil]
@@ -92,25 +92,6 @@ module Braintrust
       #   end
 
       # def initialize: (Hash | Braintrust::BaseModel) -> void
-
-      # @abstract
-      #
-      # The object type that the ACL applies to
-      class ObjectType < Braintrust::Enum
-        ORGANIZATION = :organization
-        PROJECT = :project
-        EXPERIMENT = :experiment
-        DATASET = :dataset
-        PROMPT = :prompt
-        PROMPT_SESSION = :prompt_session
-        GROUP = :group
-        ROLE = :role
-        ORG_MEMBER = :org_member
-        PROJECT_LOG = :project_log
-        ORG_PROJECT = :org_project
-
-        finalize!
-      end
 
       # @abstract
       #
