@@ -122,13 +122,13 @@ module Braintrust
       (Enumerator::Yielder arg0) -> void
     } -> void
 
-    type sse_message =
+    type server_sent_event =
       { event: String?, data: String?, id: String?, retry: Integer? }
 
     def self?.decode_lines: (Enumerable[String] enum) -> Enumerable[String]
 
     def self?.decode_sse: (
       Enumerable[String] lines
-    ) -> Braintrust::Util::sse_message
+    ) -> Braintrust::Util::server_sent_event
   end
 end
