@@ -62,6 +62,8 @@ module Braintrust
       #
       # @param params [Braintrust::Models::SpanIframeUpdateParams, Hash{Symbol=>Object}] .
       #
+      #   @option params [String, nil] :description Textual description of the span iframe
+      #
       #   @option params [String, nil] :name Name of the span iframe
       #
       #   @option params [Boolean, nil] :post_message Whether to post messages to the iframe containing the span's data. This is

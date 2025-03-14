@@ -14,11 +14,7 @@ module Braintrust
       extend Braintrust::RequestParameters::Converter
       include Braintrust::RequestParameters
 
-      attr_reader categories: Braintrust::Models::ProjectScoreUpdateParams::categories?
-
-      def categories=: (
-        Braintrust::Models::ProjectScoreUpdateParams::categories?
-      ) -> Braintrust::Models::ProjectScoreUpdateParams::categories?
+      attr_accessor categories: Braintrust::Models::ProjectScoreUpdateParams::categories?
 
       attr_accessor config: Braintrust::Models::ProjectScoreConfig?
 
@@ -45,10 +41,9 @@ module Braintrust
       def to_hash: -> Braintrust::Models::project_score_update_params
 
       type categories =
-        (::Array[Braintrust::Models::ProjectScoreCategory]
+        ::Array[Braintrust::Models::ProjectScoreCategory]
         | ::Hash[Symbol, Float]
         | ::Array[String]
-        | Braintrust::Models::ProjectScoreUpdateParams::Categories::NullableVariant)?
 
       class Categories < Braintrust::Union
         type project_score_category_array =
@@ -64,24 +59,17 @@ module Braintrust
 
         StringArray: string_array
 
-        type nullable_variant = {  }
-
-        class NullableVariant < Braintrust::BaseModel
-          def initialize:
-            -> void
-            | (
-              ?Braintrust::Models::ProjectScoreUpdateParams::Categories::nullable_variant
-              | Braintrust::BaseModel data
-            ) -> void
-
-          def to_hash: -> Braintrust::Models::ProjectScoreUpdateParams::Categories::nullable_variant
-        end
-
-        private def self.variants: -> [[nil, ::Array[Braintrust::Models::ProjectScoreCategory]], [nil, ::Hash[Symbol, Float]], [nil, ::Array[String]], [nil, Braintrust::Models::ProjectScoreUpdateParams::Categories::NullableVariant]]
+        private def self.variants: -> [[nil, ::Array[Braintrust::Models::ProjectScoreCategory]], [nil, ::Hash[Symbol, Float]], [nil, ::Array[String]]]
       end
 
       type score_type =
-        :slider | :categorical | :weighted | :minimum | :maximum | :online
+        :slider
+        | :categorical
+        | :weighted
+        | :minimum
+        | :maximum
+        | :online
+        | :"free-form"
 
       class ScoreType < Braintrust::Enum
         SLIDER: :slider
@@ -90,6 +78,7 @@ module Braintrust
         MINIMUM: :minimum
         MAXIMUM: :maximum
         ONLINE: :online
+        FREE_FORM: :"free-form"
 
         def self.values: -> ::Array[Braintrust::Models::ProjectScoreUpdateParams::score_type]
       end

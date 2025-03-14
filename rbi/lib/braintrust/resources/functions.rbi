@@ -56,8 +56,7 @@ module Braintrust
             T.any(
               Braintrust::Models::FunctionUpdateParams::FunctionData::Prompt,
               Braintrust::Models::FunctionUpdateParams::FunctionData::Code,
-              Braintrust::Models::FunctionUpdateParams::FunctionData::Global,
-              Braintrust::Models::FunctionUpdateParams::FunctionData::NullableVariant
+              Braintrust::Models::FunctionUpdateParams::FunctionData::Global
             )
           ),
           name: T.nilable(String),
@@ -122,6 +121,7 @@ module Braintrust
       sig do
         params(
           function_id: String,
+          expected: T.anything,
           input: T.anything,
           messages: T::Array[
           T.any(
@@ -133,6 +133,7 @@ module Braintrust
             Braintrust::Models::FunctionInvokeParams::Message::Fallback
           )
           ],
+          metadata: T.nilable(T::Hash[Symbol, T.nilable(T.anything)]),
           mode: T.nilable(Symbol),
           parent: T.any(Braintrust::Models::FunctionInvokeParams::Parent::SpanParentStruct, String),
           stream: T.nilable(T::Boolean),
@@ -143,8 +144,10 @@ module Braintrust
       end
       def invoke(
         function_id,
+        expected: nil,
         input: nil,
         messages: nil,
+        metadata: nil,
         mode: nil,
         parent: nil,
         stream: nil,

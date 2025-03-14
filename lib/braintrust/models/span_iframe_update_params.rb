@@ -7,6 +7,12 @@ module Braintrust
       #   extend Braintrust::RequestParameters::Converter
       include Braintrust::RequestParameters
 
+      # @!attribute description
+      #   Textual description of the span iframe
+      #
+      #   @return [String, nil]
+      optional :description, String, nil?: true
+
       # @!attribute name
       #   Name of the span iframe
       #
@@ -27,12 +33,13 @@ module Braintrust
       optional :url, String, nil?: true
 
       # @!parse
+      #   # @param description [String, nil]
       #   # @param name [String, nil]
       #   # @param post_message [Boolean, nil]
       #   # @param url [String, nil]
       #   # @param request_options [Braintrust::RequestOptions, Hash{Symbol=>Object}]
       #   #
-      #   def initialize(name: nil, post_message: nil, url: nil, request_options: {}, **) = super
+      #   def initialize(description: nil, name: nil, post_message: nil, url: nil, request_options: {}, **) = super
 
       # def initialize: (Hash | Braintrust::BaseModel) -> void
     end

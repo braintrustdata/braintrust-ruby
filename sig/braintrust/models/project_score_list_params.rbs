@@ -97,7 +97,13 @@ module Braintrust
         UnionMember1Array: union_member1_array
 
         type project_score_type =
-          :slider | :categorical | :weighted | :minimum | :maximum | :online
+          :slider
+          | :categorical
+          | :weighted
+          | :minimum
+          | :maximum
+          | :online
+          | :"free-form"
 
         class ProjectScoreType < Braintrust::Enum
           SLIDER: :slider
@@ -106,12 +112,19 @@ module Braintrust
           MINIMUM: :minimum
           MAXIMUM: :maximum
           ONLINE: :online
+          FREE_FORM: :"free-form"
 
           def self.values: -> ::Array[Braintrust::Models::ProjectScoreListParams::ScoreType::project_score_type]
         end
 
         type union_member1 =
-          :slider | :categorical | :weighted | :minimum | :maximum | :online
+          :slider
+          | :categorical
+          | :weighted
+          | :minimum
+          | :maximum
+          | :online
+          | :"free-form"
 
         class UnionMember1 < Braintrust::Enum
           SLIDER: :slider
@@ -120,6 +133,7 @@ module Braintrust
           MINIMUM: :minimum
           MAXIMUM: :maximum
           ONLINE: :online
+          FREE_FORM: :"free-form"
 
           def self.values: -> ::Array[Braintrust::Models::ProjectScoreListParams::ScoreType::union_member1]
         end

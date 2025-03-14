@@ -9,12 +9,12 @@ module Braintrust
         _parent_id: String?,
         context: Braintrust::Models::InsertExperimentEvent::Context?,
         created: Time?,
-        dataset_record_id: String?,
         error: top,
         expected: top,
         input: top,
-        metadata: ::Hash[Symbol, top?]?,
+        metadata: Braintrust::Models::InsertExperimentEvent::Metadata?,
         metrics: Braintrust::Models::InsertExperimentEvent::Metrics?,
+        origin: Braintrust::Models::ObjectReference?,
         output: top,
         root_span_id: String?,
         scores: ::Hash[Symbol, Float?]?,
@@ -39,8 +39,6 @@ module Braintrust
 
       attr_accessor created: Time?
 
-      attr_accessor dataset_record_id: String?
-
       attr_reader error: top?
 
       def error=: (top) -> top
@@ -53,9 +51,11 @@ module Braintrust
 
       def input=: (top) -> top
 
-      attr_accessor metadata: ::Hash[Symbol, top?]?
+      attr_accessor metadata: Braintrust::Models::InsertExperimentEvent::Metadata?
 
       attr_accessor metrics: Braintrust::Models::InsertExperimentEvent::Metrics?
+
+      attr_accessor origin: Braintrust::Models::ObjectReference?
 
       attr_reader output: top?
 
@@ -82,12 +82,12 @@ module Braintrust
           _parent_id: String?,
           context: Braintrust::Models::InsertExperimentEvent::Context?,
           created: Time?,
-          dataset_record_id: String?,
           error: top,
           expected: top,
           input: top,
-          metadata: ::Hash[Symbol, top?]?,
+          metadata: Braintrust::Models::InsertExperimentEvent::Metadata?,
           metrics: Braintrust::Models::InsertExperimentEvent::Metrics?,
+          origin: Braintrust::Models::ObjectReference?,
           output: top,
           root_span_id: String?,
           scores: ::Hash[Symbol, Float?]?,
@@ -129,6 +129,21 @@ module Braintrust
           ) -> void
 
         def to_hash: -> Braintrust::Models::InsertExperimentEvent::context
+      end
+
+      type metadata = { model: String? }
+
+      class Metadata < Braintrust::BaseModel
+        attr_accessor model: String?
+
+        def initialize:
+          (model: String?) -> void
+          | (
+            ?Braintrust::Models::InsertExperimentEvent::metadata
+            | Braintrust::BaseModel data
+          ) -> void
+
+        def to_hash: -> Braintrust::Models::InsertExperimentEvent::metadata
       end
 
       type metrics =

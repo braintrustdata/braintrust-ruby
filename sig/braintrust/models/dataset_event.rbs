@@ -12,8 +12,8 @@ module Braintrust
         expected: top,
         input: top,
         is_root: bool?,
-        metadata: ::Hash[Symbol, top?]?,
-        origin: Braintrust::Models::DatasetEvent::Origin?,
+        metadata: Braintrust::Models::DatasetEvent::Metadata?,
+        origin: Braintrust::Models::ObjectReference?,
         tags: ::Array[String]?
       }
 
@@ -42,9 +42,9 @@ module Braintrust
 
       attr_accessor is_root: bool?
 
-      attr_accessor metadata: ::Hash[Symbol, top?]?
+      attr_accessor metadata: Braintrust::Models::DatasetEvent::Metadata?
 
-      attr_accessor origin: Braintrust::Models::DatasetEvent::Origin?
+      attr_accessor origin: Braintrust::Models::ObjectReference?
 
       attr_accessor tags: ::Array[String]?
 
@@ -60,8 +60,8 @@ module Braintrust
           expected: top,
           input: top,
           is_root: bool?,
-          metadata: ::Hash[Symbol, top?]?,
-          origin: Braintrust::Models::DatasetEvent::Origin?,
+          metadata: Braintrust::Models::DatasetEvent::Metadata?,
+          origin: Braintrust::Models::ObjectReference?,
           tags: ::Array[String]?
         ) -> void
         | (
@@ -70,55 +70,19 @@ module Braintrust
 
       def to_hash: -> Braintrust::Models::dataset_event
 
-      type origin =
-        {
-          id: String,
-          _xact_id: String,
-          object_id_: String,
-          object_type: Braintrust::Models::DatasetEvent::Origin::object_type
-        }
+      type metadata = { model: String? }
 
-      class Origin < Braintrust::BaseModel
-        attr_accessor id: String
-
-        attr_accessor _xact_id: String
-
-        attr_accessor object_id_: String
-
-        attr_accessor object_type: Braintrust::Models::DatasetEvent::Origin::object_type
+      class Metadata < Braintrust::BaseModel
+        attr_accessor model: String?
 
         def initialize:
-          (
-            id: String,
-            _xact_id: String,
-            object_id_: String,
-            object_type: Braintrust::Models::DatasetEvent::Origin::object_type
-          ) -> void
+          (model: String?) -> void
           | (
-            ?Braintrust::Models::DatasetEvent::origin
+            ?Braintrust::Models::DatasetEvent::metadata
             | Braintrust::BaseModel data
           ) -> void
 
-        def to_hash: -> Braintrust::Models::DatasetEvent::origin
-
-        type object_type =
-          :experiment
-          | :dataset
-          | :prompt
-          | :function
-          | :prompt_session
-          | :project_logs
-
-        class ObjectType < Braintrust::Enum
-          EXPERIMENT: :experiment
-          DATASET: :dataset
-          PROMPT: :prompt
-          FUNCTION: :function
-          PROMPT_SESSION: :prompt_session
-          PROJECT_LOGS: :project_logs
-
-          def self.values: -> ::Array[Braintrust::Models::DatasetEvent::Origin::object_type]
-        end
+        def to_hash: -> Braintrust::Models::DatasetEvent::metadata
       end
     end
   end

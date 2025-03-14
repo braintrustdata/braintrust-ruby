@@ -33,12 +33,7 @@ module Braintrust
       sig do
         returns(
           T.nilable(
-            T.any(
-              T::Array[Braintrust::Models::ProjectScoreCategory],
-              T::Hash[Symbol, Float],
-              T::Array[String],
-              Braintrust::Models::ProjectScoreCreateParams::Categories::NullableVariant
-            )
+            T.any(T::Array[Braintrust::Models::ProjectScoreCategory], T::Hash[Symbol, Float], T::Array[String])
           )
         )
       end
@@ -48,22 +43,12 @@ module Braintrust
       sig do
         params(
           _: T.nilable(
-            T.any(
-              T::Array[Braintrust::Models::ProjectScoreCategory],
-              T::Hash[Symbol, Float],
-              T::Array[String],
-              Braintrust::Models::ProjectScoreCreateParams::Categories::NullableVariant
-            )
+            T.any(T::Array[Braintrust::Models::ProjectScoreCategory], T::Hash[Symbol, Float], T::Array[String])
           )
         )
           .returns(
             T.nilable(
-              T.any(
-                T::Array[Braintrust::Models::ProjectScoreCategory],
-                T::Hash[Symbol, Float],
-                T::Array[String],
-                Braintrust::Models::ProjectScoreCreateParams::Categories::NullableVariant
-              )
+              T.any(T::Array[Braintrust::Models::ProjectScoreCategory], T::Hash[Symbol, Float], T::Array[String])
             )
           )
       end
@@ -95,12 +80,7 @@ module Braintrust
           project_id: String,
           score_type: Symbol,
           categories: T.nilable(
-            T.any(
-              T::Array[Braintrust::Models::ProjectScoreCategory],
-              T::Hash[Symbol, Float],
-              T::Array[String],
-              Braintrust::Models::ProjectScoreCreateParams::Categories::NullableVariant
-            )
+            T.any(T::Array[Braintrust::Models::ProjectScoreCategory], T::Hash[Symbol, Float], T::Array[String])
           ),
           config: T.nilable(Braintrust::Models::ProjectScoreConfig),
           description: T.nilable(String),
@@ -119,12 +99,7 @@ module Braintrust
               project_id: String,
               score_type: Symbol,
               categories: T.nilable(
-                T.any(
-                  T::Array[Braintrust::Models::ProjectScoreCategory],
-                  T::Hash[Symbol, Float],
-                  T::Array[String],
-                  Braintrust::Models::ProjectScoreCreateParams::Categories::NullableVariant
-                )
+                T.any(T::Array[Braintrust::Models::ProjectScoreCategory], T::Hash[Symbol, Float], T::Array[String])
               ),
               config: T.nilable(Braintrust::Models::ProjectScoreConfig),
               description: T.nilable(String),
@@ -144,6 +119,7 @@ module Braintrust
         MINIMUM = :minimum
         MAXIMUM = :maximum
         ONLINE = :online
+        FREE_FORM = :"free-form"
 
         class << self
           sig { override.returns(T::Array[Symbol]) }
@@ -161,21 +137,11 @@ module Braintrust
 
         StringArray = T.type_alias { T::Array[String] }
 
-        class NullableVariant < Braintrust::BaseModel
-          sig { returns(T.attached_class) }
-          def self.new
-          end
-
-          sig { override.returns({}) }
-          def to_hash
-          end
-        end
-
         class << self
           sig do
             override
               .returns(
-                [[NilClass, T::Array[Braintrust::Models::ProjectScoreCategory]], [NilClass, T::Hash[Symbol, Float]], [NilClass, T::Array[String]], [NilClass, Braintrust::Models::ProjectScoreCreateParams::Categories::NullableVariant]]
+                [[NilClass, T::Array[Braintrust::Models::ProjectScoreCategory]], [NilClass, T::Hash[Symbol, Float]], [NilClass, T::Array[String]]]
               )
           end
           private def variants

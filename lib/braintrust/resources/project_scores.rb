@@ -15,7 +15,7 @@ module Braintrust
       #
       #   @option params [Symbol, Braintrust::Models::ProjectScoreCreateParams::ScoreType] :score_type The type of the configured score
       #
-      #   @option params [Array<Braintrust::Models::ProjectScoreCategory>, Hash{Symbol=>Float}, Array<String>, Braintrust::Models::ProjectScoreCreateParams::Categories::NullableVariant, nil] :categories For categorical-type project scores, the list of all categories
+      #   @option params [Array<Braintrust::Models::ProjectScoreCategory>, Hash{Symbol=>Float}, Array<String>, nil] :categories For categorical-type project scores, the list of all categories
       #
       #   @option params [Braintrust::Models::ProjectScoreConfig, nil] :config
       #
@@ -63,7 +63,7 @@ module Braintrust
       #
       # @param params [Braintrust::Models::ProjectScoreUpdateParams, Hash{Symbol=>Object}] .
       #
-      #   @option params [Array<Braintrust::Models::ProjectScoreCategory>, Hash{Symbol=>Float}, Array<String>, Braintrust::Models::ProjectScoreUpdateParams::Categories::NullableVariant, nil] :categories For categorical-type project scores, the list of all categories
+      #   @option params [Array<Braintrust::Models::ProjectScoreCategory>, Hash{Symbol=>Float}, Array<String>, nil] :categories For categorical-type project scores, the list of all categories
       #
       #   @option params [Braintrust::Models::ProjectScoreConfig, nil] :config
       #
@@ -167,7 +167,7 @@ module Braintrust
       #
       #   @option params [Symbol, Braintrust::Models::ProjectScoreReplaceParams::ScoreType] :score_type The type of the configured score
       #
-      #   @option params [Array<Braintrust::Models::ProjectScoreCategory>, Hash{Symbol=>Float}, Array<String>, Braintrust::Models::ProjectScoreReplaceParams::Categories::NullableVariant, nil] :categories For categorical-type project scores, the list of all categories
+      #   @option params [Array<Braintrust::Models::ProjectScoreCategory>, Hash{Symbol=>Float}, Array<String>, nil] :categories For categorical-type project scores, the list of all categories
       #
       #   @option params [Braintrust::Models::ProjectScoreConfig, nil] :config
       #

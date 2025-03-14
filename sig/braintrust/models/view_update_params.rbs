@@ -78,23 +78,29 @@ module Braintrust
 
       type view_type =
         :projects
-        | :logs
         | :experiments
-        | :datasets
-        | :prompts
-        | :playgrounds
         | :experiment
+        | :playgrounds
+        | :playground
+        | :datasets
         | :dataset
+        | :prompts
+        | :tools
+        | :scorers
+        | :logs
 
       class ViewType < Braintrust::Enum
         PROJECTS: :projects
-        LOGS: :logs
         EXPERIMENTS: :experiments
-        DATASETS: :datasets
-        PROMPTS: :prompts
-        PLAYGROUNDS: :playgrounds
         EXPERIMENT: :experiment
+        PLAYGROUNDS: :playgrounds
+        PLAYGROUND: :playground
+        DATASETS: :datasets
         DATASET: :dataset
+        PROMPTS: :prompts
+        TOOLS: :tools
+        SCORERS: :scorers
+        LOGS: :logs
 
         def self.values: -> ::Array[Braintrust::Models::ViewUpdateParams::view_type]
       end

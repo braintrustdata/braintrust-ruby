@@ -20,8 +20,7 @@ module Braintrust
             T.any(
               Braintrust::Models::FunctionUpdateParams::FunctionData::Prompt,
               Braintrust::Models::FunctionUpdateParams::FunctionData::Code,
-              Braintrust::Models::FunctionUpdateParams::FunctionData::Global,
-              Braintrust::Models::FunctionUpdateParams::FunctionData::NullableVariant
+              Braintrust::Models::FunctionUpdateParams::FunctionData::Global
             )
           )
         )
@@ -35,8 +34,7 @@ module Braintrust
             T.any(
               Braintrust::Models::FunctionUpdateParams::FunctionData::Prompt,
               Braintrust::Models::FunctionUpdateParams::FunctionData::Code,
-              Braintrust::Models::FunctionUpdateParams::FunctionData::Global,
-              Braintrust::Models::FunctionUpdateParams::FunctionData::NullableVariant
+              Braintrust::Models::FunctionUpdateParams::FunctionData::Global
             )
           )
         )
@@ -45,8 +43,7 @@ module Braintrust
               T.any(
                 Braintrust::Models::FunctionUpdateParams::FunctionData::Prompt,
                 Braintrust::Models::FunctionUpdateParams::FunctionData::Code,
-                Braintrust::Models::FunctionUpdateParams::FunctionData::Global,
-                Braintrust::Models::FunctionUpdateParams::FunctionData::NullableVariant
+                Braintrust::Models::FunctionUpdateParams::FunctionData::Global
               )
             )
           )
@@ -85,8 +82,7 @@ module Braintrust
             T.any(
               Braintrust::Models::FunctionUpdateParams::FunctionData::Prompt,
               Braintrust::Models::FunctionUpdateParams::FunctionData::Code,
-              Braintrust::Models::FunctionUpdateParams::FunctionData::Global,
-              Braintrust::Models::FunctionUpdateParams::FunctionData::NullableVariant
+              Braintrust::Models::FunctionUpdateParams::FunctionData::Global
             )
           ),
           name: T.nilable(String),
@@ -108,8 +104,7 @@ module Braintrust
                 T.any(
                   Braintrust::Models::FunctionUpdateParams::FunctionData::Prompt,
                   Braintrust::Models::FunctionUpdateParams::FunctionData::Code,
-                  Braintrust::Models::FunctionUpdateParams::FunctionData::Global,
-                  Braintrust::Models::FunctionUpdateParams::FunctionData::NullableVariant
+                  Braintrust::Models::FunctionUpdateParams::FunctionData::Global
                 )
               ),
               name: T.nilable(String),
@@ -420,21 +415,11 @@ module Braintrust
           end
         end
 
-        class NullableVariant < Braintrust::BaseModel
-          sig { returns(T.attached_class) }
-          def self.new
-          end
-
-          sig { override.returns({}) }
-          def to_hash
-          end
-        end
-
         class << self
           sig do
             override
               .returns(
-                [[NilClass, Braintrust::Models::FunctionUpdateParams::FunctionData::Prompt], [NilClass, Braintrust::Models::FunctionUpdateParams::FunctionData::Code], [NilClass, Braintrust::Models::FunctionUpdateParams::FunctionData::Global], [NilClass, Braintrust::Models::FunctionUpdateParams::FunctionData::NullableVariant]]
+                [[NilClass, Braintrust::Models::FunctionUpdateParams::FunctionData::Prompt], [NilClass, Braintrust::Models::FunctionUpdateParams::FunctionData::Code], [NilClass, Braintrust::Models::FunctionUpdateParams::FunctionData::Global]]
               )
           end
           private def variants

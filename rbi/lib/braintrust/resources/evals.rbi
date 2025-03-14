@@ -7,7 +7,8 @@ module Braintrust
         params(
           data: T.any(
             Braintrust::Models::EvalCreateParams::Data::DatasetID,
-            Braintrust::Models::EvalCreateParams::Data::ProjectDatasetName
+            Braintrust::Models::EvalCreateParams::Data::ProjectDatasetName,
+            Braintrust::Models::EvalCreateParams::Data::DatasetRows
           ),
           project_id: String,
           scores: T::Array[
@@ -35,6 +36,7 @@ module Braintrust
           is_public: T.nilable(T::Boolean),
           max_concurrency: T.nilable(Float),
           metadata: T::Hash[Symbol, T.nilable(T.anything)],
+          parent: T.any(Braintrust::Models::EvalCreateParams::Parent::SpanParentStruct, String),
           repo_info: T.nilable(Braintrust::Models::RepoInfo),
           stream: T::Boolean,
           timeout: T.nilable(Float),
@@ -55,6 +57,7 @@ module Braintrust
         is_public: nil,
         max_concurrency: nil,
         metadata: nil,
+        parent: nil,
         repo_info: nil,
         stream: nil,
         timeout: nil,
