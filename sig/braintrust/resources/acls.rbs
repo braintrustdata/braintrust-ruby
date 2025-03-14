@@ -50,6 +50,16 @@ module Braintrust
           request_options: Braintrust::request_opts
         ) -> Braintrust::Models::ACL
 
+      def batch_update:
+        (
+          ?Braintrust::Models::ACLBatchUpdateParams | ::Hash[Symbol, top] params
+        ) -> Braintrust::Models::ACLBatchUpdateResponse
+        | (
+          add_acls: ::Array[Braintrust::Models::ACLBatchUpdateParams::AddACL]?,
+          remove_acls: ::Array[Braintrust::Models::ACLBatchUpdateParams::RemoveACL]?,
+          request_options: Braintrust::request_opts
+        ) -> Braintrust::Models::ACLBatchUpdateResponse
+
       def find_and_delete:
         (
           Braintrust::Models::ACLFindAndDeleteParams
