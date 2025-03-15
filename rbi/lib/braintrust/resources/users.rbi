@@ -3,6 +3,7 @@
 module Braintrust
   module Resources
     class Users
+      # Get a user object by its id
       sig do
         params(
           user_id: String,
@@ -13,6 +14,8 @@ module Braintrust
       def retrieve(user_id, request_options: {})
       end
 
+      # List out all users. The users are sorted by creation date, with the most
+      #   recently-created users coming first
       sig do
         params(
           email: T.any(String, T::Array[String]),

@@ -38,7 +38,6 @@ module Braintrust
       # def initialize: (Hash | Braintrust::BaseModel) -> void
 
       # @abstract
-      #
       class Scorer < Braintrust::Union
         variant -> { Braintrust::Models::OnlineScoreConfig::Scorer::Function }
 
@@ -64,7 +63,6 @@ module Braintrust
           # def initialize: (Hash | Braintrust::BaseModel) -> void
 
           # @abstract
-          #
           class Type < Braintrust::Enum
             FUNCTION = :function
 
@@ -92,7 +90,6 @@ module Braintrust
           # def initialize: (Hash | Braintrust::BaseModel) -> void
 
           # @abstract
-          #
           class Type < Braintrust::Enum
             GLOBAL = :global
 

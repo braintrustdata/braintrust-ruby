@@ -43,7 +43,7 @@ module Braintrust
       response_headers: ::Hash[String, String]
     ) -> Braintrust::BaseClient::request_input
 
-    # @private
+    # @api private
     attr_accessor requester: top
 
     def initialize: (

@@ -6,6 +6,10 @@ module Braintrust
       extend Braintrust::RequestParameters::Converter
       include Braintrust::RequestParameters
 
+      # The experiment to compare against, if summarizing scores and metrics. If
+      #   omitted, will fall back to the `base_exp_id` stored in the experiment metadata,
+      #   and then to the most recent experiment run in the same project. Must pass
+      #   `summarize_scores=true` for this id to be used
       sig { returns(T.nilable(String)) }
       def comparison_experiment_id
       end
@@ -14,6 +18,8 @@ module Braintrust
       def comparison_experiment_id=(_)
       end
 
+      # Whether to summarize the scores and metrics. If false (or omitted), only the
+      #   metadata will be returned.
       sig { returns(T.nilable(T::Boolean)) }
       def summarize_scores
       end

@@ -7,6 +7,7 @@ module Braintrust
       def members
       end
 
+      # Get an organization object by its id
       sig do
         params(
           organization_id: String,
@@ -17,6 +18,9 @@ module Braintrust
       def retrieve(organization_id, request_options: {})
       end
 
+      # Partially update an organization object. Specify the fields to update in the
+      #   payload. Any object-type fields will be deep-merged with existing content.
+      #   Currently we do not support removing fields or setting them to null.
       sig do
         params(
           organization_id: String,
@@ -40,6 +44,8 @@ module Braintrust
       )
       end
 
+      # List out all organizations. The organizations are sorted by creation date, with
+      #   the most recently-created organizations coming first
       sig do
         params(
           ending_before: String,
@@ -61,6 +67,7 @@ module Braintrust
       )
       end
 
+      # Delete an organization object by its id
       sig do
         params(
           organization_id: String,

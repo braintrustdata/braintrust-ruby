@@ -14,6 +14,7 @@ module Braintrust
       def search=(_)
       end
 
+      # The view definition
       sig { params(search: T.nilable(Braintrust::Models::ViewDataSearch)).returns(T.attached_class) }
       def self.new(search: nil)
       end

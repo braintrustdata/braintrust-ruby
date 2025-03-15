@@ -3,6 +3,8 @@
 module Braintrust
   module Models
     class ProjectLogsEvent < Braintrust::BaseModel
+      # A unique identifier for the project logs event. If you don't provide one,
+      #   BrainTrust will generate one for you
       sig { returns(String) }
       def id
       end
@@ -11,6 +13,10 @@ module Braintrust
       def id=(_)
       end
 
+      # The transaction id of an event is unique to the network operation that processed
+      #   the event insertion. Transaction ids are monotonically increasing over time and
+      #   can be used to retrieve a versioned snapshot of the project logs (see the
+      #   `version` parameter)
       sig { returns(String) }
       def _xact_id
       end
@@ -19,6 +25,7 @@ module Braintrust
       def _xact_id=(_)
       end
 
+      # The timestamp the project logs event was created
       sig { returns(Time) }
       def created
       end
@@ -27,6 +34,7 @@ module Braintrust
       def created=(_)
       end
 
+      # A literal 'g' which identifies the log as a project log
       sig { returns(Symbol) }
       def log_id
       end
@@ -35,6 +43,7 @@ module Braintrust
       def log_id=(_)
       end
 
+      # Unique id for the organization that the project belongs under
       sig { returns(String) }
       def org_id
       end
@@ -43,6 +52,7 @@ module Braintrust
       def org_id=(_)
       end
 
+      # Unique identifier for the project
       sig { returns(String) }
       def project_id
       end
@@ -51,6 +61,7 @@ module Braintrust
       def project_id=(_)
       end
 
+      # A unique identifier for the trace this project logs event belongs to
       sig { returns(String) }
       def root_span_id
       end
@@ -59,6 +70,10 @@ module Braintrust
       def root_span_id=(_)
       end
 
+      # A unique identifier used to link different project logs events together as part
+      #   of a full trace. See the
+      #   [tracing guide](https://www.braintrust.dev/docs/guides/tracing) for full details
+      #   on tracing
       sig { returns(String) }
       def span_id
       end
@@ -67,6 +82,10 @@ module Braintrust
       def span_id=(_)
       end
 
+      # Context is additional information about the code that produced the project logs
+      #   event. It is essentially the textual counterpart to `metrics`. Use the
+      #   `caller_*` attributes to track the location in code which produced the project
+      #   logs event
       sig { returns(T.nilable(Braintrust::Models::ProjectLogsEvent::Context)) }
       def context
       end
@@ -78,6 +97,7 @@ module Braintrust
       def context=(_)
       end
 
+      # The error that occurred, if any.
       sig { returns(T.nilable(T.anything)) }
       def error
       end
@@ -86,6 +106,12 @@ module Braintrust
       def error=(_)
       end
 
+      # The ground truth value (an arbitrary, JSON serializable object) that you'd
+      #   compare to `output` to determine if your `output` value is correct or not.
+      #   Braintrust currently does not compare `output` to `expected` for you, since
+      #   there are so many different ways to do that correctly. Instead, these values are
+      #   just used to help you navigate while digging into analyses. However, we may
+      #   later use these values to re-score outputs or fine-tune your models.
       sig { returns(T.nilable(T.anything)) }
       def expected
       end
@@ -94,6 +120,8 @@ module Braintrust
       def expected=(_)
       end
 
+      # The arguments that uniquely define a user input (an arbitrary, JSON serializable
+      #   object).
       sig { returns(T.nilable(T.anything)) }
       def input
       end
@@ -102,6 +130,7 @@ module Braintrust
       def input=(_)
       end
 
+      # Whether this span is a root span
       sig { returns(T.nilable(T::Boolean)) }
       def is_root
       end
@@ -110,6 +139,11 @@ module Braintrust
       def is_root=(_)
       end
 
+      # A dictionary with additional data about the test example, model outputs, or just
+      #   about anything else that's relevant, that you can use to help find and analyze
+      #   examples later. For example, you could log the `prompt`, example's `id`, or
+      #   anything else that would be useful to slice/dice later. The values in `metadata`
+      #   can be any JSON-serializable type, but its keys must be strings
       sig { returns(T.nilable(Braintrust::Models::ProjectLogsEvent::Metadata)) }
       def metadata
       end
@@ -121,6 +155,9 @@ module Braintrust
       def metadata=(_)
       end
 
+      # Metrics are numerical measurements tracking the execution of the code that
+      #   produced the project logs event. Use "start" and "end" to track the time span
+      #   over which the project logs event was produced
       sig { returns(T.nilable(Braintrust::Models::ProjectLogsEvent::Metrics)) }
       def metrics
       end
@@ -132,6 +169,7 @@ module Braintrust
       def metrics=(_)
       end
 
+      # Indicates the event was copied from another object.
       sig { returns(T.nilable(Braintrust::Models::ObjectReference)) }
       def origin
       end
@@ -143,6 +181,11 @@ module Braintrust
       def origin=(_)
       end
 
+      # The output of your application, including post-processing (an arbitrary, JSON
+      #   serializable object), that allows you to determine whether the result is correct
+      #   or not. For example, in an app that generates SQL queries, the `output` should
+      #   be the _result_ of the SQL query generated by the model, not the query itself,
+      #   because there may be multiple valid queries that answer a single question.
       sig { returns(T.nilable(T.anything)) }
       def output
       end
@@ -151,6 +194,14 @@ module Braintrust
       def output=(_)
       end
 
+      # A dictionary of numeric values (between 0 and 1) to log. The scores should give
+      #   you a variety of signals that help you determine how accurate the outputs are
+      #   compared to what you expect and diagnose failures. For example, a summarization
+      #   app might have one score that tells you how accurate the summary is, and another
+      #   that measures the word similarity between the generated and grouth truth
+      #   summary. The word similarity score could help you determine whether the
+      #   summarization was covering similar concepts or not. You can use these scores to
+      #   help you sort, filter, and compare logs.
       sig { returns(T.nilable(T::Hash[Symbol, T.nilable(Float)])) }
       def scores
       end
@@ -162,6 +213,7 @@ module Braintrust
       def scores=(_)
       end
 
+      # Human-identifying attributes of the span, such as name, type, etc.
       sig { returns(T.nilable(Braintrust::Models::SpanAttributes)) }
       def span_attributes
       end
@@ -173,6 +225,9 @@ module Braintrust
       def span_attributes=(_)
       end
 
+      # An array of the parent `span_ids` of this project logs event. This should be
+      #   empty for the root span of a trace, and should most often contain just one
+      #   parent element for subspans
       sig { returns(T.nilable(T::Array[String])) }
       def span_parents
       end
@@ -181,6 +236,7 @@ module Braintrust
       def span_parents=(_)
       end
 
+      # A list of tags to log
       sig { returns(T.nilable(T::Array[String])) }
       def tags
       end
@@ -271,6 +327,7 @@ module Braintrust
       def to_hash
       end
 
+      # A literal 'g' which identifies the log as a project log
       class LogID < Braintrust::Enum
         abstract!
 
@@ -284,6 +341,7 @@ module Braintrust
       end
 
       class Context < Braintrust::BaseModel
+        # Name of the file in code where the project logs event was created
         sig { returns(T.nilable(String)) }
         def caller_filename
         end
@@ -292,6 +350,7 @@ module Braintrust
         def caller_filename=(_)
         end
 
+        # The function in code which created the project logs event
         sig { returns(T.nilable(String)) }
         def caller_functionname
         end
@@ -300,6 +359,7 @@ module Braintrust
         def caller_functionname=(_)
         end
 
+        # Line of code where the project logs event was created
         sig { returns(T.nilable(Integer)) }
         def caller_lineno
         end
@@ -308,6 +368,10 @@ module Braintrust
         def caller_lineno=(_)
         end
 
+        # Context is additional information about the code that produced the project logs
+        #   event. It is essentially the textual counterpart to `metrics`. Use the
+        #   `caller_*` attributes to track the location in code which produced the project
+        #   logs event
         sig do
           params(
             caller_filename: T.nilable(String),
@@ -334,6 +398,7 @@ module Braintrust
       end
 
       class Metadata < Braintrust::BaseModel
+        # The model used for this example
         sig { returns(T.nilable(String)) }
         def model
         end
@@ -342,6 +407,11 @@ module Braintrust
         def model=(_)
         end
 
+        # A dictionary with additional data about the test example, model outputs, or just
+        #   about anything else that's relevant, that you can use to help find and analyze
+        #   examples later. For example, you could log the `prompt`, example's `id`, or
+        #   anything else that would be useful to slice/dice later. The values in `metadata`
+        #   can be any JSON-serializable type, but its keys must be strings
         sig { params(model: T.nilable(String)).returns(T.attached_class) }
         def self.new(model: nil)
         end
@@ -352,6 +422,7 @@ module Braintrust
       end
 
       class Metrics < Braintrust::BaseModel
+        # This metric is deprecated
         sig { returns(T.nilable(T.anything)) }
         def caller_filename
         end
@@ -360,6 +431,7 @@ module Braintrust
         def caller_filename=(_)
         end
 
+        # This metric is deprecated
         sig { returns(T.nilable(T.anything)) }
         def caller_functionname
         end
@@ -368,6 +440,7 @@ module Braintrust
         def caller_functionname=(_)
         end
 
+        # This metric is deprecated
         sig { returns(T.nilable(T.anything)) }
         def caller_lineno
         end
@@ -376,6 +449,8 @@ module Braintrust
         def caller_lineno=(_)
         end
 
+        # The number of tokens in the completion generated by the model (only set if this
+        #   is an LLM span)
         sig { returns(T.nilable(Integer)) }
         def completion_tokens
         end
@@ -384,6 +459,8 @@ module Braintrust
         def completion_tokens=(_)
         end
 
+        # A unix timestamp recording when the section of code which produced the project
+        #   logs event finished
         sig { returns(T.nilable(Float)) }
         def end_
         end
@@ -392,6 +469,8 @@ module Braintrust
         def end_=(_)
         end
 
+        # The number of tokens in the prompt used to generate the project logs event (only
+        #   set if this is an LLM span)
         sig { returns(T.nilable(Integer)) }
         def prompt_tokens
         end
@@ -400,6 +479,8 @@ module Braintrust
         def prompt_tokens=(_)
         end
 
+        # A unix timestamp recording when the section of code which produced the project
+        #   logs event started
         sig { returns(T.nilable(Float)) }
         def start
         end
@@ -408,6 +489,7 @@ module Braintrust
         def start=(_)
         end
 
+        # The total number of tokens in the input and output of the project logs event.
         sig { returns(T.nilable(Integer)) }
         def tokens
         end
@@ -416,6 +498,9 @@ module Braintrust
         def tokens=(_)
         end
 
+        # Metrics are numerical measurements tracking the execution of the code that
+        #   produced the project logs event. Use "start" and "end" to track the time span
+        #   over which the project logs event was produced
         sig do
           params(
             caller_filename: T.anything,

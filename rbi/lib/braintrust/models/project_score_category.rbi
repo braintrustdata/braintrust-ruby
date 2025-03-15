@@ -3,6 +3,7 @@
 module Braintrust
   module Models
     class ProjectScoreCategory < Braintrust::BaseModel
+      # Name of the category
       sig { returns(String) }
       def name
       end
@@ -11,6 +12,7 @@ module Braintrust
       def name=(_)
       end
 
+      # Numerical value of the category. Must be between 0 and 1, inclusive
       sig { returns(Float) }
       def value
       end
@@ -19,6 +21,7 @@ module Braintrust
       def value=(_)
       end
 
+      # For categorical-type project scores, defines a single category
       sig { params(name: String, value: Float).returns(T.attached_class) }
       def self.new(name:, value:)
       end

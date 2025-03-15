@@ -6,6 +6,7 @@ module Braintrust
       extend Braintrust::RequestParameters::Converter
       include Braintrust::RequestParameters
 
+      # Textual description of the span iframe
       sig { returns(T.nilable(String)) }
       def description
       end
@@ -14,6 +15,7 @@ module Braintrust
       def description=(_)
       end
 
+      # Name of the span iframe
       sig { returns(T.nilable(String)) }
       def name
       end
@@ -22,6 +24,8 @@ module Braintrust
       def name=(_)
       end
 
+      # Whether to post messages to the iframe containing the span's data. This is
+      #   useful when you want to render more data than fits in the URL.
       sig { returns(T.nilable(T::Boolean)) }
       def post_message
       end
@@ -30,6 +34,7 @@ module Braintrust
       def post_message=(_)
       end
 
+      # URL to embed the project viewer in an iframe
       sig { returns(T.nilable(String)) }
       def url
       end

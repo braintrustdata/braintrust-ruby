@@ -6,6 +6,7 @@ module Braintrust
       extend Braintrust::RequestParameters::Converter
       include Braintrust::RequestParameters
 
+      # Textual description of the dataset
       sig { returns(T.nilable(String)) }
       def description
       end
@@ -14,6 +15,7 @@ module Braintrust
       def description=(_)
       end
 
+      # User-controlled metadata about the dataset
       sig { returns(T.nilable(T::Hash[Symbol, T.nilable(T.anything)])) }
       def metadata
       end
@@ -25,6 +27,7 @@ module Braintrust
       def metadata=(_)
       end
 
+      # Name of the dataset. Within a project, dataset names are unique
       sig { returns(T.nilable(String)) }
       def name
       end

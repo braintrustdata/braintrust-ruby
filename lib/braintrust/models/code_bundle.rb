@@ -35,7 +35,6 @@ module Braintrust
       # def initialize: (Hash | Braintrust::BaseModel) -> void
 
       # @abstract
-      #
       class Location < Braintrust::Union
         variant -> { Braintrust::Models::CodeBundle::Location::Experiment }
 
@@ -67,7 +66,6 @@ module Braintrust
           # def initialize: (Hash | Braintrust::BaseModel) -> void
 
           # @abstract
-          #
           class Position < Braintrust::Union
             variant -> { Braintrust::Models::CodeBundle::Location::Experiment::Position::Type }
 
@@ -87,7 +85,6 @@ module Braintrust
               # def initialize: (Hash | Braintrust::BaseModel) -> void
 
               # @abstract
-              #
               class Type < Braintrust::Enum
                 TASK = :task
 
@@ -115,7 +112,6 @@ module Braintrust
               # def initialize: (Hash | Braintrust::BaseModel) -> void
 
               # @abstract
-              #
               class Type < Braintrust::Enum
                 SCORER = :scorer
 
@@ -125,7 +121,6 @@ module Braintrust
           end
 
           # @abstract
-          #
           class Type < Braintrust::Enum
             EXPERIMENT = :experiment
 
@@ -153,7 +148,6 @@ module Braintrust
           # def initialize: (Hash | Braintrust::BaseModel) -> void
 
           # @abstract
-          #
           class Type < Braintrust::Enum
             FUNCTION = :function
 
@@ -182,7 +176,6 @@ module Braintrust
         # def initialize: (Hash | Braintrust::BaseModel) -> void
 
         # @abstract
-        #
         class Runtime < Braintrust::Enum
           NODE = :node
           PYTHON = :python

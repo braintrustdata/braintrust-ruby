@@ -6,6 +6,7 @@ module Braintrust
       extend Braintrust::RequestParameters::Converter
       include Braintrust::RequestParameters
 
+      # Color of the tag for the UI
       sig { returns(T.nilable(String)) }
       def color
       end
@@ -14,6 +15,7 @@ module Braintrust
       def color=(_)
       end
 
+      # Textual description of the project tag
       sig { returns(T.nilable(String)) }
       def description
       end
@@ -22,6 +24,7 @@ module Braintrust
       def description=(_)
       end
 
+      # Name of the project tag
       sig { returns(T.nilable(String)) }
       def name
       end

@@ -101,6 +101,7 @@ module Braintrust
       def tool_functions=(_)
       end
 
+      # The prompt, model, and its parameters
       sig do
         params(
           options: T.nilable(Braintrust::Models::PromptOptions),
@@ -560,6 +561,7 @@ module Braintrust
                   abstract!
 
                   class << self
+                    # @api private
                     sig do
                       override
                         .returns(
@@ -572,6 +574,7 @@ module Braintrust
                 end
 
                 class << self
+                  # @api private
                   sig do
                     override
                       .returns(
@@ -840,6 +843,7 @@ module Braintrust
             end
 
             class << self
+              # @api private
               sig do
                 override
                   .returns(
@@ -865,6 +869,7 @@ module Braintrust
         end
 
         class << self
+          # @api private
           sig do
             override
               .returns(
@@ -956,6 +961,7 @@ module Braintrust
         end
 
         class << self
+          # @api private
           sig do
             override
               .returns(

@@ -6,6 +6,7 @@ module Braintrust
       extend Braintrust::RequestParameters::Converter
       include Braintrust::RequestParameters
 
+      # Name of the AI secret
       sig { returns(String) }
       def name
       end
@@ -14,6 +15,9 @@ module Braintrust
       def name=(_)
       end
 
+      # For nearly all users, this parameter should be unnecessary. But in the rare case
+      #   that your API key belongs to multiple organizations, you may specify the name of
+      #   the organization the AI Secret belongs in.
       sig { returns(T.nilable(String)) }
       def org_name
       end

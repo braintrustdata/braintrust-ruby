@@ -40,7 +40,6 @@ module Braintrust
       # def initialize: (Hash | Braintrust::BaseModel) -> void
 
       # @abstract
-      #
       class Params < Braintrust::Union
         variant -> { Braintrust::Models::PromptOptions::Params::OpenAIModelParams }
 
@@ -209,14 +208,12 @@ module Braintrust
           # def initialize: (Hash | Braintrust::BaseModel) -> void
 
           # @abstract
-          #
           class FunctionCall < Braintrust::Union
             variant enum: -> { Braintrust::Models::PromptOptions::Params::OpenAIModelParams::FunctionCall::UnionMember0 }
 
             variant -> { Braintrust::Models::PromptOptions::Params::OpenAIModelParams::FunctionCall::Function }
 
             # @abstract
-            #
             class UnionMember0 < Braintrust::Enum
               AUTO = :auto
               NONE = :none
@@ -240,7 +237,6 @@ module Braintrust
           end
 
           # @abstract
-          #
           class ReasoningEffort < Braintrust::Enum
             LOW = :low
             MEDIUM = :medium
@@ -250,7 +246,6 @@ module Braintrust
           end
 
           # @abstract
-          #
           class ResponseFormat < Braintrust::Union
             variant -> { Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ResponseFormat::JsonObject }
 
@@ -273,7 +268,6 @@ module Braintrust
               # def initialize: (Hash | Braintrust::BaseModel) -> void
 
               # @abstract
-              #
               class Type < Braintrust::Enum
                 JSON_OBJECT = :json_object
 
@@ -343,7 +337,6 @@ module Braintrust
                 # def initialize: (Hash | Braintrust::BaseModel) -> void
 
                 # @abstract
-                #
                 class Schema < Braintrust::Union
                   ObjectMap = Braintrust::HashOf[Braintrust::Unknown, nil?: true]
 
@@ -354,7 +347,6 @@ module Braintrust
               end
 
               # @abstract
-              #
               class Type < Braintrust::Enum
                 JSON_SCHEMA = :json_schema
 
@@ -377,7 +369,6 @@ module Braintrust
               # def initialize: (Hash | Braintrust::BaseModel) -> void
 
               # @abstract
-              #
               class Type < Braintrust::Enum
                 TEXT = :text
 
@@ -387,14 +378,12 @@ module Braintrust
           end
 
           # @abstract
-          #
           class ToolChoice < Braintrust::Union
             variant enum: -> { Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ToolChoice::UnionMember0 }
 
             variant -> { Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ToolChoice::Function }
 
             # @abstract
-            #
             class UnionMember0 < Braintrust::Enum
               AUTO = :auto
               NONE = :none
@@ -439,7 +428,6 @@ module Braintrust
               end
 
               # @abstract
-              #
               class Type < Braintrust::Enum
                 FUNCTION = :function
 

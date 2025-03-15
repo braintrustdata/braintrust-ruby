@@ -17,6 +17,7 @@ module Braintrust
       def metadata=(_)
       end
 
+      # Name of the AI secret
       sig { returns(T.nilable(String)) }
       def name
       end

@@ -3,6 +3,7 @@
 module Braintrust
   module Models
     class CrossObjectInsertResponse < Braintrust::BaseModel
+      # A mapping from dataset id to row ids for inserted `events`
       sig { returns(T.nilable(T::Hash[Symbol, Braintrust::Models::InsertEventsResponse])) }
       def dataset
       end
@@ -14,6 +15,7 @@ module Braintrust
       def dataset=(_)
       end
 
+      # A mapping from experiment id to row ids for inserted `events`
       sig { returns(T.nilable(T::Hash[Symbol, Braintrust::Models::InsertEventsResponse])) }
       def experiment
       end
@@ -25,6 +27,7 @@ module Braintrust
       def experiment=(_)
       end
 
+      # A mapping from project id to row ids for inserted `events`
       sig { returns(T.nilable(T::Hash[Symbol, Braintrust::Models::InsertEventsResponse])) }
       def project_logs
       end

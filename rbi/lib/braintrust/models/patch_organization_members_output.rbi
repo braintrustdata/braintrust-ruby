@@ -3,6 +3,7 @@
 module Braintrust
   module Models
     class PatchOrganizationMembersOutput < Braintrust::BaseModel
+      # The id of the org that was modified.
       sig { returns(String) }
       def org_id
       end
@@ -19,6 +20,8 @@ module Braintrust
       def status=(_)
       end
 
+      # If invite emails failed to send for some reason, the patch operation will still
+      #   complete, but we will return an error message here
       sig { returns(T.nilable(String)) }
       def send_email_error
       end

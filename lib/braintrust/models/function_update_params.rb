@@ -49,7 +49,6 @@ module Braintrust
       # def initialize: (Hash | Braintrust::BaseModel) -> void
 
       # @abstract
-      #
       class FunctionData < Braintrust::Union
         variant -> { Braintrust::Models::FunctionUpdateParams::FunctionData::Prompt }
 
@@ -71,7 +70,6 @@ module Braintrust
           # def initialize: (Hash | Braintrust::BaseModel) -> void
 
           # @abstract
-          #
           class Type < Braintrust::Enum
             PROMPT = :prompt
 
@@ -99,7 +97,6 @@ module Braintrust
           # def initialize: (Hash | Braintrust::BaseModel) -> void
 
           # @abstract
-          #
           class Data < Braintrust::Union
             variant -> { Braintrust::Models::FunctionUpdateParams::FunctionData::Code::Data::Bundle }
 
@@ -120,7 +117,6 @@ module Braintrust
               # def initialize: (Hash | Braintrust::BaseModel) -> void
 
               # @abstract
-              #
               class Type < Braintrust::Enum
                 BUNDLE = :bundle
 
@@ -176,7 +172,6 @@ module Braintrust
                 # def initialize: (Hash | Braintrust::BaseModel) -> void
 
                 # @abstract
-                #
                 class Runtime < Braintrust::Enum
                   NODE = :node
                   PYTHON = :python
@@ -186,7 +181,6 @@ module Braintrust
               end
 
               # @abstract
-              #
               class Type < Braintrust::Enum
                 INLINE = :inline
 
@@ -196,7 +190,6 @@ module Braintrust
           end
 
           # @abstract
-          #
           class Type < Braintrust::Enum
             CODE = :code
 
@@ -224,7 +217,6 @@ module Braintrust
           # def initialize: (Hash | Braintrust::BaseModel) -> void
 
           # @abstract
-          #
           class Type < Braintrust::Enum
             GLOBAL = :global
 

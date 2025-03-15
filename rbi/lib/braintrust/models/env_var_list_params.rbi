@@ -6,6 +6,7 @@ module Braintrust
       extend Braintrust::RequestParameters::Converter
       include Braintrust::RequestParameters
 
+      # Name of the env_var to search for
       sig { returns(T.nilable(String)) }
       def env_var_name
       end
@@ -14,6 +15,8 @@ module Braintrust
       def env_var_name=(_)
       end
 
+      # Filter search results to a particular set of object IDs. To specify a list of
+      #   IDs, include the query param multiple times
       sig { returns(T.nilable(T.any(String, T::Array[String]))) }
       def ids
       end
@@ -22,6 +25,7 @@ module Braintrust
       def ids=(_)
       end
 
+      # Limit the number of objects to return
       sig { returns(T.nilable(Integer)) }
       def limit
       end
@@ -30,6 +34,7 @@ module Braintrust
       def limit=(_)
       end
 
+      # The id of the object the environment variable is scoped for
       sig { returns(T.nilable(String)) }
       def object_id_
       end
@@ -38,6 +43,7 @@ module Braintrust
       def object_id_=(_)
       end
 
+      # The type of the object the environment variable is scoped for
       sig { returns(T.nilable(Symbol)) }
       def object_type
       end
@@ -76,12 +82,15 @@ module Braintrust
       def to_hash
       end
 
+      # Filter search results to a particular set of object IDs. To specify a list of
+      #   IDs, include the query param multiple times
       class IDs < Braintrust::Union
         abstract!
 
         StringArray = T.type_alias { T::Array[String] }
 
         class << self
+          # @api private
           sig { override.returns([[NilClass, String], [NilClass, T::Array[String]]]) }
           private def variants
           end

@@ -7,6 +7,7 @@ module Braintrust
         extend Braintrust::RequestParameters::Converter
         include Braintrust::RequestParameters
 
+        # A list of project logs feedback items
         sig { returns(T::Array[Braintrust::Models::FeedbackProjectLogsItem]) }
         def feedback
         end
