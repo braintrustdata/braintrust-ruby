@@ -306,7 +306,7 @@ module Braintrust
   # when Braintrust::Models::ACLObjectType::EXPERIMENT
   #   # ...
   # else
-  #   # ...
+  #   puts(acl_object_type)
   # end
   # ```
   #
@@ -320,7 +320,7 @@ module Braintrust
   # in :experiment
   #   # ...
   # else
-  #   # ...
+  #   puts(acl_object_type)
   # end
   # ```
   class Enum
