@@ -20,13 +20,21 @@ module Braintrust
           .returns(Braintrust::Models::View)
       end
       def create(
+        # Name of the view
         name:,
+        # The id of the object the view applies to
         object_id_:,
+        # The object type that the ACL applies to
         object_type:,
+        # Type of table that the view corresponds to.
         view_type:,
+        # Date of role deletion, or null if the role is still active
         deleted_at: nil,
+        # Options for the view in the app
         options: nil,
+        # Identifies the user who created the view
         user_id: nil,
+        # The view definition
         view_data: nil,
         request_options: {}
       )
@@ -42,7 +50,15 @@ module Braintrust
         )
           .returns(Braintrust::Models::View)
       end
-      def retrieve(view_id, object_id_:, object_type:, request_options: {})
+      def retrieve(
+        # View id
+        view_id,
+        # The id of the object the ACL applies to
+        object_id_:,
+        # The object type that the ACL applies to
+        object_type:,
+        request_options: {}
+      )
       end
 
       # Partially update a view object. Specify the fields to update in the payload. Any
@@ -63,13 +79,21 @@ module Braintrust
           .returns(Braintrust::Models::View)
       end
       def update(
+        # View id
         view_id,
+        # The id of the object the view applies to
         object_id_:,
+        # The object type that the ACL applies to
         object_type:,
+        # Name of the view
         name: nil,
+        # Options for the view in the app
         options: nil,
+        # Identifies the user who created the view
         user_id: nil,
+        # The view definition
         view_data: nil,
+        # Type of table that the view corresponds to.
         view_type: nil,
         request_options: {}
       )
@@ -92,13 +116,30 @@ module Braintrust
           .returns(Braintrust::ListObjects[Braintrust::Models::View])
       end
       def list(
+        # The id of the object the ACL applies to
         object_id_:,
+        # The object type that the ACL applies to
         object_type:,
+        # Pagination cursor id.
+        #
+        #   For example, if the initial item in the last page you fetched had an id of
+        #   `foo`, pass `ending_before=foo` to fetch the previous page. Note: you may only
+        #   pass one of `starting_after` and `ending_before`
         ending_before: nil,
+        # Filter search results to a particular set of object IDs. To specify a list of
+        #   IDs, include the query param multiple times
         ids: nil,
+        # Limit the number of objects to return
         limit: nil,
+        # Pagination cursor id.
+        #
+        #   For example, if the final item in the last page you fetched had an id of `foo`,
+        #   pass `starting_after=foo` to fetch the next page. Note: you may only pass one of
+        #   `starting_after` and `ending_before`
         starting_after: nil,
+        # Name of the view to search for
         view_name: nil,
+        # Type of table that the view corresponds to.
         view_type: nil,
         request_options: {}
       )
@@ -114,7 +155,15 @@ module Braintrust
         )
           .returns(Braintrust::Models::View)
       end
-      def delete(view_id, object_id_:, object_type:, request_options: {})
+      def delete(
+        # View id
+        view_id,
+        # The id of the object the view applies to
+        object_id_:,
+        # The object type that the ACL applies to
+        object_type:,
+        request_options: {}
+      )
       end
 
       # Create or replace view. If there is an existing view with the same name as the
@@ -135,13 +184,21 @@ module Braintrust
           .returns(Braintrust::Models::View)
       end
       def replace(
+        # Name of the view
         name:,
+        # The id of the object the view applies to
         object_id_:,
+        # The object type that the ACL applies to
         object_type:,
+        # Type of table that the view corresponds to.
         view_type:,
+        # Date of role deletion, or null if the role is still active
         deleted_at: nil,
+        # Options for the view in the app
         options: nil,
+        # Identifies the user who created the view
         user_id: nil,
+        # The view definition
         view_data: nil,
         request_options: {}
       )

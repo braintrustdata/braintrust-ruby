@@ -16,7 +16,20 @@ module Braintrust
         )
           .returns(Braintrust::Models::AISecret)
       end
-      def create(name:, metadata: nil, org_name: nil, secret: nil, type: nil, request_options: {})
+      def create(
+        # Name of the AI secret
+        name:,
+        metadata: nil,
+        # For nearly all users, this parameter should be unnecessary. But in the rare case
+        #   that your API key belongs to multiple organizations, you may specify the name of
+        #   the organization the AI Secret belongs in.
+        org_name: nil,
+        # Secret value. If omitted in a PUT request, the existing secret value will be
+        #   left intact, not replaced with null.
+        secret: nil,
+        type: nil,
+        request_options: {}
+      )
       end
 
       # Get an ai_secret object by its id
@@ -27,7 +40,11 @@ module Braintrust
         )
           .returns(Braintrust::Models::AISecret)
       end
-      def retrieve(ai_secret_id, request_options: {})
+      def retrieve(
+        # AiSecret id
+        ai_secret_id,
+        request_options: {}
+      )
       end
 
       # Partially update an ai_secret object. Specify the fields to update in the
@@ -44,7 +61,16 @@ module Braintrust
         )
           .returns(Braintrust::Models::AISecret)
       end
-      def update(ai_secret_id, metadata: nil, name: nil, secret: nil, type: nil, request_options: {})
+      def update(
+        # AiSecret id
+        ai_secret_id,
+        metadata: nil,
+        # Name of the AI secret
+        name: nil,
+        secret: nil,
+        type: nil,
+        request_options: {}
+      )
       end
 
       # List out all ai_secrets. The ai_secrets are sorted by creation date, with the
@@ -63,12 +89,27 @@ module Braintrust
           .returns(Braintrust::ListObjects[Braintrust::Models::AISecret])
       end
       def list(
+        # Name of the ai_secret to search for
         ai_secret_name: nil,
         ai_secret_type: nil,
+        # Pagination cursor id.
+        #
+        #   For example, if the initial item in the last page you fetched had an id of
+        #   `foo`, pass `ending_before=foo` to fetch the previous page. Note: you may only
+        #   pass one of `starting_after` and `ending_before`
         ending_before: nil,
+        # Filter search results to a particular set of object IDs. To specify a list of
+        #   IDs, include the query param multiple times
         ids: nil,
+        # Limit the number of objects to return
         limit: nil,
+        # Filter search results to within a particular organization
         org_name: nil,
+        # Pagination cursor id.
+        #
+        #   For example, if the final item in the last page you fetched had an id of `foo`,
+        #   pass `starting_after=foo` to fetch the next page. Note: you may only pass one of
+        #   `starting_after` and `ending_before`
         starting_after: nil,
         request_options: {}
       )
@@ -82,7 +123,11 @@ module Braintrust
         )
           .returns(Braintrust::Models::AISecret)
       end
-      def delete(ai_secret_id, request_options: {})
+      def delete(
+        # AiSecret id
+        ai_secret_id,
+        request_options: {}
+      )
       end
 
       # Delete a single ai_secret
@@ -94,7 +139,15 @@ module Braintrust
         )
           .returns(Braintrust::Models::AISecret)
       end
-      def find_and_delete(name:, org_name: nil, request_options: {})
+      def find_and_delete(
+        # Name of the AI secret
+        name:,
+        # For nearly all users, this parameter should be unnecessary. But in the rare case
+        #   that your API key belongs to multiple organizations, you may specify the name of
+        #   the organization the AI Secret belongs in.
+        org_name: nil,
+        request_options: {}
+      )
       end
 
       # Create or replace ai_secret. If there is an existing ai_secret with the same
@@ -111,7 +164,20 @@ module Braintrust
         )
           .returns(Braintrust::Models::AISecret)
       end
-      def replace(name:, metadata: nil, org_name: nil, secret: nil, type: nil, request_options: {})
+      def replace(
+        # Name of the AI secret
+        name:,
+        metadata: nil,
+        # For nearly all users, this parameter should be unnecessary. But in the rare case
+        #   that your API key belongs to multiple organizations, you may specify the name of
+        #   the organization the AI Secret belongs in.
+        org_name: nil,
+        # Secret value. If omitted in a PUT request, the existing secret value will be
+        #   left intact, not replaced with null.
+        secret: nil,
+        type: nil,
+        request_options: {}
+      )
       end
 
       sig { params(client: Braintrust::Client).returns(T.attached_class) }
