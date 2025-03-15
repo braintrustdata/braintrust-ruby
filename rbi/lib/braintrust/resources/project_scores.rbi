@@ -21,11 +21,16 @@ module Braintrust
           .returns(Braintrust::Models::ProjectScore)
       end
       def create(
+        # Name of the project score
         name:,
+        # Unique identifier for the project that the project score belongs under
         project_id:,
+        # The type of the configured score
         score_type:,
+        # For categorical-type project scores, the list of all categories
         categories: nil,
         config: nil,
+        # Textual description of the project score
         description: nil,
         request_options: {}
       )
@@ -39,7 +44,11 @@ module Braintrust
         )
           .returns(Braintrust::Models::ProjectScore)
       end
-      def retrieve(project_score_id, request_options: {})
+      def retrieve(
+        # ProjectScore id
+        project_score_id,
+        request_options: {}
+      )
       end
 
       # Partially update a project_score object. Specify the fields to update in the
@@ -60,11 +69,16 @@ module Braintrust
           .returns(Braintrust::Models::ProjectScore)
       end
       def update(
+        # ProjectScore id
         project_score_id,
+        # For categorical-type project scores, the list of all categories
         categories: nil,
         config: nil,
+        # Textual description of the project score
         description: nil,
+        # Name of the project score
         name: nil,
+        # The type of the configured score
         score_type: nil,
         request_options: {}
       )
@@ -88,14 +102,32 @@ module Braintrust
           .returns(Braintrust::ListObjects[Braintrust::Models::ProjectScore])
       end
       def list(
+        # Pagination cursor id.
+        #
+        #   For example, if the initial item in the last page you fetched had an id of
+        #   `foo`, pass `ending_before=foo` to fetch the previous page. Note: you may only
+        #   pass one of `starting_after` and `ending_before`
         ending_before: nil,
+        # Filter search results to a particular set of object IDs. To specify a list of
+        #   IDs, include the query param multiple times
         ids: nil,
+        # Limit the number of objects to return
         limit: nil,
+        # Filter search results to within a particular organization
         org_name: nil,
+        # Project id
         project_id: nil,
+        # Name of the project to search for
         project_name: nil,
+        # Name of the project_score to search for
         project_score_name: nil,
+        # The type of the configured score
         score_type: nil,
+        # Pagination cursor id.
+        #
+        #   For example, if the final item in the last page you fetched had an id of `foo`,
+        #   pass `starting_after=foo` to fetch the next page. Note: you may only pass one of
+        #   `starting_after` and `ending_before`
         starting_after: nil,
         request_options: {}
       )
@@ -109,7 +141,11 @@ module Braintrust
         )
           .returns(Braintrust::Models::ProjectScore)
       end
-      def delete(project_score_id, request_options: {})
+      def delete(
+        # ProjectScore id
+        project_score_id,
+        request_options: {}
+      )
       end
 
       # Create or replace project_score. If there is an existing project_score in the
@@ -130,11 +166,16 @@ module Braintrust
           .returns(Braintrust::Models::ProjectScore)
       end
       def replace(
+        # Name of the project score
         name:,
+        # Unique identifier for the project that the project score belongs under
         project_id:,
+        # The type of the configured score
         score_type:,
+        # For categorical-type project scores, the list of all categories
         categories: nil,
         config: nil,
+        # Textual description of the project score
         description: nil,
         request_options: {}
       )

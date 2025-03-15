@@ -52,21 +52,48 @@ module Braintrust
           .returns(Braintrust::Models::SummarizeExperimentResponse)
       end
       def create(
+        # The dataset to use
         data:,
+        # Unique identifier for the project to run the eval in
         project_id:,
+        # The functions to score the eval on
         scores:,
+        # The function to evaluate
         task:,
+        # An optional experiment id to use as a base. If specified, the new experiment
+        #   will be summarized and compared to this experiment.
         base_experiment_id: nil,
+        # An optional experiment name to use as a base. If specified, the new experiment
+        #   will be summarized and compared to this experiment.
         base_experiment_name: nil,
+        # An optional name for the experiment created by this eval. If it conflicts with
+        #   an existing experiment, it will be suffixed with a unique identifier.
         experiment_name: nil,
+        # Optional settings for collecting git metadata. By default, will collect all git
+        #   metadata fields allowed in org-level settings.
         git_metadata_settings: nil,
+        # Whether the experiment should be public. Defaults to false.
         is_public: nil,
+        # The maximum number of tasks/scorers that will be run concurrently. Defaults to
+        #   undefined, in which case there is no max concurrency.
         max_concurrency: nil,
+        # Optional experiment-level metadata to store about the evaluation. You can later
+        #   use this to slice & dice across experiments.
         metadata: nil,
+        # Options for tracing the evaluation
         parent: nil,
+        # Metadata about the state of the repo when the experiment was created
         repo_info: nil,
+        # Whether to stream the results of the eval. If true, the request will return two
+        #   events: one to indicate the experiment has started, and another upon completion.
+        #   If false, the request will return the evaluation's summary upon completion.
         stream: nil,
+        # The maximum duration, in milliseconds, to run the evaluation. Defaults to
+        #   undefined, in which case there is no timeout.
         timeout: nil,
+        # The number of times to run the evaluator per input. This is useful for
+        #   evaluating applications that have non-deterministic behavior and gives you both
+        #   a stronger aggregate measure and a sense of the variance in the results.
         trial_count: nil,
         request_options: {}
       )

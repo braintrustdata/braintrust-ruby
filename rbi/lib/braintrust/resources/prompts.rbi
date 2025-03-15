@@ -20,12 +20,18 @@ module Braintrust
           .returns(Braintrust::Models::Prompt)
       end
       def create(
+        # Name of the prompt
         name:,
+        # Unique identifier for the project that the prompt belongs under
         project_id:,
+        # Unique identifier for the prompt
         slug:,
+        # Textual description of the prompt
         description: nil,
         function_type: nil,
+        # The prompt, model, and its parameters
         prompt_data: nil,
+        # A list of tags for the prompt
         tags: nil,
         request_options: {}
       )
@@ -39,7 +45,11 @@ module Braintrust
         )
           .returns(Braintrust::Models::Prompt)
       end
-      def retrieve(prompt_id, request_options: {})
+      def retrieve(
+        # Prompt id
+        prompt_id,
+        request_options: {}
+      )
       end
 
       # Partially update a prompt object. Specify the fields to update in the payload.
@@ -58,11 +68,17 @@ module Braintrust
           .returns(Braintrust::Models::Prompt)
       end
       def update(
+        # Prompt id
         prompt_id,
+        # Textual description of the prompt
         description: nil,
+        # Name of the prompt
         name: nil,
+        # The prompt, model, and its parameters
         prompt_data: nil,
+        # Unique identifier for the prompt
         slug: nil,
+        # A list of tags for the prompt
         tags: nil,
         request_options: {}
       )
@@ -87,15 +103,37 @@ module Braintrust
           .returns(Braintrust::ListObjects[Braintrust::Models::Prompt])
       end
       def list(
+        # Pagination cursor id.
+        #
+        #   For example, if the initial item in the last page you fetched had an id of
+        #   `foo`, pass `ending_before=foo` to fetch the previous page. Note: you may only
+        #   pass one of `starting_after` and `ending_before`
         ending_before: nil,
+        # Filter search results to a particular set of object IDs. To specify a list of
+        #   IDs, include the query param multiple times
         ids: nil,
+        # Limit the number of objects to return
         limit: nil,
+        # Filter search results to within a particular organization
         org_name: nil,
+        # Project id
         project_id: nil,
+        # Name of the project to search for
         project_name: nil,
+        # Name of the prompt to search for
         prompt_name: nil,
+        # Retrieve prompt with a specific slug
         slug: nil,
+        # Pagination cursor id.
+        #
+        #   For example, if the final item in the last page you fetched had an id of `foo`,
+        #   pass `starting_after=foo` to fetch the next page. Note: you may only pass one of
+        #   `starting_after` and `ending_before`
         starting_after: nil,
+        # Retrieve prompt at a specific version.
+        #
+        #   The version id can either be a transaction id (e.g. '1000192656880881099') or a
+        #   version identifier (e.g. '81cd05ee665fdfb3').
         version: nil,
         request_options: {}
       )
@@ -109,7 +147,11 @@ module Braintrust
         )
           .returns(Braintrust::Models::Prompt)
       end
-      def delete(prompt_id, request_options: {})
+      def delete(
+        # Prompt id
+        prompt_id,
+        request_options: {}
+      )
       end
 
       # Create or replace prompt. If there is an existing prompt in the project with the
@@ -129,12 +171,18 @@ module Braintrust
           .returns(Braintrust::Models::Prompt)
       end
       def replace(
+        # Name of the prompt
         name:,
+        # Unique identifier for the project that the prompt belongs under
         project_id:,
+        # Unique identifier for the prompt
         slug:,
+        # Textual description of the prompt
         description: nil,
         function_type: nil,
+        # The prompt, model, and its parameters
         prompt_data: nil,
+        # A list of tags for the prompt
         tags: nil,
         request_options: {}
       )
