@@ -3,6 +3,7 @@
 module Braintrust
   module Models
     class DataSummary < Braintrust::BaseModel
+      # Total number of records in the dataset
       sig { returns(Integer) }
       def total_records
       end
@@ -11,6 +12,7 @@ module Braintrust
       def total_records=(_)
       end
 
+      # Summary of a dataset's data
       sig { params(total_records: Integer).returns(T.attached_class) }
       def self.new(total_records:)
       end

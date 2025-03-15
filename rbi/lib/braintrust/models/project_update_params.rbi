@@ -6,6 +6,7 @@ module Braintrust
       extend Braintrust::RequestParameters::Converter
       include Braintrust::RequestParameters
 
+      # Name of the project
       sig { returns(T.nilable(String)) }
       def name
       end
@@ -14,6 +15,8 @@ module Braintrust
       def name=(_)
       end
 
+      # Project settings. Patch operations replace all settings, so make sure you
+      #   include all settings you want to keep.
       sig { returns(T.nilable(Braintrust::Models::ProjectSettings)) }
       def settings
       end

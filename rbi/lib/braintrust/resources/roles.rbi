@@ -3,6 +3,8 @@
 module Braintrust
   module Resources
     class Roles
+      # Create a new role. If there is an existing role with the same name as the one
+      #   specified in the request, will return the existing role unmodified
       sig do
         params(
           name: String,
@@ -24,6 +26,7 @@ module Braintrust
       )
       end
 
+      # Get a role object by its id
       sig do
         params(
           role_id: String,
@@ -34,6 +37,9 @@ module Braintrust
       def retrieve(role_id, request_options: {})
       end
 
+      # Partially update a role object. Specify the fields to update in the payload. Any
+      #   object-type fields will be deep-merged with existing content. Currently we do
+      #   not support removing fields or setting them to null.
       sig do
         params(
           role_id: String,
@@ -59,6 +65,8 @@ module Braintrust
       )
       end
 
+      # List out all roles. The roles are sorted by creation date, with the most
+      #   recently-created roles coming first
       sig do
         params(
           ending_before: String,
@@ -82,6 +90,7 @@ module Braintrust
       )
       end
 
+      # Delete a role object by its id
       sig do
         params(
           role_id: String,
@@ -92,6 +101,9 @@ module Braintrust
       def delete(role_id, request_options: {})
       end
 
+      # Create or replace role. If there is an existing role with the same name as the
+      #   one specified in the request, will replace the existing role with the provided
+      #   fields
       sig do
         params(
           name: String,

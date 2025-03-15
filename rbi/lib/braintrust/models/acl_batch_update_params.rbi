@@ -6,6 +6,16 @@ module Braintrust
       extend Braintrust::RequestParameters::Converter
       include Braintrust::RequestParameters
 
+      # An ACL grants a certain permission or role to a certain user or group on an
+      #   object.
+      #
+      #   ACLs are inherited across the object hierarchy. So for example, if a user has
+      #   read permissions on a project, they will also have read permissions on any
+      #   experiment, dataset, etc. created within that project.
+      #
+      #   To restrict a grant to a particular sub-object, you may specify
+      #   `restrict_object_type` in the ACL, as part of a direct permission grant or as
+      #   part of a role.
       sig { returns(T.nilable(T::Array[Braintrust::Models::ACLBatchUpdateParams::AddACL])) }
       def add_acls
       end
@@ -17,6 +27,16 @@ module Braintrust
       def add_acls=(_)
       end
 
+      # An ACL grants a certain permission or role to a certain user or group on an
+      #   object.
+      #
+      #   ACLs are inherited across the object hierarchy. So for example, if a user has
+      #   read permissions on a project, they will also have read permissions on any
+      #   experiment, dataset, etc. created within that project.
+      #
+      #   To restrict a grant to a particular sub-object, you may specify
+      #   `restrict_object_type` in the ACL, as part of a direct permission grant or as
+      #   part of a role.
       sig { returns(T.nilable(T::Array[Braintrust::Models::ACLBatchUpdateParams::RemoveACL])) }
       def remove_acls
       end
@@ -53,6 +73,7 @@ module Braintrust
       end
 
       class AddACL < Braintrust::BaseModel
+        # The id of the object the ACL applies to
         sig { returns(String) }
         def object_id_
         end
@@ -61,6 +82,7 @@ module Braintrust
         def object_id_=(_)
         end
 
+        # The object type that the ACL applies to
         sig { returns(Symbol) }
         def object_type
         end
@@ -69,6 +91,8 @@ module Braintrust
         def object_type=(_)
         end
 
+        # Id of the group the ACL applies to. Exactly one of `user_id` and `group_id` will
+        #   be provided
         sig { returns(T.nilable(String)) }
         def group_id
         end
@@ -77,6 +101,8 @@ module Braintrust
         def group_id=(_)
         end
 
+        # Permission the ACL grants. Exactly one of `permission` and `role_id` will be
+        #   provided
         sig { returns(T.nilable(Symbol)) }
         def permission
         end
@@ -85,6 +111,8 @@ module Braintrust
         def permission=(_)
         end
 
+        # When setting a permission directly, optionally restricts the permission grant to
+        #   just the specified object type. Cannot be set alongside a `role_id`.
         sig { returns(T.nilable(Symbol)) }
         def restrict_object_type
         end
@@ -93,6 +121,8 @@ module Braintrust
         def restrict_object_type=(_)
         end
 
+        # Id of the role the ACL grants. Exactly one of `permission` and `role_id` will be
+        #   provided
         sig { returns(T.nilable(String)) }
         def role_id
         end
@@ -101,6 +131,8 @@ module Braintrust
         def role_id=(_)
         end
 
+        # Id of the user the ACL applies to. Exactly one of `user_id` and `group_id` will
+        #   be provided
         sig { returns(T.nilable(String)) }
         def user_id
         end
@@ -109,6 +141,16 @@ module Braintrust
         def user_id=(_)
         end
 
+        # An ACL grants a certain permission or role to a certain user or group on an
+        #   object.
+        #
+        #   ACLs are inherited across the object hierarchy. So for example, if a user has
+        #   read permissions on a project, they will also have read permissions on any
+        #   experiment, dataset, etc. created within that project.
+        #
+        #   To restrict a grant to a particular sub-object, you may specify
+        #   `restrict_object_type` in the ACL, as part of a direct permission grant or as
+        #   part of a role.
         sig do
           params(
             object_id_: String,
@@ -151,6 +193,7 @@ module Braintrust
       end
 
       class RemoveACL < Braintrust::BaseModel
+        # The id of the object the ACL applies to
         sig { returns(String) }
         def object_id_
         end
@@ -159,6 +202,7 @@ module Braintrust
         def object_id_=(_)
         end
 
+        # The object type that the ACL applies to
         sig { returns(Symbol) }
         def object_type
         end
@@ -167,6 +211,8 @@ module Braintrust
         def object_type=(_)
         end
 
+        # Id of the group the ACL applies to. Exactly one of `user_id` and `group_id` will
+        #   be provided
         sig { returns(T.nilable(String)) }
         def group_id
         end
@@ -175,6 +221,8 @@ module Braintrust
         def group_id=(_)
         end
 
+        # Permission the ACL grants. Exactly one of `permission` and `role_id` will be
+        #   provided
         sig { returns(T.nilable(Symbol)) }
         def permission
         end
@@ -183,6 +231,8 @@ module Braintrust
         def permission=(_)
         end
 
+        # When setting a permission directly, optionally restricts the permission grant to
+        #   just the specified object type. Cannot be set alongside a `role_id`.
         sig { returns(T.nilable(Symbol)) }
         def restrict_object_type
         end
@@ -191,6 +241,8 @@ module Braintrust
         def restrict_object_type=(_)
         end
 
+        # Id of the role the ACL grants. Exactly one of `permission` and `role_id` will be
+        #   provided
         sig { returns(T.nilable(String)) }
         def role_id
         end
@@ -199,6 +251,8 @@ module Braintrust
         def role_id=(_)
         end
 
+        # Id of the user the ACL applies to. Exactly one of `user_id` and `group_id` will
+        #   be provided
         sig { returns(T.nilable(String)) }
         def user_id
         end
@@ -207,6 +261,16 @@ module Braintrust
         def user_id=(_)
         end
 
+        # An ACL grants a certain permission or role to a certain user or group on an
+        #   object.
+        #
+        #   ACLs are inherited across the object hierarchy. So for example, if a user has
+        #   read permissions on a project, they will also have read permissions on any
+        #   experiment, dataset, etc. created within that project.
+        #
+        #   To restrict a grant to a particular sub-object, you may specify
+        #   `restrict_object_type` in the ACL, as part of a direct permission grant or as
+        #   part of a role.
         sig do
           params(
             object_id_: String,

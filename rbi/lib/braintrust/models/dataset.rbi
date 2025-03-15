@@ -3,6 +3,7 @@
 module Braintrust
   module Models
     class Dataset < Braintrust::BaseModel
+      # Unique identifier for the dataset
       sig { returns(String) }
       def id
       end
@@ -11,6 +12,7 @@ module Braintrust
       def id=(_)
       end
 
+      # Name of the dataset. Within a project, dataset names are unique
       sig { returns(String) }
       def name
       end
@@ -19,6 +21,7 @@ module Braintrust
       def name=(_)
       end
 
+      # Unique identifier for the project that the dataset belongs under
       sig { returns(String) }
       def project_id
       end
@@ -27,6 +30,7 @@ module Braintrust
       def project_id=(_)
       end
 
+      # Date of dataset creation
       sig { returns(T.nilable(Time)) }
       def created
       end
@@ -35,6 +39,7 @@ module Braintrust
       def created=(_)
       end
 
+      # Date of dataset deletion, or null if the dataset is still active
       sig { returns(T.nilable(Time)) }
       def deleted_at
       end
@@ -43,6 +48,7 @@ module Braintrust
       def deleted_at=(_)
       end
 
+      # Textual description of the dataset
       sig { returns(T.nilable(String)) }
       def description
       end
@@ -51,6 +57,7 @@ module Braintrust
       def description=(_)
       end
 
+      # User-controlled metadata about the dataset
       sig { returns(T.nilable(T::Hash[Symbol, T.nilable(T.anything)])) }
       def metadata
       end
@@ -62,6 +69,7 @@ module Braintrust
       def metadata=(_)
       end
 
+      # Identifies the user who created the dataset
       sig { returns(T.nilable(String)) }
       def user_id
       end

@@ -3,6 +3,7 @@
 module Braintrust
   module Models
     class OnlineScoreConfig < Braintrust::BaseModel
+      # The sampling rate for online scoring
       sig { returns(Float) }
       def sampling_rate
       end
@@ -11,6 +12,7 @@ module Braintrust
       def sampling_rate=(_)
       end
 
+      # The list of scorers to use for online scoring
       sig do
         returns(
           T::Array[
@@ -45,6 +47,7 @@ module Braintrust
       def scorers=(_)
       end
 
+      # Whether to trigger online scoring on the root span of each trace
       sig { returns(T.nilable(T::Boolean)) }
       def apply_to_root_span
       end
@@ -53,6 +56,7 @@ module Braintrust
       def apply_to_root_span=(_)
       end
 
+      # Trigger online scoring on any spans with a name in this list
       sig { returns(T.nilable(T::Array[String])) }
       def apply_to_span_names
       end
@@ -177,6 +181,7 @@ module Braintrust
         end
 
         class << self
+          # @api private
           sig do
             override
               .returns(

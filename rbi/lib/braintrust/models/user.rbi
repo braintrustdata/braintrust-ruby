@@ -3,6 +3,7 @@
 module Braintrust
   module Models
     class User < Braintrust::BaseModel
+      # Unique identifier for the user
       sig { returns(String) }
       def id
       end
@@ -11,6 +12,7 @@ module Braintrust
       def id=(_)
       end
 
+      # URL of the user's Avatar image
       sig { returns(T.nilable(String)) }
       def avatar_url
       end
@@ -19,6 +21,7 @@ module Braintrust
       def avatar_url=(_)
       end
 
+      # Date of user creation
       sig { returns(T.nilable(Time)) }
       def created
       end
@@ -27,6 +30,7 @@ module Braintrust
       def created=(_)
       end
 
+      # The user's email
       sig { returns(T.nilable(String)) }
       def email
       end
@@ -35,6 +39,7 @@ module Braintrust
       def email=(_)
       end
 
+      # Family name of the user
       sig { returns(T.nilable(String)) }
       def family_name
       end
@@ -43,6 +48,7 @@ module Braintrust
       def family_name=(_)
       end
 
+      # Given name of the user
       sig { returns(T.nilable(String)) }
       def given_name
       end

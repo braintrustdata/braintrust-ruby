@@ -108,7 +108,6 @@ module Braintrust
       # def initialize: (Hash | Braintrust::BaseModel) -> void
 
       # @abstract
-      #
       class AISecretType < Braintrust::Union
         StringArray = Braintrust::ArrayOf[String]
 

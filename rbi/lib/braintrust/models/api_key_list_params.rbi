@@ -6,6 +6,7 @@ module Braintrust
       extend Braintrust::RequestParameters::Converter
       include Braintrust::RequestParameters
 
+      # Name of the api_key to search for
       sig { returns(T.nilable(String)) }
       def api_key_name
       end
@@ -14,6 +15,11 @@ module Braintrust
       def api_key_name=(_)
       end
 
+      # Pagination cursor id.
+      #
+      #   For example, if the initial item in the last page you fetched had an id of
+      #   `foo`, pass `ending_before=foo` to fetch the previous page. Note: you may only
+      #   pass one of `starting_after` and `ending_before`
       sig { returns(T.nilable(String)) }
       def ending_before
       end
@@ -22,6 +28,8 @@ module Braintrust
       def ending_before=(_)
       end
 
+      # Filter search results to a particular set of object IDs. To specify a list of
+      #   IDs, include the query param multiple times
       sig { returns(T.nilable(T.any(String, T::Array[String]))) }
       def ids
       end
@@ -30,6 +38,7 @@ module Braintrust
       def ids=(_)
       end
 
+      # Limit the number of objects to return
       sig { returns(T.nilable(Integer)) }
       def limit
       end
@@ -38,6 +47,7 @@ module Braintrust
       def limit=(_)
       end
 
+      # Filter search results to within a particular organization
       sig { returns(T.nilable(String)) }
       def org_name
       end
@@ -46,6 +56,11 @@ module Braintrust
       def org_name=(_)
       end
 
+      # Pagination cursor id.
+      #
+      #   For example, if the final item in the last page you fetched had an id of `foo`,
+      #   pass `starting_after=foo` to fetch the next page. Note: you may only pass one of
+      #   `starting_after` and `ending_before`
       sig { returns(T.nilable(String)) }
       def starting_after
       end
@@ -94,12 +109,15 @@ module Braintrust
       def to_hash
       end
 
+      # Filter search results to a particular set of object IDs. To specify a list of
+      #   IDs, include the query param multiple times
       class IDs < Braintrust::Union
         abstract!
 
         StringArray = T.type_alias { T::Array[String] }
 
         class << self
+          # @api private
           sig { override.returns([[NilClass, String], [NilClass, T::Array[String]]]) }
           private def variants
           end

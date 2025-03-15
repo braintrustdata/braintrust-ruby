@@ -127,6 +127,7 @@ module Braintrust
           def function_call=(_)
           end
 
+          # The successor to max_tokens
           sig { returns(T.nilable(Float)) }
           def max_completion_tokens
           end
@@ -360,6 +361,7 @@ module Braintrust
             end
 
             class << self
+              # @api private
               sig do
                 override
                   .returns(
@@ -536,6 +538,7 @@ module Braintrust
                   ObjectMap = T.type_alias { T::Hash[Symbol, T.nilable(T.anything)] }
 
                   class << self
+                    # @api private
                     sig do
                       override.returns(
                         [
@@ -594,6 +597,7 @@ module Braintrust
             end
 
             class << self
+              # @api private
               sig do
                 override
                   .returns(
@@ -696,6 +700,7 @@ module Braintrust
             end
 
             class << self
+              # @api private
               sig do
                 override
                   .returns(
@@ -725,6 +730,7 @@ module Braintrust
           def temperature=(_)
           end
 
+          # This is a legacy parameter that should not be used.
           sig { returns(T.nilable(Float)) }
           def max_tokens_to_sample
           end
@@ -927,6 +933,7 @@ module Braintrust
         end
 
         class << self
+          # @api private
           sig do
             override
               .returns(

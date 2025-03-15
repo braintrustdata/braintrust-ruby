@@ -17,7 +17,6 @@ module Braintrust
       #   @option params [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Braintrust::Models::CreateAPIKeyOutput]
-      #
       def create(params)
         parsed, options = Braintrust::Models::APIKeyCreateParams.dump_request(params)
         @client.request(
@@ -38,7 +37,6 @@ module Braintrust
       #   @option params [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Braintrust::Models::APIKey]
-      #
       def retrieve(api_key_id, params = {})
         @client.request(
           method: :get,
@@ -77,7 +75,6 @@ module Braintrust
       #   @option params [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Braintrust::ListObjects<Braintrust::Models::APIKey>]
-      #
       def list(params = {})
         parsed, options = Braintrust::Models::APIKeyListParams.dump_request(params)
         @client.request(
@@ -99,7 +96,6 @@ module Braintrust
       #   @option params [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Braintrust::Models::APIKey]
-      #
       def delete(api_key_id, params = {})
         @client.request(
           method: :delete,
@@ -110,7 +106,6 @@ module Braintrust
       end
 
       # @param client [Braintrust::Client]
-      #
       def initialize(client:)
         @client = client
       end

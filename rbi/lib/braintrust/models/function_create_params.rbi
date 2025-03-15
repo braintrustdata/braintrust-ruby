@@ -37,6 +37,7 @@ module Braintrust
       def function_data=(_)
       end
 
+      # Name of the prompt
       sig { returns(String) }
       def name
       end
@@ -45,6 +46,7 @@ module Braintrust
       def name=(_)
       end
 
+      # Unique identifier for the project that the prompt belongs under
       sig { returns(String) }
       def project_id
       end
@@ -53,6 +55,7 @@ module Braintrust
       def project_id=(_)
       end
 
+      # Unique identifier for the prompt
       sig { returns(String) }
       def slug
       end
@@ -61,6 +64,7 @@ module Braintrust
       def slug=(_)
       end
 
+      # Textual description of the prompt
       sig { returns(T.nilable(String)) }
       def description
       end
@@ -69,6 +73,7 @@ module Braintrust
       def description=(_)
       end
 
+      # JSON schema for the function's parameters and return type
       sig { returns(T.nilable(Braintrust::Models::FunctionCreateParams::FunctionSchema)) }
       def function_schema
       end
@@ -99,6 +104,7 @@ module Braintrust
       def origin=(_)
       end
 
+      # The prompt, model, and its parameters
       sig { returns(T.nilable(Braintrust::Models::PromptData)) }
       def prompt_data
       end
@@ -107,6 +113,7 @@ module Braintrust
       def prompt_data=(_)
       end
 
+      # A list of tags for the prompt
       sig { returns(T.nilable(T::Array[String])) }
       def tags
       end
@@ -411,6 +418,7 @@ module Braintrust
             end
 
             class << self
+              # @api private
               sig do
                 override
                   .returns(
@@ -474,6 +482,7 @@ module Braintrust
         end
 
         class << self
+          # @api private
           sig do
             override
               .returns(
@@ -502,6 +511,7 @@ module Braintrust
         def returns=(_)
         end
 
+        # JSON schema for the function's parameters and return type
         sig { params(parameters: T.anything, returns: T.anything).returns(T.attached_class) }
         def self.new(parameters: nil, returns: nil)
         end
@@ -527,6 +537,7 @@ module Braintrust
       end
 
       class Origin < Braintrust::BaseModel
+        # Id of the object the function is originating from
         sig { returns(String) }
         def object_id_
         end
@@ -535,6 +546,7 @@ module Braintrust
         def object_id_=(_)
         end
 
+        # The object type that the ACL applies to
         sig { returns(Symbol) }
         def object_type
         end
@@ -543,6 +555,8 @@ module Braintrust
         def object_type=(_)
         end
 
+        # The function exists for internal purposes and should not be displayed in the
+        #   list of functions.
         sig { returns(T.nilable(T::Boolean)) }
         def internal
         end

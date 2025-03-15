@@ -107,7 +107,6 @@ module Braintrust
         # def initialize: (Hash | Braintrust::BaseModel) -> void
 
         # @abstract
-        #
         class Type < Braintrust::Enum
           LLM_CLASSIFIER = :llm_classifier
 
@@ -116,7 +115,6 @@ module Braintrust
       end
 
       # @abstract
-      #
       class Prompt < Braintrust::Union
         variant -> { Braintrust::Models::PromptData::Prompt::Completion }
 
@@ -142,7 +140,6 @@ module Braintrust
           # def initialize: (Hash | Braintrust::BaseModel) -> void
 
           # @abstract
-          #
           class Type < Braintrust::Enum
             COMPLETION = :completion
 
@@ -181,7 +178,6 @@ module Braintrust
           # def initialize: (Hash | Braintrust::BaseModel) -> void
 
           # @abstract
-          #
           class Message < Braintrust::Union
             variant -> { Braintrust::Models::PromptData::Prompt::Chat::Message::System }
 
@@ -229,7 +225,6 @@ module Braintrust
               # def initialize: (Hash | Braintrust::BaseModel) -> void
 
               # @abstract
-              #
               class Role < Braintrust::Enum
                 SYSTEM = :system
 
@@ -271,7 +266,6 @@ module Braintrust
               # def initialize: (Hash | Braintrust::BaseModel) -> void
 
               # @abstract
-              #
               class Role < Braintrust::Enum
                 USER = :user
 
@@ -279,7 +273,6 @@ module Braintrust
               end
 
               # @abstract
-              #
               class Content < Braintrust::Union
                 Nested2DArray = Braintrust::ArrayOf[union: -> { Braintrust::Models::PromptData::Prompt::Chat::Message::User::Content::Array }]
 
@@ -288,7 +281,6 @@ module Braintrust
                 variant Braintrust::Models::PromptData::Prompt::Chat::Message::User::Content::Nested2DArray
 
                 # @abstract
-                #
                 class Array < Braintrust::Union
                   variant -> { Braintrust::Models::ChatCompletionContentPartText }
 
@@ -339,7 +331,6 @@ module Braintrust
               # def initialize: (Hash | Braintrust::BaseModel) -> void
 
               # @abstract
-              #
               class Role < Braintrust::Enum
                 ASSISTANT = :assistant
 
@@ -401,7 +392,6 @@ module Braintrust
               # def initialize: (Hash | Braintrust::BaseModel) -> void
 
               # @abstract
-              #
               class Role < Braintrust::Enum
                 TOOL = :tool
 
@@ -439,7 +429,6 @@ module Braintrust
               # def initialize: (Hash | Braintrust::BaseModel) -> void
 
               # @abstract
-              #
               class Role < Braintrust::Enum
                 FUNCTION = :function
 
@@ -467,7 +456,6 @@ module Braintrust
               # def initialize: (Hash | Braintrust::BaseModel) -> void
 
               # @abstract
-              #
               class Role < Braintrust::Enum
                 MODEL = :model
 
@@ -477,7 +465,6 @@ module Braintrust
           end
 
           # @abstract
-          #
           class Type < Braintrust::Enum
             CHAT = :chat
 
@@ -487,7 +474,6 @@ module Braintrust
       end
 
       # @abstract
-      #
       class ToolFunction < Braintrust::Union
         variant -> { Braintrust::Models::PromptData::ToolFunction::Function }
 
@@ -513,7 +499,6 @@ module Braintrust
           # def initialize: (Hash | Braintrust::BaseModel) -> void
 
           # @abstract
-          #
           class Type < Braintrust::Enum
             FUNCTION = :function
 
@@ -541,7 +526,6 @@ module Braintrust
           # def initialize: (Hash | Braintrust::BaseModel) -> void
 
           # @abstract
-          #
           class Type < Braintrust::Enum
             GLOBAL = :global
 

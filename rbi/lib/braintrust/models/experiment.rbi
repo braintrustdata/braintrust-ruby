@@ -3,6 +3,7 @@
 module Braintrust
   module Models
     class Experiment < Braintrust::BaseModel
+      # Unique identifier for the experiment
       sig { returns(String) }
       def id
       end
@@ -11,6 +12,7 @@ module Braintrust
       def id=(_)
       end
 
+      # Name of the experiment. Within a project, experiment names are unique
       sig { returns(String) }
       def name
       end
@@ -19,6 +21,7 @@ module Braintrust
       def name=(_)
       end
 
+      # Unique identifier for the project that the experiment belongs under
       sig { returns(String) }
       def project_id
       end
@@ -27,6 +30,8 @@ module Braintrust
       def project_id=(_)
       end
 
+      # Whether or not the experiment is public. Public experiments can be viewed by
+      #   anybody inside or outside the organization
       sig { returns(T::Boolean) }
       def public
       end
@@ -35,6 +40,7 @@ module Braintrust
       def public=(_)
       end
 
+      # Id of default base experiment to compare against when viewing this experiment
       sig { returns(T.nilable(String)) }
       def base_exp_id
       end
@@ -43,6 +49,7 @@ module Braintrust
       def base_exp_id=(_)
       end
 
+      # Commit, taken directly from `repo_info.commit`
       sig { returns(T.nilable(String)) }
       def commit
       end
@@ -51,6 +58,7 @@ module Braintrust
       def commit=(_)
       end
 
+      # Date of experiment creation
       sig { returns(T.nilable(Time)) }
       def created
       end
@@ -59,6 +67,8 @@ module Braintrust
       def created=(_)
       end
 
+      # Identifier of the linked dataset, or null if the experiment is not linked to a
+      #   dataset
       sig { returns(T.nilable(String)) }
       def dataset_id
       end
@@ -67,6 +77,8 @@ module Braintrust
       def dataset_id=(_)
       end
 
+      # Version number of the linked dataset the experiment was run against. This can be
+      #   used to reproduce the experiment after the dataset has been modified.
       sig { returns(T.nilable(String)) }
       def dataset_version
       end
@@ -75,6 +87,7 @@ module Braintrust
       def dataset_version=(_)
       end
 
+      # Date of experiment deletion, or null if the experiment is still active
       sig { returns(T.nilable(Time)) }
       def deleted_at
       end
@@ -83,6 +96,7 @@ module Braintrust
       def deleted_at=(_)
       end
 
+      # Textual description of the experiment
       sig { returns(T.nilable(String)) }
       def description
       end
@@ -91,6 +105,7 @@ module Braintrust
       def description=(_)
       end
 
+      # User-controlled metadata about the experiment
       sig { returns(T.nilable(T::Hash[Symbol, T.nilable(T.anything)])) }
       def metadata
       end
@@ -102,6 +117,7 @@ module Braintrust
       def metadata=(_)
       end
 
+      # Metadata about the state of the repo when the experiment was created
       sig { returns(T.nilable(Braintrust::Models::RepoInfo)) }
       def repo_info
       end
@@ -110,6 +126,7 @@ module Braintrust
       def repo_info=(_)
       end
 
+      # Identifies the user who created the experiment
       sig { returns(T.nilable(String)) }
       def user_id
       end

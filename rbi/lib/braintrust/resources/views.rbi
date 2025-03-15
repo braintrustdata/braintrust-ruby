@@ -3,6 +3,8 @@
 module Braintrust
   module Resources
     class Views
+      # Create a new view. If there is an existing view with the same name as the one
+      #   specified in the request, will return the existing view unmodified
       sig do
         params(
           name: String,
@@ -30,6 +32,7 @@ module Braintrust
       )
       end
 
+      # Get a view object by its id
       sig do
         params(
           view_id: String,
@@ -42,6 +45,9 @@ module Braintrust
       def retrieve(view_id, object_id_:, object_type:, request_options: {})
       end
 
+      # Partially update a view object. Specify the fields to update in the payload. Any
+      #   object-type fields will be deep-merged with existing content. Currently we do
+      #   not support removing fields or setting them to null.
       sig do
         params(
           view_id: String,
@@ -69,6 +75,8 @@ module Braintrust
       )
       end
 
+      # List out all views. The views are sorted by creation date, with the most
+      #   recently-created views coming first
       sig do
         params(
           object_id_: String,
@@ -96,6 +104,7 @@ module Braintrust
       )
       end
 
+      # Delete a view object by its id
       sig do
         params(
           view_id: String,
@@ -108,6 +117,9 @@ module Braintrust
       def delete(view_id, object_id_:, object_type:, request_options: {})
       end
 
+      # Create or replace view. If there is an existing view with the same name as the
+      #   one specified in the request, will replace the existing view with the provided
+      #   fields
       sig do
         params(
           name: String,

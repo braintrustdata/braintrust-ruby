@@ -3,6 +3,9 @@
 module Braintrust
   module Resources
     class ProjectTags
+      # Create a new project_tag. If there is an existing project_tag in the project
+      #   with the same name as the one specified in the request, will return the existing
+      #   project_tag unmodified
       sig do
         params(
           name: String,
@@ -16,6 +19,7 @@ module Braintrust
       def create(name:, project_id:, color: nil, description: nil, request_options: {})
       end
 
+      # Get a project_tag object by its id
       sig do
         params(
           project_tag_id: String,
@@ -26,6 +30,9 @@ module Braintrust
       def retrieve(project_tag_id, request_options: {})
       end
 
+      # Partially update a project_tag object. Specify the fields to update in the
+      #   payload. Any object-type fields will be deep-merged with existing content.
+      #   Currently we do not support removing fields or setting them to null.
       sig do
         params(
           project_tag_id: String,
@@ -39,6 +46,8 @@ module Braintrust
       def update(project_tag_id, color: nil, description: nil, name: nil, request_options: {})
       end
 
+      # List out all project_tags. The project_tags are sorted by creation date, with
+      #   the most recently-created project_tags coming first
       sig do
         params(
           ending_before: String,
@@ -66,6 +75,7 @@ module Braintrust
       )
       end
 
+      # Delete a project_tag object by its id
       sig do
         params(
           project_tag_id: String,
@@ -76,6 +86,9 @@ module Braintrust
       def delete(project_tag_id, request_options: {})
       end
 
+      # Create or replace project_tag. If there is an existing project_tag in the
+      #   project with the same name as the one specified in the request, will replace the
+      #   existing project_tag with the provided fields
       sig do
         params(
           name: String,

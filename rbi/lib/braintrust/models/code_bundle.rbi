@@ -50,6 +50,7 @@ module Braintrust
       def runtime_context=(_)
       end
 
+      # A preview of the code
       sig { returns(T.nilable(String)) }
       def preview
       end
@@ -240,6 +241,7 @@ module Braintrust
             end
 
             class << self
+              # @api private
               sig do
                 override
                   .returns(
@@ -303,6 +305,7 @@ module Braintrust
         end
 
         class << self
+          # @api private
           sig do
             override
               .returns(

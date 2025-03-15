@@ -3,6 +3,7 @@
 module Braintrust
   module Models
     class Group < Braintrust::BaseModel
+      # Unique identifier for the group
       sig { returns(String) }
       def id
       end
@@ -11,6 +12,7 @@ module Braintrust
       def id=(_)
       end
 
+      # Name of the group
       sig { returns(String) }
       def name
       end
@@ -19,6 +21,9 @@ module Braintrust
       def name=(_)
       end
 
+      # Unique id for the organization that the group belongs under
+      #
+      #   It is forbidden to change the org after creating a group
       sig { returns(String) }
       def org_id
       end
@@ -27,6 +32,7 @@ module Braintrust
       def org_id=(_)
       end
 
+      # Date of group creation
       sig { returns(T.nilable(Time)) }
       def created
       end
@@ -35,6 +41,7 @@ module Braintrust
       def created=(_)
       end
 
+      # Date of group deletion, or null if the group is still active
       sig { returns(T.nilable(Time)) }
       def deleted_at
       end
@@ -43,6 +50,7 @@ module Braintrust
       def deleted_at=(_)
       end
 
+      # Textual description of the group
       sig { returns(T.nilable(String)) }
       def description
       end
@@ -51,6 +59,10 @@ module Braintrust
       def description=(_)
       end
 
+      # Ids of the groups this group inherits from
+      #
+      #   An inheriting group has all the users contained in its member groups, as well as
+      #   all of their inherited users
       sig { returns(T.nilable(T::Array[String])) }
       def member_groups
       end
@@ -59,6 +71,7 @@ module Braintrust
       def member_groups=(_)
       end
 
+      # Ids of users which belong to this group
       sig { returns(T.nilable(T::Array[String])) }
       def member_users
       end
@@ -67,6 +80,7 @@ module Braintrust
       def member_users=(_)
       end
 
+      # Identifies the user who created the group
       sig { returns(T.nilable(String)) }
       def user_id
       end
@@ -75,6 +89,10 @@ module Braintrust
       def user_id=(_)
       end
 
+      # A group is a collection of users which can be assigned an ACL
+      #
+      #   Groups can consist of individual users, as well as a set of groups they inherit
+      #   from
       sig do
         params(
           id: String,

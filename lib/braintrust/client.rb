@@ -75,10 +75,9 @@ module Braintrust
     # @return [Braintrust::Resources::Evals]
     attr_reader :evals
 
-    # @private
+    # @api private
     #
     # @return [Hash{String=>String}]
-    #
     private def auth_headers
       return {} if @api_key.nil?
 
@@ -98,7 +97,6 @@ module Braintrust
     # @param initial_retry_delay [Float]
     #
     # @param max_retry_delay [Float]
-    #
     def initialize(
       base_url: nil,
       api_key: ENV["BRAINTRUST_API_KEY"],

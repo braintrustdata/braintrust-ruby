@@ -20,7 +20,6 @@ module Braintrust
       #   @option params [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Braintrust::Models::ProjectTag]
-      #
       def create(params)
         parsed, options = Braintrust::Models::ProjectTagCreateParams.dump_request(params)
         @client.request(
@@ -41,7 +40,6 @@ module Braintrust
       #   @option params [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Braintrust::Models::ProjectTag]
-      #
       def retrieve(project_tag_id, params = {})
         @client.request(
           method: :get,
@@ -68,7 +66,6 @@ module Braintrust
       #   @option params [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Braintrust::Models::ProjectTag]
-      #
       def update(project_tag_id, params = {})
         parsed, options = Braintrust::Models::ProjectTagUpdateParams.dump_request(params)
         @client.request(
@@ -113,7 +110,6 @@ module Braintrust
       #   @option params [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Braintrust::ListObjects<Braintrust::Models::ProjectTag>]
-      #
       def list(params = {})
         parsed, options = Braintrust::Models::ProjectTagListParams.dump_request(params)
         @client.request(
@@ -135,7 +131,6 @@ module Braintrust
       #   @option params [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Braintrust::Models::ProjectTag]
-      #
       def delete(project_tag_id, params = {})
         @client.request(
           method: :delete,
@@ -162,7 +157,6 @@ module Braintrust
       #   @option params [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Braintrust::Models::ProjectTag]
-      #
       def replace(params)
         parsed, options = Braintrust::Models::ProjectTagReplaceParams.dump_request(params)
         @client.request(
@@ -175,7 +169,6 @@ module Braintrust
       end
 
       # @param client [Braintrust::Client]
-      #
       def initialize(client:)
         @client = client
       end

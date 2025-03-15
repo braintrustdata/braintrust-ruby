@@ -20,7 +20,6 @@ module Braintrust
       #   @option params [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Braintrust::Models::Project]
-      #
       def create(params)
         parsed, options = Braintrust::Models::ProjectCreateParams.dump_request(params)
         @client.request(
@@ -41,7 +40,6 @@ module Braintrust
       #   @option params [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Braintrust::Models::Project]
-      #
       def retrieve(project_id, params = {})
         @client.request(
           method: :get,
@@ -67,7 +65,6 @@ module Braintrust
       #   @option params [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Braintrust::Models::Project]
-      #
       def update(project_id, params = {})
         parsed, options = Braintrust::Models::ProjectUpdateParams.dump_request(params)
         @client.request(
@@ -108,7 +105,6 @@ module Braintrust
       #   @option params [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Braintrust::ListObjects<Braintrust::Models::Project>]
-      #
       def list(params = {})
         parsed, options = Braintrust::Models::ProjectListParams.dump_request(params)
         @client.request(
@@ -130,7 +126,6 @@ module Braintrust
       #   @option params [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Braintrust::Models::Project]
-      #
       def delete(project_id, params = {})
         @client.request(
           method: :delete,
@@ -141,7 +136,6 @@ module Braintrust
       end
 
       # @param client [Braintrust::Client]
-      #
       def initialize(client:)
         @client = client
         @logs = Braintrust::Resources::Projects::Logs.new(client: client)

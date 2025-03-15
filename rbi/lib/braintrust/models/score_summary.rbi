@@ -3,6 +3,7 @@
 module Braintrust
   module Models
     class ScoreSummary < Braintrust::BaseModel
+      # Number of improvements in the score
       sig { returns(Integer) }
       def improvements
       end
@@ -11,6 +12,7 @@ module Braintrust
       def improvements=(_)
       end
 
+      # Name of the score
       sig { returns(String) }
       def name
       end
@@ -19,6 +21,7 @@ module Braintrust
       def name=(_)
       end
 
+      # Number of regressions in the score
       sig { returns(Integer) }
       def regressions
       end
@@ -27,6 +30,7 @@ module Braintrust
       def regressions=(_)
       end
 
+      # Average score across all examples
       sig { returns(Float) }
       def score
       end
@@ -35,6 +39,7 @@ module Braintrust
       def score=(_)
       end
 
+      # Difference in score between the current and comparison experiment
       sig { returns(T.nilable(Float)) }
       def diff
       end
@@ -43,6 +48,7 @@ module Braintrust
       def diff=(_)
       end
 
+      # Summary of a score's performance
       sig do
         params(improvements: Integer, name: String, regressions: Integer, score: Float, diff: Float)
           .returns(T.attached_class)

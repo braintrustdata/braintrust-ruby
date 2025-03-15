@@ -3,6 +3,7 @@
 module Braintrust
   module Models
     class Project < Braintrust::BaseModel
+      # Unique identifier for the project
       sig { returns(String) }
       def id
       end
@@ -11,6 +12,7 @@ module Braintrust
       def id=(_)
       end
 
+      # Name of the project
       sig { returns(String) }
       def name
       end
@@ -19,6 +21,7 @@ module Braintrust
       def name=(_)
       end
 
+      # Unique id for the organization that the project belongs under
       sig { returns(String) }
       def org_id
       end
@@ -27,6 +30,7 @@ module Braintrust
       def org_id=(_)
       end
 
+      # Date of project creation
       sig { returns(T.nilable(Time)) }
       def created
       end
@@ -35,6 +39,7 @@ module Braintrust
       def created=(_)
       end
 
+      # Date of project deletion, or null if the project is still active
       sig { returns(T.nilable(Time)) }
       def deleted_at
       end
@@ -54,6 +59,7 @@ module Braintrust
       def settings=(_)
       end
 
+      # Identifies the user who created the project
       sig { returns(T.nilable(String)) }
       def user_id
       end

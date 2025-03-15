@@ -3,6 +3,8 @@
 module Braintrust
   module Resources
     class EnvVars
+      # Create a new env_var. If there is an existing env_var with the same name as the
+      #   one specified in the request, will return the existing env_var unmodified
       sig do
         params(
           name: String,
@@ -16,6 +18,7 @@ module Braintrust
       def create(name:, object_id_:, object_type:, value: nil, request_options: {})
       end
 
+      # Get an env_var object by its id
       sig do
         params(
           env_var_id: String,
@@ -26,6 +29,9 @@ module Braintrust
       def retrieve(env_var_id, request_options: {})
       end
 
+      # Partially update an env_var object. Specify the fields to update in the payload.
+      #   Any object-type fields will be deep-merged with existing content. Currently we
+      #   do not support removing fields or setting them to null.
       sig do
         params(
           env_var_id: String,
@@ -38,6 +44,8 @@ module Braintrust
       def update(env_var_id, name:, value: nil, request_options: {})
       end
 
+      # List out all env_vars. The env_vars are sorted by creation date, with the most
+      #   recently-created env_vars coming first
       sig do
         params(
           env_var_name: String,
@@ -59,6 +67,7 @@ module Braintrust
       )
       end
 
+      # Delete an env_var object by its id
       sig do
         params(
           env_var_id: String,
@@ -69,6 +78,9 @@ module Braintrust
       def delete(env_var_id, request_options: {})
       end
 
+      # Create or replace env_var. If there is an existing env_var with the same name as
+      #   the one specified in the request, will replace the existing env_var with the
+      #   provided fields
       sig do
         params(
           name: String,

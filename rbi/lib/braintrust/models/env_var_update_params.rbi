@@ -6,6 +6,7 @@ module Braintrust
       extend Braintrust::RequestParameters::Converter
       include Braintrust::RequestParameters
 
+      # The name of the environment variable
       sig { returns(String) }
       def name
       end
@@ -14,6 +15,7 @@ module Braintrust
       def name=(_)
       end
 
+      # The value of the environment variable. Will be encrypted at rest.
       sig { returns(T.nilable(String)) }
       def value
       end

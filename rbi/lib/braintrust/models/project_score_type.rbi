@@ -2,6 +2,7 @@
 
 module Braintrust
   module Models
+    # The type of the configured score
     class ProjectScoreType < Braintrust::Enum
       abstract!
 

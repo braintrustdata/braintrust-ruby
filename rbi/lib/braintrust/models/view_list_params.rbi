@@ -6,6 +6,7 @@ module Braintrust
       extend Braintrust::RequestParameters::Converter
       include Braintrust::RequestParameters
 
+      # The id of the object the ACL applies to
       sig { returns(String) }
       def object_id_
       end
@@ -14,6 +15,7 @@ module Braintrust
       def object_id_=(_)
       end
 
+      # The object type that the ACL applies to
       sig { returns(Symbol) }
       def object_type
       end
@@ -22,6 +24,11 @@ module Braintrust
       def object_type=(_)
       end
 
+      # Pagination cursor id.
+      #
+      #   For example, if the initial item in the last page you fetched had an id of
+      #   `foo`, pass `ending_before=foo` to fetch the previous page. Note: you may only
+      #   pass one of `starting_after` and `ending_before`
       sig { returns(T.nilable(String)) }
       def ending_before
       end
@@ -30,6 +37,8 @@ module Braintrust
       def ending_before=(_)
       end
 
+      # Filter search results to a particular set of object IDs. To specify a list of
+      #   IDs, include the query param multiple times
       sig { returns(T.nilable(T.any(String, T::Array[String]))) }
       def ids
       end
@@ -38,6 +47,7 @@ module Braintrust
       def ids=(_)
       end
 
+      # Limit the number of objects to return
       sig { returns(T.nilable(Integer)) }
       def limit
       end
@@ -46,6 +56,11 @@ module Braintrust
       def limit=(_)
       end
 
+      # Pagination cursor id.
+      #
+      #   For example, if the final item in the last page you fetched had an id of `foo`,
+      #   pass `starting_after=foo` to fetch the next page. Note: you may only pass one of
+      #   `starting_after` and `ending_before`
       sig { returns(T.nilable(String)) }
       def starting_after
       end
@@ -54,6 +69,7 @@ module Braintrust
       def starting_after=(_)
       end
 
+      # Name of the view to search for
       sig { returns(T.nilable(String)) }
       def view_name
       end
@@ -62,6 +78,7 @@ module Braintrust
       def view_name=(_)
       end
 
+      # Type of table that the view corresponds to.
       sig { returns(T.nilable(Symbol)) }
       def view_type
       end
@@ -116,12 +133,15 @@ module Braintrust
       def to_hash
       end
 
+      # Filter search results to a particular set of object IDs. To specify a list of
+      #   IDs, include the query param multiple times
       class IDs < Braintrust::Union
         abstract!
 
         StringArray = T.type_alias { T::Array[String] }
 
         class << self
+          # @api private
           sig { override.returns([[NilClass, String], [NilClass, T::Array[String]]]) }
           private def variants
           end

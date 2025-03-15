@@ -6,6 +6,7 @@ module Braintrust
       extend Braintrust::RequestParameters::Converter
       include Braintrust::RequestParameters
 
+      # A list of experiment feedback items
       sig { returns(T::Array[Braintrust::Models::FeedbackExperimentItem]) }
       def feedback
       end

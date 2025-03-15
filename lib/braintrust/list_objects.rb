@@ -27,13 +27,12 @@ module Braintrust
     # @return [Array<Object>]
     attr_accessor :objects
 
-    # @private
+    # @api private
     #
     # @param client [Braintrust::BaseClient]
     # @param req [Hash{Symbol=>Object}]
     # @param headers [Hash{String=>String}, Net::HTTPHeader]
     # @param page_data [Hash{Symbol=>Object}]
-    #
     def initialize(client:, req:, headers:, page_data:)
       super
       model = req.fetch(:model)
@@ -52,7 +51,6 @@ module Braintrust
 
     # @raise [Braintrust::HTTP::Error]
     # @return [Braintrust::ListObjects]
-    #
     def next_page
       unless next_page?
         raise RuntimeError.new("No more pages available. Please check #next_page? before calling ##{__method__}")
@@ -63,7 +61,6 @@ module Braintrust
     end
 
     # @param blk [Proc]
-    #
     def auto_paging_each(&blk)
       unless block_given?
         raise ArgumentError.new("A block must be given to ##{__method__}")
@@ -77,7 +74,6 @@ module Braintrust
     end
 
     # @return [String]
-    #
     def inspect
       "#<#{self.class}:0x#{object_id.to_s(16)} objects=#{objects.inspect}>"
     end
