@@ -1,7 +1,6 @@
 # typed: strong
 
 module Braintrust
-  # @api private
   module BasePage
     abstract!
 

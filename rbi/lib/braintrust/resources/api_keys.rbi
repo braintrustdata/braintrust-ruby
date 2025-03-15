@@ -13,7 +13,15 @@ module Braintrust
         )
           .returns(Braintrust::Models::CreateAPIKeyOutput)
       end
-      def create(name:, org_name: nil, request_options: {})
+      def create(
+        # Name of the api key. Does not have to be unique
+        name:,
+        # For nearly all users, this parameter should be unnecessary. But in the rare case
+        #   that your API key belongs to multiple organizations, you may specify the name of
+        #   the organization the API key belongs in.
+        org_name: nil,
+        request_options: {}
+      )
       end
 
       # Get an api_key object by its id
@@ -24,7 +32,11 @@ module Braintrust
         )
           .returns(Braintrust::Models::APIKey)
       end
-      def retrieve(api_key_id, request_options: {})
+      def retrieve(
+        # ApiKey id
+        api_key_id,
+        request_options: {}
+      )
       end
 
       # List out all api_keys. The api_keys are sorted by creation date, with the most
@@ -42,11 +54,26 @@ module Braintrust
           .returns(Braintrust::ListObjects[Braintrust::Models::APIKey])
       end
       def list(
+        # Name of the api_key to search for
         api_key_name: nil,
+        # Pagination cursor id.
+        #
+        #   For example, if the initial item in the last page you fetched had an id of
+        #   `foo`, pass `ending_before=foo` to fetch the previous page. Note: you may only
+        #   pass one of `starting_after` and `ending_before`
         ending_before: nil,
+        # Filter search results to a particular set of object IDs. To specify a list of
+        #   IDs, include the query param multiple times
         ids: nil,
+        # Limit the number of objects to return
         limit: nil,
+        # Filter search results to within a particular organization
         org_name: nil,
+        # Pagination cursor id.
+        #
+        #   For example, if the final item in the last page you fetched had an id of `foo`,
+        #   pass `starting_after=foo` to fetch the next page. Note: you may only pass one of
+        #   `starting_after` and `ending_before`
         starting_after: nil,
         request_options: {}
       )
@@ -60,7 +87,11 @@ module Braintrust
         )
           .returns(Braintrust::Models::APIKey)
       end
-      def delete(api_key_id, request_options: {})
+      def delete(
+        # ApiKey id
+        api_key_id,
+        request_options: {}
+      )
       end
 
       sig { params(client: Braintrust::Client).returns(T.attached_class) }
