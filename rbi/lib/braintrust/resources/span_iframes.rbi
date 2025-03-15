@@ -3,6 +3,9 @@
 module Braintrust
   module Resources
     class SpanIframes
+      # Create a new span_iframe. If there is an existing span_iframe with the same name
+      #   as the one specified in the request, will return the existing span_iframe
+      #   unmodified
       sig do
         params(
           name: String,
@@ -17,6 +20,7 @@ module Braintrust
       def create(name:, project_id:, url:, description: nil, post_message: nil, request_options: {})
       end
 
+      # Get a span_iframe object by its id
       sig do
         params(
           span_iframe_id: String,
@@ -27,6 +31,9 @@ module Braintrust
       def retrieve(span_iframe_id, request_options: {})
       end
 
+      # Partially update a span_iframe object. Specify the fields to update in the
+      #   payload. Any object-type fields will be deep-merged with existing content.
+      #   Currently we do not support removing fields or setting them to null.
       sig do
         params(
           span_iframe_id: String,
@@ -48,6 +55,8 @@ module Braintrust
       )
       end
 
+      # List out all span_iframes. The span_iframes are sorted by creation date, with
+      #   the most recently-created span_iframes coming first
       sig do
         params(
           ending_before: String,
@@ -71,6 +80,7 @@ module Braintrust
       )
       end
 
+      # Delete a span_iframe object by its id
       sig do
         params(
           span_iframe_id: String,
@@ -81,6 +91,9 @@ module Braintrust
       def delete(span_iframe_id, request_options: {})
       end
 
+      # Create or replace span_iframe. If there is an existing span_iframe with the same
+      #   name as the one specified in the request, will replace the existing span_iframe
+      #   with the provided fields
       sig do
         params(
           name: String,

@@ -3,6 +3,7 @@
 module Braintrust
   module Models
     class EnvVarListResponse < Braintrust::BaseModel
+      # A list of env_var objects
       sig { returns(T::Array[Braintrust::Models::EnvVar]) }
       def objects
       end

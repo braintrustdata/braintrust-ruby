@@ -3,6 +3,7 @@
 module Braintrust
   module Models
     class Role < Braintrust::BaseModel
+      # Unique identifier for the role
       sig { returns(String) }
       def id
       end
@@ -11,6 +12,7 @@ module Braintrust
       def id=(_)
       end
 
+      # Name of the role
       sig { returns(String) }
       def name
       end
@@ -19,6 +21,7 @@ module Braintrust
       def name=(_)
       end
 
+      # Date of role creation
       sig { returns(T.nilable(Time)) }
       def created
       end
@@ -27,6 +30,7 @@ module Braintrust
       def created=(_)
       end
 
+      # Date of role deletion, or null if the role is still active
       sig { returns(T.nilable(Time)) }
       def deleted_at
       end
@@ -35,6 +39,7 @@ module Braintrust
       def deleted_at=(_)
       end
 
+      # Textual description of the role
       sig { returns(T.nilable(String)) }
       def description
       end
@@ -43,6 +48,7 @@ module Braintrust
       def description=(_)
       end
 
+      # (permission, restrict_object_type) tuples which belong to this role
       sig { returns(T.nilable(T::Array[Braintrust::Models::Role::MemberPermission])) }
       def member_permissions
       end
@@ -54,6 +60,10 @@ module Braintrust
       def member_permissions=(_)
       end
 
+      # Ids of the roles this role inherits from
+      #
+      #   An inheriting role has all the permissions contained in its member roles, as
+      #   well as all of their inherited permissions
       sig { returns(T.nilable(T::Array[String])) }
       def member_roles
       end
@@ -62,6 +72,12 @@ module Braintrust
       def member_roles=(_)
       end
 
+      # Unique id for the organization that the role belongs under
+      #
+      #   A null org_id indicates a system role, which may be assigned to anybody and
+      #   inherited by any other role, but cannot be edited.
+      #
+      #   It is forbidden to change the org after creating a role
       sig { returns(T.nilable(String)) }
       def org_id
       end
@@ -70,6 +86,7 @@ module Braintrust
       def org_id=(_)
       end
 
+      # Identifies the user who created the role
       sig { returns(T.nilable(String)) }
       def user_id
       end
@@ -78,6 +95,10 @@ module Braintrust
       def user_id=(_)
       end
 
+      # A role is a collection of permissions which can be granted as part of an ACL
+      #
+      #   Roles can consist of individual permissions, as well as a set of roles they
+      #   inherit from
       sig do
         params(
           id: String,
@@ -125,6 +146,10 @@ module Braintrust
       end
 
       class MemberPermission < Braintrust::BaseModel
+        # Each permission permits a certain type of operation on an object in the system
+        #
+        #   Permissions can be assigned to to objects on an individual basis, or grouped
+        #   into roles
         sig { returns(Symbol) }
         def permission
         end
@@ -133,6 +158,7 @@ module Braintrust
         def permission=(_)
         end
 
+        # The object type that the ACL applies to
         sig { returns(T.nilable(Symbol)) }
         def restrict_object_type
         end

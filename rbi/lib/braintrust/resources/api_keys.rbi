@@ -3,6 +3,8 @@
 module Braintrust
   module Resources
     class APIKeys
+      # Create a new api_key. It is possible to have multiple API keys with the same
+      #   name. There is no de-duplication
       sig do
         params(
           name: String,
@@ -14,6 +16,7 @@ module Braintrust
       def create(name:, org_name: nil, request_options: {})
       end
 
+      # Get an api_key object by its id
       sig do
         params(
           api_key_id: String,
@@ -24,6 +27,8 @@ module Braintrust
       def retrieve(api_key_id, request_options: {})
       end
 
+      # List out all api_keys. The api_keys are sorted by creation date, with the most
+      #   recently-created api_keys coming first
       sig do
         params(
           api_key_name: String,
@@ -47,6 +52,7 @@ module Braintrust
       )
       end
 
+      # Delete an api_key object by its id
       sig do
         params(
           api_key_id: String,

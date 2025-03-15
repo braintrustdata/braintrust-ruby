@@ -129,7 +129,6 @@ module Braintrust
       end
 
       # @abstract
-      #
       class FunctionType < Braintrust::Enum
         LLM = :llm
         SCORER = :scorer

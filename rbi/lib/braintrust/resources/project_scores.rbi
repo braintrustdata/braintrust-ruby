@@ -3,6 +3,9 @@
 module Braintrust
   module Resources
     class ProjectScores
+      # Create a new project_score. If there is an existing project_score in the project
+      #   with the same name as the one specified in the request, will return the existing
+      #   project_score unmodified
       sig do
         params(
           name: String,
@@ -28,6 +31,7 @@ module Braintrust
       )
       end
 
+      # Get a project_score object by its id
       sig do
         params(
           project_score_id: String,
@@ -38,6 +42,9 @@ module Braintrust
       def retrieve(project_score_id, request_options: {})
       end
 
+      # Partially update a project_score object. Specify the fields to update in the
+      #   payload. Any object-type fields will be deep-merged with existing content.
+      #   Currently we do not support removing fields or setting them to null.
       sig do
         params(
           project_score_id: String,
@@ -63,6 +70,8 @@ module Braintrust
       )
       end
 
+      # List out all project_scores. The project_scores are sorted by creation date,
+      #   with the most recently-created project_scores coming first
       sig do
         params(
           ending_before: String,
@@ -92,6 +101,7 @@ module Braintrust
       )
       end
 
+      # Delete a project_score object by its id
       sig do
         params(
           project_score_id: String,
@@ -102,6 +112,9 @@ module Braintrust
       def delete(project_score_id, request_options: {})
       end
 
+      # Create or replace project_score. If there is an existing project_score in the
+      #   project with the same name as the one specified in the request, will replace the
+      #   existing project_score with the provided fields
       sig do
         params(
           name: String,

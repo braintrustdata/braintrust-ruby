@@ -4,6 +4,7 @@ module Braintrust
   module Resources
     class Organizations
       class Members
+        # Modify organization membership
         sig do
           params(
             invite_users: T.nilable(Braintrust::Models::Organizations::MemberUpdateParams::InviteUsers),

@@ -6,6 +6,7 @@ module Braintrust
       extend Braintrust::RequestParameters::Converter
       include Braintrust::RequestParameters
 
+      # Name of the role
       sig { returns(String) }
       def name
       end
@@ -14,6 +15,7 @@ module Braintrust
       def name=(_)
       end
 
+      # Textual description of the role
       sig { returns(T.nilable(String)) }
       def description
       end
@@ -22,6 +24,7 @@ module Braintrust
       def description=(_)
       end
 
+      # (permission, restrict_object_type) tuples which belong to this role
       sig { returns(T.nilable(T::Array[Braintrust::Models::RoleCreateParams::MemberPermission])) }
       def member_permissions
       end
@@ -33,6 +36,10 @@ module Braintrust
       def member_permissions=(_)
       end
 
+      # Ids of the roles this role inherits from
+      #
+      #   An inheriting role has all the permissions contained in its member roles, as
+      #   well as all of their inherited permissions
       sig { returns(T.nilable(T::Array[String])) }
       def member_roles
       end
@@ -41,6 +48,9 @@ module Braintrust
       def member_roles=(_)
       end
 
+      # For nearly all users, this parameter should be unnecessary. But in the rare case
+      #   that your API key belongs to multiple organizations, you may specify the name of
+      #   the organization the role belongs in.
       sig { returns(T.nilable(String)) }
       def org_name
       end
@@ -80,6 +90,10 @@ module Braintrust
       end
 
       class MemberPermission < Braintrust::BaseModel
+        # Each permission permits a certain type of operation on an object in the system
+        #
+        #   Permissions can be assigned to to objects on an individual basis, or grouped
+        #   into roles
         sig { returns(Symbol) }
         def permission
         end
@@ -88,6 +102,7 @@ module Braintrust
         def permission=(_)
         end
 
+        # The object type that the ACL applies to
         sig { returns(T.nilable(Symbol)) }
         def restrict_object_type
         end

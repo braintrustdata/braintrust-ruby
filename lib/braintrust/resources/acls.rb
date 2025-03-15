@@ -30,7 +30,6 @@ module Braintrust
       #   @option params [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Braintrust::Models::ACL]
-      #
       def create(params)
         parsed, options = Braintrust::Models::ACLCreateParams.dump_request(params)
         @client.request(
@@ -51,7 +50,6 @@ module Braintrust
       #   @option params [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Braintrust::Models::ACL]
-      #
       def retrieve(acl_id, params = {})
         @client.request(
           method: :get,
@@ -90,7 +88,6 @@ module Braintrust
       #   @option params [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Braintrust::ListObjects<Braintrust::Models::ACL>]
-      #
       def list(params)
         parsed, options = Braintrust::Models::ACLListParams.dump_request(params)
         @client.request(
@@ -112,7 +109,6 @@ module Braintrust
       #   @option params [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Braintrust::Models::ACL]
-      #
       def delete(acl_id, params = {})
         @client.request(
           method: :delete,
@@ -153,7 +149,6 @@ module Braintrust
       #   @option params [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Braintrust::Models::ACLBatchUpdateResponse]
-      #
       def batch_update(params = {})
         parsed, options = Braintrust::Models::ACLBatchUpdateParams.dump_request(params)
         @client.request(
@@ -191,7 +186,6 @@ module Braintrust
       #   @option params [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Braintrust::Models::ACL]
-      #
       def find_and_delete(params)
         parsed, options = Braintrust::Models::ACLFindAndDeleteParams.dump_request(params)
         @client.request(
@@ -204,7 +198,6 @@ module Braintrust
       end
 
       # @param client [Braintrust::Client]
-      #
       def initialize(client:)
         @client = client
       end

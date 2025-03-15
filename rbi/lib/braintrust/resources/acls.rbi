@@ -3,6 +3,8 @@
 module Braintrust
   module Resources
     class ACLs
+      # Create a new acl. If there is an existing acl with the same contents as the one
+      #   specified in the request, will return the existing acl unmodified
       sig do
         params(
           object_id_: String,
@@ -28,6 +30,7 @@ module Braintrust
       )
       end
 
+      # Get an acl object by its id
       sig do
         params(
           acl_id: String,
@@ -38,6 +41,8 @@ module Braintrust
       def retrieve(acl_id, request_options: {})
       end
 
+      # List out all acls. The acls are sorted by creation date, with the most
+      #   recently-created acls coming first
       sig do
         params(
           object_id_: String,
@@ -61,6 +66,7 @@ module Braintrust
       )
       end
 
+      # Delete an acl object by its id
       sig do
         params(
           acl_id: String,
@@ -71,6 +77,9 @@ module Braintrust
       def delete(acl_id, request_options: {})
       end
 
+      # Batch update acls. This operation is idempotent, so adding acls which already
+      #   exist will have no effect, and removing acls which do not exist will have no
+      #   effect.
       sig do
         params(
           add_acls: T.nilable(T::Array[Braintrust::Models::ACLBatchUpdateParams::AddACL]),
@@ -82,6 +91,7 @@ module Braintrust
       def batch_update(add_acls: nil, remove_acls: nil, request_options: {})
       end
 
+      # Delete a single acl
       sig do
         params(
           object_id_: String,

@@ -3,6 +3,9 @@
 module Braintrust
   module Resources
     class Functions
+      # Create a new function. If there is an existing function in the project with the
+      #   same slug as the one specified in the request, will return the existing function
+      #   unmodified
       sig do
         params(
           function_data: T.any(
@@ -38,6 +41,7 @@ module Braintrust
       )
       end
 
+      # Get a function object by its id
       sig do
         params(
           function_id: String,
@@ -48,6 +52,9 @@ module Braintrust
       def retrieve(function_id, request_options: {})
       end
 
+      # Partially update a function object. Specify the fields to update in the payload.
+      #   Any object-type fields will be deep-merged with existing content. Currently we
+      #   do not support removing fields or setting them to null.
       sig do
         params(
           function_id: String,
@@ -77,6 +84,8 @@ module Braintrust
       )
       end
 
+      # List out all functions. The functions are sorted by creation date, with the most
+      #   recently-created functions coming first
       sig do
         params(
           ending_before: String,
@@ -108,6 +117,7 @@ module Braintrust
       )
       end
 
+      # Delete a function object by its id
       sig do
         params(
           function_id: String,
@@ -118,6 +128,7 @@ module Braintrust
       def delete(function_id, request_options: {})
       end
 
+      # Invoke a function.
       sig do
         params(
           function_id: String,
@@ -156,6 +167,9 @@ module Braintrust
       )
       end
 
+      # Create or replace function. If there is an existing function in the project with
+      #   the same slug as the one specified in the request, will replace the existing
+      #   function with the provided fields
       sig do
         params(
           function_data: T.any(

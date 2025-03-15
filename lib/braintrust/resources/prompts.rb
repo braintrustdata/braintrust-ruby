@@ -26,7 +26,6 @@ module Braintrust
       #   @option params [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Braintrust::Models::Prompt]
-      #
       def create(params)
         parsed, options = Braintrust::Models::PromptCreateParams.dump_request(params)
         @client.request(
@@ -47,7 +46,6 @@ module Braintrust
       #   @option params [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Braintrust::Models::Prompt]
-      #
       def retrieve(prompt_id, params = {})
         @client.request(
           method: :get,
@@ -78,7 +76,6 @@ module Braintrust
       #   @option params [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Braintrust::Models::Prompt]
-      #
       def update(prompt_id, params = {})
         parsed, options = Braintrust::Models::PromptUpdateParams.dump_request(params)
         @client.request(
@@ -130,7 +127,6 @@ module Braintrust
       #   @option params [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Braintrust::ListObjects<Braintrust::Models::Prompt>]
-      #
       def list(params = {})
         parsed, options = Braintrust::Models::PromptListParams.dump_request(params)
         @client.request(
@@ -152,7 +148,6 @@ module Braintrust
       #   @option params [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Braintrust::Models::Prompt]
-      #
       def delete(prompt_id, params = {})
         @client.request(
           method: :delete,
@@ -185,7 +180,6 @@ module Braintrust
       #   @option params [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Braintrust::Models::Prompt]
-      #
       def replace(params)
         parsed, options = Braintrust::Models::PromptReplaceParams.dump_request(params)
         @client.request(
@@ -198,7 +192,6 @@ module Braintrust
       end
 
       # @param client [Braintrust::Client]
-      #
       def initialize(client:)
         @client = client
       end

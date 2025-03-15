@@ -3,6 +3,7 @@
 module Braintrust
   module Models
     class AISecret < Braintrust::BaseModel
+      # Unique identifier for the AI secret
       sig { returns(String) }
       def id
       end
@@ -11,6 +12,7 @@ module Braintrust
       def id=(_)
       end
 
+      # Name of the AI secret
       sig { returns(String) }
       def name
       end
@@ -19,6 +21,7 @@ module Braintrust
       def name=(_)
       end
 
+      # Unique identifier for the organization
       sig { returns(String) }
       def org_id
       end
@@ -27,6 +30,7 @@ module Braintrust
       def org_id=(_)
       end
 
+      # Date of AI secret creation
       sig { returns(T.nilable(Time)) }
       def created
       end
@@ -62,6 +66,7 @@ module Braintrust
       def type=(_)
       end
 
+      # Date of last AI secret update
       sig { returns(T.nilable(Time)) }
       def updated_at
       end

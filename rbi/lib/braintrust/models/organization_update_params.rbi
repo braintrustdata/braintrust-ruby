@@ -22,6 +22,7 @@ module Braintrust
       def is_universal_api=(_)
       end
 
+      # Name of the organization
       sig { returns(T.nilable(String)) }
       def name
       end

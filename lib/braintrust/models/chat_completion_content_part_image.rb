@@ -45,7 +45,6 @@ module Braintrust
         # def initialize: (Hash | Braintrust::BaseModel) -> void
 
         # @abstract
-        #
         class Detail < Braintrust::Enum
           AUTO = :auto
           LOW = :low
@@ -56,7 +55,6 @@ module Braintrust
       end
 
       # @abstract
-      #
       class Type < Braintrust::Enum
         IMAGE_URL = :image_url
 

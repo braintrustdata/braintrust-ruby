@@ -3,6 +3,9 @@
 module Braintrust
   module Resources
     class Datasets
+      # Create a new dataset. If there is an existing dataset in the project with the
+      #   same name as the one specified in the request, will return the existing dataset
+      #   unmodified
       sig do
         params(
           name: String,
@@ -16,6 +19,7 @@ module Braintrust
       def create(name:, project_id:, description: nil, metadata: nil, request_options: {})
       end
 
+      # Get a dataset object by its id
       sig do
         params(
           dataset_id: String,
@@ -26,6 +30,9 @@ module Braintrust
       def retrieve(dataset_id, request_options: {})
       end
 
+      # Partially update a dataset object. Specify the fields to update in the payload.
+      #   Any object-type fields will be deep-merged with existing content. Currently we
+      #   do not support removing fields or setting them to null.
       sig do
         params(
           dataset_id: String,
@@ -39,6 +46,8 @@ module Braintrust
       def update(dataset_id, description: nil, metadata: nil, name: nil, request_options: {})
       end
 
+      # List out all datasets. The datasets are sorted by creation date, with the most
+      #   recently-created datasets coming first
       sig do
         params(
           dataset_name: String,
@@ -66,6 +75,7 @@ module Braintrust
       )
       end
 
+      # Delete a dataset object by its id
       sig do
         params(
           dataset_id: String,
@@ -76,6 +86,7 @@ module Braintrust
       def delete(dataset_id, request_options: {})
       end
 
+      # Log feedback for a set of dataset events
       sig do
         params(
           dataset_id: String,
@@ -87,6 +98,9 @@ module Braintrust
       def feedback(dataset_id, feedback:, request_options: {})
       end
 
+      # Fetch the events in a dataset. Equivalent to the POST form of the same path, but
+      #   with the parameters in the URL query rather than in the request body. For more
+      #   complex queries, use the `POST /btql` endpoint.
       sig do
         params(
           dataset_id: String,
@@ -108,6 +122,9 @@ module Braintrust
       )
       end
 
+      # Fetch the events in a dataset. Equivalent to the GET form of the same path, but
+      #   with the parameters in the request body rather than in the URL query. For more
+      #   complex queries, use the `POST /btql` endpoint.
       sig do
         params(
           dataset_id: String,
@@ -131,6 +148,7 @@ module Braintrust
       )
       end
 
+      # Insert a set of events into the dataset
       sig do
         params(
           dataset_id: String,
@@ -142,6 +160,7 @@ module Braintrust
       def insert(dataset_id, events:, request_options: {})
       end
 
+      # Summarize dataset
       sig do
         params(
           dataset_id: String,

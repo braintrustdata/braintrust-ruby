@@ -3,6 +3,7 @@
 module Braintrust
   module Models
     class SummarizeExperimentResponse < Braintrust::BaseModel
+      # Name of the experiment
       sig { returns(String) }
       def experiment_name
       end
@@ -11,6 +12,7 @@ module Braintrust
       def experiment_name=(_)
       end
 
+      # URL to the experiment's page in the Braintrust app
       sig { returns(String) }
       def experiment_url
       end
@@ -19,6 +21,7 @@ module Braintrust
       def experiment_url=(_)
       end
 
+      # Name of the project that the experiment belongs to
       sig { returns(String) }
       def project_name
       end
@@ -27,6 +30,7 @@ module Braintrust
       def project_name=(_)
       end
 
+      # URL to the project's page in the Braintrust app
       sig { returns(String) }
       def project_url
       end
@@ -35,6 +39,7 @@ module Braintrust
       def project_url=(_)
       end
 
+      # The experiment which scores are baselined against
       sig { returns(T.nilable(String)) }
       def comparison_experiment_name
       end
@@ -43,6 +48,7 @@ module Braintrust
       def comparison_experiment_name=(_)
       end
 
+      # Summary of the experiment's metrics
       sig { returns(T.nilable(T::Hash[Symbol, Braintrust::Models::MetricSummary])) }
       def metrics
       end
@@ -54,6 +60,7 @@ module Braintrust
       def metrics=(_)
       end
 
+      # Summary of the experiment's scores
       sig { returns(T.nilable(T::Hash[Symbol, Braintrust::Models::ScoreSummary])) }
       def scores
       end
@@ -65,6 +72,7 @@ module Braintrust
       def scores=(_)
       end
 
+      # Summary of an experiment
       sig do
         params(
           experiment_name: String,

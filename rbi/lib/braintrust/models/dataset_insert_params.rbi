@@ -6,6 +6,7 @@ module Braintrust
       extend Braintrust::RequestParameters::Converter
       include Braintrust::RequestParameters
 
+      # A list of dataset events to insert
       sig { returns(T::Array[Braintrust::Models::InsertDatasetEvent]) }
       def events
       end

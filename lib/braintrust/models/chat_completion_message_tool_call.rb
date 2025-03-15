@@ -48,7 +48,6 @@ module Braintrust
       end
 
       # @abstract
-      #
       class Type < Braintrust::Enum
         FUNCTION = :function
 

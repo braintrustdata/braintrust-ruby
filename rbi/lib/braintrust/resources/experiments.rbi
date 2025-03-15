@@ -3,6 +3,9 @@
 module Braintrust
   module Resources
     class Experiments
+      # Create a new experiment. If there is an existing experiment in the project with
+      #   the same name as the one specified in the request, will return the existing
+      #   experiment unmodified
       sig do
         params(
           project_id: String,
@@ -34,6 +37,7 @@ module Braintrust
       )
       end
 
+      # Get an experiment object by its id
       sig do
         params(
           experiment_id: String,
@@ -44,6 +48,9 @@ module Braintrust
       def retrieve(experiment_id, request_options: {})
       end
 
+      # Partially update an experiment object. Specify the fields to update in the
+      #   payload. Any object-type fields will be deep-merged with existing content.
+      #   Currently we do not support removing fields or setting them to null.
       sig do
         params(
           experiment_id: String,
@@ -73,6 +80,8 @@ module Braintrust
       )
       end
 
+      # List out all experiments. The experiments are sorted by creation date, with the
+      #   most recently-created experiments coming first
       sig do
         params(
           ending_before: String,
@@ -100,6 +109,7 @@ module Braintrust
       )
       end
 
+      # Delete an experiment object by its id
       sig do
         params(
           experiment_id: String,
@@ -110,6 +120,7 @@ module Braintrust
       def delete(experiment_id, request_options: {})
       end
 
+      # Log feedback for a set of experiment events
       sig do
         params(
           experiment_id: String,
@@ -121,6 +132,9 @@ module Braintrust
       def feedback(experiment_id, feedback:, request_options: {})
       end
 
+      # Fetch the events in an experiment. Equivalent to the POST form of the same path,
+      #   but with the parameters in the URL query rather than in the request body. For
+      #   more complex queries, use the `POST /btql` endpoint.
       sig do
         params(
           experiment_id: String,
@@ -142,6 +156,9 @@ module Braintrust
       )
       end
 
+      # Fetch the events in an experiment. Equivalent to the GET form of the same path,
+      #   but with the parameters in the request body rather than in the URL query. For
+      #   more complex queries, use the `POST /btql` endpoint.
       sig do
         params(
           experiment_id: String,
@@ -165,6 +182,7 @@ module Braintrust
       )
       end
 
+      # Insert a set of events into the experiment
       sig do
         params(
           experiment_id: String,
@@ -176,6 +194,7 @@ module Braintrust
       def insert(experiment_id, events:, request_options: {})
       end
 
+      # Summarize experiment
       sig do
         params(
           experiment_id: String,

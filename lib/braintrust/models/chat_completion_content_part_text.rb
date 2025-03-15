@@ -26,7 +26,6 @@ module Braintrust
       # def initialize: (Hash | Braintrust::BaseModel) -> void
 
       # @abstract
-      #
       class Type < Braintrust::Enum
         TEXT = :text
 

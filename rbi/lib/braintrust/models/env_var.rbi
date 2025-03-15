@@ -3,6 +3,7 @@
 module Braintrust
   module Models
     class EnvVar < Braintrust::BaseModel
+      # Unique identifier for the environment variable
       sig { returns(String) }
       def id
       end
@@ -11,6 +12,7 @@ module Braintrust
       def id=(_)
       end
 
+      # The name of the environment variable
       sig { returns(String) }
       def name
       end
@@ -19,6 +21,7 @@ module Braintrust
       def name=(_)
       end
 
+      # The id of the object the environment variable is scoped for
       sig { returns(String) }
       def object_id_
       end
@@ -27,6 +30,7 @@ module Braintrust
       def object_id_=(_)
       end
 
+      # The type of the object the environment variable is scoped for
       sig { returns(Symbol) }
       def object_type
       end
@@ -35,6 +39,7 @@ module Braintrust
       def object_type=(_)
       end
 
+      # Date of environment variable creation
       sig { returns(T.nilable(Time)) }
       def created
       end
@@ -43,6 +48,7 @@ module Braintrust
       def created=(_)
       end
 
+      # Date the environment variable was last used
       sig { returns(T.nilable(Time)) }
       def used
       end
@@ -81,6 +87,7 @@ module Braintrust
       def to_hash
       end
 
+      # The type of the object the environment variable is scoped for
       class ObjectType < Braintrust::Enum
         abstract!
 

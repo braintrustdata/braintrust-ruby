@@ -2,6 +2,7 @@
 
 module Braintrust
   module Models
+    # Type of table that the view corresponds to.
     class ViewType < Braintrust::Enum
       abstract!
 

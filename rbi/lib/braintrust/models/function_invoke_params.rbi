@@ -6,6 +6,7 @@ module Braintrust
       extend Braintrust::RequestParameters::Converter
       include Braintrust::RequestParameters
 
+      # The expected output of the function
       sig { returns(T.nilable(T.anything)) }
       def expected
       end
@@ -14,6 +15,7 @@ module Braintrust
       def expected=(_)
       end
 
+      # Argument to the function, which can be any JSON serializable value
       sig { returns(T.nilable(T.anything)) }
       def input
       end
@@ -22,6 +24,7 @@ module Braintrust
       def input=(_)
       end
 
+      # If the function is an LLM, additional messages to pass along to it
       sig do
         returns(
           T.nilable(
@@ -70,6 +73,7 @@ module Braintrust
       def messages=(_)
       end
 
+      # Any relevant metadata
       sig { returns(T.nilable(T::Hash[Symbol, T.nilable(T.anything)])) }
       def metadata
       end
@@ -81,6 +85,7 @@ module Braintrust
       def metadata=(_)
       end
 
+      # The mode format of the returned value (defaults to 'auto')
       sig { returns(T.nilable(Symbol)) }
       def mode
       end
@@ -89,6 +94,7 @@ module Braintrust
       def mode=(_)
       end
 
+      # Options for tracing the function call
       sig { returns(T.nilable(T.any(Braintrust::Models::FunctionInvokeParams::Parent::SpanParentStruct, String))) }
       def parent
       end
@@ -100,6 +106,8 @@ module Braintrust
       def parent=(_)
       end
 
+      # Whether to stream the response. If true, results will be returned in the
+      #   Braintrust SSE format.
       sig { returns(T.nilable(T::Boolean)) }
       def stream
       end
@@ -108,6 +116,7 @@ module Braintrust
       def stream=(_)
       end
 
+      # The version of the function
       sig { returns(T.nilable(String)) }
       def version
       end
@@ -359,6 +368,7 @@ module Braintrust
               abstract!
 
               class << self
+                # @api private
                 sig do
                   override
                     .returns(
@@ -371,6 +381,7 @@ module Braintrust
             end
 
             class << self
+              # @api private
               sig do
                 override
                   .returns(
@@ -639,6 +650,7 @@ module Braintrust
         end
 
         class << self
+          # @api private
           sig do
             override
               .returns(
@@ -650,6 +662,7 @@ module Braintrust
         end
       end
 
+      # The mode format of the returned value (defaults to 'auto')
       class Mode < Braintrust::Enum
         abstract!
 
@@ -663,10 +676,12 @@ module Braintrust
         end
       end
 
+      # Options for tracing the function call
       class Parent < Braintrust::Union
         abstract!
 
         class SpanParentStruct < Braintrust::BaseModel
+          # The id of the container object you are logging to
           sig { returns(String) }
           def object_id_
           end
@@ -683,6 +698,7 @@ module Braintrust
           def object_type=(_)
           end
 
+          # Include these properties in every span created under this parent
           sig { returns(T.nilable(T::Hash[Symbol, T.nilable(T.anything)])) }
           def propagated_event
           end
@@ -694,6 +710,7 @@ module Braintrust
           def propagated_event=(_)
           end
 
+          # Identifiers for the row to to log a subspan under
           sig { returns(T.nilable(Braintrust::Models::FunctionInvokeParams::Parent::SpanParentStruct::RowIDs)) }
           def row_ids
           end
@@ -705,6 +722,7 @@ module Braintrust
           def row_ids=(_)
           end
 
+          # Span parent properties
           sig do
             params(
               object_id_: String,
@@ -746,6 +764,7 @@ module Braintrust
           end
 
           class RowIDs < Braintrust::BaseModel
+            # The id of the row
             sig { returns(String) }
             def id
             end
@@ -754,6 +773,7 @@ module Braintrust
             def id=(_)
             end
 
+            # The root_span_id of the row
             sig { returns(String) }
             def root_span_id
             end
@@ -762,6 +782,7 @@ module Braintrust
             def root_span_id=(_)
             end
 
+            # The span_id of the row
             sig { returns(String) }
             def span_id
             end
@@ -770,6 +791,7 @@ module Braintrust
             def span_id=(_)
             end
 
+            # Identifiers for the row to to log a subspan under
             sig { params(id: String, root_span_id: String, span_id: String).returns(T.attached_class) }
             def self.new(id:, root_span_id:, span_id:)
             end
@@ -781,6 +803,7 @@ module Braintrust
         end
 
         class << self
+          # @api private
           sig do
             override
               .returns(

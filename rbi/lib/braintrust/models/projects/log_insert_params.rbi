@@ -7,6 +7,7 @@ module Braintrust
         extend Braintrust::RequestParameters::Converter
         include Braintrust::RequestParameters
 
+        # A list of project logs events to insert
         sig { returns(T::Array[Braintrust::Models::InsertProjectLogsEvent]) }
         def events
         end

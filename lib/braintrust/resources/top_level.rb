@@ -11,7 +11,6 @@ module Braintrust
       #   @option params [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [String]
-      #
       def hello_world(params = {})
         @client.request(
           method: :get,
@@ -23,7 +22,6 @@ module Braintrust
       end
 
       # @param client [Braintrust::Client]
-      #
       def initialize(client:)
         @client = client
       end

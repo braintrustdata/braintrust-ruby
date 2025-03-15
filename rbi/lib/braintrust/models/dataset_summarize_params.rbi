@@ -6,6 +6,8 @@ module Braintrust
       extend Braintrust::RequestParameters::Converter
       include Braintrust::RequestParameters
 
+      # Whether to summarize the data. If false (or omitted), only the metadata will be
+      #   returned.
       sig { returns(T.nilable(T::Boolean)) }
       def summarize_data
       end

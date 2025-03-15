@@ -6,6 +6,7 @@ module Braintrust
       extend Braintrust::RequestParameters::Converter
       include Braintrust::RequestParameters
 
+      # The id of the object the view applies to
       sig { returns(String) }
       def object_id_
       end
@@ -14,6 +15,7 @@ module Braintrust
       def object_id_=(_)
       end
 
+      # The object type that the ACL applies to
       sig { returns(Symbol) }
       def object_type
       end
@@ -22,6 +24,7 @@ module Braintrust
       def object_type=(_)
       end
 
+      # Name of the view
       sig { returns(T.nilable(String)) }
       def name
       end
@@ -30,6 +33,7 @@ module Braintrust
       def name=(_)
       end
 
+      # Options for the view in the app
       sig { returns(T.nilable(Braintrust::Models::ViewOptions)) }
       def options
       end
@@ -38,6 +42,7 @@ module Braintrust
       def options=(_)
       end
 
+      # Identifies the user who created the view
       sig { returns(T.nilable(String)) }
       def user_id
       end
@@ -46,6 +51,7 @@ module Braintrust
       def user_id=(_)
       end
 
+      # The view definition
       sig { returns(T.nilable(Braintrust::Models::ViewData)) }
       def view_data
       end
@@ -54,6 +60,7 @@ module Braintrust
       def view_data=(_)
       end
 
+      # Type of table that the view corresponds to.
       sig { returns(T.nilable(Symbol)) }
       def view_type
       end
@@ -105,6 +112,7 @@ module Braintrust
       def to_hash
       end
 
+      # Type of table that the view corresponds to.
       class ViewType < Braintrust::Enum
         abstract!
 

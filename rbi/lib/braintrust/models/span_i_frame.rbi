@@ -3,6 +3,7 @@
 module Braintrust
   module Models
     class SpanIFrame < Braintrust::BaseModel
+      # Unique identifier for the span iframe
       sig { returns(String) }
       def id
       end
@@ -11,6 +12,7 @@ module Braintrust
       def id=(_)
       end
 
+      # Name of the span iframe
       sig { returns(String) }
       def name
       end
@@ -19,6 +21,7 @@ module Braintrust
       def name=(_)
       end
 
+      # Unique identifier for the project that the span iframe belongs under
       sig { returns(String) }
       def project_id
       end
@@ -27,6 +30,7 @@ module Braintrust
       def project_id=(_)
       end
 
+      # URL to embed the project viewer in an iframe
       sig { returns(String) }
       def url
       end
@@ -35,6 +39,7 @@ module Braintrust
       def url=(_)
       end
 
+      # Date of span iframe creation
       sig { returns(T.nilable(Time)) }
       def created
       end
@@ -43,6 +48,7 @@ module Braintrust
       def created=(_)
       end
 
+      # Date of span iframe deletion, or null if the span iframe is still active
       sig { returns(T.nilable(Time)) }
       def deleted_at
       end
@@ -51,6 +57,7 @@ module Braintrust
       def deleted_at=(_)
       end
 
+      # Textual description of the span iframe
       sig { returns(T.nilable(String)) }
       def description
       end
@@ -59,6 +66,8 @@ module Braintrust
       def description=(_)
       end
 
+      # Whether to post messages to the iframe containing the span's data. This is
+      #   useful when you want to render more data than fits in the URL.
       sig { returns(T.nilable(T::Boolean)) }
       def post_message
       end
@@ -67,6 +76,7 @@ module Braintrust
       def post_message=(_)
       end
 
+      # Identifies the user who created the span iframe
       sig { returns(T.nilable(String)) }
       def user_id
       end

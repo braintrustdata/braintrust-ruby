@@ -3,6 +3,7 @@
 module Braintrust
   module Models
     class ProjectSettings < Braintrust::BaseModel
+      # The id of the experiment to use as the default baseline for comparisons
       sig { returns(T.nilable(String)) }
       def baseline_experiment_id
       end
@@ -11,6 +12,7 @@ module Braintrust
       def baseline_experiment_id=(_)
       end
 
+      # The key used to join two experiments (defaults to `input`)
       sig { returns(T.nilable(String)) }
       def comparison_key
       end
@@ -19,6 +21,7 @@ module Braintrust
       def comparison_key=(_)
       end
 
+      # The order of the fields to display in the trace view
       sig { returns(T.nilable(T::Array[Braintrust::Models::ProjectSettings::SpanFieldOrder])) }
       def span_field_order
       end

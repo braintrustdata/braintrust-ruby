@@ -16,7 +16,6 @@ module Braintrust
       # def initialize: (Hash | Braintrust::BaseModel) -> void
 
       # @abstract
-      #
       class Status < Braintrust::Enum
         SUCCESS = :success
 

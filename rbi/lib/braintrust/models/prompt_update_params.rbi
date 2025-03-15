@@ -6,6 +6,7 @@ module Braintrust
       extend Braintrust::RequestParameters::Converter
       include Braintrust::RequestParameters
 
+      # Textual description of the prompt
       sig { returns(T.nilable(String)) }
       def description
       end
@@ -14,6 +15,7 @@ module Braintrust
       def description=(_)
       end
 
+      # Name of the prompt
       sig { returns(T.nilable(String)) }
       def name
       end
@@ -22,6 +24,7 @@ module Braintrust
       def name=(_)
       end
 
+      # The prompt, model, and its parameters
       sig { returns(T.nilable(Braintrust::Models::PromptData)) }
       def prompt_data
       end
@@ -30,6 +33,7 @@ module Braintrust
       def prompt_data=(_)
       end
 
+      # Unique identifier for the prompt
       sig { returns(T.nilable(String)) }
       def slug
       end
@@ -38,6 +42,7 @@ module Braintrust
       def slug=(_)
       end
 
+      # A list of tags for the prompt
       sig { returns(T.nilable(T::Array[String])) }
       def tags
       end
