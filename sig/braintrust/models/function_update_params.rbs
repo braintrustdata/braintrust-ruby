@@ -199,7 +199,7 @@ module Braintrust
               end
             end
 
-            private def self.variants: -> [[nil, Braintrust::Models::FunctionUpdateParams::FunctionData::Code::Data::Bundle], [nil, Braintrust::Models::FunctionUpdateParams::FunctionData::Code::Data::Inline]]
+            def self.variants: -> [Braintrust::Models::FunctionUpdateParams::FunctionData::Code::Data::Bundle, Braintrust::Models::FunctionUpdateParams::FunctionData::Code::Data::Inline]
           end
 
           type type_ = :code
@@ -243,7 +243,7 @@ module Braintrust
           end
         end
 
-        private def self.variants: -> [[nil, Braintrust::Models::FunctionUpdateParams::FunctionData::Prompt], [nil, Braintrust::Models::FunctionUpdateParams::FunctionData::Code], [nil, Braintrust::Models::FunctionUpdateParams::FunctionData::Global]]
+        def self.variants: -> [Braintrust::Models::FunctionUpdateParams::FunctionData::Prompt, Braintrust::Models::FunctionUpdateParams::FunctionData::Code, Braintrust::Models::FunctionUpdateParams::FunctionData::Global]
       end
     end
   end

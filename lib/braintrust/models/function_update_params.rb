@@ -187,6 +187,12 @@ module Braintrust
                 finalize!
               end
             end
+
+            # @!parse
+            #   class << self
+            #     # @return [Array(Braintrust::Models::FunctionUpdateParams::FunctionData::Code::Data::Bundle, Braintrust::Models::FunctionUpdateParams::FunctionData::Code::Data::Inline)]
+            #     def variants; end
+            #   end
           end
 
           # @abstract
@@ -223,6 +229,12 @@ module Braintrust
             finalize!
           end
         end
+
+        # @!parse
+        #   class << self
+        #     # @return [Array(Braintrust::Models::FunctionUpdateParams::FunctionData::Prompt, Braintrust::Models::FunctionUpdateParams::FunctionData::Code, Braintrust::Models::FunctionUpdateParams::FunctionData::Global)]
+        #     def variants; end
+        #   end
       end
     end
   end

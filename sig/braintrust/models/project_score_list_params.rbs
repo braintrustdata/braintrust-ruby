@@ -83,7 +83,7 @@ module Braintrust
 
         StringArray: string_array
 
-        private def self.variants: -> [[nil, String], [nil, ::Array[String]]]
+        def self.variants: -> [String, ::Array[String]]
       end
 
       type score_type =
@@ -96,7 +96,7 @@ module Braintrust
 
         ProjectScoreTypeArray: project_score_type_array
 
-        private def self.variants: -> [[nil, Braintrust::Models::project_score_type], [nil, ::Array[Braintrust::Models::project_score_type]]]
+        def self.variants: -> [Braintrust::Models::project_score_type, ::Array[Braintrust::Models::project_score_type]]
       end
     end
   end

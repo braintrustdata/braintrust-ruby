@@ -219,7 +219,7 @@ module Braintrust
               end
             end
 
-            private def self.variants: -> [[nil, Braintrust::Models::FunctionReplaceParams::FunctionData::Code::Data::Bundle], [nil, Braintrust::Models::FunctionReplaceParams::FunctionData::Code::Data::Inline]]
+            def self.variants: -> [Braintrust::Models::FunctionReplaceParams::FunctionData::Code::Data::Bundle, Braintrust::Models::FunctionReplaceParams::FunctionData::Code::Data::Inline]
           end
 
           type type_ = :code
@@ -263,7 +263,7 @@ module Braintrust
           end
         end
 
-        private def self.variants: -> [[nil, Braintrust::Models::FunctionReplaceParams::FunctionData::Prompt], [nil, Braintrust::Models::FunctionReplaceParams::FunctionData::Code], [nil, Braintrust::Models::FunctionReplaceParams::FunctionData::Global]]
+        def self.variants: -> [Braintrust::Models::FunctionReplaceParams::FunctionData::Prompt, Braintrust::Models::FunctionReplaceParams::FunctionData::Code, Braintrust::Models::FunctionReplaceParams::FunctionData::Global]
       end
 
       type function_schema = { parameters: top, returns: top }

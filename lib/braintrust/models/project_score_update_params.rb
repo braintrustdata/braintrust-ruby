@@ -66,6 +66,12 @@ module Braintrust
 
         # For minimum-type project scores, the list of included scores
         variant Braintrust::Models::ProjectScoreUpdateParams::Categories::StringArray
+
+        # @!parse
+        #   class << self
+        #     # @return [Array(Array<Braintrust::Models::ProjectScoreCategory>, Hash{Symbol=>Float}, Array<String>)]
+        #     def variants; end
+        #   end
       end
     end
   end

@@ -178,14 +178,11 @@ module Braintrust
         StringArray = T.type_alias { T::Array[String] }
 
         class << self
-          # @api private
           sig do
             override
-              .returns(
-                [[NilClass, T::Array[Braintrust::Models::ProjectScoreCategory]], [NilClass, T::Hash[Symbol, Float]], [NilClass, T::Array[String]]]
-              )
+              .returns([T::Array[Braintrust::Models::ProjectScoreCategory], T::Hash[Symbol, Float], T::Array[String]])
           end
-          private def variants
+          def variants
           end
         end
       end

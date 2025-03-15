@@ -368,38 +368,33 @@ module Braintrust
               abstract!
 
               class << self
-                # @api private
                 sig do
                   override
                     .returns(
-                      [[NilClass, Braintrust::Models::ChatCompletionContentPartText], [NilClass, Braintrust::Models::ChatCompletionContentPartImage]]
+                      [Braintrust::Models::ChatCompletionContentPartText, Braintrust::Models::ChatCompletionContentPartImage]
                     )
                 end
-                private def variants
+                def variants
                 end
               end
             end
 
             class << self
-              # @api private
               sig do
                 override
                   .returns(
                     [
-                      [NilClass, String],
-                      [
-                        NilClass,
-                        T::Array[
-                                            T.any(
-                                              Braintrust::Models::ChatCompletionContentPartText,
-                                              Braintrust::Models::ChatCompletionContentPartImage
-                                            )
-                                            ]
-                      ]
+                      String,
+                      T::Array[
+                                          T.any(
+                                            Braintrust::Models::ChatCompletionContentPartText,
+                                            Braintrust::Models::ChatCompletionContentPartImage
+                                          )
+                                          ]
                     ]
                   )
               end
-              private def variants
+              def variants
               end
             end
           end
@@ -650,14 +645,13 @@ module Braintrust
         end
 
         class << self
-          # @api private
           sig do
             override
               .returns(
-                [[NilClass, Braintrust::Models::FunctionInvokeParams::Message::System], [NilClass, Braintrust::Models::FunctionInvokeParams::Message::User], [NilClass, Braintrust::Models::FunctionInvokeParams::Message::Assistant], [NilClass, Braintrust::Models::FunctionInvokeParams::Message::Tool], [NilClass, Braintrust::Models::FunctionInvokeParams::Message::Function], [NilClass, Braintrust::Models::FunctionInvokeParams::Message::Fallback]]
+                [Braintrust::Models::FunctionInvokeParams::Message::System, Braintrust::Models::FunctionInvokeParams::Message::User, Braintrust::Models::FunctionInvokeParams::Message::Assistant, Braintrust::Models::FunctionInvokeParams::Message::Tool, Braintrust::Models::FunctionInvokeParams::Message::Function, Braintrust::Models::FunctionInvokeParams::Message::Fallback]
               )
           end
-          private def variants
+          def variants
           end
         end
       end
@@ -803,14 +797,8 @@ module Braintrust
         end
 
         class << self
-          # @api private
-          sig do
-            override
-              .returns(
-                [[NilClass, Braintrust::Models::FunctionInvokeParams::Parent::SpanParentStruct], [NilClass, String]]
-              )
-          end
-          private def variants
+          sig { override.returns([Braintrust::Models::FunctionInvokeParams::Parent::SpanParentStruct, String]) }
+          def variants
           end
         end
       end

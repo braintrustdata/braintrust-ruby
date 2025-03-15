@@ -153,9 +153,8 @@ module Braintrust
         StringArray = T.type_alias { T::Array[String] }
 
         class << self
-          # @api private
-          sig { override.returns([[NilClass, String], [NilClass, T::Array[String]]]) }
-          private def variants
+          sig { override.returns([String, T::Array[String]]) }
+          def variants
           end
         end
       end
@@ -167,9 +166,8 @@ module Braintrust
         ProjectScoreTypeArray = T.type_alias { T::Array[Symbol] }
 
         class << self
-          # @api private
-          sig { override.returns([[NilClass, Symbol], [NilClass, T::Array[Symbol]]]) }
-          private def variants
+          sig { override.returns([Symbol, T::Array[Symbol]]) }
+          def variants
           end
         end
       end

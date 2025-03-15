@@ -99,7 +99,7 @@ module Braintrust
           end
         end
 
-        private def self.variants: -> [[nil, Braintrust::Models::OnlineScoreConfig::Scorer::Function], [nil, Braintrust::Models::OnlineScoreConfig::Scorer::Global]]
+        def self.variants: -> [Braintrust::Models::OnlineScoreConfig::Scorer::Function, Braintrust::Models::OnlineScoreConfig::Scorer::Global]
       end
     end
   end

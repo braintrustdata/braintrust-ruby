@@ -127,7 +127,7 @@ module Braintrust
               end
             end
 
-            private def self.variants: -> [[nil, Braintrust::Models::CodeBundle::Location::Experiment::Position::Type], [nil, Braintrust::Models::CodeBundle::Location::Experiment::Position::Scorer]]
+            def self.variants: -> [Braintrust::Models::CodeBundle::Location::Experiment::Position::Type, Braintrust::Models::CodeBundle::Location::Experiment::Position::Scorer]
           end
 
           type type_ = :experiment
@@ -171,7 +171,7 @@ module Braintrust
           end
         end
 
-        private def self.variants: -> [[nil, Braintrust::Models::CodeBundle::Location::Experiment], [nil, Braintrust::Models::CodeBundle::Location::Function]]
+        def self.variants: -> [Braintrust::Models::CodeBundle::Location::Experiment, Braintrust::Models::CodeBundle::Location::Function]
       end
 
       type runtime_context =

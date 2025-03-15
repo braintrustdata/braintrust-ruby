@@ -234,6 +234,12 @@ module Braintrust
 
               # def initialize: (Hash | Braintrust::BaseModel) -> void
             end
+
+            # @!parse
+            #   class << self
+            #     # @return [Array(Symbol, Braintrust::Models::PromptOptions::Params::OpenAIModelParams::FunctionCall::UnionMember0, Braintrust::Models::PromptOptions::Params::OpenAIModelParams::FunctionCall::Function)]
+            #     def variants; end
+            #   end
           end
 
           # @abstract
@@ -343,6 +349,12 @@ module Braintrust
                   variant Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ResponseFormat::JsonSchema::JsonSchema::Schema::ObjectMap
 
                   variant String
+
+                  # @!parse
+                  #   class << self
+                  #     # @return [Array(Hash{Symbol=>Object, nil}, String)]
+                  #     def variants; end
+                  #   end
                 end
               end
 
@@ -375,6 +387,12 @@ module Braintrust
                 finalize!
               end
             end
+
+            # @!parse
+            #   class << self
+            #     # @return [Array(Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ResponseFormat::JsonObject, Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ResponseFormat::JsonSchema, Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ResponseFormat::Text)]
+            #     def variants; end
+            #   end
           end
 
           # @abstract
@@ -434,6 +452,12 @@ module Braintrust
                 finalize!
               end
             end
+
+            # @!parse
+            #   class << self
+            #     # @return [Array(Symbol, Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ToolChoice::UnionMember0, Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ToolChoice::Function)]
+            #     def variants; end
+            #   end
           end
         end
 
@@ -632,6 +656,12 @@ module Braintrust
 
           # def initialize: (Hash | Braintrust::BaseModel) -> void
         end
+
+        # @!parse
+        #   class << self
+        #     # @return [Array(Braintrust::Models::PromptOptions::Params::OpenAIModelParams, Braintrust::Models::PromptOptions::Params::AnthropicModelParams, Braintrust::Models::PromptOptions::Params::GoogleModelParams, Braintrust::Models::PromptOptions::Params::WindowAIModelParams, Braintrust::Models::PromptOptions::Params::JsCompletionParams)]
+        #     def variants; end
+        #   end
       end
     end
   end

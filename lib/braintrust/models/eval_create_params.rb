@@ -254,6 +254,12 @@ module Braintrust
 
           # def initialize: (Hash | Braintrust::BaseModel) -> void
         end
+
+        # @!parse
+        #   class << self
+        #     # @return [Array(Braintrust::Models::EvalCreateParams::Data::DatasetID, Braintrust::Models::EvalCreateParams::Data::ProjectDatasetName, Braintrust::Models::EvalCreateParams::Data::DatasetRows)]
+        #     def variants; end
+        #   end
       end
 
       # @abstract
@@ -476,6 +482,12 @@ module Braintrust
 
           # def initialize: (Hash | Braintrust::BaseModel) -> void
         end
+
+        # @!parse
+        #   class << self
+        #     # @return [Array(Braintrust::Models::EvalCreateParams::Score::FunctionID, Braintrust::Models::EvalCreateParams::Score::ProjectSlug, Braintrust::Models::EvalCreateParams::Score::GlobalFunction, Braintrust::Models::EvalCreateParams::Score::PromptSessionID, Braintrust::Models::EvalCreateParams::Score::InlineCode, Braintrust::Models::EvalCreateParams::Score::InlinePrompt)]
+        #     def variants; end
+        #   end
       end
 
       # @abstract
@@ -698,6 +710,12 @@ module Braintrust
 
           # def initialize: (Hash | Braintrust::BaseModel) -> void
         end
+
+        # @!parse
+        #   class << self
+        #     # @return [Array(Braintrust::Models::EvalCreateParams::Task::FunctionID, Braintrust::Models::EvalCreateParams::Task::ProjectSlug, Braintrust::Models::EvalCreateParams::Task::GlobalFunction, Braintrust::Models::EvalCreateParams::Task::PromptSessionID, Braintrust::Models::EvalCreateParams::Task::InlineCode, Braintrust::Models::EvalCreateParams::Task::InlinePrompt)]
+        #     def variants; end
+        #   end
       end
 
       class GitMetadataSettings < Braintrust::BaseModel
@@ -841,6 +859,12 @@ module Braintrust
             # def initialize: (Hash | Braintrust::BaseModel) -> void
           end
         end
+
+        # @!parse
+        #   class << self
+        #     # @return [Array(Braintrust::Models::EvalCreateParams::Parent::SpanParentStruct, String)]
+        #     def variants; end
+        #   end
       end
     end
   end

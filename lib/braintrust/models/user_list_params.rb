@@ -133,6 +133,12 @@ module Braintrust
         variant String
 
         variant Braintrust::Models::UserListParams::Email::StringArray
+
+        # @!parse
+        #   class << self
+        #     # @return [Array(String, Array<String>)]
+        #     def variants; end
+        #   end
       end
 
       # @abstract
@@ -145,6 +151,12 @@ module Braintrust
         variant String
 
         variant Braintrust::Models::UserListParams::FamilyName::StringArray
+
+        # @!parse
+        #   class << self
+        #     # @return [Array(String, Array<String>)]
+        #     def variants; end
+        #   end
       end
 
       # @abstract
@@ -157,6 +169,12 @@ module Braintrust
         variant String
 
         variant Braintrust::Models::UserListParams::GivenName::StringArray
+
+        # @!parse
+        #   class << self
+        #     # @return [Array(String, Array<String>)]
+        #     def variants; end
+        #   end
       end
 
       # @abstract
@@ -169,6 +187,12 @@ module Braintrust
         variant String
 
         variant Braintrust::Models::UserListParams::IDs::StringArray
+
+        # @!parse
+        #   class << self
+        #     # @return [Array(String, Array<String>)]
+        #     def variants; end
+        #   end
       end
     end
   end

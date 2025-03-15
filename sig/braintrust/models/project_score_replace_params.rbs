@@ -63,7 +63,7 @@ module Braintrust
 
         StringArray: string_array
 
-        private def self.variants: -> [[nil, ::Array[Braintrust::Models::ProjectScoreCategory]], [nil, ::Hash[Symbol, Float]], [nil, ::Array[String]]]
+        def self.variants: -> [::Array[Braintrust::Models::ProjectScoreCategory], ::Hash[Symbol, Float], ::Array[String]]
       end
     end
   end

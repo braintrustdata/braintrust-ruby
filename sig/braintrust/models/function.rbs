@@ -233,7 +233,7 @@ module Braintrust
               end
             end
 
-            private def self.variants: -> [[nil, Braintrust::Models::Function::FunctionData::Code::Data::Bundle], [nil, Braintrust::Models::Function::FunctionData::Code::Data::Inline]]
+            def self.variants: -> [Braintrust::Models::Function::FunctionData::Code::Data::Bundle, Braintrust::Models::Function::FunctionData::Code::Data::Inline]
           end
 
           type type_ = :code
@@ -277,7 +277,7 @@ module Braintrust
           end
         end
 
-        private def self.variants: -> [[nil, Braintrust::Models::Function::FunctionData::Prompt], [nil, Braintrust::Models::Function::FunctionData::Code], [nil, Braintrust::Models::Function::FunctionData::Global]]
+        def self.variants: -> [Braintrust::Models::Function::FunctionData::Prompt, Braintrust::Models::Function::FunctionData::Code, Braintrust::Models::Function::FunctionData::Global]
       end
 
       type log_id = :p
