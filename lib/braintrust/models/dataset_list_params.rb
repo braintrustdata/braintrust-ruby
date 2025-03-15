@@ -130,6 +130,12 @@ module Braintrust
         variant String
 
         variant Braintrust::Models::DatasetListParams::IDs::StringArray
+
+        # @!parse
+        #   class << self
+        #     # @return [Array(String, Array<String>)]
+        #     def variants; end
+        #   end
       end
     end
   end

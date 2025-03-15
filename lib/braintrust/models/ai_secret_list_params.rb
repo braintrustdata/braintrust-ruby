@@ -114,6 +114,12 @@ module Braintrust
         variant String
 
         variant Braintrust::Models::AISecretListParams::AISecretType::StringArray
+
+        # @!parse
+        #   class << self
+        #     # @return [Array(String, Array<String>)]
+        #     def variants; end
+        #   end
       end
 
       # @abstract
@@ -126,6 +132,12 @@ module Braintrust
         variant String
 
         variant Braintrust::Models::AISecretListParams::IDs::StringArray
+
+        # @!parse
+        #   class << self
+        #     # @return [Array(String, Array<String>)]
+        #     def variants; end
+        #   end
       end
     end
   end

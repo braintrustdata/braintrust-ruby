@@ -96,6 +96,12 @@ module Braintrust
             finalize!
           end
         end
+
+        # @!parse
+        #   class << self
+        #     # @return [Array(Braintrust::Models::OnlineScoreConfig::Scorer::Function, Braintrust::Models::OnlineScoreConfig::Scorer::Global)]
+        #     def variants; end
+        #   end
       end
     end
   end

@@ -80,7 +80,7 @@ module Braintrust
 
         StringArray: string_array
 
-        private def self.variants: -> [[nil, String], [nil, ::Array[String]]]
+        def self.variants: -> [String, ::Array[String]]
       end
 
       type family_name = String | ::Array[String]
@@ -90,7 +90,7 @@ module Braintrust
 
         StringArray: string_array
 
-        private def self.variants: -> [[nil, String], [nil, ::Array[String]]]
+        def self.variants: -> [String, ::Array[String]]
       end
 
       type given_name = String | ::Array[String]
@@ -100,7 +100,7 @@ module Braintrust
 
         StringArray: string_array
 
-        private def self.variants: -> [[nil, String], [nil, ::Array[String]]]
+        def self.variants: -> [String, ::Array[String]]
       end
 
       type ids = String | ::Array[String]
@@ -110,7 +110,7 @@ module Braintrust
 
         StringArray: string_array
 
-        private def self.variants: -> [[nil, String], [nil, ::Array[String]]]
+        def self.variants: -> [String, ::Array[String]]
       end
     end
   end

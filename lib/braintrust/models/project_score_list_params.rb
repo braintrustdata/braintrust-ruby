@@ -142,6 +142,12 @@ module Braintrust
         variant String
 
         variant Braintrust::Models::ProjectScoreListParams::IDs::StringArray
+
+        # @!parse
+        #   class << self
+        #     # @return [Array(String, Array<String>)]
+        #     def variants; end
+        #   end
       end
 
       # @abstract
@@ -155,6 +161,12 @@ module Braintrust
 
         # The type of the configured score
         variant Braintrust::Models::ProjectScoreListParams::ScoreType::ProjectScoreTypeArray
+
+        # @!parse
+        #   class << self
+        #     # @return [Array(Symbol, Braintrust::Models::ProjectScoreType, Array<Symbol, Braintrust::Models::ProjectScoreType>)]
+        #     def variants; end
+        #   end
       end
     end
   end

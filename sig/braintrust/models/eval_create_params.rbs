@@ -160,7 +160,7 @@ module Braintrust
           def to_hash: -> Braintrust::Models::EvalCreateParams::Data::dataset_rows
         end
 
-        private def self.variants: -> [[nil, Braintrust::Models::EvalCreateParams::Data::DatasetID], [nil, Braintrust::Models::EvalCreateParams::Data::ProjectDatasetName], [nil, Braintrust::Models::EvalCreateParams::Data::DatasetRows]]
+        def self.variants: -> [Braintrust::Models::EvalCreateParams::Data::DatasetID, Braintrust::Models::EvalCreateParams::Data::ProjectDatasetName, Braintrust::Models::EvalCreateParams::Data::DatasetRows]
       end
 
       type score =
@@ -340,7 +340,7 @@ module Braintrust
           def to_hash: -> Braintrust::Models::EvalCreateParams::Score::inline_prompt
         end
 
-        private def self.variants: -> [[nil, Braintrust::Models::EvalCreateParams::Score::FunctionID], [nil, Braintrust::Models::EvalCreateParams::Score::ProjectSlug], [nil, Braintrust::Models::EvalCreateParams::Score::GlobalFunction], [nil, Braintrust::Models::EvalCreateParams::Score::PromptSessionID], [nil, Braintrust::Models::EvalCreateParams::Score::InlineCode], [nil, Braintrust::Models::EvalCreateParams::Score::InlinePrompt]]
+        def self.variants: -> [Braintrust::Models::EvalCreateParams::Score::FunctionID, Braintrust::Models::EvalCreateParams::Score::ProjectSlug, Braintrust::Models::EvalCreateParams::Score::GlobalFunction, Braintrust::Models::EvalCreateParams::Score::PromptSessionID, Braintrust::Models::EvalCreateParams::Score::InlineCode, Braintrust::Models::EvalCreateParams::Score::InlinePrompt]
       end
 
       type task =
@@ -520,7 +520,7 @@ module Braintrust
           def to_hash: -> Braintrust::Models::EvalCreateParams::Task::inline_prompt
         end
 
-        private def self.variants: -> [[nil, Braintrust::Models::EvalCreateParams::Task::FunctionID], [nil, Braintrust::Models::EvalCreateParams::Task::ProjectSlug], [nil, Braintrust::Models::EvalCreateParams::Task::GlobalFunction], [nil, Braintrust::Models::EvalCreateParams::Task::PromptSessionID], [nil, Braintrust::Models::EvalCreateParams::Task::InlineCode], [nil, Braintrust::Models::EvalCreateParams::Task::InlinePrompt]]
+        def self.variants: -> [Braintrust::Models::EvalCreateParams::Task::FunctionID, Braintrust::Models::EvalCreateParams::Task::ProjectSlug, Braintrust::Models::EvalCreateParams::Task::GlobalFunction, Braintrust::Models::EvalCreateParams::Task::PromptSessionID, Braintrust::Models::EvalCreateParams::Task::InlineCode, Braintrust::Models::EvalCreateParams::Task::InlinePrompt]
       end
 
       type git_metadata_settings =
@@ -651,7 +651,7 @@ module Braintrust
           end
         end
 
-        private def self.variants: -> [[nil, Braintrust::Models::EvalCreateParams::Parent::SpanParentStruct], [nil, String]]
+        def self.variants: -> [Braintrust::Models::EvalCreateParams::Parent::SpanParentStruct, String]
       end
     end
   end

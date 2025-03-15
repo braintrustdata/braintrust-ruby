@@ -361,14 +361,11 @@ module Braintrust
             end
 
             class << self
-              # @api private
               sig do
                 override
-                  .returns(
-                    [[NilClass, Symbol], [NilClass, Braintrust::Models::PromptOptions::Params::OpenAIModelParams::FunctionCall::Function]]
-                  )
+                  .returns([Symbol, Braintrust::Models::PromptOptions::Params::OpenAIModelParams::FunctionCall::Function])
               end
-              private def variants
+              def variants
               end
             end
           end
@@ -538,16 +535,8 @@ module Braintrust
                   ObjectMap = T.type_alias { T::Hash[Symbol, T.nilable(T.anything)] }
 
                   class << self
-                    # @api private
-                    sig do
-                      override.returns(
-                        [
-                          [NilClass, T::Hash[Symbol, T.nilable(T.anything)]],
-                          [NilClass, String]
-                        ]
-                      )
-                    end
-                    private def variants
+                    sig { override.returns([T::Hash[Symbol, T.nilable(T.anything)], String]) }
+                    def variants
                     end
                   end
                 end
@@ -597,14 +586,13 @@ module Braintrust
             end
 
             class << self
-              # @api private
               sig do
                 override
                   .returns(
-                    [[NilClass, Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ResponseFormat::JsonObject], [NilClass, Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ResponseFormat::JsonSchema], [NilClass, Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ResponseFormat::Text]]
+                    [Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ResponseFormat::JsonObject, Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ResponseFormat::JsonSchema, Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ResponseFormat::Text]
                   )
               end
-              private def variants
+              def variants
               end
             end
           end
@@ -700,14 +688,11 @@ module Braintrust
             end
 
             class << self
-              # @api private
               sig do
                 override
-                  .returns(
-                    [[NilClass, Symbol], [NilClass, Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ToolChoice::Function]]
-                  )
+                  .returns([Symbol, Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ToolChoice::Function])
               end
-              private def variants
+              def variants
               end
             end
           end
@@ -933,14 +918,13 @@ module Braintrust
         end
 
         class << self
-          # @api private
           sig do
             override
               .returns(
-                [[NilClass, Braintrust::Models::PromptOptions::Params::OpenAIModelParams], [NilClass, Braintrust::Models::PromptOptions::Params::AnthropicModelParams], [NilClass, Braintrust::Models::PromptOptions::Params::GoogleModelParams], [NilClass, Braintrust::Models::PromptOptions::Params::WindowAIModelParams], [NilClass, Braintrust::Models::PromptOptions::Params::JsCompletionParams]]
+                [Braintrust::Models::PromptOptions::Params::OpenAIModelParams, Braintrust::Models::PromptOptions::Params::AnthropicModelParams, Braintrust::Models::PromptOptions::Params::GoogleModelParams, Braintrust::Models::PromptOptions::Params::WindowAIModelParams, Braintrust::Models::PromptOptions::Params::JsCompletionParams]
               )
           end
-          private def variants
+          def variants
           end
         end
       end
