@@ -285,7 +285,19 @@ module Braintrust
                   variant -> { Braintrust::Models::ChatCompletionContentPartText }
 
                   variant -> { Braintrust::Models::ChatCompletionContentPartImage }
+
+                  # @!parse
+                  #   class << self
+                  #     # @return [Array(Braintrust::Models::ChatCompletionContentPartText, Braintrust::Models::ChatCompletionContentPartImage)]
+                  #     def variants; end
+                  #   end
                 end
+
+                # @!parse
+                #   class << self
+                #     # @return [Array(String, Array<Braintrust::Models::ChatCompletionContentPartText, Braintrust::Models::ChatCompletionContentPartImage>)]
+                #     def variants; end
+                #   end
               end
             end
 
@@ -462,6 +474,12 @@ module Braintrust
                 finalize!
               end
             end
+
+            # @!parse
+            #   class << self
+            #     # @return [Array(Braintrust::Models::PromptData::Prompt::Chat::Message::System, Braintrust::Models::PromptData::Prompt::Chat::Message::User, Braintrust::Models::PromptData::Prompt::Chat::Message::Assistant, Braintrust::Models::PromptData::Prompt::Chat::Message::Tool, Braintrust::Models::PromptData::Prompt::Chat::Message::Function, Braintrust::Models::PromptData::Prompt::Chat::Message::Fallback)]
+            #     def variants; end
+            #   end
           end
 
           # @abstract
@@ -471,6 +489,12 @@ module Braintrust
             finalize!
           end
         end
+
+        # @!parse
+        #   class << self
+        #     # @return [Array(Braintrust::Models::PromptData::Prompt::Completion, Braintrust::Models::PromptData::Prompt::Chat)]
+        #     def variants; end
+        #   end
       end
 
       # @abstract
@@ -532,6 +556,12 @@ module Braintrust
             finalize!
           end
         end
+
+        # @!parse
+        #   class << self
+        #     # @return [Array(Braintrust::Models::PromptData::ToolFunction::Function, Braintrust::Models::PromptData::ToolFunction::Global)]
+        #     def variants; end
+        #   end
       end
     end
   end

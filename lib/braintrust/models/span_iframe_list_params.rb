@@ -106,6 +106,12 @@ module Braintrust
         variant String
 
         variant Braintrust::Models::SpanIframeListParams::IDs::StringArray
+
+        # @!parse
+        #   class << self
+        #     # @return [Array(String, Array<String>)]
+        #     def variants; end
+        #   end
       end
     end
   end

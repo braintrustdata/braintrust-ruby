@@ -269,10 +269,10 @@ module Braintrust
                   | Braintrust::Models::ChatCompletionContentPartImage
 
                 class Array < Braintrust::Union
-                  private def self.variants: -> [[nil, Braintrust::Models::ChatCompletionContentPartText], [nil, Braintrust::Models::ChatCompletionContentPartImage]]
+                  def self.variants: -> [Braintrust::Models::ChatCompletionContentPartText, Braintrust::Models::ChatCompletionContentPartImage]
                 end
 
-                private def self.variants: -> [[nil, String], [nil, ::Array[Braintrust::Models::PromptData::Prompt::Chat::Message::User::Content::array]]]
+                def self.variants: -> [String, ::Array[Braintrust::Models::PromptData::Prompt::Chat::Message::User::Content::array]]
               end
             end
 
@@ -447,7 +447,7 @@ module Braintrust
               end
             end
 
-            private def self.variants: -> [[nil, Braintrust::Models::PromptData::Prompt::Chat::Message::System], [nil, Braintrust::Models::PromptData::Prompt::Chat::Message::User], [nil, Braintrust::Models::PromptData::Prompt::Chat::Message::Assistant], [nil, Braintrust::Models::PromptData::Prompt::Chat::Message::Tool], [nil, Braintrust::Models::PromptData::Prompt::Chat::Message::Function], [nil, Braintrust::Models::PromptData::Prompt::Chat::Message::Fallback]]
+            def self.variants: -> [Braintrust::Models::PromptData::Prompt::Chat::Message::System, Braintrust::Models::PromptData::Prompt::Chat::Message::User, Braintrust::Models::PromptData::Prompt::Chat::Message::Assistant, Braintrust::Models::PromptData::Prompt::Chat::Message::Tool, Braintrust::Models::PromptData::Prompt::Chat::Message::Function, Braintrust::Models::PromptData::Prompt::Chat::Message::Fallback]
           end
 
           type type_ = :chat
@@ -459,7 +459,7 @@ module Braintrust
           end
         end
 
-        private def self.variants: -> [[nil, Braintrust::Models::PromptData::Prompt::Completion], [nil, Braintrust::Models::PromptData::Prompt::Chat]]
+        def self.variants: -> [Braintrust::Models::PromptData::Prompt::Completion, Braintrust::Models::PromptData::Prompt::Chat]
       end
 
       type tool_function =
@@ -531,7 +531,7 @@ module Braintrust
           end
         end
 
-        private def self.variants: -> [[nil, Braintrust::Models::PromptData::ToolFunction::Function], [nil, Braintrust::Models::PromptData::ToolFunction::Global]]
+        def self.variants: -> [Braintrust::Models::PromptData::ToolFunction::Function, Braintrust::Models::PromptData::ToolFunction::Global]
       end
     end
   end

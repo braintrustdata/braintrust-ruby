@@ -168,7 +168,7 @@ module Braintrust
               def to_hash: -> Braintrust::Models::PromptOptions::Params::OpenAIModelParams::FunctionCall::function
             end
 
-            private def self.variants: -> [[nil, Braintrust::Models::PromptOptions::Params::OpenAIModelParams::FunctionCall::union_member0], [nil, Braintrust::Models::PromptOptions::Params::OpenAIModelParams::FunctionCall::Function]]
+            def self.variants: -> [Braintrust::Models::PromptOptions::Params::OpenAIModelParams::FunctionCall::union_member0, Braintrust::Models::PromptOptions::Params::OpenAIModelParams::FunctionCall::Function]
           end
 
           type reasoning_effort = :low | :medium | :high
@@ -282,7 +282,7 @@ module Braintrust
 
                   ObjectMap: object_map
 
-                  private def self.variants: -> [[nil, ::Hash[Symbol, top?]], [nil, String]]
+                  def self.variants: -> [::Hash[Symbol, top?], String]
                 end
               end
 
@@ -323,7 +323,7 @@ module Braintrust
               end
             end
 
-            private def self.variants: -> [[nil, Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ResponseFormat::JsonObject], [nil, Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ResponseFormat::JsonSchema], [nil, Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ResponseFormat::Text]]
+            def self.variants: -> [Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ResponseFormat::JsonObject, Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ResponseFormat::JsonSchema, Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ResponseFormat::Text]
           end
 
           type tool_choice =
@@ -388,7 +388,7 @@ module Braintrust
               end
             end
 
-            private def self.variants: -> [[nil, Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ToolChoice::union_member0], [nil, Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ToolChoice::Function]]
+            def self.variants: -> [Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ToolChoice::union_member0, Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ToolChoice::Function]
           end
         end
 
@@ -535,7 +535,7 @@ module Braintrust
           def to_hash: -> Braintrust::Models::PromptOptions::Params::js_completion_params
         end
 
-        private def self.variants: -> [[nil, Braintrust::Models::PromptOptions::Params::OpenAIModelParams], [nil, Braintrust::Models::PromptOptions::Params::AnthropicModelParams], [nil, Braintrust::Models::PromptOptions::Params::GoogleModelParams], [nil, Braintrust::Models::PromptOptions::Params::WindowAIModelParams], [nil, Braintrust::Models::PromptOptions::Params::JsCompletionParams]]
+        def self.variants: -> [Braintrust::Models::PromptOptions::Params::OpenAIModelParams, Braintrust::Models::PromptOptions::Params::AnthropicModelParams, Braintrust::Models::PromptOptions::Params::GoogleModelParams, Braintrust::Models::PromptOptions::Params::WindowAIModelParams, Braintrust::Models::PromptOptions::Params::JsCompletionParams]
       end
     end
   end

@@ -561,38 +561,33 @@ module Braintrust
                   abstract!
 
                   class << self
-                    # @api private
                     sig do
                       override
                         .returns(
-                          [[NilClass, Braintrust::Models::ChatCompletionContentPartText], [NilClass, Braintrust::Models::ChatCompletionContentPartImage]]
+                          [Braintrust::Models::ChatCompletionContentPartText, Braintrust::Models::ChatCompletionContentPartImage]
                         )
                     end
-                    private def variants
+                    def variants
                     end
                   end
                 end
 
                 class << self
-                  # @api private
                   sig do
                     override
                       .returns(
                         [
-                          [NilClass, String],
-                          [
-                            NilClass,
-                            T::Array[
-                                                    T.any(
-                                                      Braintrust::Models::ChatCompletionContentPartText,
-                                                      Braintrust::Models::ChatCompletionContentPartImage
-                                                    )
-                                                    ]
-                          ]
+                          String,
+                          T::Array[
+                                                  T.any(
+                                                    Braintrust::Models::ChatCompletionContentPartText,
+                                                    Braintrust::Models::ChatCompletionContentPartImage
+                                                  )
+                                                  ]
                         ]
                       )
                   end
-                  private def variants
+                  def variants
                   end
                 end
               end
@@ -843,14 +838,13 @@ module Braintrust
             end
 
             class << self
-              # @api private
               sig do
                 override
                   .returns(
-                    [[NilClass, Braintrust::Models::PromptData::Prompt::Chat::Message::System], [NilClass, Braintrust::Models::PromptData::Prompt::Chat::Message::User], [NilClass, Braintrust::Models::PromptData::Prompt::Chat::Message::Assistant], [NilClass, Braintrust::Models::PromptData::Prompt::Chat::Message::Tool], [NilClass, Braintrust::Models::PromptData::Prompt::Chat::Message::Function], [NilClass, Braintrust::Models::PromptData::Prompt::Chat::Message::Fallback]]
+                    [Braintrust::Models::PromptData::Prompt::Chat::Message::System, Braintrust::Models::PromptData::Prompt::Chat::Message::User, Braintrust::Models::PromptData::Prompt::Chat::Message::Assistant, Braintrust::Models::PromptData::Prompt::Chat::Message::Tool, Braintrust::Models::PromptData::Prompt::Chat::Message::Function, Braintrust::Models::PromptData::Prompt::Chat::Message::Fallback]
                   )
               end
-              private def variants
+              def variants
               end
             end
           end
@@ -869,14 +863,13 @@ module Braintrust
         end
 
         class << self
-          # @api private
           sig do
             override
               .returns(
-                [[NilClass, Braintrust::Models::PromptData::Prompt::Completion], [NilClass, Braintrust::Models::PromptData::Prompt::Chat]]
+                [Braintrust::Models::PromptData::Prompt::Completion, Braintrust::Models::PromptData::Prompt::Chat]
               )
           end
-          private def variants
+          def variants
           end
         end
       end
@@ -961,14 +954,13 @@ module Braintrust
         end
 
         class << self
-          # @api private
           sig do
             override
               .returns(
-                [[NilClass, Braintrust::Models::PromptData::ToolFunction::Function], [NilClass, Braintrust::Models::PromptData::ToolFunction::Global]]
+                [Braintrust::Models::PromptData::ToolFunction::Function, Braintrust::Models::PromptData::ToolFunction::Global]
               )
           end
-          private def variants
+          def variants
           end
         end
       end

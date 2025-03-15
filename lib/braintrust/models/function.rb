@@ -278,6 +278,12 @@ module Braintrust
                 finalize!
               end
             end
+
+            # @!parse
+            #   class << self
+            #     # @return [Array(Braintrust::Models::Function::FunctionData::Code::Data::Bundle, Braintrust::Models::Function::FunctionData::Code::Data::Inline)]
+            #     def variants; end
+            #   end
           end
 
           # @abstract
@@ -314,6 +320,12 @@ module Braintrust
             finalize!
           end
         end
+
+        # @!parse
+        #   class << self
+        #     # @return [Array(Braintrust::Models::Function::FunctionData::Prompt, Braintrust::Models::Function::FunctionData::Code, Braintrust::Models::Function::FunctionData::Global)]
+        #     def variants; end
+        #   end
       end
 
       # @abstract

@@ -118,6 +118,12 @@ module Braintrust
                 finalize!
               end
             end
+
+            # @!parse
+            #   class << self
+            #     # @return [Array(Braintrust::Models::CodeBundle::Location::Experiment::Position::Type, Braintrust::Models::CodeBundle::Location::Experiment::Position::Scorer)]
+            #     def variants; end
+            #   end
           end
 
           # @abstract
@@ -154,6 +160,12 @@ module Braintrust
             finalize!
           end
         end
+
+        # @!parse
+        #   class << self
+        #     # @return [Array(Braintrust::Models::CodeBundle::Location::Experiment, Braintrust::Models::CodeBundle::Location::Function)]
+        #     def variants; end
+        #   end
       end
 
       class RuntimeContext < Braintrust::BaseModel

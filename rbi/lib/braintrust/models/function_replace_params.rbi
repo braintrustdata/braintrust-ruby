@@ -418,14 +418,13 @@ module Braintrust
             end
 
             class << self
-              # @api private
               sig do
                 override
                   .returns(
-                    [[NilClass, Braintrust::Models::FunctionReplaceParams::FunctionData::Code::Data::Bundle], [NilClass, Braintrust::Models::FunctionReplaceParams::FunctionData::Code::Data::Inline]]
+                    [Braintrust::Models::FunctionReplaceParams::FunctionData::Code::Data::Bundle, Braintrust::Models::FunctionReplaceParams::FunctionData::Code::Data::Inline]
                   )
               end
-              private def variants
+              def variants
               end
             end
           end
@@ -482,14 +481,13 @@ module Braintrust
         end
 
         class << self
-          # @api private
           sig do
             override
               .returns(
-                [[NilClass, Braintrust::Models::FunctionReplaceParams::FunctionData::Prompt], [NilClass, Braintrust::Models::FunctionReplaceParams::FunctionData::Code], [NilClass, Braintrust::Models::FunctionReplaceParams::FunctionData::Global]]
+                [Braintrust::Models::FunctionReplaceParams::FunctionData::Prompt, Braintrust::Models::FunctionReplaceParams::FunctionData::Code, Braintrust::Models::FunctionReplaceParams::FunctionData::Global]
               )
           end
-          private def variants
+          def variants
           end
         end
       end

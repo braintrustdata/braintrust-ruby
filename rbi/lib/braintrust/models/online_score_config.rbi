@@ -181,14 +181,13 @@ module Braintrust
         end
 
         class << self
-          # @api private
           sig do
             override
               .returns(
-                [[NilClass, Braintrust::Models::OnlineScoreConfig::Scorer::Function], [NilClass, Braintrust::Models::OnlineScoreConfig::Scorer::Global]]
+                [Braintrust::Models::OnlineScoreConfig::Scorer::Function, Braintrust::Models::OnlineScoreConfig::Scorer::Global]
               )
           end
-          private def variants
+          def variants
           end
         end
       end
