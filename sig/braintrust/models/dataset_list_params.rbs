@@ -74,7 +74,7 @@ module Braintrust
 
         StringArray: string_array
 
-        private def self.variants: -> [[nil, String], [nil, ::Array[String]]]
+        def self.variants: -> [String, ::Array[String]]
       end
     end
   end

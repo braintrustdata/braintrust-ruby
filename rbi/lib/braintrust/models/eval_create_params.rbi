@@ -490,14 +490,13 @@ module Braintrust
         end
 
         class << self
-          # @api private
           sig do
             override
               .returns(
-                [[NilClass, Braintrust::Models::EvalCreateParams::Data::DatasetID], [NilClass, Braintrust::Models::EvalCreateParams::Data::ProjectDatasetName], [NilClass, Braintrust::Models::EvalCreateParams::Data::DatasetRows]]
+                [Braintrust::Models::EvalCreateParams::Data::DatasetID, Braintrust::Models::EvalCreateParams::Data::ProjectDatasetName, Braintrust::Models::EvalCreateParams::Data::DatasetRows]
               )
           end
-          private def variants
+          def variants
           end
         end
       end
@@ -765,14 +764,13 @@ module Braintrust
         end
 
         class << self
-          # @api private
           sig do
             override
               .returns(
-                [[NilClass, Braintrust::Models::EvalCreateParams::Score::FunctionID], [NilClass, Braintrust::Models::EvalCreateParams::Score::ProjectSlug], [NilClass, Braintrust::Models::EvalCreateParams::Score::GlobalFunction], [NilClass, Braintrust::Models::EvalCreateParams::Score::PromptSessionID], [NilClass, Braintrust::Models::EvalCreateParams::Score::InlineCode], [NilClass, Braintrust::Models::EvalCreateParams::Score::InlinePrompt]]
+                [Braintrust::Models::EvalCreateParams::Score::FunctionID, Braintrust::Models::EvalCreateParams::Score::ProjectSlug, Braintrust::Models::EvalCreateParams::Score::GlobalFunction, Braintrust::Models::EvalCreateParams::Score::PromptSessionID, Braintrust::Models::EvalCreateParams::Score::InlineCode, Braintrust::Models::EvalCreateParams::Score::InlinePrompt]
               )
           end
-          private def variants
+          def variants
           end
         end
       end
@@ -1040,14 +1038,13 @@ module Braintrust
         end
 
         class << self
-          # @api private
           sig do
             override
               .returns(
-                [[NilClass, Braintrust::Models::EvalCreateParams::Task::FunctionID], [NilClass, Braintrust::Models::EvalCreateParams::Task::ProjectSlug], [NilClass, Braintrust::Models::EvalCreateParams::Task::GlobalFunction], [NilClass, Braintrust::Models::EvalCreateParams::Task::PromptSessionID], [NilClass, Braintrust::Models::EvalCreateParams::Task::InlineCode], [NilClass, Braintrust::Models::EvalCreateParams::Task::InlinePrompt]]
+                [Braintrust::Models::EvalCreateParams::Task::FunctionID, Braintrust::Models::EvalCreateParams::Task::ProjectSlug, Braintrust::Models::EvalCreateParams::Task::GlobalFunction, Braintrust::Models::EvalCreateParams::Task::PromptSessionID, Braintrust::Models::EvalCreateParams::Task::InlineCode, Braintrust::Models::EvalCreateParams::Task::InlinePrompt]
               )
           end
-          private def variants
+          def variants
           end
         end
       end
@@ -1241,12 +1238,8 @@ module Braintrust
         end
 
         class << self
-          # @api private
-          sig do
-            override
-              .returns([[NilClass, Braintrust::Models::EvalCreateParams::Parent::SpanParentStruct], [NilClass, String]])
-          end
-          private def variants
+          sig { override.returns([Braintrust::Models::EvalCreateParams::Parent::SpanParentStruct, String]) }
+          def variants
           end
         end
       end

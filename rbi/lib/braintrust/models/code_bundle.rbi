@@ -241,14 +241,13 @@ module Braintrust
             end
 
             class << self
-              # @api private
               sig do
                 override
                   .returns(
-                    [[NilClass, Braintrust::Models::CodeBundle::Location::Experiment::Position::Type], [NilClass, Braintrust::Models::CodeBundle::Location::Experiment::Position::Scorer]]
+                    [Braintrust::Models::CodeBundle::Location::Experiment::Position::Type, Braintrust::Models::CodeBundle::Location::Experiment::Position::Scorer]
                   )
               end
-              private def variants
+              def variants
               end
             end
           end
@@ -305,14 +304,13 @@ module Braintrust
         end
 
         class << self
-          # @api private
           sig do
             override
               .returns(
-                [[NilClass, Braintrust::Models::CodeBundle::Location::Experiment], [NilClass, Braintrust::Models::CodeBundle::Location::Function]]
+                [Braintrust::Models::CodeBundle::Location::Experiment, Braintrust::Models::CodeBundle::Location::Function]
               )
           end
-          private def variants
+          def variants
           end
         end
       end

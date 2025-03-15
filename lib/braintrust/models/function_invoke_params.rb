@@ -212,7 +212,19 @@ module Braintrust
               variant -> { Braintrust::Models::ChatCompletionContentPartText }
 
               variant -> { Braintrust::Models::ChatCompletionContentPartImage }
+
+              # @!parse
+              #   class << self
+              #     # @return [Array(Braintrust::Models::ChatCompletionContentPartText, Braintrust::Models::ChatCompletionContentPartImage)]
+              #     def variants; end
+              #   end
             end
+
+            # @!parse
+            #   class << self
+            #     # @return [Array(String, Array<Braintrust::Models::ChatCompletionContentPartText, Braintrust::Models::ChatCompletionContentPartImage>)]
+            #     def variants; end
+            #   end
           end
         end
 
@@ -389,6 +401,12 @@ module Braintrust
             finalize!
           end
         end
+
+        # @!parse
+        #   class << self
+        #     # @return [Array(Braintrust::Models::FunctionInvokeParams::Message::System, Braintrust::Models::FunctionInvokeParams::Message::User, Braintrust::Models::FunctionInvokeParams::Message::Assistant, Braintrust::Models::FunctionInvokeParams::Message::Tool, Braintrust::Models::FunctionInvokeParams::Message::Function, Braintrust::Models::FunctionInvokeParams::Message::Fallback)]
+        #     def variants; end
+        #   end
       end
 
       # @abstract
@@ -490,6 +508,12 @@ module Braintrust
             # def initialize: (Hash | Braintrust::BaseModel) -> void
           end
         end
+
+        # @!parse
+        #   class << self
+        #     # @return [Array(Braintrust::Models::FunctionInvokeParams::Parent::SpanParentStruct, String)]
+        #     def variants; end
+        #   end
       end
     end
   end
