@@ -2,6 +2,6 @@ module Braintrust
   class ListObjects[Elem]
     include Braintrust::BasePage[Elem]
 
-    attr_accessor objects: ::Array[Elem]
+    attr_accessor objects: ::Array[Elem]?
   end
 end
