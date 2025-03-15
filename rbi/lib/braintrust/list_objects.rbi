@@ -6,11 +6,11 @@ module Braintrust
 
     Elem = type_member
 
-    sig { returns(T::Array[Elem]) }
+    sig { returns(T.nilable(T::Array[Elem])) }
     def objects
     end
 
-    sig { params(_: T::Array[Elem]).returns(T::Array[Elem]) }
+    sig { params(_: T.nilable(T::Array[Elem])).returns(T.nilable(T::Array[Elem])) }
     def objects=(_)
     end
   end
