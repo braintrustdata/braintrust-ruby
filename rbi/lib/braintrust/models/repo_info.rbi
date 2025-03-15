@@ -3,6 +3,7 @@
 module Braintrust
   module Models
     class RepoInfo < Braintrust::BaseModel
+      # Email of the author of the most recent commit
       sig { returns(T.nilable(String)) }
       def author_email
       end
@@ -11,6 +12,7 @@ module Braintrust
       def author_email=(_)
       end
 
+      # Name of the author of the most recent commit
       sig { returns(T.nilable(String)) }
       def author_name
       end
@@ -19,6 +21,7 @@ module Braintrust
       def author_name=(_)
       end
 
+      # Name of the branch the most recent commit belongs to
       sig { returns(T.nilable(String)) }
       def branch
       end
@@ -27,6 +30,7 @@ module Braintrust
       def branch=(_)
       end
 
+      # SHA of most recent commit
       sig { returns(T.nilable(String)) }
       def commit
       end
@@ -35,6 +39,7 @@ module Braintrust
       def commit=(_)
       end
 
+      # Most recent commit message
       sig { returns(T.nilable(String)) }
       def commit_message
       end
@@ -43,6 +48,7 @@ module Braintrust
       def commit_message=(_)
       end
 
+      # Time of the most recent commit
       sig { returns(T.nilable(String)) }
       def commit_time
       end
@@ -51,6 +57,7 @@ module Braintrust
       def commit_time=(_)
       end
 
+      # Whether or not the repo had uncommitted changes when snapshotted
       sig { returns(T.nilable(T::Boolean)) }
       def dirty
       end
@@ -59,6 +66,8 @@ module Braintrust
       def dirty=(_)
       end
 
+      # If the repo was dirty when run, this includes the diff between the current state
+      #   of the repo and the most recent commit.
       sig { returns(T.nilable(String)) }
       def git_diff
       end
@@ -67,6 +76,7 @@ module Braintrust
       def git_diff=(_)
       end
 
+      # Name of the tag on the most recent commit
       sig { returns(T.nilable(String)) }
       def tag
       end
@@ -75,6 +85,7 @@ module Braintrust
       def tag=(_)
       end
 
+      # Metadata about the state of the repo when the experiment was created
       sig do
         params(
           author_email: T.nilable(String),

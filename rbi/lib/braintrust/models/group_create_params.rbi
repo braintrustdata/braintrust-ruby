@@ -6,6 +6,7 @@ module Braintrust
       extend Braintrust::RequestParameters::Converter
       include Braintrust::RequestParameters
 
+      # Name of the group
       sig { returns(String) }
       def name
       end
@@ -14,6 +15,7 @@ module Braintrust
       def name=(_)
       end
 
+      # Textual description of the group
       sig { returns(T.nilable(String)) }
       def description
       end
@@ -22,6 +24,10 @@ module Braintrust
       def description=(_)
       end
 
+      # Ids of the groups this group inherits from
+      #
+      #   An inheriting group has all the users contained in its member groups, as well as
+      #   all of their inherited users
       sig { returns(T.nilable(T::Array[String])) }
       def member_groups
       end
@@ -30,6 +36,7 @@ module Braintrust
       def member_groups=(_)
       end
 
+      # Ids of users which belong to this group
       sig { returns(T.nilable(T::Array[String])) }
       def member_users
       end
@@ -38,6 +45,9 @@ module Braintrust
       def member_users=(_)
       end
 
+      # For nearly all users, this parameter should be unnecessary. But in the rare case
+      #   that your API key belongs to multiple organizations, you may specify the name of
+      #   the organization the group belongs in.
       sig { returns(T.nilable(String)) }
       def org_name
       end

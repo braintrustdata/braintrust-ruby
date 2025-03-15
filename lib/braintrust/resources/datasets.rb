@@ -20,7 +20,6 @@ module Braintrust
       #   @option params [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Braintrust::Models::Dataset]
-      #
       def create(params)
         parsed, options = Braintrust::Models::DatasetCreateParams.dump_request(params)
         @client.request(
@@ -41,7 +40,6 @@ module Braintrust
       #   @option params [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Braintrust::Models::Dataset]
-      #
       def retrieve(dataset_id, params = {})
         @client.request(
           method: :get,
@@ -68,7 +66,6 @@ module Braintrust
       #   @option params [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Braintrust::Models::Dataset]
-      #
       def update(dataset_id, params = {})
         parsed, options = Braintrust::Models::DatasetUpdateParams.dump_request(params)
         @client.request(
@@ -113,7 +110,6 @@ module Braintrust
       #   @option params [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Braintrust::ListObjects<Braintrust::Models::Dataset>]
-      #
       def list(params = {})
         parsed, options = Braintrust::Models::DatasetListParams.dump_request(params)
         @client.request(
@@ -135,7 +131,6 @@ module Braintrust
       #   @option params [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Braintrust::Models::Dataset]
-      #
       def delete(dataset_id, params = {})
         @client.request(
           method: :delete,
@@ -156,7 +151,6 @@ module Braintrust
       #   @option params [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Braintrust::Models::FeedbackResponseSchema]
-      #
       def feedback(dataset_id, params)
         parsed, options = Braintrust::Models::DatasetFeedbackParams.dump_request(params)
         @client.request(
@@ -222,7 +216,6 @@ module Braintrust
       #   @option params [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Braintrust::Models::FetchDatasetEventsResponse]
-      #
       def fetch(dataset_id, params = {})
         parsed, options = Braintrust::Models::DatasetFetchParams.dump_request(params)
         @client.request(
@@ -294,7 +287,6 @@ module Braintrust
       #   @option params [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Braintrust::Models::FetchDatasetEventsResponse]
-      #
       def fetch_post(dataset_id, params = {})
         parsed, options = Braintrust::Models::DatasetFetchPostParams.dump_request(params)
         @client.request(
@@ -317,7 +309,6 @@ module Braintrust
       #   @option params [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Braintrust::Models::InsertEventsResponse]
-      #
       def insert(dataset_id, params)
         parsed, options = Braintrust::Models::DatasetInsertParams.dump_request(params)
         @client.request(
@@ -341,7 +332,6 @@ module Braintrust
       #   @option params [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Braintrust::Models::SummarizeDatasetResponse]
-      #
       def summarize(dataset_id, params = {})
         parsed, options = Braintrust::Models::DatasetSummarizeParams.dump_request(params)
         @client.request(
@@ -354,7 +344,6 @@ module Braintrust
       end
 
       # @param client [Braintrust::Client]
-      #
       def initialize(client:)
         @client = client
       end

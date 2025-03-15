@@ -6,6 +6,7 @@ module Braintrust
       extend Braintrust::RequestParameters::Converter
       include Braintrust::RequestParameters
 
+      # For categorical-type project scores, the list of all categories
       sig do
         returns(
           T.nilable(
@@ -42,6 +43,7 @@ module Braintrust
       def config=(_)
       end
 
+      # Textual description of the project score
       sig { returns(T.nilable(String)) }
       def description
       end
@@ -50,6 +52,7 @@ module Braintrust
       def description=(_)
       end
 
+      # Name of the project score
       sig { returns(T.nilable(String)) }
       def name
       end
@@ -58,6 +61,7 @@ module Braintrust
       def name=(_)
       end
 
+      # The type of the configured score
       sig { returns(T.nilable(Symbol)) }
       def score_type
       end
@@ -100,6 +104,7 @@ module Braintrust
       def to_hash
       end
 
+      # For categorical-type project scores, the list of all categories
       class Categories < Braintrust::Union
         abstract!
 
@@ -110,6 +115,7 @@ module Braintrust
         StringArray = T.type_alias { T::Array[String] }
 
         class << self
+          # @api private
           sig do
             override
               .returns(

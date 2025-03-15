@@ -6,6 +6,7 @@ module Braintrust
       extend Braintrust::RequestParameters::Converter
       include Braintrust::RequestParameters
 
+      # A list of group IDs to add to the group's inheriting-from set
       sig { returns(T.nilable(T::Array[String])) }
       def add_member_groups
       end
@@ -14,6 +15,7 @@ module Braintrust
       def add_member_groups=(_)
       end
 
+      # A list of user IDs to add to the group
       sig { returns(T.nilable(T::Array[String])) }
       def add_member_users
       end
@@ -22,6 +24,7 @@ module Braintrust
       def add_member_users=(_)
       end
 
+      # Textual description of the group
       sig { returns(T.nilable(String)) }
       def description
       end
@@ -30,6 +33,7 @@ module Braintrust
       def description=(_)
       end
 
+      # Name of the group
       sig { returns(T.nilable(String)) }
       def name
       end
@@ -38,6 +42,7 @@ module Braintrust
       def name=(_)
       end
 
+      # A list of group IDs to remove from the group's inheriting-from set
       sig { returns(T.nilable(T::Array[String])) }
       def remove_member_groups
       end
@@ -46,6 +51,7 @@ module Braintrust
       def remove_member_groups=(_)
       end
 
+      # A list of user IDs to remove from the group
       sig { returns(T.nilable(T::Array[String])) }
       def remove_member_users
       end

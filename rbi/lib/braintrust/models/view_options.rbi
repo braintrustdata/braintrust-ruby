@@ -53,6 +53,7 @@ module Braintrust
       def row_height=(_)
       end
 
+      # Options for the view in the app
       sig do
         params(
           column_order: T.nilable(T::Array[String]),

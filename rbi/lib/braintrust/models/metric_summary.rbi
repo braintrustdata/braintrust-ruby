@@ -3,6 +3,7 @@
 module Braintrust
   module Models
     class MetricSummary < Braintrust::BaseModel
+      # Number of improvements in the metric
       sig { returns(Integer) }
       def improvements
       end
@@ -11,6 +12,7 @@ module Braintrust
       def improvements=(_)
       end
 
+      # Average metric across all examples
       sig { returns(Float) }
       def metric
       end
@@ -19,6 +21,7 @@ module Braintrust
       def metric=(_)
       end
 
+      # Name of the metric
       sig { returns(String) }
       def name
       end
@@ -27,6 +30,7 @@ module Braintrust
       def name=(_)
       end
 
+      # Number of regressions in the metric
       sig { returns(Integer) }
       def regressions
       end
@@ -35,6 +39,7 @@ module Braintrust
       def regressions=(_)
       end
 
+      # Unit label for the metric
       sig { returns(String) }
       def unit
       end
@@ -43,6 +48,7 @@ module Braintrust
       def unit=(_)
       end
 
+      # Difference in metric between the current and comparison experiment
       sig { returns(T.nilable(Float)) }
       def diff
       end
@@ -51,6 +57,7 @@ module Braintrust
       def diff=(_)
       end
 
+      # Summary of a metric's performance
       sig do
         params(
           improvements: Integer,

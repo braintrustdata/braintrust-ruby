@@ -3,6 +3,7 @@
 module Braintrust
   module Models
     class Organization < Braintrust::BaseModel
+      # Unique identifier for the organization
       sig { returns(String) }
       def id
       end
@@ -11,6 +12,7 @@ module Braintrust
       def id=(_)
       end
 
+      # Name of the organization
       sig { returns(String) }
       def name
       end
@@ -27,6 +29,7 @@ module Braintrust
       def api_url=(_)
       end
 
+      # Date of organization creation
       sig { returns(T.nilable(Time)) }
       def created
       end

@@ -3,6 +3,7 @@
 module Braintrust
   module Models
     class APIKey < Braintrust::BaseModel
+      # Unique identifier for the api key
       sig { returns(String) }
       def id
       end
@@ -11,6 +12,7 @@ module Braintrust
       def id=(_)
       end
 
+      # Name of the api key
       sig { returns(String) }
       def name
       end
@@ -27,6 +29,7 @@ module Braintrust
       def preview_name=(_)
       end
 
+      # Date of api key creation
       sig { returns(T.nilable(Time)) }
       def created
       end
@@ -35,6 +38,7 @@ module Braintrust
       def created=(_)
       end
 
+      # Unique identifier for the organization
       sig { returns(T.nilable(String)) }
       def org_id
       end
@@ -43,6 +47,7 @@ module Braintrust
       def org_id=(_)
       end
 
+      # Unique identifier for the user
       sig { returns(T.nilable(String)) }
       def user_id
       end

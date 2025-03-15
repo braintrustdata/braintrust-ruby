@@ -3,6 +3,7 @@
 module Braintrust
   module Models
     class ProjectTag < Braintrust::BaseModel
+      # Unique identifier for the project tag
       sig { returns(String) }
       def id
       end
@@ -11,6 +12,7 @@ module Braintrust
       def id=(_)
       end
 
+      # Name of the project tag
       sig { returns(String) }
       def name
       end
@@ -19,6 +21,7 @@ module Braintrust
       def name=(_)
       end
 
+      # Unique identifier for the project that the project tag belongs under
       sig { returns(String) }
       def project_id
       end
@@ -35,6 +38,7 @@ module Braintrust
       def user_id=(_)
       end
 
+      # Color of the tag for the UI
       sig { returns(T.nilable(String)) }
       def color
       end
@@ -43,6 +47,7 @@ module Braintrust
       def color=(_)
       end
 
+      # Date of project tag creation
       sig { returns(T.nilable(Time)) }
       def created
       end
@@ -51,6 +56,7 @@ module Braintrust
       def created=(_)
       end
 
+      # Textual description of the project tag
       sig { returns(T.nilable(String)) }
       def description
       end
@@ -59,6 +65,8 @@ module Braintrust
       def description=(_)
       end
 
+      # A project tag is a user-configured tag for tracking and filtering your
+      #   experiments, logs, and other data
       sig do
         params(
           id: String,

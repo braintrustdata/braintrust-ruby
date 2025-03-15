@@ -6,6 +6,7 @@ module Braintrust
       extend Braintrust::RequestParameters::Converter
       include Braintrust::RequestParameters
 
+      # The name of the environment variable
       sig { returns(String) }
       def name
       end
@@ -14,6 +15,7 @@ module Braintrust
       def name=(_)
       end
 
+      # The id of the object the environment variable is scoped for
       sig { returns(String) }
       def object_id_
       end
@@ -22,6 +24,7 @@ module Braintrust
       def object_id_=(_)
       end
 
+      # The type of the object the environment variable is scoped for
       sig { returns(Symbol) }
       def object_type
       end
@@ -30,6 +33,7 @@ module Braintrust
       def object_type=(_)
       end
 
+      # The value of the environment variable. Will be encrypted at rest.
       sig { returns(T.nilable(String)) }
       def value
       end
@@ -66,6 +70,7 @@ module Braintrust
       def to_hash
       end
 
+      # The type of the object the environment variable is scoped for
       class ObjectType < Braintrust::Enum
         abstract!
 

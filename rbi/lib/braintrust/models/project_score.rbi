@@ -3,6 +3,7 @@
 module Braintrust
   module Models
     class ProjectScore < Braintrust::BaseModel
+      # Unique identifier for the project score
       sig { returns(String) }
       def id
       end
@@ -11,6 +12,7 @@ module Braintrust
       def id=(_)
       end
 
+      # Name of the project score
       sig { returns(String) }
       def name
       end
@@ -19,6 +21,7 @@ module Braintrust
       def name=(_)
       end
 
+      # Unique identifier for the project that the project score belongs under
       sig { returns(String) }
       def project_id
       end
@@ -27,6 +30,7 @@ module Braintrust
       def project_id=(_)
       end
 
+      # The type of the configured score
       sig { returns(Symbol) }
       def score_type
       end
@@ -43,6 +47,7 @@ module Braintrust
       def user_id=(_)
       end
 
+      # For categorical-type project scores, the list of all categories
       sig do
         returns(
           T.nilable(
@@ -79,6 +84,7 @@ module Braintrust
       def config=(_)
       end
 
+      # Date of project score creation
       sig { returns(T.nilable(Time)) }
       def created
       end
@@ -87,6 +93,7 @@ module Braintrust
       def created=(_)
       end
 
+      # Textual description of the project score
       sig { returns(T.nilable(String)) }
       def description
       end
@@ -95,6 +102,8 @@ module Braintrust
       def description=(_)
       end
 
+      # An optional LexoRank-based string that sets the sort position for the score in
+      #   the UI
       sig { returns(T.nilable(String)) }
       def position
       end
@@ -103,6 +112,8 @@ module Braintrust
       def position=(_)
       end
 
+      # A project score is a user-configured score, which can be manually-labeled
+      #   through the UI
       sig do
         params(
           id: String,
@@ -156,6 +167,7 @@ module Braintrust
       def to_hash
       end
 
+      # For categorical-type project scores, the list of all categories
       class Categories < Braintrust::Union
         abstract!
 
@@ -166,6 +178,7 @@ module Braintrust
         StringArray = T.type_alias { T::Array[String] }
 
         class << self
+          # @api private
           sig do
             override
               .returns(

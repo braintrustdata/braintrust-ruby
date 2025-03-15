@@ -105,7 +105,6 @@ module Braintrust
       # def initialize: (Hash | Braintrust::BaseModel) -> void
 
       # @abstract
-      #
       class Message < Braintrust::Union
         variant -> { Braintrust::Models::FunctionInvokeParams::Message::System }
 
@@ -153,7 +152,6 @@ module Braintrust
           # def initialize: (Hash | Braintrust::BaseModel) -> void
 
           # @abstract
-          #
           class Role < Braintrust::Enum
             SYSTEM = :system
 
@@ -195,7 +193,6 @@ module Braintrust
           # def initialize: (Hash | Braintrust::BaseModel) -> void
 
           # @abstract
-          #
           class Role < Braintrust::Enum
             USER = :user
 
@@ -203,7 +200,6 @@ module Braintrust
           end
 
           # @abstract
-          #
           class Content < Braintrust::Union
             Nested2DArray = Braintrust::ArrayOf[union: -> { Braintrust::Models::FunctionInvokeParams::Message::User::Content::Array }]
 
@@ -212,7 +208,6 @@ module Braintrust
             variant Braintrust::Models::FunctionInvokeParams::Message::User::Content::Nested2DArray
 
             # @abstract
-            #
             class Array < Braintrust::Union
               variant -> { Braintrust::Models::ChatCompletionContentPartText }
 
@@ -263,7 +258,6 @@ module Braintrust
           # def initialize: (Hash | Braintrust::BaseModel) -> void
 
           # @abstract
-          #
           class Role < Braintrust::Enum
             ASSISTANT = :assistant
 
@@ -325,7 +319,6 @@ module Braintrust
           # def initialize: (Hash | Braintrust::BaseModel) -> void
 
           # @abstract
-          #
           class Role < Braintrust::Enum
             TOOL = :tool
 
@@ -363,7 +356,6 @@ module Braintrust
           # def initialize: (Hash | Braintrust::BaseModel) -> void
 
           # @abstract
-          #
           class Role < Braintrust::Enum
             FUNCTION = :function
 
@@ -391,7 +383,6 @@ module Braintrust
           # def initialize: (Hash | Braintrust::BaseModel) -> void
 
           # @abstract
-          #
           class Role < Braintrust::Enum
             MODEL = :model
 
@@ -460,7 +451,6 @@ module Braintrust
           # def initialize: (Hash | Braintrust::BaseModel) -> void
 
           # @abstract
-          #
           class ObjectType < Braintrust::Enum
             PROJECT_LOGS = :project_logs
             EXPERIMENT = :experiment

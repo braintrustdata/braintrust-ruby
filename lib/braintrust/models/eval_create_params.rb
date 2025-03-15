@@ -444,7 +444,6 @@ module Braintrust
             # def initialize: (Hash | Braintrust::BaseModel) -> void
 
             # @abstract
-            #
             class Runtime < Braintrust::Enum
               NODE = :node
               PYTHON = :python
@@ -667,7 +666,6 @@ module Braintrust
             # def initialize: (Hash | Braintrust::BaseModel) -> void
 
             # @abstract
-            #
             class Runtime < Braintrust::Enum
               NODE = :node
               PYTHON = :python
@@ -730,7 +728,6 @@ module Braintrust
         # def initialize: (Hash | Braintrust::BaseModel) -> void
 
         # @abstract
-        #
         class Collect < Braintrust::Enum
           ALL = :all
           NONE = :none
@@ -740,7 +737,6 @@ module Braintrust
         end
 
         # @abstract
-        #
         class Field < Braintrust::Enum
           COMMIT = :commit
           BRANCH = :branch
@@ -806,7 +802,6 @@ module Braintrust
           # def initialize: (Hash | Braintrust::BaseModel) -> void
 
           # @abstract
-          #
           class ObjectType < Braintrust::Enum
             PROJECT_LOGS = :project_logs
             EXPERIMENT = :experiment

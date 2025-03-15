@@ -3,6 +3,8 @@
 module Braintrust
   module Models
     class InsertEventsResponse < Braintrust::BaseModel
+      # The ids of all rows that were inserted, aligning one-to-one with the rows
+      #   provided as input
       sig { returns(T::Array[String]) }
       def row_ids
       end

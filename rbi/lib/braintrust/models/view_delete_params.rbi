@@ -6,6 +6,7 @@ module Braintrust
       extend Braintrust::RequestParameters::Converter
       include Braintrust::RequestParameters
 
+      # The id of the object the view applies to
       sig { returns(String) }
       def object_id_
       end
@@ -14,6 +15,7 @@ module Braintrust
       def object_id_=(_)
       end
 
+      # The object type that the ACL applies to
       sig { returns(Symbol) }
       def object_type
       end

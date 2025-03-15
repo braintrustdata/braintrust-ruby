@@ -3,6 +3,7 @@
 module Braintrust
   module Models
     class SummarizeDatasetResponse < Braintrust::BaseModel
+      # Name of the dataset
       sig { returns(String) }
       def dataset_name
       end
@@ -11,6 +12,7 @@ module Braintrust
       def dataset_name=(_)
       end
 
+      # URL to the dataset's page in the Braintrust app
       sig { returns(String) }
       def dataset_url
       end
@@ -19,6 +21,7 @@ module Braintrust
       def dataset_url=(_)
       end
 
+      # Name of the project that the dataset belongs to
       sig { returns(String) }
       def project_name
       end
@@ -27,6 +30,7 @@ module Braintrust
       def project_name=(_)
       end
 
+      # URL to the project's page in the Braintrust app
       sig { returns(String) }
       def project_url
       end
@@ -35,6 +39,7 @@ module Braintrust
       def project_url=(_)
       end
 
+      # Summary of a dataset's data
       sig { returns(T.nilable(Braintrust::Models::DataSummary)) }
       def data_summary
       end
@@ -43,6 +48,7 @@ module Braintrust
       def data_summary=(_)
       end
 
+      # Summary of a dataset
       sig do
         params(
           dataset_name: String,

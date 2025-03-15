@@ -2,6 +2,7 @@
 
 module Braintrust
   module Models
+    # The type of the object the environment variable is scoped for
     class EnvVarObjectType < Braintrust::Enum
       abstract!
 

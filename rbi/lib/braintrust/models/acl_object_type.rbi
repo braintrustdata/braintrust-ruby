@@ -2,6 +2,7 @@
 
 module Braintrust
   module Models
+    # The object type that the ACL applies to
     class ACLObjectType < Braintrust::Enum
       abstract!
 

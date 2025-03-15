@@ -3,6 +3,8 @@
 module Braintrust
   module Resources
     class TopLevel
+      # Default endpoint. Simply replies with 'Hello, World!'. Authorization is not
+      #   required
       sig do
         params(request_options: T.nilable(T.any(Braintrust::RequestOptions, T::Hash[Symbol, T.anything])))
           .returns(String)
