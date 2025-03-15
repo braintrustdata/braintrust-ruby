@@ -30,7 +30,7 @@ module Braintrust
   class ListObjects
     include Braintrust::BasePage
 
-    # @return [Array<Object>]
+    # @return [Array<Object>, nil]
     attr_accessor :objects
 
     # @api private
