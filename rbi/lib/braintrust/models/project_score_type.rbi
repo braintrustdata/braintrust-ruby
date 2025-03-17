@@ -6,6 +6,8 @@ module Braintrust
     class ProjectScoreType < Braintrust::Enum
       abstract!
 
+      Value = type_template(:out) { {fixed: Symbol} }
+
       SLIDER = :slider
       CATEGORICAL = :categorical
       WEIGHTED = :weighted
@@ -13,12 +15,6 @@ module Braintrust
       MAXIMUM = :maximum
       ONLINE = :online
       FREE_FORM = :"free-form"
-
-      class << self
-        sig { override.returns(T::Array[Symbol]) }
-        def values
-        end
-      end
     end
   end
 end

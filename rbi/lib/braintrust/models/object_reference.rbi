@@ -81,18 +81,14 @@ module Braintrust
       class ObjectType < Braintrust::Enum
         abstract!
 
+        Value = type_template(:out) { {fixed: Symbol} }
+
         EXPERIMENT = :experiment
         DATASET = :dataset
         PROMPT = :prompt
         FUNCTION = :function
         PROMPT_SESSION = :prompt_session
         PROJECT_LOGS = :project_logs
-
-        class << self
-          sig { override.returns(T::Array[Symbol]) }
-          def values
-          end
-        end
       end
     end
   end

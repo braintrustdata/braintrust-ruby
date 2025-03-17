@@ -6,6 +6,8 @@ module Braintrust
     class ACLObjectType < Braintrust::Enum
       abstract!
 
+      Value = type_template(:out) { {fixed: Symbol} }
+
       ORGANIZATION = :organization
       PROJECT = :project
       EXPERIMENT = :experiment
@@ -17,12 +19,6 @@ module Braintrust
       ORG_MEMBER = :org_member
       PROJECT_LOG = :project_log
       ORG_PROJECT = :org_project
-
-      class << self
-        sig { override.returns(T::Array[Symbol]) }
-        def values
-        end
-      end
     end
   end
 end

@@ -94,6 +94,15 @@ module Braintrust
       class Location < Braintrust::Union
         abstract!
 
+        Variants = type_template(:out) do
+          {
+            fixed: T.any(
+              Braintrust::Models::CodeBundle::Location::Experiment,
+              Braintrust::Models::CodeBundle::Location::Function
+            )
+          }
+        end
+
         class Experiment < Braintrust::BaseModel
           sig { returns(String) }
           def eval_name
@@ -172,6 +181,15 @@ module Braintrust
           class Position < Braintrust::Union
             abstract!
 
+            Variants = type_template(:out) do
+              {
+                fixed: T.any(
+                  Braintrust::Models::CodeBundle::Location::Experiment::Position::Type,
+                  Braintrust::Models::CodeBundle::Location::Experiment::Position::Scorer
+                )
+              }
+            end
+
             class Type < Braintrust::BaseModel
               sig { returns(Symbol) }
               def type
@@ -192,13 +210,9 @@ module Braintrust
               class Type < Braintrust::Enum
                 abstract!
 
-                TASK = :task
+                Value = type_template(:out) { {fixed: Symbol} }
 
-                class << self
-                  sig { override.returns(T::Array[Symbol]) }
-                  def values
-                  end
-                end
+                TASK = :task
               end
             end
 
@@ -230,24 +244,9 @@ module Braintrust
               class Type < Braintrust::Enum
                 abstract!
 
+                Value = type_template(:out) { {fixed: Symbol} }
+
                 SCORER = :scorer
-
-                class << self
-                  sig { override.returns(T::Array[Symbol]) }
-                  def values
-                  end
-                end
-              end
-            end
-
-            class << self
-              sig do
-                override
-                  .returns(
-                    [Braintrust::Models::CodeBundle::Location::Experiment::Position::Type, Braintrust::Models::CodeBundle::Location::Experiment::Position::Scorer]
-                  )
-              end
-              def variants
               end
             end
           end
@@ -255,13 +254,9 @@ module Braintrust
           class Type < Braintrust::Enum
             abstract!
 
-            EXPERIMENT = :experiment
+            Value = type_template(:out) { {fixed: Symbol} }
 
-            class << self
-              sig { override.returns(T::Array[Symbol]) }
-              def values
-              end
-            end
+            EXPERIMENT = :experiment
           end
         end
 
@@ -293,24 +288,9 @@ module Braintrust
           class Type < Braintrust::Enum
             abstract!
 
+            Value = type_template(:out) { {fixed: Symbol} }
+
             FUNCTION = :function
-
-            class << self
-              sig { override.returns(T::Array[Symbol]) }
-              def values
-              end
-            end
-          end
-        end
-
-        class << self
-          sig do
-            override
-              .returns(
-                [Braintrust::Models::CodeBundle::Location::Experiment, Braintrust::Models::CodeBundle::Location::Function]
-              )
-          end
-          def variants
           end
         end
       end
@@ -343,14 +323,10 @@ module Braintrust
         class Runtime < Braintrust::Enum
           abstract!
 
+          Value = type_template(:out) { {fixed: Symbol} }
+
           NODE = :node
           PYTHON = :python
-
-          class << self
-            sig { override.returns(T::Array[Symbol]) }
-            def values
-            end
-          end
         end
       end
     end

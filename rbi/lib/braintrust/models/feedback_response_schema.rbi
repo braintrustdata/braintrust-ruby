@@ -22,13 +22,9 @@ module Braintrust
       class Status < Braintrust::Enum
         abstract!
 
-        SUCCESS = :success
+        Value = type_template(:out) { {fixed: Symbol} }
 
-        class << self
-          sig { override.returns(T::Array[Symbol]) }
-          def values
-          end
-        end
+        SUCCESS = :success
       end
     end
   end

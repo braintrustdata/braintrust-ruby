@@ -95,13 +95,9 @@ module Braintrust
       class IDs < Braintrust::Union
         abstract!
 
-        StringArray = T.type_alias { T::Array[String] }
+        Variants = type_template(:out) { {fixed: T.any(String, T::Array[String])} }
 
-        class << self
-          sig { override.returns([String, T::Array[String]]) }
-          def variants
-          end
-        end
+        StringArray = T.type_alias { T::Array[String] }
       end
     end
   end
