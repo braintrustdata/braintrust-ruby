@@ -113,14 +113,10 @@ module Braintrust
         class Layout < Braintrust::Enum
           abstract!
 
-          FULL = T.let(:full, T.nilable(Symbol))
-          TWO_COLUMN = T.let(:two_column, T.nilable(Symbol))
+          Value = type_template(:out) { {fixed: Symbol} }
 
-          class << self
-            sig { override.returns(T::Array[Symbol]) }
-            def values
-            end
-          end
+          FULL = :full
+          TWO_COLUMN = :two_column
         end
       end
     end

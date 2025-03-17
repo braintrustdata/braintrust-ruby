@@ -376,6 +376,16 @@ module Braintrust
       class Data < Braintrust::Union
         abstract!
 
+        Variants = type_template(:out) do
+          {
+            fixed: T.any(
+              Braintrust::Models::EvalCreateParams::Data::DatasetID,
+              Braintrust::Models::EvalCreateParams::Data::ProjectDatasetName,
+              Braintrust::Models::EvalCreateParams::Data::DatasetRows
+            )
+          }
+        end
+
         class DatasetID < Braintrust::BaseModel
           sig { returns(String) }
           def dataset_id
@@ -488,22 +498,24 @@ module Braintrust
           def to_hash
           end
         end
-
-        class << self
-          sig do
-            override
-              .returns(
-                [Braintrust::Models::EvalCreateParams::Data::DatasetID, Braintrust::Models::EvalCreateParams::Data::ProjectDatasetName, Braintrust::Models::EvalCreateParams::Data::DatasetRows]
-              )
-          end
-          def variants
-          end
-        end
       end
 
       # The function to evaluate
       class Score < Braintrust::Union
         abstract!
+
+        Variants = type_template(:out) do
+          {
+            fixed: T.any(
+              Braintrust::Models::EvalCreateParams::Score::FunctionID,
+              Braintrust::Models::EvalCreateParams::Score::ProjectSlug,
+              Braintrust::Models::EvalCreateParams::Score::GlobalFunction,
+              Braintrust::Models::EvalCreateParams::Score::PromptSessionID,
+              Braintrust::Models::EvalCreateParams::Score::InlineCode,
+              Braintrust::Models::EvalCreateParams::Score::InlinePrompt
+            )
+          }
+        end
 
         class FunctionID < Braintrust::BaseModel
           # The ID of the function
@@ -719,14 +731,10 @@ module Braintrust
             class Runtime < Braintrust::Enum
               abstract!
 
+              Value = type_template(:out) { {fixed: Symbol} }
+
               NODE = :node
               PYTHON = :python
-
-              class << self
-                sig { override.returns(T::Array[Symbol]) }
-                def values
-                end
-              end
             end
           end
         end
@@ -762,22 +770,24 @@ module Braintrust
           def to_hash
           end
         end
-
-        class << self
-          sig do
-            override
-              .returns(
-                [Braintrust::Models::EvalCreateParams::Score::FunctionID, Braintrust::Models::EvalCreateParams::Score::ProjectSlug, Braintrust::Models::EvalCreateParams::Score::GlobalFunction, Braintrust::Models::EvalCreateParams::Score::PromptSessionID, Braintrust::Models::EvalCreateParams::Score::InlineCode, Braintrust::Models::EvalCreateParams::Score::InlinePrompt]
-              )
-          end
-          def variants
-          end
-        end
       end
 
       # The function to evaluate
       class Task < Braintrust::Union
         abstract!
+
+        Variants = type_template(:out) do
+          {
+            fixed: T.any(
+              Braintrust::Models::EvalCreateParams::Task::FunctionID,
+              Braintrust::Models::EvalCreateParams::Task::ProjectSlug,
+              Braintrust::Models::EvalCreateParams::Task::GlobalFunction,
+              Braintrust::Models::EvalCreateParams::Task::PromptSessionID,
+              Braintrust::Models::EvalCreateParams::Task::InlineCode,
+              Braintrust::Models::EvalCreateParams::Task::InlinePrompt
+            )
+          }
+        end
 
         class FunctionID < Braintrust::BaseModel
           # The ID of the function
@@ -993,14 +1003,10 @@ module Braintrust
             class Runtime < Braintrust::Enum
               abstract!
 
+              Value = type_template(:out) { {fixed: Symbol} }
+
               NODE = :node
               PYTHON = :python
-
-              class << self
-                sig { override.returns(T::Array[Symbol]) }
-                def values
-                end
-              end
             end
           end
         end
@@ -1036,17 +1042,6 @@ module Braintrust
           def to_hash
           end
         end
-
-        class << self
-          sig do
-            override
-              .returns(
-                [Braintrust::Models::EvalCreateParams::Task::FunctionID, Braintrust::Models::EvalCreateParams::Task::ProjectSlug, Braintrust::Models::EvalCreateParams::Task::GlobalFunction, Braintrust::Models::EvalCreateParams::Task::PromptSessionID, Braintrust::Models::EvalCreateParams::Task::InlineCode, Braintrust::Models::EvalCreateParams::Task::InlinePrompt]
-              )
-          end
-          def variants
-          end
-        end
       end
 
       class GitMetadataSettings < Braintrust::BaseModel
@@ -1079,19 +1074,17 @@ module Braintrust
         class Collect < Braintrust::Enum
           abstract!
 
+          Value = type_template(:out) { {fixed: Symbol} }
+
           ALL = :all
           NONE = :none
           SOME = :some
-
-          class << self
-            sig { override.returns(T::Array[Symbol]) }
-            def values
-            end
-          end
         end
 
         class Field < Braintrust::Enum
           abstract!
+
+          Value = type_template(:out) { {fixed: Symbol} }
 
           COMMIT = :commit
           BRANCH = :branch
@@ -1102,18 +1095,14 @@ module Braintrust
           COMMIT_MESSAGE = :commit_message
           COMMIT_TIME = :commit_time
           GIT_DIFF = :git_diff
-
-          class << self
-            sig { override.returns(T::Array[Symbol]) }
-            def values
-            end
-          end
         end
       end
 
       # Options for tracing the evaluation
       class Parent < Braintrust::Union
         abstract!
+
+        Variants = type_template(:out) { {fixed: T.any(Braintrust::Models::EvalCreateParams::Parent::SpanParentStruct, String)} }
 
         class SpanParentStruct < Braintrust::BaseModel
           # The id of the container object you are logging to
@@ -1187,15 +1176,11 @@ module Braintrust
           class ObjectType < Braintrust::Enum
             abstract!
 
+            Value = type_template(:out) { {fixed: Symbol} }
+
             PROJECT_LOGS = :project_logs
             EXPERIMENT = :experiment
             PLAYGROUND_LOGS = :playground_logs
-
-            class << self
-              sig { override.returns(T::Array[Symbol]) }
-              def values
-              end
-            end
           end
 
           class RowIDs < Braintrust::BaseModel
@@ -1234,12 +1219,6 @@ module Braintrust
             sig { override.returns({id: String, root_span_id: String, span_id: String}) }
             def to_hash
             end
-          end
-        end
-
-        class << self
-          sig { override.returns([Braintrust::Models::EvalCreateParams::Parent::SpanParentStruct, String]) }
-          def variants
           end
         end
       end

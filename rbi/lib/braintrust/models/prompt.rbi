@@ -187,28 +187,20 @@ module Braintrust
       class LogID < Braintrust::Enum
         abstract!
 
-        P = :p
+        Value = type_template(:out) { {fixed: Symbol} }
 
-        class << self
-          sig { override.returns(T::Array[Symbol]) }
-          def values
-          end
-        end
+        P = :p
       end
 
       class FunctionType < Braintrust::Enum
         abstract!
 
-        LLM = T.let(:llm, T.nilable(Symbol))
-        SCORER = T.let(:scorer, T.nilable(Symbol))
-        TASK = T.let(:task, T.nilable(Symbol))
-        TOOL = T.let(:tool, T.nilable(Symbol))
+        Value = type_template(:out) { {fixed: Symbol} }
 
-        class << self
-          sig { override.returns(T::Array[Symbol]) }
-          def values
-          end
-        end
+        LLM = :llm
+        SCORER = :scorer
+        TASK = :task
+        TOOL = :tool
       end
     end
   end

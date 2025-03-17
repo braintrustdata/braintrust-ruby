@@ -141,13 +141,9 @@ module Braintrust
       class Email < Braintrust::Union
         abstract!
 
-        StringArray = T.type_alias { T::Array[String] }
+        Variants = type_template(:out) { {fixed: T.any(String, T::Array[String])} }
 
-        class << self
-          sig { override.returns([String, T::Array[String]]) }
-          def variants
-          end
-        end
+        StringArray = T.type_alias { T::Array[String] }
       end
 
       # Family name of the user to search for. You may pass the param multiple times to
@@ -155,13 +151,9 @@ module Braintrust
       class FamilyName < Braintrust::Union
         abstract!
 
-        StringArray = T.type_alias { T::Array[String] }
+        Variants = type_template(:out) { {fixed: T.any(String, T::Array[String])} }
 
-        class << self
-          sig { override.returns([String, T::Array[String]]) }
-          def variants
-          end
-        end
+        StringArray = T.type_alias { T::Array[String] }
       end
 
       # Given name of the user to search for. You may pass the param multiple times to
@@ -169,13 +161,9 @@ module Braintrust
       class GivenName < Braintrust::Union
         abstract!
 
-        StringArray = T.type_alias { T::Array[String] }
+        Variants = type_template(:out) { {fixed: T.any(String, T::Array[String])} }
 
-        class << self
-          sig { override.returns([String, T::Array[String]]) }
-          def variants
-          end
-        end
+        StringArray = T.type_alias { T::Array[String] }
       end
 
       # Filter search results to a particular set of object IDs. To specify a list of
@@ -183,13 +171,9 @@ module Braintrust
       class IDs < Braintrust::Union
         abstract!
 
-        StringArray = T.type_alias { T::Array[String] }
+        Variants = type_template(:out) { {fixed: T.any(String, T::Array[String])} }
 
-        class << self
-          sig { override.returns([String, T::Array[String]]) }
-          def variants
-          end
-        end
+        StringArray = T.type_alias { T::Array[String] }
       end
     end
   end
