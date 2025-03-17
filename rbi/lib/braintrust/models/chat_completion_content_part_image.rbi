@@ -61,28 +61,20 @@ module Braintrust
         class Detail < Braintrust::Enum
           abstract!
 
+          Value = type_template(:out) { {fixed: Symbol} }
+
           AUTO = :auto
           LOW = :low
           HIGH = :high
-
-          class << self
-            sig { override.returns(T::Array[Symbol]) }
-            def values
-            end
-          end
         end
       end
 
       class Type < Braintrust::Enum
         abstract!
 
-        IMAGE_URL = :image_url
+        Value = type_template(:out) { {fixed: Symbol} }
 
-        class << self
-          sig { override.returns(T::Array[Symbol]) }
-          def values
-          end
-        end
+        IMAGE_URL = :image_url
       end
     end
   end

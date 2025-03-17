@@ -6,15 +6,11 @@ module Braintrust
     class EnvVarObjectType < Braintrust::Enum
       abstract!
 
+      Value = type_template(:out) { {fixed: Symbol} }
+
       ORGANIZATION = :organization
       PROJECT = :project
       FUNCTION = :function
-
-      class << self
-        sig { override.returns(T::Array[Symbol]) }
-        def values
-        end
-      end
     end
   end
 end

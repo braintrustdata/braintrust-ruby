@@ -73,13 +73,9 @@ module Braintrust
       class Type < Braintrust::Enum
         abstract!
 
-        FUNCTION = :function
+        Value = type_template(:out) { {fixed: Symbol} }
 
-        class << self
-          sig { override.returns(T::Array[Symbol]) }
-          def values
-          end
-        end
+        FUNCTION = :function
       end
     end
   end

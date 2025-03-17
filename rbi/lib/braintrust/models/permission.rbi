@@ -9,6 +9,8 @@ module Braintrust
     class Permission < Braintrust::Enum
       abstract!
 
+      Value = type_template(:out) { {fixed: Symbol} }
+
       CREATE = :create
       READ = :read
       UPDATE = :update
@@ -17,12 +19,6 @@ module Braintrust
       READ_ACLS = :read_acls
       UPDATE_ACLS = :update_acls
       DELETE_ACLS = :delete_acls
-
-      class << self
-        sig { override.returns(T::Array[Symbol]) }
-        def values
-        end
-      end
     end
   end
 end

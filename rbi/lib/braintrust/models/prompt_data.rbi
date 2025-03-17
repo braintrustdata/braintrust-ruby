@@ -226,18 +226,20 @@ module Braintrust
         class Type < Braintrust::Enum
           abstract!
 
-          LLM_CLASSIFIER = :llm_classifier
+          Value = type_template(:out) { {fixed: Symbol} }
 
-          class << self
-            sig { override.returns(T::Array[Symbol]) }
-            def values
-            end
-          end
+          LLM_CLASSIFIER = :llm_classifier
         end
       end
 
       class Prompt < Braintrust::Union
         abstract!
+
+        Variants = type_template(:out) do
+          {
+            fixed: T.any(Braintrust::Models::PromptData::Prompt::Completion, Braintrust::Models::PromptData::Prompt::Chat)
+          }
+        end
 
         class Completion < Braintrust::BaseModel
           sig { returns(String) }
@@ -267,13 +269,9 @@ module Braintrust
           class Type < Braintrust::Enum
             abstract!
 
-            COMPLETION = :completion
+            Value = type_template(:out) { {fixed: Symbol} }
 
-            class << self
-              sig { override.returns(T::Array[Symbol]) }
-              def values
-              end
-            end
+            COMPLETION = :completion
           end
         end
 
@@ -385,6 +383,19 @@ module Braintrust
           class Message < Braintrust::Union
             abstract!
 
+            Variants = type_template(:out) do
+              {
+                fixed: T.any(
+                  Braintrust::Models::PromptData::Prompt::Chat::Message::System,
+                  Braintrust::Models::PromptData::Prompt::Chat::Message::User,
+                  Braintrust::Models::PromptData::Prompt::Chat::Message::Assistant,
+                  Braintrust::Models::PromptData::Prompt::Chat::Message::Tool,
+                  Braintrust::Models::PromptData::Prompt::Chat::Message::Function,
+                  Braintrust::Models::PromptData::Prompt::Chat::Message::Fallback
+                )
+              }
+            end
+
             class System < Braintrust::BaseModel
               sig { returns(Symbol) }
               def role
@@ -421,13 +432,9 @@ module Braintrust
               class Role < Braintrust::Enum
                 abstract!
 
-                SYSTEM = :system
+                Value = type_template(:out) { {fixed: Symbol} }
 
-                class << self
-                  sig { override.returns(T::Array[Symbol]) }
-                  def values
-                  end
-                end
+                SYSTEM = :system
               end
             end
 
@@ -536,17 +543,27 @@ module Braintrust
               class Role < Braintrust::Enum
                 abstract!
 
-                USER = :user
+                Value = type_template(:out) { {fixed: Symbol} }
 
-                class << self
-                  sig { override.returns(T::Array[Symbol]) }
-                  def values
-                  end
-                end
+                USER = :user
               end
 
               class Content < Braintrust::Union
                 abstract!
+
+                Variants = type_template(:out) do
+                  {
+                    fixed: T.any(
+                      String,
+                      T::Array[
+                      T.any(
+                        Braintrust::Models::ChatCompletionContentPartText,
+                        Braintrust::Models::ChatCompletionContentPartImage
+                      )
+                      ]
+                    )
+                  }
+                end
 
                 Nested2DArray = T.type_alias do
                   T::Array[
@@ -560,34 +577,13 @@ module Braintrust
                 class Array < Braintrust::Union
                   abstract!
 
-                  class << self
-                    sig do
-                      override
-                        .returns(
-                          [Braintrust::Models::ChatCompletionContentPartText, Braintrust::Models::ChatCompletionContentPartImage]
-                        )
-                    end
-                    def variants
-                    end
-                  end
-                end
-
-                class << self
-                  sig do
-                    override
-                      .returns(
-                        [
-                          String,
-                          T::Array[
-                                                  T.any(
-                                                    Braintrust::Models::ChatCompletionContentPartText,
-                                                    Braintrust::Models::ChatCompletionContentPartImage
-                                                  )
-                                                  ]
-                        ]
+                  Variants = type_template(:out) do
+                    {
+                      fixed: T.any(
+                        Braintrust::Models::ChatCompletionContentPartText,
+                        Braintrust::Models::ChatCompletionContentPartImage
                       )
-                  end
-                  def variants
+                    }
                   end
                 end
               end
@@ -671,13 +667,9 @@ module Braintrust
               class Role < Braintrust::Enum
                 abstract!
 
-                ASSISTANT = :assistant
+                Value = type_template(:out) { {fixed: Symbol} }
 
-                class << self
-                  sig { override.returns(T::Array[Symbol]) }
-                  def values
-                  end
-                end
+                ASSISTANT = :assistant
               end
 
               class FunctionCall < Braintrust::BaseModel
@@ -743,13 +735,9 @@ module Braintrust
               class Role < Braintrust::Enum
                 abstract!
 
-                TOOL = :tool
+                Value = type_template(:out) { {fixed: Symbol} }
 
-                class << self
-                  sig { override.returns(T::Array[Symbol]) }
-                  def values
-                  end
-                end
+                TOOL = :tool
               end
             end
 
@@ -789,13 +777,9 @@ module Braintrust
               class Role < Braintrust::Enum
                 abstract!
 
-                FUNCTION = :function
+                Value = type_template(:out) { {fixed: Symbol} }
 
-                class << self
-                  sig { override.returns(T::Array[Symbol]) }
-                  def values
-                  end
-                end
+                FUNCTION = :function
               end
             end
 
@@ -827,24 +811,9 @@ module Braintrust
               class Role < Braintrust::Enum
                 abstract!
 
+                Value = type_template(:out) { {fixed: Symbol} }
+
                 MODEL = :model
-
-                class << self
-                  sig { override.returns(T::Array[Symbol]) }
-                  def values
-                  end
-                end
-              end
-            end
-
-            class << self
-              sig do
-                override
-                  .returns(
-                    [Braintrust::Models::PromptData::Prompt::Chat::Message::System, Braintrust::Models::PromptData::Prompt::Chat::Message::User, Braintrust::Models::PromptData::Prompt::Chat::Message::Assistant, Braintrust::Models::PromptData::Prompt::Chat::Message::Tool, Braintrust::Models::PromptData::Prompt::Chat::Message::Function, Braintrust::Models::PromptData::Prompt::Chat::Message::Fallback]
-                  )
-              end
-              def variants
               end
             end
           end
@@ -852,30 +821,24 @@ module Braintrust
           class Type < Braintrust::Enum
             abstract!
 
+            Value = type_template(:out) { {fixed: Symbol} }
+
             CHAT = :chat
-
-            class << self
-              sig { override.returns(T::Array[Symbol]) }
-              def values
-              end
-            end
-          end
-        end
-
-        class << self
-          sig do
-            override
-              .returns(
-                [Braintrust::Models::PromptData::Prompt::Completion, Braintrust::Models::PromptData::Prompt::Chat]
-              )
-          end
-          def variants
           end
         end
       end
 
       class ToolFunction < Braintrust::Union
         abstract!
+
+        Variants = type_template(:out) do
+          {
+            fixed: T.any(
+              Braintrust::Models::PromptData::ToolFunction::Function,
+              Braintrust::Models::PromptData::ToolFunction::Global
+            )
+          }
+        end
 
         class Function < Braintrust::BaseModel
           sig { returns(String) }
@@ -905,13 +868,9 @@ module Braintrust
           class Type < Braintrust::Enum
             abstract!
 
-            FUNCTION = :function
+            Value = type_template(:out) { {fixed: Symbol} }
 
-            class << self
-              sig { override.returns(T::Array[Symbol]) }
-              def values
-              end
-            end
+            FUNCTION = :function
           end
         end
 
@@ -943,24 +902,9 @@ module Braintrust
           class Type < Braintrust::Enum
             abstract!
 
+            Value = type_template(:out) { {fixed: Symbol} }
+
             GLOBAL = :global
-
-            class << self
-              sig { override.returns(T::Array[Symbol]) }
-              def values
-              end
-            end
-          end
-        end
-
-        class << self
-          sig do
-            override
-              .returns(
-                [Braintrust::Models::PromptData::ToolFunction::Function, Braintrust::Models::PromptData::ToolFunction::Global]
-              )
-          end
-          def variants
           end
         end
       end

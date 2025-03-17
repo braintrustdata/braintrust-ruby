@@ -114,15 +114,11 @@ module Braintrust
       class Source < Braintrust::Enum
         abstract!
 
-        APP = T.let(:app, T.nilable(Symbol))
-        API = T.let(:api, T.nilable(Symbol))
-        EXTERNAL = T.let(:external, T.nilable(Symbol))
+        Value = type_template(:out) { {fixed: Symbol} }
 
-        class << self
-          sig { override.returns(T::Array[Symbol]) }
-          def values
-          end
-        end
+        APP = :app
+        API = :api
+        EXTERNAL = :external
       end
     end
   end
