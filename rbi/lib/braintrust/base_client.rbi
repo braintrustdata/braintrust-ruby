@@ -1,6 +1,7 @@
 # typed: strong
 
 module Braintrust
+  # @api private
   class BaseClient
     abstract!
 
