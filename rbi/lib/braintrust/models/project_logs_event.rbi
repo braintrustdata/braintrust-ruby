@@ -331,13 +331,9 @@ module Braintrust
       class LogID < Braintrust::Enum
         abstract!
 
-        G = :g
+        Value = type_template(:out) { {fixed: Symbol} }
 
-        class << self
-          sig { override.returns(T::Array[Symbol]) }
-          def values
-          end
-        end
+        G = :g
       end
 
       class Context < Braintrust::BaseModel

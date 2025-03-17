@@ -104,6 +104,15 @@ module Braintrust
       class Scorer < Braintrust::Union
         abstract!
 
+        Variants = type_template(:out) do
+          {
+            fixed: T.any(
+              Braintrust::Models::OnlineScoreConfig::Scorer::Function,
+              Braintrust::Models::OnlineScoreConfig::Scorer::Global
+            )
+          }
+        end
+
         class Function < Braintrust::BaseModel
           sig { returns(String) }
           def id
@@ -132,13 +141,9 @@ module Braintrust
           class Type < Braintrust::Enum
             abstract!
 
-            FUNCTION = :function
+            Value = type_template(:out) { {fixed: Symbol} }
 
-            class << self
-              sig { override.returns(T::Array[Symbol]) }
-              def values
-              end
-            end
+            FUNCTION = :function
           end
         end
 
@@ -170,24 +175,9 @@ module Braintrust
           class Type < Braintrust::Enum
             abstract!
 
+            Value = type_template(:out) { {fixed: Symbol} }
+
             GLOBAL = :global
-
-            class << self
-              sig { override.returns(T::Array[Symbol]) }
-              def values
-              end
-            end
-          end
-        end
-
-        class << self
-          sig do
-            override
-              .returns(
-                [Braintrust::Models::OnlineScoreConfig::Scorer::Function, Braintrust::Models::OnlineScoreConfig::Scorer::Global]
-              )
-          end
-          def variants
           end
         end
       end

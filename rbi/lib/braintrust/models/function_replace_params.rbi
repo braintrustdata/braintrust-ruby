@@ -185,6 +185,16 @@ module Braintrust
       class FunctionData < Braintrust::Union
         abstract!
 
+        Variants = type_template(:out) do
+          {
+            fixed: T.any(
+              Braintrust::Models::FunctionReplaceParams::FunctionData::Prompt,
+              Braintrust::Models::FunctionReplaceParams::FunctionData::Code,
+              Braintrust::Models::FunctionReplaceParams::FunctionData::Global
+            )
+          }
+        end
+
         class Prompt < Braintrust::BaseModel
           sig { returns(Symbol) }
           def type
@@ -205,13 +215,9 @@ module Braintrust
           class Type < Braintrust::Enum
             abstract!
 
-            PROMPT = :prompt
+            Value = type_template(:out) { {fixed: Symbol} }
 
-            class << self
-              sig { override.returns(T::Array[Symbol]) }
-              def values
-              end
-            end
+            PROMPT = :prompt
           end
         end
 
@@ -283,6 +289,15 @@ module Braintrust
           class Data < Braintrust::Union
             abstract!
 
+            Variants = type_template(:out) do
+              {
+                fixed: T.any(
+                  Braintrust::Models::FunctionReplaceParams::FunctionData::Code::Data::Bundle,
+                  Braintrust::Models::FunctionReplaceParams::FunctionData::Code::Data::Inline
+                )
+              }
+            end
+
             class Bundle < Braintrust::Models::CodeBundle
               sig { returns(Symbol) }
               def type
@@ -303,13 +318,9 @@ module Braintrust
               class Type < Braintrust::Enum
                 abstract!
 
-                BUNDLE = :bundle
+                Value = type_template(:out) { {fixed: Symbol} }
 
-                class << self
-                  sig { override.returns(T::Array[Symbol]) }
-                  def values
-                  end
-                end
+                BUNDLE = :bundle
               end
             end
 
@@ -393,38 +404,19 @@ module Braintrust
                 class Runtime < Braintrust::Enum
                   abstract!
 
+                  Value = type_template(:out) { {fixed: Symbol} }
+
                   NODE = :node
                   PYTHON = :python
-
-                  class << self
-                    sig { override.returns(T::Array[Symbol]) }
-                    def values
-                    end
-                  end
                 end
               end
 
               class Type < Braintrust::Enum
                 abstract!
 
+                Value = type_template(:out) { {fixed: Symbol} }
+
                 INLINE = :inline
-
-                class << self
-                  sig { override.returns(T::Array[Symbol]) }
-                  def values
-                  end
-                end
-              end
-            end
-
-            class << self
-              sig do
-                override
-                  .returns(
-                    [Braintrust::Models::FunctionReplaceParams::FunctionData::Code::Data::Bundle, Braintrust::Models::FunctionReplaceParams::FunctionData::Code::Data::Inline]
-                  )
-              end
-              def variants
               end
             end
           end
@@ -432,13 +424,9 @@ module Braintrust
           class Type < Braintrust::Enum
             abstract!
 
-            CODE = :code
+            Value = type_template(:out) { {fixed: Symbol} }
 
-            class << self
-              sig { override.returns(T::Array[Symbol]) }
-              def values
-              end
-            end
+            CODE = :code
           end
         end
 
@@ -470,24 +458,9 @@ module Braintrust
           class Type < Braintrust::Enum
             abstract!
 
+            Value = type_template(:out) { {fixed: Symbol} }
+
             GLOBAL = :global
-
-            class << self
-              sig { override.returns(T::Array[Symbol]) }
-              def values
-              end
-            end
-          end
-        end
-
-        class << self
-          sig do
-            override
-              .returns(
-                [Braintrust::Models::FunctionReplaceParams::FunctionData::Prompt, Braintrust::Models::FunctionReplaceParams::FunctionData::Code, Braintrust::Models::FunctionReplaceParams::FunctionData::Global]
-              )
-          end
-          def variants
           end
         end
       end
@@ -522,16 +495,12 @@ module Braintrust
       class FunctionType < Braintrust::Enum
         abstract!
 
-        LLM = T.let(:llm, T.nilable(Symbol))
-        SCORER = T.let(:scorer, T.nilable(Symbol))
-        TASK = T.let(:task, T.nilable(Symbol))
-        TOOL = T.let(:tool, T.nilable(Symbol))
+        Value = type_template(:out) { {fixed: Symbol} }
 
-        class << self
-          sig { override.returns(T::Array[Symbol]) }
-          def values
-          end
-        end
+        LLM = :llm
+        SCORER = :scorer
+        TASK = :task
+        TOOL = :tool
       end
 
       class Origin < Braintrust::BaseModel

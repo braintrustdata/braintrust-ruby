@@ -97,6 +97,18 @@ module Braintrust
       class Params < Braintrust::Union
         abstract!
 
+        Variants = type_template(:out) do
+          {
+            fixed: T.any(
+              Braintrust::Models::PromptOptions::Params::OpenAIModelParams,
+              Braintrust::Models::PromptOptions::Params::AnthropicModelParams,
+              Braintrust::Models::PromptOptions::Params::GoogleModelParams,
+              Braintrust::Models::PromptOptions::Params::WindowAIModelParams,
+              Braintrust::Models::PromptOptions::Params::JsCompletionParams
+            )
+          }
+        end
+
         class OpenAIModelParams < Braintrust::BaseModel
           sig { returns(T.nilable(Float)) }
           def frequency_penalty
@@ -329,17 +341,17 @@ module Braintrust
           class FunctionCall < Braintrust::Union
             abstract!
 
+            Variants = type_template(:out) do
+              {fixed: T.any(Symbol, Braintrust::Models::PromptOptions::Params::OpenAIModelParams::FunctionCall::Function)}
+            end
+
             class UnionMember0 < Braintrust::Enum
               abstract!
 
+              Value = type_template(:out) { {fixed: Symbol} }
+
               AUTO = :auto
               NONE = :none
-
-              class << self
-                sig { override.returns(T::Array[Symbol]) }
-                def values
-                end
-              end
             end
 
             class Function < Braintrust::BaseModel
@@ -359,33 +371,30 @@ module Braintrust
               def to_hash
               end
             end
-
-            class << self
-              sig do
-                override
-                  .returns([Symbol, Braintrust::Models::PromptOptions::Params::OpenAIModelParams::FunctionCall::Function])
-              end
-              def variants
-              end
-            end
           end
 
           class ReasoningEffort < Braintrust::Enum
             abstract!
 
+            Value = type_template(:out) { {fixed: Symbol} }
+
             LOW = :low
             MEDIUM = :medium
             HIGH = :high
-
-            class << self
-              sig { override.returns(T::Array[Symbol]) }
-              def values
-              end
-            end
           end
 
           class ResponseFormat < Braintrust::Union
             abstract!
+
+            Variants = type_template(:out) do
+              {
+                fixed: T.any(
+                  Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ResponseFormat::JsonObject,
+                  Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ResponseFormat::JsonSchema,
+                  Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ResponseFormat::Text
+                )
+              }
+            end
 
             class JsonObject < Braintrust::BaseModel
               sig { returns(Symbol) }
@@ -407,13 +416,9 @@ module Braintrust
               class Type < Braintrust::Enum
                 abstract!
 
-                JSON_OBJECT = :json_object
+                Value = type_template(:out) { {fixed: Symbol} }
 
-                class << self
-                  sig { override.returns(T::Array[Symbol]) }
-                  def values
-                  end
-                end
+                JSON_OBJECT = :json_object
               end
             end
 
@@ -532,26 +537,20 @@ module Braintrust
                 class Schema < Braintrust::Union
                   abstract!
 
-                  ObjectMap = T.type_alias { T::Hash[Symbol, T.nilable(T.anything)] }
-
-                  class << self
-                    sig { override.returns([T::Hash[Symbol, T.nilable(T.anything)], String]) }
-                    def variants
-                    end
+                  Variants = type_template(:out) do
+                    {fixed: T.any(T::Hash[Symbol, T.nilable(T.anything)], String)}
                   end
+
+                  ObjectMap = T.type_alias { T::Hash[Symbol, T.nilable(T.anything)] }
                 end
               end
 
               class Type < Braintrust::Enum
                 abstract!
 
-                JSON_SCHEMA = :json_schema
+                Value = type_template(:out) { {fixed: Symbol} }
 
-                class << self
-                  sig { override.returns(T::Array[Symbol]) }
-                  def values
-                  end
-                end
+                JSON_SCHEMA = :json_schema
               end
             end
 
@@ -575,24 +574,9 @@ module Braintrust
               class Type < Braintrust::Enum
                 abstract!
 
+                Value = type_template(:out) { {fixed: Symbol} }
+
                 TEXT = :text
-
-                class << self
-                  sig { override.returns(T::Array[Symbol]) }
-                  def values
-                  end
-                end
-              end
-            end
-
-            class << self
-              sig do
-                override
-                  .returns(
-                    [Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ResponseFormat::JsonObject, Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ResponseFormat::JsonSchema, Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ResponseFormat::Text]
-                  )
-              end
-              def variants
               end
             end
           end
@@ -600,18 +584,16 @@ module Braintrust
           class ToolChoice < Braintrust::Union
             abstract!
 
+            Variants = type_template(:out) { {fixed: T.any(Symbol, Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ToolChoice::Function)} }
+
             class UnionMember0 < Braintrust::Enum
               abstract!
+
+              Value = type_template(:out) { {fixed: Symbol} }
 
               AUTO = :auto
               NONE = :none
               REQUIRED = :required
-
-              class << self
-                sig { override.returns(T::Array[Symbol]) }
-                def values
-                end
-              end
             end
 
             class Function < Braintrust::BaseModel
@@ -677,22 +659,9 @@ module Braintrust
               class Type < Braintrust::Enum
                 abstract!
 
+                Value = type_template(:out) { {fixed: Symbol} }
+
                 FUNCTION = :function
-
-                class << self
-                  sig { override.returns(T::Array[Symbol]) }
-                  def values
-                  end
-                end
-              end
-            end
-
-            class << self
-              sig do
-                override
-                  .returns([Symbol, Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ToolChoice::Function])
-              end
-              def variants
               end
             end
           end
@@ -914,17 +883,6 @@ module Braintrust
 
           sig { override.returns({use_cache: T::Boolean}) }
           def to_hash
-          end
-        end
-
-        class << self
-          sig do
-            override
-              .returns(
-                [Braintrust::Models::PromptOptions::Params::OpenAIModelParams, Braintrust::Models::PromptOptions::Params::AnthropicModelParams, Braintrust::Models::PromptOptions::Params::GoogleModelParams, Braintrust::Models::PromptOptions::Params::WindowAIModelParams, Braintrust::Models::PromptOptions::Params::JsCompletionParams]
-              )
-          end
-          def variants
           end
         end
       end
