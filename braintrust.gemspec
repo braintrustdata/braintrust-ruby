@@ -12,7 +12,7 @@ Gem::Specification.new do |s|
   s.extra_rdoc_files = ["README.md"]
   s.required_ruby_version = ">= 3.0.0"
   s.add_dependency "connection_pool"
-  s.homepage = "https://gemdocs.org/gems/braintrust/latest"
+  s.homepage = "https://gemdocs.org/gems/braintrust"
   s.metadata["homepage_uri"] = s.homepage
   s.metadata["source_code_uri"] = "https://github.com/braintrustdata/braintrust-ruby"
   s.metadata["rubygems_mfa_required"] = "false"
