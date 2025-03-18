@@ -6,7 +6,7 @@ It is generated with [Stainless](https://www.stainless.com/).
 
 ## Documentation
 
-Documentation for the most recent release of this gem can be found [on RubyDoc](https://gemdocs.org/gems/braintrust/latest).
+Documentation for released of this gem can be found [on RubyDoc](https://gemdocs.org/gems/braintrust).
 
 The underlying REST API documentation can be found on [www.braintrustdata.com](https://www.braintrustdata.com/docs/api/spec).
 
@@ -135,6 +135,8 @@ This library is written with [Sorbet type definitions](https://sorbet.org/docs/r
 What this means is that while you can use Sorbet to type check your code statically, and benefit from the [Sorbet Language Server](https://sorbet.org/docs/lsp) in your editor, there is no runtime type checking and execution overhead from Sorbet itself.
 
 Due to limitations with the Sorbet type system, where a method otherwise can take an instance of `Braintrust::BaseModel` class, you will need to use the `**` splat operator to pass the arguments:
+
+Please follow Sorbet's [setup guides](https://sorbet.org/docs/adopting) for best experience.
 
 ```ruby
 model = ProjectCreateParams.new(name: "foobar")
