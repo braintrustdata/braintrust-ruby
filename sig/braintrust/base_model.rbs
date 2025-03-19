@@ -178,6 +178,8 @@ module Braintrust
     def self.known_fields: -> ::Hash[Symbol, (Braintrust::BaseModel::known_field
     & { type_fn: (^-> Braintrust::Converter::input) })]
 
+    def self.reverse_map: -> ::Hash[Symbol, Symbol]
+
     def self.fields: -> ::Hash[Symbol, (Braintrust::BaseModel::known_field
     & { type: Braintrust::Converter::input })]
 
