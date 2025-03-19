@@ -142,7 +142,11 @@ module Braintrust
               }
 
             class Bundle < Braintrust::Models::CodeBundle
-              attr_accessor type: Braintrust::Models::Function::FunctionData::Code::Data::Bundle::type_
+              def `type`: -> Braintrust::Models::Function::FunctionData::Code::Data::Bundle::type_
+
+              def type=: (
+                Braintrust::Models::Function::FunctionData::Code::Data::Bundle::type_ _
+              ) -> Braintrust::Models::Function::FunctionData::Code::Data::Bundle::type_
 
               def initialize:
                 (
