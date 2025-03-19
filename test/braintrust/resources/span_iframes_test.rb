@@ -4,11 +4,12 @@ require_relative "../test_helper"
 
 class Braintrust::Test::Resources::SpanIframesTest < Braintrust::Test::ResourceTest
   def test_create_required_params
-    response = @braintrust.span_iframes.create(
-      name: "name",
-      project_id: "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-      url: "url"
-    )
+    response =
+      @braintrust.span_iframes.create(
+        name: "name",
+        project_id: "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+        url: "url"
+      )
 
     assert_pattern do
       response => Braintrust::Models::SpanIFrame
@@ -123,11 +124,12 @@ class Braintrust::Test::Resources::SpanIframesTest < Braintrust::Test::ResourceT
   end
 
   def test_replace_required_params
-    response = @braintrust.span_iframes.replace(
-      name: "name",
-      project_id: "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-      url: "url"
-    )
+    response =
+      @braintrust.span_iframes.replace(
+        name: "name",
+        project_id: "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+        url: "url"
+      )
 
     assert_pattern do
       response => Braintrust::Models::SpanIFrame

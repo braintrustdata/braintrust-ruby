@@ -97,17 +97,18 @@ module Braintrust
       class Params < Braintrust::Union
         abstract!
 
-        Variants = type_template(:out) do
-          {
-            fixed: T.any(
-              Braintrust::Models::PromptOptions::Params::OpenAIModelParams,
-              Braintrust::Models::PromptOptions::Params::AnthropicModelParams,
-              Braintrust::Models::PromptOptions::Params::GoogleModelParams,
-              Braintrust::Models::PromptOptions::Params::WindowAIModelParams,
-              Braintrust::Models::PromptOptions::Params::JsCompletionParams
-            )
-          }
-        end
+        Variants =
+          type_template(:out) do
+            {
+              fixed: T.any(
+                Braintrust::Models::PromptOptions::Params::OpenAIModelParams,
+                Braintrust::Models::PromptOptions::Params::AnthropicModelParams,
+                Braintrust::Models::PromptOptions::Params::GoogleModelParams,
+                Braintrust::Models::PromptOptions::Params::WindowAIModelParams,
+                Braintrust::Models::PromptOptions::Params::JsCompletionParams
+              )
+            }
+          end
 
         class OpenAIModelParams < Braintrust::BaseModel
           sig { returns(T.nilable(Float)) }
@@ -341,9 +342,10 @@ module Braintrust
           class FunctionCall < Braintrust::Union
             abstract!
 
-            Variants = type_template(:out) do
-              {fixed: T.any(Symbol, Braintrust::Models::PromptOptions::Params::OpenAIModelParams::FunctionCall::Function)}
-            end
+            Variants =
+              type_template(:out) do
+                {fixed: T.any(Symbol, Braintrust::Models::PromptOptions::Params::OpenAIModelParams::FunctionCall::Function)}
+              end
 
             class UnionMember0 < Braintrust::Enum
               abstract!
@@ -386,15 +388,16 @@ module Braintrust
           class ResponseFormat < Braintrust::Union
             abstract!
 
-            Variants = type_template(:out) do
-              {
-                fixed: T.any(
-                  Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ResponseFormat::JsonObject,
-                  Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ResponseFormat::JsonSchema,
-                  Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ResponseFormat::Text
-                )
-              }
-            end
+            Variants =
+              type_template(:out) do
+                {
+                  fixed: T.any(
+                    Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ResponseFormat::JsonObject,
+                    Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ResponseFormat::JsonSchema,
+                    Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ResponseFormat::Text
+                  )
+                }
+              end
 
             class JsonObject < Braintrust::BaseModel
               sig { returns(Symbol) }
@@ -584,7 +587,8 @@ module Braintrust
           class ToolChoice < Braintrust::Union
             abstract!
 
-            Variants = type_template(:out) { {fixed: T.any(Symbol, Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ToolChoice::Function)} }
+            Variants =
+              type_template(:out) { {fixed: T.any(Symbol, Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ToolChoice::Function)} }
 
             class UnionMember0 < Braintrust::Enum
               abstract!

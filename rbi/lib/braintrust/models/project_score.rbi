@@ -171,9 +171,10 @@ module Braintrust
       class Categories < Braintrust::Union
         abstract!
 
-        Variants = type_template(:out) do
-          {fixed: T.any(T::Array[Braintrust::Models::ProjectScoreCategory], T::Hash[Symbol, Float], T::Array[String])}
-        end
+        Variants =
+          type_template(:out) do
+            {fixed: T.any(T::Array[Braintrust::Models::ProjectScoreCategory], T::Hash[Symbol, Float], T::Array[String])}
+          end
 
         ProjectScoreCategoryArray = T.type_alias { T::Array[Braintrust::Models::ProjectScoreCategory] }
 

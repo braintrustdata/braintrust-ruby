@@ -4,11 +4,8 @@ require_relative "../test_helper"
 
 class Braintrust::Test::Resources::PromptsTest < Braintrust::Test::ResourceTest
   def test_create_required_params
-    response = @braintrust.prompts.create(
-      name: "x",
-      project_id: "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-      slug: "x"
-    )
+    response =
+      @braintrust.prompts.create(name: "x", project_id: "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e", slug: "x")
 
     assert_pattern do
       response => Braintrust::Models::Prompt
@@ -143,11 +140,8 @@ class Braintrust::Test::Resources::PromptsTest < Braintrust::Test::ResourceTest
   end
 
   def test_replace_required_params
-    response = @braintrust.prompts.replace(
-      name: "x",
-      project_id: "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-      slug: "x"
-    )
+    response =
+      @braintrust.prompts.replace(name: "x", project_id: "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e", slug: "x")
 
     assert_pattern do
       response => Braintrust::Models::Prompt
