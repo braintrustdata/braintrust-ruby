@@ -40,6 +40,7 @@ module Braintrust
       }
     end
 
+    # from whatwg fetch spec
     MAX_REDIRECTS = 20
 
     PLATFORM_HEADERS = T::Hash[String, String]
