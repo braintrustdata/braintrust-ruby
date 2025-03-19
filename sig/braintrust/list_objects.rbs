@@ -3,5 +3,7 @@ module Braintrust
     include Braintrust::BasePage[Elem]
 
     attr_accessor objects: ::Array[Elem]?
+
+    def inspect: -> String
   end
 end
