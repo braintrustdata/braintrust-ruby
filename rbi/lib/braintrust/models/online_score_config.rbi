@@ -104,14 +104,15 @@ module Braintrust
       class Scorer < Braintrust::Union
         abstract!
 
-        Variants = type_template(:out) do
-          {
-            fixed: T.any(
-              Braintrust::Models::OnlineScoreConfig::Scorer::Function,
-              Braintrust::Models::OnlineScoreConfig::Scorer::Global
-            )
-          }
-        end
+        Variants =
+          type_template(:out) do
+            {
+              fixed: T.any(
+                Braintrust::Models::OnlineScoreConfig::Scorer::Function,
+                Braintrust::Models::OnlineScoreConfig::Scorer::Global
+              )
+            }
+          end
 
         class Function < Braintrust::BaseModel
           sig { returns(String) }

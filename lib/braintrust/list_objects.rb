@@ -17,7 +17,8 @@ module Braintrust
   #
   # @example
   # ```ruby
-  # projects = list_objects
+  # projects =
+  #   list_objects
   #   .to_enum
   #   .lazy
   #   .select { _1.object_id.even? }

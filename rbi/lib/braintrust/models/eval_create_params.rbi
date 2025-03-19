@@ -376,15 +376,16 @@ module Braintrust
       class Data < Braintrust::Union
         abstract!
 
-        Variants = type_template(:out) do
-          {
-            fixed: T.any(
-              Braintrust::Models::EvalCreateParams::Data::DatasetID,
-              Braintrust::Models::EvalCreateParams::Data::ProjectDatasetName,
-              Braintrust::Models::EvalCreateParams::Data::DatasetRows
-            )
-          }
-        end
+        Variants =
+          type_template(:out) do
+            {
+              fixed: T.any(
+                Braintrust::Models::EvalCreateParams::Data::DatasetID,
+                Braintrust::Models::EvalCreateParams::Data::ProjectDatasetName,
+                Braintrust::Models::EvalCreateParams::Data::DatasetRows
+              )
+            }
+          end
 
         class DatasetID < Braintrust::BaseModel
           sig { returns(String) }
@@ -504,18 +505,19 @@ module Braintrust
       class Score < Braintrust::Union
         abstract!
 
-        Variants = type_template(:out) do
-          {
-            fixed: T.any(
-              Braintrust::Models::EvalCreateParams::Score::FunctionID,
-              Braintrust::Models::EvalCreateParams::Score::ProjectSlug,
-              Braintrust::Models::EvalCreateParams::Score::GlobalFunction,
-              Braintrust::Models::EvalCreateParams::Score::PromptSessionID,
-              Braintrust::Models::EvalCreateParams::Score::InlineCode,
-              Braintrust::Models::EvalCreateParams::Score::InlinePrompt
-            )
-          }
-        end
+        Variants =
+          type_template(:out) do
+            {
+              fixed: T.any(
+                Braintrust::Models::EvalCreateParams::Score::FunctionID,
+                Braintrust::Models::EvalCreateParams::Score::ProjectSlug,
+                Braintrust::Models::EvalCreateParams::Score::GlobalFunction,
+                Braintrust::Models::EvalCreateParams::Score::PromptSessionID,
+                Braintrust::Models::EvalCreateParams::Score::InlineCode,
+                Braintrust::Models::EvalCreateParams::Score::InlinePrompt
+              )
+            }
+          end
 
         class FunctionID < Braintrust::BaseModel
           # The ID of the function
@@ -776,18 +778,19 @@ module Braintrust
       class Task < Braintrust::Union
         abstract!
 
-        Variants = type_template(:out) do
-          {
-            fixed: T.any(
-              Braintrust::Models::EvalCreateParams::Task::FunctionID,
-              Braintrust::Models::EvalCreateParams::Task::ProjectSlug,
-              Braintrust::Models::EvalCreateParams::Task::GlobalFunction,
-              Braintrust::Models::EvalCreateParams::Task::PromptSessionID,
-              Braintrust::Models::EvalCreateParams::Task::InlineCode,
-              Braintrust::Models::EvalCreateParams::Task::InlinePrompt
-            )
-          }
-        end
+        Variants =
+          type_template(:out) do
+            {
+              fixed: T.any(
+                Braintrust::Models::EvalCreateParams::Task::FunctionID,
+                Braintrust::Models::EvalCreateParams::Task::ProjectSlug,
+                Braintrust::Models::EvalCreateParams::Task::GlobalFunction,
+                Braintrust::Models::EvalCreateParams::Task::PromptSessionID,
+                Braintrust::Models::EvalCreateParams::Task::InlineCode,
+                Braintrust::Models::EvalCreateParams::Task::InlinePrompt
+              )
+            }
+          end
 
         class FunctionID < Braintrust::BaseModel
           # The ID of the function
@@ -1102,7 +1105,8 @@ module Braintrust
       class Parent < Braintrust::Union
         abstract!
 
-        Variants = type_template(:out) { {fixed: T.any(Braintrust::Models::EvalCreateParams::Parent::SpanParentStruct, String)} }
+        Variants =
+          type_template(:out) { {fixed: T.any(Braintrust::Models::EvalCreateParams::Parent::SpanParentStruct, String)} }
 
         class SpanParentStruct < Braintrust::BaseModel
           # The id of the container object you are logging to

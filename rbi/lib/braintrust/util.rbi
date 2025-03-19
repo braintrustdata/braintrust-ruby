@@ -123,15 +123,16 @@ module Braintrust
       end
     end
 
-    ParsedUriShape = T.type_alias do
-      {
-        scheme: T.nilable(String),
-        host: T.nilable(String),
-        port: T.nilable(Integer),
-        path: T.nilable(String),
-        query: T::Hash[String, T::Array[String]]
-      }
-    end
+    ParsedUriShape =
+      T.type_alias do
+        {
+          scheme: T.nilable(String),
+          host: T.nilable(String),
+          port: T.nilable(Integer),
+          path: T.nilable(String),
+          query: T::Hash[String, T::Array[String]]
+        }
+      end
 
     class << self
       # @api private
@@ -256,9 +257,10 @@ module Braintrust
       end
     end
 
-    ServerSentEvent = T.type_alias do
-      {event: T.nilable(String), data: T.nilable(String), id: T.nilable(String), retry: T.nilable(Integer)}
-    end
+    ServerSentEvent =
+      T.type_alias do
+        {event: T.nilable(String), data: T.nilable(String), id: T.nilable(String), retry: T.nilable(Integer)}
+      end
 
     class << self
       # @api private

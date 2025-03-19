@@ -144,10 +144,8 @@ class Braintrust::Test::Resources::ExperimentsTest < Braintrust::Test::ResourceT
   end
 
   def test_feedback_required_params
-    response = @braintrust.experiments.feedback(
-      "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-      feedback: [{id: "id"}]
-    )
+    response =
+      @braintrust.experiments.feedback("182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e", feedback: [{id: "id"}])
 
     assert_pattern do
       response => Braintrust::Models::FeedbackResponseSchema
