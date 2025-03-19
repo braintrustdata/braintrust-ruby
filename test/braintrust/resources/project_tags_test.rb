@@ -4,10 +4,8 @@ require_relative "../test_helper"
 
 class Braintrust::Test::Resources::ProjectTagsTest < Braintrust::Test::ResourceTest
   def test_create_required_params
-    response = @braintrust.project_tags.create(
-      name: "name",
-      project_id: "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e"
-    )
+    response =
+      @braintrust.project_tags.create(name: "name", project_id: "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e")
 
     assert_pattern do
       response => Braintrust::Models::ProjectTag
@@ -112,10 +110,8 @@ class Braintrust::Test::Resources::ProjectTagsTest < Braintrust::Test::ResourceT
   end
 
   def test_replace_required_params
-    response = @braintrust.project_tags.replace(
-      name: "name",
-      project_id: "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e"
-    )
+    response =
+      @braintrust.project_tags.replace(name: "name", project_id: "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e")
 
     assert_pattern do
       response => Braintrust::Models::ProjectTag

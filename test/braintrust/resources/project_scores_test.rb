@@ -4,11 +4,12 @@ require_relative "../test_helper"
 
 class Braintrust::Test::Resources::ProjectScoresTest < Braintrust::Test::ResourceTest
   def test_create_required_params
-    response = @braintrust.project_scores.create(
-      name: "name",
-      project_id: "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-      score_type: :slider
-    )
+    response =
+      @braintrust.project_scores.create(
+        name: "name",
+        project_id: "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+        score_type: :slider
+      )
 
     assert_pattern do
       response => Braintrust::Models::ProjectScore
@@ -128,11 +129,12 @@ class Braintrust::Test::Resources::ProjectScoresTest < Braintrust::Test::Resourc
   end
 
   def test_replace_required_params
-    response = @braintrust.project_scores.replace(
-      name: "name",
-      project_id: "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-      score_type: :slider
-    )
+    response =
+      @braintrust.project_scores.replace(
+        name: "name",
+        project_id: "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+        score_type: :slider
+      )
 
     assert_pattern do
       response => Braintrust::Models::ProjectScore

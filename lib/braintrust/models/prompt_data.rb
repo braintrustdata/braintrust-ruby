@@ -274,7 +274,8 @@ module Braintrust
 
               # @abstract
               class Content < Braintrust::Union
-                Nested2DArray = Braintrust::ArrayOf[union: -> { Braintrust::Models::PromptData::Prompt::Chat::Message::User::Content::Array }]
+                Nested2DArray =
+                  Braintrust::ArrayOf[union: -> { Braintrust::Models::PromptData::Prompt::Chat::Message::User::Content::Array }]
 
                 variant String
 

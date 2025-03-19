@@ -4,12 +4,13 @@ require_relative "../test_helper"
 
 class Braintrust::Test::Resources::EvalsTest < Braintrust::Test::ResourceTest
   def test_create_required_params
-    response = @braintrust.evals.create(
-      data: {dataset_id: "dataset_id"},
-      project_id: "project_id",
-      scores: [{function_id: "function_id"}],
-      task: {function_id: "function_id"}
-    )
+    response =
+      @braintrust.evals.create(
+        data: {dataset_id: "dataset_id"},
+        project_id: "project_id",
+        scores: [{function_id: "function_id"}],
+        task: {function_id: "function_id"}
+      )
 
     assert_pattern do
       response => Braintrust::Models::SummarizeExperimentResponse

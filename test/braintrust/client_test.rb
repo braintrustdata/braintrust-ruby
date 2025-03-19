@@ -56,11 +56,8 @@ class BraintrustTest < Minitest::Test
   end
 
   def test_client_given_request_default_retry_attempts
-    braintrust = Braintrust::Client.new(
-      base_url: "http://localhost:4010",
-      api_key: "My API Key",
-      max_retries: 3
-    )
+    braintrust =
+      Braintrust::Client.new(base_url: "http://localhost:4010", api_key: "My API Key", max_retries: 3)
     requester = MockRequester.new(500, {}, {})
     braintrust.requester = requester
 
@@ -84,11 +81,8 @@ class BraintrustTest < Minitest::Test
   end
 
   def test_client_given_request_given_retry_attempts
-    braintrust = Braintrust::Client.new(
-      base_url: "http://localhost:4010",
-      api_key: "My API Key",
-      max_retries: 3
-    )
+    braintrust =
+      Braintrust::Client.new(base_url: "http://localhost:4010", api_key: "My API Key", max_retries: 3)
     requester = MockRequester.new(500, {}, {})
     braintrust.requester = requester
 
@@ -100,11 +94,8 @@ class BraintrustTest < Minitest::Test
   end
 
   def test_client_retry_after_seconds
-    braintrust = Braintrust::Client.new(
-      base_url: "http://localhost:4010",
-      api_key: "My API Key",
-      max_retries: 1
-    )
+    braintrust =
+      Braintrust::Client.new(base_url: "http://localhost:4010", api_key: "My API Key", max_retries: 1)
     requester = MockRequester.new(500, {"retry-after" => "1.3"}, {})
     braintrust.requester = requester
 
@@ -117,11 +108,8 @@ class BraintrustTest < Minitest::Test
   end
 
   def test_client_retry_after_date
-    braintrust = Braintrust::Client.new(
-      base_url: "http://localhost:4010",
-      api_key: "My API Key",
-      max_retries: 1
-    )
+    braintrust =
+      Braintrust::Client.new(base_url: "http://localhost:4010", api_key: "My API Key", max_retries: 1)
     requester = MockRequester.new(500, {"retry-after" => (Time.now + 10).httpdate}, {})
     braintrust.requester = requester
 
@@ -136,11 +124,8 @@ class BraintrustTest < Minitest::Test
   end
 
   def test_client_retry_after_ms
-    braintrust = Braintrust::Client.new(
-      base_url: "http://localhost:4010",
-      api_key: "My API Key",
-      max_retries: 1
-    )
+    braintrust =
+      Braintrust::Client.new(base_url: "http://localhost:4010", api_key: "My API Key", max_retries: 1)
     requester = MockRequester.new(500, {"retry-after-ms" => "1300"}, {})
     braintrust.requester = requester
 

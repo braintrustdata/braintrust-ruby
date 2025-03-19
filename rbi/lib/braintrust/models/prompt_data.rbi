@@ -235,11 +235,12 @@ module Braintrust
       class Prompt < Braintrust::Union
         abstract!
 
-        Variants = type_template(:out) do
-          {
-            fixed: T.any(Braintrust::Models::PromptData::Prompt::Completion, Braintrust::Models::PromptData::Prompt::Chat)
-          }
-        end
+        Variants =
+          type_template(:out) do
+            {
+              fixed: T.any(Braintrust::Models::PromptData::Prompt::Completion, Braintrust::Models::PromptData::Prompt::Chat)
+            }
+          end
 
         class Completion < Braintrust::BaseModel
           sig { returns(String) }
@@ -383,18 +384,19 @@ module Braintrust
           class Message < Braintrust::Union
             abstract!
 
-            Variants = type_template(:out) do
-              {
-                fixed: T.any(
-                  Braintrust::Models::PromptData::Prompt::Chat::Message::System,
-                  Braintrust::Models::PromptData::Prompt::Chat::Message::User,
-                  Braintrust::Models::PromptData::Prompt::Chat::Message::Assistant,
-                  Braintrust::Models::PromptData::Prompt::Chat::Message::Tool,
-                  Braintrust::Models::PromptData::Prompt::Chat::Message::Function,
-                  Braintrust::Models::PromptData::Prompt::Chat::Message::Fallback
-                )
-              }
-            end
+            Variants =
+              type_template(:out) do
+                {
+                  fixed: T.any(
+                    Braintrust::Models::PromptData::Prompt::Chat::Message::System,
+                    Braintrust::Models::PromptData::Prompt::Chat::Message::User,
+                    Braintrust::Models::PromptData::Prompt::Chat::Message::Assistant,
+                    Braintrust::Models::PromptData::Prompt::Chat::Message::Tool,
+                    Braintrust::Models::PromptData::Prompt::Chat::Message::Function,
+                    Braintrust::Models::PromptData::Prompt::Chat::Message::Fallback
+                  )
+                }
+              end
 
             class System < Braintrust::BaseModel
               sig { returns(Symbol) }
@@ -551,40 +553,43 @@ module Braintrust
               class Content < Braintrust::Union
                 abstract!
 
-                Variants = type_template(:out) do
-                  {
-                    fixed: T.any(
-                      String,
-                      T::Array[
-                      T.any(
-                        Braintrust::Models::ChatCompletionContentPartText,
-                        Braintrust::Models::ChatCompletionContentPartImage
+                Variants =
+                  type_template(:out) do
+                    {
+                      fixed: T.any(
+                        String,
+                        T::Array[
+                        T.any(
+                          Braintrust::Models::ChatCompletionContentPartText,
+                          Braintrust::Models::ChatCompletionContentPartImage
+                        )
+                        ]
                       )
-                      ]
-                    )
-                  }
-                end
+                    }
+                  end
 
-                Nested2DArray = T.type_alias do
-                  T::Array[
-                  T.any(
-                    Braintrust::Models::ChatCompletionContentPartText,
-                    Braintrust::Models::ChatCompletionContentPartImage
-                  )
-                  ]
-                end
+                Nested2DArray =
+                  T.type_alias do
+                    T::Array[
+                    T.any(
+                      Braintrust::Models::ChatCompletionContentPartText,
+                      Braintrust::Models::ChatCompletionContentPartImage
+                    )
+                    ]
+                  end
 
                 class Array < Braintrust::Union
                   abstract!
 
-                  Variants = type_template(:out) do
-                    {
-                      fixed: T.any(
-                        Braintrust::Models::ChatCompletionContentPartText,
-                        Braintrust::Models::ChatCompletionContentPartImage
-                      )
-                    }
-                  end
+                  Variants =
+                    type_template(:out) do
+                      {
+                        fixed: T.any(
+                          Braintrust::Models::ChatCompletionContentPartText,
+                          Braintrust::Models::ChatCompletionContentPartImage
+                        )
+                      }
+                    end
                 end
               end
             end
@@ -831,14 +836,15 @@ module Braintrust
       class ToolFunction < Braintrust::Union
         abstract!
 
-        Variants = type_template(:out) do
-          {
-            fixed: T.any(
-              Braintrust::Models::PromptData::ToolFunction::Function,
-              Braintrust::Models::PromptData::ToolFunction::Global
-            )
-          }
-        end
+        Variants =
+          type_template(:out) do
+            {
+              fixed: T.any(
+                Braintrust::Models::PromptData::ToolFunction::Function,
+                Braintrust::Models::PromptData::ToolFunction::Global
+              )
+            }
+          end
 
         class Function < Braintrust::BaseModel
           sig { returns(String) }
