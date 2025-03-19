@@ -94,14 +94,15 @@ module Braintrust
       class Location < Braintrust::Union
         abstract!
 
-        Variants = type_template(:out) do
-          {
-            fixed: T.any(
-              Braintrust::Models::CodeBundle::Location::Experiment,
-              Braintrust::Models::CodeBundle::Location::Function
-            )
-          }
-        end
+        Variants =
+          type_template(:out) do
+            {
+              fixed: T.any(
+                Braintrust::Models::CodeBundle::Location::Experiment,
+                Braintrust::Models::CodeBundle::Location::Function
+              )
+            }
+          end
 
         class Experiment < Braintrust::BaseModel
           sig { returns(String) }
@@ -181,14 +182,15 @@ module Braintrust
           class Position < Braintrust::Union
             abstract!
 
-            Variants = type_template(:out) do
-              {
-                fixed: T.any(
-                  Braintrust::Models::CodeBundle::Location::Experiment::Position::Type,
-                  Braintrust::Models::CodeBundle::Location::Experiment::Position::Scorer
-                )
-              }
-            end
+            Variants =
+              type_template(:out) do
+                {
+                  fixed: T.any(
+                    Braintrust::Models::CodeBundle::Location::Experiment::Position::Type,
+                    Braintrust::Models::CodeBundle::Location::Experiment::Position::Scorer
+                  )
+                }
+              end
 
             class Type < Braintrust::BaseModel
               sig { returns(Symbol) }

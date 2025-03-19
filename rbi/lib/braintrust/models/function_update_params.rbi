@@ -124,15 +124,16 @@ module Braintrust
       class FunctionData < Braintrust::Union
         abstract!
 
-        Variants = type_template(:out) do
-          {
-            fixed: T.any(
-              Braintrust::Models::FunctionUpdateParams::FunctionData::Prompt,
-              Braintrust::Models::FunctionUpdateParams::FunctionData::Code,
-              Braintrust::Models::FunctionUpdateParams::FunctionData::Global
-            )
-          }
-        end
+        Variants =
+          type_template(:out) do
+            {
+              fixed: T.any(
+                Braintrust::Models::FunctionUpdateParams::FunctionData::Prompt,
+                Braintrust::Models::FunctionUpdateParams::FunctionData::Code,
+                Braintrust::Models::FunctionUpdateParams::FunctionData::Global
+              )
+            }
+          end
 
         class Prompt < Braintrust::BaseModel
           sig { returns(Symbol) }
@@ -228,14 +229,15 @@ module Braintrust
           class Data < Braintrust::Union
             abstract!
 
-            Variants = type_template(:out) do
-              {
-                fixed: T.any(
-                  Braintrust::Models::FunctionUpdateParams::FunctionData::Code::Data::Bundle,
-                  Braintrust::Models::FunctionUpdateParams::FunctionData::Code::Data::Inline
-                )
-              }
-            end
+            Variants =
+              type_template(:out) do
+                {
+                  fixed: T.any(
+                    Braintrust::Models::FunctionUpdateParams::FunctionData::Code::Data::Bundle,
+                    Braintrust::Models::FunctionUpdateParams::FunctionData::Code::Data::Inline
+                  )
+                }
+              end
 
             class Bundle < Braintrust::Models::CodeBundle
               sig { returns(Symbol) }

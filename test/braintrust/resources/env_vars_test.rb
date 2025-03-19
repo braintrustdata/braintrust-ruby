@@ -4,11 +4,12 @@ require_relative "../test_helper"
 
 class Braintrust::Test::Resources::EnvVarsTest < Braintrust::Test::ResourceTest
   def test_create_required_params
-    response = @braintrust.env_vars.create(
-      name: "name",
-      object_id_: "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-      object_type: :organization
-    )
+    response =
+      @braintrust.env_vars.create(
+        name: "name",
+        object_id_: "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+        object_type: :organization
+      )
 
     assert_pattern do
       response => Braintrust::Models::EnvVar
@@ -98,11 +99,12 @@ class Braintrust::Test::Resources::EnvVarsTest < Braintrust::Test::ResourceTest
   end
 
   def test_replace_required_params
-    response = @braintrust.env_vars.replace(
-      name: "name",
-      object_id_: "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-      object_type: :organization
-    )
+    response =
+      @braintrust.env_vars.replace(
+        name: "name",
+        object_id_: "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+        object_type: :organization
+      )
 
     assert_pattern do
       response => Braintrust::Models::EnvVar

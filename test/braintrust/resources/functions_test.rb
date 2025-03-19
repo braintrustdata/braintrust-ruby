@@ -4,12 +4,13 @@ require_relative "../test_helper"
 
 class Braintrust::Test::Resources::FunctionsTest < Braintrust::Test::ResourceTest
   def test_create_required_params
-    response = @braintrust.functions.create(
-      function_data: {type: :prompt},
-      name: "x",
-      project_id: "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-      slug: "x"
-    )
+    response =
+      @braintrust.functions.create(
+        function_data: {type: :prompt},
+        name: "x",
+        project_id: "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+        slug: "x"
+      )
 
     assert_pattern do
       response => Braintrust::Models::Function
@@ -167,12 +168,13 @@ class Braintrust::Test::Resources::FunctionsTest < Braintrust::Test::ResourceTes
   end
 
   def test_replace_required_params
-    response = @braintrust.functions.replace(
-      function_data: {type: :prompt},
-      name: "x",
-      project_id: "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-      slug: "x"
-    )
+    response =
+      @braintrust.functions.replace(
+        function_data: {type: :prompt},
+        name: "x",
+        project_id: "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+        slug: "x"
+      )
 
     assert_pattern do
       response => Braintrust::Models::Function
