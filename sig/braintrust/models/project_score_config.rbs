@@ -16,9 +16,9 @@ module Braintrust
 
       def initialize:
         (
-          destination: String?,
-          multi_select: bool?,
-          online: Braintrust::Models::OnlineScoreConfig?
+          ?destination: String?,
+          ?multi_select: bool?,
+          ?online: Braintrust::Models::OnlineScoreConfig?
         ) -> void
         | (
           ?Braintrust::Models::project_score_config | Braintrust::BaseModel data

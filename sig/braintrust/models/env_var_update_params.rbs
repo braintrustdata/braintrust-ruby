@@ -14,8 +14,8 @@ module Braintrust
       def initialize:
         (
           name: String,
-          value: String?,
-          request_options: Braintrust::request_opts
+          ?value: String?,
+          ?request_options: Braintrust::request_opts
         ) -> void
         | (
           ?Braintrust::Models::env_var_update_params

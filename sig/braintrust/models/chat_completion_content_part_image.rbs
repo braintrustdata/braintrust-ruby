@@ -41,7 +41,7 @@ module Braintrust
         def initialize:
           (
             url: String,
-            detail: Braintrust::Models::ChatCompletionContentPartImage::ImageURL::detail
+            ?detail: Braintrust::Models::ChatCompletionContentPartImage::ImageURL::detail
           ) -> void
           | (
             ?Braintrust::Models::ChatCompletionContentPartImage::image_url

@@ -28,9 +28,9 @@ module Braintrust
           id: String,
           name: String,
           preview_name: String,
-          created: Time?,
-          org_id: String?,
-          user_id: String?
+          ?created: Time?,
+          ?org_id: String?,
+          ?user_id: String?
         ) -> void
         | (?Braintrust::Models::api_key | Braintrust::BaseModel data) -> void
 

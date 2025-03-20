@@ -41,12 +41,12 @@ module Braintrust
           _object_org_id: String,
           object_id_: String,
           object_type: Braintrust::Models::acl_object_type,
-          created: Time?,
-          group_id: String?,
-          permission: Braintrust::Models::permission?,
-          restrict_object_type: Braintrust::Models::acl_object_type?,
-          role_id: String?,
-          user_id: String?
+          ?created: Time?,
+          ?group_id: String?,
+          ?permission: Braintrust::Models::permission?,
+          ?restrict_object_type: Braintrust::Models::acl_object_type?,
+          ?role_id: String?,
+          ?user_id: String?
         ) -> void
         | (?Braintrust::Models::acl | Braintrust::BaseModel data) -> void
 

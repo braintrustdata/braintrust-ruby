@@ -37,12 +37,12 @@ module Braintrust
           id: String,
           name: String,
           org_id: String,
-          created: Time?,
-          deleted_at: Time?,
-          description: String?,
-          member_groups: ::Array[String]?,
-          member_users: ::Array[String]?,
-          user_id: String?
+          ?created: Time?,
+          ?deleted_at: Time?,
+          ?description: String?,
+          ?member_groups: ::Array[String]?,
+          ?member_users: ::Array[String]?,
+          ?user_id: String?
         ) -> void
         | (?Braintrust::Models::group | Braintrust::BaseModel data) -> void
 

@@ -42,11 +42,11 @@ module Braintrust
           object_id_: String,
           object_type: Braintrust::Models::acl_object_type,
           view_type: Braintrust::Models::View::view_type?,
-          created: Time?,
-          deleted_at: Time?,
-          options: Braintrust::Models::ViewOptions?,
-          user_id: String?,
-          view_data: Braintrust::Models::ViewData?
+          ?created: Time?,
+          ?deleted_at: Time?,
+          ?options: Braintrust::Models::ViewOptions?,
+          ?user_id: String?,
+          ?view_data: Braintrust::Models::ViewData?
         ) -> void
         | (?Braintrust::Models::view | Braintrust::BaseModel data) -> void
 

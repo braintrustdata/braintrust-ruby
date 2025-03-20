@@ -9,8 +9,8 @@ module Braintrust
         ) -> Braintrust::Models::Project
         | (
           name: String,
-          org_name: String?,
-          request_options: Braintrust::request_opts
+          ?org_name: String?,
+          ?request_options: Braintrust::request_opts
         ) -> Braintrust::Models::Project
 
       def retrieve:
@@ -21,7 +21,7 @@ module Braintrust
         ) -> Braintrust::Models::Project
         | (
           String project_id,
-          request_options: Braintrust::request_opts
+          ?request_options: Braintrust::request_opts
         ) -> Braintrust::Models::Project
 
       def update:
@@ -31,9 +31,9 @@ module Braintrust
         ) -> Braintrust::Models::Project
         | (
           String project_id,
-          name: String?,
-          settings: Braintrust::Models::ProjectSettings?,
-          request_options: Braintrust::request_opts
+          ?name: String?,
+          ?settings: Braintrust::Models::ProjectSettings?,
+          ?request_options: Braintrust::request_opts
         ) -> Braintrust::Models::Project
 
       def list:
@@ -41,13 +41,13 @@ module Braintrust
           ?Braintrust::Models::ProjectListParams | ::Hash[Symbol, top] params
         ) -> Braintrust::ListObjects[Braintrust::Models::Project]
         | (
-          ending_before: String,
-          ids: Braintrust::Models::ProjectListParams::ids,
-          limit: Integer?,
-          org_name: String,
-          project_name: String,
-          starting_after: String,
-          request_options: Braintrust::request_opts
+          ?ending_before: String,
+          ?ids: Braintrust::Models::ProjectListParams::ids,
+          ?limit: Integer?,
+          ?org_name: String,
+          ?project_name: String,
+          ?starting_after: String,
+          ?request_options: Braintrust::request_opts
         ) -> Braintrust::ListObjects[Braintrust::Models::Project]
 
       def delete:
@@ -57,7 +57,7 @@ module Braintrust
         ) -> Braintrust::Models::Project
         | (
           String project_id,
-          request_options: Braintrust::request_opts
+          ?request_options: Braintrust::request_opts
         ) -> Braintrust::Models::Project
 
       def initialize: (client: Braintrust::Client) -> void

@@ -35,11 +35,11 @@ module Braintrust
           name: String,
           project_id: String,
           slug: String,
-          description: String?,
-          function_type: Braintrust::Models::PromptReplaceParams::function_type?,
-          prompt_data: Braintrust::Models::PromptData?,
-          tags: ::Array[String]?,
-          request_options: Braintrust::request_opts
+          ?description: String?,
+          ?function_type: Braintrust::Models::PromptReplaceParams::function_type?,
+          ?prompt_data: Braintrust::Models::PromptData?,
+          ?tags: ::Array[String]?,
+          ?request_options: Braintrust::request_opts
         ) -> void
         | (
           ?Braintrust::Models::prompt_replace_params

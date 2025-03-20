@@ -16,7 +16,7 @@ module Braintrust
       def initialize:
         (
           type: Braintrust::Models::ChatCompletionContentPartText::type_,
-          text: String
+          ?text: String
         ) -> void
         | (
           ?Braintrust::Models::chat_completion_content_part_text

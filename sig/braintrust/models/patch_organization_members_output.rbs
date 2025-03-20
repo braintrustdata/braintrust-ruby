@@ -18,7 +18,7 @@ module Braintrust
         (
           org_id: String,
           status: Braintrust::Models::PatchOrganizationMembersOutput::status,
-          send_email_error: String?
+          ?send_email_error: String?
         ) -> void
         | (
           ?Braintrust::Models::patch_organization_members_output

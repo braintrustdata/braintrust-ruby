@@ -42,16 +42,16 @@ module Braintrust
       def initialize:
         (
           project_id: String,
-          base_exp_id: String?,
-          dataset_id: String?,
-          dataset_version: String?,
-          description: String?,
-          ensure_new: bool?,
-          metadata: ::Hash[Symbol, top?]?,
-          name: String?,
-          public: bool?,
-          repo_info: Braintrust::Models::RepoInfo?,
-          request_options: Braintrust::request_opts
+          ?base_exp_id: String?,
+          ?dataset_id: String?,
+          ?dataset_version: String?,
+          ?description: String?,
+          ?ensure_new: bool?,
+          ?metadata: ::Hash[Symbol, top?]?,
+          ?name: String?,
+          ?public: bool?,
+          ?repo_info: Braintrust::Models::RepoInfo?,
+          ?request_options: Braintrust::request_opts
         ) -> void
         | (
           ?Braintrust::Models::experiment_create_params

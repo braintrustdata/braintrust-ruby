@@ -26,7 +26,7 @@ module Braintrust
           _xact_id: String,
           object_id_: String,
           object_type: Braintrust::Models::ObjectReference::object_type,
-          created: String?
+          ?created: String?
         ) -> void
         | (
           ?Braintrust::Models::object_reference | Braintrust::BaseModel data

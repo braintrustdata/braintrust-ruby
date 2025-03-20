@@ -36,13 +36,13 @@ module Braintrust
         (
           id: String,
           name: String,
-          created: Time?,
-          deleted_at: Time?,
-          description: String?,
-          member_permissions: ::Array[Braintrust::Models::Role::MemberPermission]?,
-          member_roles: ::Array[String]?,
-          org_id: String?,
-          user_id: String?
+          ?created: Time?,
+          ?deleted_at: Time?,
+          ?description: String?,
+          ?member_permissions: ::Array[Braintrust::Models::Role::MemberPermission]?,
+          ?member_roles: ::Array[String]?,
+          ?org_id: String?,
+          ?user_id: String?
         ) -> void
         | (?Braintrust::Models::role | Braintrust::BaseModel data) -> void
 
@@ -62,7 +62,7 @@ module Braintrust
         def initialize:
           (
             permission: Braintrust::Models::permission,
-            restrict_object_type: Braintrust::Models::acl_object_type?
+            ?restrict_object_type: Braintrust::Models::acl_object_type?
           ) -> void
           | (
             ?Braintrust::Models::Role::member_permission
