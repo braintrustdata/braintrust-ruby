@@ -5,11 +5,7 @@ module Braintrust
     class DataSummary < Braintrust::BaseModel
       attr_accessor total_records: Integer
 
-      def initialize:
-        (total_records: Integer) -> void
-        | (
-          ?Braintrust::Models::data_summary | Braintrust::BaseModel data
-        ) -> void
+      def initialize: (total_records: Integer) -> void
 
       def to_hash: -> Braintrust::Models::data_summary
     end

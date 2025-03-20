@@ -11,15 +11,10 @@ module Braintrust
 
       attr_accessor type: Braintrust::Models::ChatCompletionContentPartImage::type_
 
-      def initialize:
-        (
-          image_url: Braintrust::Models::ChatCompletionContentPartImage::ImageURL,
-          type: Braintrust::Models::ChatCompletionContentPartImage::type_
-        ) -> void
-        | (
-          ?Braintrust::Models::chat_completion_content_part_image
-          | Braintrust::BaseModel data
-        ) -> void
+      def initialize: (
+        image_url: Braintrust::Models::ChatCompletionContentPartImage::ImageURL,
+        type: Braintrust::Models::ChatCompletionContentPartImage::type_
+      ) -> void
 
       def to_hash: -> Braintrust::Models::chat_completion_content_part_image
 
@@ -38,15 +33,10 @@ module Braintrust
           Braintrust::Models::ChatCompletionContentPartImage::ImageURL::detail
         ) -> Braintrust::Models::ChatCompletionContentPartImage::ImageURL::detail
 
-        def initialize:
-          (
-            url: String,
-            ?detail: Braintrust::Models::ChatCompletionContentPartImage::ImageURL::detail
-          ) -> void
-          | (
-            ?Braintrust::Models::ChatCompletionContentPartImage::image_url
-            | Braintrust::BaseModel data
-          ) -> void
+        def initialize: (
+          url: String,
+          ?detail: Braintrust::Models::ChatCompletionContentPartImage::ImageURL::detail
+        ) -> void
 
         def to_hash: -> Braintrust::Models::ChatCompletionContentPartImage::image_url
 

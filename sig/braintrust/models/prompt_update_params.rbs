@@ -24,18 +24,14 @@ module Braintrust
 
       attr_accessor tags: ::Array[String]?
 
-      def initialize:
-        (
-          ?description: String?,
-          ?name: String?,
-          ?prompt_data: Braintrust::Models::PromptData?,
-          ?slug: String?,
-          ?tags: ::Array[String]?,
-          ?request_options: Braintrust::request_opts
-        ) -> void
-        | (
-          ?Braintrust::Models::prompt_update_params | Braintrust::BaseModel data
-        ) -> void
+      def initialize: (
+        ?description: String?,
+        ?name: String?,
+        ?prompt_data: Braintrust::Models::PromptData?,
+        ?slug: String?,
+        ?tags: ::Array[String]?,
+        ?request_options: Braintrust::request_opts
+      ) -> void
 
       def to_hash: -> Braintrust::Models::prompt_update_params
     end

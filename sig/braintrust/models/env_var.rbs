@@ -23,16 +23,14 @@ module Braintrust
 
       attr_accessor used: Time?
 
-      def initialize:
-        (
-          id: String,
-          name: String,
-          object_id_: String,
-          object_type: Braintrust::Models::EnvVar::object_type,
-          ?created: Time?,
-          ?used: Time?
-        ) -> void
-        | (?Braintrust::Models::env_var | Braintrust::BaseModel data) -> void
+      def initialize: (
+        id: String,
+        name: String,
+        object_id_: String,
+        object_type: Braintrust::Models::EnvVar::object_type,
+        ?created: Time?,
+        ?used: Time?
+      ) -> void
 
       def to_hash: -> Braintrust::Models::env_var
 

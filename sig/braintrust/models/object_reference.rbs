@@ -20,17 +20,13 @@ module Braintrust
 
       attr_accessor created: String?
 
-      def initialize:
-        (
-          id: String,
-          _xact_id: String,
-          object_id_: String,
-          object_type: Braintrust::Models::ObjectReference::object_type,
-          ?created: String?
-        ) -> void
-        | (
-          ?Braintrust::Models::object_reference | Braintrust::BaseModel data
-        ) -> void
+      def initialize: (
+        id: String,
+        _xact_id: String,
+        object_id_: String,
+        object_type: Braintrust::Models::ObjectReference::object_type,
+        ?created: String?
+      ) -> void
 
       def to_hash: -> Braintrust::Models::object_reference
 

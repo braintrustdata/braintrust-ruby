@@ -11,16 +11,11 @@ module Braintrust
 
       attr_accessor org_name: String?
 
-      def initialize:
-        (
-          name: String,
-          ?org_name: String?,
-          ?request_options: Braintrust::request_opts
-        ) -> void
-        | (
-          ?Braintrust::Models::api_key_create_params
-          | Braintrust::BaseModel data
-        ) -> void
+      def initialize: (
+        name: String,
+        ?org_name: String?,
+        ?request_options: Braintrust::request_opts
+      ) -> void
 
       def to_hash: -> Braintrust::Models::api_key_create_params
     end

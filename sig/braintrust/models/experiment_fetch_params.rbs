@@ -27,18 +27,13 @@ module Braintrust
 
       def version=: (String) -> String
 
-      def initialize:
-        (
-          ?limit: Integer?,
-          ?max_root_span_id: String,
-          ?max_xact_id: String,
-          ?version: String,
-          ?request_options: Braintrust::request_opts
-        ) -> void
-        | (
-          ?Braintrust::Models::experiment_fetch_params
-          | Braintrust::BaseModel data
-        ) -> void
+      def initialize: (
+        ?limit: Integer?,
+        ?max_root_span_id: String,
+        ?max_xact_id: String,
+        ?version: String,
+        ?request_options: Braintrust::request_opts
+      ) -> void
 
       def to_hash: -> Braintrust::Models::experiment_fetch_params
     end

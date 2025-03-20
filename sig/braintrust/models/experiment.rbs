@@ -47,24 +47,22 @@ module Braintrust
 
       attr_accessor user_id: String?
 
-      def initialize:
-        (
-          id: String,
-          name: String,
-          project_id: String,
-          public: bool,
-          ?base_exp_id: String?,
-          ?commit: String?,
-          ?created: Time?,
-          ?dataset_id: String?,
-          ?dataset_version: String?,
-          ?deleted_at: Time?,
-          ?description: String?,
-          ?metadata: ::Hash[Symbol, top?]?,
-          ?repo_info: Braintrust::Models::RepoInfo?,
-          ?user_id: String?
-        ) -> void
-        | (?Braintrust::Models::experiment | Braintrust::BaseModel data) -> void
+      def initialize: (
+        id: String,
+        name: String,
+        project_id: String,
+        public: bool,
+        ?base_exp_id: String?,
+        ?commit: String?,
+        ?created: Time?,
+        ?dataset_id: String?,
+        ?dataset_version: String?,
+        ?deleted_at: Time?,
+        ?description: String?,
+        ?metadata: ::Hash[Symbol, top?]?,
+        ?repo_info: Braintrust::Models::RepoInfo?,
+        ?user_id: String?
+      ) -> void
 
       def to_hash: -> Braintrust::Models::experiment
     end

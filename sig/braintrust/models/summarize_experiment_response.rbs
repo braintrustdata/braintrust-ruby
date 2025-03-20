@@ -26,20 +26,15 @@ module Braintrust
 
       attr_accessor scores: ::Hash[Symbol, Braintrust::Models::ScoreSummary]?
 
-      def initialize:
-        (
-          experiment_name: String,
-          experiment_url: String,
-          project_name: String,
-          project_url: String,
-          ?comparison_experiment_name: String?,
-          ?metrics: ::Hash[Symbol, Braintrust::Models::MetricSummary]?,
-          ?scores: ::Hash[Symbol, Braintrust::Models::ScoreSummary]?
-        ) -> void
-        | (
-          ?Braintrust::Models::summarize_experiment_response
-          | Braintrust::BaseModel data
-        ) -> void
+      def initialize: (
+        experiment_name: String,
+        experiment_url: String,
+        project_name: String,
+        project_url: String,
+        ?comparison_experiment_name: String?,
+        ?metrics: ::Hash[Symbol, Braintrust::Models::MetricSummary]?,
+        ?scores: ::Hash[Symbol, Braintrust::Models::ScoreSummary]?
+      ) -> void
 
       def to_hash: -> Braintrust::Models::summarize_experiment_response
     end

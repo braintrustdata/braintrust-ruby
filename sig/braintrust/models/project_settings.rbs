@@ -14,15 +14,11 @@ module Braintrust
 
       attr_accessor span_field_order: ::Array[Braintrust::Models::ProjectSettings::SpanFieldOrder]?
 
-      def initialize:
-        (
-          ?baseline_experiment_id: String?,
-          ?comparison_key: String?,
-          ?span_field_order: ::Array[Braintrust::Models::ProjectSettings::SpanFieldOrder]?
-        ) -> void
-        | (
-          ?Braintrust::Models::project_settings | Braintrust::BaseModel data
-        ) -> void
+      def initialize: (
+        ?baseline_experiment_id: String?,
+        ?comparison_key: String?,
+        ?span_field_order: ::Array[Braintrust::Models::ProjectSettings::SpanFieldOrder]?
+      ) -> void
 
       def to_hash: -> Braintrust::Models::project_settings
 
@@ -43,17 +39,12 @@ module Braintrust
 
         attr_accessor layout: Braintrust::Models::ProjectSettings::SpanFieldOrder::layout?
 
-        def initialize:
-          (
-            column_id: String,
-            object_type: String,
-            position: String,
-            ?layout: Braintrust::Models::ProjectSettings::SpanFieldOrder::layout?
-          ) -> void
-          | (
-            ?Braintrust::Models::ProjectSettings::span_field_order
-            | Braintrust::BaseModel data
-          ) -> void
+        def initialize: (
+          column_id: String,
+          object_type: String,
+          position: String,
+          ?layout: Braintrust::Models::ProjectSettings::SpanFieldOrder::layout?
+        ) -> void
 
         def to_hash: -> Braintrust::Models::ProjectSettings::span_field_order
 

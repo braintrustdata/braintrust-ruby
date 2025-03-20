@@ -14,16 +14,11 @@ module Braintrust
 
       attr_accessor project_logs: ::Hash[Symbol, Braintrust::Models::InsertEventsResponse]?
 
-      def initialize:
-        (
-          ?dataset: ::Hash[Symbol, Braintrust::Models::InsertEventsResponse]?,
-          ?experiment: ::Hash[Symbol, Braintrust::Models::InsertEventsResponse]?,
-          ?project_logs: ::Hash[Symbol, Braintrust::Models::InsertEventsResponse]?
-        ) -> void
-        | (
-          ?Braintrust::Models::cross_object_insert_response
-          | Braintrust::BaseModel data
-        ) -> void
+      def initialize: (
+        ?dataset: ::Hash[Symbol, Braintrust::Models::InsertEventsResponse]?,
+        ?experiment: ::Hash[Symbol, Braintrust::Models::InsertEventsResponse]?,
+        ?project_logs: ::Hash[Symbol, Braintrust::Models::InsertEventsResponse]?
+      ) -> void
 
       def to_hash: -> Braintrust::Models::cross_object_insert_response
     end

@@ -14,16 +14,11 @@ module Braintrust
 
       attr_accessor type: Braintrust::Models::ChatCompletionMessageToolCall::type_
 
-      def initialize:
-        (
-          id: String,
-          function: Braintrust::Models::ChatCompletionMessageToolCall::Function,
-          type: Braintrust::Models::ChatCompletionMessageToolCall::type_
-        ) -> void
-        | (
-          ?Braintrust::Models::chat_completion_message_tool_call
-          | Braintrust::BaseModel data
-        ) -> void
+      def initialize: (
+        id: String,
+        function: Braintrust::Models::ChatCompletionMessageToolCall::Function,
+        type: Braintrust::Models::ChatCompletionMessageToolCall::type_
+      ) -> void
 
       def to_hash: -> Braintrust::Models::chat_completion_message_tool_call
 
@@ -34,12 +29,7 @@ module Braintrust
 
         attr_accessor name: String
 
-        def initialize:
-          (arguments: String, name: String) -> void
-          | (
-            ?Braintrust::Models::ChatCompletionMessageToolCall::function
-            | Braintrust::BaseModel data
-          ) -> void
+        def initialize: (arguments: String, name: String) -> void
 
         def to_hash: -> Braintrust::Models::ChatCompletionMessageToolCall::function
       end

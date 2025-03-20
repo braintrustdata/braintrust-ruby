@@ -16,18 +16,13 @@ module Braintrust
 
       attr_accessor url: String?
 
-      def initialize:
-        (
-          ?description: String?,
-          ?name: String?,
-          ?post_message: bool?,
-          ?url: String?,
-          ?request_options: Braintrust::request_opts
-        ) -> void
-        | (
-          ?Braintrust::Models::span_iframe_update_params
-          | Braintrust::BaseModel data
-        ) -> void
+      def initialize: (
+        ?description: String?,
+        ?name: String?,
+        ?post_message: bool?,
+        ?url: String?,
+        ?request_options: Braintrust::request_opts
+      ) -> void
 
       def to_hash: -> Braintrust::Models::span_iframe_update_params
     end

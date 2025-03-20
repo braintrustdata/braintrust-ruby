@@ -1,81 +1,54 @@
 module Braintrust
   module Resources
     class Groups
-      def create:
-        (
-          Braintrust::Models::GroupCreateParams | ::Hash[Symbol, top] params
-        ) -> Braintrust::Models::Group
-        | (
-          name: String,
-          ?description: String?,
-          ?member_groups: ::Array[String]?,
-          ?member_users: ::Array[String]?,
-          ?org_name: String?,
-          ?request_options: Braintrust::request_opts
-        ) -> Braintrust::Models::Group
+      def create: (
+        name: String,
+        ?description: String?,
+        ?member_groups: ::Array[String]?,
+        ?member_users: ::Array[String]?,
+        ?org_name: String?,
+        ?request_options: Braintrust::request_opts
+      ) -> Braintrust::Models::Group
 
-      def retrieve:
-        (
-          String group_id,
-          ?Braintrust::Models::GroupRetrieveParams | ::Hash[Symbol, top] params
-        ) -> Braintrust::Models::Group
-        | (
-          String group_id,
-          ?request_options: Braintrust::request_opts
-        ) -> Braintrust::Models::Group
+      def retrieve: (
+        String group_id,
+        ?request_options: Braintrust::request_opts
+      ) -> Braintrust::Models::Group
 
-      def update:
-        (
-          String group_id,
-          ?Braintrust::Models::GroupUpdateParams | ::Hash[Symbol, top] params
-        ) -> Braintrust::Models::Group
-        | (
-          String group_id,
-          ?add_member_groups: ::Array[String]?,
-          ?add_member_users: ::Array[String]?,
-          ?description: String?,
-          ?name: String?,
-          ?remove_member_groups: ::Array[String]?,
-          ?remove_member_users: ::Array[String]?,
-          ?request_options: Braintrust::request_opts
-        ) -> Braintrust::Models::Group
+      def update: (
+        String group_id,
+        ?add_member_groups: ::Array[String]?,
+        ?add_member_users: ::Array[String]?,
+        ?description: String?,
+        ?name: String?,
+        ?remove_member_groups: ::Array[String]?,
+        ?remove_member_users: ::Array[String]?,
+        ?request_options: Braintrust::request_opts
+      ) -> Braintrust::Models::Group
 
-      def list:
-        (
-          ?Braintrust::Models::GroupListParams | ::Hash[Symbol, top] params
-        ) -> Braintrust::ListObjects[Braintrust::Models::Group]
-        | (
-          ?ending_before: String,
-          ?group_name: String,
-          ?ids: Braintrust::Models::GroupListParams::ids,
-          ?limit: Integer?,
-          ?org_name: String,
-          ?starting_after: String,
-          ?request_options: Braintrust::request_opts
-        ) -> Braintrust::ListObjects[Braintrust::Models::Group]
+      def list: (
+        ?ending_before: String,
+        ?group_name: String,
+        ?ids: Braintrust::Models::GroupListParams::ids,
+        ?limit: Integer?,
+        ?org_name: String,
+        ?starting_after: String,
+        ?request_options: Braintrust::request_opts
+      ) -> Braintrust::ListObjects[Braintrust::Models::Group]
 
-      def delete:
-        (
-          String group_id,
-          ?Braintrust::Models::GroupDeleteParams | ::Hash[Symbol, top] params
-        ) -> Braintrust::Models::Group
-        | (
-          String group_id,
-          ?request_options: Braintrust::request_opts
-        ) -> Braintrust::Models::Group
+      def delete: (
+        String group_id,
+        ?request_options: Braintrust::request_opts
+      ) -> Braintrust::Models::Group
 
-      def replace:
-        (
-          Braintrust::Models::GroupReplaceParams | ::Hash[Symbol, top] params
-        ) -> Braintrust::Models::Group
-        | (
-          name: String,
-          ?description: String?,
-          ?member_groups: ::Array[String]?,
-          ?member_users: ::Array[String]?,
-          ?org_name: String?,
-          ?request_options: Braintrust::request_opts
-        ) -> Braintrust::Models::Group
+      def replace: (
+        name: String,
+        ?description: String?,
+        ?member_groups: ::Array[String]?,
+        ?member_users: ::Array[String]?,
+        ?org_name: String?,
+        ?request_options: Braintrust::request_opts
+      ) -> Braintrust::Models::Group
 
       def initialize: (client: Braintrust::Client) -> void
     end

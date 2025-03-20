@@ -24,18 +24,14 @@ module Braintrust
 
       attr_accessor org_name: String?
 
-      def initialize:
-        (
-          name: String,
-          ?description: String?,
-          ?member_permissions: ::Array[Braintrust::Models::RoleCreateParams::MemberPermission]?,
-          ?member_roles: ::Array[String]?,
-          ?org_name: String?,
-          ?request_options: Braintrust::request_opts
-        ) -> void
-        | (
-          ?Braintrust::Models::role_create_params | Braintrust::BaseModel data
-        ) -> void
+      def initialize: (
+        name: String,
+        ?description: String?,
+        ?member_permissions: ::Array[Braintrust::Models::RoleCreateParams::MemberPermission]?,
+        ?member_roles: ::Array[String]?,
+        ?org_name: String?,
+        ?request_options: Braintrust::request_opts
+      ) -> void
 
       def to_hash: -> Braintrust::Models::role_create_params
 
@@ -50,15 +46,10 @@ module Braintrust
 
         attr_accessor restrict_object_type: Braintrust::Models::acl_object_type?
 
-        def initialize:
-          (
-            permission: Braintrust::Models::permission,
-            ?restrict_object_type: Braintrust::Models::acl_object_type?
-          ) -> void
-          | (
-            ?Braintrust::Models::RoleCreateParams::member_permission
-            | Braintrust::BaseModel data
-          ) -> void
+        def initialize: (
+          permission: Braintrust::Models::permission,
+          ?restrict_object_type: Braintrust::Models::acl_object_type?
+        ) -> void
 
         def to_hash: -> Braintrust::Models::RoleCreateParams::member_permission
       end

@@ -21,18 +21,13 @@ module Braintrust
 
       attr_accessor value: String?
 
-      def initialize:
-        (
-          name: String,
-          object_id_: String,
-          object_type: Braintrust::Models::EnvVarReplaceParams::object_type,
-          ?value: String?,
-          ?request_options: Braintrust::request_opts
-        ) -> void
-        | (
-          ?Braintrust::Models::env_var_replace_params
-          | Braintrust::BaseModel data
-        ) -> void
+      def initialize: (
+        name: String,
+        object_id_: String,
+        object_type: Braintrust::Models::EnvVarReplaceParams::object_type,
+        ?value: String?,
+        ?request_options: Braintrust::request_opts
+      ) -> void
 
       def to_hash: -> Braintrust::Models::env_var_replace_params
 

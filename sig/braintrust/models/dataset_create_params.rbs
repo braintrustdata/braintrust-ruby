@@ -21,18 +21,13 @@ module Braintrust
 
       attr_accessor metadata: ::Hash[Symbol, top?]?
 
-      def initialize:
-        (
-          name: String,
-          project_id: String,
-          ?description: String?,
-          ?metadata: ::Hash[Symbol, top?]?,
-          ?request_options: Braintrust::request_opts
-        ) -> void
-        | (
-          ?Braintrust::Models::dataset_create_params
-          | Braintrust::BaseModel data
-        ) -> void
+      def initialize: (
+        name: String,
+        project_id: String,
+        ?description: String?,
+        ?metadata: ::Hash[Symbol, top?]?,
+        ?request_options: Braintrust::request_opts
+      ) -> void
 
       def to_hash: -> Braintrust::Models::dataset_create_params
     end

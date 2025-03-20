@@ -67,29 +67,25 @@ module Braintrust
 
       attr_accessor trial_count: Float?
 
-      def initialize:
-        (
-          data: Braintrust::Models::EvalCreateParams::data,
-          project_id: String,
-          scores: ::Array[Braintrust::Models::EvalCreateParams::score],
-          task: Braintrust::Models::EvalCreateParams::task,
-          ?base_experiment_id: String?,
-          ?base_experiment_name: String?,
-          ?experiment_name: String,
-          ?git_metadata_settings: Braintrust::Models::EvalCreateParams::GitMetadataSettings?,
-          ?is_public: bool?,
-          ?max_concurrency: Float?,
-          ?metadata: ::Hash[Symbol, top?],
-          ?parent: Braintrust::Models::EvalCreateParams::parent,
-          ?repo_info: Braintrust::Models::RepoInfo?,
-          ?stream: bool,
-          ?timeout: Float?,
-          ?trial_count: Float?,
-          ?request_options: Braintrust::request_opts
-        ) -> void
-        | (
-          ?Braintrust::Models::eval_create_params | Braintrust::BaseModel data
-        ) -> void
+      def initialize: (
+        data: Braintrust::Models::EvalCreateParams::data,
+        project_id: String,
+        scores: ::Array[Braintrust::Models::EvalCreateParams::score],
+        task: Braintrust::Models::EvalCreateParams::task,
+        ?base_experiment_id: String?,
+        ?base_experiment_name: String?,
+        ?experiment_name: String,
+        ?git_metadata_settings: Braintrust::Models::EvalCreateParams::GitMetadataSettings?,
+        ?is_public: bool?,
+        ?max_concurrency: Float?,
+        ?metadata: ::Hash[Symbol, top?],
+        ?parent: Braintrust::Models::EvalCreateParams::parent,
+        ?repo_info: Braintrust::Models::RepoInfo?,
+        ?stream: bool,
+        ?timeout: Float?,
+        ?trial_count: Float?,
+        ?request_options: Braintrust::request_opts
+      ) -> void
 
       def to_hash: -> Braintrust::Models::eval_create_params
 
@@ -107,12 +103,10 @@ module Braintrust
 
           attr_accessor _internal_btql: ::Hash[Symbol, top?]?
 
-          def initialize:
-            (dataset_id: String, ?_internal_btql: ::Hash[Symbol, top?]?) -> void
-            | (
-              ?Braintrust::Models::EvalCreateParams::Data::dataset_id
-              | Braintrust::BaseModel data
-            ) -> void
+          def initialize: (
+            dataset_id: String,
+            ?_internal_btql: ::Hash[Symbol, top?]?
+          ) -> void
 
           def to_hash: -> Braintrust::Models::EvalCreateParams::Data::dataset_id
         end
@@ -131,16 +125,11 @@ module Braintrust
 
           attr_accessor _internal_btql: ::Hash[Symbol, top?]?
 
-          def initialize:
-            (
-              dataset_name: String,
-              project_name: String,
-              ?_internal_btql: ::Hash[Symbol, top?]?
-            ) -> void
-            | (
-              ?Braintrust::Models::EvalCreateParams::Data::project_dataset_name
-              | Braintrust::BaseModel data
-            ) -> void
+          def initialize: (
+            dataset_name: String,
+            project_name: String,
+            ?_internal_btql: ::Hash[Symbol, top?]?
+          ) -> void
 
           def to_hash: -> Braintrust::Models::EvalCreateParams::Data::project_dataset_name
         end
@@ -150,12 +139,7 @@ module Braintrust
         class DatasetRows < Braintrust::BaseModel
           attr_accessor data: ::Array[top?]
 
-          def initialize:
-            (data: ::Array[top?]) -> void
-            | (
-              ?Braintrust::Models::EvalCreateParams::Data::dataset_rows
-              | Braintrust::BaseModel data
-            ) -> void
+          def initialize: (data: ::Array[top?]) -> void
 
           def to_hash: -> Braintrust::Models::EvalCreateParams::Data::dataset_rows
         end
@@ -181,12 +165,7 @@ module Braintrust
 
           def version=: (String) -> String
 
-          def initialize:
-            (function_id: String, ?version: String) -> void
-            | (
-              ?Braintrust::Models::EvalCreateParams::Score::function_id
-              | Braintrust::BaseModel data
-            ) -> void
+          def initialize: (function_id: String, ?version: String) -> void
 
           def to_hash: -> Braintrust::Models::EvalCreateParams::Score::function_id
         end
@@ -203,12 +182,11 @@ module Braintrust
 
           def version=: (String) -> String
 
-          def initialize:
-            (project_name: String, slug: String, ?version: String) -> void
-            | (
-              ?Braintrust::Models::EvalCreateParams::Score::project_slug
-              | Braintrust::BaseModel data
-            ) -> void
+          def initialize: (
+            project_name: String,
+            slug: String,
+            ?version: String
+          ) -> void
 
           def to_hash: -> Braintrust::Models::EvalCreateParams::Score::project_slug
         end
@@ -218,12 +196,7 @@ module Braintrust
         class GlobalFunction < Braintrust::BaseModel
           attr_accessor global_function: String
 
-          def initialize:
-            (global_function: String) -> void
-            | (
-              ?Braintrust::Models::EvalCreateParams::Score::global_function
-              | Braintrust::BaseModel data
-            ) -> void
+          def initialize: (global_function: String) -> void
 
           def to_hash: -> Braintrust::Models::EvalCreateParams::Score::global_function
         end
@@ -244,16 +217,11 @@ module Braintrust
 
           def version=: (String) -> String
 
-          def initialize:
-            (
-              prompt_session_function_id: String,
-              prompt_session_id: String,
-              ?version: String
-            ) -> void
-            | (
-              ?Braintrust::Models::EvalCreateParams::Score::prompt_session_id
-              | Braintrust::BaseModel data
-            ) -> void
+          def initialize: (
+            prompt_session_function_id: String,
+            prompt_session_id: String,
+            ?version: String
+          ) -> void
 
           def to_hash: -> Braintrust::Models::EvalCreateParams::Score::prompt_session_id
         end
@@ -272,16 +240,11 @@ module Braintrust
 
           attr_accessor name: String?
 
-          def initialize:
-            (
-              code: String,
-              inline_context: Braintrust::Models::EvalCreateParams::Score::InlineCode::InlineContext,
-              ?name: String?
-            ) -> void
-            | (
-              ?Braintrust::Models::EvalCreateParams::Score::inline_code
-              | Braintrust::BaseModel data
-            ) -> void
+          def initialize: (
+            code: String,
+            inline_context: Braintrust::Models::EvalCreateParams::Score::InlineCode::InlineContext,
+            ?name: String?
+          ) -> void
 
           def to_hash: -> Braintrust::Models::EvalCreateParams::Score::inline_code
 
@@ -296,15 +259,10 @@ module Braintrust
 
             attr_accessor version: String
 
-            def initialize:
-              (
-                runtime: Braintrust::Models::EvalCreateParams::Score::InlineCode::InlineContext::runtime,
-                version: String
-              ) -> void
-              | (
-                ?Braintrust::Models::EvalCreateParams::Score::InlineCode::inline_context
-                | Braintrust::BaseModel data
-              ) -> void
+            def initialize: (
+              runtime: Braintrust::Models::EvalCreateParams::Score::InlineCode::InlineContext::runtime,
+              version: String
+            ) -> void
 
             def to_hash: -> Braintrust::Models::EvalCreateParams::Score::InlineCode::inline_context
 
@@ -327,15 +285,10 @@ module Braintrust
 
           attr_accessor name: String?
 
-          def initialize:
-            (
-              inline_prompt: Braintrust::Models::PromptData?,
-              ?name: String?
-            ) -> void
-            | (
-              ?Braintrust::Models::EvalCreateParams::Score::inline_prompt
-              | Braintrust::BaseModel data
-            ) -> void
+          def initialize: (
+            inline_prompt: Braintrust::Models::PromptData?,
+            ?name: String?
+          ) -> void
 
           def to_hash: -> Braintrust::Models::EvalCreateParams::Score::inline_prompt
         end
@@ -361,12 +314,7 @@ module Braintrust
 
           def version=: (String) -> String
 
-          def initialize:
-            (function_id: String, ?version: String) -> void
-            | (
-              ?Braintrust::Models::EvalCreateParams::Task::function_id
-              | Braintrust::BaseModel data
-            ) -> void
+          def initialize: (function_id: String, ?version: String) -> void
 
           def to_hash: -> Braintrust::Models::EvalCreateParams::Task::function_id
         end
@@ -383,12 +331,11 @@ module Braintrust
 
           def version=: (String) -> String
 
-          def initialize:
-            (project_name: String, slug: String, ?version: String) -> void
-            | (
-              ?Braintrust::Models::EvalCreateParams::Task::project_slug
-              | Braintrust::BaseModel data
-            ) -> void
+          def initialize: (
+            project_name: String,
+            slug: String,
+            ?version: String
+          ) -> void
 
           def to_hash: -> Braintrust::Models::EvalCreateParams::Task::project_slug
         end
@@ -398,12 +345,7 @@ module Braintrust
         class GlobalFunction < Braintrust::BaseModel
           attr_accessor global_function: String
 
-          def initialize:
-            (global_function: String) -> void
-            | (
-              ?Braintrust::Models::EvalCreateParams::Task::global_function
-              | Braintrust::BaseModel data
-            ) -> void
+          def initialize: (global_function: String) -> void
 
           def to_hash: -> Braintrust::Models::EvalCreateParams::Task::global_function
         end
@@ -424,16 +366,11 @@ module Braintrust
 
           def version=: (String) -> String
 
-          def initialize:
-            (
-              prompt_session_function_id: String,
-              prompt_session_id: String,
-              ?version: String
-            ) -> void
-            | (
-              ?Braintrust::Models::EvalCreateParams::Task::prompt_session_id
-              | Braintrust::BaseModel data
-            ) -> void
+          def initialize: (
+            prompt_session_function_id: String,
+            prompt_session_id: String,
+            ?version: String
+          ) -> void
 
           def to_hash: -> Braintrust::Models::EvalCreateParams::Task::prompt_session_id
         end
@@ -452,16 +389,11 @@ module Braintrust
 
           attr_accessor name: String?
 
-          def initialize:
-            (
-              code: String,
-              inline_context: Braintrust::Models::EvalCreateParams::Task::InlineCode::InlineContext,
-              ?name: String?
-            ) -> void
-            | (
-              ?Braintrust::Models::EvalCreateParams::Task::inline_code
-              | Braintrust::BaseModel data
-            ) -> void
+          def initialize: (
+            code: String,
+            inline_context: Braintrust::Models::EvalCreateParams::Task::InlineCode::InlineContext,
+            ?name: String?
+          ) -> void
 
           def to_hash: -> Braintrust::Models::EvalCreateParams::Task::inline_code
 
@@ -476,15 +408,10 @@ module Braintrust
 
             attr_accessor version: String
 
-            def initialize:
-              (
-                runtime: Braintrust::Models::EvalCreateParams::Task::InlineCode::InlineContext::runtime,
-                version: String
-              ) -> void
-              | (
-                ?Braintrust::Models::EvalCreateParams::Task::InlineCode::inline_context
-                | Braintrust::BaseModel data
-              ) -> void
+            def initialize: (
+              runtime: Braintrust::Models::EvalCreateParams::Task::InlineCode::InlineContext::runtime,
+              version: String
+            ) -> void
 
             def to_hash: -> Braintrust::Models::EvalCreateParams::Task::InlineCode::inline_context
 
@@ -507,15 +434,10 @@ module Braintrust
 
           attr_accessor name: String?
 
-          def initialize:
-            (
-              inline_prompt: Braintrust::Models::PromptData?,
-              ?name: String?
-            ) -> void
-            | (
-              ?Braintrust::Models::EvalCreateParams::Task::inline_prompt
-              | Braintrust::BaseModel data
-            ) -> void
+          def initialize: (
+            inline_prompt: Braintrust::Models::PromptData?,
+            ?name: String?
+          ) -> void
 
           def to_hash: -> Braintrust::Models::EvalCreateParams::Task::inline_prompt
         end
@@ -538,15 +460,10 @@ module Braintrust
           ::Array[Braintrust::Models::EvalCreateParams::GitMetadataSettings::field]
         ) -> ::Array[Braintrust::Models::EvalCreateParams::GitMetadataSettings::field]
 
-        def initialize:
-          (
-            collect: Braintrust::Models::EvalCreateParams::GitMetadataSettings::collect,
-            ?fields: ::Array[Braintrust::Models::EvalCreateParams::GitMetadataSettings::field]
-          ) -> void
-          | (
-            ?Braintrust::Models::EvalCreateParams::git_metadata_settings
-            | Braintrust::BaseModel data
-          ) -> void
+        def initialize: (
+          collect: Braintrust::Models::EvalCreateParams::GitMetadataSettings::collect,
+          ?fields: ::Array[Braintrust::Models::EvalCreateParams::GitMetadataSettings::field]
+        ) -> void
 
         def to_hash: -> Braintrust::Models::EvalCreateParams::git_metadata_settings
 
@@ -607,17 +524,12 @@ module Braintrust
 
           attr_accessor row_ids: Braintrust::Models::EvalCreateParams::Parent::SpanParentStruct::RowIDs?
 
-          def initialize:
-            (
-              object_id_: String,
-              object_type: Braintrust::Models::EvalCreateParams::Parent::SpanParentStruct::object_type,
-              ?propagated_event: ::Hash[Symbol, top?]?,
-              ?row_ids: Braintrust::Models::EvalCreateParams::Parent::SpanParentStruct::RowIDs?
-            ) -> void
-            | (
-              ?Braintrust::Models::EvalCreateParams::Parent::span_parent_struct
-              | Braintrust::BaseModel data
-            ) -> void
+          def initialize: (
+            object_id_: String,
+            object_type: Braintrust::Models::EvalCreateParams::Parent::SpanParentStruct::object_type,
+            ?propagated_event: ::Hash[Symbol, top?]?,
+            ?row_ids: Braintrust::Models::EvalCreateParams::Parent::SpanParentStruct::RowIDs?
+          ) -> void
 
           def to_hash: -> Braintrust::Models::EvalCreateParams::Parent::span_parent_struct
 
@@ -640,12 +552,11 @@ module Braintrust
 
             attr_accessor span_id: String
 
-            def initialize:
-              (id: String, root_span_id: String, span_id: String) -> void
-              | (
-                ?Braintrust::Models::EvalCreateParams::Parent::SpanParentStruct::row_ids
-                | Braintrust::BaseModel data
-              ) -> void
+            def initialize: (
+              id: String,
+              root_span_id: String,
+              span_id: String
+            ) -> void
 
             def to_hash: -> Braintrust::Models::EvalCreateParams::Parent::SpanParentStruct::row_ids
           end
