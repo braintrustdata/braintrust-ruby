@@ -43,21 +43,17 @@ module Braintrust
 
       attr_accessor view_type: Braintrust::Models::view_type?
 
-      def initialize:
-        (
-          object_id_: String,
-          object_type: Braintrust::Models::acl_object_type,
-          ?ending_before: String,
-          ?ids: Braintrust::Models::ViewListParams::ids,
-          ?limit: Integer?,
-          ?starting_after: String,
-          ?view_name: String,
-          ?view_type: Braintrust::Models::view_type?,
-          ?request_options: Braintrust::request_opts
-        ) -> void
-        | (
-          ?Braintrust::Models::view_list_params | Braintrust::BaseModel data
-        ) -> void
+      def initialize: (
+        object_id_: String,
+        object_type: Braintrust::Models::acl_object_type,
+        ?ending_before: String,
+        ?ids: Braintrust::Models::ViewListParams::ids,
+        ?limit: Integer?,
+        ?starting_after: String,
+        ?view_name: String,
+        ?view_type: Braintrust::Models::view_type?,
+        ?request_options: Braintrust::request_opts
+      ) -> void
 
       def to_hash: -> Braintrust::Models::view_list_params
 

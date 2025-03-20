@@ -14,16 +14,11 @@ module Braintrust
 
       attr_accessor send_email_error: String?
 
-      def initialize:
-        (
-          org_id: String,
-          status: Braintrust::Models::PatchOrganizationMembersOutput::status,
-          ?send_email_error: String?
-        ) -> void
-        | (
-          ?Braintrust::Models::patch_organization_members_output
-          | Braintrust::BaseModel data
-        ) -> void
+      def initialize: (
+        org_id: String,
+        status: Braintrust::Models::PatchOrganizationMembersOutput::status,
+        ?send_email_error: String?
+      ) -> void
 
       def to_hash: -> Braintrust::Models::patch_organization_members_output
 

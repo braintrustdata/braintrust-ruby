@@ -14,16 +14,11 @@ module Braintrust
 
       attr_accessor summarize_scores: bool?
 
-      def initialize:
-        (
-          ?comparison_experiment_id: String,
-          ?summarize_scores: bool?,
-          ?request_options: Braintrust::request_opts
-        ) -> void
-        | (
-          ?Braintrust::Models::experiment_summarize_params
-          | Braintrust::BaseModel data
-        ) -> void
+      def initialize: (
+        ?comparison_experiment_id: String,
+        ?summarize_scores: bool?,
+        ?request_options: Braintrust::request_opts
+      ) -> void
 
       def to_hash: -> Braintrust::Models::experiment_summarize_params
     end

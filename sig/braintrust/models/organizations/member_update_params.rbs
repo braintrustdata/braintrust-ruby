@@ -22,18 +22,13 @@ module Braintrust
 
         attr_accessor remove_users: Braintrust::Models::Organizations::MemberUpdateParams::RemoveUsers?
 
-        def initialize:
-          (
-            ?invite_users: Braintrust::Models::Organizations::MemberUpdateParams::InviteUsers?,
-            ?org_id: String?,
-            ?org_name: String?,
-            ?remove_users: Braintrust::Models::Organizations::MemberUpdateParams::RemoveUsers?,
-            ?request_options: Braintrust::request_opts
-          ) -> void
-          | (
-            ?Braintrust::Models::Organizations::member_update_params
-            | Braintrust::BaseModel data
-          ) -> void
+        def initialize: (
+          ?invite_users: Braintrust::Models::Organizations::MemberUpdateParams::InviteUsers?,
+          ?org_id: String?,
+          ?org_name: String?,
+          ?remove_users: Braintrust::Models::Organizations::MemberUpdateParams::RemoveUsers?,
+          ?request_options: Braintrust::request_opts
+        ) -> void
 
         def to_hash: -> Braintrust::Models::Organizations::member_update_params
 
@@ -63,20 +58,15 @@ module Braintrust
 
           attr_accessor send_invite_emails: bool?
 
-          def initialize:
-            (
-              ?emails: ::Array[String]?,
-              ?group_id: String?,
-              ?group_ids: ::Array[String]?,
-              ?group_name: String?,
-              ?group_names: ::Array[String]?,
-              ?ids: ::Array[String]?,
-              ?send_invite_emails: bool?
-            ) -> void
-            | (
-              ?Braintrust::Models::Organizations::MemberUpdateParams::invite_users
-              | Braintrust::BaseModel data
-            ) -> void
+          def initialize: (
+            ?emails: ::Array[String]?,
+            ?group_id: String?,
+            ?group_ids: ::Array[String]?,
+            ?group_name: String?,
+            ?group_names: ::Array[String]?,
+            ?ids: ::Array[String]?,
+            ?send_invite_emails: bool?
+          ) -> void
 
           def to_hash: -> Braintrust::Models::Organizations::MemberUpdateParams::invite_users
         end
@@ -88,12 +78,10 @@ module Braintrust
 
           attr_accessor ids: ::Array[String]?
 
-          def initialize:
-            (?emails: ::Array[String]?, ?ids: ::Array[String]?) -> void
-            | (
-              ?Braintrust::Models::Organizations::MemberUpdateParams::remove_users
-              | Braintrust::BaseModel data
-            ) -> void
+          def initialize: (
+            ?emails: ::Array[String]?,
+            ?ids: ::Array[String]?
+          ) -> void
 
           def to_hash: -> Braintrust::Models::Organizations::MemberUpdateParams::remove_users
         end

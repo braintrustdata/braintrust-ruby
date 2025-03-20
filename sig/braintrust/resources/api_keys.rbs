@@ -1,49 +1,31 @@
 module Braintrust
   module Resources
     class APIKeys
-      def create:
-        (
-          Braintrust::Models::APIKeyCreateParams | ::Hash[Symbol, top] params
-        ) -> Braintrust::Models::CreateAPIKeyOutput
-        | (
-          name: String,
-          ?org_name: String?,
-          ?request_options: Braintrust::request_opts
-        ) -> Braintrust::Models::CreateAPIKeyOutput
+      def create: (
+        name: String,
+        ?org_name: String?,
+        ?request_options: Braintrust::request_opts
+      ) -> Braintrust::Models::CreateAPIKeyOutput
 
-      def retrieve:
-        (
-          String api_key_id,
-          ?Braintrust::Models::APIKeyRetrieveParams | ::Hash[Symbol, top] params
-        ) -> Braintrust::Models::APIKey
-        | (
-          String api_key_id,
-          ?request_options: Braintrust::request_opts
-        ) -> Braintrust::Models::APIKey
+      def retrieve: (
+        String api_key_id,
+        ?request_options: Braintrust::request_opts
+      ) -> Braintrust::Models::APIKey
 
-      def list:
-        (
-          ?Braintrust::Models::APIKeyListParams | ::Hash[Symbol, top] params
-        ) -> Braintrust::ListObjects[Braintrust::Models::APIKey]
-        | (
-          ?api_key_name: String,
-          ?ending_before: String,
-          ?ids: Braintrust::Models::APIKeyListParams::ids,
-          ?limit: Integer?,
-          ?org_name: String,
-          ?starting_after: String,
-          ?request_options: Braintrust::request_opts
-        ) -> Braintrust::ListObjects[Braintrust::Models::APIKey]
+      def list: (
+        ?api_key_name: String,
+        ?ending_before: String,
+        ?ids: Braintrust::Models::APIKeyListParams::ids,
+        ?limit: Integer?,
+        ?org_name: String,
+        ?starting_after: String,
+        ?request_options: Braintrust::request_opts
+      ) -> Braintrust::ListObjects[Braintrust::Models::APIKey]
 
-      def delete:
-        (
-          String api_key_id,
-          ?Braintrust::Models::APIKeyDeleteParams | ::Hash[Symbol, top] params
-        ) -> Braintrust::Models::APIKey
-        | (
-          String api_key_id,
-          ?request_options: Braintrust::request_opts
-        ) -> Braintrust::Models::APIKey
+      def delete: (
+        String api_key_id,
+        ?request_options: Braintrust::request_opts
+      ) -> Braintrust::Models::APIKey
 
       def initialize: (client: Braintrust::Client) -> void
     end

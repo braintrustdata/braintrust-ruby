@@ -20,18 +20,13 @@ module Braintrust
 
       attr_accessor tags: ::Array[String]?
 
-      def initialize:
-        (
-          id: String,
-          ?comment: String?,
-          ?metadata: ::Hash[Symbol, top?]?,
-          ?source: Braintrust::Models::FeedbackDatasetItem::source?,
-          ?tags: ::Array[String]?
-        ) -> void
-        | (
-          ?Braintrust::Models::feedback_dataset_item
-          | Braintrust::BaseModel data
-        ) -> void
+      def initialize: (
+        id: String,
+        ?comment: String?,
+        ?metadata: ::Hash[Symbol, top?]?,
+        ?source: Braintrust::Models::FeedbackDatasetItem::source?,
+        ?tags: ::Array[String]?
+      ) -> void
 
       def to_hash: -> Braintrust::Models::feedback_dataset_item
 

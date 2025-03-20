@@ -35,22 +35,18 @@ module Braintrust
 
       attr_accessor position: String?
 
-      def initialize:
-        (
-          id: String,
-          name: String,
-          project_id: String,
-          score_type: Braintrust::Models::project_score_type,
-          user_id: String,
-          ?categories: Braintrust::Models::ProjectScore::categories?,
-          ?config: Braintrust::Models::ProjectScoreConfig?,
-          ?created: Time?,
-          ?description: String?,
-          ?position: String?
-        ) -> void
-        | (
-          ?Braintrust::Models::project_score | Braintrust::BaseModel data
-        ) -> void
+      def initialize: (
+        id: String,
+        name: String,
+        project_id: String,
+        score_type: Braintrust::Models::project_score_type,
+        user_id: String,
+        ?categories: Braintrust::Models::ProjectScore::categories?,
+        ?config: Braintrust::Models::ProjectScoreConfig?,
+        ?created: Time?,
+        ?description: String?,
+        ?position: String?
+      ) -> void
 
       def to_hash: -> Braintrust::Models::project_score
 

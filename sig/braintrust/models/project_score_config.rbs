@@ -14,15 +14,11 @@ module Braintrust
 
       attr_accessor online: Braintrust::Models::OnlineScoreConfig?
 
-      def initialize:
-        (
-          ?destination: String?,
-          ?multi_select: bool?,
-          ?online: Braintrust::Models::OnlineScoreConfig?
-        ) -> void
-        | (
-          ?Braintrust::Models::project_score_config | Braintrust::BaseModel data
-        ) -> void
+      def initialize: (
+        ?destination: String?,
+        ?multi_select: bool?,
+        ?online: Braintrust::Models::OnlineScoreConfig?
+      ) -> void
 
       def to_hash: -> Braintrust::Models::project_score_config
     end

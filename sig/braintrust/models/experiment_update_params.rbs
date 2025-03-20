@@ -33,22 +33,17 @@ module Braintrust
 
       attr_accessor repo_info: Braintrust::Models::RepoInfo?
 
-      def initialize:
-        (
-          ?base_exp_id: String?,
-          ?dataset_id: String?,
-          ?dataset_version: String?,
-          ?description: String?,
-          ?metadata: ::Hash[Symbol, top?]?,
-          ?name: String?,
-          ?public: bool?,
-          ?repo_info: Braintrust::Models::RepoInfo?,
-          ?request_options: Braintrust::request_opts
-        ) -> void
-        | (
-          ?Braintrust::Models::experiment_update_params
-          | Braintrust::BaseModel data
-        ) -> void
+      def initialize: (
+        ?base_exp_id: String?,
+        ?dataset_id: String?,
+        ?dataset_version: String?,
+        ?description: String?,
+        ?metadata: ::Hash[Symbol, top?]?,
+        ?name: String?,
+        ?public: bool?,
+        ?repo_info: Braintrust::Models::RepoInfo?,
+        ?request_options: Braintrust::request_opts
+      ) -> void
 
       def to_hash: -> Braintrust::Models::experiment_update_params
     end

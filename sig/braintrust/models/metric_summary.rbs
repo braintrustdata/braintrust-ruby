@@ -25,18 +25,14 @@ module Braintrust
 
       def diff=: (Float) -> Float
 
-      def initialize:
-        (
-          improvements: Integer,
-          metric: Float,
-          name: String,
-          regressions: Integer,
-          unit: String,
-          ?diff: Float
-        ) -> void
-        | (
-          ?Braintrust::Models::metric_summary | Braintrust::BaseModel data
-        ) -> void
+      def initialize: (
+        improvements: Integer,
+        metric: Float,
+        name: String,
+        regressions: Integer,
+        unit: String,
+        ?diff: Float
+      ) -> void
 
       def to_hash: -> Braintrust::Models::metric_summary
     end

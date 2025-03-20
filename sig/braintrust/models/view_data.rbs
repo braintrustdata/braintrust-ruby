@@ -5,9 +5,7 @@ module Braintrust
     class ViewData < Braintrust::BaseModel
       attr_accessor search: Braintrust::Models::ViewDataSearch?
 
-      def initialize:
-        (?search: Braintrust::Models::ViewDataSearch?) -> void
-        | (?Braintrust::Models::view_data | Braintrust::BaseModel data) -> void
+      def initialize: (?search: Braintrust::Models::ViewDataSearch?) -> void
 
       def to_hash: -> Braintrust::Models::view_data
     end
