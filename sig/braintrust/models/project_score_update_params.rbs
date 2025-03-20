@@ -24,19 +24,14 @@ module Braintrust
 
       attr_accessor score_type: Braintrust::Models::project_score_type?
 
-      def initialize:
-        (
-          ?categories: Braintrust::Models::ProjectScoreUpdateParams::categories?,
-          ?config: Braintrust::Models::ProjectScoreConfig?,
-          ?description: String?,
-          ?name: String?,
-          ?score_type: Braintrust::Models::project_score_type?,
-          ?request_options: Braintrust::request_opts
-        ) -> void
-        | (
-          ?Braintrust::Models::project_score_update_params
-          | Braintrust::BaseModel data
-        ) -> void
+      def initialize: (
+        ?categories: Braintrust::Models::ProjectScoreUpdateParams::categories?,
+        ?config: Braintrust::Models::ProjectScoreConfig?,
+        ?description: String?,
+        ?name: String?,
+        ?score_type: Braintrust::Models::project_score_type?,
+        ?request_options: Braintrust::request_opts
+      ) -> void
 
       def to_hash: -> Braintrust::Models::project_score_update_params
 

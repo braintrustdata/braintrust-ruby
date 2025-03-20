@@ -11,15 +11,10 @@ module Braintrust
 
         attr_accessor feedback: ::Array[Braintrust::Models::FeedbackProjectLogsItem]
 
-        def initialize:
-          (
-            feedback: ::Array[Braintrust::Models::FeedbackProjectLogsItem],
-            ?request_options: Braintrust::request_opts
-          ) -> void
-          | (
-            ?Braintrust::Models::Projects::log_feedback_params
-            | Braintrust::BaseModel data
-          ) -> void
+        def initialize: (
+          feedback: ::Array[Braintrust::Models::FeedbackProjectLogsItem],
+          ?request_options: Braintrust::request_opts
+        ) -> void
 
         def to_hash: -> Braintrust::Models::Projects::log_feedback_params
       end

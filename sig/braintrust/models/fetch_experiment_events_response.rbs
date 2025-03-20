@@ -8,15 +8,10 @@ module Braintrust
 
       attr_accessor cursor: String?
 
-      def initialize:
-        (
-          events: ::Array[Braintrust::Models::ExperimentEvent],
-          ?cursor: String?
-        ) -> void
-        | (
-          ?Braintrust::Models::fetch_experiment_events_response
-          | Braintrust::BaseModel data
-        ) -> void
+      def initialize: (
+        events: ::Array[Braintrust::Models::ExperimentEvent],
+        ?cursor: String?
+      ) -> void
 
       def to_hash: -> Braintrust::Models::fetch_experiment_events_response
     end

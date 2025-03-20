@@ -24,19 +24,14 @@ module Braintrust
 
       attr_accessor post_message: bool?
 
-      def initialize:
-        (
-          name: String,
-          project_id: String,
-          url: String,
-          ?description: String?,
-          ?post_message: bool?,
-          ?request_options: Braintrust::request_opts
-        ) -> void
-        | (
-          ?Braintrust::Models::span_iframe_create_params
-          | Braintrust::BaseModel data
-        ) -> void
+      def initialize: (
+        name: String,
+        project_id: String,
+        url: String,
+        ?description: String?,
+        ?post_message: bool?,
+        ?request_options: Braintrust::request_opts
+      ) -> void
 
       def to_hash: -> Braintrust::Models::span_iframe_create_params
     end

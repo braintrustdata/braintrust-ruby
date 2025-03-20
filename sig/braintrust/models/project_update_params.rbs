@@ -12,16 +12,11 @@ module Braintrust
 
       attr_accessor settings: Braintrust::Models::ProjectSettings?
 
-      def initialize:
-        (
-          ?name: String?,
-          ?settings: Braintrust::Models::ProjectSettings?,
-          ?request_options: Braintrust::request_opts
-        ) -> void
-        | (
-          ?Braintrust::Models::project_update_params
-          | Braintrust::BaseModel data
-        ) -> void
+      def initialize: (
+        ?name: String?,
+        ?settings: Braintrust::Models::ProjectSettings?,
+        ?request_options: Braintrust::request_opts
+      ) -> void
 
       def to_hash: -> Braintrust::Models::project_update_params
     end

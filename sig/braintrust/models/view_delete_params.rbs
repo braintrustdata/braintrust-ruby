@@ -12,15 +12,11 @@ module Braintrust
 
       attr_accessor object_type: Braintrust::Models::acl_object_type
 
-      def initialize:
-        (
-          object_id_: String,
-          object_type: Braintrust::Models::acl_object_type,
-          ?request_options: Braintrust::request_opts
-        ) -> void
-        | (
-          ?Braintrust::Models::view_delete_params | Braintrust::BaseModel data
-        ) -> void
+      def initialize: (
+        object_id_: String,
+        object_type: Braintrust::Models::acl_object_type,
+        ?request_options: Braintrust::request_opts
+      ) -> void
 
       def to_hash: -> Braintrust::Models::view_delete_params
     end

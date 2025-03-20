@@ -20,17 +20,13 @@ module Braintrust
 
       attr_accessor tool_functions: ::Array[Braintrust::Models::PromptData::tool_function]?
 
-      def initialize:
-        (
-          ?options: Braintrust::Models::PromptOptions?,
-          ?origin: Braintrust::Models::PromptData::Origin?,
-          ?parser: Braintrust::Models::PromptData::Parser?,
-          ?prompt: Braintrust::Models::PromptData::prompt?,
-          ?tool_functions: ::Array[Braintrust::Models::PromptData::tool_function]?
-        ) -> void
-        | (
-          ?Braintrust::Models::prompt_data | Braintrust::BaseModel data
-        ) -> void
+      def initialize: (
+        ?options: Braintrust::Models::PromptOptions?,
+        ?origin: Braintrust::Models::PromptData::Origin?,
+        ?parser: Braintrust::Models::PromptData::Parser?,
+        ?prompt: Braintrust::Models::PromptData::prompt?,
+        ?tool_functions: ::Array[Braintrust::Models::PromptData::tool_function]?
+      ) -> void
 
       def to_hash: -> Braintrust::Models::prompt_data
 
@@ -50,15 +46,11 @@ module Braintrust
 
         def prompt_version=: (String) -> String
 
-        def initialize:
-          (
-            ?project_id: String,
-            ?prompt_id: String,
-            ?prompt_version: String
-          ) -> void
-          | (
-            ?Braintrust::Models::PromptData::origin | Braintrust::BaseModel data
-          ) -> void
+        def initialize: (
+          ?project_id: String,
+          ?prompt_id: String,
+          ?prompt_version: String
+        ) -> void
 
         def to_hash: -> Braintrust::Models::PromptData::origin
       end
@@ -77,15 +69,11 @@ module Braintrust
 
         attr_accessor use_cot: bool
 
-        def initialize:
-          (
-            choice_scores: ::Hash[Symbol, Float],
-            type: Braintrust::Models::PromptData::Parser::type_,
-            use_cot: bool
-          ) -> void
-          | (
-            ?Braintrust::Models::PromptData::parser | Braintrust::BaseModel data
-          ) -> void
+        def initialize: (
+          choice_scores: ::Hash[Symbol, Float],
+          type: Braintrust::Models::PromptData::Parser::type_,
+          use_cot: bool
+        ) -> void
 
         def to_hash: -> Braintrust::Models::PromptData::parser
 
@@ -114,15 +102,10 @@ module Braintrust
 
           attr_accessor type: Braintrust::Models::PromptData::Prompt::Completion::type_
 
-          def initialize:
-            (
-              content: String,
-              type: Braintrust::Models::PromptData::Prompt::Completion::type_
-            ) -> void
-            | (
-              ?Braintrust::Models::PromptData::Prompt::completion
-              | Braintrust::BaseModel data
-            ) -> void
+          def initialize: (
+            content: String,
+            type: Braintrust::Models::PromptData::Prompt::Completion::type_
+          ) -> void
 
           def to_hash: -> Braintrust::Models::PromptData::Prompt::completion
 
@@ -151,16 +134,11 @@ module Braintrust
 
           def tools=: (String) -> String
 
-          def initialize:
-            (
-              messages: ::Array[Braintrust::Models::PromptData::Prompt::Chat::message],
-              type: Braintrust::Models::PromptData::Prompt::Chat::type_,
-              ?tools: String
-            ) -> void
-            | (
-              ?Braintrust::Models::PromptData::Prompt::chat
-              | Braintrust::BaseModel data
-            ) -> void
+          def initialize: (
+            messages: ::Array[Braintrust::Models::PromptData::Prompt::Chat::message],
+            type: Braintrust::Models::PromptData::Prompt::Chat::type_,
+            ?tools: String
+          ) -> void
 
           def to_hash: -> Braintrust::Models::PromptData::Prompt::chat
 
@@ -191,16 +169,11 @@ module Braintrust
 
               def name=: (String) -> String
 
-              def initialize:
-                (
-                  role: Braintrust::Models::PromptData::Prompt::Chat::Message::System::role,
-                  ?content: String,
-                  ?name: String
-                ) -> void
-                | (
-                  ?Braintrust::Models::PromptData::Prompt::Chat::Message::system_
-                  | Braintrust::BaseModel data
-                ) -> void
+              def initialize: (
+                role: Braintrust::Models::PromptData::Prompt::Chat::Message::System::role,
+                ?content: String,
+                ?name: String
+              ) -> void
 
               def to_hash: -> Braintrust::Models::PromptData::Prompt::Chat::Message::system_
 
@@ -233,16 +206,11 @@ module Braintrust
 
               def name=: (String) -> String
 
-              def initialize:
-                (
-                  role: Braintrust::Models::PromptData::Prompt::Chat::Message::User::role,
-                  ?content: Braintrust::Models::PromptData::Prompt::Chat::Message::User::content,
-                  ?name: String
-                ) -> void
-                | (
-                  ?Braintrust::Models::PromptData::Prompt::Chat::Message::user
-                  | Braintrust::BaseModel data
-                ) -> void
+              def initialize: (
+                role: Braintrust::Models::PromptData::Prompt::Chat::Message::User::role,
+                ?content: Braintrust::Models::PromptData::Prompt::Chat::Message::User::content,
+                ?name: String
+              ) -> void
 
               def to_hash: -> Braintrust::Models::PromptData::Prompt::Chat::Message::user
 
@@ -296,18 +264,13 @@ module Braintrust
 
               attr_accessor tool_calls: ::Array[Braintrust::Models::ChatCompletionMessageToolCall]?
 
-              def initialize:
-                (
-                  role: Braintrust::Models::PromptData::Prompt::Chat::Message::Assistant::role,
-                  ?content: String?,
-                  ?function_call: Braintrust::Models::PromptData::Prompt::Chat::Message::Assistant::FunctionCall?,
-                  ?name: String?,
-                  ?tool_calls: ::Array[Braintrust::Models::ChatCompletionMessageToolCall]?
-                ) -> void
-                | (
-                  ?Braintrust::Models::PromptData::Prompt::Chat::Message::assistant
-                  | Braintrust::BaseModel data
-                ) -> void
+              def initialize: (
+                role: Braintrust::Models::PromptData::Prompt::Chat::Message::Assistant::role,
+                ?content: String?,
+                ?function_call: Braintrust::Models::PromptData::Prompt::Chat::Message::Assistant::FunctionCall?,
+                ?name: String?,
+                ?tool_calls: ::Array[Braintrust::Models::ChatCompletionMessageToolCall]?
+              ) -> void
 
               def to_hash: -> Braintrust::Models::PromptData::Prompt::Chat::Message::assistant
 
@@ -326,12 +289,7 @@ module Braintrust
 
                 attr_accessor name: String
 
-                def initialize:
-                  (arguments: String, name: String) -> void
-                  | (
-                    ?Braintrust::Models::PromptData::Prompt::Chat::Message::Assistant::function_call
-                    | Braintrust::BaseModel data
-                  ) -> void
+                def initialize: (arguments: String, name: String) -> void
 
                 def to_hash: -> Braintrust::Models::PromptData::Prompt::Chat::Message::Assistant::function_call
               end
@@ -355,16 +313,11 @@ module Braintrust
 
               def tool_call_id=: (String) -> String
 
-              def initialize:
-                (
-                  role: Braintrust::Models::PromptData::Prompt::Chat::Message::Tool::role,
-                  ?content: String,
-                  ?tool_call_id: String
-                ) -> void
-                | (
-                  ?Braintrust::Models::PromptData::Prompt::Chat::Message::tool
-                  | Braintrust::BaseModel data
-                ) -> void
+              def initialize: (
+                role: Braintrust::Models::PromptData::Prompt::Chat::Message::Tool::role,
+                ?content: String,
+                ?tool_call_id: String
+              ) -> void
 
               def to_hash: -> Braintrust::Models::PromptData::Prompt::Chat::Message::tool
 
@@ -393,16 +346,11 @@ module Braintrust
 
               def content=: (String) -> String
 
-              def initialize:
-                (
-                  name: String,
-                  role: Braintrust::Models::PromptData::Prompt::Chat::Message::Function::role,
-                  ?content: String
-                ) -> void
-                | (
-                  ?Braintrust::Models::PromptData::Prompt::Chat::Message::function
-                  | Braintrust::BaseModel data
-                ) -> void
+              def initialize: (
+                name: String,
+                role: Braintrust::Models::PromptData::Prompt::Chat::Message::Function::role,
+                ?content: String
+              ) -> void
 
               def to_hash: -> Braintrust::Models::PromptData::Prompt::Chat::Message::function
 
@@ -426,15 +374,10 @@ module Braintrust
 
               attr_accessor content: String?
 
-              def initialize:
-                (
-                  role: Braintrust::Models::PromptData::Prompt::Chat::Message::Fallback::role,
-                  ?content: String?
-                ) -> void
-                | (
-                  ?Braintrust::Models::PromptData::Prompt::Chat::Message::fallback
-                  | Braintrust::BaseModel data
-                ) -> void
+              def initialize: (
+                role: Braintrust::Models::PromptData::Prompt::Chat::Message::Fallback::role,
+                ?content: String?
+              ) -> void
 
               def to_hash: -> Braintrust::Models::PromptData::Prompt::Chat::Message::fallback
 
@@ -478,15 +421,10 @@ module Braintrust
 
           attr_accessor type: Braintrust::Models::PromptData::ToolFunction::Function::type_
 
-          def initialize:
-            (
-              id: String,
-              type: Braintrust::Models::PromptData::ToolFunction::Function::type_
-            ) -> void
-            | (
-              ?Braintrust::Models::PromptData::ToolFunction::function
-              | Braintrust::BaseModel data
-            ) -> void
+          def initialize: (
+            id: String,
+            type: Braintrust::Models::PromptData::ToolFunction::Function::type_
+          ) -> void
 
           def to_hash: -> Braintrust::Models::PromptData::ToolFunction::function
 
@@ -510,15 +448,10 @@ module Braintrust
 
           attr_accessor type: Braintrust::Models::PromptData::ToolFunction::Global::type_
 
-          def initialize:
-            (
-              name: String,
-              type: Braintrust::Models::PromptData::ToolFunction::Global::type_
-            ) -> void
-            | (
-              ?Braintrust::Models::PromptData::ToolFunction::global
-              | Braintrust::BaseModel data
-            ) -> void
+          def initialize: (
+            name: String,
+            type: Braintrust::Models::PromptData::ToolFunction::Global::type_
+          ) -> void
 
           def to_hash: -> Braintrust::Models::PromptData::ToolFunction::global
 

@@ -6,12 +6,7 @@ module Braintrust
     class EnvVarListResponse < Braintrust::BaseModel
       attr_accessor objects: ::Array[Braintrust::Models::EnvVar]
 
-      def initialize:
-        (objects: ::Array[Braintrust::Models::EnvVar]) -> void
-        | (
-          ?Braintrust::Models::env_var_list_response
-          | Braintrust::BaseModel data
-        ) -> void
+      def initialize: (objects: ::Array[Braintrust::Models::EnvVar]) -> void
 
       def to_hash: -> Braintrust::Models::env_var_list_response
     end

@@ -30,20 +30,16 @@ module Braintrust
 
       attr_accessor tags: ::Array[String]?
 
-      def initialize:
-        (
-          name: String,
-          project_id: String,
-          slug: String,
-          ?description: String?,
-          ?function_type: Braintrust::Models::PromptCreateParams::function_type?,
-          ?prompt_data: Braintrust::Models::PromptData?,
-          ?tags: ::Array[String]?,
-          ?request_options: Braintrust::request_opts
-        ) -> void
-        | (
-          ?Braintrust::Models::prompt_create_params | Braintrust::BaseModel data
-        ) -> void
+      def initialize: (
+        name: String,
+        project_id: String,
+        slug: String,
+        ?description: String?,
+        ?function_type: Braintrust::Models::PromptCreateParams::function_type?,
+        ?prompt_data: Braintrust::Models::PromptData?,
+        ?tags: ::Array[String]?,
+        ?request_options: Braintrust::request_opts
+      ) -> void
 
       def to_hash: -> Braintrust::Models::prompt_create_params
 

@@ -15,16 +15,11 @@ module Braintrust
 
       attr_accessor remove_acls: ::Array[Braintrust::Models::ACLBatchUpdateParams::RemoveACL]?
 
-      def initialize:
-        (
-          ?add_acls: ::Array[Braintrust::Models::ACLBatchUpdateParams::AddACL]?,
-          ?remove_acls: ::Array[Braintrust::Models::ACLBatchUpdateParams::RemoveACL]?,
-          ?request_options: Braintrust::request_opts
-        ) -> void
-        | (
-          ?Braintrust::Models::acl_batch_update_params
-          | Braintrust::BaseModel data
-        ) -> void
+      def initialize: (
+        ?add_acls: ::Array[Braintrust::Models::ACLBatchUpdateParams::AddACL]?,
+        ?remove_acls: ::Array[Braintrust::Models::ACLBatchUpdateParams::RemoveACL]?,
+        ?request_options: Braintrust::request_opts
+      ) -> void
 
       def to_hash: -> Braintrust::Models::acl_batch_update_params
 
@@ -54,20 +49,15 @@ module Braintrust
 
         attr_accessor user_id: String?
 
-        def initialize:
-          (
-            object_id_: String,
-            object_type: Braintrust::Models::acl_object_type,
-            ?group_id: String?,
-            ?permission: Braintrust::Models::permission?,
-            ?restrict_object_type: Braintrust::Models::acl_object_type?,
-            ?role_id: String?,
-            ?user_id: String?
-          ) -> void
-          | (
-            ?Braintrust::Models::ACLBatchUpdateParams::add_acl
-            | Braintrust::BaseModel data
-          ) -> void
+        def initialize: (
+          object_id_: String,
+          object_type: Braintrust::Models::acl_object_type,
+          ?group_id: String?,
+          ?permission: Braintrust::Models::permission?,
+          ?restrict_object_type: Braintrust::Models::acl_object_type?,
+          ?role_id: String?,
+          ?user_id: String?
+        ) -> void
 
         def to_hash: -> Braintrust::Models::ACLBatchUpdateParams::add_acl
       end
@@ -98,20 +88,15 @@ module Braintrust
 
         attr_accessor user_id: String?
 
-        def initialize:
-          (
-            object_id_: String,
-            object_type: Braintrust::Models::acl_object_type,
-            ?group_id: String?,
-            ?permission: Braintrust::Models::permission?,
-            ?restrict_object_type: Braintrust::Models::acl_object_type?,
-            ?role_id: String?,
-            ?user_id: String?
-          ) -> void
-          | (
-            ?Braintrust::Models::ACLBatchUpdateParams::remove_acl
-            | Braintrust::BaseModel data
-          ) -> void
+        def initialize: (
+          object_id_: String,
+          object_type: Braintrust::Models::acl_object_type,
+          ?group_id: String?,
+          ?permission: Braintrust::Models::permission?,
+          ?restrict_object_type: Braintrust::Models::acl_object_type?,
+          ?role_id: String?,
+          ?user_id: String?
+        ) -> void
 
         def to_hash: -> Braintrust::Models::ACLBatchUpdateParams::remove_acl
       end

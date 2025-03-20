@@ -3,62 +3,38 @@ module Braintrust
     class Projects
       attr_reader logs: Braintrust::Resources::Projects::Logs
 
-      def create:
-        (
-          Braintrust::Models::ProjectCreateParams | ::Hash[Symbol, top] params
-        ) -> Braintrust::Models::Project
-        | (
-          name: String,
-          ?org_name: String?,
-          ?request_options: Braintrust::request_opts
-        ) -> Braintrust::Models::Project
+      def create: (
+        name: String,
+        ?org_name: String?,
+        ?request_options: Braintrust::request_opts
+      ) -> Braintrust::Models::Project
 
-      def retrieve:
-        (
-          String project_id,
-          ?Braintrust::Models::ProjectRetrieveParams
-          | ::Hash[Symbol, top] params
-        ) -> Braintrust::Models::Project
-        | (
-          String project_id,
-          ?request_options: Braintrust::request_opts
-        ) -> Braintrust::Models::Project
+      def retrieve: (
+        String project_id,
+        ?request_options: Braintrust::request_opts
+      ) -> Braintrust::Models::Project
 
-      def update:
-        (
-          String project_id,
-          ?Braintrust::Models::ProjectUpdateParams | ::Hash[Symbol, top] params
-        ) -> Braintrust::Models::Project
-        | (
-          String project_id,
-          ?name: String?,
-          ?settings: Braintrust::Models::ProjectSettings?,
-          ?request_options: Braintrust::request_opts
-        ) -> Braintrust::Models::Project
+      def update: (
+        String project_id,
+        ?name: String?,
+        ?settings: Braintrust::Models::ProjectSettings?,
+        ?request_options: Braintrust::request_opts
+      ) -> Braintrust::Models::Project
 
-      def list:
-        (
-          ?Braintrust::Models::ProjectListParams | ::Hash[Symbol, top] params
-        ) -> Braintrust::ListObjects[Braintrust::Models::Project]
-        | (
-          ?ending_before: String,
-          ?ids: Braintrust::Models::ProjectListParams::ids,
-          ?limit: Integer?,
-          ?org_name: String,
-          ?project_name: String,
-          ?starting_after: String,
-          ?request_options: Braintrust::request_opts
-        ) -> Braintrust::ListObjects[Braintrust::Models::Project]
+      def list: (
+        ?ending_before: String,
+        ?ids: Braintrust::Models::ProjectListParams::ids,
+        ?limit: Integer?,
+        ?org_name: String,
+        ?project_name: String,
+        ?starting_after: String,
+        ?request_options: Braintrust::request_opts
+      ) -> Braintrust::ListObjects[Braintrust::Models::Project]
 
-      def delete:
-        (
-          String project_id,
-          ?Braintrust::Models::ProjectDeleteParams | ::Hash[Symbol, top] params
-        ) -> Braintrust::Models::Project
-        | (
-          String project_id,
-          ?request_options: Braintrust::request_opts
-        ) -> Braintrust::Models::Project
+      def delete: (
+        String project_id,
+        ?request_options: Braintrust::request_opts
+      ) -> Braintrust::Models::Project
 
       def initialize: (client: Braintrust::Client) -> void
     end

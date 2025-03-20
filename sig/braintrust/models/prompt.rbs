@@ -44,23 +44,21 @@ module Braintrust
 
       attr_accessor tags: ::Array[String]?
 
-      def initialize:
-        (
-          id: String,
-          _xact_id: String,
-          log_id: Braintrust::Models::Prompt::log_id,
-          name: String,
-          org_id: String,
-          project_id: String,
-          slug: String,
-          ?created: Time?,
-          ?description: String?,
-          ?function_type: Braintrust::Models::Prompt::function_type?,
-          ?metadata: ::Hash[Symbol, top?]?,
-          ?prompt_data: Braintrust::Models::PromptData?,
-          ?tags: ::Array[String]?
-        ) -> void
-        | (?Braintrust::Models::prompt | Braintrust::BaseModel data) -> void
+      def initialize: (
+        id: String,
+        _xact_id: String,
+        log_id: Braintrust::Models::Prompt::log_id,
+        name: String,
+        org_id: String,
+        project_id: String,
+        slug: String,
+        ?created: Time?,
+        ?description: String?,
+        ?function_type: Braintrust::Models::Prompt::function_type?,
+        ?metadata: ::Hash[Symbol, top?]?,
+        ?prompt_data: Braintrust::Models::PromptData?,
+        ?tags: ::Array[String]?
+      ) -> void
 
       def to_hash: -> Braintrust::Models::prompt
 

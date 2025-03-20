@@ -1,12 +1,7 @@
 module Braintrust
   module Resources
     class TopLevel
-      def hello_world:
-        (
-          ?Braintrust::Models::TopLevelHelloWorldParams
-          | ::Hash[Symbol, top] params
-        ) -> String
-        | (?request_options: Braintrust::request_opts) -> String
+      def hello_world: (?request_options: Braintrust::request_opts) -> String
 
       def initialize: (client: Braintrust::Client) -> void
     end

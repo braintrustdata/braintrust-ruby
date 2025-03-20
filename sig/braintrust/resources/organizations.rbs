@@ -3,57 +3,34 @@ module Braintrust
     class Organizations
       attr_reader members: Braintrust::Resources::Organizations::Members
 
-      def retrieve:
-        (
-          String organization_id,
-          ?Braintrust::Models::OrganizationRetrieveParams
-          | ::Hash[Symbol, top] params
-        ) -> Braintrust::Models::Organization
-        | (
-          String organization_id,
-          ?request_options: Braintrust::request_opts
-        ) -> Braintrust::Models::Organization
+      def retrieve: (
+        String organization_id,
+        ?request_options: Braintrust::request_opts
+      ) -> Braintrust::Models::Organization
 
-      def update:
-        (
-          String organization_id,
-          ?Braintrust::Models::OrganizationUpdateParams
-          | ::Hash[Symbol, top] params
-        ) -> Braintrust::Models::Organization
-        | (
-          String organization_id,
-          ?api_url: String?,
-          ?is_universal_api: bool?,
-          ?name: String?,
-          ?proxy_url: String?,
-          ?realtime_url: String?,
-          ?request_options: Braintrust::request_opts
-        ) -> Braintrust::Models::Organization
+      def update: (
+        String organization_id,
+        ?api_url: String?,
+        ?is_universal_api: bool?,
+        ?name: String?,
+        ?proxy_url: String?,
+        ?realtime_url: String?,
+        ?request_options: Braintrust::request_opts
+      ) -> Braintrust::Models::Organization
 
-      def list:
-        (
-          ?Braintrust::Models::OrganizationListParams
-          | ::Hash[Symbol, top] params
-        ) -> Braintrust::ListObjects[Braintrust::Models::Organization]
-        | (
-          ?ending_before: String,
-          ?ids: Braintrust::Models::OrganizationListParams::ids,
-          ?limit: Integer?,
-          ?org_name: String,
-          ?starting_after: String,
-          ?request_options: Braintrust::request_opts
-        ) -> Braintrust::ListObjects[Braintrust::Models::Organization]
+      def list: (
+        ?ending_before: String,
+        ?ids: Braintrust::Models::OrganizationListParams::ids,
+        ?limit: Integer?,
+        ?org_name: String,
+        ?starting_after: String,
+        ?request_options: Braintrust::request_opts
+      ) -> Braintrust::ListObjects[Braintrust::Models::Organization]
 
-      def delete:
-        (
-          String organization_id,
-          ?Braintrust::Models::OrganizationDeleteParams
-          | ::Hash[Symbol, top] params
-        ) -> Braintrust::Models::Organization
-        | (
-          String organization_id,
-          ?request_options: Braintrust::request_opts
-        ) -> Braintrust::Models::Organization
+      def delete: (
+        String organization_id,
+        ?request_options: Braintrust::request_opts
+      ) -> Braintrust::Models::Organization
 
       def initialize: (client: Braintrust::Client) -> void
     end

@@ -73,33 +73,28 @@ module Braintrust
 
       attr_accessor tags: ::Array[String]?
 
-      def initialize:
-        (
-          ?id: String?,
-          ?_is_merge: bool?,
-          ?_merge_paths: ::Array[::Array[String]]?,
-          ?_object_delete: bool?,
-          ?_parent_id: String?,
-          ?context: Braintrust::Models::InsertProjectLogsEvent::Context?,
-          ?created: Time?,
-          ?error: top,
-          ?expected: top,
-          ?input: top,
-          ?metadata: Braintrust::Models::InsertProjectLogsEvent::Metadata?,
-          ?metrics: Braintrust::Models::InsertProjectLogsEvent::Metrics?,
-          ?origin: Braintrust::Models::ObjectReference?,
-          ?output: top,
-          ?root_span_id: String?,
-          ?scores: ::Hash[Symbol, Float?]?,
-          ?span_attributes: Braintrust::Models::SpanAttributes?,
-          ?span_id: String?,
-          ?span_parents: ::Array[String]?,
-          ?tags: ::Array[String]?
-        ) -> void
-        | (
-          ?Braintrust::Models::insert_project_logs_event
-          | Braintrust::BaseModel data
-        ) -> void
+      def initialize: (
+        ?id: String?,
+        ?_is_merge: bool?,
+        ?_merge_paths: ::Array[::Array[String]]?,
+        ?_object_delete: bool?,
+        ?_parent_id: String?,
+        ?context: Braintrust::Models::InsertProjectLogsEvent::Context?,
+        ?created: Time?,
+        ?error: top,
+        ?expected: top,
+        ?input: top,
+        ?metadata: Braintrust::Models::InsertProjectLogsEvent::Metadata?,
+        ?metrics: Braintrust::Models::InsertProjectLogsEvent::Metrics?,
+        ?origin: Braintrust::Models::ObjectReference?,
+        ?output: top,
+        ?root_span_id: String?,
+        ?scores: ::Hash[Symbol, Float?]?,
+        ?span_attributes: Braintrust::Models::SpanAttributes?,
+        ?span_id: String?,
+        ?span_parents: ::Array[String]?,
+        ?tags: ::Array[String]?
+      ) -> void
 
       def to_hash: -> Braintrust::Models::insert_project_logs_event
 
@@ -117,16 +112,11 @@ module Braintrust
 
         attr_accessor caller_lineno: Integer?
 
-        def initialize:
-          (
-            ?caller_filename: String?,
-            ?caller_functionname: String?,
-            ?caller_lineno: Integer?
-          ) -> void
-          | (
-            ?Braintrust::Models::InsertProjectLogsEvent::context
-            | Braintrust::BaseModel data
-          ) -> void
+        def initialize: (
+          ?caller_filename: String?,
+          ?caller_functionname: String?,
+          ?caller_lineno: Integer?
+        ) -> void
 
         def to_hash: -> Braintrust::Models::InsertProjectLogsEvent::context
       end
@@ -136,12 +126,7 @@ module Braintrust
       class Metadata < Braintrust::BaseModel
         attr_accessor model: String?
 
-        def initialize:
-          (?model: String?) -> void
-          | (
-            ?Braintrust::Models::InsertProjectLogsEvent::metadata
-            | Braintrust::BaseModel data
-          ) -> void
+        def initialize: (?model: String?) -> void
 
         def to_hash: -> Braintrust::Models::InsertProjectLogsEvent::metadata
       end
@@ -181,21 +166,16 @@ module Braintrust
 
         attr_accessor tokens: Integer?
 
-        def initialize:
-          (
-            ?caller_filename: top,
-            ?caller_functionname: top,
-            ?caller_lineno: top,
-            ?completion_tokens: Integer?,
-            ?end_: Float?,
-            ?prompt_tokens: Integer?,
-            ?start: Float?,
-            ?tokens: Integer?
-          ) -> void
-          | (
-            ?Braintrust::Models::InsertProjectLogsEvent::metrics
-            | Braintrust::BaseModel data
-          ) -> void
+        def initialize: (
+          ?caller_filename: top,
+          ?caller_functionname: top,
+          ?caller_lineno: top,
+          ?completion_tokens: Integer?,
+          ?end_: Float?,
+          ?prompt_tokens: Integer?,
+          ?start: Float?,
+          ?tokens: Integer?
+        ) -> void
 
         def to_hash: -> Braintrust::Models::InsertProjectLogsEvent::metrics
       end

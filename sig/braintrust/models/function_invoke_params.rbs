@@ -47,22 +47,17 @@ module Braintrust
 
       def version=: (String) -> String
 
-      def initialize:
-        (
-          ?expected: top,
-          ?input: top,
-          ?messages: ::Array[Braintrust::Models::FunctionInvokeParams::message],
-          ?metadata: ::Hash[Symbol, top?]?,
-          ?mode: Braintrust::Models::FunctionInvokeParams::mode?,
-          ?parent: Braintrust::Models::FunctionInvokeParams::parent,
-          ?stream: bool?,
-          ?version: String,
-          ?request_options: Braintrust::request_opts
-        ) -> void
-        | (
-          ?Braintrust::Models::function_invoke_params
-          | Braintrust::BaseModel data
-        ) -> void
+      def initialize: (
+        ?expected: top,
+        ?input: top,
+        ?messages: ::Array[Braintrust::Models::FunctionInvokeParams::message],
+        ?metadata: ::Hash[Symbol, top?]?,
+        ?mode: Braintrust::Models::FunctionInvokeParams::mode?,
+        ?parent: Braintrust::Models::FunctionInvokeParams::parent,
+        ?stream: bool?,
+        ?version: String,
+        ?request_options: Braintrust::request_opts
+      ) -> void
 
       def to_hash: -> Braintrust::Models::function_invoke_params
 
@@ -93,16 +88,11 @@ module Braintrust
 
           def name=: (String) -> String
 
-          def initialize:
-            (
-              role: Braintrust::Models::FunctionInvokeParams::Message::System::role,
-              ?content: String,
-              ?name: String
-            ) -> void
-            | (
-              ?Braintrust::Models::FunctionInvokeParams::Message::system_
-              | Braintrust::BaseModel data
-            ) -> void
+          def initialize: (
+            role: Braintrust::Models::FunctionInvokeParams::Message::System::role,
+            ?content: String,
+            ?name: String
+          ) -> void
 
           def to_hash: -> Braintrust::Models::FunctionInvokeParams::Message::system_
 
@@ -135,16 +125,11 @@ module Braintrust
 
           def name=: (String) -> String
 
-          def initialize:
-            (
-              role: Braintrust::Models::FunctionInvokeParams::Message::User::role,
-              ?content: Braintrust::Models::FunctionInvokeParams::Message::User::content,
-              ?name: String
-            ) -> void
-            | (
-              ?Braintrust::Models::FunctionInvokeParams::Message::user
-              | Braintrust::BaseModel data
-            ) -> void
+          def initialize: (
+            role: Braintrust::Models::FunctionInvokeParams::Message::User::role,
+            ?content: Braintrust::Models::FunctionInvokeParams::Message::User::content,
+            ?name: String
+          ) -> void
 
           def to_hash: -> Braintrust::Models::FunctionInvokeParams::Message::user
 
@@ -198,18 +183,13 @@ module Braintrust
 
           attr_accessor tool_calls: ::Array[Braintrust::Models::ChatCompletionMessageToolCall]?
 
-          def initialize:
-            (
-              role: Braintrust::Models::FunctionInvokeParams::Message::Assistant::role,
-              ?content: String?,
-              ?function_call: Braintrust::Models::FunctionInvokeParams::Message::Assistant::FunctionCall?,
-              ?name: String?,
-              ?tool_calls: ::Array[Braintrust::Models::ChatCompletionMessageToolCall]?
-            ) -> void
-            | (
-              ?Braintrust::Models::FunctionInvokeParams::Message::assistant
-              | Braintrust::BaseModel data
-            ) -> void
+          def initialize: (
+            role: Braintrust::Models::FunctionInvokeParams::Message::Assistant::role,
+            ?content: String?,
+            ?function_call: Braintrust::Models::FunctionInvokeParams::Message::Assistant::FunctionCall?,
+            ?name: String?,
+            ?tool_calls: ::Array[Braintrust::Models::ChatCompletionMessageToolCall]?
+          ) -> void
 
           def to_hash: -> Braintrust::Models::FunctionInvokeParams::Message::assistant
 
@@ -228,12 +208,7 @@ module Braintrust
 
             attr_accessor name: String
 
-            def initialize:
-              (arguments: String, name: String) -> void
-              | (
-                ?Braintrust::Models::FunctionInvokeParams::Message::Assistant::function_call
-                | Braintrust::BaseModel data
-              ) -> void
+            def initialize: (arguments: String, name: String) -> void
 
             def to_hash: -> Braintrust::Models::FunctionInvokeParams::Message::Assistant::function_call
           end
@@ -257,16 +232,11 @@ module Braintrust
 
           def tool_call_id=: (String) -> String
 
-          def initialize:
-            (
-              role: Braintrust::Models::FunctionInvokeParams::Message::Tool::role,
-              ?content: String,
-              ?tool_call_id: String
-            ) -> void
-            | (
-              ?Braintrust::Models::FunctionInvokeParams::Message::tool
-              | Braintrust::BaseModel data
-            ) -> void
+          def initialize: (
+            role: Braintrust::Models::FunctionInvokeParams::Message::Tool::role,
+            ?content: String,
+            ?tool_call_id: String
+          ) -> void
 
           def to_hash: -> Braintrust::Models::FunctionInvokeParams::Message::tool
 
@@ -295,16 +265,11 @@ module Braintrust
 
           def content=: (String) -> String
 
-          def initialize:
-            (
-              name: String,
-              role: Braintrust::Models::FunctionInvokeParams::Message::Function::role,
-              ?content: String
-            ) -> void
-            | (
-              ?Braintrust::Models::FunctionInvokeParams::Message::function
-              | Braintrust::BaseModel data
-            ) -> void
+          def initialize: (
+            name: String,
+            role: Braintrust::Models::FunctionInvokeParams::Message::Function::role,
+            ?content: String
+          ) -> void
 
           def to_hash: -> Braintrust::Models::FunctionInvokeParams::Message::function
 
@@ -328,15 +293,10 @@ module Braintrust
 
           attr_accessor content: String?
 
-          def initialize:
-            (
-              role: Braintrust::Models::FunctionInvokeParams::Message::Fallback::role,
-              ?content: String?
-            ) -> void
-            | (
-              ?Braintrust::Models::FunctionInvokeParams::Message::fallback
-              | Braintrust::BaseModel data
-            ) -> void
+          def initialize: (
+            role: Braintrust::Models::FunctionInvokeParams::Message::Fallback::role,
+            ?content: String?
+          ) -> void
 
           def to_hash: -> Braintrust::Models::FunctionInvokeParams::Message::fallback
 
@@ -383,17 +343,12 @@ module Braintrust
 
           attr_accessor row_ids: Braintrust::Models::FunctionInvokeParams::Parent::SpanParentStruct::RowIDs?
 
-          def initialize:
-            (
-              object_id_: String,
-              object_type: Braintrust::Models::FunctionInvokeParams::Parent::SpanParentStruct::object_type,
-              ?propagated_event: ::Hash[Symbol, top?]?,
-              ?row_ids: Braintrust::Models::FunctionInvokeParams::Parent::SpanParentStruct::RowIDs?
-            ) -> void
-            | (
-              ?Braintrust::Models::FunctionInvokeParams::Parent::span_parent_struct
-              | Braintrust::BaseModel data
-            ) -> void
+          def initialize: (
+            object_id_: String,
+            object_type: Braintrust::Models::FunctionInvokeParams::Parent::SpanParentStruct::object_type,
+            ?propagated_event: ::Hash[Symbol, top?]?,
+            ?row_ids: Braintrust::Models::FunctionInvokeParams::Parent::SpanParentStruct::RowIDs?
+          ) -> void
 
           def to_hash: -> Braintrust::Models::FunctionInvokeParams::Parent::span_parent_struct
 
@@ -416,12 +371,11 @@ module Braintrust
 
             attr_accessor span_id: String
 
-            def initialize:
-              (id: String, root_span_id: String, span_id: String) -> void
-              | (
-                ?Braintrust::Models::FunctionInvokeParams::Parent::SpanParentStruct::row_ids
-                | Braintrust::BaseModel data
-              ) -> void
+            def initialize: (
+              id: String,
+              root_span_id: String,
+              span_id: String
+            ) -> void
 
             def to_hash: -> Braintrust::Models::FunctionInvokeParams::Parent::SpanParentStruct::row_ids
           end
