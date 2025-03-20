@@ -11,7 +11,7 @@ module Braintrust
         ) -> Braintrust::Models::Organization
         | (
           String organization_id,
-          request_options: Braintrust::request_opts
+          ?request_options: Braintrust::request_opts
         ) -> Braintrust::Models::Organization
 
       def update:
@@ -22,12 +22,12 @@ module Braintrust
         ) -> Braintrust::Models::Organization
         | (
           String organization_id,
-          api_url: String?,
-          is_universal_api: bool?,
-          name: String?,
-          proxy_url: String?,
-          realtime_url: String?,
-          request_options: Braintrust::request_opts
+          ?api_url: String?,
+          ?is_universal_api: bool?,
+          ?name: String?,
+          ?proxy_url: String?,
+          ?realtime_url: String?,
+          ?request_options: Braintrust::request_opts
         ) -> Braintrust::Models::Organization
 
       def list:
@@ -36,12 +36,12 @@ module Braintrust
           | ::Hash[Symbol, top] params
         ) -> Braintrust::ListObjects[Braintrust::Models::Organization]
         | (
-          ending_before: String,
-          ids: Braintrust::Models::OrganizationListParams::ids,
-          limit: Integer?,
-          org_name: String,
-          starting_after: String,
-          request_options: Braintrust::request_opts
+          ?ending_before: String,
+          ?ids: Braintrust::Models::OrganizationListParams::ids,
+          ?limit: Integer?,
+          ?org_name: String,
+          ?starting_after: String,
+          ?request_options: Braintrust::request_opts
         ) -> Braintrust::ListObjects[Braintrust::Models::Organization]
 
       def delete:
@@ -52,7 +52,7 @@ module Braintrust
         ) -> Braintrust::Models::Organization
         | (
           String organization_id,
-          request_options: Braintrust::request_opts
+          ?request_options: Braintrust::request_opts
         ) -> Braintrust::Models::Organization
 
       def initialize: (client: Braintrust::Client) -> void

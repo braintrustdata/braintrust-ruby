@@ -57,15 +57,15 @@ module Braintrust
 
       def initialize:
         (
-          email: Braintrust::Models::UserListParams::email,
-          ending_before: String,
-          family_name: Braintrust::Models::UserListParams::family_name,
-          given_name: Braintrust::Models::UserListParams::given_name,
-          ids: Braintrust::Models::UserListParams::ids,
-          limit: Integer?,
-          org_name: String,
-          starting_after: String,
-          request_options: Braintrust::request_opts
+          ?email: Braintrust::Models::UserListParams::email,
+          ?ending_before: String,
+          ?family_name: Braintrust::Models::UserListParams::family_name,
+          ?given_name: Braintrust::Models::UserListParams::given_name,
+          ?ids: Braintrust::Models::UserListParams::ids,
+          ?limit: Integer?,
+          ?org_name: String,
+          ?starting_after: String,
+          ?request_options: Braintrust::request_opts
         ) -> void
         | (
           ?Braintrust::Models::user_list_params | Braintrust::BaseModel data

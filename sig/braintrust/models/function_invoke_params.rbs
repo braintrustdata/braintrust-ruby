@@ -49,15 +49,15 @@ module Braintrust
 
       def initialize:
         (
-          expected: top,
-          input: top,
-          messages: ::Array[Braintrust::Models::FunctionInvokeParams::message],
-          metadata: ::Hash[Symbol, top?]?,
-          mode: Braintrust::Models::FunctionInvokeParams::mode?,
-          parent: Braintrust::Models::FunctionInvokeParams::parent,
-          stream: bool?,
-          version: String,
-          request_options: Braintrust::request_opts
+          ?expected: top,
+          ?input: top,
+          ?messages: ::Array[Braintrust::Models::FunctionInvokeParams::message],
+          ?metadata: ::Hash[Symbol, top?]?,
+          ?mode: Braintrust::Models::FunctionInvokeParams::mode?,
+          ?parent: Braintrust::Models::FunctionInvokeParams::parent,
+          ?stream: bool?,
+          ?version: String,
+          ?request_options: Braintrust::request_opts
         ) -> void
         | (
           ?Braintrust::Models::function_invoke_params
@@ -96,8 +96,8 @@ module Braintrust
           def initialize:
             (
               role: Braintrust::Models::FunctionInvokeParams::Message::System::role,
-              content: String,
-              name: String
+              ?content: String,
+              ?name: String
             ) -> void
             | (
               ?Braintrust::Models::FunctionInvokeParams::Message::system_
@@ -138,8 +138,8 @@ module Braintrust
           def initialize:
             (
               role: Braintrust::Models::FunctionInvokeParams::Message::User::role,
-              content: Braintrust::Models::FunctionInvokeParams::Message::User::content,
-              name: String
+              ?content: Braintrust::Models::FunctionInvokeParams::Message::User::content,
+              ?name: String
             ) -> void
             | (
               ?Braintrust::Models::FunctionInvokeParams::Message::user
@@ -201,10 +201,10 @@ module Braintrust
           def initialize:
             (
               role: Braintrust::Models::FunctionInvokeParams::Message::Assistant::role,
-              content: String?,
-              function_call: Braintrust::Models::FunctionInvokeParams::Message::Assistant::FunctionCall?,
-              name: String?,
-              tool_calls: ::Array[Braintrust::Models::ChatCompletionMessageToolCall]?
+              ?content: String?,
+              ?function_call: Braintrust::Models::FunctionInvokeParams::Message::Assistant::FunctionCall?,
+              ?name: String?,
+              ?tool_calls: ::Array[Braintrust::Models::ChatCompletionMessageToolCall]?
             ) -> void
             | (
               ?Braintrust::Models::FunctionInvokeParams::Message::assistant
@@ -260,8 +260,8 @@ module Braintrust
           def initialize:
             (
               role: Braintrust::Models::FunctionInvokeParams::Message::Tool::role,
-              content: String,
-              tool_call_id: String
+              ?content: String,
+              ?tool_call_id: String
             ) -> void
             | (
               ?Braintrust::Models::FunctionInvokeParams::Message::tool
@@ -299,7 +299,7 @@ module Braintrust
             (
               name: String,
               role: Braintrust::Models::FunctionInvokeParams::Message::Function::role,
-              content: String
+              ?content: String
             ) -> void
             | (
               ?Braintrust::Models::FunctionInvokeParams::Message::function
@@ -331,7 +331,7 @@ module Braintrust
           def initialize:
             (
               role: Braintrust::Models::FunctionInvokeParams::Message::Fallback::role,
-              content: String?
+              ?content: String?
             ) -> void
             | (
               ?Braintrust::Models::FunctionInvokeParams::Message::fallback
@@ -387,8 +387,8 @@ module Braintrust
             (
               object_id_: String,
               object_type: Braintrust::Models::FunctionInvokeParams::Parent::SpanParentStruct::object_type,
-              propagated_event: ::Hash[Symbol, top?]?,
-              row_ids: Braintrust::Models::FunctionInvokeParams::Parent::SpanParentStruct::RowIDs?
+              ?propagated_event: ::Hash[Symbol, top?]?,
+              ?row_ids: Braintrust::Models::FunctionInvokeParams::Parent::SpanParentStruct::RowIDs?
             ) -> void
             | (
               ?Braintrust::Models::FunctionInvokeParams::Parent::span_parent_struct

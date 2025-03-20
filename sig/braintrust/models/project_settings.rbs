@@ -16,9 +16,9 @@ module Braintrust
 
       def initialize:
         (
-          baseline_experiment_id: String?,
-          comparison_key: String?,
-          span_field_order: ::Array[Braintrust::Models::ProjectSettings::SpanFieldOrder]?
+          ?baseline_experiment_id: String?,
+          ?comparison_key: String?,
+          ?span_field_order: ::Array[Braintrust::Models::ProjectSettings::SpanFieldOrder]?
         ) -> void
         | (
           ?Braintrust::Models::project_settings | Braintrust::BaseModel data
@@ -48,7 +48,7 @@ module Braintrust
             column_id: String,
             object_type: String,
             position: String,
-            layout: Braintrust::Models::ProjectSettings::SpanFieldOrder::layout?
+            ?layout: Braintrust::Models::ProjectSettings::SpanFieldOrder::layout?
           ) -> void
           | (
             ?Braintrust::Models::ProjectSettings::span_field_order

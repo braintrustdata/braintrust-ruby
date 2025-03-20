@@ -34,12 +34,12 @@ module Braintrust
         (
           object_id_: String,
           object_type: Braintrust::Models::acl_object_type,
-          group_id: String?,
-          permission: Braintrust::Models::permission?,
-          restrict_object_type: Braintrust::Models::acl_object_type?,
-          role_id: String?,
-          user_id: String?,
-          request_options: Braintrust::request_opts
+          ?group_id: String?,
+          ?permission: Braintrust::Models::permission?,
+          ?restrict_object_type: Braintrust::Models::acl_object_type?,
+          ?role_id: String?,
+          ?user_id: String?,
+          ?request_options: Braintrust::request_opts
         ) -> void
         | (
           ?Braintrust::Models::acl_create_params | Braintrust::BaseModel data

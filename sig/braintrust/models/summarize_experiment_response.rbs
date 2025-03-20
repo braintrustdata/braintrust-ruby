@@ -32,9 +32,9 @@ module Braintrust
           experiment_url: String,
           project_name: String,
           project_url: String,
-          comparison_experiment_name: String?,
-          metrics: ::Hash[Symbol, Braintrust::Models::MetricSummary]?,
-          scores: ::Hash[Symbol, Braintrust::Models::ScoreSummary]?
+          ?comparison_experiment_name: String?,
+          ?metrics: ::Hash[Symbol, Braintrust::Models::MetricSummary]?,
+          ?scores: ::Hash[Symbol, Braintrust::Models::ScoreSummary]?
         ) -> void
         | (
           ?Braintrust::Models::summarize_experiment_response

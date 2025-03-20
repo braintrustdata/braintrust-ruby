@@ -11,7 +11,7 @@ module Braintrust
       def initialize:
         (
           events: ::Array[Braintrust::Models::ExperimentEvent],
-          cursor: String?
+          ?cursor: String?
         ) -> void
         | (
           ?Braintrust::Models::fetch_experiment_events_response

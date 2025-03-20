@@ -29,13 +29,13 @@ module Braintrust
 
       def initialize:
         (
-          add_member_permissions: ::Array[Braintrust::Models::RoleUpdateParams::AddMemberPermission]?,
-          add_member_roles: ::Array[String]?,
-          description: String?,
-          name: String?,
-          remove_member_permissions: ::Array[Braintrust::Models::RoleUpdateParams::RemoveMemberPermission]?,
-          remove_member_roles: ::Array[String]?,
-          request_options: Braintrust::request_opts
+          ?add_member_permissions: ::Array[Braintrust::Models::RoleUpdateParams::AddMemberPermission]?,
+          ?add_member_roles: ::Array[String]?,
+          ?description: String?,
+          ?name: String?,
+          ?remove_member_permissions: ::Array[Braintrust::Models::RoleUpdateParams::RemoveMemberPermission]?,
+          ?remove_member_roles: ::Array[String]?,
+          ?request_options: Braintrust::request_opts
         ) -> void
         | (
           ?Braintrust::Models::role_update_params | Braintrust::BaseModel data
@@ -57,7 +57,7 @@ module Braintrust
         def initialize:
           (
             permission: Braintrust::Models::permission,
-            restrict_object_type: Braintrust::Models::acl_object_type?
+            ?restrict_object_type: Braintrust::Models::acl_object_type?
           ) -> void
           | (
             ?Braintrust::Models::RoleUpdateParams::add_member_permission
@@ -81,7 +81,7 @@ module Braintrust
         def initialize:
           (
             permission: Braintrust::Models::permission,
-            restrict_object_type: Braintrust::Models::acl_object_type?
+            ?restrict_object_type: Braintrust::Models::acl_object_type?
           ) -> void
           | (
             ?Braintrust::Models::RoleUpdateParams::remove_member_permission

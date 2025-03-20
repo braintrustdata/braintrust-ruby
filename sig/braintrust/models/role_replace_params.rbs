@@ -27,11 +27,11 @@ module Braintrust
       def initialize:
         (
           name: String,
-          description: String?,
-          member_permissions: ::Array[Braintrust::Models::RoleReplaceParams::MemberPermission]?,
-          member_roles: ::Array[String]?,
-          org_name: String?,
-          request_options: Braintrust::request_opts
+          ?description: String?,
+          ?member_permissions: ::Array[Braintrust::Models::RoleReplaceParams::MemberPermission]?,
+          ?member_roles: ::Array[String]?,
+          ?org_name: String?,
+          ?request_options: Braintrust::request_opts
         ) -> void
         | (
           ?Braintrust::Models::role_replace_params | Braintrust::BaseModel data
@@ -53,7 +53,7 @@ module Braintrust
         def initialize:
           (
             permission: Braintrust::Models::permission,
-            restrict_object_type: Braintrust::Models::acl_object_type?
+            ?restrict_object_type: Braintrust::Models::acl_object_type?
           ) -> void
           | (
             ?Braintrust::Models::RoleReplaceParams::member_permission

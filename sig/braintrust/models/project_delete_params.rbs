@@ -7,7 +7,7 @@ module Braintrust
       include Braintrust::RequestParameters
 
       def initialize:
-        (request_options: Braintrust::request_opts) -> void
+        (?request_options: Braintrust::request_opts) -> void
         | (
           ?Braintrust::Models::project_delete_params
           | Braintrust::BaseModel data

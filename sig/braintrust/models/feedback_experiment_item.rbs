@@ -31,12 +31,12 @@ module Braintrust
       def initialize:
         (
           id: String,
-          comment: String?,
-          expected: top,
-          metadata: ::Hash[Symbol, top?]?,
-          scores: ::Hash[Symbol, Float?]?,
-          source: Braintrust::Models::FeedbackExperimentItem::source?,
-          tags: ::Array[String]?
+          ?comment: String?,
+          ?expected: top,
+          ?metadata: ::Hash[Symbol, top?]?,
+          ?scores: ::Hash[Symbol, Float?]?,
+          ?source: Braintrust::Models::FeedbackExperimentItem::source?,
+          ?tags: ::Array[String]?
         ) -> void
         | (
           ?Braintrust::Models::feedback_experiment_item
