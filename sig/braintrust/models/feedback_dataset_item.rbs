@@ -23,10 +23,10 @@ module Braintrust
       def initialize:
         (
           id: String,
-          comment: String?,
-          metadata: ::Hash[Symbol, top?]?,
-          source: Braintrust::Models::FeedbackDatasetItem::source?,
-          tags: ::Array[String]?
+          ?comment: String?,
+          ?metadata: ::Hash[Symbol, top?]?,
+          ?source: Braintrust::Models::FeedbackDatasetItem::source?,
+          ?tags: ::Array[String]?
         ) -> void
         | (
           ?Braintrust::Models::feedback_dataset_item

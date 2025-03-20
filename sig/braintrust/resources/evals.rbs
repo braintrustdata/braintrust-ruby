@@ -10,19 +10,19 @@ module Braintrust
           project_id: String,
           scores: ::Array[Braintrust::Models::EvalCreateParams::score],
           task: Braintrust::Models::EvalCreateParams::task,
-          base_experiment_id: String?,
-          base_experiment_name: String?,
-          experiment_name: String,
-          git_metadata_settings: Braintrust::Models::EvalCreateParams::GitMetadataSettings?,
-          is_public: bool?,
-          max_concurrency: Float?,
-          metadata: ::Hash[Symbol, top?],
-          parent: Braintrust::Models::EvalCreateParams::parent,
-          repo_info: Braintrust::Models::RepoInfo?,
-          stream: bool,
-          timeout: Float?,
-          trial_count: Float?,
-          request_options: Braintrust::request_opts
+          ?base_experiment_id: String?,
+          ?base_experiment_name: String?,
+          ?experiment_name: String,
+          ?git_metadata_settings: Braintrust::Models::EvalCreateParams::GitMetadataSettings?,
+          ?is_public: bool?,
+          ?max_concurrency: Float?,
+          ?metadata: ::Hash[Symbol, top?],
+          ?parent: Braintrust::Models::EvalCreateParams::parent,
+          ?repo_info: Braintrust::Models::RepoInfo?,
+          ?stream: bool,
+          ?timeout: Float?,
+          ?trial_count: Float?,
+          ?request_options: Braintrust::request_opts
         ) -> Braintrust::Models::SummarizeExperimentResponse
 
       def initialize: (client: Braintrust::Client) -> void

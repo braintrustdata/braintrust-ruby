@@ -29,13 +29,13 @@ module Braintrust
 
       def initialize:
         (
-          add_member_groups: ::Array[String]?,
-          add_member_users: ::Array[String]?,
-          description: String?,
-          name: String?,
-          remove_member_groups: ::Array[String]?,
-          remove_member_users: ::Array[String]?,
-          request_options: Braintrust::request_opts
+          ?add_member_groups: ::Array[String]?,
+          ?add_member_users: ::Array[String]?,
+          ?description: String?,
+          ?name: String?,
+          ?remove_member_groups: ::Array[String]?,
+          ?remove_member_users: ::Array[String]?,
+          ?request_options: Braintrust::request_opts
         ) -> void
         | (
           ?Braintrust::Models::group_update_params | Braintrust::BaseModel data

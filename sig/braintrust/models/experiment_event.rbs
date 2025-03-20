@@ -82,19 +82,19 @@ module Braintrust
           project_id: String,
           root_span_id: String,
           span_id: String,
-          context: Braintrust::Models::ExperimentEvent::Context?,
-          error: top,
-          expected: top,
-          input: top,
-          is_root: bool?,
-          metadata: Braintrust::Models::ExperimentEvent::Metadata?,
-          metrics: Braintrust::Models::ExperimentEvent::Metrics?,
-          origin: Braintrust::Models::ObjectReference?,
-          output: top,
-          scores: ::Hash[Symbol, Float?]?,
-          span_attributes: Braintrust::Models::SpanAttributes?,
-          span_parents: ::Array[String]?,
-          tags: ::Array[String]?
+          ?context: Braintrust::Models::ExperimentEvent::Context?,
+          ?error: top,
+          ?expected: top,
+          ?input: top,
+          ?is_root: bool?,
+          ?metadata: Braintrust::Models::ExperimentEvent::Metadata?,
+          ?metrics: Braintrust::Models::ExperimentEvent::Metrics?,
+          ?origin: Braintrust::Models::ObjectReference?,
+          ?output: top,
+          ?scores: ::Hash[Symbol, Float?]?,
+          ?span_attributes: Braintrust::Models::SpanAttributes?,
+          ?span_parents: ::Array[String]?,
+          ?tags: ::Array[String]?
         ) -> void
         | (
           ?Braintrust::Models::experiment_event | Braintrust::BaseModel data
@@ -118,9 +118,9 @@ module Braintrust
 
         def initialize:
           (
-            caller_filename: String?,
-            caller_functionname: String?,
-            caller_lineno: Integer?
+            ?caller_filename: String?,
+            ?caller_functionname: String?,
+            ?caller_lineno: Integer?
           ) -> void
           | (
             ?Braintrust::Models::ExperimentEvent::context
@@ -136,7 +136,7 @@ module Braintrust
         attr_accessor model: String?
 
         def initialize:
-          (model: String?) -> void
+          (?model: String?) -> void
           | (
             ?Braintrust::Models::ExperimentEvent::metadata
             | Braintrust::BaseModel data
@@ -182,14 +182,14 @@ module Braintrust
 
         def initialize:
           (
-            caller_filename: top,
-            caller_functionname: top,
-            caller_lineno: top,
-            completion_tokens: Integer?,
-            end_: Float?,
-            prompt_tokens: Integer?,
-            start: Float?,
-            tokens: Integer?
+            ?caller_filename: top,
+            ?caller_functionname: top,
+            ?caller_lineno: top,
+            ?completion_tokens: Integer?,
+            ?end_: Float?,
+            ?prompt_tokens: Integer?,
+            ?start: Float?,
+            ?tokens: Integer?
           ) -> void
           | (
             ?Braintrust::Models::ExperimentEvent::metrics

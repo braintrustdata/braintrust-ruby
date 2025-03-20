@@ -30,11 +30,11 @@ module Braintrust
         (
           id: String,
           name: String,
-          api_url: String?,
-          created: Time?,
-          is_universal_api: bool?,
-          proxy_url: String?,
-          realtime_url: String?
+          ?api_url: String?,
+          ?created: Time?,
+          ?is_universal_api: bool?,
+          ?proxy_url: String?,
+          ?realtime_url: String?
         ) -> void
         | (
           ?Braintrust::Models::organization | Braintrust::BaseModel data

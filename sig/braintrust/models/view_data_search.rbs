@@ -19,10 +19,10 @@ module Braintrust
 
       def initialize:
         (
-          filter: ::Array[top?]?,
-          match: ::Array[top?]?,
-          sort: ::Array[top?]?,
-          tag: ::Array[top?]?
+          ?filter: ::Array[top?]?,
+          ?match: ::Array[top?]?,
+          ?sort: ::Array[top?]?,
+          ?tag: ::Array[top?]?
         ) -> void
         | (
           ?Braintrust::Models::view_data_search | Braintrust::BaseModel data

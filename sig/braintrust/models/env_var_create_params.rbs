@@ -26,8 +26,8 @@ module Braintrust
           name: String,
           object_id_: String,
           object_type: Braintrust::Models::EnvVarCreateParams::object_type,
-          value: String?,
-          request_options: Braintrust::request_opts
+          ?value: String?,
+          ?request_options: Braintrust::request_opts
         ) -> void
         | (
           ?Braintrust::Models::env_var_create_params

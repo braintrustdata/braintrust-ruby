@@ -26,12 +26,12 @@ module Braintrust
 
       def initialize:
         (
-          description: String?,
-          name: String?,
-          prompt_data: Braintrust::Models::PromptData?,
-          slug: String?,
-          tags: ::Array[String]?,
-          request_options: Braintrust::request_opts
+          ?description: String?,
+          ?name: String?,
+          ?prompt_data: Braintrust::Models::PromptData?,
+          ?slug: String?,
+          ?tags: ::Array[String]?,
+          ?request_options: Braintrust::request_opts
         ) -> void
         | (
           ?Braintrust::Models::prompt_update_params | Braintrust::BaseModel data

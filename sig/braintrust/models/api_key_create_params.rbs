@@ -14,8 +14,8 @@ module Braintrust
       def initialize:
         (
           name: String,
-          org_name: String?,
-          request_options: Braintrust::request_opts
+          ?org_name: String?,
+          ?request_options: Braintrust::request_opts
         ) -> void
         | (
           ?Braintrust::Models::api_key_create_params

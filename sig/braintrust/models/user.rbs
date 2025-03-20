@@ -26,11 +26,11 @@ module Braintrust
       def initialize:
         (
           id: String,
-          avatar_url: String?,
-          created: Time?,
-          email: String?,
-          family_name: String?,
-          given_name: String?
+          ?avatar_url: String?,
+          ?created: Time?,
+          ?email: String?,
+          ?family_name: String?,
+          ?given_name: String?
         ) -> void
         | (?Braintrust::Models::user | Braintrust::BaseModel data) -> void
 

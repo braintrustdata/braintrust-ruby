@@ -13,7 +13,7 @@ module Braintrust
       def initialize:
         (
           feedback: ::Array[Braintrust::Models::FeedbackDatasetItem],
-          request_options: Braintrust::request_opts
+          ?request_options: Braintrust::request_opts
         ) -> void
         | (
           ?Braintrust::Models::dataset_feedback_params

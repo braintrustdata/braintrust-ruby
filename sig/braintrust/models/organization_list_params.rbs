@@ -36,12 +36,12 @@ module Braintrust
 
       def initialize:
         (
-          ending_before: String,
-          ids: Braintrust::Models::OrganizationListParams::ids,
-          limit: Integer?,
-          org_name: String,
-          starting_after: String,
-          request_options: Braintrust::request_opts
+          ?ending_before: String,
+          ?ids: Braintrust::Models::OrganizationListParams::ids,
+          ?limit: Integer?,
+          ?org_name: String,
+          ?starting_after: String,
+          ?request_options: Braintrust::request_opts
         ) -> void
         | (
           ?Braintrust::Models::organization_list_params

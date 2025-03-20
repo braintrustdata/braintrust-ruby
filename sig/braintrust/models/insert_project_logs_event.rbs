@@ -75,26 +75,26 @@ module Braintrust
 
       def initialize:
         (
-          id: String?,
-          _is_merge: bool?,
-          _merge_paths: ::Array[::Array[String]]?,
-          _object_delete: bool?,
-          _parent_id: String?,
-          context: Braintrust::Models::InsertProjectLogsEvent::Context?,
-          created: Time?,
-          error: top,
-          expected: top,
-          input: top,
-          metadata: Braintrust::Models::InsertProjectLogsEvent::Metadata?,
-          metrics: Braintrust::Models::InsertProjectLogsEvent::Metrics?,
-          origin: Braintrust::Models::ObjectReference?,
-          output: top,
-          root_span_id: String?,
-          scores: ::Hash[Symbol, Float?]?,
-          span_attributes: Braintrust::Models::SpanAttributes?,
-          span_id: String?,
-          span_parents: ::Array[String]?,
-          tags: ::Array[String]?
+          ?id: String?,
+          ?_is_merge: bool?,
+          ?_merge_paths: ::Array[::Array[String]]?,
+          ?_object_delete: bool?,
+          ?_parent_id: String?,
+          ?context: Braintrust::Models::InsertProjectLogsEvent::Context?,
+          ?created: Time?,
+          ?error: top,
+          ?expected: top,
+          ?input: top,
+          ?metadata: Braintrust::Models::InsertProjectLogsEvent::Metadata?,
+          ?metrics: Braintrust::Models::InsertProjectLogsEvent::Metrics?,
+          ?origin: Braintrust::Models::ObjectReference?,
+          ?output: top,
+          ?root_span_id: String?,
+          ?scores: ::Hash[Symbol, Float?]?,
+          ?span_attributes: Braintrust::Models::SpanAttributes?,
+          ?span_id: String?,
+          ?span_parents: ::Array[String]?,
+          ?tags: ::Array[String]?
         ) -> void
         | (
           ?Braintrust::Models::insert_project_logs_event
@@ -119,9 +119,9 @@ module Braintrust
 
         def initialize:
           (
-            caller_filename: String?,
-            caller_functionname: String?,
-            caller_lineno: Integer?
+            ?caller_filename: String?,
+            ?caller_functionname: String?,
+            ?caller_lineno: Integer?
           ) -> void
           | (
             ?Braintrust::Models::InsertProjectLogsEvent::context
@@ -137,7 +137,7 @@ module Braintrust
         attr_accessor model: String?
 
         def initialize:
-          (model: String?) -> void
+          (?model: String?) -> void
           | (
             ?Braintrust::Models::InsertProjectLogsEvent::metadata
             | Braintrust::BaseModel data
@@ -183,14 +183,14 @@ module Braintrust
 
         def initialize:
           (
-            caller_filename: top,
-            caller_functionname: top,
-            caller_lineno: top,
-            completion_tokens: Integer?,
-            end_: Float?,
-            prompt_tokens: Integer?,
-            start: Float?,
-            tokens: Integer?
+            ?caller_filename: top,
+            ?caller_functionname: top,
+            ?caller_lineno: top,
+            ?completion_tokens: Integer?,
+            ?end_: Float?,
+            ?prompt_tokens: Integer?,
+            ?start: Float?,
+            ?tokens: Integer?
           ) -> void
           | (
             ?Braintrust::Models::InsertProjectLogsEvent::metrics

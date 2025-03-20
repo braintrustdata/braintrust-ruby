@@ -28,7 +28,7 @@ module Braintrust
           name: String,
           regressions: Integer,
           score: Float,
-          diff: Float
+          ?diff: Float
         ) -> void
         | (
           ?Braintrust::Models::score_summary | Braintrust::BaseModel data

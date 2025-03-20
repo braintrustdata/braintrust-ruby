@@ -16,9 +16,9 @@ module Braintrust
 
       def initialize:
         (
-          comparison_experiment_id: String,
-          summarize_scores: bool?,
-          request_options: Braintrust::request_opts
+          ?comparison_experiment_id: String,
+          ?summarize_scores: bool?,
+          ?request_options: Braintrust::request_opts
         ) -> void
         | (
           ?Braintrust::Models::experiment_summarize_params

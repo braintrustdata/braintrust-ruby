@@ -32,9 +32,9 @@ module Braintrust
           name: String,
           project_id: String,
           user_id: String,
-          color: String?,
-          created: Time?,
-          description: String?
+          ?color: String?,
+          ?created: Time?,
+          ?description: String?
         ) -> void
         | (
           ?Braintrust::Models::project_tag | Braintrust::BaseModel data

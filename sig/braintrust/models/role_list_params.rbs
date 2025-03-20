@@ -41,13 +41,13 @@ module Braintrust
 
       def initialize:
         (
-          ending_before: String,
-          ids: Braintrust::Models::RoleListParams::ids,
-          limit: Integer?,
-          org_name: String,
-          role_name: String,
-          starting_after: String,
-          request_options: Braintrust::request_opts
+          ?ending_before: String,
+          ?ids: Braintrust::Models::RoleListParams::ids,
+          ?limit: Integer?,
+          ?org_name: String,
+          ?role_name: String,
+          ?starting_after: String,
+          ?request_options: Braintrust::request_opts
         ) -> void
         | (
           ?Braintrust::Models::role_list_params | Braintrust::BaseModel data
