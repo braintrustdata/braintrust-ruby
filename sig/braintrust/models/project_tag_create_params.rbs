@@ -20,9 +20,9 @@ module Braintrust
         (
           name: String,
           project_id: String,
-          color: String?,
-          description: String?,
-          request_options: Braintrust::request_opts
+          ?color: String?,
+          ?description: String?,
+          ?request_options: Braintrust::request_opts
         ) -> void
         | (
           ?Braintrust::Models::project_tag_create_params

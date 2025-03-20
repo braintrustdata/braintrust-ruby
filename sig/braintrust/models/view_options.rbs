@@ -25,12 +25,12 @@ module Braintrust
 
       def initialize:
         (
-          column_order: ::Array[String]?,
-          column_sizing: ::Hash[Symbol, Float]?,
-          column_visibility: ::Hash[Symbol, bool]?,
-          grouping: String?,
-          layout: String?,
-          row_height: String?
+          ?column_order: ::Array[String]?,
+          ?column_sizing: ::Hash[Symbol, Float]?,
+          ?column_visibility: ::Hash[Symbol, bool]?,
+          ?grouping: String?,
+          ?layout: String?,
+          ?row_height: String?
         ) -> void
         | (
           ?Braintrust::Models::view_options | Braintrust::BaseModel data

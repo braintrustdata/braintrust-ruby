@@ -13,7 +13,7 @@ module Braintrust
       def initialize:
         (
           events: ::Array[Braintrust::Models::InsertDatasetEvent],
-          request_options: Braintrust::request_opts
+          ?request_options: Braintrust::request_opts
         ) -> void
         | (
           ?Braintrust::Models::dataset_insert_params

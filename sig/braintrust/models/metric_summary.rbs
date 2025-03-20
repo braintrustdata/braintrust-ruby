@@ -32,7 +32,7 @@ module Braintrust
           name: String,
           regressions: Integer,
           unit: String,
-          diff: Float
+          ?diff: Float
         ) -> void
         | (
           ?Braintrust::Models::metric_summary | Braintrust::BaseModel data

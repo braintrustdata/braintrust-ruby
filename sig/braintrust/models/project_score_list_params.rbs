@@ -58,16 +58,16 @@ module Braintrust
 
       def initialize:
         (
-          ending_before: String,
-          ids: Braintrust::Models::ProjectScoreListParams::ids,
-          limit: Integer?,
-          org_name: String,
-          project_id: String,
-          project_name: String,
-          project_score_name: String,
-          score_type: Braintrust::Models::ProjectScoreListParams::score_type,
-          starting_after: String,
-          request_options: Braintrust::request_opts
+          ?ending_before: String,
+          ?ids: Braintrust::Models::ProjectScoreListParams::ids,
+          ?limit: Integer?,
+          ?org_name: String,
+          ?project_id: String,
+          ?project_name: String,
+          ?project_score_name: String,
+          ?score_type: Braintrust::Models::ProjectScoreListParams::score_type,
+          ?starting_after: String,
+          ?request_options: Braintrust::request_opts
         ) -> void
         | (
           ?Braintrust::Models::project_score_list_params

@@ -35,15 +35,15 @@ module Braintrust
 
       def initialize:
         (
-          base_exp_id: String?,
-          dataset_id: String?,
-          dataset_version: String?,
-          description: String?,
-          metadata: ::Hash[Symbol, top?]?,
-          name: String?,
-          public: bool?,
-          repo_info: Braintrust::Models::RepoInfo?,
-          request_options: Braintrust::request_opts
+          ?base_exp_id: String?,
+          ?dataset_id: String?,
+          ?dataset_version: String?,
+          ?description: String?,
+          ?metadata: ::Hash[Symbol, top?]?,
+          ?name: String?,
+          ?public: bool?,
+          ?repo_info: Braintrust::Models::RepoInfo?,
+          ?request_options: Braintrust::request_opts
         ) -> void
         | (
           ?Braintrust::Models::experiment_update_params

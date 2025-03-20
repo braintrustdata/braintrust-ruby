@@ -8,9 +8,9 @@ module Braintrust
         | (
           name: String,
           project_id: String,
-          description: String?,
-          metadata: ::Hash[Symbol, top?]?,
-          request_options: Braintrust::request_opts
+          ?description: String?,
+          ?metadata: ::Hash[Symbol, top?]?,
+          ?request_options: Braintrust::request_opts
         ) -> Braintrust::Models::Dataset
 
       def retrieve:
@@ -21,7 +21,7 @@ module Braintrust
         ) -> Braintrust::Models::Dataset
         | (
           String dataset_id,
-          request_options: Braintrust::request_opts
+          ?request_options: Braintrust::request_opts
         ) -> Braintrust::Models::Dataset
 
       def update:
@@ -31,10 +31,10 @@ module Braintrust
         ) -> Braintrust::Models::Dataset
         | (
           String dataset_id,
-          description: String?,
-          metadata: ::Hash[Symbol, top?]?,
-          name: String?,
-          request_options: Braintrust::request_opts
+          ?description: String?,
+          ?metadata: ::Hash[Symbol, top?]?,
+          ?name: String?,
+          ?request_options: Braintrust::request_opts
         ) -> Braintrust::Models::Dataset
 
       def list:
@@ -42,15 +42,15 @@ module Braintrust
           ?Braintrust::Models::DatasetListParams | ::Hash[Symbol, top] params
         ) -> Braintrust::ListObjects[Braintrust::Models::Dataset]
         | (
-          dataset_name: String,
-          ending_before: String,
-          ids: Braintrust::Models::DatasetListParams::ids,
-          limit: Integer?,
-          org_name: String,
-          project_id: String,
-          project_name: String,
-          starting_after: String,
-          request_options: Braintrust::request_opts
+          ?dataset_name: String,
+          ?ending_before: String,
+          ?ids: Braintrust::Models::DatasetListParams::ids,
+          ?limit: Integer?,
+          ?org_name: String,
+          ?project_id: String,
+          ?project_name: String,
+          ?starting_after: String,
+          ?request_options: Braintrust::request_opts
         ) -> Braintrust::ListObjects[Braintrust::Models::Dataset]
 
       def delete:
@@ -60,7 +60,7 @@ module Braintrust
         ) -> Braintrust::Models::Dataset
         | (
           String dataset_id,
-          request_options: Braintrust::request_opts
+          ?request_options: Braintrust::request_opts
         ) -> Braintrust::Models::Dataset
 
       def feedback:
@@ -71,7 +71,7 @@ module Braintrust
         | (
           String dataset_id,
           feedback: ::Array[Braintrust::Models::FeedbackDatasetItem],
-          request_options: Braintrust::request_opts
+          ?request_options: Braintrust::request_opts
         ) -> Braintrust::Models::FeedbackResponseSchema
 
       def fetch:
@@ -81,11 +81,11 @@ module Braintrust
         ) -> Braintrust::Models::FetchDatasetEventsResponse
         | (
           String dataset_id,
-          limit: Integer?,
-          max_root_span_id: String,
-          max_xact_id: String,
-          version: String,
-          request_options: Braintrust::request_opts
+          ?limit: Integer?,
+          ?max_root_span_id: String,
+          ?max_xact_id: String,
+          ?version: String,
+          ?request_options: Braintrust::request_opts
         ) -> Braintrust::Models::FetchDatasetEventsResponse
 
       def fetch_post:
@@ -96,12 +96,12 @@ module Braintrust
         ) -> Braintrust::Models::FetchDatasetEventsResponse
         | (
           String dataset_id,
-          cursor: String?,
-          limit: Integer?,
-          max_root_span_id: String?,
-          max_xact_id: String?,
-          version: String?,
-          request_options: Braintrust::request_opts
+          ?cursor: String?,
+          ?limit: Integer?,
+          ?max_root_span_id: String?,
+          ?max_xact_id: String?,
+          ?version: String?,
+          ?request_options: Braintrust::request_opts
         ) -> Braintrust::Models::FetchDatasetEventsResponse
 
       def insert:
@@ -112,7 +112,7 @@ module Braintrust
         | (
           String dataset_id,
           events: ::Array[Braintrust::Models::InsertDatasetEvent],
-          request_options: Braintrust::request_opts
+          ?request_options: Braintrust::request_opts
         ) -> Braintrust::Models::InsertEventsResponse
 
       def summarize:
@@ -123,8 +123,8 @@ module Braintrust
         ) -> Braintrust::Models::SummarizeDatasetResponse
         | (
           String dataset_id,
-          summarize_data: bool?,
-          request_options: Braintrust::request_opts
+          ?summarize_data: bool?,
+          ?request_options: Braintrust::request_opts
         ) -> Braintrust::Models::SummarizeDatasetResponse
 
       def initialize: (client: Braintrust::Client) -> void

@@ -53,20 +53,20 @@ module Braintrust
 
       def initialize:
         (
-          id: String?,
-          _is_merge: bool?,
-          _merge_paths: ::Array[::Array[String]]?,
-          _object_delete: bool?,
-          _parent_id: String?,
-          created: Time?,
-          expected: top,
-          input: top,
-          metadata: Braintrust::Models::InsertDatasetEvent::Metadata?,
-          origin: Braintrust::Models::ObjectReference?,
-          root_span_id: String?,
-          span_id: String?,
-          span_parents: ::Array[String]?,
-          tags: ::Array[String]?
+          ?id: String?,
+          ?_is_merge: bool?,
+          ?_merge_paths: ::Array[::Array[String]]?,
+          ?_object_delete: bool?,
+          ?_parent_id: String?,
+          ?created: Time?,
+          ?expected: top,
+          ?input: top,
+          ?metadata: Braintrust::Models::InsertDatasetEvent::Metadata?,
+          ?origin: Braintrust::Models::ObjectReference?,
+          ?root_span_id: String?,
+          ?span_id: String?,
+          ?span_parents: ::Array[String]?,
+          ?tags: ::Array[String]?
         ) -> void
         | (
           ?Braintrust::Models::insert_dataset_event | Braintrust::BaseModel data
@@ -80,7 +80,7 @@ module Braintrust
         attr_accessor model: String?
 
         def initialize:
-          (model: String?) -> void
+          (?model: String?) -> void
           | (
             ?Braintrust::Models::InsertDatasetEvent::metadata
             | Braintrust::BaseModel data

@@ -45,13 +45,13 @@ module Braintrust
           name: String,
           project_id: String,
           slug: String,
-          description: String?,
-          function_schema: Braintrust::Models::FunctionCreateParams::FunctionSchema?,
-          function_type: Braintrust::Models::FunctionCreateParams::function_type?,
-          origin: Braintrust::Models::FunctionCreateParams::Origin?,
-          prompt_data: Braintrust::Models::PromptData?,
-          tags: ::Array[String]?,
-          request_options: Braintrust::request_opts
+          ?description: String?,
+          ?function_schema: Braintrust::Models::FunctionCreateParams::FunctionSchema?,
+          ?function_type: Braintrust::Models::FunctionCreateParams::function_type?,
+          ?origin: Braintrust::Models::FunctionCreateParams::Origin?,
+          ?prompt_data: Braintrust::Models::PromptData?,
+          ?tags: ::Array[String]?,
+          ?request_options: Braintrust::request_opts
         ) -> void
         | (
           ?Braintrust::Models::function_create_params
@@ -282,7 +282,7 @@ module Braintrust
         def returns=: (top) -> top
 
         def initialize:
-          (parameters: top, returns: top) -> void
+          (?parameters: top, ?returns: top) -> void
           | (
             ?Braintrust::Models::FunctionCreateParams::function_schema
             | Braintrust::BaseModel data
@@ -320,7 +320,7 @@ module Braintrust
           (
             object_id_: String,
             object_type: Braintrust::Models::acl_object_type,
-            internal: bool?
+            ?internal: bool?
           ) -> void
           | (
             ?Braintrust::Models::FunctionCreateParams::origin

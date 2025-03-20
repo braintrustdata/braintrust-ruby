@@ -9,9 +9,9 @@ module Braintrust
         | (
           name: String,
           project_id: String,
-          color: String?,
-          description: String?,
-          request_options: Braintrust::request_opts
+          ?color: String?,
+          ?description: String?,
+          ?request_options: Braintrust::request_opts
         ) -> Braintrust::Models::ProjectTag
 
       def retrieve:
@@ -22,7 +22,7 @@ module Braintrust
         ) -> Braintrust::Models::ProjectTag
         | (
           String project_tag_id,
-          request_options: Braintrust::request_opts
+          ?request_options: Braintrust::request_opts
         ) -> Braintrust::Models::ProjectTag
 
       def update:
@@ -33,10 +33,10 @@ module Braintrust
         ) -> Braintrust::Models::ProjectTag
         | (
           String project_tag_id,
-          color: String?,
-          description: String?,
-          name: String?,
-          request_options: Braintrust::request_opts
+          ?color: String?,
+          ?description: String?,
+          ?name: String?,
+          ?request_options: Braintrust::request_opts
         ) -> Braintrust::Models::ProjectTag
 
       def list:
@@ -44,15 +44,15 @@ module Braintrust
           ?Braintrust::Models::ProjectTagListParams | ::Hash[Symbol, top] params
         ) -> Braintrust::ListObjects[Braintrust::Models::ProjectTag]
         | (
-          ending_before: String,
-          ids: Braintrust::Models::ProjectTagListParams::ids,
-          limit: Integer?,
-          org_name: String,
-          project_id: String,
-          project_name: String,
-          project_tag_name: String,
-          starting_after: String,
-          request_options: Braintrust::request_opts
+          ?ending_before: String,
+          ?ids: Braintrust::Models::ProjectTagListParams::ids,
+          ?limit: Integer?,
+          ?org_name: String,
+          ?project_id: String,
+          ?project_name: String,
+          ?project_tag_name: String,
+          ?starting_after: String,
+          ?request_options: Braintrust::request_opts
         ) -> Braintrust::ListObjects[Braintrust::Models::ProjectTag]
 
       def delete:
@@ -63,7 +63,7 @@ module Braintrust
         ) -> Braintrust::Models::ProjectTag
         | (
           String project_tag_id,
-          request_options: Braintrust::request_opts
+          ?request_options: Braintrust::request_opts
         ) -> Braintrust::Models::ProjectTag
 
       def replace:
@@ -74,9 +74,9 @@ module Braintrust
         | (
           name: String,
           project_id: String,
-          color: String?,
-          description: String?,
-          request_options: Braintrust::request_opts
+          ?color: String?,
+          ?description: String?,
+          ?request_options: Braintrust::request_opts
         ) -> Braintrust::Models::ProjectTag
 
       def initialize: (client: Braintrust::Client) -> void

@@ -27,11 +27,11 @@ module Braintrust
       def initialize:
         (
           name: String,
-          description: String?,
-          member_groups: ::Array[String]?,
-          member_users: ::Array[String]?,
-          org_name: String?,
-          request_options: Braintrust::request_opts
+          ?description: String?,
+          ?member_groups: ::Array[String]?,
+          ?member_users: ::Array[String]?,
+          ?org_name: String?,
+          ?request_options: Braintrust::request_opts
         ) -> void
         | (
           ?Braintrust::Models::group_replace_params | Braintrust::BaseModel data

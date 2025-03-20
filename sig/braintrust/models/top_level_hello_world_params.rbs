@@ -7,7 +7,7 @@ module Braintrust
       include Braintrust::RequestParameters
 
       def initialize:
-        (request_options: Braintrust::request_opts) -> void
+        (?request_options: Braintrust::request_opts) -> void
         | (
           ?Braintrust::Models::top_level_hello_world_params
           | Braintrust::BaseModel data

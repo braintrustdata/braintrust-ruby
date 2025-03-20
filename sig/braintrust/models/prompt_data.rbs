@@ -22,11 +22,11 @@ module Braintrust
 
       def initialize:
         (
-          options: Braintrust::Models::PromptOptions?,
-          origin: Braintrust::Models::PromptData::Origin?,
-          parser: Braintrust::Models::PromptData::Parser?,
-          prompt: Braintrust::Models::PromptData::prompt?,
-          tool_functions: ::Array[Braintrust::Models::PromptData::tool_function]?
+          ?options: Braintrust::Models::PromptOptions?,
+          ?origin: Braintrust::Models::PromptData::Origin?,
+          ?parser: Braintrust::Models::PromptData::Parser?,
+          ?prompt: Braintrust::Models::PromptData::prompt?,
+          ?tool_functions: ::Array[Braintrust::Models::PromptData::tool_function]?
         ) -> void
         | (
           ?Braintrust::Models::prompt_data | Braintrust::BaseModel data
@@ -52,9 +52,9 @@ module Braintrust
 
         def initialize:
           (
-            project_id: String,
-            prompt_id: String,
-            prompt_version: String
+            ?project_id: String,
+            ?prompt_id: String,
+            ?prompt_version: String
           ) -> void
           | (
             ?Braintrust::Models::PromptData::origin | Braintrust::BaseModel data
@@ -155,7 +155,7 @@ module Braintrust
             (
               messages: ::Array[Braintrust::Models::PromptData::Prompt::Chat::message],
               type: Braintrust::Models::PromptData::Prompt::Chat::type_,
-              tools: String
+              ?tools: String
             ) -> void
             | (
               ?Braintrust::Models::PromptData::Prompt::chat
@@ -194,8 +194,8 @@ module Braintrust
               def initialize:
                 (
                   role: Braintrust::Models::PromptData::Prompt::Chat::Message::System::role,
-                  content: String,
-                  name: String
+                  ?content: String,
+                  ?name: String
                 ) -> void
                 | (
                   ?Braintrust::Models::PromptData::Prompt::Chat::Message::system_
@@ -236,8 +236,8 @@ module Braintrust
               def initialize:
                 (
                   role: Braintrust::Models::PromptData::Prompt::Chat::Message::User::role,
-                  content: Braintrust::Models::PromptData::Prompt::Chat::Message::User::content,
-                  name: String
+                  ?content: Braintrust::Models::PromptData::Prompt::Chat::Message::User::content,
+                  ?name: String
                 ) -> void
                 | (
                   ?Braintrust::Models::PromptData::Prompt::Chat::Message::user
@@ -299,10 +299,10 @@ module Braintrust
               def initialize:
                 (
                   role: Braintrust::Models::PromptData::Prompt::Chat::Message::Assistant::role,
-                  content: String?,
-                  function_call: Braintrust::Models::PromptData::Prompt::Chat::Message::Assistant::FunctionCall?,
-                  name: String?,
-                  tool_calls: ::Array[Braintrust::Models::ChatCompletionMessageToolCall]?
+                  ?content: String?,
+                  ?function_call: Braintrust::Models::PromptData::Prompt::Chat::Message::Assistant::FunctionCall?,
+                  ?name: String?,
+                  ?tool_calls: ::Array[Braintrust::Models::ChatCompletionMessageToolCall]?
                 ) -> void
                 | (
                   ?Braintrust::Models::PromptData::Prompt::Chat::Message::assistant
@@ -358,8 +358,8 @@ module Braintrust
               def initialize:
                 (
                   role: Braintrust::Models::PromptData::Prompt::Chat::Message::Tool::role,
-                  content: String,
-                  tool_call_id: String
+                  ?content: String,
+                  ?tool_call_id: String
                 ) -> void
                 | (
                   ?Braintrust::Models::PromptData::Prompt::Chat::Message::tool
@@ -397,7 +397,7 @@ module Braintrust
                 (
                   name: String,
                   role: Braintrust::Models::PromptData::Prompt::Chat::Message::Function::role,
-                  content: String
+                  ?content: String
                 ) -> void
                 | (
                   ?Braintrust::Models::PromptData::Prompt::Chat::Message::function
@@ -429,7 +429,7 @@ module Braintrust
               def initialize:
                 (
                   role: Braintrust::Models::PromptData::Prompt::Chat::Message::Fallback::role,
-                  content: String?
+                  ?content: String?
                 ) -> void
                 | (
                   ?Braintrust::Models::PromptData::Prompt::Chat::Message::fallback

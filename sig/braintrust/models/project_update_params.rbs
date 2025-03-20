@@ -14,9 +14,9 @@ module Braintrust
 
       def initialize:
         (
-          name: String?,
-          settings: Braintrust::Models::ProjectSettings?,
-          request_options: Braintrust::request_opts
+          ?name: String?,
+          ?settings: Braintrust::Models::ProjectSettings?,
+          ?request_options: Braintrust::request_opts
         ) -> void
         | (
           ?Braintrust::Models::project_update_params

@@ -8,12 +8,12 @@ module Braintrust
         | (
           object_id_: String,
           object_type: Braintrust::Models::acl_object_type,
-          group_id: String?,
-          permission: Braintrust::Models::permission?,
-          restrict_object_type: Braintrust::Models::acl_object_type?,
-          role_id: String?,
-          user_id: String?,
-          request_options: Braintrust::request_opts
+          ?group_id: String?,
+          ?permission: Braintrust::Models::permission?,
+          ?restrict_object_type: Braintrust::Models::acl_object_type?,
+          ?role_id: String?,
+          ?user_id: String?,
+          ?request_options: Braintrust::request_opts
         ) -> Braintrust::Models::ACL
 
       def retrieve:
@@ -23,7 +23,7 @@ module Braintrust
         ) -> Braintrust::Models::ACL
         | (
           String acl_id,
-          request_options: Braintrust::request_opts
+          ?request_options: Braintrust::request_opts
         ) -> Braintrust::Models::ACL
 
       def list:
@@ -33,11 +33,11 @@ module Braintrust
         | (
           object_id_: String,
           object_type: Braintrust::Models::acl_object_type,
-          ending_before: String,
-          ids: Braintrust::Models::ACLListParams::ids,
-          limit: Integer?,
-          starting_after: String,
-          request_options: Braintrust::request_opts
+          ?ending_before: String,
+          ?ids: Braintrust::Models::ACLListParams::ids,
+          ?limit: Integer?,
+          ?starting_after: String,
+          ?request_options: Braintrust::request_opts
         ) -> Braintrust::ListObjects[Braintrust::Models::ACL]
 
       def delete:
@@ -47,7 +47,7 @@ module Braintrust
         ) -> Braintrust::Models::ACL
         | (
           String acl_id,
-          request_options: Braintrust::request_opts
+          ?request_options: Braintrust::request_opts
         ) -> Braintrust::Models::ACL
 
       def batch_update:
@@ -55,9 +55,9 @@ module Braintrust
           ?Braintrust::Models::ACLBatchUpdateParams | ::Hash[Symbol, top] params
         ) -> Braintrust::Models::ACLBatchUpdateResponse
         | (
-          add_acls: ::Array[Braintrust::Models::ACLBatchUpdateParams::AddACL]?,
-          remove_acls: ::Array[Braintrust::Models::ACLBatchUpdateParams::RemoveACL]?,
-          request_options: Braintrust::request_opts
+          ?add_acls: ::Array[Braintrust::Models::ACLBatchUpdateParams::AddACL]?,
+          ?remove_acls: ::Array[Braintrust::Models::ACLBatchUpdateParams::RemoveACL]?,
+          ?request_options: Braintrust::request_opts
         ) -> Braintrust::Models::ACLBatchUpdateResponse
 
       def find_and_delete:
@@ -68,12 +68,12 @@ module Braintrust
         | (
           object_id_: String,
           object_type: Braintrust::Models::acl_object_type,
-          group_id: String?,
-          permission: Braintrust::Models::permission?,
-          restrict_object_type: Braintrust::Models::acl_object_type?,
-          role_id: String?,
-          user_id: String?,
-          request_options: Braintrust::request_opts
+          ?group_id: String?,
+          ?permission: Braintrust::Models::permission?,
+          ?restrict_object_type: Braintrust::Models::acl_object_type?,
+          ?role_id: String?,
+          ?user_id: String?,
+          ?request_options: Braintrust::request_opts
         ) -> Braintrust::Models::ACL
 
       def initialize: (client: Braintrust::Client) -> void

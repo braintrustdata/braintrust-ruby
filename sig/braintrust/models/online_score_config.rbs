@@ -21,8 +21,8 @@ module Braintrust
         (
           sampling_rate: Float,
           scorers: ::Array[Braintrust::Models::OnlineScoreConfig::scorer],
-          apply_to_root_span: bool?,
-          apply_to_span_names: ::Array[String]?
+          ?apply_to_root_span: bool?,
+          ?apply_to_span_names: ::Array[String]?
         ) -> void
         | (
           ?Braintrust::Models::online_score_config | Braintrust::BaseModel data

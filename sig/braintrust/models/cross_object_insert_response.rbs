@@ -16,9 +16,9 @@ module Braintrust
 
       def initialize:
         (
-          dataset: ::Hash[Symbol, Braintrust::Models::InsertEventsResponse]?,
-          experiment: ::Hash[Symbol, Braintrust::Models::InsertEventsResponse]?,
-          project_logs: ::Hash[Symbol, Braintrust::Models::InsertEventsResponse]?
+          ?dataset: ::Hash[Symbol, Braintrust::Models::InsertEventsResponse]?,
+          ?experiment: ::Hash[Symbol, Braintrust::Models::InsertEventsResponse]?,
+          ?project_logs: ::Hash[Symbol, Braintrust::Models::InsertEventsResponse]?
         ) -> void
         | (
           ?Braintrust::Models::cross_object_insert_response

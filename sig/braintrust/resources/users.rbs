@@ -8,7 +8,7 @@ module Braintrust
         ) -> Braintrust::Models::User
         | (
           String user_id,
-          request_options: Braintrust::request_opts
+          ?request_options: Braintrust::request_opts
         ) -> Braintrust::Models::User
 
       def list:
@@ -16,15 +16,15 @@ module Braintrust
           ?Braintrust::Models::UserListParams | ::Hash[Symbol, top] params
         ) -> Braintrust::ListObjects[Braintrust::Models::User]
         | (
-          email: Braintrust::Models::UserListParams::email,
-          ending_before: String,
-          family_name: Braintrust::Models::UserListParams::family_name,
-          given_name: Braintrust::Models::UserListParams::given_name,
-          ids: Braintrust::Models::UserListParams::ids,
-          limit: Integer?,
-          org_name: String,
-          starting_after: String,
-          request_options: Braintrust::request_opts
+          ?email: Braintrust::Models::UserListParams::email,
+          ?ending_before: String,
+          ?family_name: Braintrust::Models::UserListParams::family_name,
+          ?given_name: Braintrust::Models::UserListParams::given_name,
+          ?ids: Braintrust::Models::UserListParams::ids,
+          ?limit: Integer?,
+          ?org_name: String,
+          ?starting_after: String,
+          ?request_options: Braintrust::request_opts
         ) -> Braintrust::ListObjects[Braintrust::Models::User]
 
       def initialize: (client: Braintrust::Client) -> void

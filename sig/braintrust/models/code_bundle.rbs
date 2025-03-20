@@ -22,7 +22,7 @@ module Braintrust
           bundle_id: String,
           location: Braintrust::Models::CodeBundle::location,
           runtime_context: Braintrust::Models::CodeBundle::RuntimeContext,
-          preview: String?
+          ?preview: String?
         ) -> void
         | (
           ?Braintrust::Models::code_bundle | Braintrust::BaseModel data

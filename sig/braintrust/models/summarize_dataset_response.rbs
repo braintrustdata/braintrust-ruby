@@ -26,7 +26,7 @@ module Braintrust
           dataset_url: String,
           project_name: String,
           project_url: String,
-          data_summary: Braintrust::Models::DataSummary?
+          ?data_summary: Braintrust::Models::DataSummary?
         ) -> void
         | (
           ?Braintrust::Models::summarize_dataset_response

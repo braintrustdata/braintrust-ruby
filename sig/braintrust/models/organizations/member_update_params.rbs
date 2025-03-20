@@ -24,11 +24,11 @@ module Braintrust
 
         def initialize:
           (
-            invite_users: Braintrust::Models::Organizations::MemberUpdateParams::InviteUsers?,
-            org_id: String?,
-            org_name: String?,
-            remove_users: Braintrust::Models::Organizations::MemberUpdateParams::RemoveUsers?,
-            request_options: Braintrust::request_opts
+            ?invite_users: Braintrust::Models::Organizations::MemberUpdateParams::InviteUsers?,
+            ?org_id: String?,
+            ?org_name: String?,
+            ?remove_users: Braintrust::Models::Organizations::MemberUpdateParams::RemoveUsers?,
+            ?request_options: Braintrust::request_opts
           ) -> void
           | (
             ?Braintrust::Models::Organizations::member_update_params
@@ -65,13 +65,13 @@ module Braintrust
 
           def initialize:
             (
-              emails: ::Array[String]?,
-              group_id: String?,
-              group_ids: ::Array[String]?,
-              group_name: String?,
-              group_names: ::Array[String]?,
-              ids: ::Array[String]?,
-              send_invite_emails: bool?
+              ?emails: ::Array[String]?,
+              ?group_id: String?,
+              ?group_ids: ::Array[String]?,
+              ?group_name: String?,
+              ?group_names: ::Array[String]?,
+              ?ids: ::Array[String]?,
+              ?send_invite_emails: bool?
             ) -> void
             | (
               ?Braintrust::Models::Organizations::MemberUpdateParams::invite_users
@@ -89,7 +89,7 @@ module Braintrust
           attr_accessor ids: ::Array[String]?
 
           def initialize:
-            (emails: ::Array[String]?, ids: ::Array[String]?) -> void
+            (?emails: ::Array[String]?, ?ids: ::Array[String]?) -> void
             | (
               ?Braintrust::Models::Organizations::MemberUpdateParams::remove_users
               | Braintrust::BaseModel data

@@ -61,17 +61,17 @@ module Braintrust
 
       def initialize:
         (
-          ending_before: String,
-          function_name: String,
-          ids: Braintrust::Models::FunctionListParams::ids,
-          limit: Integer?,
-          org_name: String,
-          project_id: String,
-          project_name: String,
-          slug: String,
-          starting_after: String,
-          version: String,
-          request_options: Braintrust::request_opts
+          ?ending_before: String,
+          ?function_name: String,
+          ?ids: Braintrust::Models::FunctionListParams::ids,
+          ?limit: Integer?,
+          ?org_name: String,
+          ?project_id: String,
+          ?project_name: String,
+          ?slug: String,
+          ?starting_after: String,
+          ?version: String,
+          ?request_options: Braintrust::request_opts
         ) -> void
         | (
           ?Braintrust::Models::function_list_params | Braintrust::BaseModel data
