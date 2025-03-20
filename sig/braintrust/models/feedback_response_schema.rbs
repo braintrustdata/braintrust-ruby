@@ -6,12 +6,9 @@ module Braintrust
     class FeedbackResponseSchema < Braintrust::BaseModel
       attr_accessor status: Braintrust::Models::FeedbackResponseSchema::status
 
-      def initialize:
-        (status: Braintrust::Models::FeedbackResponseSchema::status) -> void
-        | (
-          ?Braintrust::Models::feedback_response_schema
-          | Braintrust::BaseModel data
-        ) -> void
+      def initialize: (
+        status: Braintrust::Models::FeedbackResponseSchema::status
+      ) -> void
 
       def to_hash: -> Braintrust::Models::feedback_response_schema
 

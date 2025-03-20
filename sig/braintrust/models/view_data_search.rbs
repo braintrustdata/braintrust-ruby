@@ -17,16 +17,12 @@ module Braintrust
 
       attr_accessor tag: ::Array[top?]?
 
-      def initialize:
-        (
-          ?filter: ::Array[top?]?,
-          ?match: ::Array[top?]?,
-          ?sort: ::Array[top?]?,
-          ?tag: ::Array[top?]?
-        ) -> void
-        | (
-          ?Braintrust::Models::view_data_search | Braintrust::BaseModel data
-        ) -> void
+      def initialize: (
+        ?filter: ::Array[top?]?,
+        ?match: ::Array[top?]?,
+        ?sort: ::Array[top?]?,
+        ?tag: ::Array[top?]?
+      ) -> void
 
       def to_hash: -> Braintrust::Models::view_data_search
     end

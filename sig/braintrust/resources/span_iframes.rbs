@@ -1,84 +1,52 @@
 module Braintrust
   module Resources
     class SpanIframes
-      def create:
-        (
-          Braintrust::Models::SpanIframeCreateParams
-          | ::Hash[Symbol, top] params
-        ) -> Braintrust::Models::SpanIFrame
-        | (
-          name: String,
-          project_id: String,
-          url: String,
-          ?description: String?,
-          ?post_message: bool?,
-          ?request_options: Braintrust::request_opts
-        ) -> Braintrust::Models::SpanIFrame
+      def create: (
+        name: String,
+        project_id: String,
+        url: String,
+        ?description: String?,
+        ?post_message: bool?,
+        ?request_options: Braintrust::request_opts
+      ) -> Braintrust::Models::SpanIFrame
 
-      def retrieve:
-        (
-          String span_iframe_id,
-          ?Braintrust::Models::SpanIframeRetrieveParams
-          | ::Hash[Symbol, top] params
-        ) -> Braintrust::Models::SpanIFrame
-        | (
-          String span_iframe_id,
-          ?request_options: Braintrust::request_opts
-        ) -> Braintrust::Models::SpanIFrame
+      def retrieve: (
+        String span_iframe_id,
+        ?request_options: Braintrust::request_opts
+      ) -> Braintrust::Models::SpanIFrame
 
-      def update:
-        (
-          String span_iframe_id,
-          ?Braintrust::Models::SpanIframeUpdateParams
-          | ::Hash[Symbol, top] params
-        ) -> Braintrust::Models::SpanIFrame
-        | (
-          String span_iframe_id,
-          ?description: String?,
-          ?name: String?,
-          ?post_message: bool?,
-          ?url: String?,
-          ?request_options: Braintrust::request_opts
-        ) -> Braintrust::Models::SpanIFrame
+      def update: (
+        String span_iframe_id,
+        ?description: String?,
+        ?name: String?,
+        ?post_message: bool?,
+        ?url: String?,
+        ?request_options: Braintrust::request_opts
+      ) -> Braintrust::Models::SpanIFrame
 
-      def list:
-        (
-          ?Braintrust::Models::SpanIframeListParams | ::Hash[Symbol, top] params
-        ) -> Braintrust::ListObjects[Braintrust::Models::SpanIFrame]
-        | (
-          ?ending_before: String,
-          ?ids: Braintrust::Models::SpanIframeListParams::ids,
-          ?limit: Integer?,
-          ?org_name: String,
-          ?span_iframe_name: String,
-          ?starting_after: String,
-          ?request_options: Braintrust::request_opts
-        ) -> Braintrust::ListObjects[Braintrust::Models::SpanIFrame]
+      def list: (
+        ?ending_before: String,
+        ?ids: Braintrust::Models::SpanIframeListParams::ids,
+        ?limit: Integer?,
+        ?org_name: String,
+        ?span_iframe_name: String,
+        ?starting_after: String,
+        ?request_options: Braintrust::request_opts
+      ) -> Braintrust::ListObjects[Braintrust::Models::SpanIFrame]
 
-      def delete:
-        (
-          String span_iframe_id,
-          ?Braintrust::Models::SpanIframeDeleteParams
-          | ::Hash[Symbol, top] params
-        ) -> Braintrust::Models::SpanIFrame
-        | (
-          String span_iframe_id,
-          ?request_options: Braintrust::request_opts
-        ) -> Braintrust::Models::SpanIFrame
+      def delete: (
+        String span_iframe_id,
+        ?request_options: Braintrust::request_opts
+      ) -> Braintrust::Models::SpanIFrame
 
-      def replace:
-        (
-          Braintrust::Models::SpanIframeReplaceParams
-          | ::Hash[Symbol, top] params
-        ) -> Braintrust::Models::SpanIFrame
-        | (
-          name: String,
-          project_id: String,
-          url: String,
-          ?description: String?,
-          ?post_message: bool?,
-          ?request_options: Braintrust::request_opts
-        ) -> Braintrust::Models::SpanIFrame
+      def replace: (
+        name: String,
+        project_id: String,
+        url: String,
+        ?description: String?,
+        ?post_message: bool?,
+        ?request_options: Braintrust::request_opts
+      ) -> Braintrust::Models::SpanIFrame
 
       def initialize: (client: Braintrust::Client) -> void
     end

@@ -6,12 +6,7 @@ module Braintrust
       extend Braintrust::RequestParameters::Converter
       include Braintrust::RequestParameters
 
-      def initialize:
-        (?request_options: Braintrust::request_opts) -> void
-        | (
-          ?Braintrust::Models::project_tag_retrieve_params
-          | Braintrust::BaseModel data
-        ) -> void
+      def initialize: (?request_options: Braintrust::request_opts) -> void
 
       def to_hash: -> Braintrust::Models::project_tag_retrieve_params
     end

@@ -35,20 +35,18 @@ module Braintrust
 
       attr_accessor view_data: Braintrust::Models::ViewData?
 
-      def initialize:
-        (
-          id: String,
-          name: String,
-          object_id_: String,
-          object_type: Braintrust::Models::acl_object_type,
-          view_type: Braintrust::Models::View::view_type?,
-          ?created: Time?,
-          ?deleted_at: Time?,
-          ?options: Braintrust::Models::ViewOptions?,
-          ?user_id: String?,
-          ?view_data: Braintrust::Models::ViewData?
-        ) -> void
-        | (?Braintrust::Models::view | Braintrust::BaseModel data) -> void
+      def initialize: (
+        id: String,
+        name: String,
+        object_id_: String,
+        object_type: Braintrust::Models::acl_object_type,
+        view_type: Braintrust::Models::View::view_type?,
+        ?created: Time?,
+        ?deleted_at: Time?,
+        ?options: Braintrust::Models::ViewOptions?,
+        ?user_id: String?,
+        ?view_data: Braintrust::Models::ViewData?
+      ) -> void
 
       def to_hash: -> Braintrust::Models::view
 

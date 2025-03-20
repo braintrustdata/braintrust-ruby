@@ -53,26 +53,24 @@ module Braintrust
 
       attr_accessor tags: ::Array[String]?
 
-      def initialize:
-        (
-          id: String,
-          _xact_id: String,
-          function_data: Braintrust::Models::Function::function_data,
-          log_id: Braintrust::Models::Function::log_id,
-          name: String,
-          org_id: String,
-          project_id: String,
-          slug: String,
-          ?created: Time?,
-          ?description: String?,
-          ?function_schema: Braintrust::Models::Function::FunctionSchema?,
-          ?function_type: Braintrust::Models::Function::function_type?,
-          ?metadata: ::Hash[Symbol, top?]?,
-          ?origin: Braintrust::Models::Function::Origin?,
-          ?prompt_data: Braintrust::Models::PromptData?,
-          ?tags: ::Array[String]?
-        ) -> void
-        | (?Braintrust::Models::function | Braintrust::BaseModel data) -> void
+      def initialize: (
+        id: String,
+        _xact_id: String,
+        function_data: Braintrust::Models::Function::function_data,
+        log_id: Braintrust::Models::Function::log_id,
+        name: String,
+        org_id: String,
+        project_id: String,
+        slug: String,
+        ?created: Time?,
+        ?description: String?,
+        ?function_schema: Braintrust::Models::Function::FunctionSchema?,
+        ?function_type: Braintrust::Models::Function::function_type?,
+        ?metadata: ::Hash[Symbol, top?]?,
+        ?origin: Braintrust::Models::Function::Origin?,
+        ?prompt_data: Braintrust::Models::PromptData?,
+        ?tags: ::Array[String]?
+      ) -> void
 
       def to_hash: -> Braintrust::Models::function
 
@@ -88,14 +86,9 @@ module Braintrust
         class Prompt < Braintrust::BaseModel
           attr_accessor type: Braintrust::Models::Function::FunctionData::Prompt::type_
 
-          def initialize:
-            (
-              type: Braintrust::Models::Function::FunctionData::Prompt::type_
-            ) -> void
-            | (
-              ?Braintrust::Models::Function::FunctionData::prompt
-              | Braintrust::BaseModel data
-            ) -> void
+          def initialize: (
+            type: Braintrust::Models::Function::FunctionData::Prompt::type_
+          ) -> void
 
           def to_hash: -> Braintrust::Models::Function::FunctionData::prompt
 
@@ -119,15 +112,10 @@ module Braintrust
 
           attr_accessor type: Braintrust::Models::Function::FunctionData::Code::type_
 
-          def initialize:
-            (
-              data: Braintrust::Models::Function::FunctionData::Code::data,
-              type: Braintrust::Models::Function::FunctionData::Code::type_
-            ) -> void
-            | (
-              ?Braintrust::Models::Function::FunctionData::code
-              | Braintrust::BaseModel data
-            ) -> void
+          def initialize: (
+            data: Braintrust::Models::Function::FunctionData::Code::data,
+            type: Braintrust::Models::Function::FunctionData::Code::type_
+          ) -> void
 
           def to_hash: -> Braintrust::Models::Function::FunctionData::code
 
@@ -148,14 +136,9 @@ module Braintrust
                 Braintrust::Models::Function::FunctionData::Code::Data::Bundle::type_ _
               ) -> Braintrust::Models::Function::FunctionData::Code::Data::Bundle::type_
 
-              def initialize:
-                (
-                  type: Braintrust::Models::Function::FunctionData::Code::Data::Bundle::type_
-                ) -> void
-                | (
-                  ?Braintrust::Models::Function::FunctionData::Code::Data::bundle
-                  | Braintrust::BaseModel data
-                ) -> void
+              def initialize: (
+                type: Braintrust::Models::Function::FunctionData::Code::Data::Bundle::type_
+              ) -> void
 
               def to_hash: -> Braintrust::Models::Function::FunctionData::Code::Data::bundle
 
@@ -182,16 +165,11 @@ module Braintrust
 
               attr_accessor type: Braintrust::Models::Function::FunctionData::Code::Data::Inline::type_
 
-              def initialize:
-                (
-                  code: String,
-                  runtime_context: Braintrust::Models::Function::FunctionData::Code::Data::Inline::RuntimeContext,
-                  type: Braintrust::Models::Function::FunctionData::Code::Data::Inline::type_
-                ) -> void
-                | (
-                  ?Braintrust::Models::Function::FunctionData::Code::Data::inline
-                  | Braintrust::BaseModel data
-                ) -> void
+              def initialize: (
+                code: String,
+                runtime_context: Braintrust::Models::Function::FunctionData::Code::Data::Inline::RuntimeContext,
+                type: Braintrust::Models::Function::FunctionData::Code::Data::Inline::type_
+              ) -> void
 
               def to_hash: -> Braintrust::Models::Function::FunctionData::Code::Data::inline
 
@@ -206,15 +184,10 @@ module Braintrust
 
                 attr_accessor version: String
 
-                def initialize:
-                  (
-                    runtime: Braintrust::Models::Function::FunctionData::Code::Data::Inline::RuntimeContext::runtime,
-                    version: String
-                  ) -> void
-                  | (
-                    ?Braintrust::Models::Function::FunctionData::Code::Data::Inline::runtime_context
-                    | Braintrust::BaseModel data
-                  ) -> void
+                def initialize: (
+                  runtime: Braintrust::Models::Function::FunctionData::Code::Data::Inline::RuntimeContext::runtime,
+                  version: String
+                ) -> void
 
                 def to_hash: -> Braintrust::Models::Function::FunctionData::Code::Data::Inline::runtime_context
 
@@ -260,15 +233,10 @@ module Braintrust
 
           attr_accessor type: Braintrust::Models::Function::FunctionData::Global::type_
 
-          def initialize:
-            (
-              name: String,
-              type: Braintrust::Models::Function::FunctionData::Global::type_
-            ) -> void
-            | (
-              ?Braintrust::Models::Function::FunctionData::global
-              | Braintrust::BaseModel data
-            ) -> void
+          def initialize: (
+            name: String,
+            type: Braintrust::Models::Function::FunctionData::Global::type_
+          ) -> void
 
           def to_hash: -> Braintrust::Models::Function::FunctionData::global
 
@@ -303,12 +271,7 @@ module Braintrust
 
         def returns=: (top) -> top
 
-        def initialize:
-          (?parameters: top, ?returns: top) -> void
-          | (
-            ?Braintrust::Models::Function::function_schema
-            | Braintrust::BaseModel data
-          ) -> void
+        def initialize: (?parameters: top, ?returns: top) -> void
 
         def to_hash: -> Braintrust::Models::Function::function_schema
       end
@@ -338,15 +301,11 @@ module Braintrust
 
         attr_accessor internal: bool?
 
-        def initialize:
-          (
-            object_id_: String,
-            object_type: Braintrust::Models::acl_object_type,
-            ?internal: bool?
-          ) -> void
-          | (
-            ?Braintrust::Models::Function::origin | Braintrust::BaseModel data
-          ) -> void
+        def initialize: (
+          object_id_: String,
+          object_type: Braintrust::Models::acl_object_type,
+          ?internal: bool?
+        ) -> void
 
         def to_hash: -> Braintrust::Models::Function::origin
       end

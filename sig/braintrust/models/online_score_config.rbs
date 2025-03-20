@@ -17,16 +17,12 @@ module Braintrust
 
       attr_accessor apply_to_span_names: ::Array[String]?
 
-      def initialize:
-        (
-          sampling_rate: Float,
-          scorers: ::Array[Braintrust::Models::OnlineScoreConfig::scorer],
-          ?apply_to_root_span: bool?,
-          ?apply_to_span_names: ::Array[String]?
-        ) -> void
-        | (
-          ?Braintrust::Models::online_score_config | Braintrust::BaseModel data
-        ) -> void
+      def initialize: (
+        sampling_rate: Float,
+        scorers: ::Array[Braintrust::Models::OnlineScoreConfig::scorer],
+        ?apply_to_root_span: bool?,
+        ?apply_to_span_names: ::Array[String]?
+      ) -> void
 
       def to_hash: -> Braintrust::Models::online_score_config
 
@@ -46,15 +42,10 @@ module Braintrust
 
           attr_accessor type: Braintrust::Models::OnlineScoreConfig::Scorer::Function::type_
 
-          def initialize:
-            (
-              id: String,
-              type: Braintrust::Models::OnlineScoreConfig::Scorer::Function::type_
-            ) -> void
-            | (
-              ?Braintrust::Models::OnlineScoreConfig::Scorer::function
-              | Braintrust::BaseModel data
-            ) -> void
+          def initialize: (
+            id: String,
+            type: Braintrust::Models::OnlineScoreConfig::Scorer::Function::type_
+          ) -> void
 
           def to_hash: -> Braintrust::Models::OnlineScoreConfig::Scorer::function
 
@@ -78,15 +69,10 @@ module Braintrust
 
           attr_accessor type: Braintrust::Models::OnlineScoreConfig::Scorer::Global::type_
 
-          def initialize:
-            (
-              name: String,
-              type: Braintrust::Models::OnlineScoreConfig::Scorer::Global::type_
-            ) -> void
-            | (
-              ?Braintrust::Models::OnlineScoreConfig::Scorer::global
-              | Braintrust::BaseModel data
-            ) -> void
+          def initialize: (
+            name: String,
+            type: Braintrust::Models::OnlineScoreConfig::Scorer::Global::type_
+          ) -> void
 
           def to_hash: -> Braintrust::Models::OnlineScoreConfig::Scorer::global
 

@@ -49,21 +49,17 @@ module Braintrust
 
       def starting_after=: (String) -> String
 
-      def initialize:
-        (
-          ?dataset_name: String,
-          ?ending_before: String,
-          ?ids: Braintrust::Models::DatasetListParams::ids,
-          ?limit: Integer?,
-          ?org_name: String,
-          ?project_id: String,
-          ?project_name: String,
-          ?starting_after: String,
-          ?request_options: Braintrust::request_opts
-        ) -> void
-        | (
-          ?Braintrust::Models::dataset_list_params | Braintrust::BaseModel data
-        ) -> void
+      def initialize: (
+        ?dataset_name: String,
+        ?ending_before: String,
+        ?ids: Braintrust::Models::DatasetListParams::ids,
+        ?limit: Integer?,
+        ?org_name: String,
+        ?project_id: String,
+        ?project_name: String,
+        ?starting_after: String,
+        ?request_options: Braintrust::request_opts
+      ) -> void
 
       def to_hash: -> Braintrust::Models::dataset_list_params
 

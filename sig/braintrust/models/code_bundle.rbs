@@ -17,16 +17,12 @@ module Braintrust
 
       attr_accessor preview: String?
 
-      def initialize:
-        (
-          bundle_id: String,
-          location: Braintrust::Models::CodeBundle::location,
-          runtime_context: Braintrust::Models::CodeBundle::RuntimeContext,
-          ?preview: String?
-        ) -> void
-        | (
-          ?Braintrust::Models::code_bundle | Braintrust::BaseModel data
-        ) -> void
+      def initialize: (
+        bundle_id: String,
+        location: Braintrust::Models::CodeBundle::location,
+        runtime_context: Braintrust::Models::CodeBundle::RuntimeContext,
+        ?preview: String?
+      ) -> void
 
       def to_hash: -> Braintrust::Models::code_bundle
 
@@ -49,16 +45,11 @@ module Braintrust
 
           attr_accessor type: Braintrust::Models::CodeBundle::Location::Experiment::type_
 
-          def initialize:
-            (
-              eval_name: String,
-              position: Braintrust::Models::CodeBundle::Location::Experiment::position,
-              type: Braintrust::Models::CodeBundle::Location::Experiment::type_
-            ) -> void
-            | (
-              ?Braintrust::Models::CodeBundle::Location::experiment
-              | Braintrust::BaseModel data
-            ) -> void
+          def initialize: (
+            eval_name: String,
+            position: Braintrust::Models::CodeBundle::Location::Experiment::position,
+            type: Braintrust::Models::CodeBundle::Location::Experiment::type_
+          ) -> void
 
           def to_hash: -> Braintrust::Models::CodeBundle::Location::experiment
 
@@ -75,14 +66,9 @@ module Braintrust
             class Type < Braintrust::BaseModel
               attr_accessor type: Braintrust::Models::CodeBundle::Location::Experiment::Position::Type::type_
 
-              def initialize:
-                (
-                  type: Braintrust::Models::CodeBundle::Location::Experiment::Position::Type::type_
-                ) -> void
-                | (
-                  ?Braintrust::Models::CodeBundle::Location::Experiment::Position::type_
-                  | Braintrust::BaseModel data
-                ) -> void
+              def initialize: (
+                type: Braintrust::Models::CodeBundle::Location::Experiment::Position::Type::type_
+              ) -> void
 
               def to_hash: -> Braintrust::Models::CodeBundle::Location::Experiment::Position::type_
 
@@ -106,15 +92,10 @@ module Braintrust
 
               attr_accessor type: Braintrust::Models::CodeBundle::Location::Experiment::Position::Scorer::type_
 
-              def initialize:
-                (
-                  index: Integer,
-                  type: Braintrust::Models::CodeBundle::Location::Experiment::Position::Scorer::type_
-                ) -> void
-                | (
-                  ?Braintrust::Models::CodeBundle::Location::Experiment::Position::scorer
-                  | Braintrust::BaseModel data
-                ) -> void
+              def initialize: (
+                index: Integer,
+                type: Braintrust::Models::CodeBundle::Location::Experiment::Position::Scorer::type_
+              ) -> void
 
               def to_hash: -> Braintrust::Models::CodeBundle::Location::Experiment::Position::scorer
 
@@ -150,15 +131,10 @@ module Braintrust
 
           attr_accessor type: Braintrust::Models::CodeBundle::Location::Function::type_
 
-          def initialize:
-            (
-              index: Integer,
-              type: Braintrust::Models::CodeBundle::Location::Function::type_
-            ) -> void
-            | (
-              ?Braintrust::Models::CodeBundle::Location::function
-              | Braintrust::BaseModel data
-            ) -> void
+          def initialize: (
+            index: Integer,
+            type: Braintrust::Models::CodeBundle::Location::Function::type_
+          ) -> void
 
           def to_hash: -> Braintrust::Models::CodeBundle::Location::function
 
@@ -185,15 +161,10 @@ module Braintrust
 
         attr_accessor version: String
 
-        def initialize:
-          (
-            runtime: Braintrust::Models::CodeBundle::RuntimeContext::runtime,
-            version: String
-          ) -> void
-          | (
-            ?Braintrust::Models::CodeBundle::runtime_context
-            | Braintrust::BaseModel data
-          ) -> void
+        def initialize: (
+          runtime: Braintrust::Models::CodeBundle::RuntimeContext::runtime,
+          version: String
+        ) -> void
 
         def to_hash: -> Braintrust::Models::CodeBundle::runtime_context
 

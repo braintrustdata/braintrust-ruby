@@ -8,11 +8,10 @@ module Braintrust
 
       attr_accessor type: Braintrust::Models::span_type?
 
-      def initialize:
-        (?name: String?, ?type: Braintrust::Models::span_type?) -> void
-        | (
-          ?Braintrust::Models::span_attributes | Braintrust::BaseModel data
-        ) -> void
+      def initialize: (
+        ?name: String?,
+        ?type: Braintrust::Models::span_type?
+      ) -> void
 
       def to_hash: -> Braintrust::Models::span_attributes
     end

@@ -16,18 +16,13 @@ module Braintrust
 
       attr_accessor description: String?
 
-      def initialize:
-        (
-          name: String,
-          project_id: String,
-          ?color: String?,
-          ?description: String?,
-          ?request_options: Braintrust::request_opts
-        ) -> void
-        | (
-          ?Braintrust::Models::project_tag_create_params
-          | Braintrust::BaseModel data
-        ) -> void
+      def initialize: (
+        name: String,
+        project_id: String,
+        ?color: String?,
+        ?description: String?,
+        ?request_options: Braintrust::request_opts
+      ) -> void
 
       def to_hash: -> Braintrust::Models::project_tag_create_params
     end

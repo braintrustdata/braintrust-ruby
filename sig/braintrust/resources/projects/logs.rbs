@@ -2,60 +2,36 @@ module Braintrust
   module Resources
     class Projects
       class Logs
-        def feedback:
-          (
-            String project_id,
-            Braintrust::Models::Projects::LogFeedbackParams
-            | ::Hash[Symbol, top] params
-          ) -> Braintrust::Models::FeedbackResponseSchema
-          | (
-            String project_id,
-            feedback: ::Array[Braintrust::Models::FeedbackProjectLogsItem],
-            ?request_options: Braintrust::request_opts
-          ) -> Braintrust::Models::FeedbackResponseSchema
+        def feedback: (
+          String project_id,
+          feedback: ::Array[Braintrust::Models::FeedbackProjectLogsItem],
+          ?request_options: Braintrust::request_opts
+        ) -> Braintrust::Models::FeedbackResponseSchema
 
-        def fetch:
-          (
-            String project_id,
-            ?Braintrust::Models::Projects::LogFetchParams
-            | ::Hash[Symbol, top] params
-          ) -> Braintrust::Models::FetchProjectLogsEventsResponse
-          | (
-            String project_id,
-            ?limit: Integer?,
-            ?max_root_span_id: String,
-            ?max_xact_id: String,
-            ?version: String,
-            ?request_options: Braintrust::request_opts
-          ) -> Braintrust::Models::FetchProjectLogsEventsResponse
+        def fetch: (
+          String project_id,
+          ?limit: Integer?,
+          ?max_root_span_id: String,
+          ?max_xact_id: String,
+          ?version: String,
+          ?request_options: Braintrust::request_opts
+        ) -> Braintrust::Models::FetchProjectLogsEventsResponse
 
-        def fetch_post:
-          (
-            String project_id,
-            ?Braintrust::Models::Projects::LogFetchPostParams
-            | ::Hash[Symbol, top] params
-          ) -> Braintrust::Models::FetchProjectLogsEventsResponse
-          | (
-            String project_id,
-            ?cursor: String?,
-            ?limit: Integer?,
-            ?max_root_span_id: String?,
-            ?max_xact_id: String?,
-            ?version: String?,
-            ?request_options: Braintrust::request_opts
-          ) -> Braintrust::Models::FetchProjectLogsEventsResponse
+        def fetch_post: (
+          String project_id,
+          ?cursor: String?,
+          ?limit: Integer?,
+          ?max_root_span_id: String?,
+          ?max_xact_id: String?,
+          ?version: String?,
+          ?request_options: Braintrust::request_opts
+        ) -> Braintrust::Models::FetchProjectLogsEventsResponse
 
-        def insert:
-          (
-            String project_id,
-            Braintrust::Models::Projects::LogInsertParams
-            | ::Hash[Symbol, top] params
-          ) -> Braintrust::Models::InsertEventsResponse
-          | (
-            String project_id,
-            events: ::Array[Braintrust::Models::InsertProjectLogsEvent],
-            ?request_options: Braintrust::request_opts
-          ) -> Braintrust::Models::InsertEventsResponse
+        def insert: (
+          String project_id,
+          events: ::Array[Braintrust::Models::InsertProjectLogsEvent],
+          ?request_options: Braintrust::request_opts
+        ) -> Braintrust::Models::InsertEventsResponse
 
         def initialize: (client: Braintrust::Client) -> void
       end

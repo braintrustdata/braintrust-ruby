@@ -26,19 +26,15 @@ module Braintrust
 
       attr_accessor description: String?
 
-      def initialize:
-        (
-          id: String,
-          name: String,
-          project_id: String,
-          user_id: String,
-          ?color: String?,
-          ?created: Time?,
-          ?description: String?
-        ) -> void
-        | (
-          ?Braintrust::Models::project_tag | Braintrust::BaseModel data
-        ) -> void
+      def initialize: (
+        id: String,
+        name: String,
+        project_id: String,
+        user_id: String,
+        ?color: String?,
+        ?created: Time?,
+        ?description: String?
+      ) -> void
 
       def to_hash: -> Braintrust::Models::project_tag
     end

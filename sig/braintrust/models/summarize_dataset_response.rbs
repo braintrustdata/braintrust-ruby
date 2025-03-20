@@ -20,18 +20,13 @@ module Braintrust
 
       attr_accessor data_summary: Braintrust::Models::DataSummary?
 
-      def initialize:
-        (
-          dataset_name: String,
-          dataset_url: String,
-          project_name: String,
-          project_url: String,
-          ?data_summary: Braintrust::Models::DataSummary?
-        ) -> void
-        | (
-          ?Braintrust::Models::summarize_dataset_response
-          | Braintrust::BaseModel data
-        ) -> void
+      def initialize: (
+        dataset_name: String,
+        dataset_url: String,
+        project_name: String,
+        project_url: String,
+        ?data_summary: Braintrust::Models::DataSummary?
+      ) -> void
 
       def to_hash: -> Braintrust::Models::summarize_dataset_response
     end

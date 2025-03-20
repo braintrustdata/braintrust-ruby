@@ -32,19 +32,17 @@ module Braintrust
 
       attr_accessor user_id: String?
 
-      def initialize:
-        (
-          id: String,
-          name: String,
-          org_id: String,
-          ?created: Time?,
-          ?deleted_at: Time?,
-          ?description: String?,
-          ?member_groups: ::Array[String]?,
-          ?member_users: ::Array[String]?,
-          ?user_id: String?
-        ) -> void
-        | (?Braintrust::Models::group | Braintrust::BaseModel data) -> void
+      def initialize: (
+        id: String,
+        name: String,
+        org_id: String,
+        ?created: Time?,
+        ?deleted_at: Time?,
+        ?description: String?,
+        ?member_groups: ::Array[String]?,
+        ?member_users: ::Array[String]?,
+        ?user_id: String?
+      ) -> void
 
       def to_hash: -> Braintrust::Models::group
     end

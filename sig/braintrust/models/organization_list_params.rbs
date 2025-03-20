@@ -34,19 +34,14 @@ module Braintrust
 
       def starting_after=: (String) -> String
 
-      def initialize:
-        (
-          ?ending_before: String,
-          ?ids: Braintrust::Models::OrganizationListParams::ids,
-          ?limit: Integer?,
-          ?org_name: String,
-          ?starting_after: String,
-          ?request_options: Braintrust::request_opts
-        ) -> void
-        | (
-          ?Braintrust::Models::organization_list_params
-          | Braintrust::BaseModel data
-        ) -> void
+      def initialize: (
+        ?ending_before: String,
+        ?ids: Braintrust::Models::OrganizationListParams::ids,
+        ?limit: Integer?,
+        ?org_name: String,
+        ?starting_after: String,
+        ?request_options: Braintrust::request_opts
+      ) -> void
 
       def to_hash: -> Braintrust::Models::organization_list_params
 

@@ -13,15 +13,10 @@ module Braintrust
 
       def text=: (String) -> String
 
-      def initialize:
-        (
-          type: Braintrust::Models::ChatCompletionContentPartText::type_,
-          ?text: String
-        ) -> void
-        | (
-          ?Braintrust::Models::chat_completion_content_part_text
-          | Braintrust::BaseModel data
-        ) -> void
+      def initialize: (
+        type: Braintrust::Models::ChatCompletionContentPartText::type_,
+        ?text: String
+      ) -> void
 
       def to_hash: -> Braintrust::Models::chat_completion_content_part_text
 

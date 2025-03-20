@@ -36,18 +36,14 @@ module Braintrust
         Braintrust::Models::env_var_object_type
       ) -> Braintrust::Models::env_var_object_type
 
-      def initialize:
-        (
-          ?env_var_name: String,
-          ?ids: Braintrust::Models::EnvVarListParams::ids,
-          ?limit: Integer?,
-          ?object_id_: String,
-          ?object_type: Braintrust::Models::env_var_object_type,
-          ?request_options: Braintrust::request_opts
-        ) -> void
-        | (
-          ?Braintrust::Models::env_var_list_params | Braintrust::BaseModel data
-        ) -> void
+      def initialize: (
+        ?env_var_name: String,
+        ?ids: Braintrust::Models::EnvVarListParams::ids,
+        ?limit: Integer?,
+        ?object_id_: String,
+        ?object_type: Braintrust::Models::env_var_object_type,
+        ?request_options: Braintrust::request_opts
+      ) -> void
 
       def to_hash: -> Braintrust::Models::env_var_list_params
 
