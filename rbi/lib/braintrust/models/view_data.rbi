@@ -15,7 +15,10 @@ module Braintrust
       end
 
       # The view definition
-      sig { params(search: T.nilable(Braintrust::Models::ViewDataSearch)).returns(T.attached_class) }
+      sig do
+        params(search: T.nilable(T.any(Braintrust::Models::ViewDataSearch, Braintrust::Util::AnyHash)))
+          .returns(T.attached_class)
+      end
       def self.new(search: nil)
       end
 

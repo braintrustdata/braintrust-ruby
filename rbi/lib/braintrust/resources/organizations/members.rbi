@@ -11,7 +11,7 @@ module Braintrust
             org_id: T.nilable(String),
             org_name: T.nilable(String),
             remove_users: T.nilable(Braintrust::Models::Organizations::MemberUpdateParams::RemoveUsers),
-            request_options: T.nilable(T.any(Braintrust::RequestOptions, T::Hash[Symbol, T.anything]))
+            request_options: T.nilable(T.any(Braintrust::RequestOptions, Braintrust::Util::AnyHash))
           )
             .returns(Braintrust::Models::PatchOrganizationMembersOutput)
         end

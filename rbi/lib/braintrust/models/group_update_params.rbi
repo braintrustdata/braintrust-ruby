@@ -68,7 +68,7 @@ module Braintrust
           name: T.nilable(String),
           remove_member_groups: T.nilable(T::Array[String]),
           remove_member_users: T.nilable(T::Array[String]),
-          request_options: T.any(Braintrust::RequestOptions, T::Hash[Symbol, T.anything])
+          request_options: T.any(Braintrust::RequestOptions, Braintrust::Util::AnyHash)
         )
           .returns(T.attached_class)
       end

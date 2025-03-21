@@ -14,7 +14,7 @@ module Braintrust
           restrict_object_type: T.nilable(Braintrust::Models::ACLObjectType::OrSymbol),
           role_id: T.nilable(String),
           user_id: T.nilable(String),
-          request_options: T.nilable(T.any(Braintrust::RequestOptions, T::Hash[Symbol, T.anything]))
+          request_options: T.nilable(T.any(Braintrust::RequestOptions, Braintrust::Util::AnyHash))
         )
           .returns(Braintrust::Models::ACL)
       end
@@ -46,7 +46,7 @@ module Braintrust
       sig do
         params(
           acl_id: String,
-          request_options: T.nilable(T.any(Braintrust::RequestOptions, T::Hash[Symbol, T.anything]))
+          request_options: T.nilable(T.any(Braintrust::RequestOptions, Braintrust::Util::AnyHash))
         )
           .returns(Braintrust::Models::ACL)
       end
@@ -67,7 +67,7 @@ module Braintrust
           ids: T.any(String, T::Array[String]),
           limit: T.nilable(Integer),
           starting_after: String,
-          request_options: T.nilable(T.any(Braintrust::RequestOptions, T::Hash[Symbol, T.anything]))
+          request_options: T.nilable(T.any(Braintrust::RequestOptions, Braintrust::Util::AnyHash))
         )
           .returns(Braintrust::ListObjects[Braintrust::Models::ACL])
       end
@@ -101,7 +101,7 @@ module Braintrust
       sig do
         params(
           acl_id: String,
-          request_options: T.nilable(T.any(Braintrust::RequestOptions, T::Hash[Symbol, T.anything]))
+          request_options: T.nilable(T.any(Braintrust::RequestOptions, Braintrust::Util::AnyHash))
         )
           .returns(Braintrust::Models::ACL)
       end
@@ -119,7 +119,7 @@ module Braintrust
         params(
           add_acls: T.nilable(T::Array[Braintrust::Models::ACLBatchUpdateParams::AddACL]),
           remove_acls: T.nilable(T::Array[Braintrust::Models::ACLBatchUpdateParams::RemoveACL]),
-          request_options: T.nilable(T.any(Braintrust::RequestOptions, T::Hash[Symbol, T.anything]))
+          request_options: T.nilable(T.any(Braintrust::RequestOptions, Braintrust::Util::AnyHash))
         )
           .returns(Braintrust::Models::ACLBatchUpdateResponse)
       end
@@ -160,7 +160,7 @@ module Braintrust
           restrict_object_type: T.nilable(Braintrust::Models::ACLObjectType::OrSymbol),
           role_id: T.nilable(String),
           user_id: T.nilable(String),
-          request_options: T.nilable(T.any(Braintrust::RequestOptions, T::Hash[Symbol, T.anything]))
+          request_options: T.nilable(T.any(Braintrust::RequestOptions, Braintrust::Util::AnyHash))
         )
           .returns(Braintrust::Models::ACL)
       end

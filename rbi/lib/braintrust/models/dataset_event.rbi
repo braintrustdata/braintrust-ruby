@@ -151,8 +151,8 @@ module Braintrust
           expected: T.anything,
           input: T.anything,
           is_root: T.nilable(T::Boolean),
-          metadata: T.nilable(Braintrust::Models::DatasetEvent::Metadata),
-          origin: T.nilable(Braintrust::Models::ObjectReference),
+          metadata: T.nilable(T.any(Braintrust::Models::DatasetEvent::Metadata, Braintrust::Util::AnyHash)),
+          origin: T.nilable(T.any(Braintrust::Models::ObjectReference, Braintrust::Util::AnyHash)),
           tags: T.nilable(T::Array[String])
         )
           .returns(T.attached_class)

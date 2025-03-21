@@ -13,7 +13,7 @@ module Braintrust
         params(
           name: String,
           org_name: T.nilable(String),
-          request_options: T.nilable(T.any(Braintrust::RequestOptions, T::Hash[Symbol, T.anything]))
+          request_options: T.nilable(T.any(Braintrust::RequestOptions, Braintrust::Util::AnyHash))
         )
           .returns(Braintrust::Models::Project)
       end
@@ -32,7 +32,7 @@ module Braintrust
       sig do
         params(
           project_id: String,
-          request_options: T.nilable(T.any(Braintrust::RequestOptions, T::Hash[Symbol, T.anything]))
+          request_options: T.nilable(T.any(Braintrust::RequestOptions, Braintrust::Util::AnyHash))
         )
           .returns(Braintrust::Models::Project)
       end
@@ -51,7 +51,7 @@ module Braintrust
           project_id: String,
           name: T.nilable(String),
           settings: T.nilable(Braintrust::Models::ProjectSettings),
-          request_options: T.nilable(T.any(Braintrust::RequestOptions, T::Hash[Symbol, T.anything]))
+          request_options: T.nilable(T.any(Braintrust::RequestOptions, Braintrust::Util::AnyHash))
         )
           .returns(Braintrust::Models::Project)
       end
@@ -77,7 +77,7 @@ module Braintrust
           org_name: String,
           project_name: String,
           starting_after: String,
-          request_options: T.nilable(T.any(Braintrust::RequestOptions, T::Hash[Symbol, T.anything]))
+          request_options: T.nilable(T.any(Braintrust::RequestOptions, Braintrust::Util::AnyHash))
         )
           .returns(Braintrust::ListObjects[Braintrust::Models::Project])
       end
@@ -111,7 +111,7 @@ module Braintrust
       sig do
         params(
           project_id: String,
-          request_options: T.nilable(T.any(Braintrust::RequestOptions, T::Hash[Symbol, T.anything]))
+          request_options: T.nilable(T.any(Braintrust::RequestOptions, Braintrust::Util::AnyHash))
         )
           .returns(Braintrust::Models::Project)
       end

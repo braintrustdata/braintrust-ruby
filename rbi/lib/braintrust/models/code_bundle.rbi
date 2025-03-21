@@ -66,7 +66,7 @@ module Braintrust
             Braintrust::Models::CodeBundle::Location::Experiment,
             Braintrust::Models::CodeBundle::Location::Function
           ),
-          runtime_context: Braintrust::Models::CodeBundle::RuntimeContext,
+          runtime_context: T.any(Braintrust::Models::CodeBundle::RuntimeContext, Braintrust::Util::AnyHash),
           preview: T.nilable(String)
         )
           .returns(T.attached_class)

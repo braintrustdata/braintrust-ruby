@@ -36,7 +36,7 @@ module Braintrust
       sig do
         params(
           id: String,
-          function: Braintrust::Models::ChatCompletionMessageToolCall::Function,
+          function: T.any(Braintrust::Models::ChatCompletionMessageToolCall::Function, Braintrust::Util::AnyHash),
           type: Braintrust::Models::ChatCompletionMessageToolCall::Type::OrSymbol
         )
           .returns(T.attached_class)

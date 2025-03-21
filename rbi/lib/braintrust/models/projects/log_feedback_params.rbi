@@ -22,7 +22,7 @@ module Braintrust
         sig do
           params(
             feedback: T::Array[Braintrust::Models::FeedbackProjectLogsItem],
-            request_options: T.any(Braintrust::RequestOptions, T::Hash[Symbol, T.anything])
+            request_options: T.any(Braintrust::RequestOptions, Braintrust::Util::AnyHash)
           )
             .returns(T.attached_class)
         end

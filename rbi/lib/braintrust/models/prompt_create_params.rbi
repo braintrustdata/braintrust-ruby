@@ -81,9 +81,9 @@ module Braintrust
           slug: String,
           description: T.nilable(String),
           function_type: T.nilable(Braintrust::Models::PromptCreateParams::FunctionType::OrSymbol),
-          prompt_data: T.nilable(Braintrust::Models::PromptData),
+          prompt_data: T.nilable(T.any(Braintrust::Models::PromptData, Braintrust::Util::AnyHash)),
           tags: T.nilable(T::Array[String]),
-          request_options: T.any(Braintrust::RequestOptions, T::Hash[Symbol, T.anything])
+          request_options: T.any(Braintrust::RequestOptions, Braintrust::Util::AnyHash)
         )
           .returns(T.attached_class)
       end

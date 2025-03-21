@@ -34,7 +34,7 @@ module Braintrust
         params(
           destination: T.nilable(String),
           multi_select: T.nilable(T::Boolean),
-          online: T.nilable(Braintrust::Models::OnlineScoreConfig)
+          online: T.nilable(T.any(Braintrust::Models::OnlineScoreConfig, Braintrust::Util::AnyHash))
         )
           .returns(T.attached_class)
       end

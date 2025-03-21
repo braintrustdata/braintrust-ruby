@@ -26,7 +26,7 @@ module Braintrust
           page: T.nilable(T::Class[Braintrust::BasePage[Braintrust::BaseModel]]),
           stream: T.nilable(T::Class[T.anything]),
           model: T.nilable(Braintrust::Converter::Input),
-          options: T.nilable(T.any(Braintrust::RequestOptions, T::Hash[Symbol, T.anything]))
+          options: T.nilable(T.any(Braintrust::RequestOptions, Braintrust::Util::AnyHash))
         }
       end
 
@@ -130,7 +130,7 @@ module Braintrust
     # @api private
     sig do
       overridable
-        .params(req: Braintrust::BaseClient::RequestComponentsShape, opts: T::Hash[Symbol, T.anything])
+        .params(req: Braintrust::BaseClient::RequestComponentsShape, opts: Braintrust::Util::AnyHash)
         .returns(Braintrust::BaseClient::RequestInputShape)
     end
     private def build_request(req, opts)
@@ -176,7 +176,7 @@ module Braintrust
         page: T.nilable(T::Class[Braintrust::BasePage[Braintrust::BaseModel]]),
         stream: T.nilable(T::Class[T.anything]),
         model: T.nilable(Braintrust::Converter::Input),
-        options: T.nilable(T.any(Braintrust::RequestOptions, T::Hash[Symbol, T.anything]))
+        options: T.nilable(T.any(Braintrust::RequestOptions, Braintrust::Util::AnyHash))
       )
         .returns(T.anything)
     end

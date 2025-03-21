@@ -204,11 +204,11 @@ module Braintrust
           slug: String,
           created: T.nilable(Time),
           description: T.nilable(String),
-          function_schema: T.nilable(Braintrust::Models::Function::FunctionSchema),
+          function_schema: T.nilable(T.any(Braintrust::Models::Function::FunctionSchema, Braintrust::Util::AnyHash)),
           function_type: T.nilable(Braintrust::Models::Function::FunctionType::TaggedSymbol),
           metadata: T.nilable(T::Hash[Symbol, T.nilable(T.anything)]),
-          origin: T.nilable(Braintrust::Models::Function::Origin),
-          prompt_data: T.nilable(Braintrust::Models::PromptData),
+          origin: T.nilable(T.any(Braintrust::Models::Function::Origin, Braintrust::Util::AnyHash)),
+          prompt_data: T.nilable(T.any(Braintrust::Models::PromptData, Braintrust::Util::AnyHash)),
           tags: T.nilable(T::Array[String])
         )
           .returns(T.attached_class)
@@ -490,7 +490,10 @@ module Braintrust
               sig do
                 params(
                   code: String,
-                  runtime_context: Braintrust::Models::Function::FunctionData::Code::Data::Inline::RuntimeContext,
+                  runtime_context: T.any(
+                    Braintrust::Models::Function::FunctionData::Code::Data::Inline::RuntimeContext,
+                    Braintrust::Util::AnyHash
+                  ),
                   type: Braintrust::Models::Function::FunctionData::Code::Data::Inline::Type::TaggedSymbol
                 )
                   .returns(T.attached_class)

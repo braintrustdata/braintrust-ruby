@@ -31,8 +31,8 @@ module Braintrust
       sig do
         params(
           name: T.nilable(String),
-          settings: T.nilable(Braintrust::Models::ProjectSettings),
-          request_options: T.any(Braintrust::RequestOptions, T::Hash[Symbol, T.anything])
+          settings: T.nilable(T.any(Braintrust::Models::ProjectSettings, Braintrust::Util::AnyHash)),
+          request_options: T.any(Braintrust::RequestOptions, Braintrust::Util::AnyHash)
         )
           .returns(T.attached_class)
       end
