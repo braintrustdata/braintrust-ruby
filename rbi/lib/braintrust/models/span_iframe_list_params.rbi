@@ -77,7 +77,7 @@ module Braintrust
           org_name: String,
           span_iframe_name: String,
           starting_after: String,
-          request_options: T.any(Braintrust::RequestOptions, T::Hash[Symbol, T.anything])
+          request_options: T.any(Braintrust::RequestOptions, Braintrust::Util::AnyHash)
         )
           .returns(T.attached_class)
       end

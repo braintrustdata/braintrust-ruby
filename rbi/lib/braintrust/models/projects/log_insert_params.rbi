@@ -22,7 +22,7 @@ module Braintrust
         sig do
           params(
             events: T::Array[Braintrust::Models::InsertProjectLogsEvent],
-            request_options: T.any(Braintrust::RequestOptions, T::Hash[Symbol, T.anything])
+            request_options: T.any(Braintrust::RequestOptions, Braintrust::Util::AnyHash)
           )
             .returns(T.attached_class)
         end

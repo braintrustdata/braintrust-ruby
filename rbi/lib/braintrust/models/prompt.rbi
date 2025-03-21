@@ -147,7 +147,7 @@ module Braintrust
           description: T.nilable(String),
           function_type: T.nilable(Braintrust::Models::Prompt::FunctionType::TaggedSymbol),
           metadata: T.nilable(T::Hash[Symbol, T.nilable(T.anything)]),
-          prompt_data: T.nilable(Braintrust::Models::PromptData),
+          prompt_data: T.nilable(T.any(Braintrust::Models::PromptData, Braintrust::Util::AnyHash)),
           tags: T.nilable(T::Array[String])
         )
           .returns(T.attached_class)

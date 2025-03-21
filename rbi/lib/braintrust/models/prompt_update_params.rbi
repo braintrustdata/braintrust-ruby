@@ -58,10 +58,10 @@ module Braintrust
         params(
           description: T.nilable(String),
           name: T.nilable(String),
-          prompt_data: T.nilable(Braintrust::Models::PromptData),
+          prompt_data: T.nilable(T.any(Braintrust::Models::PromptData, Braintrust::Util::AnyHash)),
           slug: T.nilable(String),
           tags: T.nilable(T::Array[String]),
-          request_options: T.any(Braintrust::RequestOptions, T::Hash[Symbol, T.anything])
+          request_options: T.any(Braintrust::RequestOptions, Braintrust::Util::AnyHash)
         )
           .returns(T.attached_class)
       end

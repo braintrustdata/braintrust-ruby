@@ -58,7 +58,7 @@ module Braintrust
           dataset_url: String,
           project_name: String,
           project_url: String,
-          data_summary: T.nilable(Braintrust::Models::DataSummary)
+          data_summary: T.nilable(T.any(Braintrust::Models::DataSummary, Braintrust::Util::AnyHash))
         )
           .returns(T.attached_class)
       end

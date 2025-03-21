@@ -127,7 +127,7 @@ module Braintrust
           categories: T.nilable(
             T.any(T::Array[Braintrust::Models::ProjectScoreCategory], T::Hash[Symbol, Float], T::Array[String])
           ),
-          config: T.nilable(Braintrust::Models::ProjectScoreConfig),
+          config: T.nilable(T.any(Braintrust::Models::ProjectScoreConfig, Braintrust::Util::AnyHash)),
           created: T.nilable(Time),
           description: T.nilable(String),
           position: T.nilable(String)

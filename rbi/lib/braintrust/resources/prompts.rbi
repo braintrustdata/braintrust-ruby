@@ -15,7 +15,7 @@ module Braintrust
           function_type: T.nilable(Braintrust::Models::PromptCreateParams::FunctionType::OrSymbol),
           prompt_data: T.nilable(Braintrust::Models::PromptData),
           tags: T.nilable(T::Array[String]),
-          request_options: T.nilable(T.any(Braintrust::RequestOptions, T::Hash[Symbol, T.anything]))
+          request_options: T.nilable(T.any(Braintrust::RequestOptions, Braintrust::Util::AnyHash))
         )
           .returns(Braintrust::Models::Prompt)
       end
@@ -41,7 +41,7 @@ module Braintrust
       sig do
         params(
           prompt_id: String,
-          request_options: T.nilable(T.any(Braintrust::RequestOptions, T::Hash[Symbol, T.anything]))
+          request_options: T.nilable(T.any(Braintrust::RequestOptions, Braintrust::Util::AnyHash))
         )
           .returns(Braintrust::Models::Prompt)
       end
@@ -63,7 +63,7 @@ module Braintrust
           prompt_data: T.nilable(Braintrust::Models::PromptData),
           slug: T.nilable(String),
           tags: T.nilable(T::Array[String]),
-          request_options: T.nilable(T.any(Braintrust::RequestOptions, T::Hash[Symbol, T.anything]))
+          request_options: T.nilable(T.any(Braintrust::RequestOptions, Braintrust::Util::AnyHash))
         )
           .returns(Braintrust::Models::Prompt)
       end
@@ -98,7 +98,7 @@ module Braintrust
           slug: String,
           starting_after: String,
           version: String,
-          request_options: T.nilable(T.any(Braintrust::RequestOptions, T::Hash[Symbol, T.anything]))
+          request_options: T.nilable(T.any(Braintrust::RequestOptions, Braintrust::Util::AnyHash))
         )
           .returns(Braintrust::ListObjects[Braintrust::Models::Prompt])
       end
@@ -143,7 +143,7 @@ module Braintrust
       sig do
         params(
           prompt_id: String,
-          request_options: T.nilable(T.any(Braintrust::RequestOptions, T::Hash[Symbol, T.anything]))
+          request_options: T.nilable(T.any(Braintrust::RequestOptions, Braintrust::Util::AnyHash))
         )
           .returns(Braintrust::Models::Prompt)
       end
@@ -166,7 +166,7 @@ module Braintrust
           function_type: T.nilable(Braintrust::Models::PromptReplaceParams::FunctionType::OrSymbol),
           prompt_data: T.nilable(Braintrust::Models::PromptData),
           tags: T.nilable(T::Array[String]),
-          request_options: T.nilable(T.any(Braintrust::RequestOptions, T::Hash[Symbol, T.anything]))
+          request_options: T.nilable(T.any(Braintrust::RequestOptions, Braintrust::Util::AnyHash))
         )
           .returns(Braintrust::Models::Prompt)
       end

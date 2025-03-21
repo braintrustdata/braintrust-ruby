@@ -242,8 +242,8 @@ module Braintrust
     # @api private
     sig do
       params(
-        key: T.any(Symbol, T::Hash[Symbol, T.anything], T.proc.returns(T.anything), T.anything),
-        spec: T.any(T::Hash[Symbol, T.anything], T.proc.returns(T.anything), T.anything)
+        key: T.any(Symbol, Braintrust::Util::AnyHash, T.proc.returns(T.anything), T.anything),
+        spec: T.any(Braintrust::Util::AnyHash, T.proc.returns(T.anything), T.anything)
       )
         .void
     end
@@ -295,11 +295,11 @@ module Braintrust
     sig(:final) do
       params(
         type_info: T.any(
-          T::Hash[Symbol, T.anything],
+          Braintrust::Util::AnyHash,
           T.proc.returns(Braintrust::Converter::Input),
           Braintrust::Converter::Input
         ),
-        spec: T::Hash[Symbol, T.anything]
+        spec: Braintrust::Util::AnyHash
       )
         .returns(T.attached_class)
     end
@@ -350,11 +350,11 @@ module Braintrust
     sig(:final) do
       params(
         type_info: T.any(
-          T::Hash[Symbol, T.anything],
+          Braintrust::Util::AnyHash,
           T.proc.returns(Braintrust::Converter::Input),
           Braintrust::Converter::Input
         ),
-        spec: T::Hash[Symbol, T.anything]
+        spec: Braintrust::Util::AnyHash
       )
         .void
     end
@@ -374,11 +374,11 @@ module Braintrust
     sig(:final) do
       params(
         type_info: T.any(
-          T::Hash[Symbol, T.anything],
+          Braintrust::Util::AnyHash,
           T.proc.returns(Braintrust::Converter::Input),
           Braintrust::Converter::Input
         ),
-        spec: T::Hash[Symbol, T.anything]
+        spec: Braintrust::Util::AnyHash
       )
         .returns(T.attached_class)
     end
@@ -397,7 +397,7 @@ module Braintrust
     sig(:final) do
       override
         .params(value: T.any(T::Hash[T.anything, T.anything], T.anything))
-        .returns(T.any(T::Hash[Symbol, T.anything], T.anything))
+        .returns(T.any(Braintrust::Util::AnyHash, T.anything))
     end
     def coerce(value)
     end
@@ -406,7 +406,7 @@ module Braintrust
     sig(:final) do
       override
         .params(value: T.any(T::Hash[T.anything, T.anything], T.anything))
-        .returns(T.any(T::Hash[Symbol, T.anything], T.anything))
+        .returns(T.any(Braintrust::Util::AnyHash, T.anything))
     end
     def dump(value)
     end
@@ -429,11 +429,11 @@ module Braintrust
     sig(:final) do
       params(
         type_info: T.any(
-          T::Hash[Symbol, T.anything],
+          Braintrust::Util::AnyHash,
           T.proc.returns(Braintrust::Converter::Input),
           Braintrust::Converter::Input
         ),
-        spec: T::Hash[Symbol, T.anything]
+        spec: Braintrust::Util::AnyHash
       )
         .void
     end
@@ -503,7 +503,7 @@ module Braintrust
             T.proc.returns(Braintrust::Converter::Input),
             Braintrust::Converter::Input
           ),
-          spec: T::Hash[Symbol, T.anything]
+          spec: Braintrust::Util::AnyHash
         )
           .void
       end
@@ -515,11 +515,11 @@ module Braintrust
         params(
           name_sym: Symbol,
           type_info: T.any(
-            T::Hash[Symbol, T.anything],
+            Braintrust::Util::AnyHash,
             T.proc.returns(Braintrust::Converter::Input),
             Braintrust::Converter::Input
           ),
-          spec: T::Hash[Symbol, T.anything]
+          spec: Braintrust::Util::AnyHash
         )
           .void
       end
@@ -531,11 +531,11 @@ module Braintrust
         params(
           name_sym: Symbol,
           type_info: T.any(
-            T::Hash[Symbol, T.anything],
+            Braintrust::Util::AnyHash,
             T.proc.returns(Braintrust::Converter::Input),
             Braintrust::Converter::Input
           ),
-          spec: T::Hash[Symbol, T.anything]
+          spec: Braintrust::Util::AnyHash
         )
           .void
       end
@@ -609,7 +609,7 @@ module Braintrust
     #
     #   This method is not recursive. The returned value is shared by the object, so it
     #   should not be mutated.
-    sig { overridable.returns(T::Hash[Symbol, T.anything]) }
+    sig { overridable.returns(Braintrust::Util::AnyHash) }
     def to_h
     end
 
@@ -621,11 +621,11 @@ module Braintrust
     #
     #   This method is not recursive. The returned value is shared by the object, so it
     #   should not be mutated.
-    sig { overridable.returns(T::Hash[Symbol, T.anything]) }
+    sig { overridable.returns(Braintrust::Util::AnyHash) }
     def to_hash
     end
 
-    sig { params(keys: T.nilable(T::Array[Symbol])).returns(T::Hash[Symbol, T.anything]) }
+    sig { params(keys: T.nilable(T::Array[Symbol])).returns(Braintrust::Util::AnyHash) }
     def deconstruct_keys(keys)
     end
 

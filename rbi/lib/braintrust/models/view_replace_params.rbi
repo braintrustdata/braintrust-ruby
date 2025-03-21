@@ -96,10 +96,10 @@ module Braintrust
           object_type: Braintrust::Models::ACLObjectType::OrSymbol,
           view_type: T.nilable(Braintrust::Models::ViewReplaceParams::ViewType::OrSymbol),
           deleted_at: T.nilable(Time),
-          options: T.nilable(Braintrust::Models::ViewOptions),
+          options: T.nilable(T.any(Braintrust::Models::ViewOptions, Braintrust::Util::AnyHash)),
           user_id: T.nilable(String),
-          view_data: T.nilable(Braintrust::Models::ViewData),
-          request_options: T.any(Braintrust::RequestOptions, T::Hash[Symbol, T.anything])
+          view_data: T.nilable(T.any(Braintrust::Models::ViewData, Braintrust::Util::AnyHash)),
+          request_options: T.any(Braintrust::RequestOptions, Braintrust::Util::AnyHash)
         )
           .returns(T.attached_class)
       end

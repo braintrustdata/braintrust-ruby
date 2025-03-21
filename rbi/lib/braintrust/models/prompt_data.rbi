@@ -104,9 +104,9 @@ module Braintrust
       # The prompt, model, and its parameters
       sig do
         params(
-          options: T.nilable(Braintrust::Models::PromptOptions),
-          origin: T.nilable(Braintrust::Models::PromptData::Origin),
-          parser: T.nilable(Braintrust::Models::PromptData::Parser),
+          options: T.nilable(T.any(Braintrust::Models::PromptOptions, Braintrust::Util::AnyHash)),
+          origin: T.nilable(T.any(Braintrust::Models::PromptData::Origin, Braintrust::Util::AnyHash)),
+          parser: T.nilable(T.any(Braintrust::Models::PromptData::Parser, Braintrust::Util::AnyHash)),
           prompt: T.nilable(
             T.any(Braintrust::Models::PromptData::Prompt::Completion, Braintrust::Models::PromptData::Prompt::Chat)
           ),
@@ -774,7 +774,12 @@ module Braintrust
                 params(
                   role: Braintrust::Models::PromptData::Prompt::Chat::Message::Assistant::Role::OrSymbol,
                   content: T.nilable(String),
-                  function_call: T.nilable(Braintrust::Models::PromptData::Prompt::Chat::Message::Assistant::FunctionCall),
+                  function_call: T.nilable(
+                    T.any(
+                      Braintrust::Models::PromptData::Prompt::Chat::Message::Assistant::FunctionCall,
+                      Braintrust::Util::AnyHash
+                    )
+                  ),
                   name: T.nilable(String),
                   tool_calls: T.nilable(T::Array[Braintrust::Models::ChatCompletionMessageToolCall])
                 )
