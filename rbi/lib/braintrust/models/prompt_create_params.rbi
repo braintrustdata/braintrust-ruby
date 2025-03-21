@@ -58,7 +58,10 @@ module Braintrust
       def prompt_data
       end
 
-      sig { params(_: T.nilable(Braintrust::Models::PromptData)).returns(T.nilable(Braintrust::Models::PromptData)) }
+      sig do
+        params(_: T.nilable(T.any(Braintrust::Models::PromptData, Braintrust::Util::AnyHash)))
+          .returns(T.nilable(T.any(Braintrust::Models::PromptData, Braintrust::Util::AnyHash)))
+      end
       def prompt_data=(_)
       end
 

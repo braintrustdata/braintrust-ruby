@@ -539,10 +539,16 @@ module Braintrust
 
               sig do
                 params(
-                  _: Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ResponseFormat::JsonSchema::JsonSchema
+                  _: T.any(
+                    Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ResponseFormat::JsonSchema::JsonSchema,
+                    Braintrust::Util::AnyHash
+                  )
                 )
                   .returns(
-                    Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ResponseFormat::JsonSchema::JsonSchema
+                    T.any(
+                      Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ResponseFormat::JsonSchema::JsonSchema,
+                      Braintrust::Util::AnyHash
+                    )
                   )
               end
               def json_schema=(_)
@@ -797,8 +803,18 @@ module Braintrust
               end
 
               sig do
-                params(_: Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ToolChoice::Function::Function)
-                  .returns(Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ToolChoice::Function::Function)
+                params(
+                  _: T.any(
+                    Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ToolChoice::Function::Function,
+                    Braintrust::Util::AnyHash
+                  )
+                )
+                  .returns(
+                    T.any(
+                      Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ToolChoice::Function::Function,
+                      Braintrust::Util::AnyHash
+                    )
+                  )
               end
               def function=(_)
               end

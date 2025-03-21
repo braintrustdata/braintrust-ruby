@@ -16,8 +16,8 @@ module Braintrust
       end
 
       sig do
-        params(_: Braintrust::Models::ChatCompletionMessageToolCall::Function)
-          .returns(Braintrust::Models::ChatCompletionMessageToolCall::Function)
+        params(_: T.any(Braintrust::Models::ChatCompletionMessageToolCall::Function, Braintrust::Util::AnyHash))
+          .returns(T.any(Braintrust::Models::ChatCompletionMessageToolCall::Function, Braintrust::Util::AnyHash))
       end
       def function=(_)
       end
