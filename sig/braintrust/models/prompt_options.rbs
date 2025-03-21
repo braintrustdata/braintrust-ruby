@@ -153,7 +153,7 @@ module Braintrust
               def to_hash: -> Braintrust::Models::PromptOptions::Params::OpenAIModelParams::FunctionCall::function
             end
 
-            def self.variants: -> [(:auto
+            def self?.variants: -> [(:auto
             | :none), Braintrust::Models::PromptOptions::Params::OpenAIModelParams::FunctionCall::Function]
           end
 
@@ -166,7 +166,7 @@ module Braintrust
             MEDIUM: :medium
             HIGH: :high
 
-            def self.values: -> ::Array[Braintrust::Models::PromptOptions::Params::OpenAIModelParams::reasoning_effort]
+            def self?.values: -> ::Array[Braintrust::Models::PromptOptions::Params::OpenAIModelParams::reasoning_effort]
           end
 
           type response_format =
@@ -198,7 +198,7 @@ module Braintrust
 
                 JSON_OBJECT: :json_object
 
-                def self.values: -> ::Array[Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ResponseFormat::JsonObject::type_]
+                def self?.values: -> ::Array[Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ResponseFormat::JsonObject::type_]
               end
             end
 
@@ -261,7 +261,7 @@ module Braintrust
 
                   ObjectMap: object_map
 
-                  def self.variants: -> [::Hash[Symbol, top?], String]
+                  def self?.variants: -> [::Hash[Symbol, top?], String]
                 end
               end
 
@@ -272,7 +272,7 @@ module Braintrust
 
                 JSON_SCHEMA: :json_schema
 
-                def self.values: -> ::Array[Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ResponseFormat::JsonSchema::type_]
+                def self?.values: -> ::Array[Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ResponseFormat::JsonSchema::type_]
               end
             end
 
@@ -297,11 +297,11 @@ module Braintrust
 
                 TEXT: :text
 
-                def self.values: -> ::Array[Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ResponseFormat::Text::type_]
+                def self?.values: -> ::Array[Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ResponseFormat::Text::type_]
               end
             end
 
-            def self.variants: -> [Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ResponseFormat::JsonObject, Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ResponseFormat::JsonSchema, Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ResponseFormat::Text]
+            def self?.variants: -> [Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ResponseFormat::JsonObject, Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ResponseFormat::JsonSchema, Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ResponseFormat::Text]
           end
 
           type tool_choice =
@@ -352,11 +352,11 @@ module Braintrust
 
                 FUNCTION: :function
 
-                def self.values: -> ::Array[Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ToolChoice::Function::type_]
+                def self?.values: -> ::Array[Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ToolChoice::Function::type_]
               end
             end
 
-            def self.variants: -> [(:auto
+            def self?.variants: -> [(:auto
             | :none
             | :required), Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ToolChoice::Function]
           end
@@ -489,7 +489,7 @@ module Braintrust
           def to_hash: -> Braintrust::Models::PromptOptions::Params::js_completion_params
         end
 
-        def self.variants: -> [Braintrust::Models::PromptOptions::Params::OpenAIModelParams, Braintrust::Models::PromptOptions::Params::AnthropicModelParams, Braintrust::Models::PromptOptions::Params::GoogleModelParams, Braintrust::Models::PromptOptions::Params::WindowAIModelParams, Braintrust::Models::PromptOptions::Params::JsCompletionParams]
+        def self?.variants: -> [Braintrust::Models::PromptOptions::Params::OpenAIModelParams, Braintrust::Models::PromptOptions::Params::AnthropicModelParams, Braintrust::Models::PromptOptions::Params::GoogleModelParams, Braintrust::Models::PromptOptions::Params::WindowAIModelParams, Braintrust::Models::PromptOptions::Params::JsCompletionParams]
       end
     end
   end

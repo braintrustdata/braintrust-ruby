@@ -87,12 +87,18 @@ module Braintrust
         TaggedSymbol = T.type_alias { T.all(Symbol, Braintrust::Models::ObjectReference::ObjectType) }
         OrSymbol = T.type_alias { T.any(Symbol, Braintrust::Models::ObjectReference::ObjectType::TaggedSymbol) }
 
-        EXPERIMENT = T.let(:experiment, Braintrust::Models::ObjectReference::ObjectType::OrSymbol)
-        DATASET = T.let(:dataset, Braintrust::Models::ObjectReference::ObjectType::OrSymbol)
-        PROMPT = T.let(:prompt, Braintrust::Models::ObjectReference::ObjectType::OrSymbol)
-        FUNCTION = T.let(:function, Braintrust::Models::ObjectReference::ObjectType::OrSymbol)
-        PROMPT_SESSION = T.let(:prompt_session, Braintrust::Models::ObjectReference::ObjectType::OrSymbol)
-        PROJECT_LOGS = T.let(:project_logs, Braintrust::Models::ObjectReference::ObjectType::OrSymbol)
+        EXPERIMENT = T.let(:experiment, Braintrust::Models::ObjectReference::ObjectType::TaggedSymbol)
+        DATASET = T.let(:dataset, Braintrust::Models::ObjectReference::ObjectType::TaggedSymbol)
+        PROMPT = T.let(:prompt, Braintrust::Models::ObjectReference::ObjectType::TaggedSymbol)
+        FUNCTION = T.let(:function, Braintrust::Models::ObjectReference::ObjectType::TaggedSymbol)
+        PROMPT_SESSION = T.let(:prompt_session, Braintrust::Models::ObjectReference::ObjectType::TaggedSymbol)
+        PROJECT_LOGS = T.let(:project_logs, Braintrust::Models::ObjectReference::ObjectType::TaggedSymbol)
+
+        class << self
+          sig { override.returns(T::Array[Braintrust::Models::ObjectReference::ObjectType::TaggedSymbol]) }
+          def values
+          end
+        end
       end
     end
   end

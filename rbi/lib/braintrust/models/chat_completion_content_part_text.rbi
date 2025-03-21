@@ -40,7 +40,13 @@ module Braintrust
         OrSymbol =
           T.type_alias { T.any(Symbol, Braintrust::Models::ChatCompletionContentPartText::Type::TaggedSymbol) }
 
-        TEXT = T.let(:text, Braintrust::Models::ChatCompletionContentPartText::Type::OrSymbol)
+        TEXT = T.let(:text, Braintrust::Models::ChatCompletionContentPartText::Type::TaggedSymbol)
+
+        class << self
+          sig { override.returns(T::Array[Braintrust::Models::ChatCompletionContentPartText::Type::TaggedSymbol]) }
+          def values
+          end
+        end
       end
     end
   end

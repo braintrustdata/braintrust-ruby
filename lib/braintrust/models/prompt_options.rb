@@ -253,6 +253,12 @@ module Braintrust
             HIGH = :high
 
             finalize!
+
+            class << self
+              # @!parse
+              #   # @return [Array<Symbol>]
+              #   def values; end
+            end
           end
 
           module ResponseFormat
@@ -284,6 +290,12 @@ module Braintrust
                 JSON_OBJECT = :json_object
 
                 finalize!
+
+                class << self
+                  # @!parse
+                  #   # @return [Array<Symbol>]
+                  #   def values; end
+                end
               end
             end
 
@@ -371,6 +383,12 @@ module Braintrust
                 JSON_SCHEMA = :json_schema
 
                 finalize!
+
+                class << self
+                  # @!parse
+                  #   # @return [Array<Symbol>]
+                  #   def values; end
+                end
               end
             end
 
@@ -394,6 +412,12 @@ module Braintrust
                 TEXT = :text
 
                 finalize!
+
+                class << self
+                  # @!parse
+                  #   # @return [Array<Symbol>]
+                  #   def values; end
+                end
               end
             end
 
@@ -464,6 +488,12 @@ module Braintrust
                 FUNCTION = :function
 
                 finalize!
+
+                class << self
+                  # @!parse
+                  #   # @return [Array<Symbol>]
+                  #   def values; end
+                end
               end
             end
 

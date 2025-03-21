@@ -9,9 +9,15 @@ module Braintrust
       TaggedSymbol = T.type_alias { T.all(Symbol, Braintrust::Models::EnvVarObjectType) }
       OrSymbol = T.type_alias { T.any(Symbol, Braintrust::Models::EnvVarObjectType::TaggedSymbol) }
 
-      ORGANIZATION = T.let(:organization, Braintrust::Models::EnvVarObjectType::OrSymbol)
-      PROJECT = T.let(:project, Braintrust::Models::EnvVarObjectType::OrSymbol)
-      FUNCTION = T.let(:function, Braintrust::Models::EnvVarObjectType::OrSymbol)
+      ORGANIZATION = T.let(:organization, Braintrust::Models::EnvVarObjectType::TaggedSymbol)
+      PROJECT = T.let(:project, Braintrust::Models::EnvVarObjectType::TaggedSymbol)
+      FUNCTION = T.let(:function, Braintrust::Models::EnvVarObjectType::TaggedSymbol)
+
+      class << self
+        sig { override.returns(T::Array[Braintrust::Models::EnvVarObjectType::TaggedSymbol]) }
+        def values
+        end
+      end
     end
   end
 end

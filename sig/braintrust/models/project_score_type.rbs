@@ -20,7 +20,7 @@ module Braintrust
       ONLINE: :online
       FREE_FORM: :"free-form"
 
-      def self.values: -> ::Array[Braintrust::Models::project_score_type]
+      def self?.values: -> ::Array[Braintrust::Models::project_score_type]
     end
   end
 end

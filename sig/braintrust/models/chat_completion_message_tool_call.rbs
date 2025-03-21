@@ -41,7 +41,7 @@ module Braintrust
 
         FUNCTION: :function
 
-        def self.values: -> ::Array[Braintrust::Models::ChatCompletionMessageToolCall::type_]
+        def self?.values: -> ::Array[Braintrust::Models::ChatCompletionMessageToolCall::type_]
       end
     end
   end

@@ -56,7 +56,7 @@ module Braintrust
           FULL: :full
           TWO_COLUMN: :two_column
 
-          def self.values: -> ::Array[Braintrust::Models::ProjectSettings::SpanFieldOrder::layout]
+          def self?.values: -> ::Array[Braintrust::Models::ProjectSettings::SpanFieldOrder::layout]
         end
       end
     end

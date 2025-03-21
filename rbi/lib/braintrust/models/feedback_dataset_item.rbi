@@ -93,9 +93,15 @@ module Braintrust
         TaggedSymbol = T.type_alias { T.all(Symbol, Braintrust::Models::FeedbackDatasetItem::Source) }
         OrSymbol = T.type_alias { T.any(Symbol, Braintrust::Models::FeedbackDatasetItem::Source::TaggedSymbol) }
 
-        APP = T.let(:app, Braintrust::Models::FeedbackDatasetItem::Source::OrSymbol)
-        API = T.let(:api, Braintrust::Models::FeedbackDatasetItem::Source::OrSymbol)
-        EXTERNAL = T.let(:external, Braintrust::Models::FeedbackDatasetItem::Source::OrSymbol)
+        APP = T.let(:app, Braintrust::Models::FeedbackDatasetItem::Source::TaggedSymbol)
+        API = T.let(:api, Braintrust::Models::FeedbackDatasetItem::Source::TaggedSymbol)
+        EXTERNAL = T.let(:external, Braintrust::Models::FeedbackDatasetItem::Source::TaggedSymbol)
+
+        class << self
+          sig { override.returns(T::Array[Braintrust::Models::FeedbackDatasetItem::Source::TaggedSymbol]) }
+          def values
+          end
+        end
       end
     end
   end

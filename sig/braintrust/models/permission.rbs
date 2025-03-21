@@ -22,7 +22,7 @@ module Braintrust
       UPDATE_ACLS: :update_acls
       DELETE_ACLS: :delete_acls
 
-      def self.values: -> ::Array[Braintrust::Models::permission]
+      def self?.values: -> ::Array[Braintrust::Models::permission]
     end
   end
 end

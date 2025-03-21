@@ -506,6 +506,17 @@ module Braintrust
           def to_hash
           end
         end
+
+        class << self
+          sig do
+            override
+              .returns(
+                [Braintrust::Models::EvalCreateParams::Data::DatasetID, Braintrust::Models::EvalCreateParams::Data::ProjectDatasetName, Braintrust::Models::EvalCreateParams::Data::DatasetRows]
+              )
+          end
+          def variants
+          end
+        end
       end
 
       # The function to evaluate
@@ -772,9 +783,26 @@ module Braintrust
                 end
 
               NODE =
-                T.let(:node, Braintrust::Models::EvalCreateParams::Score::InlineCode::InlineContext::Runtime::OrSymbol)
+                T.let(
+                  :node,
+                  Braintrust::Models::EvalCreateParams::Score::InlineCode::InlineContext::Runtime::TaggedSymbol
+                )
               PYTHON =
-                T.let(:python, Braintrust::Models::EvalCreateParams::Score::InlineCode::InlineContext::Runtime::OrSymbol)
+                T.let(
+                  :python,
+                  Braintrust::Models::EvalCreateParams::Score::InlineCode::InlineContext::Runtime::TaggedSymbol
+                )
+
+              class << self
+                sig do
+                  override
+                    .returns(
+                      T::Array[Braintrust::Models::EvalCreateParams::Score::InlineCode::InlineContext::Runtime::TaggedSymbol]
+                    )
+                end
+                def values
+                end
+              end
             end
           end
         end
@@ -811,6 +839,17 @@ module Braintrust
 
           sig { override.returns({inline_prompt: T.nilable(Braintrust::Models::PromptData), name: T.nilable(String)}) }
           def to_hash
+          end
+        end
+
+        class << self
+          sig do
+            override
+              .returns(
+                [Braintrust::Models::EvalCreateParams::Score::FunctionID, Braintrust::Models::EvalCreateParams::Score::ProjectSlug, Braintrust::Models::EvalCreateParams::Score::GlobalFunction, Braintrust::Models::EvalCreateParams::Score::PromptSessionID, Braintrust::Models::EvalCreateParams::Score::InlineCode, Braintrust::Models::EvalCreateParams::Score::InlinePrompt]
+              )
+          end
+          def variants
           end
         end
       end
@@ -1079,9 +1118,23 @@ module Braintrust
                 end
 
               NODE =
-                T.let(:node, Braintrust::Models::EvalCreateParams::Task::InlineCode::InlineContext::Runtime::OrSymbol)
+                T.let(:node, Braintrust::Models::EvalCreateParams::Task::InlineCode::InlineContext::Runtime::TaggedSymbol)
               PYTHON =
-                T.let(:python, Braintrust::Models::EvalCreateParams::Task::InlineCode::InlineContext::Runtime::OrSymbol)
+                T.let(
+                  :python,
+                  Braintrust::Models::EvalCreateParams::Task::InlineCode::InlineContext::Runtime::TaggedSymbol
+                )
+
+              class << self
+                sig do
+                  override
+                    .returns(
+                      T::Array[Braintrust::Models::EvalCreateParams::Task::InlineCode::InlineContext::Runtime::TaggedSymbol]
+                    )
+                end
+                def values
+                end
+              end
             end
           end
         end
@@ -1118,6 +1171,17 @@ module Braintrust
 
           sig { override.returns({inline_prompt: T.nilable(Braintrust::Models::PromptData), name: T.nilable(String)}) }
           def to_hash
+          end
+        end
+
+        class << self
+          sig do
+            override
+              .returns(
+                [Braintrust::Models::EvalCreateParams::Task::FunctionID, Braintrust::Models::EvalCreateParams::Task::ProjectSlug, Braintrust::Models::EvalCreateParams::Task::GlobalFunction, Braintrust::Models::EvalCreateParams::Task::PromptSessionID, Braintrust::Models::EvalCreateParams::Task::InlineCode, Braintrust::Models::EvalCreateParams::Task::InlinePrompt]
+              )
+          end
+          def variants
           end
         end
       end
@@ -1177,9 +1241,18 @@ module Braintrust
           OrSymbol =
             T.type_alias { T.any(Symbol, Braintrust::Models::EvalCreateParams::GitMetadataSettings::Collect::TaggedSymbol) }
 
-          ALL = T.let(:all, Braintrust::Models::EvalCreateParams::GitMetadataSettings::Collect::OrSymbol)
-          NONE = T.let(:none, Braintrust::Models::EvalCreateParams::GitMetadataSettings::Collect::OrSymbol)
-          SOME = T.let(:some, Braintrust::Models::EvalCreateParams::GitMetadataSettings::Collect::OrSymbol)
+          ALL = T.let(:all, Braintrust::Models::EvalCreateParams::GitMetadataSettings::Collect::TaggedSymbol)
+          NONE = T.let(:none, Braintrust::Models::EvalCreateParams::GitMetadataSettings::Collect::TaggedSymbol)
+          SOME = T.let(:some, Braintrust::Models::EvalCreateParams::GitMetadataSettings::Collect::TaggedSymbol)
+
+          class << self
+            sig do
+              override
+                .returns(T::Array[Braintrust::Models::EvalCreateParams::GitMetadataSettings::Collect::TaggedSymbol])
+            end
+            def values
+            end
+          end
         end
 
         module Field
@@ -1190,19 +1263,26 @@ module Braintrust
           OrSymbol =
             T.type_alias { T.any(Symbol, Braintrust::Models::EvalCreateParams::GitMetadataSettings::Field::TaggedSymbol) }
 
-          COMMIT = T.let(:commit, Braintrust::Models::EvalCreateParams::GitMetadataSettings::Field::OrSymbol)
-          BRANCH = T.let(:branch, Braintrust::Models::EvalCreateParams::GitMetadataSettings::Field::OrSymbol)
-          TAG = T.let(:tag, Braintrust::Models::EvalCreateParams::GitMetadataSettings::Field::OrSymbol)
-          DIRTY = T.let(:dirty, Braintrust::Models::EvalCreateParams::GitMetadataSettings::Field::OrSymbol)
+          COMMIT = T.let(:commit, Braintrust::Models::EvalCreateParams::GitMetadataSettings::Field::TaggedSymbol)
+          BRANCH = T.let(:branch, Braintrust::Models::EvalCreateParams::GitMetadataSettings::Field::TaggedSymbol)
+          TAG = T.let(:tag, Braintrust::Models::EvalCreateParams::GitMetadataSettings::Field::TaggedSymbol)
+          DIRTY = T.let(:dirty, Braintrust::Models::EvalCreateParams::GitMetadataSettings::Field::TaggedSymbol)
           AUTHOR_NAME =
-            T.let(:author_name, Braintrust::Models::EvalCreateParams::GitMetadataSettings::Field::OrSymbol)
+            T.let(:author_name, Braintrust::Models::EvalCreateParams::GitMetadataSettings::Field::TaggedSymbol)
           AUTHOR_EMAIL =
-            T.let(:author_email, Braintrust::Models::EvalCreateParams::GitMetadataSettings::Field::OrSymbol)
+            T.let(:author_email, Braintrust::Models::EvalCreateParams::GitMetadataSettings::Field::TaggedSymbol)
           COMMIT_MESSAGE =
-            T.let(:commit_message, Braintrust::Models::EvalCreateParams::GitMetadataSettings::Field::OrSymbol)
+            T.let(:commit_message, Braintrust::Models::EvalCreateParams::GitMetadataSettings::Field::TaggedSymbol)
           COMMIT_TIME =
-            T.let(:commit_time, Braintrust::Models::EvalCreateParams::GitMetadataSettings::Field::OrSymbol)
-          GIT_DIFF = T.let(:git_diff, Braintrust::Models::EvalCreateParams::GitMetadataSettings::Field::OrSymbol)
+            T.let(:commit_time, Braintrust::Models::EvalCreateParams::GitMetadataSettings::Field::TaggedSymbol)
+          GIT_DIFF =
+            T.let(:git_diff, Braintrust::Models::EvalCreateParams::GitMetadataSettings::Field::TaggedSymbol)
+
+          class << self
+            sig { override.returns(T::Array[Braintrust::Models::EvalCreateParams::GitMetadataSettings::Field::TaggedSymbol]) }
+            def values
+            end
+          end
         end
       end
 
@@ -1302,14 +1382,31 @@ module Braintrust
               T.type_alias { T.any(Symbol, Braintrust::Models::EvalCreateParams::Parent::SpanParentStruct::ObjectType::TaggedSymbol) }
 
             PROJECT_LOGS =
-              T.let(:project_logs, Braintrust::Models::EvalCreateParams::Parent::SpanParentStruct::ObjectType::OrSymbol)
+              T.let(
+                :project_logs,
+                Braintrust::Models::EvalCreateParams::Parent::SpanParentStruct::ObjectType::TaggedSymbol
+              )
             EXPERIMENT =
-              T.let(:experiment, Braintrust::Models::EvalCreateParams::Parent::SpanParentStruct::ObjectType::OrSymbol)
+              T.let(
+                :experiment,
+                Braintrust::Models::EvalCreateParams::Parent::SpanParentStruct::ObjectType::TaggedSymbol
+              )
             PLAYGROUND_LOGS =
               T.let(
                 :playground_logs,
-                Braintrust::Models::EvalCreateParams::Parent::SpanParentStruct::ObjectType::OrSymbol
+                Braintrust::Models::EvalCreateParams::Parent::SpanParentStruct::ObjectType::TaggedSymbol
               )
+
+            class << self
+              sig do
+                override
+                  .returns(
+                    T::Array[Braintrust::Models::EvalCreateParams::Parent::SpanParentStruct::ObjectType::TaggedSymbol]
+                  )
+              end
+              def values
+              end
+            end
           end
 
           class RowIDs < Braintrust::BaseModel
@@ -1348,6 +1445,12 @@ module Braintrust
             sig { override.returns({id: String, root_span_id: String, span_id: String}) }
             def to_hash
             end
+          end
+        end
+
+        class << self
+          sig { override.returns([Braintrust::Models::EvalCreateParams::Parent::SpanParentStruct, String]) }
+          def variants
           end
         end
       end

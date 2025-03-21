@@ -81,9 +81,15 @@ module Braintrust
         OrSymbol =
           T.type_alias { T.any(Symbol, Braintrust::Models::EnvVarCreateParams::ObjectType::TaggedSymbol) }
 
-        ORGANIZATION = T.let(:organization, Braintrust::Models::EnvVarCreateParams::ObjectType::OrSymbol)
-        PROJECT = T.let(:project, Braintrust::Models::EnvVarCreateParams::ObjectType::OrSymbol)
-        FUNCTION = T.let(:function, Braintrust::Models::EnvVarCreateParams::ObjectType::OrSymbol)
+        ORGANIZATION = T.let(:organization, Braintrust::Models::EnvVarCreateParams::ObjectType::TaggedSymbol)
+        PROJECT = T.let(:project, Braintrust::Models::EnvVarCreateParams::ObjectType::TaggedSymbol)
+        FUNCTION = T.let(:function, Braintrust::Models::EnvVarCreateParams::ObjectType::TaggedSymbol)
+
+        class << self
+          sig { override.returns(T::Array[Braintrust::Models::EnvVarCreateParams::ObjectType::TaggedSymbol]) }
+          def values
+          end
+        end
       end
     end
   end

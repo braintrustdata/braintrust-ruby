@@ -69,7 +69,7 @@ module Braintrust
 
         P: :p
 
-        def self.values: -> ::Array[Braintrust::Models::Prompt::log_id]
+        def self?.values: -> ::Array[Braintrust::Models::Prompt::log_id]
       end
 
       type function_type = :llm | :scorer | :task | :tool
@@ -82,7 +82,7 @@ module Braintrust
         TASK: :task
         TOOL: :tool
 
-        def self.values: -> ::Array[Braintrust::Models::Prompt::function_type]
+        def self?.values: -> ::Array[Braintrust::Models::Prompt::function_type]
       end
     end
   end

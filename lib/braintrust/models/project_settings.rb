@@ -71,6 +71,12 @@ module Braintrust
           TWO_COLUMN = :two_column
 
           finalize!
+
+          class << self
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   def values; end
+          end
         end
       end
     end
