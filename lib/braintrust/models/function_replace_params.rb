@@ -124,6 +124,12 @@ module Braintrust
             PROMPT = :prompt
 
             finalize!
+
+            class << self
+              # @!parse
+              #   # @return [Array<Symbol>]
+              #   def values; end
+            end
           end
         end
 
@@ -173,6 +179,12 @@ module Braintrust
                 BUNDLE = :bundle
 
                 finalize!
+
+                class << self
+                  # @!parse
+                  #   # @return [Array<Symbol>]
+                  #   def values; end
+                end
               end
             end
 
@@ -230,6 +242,12 @@ module Braintrust
                   PYTHON = :python
 
                   finalize!
+
+                  class << self
+                    # @!parse
+                    #   # @return [Array<Symbol>]
+                    #   def values; end
+                  end
                 end
               end
 
@@ -239,6 +257,12 @@ module Braintrust
                 INLINE = :inline
 
                 finalize!
+
+                class << self
+                  # @!parse
+                  #   # @return [Array<Symbol>]
+                  #   def values; end
+                end
               end
             end
 
@@ -255,6 +279,12 @@ module Braintrust
             CODE = :code
 
             finalize!
+
+            class << self
+              # @!parse
+              #   # @return [Array<Symbol>]
+              #   def values; end
+            end
           end
         end
 
@@ -283,6 +313,12 @@ module Braintrust
             GLOBAL = :global
 
             finalize!
+
+            class << self
+              # @!parse
+              #   # @return [Array<Symbol>]
+              #   def values; end
+            end
           end
         end
 
@@ -332,6 +368,12 @@ module Braintrust
         TOOL = :tool
 
         finalize!
+
+        class << self
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   def values; end
+        end
       end
 
       class Origin < Braintrust::BaseModel

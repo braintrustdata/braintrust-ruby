@@ -122,6 +122,15 @@ module Braintrust
         FloatMap = T.let(Braintrust::HashOf[Float], Braintrust::Converter)
 
         StringArray = T.let(Braintrust::ArrayOf[String], Braintrust::Converter)
+
+        class << self
+          sig do
+            override
+              .returns([T::Array[Braintrust::Models::ProjectScoreCategory], T::Hash[Symbol, Float], T::Array[String]])
+          end
+          def variants
+          end
+        end
       end
     end
   end

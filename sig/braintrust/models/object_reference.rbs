@@ -48,7 +48,7 @@ module Braintrust
         PROMPT_SESSION: :prompt_session
         PROJECT_LOGS: :project_logs
 
-        def self.values: -> ::Array[Braintrust::Models::ObjectReference::object_type]
+        def self?.values: -> ::Array[Braintrust::Models::ObjectReference::object_type]
       end
     end
   end

@@ -94,9 +94,18 @@ module Braintrust
           OrSymbol =
             T.type_alias { T.any(Symbol, Braintrust::Models::ChatCompletionContentPartImage::ImageURL::Detail::TaggedSymbol) }
 
-          AUTO = T.let(:auto, Braintrust::Models::ChatCompletionContentPartImage::ImageURL::Detail::OrSymbol)
-          LOW = T.let(:low, Braintrust::Models::ChatCompletionContentPartImage::ImageURL::Detail::OrSymbol)
-          HIGH = T.let(:high, Braintrust::Models::ChatCompletionContentPartImage::ImageURL::Detail::OrSymbol)
+          AUTO = T.let(:auto, Braintrust::Models::ChatCompletionContentPartImage::ImageURL::Detail::TaggedSymbol)
+          LOW = T.let(:low, Braintrust::Models::ChatCompletionContentPartImage::ImageURL::Detail::TaggedSymbol)
+          HIGH = T.let(:high, Braintrust::Models::ChatCompletionContentPartImage::ImageURL::Detail::TaggedSymbol)
+
+          class << self
+            sig do
+              override
+                .returns(T::Array[Braintrust::Models::ChatCompletionContentPartImage::ImageURL::Detail::TaggedSymbol])
+            end
+            def values
+            end
+          end
         end
       end
 
@@ -107,7 +116,13 @@ module Braintrust
         OrSymbol =
           T.type_alias { T.any(Symbol, Braintrust::Models::ChatCompletionContentPartImage::Type::TaggedSymbol) }
 
-        IMAGE_URL = T.let(:image_url, Braintrust::Models::ChatCompletionContentPartImage::Type::OrSymbol)
+        IMAGE_URL = T.let(:image_url, Braintrust::Models::ChatCompletionContentPartImage::Type::TaggedSymbol)
+
+        class << self
+          sig { override.returns(T::Array[Braintrust::Models::ChatCompletionContentPartImage::Type::TaggedSymbol]) }
+          def values
+          end
+        end
       end
     end
   end

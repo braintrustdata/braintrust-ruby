@@ -71,7 +71,7 @@ module Braintrust
 
         StringArray: string_array
 
-        def self.variants: -> [::Array[Braintrust::Models::ProjectScoreCategory], ::Hash[Symbol, Float], ::Array[String]]
+        def self?.variants: -> [::Array[Braintrust::Models::ProjectScoreCategory], ::Hash[Symbol, Float], ::Array[String]]
       end
     end
   end

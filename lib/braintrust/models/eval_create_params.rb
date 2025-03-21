@@ -456,6 +456,12 @@ module Braintrust
               PYTHON = :python
 
               finalize!
+
+              class << self
+                # @!parse
+                #   # @return [Array<Symbol>]
+                #   def values; end
+              end
             end
           end
         end
@@ -685,6 +691,12 @@ module Braintrust
               PYTHON = :python
 
               finalize!
+
+              class << self
+                # @!parse
+                #   # @return [Array<Symbol>]
+                #   def values; end
+              end
             end
           end
         end
@@ -755,6 +767,12 @@ module Braintrust
           SOME = :some
 
           finalize!
+
+          class << self
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   def values; end
+          end
         end
 
         module Field
@@ -771,6 +789,12 @@ module Braintrust
           GIT_DIFF = :git_diff
 
           finalize!
+
+          class << self
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   def values; end
+          end
         end
       end
 
@@ -831,6 +855,12 @@ module Braintrust
             PLAYGROUND_LOGS = :playground_logs
 
             finalize!
+
+            class << self
+              # @!parse
+              #   # @return [Array<Symbol>]
+              #   def values; end
+            end
           end
 
           class RowIDs < Braintrust::BaseModel

@@ -112,6 +112,12 @@ module Braintrust
           LLM_CLASSIFIER = :llm_classifier
 
           finalize!
+
+          class << self
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   def values; end
+          end
         end
       end
 
@@ -147,6 +153,12 @@ module Braintrust
             COMPLETION = :completion
 
             finalize!
+
+            class << self
+              # @!parse
+              #   # @return [Array<Symbol>]
+              #   def values; end
+            end
           end
         end
 
@@ -234,6 +246,12 @@ module Braintrust
                 SYSTEM = :system
 
                 finalize!
+
+                class << self
+                  # @!parse
+                  #   # @return [Array<Symbol>]
+                  #   def values; end
+                end
               end
             end
 
@@ -276,6 +294,12 @@ module Braintrust
                 USER = :user
 
                 finalize!
+
+                class << self
+                  # @!parse
+                  #   # @return [Array<Symbol>]
+                  #   def values; end
+                end
               end
 
               module Content
@@ -357,6 +381,12 @@ module Braintrust
                 ASSISTANT = :assistant
 
                 finalize!
+
+                class << self
+                  # @!parse
+                  #   # @return [Array<Symbol>]
+                  #   def values; end
+                end
               end
 
               class FunctionCall < Braintrust::BaseModel
@@ -419,6 +449,12 @@ module Braintrust
                 TOOL = :tool
 
                 finalize!
+
+                class << self
+                  # @!parse
+                  #   # @return [Array<Symbol>]
+                  #   def values; end
+                end
               end
             end
 
@@ -457,6 +493,12 @@ module Braintrust
                 FUNCTION = :function
 
                 finalize!
+
+                class << self
+                  # @!parse
+                  #   # @return [Array<Symbol>]
+                  #   def values; end
+                end
               end
             end
 
@@ -485,6 +527,12 @@ module Braintrust
                 MODEL = :model
 
                 finalize!
+
+                class << self
+                  # @!parse
+                  #   # @return [Array<Symbol>]
+                  #   def values; end
+                end
               end
             end
 
@@ -501,6 +549,12 @@ module Braintrust
             CHAT = :chat
 
             finalize!
+
+            class << self
+              # @!parse
+              #   # @return [Array<Symbol>]
+              #   def values; end
+            end
           end
         end
 
@@ -543,6 +597,12 @@ module Braintrust
             FUNCTION = :function
 
             finalize!
+
+            class << self
+              # @!parse
+              #   # @return [Array<Symbol>]
+              #   def values; end
+            end
           end
         end
 
@@ -571,6 +631,12 @@ module Braintrust
             GLOBAL = :global
 
             finalize!
+
+            class << self
+              # @!parse
+              #   # @return [Array<Symbol>]
+              #   def values; end
+            end
           end
         end
 

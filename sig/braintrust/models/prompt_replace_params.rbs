@@ -53,7 +53,7 @@ module Braintrust
         TASK: :task
         TOOL: :tool
 
-        def self.values: -> ::Array[Braintrust::Models::PromptReplaceParams::function_type]
+        def self?.values: -> ::Array[Braintrust::Models::PromptReplaceParams::function_type]
       end
     end
   end
