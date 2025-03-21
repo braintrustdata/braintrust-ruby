@@ -132,11 +132,11 @@ module Braintrust
 
       # def initialize: (Hash | Braintrust::BaseModel) -> void
 
-      # @abstract
-      #
       # Filter search results to a particular set of object IDs. To specify a list of
       #   IDs, include the query param multiple times
-      class IDs < Braintrust::Union
+      module IDs
+        extend Braintrust::Union
+
         StringArray = Braintrust::ArrayOf[String]
 
         variant String
@@ -150,10 +150,10 @@ module Braintrust
         #   end
       end
 
-      # @abstract
-      #
       # The type of the configured score
-      class ScoreType < Braintrust::Union
+      module ScoreType
+        extend Braintrust::Union
+
         ProjectScoreTypeArray = Braintrust::ArrayOf[enum: -> { Braintrust::Models::ProjectScoreType }]
 
         # The type of the configured score

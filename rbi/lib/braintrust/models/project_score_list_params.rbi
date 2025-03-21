@@ -75,11 +75,33 @@ module Braintrust
       end
 
       # The type of the configured score
-      sig { returns(T.nilable(T.any(Symbol, T::Array[Symbol]))) }
+      sig do
+        returns(
+          T.nilable(
+            T.any(
+              Braintrust::Models::ProjectScoreType::OrSymbol,
+              T::Array[Braintrust::Models::ProjectScoreType::OrSymbol]
+            )
+          )
+        )
+      end
       def score_type
       end
 
-      sig { params(_: T.any(Symbol, T::Array[Symbol])).returns(T.any(Symbol, T::Array[Symbol])) }
+      sig do
+        params(
+          _: T.any(
+            Braintrust::Models::ProjectScoreType::OrSymbol,
+            T::Array[Braintrust::Models::ProjectScoreType::OrSymbol]
+          )
+        )
+          .returns(
+            T.any(
+              Braintrust::Models::ProjectScoreType::OrSymbol,
+              T::Array[Braintrust::Models::ProjectScoreType::OrSymbol]
+            )
+          )
+      end
       def score_type=(_)
       end
 
@@ -105,7 +127,10 @@ module Braintrust
           project_id: String,
           project_name: String,
           project_score_name: String,
-          score_type: T.any(Symbol, T::Array[Symbol]),
+          score_type: T.any(
+            Braintrust::Models::ProjectScoreType::OrSymbol,
+            T::Array[Braintrust::Models::ProjectScoreType::OrSymbol]
+          ),
           starting_after: String,
           request_options: T.any(Braintrust::RequestOptions, T::Hash[Symbol, T.anything])
         )
@@ -136,7 +161,10 @@ module Braintrust
               project_id: String,
               project_name: String,
               project_score_name: String,
-              score_type: T.any(Symbol, T::Array[Symbol]),
+              score_type: T.any(
+                Braintrust::Models::ProjectScoreType::OrSymbol,
+                T::Array[Braintrust::Models::ProjectScoreType::OrSymbol]
+              ),
               starting_after: String,
               request_options: Braintrust::RequestOptions
             }
@@ -147,8 +175,8 @@ module Braintrust
 
       # Filter search results to a particular set of object IDs. To specify a list of
       #   IDs, include the query param multiple times
-      class IDs < Braintrust::Union
-        abstract!
+      module IDs
+        extend Braintrust::Union
 
         Variants = type_template(:out) { {fixed: T.any(String, T::Array[String])} }
 
@@ -156,10 +184,18 @@ module Braintrust
       end
 
       # The type of the configured score
-      class ScoreType < Braintrust::Union
-        abstract!
+      module ScoreType
+        extend Braintrust::Union
 
-        Variants = type_template(:out) { {fixed: T.any(Symbol, T::Array[Symbol])} }
+        Variants =
+          type_template(:out) do
+            {
+              fixed: T.any(
+                Braintrust::Models::ProjectScoreType::OrSymbol,
+                T::Array[Braintrust::Models::ProjectScoreType::OrSymbol]
+              )
+            }
+          end
 
         ProjectScoreTypeArray =
           T.let(Braintrust::ArrayOf[enum: Braintrust::Models::ProjectScoreType], Braintrust::Converter)

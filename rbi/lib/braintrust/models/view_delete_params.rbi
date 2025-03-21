@@ -16,18 +16,20 @@ module Braintrust
       end
 
       # The object type that the ACL applies to
-      sig { returns(Symbol) }
+      sig { returns(Braintrust::Models::ACLObjectType::OrSymbol) }
       def object_type
       end
 
-      sig { params(_: Symbol).returns(Symbol) }
+      sig do
+        params(_: Braintrust::Models::ACLObjectType::OrSymbol).returns(Braintrust::Models::ACLObjectType::OrSymbol)
+      end
       def object_type=(_)
       end
 
       sig do
         params(
           object_id_: String,
-          object_type: Symbol,
+          object_type: Braintrust::Models::ACLObjectType::OrSymbol,
           request_options: T.any(Braintrust::RequestOptions, T::Hash[Symbol, T.anything])
         )
           .returns(T.attached_class)
@@ -36,13 +38,14 @@ module Braintrust
       end
 
       sig do
-        override.returns(
-          {
-            object_id_: String,
-            object_type: Symbol,
-            request_options: Braintrust::RequestOptions
-          }
-        )
+        override
+          .returns(
+            {
+              object_id_: String,
+              object_type: Braintrust::Models::ACLObjectType::OrSymbol,
+              request_options: Braintrust::RequestOptions
+            }
+          )
       end
       def to_hash
       end

@@ -3,11 +3,14 @@
 module Braintrust
   module Models
     class ChatCompletionContentPartText < Braintrust::BaseModel
-      sig { returns(Symbol) }
+      sig { returns(Braintrust::Models::ChatCompletionContentPartText::Type::OrSymbol) }
       def type
       end
 
-      sig { params(_: Symbol).returns(Symbol) }
+      sig do
+        params(_: Braintrust::Models::ChatCompletionContentPartText::Type::OrSymbol)
+          .returns(Braintrust::Models::ChatCompletionContentPartText::Type::OrSymbol)
+      end
       def type=(_)
       end
 
@@ -19,20 +22,25 @@ module Braintrust
       def text=(_)
       end
 
-      sig { params(type: Symbol, text: String).returns(T.attached_class) }
+      sig do
+        params(type: Braintrust::Models::ChatCompletionContentPartText::Type::OrSymbol, text: String)
+          .returns(T.attached_class)
+      end
       def self.new(type:, text: nil)
       end
 
-      sig { override.returns({type: Symbol, text: String}) }
+      sig { override.returns({type: Braintrust::Models::ChatCompletionContentPartText::Type::OrSymbol, text: String}) }
       def to_hash
       end
 
-      class Type < Braintrust::Enum
-        abstract!
+      module Type
+        extend Braintrust::Enum
 
-        Value = type_template(:out) { {fixed: Symbol} }
+        TaggedSymbol = T.type_alias { T.all(Symbol, Braintrust::Models::ChatCompletionContentPartText::Type) }
+        OrSymbol =
+          T.type_alias { T.any(Symbol, Braintrust::Models::ChatCompletionContentPartText::Type::TaggedSymbol) }
 
-        TEXT = :text
+        TEXT = T.let(:text, Braintrust::Models::ChatCompletionContentPartText::Type::OrSymbol)
       end
     end
   end

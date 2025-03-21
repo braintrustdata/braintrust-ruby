@@ -82,41 +82,53 @@ module Braintrust
         def position=(_)
         end
 
-        sig { returns(T.nilable(Symbol)) }
+        sig { returns(T.nilable(Braintrust::Models::ProjectSettings::SpanFieldOrder::Layout::OrSymbol)) }
         def layout
         end
 
-        sig { params(_: T.nilable(Symbol)).returns(T.nilable(Symbol)) }
+        sig do
+          params(_: T.nilable(Braintrust::Models::ProjectSettings::SpanFieldOrder::Layout::OrSymbol))
+            .returns(T.nilable(Braintrust::Models::ProjectSettings::SpanFieldOrder::Layout::OrSymbol))
+        end
         def layout=(_)
         end
 
         sig do
-          params(column_id: String, object_type: String, position: String, layout: T.nilable(Symbol))
+          params(
+            column_id: String,
+            object_type: String,
+            position: String,
+            layout: T.nilable(Braintrust::Models::ProjectSettings::SpanFieldOrder::Layout::OrSymbol)
+          )
             .returns(T.attached_class)
         end
         def self.new(column_id:, object_type:, position:, layout: nil)
         end
 
         sig do
-          override.returns(
-            {
-              column_id: String,
-              object_type: String,
-              position: String,
-              layout: T.nilable(Symbol)
-            }
-          )
+          override
+            .returns(
+              {
+                column_id: String,
+                object_type: String,
+                position: String,
+                layout: T.nilable(Braintrust::Models::ProjectSettings::SpanFieldOrder::Layout::OrSymbol)
+              }
+            )
         end
         def to_hash
         end
 
-        class Layout < Braintrust::Enum
-          abstract!
+        module Layout
+          extend Braintrust::Enum
 
-          Value = type_template(:out) { {fixed: Symbol} }
+          TaggedSymbol =
+            T.type_alias { T.all(Symbol, Braintrust::Models::ProjectSettings::SpanFieldOrder::Layout) }
+          OrSymbol =
+            T.type_alias { T.any(Symbol, Braintrust::Models::ProjectSettings::SpanFieldOrder::Layout::TaggedSymbol) }
 
-          FULL = :full
-          TWO_COLUMN = :two_column
+          FULL = T.let(:full, Braintrust::Models::ProjectSettings::SpanFieldOrder::Layout::OrSymbol)
+          TWO_COLUMN = T.let(:two_column, Braintrust::Models::ProjectSettings::SpanFieldOrder::Layout::OrSymbol)
         end
       end
     end

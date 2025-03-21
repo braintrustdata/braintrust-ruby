@@ -111,28 +111,45 @@ module Braintrust
         #
         #   Permissions can be assigned to to objects on an individual basis, or grouped
         #   into roles
-        sig { returns(Symbol) }
+        sig { returns(Braintrust::Models::Permission::OrSymbol) }
         def permission
         end
 
-        sig { params(_: Symbol).returns(Symbol) }
+        sig { params(_: Braintrust::Models::Permission::OrSymbol).returns(Braintrust::Models::Permission::OrSymbol) }
         def permission=(_)
         end
 
         # The object type that the ACL applies to
-        sig { returns(T.nilable(Symbol)) }
+        sig { returns(T.nilable(Braintrust::Models::ACLObjectType::OrSymbol)) }
         def restrict_object_type
         end
 
-        sig { params(_: T.nilable(Symbol)).returns(T.nilable(Symbol)) }
+        sig do
+          params(_: T.nilable(Braintrust::Models::ACLObjectType::OrSymbol))
+            .returns(T.nilable(Braintrust::Models::ACLObjectType::OrSymbol))
+        end
         def restrict_object_type=(_)
         end
 
-        sig { params(permission: Symbol, restrict_object_type: T.nilable(Symbol)).returns(T.attached_class) }
+        sig do
+          params(
+            permission: Braintrust::Models::Permission::OrSymbol,
+            restrict_object_type: T.nilable(Braintrust::Models::ACLObjectType::OrSymbol)
+          )
+            .returns(T.attached_class)
+        end
         def self.new(permission:, restrict_object_type: nil)
         end
 
-        sig { override.returns({permission: Symbol, restrict_object_type: T.nilable(Symbol)}) }
+        sig do
+          override
+            .returns(
+              {
+                permission: Braintrust::Models::Permission::OrSymbol,
+                restrict_object_type: T.nilable(Braintrust::Models::ACLObjectType::OrSymbol)
+              }
+            )
+        end
         def to_hash
         end
       end
@@ -142,28 +159,45 @@ module Braintrust
         #
         #   Permissions can be assigned to to objects on an individual basis, or grouped
         #   into roles
-        sig { returns(Symbol) }
+        sig { returns(Braintrust::Models::Permission::OrSymbol) }
         def permission
         end
 
-        sig { params(_: Symbol).returns(Symbol) }
+        sig { params(_: Braintrust::Models::Permission::OrSymbol).returns(Braintrust::Models::Permission::OrSymbol) }
         def permission=(_)
         end
 
         # The object type that the ACL applies to
-        sig { returns(T.nilable(Symbol)) }
+        sig { returns(T.nilable(Braintrust::Models::ACLObjectType::OrSymbol)) }
         def restrict_object_type
         end
 
-        sig { params(_: T.nilable(Symbol)).returns(T.nilable(Symbol)) }
+        sig do
+          params(_: T.nilable(Braintrust::Models::ACLObjectType::OrSymbol))
+            .returns(T.nilable(Braintrust::Models::ACLObjectType::OrSymbol))
+        end
         def restrict_object_type=(_)
         end
 
-        sig { params(permission: Symbol, restrict_object_type: T.nilable(Symbol)).returns(T.attached_class) }
+        sig do
+          params(
+            permission: Braintrust::Models::Permission::OrSymbol,
+            restrict_object_type: T.nilable(Braintrust::Models::ACLObjectType::OrSymbol)
+          )
+            .returns(T.attached_class)
+        end
         def self.new(permission:, restrict_object_type: nil)
         end
 
-        sig { override.returns({permission: Symbol, restrict_object_type: T.nilable(Symbol)}) }
+        sig do
+          override
+            .returns(
+              {
+                permission: Braintrust::Models::Permission::OrSymbol,
+                restrict_object_type: T.nilable(Braintrust::Models::ACLObjectType::OrSymbol)
+              }
+            )
+        end
         def to_hash
         end
       end

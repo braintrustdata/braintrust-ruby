@@ -16,11 +16,13 @@ module Braintrust
       end
 
       # The object type that the ACL applies to
-      sig { returns(Symbol) }
+      sig { returns(Braintrust::Models::ACLObjectType::OrSymbol) }
       def object_type
       end
 
-      sig { params(_: Symbol).returns(Symbol) }
+      sig do
+        params(_: Braintrust::Models::ACLObjectType::OrSymbol).returns(Braintrust::Models::ACLObjectType::OrSymbol)
+      end
       def object_type=(_)
       end
 
@@ -61,23 +63,26 @@ module Braintrust
       end
 
       # Type of table that the view corresponds to.
-      sig { returns(T.nilable(Symbol)) }
+      sig { returns(T.nilable(Braintrust::Models::ViewUpdateParams::ViewType::OrSymbol)) }
       def view_type
       end
 
-      sig { params(_: T.nilable(Symbol)).returns(T.nilable(Symbol)) }
+      sig do
+        params(_: T.nilable(Braintrust::Models::ViewUpdateParams::ViewType::OrSymbol))
+          .returns(T.nilable(Braintrust::Models::ViewUpdateParams::ViewType::OrSymbol))
+      end
       def view_type=(_)
       end
 
       sig do
         params(
           object_id_: String,
-          object_type: Symbol,
+          object_type: Braintrust::Models::ACLObjectType::OrSymbol,
           name: T.nilable(String),
           options: T.nilable(Braintrust::Models::ViewOptions),
           user_id: T.nilable(String),
           view_data: T.nilable(Braintrust::Models::ViewData),
-          view_type: T.nilable(Symbol),
+          view_type: T.nilable(Braintrust::Models::ViewUpdateParams::ViewType::OrSymbol),
           request_options: T.any(Braintrust::RequestOptions, T::Hash[Symbol, T.anything])
         )
           .returns(T.attached_class)
@@ -99,12 +104,12 @@ module Braintrust
           .returns(
             {
               object_id_: String,
-              object_type: Symbol,
+              object_type: Braintrust::Models::ACLObjectType::OrSymbol,
               name: T.nilable(String),
               options: T.nilable(Braintrust::Models::ViewOptions),
               user_id: T.nilable(String),
               view_data: T.nilable(Braintrust::Models::ViewData),
-              view_type: T.nilable(Symbol),
+              view_type: T.nilable(Braintrust::Models::ViewUpdateParams::ViewType::OrSymbol),
               request_options: Braintrust::RequestOptions
             }
           )
@@ -113,22 +118,23 @@ module Braintrust
       end
 
       # Type of table that the view corresponds to.
-      class ViewType < Braintrust::Enum
-        abstract!
+      module ViewType
+        extend Braintrust::Enum
 
-        Value = type_template(:out) { {fixed: Symbol} }
+        TaggedSymbol = T.type_alias { T.all(Symbol, Braintrust::Models::ViewUpdateParams::ViewType) }
+        OrSymbol = T.type_alias { T.any(Symbol, Braintrust::Models::ViewUpdateParams::ViewType::TaggedSymbol) }
 
-        PROJECTS = :projects
-        EXPERIMENTS = :experiments
-        EXPERIMENT = :experiment
-        PLAYGROUNDS = :playgrounds
-        PLAYGROUND = :playground
-        DATASETS = :datasets
-        DATASET = :dataset
-        PROMPTS = :prompts
-        TOOLS = :tools
-        SCORERS = :scorers
-        LOGS = :logs
+        PROJECTS = T.let(:projects, Braintrust::Models::ViewUpdateParams::ViewType::OrSymbol)
+        EXPERIMENTS = T.let(:experiments, Braintrust::Models::ViewUpdateParams::ViewType::OrSymbol)
+        EXPERIMENT = T.let(:experiment, Braintrust::Models::ViewUpdateParams::ViewType::OrSymbol)
+        PLAYGROUNDS = T.let(:playgrounds, Braintrust::Models::ViewUpdateParams::ViewType::OrSymbol)
+        PLAYGROUND = T.let(:playground, Braintrust::Models::ViewUpdateParams::ViewType::OrSymbol)
+        DATASETS = T.let(:datasets, Braintrust::Models::ViewUpdateParams::ViewType::OrSymbol)
+        DATASET = T.let(:dataset, Braintrust::Models::ViewUpdateParams::ViewType::OrSymbol)
+        PROMPTS = T.let(:prompts, Braintrust::Models::ViewUpdateParams::ViewType::OrSymbol)
+        TOOLS = T.let(:tools, Braintrust::Models::ViewUpdateParams::ViewType::OrSymbol)
+        SCORERS = T.let(:scorers, Braintrust::Models::ViewUpdateParams::ViewType::OrSymbol)
+        LOGS = T.let(:logs, Braintrust::Models::ViewUpdateParams::ViewType::OrSymbol)
       end
     end
   end

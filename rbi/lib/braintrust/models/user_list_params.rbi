@@ -138,8 +138,8 @@ module Braintrust
 
       # Email of the user to search for. You may pass the param multiple times to filter
       #   for more than one email
-      class Email < Braintrust::Union
-        abstract!
+      module Email
+        extend Braintrust::Union
 
         Variants = type_template(:out) { {fixed: T.any(String, T::Array[String])} }
 
@@ -148,8 +148,8 @@ module Braintrust
 
       # Family name of the user to search for. You may pass the param multiple times to
       #   filter for more than one family name
-      class FamilyName < Braintrust::Union
-        abstract!
+      module FamilyName
+        extend Braintrust::Union
 
         Variants = type_template(:out) { {fixed: T.any(String, T::Array[String])} }
 
@@ -158,8 +158,8 @@ module Braintrust
 
       # Given name of the user to search for. You may pass the param multiple times to
       #   filter for more than one given name
-      class GivenName < Braintrust::Union
-        abstract!
+      module GivenName
+        extend Braintrust::Union
 
         Variants = type_template(:out) { {fixed: T.any(String, T::Array[String])} }
 
@@ -168,8 +168,8 @@ module Braintrust
 
       # Filter search results to a particular set of object IDs. To specify a list of
       #   IDs, include the query param multiple times
-      class IDs < Braintrust::Union
-        abstract!
+      module IDs
+        extend Braintrust::Union
 
         Variants = type_template(:out) { {fixed: T.any(String, T::Array[String])} }
 

@@ -39,8 +39,9 @@ module Braintrust
 
       # def initialize: (Hash | Braintrust::BaseModel) -> void
 
-      # @abstract
-      class Params < Braintrust::Union
+      module Params
+        extend Braintrust::Union
+
         variant -> { Braintrust::Models::PromptOptions::Params::OpenAIModelParams }
 
         variant -> { Braintrust::Models::PromptOptions::Params::AnthropicModelParams }
@@ -207,14 +208,16 @@ module Braintrust
 
           # def initialize: (Hash | Braintrust::BaseModel) -> void
 
-          # @abstract
-          class FunctionCall < Braintrust::Union
+          module FunctionCall
+            extend Braintrust::Union
+
             variant enum: -> { Braintrust::Models::PromptOptions::Params::OpenAIModelParams::FunctionCall::UnionMember0 }
 
             variant -> { Braintrust::Models::PromptOptions::Params::OpenAIModelParams::FunctionCall::Function }
 
-            # @abstract
-            class UnionMember0 < Braintrust::Enum
+            module UnionMember0
+              extend Braintrust::Enum
+
               AUTO = :auto
               NONE = :none
 
@@ -242,8 +245,9 @@ module Braintrust
             #   end
           end
 
-          # @abstract
-          class ReasoningEffort < Braintrust::Enum
+          module ReasoningEffort
+            extend Braintrust::Enum
+
             LOW = :low
             MEDIUM = :medium
             HIGH = :high
@@ -251,8 +255,9 @@ module Braintrust
             finalize!
           end
 
-          # @abstract
-          class ResponseFormat < Braintrust::Union
+          module ResponseFormat
+            extend Braintrust::Union
+
             variant -> { Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ResponseFormat::JsonObject }
 
             variant -> { Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ResponseFormat::JsonSchema }
@@ -273,8 +278,9 @@ module Braintrust
 
               # def initialize: (Hash | Braintrust::BaseModel) -> void
 
-              # @abstract
-              class Type < Braintrust::Enum
+              module Type
+                extend Braintrust::Enum
+
                 JSON_OBJECT = :json_object
 
                 finalize!
@@ -342,8 +348,9 @@ module Braintrust
 
                 # def initialize: (Hash | Braintrust::BaseModel) -> void
 
-                # @abstract
-                class Schema < Braintrust::Union
+                module Schema
+                  extend Braintrust::Union
+
                   ObjectMap = Braintrust::HashOf[Braintrust::Unknown, nil?: true]
 
                   variant Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ResponseFormat::JsonSchema::JsonSchema::Schema::ObjectMap
@@ -358,8 +365,9 @@ module Braintrust
                 end
               end
 
-              # @abstract
-              class Type < Braintrust::Enum
+              module Type
+                extend Braintrust::Enum
+
                 JSON_SCHEMA = :json_schema
 
                 finalize!
@@ -380,8 +388,9 @@ module Braintrust
 
               # def initialize: (Hash | Braintrust::BaseModel) -> void
 
-              # @abstract
-              class Type < Braintrust::Enum
+              module Type
+                extend Braintrust::Enum
+
                 TEXT = :text
 
                 finalize!
@@ -395,14 +404,16 @@ module Braintrust
             #   end
           end
 
-          # @abstract
-          class ToolChoice < Braintrust::Union
+          module ToolChoice
+            extend Braintrust::Union
+
             variant enum: -> { Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ToolChoice::UnionMember0 }
 
             variant -> { Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ToolChoice::Function }
 
-            # @abstract
-            class UnionMember0 < Braintrust::Enum
+            module UnionMember0
+              extend Braintrust::Enum
+
               AUTO = :auto
               NONE = :none
               REQUIRED = :required
@@ -445,8 +456,9 @@ module Braintrust
                 # def initialize: (Hash | Braintrust::BaseModel) -> void
               end
 
-              # @abstract
-              class Type < Braintrust::Enum
+              module Type
+                extend Braintrust::Enum
+
                 FUNCTION = :function
 
                 finalize!

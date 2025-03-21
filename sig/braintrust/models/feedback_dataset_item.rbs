@@ -32,7 +32,9 @@ module Braintrust
 
       type source = :app | :api | :external
 
-      class Source < Braintrust::Enum
+      module Source
+        extend Braintrust::Enum
+
         APP: :app
         API: :api
         EXTERNAL: :external

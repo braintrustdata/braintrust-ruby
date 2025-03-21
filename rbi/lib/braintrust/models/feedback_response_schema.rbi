@@ -3,28 +3,33 @@
 module Braintrust
   module Models
     class FeedbackResponseSchema < Braintrust::BaseModel
-      sig { returns(Symbol) }
+      sig { returns(Braintrust::Models::FeedbackResponseSchema::Status::TaggedSymbol) }
       def status
       end
 
-      sig { params(_: Symbol).returns(Symbol) }
+      sig do
+        params(_: Braintrust::Models::FeedbackResponseSchema::Status::TaggedSymbol)
+          .returns(Braintrust::Models::FeedbackResponseSchema::Status::TaggedSymbol)
+      end
       def status=(_)
       end
 
-      sig { params(status: Symbol).returns(T.attached_class) }
+      sig { params(status: Braintrust::Models::FeedbackResponseSchema::Status::TaggedSymbol).returns(T.attached_class) }
       def self.new(status:)
       end
 
-      sig { override.returns({status: Symbol}) }
+      sig { override.returns({status: Braintrust::Models::FeedbackResponseSchema::Status::TaggedSymbol}) }
       def to_hash
       end
 
-      class Status < Braintrust::Enum
-        abstract!
+      module Status
+        extend Braintrust::Enum
 
-        Value = type_template(:out) { {fixed: Symbol} }
+        TaggedSymbol = T.type_alias { T.all(Symbol, Braintrust::Models::FeedbackResponseSchema::Status) }
+        OrSymbol =
+          T.type_alias { T.any(Symbol, Braintrust::Models::FeedbackResponseSchema::Status::TaggedSymbol) }
 
-        SUCCESS = :success
+        SUCCESS = T.let(:success, Braintrust::Models::FeedbackResponseSchema::Status::TaggedSymbol)
       end
     end
   end

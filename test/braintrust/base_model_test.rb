@@ -3,7 +3,9 @@
 require_relative "test_helper"
 
 class Braintrust::Test::BaseModelTest < Minitest::Test
-  class E1 < Braintrust::Enum
+  module E1
+    extend Braintrust::Enum
+
     A = :a
     B = :b
   end
@@ -242,13 +244,17 @@ class Braintrust::Test::BaseModelTest < Minitest::Test
     optional :b, E1, api_name: :renamed_again
   end
 
-  class U1 < Braintrust::Union
+  module U1
+    extend Braintrust::Union
+
     discriminator :type
     variant :a, M1
     variant :b, M3
   end
 
-  class U2 < Braintrust::Union
+  module U2
+    extend Braintrust::Union
+
     variant A1
     variant A3
   end
@@ -330,12 +336,16 @@ class Braintrust::Test::BaseModelTest < Minitest::Test
     end
   end
 
-  class E2 < Braintrust::Enum
+  module E2
+    extend Braintrust::Enum
+
     A = :a
     B = :b
   end
 
-  class U3 < Braintrust::Union
+  module U3
+    extend Braintrust::Union
+
     discriminator :type
     variant :a, M1
     variant :b, M3
@@ -353,7 +363,9 @@ class Braintrust::Test::BaseModelTest < Minitest::Test
     assert_equal(U1, U3)
   end
 
-  class U4 < Braintrust::Union
+  module U4
+    extend Braintrust::Union
+
     variant :a, const: :a
     variant :b, const: :b
   end

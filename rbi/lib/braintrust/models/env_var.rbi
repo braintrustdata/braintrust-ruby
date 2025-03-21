@@ -31,11 +31,14 @@ module Braintrust
       end
 
       # The type of the object the environment variable is scoped for
-      sig { returns(Symbol) }
+      sig { returns(Braintrust::Models::EnvVar::ObjectType::TaggedSymbol) }
       def object_type
       end
 
-      sig { params(_: Symbol).returns(Symbol) }
+      sig do
+        params(_: Braintrust::Models::EnvVar::ObjectType::TaggedSymbol)
+          .returns(Braintrust::Models::EnvVar::ObjectType::TaggedSymbol)
+      end
       def object_type=(_)
       end
 
@@ -62,7 +65,7 @@ module Braintrust
           id: String,
           name: String,
           object_id_: String,
-          object_type: Symbol,
+          object_type: Braintrust::Models::EnvVar::ObjectType::TaggedSymbol,
           created: T.nilable(Time),
           used: T.nilable(Time)
         )
@@ -78,7 +81,7 @@ module Braintrust
               id: String,
               name: String,
               object_id_: String,
-              object_type: Symbol,
+              object_type: Braintrust::Models::EnvVar::ObjectType::TaggedSymbol,
               created: T.nilable(Time),
               used: T.nilable(Time)
             }
@@ -88,14 +91,15 @@ module Braintrust
       end
 
       # The type of the object the environment variable is scoped for
-      class ObjectType < Braintrust::Enum
-        abstract!
+      module ObjectType
+        extend Braintrust::Enum
 
-        Value = type_template(:out) { {fixed: Symbol} }
+        TaggedSymbol = T.type_alias { T.all(Symbol, Braintrust::Models::EnvVar::ObjectType) }
+        OrSymbol = T.type_alias { T.any(Symbol, Braintrust::Models::EnvVar::ObjectType::TaggedSymbol) }
 
-        ORGANIZATION = :organization
-        PROJECT = :project
-        FUNCTION = :function
+        ORGANIZATION = T.let(:organization, Braintrust::Models::EnvVar::ObjectType::TaggedSymbol)
+        PROJECT = T.let(:project, Braintrust::Models::EnvVar::ObjectType::TaggedSymbol)
+        FUNCTION = T.let(:function, Braintrust::Models::EnvVar::ObjectType::TaggedSymbol)
       end
     end
   end

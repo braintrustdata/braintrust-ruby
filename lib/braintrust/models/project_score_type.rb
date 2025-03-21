@@ -2,10 +2,10 @@
 
 module Braintrust
   module Models
-    # @abstract
-    #
     # The type of the configured score
-    class ProjectScoreType < Braintrust::Enum
+    module ProjectScoreType
+      extend Braintrust::Enum
+
       SLIDER = :slider
       CATEGORICAL = :categorical
       WEIGHTED = :weighted

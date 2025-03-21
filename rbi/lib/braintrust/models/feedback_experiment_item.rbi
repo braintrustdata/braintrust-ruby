@@ -61,11 +61,14 @@ module Braintrust
       end
 
       # The source of the feedback. Must be one of "external" (default), "app", or "api"
-      sig { returns(T.nilable(Symbol)) }
+      sig { returns(T.nilable(Braintrust::Models::FeedbackExperimentItem::Source::OrSymbol)) }
       def source
       end
 
-      sig { params(_: T.nilable(Symbol)).returns(T.nilable(Symbol)) }
+      sig do
+        params(_: T.nilable(Braintrust::Models::FeedbackExperimentItem::Source::OrSymbol))
+          .returns(T.nilable(Braintrust::Models::FeedbackExperimentItem::Source::OrSymbol))
+      end
       def source=(_)
       end
 
@@ -85,7 +88,7 @@ module Braintrust
           expected: T.anything,
           metadata: T.nilable(T::Hash[Symbol, T.nilable(T.anything)]),
           scores: T.nilable(T::Hash[Symbol, T.nilable(Float)]),
-          source: T.nilable(Symbol),
+          source: T.nilable(Braintrust::Models::FeedbackExperimentItem::Source::OrSymbol),
           tags: T.nilable(T::Array[String])
         )
           .returns(T.attached_class)
@@ -102,7 +105,7 @@ module Braintrust
               expected: T.anything,
               metadata: T.nilable(T::Hash[Symbol, T.nilable(T.anything)]),
               scores: T.nilable(T::Hash[Symbol, T.nilable(Float)]),
-              source: T.nilable(Symbol),
+              source: T.nilable(Braintrust::Models::FeedbackExperimentItem::Source::OrSymbol),
               tags: T.nilable(T::Array[String])
             }
           )
@@ -111,14 +114,16 @@ module Braintrust
       end
 
       # The source of the feedback. Must be one of "external" (default), "app", or "api"
-      class Source < Braintrust::Enum
-        abstract!
+      module Source
+        extend Braintrust::Enum
 
-        Value = type_template(:out) { {fixed: Symbol} }
+        TaggedSymbol = T.type_alias { T.all(Symbol, Braintrust::Models::FeedbackExperimentItem::Source) }
+        OrSymbol =
+          T.type_alias { T.any(Symbol, Braintrust::Models::FeedbackExperimentItem::Source::TaggedSymbol) }
 
-        APP = :app
-        API = :api
-        EXTERNAL = :external
+        APP = T.let(:app, Braintrust::Models::FeedbackExperimentItem::Source::OrSymbol)
+        API = T.let(:api, Braintrust::Models::FeedbackExperimentItem::Source::OrSymbol)
+        EXTERNAL = T.let(:external, Braintrust::Models::FeedbackExperimentItem::Source::OrSymbol)
       end
     end
   end

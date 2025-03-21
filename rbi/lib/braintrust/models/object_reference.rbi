@@ -31,11 +31,14 @@ module Braintrust
       end
 
       # Type of the object the event is originating from.
-      sig { returns(Symbol) }
+      sig { returns(Braintrust::Models::ObjectReference::ObjectType::OrSymbol) }
       def object_type
       end
 
-      sig { params(_: Symbol).returns(Symbol) }
+      sig do
+        params(_: Braintrust::Models::ObjectReference::ObjectType::OrSymbol)
+          .returns(Braintrust::Models::ObjectReference::ObjectType::OrSymbol)
+      end
       def object_type=(_)
       end
 
@@ -54,7 +57,7 @@ module Braintrust
           id: String,
           _xact_id: String,
           object_id_: String,
-          object_type: Symbol,
+          object_type: Braintrust::Models::ObjectReference::ObjectType::OrSymbol,
           created: T.nilable(String)
         )
           .returns(T.attached_class)
@@ -69,7 +72,7 @@ module Braintrust
               id: String,
               _xact_id: String,
               object_id_: String,
-              object_type: Symbol,
+              object_type: Braintrust::Models::ObjectReference::ObjectType::OrSymbol,
               created: T.nilable(String)
             }
           )
@@ -78,17 +81,18 @@ module Braintrust
       end
 
       # Type of the object the event is originating from.
-      class ObjectType < Braintrust::Enum
-        abstract!
+      module ObjectType
+        extend Braintrust::Enum
 
-        Value = type_template(:out) { {fixed: Symbol} }
+        TaggedSymbol = T.type_alias { T.all(Symbol, Braintrust::Models::ObjectReference::ObjectType) }
+        OrSymbol = T.type_alias { T.any(Symbol, Braintrust::Models::ObjectReference::ObjectType::TaggedSymbol) }
 
-        EXPERIMENT = :experiment
-        DATASET = :dataset
-        PROMPT = :prompt
-        FUNCTION = :function
-        PROMPT_SESSION = :prompt_session
-        PROJECT_LOGS = :project_logs
+        EXPERIMENT = T.let(:experiment, Braintrust::Models::ObjectReference::ObjectType::OrSymbol)
+        DATASET = T.let(:dataset, Braintrust::Models::ObjectReference::ObjectType::OrSymbol)
+        PROMPT = T.let(:prompt, Braintrust::Models::ObjectReference::ObjectType::OrSymbol)
+        FUNCTION = T.let(:function, Braintrust::Models::ObjectReference::ObjectType::OrSymbol)
+        PROMPT_SESSION = T.let(:prompt_session, Braintrust::Models::ObjectReference::ObjectType::OrSymbol)
+        PROJECT_LOGS = T.let(:project_logs, Braintrust::Models::ObjectReference::ObjectType::OrSymbol)
       end
     end
   end

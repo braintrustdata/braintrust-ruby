@@ -2,7 +2,9 @@ module Braintrust
   module Models
     type span_type = :llm | :score | :function | :eval | :task | :tool
 
-    class SpanType < Braintrust::Enum
+    module SpanType
+      extend Braintrust::Enum
+
       LLM: :llm
       SCORE: :score
       FUNCTION: :function

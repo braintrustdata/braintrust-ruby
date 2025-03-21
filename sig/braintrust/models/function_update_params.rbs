@@ -40,7 +40,9 @@ module Braintrust
         | Braintrust::Models::FunctionUpdateParams::FunctionData::Code
         | Braintrust::Models::FunctionUpdateParams::FunctionData::Global
 
-      class FunctionData < Braintrust::Union
+      module FunctionData
+        extend Braintrust::Union
+
         type prompt =
           {
             type: Braintrust::Models::FunctionUpdateParams::FunctionData::Prompt::type_
@@ -57,7 +59,9 @@ module Braintrust
 
           type type_ = :prompt
 
-          class Type < Braintrust::Enum
+          module Type
+            extend Braintrust::Enum
+
             PROMPT: :prompt
 
             def self.values: -> ::Array[Braintrust::Models::FunctionUpdateParams::FunctionData::Prompt::type_]
@@ -86,7 +90,9 @@ module Braintrust
             Braintrust::Models::FunctionUpdateParams::FunctionData::Code::Data::Bundle
             | Braintrust::Models::FunctionUpdateParams::FunctionData::Code::Data::Inline
 
-          class Data < Braintrust::Union
+          module Data
+            extend Braintrust::Union
+
             type bundle =
               {
                 type: Braintrust::Models::FunctionUpdateParams::FunctionData::Code::Data::Bundle::type_
@@ -107,7 +113,9 @@ module Braintrust
 
               type type_ = :bundle
 
-              class Type < Braintrust::Enum
+              module Type
+                extend Braintrust::Enum
+
                 BUNDLE: :bundle
 
                 def self.values: -> ::Array[Braintrust::Models::FunctionUpdateParams::FunctionData::Code::Data::Bundle::type_]
@@ -156,7 +164,9 @@ module Braintrust
 
                 type runtime = :node | :python
 
-                class Runtime < Braintrust::Enum
+                module Runtime
+                  extend Braintrust::Enum
+
                   NODE: :node
                   PYTHON: :python
 
@@ -166,7 +176,9 @@ module Braintrust
 
               type type_ = :inline
 
-              class Type < Braintrust::Enum
+              module Type
+                extend Braintrust::Enum
+
                 INLINE: :inline
 
                 def self.values: -> ::Array[Braintrust::Models::FunctionUpdateParams::FunctionData::Code::Data::Inline::type_]
@@ -178,7 +190,9 @@ module Braintrust
 
           type type_ = :code
 
-          class Type < Braintrust::Enum
+          module Type
+            extend Braintrust::Enum
+
             CODE: :code
 
             def self.values: -> ::Array[Braintrust::Models::FunctionUpdateParams::FunctionData::Code::type_]
@@ -205,7 +219,9 @@ module Braintrust
 
           type type_ = :global
 
-          class Type < Braintrust::Enum
+          module Type
+            extend Braintrust::Enum
+
             GLOBAL: :global
 
             def self.values: -> ::Array[Braintrust::Models::FunctionUpdateParams::FunctionData::Global::type_]

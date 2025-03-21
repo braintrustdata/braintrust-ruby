@@ -30,7 +30,9 @@ module Braintrust
         Braintrust::Models::OnlineScoreConfig::Scorer::Function
         | Braintrust::Models::OnlineScoreConfig::Scorer::Global
 
-      class Scorer < Braintrust::Union
+      module Scorer
+        extend Braintrust::Union
+
         type function =
           {
             id: String,
@@ -51,7 +53,9 @@ module Braintrust
 
           type type_ = :function
 
-          class Type < Braintrust::Enum
+          module Type
+            extend Braintrust::Enum
+
             FUNCTION: :function
 
             def self.values: -> ::Array[Braintrust::Models::OnlineScoreConfig::Scorer::Function::type_]
@@ -78,7 +82,9 @@ module Braintrust
 
           type type_ = :global
 
-          class Type < Braintrust::Enum
+          module Type
+            extend Braintrust::Enum
+
             GLOBAL: :global
 
             def self.values: -> ::Array[Braintrust::Models::OnlineScoreConfig::Scorer::Global::type_]

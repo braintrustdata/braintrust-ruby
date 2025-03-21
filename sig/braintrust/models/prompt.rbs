@@ -64,7 +64,9 @@ module Braintrust
 
       type log_id = :p
 
-      class LogID < Braintrust::Enum
+      module LogID
+        extend Braintrust::Enum
+
         P: :p
 
         def self.values: -> ::Array[Braintrust::Models::Prompt::log_id]
@@ -72,7 +74,9 @@ module Braintrust
 
       type function_type = :llm | :scorer | :task | :tool
 
-      class FunctionType < Braintrust::Enum
+      module FunctionType
+        extend Braintrust::Enum
+
         LLM: :llm
         SCORER: :scorer
         TASK: :task

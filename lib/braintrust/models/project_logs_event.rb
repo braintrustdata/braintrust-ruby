@@ -232,10 +232,10 @@ module Braintrust
 
       # def initialize: (Hash | Braintrust::BaseModel) -> void
 
-      # @abstract
-      #
       # A literal 'g' which identifies the log as a project log
-      class LogID < Braintrust::Enum
+      module LogID
+        extend Braintrust::Enum
+
         G = :g
 
         finalize!

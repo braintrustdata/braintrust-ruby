@@ -50,7 +50,9 @@ module Braintrust
 
         type layout = :full | :two_column
 
-        class Layout < Braintrust::Enum
+        module Layout
+          extend Braintrust::Enum
+
           FULL: :full
           TWO_COLUMN: :two_column
 

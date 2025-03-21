@@ -9,7 +9,7 @@ module Braintrust
         params(
           name: String,
           object_id_: String,
-          object_type: Symbol,
+          object_type: Braintrust::Models::EnvVarCreateParams::ObjectType::OrSymbol,
           value: T.nilable(String),
           request_options: T.nilable(T.any(Braintrust::RequestOptions, T::Hash[Symbol, T.anything]))
         )
@@ -74,7 +74,7 @@ module Braintrust
           ids: T.any(String, T::Array[String]),
           limit: T.nilable(Integer),
           object_id_: String,
-          object_type: Symbol,
+          object_type: Braintrust::Models::EnvVarObjectType::OrSymbol,
           request_options: T.nilable(T.any(Braintrust::RequestOptions, T::Hash[Symbol, T.anything]))
         )
           .returns(Braintrust::Models::EnvVarListResponse)
@@ -117,7 +117,7 @@ module Braintrust
         params(
           name: String,
           object_id_: String,
-          object_type: Symbol,
+          object_type: Braintrust::Models::EnvVarReplaceParams::ObjectType::OrSymbol,
           value: T.nilable(String),
           request_options: T.nilable(T.any(Braintrust::RequestOptions, T::Hash[Symbol, T.anything]))
         )

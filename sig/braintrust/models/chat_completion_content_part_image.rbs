@@ -42,7 +42,9 @@ module Braintrust
 
         type detail = :auto | :low | :high
 
-        class Detail < Braintrust::Enum
+        module Detail
+          extend Braintrust::Enum
+
           AUTO: :auto
           LOW: :low
           HIGH: :high
@@ -53,7 +55,9 @@ module Braintrust
 
       type type_ = :image_url
 
-      class Type < Braintrust::Enum
+      module Type
+        extend Braintrust::Enum
+
         IMAGE_URL: :image_url
 
         def self.values: -> ::Array[Braintrust::Models::ChatCompletionContentPartImage::type_]

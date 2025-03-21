@@ -25,11 +25,14 @@ module Braintrust
       end
 
       # The type of the object the environment variable is scoped for
-      sig { returns(Symbol) }
+      sig { returns(Braintrust::Models::EnvVarReplaceParams::ObjectType::OrSymbol) }
       def object_type
       end
 
-      sig { params(_: Symbol).returns(Symbol) }
+      sig do
+        params(_: Braintrust::Models::EnvVarReplaceParams::ObjectType::OrSymbol)
+          .returns(Braintrust::Models::EnvVarReplaceParams::ObjectType::OrSymbol)
+      end
       def object_type=(_)
       end
 
@@ -46,7 +49,7 @@ module Braintrust
         params(
           name: String,
           object_id_: String,
-          object_type: Symbol,
+          object_type: Braintrust::Models::EnvVarReplaceParams::ObjectType::OrSymbol,
           value: T.nilable(String),
           request_options: T.any(Braintrust::RequestOptions, T::Hash[Symbol, T.anything])
         )
@@ -61,7 +64,7 @@ module Braintrust
             {
               name: String,
               object_id_: String,
-              object_type: Symbol,
+              object_type: Braintrust::Models::EnvVarReplaceParams::ObjectType::OrSymbol,
               value: T.nilable(String),
               request_options: Braintrust::RequestOptions
             }
@@ -71,14 +74,16 @@ module Braintrust
       end
 
       # The type of the object the environment variable is scoped for
-      class ObjectType < Braintrust::Enum
-        abstract!
+      module ObjectType
+        extend Braintrust::Enum
 
-        Value = type_template(:out) { {fixed: Symbol} }
+        TaggedSymbol = T.type_alias { T.all(Symbol, Braintrust::Models::EnvVarReplaceParams::ObjectType) }
+        OrSymbol =
+          T.type_alias { T.any(Symbol, Braintrust::Models::EnvVarReplaceParams::ObjectType::TaggedSymbol) }
 
-        ORGANIZATION = :organization
-        PROJECT = :project
-        FUNCTION = :function
+        ORGANIZATION = T.let(:organization, Braintrust::Models::EnvVarReplaceParams::ObjectType::OrSymbol)
+        PROJECT = T.let(:project, Braintrust::Models::EnvVarReplaceParams::ObjectType::OrSymbol)
+        FUNCTION = T.let(:function, Braintrust::Models::EnvVarReplaceParams::ObjectType::OrSymbol)
       end
     end
   end

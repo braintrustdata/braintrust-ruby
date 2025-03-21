@@ -38,7 +38,9 @@ module Braintrust
         | :prompt_session
         | :project_logs
 
-      class ObjectType < Braintrust::Enum
+      module ObjectType
+        extend Braintrust::Enum
+
         EXPERIMENT: :experiment
         DATASET: :dataset
         PROMPT: :prompt

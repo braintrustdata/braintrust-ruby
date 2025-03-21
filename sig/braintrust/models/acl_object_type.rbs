@@ -13,7 +13,9 @@ module Braintrust
       | :project_log
       | :org_project
 
-    class ACLObjectType < Braintrust::Enum
+    module ACLObjectType
+      extend Braintrust::Enum
+
       ORGANIZATION: :organization
       PROJECT: :project
       EXPERIMENT: :experiment

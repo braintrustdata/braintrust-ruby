@@ -2,13 +2,13 @@
 
 module Braintrust
   module Models
-    # @abstract
-    #
     # Each permission permits a certain type of operation on an object in the system
     #
     #   Permissions can be assigned to to objects on an individual basis, or grouped
     #   into roles
-    class Permission < Braintrust::Enum
+    module Permission
+      extend Braintrust::Enum
+
       CREATE = :create
       READ = :read
       UPDATE = :update
