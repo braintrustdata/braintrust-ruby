@@ -544,7 +544,10 @@ module Braintrust
                     {fixed: T.any(T::Hash[Symbol, T.nilable(T.anything)], String)}
                   end
 
-                  ObjectMap = T.type_alias { T::Hash[Symbol, T.nilable(T.anything)] }
+                  ObjectMap = T.let(
+                    Braintrust::HashOf[Braintrust::Unknown, nil?: true],
+                    Braintrust::Converter
+                  )
                 end
               end
 

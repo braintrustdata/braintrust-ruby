@@ -143,7 +143,7 @@ module Braintrust
 
         Variants = type_template(:out) { {fixed: T.any(String, T::Array[String])} }
 
-        StringArray = T.type_alias { T::Array[String] }
+        StringArray = T.let(Braintrust::ArrayOf[String], Braintrust::Converter)
       end
 
       # Family name of the user to search for. You may pass the param multiple times to
@@ -153,7 +153,7 @@ module Braintrust
 
         Variants = type_template(:out) { {fixed: T.any(String, T::Array[String])} }
 
-        StringArray = T.type_alias { T::Array[String] }
+        StringArray = T.let(Braintrust::ArrayOf[String], Braintrust::Converter)
       end
 
       # Given name of the user to search for. You may pass the param multiple times to
@@ -163,7 +163,7 @@ module Braintrust
 
         Variants = type_template(:out) { {fixed: T.any(String, T::Array[String])} }
 
-        StringArray = T.type_alias { T::Array[String] }
+        StringArray = T.let(Braintrust::ArrayOf[String], Braintrust::Converter)
       end
 
       # Filter search results to a particular set of object IDs. To specify a list of
@@ -173,7 +173,7 @@ module Braintrust
 
         Variants = type_template(:out) { {fixed: T.any(String, T::Array[String])} }
 
-        StringArray = T.type_alias { T::Array[String] }
+        StringArray = T.let(Braintrust::ArrayOf[String], Braintrust::Converter)
       end
     end
   end

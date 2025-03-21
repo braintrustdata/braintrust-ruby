@@ -152,7 +152,7 @@ module Braintrust
 
         Variants = type_template(:out) { {fixed: T.any(String, T::Array[String])} }
 
-        StringArray = T.type_alias { T::Array[String] }
+        StringArray = T.let(Braintrust::ArrayOf[String], Braintrust::Converter)
       end
 
       # The type of the configured score
@@ -161,7 +161,8 @@ module Braintrust
 
         Variants = type_template(:out) { {fixed: T.any(Symbol, T::Array[Symbol])} }
 
-        ProjectScoreTypeArray = T.type_alias { T::Array[Symbol] }
+        ProjectScoreTypeArray =
+          T.let(Braintrust::ArrayOf[enum: Braintrust::Models::ProjectScoreType], Braintrust::Converter)
       end
     end
   end
