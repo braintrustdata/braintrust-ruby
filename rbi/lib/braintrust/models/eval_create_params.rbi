@@ -172,8 +172,12 @@ module Braintrust
       end
 
       sig do
-        params(_: T.nilable(Braintrust::Models::EvalCreateParams::GitMetadataSettings))
-          .returns(T.nilable(Braintrust::Models::EvalCreateParams::GitMetadataSettings))
+        params(
+          _: T.nilable(T.any(Braintrust::Models::EvalCreateParams::GitMetadataSettings, Braintrust::Util::AnyHash))
+        )
+          .returns(
+            T.nilable(T.any(Braintrust::Models::EvalCreateParams::GitMetadataSettings, Braintrust::Util::AnyHash))
+          )
       end
       def git_metadata_settings=(_)
       end
@@ -226,7 +230,10 @@ module Braintrust
       def repo_info
       end
 
-      sig { params(_: T.nilable(Braintrust::Models::RepoInfo)).returns(T.nilable(Braintrust::Models::RepoInfo)) }
+      sig do
+        params(_: T.nilable(T.any(Braintrust::Models::RepoInfo, Braintrust::Util::AnyHash)))
+          .returns(T.nilable(T.any(Braintrust::Models::RepoInfo, Braintrust::Util::AnyHash)))
+      end
       def repo_info=(_)
       end
 
@@ -665,8 +672,12 @@ module Braintrust
           end
 
           sig do
-            params(_: Braintrust::Models::EvalCreateParams::Score::InlineCode::InlineContext)
-              .returns(Braintrust::Models::EvalCreateParams::Score::InlineCode::InlineContext)
+            params(
+              _: T.any(Braintrust::Models::EvalCreateParams::Score::InlineCode::InlineContext, Braintrust::Util::AnyHash)
+            )
+              .returns(
+                T.any(Braintrust::Models::EvalCreateParams::Score::InlineCode::InlineContext, Braintrust::Util::AnyHash)
+              )
           end
           def inline_context=(_)
           end
@@ -774,7 +785,10 @@ module Braintrust
           def inline_prompt
           end
 
-          sig { params(_: T.nilable(Braintrust::Models::PromptData)).returns(T.nilable(Braintrust::Models::PromptData)) }
+          sig do
+            params(_: T.nilable(T.any(Braintrust::Models::PromptData, Braintrust::Util::AnyHash)))
+              .returns(T.nilable(T.any(Braintrust::Models::PromptData, Braintrust::Util::AnyHash)))
+          end
           def inline_prompt=(_)
           end
 
@@ -965,8 +979,12 @@ module Braintrust
           end
 
           sig do
-            params(_: Braintrust::Models::EvalCreateParams::Task::InlineCode::InlineContext)
-              .returns(Braintrust::Models::EvalCreateParams::Task::InlineCode::InlineContext)
+            params(
+              _: T.any(Braintrust::Models::EvalCreateParams::Task::InlineCode::InlineContext, Braintrust::Util::AnyHash)
+            )
+              .returns(
+                T.any(Braintrust::Models::EvalCreateParams::Task::InlineCode::InlineContext, Braintrust::Util::AnyHash)
+              )
           end
           def inline_context=(_)
           end
@@ -1074,7 +1092,10 @@ module Braintrust
           def inline_prompt
           end
 
-          sig { params(_: T.nilable(Braintrust::Models::PromptData)).returns(T.nilable(Braintrust::Models::PromptData)) }
+          sig do
+            params(_: T.nilable(T.any(Braintrust::Models::PromptData, Braintrust::Util::AnyHash)))
+              .returns(T.nilable(T.any(Braintrust::Models::PromptData, Braintrust::Util::AnyHash)))
+          end
           def inline_prompt=(_)
           end
 
@@ -1231,8 +1252,16 @@ module Braintrust
           end
 
           sig do
-            params(_: T.nilable(Braintrust::Models::EvalCreateParams::Parent::SpanParentStruct::RowIDs))
-              .returns(T.nilable(Braintrust::Models::EvalCreateParams::Parent::SpanParentStruct::RowIDs))
+            params(
+              _: T.nilable(
+                T.any(Braintrust::Models::EvalCreateParams::Parent::SpanParentStruct::RowIDs, Braintrust::Util::AnyHash)
+              )
+            )
+              .returns(
+                T.nilable(
+                  T.any(Braintrust::Models::EvalCreateParams::Parent::SpanParentStruct::RowIDs, Braintrust::Util::AnyHash)
+                )
+              )
           end
           def row_ids=(_)
           end

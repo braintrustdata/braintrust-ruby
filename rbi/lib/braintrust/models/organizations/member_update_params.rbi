@@ -13,8 +13,16 @@ module Braintrust
         end
 
         sig do
-          params(_: T.nilable(Braintrust::Models::Organizations::MemberUpdateParams::InviteUsers))
-            .returns(T.nilable(Braintrust::Models::Organizations::MemberUpdateParams::InviteUsers))
+          params(
+            _: T.nilable(
+              T.any(Braintrust::Models::Organizations::MemberUpdateParams::InviteUsers, Braintrust::Util::AnyHash)
+            )
+          )
+            .returns(
+              T.nilable(
+                T.any(Braintrust::Models::Organizations::MemberUpdateParams::InviteUsers, Braintrust::Util::AnyHash)
+              )
+            )
         end
         def invite_users=(_)
         end
@@ -49,8 +57,16 @@ module Braintrust
         end
 
         sig do
-          params(_: T.nilable(Braintrust::Models::Organizations::MemberUpdateParams::RemoveUsers))
-            .returns(T.nilable(Braintrust::Models::Organizations::MemberUpdateParams::RemoveUsers))
+          params(
+            _: T.nilable(
+              T.any(Braintrust::Models::Organizations::MemberUpdateParams::RemoveUsers, Braintrust::Util::AnyHash)
+            )
+          )
+            .returns(
+              T.nilable(
+                T.any(Braintrust::Models::Organizations::MemberUpdateParams::RemoveUsers, Braintrust::Util::AnyHash)
+              )
+            )
         end
         def remove_users=(_)
         end

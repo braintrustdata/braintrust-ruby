@@ -24,8 +24,8 @@ module Braintrust
       end
 
       sig do
-        params(_: T.nilable(Braintrust::Models::OnlineScoreConfig))
-          .returns(T.nilable(Braintrust::Models::OnlineScoreConfig))
+        params(_: T.nilable(T.any(Braintrust::Models::OnlineScoreConfig, Braintrust::Util::AnyHash)))
+          .returns(T.nilable(T.any(Braintrust::Models::OnlineScoreConfig, Braintrust::Util::AnyHash)))
       end
       def online=(_)
       end

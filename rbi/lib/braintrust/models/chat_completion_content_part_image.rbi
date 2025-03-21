@@ -8,8 +8,8 @@ module Braintrust
       end
 
       sig do
-        params(_: Braintrust::Models::ChatCompletionContentPartImage::ImageURL)
-          .returns(Braintrust::Models::ChatCompletionContentPartImage::ImageURL)
+        params(_: T.any(Braintrust::Models::ChatCompletionContentPartImage::ImageURL, Braintrust::Util::AnyHash))
+          .returns(T.any(Braintrust::Models::ChatCompletionContentPartImage::ImageURL, Braintrust::Util::AnyHash))
       end
       def image_url=(_)
       end

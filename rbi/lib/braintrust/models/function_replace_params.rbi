@@ -79,8 +79,12 @@ module Braintrust
       end
 
       sig do
-        params(_: T.nilable(Braintrust::Models::FunctionReplaceParams::FunctionSchema))
-          .returns(T.nilable(Braintrust::Models::FunctionReplaceParams::FunctionSchema))
+        params(
+          _: T.nilable(T.any(Braintrust::Models::FunctionReplaceParams::FunctionSchema, Braintrust::Util::AnyHash))
+        )
+          .returns(
+            T.nilable(T.any(Braintrust::Models::FunctionReplaceParams::FunctionSchema, Braintrust::Util::AnyHash))
+          )
       end
       def function_schema=(_)
       end
@@ -101,8 +105,8 @@ module Braintrust
       end
 
       sig do
-        params(_: T.nilable(Braintrust::Models::FunctionReplaceParams::Origin))
-          .returns(T.nilable(Braintrust::Models::FunctionReplaceParams::Origin))
+        params(_: T.nilable(T.any(Braintrust::Models::FunctionReplaceParams::Origin, Braintrust::Util::AnyHash)))
+          .returns(T.nilable(T.any(Braintrust::Models::FunctionReplaceParams::Origin, Braintrust::Util::AnyHash)))
       end
       def origin=(_)
       end
@@ -112,7 +116,10 @@ module Braintrust
       def prompt_data
       end
 
-      sig { params(_: T.nilable(Braintrust::Models::PromptData)).returns(T.nilable(Braintrust::Models::PromptData)) }
+      sig do
+        params(_: T.nilable(T.any(Braintrust::Models::PromptData, Braintrust::Util::AnyHash)))
+          .returns(T.nilable(T.any(Braintrust::Models::PromptData, Braintrust::Util::AnyHash)))
+      end
       def prompt_data=(_)
       end
 
@@ -378,8 +385,18 @@ module Braintrust
               end
 
               sig do
-                params(_: Braintrust::Models::FunctionReplaceParams::FunctionData::Code::Data::Inline::RuntimeContext)
-                  .returns(Braintrust::Models::FunctionReplaceParams::FunctionData::Code::Data::Inline::RuntimeContext)
+                params(
+                  _: T.any(
+                    Braintrust::Models::FunctionReplaceParams::FunctionData::Code::Data::Inline::RuntimeContext,
+                    Braintrust::Util::AnyHash
+                  )
+                )
+                  .returns(
+                    T.any(
+                      Braintrust::Models::FunctionReplaceParams::FunctionData::Code::Data::Inline::RuntimeContext,
+                      Braintrust::Util::AnyHash
+                    )
+                  )
               end
               def runtime_context=(_)
               end

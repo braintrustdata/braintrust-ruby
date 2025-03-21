@@ -81,8 +81,8 @@ module Braintrust
       end
 
       sig do
-        params(_: T.nilable(Braintrust::Models::ProjectScoreConfig))
-          .returns(T.nilable(Braintrust::Models::ProjectScoreConfig))
+        params(_: T.nilable(T.any(Braintrust::Models::ProjectScoreConfig, Braintrust::Util::AnyHash)))
+          .returns(T.nilable(T.any(Braintrust::Models::ProjectScoreConfig, Braintrust::Util::AnyHash)))
       end
       def config=(_)
       end
