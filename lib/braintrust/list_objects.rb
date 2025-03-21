@@ -2,32 +2,26 @@
 
 module Braintrust
   # @example
-  # ```ruby
-  # if list_objects.has_next?
-  #   list_objects = list_objects.next_page
-  # end
-  # ```
+  #   if list_objects.has_next?
+  #     list_objects = list_objects.next_page
+  #   end
   #
   # @example
-  # ```ruby
-  # list_objects.auto_paging_each do |project|
-  #   puts(project)
-  # end
-  # ```
+  #   list_objects.auto_paging_each do |project|
+  #     puts(project)
+  #   end
   #
   # @example
-  # ```ruby
-  # projects =
-  #   list_objects
-  #   .to_enum
-  #   .lazy
-  #   .select { _1.object_id.even? }
-  #   .map(&:itself)
-  #   .take(2)
-  #   .to_a
+  #   projects =
+  #     list_objects
+  #     .to_enum
+  #     .lazy
+  #     .select { _1.object_id.even? }
+  #     .map(&:itself)
+  #     .take(2)
+  #     .to_a
   #
-  # projects => Array
-  # ```
+  #   projects => Array
   class ListObjects
     include Braintrust::BasePage
 

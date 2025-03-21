@@ -2,32 +2,26 @@
 
 module Braintrust
   # @example
-  # ```ruby
-  # if page.has_next?
-  #   page = page.next_page
-  # end
-  # ```
+  #   if page.has_next?
+  #     page = page.next_page
+  #   end
   #
   # @example
-  # ```ruby
-  # page.auto_paging_each do |top_level|
-  #   puts(top_level)
-  # end
-  # ```
+  #   page.auto_paging_each do |top_level|
+  #     puts(top_level)
+  #   end
   #
   # @example
-  # ```ruby
-  # top_levels =
-  #   page
-  #   .to_enum
-  #   .lazy
-  #   .select { _1.object_id.even? }
-  #   .map(&:itself)
-  #   .take(2)
-  #   .to_a
+  #   top_levels =
+  #     page
+  #     .to_enum
+  #     .lazy
+  #     .select { _1.object_id.even? }
+  #     .map(&:itself)
+  #     .take(2)
+  #     .to_a
   #
-  # top_levels => Array
-  # ```
+  #   top_levels => Array
   module BasePage
     # rubocop:disable Lint/UnusedMethodArgument
 
