@@ -126,6 +126,12 @@ module Braintrust
         P = :p
 
         finalize!
+
+        class << self
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   def values; end
+        end
       end
 
       module FunctionType
@@ -137,6 +143,12 @@ module Braintrust
         TOOL = :tool
 
         finalize!
+
+        class << self
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   def values; end
+        end
       end
     end
   end

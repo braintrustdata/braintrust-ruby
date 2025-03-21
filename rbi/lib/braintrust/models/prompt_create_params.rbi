@@ -124,10 +124,16 @@ module Braintrust
         OrSymbol =
           T.type_alias { T.any(Symbol, Braintrust::Models::PromptCreateParams::FunctionType::TaggedSymbol) }
 
-        LLM = T.let(:llm, Braintrust::Models::PromptCreateParams::FunctionType::OrSymbol)
-        SCORER = T.let(:scorer, Braintrust::Models::PromptCreateParams::FunctionType::OrSymbol)
-        TASK = T.let(:task, Braintrust::Models::PromptCreateParams::FunctionType::OrSymbol)
-        TOOL = T.let(:tool, Braintrust::Models::PromptCreateParams::FunctionType::OrSymbol)
+        LLM = T.let(:llm, Braintrust::Models::PromptCreateParams::FunctionType::TaggedSymbol)
+        SCORER = T.let(:scorer, Braintrust::Models::PromptCreateParams::FunctionType::TaggedSymbol)
+        TASK = T.let(:task, Braintrust::Models::PromptCreateParams::FunctionType::TaggedSymbol)
+        TOOL = T.let(:tool, Braintrust::Models::PromptCreateParams::FunctionType::TaggedSymbol)
+
+        class << self
+          sig { override.returns(T::Array[Braintrust::Models::PromptCreateParams::FunctionType::TaggedSymbol]) }
+          def values
+          end
+        end
       end
     end
   end

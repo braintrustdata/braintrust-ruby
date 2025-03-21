@@ -49,7 +49,7 @@ module Braintrust
         API: :api
         EXTERNAL: :external
 
-        def self.values: -> ::Array[Braintrust::Models::FeedbackExperimentItem::source]
+        def self?.values: -> ::Array[Braintrust::Models::FeedbackExperimentItem::source]
       end
     end
   end

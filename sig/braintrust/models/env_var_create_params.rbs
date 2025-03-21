@@ -40,7 +40,7 @@ module Braintrust
         PROJECT: :project
         FUNCTION: :function
 
-        def self.values: -> ::Array[Braintrust::Models::EnvVarCreateParams::object_type]
+        def self?.values: -> ::Array[Braintrust::Models::EnvVarCreateParams::object_type]
       end
     end
   end

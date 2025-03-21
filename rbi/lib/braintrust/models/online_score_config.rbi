@@ -156,7 +156,13 @@ module Braintrust
             OrSymbol =
               T.type_alias { T.any(Symbol, Braintrust::Models::OnlineScoreConfig::Scorer::Function::Type::TaggedSymbol) }
 
-            FUNCTION = T.let(:function, Braintrust::Models::OnlineScoreConfig::Scorer::Function::Type::OrSymbol)
+            FUNCTION = T.let(:function, Braintrust::Models::OnlineScoreConfig::Scorer::Function::Type::TaggedSymbol)
+
+            class << self
+              sig { override.returns(T::Array[Braintrust::Models::OnlineScoreConfig::Scorer::Function::Type::TaggedSymbol]) }
+              def values
+              end
+            end
           end
         end
 
@@ -202,7 +208,24 @@ module Braintrust
             OrSymbol =
               T.type_alias { T.any(Symbol, Braintrust::Models::OnlineScoreConfig::Scorer::Global::Type::TaggedSymbol) }
 
-            GLOBAL = T.let(:global, Braintrust::Models::OnlineScoreConfig::Scorer::Global::Type::OrSymbol)
+            GLOBAL = T.let(:global, Braintrust::Models::OnlineScoreConfig::Scorer::Global::Type::TaggedSymbol)
+
+            class << self
+              sig { override.returns(T::Array[Braintrust::Models::OnlineScoreConfig::Scorer::Global::Type::TaggedSymbol]) }
+              def values
+              end
+            end
+          end
+        end
+
+        class << self
+          sig do
+            override
+              .returns(
+                [Braintrust::Models::OnlineScoreConfig::Scorer::Function, Braintrust::Models::OnlineScoreConfig::Scorer::Global]
+              )
+          end
+          def variants
           end
         end
       end

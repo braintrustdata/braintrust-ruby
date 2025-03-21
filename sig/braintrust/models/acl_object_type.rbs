@@ -28,7 +28,7 @@ module Braintrust
       PROJECT_LOG: :project_log
       ORG_PROJECT: :org_project
 
-      def self.values: -> ::Array[Braintrust::Models::acl_object_type]
+      def self?.values: -> ::Array[Braintrust::Models::acl_object_type]
     end
   end
 end

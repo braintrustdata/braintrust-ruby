@@ -308,6 +308,12 @@ module Braintrust
               T.type_alias { T.any(Symbol, Braintrust::Models::Function::FunctionData::Prompt::Type::TaggedSymbol) }
 
             PROMPT = T.let(:prompt, Braintrust::Models::Function::FunctionData::Prompt::Type::TaggedSymbol)
+
+            class << self
+              sig { override.returns(T::Array[Braintrust::Models::Function::FunctionData::Prompt::Type::TaggedSymbol]) }
+              def values
+              end
+            end
           end
         end
 
@@ -428,6 +434,15 @@ module Braintrust
 
                 BUNDLE =
                   T.let(:bundle, Braintrust::Models::Function::FunctionData::Code::Data::Bundle::Type::TaggedSymbol)
+
+                class << self
+                  sig do
+                    override
+                      .returns(T::Array[Braintrust::Models::Function::FunctionData::Code::Data::Bundle::Type::TaggedSymbol])
+                  end
+                  def values
+                  end
+                end
               end
             end
 
@@ -569,6 +584,17 @@ module Braintrust
                       :python,
                       Braintrust::Models::Function::FunctionData::Code::Data::Inline::RuntimeContext::Runtime::TaggedSymbol
                     )
+
+                  class << self
+                    sig do
+                      override
+                        .returns(
+                          T::Array[Braintrust::Models::Function::FunctionData::Code::Data::Inline::RuntimeContext::Runtime::TaggedSymbol]
+                        )
+                    end
+                    def values
+                    end
+                  end
                 end
               end
 
@@ -582,6 +608,26 @@ module Braintrust
 
                 INLINE =
                   T.let(:inline, Braintrust::Models::Function::FunctionData::Code::Data::Inline::Type::TaggedSymbol)
+
+                class << self
+                  sig do
+                    override
+                      .returns(T::Array[Braintrust::Models::Function::FunctionData::Code::Data::Inline::Type::TaggedSymbol])
+                  end
+                  def values
+                  end
+                end
+              end
+            end
+
+            class << self
+              sig do
+                override
+                  .returns(
+                    [Braintrust::Models::Function::FunctionData::Code::Data::Bundle, Braintrust::Models::Function::FunctionData::Code::Data::Inline]
+                  )
+              end
+              def variants
               end
             end
           end
@@ -594,6 +640,12 @@ module Braintrust
               T.type_alias { T.any(Symbol, Braintrust::Models::Function::FunctionData::Code::Type::TaggedSymbol) }
 
             CODE = T.let(:code, Braintrust::Models::Function::FunctionData::Code::Type::TaggedSymbol)
+
+            class << self
+              sig { override.returns(T::Array[Braintrust::Models::Function::FunctionData::Code::Type::TaggedSymbol]) }
+              def values
+              end
+            end
           end
         end
 
@@ -639,6 +691,23 @@ module Braintrust
               T.type_alias { T.any(Symbol, Braintrust::Models::Function::FunctionData::Global::Type::TaggedSymbol) }
 
             GLOBAL = T.let(:global, Braintrust::Models::Function::FunctionData::Global::Type::TaggedSymbol)
+
+            class << self
+              sig { override.returns(T::Array[Braintrust::Models::Function::FunctionData::Global::Type::TaggedSymbol]) }
+              def values
+              end
+            end
+          end
+        end
+
+        class << self
+          sig do
+            override
+              .returns(
+                [Braintrust::Models::Function::FunctionData::Prompt, Braintrust::Models::Function::FunctionData::Code, Braintrust::Models::Function::FunctionData::Global]
+              )
+          end
+          def variants
           end
         end
       end
@@ -651,6 +720,12 @@ module Braintrust
         OrSymbol = T.type_alias { T.any(Symbol, Braintrust::Models::Function::LogID::TaggedSymbol) }
 
         P = T.let(:p, Braintrust::Models::Function::LogID::TaggedSymbol)
+
+        class << self
+          sig { override.returns(T::Array[Braintrust::Models::Function::LogID::TaggedSymbol]) }
+          def values
+          end
+        end
       end
 
       class FunctionSchema < Braintrust::BaseModel
@@ -690,6 +765,12 @@ module Braintrust
         SCORER = T.let(:scorer, Braintrust::Models::Function::FunctionType::TaggedSymbol)
         TASK = T.let(:task, Braintrust::Models::Function::FunctionType::TaggedSymbol)
         TOOL = T.let(:tool, Braintrust::Models::Function::FunctionType::TaggedSymbol)
+
+        class << self
+          sig { override.returns(T::Array[Braintrust::Models::Function::FunctionType::TaggedSymbol]) }
+          def values
+          end
+        end
       end
 
       class Origin < Braintrust::BaseModel

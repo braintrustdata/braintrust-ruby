@@ -229,7 +229,19 @@ module Braintrust
                 OrSymbol =
                   T.type_alias { T.any(Symbol, Braintrust::Models::CodeBundle::Location::Experiment::Position::Type::Type::TaggedSymbol) }
 
-                TASK = T.let(:task, Braintrust::Models::CodeBundle::Location::Experiment::Position::Type::Type::OrSymbol)
+                TASK =
+                  T.let(:task, Braintrust::Models::CodeBundle::Location::Experiment::Position::Type::Type::TaggedSymbol)
+
+                class << self
+                  sig do
+                    override
+                      .returns(
+                        T::Array[Braintrust::Models::CodeBundle::Location::Experiment::Position::Type::Type::TaggedSymbol]
+                      )
+                  end
+                  def values
+                  end
+                end
               end
             end
 
@@ -281,7 +293,29 @@ module Braintrust
                   T.type_alias { T.any(Symbol, Braintrust::Models::CodeBundle::Location::Experiment::Position::Scorer::Type::TaggedSymbol) }
 
                 SCORER =
-                  T.let(:scorer, Braintrust::Models::CodeBundle::Location::Experiment::Position::Scorer::Type::OrSymbol)
+                  T.let(:scorer, Braintrust::Models::CodeBundle::Location::Experiment::Position::Scorer::Type::TaggedSymbol)
+
+                class << self
+                  sig do
+                    override
+                      .returns(
+                        T::Array[Braintrust::Models::CodeBundle::Location::Experiment::Position::Scorer::Type::TaggedSymbol]
+                      )
+                  end
+                  def values
+                  end
+                end
+              end
+            end
+
+            class << self
+              sig do
+                override
+                  .returns(
+                    [Braintrust::Models::CodeBundle::Location::Experiment::Position::Type, Braintrust::Models::CodeBundle::Location::Experiment::Position::Scorer]
+                  )
+              end
+              def variants
               end
             end
           end
@@ -293,7 +327,13 @@ module Braintrust
             OrSymbol =
               T.type_alias { T.any(Symbol, Braintrust::Models::CodeBundle::Location::Experiment::Type::TaggedSymbol) }
 
-            EXPERIMENT = T.let(:experiment, Braintrust::Models::CodeBundle::Location::Experiment::Type::OrSymbol)
+            EXPERIMENT = T.let(:experiment, Braintrust::Models::CodeBundle::Location::Experiment::Type::TaggedSymbol)
+
+            class << self
+              sig { override.returns(T::Array[Braintrust::Models::CodeBundle::Location::Experiment::Type::TaggedSymbol]) }
+              def values
+              end
+            end
           end
         end
 
@@ -338,7 +378,24 @@ module Braintrust
             OrSymbol =
               T.type_alias { T.any(Symbol, Braintrust::Models::CodeBundle::Location::Function::Type::TaggedSymbol) }
 
-            FUNCTION = T.let(:function, Braintrust::Models::CodeBundle::Location::Function::Type::OrSymbol)
+            FUNCTION = T.let(:function, Braintrust::Models::CodeBundle::Location::Function::Type::TaggedSymbol)
+
+            class << self
+              sig { override.returns(T::Array[Braintrust::Models::CodeBundle::Location::Function::Type::TaggedSymbol]) }
+              def values
+              end
+            end
+          end
+        end
+
+        class << self
+          sig do
+            override
+              .returns(
+                [Braintrust::Models::CodeBundle::Location::Experiment, Braintrust::Models::CodeBundle::Location::Function]
+              )
+          end
+          def variants
           end
         end
       end
@@ -384,8 +441,14 @@ module Braintrust
           OrSymbol =
             T.type_alias { T.any(Symbol, Braintrust::Models::CodeBundle::RuntimeContext::Runtime::TaggedSymbol) }
 
-          NODE = T.let(:node, Braintrust::Models::CodeBundle::RuntimeContext::Runtime::OrSymbol)
-          PYTHON = T.let(:python, Braintrust::Models::CodeBundle::RuntimeContext::Runtime::OrSymbol)
+          NODE = T.let(:node, Braintrust::Models::CodeBundle::RuntimeContext::Runtime::TaggedSymbol)
+          PYTHON = T.let(:python, Braintrust::Models::CodeBundle::RuntimeContext::Runtime::TaggedSymbol)
+
+          class << self
+            sig { override.returns(T::Array[Braintrust::Models::CodeBundle::RuntimeContext::Runtime::TaggedSymbol]) }
+            def values
+            end
+          end
         end
       end
     end

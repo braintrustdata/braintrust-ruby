@@ -105,7 +105,7 @@ module Braintrust
 
             SYSTEM: :system
 
-            def self.values: -> ::Array[Braintrust::Models::FunctionInvokeParams::Message::System::role]
+            def self?.values: -> ::Array[Braintrust::Models::FunctionInvokeParams::Message::System::role]
           end
         end
 
@@ -144,7 +144,7 @@ module Braintrust
 
             USER: :user
 
-            def self.values: -> ::Array[Braintrust::Models::FunctionInvokeParams::Message::User::role]
+            def self?.values: -> ::Array[Braintrust::Models::FunctionInvokeParams::Message::User::role]
           end
 
           type content =
@@ -166,10 +166,10 @@ module Braintrust
             module Array
               extend Braintrust::Union
 
-              def self.variants: -> [Braintrust::Models::ChatCompletionContentPartText, Braintrust::Models::ChatCompletionContentPartImage]
+              def self?.variants: -> [Braintrust::Models::ChatCompletionContentPartText, Braintrust::Models::ChatCompletionContentPartImage]
             end
 
-            def self.variants: -> [String, ::Array[Braintrust::Models::FunctionInvokeParams::Message::User::Content::array]]
+            def self?.variants: -> [String, ::Array[Braintrust::Models::FunctionInvokeParams::Message::User::Content::array]]
           end
         end
 
@@ -210,7 +210,7 @@ module Braintrust
 
             ASSISTANT: :assistant
 
-            def self.values: -> ::Array[Braintrust::Models::FunctionInvokeParams::Message::Assistant::role]
+            def self?.values: -> ::Array[Braintrust::Models::FunctionInvokeParams::Message::Assistant::role]
           end
 
           type function_call = { arguments: String, name: String }
@@ -259,7 +259,7 @@ module Braintrust
 
             TOOL: :tool
 
-            def self.values: -> ::Array[Braintrust::Models::FunctionInvokeParams::Message::Tool::role]
+            def self?.values: -> ::Array[Braintrust::Models::FunctionInvokeParams::Message::Tool::role]
           end
         end
 
@@ -294,7 +294,7 @@ module Braintrust
 
             FUNCTION: :function
 
-            def self.values: -> ::Array[Braintrust::Models::FunctionInvokeParams::Message::Function::role]
+            def self?.values: -> ::Array[Braintrust::Models::FunctionInvokeParams::Message::Function::role]
           end
         end
 
@@ -323,11 +323,11 @@ module Braintrust
 
             MODEL: :model
 
-            def self.values: -> ::Array[Braintrust::Models::FunctionInvokeParams::Message::Fallback::role]
+            def self?.values: -> ::Array[Braintrust::Models::FunctionInvokeParams::Message::Fallback::role]
           end
         end
 
-        def self.variants: -> [Braintrust::Models::FunctionInvokeParams::Message::System, Braintrust::Models::FunctionInvokeParams::Message::User, Braintrust::Models::FunctionInvokeParams::Message::Assistant, Braintrust::Models::FunctionInvokeParams::Message::Tool, Braintrust::Models::FunctionInvokeParams::Message::Function, Braintrust::Models::FunctionInvokeParams::Message::Fallback]
+        def self?.variants: -> [Braintrust::Models::FunctionInvokeParams::Message::System, Braintrust::Models::FunctionInvokeParams::Message::User, Braintrust::Models::FunctionInvokeParams::Message::Assistant, Braintrust::Models::FunctionInvokeParams::Message::Tool, Braintrust::Models::FunctionInvokeParams::Message::Function, Braintrust::Models::FunctionInvokeParams::Message::Fallback]
       end
 
       type mode = :auto | :parallel
@@ -338,7 +338,7 @@ module Braintrust
         AUTO: :auto
         PARALLEL: :parallel
 
-        def self.values: -> ::Array[Braintrust::Models::FunctionInvokeParams::mode]
+        def self?.values: -> ::Array[Braintrust::Models::FunctionInvokeParams::mode]
       end
 
       type parent =
@@ -383,7 +383,7 @@ module Braintrust
             EXPERIMENT: :experiment
             PLAYGROUND_LOGS: :playground_logs
 
-            def self.values: -> ::Array[Braintrust::Models::FunctionInvokeParams::Parent::SpanParentStruct::object_type]
+            def self?.values: -> ::Array[Braintrust::Models::FunctionInvokeParams::Parent::SpanParentStruct::object_type]
           end
 
           type row_ids = { id: String, root_span_id: String, span_id: String }
@@ -405,7 +405,7 @@ module Braintrust
           end
         end
 
-        def self.variants: -> [Braintrust::Models::FunctionInvokeParams::Parent::SpanParentStruct, String]
+        def self?.variants: -> [Braintrust::Models::FunctionInvokeParams::Parent::SpanParentStruct, String]
       end
     end
   end

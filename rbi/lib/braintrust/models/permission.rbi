@@ -12,14 +12,20 @@ module Braintrust
       TaggedSymbol = T.type_alias { T.all(Symbol, Braintrust::Models::Permission) }
       OrSymbol = T.type_alias { T.any(Symbol, Braintrust::Models::Permission::TaggedSymbol) }
 
-      CREATE = T.let(:create, Braintrust::Models::Permission::OrSymbol)
-      READ = T.let(:read, Braintrust::Models::Permission::OrSymbol)
-      UPDATE = T.let(:update, Braintrust::Models::Permission::OrSymbol)
-      DELETE = T.let(:delete, Braintrust::Models::Permission::OrSymbol)
-      CREATE_ACLS = T.let(:create_acls, Braintrust::Models::Permission::OrSymbol)
-      READ_ACLS = T.let(:read_acls, Braintrust::Models::Permission::OrSymbol)
-      UPDATE_ACLS = T.let(:update_acls, Braintrust::Models::Permission::OrSymbol)
-      DELETE_ACLS = T.let(:delete_acls, Braintrust::Models::Permission::OrSymbol)
+      CREATE = T.let(:create, Braintrust::Models::Permission::TaggedSymbol)
+      READ = T.let(:read, Braintrust::Models::Permission::TaggedSymbol)
+      UPDATE = T.let(:update, Braintrust::Models::Permission::TaggedSymbol)
+      DELETE = T.let(:delete, Braintrust::Models::Permission::TaggedSymbol)
+      CREATE_ACLS = T.let(:create_acls, Braintrust::Models::Permission::TaggedSymbol)
+      READ_ACLS = T.let(:read_acls, Braintrust::Models::Permission::TaggedSymbol)
+      UPDATE_ACLS = T.let(:update_acls, Braintrust::Models::Permission::TaggedSymbol)
+      DELETE_ACLS = T.let(:delete_acls, Braintrust::Models::Permission::TaggedSymbol)
+
+      class << self
+        sig { override.returns(T::Array[Braintrust::Models::Permission::TaggedSymbol]) }
+        def values
+        end
+      end
     end
   end
 end
