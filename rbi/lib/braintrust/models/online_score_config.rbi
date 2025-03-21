@@ -101,8 +101,8 @@ module Braintrust
       def to_hash
       end
 
-      class Scorer < Braintrust::Union
-        abstract!
+      module Scorer
+        extend Braintrust::Union
 
         Variants =
           type_template(:out) do
@@ -123,28 +123,40 @@ module Braintrust
           def id=(_)
           end
 
-          sig { returns(Symbol) }
+          sig { returns(Braintrust::Models::OnlineScoreConfig::Scorer::Function::Type::OrSymbol) }
           def type
           end
 
-          sig { params(_: Symbol).returns(Symbol) }
+          sig do
+            params(_: Braintrust::Models::OnlineScoreConfig::Scorer::Function::Type::OrSymbol)
+              .returns(Braintrust::Models::OnlineScoreConfig::Scorer::Function::Type::OrSymbol)
+          end
           def type=(_)
           end
 
-          sig { params(id: String, type: Symbol).returns(T.attached_class) }
+          sig do
+            params(id: String, type: Braintrust::Models::OnlineScoreConfig::Scorer::Function::Type::OrSymbol)
+              .returns(T.attached_class)
+          end
           def self.new(id:, type:)
           end
 
-          sig { override.returns({id: String, type: Symbol}) }
+          sig do
+            override
+              .returns({id: String, type: Braintrust::Models::OnlineScoreConfig::Scorer::Function::Type::OrSymbol})
+          end
           def to_hash
           end
 
-          class Type < Braintrust::Enum
-            abstract!
+          module Type
+            extend Braintrust::Enum
 
-            Value = type_template(:out) { {fixed: Symbol} }
+            TaggedSymbol =
+              T.type_alias { T.all(Symbol, Braintrust::Models::OnlineScoreConfig::Scorer::Function::Type) }
+            OrSymbol =
+              T.type_alias { T.any(Symbol, Braintrust::Models::OnlineScoreConfig::Scorer::Function::Type::TaggedSymbol) }
 
-            FUNCTION = :function
+            FUNCTION = T.let(:function, Braintrust::Models::OnlineScoreConfig::Scorer::Function::Type::OrSymbol)
           end
         end
 
@@ -157,28 +169,40 @@ module Braintrust
           def name=(_)
           end
 
-          sig { returns(Symbol) }
+          sig { returns(Braintrust::Models::OnlineScoreConfig::Scorer::Global::Type::OrSymbol) }
           def type
           end
 
-          sig { params(_: Symbol).returns(Symbol) }
+          sig do
+            params(_: Braintrust::Models::OnlineScoreConfig::Scorer::Global::Type::OrSymbol)
+              .returns(Braintrust::Models::OnlineScoreConfig::Scorer::Global::Type::OrSymbol)
+          end
           def type=(_)
           end
 
-          sig { params(name: String, type: Symbol).returns(T.attached_class) }
+          sig do
+            params(name: String, type: Braintrust::Models::OnlineScoreConfig::Scorer::Global::Type::OrSymbol)
+              .returns(T.attached_class)
+          end
           def self.new(name:, type:)
           end
 
-          sig { override.returns({name: String, type: Symbol}) }
+          sig do
+            override
+              .returns({name: String, type: Braintrust::Models::OnlineScoreConfig::Scorer::Global::Type::OrSymbol})
+          end
           def to_hash
           end
 
-          class Type < Braintrust::Enum
-            abstract!
+          module Type
+            extend Braintrust::Enum
 
-            Value = type_template(:out) { {fixed: Symbol} }
+            TaggedSymbol =
+              T.type_alias { T.all(Symbol, Braintrust::Models::OnlineScoreConfig::Scorer::Global::Type) }
+            OrSymbol =
+              T.type_alias { T.any(Symbol, Braintrust::Models::OnlineScoreConfig::Scorer::Global::Type::TaggedSymbol) }
 
-            GLOBAL = :global
+            GLOBAL = T.let(:global, Braintrust::Models::OnlineScoreConfig::Scorer::Global::Type::OrSymbol)
           end
         end
       end

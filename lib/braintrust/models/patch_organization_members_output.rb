@@ -30,8 +30,9 @@ module Braintrust
 
       # def initialize: (Hash | Braintrust::BaseModel) -> void
 
-      # @abstract
-      class Status < Braintrust::Enum
+      module Status
+        extend Braintrust::Enum
+
         SUCCESS = :success
 
         finalize!

@@ -106,16 +106,18 @@ module Braintrust
 
         # def initialize: (Hash | Braintrust::BaseModel) -> void
 
-        # @abstract
-        class Type < Braintrust::Enum
+        module Type
+          extend Braintrust::Enum
+
           LLM_CLASSIFIER = :llm_classifier
 
           finalize!
         end
       end
 
-      # @abstract
-      class Prompt < Braintrust::Union
+      module Prompt
+        extend Braintrust::Union
+
         variant -> { Braintrust::Models::PromptData::Prompt::Completion }
 
         variant -> { Braintrust::Models::PromptData::Prompt::Chat }
@@ -139,8 +141,9 @@ module Braintrust
 
           # def initialize: (Hash | Braintrust::BaseModel) -> void
 
-          # @abstract
-          class Type < Braintrust::Enum
+          module Type
+            extend Braintrust::Enum
+
             COMPLETION = :completion
 
             finalize!
@@ -177,8 +180,9 @@ module Braintrust
 
           # def initialize: (Hash | Braintrust::BaseModel) -> void
 
-          # @abstract
-          class Message < Braintrust::Union
+          module Message
+            extend Braintrust::Union
+
             variant -> { Braintrust::Models::PromptData::Prompt::Chat::Message::System }
 
             variant -> { Braintrust::Models::PromptData::Prompt::Chat::Message::User }
@@ -224,8 +228,9 @@ module Braintrust
 
               # def initialize: (Hash | Braintrust::BaseModel) -> void
 
-              # @abstract
-              class Role < Braintrust::Enum
+              module Role
+                extend Braintrust::Enum
+
                 SYSTEM = :system
 
                 finalize!
@@ -265,15 +270,17 @@ module Braintrust
 
               # def initialize: (Hash | Braintrust::BaseModel) -> void
 
-              # @abstract
-              class Role < Braintrust::Enum
+              module Role
+                extend Braintrust::Enum
+
                 USER = :user
 
                 finalize!
               end
 
-              # @abstract
-              class Content < Braintrust::Union
+              module Content
+                extend Braintrust::Union
+
                 Nested2DArray =
                   Braintrust::ArrayOf[union: -> { Braintrust::Models::PromptData::Prompt::Chat::Message::User::Content::Array }]
 
@@ -281,8 +288,9 @@ module Braintrust
 
                 variant Braintrust::Models::PromptData::Prompt::Chat::Message::User::Content::Nested2DArray
 
-                # @abstract
-                class Array < Braintrust::Union
+                module Array
+                  extend Braintrust::Union
+
                   variant -> { Braintrust::Models::ChatCompletionContentPartText }
 
                   variant -> { Braintrust::Models::ChatCompletionContentPartImage }
@@ -343,8 +351,9 @@ module Braintrust
 
               # def initialize: (Hash | Braintrust::BaseModel) -> void
 
-              # @abstract
-              class Role < Braintrust::Enum
+              module Role
+                extend Braintrust::Enum
+
                 ASSISTANT = :assistant
 
                 finalize!
@@ -404,8 +413,9 @@ module Braintrust
 
               # def initialize: (Hash | Braintrust::BaseModel) -> void
 
-              # @abstract
-              class Role < Braintrust::Enum
+              module Role
+                extend Braintrust::Enum
+
                 TOOL = :tool
 
                 finalize!
@@ -441,8 +451,9 @@ module Braintrust
 
               # def initialize: (Hash | Braintrust::BaseModel) -> void
 
-              # @abstract
-              class Role < Braintrust::Enum
+              module Role
+                extend Braintrust::Enum
+
                 FUNCTION = :function
 
                 finalize!
@@ -468,8 +479,9 @@ module Braintrust
 
               # def initialize: (Hash | Braintrust::BaseModel) -> void
 
-              # @abstract
-              class Role < Braintrust::Enum
+              module Role
+                extend Braintrust::Enum
+
                 MODEL = :model
 
                 finalize!
@@ -483,8 +495,9 @@ module Braintrust
             #   end
           end
 
-          # @abstract
-          class Type < Braintrust::Enum
+          module Type
+            extend Braintrust::Enum
+
             CHAT = :chat
 
             finalize!
@@ -498,8 +511,9 @@ module Braintrust
         #   end
       end
 
-      # @abstract
-      class ToolFunction < Braintrust::Union
+      module ToolFunction
+        extend Braintrust::Union
+
         variant -> { Braintrust::Models::PromptData::ToolFunction::Function }
 
         variant -> { Braintrust::Models::PromptData::ToolFunction::Global }
@@ -523,8 +537,9 @@ module Braintrust
 
           # def initialize: (Hash | Braintrust::BaseModel) -> void
 
-          # @abstract
-          class Type < Braintrust::Enum
+          module Type
+            extend Braintrust::Enum
+
             FUNCTION = :function
 
             finalize!
@@ -550,8 +565,9 @@ module Braintrust
 
           # def initialize: (Hash | Braintrust::BaseModel) -> void
 
-          # @abstract
-          class Type < Braintrust::Enum
+          module Type
+            extend Braintrust::Enum
+
             GLOBAL = :global
 
             finalize!

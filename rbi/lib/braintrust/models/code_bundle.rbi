@@ -91,8 +91,8 @@ module Braintrust
       def to_hash
       end
 
-      class Location < Braintrust::Union
-        abstract!
+      module Location
+        extend Braintrust::Union
 
         Variants =
           type_template(:out) do
@@ -141,11 +141,14 @@ module Braintrust
           def position=(_)
           end
 
-          sig { returns(Symbol) }
+          sig { returns(Braintrust::Models::CodeBundle::Location::Experiment::Type::OrSymbol) }
           def type
           end
 
-          sig { params(_: Symbol).returns(Symbol) }
+          sig do
+            params(_: Braintrust::Models::CodeBundle::Location::Experiment::Type::OrSymbol)
+              .returns(Braintrust::Models::CodeBundle::Location::Experiment::Type::OrSymbol)
+          end
           def type=(_)
           end
 
@@ -156,7 +159,7 @@ module Braintrust
                 Braintrust::Models::CodeBundle::Location::Experiment::Position::Type,
                 Braintrust::Models::CodeBundle::Location::Experiment::Position::Scorer
               ),
-              type: Symbol
+              type: Braintrust::Models::CodeBundle::Location::Experiment::Type::OrSymbol
             )
               .returns(T.attached_class)
           end
@@ -172,15 +175,15 @@ module Braintrust
                     Braintrust::Models::CodeBundle::Location::Experiment::Position::Type,
                     Braintrust::Models::CodeBundle::Location::Experiment::Position::Scorer
                   ),
-                  type: Symbol
+                  type: Braintrust::Models::CodeBundle::Location::Experiment::Type::OrSymbol
                 }
               )
           end
           def to_hash
           end
 
-          class Position < Braintrust::Union
-            abstract!
+          module Position
+            extend Braintrust::Union
 
             Variants =
               type_template(:out) do
@@ -193,28 +196,40 @@ module Braintrust
               end
 
             class Type < Braintrust::BaseModel
-              sig { returns(Symbol) }
+              sig { returns(Braintrust::Models::CodeBundle::Location::Experiment::Position::Type::Type::OrSymbol) }
               def type
               end
 
-              sig { params(_: Symbol).returns(Symbol) }
+              sig do
+                params(_: Braintrust::Models::CodeBundle::Location::Experiment::Position::Type::Type::OrSymbol)
+                  .returns(Braintrust::Models::CodeBundle::Location::Experiment::Position::Type::Type::OrSymbol)
+              end
               def type=(_)
               end
 
-              sig { params(type: Symbol).returns(T.attached_class) }
+              sig do
+                params(type: Braintrust::Models::CodeBundle::Location::Experiment::Position::Type::Type::OrSymbol)
+                  .returns(T.attached_class)
+              end
               def self.new(type:)
               end
 
-              sig { override.returns({type: Symbol}) }
+              sig do
+                override
+                  .returns({type: Braintrust::Models::CodeBundle::Location::Experiment::Position::Type::Type::OrSymbol})
+              end
               def to_hash
               end
 
-              class Type < Braintrust::Enum
-                abstract!
+              module Type
+                extend Braintrust::Enum
 
-                Value = type_template(:out) { {fixed: Symbol} }
+                TaggedSymbol =
+                  T.type_alias { T.all(Symbol, Braintrust::Models::CodeBundle::Location::Experiment::Position::Type::Type) }
+                OrSymbol =
+                  T.type_alias { T.any(Symbol, Braintrust::Models::CodeBundle::Location::Experiment::Position::Type::Type::TaggedSymbol) }
 
-                TASK = :task
+                TASK = T.let(:task, Braintrust::Models::CodeBundle::Location::Experiment::Position::Type::Type::OrSymbol)
               end
             end
 
@@ -227,38 +242,58 @@ module Braintrust
               def index=(_)
               end
 
-              sig { returns(Symbol) }
+              sig { returns(Braintrust::Models::CodeBundle::Location::Experiment::Position::Scorer::Type::OrSymbol) }
               def type
               end
 
-              sig { params(_: Symbol).returns(Symbol) }
+              sig do
+                params(_: Braintrust::Models::CodeBundle::Location::Experiment::Position::Scorer::Type::OrSymbol)
+                  .returns(Braintrust::Models::CodeBundle::Location::Experiment::Position::Scorer::Type::OrSymbol)
+              end
               def type=(_)
               end
 
-              sig { params(index: Integer, type: Symbol).returns(T.attached_class) }
+              sig do
+                params(
+                  index: Integer,
+                  type: Braintrust::Models::CodeBundle::Location::Experiment::Position::Scorer::Type::OrSymbol
+                )
+                  .returns(T.attached_class)
+              end
               def self.new(index:, type:)
               end
 
-              sig { override.returns({index: Integer, type: Symbol}) }
+              sig do
+                override
+                  .returns(
+                    {index: Integer, type: Braintrust::Models::CodeBundle::Location::Experiment::Position::Scorer::Type::OrSymbol}
+                  )
+              end
               def to_hash
               end
 
-              class Type < Braintrust::Enum
-                abstract!
+              module Type
+                extend Braintrust::Enum
 
-                Value = type_template(:out) { {fixed: Symbol} }
+                TaggedSymbol =
+                  T.type_alias { T.all(Symbol, Braintrust::Models::CodeBundle::Location::Experiment::Position::Scorer::Type) }
+                OrSymbol =
+                  T.type_alias { T.any(Symbol, Braintrust::Models::CodeBundle::Location::Experiment::Position::Scorer::Type::TaggedSymbol) }
 
-                SCORER = :scorer
+                SCORER =
+                  T.let(:scorer, Braintrust::Models::CodeBundle::Location::Experiment::Position::Scorer::Type::OrSymbol)
               end
             end
           end
 
-          class Type < Braintrust::Enum
-            abstract!
+          module Type
+            extend Braintrust::Enum
 
-            Value = type_template(:out) { {fixed: Symbol} }
+            TaggedSymbol = T.type_alias { T.all(Symbol, Braintrust::Models::CodeBundle::Location::Experiment::Type) }
+            OrSymbol =
+              T.type_alias { T.any(Symbol, Braintrust::Models::CodeBundle::Location::Experiment::Type::TaggedSymbol) }
 
-            EXPERIMENT = :experiment
+            EXPERIMENT = T.let(:experiment, Braintrust::Models::CodeBundle::Location::Experiment::Type::OrSymbol)
           end
         end
 
@@ -271,38 +306,52 @@ module Braintrust
           def index=(_)
           end
 
-          sig { returns(Symbol) }
+          sig { returns(Braintrust::Models::CodeBundle::Location::Function::Type::OrSymbol) }
           def type
           end
 
-          sig { params(_: Symbol).returns(Symbol) }
+          sig do
+            params(_: Braintrust::Models::CodeBundle::Location::Function::Type::OrSymbol)
+              .returns(Braintrust::Models::CodeBundle::Location::Function::Type::OrSymbol)
+          end
           def type=(_)
           end
 
-          sig { params(index: Integer, type: Symbol).returns(T.attached_class) }
+          sig do
+            params(index: Integer, type: Braintrust::Models::CodeBundle::Location::Function::Type::OrSymbol)
+              .returns(T.attached_class)
+          end
           def self.new(index:, type:)
           end
 
-          sig { override.returns({index: Integer, type: Symbol}) }
+          sig do
+            override
+              .returns({index: Integer, type: Braintrust::Models::CodeBundle::Location::Function::Type::OrSymbol})
+          end
           def to_hash
           end
 
-          class Type < Braintrust::Enum
-            abstract!
+          module Type
+            extend Braintrust::Enum
 
-            Value = type_template(:out) { {fixed: Symbol} }
+            TaggedSymbol = T.type_alias { T.all(Symbol, Braintrust::Models::CodeBundle::Location::Function::Type) }
+            OrSymbol =
+              T.type_alias { T.any(Symbol, Braintrust::Models::CodeBundle::Location::Function::Type::TaggedSymbol) }
 
-            FUNCTION = :function
+            FUNCTION = T.let(:function, Braintrust::Models::CodeBundle::Location::Function::Type::OrSymbol)
           end
         end
       end
 
       class RuntimeContext < Braintrust::BaseModel
-        sig { returns(Symbol) }
+        sig { returns(Braintrust::Models::CodeBundle::RuntimeContext::Runtime::OrSymbol) }
         def runtime
         end
 
-        sig { params(_: Symbol).returns(Symbol) }
+        sig do
+          params(_: Braintrust::Models::CodeBundle::RuntimeContext::Runtime::OrSymbol)
+            .returns(Braintrust::Models::CodeBundle::RuntimeContext::Runtime::OrSymbol)
+        end
         def runtime=(_)
         end
 
@@ -314,21 +363,29 @@ module Braintrust
         def version=(_)
         end
 
-        sig { params(runtime: Symbol, version: String).returns(T.attached_class) }
+        sig do
+          params(runtime: Braintrust::Models::CodeBundle::RuntimeContext::Runtime::OrSymbol, version: String)
+            .returns(T.attached_class)
+        end
         def self.new(runtime:, version:)
         end
 
-        sig { override.returns({runtime: Symbol, version: String}) }
+        sig do
+          override
+            .returns({runtime: Braintrust::Models::CodeBundle::RuntimeContext::Runtime::OrSymbol, version: String})
+        end
         def to_hash
         end
 
-        class Runtime < Braintrust::Enum
-          abstract!
+        module Runtime
+          extend Braintrust::Enum
 
-          Value = type_template(:out) { {fixed: Symbol} }
+          TaggedSymbol = T.type_alias { T.all(Symbol, Braintrust::Models::CodeBundle::RuntimeContext::Runtime) }
+          OrSymbol =
+            T.type_alias { T.any(Symbol, Braintrust::Models::CodeBundle::RuntimeContext::Runtime::TaggedSymbol) }
 
-          NODE = :node
-          PYTHON = :python
+          NODE = T.let(:node, Braintrust::Models::CodeBundle::RuntimeContext::Runtime::OrSymbol)
+          PYTHON = T.let(:python, Braintrust::Models::CodeBundle::RuntimeContext::Runtime::OrSymbol)
         end
       end
     end

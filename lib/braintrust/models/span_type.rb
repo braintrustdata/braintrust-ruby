@@ -2,10 +2,10 @@
 
 module Braintrust
   module Models
-    # @abstract
-    #
     # Type of the span, for display purposes only
-    class SpanType < Braintrust::Enum
+    module SpanType
+      extend Braintrust::Enum
+
       LLM = :llm
       SCORE = :score
       FUNCTION = :function

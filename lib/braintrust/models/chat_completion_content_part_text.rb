@@ -25,8 +25,9 @@ module Braintrust
 
       # def initialize: (Hash | Braintrust::BaseModel) -> void
 
-      # @abstract
-      class Type < Braintrust::Enum
+      module Type
+        extend Braintrust::Enum
+
         TEXT = :text
 
         finalize!

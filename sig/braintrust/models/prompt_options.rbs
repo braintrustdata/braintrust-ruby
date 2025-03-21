@@ -37,7 +37,9 @@ module Braintrust
         | Braintrust::Models::PromptOptions::Params::WindowAIModelParams
         | Braintrust::Models::PromptOptions::Params::JsCompletionParams
 
-      class Params < Braintrust::Union
+      module Params
+        extend Braintrust::Union
+
         type openai_model_params =
           {
             frequency_penalty: Float,
@@ -134,10 +136,14 @@ module Braintrust
             Braintrust::Models::PromptOptions::Params::OpenAIModelParams::FunctionCall::union_member0
             | Braintrust::Models::PromptOptions::Params::OpenAIModelParams::FunctionCall::Function
 
-          class FunctionCall < Braintrust::Union
+          module FunctionCall
+            extend Braintrust::Union
+
             type union_member0 = :auto | :none
 
-            class UnionMember0 < Braintrust::Enum
+            module UnionMember0
+              extend Braintrust::Enum
+
               AUTO: :auto
               NONE: :none
 
@@ -159,7 +165,9 @@ module Braintrust
 
           type reasoning_effort = :low | :medium | :high
 
-          class ReasoningEffort < Braintrust::Enum
+          module ReasoningEffort
+            extend Braintrust::Enum
+
             LOW: :low
             MEDIUM: :medium
             HIGH: :high
@@ -172,7 +180,9 @@ module Braintrust
             | Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ResponseFormat::JsonSchema
             | Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ResponseFormat::Text
 
-          class ResponseFormat < Braintrust::Union
+          module ResponseFormat
+            extend Braintrust::Union
+
             type json_object =
               {
                 type: Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ResponseFormat::JsonObject::type_
@@ -189,7 +199,9 @@ module Braintrust
 
               type type_ = :json_object
 
-              class Type < Braintrust::Enum
+              module Type
+                extend Braintrust::Enum
+
                 JSON_OBJECT: :json_object
 
                 def self.values: -> ::Array[Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ResponseFormat::JsonObject::type_]
@@ -248,7 +260,9 @@ module Braintrust
 
                 type schema = ::Hash[Symbol, top?] | String
 
-                class Schema < Braintrust::Union
+                module Schema
+                  extend Braintrust::Union
+
                   type object_map = ::Hash[Symbol, top?]
 
                   ObjectMap: object_map
@@ -259,7 +273,9 @@ module Braintrust
 
               type type_ = :json_schema
 
-              class Type < Braintrust::Enum
+              module Type
+                extend Braintrust::Enum
+
                 JSON_SCHEMA: :json_schema
 
                 def self.values: -> ::Array[Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ResponseFormat::JsonSchema::type_]
@@ -282,7 +298,9 @@ module Braintrust
 
               type type_ = :text
 
-              class Type < Braintrust::Enum
+              module Type
+                extend Braintrust::Enum
+
                 TEXT: :text
 
                 def self.values: -> ::Array[Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ResponseFormat::Text::type_]
@@ -296,10 +314,14 @@ module Braintrust
             Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ToolChoice::union_member0
             | Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ToolChoice::Function
 
-          class ToolChoice < Braintrust::Union
+          module ToolChoice
+            extend Braintrust::Union
+
             type union_member0 = :auto | :none | :required
 
-            class UnionMember0 < Braintrust::Enum
+            module UnionMember0
+              extend Braintrust::Enum
+
               AUTO: :auto
               NONE: :none
               REQUIRED: :required
@@ -337,7 +359,9 @@ module Braintrust
 
               type type_ = :function
 
-              class Type < Braintrust::Enum
+              module Type
+                extend Braintrust::Enum
+
                 FUNCTION: :function
 
                 def self.values: -> ::Array[Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ToolChoice::Function::type_]

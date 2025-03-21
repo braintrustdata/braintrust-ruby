@@ -12,7 +12,7 @@ module Braintrust
           project_id: String,
           slug: String,
           description: T.nilable(String),
-          function_type: T.nilable(Symbol),
+          function_type: T.nilable(Braintrust::Models::PromptCreateParams::FunctionType::OrSymbol),
           prompt_data: T.nilable(Braintrust::Models::PromptData),
           tags: T.nilable(T::Array[String]),
           request_options: T.nilable(T.any(Braintrust::RequestOptions, T::Hash[Symbol, T.anything]))
@@ -163,7 +163,7 @@ module Braintrust
           project_id: String,
           slug: String,
           description: T.nilable(String),
-          function_type: T.nilable(Symbol),
+          function_type: T.nilable(Braintrust::Models::PromptReplaceParams::FunctionType::OrSymbol),
           prompt_data: T.nilable(Braintrust::Models::PromptData),
           tags: T.nilable(T::Array[String]),
           request_options: T.nilable(T.any(Braintrust::RequestOptions, T::Hash[Symbol, T.anything]))

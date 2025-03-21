@@ -104,8 +104,9 @@ module Braintrust
 
       # def initialize: (Hash | Braintrust::BaseModel) -> void
 
-      # @abstract
-      class Message < Braintrust::Union
+      module Message
+        extend Braintrust::Union
+
         variant -> { Braintrust::Models::FunctionInvokeParams::Message::System }
 
         variant -> { Braintrust::Models::FunctionInvokeParams::Message::User }
@@ -151,8 +152,9 @@ module Braintrust
 
           # def initialize: (Hash | Braintrust::BaseModel) -> void
 
-          # @abstract
-          class Role < Braintrust::Enum
+          module Role
+            extend Braintrust::Enum
+
             SYSTEM = :system
 
             finalize!
@@ -192,15 +194,17 @@ module Braintrust
 
           # def initialize: (Hash | Braintrust::BaseModel) -> void
 
-          # @abstract
-          class Role < Braintrust::Enum
+          module Role
+            extend Braintrust::Enum
+
             USER = :user
 
             finalize!
           end
 
-          # @abstract
-          class Content < Braintrust::Union
+          module Content
+            extend Braintrust::Union
+
             Nested2DArray =
               Braintrust::ArrayOf[union: -> { Braintrust::Models::FunctionInvokeParams::Message::User::Content::Array }]
 
@@ -208,8 +212,9 @@ module Braintrust
 
             variant Braintrust::Models::FunctionInvokeParams::Message::User::Content::Nested2DArray
 
-            # @abstract
-            class Array < Braintrust::Union
+            module Array
+              extend Braintrust::Union
+
               variant -> { Braintrust::Models::ChatCompletionContentPartText }
 
               variant -> { Braintrust::Models::ChatCompletionContentPartImage }
@@ -270,8 +275,9 @@ module Braintrust
 
           # def initialize: (Hash | Braintrust::BaseModel) -> void
 
-          # @abstract
-          class Role < Braintrust::Enum
+          module Role
+            extend Braintrust::Enum
+
             ASSISTANT = :assistant
 
             finalize!
@@ -331,8 +337,9 @@ module Braintrust
 
           # def initialize: (Hash | Braintrust::BaseModel) -> void
 
-          # @abstract
-          class Role < Braintrust::Enum
+          module Role
+            extend Braintrust::Enum
+
             TOOL = :tool
 
             finalize!
@@ -368,8 +375,9 @@ module Braintrust
 
           # def initialize: (Hash | Braintrust::BaseModel) -> void
 
-          # @abstract
-          class Role < Braintrust::Enum
+          module Role
+            extend Braintrust::Enum
+
             FUNCTION = :function
 
             finalize!
@@ -395,8 +403,9 @@ module Braintrust
 
           # def initialize: (Hash | Braintrust::BaseModel) -> void
 
-          # @abstract
-          class Role < Braintrust::Enum
+          module Role
+            extend Braintrust::Enum
+
             MODEL = :model
 
             finalize!
@@ -410,20 +419,20 @@ module Braintrust
         #   end
       end
 
-      # @abstract
-      #
       # The mode format of the returned value (defaults to 'auto')
-      class Mode < Braintrust::Enum
+      module Mode
+        extend Braintrust::Enum
+
         AUTO = :auto
         PARALLEL = :parallel
 
         finalize!
       end
 
-      # @abstract
-      #
       # Options for tracing the function call
-      class Parent < Braintrust::Union
+      module Parent
+        extend Braintrust::Union
+
         # Span parent properties
         variant -> { Braintrust::Models::FunctionInvokeParams::Parent::SpanParentStruct }
 
@@ -469,8 +478,9 @@ module Braintrust
 
           # def initialize: (Hash | Braintrust::BaseModel) -> void
 
-          # @abstract
-          class ObjectType < Braintrust::Enum
+          module ObjectType
+            extend Braintrust::Enum
+
             PROJECT_LOGS = :project_logs
             EXPERIMENT = :experiment
             PLAYGROUND_LOGS = :playground_logs

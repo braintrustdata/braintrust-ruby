@@ -2,10 +2,10 @@
 
 module Braintrust
   module Models
-    # @abstract
-    #
     # The type of the object the environment variable is scoped for
-    class EnvVarObjectType < Braintrust::Enum
+    module EnvVarObjectType
+      extend Braintrust::Enum
+
       ORGANIZATION = :organization
       PROJECT = :project
       FUNCTION = :function

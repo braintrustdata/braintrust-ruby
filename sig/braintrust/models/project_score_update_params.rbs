@@ -40,7 +40,9 @@ module Braintrust
         | ::Hash[Symbol, Float]
         | ::Array[String]
 
-      class Categories < Braintrust::Union
+      module Categories
+        extend Braintrust::Union
+
         type project_score_category_array =
           ::Array[Braintrust::Models::ProjectScoreCategory]
 

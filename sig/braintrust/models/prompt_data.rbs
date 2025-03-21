@@ -79,7 +79,9 @@ module Braintrust
 
         type type_ = :llm_classifier
 
-        class Type < Braintrust::Enum
+        module Type
+          extend Braintrust::Enum
+
           LLM_CLASSIFIER: :llm_classifier
 
           def self.values: -> ::Array[Braintrust::Models::PromptData::Parser::type_]
@@ -90,7 +92,9 @@ module Braintrust
         Braintrust::Models::PromptData::Prompt::Completion
         | Braintrust::Models::PromptData::Prompt::Chat
 
-      class Prompt < Braintrust::Union
+      module Prompt
+        extend Braintrust::Union
+
         type completion =
           {
             content: String,
@@ -111,7 +115,9 @@ module Braintrust
 
           type type_ = :completion
 
-          class Type < Braintrust::Enum
+          module Type
+            extend Braintrust::Enum
+
             COMPLETION: :completion
 
             def self.values: -> ::Array[Braintrust::Models::PromptData::Prompt::Completion::type_]
@@ -150,7 +156,9 @@ module Braintrust
             | Braintrust::Models::PromptData::Prompt::Chat::Message::Function
             | Braintrust::Models::PromptData::Prompt::Chat::Message::Fallback
 
-          class Message < Braintrust::Union
+          module Message
+            extend Braintrust::Union
+
             type system_ =
               {
                 role: Braintrust::Models::PromptData::Prompt::Chat::Message::System::role,
@@ -179,7 +187,9 @@ module Braintrust
 
               type role = :system
 
-              class Role < Braintrust::Enum
+              module Role
+                extend Braintrust::Enum
+
                 SYSTEM: :system
 
                 def self.values: -> ::Array[Braintrust::Models::PromptData::Prompt::Chat::Message::System::role]
@@ -216,7 +226,9 @@ module Braintrust
 
               type role = :user
 
-              class Role < Braintrust::Enum
+              module Role
+                extend Braintrust::Enum
+
                 USER: :user
 
                 def self.values: -> ::Array[Braintrust::Models::PromptData::Prompt::Chat::Message::User::role]
@@ -226,7 +238,9 @@ module Braintrust
                 String
                 | ::Array[Braintrust::Models::PromptData::Prompt::Chat::Message::User::Content::array]
 
-              class Content < Braintrust::Union
+              module Content
+                extend Braintrust::Union
+
                 type nested2_d_array =
                   ::Array[Braintrust::Models::PromptData::Prompt::Chat::Message::User::Content::array]
 
@@ -236,7 +250,9 @@ module Braintrust
                   Braintrust::Models::ChatCompletionContentPartText
                   | Braintrust::Models::ChatCompletionContentPartImage
 
-                class Array < Braintrust::Union
+                module Array
+                  extend Braintrust::Union
+
                   def self.variants: -> [Braintrust::Models::ChatCompletionContentPartText, Braintrust::Models::ChatCompletionContentPartImage]
                 end
 
@@ -276,7 +292,9 @@ module Braintrust
 
               type role = :assistant
 
-              class Role < Braintrust::Enum
+              module Role
+                extend Braintrust::Enum
+
                 ASSISTANT: :assistant
 
                 def self.values: -> ::Array[Braintrust::Models::PromptData::Prompt::Chat::Message::Assistant::role]
@@ -323,7 +341,9 @@ module Braintrust
 
               type role = :tool
 
-              class Role < Braintrust::Enum
+              module Role
+                extend Braintrust::Enum
+
                 TOOL: :tool
 
                 def self.values: -> ::Array[Braintrust::Models::PromptData::Prompt::Chat::Message::Tool::role]
@@ -356,7 +376,9 @@ module Braintrust
 
               type role = :function
 
-              class Role < Braintrust::Enum
+              module Role
+                extend Braintrust::Enum
+
                 FUNCTION: :function
 
                 def self.values: -> ::Array[Braintrust::Models::PromptData::Prompt::Chat::Message::Function::role]
@@ -383,7 +405,9 @@ module Braintrust
 
               type role = :model
 
-              class Role < Braintrust::Enum
+              module Role
+                extend Braintrust::Enum
+
                 MODEL: :model
 
                 def self.values: -> ::Array[Braintrust::Models::PromptData::Prompt::Chat::Message::Fallback::role]
@@ -395,7 +419,9 @@ module Braintrust
 
           type type_ = :chat
 
-          class Type < Braintrust::Enum
+          module Type
+            extend Braintrust::Enum
+
             CHAT: :chat
 
             def self.values: -> ::Array[Braintrust::Models::PromptData::Prompt::Chat::type_]
@@ -409,7 +435,9 @@ module Braintrust
         Braintrust::Models::PromptData::ToolFunction::Function
         | Braintrust::Models::PromptData::ToolFunction::Global
 
-      class ToolFunction < Braintrust::Union
+      module ToolFunction
+        extend Braintrust::Union
+
         type function =
           {
             id: String,
@@ -430,7 +458,9 @@ module Braintrust
 
           type type_ = :function
 
-          class Type < Braintrust::Enum
+          module Type
+            extend Braintrust::Enum
+
             FUNCTION: :function
 
             def self.values: -> ::Array[Braintrust::Models::PromptData::ToolFunction::Function::type_]
@@ -457,7 +487,9 @@ module Braintrust
 
           type type_ = :global
 
-          class Type < Braintrust::Enum
+          module Type
+            extend Braintrust::Enum
+
             GLOBAL: :global
 
             def self.values: -> ::Array[Braintrust::Models::PromptData::ToolFunction::Global::type_]

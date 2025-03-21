@@ -94,8 +94,8 @@ module Braintrust
       def to_hash
       end
 
-      class Params < Braintrust::Union
-        abstract!
+      module Params
+        extend Braintrust::Union
 
         Variants =
           type_template(:out) do
@@ -122,7 +122,10 @@ module Braintrust
           sig do
             returns(
               T.nilable(
-                T.any(Symbol, Braintrust::Models::PromptOptions::Params::OpenAIModelParams::FunctionCall::Function)
+                T.any(
+                  Braintrust::Models::PromptOptions::Params::OpenAIModelParams::FunctionCall::UnionMember0::OrSymbol,
+                  Braintrust::Models::PromptOptions::Params::OpenAIModelParams::FunctionCall::Function
+                )
               )
             )
           end
@@ -131,10 +134,16 @@ module Braintrust
 
           sig do
             params(
-              _: T.any(Symbol, Braintrust::Models::PromptOptions::Params::OpenAIModelParams::FunctionCall::Function)
+              _: T.any(
+                Braintrust::Models::PromptOptions::Params::OpenAIModelParams::FunctionCall::UnionMember0::OrSymbol,
+                Braintrust::Models::PromptOptions::Params::OpenAIModelParams::FunctionCall::Function
+              )
             )
               .returns(
-                T.any(Symbol, Braintrust::Models::PromptOptions::Params::OpenAIModelParams::FunctionCall::Function)
+                T.any(
+                  Braintrust::Models::PromptOptions::Params::OpenAIModelParams::FunctionCall::UnionMember0::OrSymbol,
+                  Braintrust::Models::PromptOptions::Params::OpenAIModelParams::FunctionCall::Function
+                )
               )
           end
           def function_call=(_)
@@ -173,11 +182,18 @@ module Braintrust
           def presence_penalty=(_)
           end
 
-          sig { returns(T.nilable(Symbol)) }
+          sig do
+            returns(
+              T.nilable(Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ReasoningEffort::OrSymbol)
+            )
+          end
           def reasoning_effort
           end
 
-          sig { params(_: Symbol).returns(Symbol) }
+          sig do
+            params(_: Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ReasoningEffort::OrSymbol)
+              .returns(Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ReasoningEffort::OrSymbol)
+          end
           def reasoning_effort=(_)
           end
 
@@ -237,7 +253,10 @@ module Braintrust
           sig do
             returns(
               T.nilable(
-                T.any(Symbol, Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ToolChoice::Function)
+                T.any(
+                  Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ToolChoice::UnionMember0::OrSymbol,
+                  Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ToolChoice::Function
+                )
               )
             )
           end
@@ -246,9 +265,17 @@ module Braintrust
 
           sig do
             params(
-              _: T.any(Symbol, Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ToolChoice::Function)
+              _: T.any(
+                Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ToolChoice::UnionMember0::OrSymbol,
+                Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ToolChoice::Function
+              )
             )
-              .returns(T.any(Symbol, Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ToolChoice::Function))
+              .returns(
+                T.any(
+                  Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ToolChoice::UnionMember0::OrSymbol,
+                  Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ToolChoice::Function
+                )
+              )
           end
           def tool_choice=(_)
           end
@@ -272,12 +299,15 @@ module Braintrust
           sig do
             params(
               frequency_penalty: Float,
-              function_call: T.any(Symbol, Braintrust::Models::PromptOptions::Params::OpenAIModelParams::FunctionCall::Function),
+              function_call: T.any(
+                Braintrust::Models::PromptOptions::Params::OpenAIModelParams::FunctionCall::UnionMember0::OrSymbol,
+                Braintrust::Models::PromptOptions::Params::OpenAIModelParams::FunctionCall::Function
+              ),
               max_completion_tokens: Float,
               max_tokens: Float,
               n: Float,
               presence_penalty: Float,
-              reasoning_effort: Symbol,
+              reasoning_effort: Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ReasoningEffort::OrSymbol,
               response_format: T.nilable(
                 T.any(
                   Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ResponseFormat::JsonObject,
@@ -287,7 +317,10 @@ module Braintrust
               ),
               stop: T::Array[String],
               temperature: Float,
-              tool_choice: T.any(Symbol, Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ToolChoice::Function),
+              tool_choice: T.any(
+                Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ToolChoice::UnionMember0::OrSymbol,
+                Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ToolChoice::Function
+              ),
               top_p: Float,
               use_cache: T::Boolean
             )
@@ -315,12 +348,15 @@ module Braintrust
               .returns(
                 {
                   frequency_penalty: Float,
-                  function_call: T.any(Symbol, Braintrust::Models::PromptOptions::Params::OpenAIModelParams::FunctionCall::Function),
+                  function_call: T.any(
+                    Braintrust::Models::PromptOptions::Params::OpenAIModelParams::FunctionCall::UnionMember0::OrSymbol,
+                    Braintrust::Models::PromptOptions::Params::OpenAIModelParams::FunctionCall::Function
+                  ),
                   max_completion_tokens: Float,
                   max_tokens: Float,
                   n: Float,
                   presence_penalty: Float,
-                  reasoning_effort: Symbol,
+                  reasoning_effort: Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ReasoningEffort::OrSymbol,
                   response_format: T.nilable(
                     T.any(
                       Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ResponseFormat::JsonObject,
@@ -330,7 +366,10 @@ module Braintrust
                   ),
                   stop: T::Array[String],
                   temperature: Float,
-                  tool_choice: T.any(Symbol, Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ToolChoice::Function),
+                  tool_choice: T.any(
+                    Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ToolChoice::UnionMember0::OrSymbol,
+                    Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ToolChoice::Function
+                  ),
                   top_p: Float,
                   use_cache: T::Boolean
                 }
@@ -339,21 +378,42 @@ module Braintrust
           def to_hash
           end
 
-          class FunctionCall < Braintrust::Union
-            abstract!
+          module FunctionCall
+            extend Braintrust::Union
 
             Variants =
               type_template(:out) do
-                {fixed: T.any(Symbol, Braintrust::Models::PromptOptions::Params::OpenAIModelParams::FunctionCall::Function)}
+                {
+                  fixed: T.any(
+                    Braintrust::Models::PromptOptions::Params::OpenAIModelParams::FunctionCall::UnionMember0::OrSymbol,
+                    Braintrust::Models::PromptOptions::Params::OpenAIModelParams::FunctionCall::Function
+                  )
+                }
               end
 
-            class UnionMember0 < Braintrust::Enum
-              abstract!
+            module UnionMember0
+              extend Braintrust::Enum
 
-              Value = type_template(:out) { {fixed: Symbol} }
+              TaggedSymbol =
+                T.type_alias { T.all(Symbol, Braintrust::Models::PromptOptions::Params::OpenAIModelParams::FunctionCall::UnionMember0) }
+              OrSymbol =
+                T.type_alias do
+                  T.any(
+                    Symbol,
+                    Braintrust::Models::PromptOptions::Params::OpenAIModelParams::FunctionCall::UnionMember0::TaggedSymbol
+                  )
+                end
 
-              AUTO = :auto
-              NONE = :none
+              AUTO =
+                T.let(
+                  :auto,
+                  Braintrust::Models::PromptOptions::Params::OpenAIModelParams::FunctionCall::UnionMember0::OrSymbol
+                )
+              NONE =
+                T.let(
+                  :none,
+                  Braintrust::Models::PromptOptions::Params::OpenAIModelParams::FunctionCall::UnionMember0::OrSymbol
+                )
             end
 
             class Function < Braintrust::BaseModel
@@ -375,18 +435,24 @@ module Braintrust
             end
           end
 
-          class ReasoningEffort < Braintrust::Enum
-            abstract!
+          module ReasoningEffort
+            extend Braintrust::Enum
 
-            Value = type_template(:out) { {fixed: Symbol} }
+            TaggedSymbol =
+              T.type_alias { T.all(Symbol, Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ReasoningEffort) }
+            OrSymbol =
+              T.type_alias { T.any(Symbol, Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ReasoningEffort::TaggedSymbol) }
 
-            LOW = :low
-            MEDIUM = :medium
-            HIGH = :high
+            LOW =
+              T.let(:low, Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ReasoningEffort::OrSymbol)
+            MEDIUM =
+              T.let(:medium, Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ReasoningEffort::OrSymbol)
+            HIGH =
+              T.let(:high, Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ReasoningEffort::OrSymbol)
           end
 
-          class ResponseFormat < Braintrust::Union
-            abstract!
+          module ResponseFormat
+            extend Braintrust::Union
 
             Variants =
               type_template(:out) do
@@ -400,28 +466,65 @@ module Braintrust
               end
 
             class JsonObject < Braintrust::BaseModel
-              sig { returns(Symbol) }
+              sig do
+                returns(
+                  Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ResponseFormat::JsonObject::Type::OrSymbol
+                )
+              end
               def type
               end
 
-              sig { params(_: Symbol).returns(Symbol) }
+              sig do
+                params(
+                  _: Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ResponseFormat::JsonObject::Type::OrSymbol
+                )
+                  .returns(
+                    Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ResponseFormat::JsonObject::Type::OrSymbol
+                  )
+              end
               def type=(_)
               end
 
-              sig { params(type: Symbol).returns(T.attached_class) }
+              sig do
+                params(
+                  type: Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ResponseFormat::JsonObject::Type::OrSymbol
+                )
+                  .returns(T.attached_class)
+              end
               def self.new(type:)
               end
 
-              sig { override.returns({type: Symbol}) }
+              sig do
+                override
+                  .returns(
+                    {
+                      type: Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ResponseFormat::JsonObject::Type::OrSymbol
+                    }
+                  )
+              end
               def to_hash
               end
 
-              class Type < Braintrust::Enum
-                abstract!
+              module Type
+                extend Braintrust::Enum
 
-                Value = type_template(:out) { {fixed: Symbol} }
+                TaggedSymbol =
+                  T.type_alias do
+                    T.all(Symbol, Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ResponseFormat::JsonObject::Type)
+                  end
+                OrSymbol =
+                  T.type_alias do
+                    T.any(
+                      Symbol,
+                      Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ResponseFormat::JsonObject::Type::TaggedSymbol
+                    )
+                  end
 
-                JSON_OBJECT = :json_object
+                JSON_OBJECT =
+                  T.let(
+                    :json_object,
+                    Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ResponseFormat::JsonObject::Type::OrSymbol
+                  )
               end
             end
 
@@ -445,18 +548,29 @@ module Braintrust
               def json_schema=(_)
               end
 
-              sig { returns(Symbol) }
+              sig do
+                returns(
+                  Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ResponseFormat::JsonSchema::Type::OrSymbol
+                )
+              end
               def type
               end
 
-              sig { params(_: Symbol).returns(Symbol) }
+              sig do
+                params(
+                  _: Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ResponseFormat::JsonSchema::Type::OrSymbol
+                )
+                  .returns(
+                    Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ResponseFormat::JsonSchema::Type::OrSymbol
+                  )
+              end
               def type=(_)
               end
 
               sig do
                 params(
                   json_schema: Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ResponseFormat::JsonSchema::JsonSchema,
-                  type: Symbol
+                  type: Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ResponseFormat::JsonSchema::Type::OrSymbol
                 )
                   .returns(T.attached_class)
               end
@@ -468,7 +582,7 @@ module Braintrust
                   .returns(
                     {
                       json_schema: Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ResponseFormat::JsonSchema::JsonSchema,
-                      type: Symbol
+                      type: Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ResponseFormat::JsonSchema::Type::OrSymbol
                     }
                   )
               end
@@ -537,8 +651,8 @@ module Braintrust
                 def to_hash
                 end
 
-                class Schema < Braintrust::Union
-                  abstract!
+                module Schema
+                  extend Braintrust::Union
 
                   Variants = type_template(:out) do
                     {fixed: T.any(T::Hash[Symbol, T.nilable(T.anything)], String)}
@@ -551,56 +665,130 @@ module Braintrust
                 end
               end
 
-              class Type < Braintrust::Enum
-                abstract!
+              module Type
+                extend Braintrust::Enum
 
-                Value = type_template(:out) { {fixed: Symbol} }
+                TaggedSymbol =
+                  T.type_alias do
+                    T.all(Symbol, Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ResponseFormat::JsonSchema::Type)
+                  end
+                OrSymbol =
+                  T.type_alias do
+                    T.any(
+                      Symbol,
+                      Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ResponseFormat::JsonSchema::Type::TaggedSymbol
+                    )
+                  end
 
-                JSON_SCHEMA = :json_schema
+                JSON_SCHEMA =
+                  T.let(
+                    :json_schema,
+                    Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ResponseFormat::JsonSchema::Type::OrSymbol
+                  )
               end
             end
 
             class Text < Braintrust::BaseModel
-              sig { returns(Symbol) }
+              sig do
+                returns(
+                  Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ResponseFormat::Text::Type::OrSymbol
+                )
+              end
               def type
               end
 
-              sig { params(_: Symbol).returns(Symbol) }
+              sig do
+                params(
+                  _: Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ResponseFormat::Text::Type::OrSymbol
+                )
+                  .returns(
+                    Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ResponseFormat::Text::Type::OrSymbol
+                  )
+              end
               def type=(_)
               end
 
-              sig { params(type: Symbol).returns(T.attached_class) }
+              sig do
+                params(
+                  type: Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ResponseFormat::Text::Type::OrSymbol
+                )
+                  .returns(T.attached_class)
+              end
               def self.new(type:)
               end
 
-              sig { override.returns({type: Symbol}) }
+              sig do
+                override
+                  .returns(
+                    {type: Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ResponseFormat::Text::Type::OrSymbol}
+                  )
+              end
               def to_hash
               end
 
-              class Type < Braintrust::Enum
-                abstract!
+              module Type
+                extend Braintrust::Enum
 
-                Value = type_template(:out) { {fixed: Symbol} }
+                TaggedSymbol =
+                  T.type_alias { T.all(Symbol, Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ResponseFormat::Text::Type) }
+                OrSymbol =
+                  T.type_alias do
+                    T.any(
+                      Symbol,
+                      Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ResponseFormat::Text::Type::TaggedSymbol
+                    )
+                  end
 
-                TEXT = :text
+                TEXT =
+                  T.let(
+                    :text,
+                    Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ResponseFormat::Text::Type::OrSymbol
+                  )
               end
             end
           end
 
-          class ToolChoice < Braintrust::Union
-            abstract!
+          module ToolChoice
+            extend Braintrust::Union
 
             Variants =
-              type_template(:out) { {fixed: T.any(Symbol, Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ToolChoice::Function)} }
+              type_template(:out) do
+                {
+                  fixed: T.any(
+                    Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ToolChoice::UnionMember0::OrSymbol,
+                    Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ToolChoice::Function
+                  )
+                }
+              end
 
-            class UnionMember0 < Braintrust::Enum
-              abstract!
+            module UnionMember0
+              extend Braintrust::Enum
 
-              Value = type_template(:out) { {fixed: Symbol} }
+              TaggedSymbol =
+                T.type_alias { T.all(Symbol, Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ToolChoice::UnionMember0) }
+              OrSymbol =
+                T.type_alias do
+                  T.any(
+                    Symbol,
+                    Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ToolChoice::UnionMember0::TaggedSymbol
+                  )
+                end
 
-              AUTO = :auto
-              NONE = :none
-              REQUIRED = :required
+              AUTO =
+                T.let(
+                  :auto,
+                  Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ToolChoice::UnionMember0::OrSymbol
+                )
+              NONE =
+                T.let(
+                  :none,
+                  Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ToolChoice::UnionMember0::OrSymbol
+                )
+              REQUIRED =
+                T.let(
+                  :required,
+                  Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ToolChoice::UnionMember0::OrSymbol
+                )
             end
 
             class Function < Braintrust::BaseModel
@@ -615,18 +803,29 @@ module Braintrust
               def function=(_)
               end
 
-              sig { returns(Symbol) }
+              sig do
+                returns(
+                  Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ToolChoice::Function::Type::OrSymbol
+                )
+              end
               def type
               end
 
-              sig { params(_: Symbol).returns(Symbol) }
+              sig do
+                params(
+                  _: Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ToolChoice::Function::Type::OrSymbol
+                )
+                  .returns(
+                    Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ToolChoice::Function::Type::OrSymbol
+                  )
+              end
               def type=(_)
               end
 
               sig do
                 params(
                   function: Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ToolChoice::Function::Function,
-                  type: Symbol
+                  type: Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ToolChoice::Function::Type::OrSymbol
                 )
                   .returns(T.attached_class)
               end
@@ -638,7 +837,7 @@ module Braintrust
                   .returns(
                     {
                       function: Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ToolChoice::Function::Function,
-                      type: Symbol
+                      type: Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ToolChoice::Function::Type::OrSymbol
                     }
                   )
               end
@@ -663,12 +862,24 @@ module Braintrust
                 end
               end
 
-              class Type < Braintrust::Enum
-                abstract!
+              module Type
+                extend Braintrust::Enum
 
-                Value = type_template(:out) { {fixed: Symbol} }
+                TaggedSymbol =
+                  T.type_alias { T.all(Symbol, Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ToolChoice::Function::Type) }
+                OrSymbol =
+                  T.type_alias do
+                    T.any(
+                      Symbol,
+                      Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ToolChoice::Function::Type::TaggedSymbol
+                    )
+                  end
 
-                FUNCTION = :function
+                FUNCTION =
+                  T.let(
+                    :function,
+                    Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ToolChoice::Function::Type::OrSymbol
+                  )
               end
             end
           end

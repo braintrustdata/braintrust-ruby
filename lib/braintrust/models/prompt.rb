@@ -119,17 +119,18 @@ module Braintrust
 
       # def initialize: (Hash | Braintrust::BaseModel) -> void
 
-      # @abstract
-      #
       # A literal 'p' which identifies the object as a project prompt
-      class LogID < Braintrust::Enum
+      module LogID
+        extend Braintrust::Enum
+
         P = :p
 
         finalize!
       end
 
-      # @abstract
-      class FunctionType < Braintrust::Enum
+      module FunctionType
+        extend Braintrust::Enum
+
         LLM = :llm
         SCORER = :scorer
         TASK = :task

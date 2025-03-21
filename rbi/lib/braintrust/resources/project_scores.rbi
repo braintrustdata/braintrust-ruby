@@ -10,7 +10,7 @@ module Braintrust
         params(
           name: String,
           project_id: String,
-          score_type: Symbol,
+          score_type: Braintrust::Models::ProjectScoreType::OrSymbol,
           categories: T.nilable(
             T.any(T::Array[Braintrust::Models::ProjectScoreCategory], T::Hash[Symbol, Float], T::Array[String])
           ),
@@ -63,7 +63,7 @@ module Braintrust
           config: T.nilable(Braintrust::Models::ProjectScoreConfig),
           description: T.nilable(String),
           name: T.nilable(String),
-          score_type: T.nilable(Symbol),
+          score_type: T.nilable(Braintrust::Models::ProjectScoreType::OrSymbol),
           request_options: T.nilable(T.any(Braintrust::RequestOptions, T::Hash[Symbol, T.anything]))
         )
           .returns(Braintrust::Models::ProjectScore)
@@ -95,7 +95,10 @@ module Braintrust
           project_id: String,
           project_name: String,
           project_score_name: String,
-          score_type: T.any(Symbol, T::Array[Symbol]),
+          score_type: T.any(
+            Braintrust::Models::ProjectScoreType::OrSymbol,
+            T::Array[Braintrust::Models::ProjectScoreType::OrSymbol]
+          ),
           starting_after: String,
           request_options: T.nilable(T.any(Braintrust::RequestOptions, T::Hash[Symbol, T.anything]))
         )
@@ -155,7 +158,7 @@ module Braintrust
         params(
           name: String,
           project_id: String,
-          score_type: Symbol,
+          score_type: Braintrust::Models::ProjectScoreType::OrSymbol,
           categories: T.nilable(
             T.any(T::Array[Braintrust::Models::ProjectScoreCategory], T::Hash[Symbol, Float], T::Array[String])
           ),

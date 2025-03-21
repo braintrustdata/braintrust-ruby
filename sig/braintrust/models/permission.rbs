@@ -10,7 +10,9 @@ module Braintrust
       | :update_acls
       | :delete_acls
 
-    class Permission < Braintrust::Enum
+    module Permission
+      extend Braintrust::Enum
+
       CREATE: :create
       READ: :read
       UPDATE: :update
