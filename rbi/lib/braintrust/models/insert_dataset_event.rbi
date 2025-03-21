@@ -128,8 +128,8 @@ module Braintrust
       end
 
       sig do
-        params(_: T.nilable(Braintrust::Models::InsertDatasetEvent::Metadata))
-          .returns(T.nilable(Braintrust::Models::InsertDatasetEvent::Metadata))
+        params(_: T.nilable(T.any(Braintrust::Models::InsertDatasetEvent::Metadata, Braintrust::Util::AnyHash)))
+          .returns(T.nilable(T.any(Braintrust::Models::InsertDatasetEvent::Metadata, Braintrust::Util::AnyHash)))
       end
       def metadata=(_)
       end
@@ -140,8 +140,8 @@ module Braintrust
       end
 
       sig do
-        params(_: T.nilable(Braintrust::Models::ObjectReference))
-          .returns(T.nilable(Braintrust::Models::ObjectReference))
+        params(_: T.nilable(T.any(Braintrust::Models::ObjectReference, Braintrust::Util::AnyHash)))
+          .returns(T.nilable(T.any(Braintrust::Models::ObjectReference, Braintrust::Util::AnyHash)))
       end
       def origin=(_)
       end

@@ -44,7 +44,10 @@ module Braintrust
       def data_summary
       end
 
-      sig { params(_: T.nilable(Braintrust::Models::DataSummary)).returns(T.nilable(Braintrust::Models::DataSummary)) }
+      sig do
+        params(_: T.nilable(T.any(Braintrust::Models::DataSummary, Braintrust::Util::AnyHash)))
+          .returns(T.nilable(T.any(Braintrust::Models::DataSummary, Braintrust::Util::AnyHash)))
+      end
       def data_summary=(_)
       end
 

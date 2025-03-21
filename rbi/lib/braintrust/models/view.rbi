@@ -77,7 +77,10 @@ module Braintrust
       def options
       end
 
-      sig { params(_: T.nilable(Braintrust::Models::ViewOptions)).returns(T.nilable(Braintrust::Models::ViewOptions)) }
+      sig do
+        params(_: T.nilable(T.any(Braintrust::Models::ViewOptions, Braintrust::Util::AnyHash)))
+          .returns(T.nilable(T.any(Braintrust::Models::ViewOptions, Braintrust::Util::AnyHash)))
+      end
       def options=(_)
       end
 
@@ -95,7 +98,10 @@ module Braintrust
       def view_data
       end
 
-      sig { params(_: T.nilable(Braintrust::Models::ViewData)).returns(T.nilable(Braintrust::Models::ViewData)) }
+      sig do
+        params(_: T.nilable(T.any(Braintrust::Models::ViewData, Braintrust::Util::AnyHash)))
+          .returns(T.nilable(T.any(Braintrust::Models::ViewData, Braintrust::Util::AnyHash)))
+      end
       def view_data=(_)
       end
 

@@ -122,7 +122,10 @@ module Braintrust
       def repo_info
       end
 
-      sig { params(_: T.nilable(Braintrust::Models::RepoInfo)).returns(T.nilable(Braintrust::Models::RepoInfo)) }
+      sig do
+        params(_: T.nilable(T.any(Braintrust::Models::RepoInfo, Braintrust::Util::AnyHash)))
+          .returns(T.nilable(T.any(Braintrust::Models::RepoInfo, Braintrust::Util::AnyHash)))
+      end
       def repo_info=(_)
       end
 
