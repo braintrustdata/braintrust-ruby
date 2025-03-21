@@ -8,10 +8,10 @@ module Braintrust
       sig do
         params(
           object_id_: String,
-          object_type: Symbol,
+          object_type: Braintrust::Models::ACLObjectType::OrSymbol,
           group_id: T.nilable(String),
-          permission: T.nilable(Symbol),
-          restrict_object_type: T.nilable(Symbol),
+          permission: T.nilable(Braintrust::Models::Permission::OrSymbol),
+          restrict_object_type: T.nilable(Braintrust::Models::ACLObjectType::OrSymbol),
           role_id: T.nilable(String),
           user_id: T.nilable(String),
           request_options: T.nilable(T.any(Braintrust::RequestOptions, T::Hash[Symbol, T.anything]))
@@ -62,7 +62,7 @@ module Braintrust
       sig do
         params(
           object_id_: String,
-          object_type: Symbol,
+          object_type: Braintrust::Models::ACLObjectType::OrSymbol,
           ending_before: String,
           ids: T.any(String, T::Array[String]),
           limit: T.nilable(Integer),
@@ -154,10 +154,10 @@ module Braintrust
       sig do
         params(
           object_id_: String,
-          object_type: Symbol,
+          object_type: Braintrust::Models::ACLObjectType::OrSymbol,
           group_id: T.nilable(String),
-          permission: T.nilable(Symbol),
-          restrict_object_type: T.nilable(Symbol),
+          permission: T.nilable(Braintrust::Models::Permission::OrSymbol),
+          restrict_object_type: T.nilable(Braintrust::Models::ACLObjectType::OrSymbol),
           role_id: T.nilable(String),
           user_id: T.nilable(String),
           request_options: T.nilable(T.any(Braintrust::RequestOptions, T::Hash[Symbol, T.anything]))

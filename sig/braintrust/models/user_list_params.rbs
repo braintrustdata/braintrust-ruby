@@ -71,7 +71,9 @@ module Braintrust
 
       type email = String | ::Array[String]
 
-      class Email < Braintrust::Union
+      module Email
+        extend Braintrust::Union
+
         type string_array = ::Array[String]
 
         StringArray: string_array
@@ -81,7 +83,9 @@ module Braintrust
 
       type family_name = String | ::Array[String]
 
-      class FamilyName < Braintrust::Union
+      module FamilyName
+        extend Braintrust::Union
+
         type string_array = ::Array[String]
 
         StringArray: string_array
@@ -91,7 +95,9 @@ module Braintrust
 
       type given_name = String | ::Array[String]
 
-      class GivenName < Braintrust::Union
+      module GivenName
+        extend Braintrust::Union
+
         type string_array = ::Array[String]
 
         StringArray: string_array
@@ -101,7 +107,9 @@ module Braintrust
 
       type ids = String | ::Array[String]
 
-      class IDs < Braintrust::Union
+      module IDs
+        extend Braintrust::Union
+
         type string_array = ::Array[String]
 
         StringArray: string_array

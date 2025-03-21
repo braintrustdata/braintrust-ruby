@@ -86,11 +86,14 @@ module Braintrust
       end
 
       # The mode format of the returned value (defaults to 'auto')
-      sig { returns(T.nilable(Symbol)) }
+      sig { returns(T.nilable(Braintrust::Models::FunctionInvokeParams::Mode::OrSymbol)) }
       def mode
       end
 
-      sig { params(_: T.nilable(Symbol)).returns(T.nilable(Symbol)) }
+      sig do
+        params(_: T.nilable(Braintrust::Models::FunctionInvokeParams::Mode::OrSymbol))
+          .returns(T.nilable(Braintrust::Models::FunctionInvokeParams::Mode::OrSymbol))
+      end
       def mode=(_)
       end
 
@@ -140,7 +143,7 @@ module Braintrust
           )
           ],
           metadata: T.nilable(T::Hash[Symbol, T.nilable(T.anything)]),
-          mode: T.nilable(Symbol),
+          mode: T.nilable(Braintrust::Models::FunctionInvokeParams::Mode::OrSymbol),
           parent: T.any(Braintrust::Models::FunctionInvokeParams::Parent::SpanParentStruct, String),
           stream: T.nilable(T::Boolean),
           version: String,
@@ -178,7 +181,7 @@ module Braintrust
               )
               ],
               metadata: T.nilable(T::Hash[Symbol, T.nilable(T.anything)]),
-              mode: T.nilable(Symbol),
+              mode: T.nilable(Braintrust::Models::FunctionInvokeParams::Mode::OrSymbol),
               parent: T.any(Braintrust::Models::FunctionInvokeParams::Parent::SpanParentStruct, String),
               stream: T.nilable(T::Boolean),
               version: String,
@@ -189,8 +192,8 @@ module Braintrust
       def to_hash
       end
 
-      class Message < Braintrust::Union
-        abstract!
+      module Message
+        extend Braintrust::Union
 
         Variants =
           type_template(:out) do
@@ -207,11 +210,14 @@ module Braintrust
           end
 
         class System < Braintrust::BaseModel
-          sig { returns(Symbol) }
+          sig { returns(Braintrust::Models::FunctionInvokeParams::Message::System::Role::OrSymbol) }
           def role
           end
 
-          sig { params(_: Symbol).returns(Symbol) }
+          sig do
+            params(_: Braintrust::Models::FunctionInvokeParams::Message::System::Role::OrSymbol)
+              .returns(Braintrust::Models::FunctionInvokeParams::Message::System::Role::OrSymbol)
+          end
           def role=(_)
           end
 
@@ -231,29 +237,47 @@ module Braintrust
           def name=(_)
           end
 
-          sig { params(role: Symbol, content: String, name: String).returns(T.attached_class) }
+          sig do
+            params(
+              role: Braintrust::Models::FunctionInvokeParams::Message::System::Role::OrSymbol,
+              content: String,
+              name: String
+            )
+              .returns(T.attached_class)
+          end
           def self.new(role:, content: nil, name: nil)
           end
 
-          sig { override.returns({role: Symbol, content: String, name: String}) }
+          sig do
+            override
+              .returns(
+                {role: Braintrust::Models::FunctionInvokeParams::Message::System::Role::OrSymbol, content: String, name: String}
+              )
+          end
           def to_hash
           end
 
-          class Role < Braintrust::Enum
-            abstract!
+          module Role
+            extend Braintrust::Enum
 
-            Value = type_template(:out) { {fixed: Symbol} }
+            TaggedSymbol =
+              T.type_alias { T.all(Symbol, Braintrust::Models::FunctionInvokeParams::Message::System::Role) }
+            OrSymbol =
+              T.type_alias { T.any(Symbol, Braintrust::Models::FunctionInvokeParams::Message::System::Role::TaggedSymbol) }
 
-            SYSTEM = :system
+            SYSTEM = T.let(:system, Braintrust::Models::FunctionInvokeParams::Message::System::Role::OrSymbol)
           end
         end
 
         class User < Braintrust::BaseModel
-          sig { returns(Symbol) }
+          sig { returns(Braintrust::Models::FunctionInvokeParams::Message::User::Role::OrSymbol) }
           def role
           end
 
-          sig { params(_: Symbol).returns(Symbol) }
+          sig do
+            params(_: Braintrust::Models::FunctionInvokeParams::Message::User::Role::OrSymbol)
+              .returns(Braintrust::Models::FunctionInvokeParams::Message::User::Role::OrSymbol)
+          end
           def role=(_)
           end
 
@@ -312,7 +336,7 @@ module Braintrust
 
           sig do
             params(
-              role: Symbol,
+              role: Braintrust::Models::FunctionInvokeParams::Message::User::Role::OrSymbol,
               content: T.any(
                 String,
                 T::Array[
@@ -333,7 +357,7 @@ module Braintrust
             override
               .returns(
                 {
-                  role: Symbol,
+                  role: Braintrust::Models::FunctionInvokeParams::Message::User::Role::OrSymbol,
                   content: T.any(
                     String,
                     T::Array[
@@ -350,16 +374,19 @@ module Braintrust
           def to_hash
           end
 
-          class Role < Braintrust::Enum
-            abstract!
+          module Role
+            extend Braintrust::Enum
 
-            Value = type_template(:out) { {fixed: Symbol} }
+            TaggedSymbol =
+              T.type_alias { T.all(Symbol, Braintrust::Models::FunctionInvokeParams::Message::User::Role) }
+            OrSymbol =
+              T.type_alias { T.any(Symbol, Braintrust::Models::FunctionInvokeParams::Message::User::Role::TaggedSymbol) }
 
-            USER = :user
+            USER = T.let(:user, Braintrust::Models::FunctionInvokeParams::Message::User::Role::OrSymbol)
           end
 
-          class Content < Braintrust::Union
-            abstract!
+          module Content
+            extend Braintrust::Union
 
             Variants =
               type_template(:out) do
@@ -382,8 +409,8 @@ module Braintrust
                 Braintrust::Converter
               )
 
-            class Array < Braintrust::Union
-              abstract!
+            module Array
+              extend Braintrust::Union
 
               Variants =
                 type_template(:out) do
@@ -399,11 +426,14 @@ module Braintrust
         end
 
         class Assistant < Braintrust::BaseModel
-          sig { returns(Symbol) }
+          sig { returns(Braintrust::Models::FunctionInvokeParams::Message::Assistant::Role::OrSymbol) }
           def role
           end
 
-          sig { params(_: Symbol).returns(Symbol) }
+          sig do
+            params(_: Braintrust::Models::FunctionInvokeParams::Message::Assistant::Role::OrSymbol)
+              .returns(Braintrust::Models::FunctionInvokeParams::Message::Assistant::Role::OrSymbol)
+          end
           def role=(_)
           end
 
@@ -447,7 +477,7 @@ module Braintrust
 
           sig do
             params(
-              role: Symbol,
+              role: Braintrust::Models::FunctionInvokeParams::Message::Assistant::Role::OrSymbol,
               content: T.nilable(String),
               function_call: T.nilable(Braintrust::Models::FunctionInvokeParams::Message::Assistant::FunctionCall),
               name: T.nilable(String),
@@ -462,7 +492,7 @@ module Braintrust
             override
               .returns(
                 {
-                  role: Symbol,
+                  role: Braintrust::Models::FunctionInvokeParams::Message::Assistant::Role::OrSymbol,
                   content: T.nilable(String),
                   function_call: T.nilable(Braintrust::Models::FunctionInvokeParams::Message::Assistant::FunctionCall),
                   name: T.nilable(String),
@@ -473,12 +503,16 @@ module Braintrust
           def to_hash
           end
 
-          class Role < Braintrust::Enum
-            abstract!
+          module Role
+            extend Braintrust::Enum
 
-            Value = type_template(:out) { {fixed: Symbol} }
+            TaggedSymbol =
+              T.type_alias { T.all(Symbol, Braintrust::Models::FunctionInvokeParams::Message::Assistant::Role) }
+            OrSymbol =
+              T.type_alias { T.any(Symbol, Braintrust::Models::FunctionInvokeParams::Message::Assistant::Role::TaggedSymbol) }
 
-            ASSISTANT = :assistant
+            ASSISTANT =
+              T.let(:assistant, Braintrust::Models::FunctionInvokeParams::Message::Assistant::Role::OrSymbol)
           end
 
           class FunctionCall < Braintrust::BaseModel
@@ -509,11 +543,14 @@ module Braintrust
         end
 
         class Tool < Braintrust::BaseModel
-          sig { returns(Symbol) }
+          sig { returns(Braintrust::Models::FunctionInvokeParams::Message::Tool::Role::OrSymbol) }
           def role
           end
 
-          sig { params(_: Symbol).returns(Symbol) }
+          sig do
+            params(_: Braintrust::Models::FunctionInvokeParams::Message::Tool::Role::OrSymbol)
+              .returns(Braintrust::Models::FunctionInvokeParams::Message::Tool::Role::OrSymbol)
+          end
           def role=(_)
           end
 
@@ -533,20 +570,39 @@ module Braintrust
           def tool_call_id=(_)
           end
 
-          sig { params(role: Symbol, content: String, tool_call_id: String).returns(T.attached_class) }
+          sig do
+            params(
+              role: Braintrust::Models::FunctionInvokeParams::Message::Tool::Role::OrSymbol,
+              content: String,
+              tool_call_id: String
+            )
+              .returns(T.attached_class)
+          end
           def self.new(role:, content: nil, tool_call_id: nil)
           end
 
-          sig { override.returns({role: Symbol, content: String, tool_call_id: String}) }
+          sig do
+            override
+              .returns(
+                {
+                  role: Braintrust::Models::FunctionInvokeParams::Message::Tool::Role::OrSymbol,
+                  content: String,
+                  tool_call_id: String
+                }
+              )
+          end
           def to_hash
           end
 
-          class Role < Braintrust::Enum
-            abstract!
+          module Role
+            extend Braintrust::Enum
 
-            Value = type_template(:out) { {fixed: Symbol} }
+            TaggedSymbol =
+              T.type_alias { T.all(Symbol, Braintrust::Models::FunctionInvokeParams::Message::Tool::Role) }
+            OrSymbol =
+              T.type_alias { T.any(Symbol, Braintrust::Models::FunctionInvokeParams::Message::Tool::Role::TaggedSymbol) }
 
-            TOOL = :tool
+            TOOL = T.let(:tool, Braintrust::Models::FunctionInvokeParams::Message::Tool::Role::OrSymbol)
           end
         end
 
@@ -559,11 +615,14 @@ module Braintrust
           def name=(_)
           end
 
-          sig { returns(Symbol) }
+          sig { returns(Braintrust::Models::FunctionInvokeParams::Message::Function::Role::OrSymbol) }
           def role
           end
 
-          sig { params(_: Symbol).returns(Symbol) }
+          sig do
+            params(_: Braintrust::Models::FunctionInvokeParams::Message::Function::Role::OrSymbol)
+              .returns(Braintrust::Models::FunctionInvokeParams::Message::Function::Role::OrSymbol)
+          end
           def role=(_)
           end
 
@@ -575,29 +634,51 @@ module Braintrust
           def content=(_)
           end
 
-          sig { params(name: String, role: Symbol, content: String).returns(T.attached_class) }
+          sig do
+            params(
+              name: String,
+              role: Braintrust::Models::FunctionInvokeParams::Message::Function::Role::OrSymbol,
+              content: String
+            )
+              .returns(T.attached_class)
+          end
           def self.new(name:, role:, content: nil)
           end
 
-          sig { override.returns({name: String, role: Symbol, content: String}) }
+          sig do
+            override
+              .returns(
+                {
+                  name: String,
+                  role: Braintrust::Models::FunctionInvokeParams::Message::Function::Role::OrSymbol,
+                  content: String
+                }
+              )
+          end
           def to_hash
           end
 
-          class Role < Braintrust::Enum
-            abstract!
+          module Role
+            extend Braintrust::Enum
 
-            Value = type_template(:out) { {fixed: Symbol} }
+            TaggedSymbol =
+              T.type_alias { T.all(Symbol, Braintrust::Models::FunctionInvokeParams::Message::Function::Role) }
+            OrSymbol =
+              T.type_alias { T.any(Symbol, Braintrust::Models::FunctionInvokeParams::Message::Function::Role::TaggedSymbol) }
 
-            FUNCTION = :function
+            FUNCTION = T.let(:function, Braintrust::Models::FunctionInvokeParams::Message::Function::Role::OrSymbol)
           end
         end
 
         class Fallback < Braintrust::BaseModel
-          sig { returns(Symbol) }
+          sig { returns(Braintrust::Models::FunctionInvokeParams::Message::Fallback::Role::OrSymbol) }
           def role
           end
 
-          sig { params(_: Symbol).returns(Symbol) }
+          sig do
+            params(_: Braintrust::Models::FunctionInvokeParams::Message::Fallback::Role::OrSymbol)
+              .returns(Braintrust::Models::FunctionInvokeParams::Message::Fallback::Role::OrSymbol)
+          end
           def role=(_)
           end
 
@@ -609,37 +690,55 @@ module Braintrust
           def content=(_)
           end
 
-          sig { params(role: Symbol, content: T.nilable(String)).returns(T.attached_class) }
+          sig do
+            params(
+              role: Braintrust::Models::FunctionInvokeParams::Message::Fallback::Role::OrSymbol,
+              content: T.nilable(String)
+            )
+              .returns(T.attached_class)
+          end
           def self.new(role:, content: nil)
           end
 
-          sig { override.returns({role: Symbol, content: T.nilable(String)}) }
+          sig do
+            override
+              .returns(
+                {
+                  role: Braintrust::Models::FunctionInvokeParams::Message::Fallback::Role::OrSymbol,
+                  content: T.nilable(String)
+                }
+              )
+          end
           def to_hash
           end
 
-          class Role < Braintrust::Enum
-            abstract!
+          module Role
+            extend Braintrust::Enum
 
-            Value = type_template(:out) { {fixed: Symbol} }
+            TaggedSymbol =
+              T.type_alias { T.all(Symbol, Braintrust::Models::FunctionInvokeParams::Message::Fallback::Role) }
+            OrSymbol =
+              T.type_alias { T.any(Symbol, Braintrust::Models::FunctionInvokeParams::Message::Fallback::Role::TaggedSymbol) }
 
-            MODEL = :model
+            MODEL = T.let(:model, Braintrust::Models::FunctionInvokeParams::Message::Fallback::Role::OrSymbol)
           end
         end
       end
 
       # The mode format of the returned value (defaults to 'auto')
-      class Mode < Braintrust::Enum
-        abstract!
+      module Mode
+        extend Braintrust::Enum
 
-        Value = type_template(:out) { {fixed: Symbol} }
+        TaggedSymbol = T.type_alias { T.all(Symbol, Braintrust::Models::FunctionInvokeParams::Mode) }
+        OrSymbol = T.type_alias { T.any(Symbol, Braintrust::Models::FunctionInvokeParams::Mode::TaggedSymbol) }
 
-        AUTO = :auto
-        PARALLEL = :parallel
+        AUTO = T.let(:auto, Braintrust::Models::FunctionInvokeParams::Mode::OrSymbol)
+        PARALLEL = T.let(:parallel, Braintrust::Models::FunctionInvokeParams::Mode::OrSymbol)
       end
 
       # Options for tracing the function call
-      class Parent < Braintrust::Union
-        abstract!
+      module Parent
+        extend Braintrust::Union
 
         Variants =
           type_template(:out) { {fixed: T.any(Braintrust::Models::FunctionInvokeParams::Parent::SpanParentStruct, String)} }
@@ -654,11 +753,14 @@ module Braintrust
           def object_id_=(_)
           end
 
-          sig { returns(Symbol) }
+          sig { returns(Braintrust::Models::FunctionInvokeParams::Parent::SpanParentStruct::ObjectType::OrSymbol) }
           def object_type
           end
 
-          sig { params(_: Symbol).returns(Symbol) }
+          sig do
+            params(_: Braintrust::Models::FunctionInvokeParams::Parent::SpanParentStruct::ObjectType::OrSymbol)
+              .returns(Braintrust::Models::FunctionInvokeParams::Parent::SpanParentStruct::ObjectType::OrSymbol)
+          end
           def object_type=(_)
           end
 
@@ -690,7 +792,7 @@ module Braintrust
           sig do
             params(
               object_id_: String,
-              object_type: Symbol,
+              object_type: Braintrust::Models::FunctionInvokeParams::Parent::SpanParentStruct::ObjectType::OrSymbol,
               propagated_event: T.nilable(T::Hash[Symbol, T.nilable(T.anything)]),
               row_ids: T.nilable(Braintrust::Models::FunctionInvokeParams::Parent::SpanParentStruct::RowIDs)
             )
@@ -704,7 +806,7 @@ module Braintrust
               .returns(
                 {
                   object_id_: String,
-                  object_type: Symbol,
+                  object_type: Braintrust::Models::FunctionInvokeParams::Parent::SpanParentStruct::ObjectType::OrSymbol,
                   propagated_event: T.nilable(T::Hash[Symbol, T.nilable(T.anything)]),
                   row_ids: T.nilable(Braintrust::Models::FunctionInvokeParams::Parent::SpanParentStruct::RowIDs)
                 }
@@ -713,14 +815,34 @@ module Braintrust
           def to_hash
           end
 
-          class ObjectType < Braintrust::Enum
-            abstract!
+          module ObjectType
+            extend Braintrust::Enum
 
-            Value = type_template(:out) { {fixed: Symbol} }
+            TaggedSymbol =
+              T.type_alias { T.all(Symbol, Braintrust::Models::FunctionInvokeParams::Parent::SpanParentStruct::ObjectType) }
+            OrSymbol =
+              T.type_alias do
+                T.any(
+                  Symbol,
+                  Braintrust::Models::FunctionInvokeParams::Parent::SpanParentStruct::ObjectType::TaggedSymbol
+                )
+              end
 
-            PROJECT_LOGS = :project_logs
-            EXPERIMENT = :experiment
-            PLAYGROUND_LOGS = :playground_logs
+            PROJECT_LOGS =
+              T.let(
+                :project_logs,
+                Braintrust::Models::FunctionInvokeParams::Parent::SpanParentStruct::ObjectType::OrSymbol
+              )
+            EXPERIMENT =
+              T.let(
+                :experiment,
+                Braintrust::Models::FunctionInvokeParams::Parent::SpanParentStruct::ObjectType::OrSymbol
+              )
+            PLAYGROUND_LOGS =
+              T.let(
+                :playground_logs,
+                Braintrust::Models::FunctionInvokeParams::Parent::SpanParentStruct::ObjectType::OrSymbol
+              )
           end
 
           class RowIDs < Braintrust::BaseModel

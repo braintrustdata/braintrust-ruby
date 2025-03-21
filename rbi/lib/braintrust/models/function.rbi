@@ -56,11 +56,14 @@ module Braintrust
       end
 
       # A literal 'p' which identifies the object as a project prompt
-      sig { returns(Symbol) }
+      sig { returns(Braintrust::Models::Function::LogID::TaggedSymbol) }
       def log_id
       end
 
-      sig { params(_: Symbol).returns(Symbol) }
+      sig do
+        params(_: Braintrust::Models::Function::LogID::TaggedSymbol)
+          .returns(Braintrust::Models::Function::LogID::TaggedSymbol)
+      end
       def log_id=(_)
       end
 
@@ -130,11 +133,14 @@ module Braintrust
       def function_schema=(_)
       end
 
-      sig { returns(T.nilable(Symbol)) }
+      sig { returns(T.nilable(Braintrust::Models::Function::FunctionType::TaggedSymbol)) }
       def function_type
       end
 
-      sig { params(_: T.nilable(Symbol)).returns(T.nilable(Symbol)) }
+      sig do
+        params(_: T.nilable(Braintrust::Models::Function::FunctionType::TaggedSymbol))
+          .returns(T.nilable(Braintrust::Models::Function::FunctionType::TaggedSymbol))
+      end
       def function_type=(_)
       end
 
@@ -188,7 +194,7 @@ module Braintrust
             Braintrust::Models::Function::FunctionData::Code,
             Braintrust::Models::Function::FunctionData::Global
           ),
-          log_id: Symbol,
+          log_id: Braintrust::Models::Function::LogID::TaggedSymbol,
           name: String,
           org_id: String,
           project_id: String,
@@ -196,7 +202,7 @@ module Braintrust
           created: T.nilable(Time),
           description: T.nilable(String),
           function_schema: T.nilable(Braintrust::Models::Function::FunctionSchema),
-          function_type: T.nilable(Symbol),
+          function_type: T.nilable(Braintrust::Models::Function::FunctionType::TaggedSymbol),
           metadata: T.nilable(T::Hash[Symbol, T.nilable(T.anything)]),
           origin: T.nilable(Braintrust::Models::Function::Origin),
           prompt_data: T.nilable(Braintrust::Models::PromptData),
@@ -235,7 +241,7 @@ module Braintrust
                 Braintrust::Models::Function::FunctionData::Code,
                 Braintrust::Models::Function::FunctionData::Global
               ),
-              log_id: Symbol,
+              log_id: Braintrust::Models::Function::LogID::TaggedSymbol,
               name: String,
               org_id: String,
               project_id: String,
@@ -243,7 +249,7 @@ module Braintrust
               created: T.nilable(Time),
               description: T.nilable(String),
               function_schema: T.nilable(Braintrust::Models::Function::FunctionSchema),
-              function_type: T.nilable(Symbol),
+              function_type: T.nilable(Braintrust::Models::Function::FunctionType::TaggedSymbol),
               metadata: T.nilable(T::Hash[Symbol, T.nilable(T.anything)]),
               origin: T.nilable(Braintrust::Models::Function::Origin),
               prompt_data: T.nilable(Braintrust::Models::PromptData),
@@ -254,8 +260,8 @@ module Braintrust
       def to_hash
       end
 
-      class FunctionData < Braintrust::Union
-        abstract!
+      module FunctionData
+        extend Braintrust::Union
 
         Variants =
           type_template(:out) do
@@ -269,28 +275,36 @@ module Braintrust
           end
 
         class Prompt < Braintrust::BaseModel
-          sig { returns(Symbol) }
+          sig { returns(Braintrust::Models::Function::FunctionData::Prompt::Type::TaggedSymbol) }
           def type
           end
 
-          sig { params(_: Symbol).returns(Symbol) }
+          sig do
+            params(_: Braintrust::Models::Function::FunctionData::Prompt::Type::TaggedSymbol)
+              .returns(Braintrust::Models::Function::FunctionData::Prompt::Type::TaggedSymbol)
+          end
           def type=(_)
           end
 
-          sig { params(type: Symbol).returns(T.attached_class) }
+          sig do
+            params(type: Braintrust::Models::Function::FunctionData::Prompt::Type::TaggedSymbol)
+              .returns(T.attached_class)
+          end
           def self.new(type:)
           end
 
-          sig { override.returns({type: Symbol}) }
+          sig { override.returns({type: Braintrust::Models::Function::FunctionData::Prompt::Type::TaggedSymbol}) }
           def to_hash
           end
 
-          class Type < Braintrust::Enum
-            abstract!
+          module Type
+            extend Braintrust::Enum
 
-            Value = type_template(:out) { {fixed: Symbol} }
+            TaggedSymbol = T.type_alias { T.all(Symbol, Braintrust::Models::Function::FunctionData::Prompt::Type) }
+            OrSymbol =
+              T.type_alias { T.any(Symbol, Braintrust::Models::Function::FunctionData::Prompt::Type::TaggedSymbol) }
 
-            PROMPT = :prompt
+            PROMPT = T.let(:prompt, Braintrust::Models::Function::FunctionData::Prompt::Type::TaggedSymbol)
           end
         end
 
@@ -323,11 +337,14 @@ module Braintrust
           def data=(_)
           end
 
-          sig { returns(Symbol) }
+          sig { returns(Braintrust::Models::Function::FunctionData::Code::Type::TaggedSymbol) }
           def type
           end
 
-          sig { params(_: Symbol).returns(Symbol) }
+          sig do
+            params(_: Braintrust::Models::Function::FunctionData::Code::Type::TaggedSymbol)
+              .returns(Braintrust::Models::Function::FunctionData::Code::Type::TaggedSymbol)
+          end
           def type=(_)
           end
 
@@ -337,7 +354,7 @@ module Braintrust
                 Braintrust::Models::Function::FunctionData::Code::Data::Bundle,
                 Braintrust::Models::Function::FunctionData::Code::Data::Inline
               ),
-              type: Symbol
+              type: Braintrust::Models::Function::FunctionData::Code::Type::TaggedSymbol
             )
               .returns(T.attached_class)
           end
@@ -352,15 +369,15 @@ module Braintrust
                     Braintrust::Models::Function::FunctionData::Code::Data::Bundle,
                     Braintrust::Models::Function::FunctionData::Code::Data::Inline
                   ),
-                  type: Symbol
+                  type: Braintrust::Models::Function::FunctionData::Code::Type::TaggedSymbol
                 }
               )
           end
           def to_hash
           end
 
-          class Data < Braintrust::Union
-            abstract!
+          module Data
+            extend Braintrust::Union
 
             Variants =
               type_template(:out) do
@@ -373,28 +390,41 @@ module Braintrust
               end
 
             class Bundle < Braintrust::Models::CodeBundle
-              sig { returns(Symbol) }
+              sig { returns(Braintrust::Models::Function::FunctionData::Code::Data::Bundle::Type::TaggedSymbol) }
               def type
               end
 
-              sig { params(_: Symbol).returns(Symbol) }
+              sig do
+                params(_: Braintrust::Models::Function::FunctionData::Code::Data::Bundle::Type::TaggedSymbol)
+                  .returns(Braintrust::Models::Function::FunctionData::Code::Data::Bundle::Type::TaggedSymbol)
+              end
               def type=(_)
               end
 
-              sig { params(type: Symbol).returns(T.attached_class) }
+              sig do
+                params(type: Braintrust::Models::Function::FunctionData::Code::Data::Bundle::Type::TaggedSymbol)
+                  .returns(T.attached_class)
+              end
               def self.new(type:)
               end
 
-              sig { override.returns({type: Symbol}) }
+              sig do
+                override
+                  .returns({type: Braintrust::Models::Function::FunctionData::Code::Data::Bundle::Type::TaggedSymbol})
+              end
               def to_hash
               end
 
-              class Type < Braintrust::Enum
-                abstract!
+              module Type
+                extend Braintrust::Enum
 
-                Value = type_template(:out) { {fixed: Symbol} }
+                TaggedSymbol =
+                  T.type_alias { T.all(Symbol, Braintrust::Models::Function::FunctionData::Code::Data::Bundle::Type) }
+                OrSymbol =
+                  T.type_alias { T.any(Symbol, Braintrust::Models::Function::FunctionData::Code::Data::Bundle::Type::TaggedSymbol) }
 
-                BUNDLE = :bundle
+                BUNDLE =
+                  T.let(:bundle, Braintrust::Models::Function::FunctionData::Code::Data::Bundle::Type::TaggedSymbol)
               end
             end
 
@@ -418,11 +448,14 @@ module Braintrust
               def runtime_context=(_)
               end
 
-              sig { returns(Symbol) }
+              sig { returns(Braintrust::Models::Function::FunctionData::Code::Data::Inline::Type::TaggedSymbol) }
               def type
               end
 
-              sig { params(_: Symbol).returns(Symbol) }
+              sig do
+                params(_: Braintrust::Models::Function::FunctionData::Code::Data::Inline::Type::TaggedSymbol)
+                  .returns(Braintrust::Models::Function::FunctionData::Code::Data::Inline::Type::TaggedSymbol)
+              end
               def type=(_)
               end
 
@@ -430,7 +463,7 @@ module Braintrust
                 params(
                   code: String,
                   runtime_context: Braintrust::Models::Function::FunctionData::Code::Data::Inline::RuntimeContext,
-                  type: Symbol
+                  type: Braintrust::Models::Function::FunctionData::Code::Data::Inline::Type::TaggedSymbol
                 )
                   .returns(T.attached_class)
               end
@@ -443,7 +476,7 @@ module Braintrust
                     {
                       code: String,
                       runtime_context: Braintrust::Models::Function::FunctionData::Code::Data::Inline::RuntimeContext,
-                      type: Symbol
+                      type: Braintrust::Models::Function::FunctionData::Code::Data::Inline::Type::TaggedSymbol
                     }
                   )
               end
@@ -451,11 +484,22 @@ module Braintrust
               end
 
               class RuntimeContext < Braintrust::BaseModel
-                sig { returns(Symbol) }
+                sig do
+                  returns(
+                    Braintrust::Models::Function::FunctionData::Code::Data::Inline::RuntimeContext::Runtime::TaggedSymbol
+                  )
+                end
                 def runtime
                 end
 
-                sig { params(_: Symbol).returns(Symbol) }
+                sig do
+                  params(
+                    _: Braintrust::Models::Function::FunctionData::Code::Data::Inline::RuntimeContext::Runtime::TaggedSymbol
+                  )
+                    .returns(
+                      Braintrust::Models::Function::FunctionData::Code::Data::Inline::RuntimeContext::Runtime::TaggedSymbol
+                    )
+                end
                 def runtime=(_)
                 end
 
@@ -467,40 +511,76 @@ module Braintrust
                 def version=(_)
                 end
 
-                sig { params(runtime: Symbol, version: String).returns(T.attached_class) }
+                sig do
+                  params(
+                    runtime: Braintrust::Models::Function::FunctionData::Code::Data::Inline::RuntimeContext::Runtime::TaggedSymbol,
+                    version: String
+                  )
+                    .returns(T.attached_class)
+                end
                 def self.new(runtime:, version:)
                 end
 
-                sig { override.returns({runtime: Symbol, version: String}) }
+                sig do
+                  override
+                    .returns(
+                      {
+                        runtime: Braintrust::Models::Function::FunctionData::Code::Data::Inline::RuntimeContext::Runtime::TaggedSymbol,
+                        version: String
+                      }
+                    )
+                end
                 def to_hash
                 end
 
-                class Runtime < Braintrust::Enum
-                  abstract!
+                module Runtime
+                  extend Braintrust::Enum
 
-                  Value = type_template(:out) { {fixed: Symbol} }
+                  TaggedSymbol =
+                    T.type_alias { T.all(Symbol, Braintrust::Models::Function::FunctionData::Code::Data::Inline::RuntimeContext::Runtime) }
+                  OrSymbol =
+                    T.type_alias do
+                      T.any(
+                        Symbol,
+                        Braintrust::Models::Function::FunctionData::Code::Data::Inline::RuntimeContext::Runtime::TaggedSymbol
+                      )
+                    end
 
-                  NODE = :node
-                  PYTHON = :python
+                  NODE =
+                    T.let(
+                      :node,
+                      Braintrust::Models::Function::FunctionData::Code::Data::Inline::RuntimeContext::Runtime::TaggedSymbol
+                    )
+                  PYTHON =
+                    T.let(
+                      :python,
+                      Braintrust::Models::Function::FunctionData::Code::Data::Inline::RuntimeContext::Runtime::TaggedSymbol
+                    )
                 end
               end
 
-              class Type < Braintrust::Enum
-                abstract!
+              module Type
+                extend Braintrust::Enum
 
-                Value = type_template(:out) { {fixed: Symbol} }
+                TaggedSymbol =
+                  T.type_alias { T.all(Symbol, Braintrust::Models::Function::FunctionData::Code::Data::Inline::Type) }
+                OrSymbol =
+                  T.type_alias { T.any(Symbol, Braintrust::Models::Function::FunctionData::Code::Data::Inline::Type::TaggedSymbol) }
 
-                INLINE = :inline
+                INLINE =
+                  T.let(:inline, Braintrust::Models::Function::FunctionData::Code::Data::Inline::Type::TaggedSymbol)
               end
             end
           end
 
-          class Type < Braintrust::Enum
-            abstract!
+          module Type
+            extend Braintrust::Enum
 
-            Value = type_template(:out) { {fixed: Symbol} }
+            TaggedSymbol = T.type_alias { T.all(Symbol, Braintrust::Models::Function::FunctionData::Code::Type) }
+            OrSymbol =
+              T.type_alias { T.any(Symbol, Braintrust::Models::Function::FunctionData::Code::Type::TaggedSymbol) }
 
-            CODE = :code
+            CODE = T.let(:code, Braintrust::Models::Function::FunctionData::Code::Type::TaggedSymbol)
           end
         end
 
@@ -513,39 +593,51 @@ module Braintrust
           def name=(_)
           end
 
-          sig { returns(Symbol) }
+          sig { returns(Braintrust::Models::Function::FunctionData::Global::Type::TaggedSymbol) }
           def type
           end
 
-          sig { params(_: Symbol).returns(Symbol) }
+          sig do
+            params(_: Braintrust::Models::Function::FunctionData::Global::Type::TaggedSymbol)
+              .returns(Braintrust::Models::Function::FunctionData::Global::Type::TaggedSymbol)
+          end
           def type=(_)
           end
 
-          sig { params(name: String, type: Symbol).returns(T.attached_class) }
+          sig do
+            params(name: String, type: Braintrust::Models::Function::FunctionData::Global::Type::TaggedSymbol)
+              .returns(T.attached_class)
+          end
           def self.new(name:, type:)
           end
 
-          sig { override.returns({name: String, type: Symbol}) }
+          sig do
+            override
+              .returns({name: String, type: Braintrust::Models::Function::FunctionData::Global::Type::TaggedSymbol})
+          end
           def to_hash
           end
 
-          class Type < Braintrust::Enum
-            abstract!
+          module Type
+            extend Braintrust::Enum
 
-            Value = type_template(:out) { {fixed: Symbol} }
+            TaggedSymbol = T.type_alias { T.all(Symbol, Braintrust::Models::Function::FunctionData::Global::Type) }
+            OrSymbol =
+              T.type_alias { T.any(Symbol, Braintrust::Models::Function::FunctionData::Global::Type::TaggedSymbol) }
 
-            GLOBAL = :global
+            GLOBAL = T.let(:global, Braintrust::Models::Function::FunctionData::Global::Type::TaggedSymbol)
           end
         end
       end
 
       # A literal 'p' which identifies the object as a project prompt
-      class LogID < Braintrust::Enum
-        abstract!
+      module LogID
+        extend Braintrust::Enum
 
-        Value = type_template(:out) { {fixed: Symbol} }
+        TaggedSymbol = T.type_alias { T.all(Symbol, Braintrust::Models::Function::LogID) }
+        OrSymbol = T.type_alias { T.any(Symbol, Braintrust::Models::Function::LogID::TaggedSymbol) }
 
-        P = :p
+        P = T.let(:p, Braintrust::Models::Function::LogID::TaggedSymbol)
       end
 
       class FunctionSchema < Braintrust::BaseModel
@@ -575,15 +667,16 @@ module Braintrust
         end
       end
 
-      class FunctionType < Braintrust::Enum
-        abstract!
+      module FunctionType
+        extend Braintrust::Enum
 
-        Value = type_template(:out) { {fixed: Symbol} }
+        TaggedSymbol = T.type_alias { T.all(Symbol, Braintrust::Models::Function::FunctionType) }
+        OrSymbol = T.type_alias { T.any(Symbol, Braintrust::Models::Function::FunctionType::TaggedSymbol) }
 
-        LLM = :llm
-        SCORER = :scorer
-        TASK = :task
-        TOOL = :tool
+        LLM = T.let(:llm, Braintrust::Models::Function::FunctionType::TaggedSymbol)
+        SCORER = T.let(:scorer, Braintrust::Models::Function::FunctionType::TaggedSymbol)
+        TASK = T.let(:task, Braintrust::Models::Function::FunctionType::TaggedSymbol)
+        TOOL = T.let(:tool, Braintrust::Models::Function::FunctionType::TaggedSymbol)
       end
 
       class Origin < Braintrust::BaseModel
@@ -597,11 +690,14 @@ module Braintrust
         end
 
         # The object type that the ACL applies to
-        sig { returns(Symbol) }
+        sig { returns(Braintrust::Models::ACLObjectType::TaggedSymbol) }
         def object_type
         end
 
-        sig { params(_: Symbol).returns(Symbol) }
+        sig do
+          params(_: Braintrust::Models::ACLObjectType::TaggedSymbol)
+            .returns(Braintrust::Models::ACLObjectType::TaggedSymbol)
+        end
         def object_type=(_)
         end
 
@@ -618,14 +714,24 @@ module Braintrust
         sig do
           params(
             object_id_: String,
-            object_type: Symbol,
+            object_type: Braintrust::Models::ACLObjectType::TaggedSymbol,
             internal: T.nilable(T::Boolean)
-          ).returns(T.attached_class)
+          )
+            .returns(T.attached_class)
         end
         def self.new(object_id_:, object_type:, internal: nil)
         end
 
-        sig { override.returns({object_id_: String, object_type: Symbol, internal: T.nilable(T::Boolean)}) }
+        sig do
+          override
+            .returns(
+              {
+                object_id_: String,
+                object_type: Braintrust::Models::ACLObjectType::TaggedSymbol,
+                internal: T.nilable(T::Boolean)
+              }
+            )
+        end
         def to_hash
         end
       end

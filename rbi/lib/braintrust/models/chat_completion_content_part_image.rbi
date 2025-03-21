@@ -14,22 +14,36 @@ module Braintrust
       def image_url=(_)
       end
 
-      sig { returns(Symbol) }
+      sig { returns(Braintrust::Models::ChatCompletionContentPartImage::Type::OrSymbol) }
       def type
       end
 
-      sig { params(_: Symbol).returns(Symbol) }
+      sig do
+        params(_: Braintrust::Models::ChatCompletionContentPartImage::Type::OrSymbol)
+          .returns(Braintrust::Models::ChatCompletionContentPartImage::Type::OrSymbol)
+      end
       def type=(_)
       end
 
       sig do
-        params(image_url: Braintrust::Models::ChatCompletionContentPartImage::ImageURL, type: Symbol)
+        params(
+          image_url: Braintrust::Models::ChatCompletionContentPartImage::ImageURL,
+          type: Braintrust::Models::ChatCompletionContentPartImage::Type::OrSymbol
+        )
           .returns(T.attached_class)
       end
       def self.new(image_url:, type:)
       end
 
-      sig { override.returns({image_url: Braintrust::Models::ChatCompletionContentPartImage::ImageURL, type: Symbol}) }
+      sig do
+        override
+          .returns(
+            {
+              image_url: Braintrust::Models::ChatCompletionContentPartImage::ImageURL,
+              type: Braintrust::Models::ChatCompletionContentPartImage::Type::OrSymbol
+            }
+          )
+      end
       def to_hash
       end
 
@@ -42,39 +56,58 @@ module Braintrust
         def url=(_)
         end
 
-        sig { returns(T.nilable(Symbol)) }
+        sig { returns(T.nilable(Braintrust::Models::ChatCompletionContentPartImage::ImageURL::Detail::OrSymbol)) }
         def detail
         end
 
-        sig { params(_: Symbol).returns(Symbol) }
+        sig do
+          params(_: Braintrust::Models::ChatCompletionContentPartImage::ImageURL::Detail::OrSymbol)
+            .returns(Braintrust::Models::ChatCompletionContentPartImage::ImageURL::Detail::OrSymbol)
+        end
         def detail=(_)
         end
 
-        sig { params(url: String, detail: Symbol).returns(T.attached_class) }
+        sig do
+          params(
+            url: String,
+            detail: Braintrust::Models::ChatCompletionContentPartImage::ImageURL::Detail::OrSymbol
+          )
+            .returns(T.attached_class)
+        end
         def self.new(url:, detail: nil)
         end
 
-        sig { override.returns({url: String, detail: Symbol}) }
+        sig do
+          override
+            .returns(
+              {url: String, detail: Braintrust::Models::ChatCompletionContentPartImage::ImageURL::Detail::OrSymbol}
+            )
+        end
         def to_hash
         end
 
-        class Detail < Braintrust::Enum
-          abstract!
+        module Detail
+          extend Braintrust::Enum
 
-          Value = type_template(:out) { {fixed: Symbol} }
+          TaggedSymbol =
+            T.type_alias { T.all(Symbol, Braintrust::Models::ChatCompletionContentPartImage::ImageURL::Detail) }
+          OrSymbol =
+            T.type_alias { T.any(Symbol, Braintrust::Models::ChatCompletionContentPartImage::ImageURL::Detail::TaggedSymbol) }
 
-          AUTO = :auto
-          LOW = :low
-          HIGH = :high
+          AUTO = T.let(:auto, Braintrust::Models::ChatCompletionContentPartImage::ImageURL::Detail::OrSymbol)
+          LOW = T.let(:low, Braintrust::Models::ChatCompletionContentPartImage::ImageURL::Detail::OrSymbol)
+          HIGH = T.let(:high, Braintrust::Models::ChatCompletionContentPartImage::ImageURL::Detail::OrSymbol)
         end
       end
 
-      class Type < Braintrust::Enum
-        abstract!
+      module Type
+        extend Braintrust::Enum
 
-        Value = type_template(:out) { {fixed: Symbol} }
+        TaggedSymbol = T.type_alias { T.all(Symbol, Braintrust::Models::ChatCompletionContentPartImage::Type) }
+        OrSymbol =
+          T.type_alias { T.any(Symbol, Braintrust::Models::ChatCompletionContentPartImage::Type::TaggedSymbol) }
 
-        IMAGE_URL = :image_url
+        IMAGE_URL = T.let(:image_url, Braintrust::Models::ChatCompletionContentPartImage::Type::OrSymbol)
       end
     end
   end

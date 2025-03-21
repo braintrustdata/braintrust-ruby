@@ -45,7 +45,9 @@ module Braintrust
 
       type function_type = :llm | :scorer | :task | :tool
 
-      class FunctionType < Braintrust::Enum
+      module FunctionType
+        extend Braintrust::Enum
+
         LLM: :llm
         SCORER: :scorer
         TASK: :task

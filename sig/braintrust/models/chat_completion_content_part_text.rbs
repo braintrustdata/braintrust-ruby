@@ -22,7 +22,9 @@ module Braintrust
 
       type type_ = :text
 
-      class Type < Braintrust::Enum
+      module Type
+        extend Braintrust::Enum
+
         TEXT: :text
 
         def self.values: -> ::Array[Braintrust::Models::ChatCompletionContentPartText::type_]

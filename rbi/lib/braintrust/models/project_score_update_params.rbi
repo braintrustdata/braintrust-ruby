@@ -62,11 +62,14 @@ module Braintrust
       end
 
       # The type of the configured score
-      sig { returns(T.nilable(Symbol)) }
+      sig { returns(T.nilable(Braintrust::Models::ProjectScoreType::OrSymbol)) }
       def score_type
       end
 
-      sig { params(_: T.nilable(Symbol)).returns(T.nilable(Symbol)) }
+      sig do
+        params(_: T.nilable(Braintrust::Models::ProjectScoreType::OrSymbol))
+          .returns(T.nilable(Braintrust::Models::ProjectScoreType::OrSymbol))
+      end
       def score_type=(_)
       end
 
@@ -78,7 +81,7 @@ module Braintrust
           config: T.nilable(Braintrust::Models::ProjectScoreConfig),
           description: T.nilable(String),
           name: T.nilable(String),
-          score_type: T.nilable(Symbol),
+          score_type: T.nilable(Braintrust::Models::ProjectScoreType::OrSymbol),
           request_options: T.any(Braintrust::RequestOptions, T::Hash[Symbol, T.anything])
         )
           .returns(T.attached_class)
@@ -96,7 +99,7 @@ module Braintrust
               config: T.nilable(Braintrust::Models::ProjectScoreConfig),
               description: T.nilable(String),
               name: T.nilable(String),
-              score_type: T.nilable(Symbol),
+              score_type: T.nilable(Braintrust::Models::ProjectScoreType::OrSymbol),
               request_options: Braintrust::RequestOptions
             }
           )
@@ -105,8 +108,8 @@ module Braintrust
       end
 
       # For categorical-type project scores, the list of all categories
-      class Categories < Braintrust::Union
-        abstract!
+      module Categories
+        extend Braintrust::Union
 
         Variants =
           type_template(:out) do

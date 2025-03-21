@@ -176,10 +176,10 @@ module Braintrust
 
       # def initialize: (Hash | Braintrust::BaseModel) -> void
 
-      # @abstract
-      #
       # The dataset to use
-      class Data < Braintrust::Union
+      module Data
+        extend Braintrust::Union
+
         # Dataset id
         variant -> { Braintrust::Models::EvalCreateParams::Data::DatasetID }
 
@@ -262,10 +262,10 @@ module Braintrust
         #   end
       end
 
-      # @abstract
-      #
       # The function to evaluate
-      class Score < Braintrust::Union
+      module Score
+        extend Braintrust::Union
+
         # Function id
         variant -> { Braintrust::Models::EvalCreateParams::Score::FunctionID }
 
@@ -449,8 +449,9 @@ module Braintrust
 
             # def initialize: (Hash | Braintrust::BaseModel) -> void
 
-            # @abstract
-            class Runtime < Braintrust::Enum
+            module Runtime
+              extend Braintrust::Enum
+
               NODE = :node
               PYTHON = :python
 
@@ -490,10 +491,10 @@ module Braintrust
         #   end
       end
 
-      # @abstract
-      #
       # The function to evaluate
-      class Task < Braintrust::Union
+      module Task
+        extend Braintrust::Union
+
         # Function id
         variant -> { Braintrust::Models::EvalCreateParams::Task::FunctionID }
 
@@ -677,8 +678,9 @@ module Braintrust
 
             # def initialize: (Hash | Braintrust::BaseModel) -> void
 
-            # @abstract
-            class Runtime < Braintrust::Enum
+            module Runtime
+              extend Braintrust::Enum
+
               NODE = :node
               PYTHON = :python
 
@@ -745,8 +747,9 @@ module Braintrust
 
         # def initialize: (Hash | Braintrust::BaseModel) -> void
 
-        # @abstract
-        class Collect < Braintrust::Enum
+        module Collect
+          extend Braintrust::Enum
+
           ALL = :all
           NONE = :none
           SOME = :some
@@ -754,8 +757,9 @@ module Braintrust
           finalize!
         end
 
-        # @abstract
-        class Field < Braintrust::Enum
+        module Field
+          extend Braintrust::Enum
+
           COMMIT = :commit
           BRANCH = :branch
           TAG = :tag
@@ -770,10 +774,10 @@ module Braintrust
         end
       end
 
-      # @abstract
-      #
       # Options for tracing the evaluation
-      class Parent < Braintrust::Union
+      module Parent
+        extend Braintrust::Union
+
         # Span parent properties
         variant -> { Braintrust::Models::EvalCreateParams::Parent::SpanParentStruct }
 
@@ -819,8 +823,9 @@ module Braintrust
 
           # def initialize: (Hash | Braintrust::BaseModel) -> void
 
-          # @abstract
-          class ObjectType < Braintrust::Enum
+          module ObjectType
+            extend Braintrust::Enum
+
             PROJECT_LOGS = :project_logs
             EXPERIMENT = :experiment
             PLAYGROUND_LOGS = :playground_logs

@@ -42,10 +42,10 @@ module Braintrust
 
       # def initialize: (Hash | Braintrust::BaseModel) -> void
 
-      # @abstract
-      #
       # The type of the object the environment variable is scoped for
-      class ObjectType < Braintrust::Enum
+      module ObjectType
+        extend Braintrust::Enum
+
         ORGANIZATION = :organization
         PROJECT = :project
         FUNCTION = :function

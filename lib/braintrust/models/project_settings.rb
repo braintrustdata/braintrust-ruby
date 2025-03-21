@@ -64,8 +64,9 @@ module Braintrust
 
         # def initialize: (Hash | Braintrust::BaseModel) -> void
 
-        # @abstract
-        class Layout < Braintrust::Enum
+        module Layout
+          extend Braintrust::Enum
+
           FULL = :full
           TWO_COLUMN = :two_column
 

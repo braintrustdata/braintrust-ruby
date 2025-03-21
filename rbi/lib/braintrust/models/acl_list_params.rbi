@@ -16,11 +16,13 @@ module Braintrust
       end
 
       # The object type that the ACL applies to
-      sig { returns(Symbol) }
+      sig { returns(Braintrust::Models::ACLObjectType::OrSymbol) }
       def object_type
       end
 
-      sig { params(_: Symbol).returns(Symbol) }
+      sig do
+        params(_: Braintrust::Models::ACLObjectType::OrSymbol).returns(Braintrust::Models::ACLObjectType::OrSymbol)
+      end
       def object_type=(_)
       end
 
@@ -72,7 +74,7 @@ module Braintrust
       sig do
         params(
           object_id_: String,
-          object_type: Symbol,
+          object_type: Braintrust::Models::ACLObjectType::OrSymbol,
           ending_before: String,
           ids: T.any(String, T::Array[String]),
           limit: T.nilable(Integer),
@@ -97,7 +99,7 @@ module Braintrust
           .returns(
             {
               object_id_: String,
-              object_type: Symbol,
+              object_type: Braintrust::Models::ACLObjectType::OrSymbol,
               ending_before: String,
               ids: T.any(String, T::Array[String]),
               limit: T.nilable(Integer),
@@ -111,8 +113,8 @@ module Braintrust
 
       # Filter search results to a particular set of object IDs. To specify a list of
       #   IDs, include the query param multiple times
-      class IDs < Braintrust::Union
-        abstract!
+      module IDs
+        extend Braintrust::Union
 
         Variants = type_template(:out) { {fixed: T.any(String, T::Array[String])} }
 

@@ -42,11 +42,14 @@ module Braintrust
       def description=(_)
       end
 
-      sig { returns(T.nilable(Symbol)) }
+      sig { returns(T.nilable(Braintrust::Models::PromptReplaceParams::FunctionType::OrSymbol)) }
       def function_type
       end
 
-      sig { params(_: T.nilable(Symbol)).returns(T.nilable(Symbol)) }
+      sig do
+        params(_: T.nilable(Braintrust::Models::PromptReplaceParams::FunctionType::OrSymbol))
+          .returns(T.nilable(Braintrust::Models::PromptReplaceParams::FunctionType::OrSymbol))
+      end
       def function_type=(_)
       end
 
@@ -74,7 +77,7 @@ module Braintrust
           project_id: String,
           slug: String,
           description: T.nilable(String),
-          function_type: T.nilable(Symbol),
+          function_type: T.nilable(Braintrust::Models::PromptReplaceParams::FunctionType::OrSymbol),
           prompt_data: T.nilable(Braintrust::Models::PromptData),
           tags: T.nilable(T::Array[String]),
           request_options: T.any(Braintrust::RequestOptions, T::Hash[Symbol, T.anything])
@@ -101,7 +104,7 @@ module Braintrust
               project_id: String,
               slug: String,
               description: T.nilable(String),
-              function_type: T.nilable(Symbol),
+              function_type: T.nilable(Braintrust::Models::PromptReplaceParams::FunctionType::OrSymbol),
               prompt_data: T.nilable(Braintrust::Models::PromptData),
               tags: T.nilable(T::Array[String]),
               request_options: Braintrust::RequestOptions
@@ -111,15 +114,17 @@ module Braintrust
       def to_hash
       end
 
-      class FunctionType < Braintrust::Enum
-        abstract!
+      module FunctionType
+        extend Braintrust::Enum
 
-        Value = type_template(:out) { {fixed: Symbol} }
+        TaggedSymbol = T.type_alias { T.all(Symbol, Braintrust::Models::PromptReplaceParams::FunctionType) }
+        OrSymbol =
+          T.type_alias { T.any(Symbol, Braintrust::Models::PromptReplaceParams::FunctionType::TaggedSymbol) }
 
-        LLM = :llm
-        SCORER = :scorer
-        TASK = :task
-        TOOL = :tool
+        LLM = T.let(:llm, Braintrust::Models::PromptReplaceParams::FunctionType::OrSymbol)
+        SCORER = T.let(:scorer, Braintrust::Models::PromptReplaceParams::FunctionType::OrSymbol)
+        TASK = T.let(:task, Braintrust::Models::PromptReplaceParams::FunctionType::OrSymbol)
+        TOOL = T.let(:tool, Braintrust::Models::PromptReplaceParams::FunctionType::OrSymbol)
       end
     end
   end

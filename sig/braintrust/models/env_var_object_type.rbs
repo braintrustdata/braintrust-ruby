@@ -2,7 +2,9 @@ module Braintrust
   module Models
     type env_var_object_type = :organization | :project | :function
 
-    class EnvVarObjectType < Braintrust::Enum
+    module EnvVarObjectType
+      extend Braintrust::Enum
+
       ORGANIZATION: :organization
       PROJECT: :project
       FUNCTION: :function

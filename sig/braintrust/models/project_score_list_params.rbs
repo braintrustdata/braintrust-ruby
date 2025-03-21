@@ -73,7 +73,9 @@ module Braintrust
 
       type ids = String | ::Array[String]
 
-      class IDs < Braintrust::Union
+      module IDs
+        extend Braintrust::Union
+
         type string_array = ::Array[String]
 
         StringArray: string_array
@@ -85,7 +87,9 @@ module Braintrust
         Braintrust::Models::project_score_type
         | ::Array[Braintrust::Models::project_score_type]
 
-      class ScoreType < Braintrust::Union
+      module ScoreType
+        extend Braintrust::Union
+
         type project_score_type_array =
           ::Array[Braintrust::Models::project_score_type]
 

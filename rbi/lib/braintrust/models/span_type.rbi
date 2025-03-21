@@ -3,17 +3,18 @@
 module Braintrust
   module Models
     # Type of the span, for display purposes only
-    class SpanType < Braintrust::Enum
-      abstract!
+    module SpanType
+      extend Braintrust::Enum
 
-      Value = type_template(:out) { {fixed: Symbol} }
+      TaggedSymbol = T.type_alias { T.all(Symbol, Braintrust::Models::SpanType) }
+      OrSymbol = T.type_alias { T.any(Symbol, Braintrust::Models::SpanType::TaggedSymbol) }
 
-      LLM = :llm
-      SCORE = :score
-      FUNCTION = :function
-      EVAL = :eval
-      TASK = :task
-      TOOL = :tool
+      LLM = T.let(:llm, Braintrust::Models::SpanType::OrSymbol)
+      SCORE = T.let(:score, Braintrust::Models::SpanType::OrSymbol)
+      FUNCTION = T.let(:function, Braintrust::Models::SpanType::OrSymbol)
+      EVAL = T.let(:eval, Braintrust::Models::SpanType::OrSymbol)
+      TASK = T.let(:task, Braintrust::Models::SpanType::OrSymbol)
+      TOOL = T.let(:tool, Braintrust::Models::SpanType::OrSymbol)
     end
   end
 end

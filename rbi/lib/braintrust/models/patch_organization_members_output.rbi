@@ -12,11 +12,14 @@ module Braintrust
       def org_id=(_)
       end
 
-      sig { returns(Symbol) }
+      sig { returns(Braintrust::Models::PatchOrganizationMembersOutput::Status::TaggedSymbol) }
       def status
       end
 
-      sig { params(_: Symbol).returns(Symbol) }
+      sig do
+        params(_: Braintrust::Models::PatchOrganizationMembersOutput::Status::TaggedSymbol)
+          .returns(Braintrust::Models::PatchOrganizationMembersOutput::Status::TaggedSymbol)
+      end
       def status=(_)
       end
 
@@ -31,21 +34,37 @@ module Braintrust
       end
 
       sig do
-        params(org_id: String, status: Symbol, send_email_error: T.nilable(String)).returns(T.attached_class)
+        params(
+          org_id: String,
+          status: Braintrust::Models::PatchOrganizationMembersOutput::Status::TaggedSymbol,
+          send_email_error: T.nilable(String)
+        )
+          .returns(T.attached_class)
       end
       def self.new(org_id:, status:, send_email_error: nil)
       end
 
-      sig { override.returns({org_id: String, status: Symbol, send_email_error: T.nilable(String)}) }
+      sig do
+        override
+          .returns(
+            {
+              org_id: String,
+              status: Braintrust::Models::PatchOrganizationMembersOutput::Status::TaggedSymbol,
+              send_email_error: T.nilable(String)
+            }
+          )
+      end
       def to_hash
       end
 
-      class Status < Braintrust::Enum
-        abstract!
+      module Status
+        extend Braintrust::Enum
 
-        Value = type_template(:out) { {fixed: Symbol} }
+        TaggedSymbol = T.type_alias { T.all(Symbol, Braintrust::Models::PatchOrganizationMembersOutput::Status) }
+        OrSymbol =
+          T.type_alias { T.any(Symbol, Braintrust::Models::PatchOrganizationMembersOutput::Status::TaggedSymbol) }
 
-        SUCCESS = :success
+        SUCCESS = T.let(:success, Braintrust::Models::PatchOrganizationMembersOutput::Status::TaggedSymbol)
       end
     end
   end

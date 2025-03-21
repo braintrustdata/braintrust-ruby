@@ -96,8 +96,9 @@ module Braintrust
 
       # def initialize: (Hash | Braintrust::BaseModel) -> void
 
-      # @abstract
-      class FunctionData < Braintrust::Union
+      module FunctionData
+        extend Braintrust::Union
+
         variant -> { Braintrust::Models::FunctionCreateParams::FunctionData::Prompt }
 
         variant -> { Braintrust::Models::FunctionCreateParams::FunctionData::Code }
@@ -117,8 +118,9 @@ module Braintrust
 
           # def initialize: (Hash | Braintrust::BaseModel) -> void
 
-          # @abstract
-          class Type < Braintrust::Enum
+          module Type
+            extend Braintrust::Enum
+
             PROMPT = :prompt
 
             finalize!
@@ -144,8 +146,9 @@ module Braintrust
 
           # def initialize: (Hash | Braintrust::BaseModel) -> void
 
-          # @abstract
-          class Data < Braintrust::Union
+          module Data
+            extend Braintrust::Union
+
             variant -> { Braintrust::Models::FunctionCreateParams::FunctionData::Code::Data::Bundle }
 
             variant -> { Braintrust::Models::FunctionCreateParams::FunctionData::Code::Data::Inline }
@@ -164,8 +167,9 @@ module Braintrust
 
               # def initialize: (Hash | Braintrust::BaseModel) -> void
 
-              # @abstract
-              class Type < Braintrust::Enum
+              module Type
+                extend Braintrust::Enum
+
                 BUNDLE = :bundle
 
                 finalize!
@@ -219,8 +223,9 @@ module Braintrust
 
                 # def initialize: (Hash | Braintrust::BaseModel) -> void
 
-                # @abstract
-                class Runtime < Braintrust::Enum
+                module Runtime
+                  extend Braintrust::Enum
+
                   NODE = :node
                   PYTHON = :python
 
@@ -228,8 +233,9 @@ module Braintrust
                 end
               end
 
-              # @abstract
-              class Type < Braintrust::Enum
+              module Type
+                extend Braintrust::Enum
+
                 INLINE = :inline
 
                 finalize!
@@ -243,8 +249,9 @@ module Braintrust
             #   end
           end
 
-          # @abstract
-          class Type < Braintrust::Enum
+          module Type
+            extend Braintrust::Enum
+
             CODE = :code
 
             finalize!
@@ -270,8 +277,9 @@ module Braintrust
 
           # def initialize: (Hash | Braintrust::BaseModel) -> void
 
-          # @abstract
-          class Type < Braintrust::Enum
+          module Type
+            extend Braintrust::Enum
+
             GLOBAL = :global
 
             finalize!
@@ -315,8 +323,9 @@ module Braintrust
         # def initialize: (Hash | Braintrust::BaseModel) -> void
       end
 
-      # @abstract
-      class FunctionType < Braintrust::Enum
+      module FunctionType
+        extend Braintrust::Enum
+
         LLM = :llm
         SCORER = :scorer
         TASK = :task

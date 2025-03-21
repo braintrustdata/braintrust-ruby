@@ -22,16 +22,23 @@ module Braintrust
       def function=(_)
       end
 
-      sig { returns(Symbol) }
+      sig { returns(Braintrust::Models::ChatCompletionMessageToolCall::Type::OrSymbol) }
       def type
       end
 
-      sig { params(_: Symbol).returns(Symbol) }
+      sig do
+        params(_: Braintrust::Models::ChatCompletionMessageToolCall::Type::OrSymbol)
+          .returns(Braintrust::Models::ChatCompletionMessageToolCall::Type::OrSymbol)
+      end
       def type=(_)
       end
 
       sig do
-        params(id: String, function: Braintrust::Models::ChatCompletionMessageToolCall::Function, type: Symbol)
+        params(
+          id: String,
+          function: Braintrust::Models::ChatCompletionMessageToolCall::Function,
+          type: Braintrust::Models::ChatCompletionMessageToolCall::Type::OrSymbol
+        )
           .returns(T.attached_class)
       end
       def self.new(id:, function:, type:)
@@ -39,7 +46,13 @@ module Braintrust
 
       sig do
         override
-          .returns({id: String, function: Braintrust::Models::ChatCompletionMessageToolCall::Function, type: Symbol})
+          .returns(
+            {
+              id: String,
+              function: Braintrust::Models::ChatCompletionMessageToolCall::Function,
+              type: Braintrust::Models::ChatCompletionMessageToolCall::Type::OrSymbol
+            }
+          )
       end
       def to_hash
       end
@@ -70,12 +83,14 @@ module Braintrust
         end
       end
 
-      class Type < Braintrust::Enum
-        abstract!
+      module Type
+        extend Braintrust::Enum
 
-        Value = type_template(:out) { {fixed: Symbol} }
+        TaggedSymbol = T.type_alias { T.all(Symbol, Braintrust::Models::ChatCompletionMessageToolCall::Type) }
+        OrSymbol =
+          T.type_alias { T.any(Symbol, Braintrust::Models::ChatCompletionMessageToolCall::Type::TaggedSymbol) }
 
-        FUNCTION = :function
+        FUNCTION = T.let(:function, Braintrust::Models::ChatCompletionMessageToolCall::Type::OrSymbol)
       end
     end
   end
