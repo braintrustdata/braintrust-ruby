@@ -133,22 +133,15 @@ module Braintrust
           def to_hash: -> Braintrust::Models::PromptOptions::Params::openai_model_params
 
           type function_call =
-            Braintrust::Models::PromptOptions::Params::OpenAIModelParams::FunctionCall::union_member0
+            :auto
+            | :none
             | Braintrust::Models::PromptOptions::Params::OpenAIModelParams::FunctionCall::Function
 
           module FunctionCall
             extend Braintrust::Union
 
-            type union_member0 = :auto | :none
-
-            module UnionMember0
-              extend Braintrust::Enum
-
-              AUTO: :auto
-              NONE: :none
-
-              def self.values: -> ::Array[Braintrust::Models::PromptOptions::Params::OpenAIModelParams::FunctionCall::union_member0]
-            end
+            AUTO: :auto
+            NONE: :none
 
             type function = { name: String }
 
@@ -160,7 +153,8 @@ module Braintrust
               def to_hash: -> Braintrust::Models::PromptOptions::Params::OpenAIModelParams::FunctionCall::function
             end
 
-            def self.variants: -> [Braintrust::Models::PromptOptions::Params::OpenAIModelParams::FunctionCall::union_member0, Braintrust::Models::PromptOptions::Params::OpenAIModelParams::FunctionCall::Function]
+            def self.variants: -> [(:auto
+            | :none), Braintrust::Models::PromptOptions::Params::OpenAIModelParams::FunctionCall::Function]
           end
 
           type reasoning_effort = :low | :medium | :high
@@ -311,23 +305,17 @@ module Braintrust
           end
 
           type tool_choice =
-            Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ToolChoice::union_member0
+            :auto
+            | :none
+            | :required
             | Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ToolChoice::Function
 
           module ToolChoice
             extend Braintrust::Union
 
-            type union_member0 = :auto | :none | :required
-
-            module UnionMember0
-              extend Braintrust::Enum
-
-              AUTO: :auto
-              NONE: :none
-              REQUIRED: :required
-
-              def self.values: -> ::Array[Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ToolChoice::union_member0]
-            end
+            AUTO: :auto
+            NONE: :none
+            REQUIRED: :required
 
             type function =
               {
@@ -368,7 +356,9 @@ module Braintrust
               end
             end
 
-            def self.variants: -> [Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ToolChoice::union_member0, Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ToolChoice::Function]
+            def self.variants: -> [(:auto
+            | :none
+            | :required), Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ToolChoice::Function]
           end
         end
 
