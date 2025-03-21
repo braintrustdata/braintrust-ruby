@@ -36,7 +36,9 @@ module Braintrust
 
       type type_ = :function
 
-      class Type < Braintrust::Enum
+      module Type
+        extend Braintrust::Enum
+
         FUNCTION: :function
 
         def self.values: -> ::Array[Braintrust::Models::ChatCompletionMessageToolCall::type_]

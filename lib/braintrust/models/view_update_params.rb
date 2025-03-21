@@ -75,10 +75,10 @@ module Braintrust
 
       # def initialize: (Hash | Braintrust::BaseModel) -> void
 
-      # @abstract
-      #
       # Type of table that the view corresponds to.
-      class ViewType < Braintrust::Enum
+      module ViewType
+        extend Braintrust::Enum
+
         PROJECTS = :projects
         EXPERIMENTS = :experiments
         EXPERIMENT = :experiment

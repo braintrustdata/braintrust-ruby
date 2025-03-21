@@ -25,11 +25,14 @@ module Braintrust
       end
 
       # A literal 'p' which identifies the object as a project prompt
-      sig { returns(Symbol) }
+      sig { returns(Braintrust::Models::Prompt::LogID::TaggedSymbol) }
       def log_id
       end
 
-      sig { params(_: Symbol).returns(Symbol) }
+      sig do
+        params(_: Braintrust::Models::Prompt::LogID::TaggedSymbol)
+          .returns(Braintrust::Models::Prompt::LogID::TaggedSymbol)
+      end
       def log_id=(_)
       end
 
@@ -87,11 +90,14 @@ module Braintrust
       def description=(_)
       end
 
-      sig { returns(T.nilable(Symbol)) }
+      sig { returns(T.nilable(Braintrust::Models::Prompt::FunctionType::TaggedSymbol)) }
       def function_type
       end
 
-      sig { params(_: T.nilable(Symbol)).returns(T.nilable(Symbol)) }
+      sig do
+        params(_: T.nilable(Braintrust::Models::Prompt::FunctionType::TaggedSymbol))
+          .returns(T.nilable(Braintrust::Models::Prompt::FunctionType::TaggedSymbol))
+      end
       def function_type=(_)
       end
 
@@ -129,14 +135,14 @@ module Braintrust
         params(
           id: String,
           _xact_id: String,
-          log_id: Symbol,
+          log_id: Braintrust::Models::Prompt::LogID::TaggedSymbol,
           name: String,
           org_id: String,
           project_id: String,
           slug: String,
           created: T.nilable(Time),
           description: T.nilable(String),
-          function_type: T.nilable(Symbol),
+          function_type: T.nilable(Braintrust::Models::Prompt::FunctionType::TaggedSymbol),
           metadata: T.nilable(T::Hash[Symbol, T.nilable(T.anything)]),
           prompt_data: T.nilable(Braintrust::Models::PromptData),
           tags: T.nilable(T::Array[String])
@@ -166,14 +172,14 @@ module Braintrust
             {
               id: String,
               _xact_id: String,
-              log_id: Symbol,
+              log_id: Braintrust::Models::Prompt::LogID::TaggedSymbol,
               name: String,
               org_id: String,
               project_id: String,
               slug: String,
               created: T.nilable(Time),
               description: T.nilable(String),
-              function_type: T.nilable(Symbol),
+              function_type: T.nilable(Braintrust::Models::Prompt::FunctionType::TaggedSymbol),
               metadata: T.nilable(T::Hash[Symbol, T.nilable(T.anything)]),
               prompt_data: T.nilable(Braintrust::Models::PromptData),
               tags: T.nilable(T::Array[String])
@@ -184,23 +190,25 @@ module Braintrust
       end
 
       # A literal 'p' which identifies the object as a project prompt
-      class LogID < Braintrust::Enum
-        abstract!
+      module LogID
+        extend Braintrust::Enum
 
-        Value = type_template(:out) { {fixed: Symbol} }
+        TaggedSymbol = T.type_alias { T.all(Symbol, Braintrust::Models::Prompt::LogID) }
+        OrSymbol = T.type_alias { T.any(Symbol, Braintrust::Models::Prompt::LogID::TaggedSymbol) }
 
-        P = :p
+        P = T.let(:p, Braintrust::Models::Prompt::LogID::TaggedSymbol)
       end
 
-      class FunctionType < Braintrust::Enum
-        abstract!
+      module FunctionType
+        extend Braintrust::Enum
 
-        Value = type_template(:out) { {fixed: Symbol} }
+        TaggedSymbol = T.type_alias { T.all(Symbol, Braintrust::Models::Prompt::FunctionType) }
+        OrSymbol = T.type_alias { T.any(Symbol, Braintrust::Models::Prompt::FunctionType::TaggedSymbol) }
 
-        LLM = :llm
-        SCORER = :scorer
-        TASK = :task
-        TOOL = :tool
+        LLM = T.let(:llm, Braintrust::Models::Prompt::FunctionType::TaggedSymbol)
+        SCORER = T.let(:scorer, Braintrust::Models::Prompt::FunctionType::TaggedSymbol)
+        TASK = T.let(:task, Braintrust::Models::Prompt::FunctionType::TaggedSymbol)
+        TOOL = T.let(:tool, Braintrust::Models::Prompt::FunctionType::TaggedSymbol)
       end
     end
   end

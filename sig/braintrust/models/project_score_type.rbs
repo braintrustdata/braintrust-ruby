@@ -9,7 +9,9 @@ module Braintrust
       | :online
       | :"free-form"
 
-    class ProjectScoreType < Braintrust::Enum
+    module ProjectScoreType
+      extend Braintrust::Enum
+
       SLIDER: :slider
       CATEGORICAL: :categorical
       WEIGHTED: :weighted

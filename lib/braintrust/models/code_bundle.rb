@@ -34,8 +34,9 @@ module Braintrust
 
       # def initialize: (Hash | Braintrust::BaseModel) -> void
 
-      # @abstract
-      class Location < Braintrust::Union
+      module Location
+        extend Braintrust::Union
+
         variant -> { Braintrust::Models::CodeBundle::Location::Experiment }
 
         variant -> { Braintrust::Models::CodeBundle::Location::Function }
@@ -65,8 +66,9 @@ module Braintrust
 
           # def initialize: (Hash | Braintrust::BaseModel) -> void
 
-          # @abstract
-          class Position < Braintrust::Union
+          module Position
+            extend Braintrust::Union
+
             variant -> { Braintrust::Models::CodeBundle::Location::Experiment::Position::Type }
 
             variant -> { Braintrust::Models::CodeBundle::Location::Experiment::Position::Scorer }
@@ -84,8 +86,9 @@ module Braintrust
 
               # def initialize: (Hash | Braintrust::BaseModel) -> void
 
-              # @abstract
-              class Type < Braintrust::Enum
+              module Type
+                extend Braintrust::Enum
+
                 TASK = :task
 
                 finalize!
@@ -111,8 +114,9 @@ module Braintrust
 
               # def initialize: (Hash | Braintrust::BaseModel) -> void
 
-              # @abstract
-              class Type < Braintrust::Enum
+              module Type
+                extend Braintrust::Enum
+
                 SCORER = :scorer
 
                 finalize!
@@ -126,8 +130,9 @@ module Braintrust
             #   end
           end
 
-          # @abstract
-          class Type < Braintrust::Enum
+          module Type
+            extend Braintrust::Enum
+
             EXPERIMENT = :experiment
 
             finalize!
@@ -153,8 +158,9 @@ module Braintrust
 
           # def initialize: (Hash | Braintrust::BaseModel) -> void
 
-          # @abstract
-          class Type < Braintrust::Enum
+          module Type
+            extend Braintrust::Enum
+
             FUNCTION = :function
 
             finalize!
@@ -187,8 +193,9 @@ module Braintrust
 
         # def initialize: (Hash | Braintrust::BaseModel) -> void
 
-        # @abstract
-        class Runtime < Braintrust::Enum
+        module Runtime
+          extend Braintrust::Enum
+
           NODE = :node
           PYTHON = :python
 

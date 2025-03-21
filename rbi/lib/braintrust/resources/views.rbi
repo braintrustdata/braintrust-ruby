@@ -9,8 +9,8 @@ module Braintrust
         params(
           name: String,
           object_id_: String,
-          object_type: Symbol,
-          view_type: T.nilable(Symbol),
+          object_type: Braintrust::Models::ACLObjectType::OrSymbol,
+          view_type: T.nilable(Braintrust::Models::ViewCreateParams::ViewType::OrSymbol),
           deleted_at: T.nilable(Time),
           options: T.nilable(Braintrust::Models::ViewOptions),
           user_id: T.nilable(String),
@@ -45,7 +45,7 @@ module Braintrust
         params(
           view_id: String,
           object_id_: String,
-          object_type: Symbol,
+          object_type: Braintrust::Models::ACLObjectType::OrSymbol,
           request_options: T.nilable(T.any(Braintrust::RequestOptions, T::Hash[Symbol, T.anything]))
         )
           .returns(Braintrust::Models::View)
@@ -68,12 +68,12 @@ module Braintrust
         params(
           view_id: String,
           object_id_: String,
-          object_type: Symbol,
+          object_type: Braintrust::Models::ACLObjectType::OrSymbol,
           name: T.nilable(String),
           options: T.nilable(Braintrust::Models::ViewOptions),
           user_id: T.nilable(String),
           view_data: T.nilable(Braintrust::Models::ViewData),
-          view_type: T.nilable(Symbol),
+          view_type: T.nilable(Braintrust::Models::ViewUpdateParams::ViewType::OrSymbol),
           request_options: T.nilable(T.any(Braintrust::RequestOptions, T::Hash[Symbol, T.anything]))
         )
           .returns(Braintrust::Models::View)
@@ -104,13 +104,13 @@ module Braintrust
       sig do
         params(
           object_id_: String,
-          object_type: Symbol,
+          object_type: Braintrust::Models::ACLObjectType::OrSymbol,
           ending_before: String,
           ids: T.any(String, T::Array[String]),
           limit: T.nilable(Integer),
           starting_after: String,
           view_name: String,
-          view_type: T.nilable(Symbol),
+          view_type: T.nilable(Braintrust::Models::ViewType::OrSymbol),
           request_options: T.nilable(T.any(Braintrust::RequestOptions, T::Hash[Symbol, T.anything]))
         )
           .returns(Braintrust::ListObjects[Braintrust::Models::View])
@@ -150,7 +150,7 @@ module Braintrust
         params(
           view_id: String,
           object_id_: String,
-          object_type: Symbol,
+          object_type: Braintrust::Models::ACLObjectType::OrSymbol,
           request_options: T.nilable(T.any(Braintrust::RequestOptions, T::Hash[Symbol, T.anything]))
         )
           .returns(Braintrust::Models::View)
@@ -173,8 +173,8 @@ module Braintrust
         params(
           name: String,
           object_id_: String,
-          object_type: Symbol,
-          view_type: T.nilable(Symbol),
+          object_type: Braintrust::Models::ACLObjectType::OrSymbol,
+          view_type: T.nilable(Braintrust::Models::ViewReplaceParams::ViewType::OrSymbol),
           deleted_at: T.nilable(Time),
           options: T.nilable(Braintrust::Models::ViewOptions),
           user_id: T.nilable(String),

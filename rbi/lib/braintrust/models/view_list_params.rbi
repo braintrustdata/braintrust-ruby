@@ -16,11 +16,13 @@ module Braintrust
       end
 
       # The object type that the ACL applies to
-      sig { returns(Symbol) }
+      sig { returns(Braintrust::Models::ACLObjectType::OrSymbol) }
       def object_type
       end
 
-      sig { params(_: Symbol).returns(Symbol) }
+      sig do
+        params(_: Braintrust::Models::ACLObjectType::OrSymbol).returns(Braintrust::Models::ACLObjectType::OrSymbol)
+      end
       def object_type=(_)
       end
 
@@ -79,24 +81,27 @@ module Braintrust
       end
 
       # Type of table that the view corresponds to.
-      sig { returns(T.nilable(Symbol)) }
+      sig { returns(T.nilable(Braintrust::Models::ViewType::OrSymbol)) }
       def view_type
       end
 
-      sig { params(_: T.nilable(Symbol)).returns(T.nilable(Symbol)) }
+      sig do
+        params(_: T.nilable(Braintrust::Models::ViewType::OrSymbol))
+          .returns(T.nilable(Braintrust::Models::ViewType::OrSymbol))
+      end
       def view_type=(_)
       end
 
       sig do
         params(
           object_id_: String,
-          object_type: Symbol,
+          object_type: Braintrust::Models::ACLObjectType::OrSymbol,
           ending_before: String,
           ids: T.any(String, T::Array[String]),
           limit: T.nilable(Integer),
           starting_after: String,
           view_name: String,
-          view_type: T.nilable(Symbol),
+          view_type: T.nilable(Braintrust::Models::ViewType::OrSymbol),
           request_options: T.any(Braintrust::RequestOptions, T::Hash[Symbol, T.anything])
         )
           .returns(T.attached_class)
@@ -119,13 +124,13 @@ module Braintrust
           .returns(
             {
               object_id_: String,
-              object_type: Symbol,
+              object_type: Braintrust::Models::ACLObjectType::OrSymbol,
               ending_before: String,
               ids: T.any(String, T::Array[String]),
               limit: T.nilable(Integer),
               starting_after: String,
               view_name: String,
-              view_type: T.nilable(Symbol),
+              view_type: T.nilable(Braintrust::Models::ViewType::OrSymbol),
               request_options: Braintrust::RequestOptions
             }
           )
@@ -135,8 +140,8 @@ module Braintrust
 
       # Filter search results to a particular set of object IDs. To specify a list of
       #   IDs, include the query param multiple times
-      class IDs < Braintrust::Union
-        abstract!
+      module IDs
+        extend Braintrust::Union
 
         Variants = type_template(:out) { {fixed: T.any(String, T::Array[String])} }
 

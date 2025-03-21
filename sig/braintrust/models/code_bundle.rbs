@@ -30,7 +30,9 @@ module Braintrust
         Braintrust::Models::CodeBundle::Location::Experiment
         | Braintrust::Models::CodeBundle::Location::Function
 
-      class Location < Braintrust::Union
+      module Location
+        extend Braintrust::Union
+
         type experiment =
           {
             eval_name: String,
@@ -57,7 +59,9 @@ module Braintrust
             Braintrust::Models::CodeBundle::Location::Experiment::Position::Type
             | Braintrust::Models::CodeBundle::Location::Experiment::Position::Scorer
 
-          class Position < Braintrust::Union
+          module Position
+            extend Braintrust::Union
+
             type type_ =
               {
                 type: Braintrust::Models::CodeBundle::Location::Experiment::Position::Type::type_
@@ -74,7 +78,9 @@ module Braintrust
 
               type type_ = :task
 
-              class Type < Braintrust::Enum
+              module Type
+                extend Braintrust::Enum
+
                 TASK: :task
 
                 def self.values: -> ::Array[Braintrust::Models::CodeBundle::Location::Experiment::Position::Type::type_]
@@ -101,7 +107,9 @@ module Braintrust
 
               type type_ = :scorer
 
-              class Type < Braintrust::Enum
+              module Type
+                extend Braintrust::Enum
+
                 SCORER: :scorer
 
                 def self.values: -> ::Array[Braintrust::Models::CodeBundle::Location::Experiment::Position::Scorer::type_]
@@ -113,7 +121,9 @@ module Braintrust
 
           type type_ = :experiment
 
-          class Type < Braintrust::Enum
+          module Type
+            extend Braintrust::Enum
+
             EXPERIMENT: :experiment
 
             def self.values: -> ::Array[Braintrust::Models::CodeBundle::Location::Experiment::type_]
@@ -140,7 +150,9 @@ module Braintrust
 
           type type_ = :function
 
-          class Type < Braintrust::Enum
+          module Type
+            extend Braintrust::Enum
+
             FUNCTION: :function
 
             def self.values: -> ::Array[Braintrust::Models::CodeBundle::Location::Function::type_]
@@ -170,7 +182,9 @@ module Braintrust
 
         type runtime = :node | :python
 
-        class Runtime < Braintrust::Enum
+        module Runtime
+          extend Braintrust::Enum
+
           NODE: :node
           PYTHON: :python
 

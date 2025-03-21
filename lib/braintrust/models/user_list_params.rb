@@ -123,11 +123,11 @@ module Braintrust
 
       # def initialize: (Hash | Braintrust::BaseModel) -> void
 
-      # @abstract
-      #
       # Email of the user to search for. You may pass the param multiple times to filter
       #   for more than one email
-      class Email < Braintrust::Union
+      module Email
+        extend Braintrust::Union
+
         StringArray = Braintrust::ArrayOf[String]
 
         variant String
@@ -141,11 +141,11 @@ module Braintrust
         #   end
       end
 
-      # @abstract
-      #
       # Family name of the user to search for. You may pass the param multiple times to
       #   filter for more than one family name
-      class FamilyName < Braintrust::Union
+      module FamilyName
+        extend Braintrust::Union
+
         StringArray = Braintrust::ArrayOf[String]
 
         variant String
@@ -159,11 +159,11 @@ module Braintrust
         #   end
       end
 
-      # @abstract
-      #
       # Given name of the user to search for. You may pass the param multiple times to
       #   filter for more than one given name
-      class GivenName < Braintrust::Union
+      module GivenName
+        extend Braintrust::Union
+
         StringArray = Braintrust::ArrayOf[String]
 
         variant String
@@ -177,11 +177,11 @@ module Braintrust
         #   end
       end
 
-      # @abstract
-      #
       # Filter search results to a particular set of object IDs. To specify a list of
       #   IDs, include the query param multiple times
-      class IDs < Braintrust::Union
+      module IDs
+        extend Braintrust::Union
+
         StringArray = Braintrust::ArrayOf[String]
 
         variant String

@@ -107,8 +107,9 @@ module Braintrust
 
       # def initialize: (Hash | Braintrust::BaseModel) -> void
 
-      # @abstract
-      class AISecretType < Braintrust::Union
+      module AISecretType
+        extend Braintrust::Union
+
         StringArray = Braintrust::ArrayOf[String]
 
         variant String
@@ -122,11 +123,11 @@ module Braintrust
         #   end
       end
 
-      # @abstract
-      #
       # Filter search results to a particular set of object IDs. To specify a list of
       #   IDs, include the query param multiple times
-      class IDs < Braintrust::Union
+      module IDs
+        extend Braintrust::Union
+
         StringArray = Braintrust::ArrayOf[String]
 
         variant String

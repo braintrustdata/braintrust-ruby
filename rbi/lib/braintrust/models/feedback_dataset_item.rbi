@@ -38,11 +38,14 @@ module Braintrust
       end
 
       # The source of the feedback. Must be one of "external" (default), "app", or "api"
-      sig { returns(T.nilable(Symbol)) }
+      sig { returns(T.nilable(Braintrust::Models::FeedbackDatasetItem::Source::OrSymbol)) }
       def source
       end
 
-      sig { params(_: T.nilable(Symbol)).returns(T.nilable(Symbol)) }
+      sig do
+        params(_: T.nilable(Braintrust::Models::FeedbackDatasetItem::Source::OrSymbol))
+          .returns(T.nilable(Braintrust::Models::FeedbackDatasetItem::Source::OrSymbol))
+      end
       def source=(_)
       end
 
@@ -60,7 +63,7 @@ module Braintrust
           id: String,
           comment: T.nilable(String),
           metadata: T.nilable(T::Hash[Symbol, T.nilable(T.anything)]),
-          source: T.nilable(Symbol),
+          source: T.nilable(Braintrust::Models::FeedbackDatasetItem::Source::OrSymbol),
           tags: T.nilable(T::Array[String])
         )
           .returns(T.attached_class)
@@ -75,7 +78,7 @@ module Braintrust
               id: String,
               comment: T.nilable(String),
               metadata: T.nilable(T::Hash[Symbol, T.nilable(T.anything)]),
-              source: T.nilable(Symbol),
+              source: T.nilable(Braintrust::Models::FeedbackDatasetItem::Source::OrSymbol),
               tags: T.nilable(T::Array[String])
             }
           )
@@ -84,14 +87,15 @@ module Braintrust
       end
 
       # The source of the feedback. Must be one of "external" (default), "app", or "api"
-      class Source < Braintrust::Enum
-        abstract!
+      module Source
+        extend Braintrust::Enum
 
-        Value = type_template(:out) { {fixed: Symbol} }
+        TaggedSymbol = T.type_alias { T.all(Symbol, Braintrust::Models::FeedbackDatasetItem::Source) }
+        OrSymbol = T.type_alias { T.any(Symbol, Braintrust::Models::FeedbackDatasetItem::Source::TaggedSymbol) }
 
-        APP = :app
-        API = :api
-        EXTERNAL = :external
+        APP = T.let(:app, Braintrust::Models::FeedbackDatasetItem::Source::OrSymbol)
+        API = T.let(:api, Braintrust::Models::FeedbackDatasetItem::Source::OrSymbol)
+        EXTERNAL = T.let(:external, Braintrust::Models::FeedbackDatasetItem::Source::OrSymbol)
       end
     end
   end

@@ -46,10 +46,10 @@ module Braintrust
 
       # def initialize: (Hash | Braintrust::BaseModel) -> void
 
-      # @abstract
-      #
       # Type of the object the event is originating from.
-      class ObjectType < Braintrust::Enum
+      module ObjectType
+        extend Braintrust::Enum
+
         EXPERIMENT = :experiment
         DATASET = :dataset
         PROMPT = :prompt

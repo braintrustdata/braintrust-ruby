@@ -16,11 +16,13 @@ module Braintrust
       end
 
       # The object type that the ACL applies to
-      sig { returns(Symbol) }
+      sig { returns(Braintrust::Models::ACLObjectType::OrSymbol) }
       def object_type
       end
 
-      sig { params(_: Symbol).returns(Symbol) }
+      sig do
+        params(_: Braintrust::Models::ACLObjectType::OrSymbol).returns(Braintrust::Models::ACLObjectType::OrSymbol)
+      end
       def object_type=(_)
       end
 
@@ -36,21 +38,27 @@ module Braintrust
 
       # Permission the ACL grants. Exactly one of `permission` and `role_id` will be
       #   provided
-      sig { returns(T.nilable(Symbol)) }
+      sig { returns(T.nilable(Braintrust::Models::Permission::OrSymbol)) }
       def permission
       end
 
-      sig { params(_: T.nilable(Symbol)).returns(T.nilable(Symbol)) }
+      sig do
+        params(_: T.nilable(Braintrust::Models::Permission::OrSymbol))
+          .returns(T.nilable(Braintrust::Models::Permission::OrSymbol))
+      end
       def permission=(_)
       end
 
       # When setting a permission directly, optionally restricts the permission grant to
       #   just the specified object type. Cannot be set alongside a `role_id`.
-      sig { returns(T.nilable(Symbol)) }
+      sig { returns(T.nilable(Braintrust::Models::ACLObjectType::OrSymbol)) }
       def restrict_object_type
       end
 
-      sig { params(_: T.nilable(Symbol)).returns(T.nilable(Symbol)) }
+      sig do
+        params(_: T.nilable(Braintrust::Models::ACLObjectType::OrSymbol))
+          .returns(T.nilable(Braintrust::Models::ACLObjectType::OrSymbol))
+      end
       def restrict_object_type=(_)
       end
 
@@ -77,10 +85,10 @@ module Braintrust
       sig do
         params(
           object_id_: String,
-          object_type: Symbol,
+          object_type: Braintrust::Models::ACLObjectType::OrSymbol,
           group_id: T.nilable(String),
-          permission: T.nilable(Symbol),
-          restrict_object_type: T.nilable(Symbol),
+          permission: T.nilable(Braintrust::Models::Permission::OrSymbol),
+          restrict_object_type: T.nilable(Braintrust::Models::ACLObjectType::OrSymbol),
           role_id: T.nilable(String),
           user_id: T.nilable(String),
           request_options: T.any(Braintrust::RequestOptions, T::Hash[Symbol, T.anything])
@@ -104,10 +112,10 @@ module Braintrust
           .returns(
             {
               object_id_: String,
-              object_type: Symbol,
+              object_type: Braintrust::Models::ACLObjectType::OrSymbol,
               group_id: T.nilable(String),
-              permission: T.nilable(Symbol),
-              restrict_object_type: T.nilable(Symbol),
+              permission: T.nilable(Braintrust::Models::Permission::OrSymbol),
+              restrict_object_type: T.nilable(Braintrust::Models::ACLObjectType::OrSymbol),
               role_id: T.nilable(String),
               user_id: T.nilable(String),
               request_options: Braintrust::RequestOptions

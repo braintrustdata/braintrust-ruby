@@ -69,7 +69,9 @@ module Braintrust
         | Braintrust::Models::FunctionInvokeParams::Message::Function
         | Braintrust::Models::FunctionInvokeParams::Message::Fallback
 
-      class Message < Braintrust::Union
+      module Message
+        extend Braintrust::Union
+
         type system_ =
           {
             role: Braintrust::Models::FunctionInvokeParams::Message::System::role,
@@ -98,7 +100,9 @@ module Braintrust
 
           type role = :system
 
-          class Role < Braintrust::Enum
+          module Role
+            extend Braintrust::Enum
+
             SYSTEM: :system
 
             def self.values: -> ::Array[Braintrust::Models::FunctionInvokeParams::Message::System::role]
@@ -135,7 +139,9 @@ module Braintrust
 
           type role = :user
 
-          class Role < Braintrust::Enum
+          module Role
+            extend Braintrust::Enum
+
             USER: :user
 
             def self.values: -> ::Array[Braintrust::Models::FunctionInvokeParams::Message::User::role]
@@ -145,7 +151,9 @@ module Braintrust
             String
             | ::Array[Braintrust::Models::FunctionInvokeParams::Message::User::Content::array]
 
-          class Content < Braintrust::Union
+          module Content
+            extend Braintrust::Union
+
             type nested2_d_array =
               ::Array[Braintrust::Models::FunctionInvokeParams::Message::User::Content::array]
 
@@ -155,7 +163,9 @@ module Braintrust
               Braintrust::Models::ChatCompletionContentPartText
               | Braintrust::Models::ChatCompletionContentPartImage
 
-            class Array < Braintrust::Union
+            module Array
+              extend Braintrust::Union
+
               def self.variants: -> [Braintrust::Models::ChatCompletionContentPartText, Braintrust::Models::ChatCompletionContentPartImage]
             end
 
@@ -195,7 +205,9 @@ module Braintrust
 
           type role = :assistant
 
-          class Role < Braintrust::Enum
+          module Role
+            extend Braintrust::Enum
+
             ASSISTANT: :assistant
 
             def self.values: -> ::Array[Braintrust::Models::FunctionInvokeParams::Message::Assistant::role]
@@ -242,7 +254,9 @@ module Braintrust
 
           type role = :tool
 
-          class Role < Braintrust::Enum
+          module Role
+            extend Braintrust::Enum
+
             TOOL: :tool
 
             def self.values: -> ::Array[Braintrust::Models::FunctionInvokeParams::Message::Tool::role]
@@ -275,7 +289,9 @@ module Braintrust
 
           type role = :function
 
-          class Role < Braintrust::Enum
+          module Role
+            extend Braintrust::Enum
+
             FUNCTION: :function
 
             def self.values: -> ::Array[Braintrust::Models::FunctionInvokeParams::Message::Function::role]
@@ -302,7 +318,9 @@ module Braintrust
 
           type role = :model
 
-          class Role < Braintrust::Enum
+          module Role
+            extend Braintrust::Enum
+
             MODEL: :model
 
             def self.values: -> ::Array[Braintrust::Models::FunctionInvokeParams::Message::Fallback::role]
@@ -314,7 +332,9 @@ module Braintrust
 
       type mode = :auto | :parallel
 
-      class Mode < Braintrust::Enum
+      module Mode
+        extend Braintrust::Enum
+
         AUTO: :auto
         PARALLEL: :parallel
 
@@ -325,7 +345,9 @@ module Braintrust
         Braintrust::Models::FunctionInvokeParams::Parent::SpanParentStruct
         | String
 
-      class Parent < Braintrust::Union
+      module Parent
+        extend Braintrust::Union
+
         type span_parent_struct =
           {
             object_id_: String,
@@ -354,7 +376,9 @@ module Braintrust
 
           type object_type = :project_logs | :experiment | :playground_logs
 
-          class ObjectType < Braintrust::Enum
+          module ObjectType
+            extend Braintrust::Enum
+
             PROJECT_LOGS: :project_logs
             EXPERIMENT: :experiment
             PLAYGROUND_LOGS: :playground_logs

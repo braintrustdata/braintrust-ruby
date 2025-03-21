@@ -94,7 +94,9 @@ module Braintrust
         | Braintrust::Models::EvalCreateParams::Data::ProjectDatasetName
         | Braintrust::Models::EvalCreateParams::Data::DatasetRows
 
-      class Data < Braintrust::Union
+      module Data
+        extend Braintrust::Union
+
         type dataset_id =
           { dataset_id: String, _internal_btql: ::Hash[Symbol, top?]? }
 
@@ -155,7 +157,9 @@ module Braintrust
         | Braintrust::Models::EvalCreateParams::Score::InlineCode
         | Braintrust::Models::EvalCreateParams::Score::InlinePrompt
 
-      class Score < Braintrust::Union
+      module Score
+        extend Braintrust::Union
+
         type function_id = { function_id: String, version: String }
 
         class FunctionID < Braintrust::BaseModel
@@ -268,7 +272,9 @@ module Braintrust
 
             type runtime = :node | :python
 
-            class Runtime < Braintrust::Enum
+            module Runtime
+              extend Braintrust::Enum
+
               NODE: :node
               PYTHON: :python
 
@@ -304,7 +310,9 @@ module Braintrust
         | Braintrust::Models::EvalCreateParams::Task::InlineCode
         | Braintrust::Models::EvalCreateParams::Task::InlinePrompt
 
-      class Task < Braintrust::Union
+      module Task
+        extend Braintrust::Union
+
         type function_id = { function_id: String, version: String }
 
         class FunctionID < Braintrust::BaseModel
@@ -417,7 +425,9 @@ module Braintrust
 
             type runtime = :node | :python
 
-            class Runtime < Braintrust::Enum
+            module Runtime
+              extend Braintrust::Enum
+
               NODE: :node
               PYTHON: :python
 
@@ -469,7 +479,9 @@ module Braintrust
 
         type collect = :all | :none | :some
 
-        class Collect < Braintrust::Enum
+        module Collect
+          extend Braintrust::Enum
+
           ALL: :all
           NONE: :none
           SOME: :some
@@ -488,7 +500,9 @@ module Braintrust
           | :commit_time
           | :git_diff
 
-        class Field < Braintrust::Enum
+        module Field
+          extend Braintrust::Enum
+
           COMMIT: :commit
           BRANCH: :branch
           TAG: :tag
@@ -506,7 +520,9 @@ module Braintrust
       type parent =
         Braintrust::Models::EvalCreateParams::Parent::SpanParentStruct | String
 
-      class Parent < Braintrust::Union
+      module Parent
+        extend Braintrust::Union
+
         type span_parent_struct =
           {
             object_id_: String,
@@ -535,7 +551,9 @@ module Braintrust
 
           type object_type = :project_logs | :experiment | :playground_logs
 
-          class ObjectType < Braintrust::Enum
+          module ObjectType
+            extend Braintrust::Enum
+
             PROJECT_LOGS: :project_logs
             EXPERIMENT: :experiment
             PLAYGROUND_LOGS: :playground_logs

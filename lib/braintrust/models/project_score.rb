@@ -95,10 +95,10 @@ module Braintrust
 
       # def initialize: (Hash | Braintrust::BaseModel) -> void
 
-      # @abstract
-      #
       # For categorical-type project scores, the list of all categories
-      class Categories < Braintrust::Union
+      module Categories
+        extend Braintrust::Union
+
         ProjectScoreCategoryArray = Braintrust::ArrayOf[-> { Braintrust::Models::ProjectScoreCategory }]
 
         FloatMap = Braintrust::HashOf[Float]

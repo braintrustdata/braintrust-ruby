@@ -25,20 +25,25 @@ module Braintrust
       end
 
       # The object type that the ACL applies to
-      sig { returns(Symbol) }
+      sig { returns(Braintrust::Models::ACLObjectType::OrSymbol) }
       def object_type
       end
 
-      sig { params(_: Symbol).returns(Symbol) }
+      sig do
+        params(_: Braintrust::Models::ACLObjectType::OrSymbol).returns(Braintrust::Models::ACLObjectType::OrSymbol)
+      end
       def object_type=(_)
       end
 
       # Type of table that the view corresponds to.
-      sig { returns(T.nilable(Symbol)) }
+      sig { returns(T.nilable(Braintrust::Models::ViewCreateParams::ViewType::OrSymbol)) }
       def view_type
       end
 
-      sig { params(_: T.nilable(Symbol)).returns(T.nilable(Symbol)) }
+      sig do
+        params(_: T.nilable(Braintrust::Models::ViewCreateParams::ViewType::OrSymbol))
+          .returns(T.nilable(Braintrust::Models::ViewCreateParams::ViewType::OrSymbol))
+      end
       def view_type=(_)
       end
 
@@ -82,8 +87,8 @@ module Braintrust
         params(
           name: String,
           object_id_: String,
-          object_type: Symbol,
-          view_type: T.nilable(Symbol),
+          object_type: Braintrust::Models::ACLObjectType::OrSymbol,
+          view_type: T.nilable(Braintrust::Models::ViewCreateParams::ViewType::OrSymbol),
           deleted_at: T.nilable(Time),
           options: T.nilable(Braintrust::Models::ViewOptions),
           user_id: T.nilable(String),
@@ -111,8 +116,8 @@ module Braintrust
             {
               name: String,
               object_id_: String,
-              object_type: Symbol,
-              view_type: T.nilable(Symbol),
+              object_type: Braintrust::Models::ACLObjectType::OrSymbol,
+              view_type: T.nilable(Braintrust::Models::ViewCreateParams::ViewType::OrSymbol),
               deleted_at: T.nilable(Time),
               options: T.nilable(Braintrust::Models::ViewOptions),
               user_id: T.nilable(String),
@@ -125,22 +130,23 @@ module Braintrust
       end
 
       # Type of table that the view corresponds to.
-      class ViewType < Braintrust::Enum
-        abstract!
+      module ViewType
+        extend Braintrust::Enum
 
-        Value = type_template(:out) { {fixed: Symbol} }
+        TaggedSymbol = T.type_alias { T.all(Symbol, Braintrust::Models::ViewCreateParams::ViewType) }
+        OrSymbol = T.type_alias { T.any(Symbol, Braintrust::Models::ViewCreateParams::ViewType::TaggedSymbol) }
 
-        PROJECTS = :projects
-        EXPERIMENTS = :experiments
-        EXPERIMENT = :experiment
-        PLAYGROUNDS = :playgrounds
-        PLAYGROUND = :playground
-        DATASETS = :datasets
-        DATASET = :dataset
-        PROMPTS = :prompts
-        TOOLS = :tools
-        SCORERS = :scorers
-        LOGS = :logs
+        PROJECTS = T.let(:projects, Braintrust::Models::ViewCreateParams::ViewType::OrSymbol)
+        EXPERIMENTS = T.let(:experiments, Braintrust::Models::ViewCreateParams::ViewType::OrSymbol)
+        EXPERIMENT = T.let(:experiment, Braintrust::Models::ViewCreateParams::ViewType::OrSymbol)
+        PLAYGROUNDS = T.let(:playgrounds, Braintrust::Models::ViewCreateParams::ViewType::OrSymbol)
+        PLAYGROUND = T.let(:playground, Braintrust::Models::ViewCreateParams::ViewType::OrSymbol)
+        DATASETS = T.let(:datasets, Braintrust::Models::ViewCreateParams::ViewType::OrSymbol)
+        DATASET = T.let(:dataset, Braintrust::Models::ViewCreateParams::ViewType::OrSymbol)
+        PROMPTS = T.let(:prompts, Braintrust::Models::ViewCreateParams::ViewType::OrSymbol)
+        TOOLS = T.let(:tools, Braintrust::Models::ViewCreateParams::ViewType::OrSymbol)
+        SCORERS = T.let(:scorers, Braintrust::Models::ViewCreateParams::ViewType::OrSymbol)
+        LOGS = T.let(:logs, Braintrust::Models::ViewCreateParams::ViewType::OrSymbol)
       end
     end
   end

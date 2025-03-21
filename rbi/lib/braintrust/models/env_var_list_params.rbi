@@ -44,11 +44,14 @@ module Braintrust
       end
 
       # The type of the object the environment variable is scoped for
-      sig { returns(T.nilable(Symbol)) }
+      sig { returns(T.nilable(Braintrust::Models::EnvVarObjectType::OrSymbol)) }
       def object_type
       end
 
-      sig { params(_: Symbol).returns(Symbol) }
+      sig do
+        params(_: Braintrust::Models::EnvVarObjectType::OrSymbol)
+          .returns(Braintrust::Models::EnvVarObjectType::OrSymbol)
+      end
       def object_type=(_)
       end
 
@@ -58,7 +61,7 @@ module Braintrust
           ids: T.any(String, T::Array[String]),
           limit: T.nilable(Integer),
           object_id_: String,
-          object_type: Symbol,
+          object_type: Braintrust::Models::EnvVarObjectType::OrSymbol,
           request_options: T.any(Braintrust::RequestOptions, T::Hash[Symbol, T.anything])
         )
           .returns(T.attached_class)
@@ -74,7 +77,7 @@ module Braintrust
               ids: T.any(String, T::Array[String]),
               limit: T.nilable(Integer),
               object_id_: String,
-              object_type: Symbol,
+              object_type: Braintrust::Models::EnvVarObjectType::OrSymbol,
               request_options: Braintrust::RequestOptions
             }
           )
@@ -84,8 +87,8 @@ module Braintrust
 
       # Filter search results to a particular set of object IDs. To specify a list of
       #   IDs, include the query param multiple times
-      class IDs < Braintrust::Union
-        abstract!
+      module IDs
+        extend Braintrust::Union
 
         Variants = type_template(:out) { {fixed: T.any(String, T::Array[String])} }
 

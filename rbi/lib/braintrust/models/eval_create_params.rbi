@@ -373,8 +373,8 @@ module Braintrust
       end
 
       # The dataset to use
-      class Data < Braintrust::Union
-        abstract!
+      module Data
+        extend Braintrust::Union
 
         Variants =
           type_template(:out) do
@@ -502,8 +502,8 @@ module Braintrust
       end
 
       # The function to evaluate
-      class Score < Braintrust::Union
-        abstract!
+      module Score
+        extend Braintrust::Union
 
         Variants =
           type_template(:out) do
@@ -706,11 +706,14 @@ module Braintrust
           end
 
           class InlineContext < Braintrust::BaseModel
-            sig { returns(Symbol) }
+            sig { returns(Braintrust::Models::EvalCreateParams::Score::InlineCode::InlineContext::Runtime::OrSymbol) }
             def runtime
             end
 
-            sig { params(_: Symbol).returns(Symbol) }
+            sig do
+              params(_: Braintrust::Models::EvalCreateParams::Score::InlineCode::InlineContext::Runtime::OrSymbol)
+                .returns(Braintrust::Models::EvalCreateParams::Score::InlineCode::InlineContext::Runtime::OrSymbol)
+            end
             def runtime=(_)
             end
 
@@ -722,21 +725,45 @@ module Braintrust
             def version=(_)
             end
 
-            sig { params(runtime: Symbol, version: String).returns(T.attached_class) }
+            sig do
+              params(
+                runtime: Braintrust::Models::EvalCreateParams::Score::InlineCode::InlineContext::Runtime::OrSymbol,
+                version: String
+              )
+                .returns(T.attached_class)
+            end
             def self.new(runtime:, version:)
             end
 
-            sig { override.returns({runtime: Symbol, version: String}) }
+            sig do
+              override
+                .returns(
+                  {
+                    runtime: Braintrust::Models::EvalCreateParams::Score::InlineCode::InlineContext::Runtime::OrSymbol,
+                    version: String
+                  }
+                )
+            end
             def to_hash
             end
 
-            class Runtime < Braintrust::Enum
-              abstract!
+            module Runtime
+              extend Braintrust::Enum
 
-              Value = type_template(:out) { {fixed: Symbol} }
+              TaggedSymbol =
+                T.type_alias { T.all(Symbol, Braintrust::Models::EvalCreateParams::Score::InlineCode::InlineContext::Runtime) }
+              OrSymbol =
+                T.type_alias do
+                  T.any(
+                    Symbol,
+                    Braintrust::Models::EvalCreateParams::Score::InlineCode::InlineContext::Runtime::TaggedSymbol
+                  )
+                end
 
-              NODE = :node
-              PYTHON = :python
+              NODE =
+                T.let(:node, Braintrust::Models::EvalCreateParams::Score::InlineCode::InlineContext::Runtime::OrSymbol)
+              PYTHON =
+                T.let(:python, Braintrust::Models::EvalCreateParams::Score::InlineCode::InlineContext::Runtime::OrSymbol)
             end
           end
         end
@@ -775,8 +802,8 @@ module Braintrust
       end
 
       # The function to evaluate
-      class Task < Braintrust::Union
-        abstract!
+      module Task
+        extend Braintrust::Union
 
         Variants =
           type_template(:out) do
@@ -979,11 +1006,14 @@ module Braintrust
           end
 
           class InlineContext < Braintrust::BaseModel
-            sig { returns(Symbol) }
+            sig { returns(Braintrust::Models::EvalCreateParams::Task::InlineCode::InlineContext::Runtime::OrSymbol) }
             def runtime
             end
 
-            sig { params(_: Symbol).returns(Symbol) }
+            sig do
+              params(_: Braintrust::Models::EvalCreateParams::Task::InlineCode::InlineContext::Runtime::OrSymbol)
+                .returns(Braintrust::Models::EvalCreateParams::Task::InlineCode::InlineContext::Runtime::OrSymbol)
+            end
             def runtime=(_)
             end
 
@@ -995,21 +1025,45 @@ module Braintrust
             def version=(_)
             end
 
-            sig { params(runtime: Symbol, version: String).returns(T.attached_class) }
+            sig do
+              params(
+                runtime: Braintrust::Models::EvalCreateParams::Task::InlineCode::InlineContext::Runtime::OrSymbol,
+                version: String
+              )
+                .returns(T.attached_class)
+            end
             def self.new(runtime:, version:)
             end
 
-            sig { override.returns({runtime: Symbol, version: String}) }
+            sig do
+              override
+                .returns(
+                  {
+                    runtime: Braintrust::Models::EvalCreateParams::Task::InlineCode::InlineContext::Runtime::OrSymbol,
+                    version: String
+                  }
+                )
+            end
             def to_hash
             end
 
-            class Runtime < Braintrust::Enum
-              abstract!
+            module Runtime
+              extend Braintrust::Enum
 
-              Value = type_template(:out) { {fixed: Symbol} }
+              TaggedSymbol =
+                T.type_alias { T.all(Symbol, Braintrust::Models::EvalCreateParams::Task::InlineCode::InlineContext::Runtime) }
+              OrSymbol =
+                T.type_alias do
+                  T.any(
+                    Symbol,
+                    Braintrust::Models::EvalCreateParams::Task::InlineCode::InlineContext::Runtime::TaggedSymbol
+                  )
+                end
 
-              NODE = :node
-              PYTHON = :python
+              NODE =
+                T.let(:node, Braintrust::Models::EvalCreateParams::Task::InlineCode::InlineContext::Runtime::OrSymbol)
+              PYTHON =
+                T.let(:python, Braintrust::Models::EvalCreateParams::Task::InlineCode::InlineContext::Runtime::OrSymbol)
             end
           end
         end
@@ -1048,62 +1102,92 @@ module Braintrust
       end
 
       class GitMetadataSettings < Braintrust::BaseModel
-        sig { returns(Symbol) }
+        sig { returns(Braintrust::Models::EvalCreateParams::GitMetadataSettings::Collect::OrSymbol) }
         def collect
         end
 
-        sig { params(_: Symbol).returns(Symbol) }
+        sig do
+          params(_: Braintrust::Models::EvalCreateParams::GitMetadataSettings::Collect::OrSymbol)
+            .returns(Braintrust::Models::EvalCreateParams::GitMetadataSettings::Collect::OrSymbol)
+        end
         def collect=(_)
         end
 
-        sig { returns(T.nilable(T::Array[Symbol])) }
+        sig { returns(T.nilable(T::Array[Braintrust::Models::EvalCreateParams::GitMetadataSettings::Field::OrSymbol])) }
         def fields
         end
 
-        sig { params(_: T::Array[Symbol]).returns(T::Array[Symbol]) }
+        sig do
+          params(_: T::Array[Braintrust::Models::EvalCreateParams::GitMetadataSettings::Field::OrSymbol])
+            .returns(T::Array[Braintrust::Models::EvalCreateParams::GitMetadataSettings::Field::OrSymbol])
+        end
         def fields=(_)
         end
 
         # Optional settings for collecting git metadata. By default, will collect all git
         #   metadata fields allowed in org-level settings.
-        sig { params(collect: Symbol, fields: T::Array[Symbol]).returns(T.attached_class) }
+        sig do
+          params(
+            collect: Braintrust::Models::EvalCreateParams::GitMetadataSettings::Collect::OrSymbol,
+            fields: T::Array[Braintrust::Models::EvalCreateParams::GitMetadataSettings::Field::OrSymbol]
+          )
+            .returns(T.attached_class)
+        end
         def self.new(collect:, fields: nil)
         end
 
-        sig { override.returns({collect: Symbol, fields: T::Array[Symbol]}) }
+        sig do
+          override
+            .returns(
+              {
+                collect: Braintrust::Models::EvalCreateParams::GitMetadataSettings::Collect::OrSymbol,
+                fields: T::Array[Braintrust::Models::EvalCreateParams::GitMetadataSettings::Field::OrSymbol]
+              }
+            )
+        end
         def to_hash
         end
 
-        class Collect < Braintrust::Enum
-          abstract!
+        module Collect
+          extend Braintrust::Enum
 
-          Value = type_template(:out) { {fixed: Symbol} }
+          TaggedSymbol =
+            T.type_alias { T.all(Symbol, Braintrust::Models::EvalCreateParams::GitMetadataSettings::Collect) }
+          OrSymbol =
+            T.type_alias { T.any(Symbol, Braintrust::Models::EvalCreateParams::GitMetadataSettings::Collect::TaggedSymbol) }
 
-          ALL = :all
-          NONE = :none
-          SOME = :some
+          ALL = T.let(:all, Braintrust::Models::EvalCreateParams::GitMetadataSettings::Collect::OrSymbol)
+          NONE = T.let(:none, Braintrust::Models::EvalCreateParams::GitMetadataSettings::Collect::OrSymbol)
+          SOME = T.let(:some, Braintrust::Models::EvalCreateParams::GitMetadataSettings::Collect::OrSymbol)
         end
 
-        class Field < Braintrust::Enum
-          abstract!
+        module Field
+          extend Braintrust::Enum
 
-          Value = type_template(:out) { {fixed: Symbol} }
+          TaggedSymbol =
+            T.type_alias { T.all(Symbol, Braintrust::Models::EvalCreateParams::GitMetadataSettings::Field) }
+          OrSymbol =
+            T.type_alias { T.any(Symbol, Braintrust::Models::EvalCreateParams::GitMetadataSettings::Field::TaggedSymbol) }
 
-          COMMIT = :commit
-          BRANCH = :branch
-          TAG = :tag
-          DIRTY = :dirty
-          AUTHOR_NAME = :author_name
-          AUTHOR_EMAIL = :author_email
-          COMMIT_MESSAGE = :commit_message
-          COMMIT_TIME = :commit_time
-          GIT_DIFF = :git_diff
+          COMMIT = T.let(:commit, Braintrust::Models::EvalCreateParams::GitMetadataSettings::Field::OrSymbol)
+          BRANCH = T.let(:branch, Braintrust::Models::EvalCreateParams::GitMetadataSettings::Field::OrSymbol)
+          TAG = T.let(:tag, Braintrust::Models::EvalCreateParams::GitMetadataSettings::Field::OrSymbol)
+          DIRTY = T.let(:dirty, Braintrust::Models::EvalCreateParams::GitMetadataSettings::Field::OrSymbol)
+          AUTHOR_NAME =
+            T.let(:author_name, Braintrust::Models::EvalCreateParams::GitMetadataSettings::Field::OrSymbol)
+          AUTHOR_EMAIL =
+            T.let(:author_email, Braintrust::Models::EvalCreateParams::GitMetadataSettings::Field::OrSymbol)
+          COMMIT_MESSAGE =
+            T.let(:commit_message, Braintrust::Models::EvalCreateParams::GitMetadataSettings::Field::OrSymbol)
+          COMMIT_TIME =
+            T.let(:commit_time, Braintrust::Models::EvalCreateParams::GitMetadataSettings::Field::OrSymbol)
+          GIT_DIFF = T.let(:git_diff, Braintrust::Models::EvalCreateParams::GitMetadataSettings::Field::OrSymbol)
         end
       end
 
       # Options for tracing the evaluation
-      class Parent < Braintrust::Union
-        abstract!
+      module Parent
+        extend Braintrust::Union
 
         Variants =
           type_template(:out) { {fixed: T.any(Braintrust::Models::EvalCreateParams::Parent::SpanParentStruct, String)} }
@@ -1118,11 +1202,14 @@ module Braintrust
           def object_id_=(_)
           end
 
-          sig { returns(Symbol) }
+          sig { returns(Braintrust::Models::EvalCreateParams::Parent::SpanParentStruct::ObjectType::OrSymbol) }
           def object_type
           end
 
-          sig { params(_: Symbol).returns(Symbol) }
+          sig do
+            params(_: Braintrust::Models::EvalCreateParams::Parent::SpanParentStruct::ObjectType::OrSymbol)
+              .returns(Braintrust::Models::EvalCreateParams::Parent::SpanParentStruct::ObjectType::OrSymbol)
+          end
           def object_type=(_)
           end
 
@@ -1154,7 +1241,7 @@ module Braintrust
           sig do
             params(
               object_id_: String,
-              object_type: Symbol,
+              object_type: Braintrust::Models::EvalCreateParams::Parent::SpanParentStruct::ObjectType::OrSymbol,
               propagated_event: T.nilable(T::Hash[Symbol, T.nilable(T.anything)]),
               row_ids: T.nilable(Braintrust::Models::EvalCreateParams::Parent::SpanParentStruct::RowIDs)
             )
@@ -1168,7 +1255,7 @@ module Braintrust
               .returns(
                 {
                   object_id_: String,
-                  object_type: Symbol,
+                  object_type: Braintrust::Models::EvalCreateParams::Parent::SpanParentStruct::ObjectType::OrSymbol,
                   propagated_event: T.nilable(T::Hash[Symbol, T.nilable(T.anything)]),
                   row_ids: T.nilable(Braintrust::Models::EvalCreateParams::Parent::SpanParentStruct::RowIDs)
                 }
@@ -1177,14 +1264,23 @@ module Braintrust
           def to_hash
           end
 
-          class ObjectType < Braintrust::Enum
-            abstract!
+          module ObjectType
+            extend Braintrust::Enum
 
-            Value = type_template(:out) { {fixed: Symbol} }
+            TaggedSymbol =
+              T.type_alias { T.all(Symbol, Braintrust::Models::EvalCreateParams::Parent::SpanParentStruct::ObjectType) }
+            OrSymbol =
+              T.type_alias { T.any(Symbol, Braintrust::Models::EvalCreateParams::Parent::SpanParentStruct::ObjectType::TaggedSymbol) }
 
-            PROJECT_LOGS = :project_logs
-            EXPERIMENT = :experiment
-            PLAYGROUND_LOGS = :playground_logs
+            PROJECT_LOGS =
+              T.let(:project_logs, Braintrust::Models::EvalCreateParams::Parent::SpanParentStruct::ObjectType::OrSymbol)
+            EXPERIMENT =
+              T.let(:experiment, Braintrust::Models::EvalCreateParams::Parent::SpanParentStruct::ObjectType::OrSymbol)
+            PLAYGROUND_LOGS =
+              T.let(
+                :playground_logs,
+                Braintrust::Models::EvalCreateParams::Parent::SpanParentStruct::ObjectType::OrSymbol
+              )
           end
 
           class RowIDs < Braintrust::BaseModel

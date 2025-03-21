@@ -35,11 +35,14 @@ module Braintrust
       end
 
       # A literal 'g' which identifies the log as a project log
-      sig { returns(Symbol) }
+      sig { returns(Braintrust::Models::ProjectLogsEvent::LogID::TaggedSymbol) }
       def log_id
       end
 
-      sig { params(_: Symbol).returns(Symbol) }
+      sig do
+        params(_: Braintrust::Models::ProjectLogsEvent::LogID::TaggedSymbol)
+          .returns(Braintrust::Models::ProjectLogsEvent::LogID::TaggedSymbol)
+      end
       def log_id=(_)
       end
 
@@ -250,7 +253,7 @@ module Braintrust
           id: String,
           _xact_id: String,
           created: Time,
-          log_id: Symbol,
+          log_id: Braintrust::Models::ProjectLogsEvent::LogID::TaggedSymbol,
           org_id: String,
           project_id: String,
           root_span_id: String,
@@ -303,7 +306,7 @@ module Braintrust
               id: String,
               _xact_id: String,
               created: Time,
-              log_id: Symbol,
+              log_id: Braintrust::Models::ProjectLogsEvent::LogID::TaggedSymbol,
               org_id: String,
               project_id: String,
               root_span_id: String,
@@ -328,12 +331,13 @@ module Braintrust
       end
 
       # A literal 'g' which identifies the log as a project log
-      class LogID < Braintrust::Enum
-        abstract!
+      module LogID
+        extend Braintrust::Enum
 
-        Value = type_template(:out) { {fixed: Symbol} }
+        TaggedSymbol = T.type_alias { T.all(Symbol, Braintrust::Models::ProjectLogsEvent::LogID) }
+        OrSymbol = T.type_alias { T.any(Symbol, Braintrust::Models::ProjectLogsEvent::LogID::TaggedSymbol) }
 
-        G = :g
+        G = T.let(:g, Braintrust::Models::ProjectLogsEvent::LogID::TaggedSymbol)
       end
 
       class Context < Braintrust::BaseModel
