@@ -44,8 +44,8 @@ module Braintrust
       end
 
       sig do
-        params(_: Braintrust::Models::CodeBundle::RuntimeContext)
-          .returns(Braintrust::Models::CodeBundle::RuntimeContext)
+        params(_: T.any(Braintrust::Models::CodeBundle::RuntimeContext, Braintrust::Util::AnyHash))
+          .returns(T.any(Braintrust::Models::CodeBundle::RuntimeContext, Braintrust::Util::AnyHash))
       end
       def runtime_context=(_)
       end

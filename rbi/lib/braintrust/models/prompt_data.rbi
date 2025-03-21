@@ -8,8 +8,8 @@ module Braintrust
       end
 
       sig do
-        params(_: T.nilable(Braintrust::Models::PromptOptions))
-          .returns(T.nilable(Braintrust::Models::PromptOptions))
+        params(_: T.nilable(T.any(Braintrust::Models::PromptOptions, Braintrust::Util::AnyHash)))
+          .returns(T.nilable(T.any(Braintrust::Models::PromptOptions, Braintrust::Util::AnyHash)))
       end
       def options=(_)
       end
@@ -19,8 +19,8 @@ module Braintrust
       end
 
       sig do
-        params(_: T.nilable(Braintrust::Models::PromptData::Origin))
-          .returns(T.nilable(Braintrust::Models::PromptData::Origin))
+        params(_: T.nilable(T.any(Braintrust::Models::PromptData::Origin, Braintrust::Util::AnyHash)))
+          .returns(T.nilable(T.any(Braintrust::Models::PromptData::Origin, Braintrust::Util::AnyHash)))
       end
       def origin=(_)
       end
@@ -30,8 +30,8 @@ module Braintrust
       end
 
       sig do
-        params(_: T.nilable(Braintrust::Models::PromptData::Parser))
-          .returns(T.nilable(Braintrust::Models::PromptData::Parser))
+        params(_: T.nilable(T.any(Braintrust::Models::PromptData::Parser, Braintrust::Util::AnyHash)))
+          .returns(T.nilable(T.any(Braintrust::Models::PromptData::Parser, Braintrust::Util::AnyHash)))
       end
       def parser=(_)
       end
@@ -671,8 +671,22 @@ module Braintrust
               end
 
               sig do
-                params(_: T.nilable(Braintrust::Models::PromptData::Prompt::Chat::Message::Assistant::FunctionCall))
-                  .returns(T.nilable(Braintrust::Models::PromptData::Prompt::Chat::Message::Assistant::FunctionCall))
+                params(
+                  _: T.nilable(
+                    T.any(
+                      Braintrust::Models::PromptData::Prompt::Chat::Message::Assistant::FunctionCall,
+                      Braintrust::Util::AnyHash
+                    )
+                  )
+                )
+                  .returns(
+                    T.nilable(
+                      T.any(
+                        Braintrust::Models::PromptData::Prompt::Chat::Message::Assistant::FunctionCall,
+                        Braintrust::Util::AnyHash
+                      )
+                    )
+                  )
               end
               def function_call=(_)
               end

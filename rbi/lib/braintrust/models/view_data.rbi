@@ -8,8 +8,8 @@ module Braintrust
       end
 
       sig do
-        params(_: T.nilable(Braintrust::Models::ViewDataSearch))
-          .returns(T.nilable(Braintrust::Models::ViewDataSearch))
+        params(_: T.nilable(T.any(Braintrust::Models::ViewDataSearch, Braintrust::Util::AnyHash)))
+          .returns(T.nilable(T.any(Braintrust::Models::ViewDataSearch, Braintrust::Util::AnyHash)))
       end
       def search=(_)
       end

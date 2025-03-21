@@ -66,7 +66,10 @@ module Braintrust
       def prompt_data
       end
 
-      sig { params(_: T.nilable(Braintrust::Models::PromptData)).returns(T.nilable(Braintrust::Models::PromptData)) }
+      sig do
+        params(_: T.nilable(T.any(Braintrust::Models::PromptData, Braintrust::Util::AnyHash)))
+          .returns(T.nilable(T.any(Braintrust::Models::PromptData, Braintrust::Util::AnyHash)))
+      end
       def prompt_data=(_)
       end
 
@@ -311,8 +314,18 @@ module Braintrust
               end
 
               sig do
-                params(_: Braintrust::Models::FunctionUpdateParams::FunctionData::Code::Data::Inline::RuntimeContext)
-                  .returns(Braintrust::Models::FunctionUpdateParams::FunctionData::Code::Data::Inline::RuntimeContext)
+                params(
+                  _: T.any(
+                    Braintrust::Models::FunctionUpdateParams::FunctionData::Code::Data::Inline::RuntimeContext,
+                    Braintrust::Util::AnyHash
+                  )
+                )
+                  .returns(
+                    T.any(
+                      Braintrust::Models::FunctionUpdateParams::FunctionData::Code::Data::Inline::RuntimeContext,
+                      Braintrust::Util::AnyHash
+                    )
+                  )
               end
               def runtime_context=(_)
               end

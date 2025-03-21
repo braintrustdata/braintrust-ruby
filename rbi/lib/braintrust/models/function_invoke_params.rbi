@@ -450,8 +450,22 @@ module Braintrust
           end
 
           sig do
-            params(_: T.nilable(Braintrust::Models::FunctionInvokeParams::Message::Assistant::FunctionCall))
-              .returns(T.nilable(Braintrust::Models::FunctionInvokeParams::Message::Assistant::FunctionCall))
+            params(
+              _: T.nilable(
+                T.any(
+                  Braintrust::Models::FunctionInvokeParams::Message::Assistant::FunctionCall,
+                  Braintrust::Util::AnyHash
+                )
+              )
+            )
+              .returns(
+                T.nilable(
+                  T.any(
+                    Braintrust::Models::FunctionInvokeParams::Message::Assistant::FunctionCall,
+                    Braintrust::Util::AnyHash
+                  )
+                )
+              )
           end
           def function_call=(_)
           end
@@ -782,8 +796,22 @@ module Braintrust
           end
 
           sig do
-            params(_: T.nilable(Braintrust::Models::FunctionInvokeParams::Parent::SpanParentStruct::RowIDs))
-              .returns(T.nilable(Braintrust::Models::FunctionInvokeParams::Parent::SpanParentStruct::RowIDs))
+            params(
+              _: T.nilable(
+                T.any(
+                  Braintrust::Models::FunctionInvokeParams::Parent::SpanParentStruct::RowIDs,
+                  Braintrust::Util::AnyHash
+                )
+              )
+            )
+              .returns(
+                T.nilable(
+                  T.any(
+                    Braintrust::Models::FunctionInvokeParams::Parent::SpanParentStruct::RowIDs,
+                    Braintrust::Util::AnyHash
+                  )
+                )
+              )
           end
           def row_ids=(_)
           end

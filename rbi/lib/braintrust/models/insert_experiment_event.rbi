@@ -98,8 +98,8 @@ module Braintrust
       end
 
       sig do
-        params(_: T.nilable(Braintrust::Models::InsertExperimentEvent::Context))
-          .returns(T.nilable(Braintrust::Models::InsertExperimentEvent::Context))
+        params(_: T.nilable(T.any(Braintrust::Models::InsertExperimentEvent::Context, Braintrust::Util::AnyHash)))
+          .returns(T.nilable(T.any(Braintrust::Models::InsertExperimentEvent::Context, Braintrust::Util::AnyHash)))
       end
       def context=(_)
       end
@@ -160,8 +160,10 @@ module Braintrust
       end
 
       sig do
-        params(_: T.nilable(Braintrust::Models::InsertExperimentEvent::Metadata))
-          .returns(T.nilable(Braintrust::Models::InsertExperimentEvent::Metadata))
+        params(
+          _: T.nilable(T.any(Braintrust::Models::InsertExperimentEvent::Metadata, Braintrust::Util::AnyHash))
+        )
+          .returns(T.nilable(T.any(Braintrust::Models::InsertExperimentEvent::Metadata, Braintrust::Util::AnyHash)))
       end
       def metadata=(_)
       end
@@ -174,8 +176,8 @@ module Braintrust
       end
 
       sig do
-        params(_: T.nilable(Braintrust::Models::InsertExperimentEvent::Metrics))
-          .returns(T.nilable(Braintrust::Models::InsertExperimentEvent::Metrics))
+        params(_: T.nilable(T.any(Braintrust::Models::InsertExperimentEvent::Metrics, Braintrust::Util::AnyHash)))
+          .returns(T.nilable(T.any(Braintrust::Models::InsertExperimentEvent::Metrics, Braintrust::Util::AnyHash)))
       end
       def metrics=(_)
       end
@@ -186,8 +188,8 @@ module Braintrust
       end
 
       sig do
-        params(_: T.nilable(Braintrust::Models::ObjectReference))
-          .returns(T.nilable(Braintrust::Models::ObjectReference))
+        params(_: T.nilable(T.any(Braintrust::Models::ObjectReference, Braintrust::Util::AnyHash)))
+          .returns(T.nilable(T.any(Braintrust::Models::ObjectReference, Braintrust::Util::AnyHash)))
       end
       def origin=(_)
       end
@@ -253,8 +255,8 @@ module Braintrust
       end
 
       sig do
-        params(_: T.nilable(Braintrust::Models::SpanAttributes))
-          .returns(T.nilable(Braintrust::Models::SpanAttributes))
+        params(_: T.nilable(T.any(Braintrust::Models::SpanAttributes, Braintrust::Util::AnyHash)))
+          .returns(T.nilable(T.any(Braintrust::Models::SpanAttributes, Braintrust::Util::AnyHash)))
       end
       def span_attributes=(_)
       end

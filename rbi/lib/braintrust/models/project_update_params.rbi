@@ -22,8 +22,8 @@ module Braintrust
       end
 
       sig do
-        params(_: T.nilable(Braintrust::Models::ProjectSettings))
-          .returns(T.nilable(Braintrust::Models::ProjectSettings))
+        params(_: T.nilable(T.any(Braintrust::Models::ProjectSettings, Braintrust::Util::AnyHash)))
+          .returns(T.nilable(T.any(Braintrust::Models::ProjectSettings, Braintrust::Util::AnyHash)))
       end
       def settings=(_)
       end
