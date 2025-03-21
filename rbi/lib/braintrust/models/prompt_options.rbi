@@ -598,7 +598,10 @@ module Braintrust
 
               sig do
                 params(
-                  json_schema: Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ResponseFormat::JsonSchema::JsonSchema,
+                  json_schema: T.any(
+                    Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ResponseFormat::JsonSchema::JsonSchema,
+                    Braintrust::Util::AnyHash
+                  ),
                   type: Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ResponseFormat::JsonSchema::Type::OrSymbol
                 )
                   .returns(T.attached_class)
@@ -886,7 +889,10 @@ module Braintrust
 
               sig do
                 params(
-                  function: Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ToolChoice::Function::Function,
+                  function: T.any(
+                    Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ToolChoice::Function::Function,
+                    Braintrust::Util::AnyHash
+                  ),
                   type: Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ToolChoice::Function::Type::OrSymbol
                 )
                   .returns(T.attached_class)

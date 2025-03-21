@@ -91,7 +91,7 @@ module Braintrust
           restrict_object_type: T.nilable(Braintrust::Models::ACLObjectType::OrSymbol),
           role_id: T.nilable(String),
           user_id: T.nilable(String),
-          request_options: T.any(Braintrust::RequestOptions, T::Hash[Symbol, T.anything])
+          request_options: T.any(Braintrust::RequestOptions, Braintrust::Util::AnyHash)
         )
           .returns(T.attached_class)
       end

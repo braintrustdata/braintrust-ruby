@@ -147,7 +147,7 @@ module Braintrust
           parent: T.any(Braintrust::Models::FunctionInvokeParams::Parent::SpanParentStruct, String),
           stream: T.nilable(T::Boolean),
           version: String,
-          request_options: T.any(Braintrust::RequestOptions, T::Hash[Symbol, T.anything])
+          request_options: T.any(Braintrust::RequestOptions, Braintrust::Util::AnyHash)
         )
           .returns(T.attached_class)
       end
@@ -535,7 +535,12 @@ module Braintrust
             params(
               role: Braintrust::Models::FunctionInvokeParams::Message::Assistant::Role::OrSymbol,
               content: T.nilable(String),
-              function_call: T.nilable(Braintrust::Models::FunctionInvokeParams::Message::Assistant::FunctionCall),
+              function_call: T.nilable(
+                T.any(
+                  Braintrust::Models::FunctionInvokeParams::Message::Assistant::FunctionCall,
+                  Braintrust::Util::AnyHash
+                )
+              ),
               name: T.nilable(String),
               tool_calls: T.nilable(T::Array[Braintrust::Models::ChatCompletionMessageToolCall])
             )
@@ -913,7 +918,12 @@ module Braintrust
               object_id_: String,
               object_type: Braintrust::Models::FunctionInvokeParams::Parent::SpanParentStruct::ObjectType::OrSymbol,
               propagated_event: T.nilable(T::Hash[Symbol, T.nilable(T.anything)]),
-              row_ids: T.nilable(Braintrust::Models::FunctionInvokeParams::Parent::SpanParentStruct::RowIDs)
+              row_ids: T.nilable(
+                T.any(
+                  Braintrust::Models::FunctionInvokeParams::Parent::SpanParentStruct::RowIDs,
+                  Braintrust::Util::AnyHash
+                )
+              )
             )
               .returns(T.attached_class)
           end

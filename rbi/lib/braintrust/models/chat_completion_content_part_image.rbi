@@ -27,7 +27,7 @@ module Braintrust
 
       sig do
         params(
-          image_url: Braintrust::Models::ChatCompletionContentPartImage::ImageURL,
+          image_url: T.any(Braintrust::Models::ChatCompletionContentPartImage::ImageURL, Braintrust::Util::AnyHash),
           type: Braintrust::Models::ChatCompletionContentPartImage::Type::OrSymbol
         )
           .returns(T.attached_class)

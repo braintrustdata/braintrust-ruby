@@ -119,8 +119,8 @@ module Braintrust
           metadata: T.nilable(T::Hash[Symbol, T.nilable(T.anything)]),
           name: T.nilable(String),
           public: T.nilable(T::Boolean),
-          repo_info: T.nilable(Braintrust::Models::RepoInfo),
-          request_options: T.any(Braintrust::RequestOptions, T::Hash[Symbol, T.anything])
+          repo_info: T.nilable(T.any(Braintrust::Models::RepoInfo, Braintrust::Util::AnyHash)),
+          request_options: T.any(Braintrust::RequestOptions, Braintrust::Util::AnyHash)
         )
           .returns(T.attached_class)
       end

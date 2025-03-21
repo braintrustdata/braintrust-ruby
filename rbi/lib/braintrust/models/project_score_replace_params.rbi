@@ -90,9 +90,9 @@ module Braintrust
           categories: T.nilable(
             T.any(T::Array[Braintrust::Models::ProjectScoreCategory], T::Hash[Symbol, Float], T::Array[String])
           ),
-          config: T.nilable(Braintrust::Models::ProjectScoreConfig),
+          config: T.nilable(T.any(Braintrust::Models::ProjectScoreConfig, Braintrust::Util::AnyHash)),
           description: T.nilable(String),
-          request_options: T.any(Braintrust::RequestOptions, T::Hash[Symbol, T.anything])
+          request_options: T.any(Braintrust::RequestOptions, Braintrust::Util::AnyHash)
         )
           .returns(T.attached_class)
       end

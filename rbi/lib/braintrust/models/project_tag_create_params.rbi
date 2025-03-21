@@ -48,7 +48,7 @@ module Braintrust
           project_id: String,
           color: T.nilable(String),
           description: T.nilable(String),
-          request_options: T.any(Braintrust::RequestOptions, T::Hash[Symbol, T.anything])
+          request_options: T.any(Braintrust::RequestOptions, Braintrust::Util::AnyHash)
         )
           .returns(T.attached_class)
       end

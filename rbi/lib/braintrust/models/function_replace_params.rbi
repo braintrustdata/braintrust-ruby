@@ -143,12 +143,12 @@ module Braintrust
           project_id: String,
           slug: String,
           description: T.nilable(String),
-          function_schema: T.nilable(Braintrust::Models::FunctionReplaceParams::FunctionSchema),
+          function_schema: T.nilable(T.any(Braintrust::Models::FunctionReplaceParams::FunctionSchema, Braintrust::Util::AnyHash)),
           function_type: T.nilable(Braintrust::Models::FunctionReplaceParams::FunctionType::OrSymbol),
-          origin: T.nilable(Braintrust::Models::FunctionReplaceParams::Origin),
-          prompt_data: T.nilable(Braintrust::Models::PromptData),
+          origin: T.nilable(T.any(Braintrust::Models::FunctionReplaceParams::Origin, Braintrust::Util::AnyHash)),
+          prompt_data: T.nilable(T.any(Braintrust::Models::PromptData, Braintrust::Util::AnyHash)),
           tags: T.nilable(T::Array[String]),
-          request_options: T.any(Braintrust::RequestOptions, T::Hash[Symbol, T.anything])
+          request_options: T.any(Braintrust::RequestOptions, Braintrust::Util::AnyHash)
         )
           .returns(T.attached_class)
       end
@@ -436,7 +436,10 @@ module Braintrust
               sig do
                 params(
                   code: String,
-                  runtime_context: Braintrust::Models::FunctionReplaceParams::FunctionData::Code::Data::Inline::RuntimeContext,
+                  runtime_context: T.any(
+                    Braintrust::Models::FunctionReplaceParams::FunctionData::Code::Data::Inline::RuntimeContext,
+                    Braintrust::Util::AnyHash
+                  ),
                   type: Braintrust::Models::FunctionReplaceParams::FunctionData::Code::Data::Inline::Type::OrSymbol
                 )
                   .returns(T.attached_class)

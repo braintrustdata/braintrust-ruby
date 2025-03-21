@@ -152,7 +152,7 @@ module Braintrust
           deleted_at: T.nilable(Time),
           description: T.nilable(String),
           metadata: T.nilable(T::Hash[Symbol, T.nilable(T.anything)]),
-          repo_info: T.nilable(Braintrust::Models::RepoInfo),
+          repo_info: T.nilable(T.any(Braintrust::Models::RepoInfo, Braintrust::Util::AnyHash)),
           user_id: T.nilable(String)
         )
           .returns(T.attached_class)

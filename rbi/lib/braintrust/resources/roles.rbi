@@ -12,7 +12,7 @@ module Braintrust
           member_permissions: T.nilable(T::Array[Braintrust::Models::RoleCreateParams::MemberPermission]),
           member_roles: T.nilable(T::Array[String]),
           org_name: T.nilable(String),
-          request_options: T.nilable(T.any(Braintrust::RequestOptions, T::Hash[Symbol, T.anything]))
+          request_options: T.nilable(T.any(Braintrust::RequestOptions, Braintrust::Util::AnyHash))
         )
           .returns(Braintrust::Models::Role)
       end
@@ -40,7 +40,7 @@ module Braintrust
       sig do
         params(
           role_id: String,
-          request_options: T.nilable(T.any(Braintrust::RequestOptions, T::Hash[Symbol, T.anything]))
+          request_options: T.nilable(T.any(Braintrust::RequestOptions, Braintrust::Util::AnyHash))
         )
           .returns(Braintrust::Models::Role)
       end
@@ -63,7 +63,7 @@ module Braintrust
           name: T.nilable(String),
           remove_member_permissions: T.nilable(T::Array[Braintrust::Models::RoleUpdateParams::RemoveMemberPermission]),
           remove_member_roles: T.nilable(T::Array[String]),
-          request_options: T.nilable(T.any(Braintrust::RequestOptions, T::Hash[Symbol, T.anything]))
+          request_options: T.nilable(T.any(Braintrust::RequestOptions, Braintrust::Util::AnyHash))
         )
           .returns(Braintrust::Models::Role)
       end
@@ -96,7 +96,7 @@ module Braintrust
           org_name: String,
           role_name: String,
           starting_after: String,
-          request_options: T.nilable(T.any(Braintrust::RequestOptions, T::Hash[Symbol, T.anything]))
+          request_options: T.nilable(T.any(Braintrust::RequestOptions, Braintrust::Util::AnyHash))
         )
           .returns(Braintrust::ListObjects[Braintrust::Models::Role])
       end
@@ -130,7 +130,7 @@ module Braintrust
       sig do
         params(
           role_id: String,
-          request_options: T.nilable(T.any(Braintrust::RequestOptions, T::Hash[Symbol, T.anything]))
+          request_options: T.nilable(T.any(Braintrust::RequestOptions, Braintrust::Util::AnyHash))
         )
           .returns(Braintrust::Models::Role)
       end
@@ -151,7 +151,7 @@ module Braintrust
           member_permissions: T.nilable(T::Array[Braintrust::Models::RoleReplaceParams::MemberPermission]),
           member_roles: T.nilable(T::Array[String]),
           org_name: T.nilable(String),
-          request_options: T.nilable(T.any(Braintrust::RequestOptions, T::Hash[Symbol, T.anything]))
+          request_options: T.nilable(T.any(Braintrust::RequestOptions, Braintrust::Util::AnyHash))
         )
           .returns(Braintrust::Models::Role)
       end

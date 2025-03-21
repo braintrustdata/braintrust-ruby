@@ -15,7 +15,7 @@ module Braintrust
           options: T.nilable(Braintrust::Models::ViewOptions),
           user_id: T.nilable(String),
           view_data: T.nilable(Braintrust::Models::ViewData),
-          request_options: T.nilable(T.any(Braintrust::RequestOptions, T::Hash[Symbol, T.anything]))
+          request_options: T.nilable(T.any(Braintrust::RequestOptions, Braintrust::Util::AnyHash))
         )
           .returns(Braintrust::Models::View)
       end
@@ -46,7 +46,7 @@ module Braintrust
           view_id: String,
           object_id_: String,
           object_type: Braintrust::Models::ACLObjectType::OrSymbol,
-          request_options: T.nilable(T.any(Braintrust::RequestOptions, T::Hash[Symbol, T.anything]))
+          request_options: T.nilable(T.any(Braintrust::RequestOptions, Braintrust::Util::AnyHash))
         )
           .returns(Braintrust::Models::View)
       end
@@ -74,7 +74,7 @@ module Braintrust
           user_id: T.nilable(String),
           view_data: T.nilable(Braintrust::Models::ViewData),
           view_type: T.nilable(Braintrust::Models::ViewUpdateParams::ViewType::OrSymbol),
-          request_options: T.nilable(T.any(Braintrust::RequestOptions, T::Hash[Symbol, T.anything]))
+          request_options: T.nilable(T.any(Braintrust::RequestOptions, Braintrust::Util::AnyHash))
         )
           .returns(Braintrust::Models::View)
       end
@@ -111,7 +111,7 @@ module Braintrust
           starting_after: String,
           view_name: String,
           view_type: T.nilable(Braintrust::Models::ViewType::OrSymbol),
-          request_options: T.nilable(T.any(Braintrust::RequestOptions, T::Hash[Symbol, T.anything]))
+          request_options: T.nilable(T.any(Braintrust::RequestOptions, Braintrust::Util::AnyHash))
         )
           .returns(Braintrust::ListObjects[Braintrust::Models::View])
       end
@@ -151,7 +151,7 @@ module Braintrust
           view_id: String,
           object_id_: String,
           object_type: Braintrust::Models::ACLObjectType::OrSymbol,
-          request_options: T.nilable(T.any(Braintrust::RequestOptions, T::Hash[Symbol, T.anything]))
+          request_options: T.nilable(T.any(Braintrust::RequestOptions, Braintrust::Util::AnyHash))
         )
           .returns(Braintrust::Models::View)
       end
@@ -179,7 +179,7 @@ module Braintrust
           options: T.nilable(Braintrust::Models::ViewOptions),
           user_id: T.nilable(String),
           view_data: T.nilable(Braintrust::Models::ViewData),
-          request_options: T.nilable(T.any(Braintrust::RequestOptions, T::Hash[Symbol, T.anything]))
+          request_options: T.nilable(T.any(Braintrust::RequestOptions, Braintrust::Util::AnyHash))
         )
           .returns(Braintrust::Models::View)
       end

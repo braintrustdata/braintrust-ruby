@@ -75,7 +75,7 @@ module Braintrust
           org_id: String,
           created: T.nilable(Time),
           deleted_at: T.nilable(Time),
-          settings: T.nilable(Braintrust::Models::ProjectSettings),
+          settings: T.nilable(T.any(Braintrust::Models::ProjectSettings, Braintrust::Util::AnyHash)),
           user_id: T.nilable(String)
         )
           .returns(T.attached_class)
