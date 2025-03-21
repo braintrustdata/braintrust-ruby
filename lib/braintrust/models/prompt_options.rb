@@ -64,12 +64,12 @@ module Braintrust
 
           # @!attribute [r] function_call
           #
-          #   @return [Symbol, Braintrust::Models::PromptOptions::Params::OpenAIModelParams::FunctionCall::UnionMember0, Braintrust::Models::PromptOptions::Params::OpenAIModelParams::FunctionCall::Function, nil]
+          #   @return [Symbol, Braintrust::Models::PromptOptions::Params::OpenAIModelParams::FunctionCall::Function, nil]
           optional :function_call,
                    union: -> { Braintrust::Models::PromptOptions::Params::OpenAIModelParams::FunctionCall }
 
           # @!parse
-          #   # @return [Symbol, Braintrust::Models::PromptOptions::Params::OpenAIModelParams::FunctionCall::UnionMember0, Braintrust::Models::PromptOptions::Params::OpenAIModelParams::FunctionCall::Function]
+          #   # @return [Symbol, Braintrust::Models::PromptOptions::Params::OpenAIModelParams::FunctionCall::Function]
           #   attr_writer :function_call
 
           # @!attribute [r] max_completion_tokens
@@ -146,12 +146,12 @@ module Braintrust
 
           # @!attribute [r] tool_choice
           #
-          #   @return [Symbol, Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ToolChoice::UnionMember0, Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ToolChoice::Function, nil]
+          #   @return [Symbol, Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ToolChoice::Function, nil]
           optional :tool_choice,
                    union: -> { Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ToolChoice }
 
           # @!parse
-          #   # @return [Symbol, Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ToolChoice::UnionMember0, Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ToolChoice::Function]
+          #   # @return [Symbol, Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ToolChoice::Function]
           #   attr_writer :tool_choice
 
           # @!attribute [r] top_p
@@ -174,7 +174,7 @@ module Braintrust
 
           # @!parse
           #   # @param frequency_penalty [Float]
-          #   # @param function_call [Symbol, Braintrust::Models::PromptOptions::Params::OpenAIModelParams::FunctionCall::UnionMember0, Braintrust::Models::PromptOptions::Params::OpenAIModelParams::FunctionCall::Function]
+          #   # @param function_call [Symbol, Braintrust::Models::PromptOptions::Params::OpenAIModelParams::FunctionCall::Function]
           #   # @param max_completion_tokens [Float]
           #   # @param max_tokens [Float]
           #   # @param n [Float]
@@ -183,7 +183,7 @@ module Braintrust
           #   # @param response_format [Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ResponseFormat::JsonObject, Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ResponseFormat::JsonSchema, Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ResponseFormat::Text, nil]
           #   # @param stop [Array<String>]
           #   # @param temperature [Float]
-          #   # @param tool_choice [Symbol, Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ToolChoice::UnionMember0, Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ToolChoice::Function]
+          #   # @param tool_choice [Symbol, Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ToolChoice::Function]
           #   # @param top_p [Float]
           #   # @param use_cache [Boolean]
           #   #
@@ -211,18 +211,18 @@ module Braintrust
           module FunctionCall
             extend Braintrust::Union
 
-            variant enum: -> { Braintrust::Models::PromptOptions::Params::OpenAIModelParams::FunctionCall::UnionMember0 }
+            # @!group
+
+            AUTO = :auto
+            NONE = :none
+
+            # @!endgroup
+
+            variant const: Braintrust::Models::PromptOptions::Params::OpenAIModelParams::FunctionCall::AUTO
+
+            variant const: Braintrust::Models::PromptOptions::Params::OpenAIModelParams::FunctionCall::NONE
 
             variant -> { Braintrust::Models::PromptOptions::Params::OpenAIModelParams::FunctionCall::Function }
-
-            module UnionMember0
-              extend Braintrust::Enum
-
-              AUTO = :auto
-              NONE = :none
-
-              finalize!
-            end
 
             class Function < Braintrust::BaseModel
               # @!attribute name
@@ -240,7 +240,7 @@ module Braintrust
 
             # @!parse
             #   class << self
-            #     # @return [Array(Symbol, Braintrust::Models::PromptOptions::Params::OpenAIModelParams::FunctionCall::UnionMember0, Braintrust::Models::PromptOptions::Params::OpenAIModelParams::FunctionCall::Function)]
+            #     # @return [Array(Symbol, Braintrust::Models::PromptOptions::Params::OpenAIModelParams::FunctionCall::Function)]
             #     def variants; end
             #   end
           end
@@ -407,19 +407,21 @@ module Braintrust
           module ToolChoice
             extend Braintrust::Union
 
-            variant enum: -> { Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ToolChoice::UnionMember0 }
+            # @!group
+
+            AUTO = :auto
+            NONE = :none
+            REQUIRED = :required
+
+            # @!endgroup
+
+            variant const: Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ToolChoice::AUTO
+
+            variant const: Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ToolChoice::NONE
+
+            variant const: Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ToolChoice::REQUIRED
 
             variant -> { Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ToolChoice::Function }
-
-            module UnionMember0
-              extend Braintrust::Enum
-
-              AUTO = :auto
-              NONE = :none
-              REQUIRED = :required
-
-              finalize!
-            end
 
             class Function < Braintrust::BaseModel
               # @!attribute function
@@ -467,7 +469,7 @@ module Braintrust
 
             # @!parse
             #   class << self
-            #     # @return [Array(Symbol, Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ToolChoice::UnionMember0, Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ToolChoice::Function)]
+            #     # @return [Array(Symbol, Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ToolChoice::Function)]
             #     def variants; end
             #   end
           end
