@@ -167,7 +167,7 @@ module Braintrust
 
         Variants = type_template(:out) { {fixed: T.any(String, T::Array[String])} }
 
-        StringArray = T.type_alias { T::Array[String] }
+        StringArray = T.let(Braintrust::ArrayOf[String], Braintrust::Converter)
       end
     end
   end
