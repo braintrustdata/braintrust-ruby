@@ -100,6 +100,12 @@ module Braintrust
         ORGANIZATION = T.let(:organization, Braintrust::Models::EnvVar::ObjectType::TaggedSymbol)
         PROJECT = T.let(:project, Braintrust::Models::EnvVar::ObjectType::TaggedSymbol)
         FUNCTION = T.let(:function, Braintrust::Models::EnvVar::ObjectType::TaggedSymbol)
+
+        class << self
+          sig { override.returns(T::Array[Braintrust::Models::EnvVar::ObjectType::TaggedSymbol]) }
+          def values
+          end
+        end
       end
     end
   end

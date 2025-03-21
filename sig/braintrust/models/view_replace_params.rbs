@@ -75,7 +75,7 @@ module Braintrust
         SCORERS: :scorers
         LOGS: :logs
 
-        def self.values: -> ::Array[Braintrust::Models::ViewReplaceParams::view_type]
+        def self?.values: -> ::Array[Braintrust::Models::ViewReplaceParams::view_type]
       end
     end
   end

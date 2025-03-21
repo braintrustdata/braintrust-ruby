@@ -127,8 +127,15 @@ module Braintrust
           OrSymbol =
             T.type_alias { T.any(Symbol, Braintrust::Models::ProjectSettings::SpanFieldOrder::Layout::TaggedSymbol) }
 
-          FULL = T.let(:full, Braintrust::Models::ProjectSettings::SpanFieldOrder::Layout::OrSymbol)
-          TWO_COLUMN = T.let(:two_column, Braintrust::Models::ProjectSettings::SpanFieldOrder::Layout::OrSymbol)
+          FULL = T.let(:full, Braintrust::Models::ProjectSettings::SpanFieldOrder::Layout::TaggedSymbol)
+          TWO_COLUMN =
+            T.let(:two_column, Braintrust::Models::ProjectSettings::SpanFieldOrder::Layout::TaggedSymbol)
+
+          class << self
+            sig { override.returns(T::Array[Braintrust::Models::ProjectSettings::SpanFieldOrder::Layout::TaggedSymbol]) }
+            def values
+            end
+          end
         end
       end
     end

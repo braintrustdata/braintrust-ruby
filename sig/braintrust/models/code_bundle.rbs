@@ -83,7 +83,7 @@ module Braintrust
 
                 TASK: :task
 
-                def self.values: -> ::Array[Braintrust::Models::CodeBundle::Location::Experiment::Position::Type::type_]
+                def self?.values: -> ::Array[Braintrust::Models::CodeBundle::Location::Experiment::Position::Type::type_]
               end
             end
 
@@ -112,11 +112,11 @@ module Braintrust
 
                 SCORER: :scorer
 
-                def self.values: -> ::Array[Braintrust::Models::CodeBundle::Location::Experiment::Position::Scorer::type_]
+                def self?.values: -> ::Array[Braintrust::Models::CodeBundle::Location::Experiment::Position::Scorer::type_]
               end
             end
 
-            def self.variants: -> [Braintrust::Models::CodeBundle::Location::Experiment::Position::Type, Braintrust::Models::CodeBundle::Location::Experiment::Position::Scorer]
+            def self?.variants: -> [Braintrust::Models::CodeBundle::Location::Experiment::Position::Type, Braintrust::Models::CodeBundle::Location::Experiment::Position::Scorer]
           end
 
           type type_ = :experiment
@@ -126,7 +126,7 @@ module Braintrust
 
             EXPERIMENT: :experiment
 
-            def self.values: -> ::Array[Braintrust::Models::CodeBundle::Location::Experiment::type_]
+            def self?.values: -> ::Array[Braintrust::Models::CodeBundle::Location::Experiment::type_]
           end
         end
 
@@ -155,11 +155,11 @@ module Braintrust
 
             FUNCTION: :function
 
-            def self.values: -> ::Array[Braintrust::Models::CodeBundle::Location::Function::type_]
+            def self?.values: -> ::Array[Braintrust::Models::CodeBundle::Location::Function::type_]
           end
         end
 
-        def self.variants: -> [Braintrust::Models::CodeBundle::Location::Experiment, Braintrust::Models::CodeBundle::Location::Function]
+        def self?.variants: -> [Braintrust::Models::CodeBundle::Location::Experiment, Braintrust::Models::CodeBundle::Location::Function]
       end
 
       type runtime_context =
@@ -188,7 +188,7 @@ module Braintrust
           NODE: :node
           PYTHON: :python
 
-          def self.values: -> ::Array[Braintrust::Models::CodeBundle::RuntimeContext::runtime]
+          def self?.values: -> ::Array[Braintrust::Models::CodeBundle::RuntimeContext::runtime]
         end
       end
     end

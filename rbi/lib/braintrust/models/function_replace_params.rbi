@@ -237,7 +237,17 @@ module Braintrust
             OrSymbol =
               T.type_alias { T.any(Symbol, Braintrust::Models::FunctionReplaceParams::FunctionData::Prompt::Type::TaggedSymbol) }
 
-            PROMPT = T.let(:prompt, Braintrust::Models::FunctionReplaceParams::FunctionData::Prompt::Type::OrSymbol)
+            PROMPT =
+              T.let(:prompt, Braintrust::Models::FunctionReplaceParams::FunctionData::Prompt::Type::TaggedSymbol)
+
+            class << self
+              sig do
+                override
+                  .returns(T::Array[Braintrust::Models::FunctionReplaceParams::FunctionData::Prompt::Type::TaggedSymbol])
+              end
+              def values
+              end
+            end
           end
         end
 
@@ -366,8 +376,19 @@ module Braintrust
                 BUNDLE =
                   T.let(
                     :bundle,
-                    Braintrust::Models::FunctionReplaceParams::FunctionData::Code::Data::Bundle::Type::OrSymbol
+                    Braintrust::Models::FunctionReplaceParams::FunctionData::Code::Data::Bundle::Type::TaggedSymbol
                   )
+
+                class << self
+                  sig do
+                    override
+                      .returns(
+                        T::Array[Braintrust::Models::FunctionReplaceParams::FunctionData::Code::Data::Bundle::Type::TaggedSymbol]
+                      )
+                  end
+                  def values
+                  end
+                end
               end
             end
 
@@ -504,13 +525,26 @@ module Braintrust
                   NODE =
                     T.let(
                       :node,
-                      Braintrust::Models::FunctionReplaceParams::FunctionData::Code::Data::Inline::RuntimeContext::Runtime::OrSymbol
+                      Braintrust::Models::FunctionReplaceParams::FunctionData::Code::Data::Inline::RuntimeContext::Runtime::TaggedSymbol
                     )
                   PYTHON =
                     T.let(
                       :python,
-                      Braintrust::Models::FunctionReplaceParams::FunctionData::Code::Data::Inline::RuntimeContext::Runtime::OrSymbol
+                      Braintrust::Models::FunctionReplaceParams::FunctionData::Code::Data::Inline::RuntimeContext::Runtime::TaggedSymbol
                     )
+
+                  class << self
+                    sig do
+                      override
+                        .returns(
+                          T::Array[
+                          Braintrust::Models::FunctionReplaceParams::FunctionData::Code::Data::Inline::RuntimeContext::Runtime::TaggedSymbol
+                          ]
+                        )
+                    end
+                    def values
+                    end
+                  end
                 end
               end
 
@@ -530,8 +564,30 @@ module Braintrust
                 INLINE =
                   T.let(
                     :inline,
-                    Braintrust::Models::FunctionReplaceParams::FunctionData::Code::Data::Inline::Type::OrSymbol
+                    Braintrust::Models::FunctionReplaceParams::FunctionData::Code::Data::Inline::Type::TaggedSymbol
                   )
+
+                class << self
+                  sig do
+                    override
+                      .returns(
+                        T::Array[Braintrust::Models::FunctionReplaceParams::FunctionData::Code::Data::Inline::Type::TaggedSymbol]
+                      )
+                  end
+                  def values
+                  end
+                end
+              end
+            end
+
+            class << self
+              sig do
+                override
+                  .returns(
+                    [Braintrust::Models::FunctionReplaceParams::FunctionData::Code::Data::Bundle, Braintrust::Models::FunctionReplaceParams::FunctionData::Code::Data::Inline]
+                  )
+              end
+              def variants
               end
             end
           end
@@ -544,7 +600,16 @@ module Braintrust
             OrSymbol =
               T.type_alias { T.any(Symbol, Braintrust::Models::FunctionReplaceParams::FunctionData::Code::Type::TaggedSymbol) }
 
-            CODE = T.let(:code, Braintrust::Models::FunctionReplaceParams::FunctionData::Code::Type::OrSymbol)
+            CODE = T.let(:code, Braintrust::Models::FunctionReplaceParams::FunctionData::Code::Type::TaggedSymbol)
+
+            class << self
+              sig do
+                override
+                  .returns(T::Array[Braintrust::Models::FunctionReplaceParams::FunctionData::Code::Type::TaggedSymbol])
+              end
+              def values
+              end
+            end
           end
         end
 
@@ -595,7 +660,28 @@ module Braintrust
             OrSymbol =
               T.type_alias { T.any(Symbol, Braintrust::Models::FunctionReplaceParams::FunctionData::Global::Type::TaggedSymbol) }
 
-            GLOBAL = T.let(:global, Braintrust::Models::FunctionReplaceParams::FunctionData::Global::Type::OrSymbol)
+            GLOBAL =
+              T.let(:global, Braintrust::Models::FunctionReplaceParams::FunctionData::Global::Type::TaggedSymbol)
+
+            class << self
+              sig do
+                override
+                  .returns(T::Array[Braintrust::Models::FunctionReplaceParams::FunctionData::Global::Type::TaggedSymbol])
+              end
+              def values
+              end
+            end
+          end
+        end
+
+        class << self
+          sig do
+            override
+              .returns(
+                [Braintrust::Models::FunctionReplaceParams::FunctionData::Prompt, Braintrust::Models::FunctionReplaceParams::FunctionData::Code, Braintrust::Models::FunctionReplaceParams::FunctionData::Global]
+              )
+          end
+          def variants
           end
         end
       end
@@ -634,10 +720,16 @@ module Braintrust
         OrSymbol =
           T.type_alias { T.any(Symbol, Braintrust::Models::FunctionReplaceParams::FunctionType::TaggedSymbol) }
 
-        LLM = T.let(:llm, Braintrust::Models::FunctionReplaceParams::FunctionType::OrSymbol)
-        SCORER = T.let(:scorer, Braintrust::Models::FunctionReplaceParams::FunctionType::OrSymbol)
-        TASK = T.let(:task, Braintrust::Models::FunctionReplaceParams::FunctionType::OrSymbol)
-        TOOL = T.let(:tool, Braintrust::Models::FunctionReplaceParams::FunctionType::OrSymbol)
+        LLM = T.let(:llm, Braintrust::Models::FunctionReplaceParams::FunctionType::TaggedSymbol)
+        SCORER = T.let(:scorer, Braintrust::Models::FunctionReplaceParams::FunctionType::TaggedSymbol)
+        TASK = T.let(:task, Braintrust::Models::FunctionReplaceParams::FunctionType::TaggedSymbol)
+        TOOL = T.let(:tool, Braintrust::Models::FunctionReplaceParams::FunctionType::TaggedSymbol)
+
+        class << self
+          sig { override.returns(T::Array[Braintrust::Models::FunctionReplaceParams::FunctionType::TaggedSymbol]) }
+          def values
+          end
+        end
       end
 
       class Origin < Braintrust::BaseModel

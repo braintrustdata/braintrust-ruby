@@ -109,7 +109,7 @@ module Braintrust
 
         G: :g
 
-        def self.values: -> ::Array[Braintrust::Models::ProjectLogsEvent::log_id]
+        def self?.values: -> ::Array[Braintrust::Models::ProjectLogsEvent::log_id]
       end
 
       type context =

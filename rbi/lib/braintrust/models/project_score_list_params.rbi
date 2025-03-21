@@ -181,6 +181,12 @@ module Braintrust
         Variants = type_template(:out) { {fixed: T.any(String, T::Array[String])} }
 
         StringArray = T.let(Braintrust::ArrayOf[String], Braintrust::Converter)
+
+        class << self
+          sig { override.returns([String, T::Array[String]]) }
+          def variants
+          end
+        end
       end
 
       # The type of the configured score
@@ -199,6 +205,17 @@ module Braintrust
 
         ProjectScoreTypeArray =
           T.let(Braintrust::ArrayOf[enum: Braintrust::Models::ProjectScoreType], Braintrust::Converter)
+
+        class << self
+          sig do
+            override
+              .returns(
+                [Braintrust::Models::ProjectScoreType::OrSymbol, T::Array[Braintrust::Models::ProjectScoreType::OrSymbol]]
+              )
+          end
+          def variants
+          end
+        end
       end
     end
   end

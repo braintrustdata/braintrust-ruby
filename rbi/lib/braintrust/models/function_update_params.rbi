@@ -169,7 +169,17 @@ module Braintrust
             OrSymbol =
               T.type_alias { T.any(Symbol, Braintrust::Models::FunctionUpdateParams::FunctionData::Prompt::Type::TaggedSymbol) }
 
-            PROMPT = T.let(:prompt, Braintrust::Models::FunctionUpdateParams::FunctionData::Prompt::Type::OrSymbol)
+            PROMPT =
+              T.let(:prompt, Braintrust::Models::FunctionUpdateParams::FunctionData::Prompt::Type::TaggedSymbol)
+
+            class << self
+              sig do
+                override
+                  .returns(T::Array[Braintrust::Models::FunctionUpdateParams::FunctionData::Prompt::Type::TaggedSymbol])
+              end
+              def values
+              end
+            end
           end
         end
 
@@ -296,7 +306,21 @@ module Braintrust
                   end
 
                 BUNDLE =
-                  T.let(:bundle, Braintrust::Models::FunctionUpdateParams::FunctionData::Code::Data::Bundle::Type::OrSymbol)
+                  T.let(
+                    :bundle,
+                    Braintrust::Models::FunctionUpdateParams::FunctionData::Code::Data::Bundle::Type::TaggedSymbol
+                  )
+
+                class << self
+                  sig do
+                    override
+                      .returns(
+                        T::Array[Braintrust::Models::FunctionUpdateParams::FunctionData::Code::Data::Bundle::Type::TaggedSymbol]
+                      )
+                  end
+                  def values
+                  end
+                end
               end
             end
 
@@ -433,13 +457,26 @@ module Braintrust
                   NODE =
                     T.let(
                       :node,
-                      Braintrust::Models::FunctionUpdateParams::FunctionData::Code::Data::Inline::RuntimeContext::Runtime::OrSymbol
+                      Braintrust::Models::FunctionUpdateParams::FunctionData::Code::Data::Inline::RuntimeContext::Runtime::TaggedSymbol
                     )
                   PYTHON =
                     T.let(
                       :python,
-                      Braintrust::Models::FunctionUpdateParams::FunctionData::Code::Data::Inline::RuntimeContext::Runtime::OrSymbol
+                      Braintrust::Models::FunctionUpdateParams::FunctionData::Code::Data::Inline::RuntimeContext::Runtime::TaggedSymbol
                     )
+
+                  class << self
+                    sig do
+                      override
+                        .returns(
+                          T::Array[
+                          Braintrust::Models::FunctionUpdateParams::FunctionData::Code::Data::Inline::RuntimeContext::Runtime::TaggedSymbol
+                          ]
+                        )
+                    end
+                    def values
+                    end
+                  end
                 end
               end
 
@@ -457,7 +494,32 @@ module Braintrust
                   end
 
                 INLINE =
-                  T.let(:inline, Braintrust::Models::FunctionUpdateParams::FunctionData::Code::Data::Inline::Type::OrSymbol)
+                  T.let(
+                    :inline,
+                    Braintrust::Models::FunctionUpdateParams::FunctionData::Code::Data::Inline::Type::TaggedSymbol
+                  )
+
+                class << self
+                  sig do
+                    override
+                      .returns(
+                        T::Array[Braintrust::Models::FunctionUpdateParams::FunctionData::Code::Data::Inline::Type::TaggedSymbol]
+                      )
+                  end
+                  def values
+                  end
+                end
+              end
+            end
+
+            class << self
+              sig do
+                override
+                  .returns(
+                    [Braintrust::Models::FunctionUpdateParams::FunctionData::Code::Data::Bundle, Braintrust::Models::FunctionUpdateParams::FunctionData::Code::Data::Inline]
+                  )
+              end
+              def variants
               end
             end
           end
@@ -470,7 +532,16 @@ module Braintrust
             OrSymbol =
               T.type_alias { T.any(Symbol, Braintrust::Models::FunctionUpdateParams::FunctionData::Code::Type::TaggedSymbol) }
 
-            CODE = T.let(:code, Braintrust::Models::FunctionUpdateParams::FunctionData::Code::Type::OrSymbol)
+            CODE = T.let(:code, Braintrust::Models::FunctionUpdateParams::FunctionData::Code::Type::TaggedSymbol)
+
+            class << self
+              sig do
+                override
+                  .returns(T::Array[Braintrust::Models::FunctionUpdateParams::FunctionData::Code::Type::TaggedSymbol])
+              end
+              def values
+              end
+            end
           end
         end
 
@@ -518,7 +589,28 @@ module Braintrust
             OrSymbol =
               T.type_alias { T.any(Symbol, Braintrust::Models::FunctionUpdateParams::FunctionData::Global::Type::TaggedSymbol) }
 
-            GLOBAL = T.let(:global, Braintrust::Models::FunctionUpdateParams::FunctionData::Global::Type::OrSymbol)
+            GLOBAL =
+              T.let(:global, Braintrust::Models::FunctionUpdateParams::FunctionData::Global::Type::TaggedSymbol)
+
+            class << self
+              sig do
+                override
+                  .returns(T::Array[Braintrust::Models::FunctionUpdateParams::FunctionData::Global::Type::TaggedSymbol])
+              end
+              def values
+              end
+            end
+          end
+        end
+
+        class << self
+          sig do
+            override
+              .returns(
+                [Braintrust::Models::FunctionUpdateParams::FunctionData::Prompt, Braintrust::Models::FunctionUpdateParams::FunctionData::Code, Braintrust::Models::FunctionUpdateParams::FunctionData::Global]
+              )
+          end
+          def variants
           end
         end
       end

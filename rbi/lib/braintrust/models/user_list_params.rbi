@@ -144,6 +144,12 @@ module Braintrust
         Variants = type_template(:out) { {fixed: T.any(String, T::Array[String])} }
 
         StringArray = T.let(Braintrust::ArrayOf[String], Braintrust::Converter)
+
+        class << self
+          sig { override.returns([String, T::Array[String]]) }
+          def variants
+          end
+        end
       end
 
       # Family name of the user to search for. You may pass the param multiple times to
@@ -154,6 +160,12 @@ module Braintrust
         Variants = type_template(:out) { {fixed: T.any(String, T::Array[String])} }
 
         StringArray = T.let(Braintrust::ArrayOf[String], Braintrust::Converter)
+
+        class << self
+          sig { override.returns([String, T::Array[String]]) }
+          def variants
+          end
+        end
       end
 
       # Given name of the user to search for. You may pass the param multiple times to
@@ -164,6 +176,12 @@ module Braintrust
         Variants = type_template(:out) { {fixed: T.any(String, T::Array[String])} }
 
         StringArray = T.let(Braintrust::ArrayOf[String], Braintrust::Converter)
+
+        class << self
+          sig { override.returns([String, T::Array[String]]) }
+          def variants
+          end
+        end
       end
 
       # Filter search results to a particular set of object IDs. To specify a list of
@@ -174,6 +192,12 @@ module Braintrust
         Variants = type_template(:out) { {fixed: T.any(String, T::Array[String])} }
 
         StringArray = T.let(Braintrust::ArrayOf[String], Braintrust::Converter)
+
+        class << self
+          sig { override.returns([String, T::Array[String]]) }
+          def variants
+          end
+        end
       end
     end
   end

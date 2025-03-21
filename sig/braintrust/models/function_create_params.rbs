@@ -84,7 +84,7 @@ module Braintrust
 
             PROMPT: :prompt
 
-            def self.values: -> ::Array[Braintrust::Models::FunctionCreateParams::FunctionData::Prompt::type_]
+            def self?.values: -> ::Array[Braintrust::Models::FunctionCreateParams::FunctionData::Prompt::type_]
           end
         end
 
@@ -138,7 +138,7 @@ module Braintrust
 
                 BUNDLE: :bundle
 
-                def self.values: -> ::Array[Braintrust::Models::FunctionCreateParams::FunctionData::Code::Data::Bundle::type_]
+                def self?.values: -> ::Array[Braintrust::Models::FunctionCreateParams::FunctionData::Code::Data::Bundle::type_]
               end
             end
 
@@ -190,7 +190,7 @@ module Braintrust
                   NODE: :node
                   PYTHON: :python
 
-                  def self.values: -> ::Array[Braintrust::Models::FunctionCreateParams::FunctionData::Code::Data::Inline::RuntimeContext::runtime]
+                  def self?.values: -> ::Array[Braintrust::Models::FunctionCreateParams::FunctionData::Code::Data::Inline::RuntimeContext::runtime]
                 end
               end
 
@@ -201,11 +201,11 @@ module Braintrust
 
                 INLINE: :inline
 
-                def self.values: -> ::Array[Braintrust::Models::FunctionCreateParams::FunctionData::Code::Data::Inline::type_]
+                def self?.values: -> ::Array[Braintrust::Models::FunctionCreateParams::FunctionData::Code::Data::Inline::type_]
               end
             end
 
-            def self.variants: -> [Braintrust::Models::FunctionCreateParams::FunctionData::Code::Data::Bundle, Braintrust::Models::FunctionCreateParams::FunctionData::Code::Data::Inline]
+            def self?.variants: -> [Braintrust::Models::FunctionCreateParams::FunctionData::Code::Data::Bundle, Braintrust::Models::FunctionCreateParams::FunctionData::Code::Data::Inline]
           end
 
           type type_ = :code
@@ -215,7 +215,7 @@ module Braintrust
 
             CODE: :code
 
-            def self.values: -> ::Array[Braintrust::Models::FunctionCreateParams::FunctionData::Code::type_]
+            def self?.values: -> ::Array[Braintrust::Models::FunctionCreateParams::FunctionData::Code::type_]
           end
         end
 
@@ -244,11 +244,11 @@ module Braintrust
 
             GLOBAL: :global
 
-            def self.values: -> ::Array[Braintrust::Models::FunctionCreateParams::FunctionData::Global::type_]
+            def self?.values: -> ::Array[Braintrust::Models::FunctionCreateParams::FunctionData::Global::type_]
           end
         end
 
-        def self.variants: -> [Braintrust::Models::FunctionCreateParams::FunctionData::Prompt, Braintrust::Models::FunctionCreateParams::FunctionData::Code, Braintrust::Models::FunctionCreateParams::FunctionData::Global]
+        def self?.variants: -> [Braintrust::Models::FunctionCreateParams::FunctionData::Prompt, Braintrust::Models::FunctionCreateParams::FunctionData::Code, Braintrust::Models::FunctionCreateParams::FunctionData::Global]
       end
 
       type function_schema = { parameters: top, returns: top }
@@ -277,7 +277,7 @@ module Braintrust
         TASK: :task
         TOOL: :tool
 
-        def self.values: -> ::Array[Braintrust::Models::FunctionCreateParams::function_type]
+        def self?.values: -> ::Array[Braintrust::Models::FunctionCreateParams::function_type]
       end
 
       type origin =

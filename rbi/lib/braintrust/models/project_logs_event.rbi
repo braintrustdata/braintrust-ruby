@@ -338,6 +338,12 @@ module Braintrust
         OrSymbol = T.type_alias { T.any(Symbol, Braintrust::Models::ProjectLogsEvent::LogID::TaggedSymbol) }
 
         G = T.let(:g, Braintrust::Models::ProjectLogsEvent::LogID::TaggedSymbol)
+
+        class << self
+          sig { override.returns(T::Array[Braintrust::Models::ProjectLogsEvent::LogID::TaggedSymbol]) }
+          def values
+          end
+        end
       end
 
       class Context < Braintrust::BaseModel

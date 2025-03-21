@@ -142,17 +142,23 @@ module Braintrust
         TaggedSymbol = T.type_alias { T.all(Symbol, Braintrust::Models::ViewCreateParams::ViewType) }
         OrSymbol = T.type_alias { T.any(Symbol, Braintrust::Models::ViewCreateParams::ViewType::TaggedSymbol) }
 
-        PROJECTS = T.let(:projects, Braintrust::Models::ViewCreateParams::ViewType::OrSymbol)
-        EXPERIMENTS = T.let(:experiments, Braintrust::Models::ViewCreateParams::ViewType::OrSymbol)
-        EXPERIMENT = T.let(:experiment, Braintrust::Models::ViewCreateParams::ViewType::OrSymbol)
-        PLAYGROUNDS = T.let(:playgrounds, Braintrust::Models::ViewCreateParams::ViewType::OrSymbol)
-        PLAYGROUND = T.let(:playground, Braintrust::Models::ViewCreateParams::ViewType::OrSymbol)
-        DATASETS = T.let(:datasets, Braintrust::Models::ViewCreateParams::ViewType::OrSymbol)
-        DATASET = T.let(:dataset, Braintrust::Models::ViewCreateParams::ViewType::OrSymbol)
-        PROMPTS = T.let(:prompts, Braintrust::Models::ViewCreateParams::ViewType::OrSymbol)
-        TOOLS = T.let(:tools, Braintrust::Models::ViewCreateParams::ViewType::OrSymbol)
-        SCORERS = T.let(:scorers, Braintrust::Models::ViewCreateParams::ViewType::OrSymbol)
-        LOGS = T.let(:logs, Braintrust::Models::ViewCreateParams::ViewType::OrSymbol)
+        PROJECTS = T.let(:projects, Braintrust::Models::ViewCreateParams::ViewType::TaggedSymbol)
+        EXPERIMENTS = T.let(:experiments, Braintrust::Models::ViewCreateParams::ViewType::TaggedSymbol)
+        EXPERIMENT = T.let(:experiment, Braintrust::Models::ViewCreateParams::ViewType::TaggedSymbol)
+        PLAYGROUNDS = T.let(:playgrounds, Braintrust::Models::ViewCreateParams::ViewType::TaggedSymbol)
+        PLAYGROUND = T.let(:playground, Braintrust::Models::ViewCreateParams::ViewType::TaggedSymbol)
+        DATASETS = T.let(:datasets, Braintrust::Models::ViewCreateParams::ViewType::TaggedSymbol)
+        DATASET = T.let(:dataset, Braintrust::Models::ViewCreateParams::ViewType::TaggedSymbol)
+        PROMPTS = T.let(:prompts, Braintrust::Models::ViewCreateParams::ViewType::TaggedSymbol)
+        TOOLS = T.let(:tools, Braintrust::Models::ViewCreateParams::ViewType::TaggedSymbol)
+        SCORERS = T.let(:scorers, Braintrust::Models::ViewCreateParams::ViewType::TaggedSymbol)
+        LOGS = T.let(:logs, Braintrust::Models::ViewCreateParams::ViewType::TaggedSymbol)
+
+        class << self
+          sig { override.returns(T::Array[Braintrust::Models::ViewCreateParams::ViewType::TaggedSymbol]) }
+          def values
+          end
+        end
       end
     end
   end

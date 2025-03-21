@@ -64,7 +64,7 @@ module Braintrust
 
             PROMPT: :prompt
 
-            def self.values: -> ::Array[Braintrust::Models::FunctionUpdateParams::FunctionData::Prompt::type_]
+            def self?.values: -> ::Array[Braintrust::Models::FunctionUpdateParams::FunctionData::Prompt::type_]
           end
         end
 
@@ -118,7 +118,7 @@ module Braintrust
 
                 BUNDLE: :bundle
 
-                def self.values: -> ::Array[Braintrust::Models::FunctionUpdateParams::FunctionData::Code::Data::Bundle::type_]
+                def self?.values: -> ::Array[Braintrust::Models::FunctionUpdateParams::FunctionData::Code::Data::Bundle::type_]
               end
             end
 
@@ -170,7 +170,7 @@ module Braintrust
                   NODE: :node
                   PYTHON: :python
 
-                  def self.values: -> ::Array[Braintrust::Models::FunctionUpdateParams::FunctionData::Code::Data::Inline::RuntimeContext::runtime]
+                  def self?.values: -> ::Array[Braintrust::Models::FunctionUpdateParams::FunctionData::Code::Data::Inline::RuntimeContext::runtime]
                 end
               end
 
@@ -181,11 +181,11 @@ module Braintrust
 
                 INLINE: :inline
 
-                def self.values: -> ::Array[Braintrust::Models::FunctionUpdateParams::FunctionData::Code::Data::Inline::type_]
+                def self?.values: -> ::Array[Braintrust::Models::FunctionUpdateParams::FunctionData::Code::Data::Inline::type_]
               end
             end
 
-            def self.variants: -> [Braintrust::Models::FunctionUpdateParams::FunctionData::Code::Data::Bundle, Braintrust::Models::FunctionUpdateParams::FunctionData::Code::Data::Inline]
+            def self?.variants: -> [Braintrust::Models::FunctionUpdateParams::FunctionData::Code::Data::Bundle, Braintrust::Models::FunctionUpdateParams::FunctionData::Code::Data::Inline]
           end
 
           type type_ = :code
@@ -195,7 +195,7 @@ module Braintrust
 
             CODE: :code
 
-            def self.values: -> ::Array[Braintrust::Models::FunctionUpdateParams::FunctionData::Code::type_]
+            def self?.values: -> ::Array[Braintrust::Models::FunctionUpdateParams::FunctionData::Code::type_]
           end
         end
 
@@ -224,11 +224,11 @@ module Braintrust
 
             GLOBAL: :global
 
-            def self.values: -> ::Array[Braintrust::Models::FunctionUpdateParams::FunctionData::Global::type_]
+            def self?.values: -> ::Array[Braintrust::Models::FunctionUpdateParams::FunctionData::Global::type_]
           end
         end
 
-        def self.variants: -> [Braintrust::Models::FunctionUpdateParams::FunctionData::Prompt, Braintrust::Models::FunctionUpdateParams::FunctionData::Code, Braintrust::Models::FunctionUpdateParams::FunctionData::Global]
+        def self?.variants: -> [Braintrust::Models::FunctionUpdateParams::FunctionData::Prompt, Braintrust::Models::FunctionUpdateParams::FunctionData::Code, Braintrust::Models::FunctionUpdateParams::FunctionData::Global]
       end
     end
   end

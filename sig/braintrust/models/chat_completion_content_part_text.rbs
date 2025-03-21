@@ -27,7 +27,7 @@ module Braintrust
 
         TEXT: :text
 
-        def self.values: -> ::Array[Braintrust::Models::ChatCompletionContentPartText::type_]
+        def self?.values: -> ::Array[Braintrust::Models::ChatCompletionContentPartText::type_]
       end
     end
   end

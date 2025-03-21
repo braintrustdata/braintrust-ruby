@@ -84,7 +84,7 @@ module Braintrust
 
         StringArray: string_array
 
-        def self.variants: -> [String, ::Array[String]]
+        def self?.variants: -> [String, ::Array[String]]
       end
     end
   end

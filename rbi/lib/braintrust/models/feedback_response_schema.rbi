@@ -30,6 +30,12 @@ module Braintrust
           T.type_alias { T.any(Symbol, Braintrust::Models::FeedbackResponseSchema::Status::TaggedSymbol) }
 
         SUCCESS = T.let(:success, Braintrust::Models::FeedbackResponseSchema::Status::TaggedSymbol)
+
+        class << self
+          sig { override.returns(T::Array[Braintrust::Models::FeedbackResponseSchema::Status::TaggedSymbol]) }
+          def values
+          end
+        end
       end
     end
   end
