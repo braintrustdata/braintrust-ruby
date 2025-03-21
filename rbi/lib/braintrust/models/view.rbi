@@ -114,9 +114,9 @@ module Braintrust
           view_type: T.nilable(Braintrust::Models::View::ViewType::TaggedSymbol),
           created: T.nilable(Time),
           deleted_at: T.nilable(Time),
-          options: T.nilable(Braintrust::Models::ViewOptions),
+          options: T.nilable(T.any(Braintrust::Models::ViewOptions, Braintrust::Util::AnyHash)),
           user_id: T.nilable(String),
-          view_data: T.nilable(Braintrust::Models::ViewData)
+          view_data: T.nilable(T.any(Braintrust::Models::ViewData, Braintrust::Util::AnyHash))
         )
           .returns(T.attached_class)
       end

@@ -32,7 +32,7 @@ module Braintrust
         params(
           comparison_experiment_id: String,
           summarize_scores: T.nilable(T::Boolean),
-          request_options: T.any(Braintrust::RequestOptions, T::Hash[Symbol, T.anything])
+          request_options: T.any(Braintrust::RequestOptions, Braintrust::Util::AnyHash)
         )
           .returns(T.attached_class)
       end

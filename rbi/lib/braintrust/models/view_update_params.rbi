@@ -85,11 +85,11 @@ module Braintrust
           object_id_: String,
           object_type: Braintrust::Models::ACLObjectType::OrSymbol,
           name: T.nilable(String),
-          options: T.nilable(Braintrust::Models::ViewOptions),
+          options: T.nilable(T.any(Braintrust::Models::ViewOptions, Braintrust::Util::AnyHash)),
           user_id: T.nilable(String),
-          view_data: T.nilable(Braintrust::Models::ViewData),
+          view_data: T.nilable(T.any(Braintrust::Models::ViewData, Braintrust::Util::AnyHash)),
           view_type: T.nilable(Braintrust::Models::ViewUpdateParams::ViewType::OrSymbol),
-          request_options: T.any(Braintrust::RequestOptions, T::Hash[Symbol, T.anything])
+          request_options: T.any(Braintrust::RequestOptions, Braintrust::Util::AnyHash)
         )
           .returns(T.attached_class)
       end

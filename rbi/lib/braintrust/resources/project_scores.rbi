@@ -16,7 +16,7 @@ module Braintrust
           ),
           config: T.nilable(Braintrust::Models::ProjectScoreConfig),
           description: T.nilable(String),
-          request_options: T.nilable(T.any(Braintrust::RequestOptions, T::Hash[Symbol, T.anything]))
+          request_options: T.nilable(T.any(Braintrust::RequestOptions, Braintrust::Util::AnyHash))
         )
           .returns(Braintrust::Models::ProjectScore)
       end
@@ -40,7 +40,7 @@ module Braintrust
       sig do
         params(
           project_score_id: String,
-          request_options: T.nilable(T.any(Braintrust::RequestOptions, T::Hash[Symbol, T.anything]))
+          request_options: T.nilable(T.any(Braintrust::RequestOptions, Braintrust::Util::AnyHash))
         )
           .returns(Braintrust::Models::ProjectScore)
       end
@@ -64,7 +64,7 @@ module Braintrust
           description: T.nilable(String),
           name: T.nilable(String),
           score_type: T.nilable(Braintrust::Models::ProjectScoreType::OrSymbol),
-          request_options: T.nilable(T.any(Braintrust::RequestOptions, T::Hash[Symbol, T.anything]))
+          request_options: T.nilable(T.any(Braintrust::RequestOptions, Braintrust::Util::AnyHash))
         )
           .returns(Braintrust::Models::ProjectScore)
       end
@@ -100,7 +100,7 @@ module Braintrust
             T::Array[Braintrust::Models::ProjectScoreType::OrSymbol]
           ),
           starting_after: String,
-          request_options: T.nilable(T.any(Braintrust::RequestOptions, T::Hash[Symbol, T.anything]))
+          request_options: T.nilable(T.any(Braintrust::RequestOptions, Braintrust::Util::AnyHash))
         )
           .returns(Braintrust::ListObjects[Braintrust::Models::ProjectScore])
       end
@@ -140,7 +140,7 @@ module Braintrust
       sig do
         params(
           project_score_id: String,
-          request_options: T.nilable(T.any(Braintrust::RequestOptions, T::Hash[Symbol, T.anything]))
+          request_options: T.nilable(T.any(Braintrust::RequestOptions, Braintrust::Util::AnyHash))
         )
           .returns(Braintrust::Models::ProjectScore)
       end
@@ -164,7 +164,7 @@ module Braintrust
           ),
           config: T.nilable(Braintrust::Models::ProjectScoreConfig),
           description: T.nilable(String),
-          request_options: T.nilable(T.any(Braintrust::RequestOptions, T::Hash[Symbol, T.anything]))
+          request_options: T.nilable(T.any(Braintrust::RequestOptions, Braintrust::Util::AnyHash))
         )
           .returns(Braintrust::Models::ProjectScore)
       end
