@@ -176,11 +176,12 @@ module Braintrust
             {fixed: T.any(T::Array[Braintrust::Models::ProjectScoreCategory], T::Hash[Symbol, Float], T::Array[String])}
           end
 
-        ProjectScoreCategoryArray = T.type_alias { T::Array[Braintrust::Models::ProjectScoreCategory] }
+        ProjectScoreCategoryArray =
+          T.let(Braintrust::ArrayOf[Braintrust::Models::ProjectScoreCategory], Braintrust::Converter)
 
-        FloatMap = T.type_alias { T::Hash[Symbol, Float] }
+        FloatMap = T.let(Braintrust::HashOf[Float], Braintrust::Converter)
 
-        StringArray = T.type_alias { T::Array[String] }
+        StringArray = T.let(Braintrust::ArrayOf[String], Braintrust::Converter)
       end
     end
   end
