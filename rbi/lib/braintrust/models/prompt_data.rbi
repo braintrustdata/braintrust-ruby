@@ -569,14 +569,10 @@ module Braintrust
                   end
 
                 Nested2DArray =
-                  T.type_alias do
-                    T::Array[
-                    T.any(
-                      Braintrust::Models::ChatCompletionContentPartText,
-                      Braintrust::Models::ChatCompletionContentPartImage
-                    )
-                    ]
-                  end
+                  T.let(
+                    Braintrust::ArrayOf[union: Braintrust::Models::PromptData::Prompt::Chat::Message::User::Content::Array],
+                    Braintrust::Converter
+                  )
 
                 class Array < Braintrust::Union
                   abstract!
