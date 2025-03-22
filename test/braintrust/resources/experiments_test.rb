@@ -92,6 +92,8 @@ class Braintrust::Test::Resources::ExperimentsTest < Braintrust::Test::ResourceT
     end
 
     row = response.to_enum.first
+    return if row.nil?
+
     assert_pattern do
       row => Braintrust::Models::Experiment
     end

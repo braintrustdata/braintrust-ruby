@@ -40,7 +40,7 @@ module Braintrust
 
       case page_data
       in {objects: Array | nil => objects}
-        @objects = objects&.map { model.coerce(_1) }
+        @objects = objects&.map { Braintrust::Converter.coerce(model, _1) }
       else
       end
     end

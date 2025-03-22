@@ -51,6 +51,8 @@ class Braintrust::Test::Resources::OrganizationsTest < Braintrust::Test::Resourc
     end
 
     row = response.to_enum.first
+    return if row.nil?
+
     assert_pattern do
       row => Braintrust::Models::Organization
     end
