@@ -63,7 +63,9 @@ module Braintrust
         params(
           name: String,
           description: T.nilable(String),
-          member_permissions: T.nilable(T::Array[Braintrust::Models::RoleCreateParams::MemberPermission]),
+          member_permissions: T.nilable(
+            T::Array[T.any(Braintrust::Models::RoleCreateParams::MemberPermission, Braintrust::Util::AnyHash)]
+          ),
           member_roles: T.nilable(T::Array[String]),
           org_name: T.nilable(String),
           request_options: T.any(Braintrust::RequestOptions, Braintrust::Util::AnyHash)

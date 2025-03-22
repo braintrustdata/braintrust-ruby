@@ -138,14 +138,14 @@ module Braintrust
         params(
           id: String,
           _xact_id: String,
-          log_id: Braintrust::Models::Prompt::LogID::TaggedSymbol,
+          log_id: Braintrust::Models::Prompt::LogID::OrSymbol,
           name: String,
           org_id: String,
           project_id: String,
           slug: String,
           created: T.nilable(Time),
           description: T.nilable(String),
-          function_type: T.nilable(Braintrust::Models::Prompt::FunctionType::TaggedSymbol),
+          function_type: T.nilable(Braintrust::Models::Prompt::FunctionType::OrSymbol),
           metadata: T.nilable(T::Hash[Symbol, T.nilable(T.anything)]),
           prompt_data: T.nilable(T.any(Braintrust::Models::PromptData, Braintrust::Util::AnyHash)),
           tags: T.nilable(T::Array[String])

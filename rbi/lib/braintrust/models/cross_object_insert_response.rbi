@@ -41,9 +41,9 @@ module Braintrust
 
       sig do
         params(
-          dataset: T.nilable(T::Hash[Symbol, Braintrust::Models::InsertEventsResponse]),
-          experiment: T.nilable(T::Hash[Symbol, Braintrust::Models::InsertEventsResponse]),
-          project_logs: T.nilable(T::Hash[Symbol, Braintrust::Models::InsertEventsResponse])
+          dataset: T.nilable(T::Hash[Symbol, T.any(Braintrust::Models::InsertEventsResponse, Braintrust::Util::AnyHash)]),
+          experiment: T.nilable(T::Hash[Symbol, T.any(Braintrust::Models::InsertEventsResponse, Braintrust::Util::AnyHash)]),
+          project_logs: T.nilable(T::Hash[Symbol, T.any(Braintrust::Models::InsertEventsResponse, Braintrust::Util::AnyHash)])
         )
           .returns(T.attached_class)
       end

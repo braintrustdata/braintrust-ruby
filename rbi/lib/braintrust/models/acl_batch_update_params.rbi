@@ -50,8 +50,8 @@ module Braintrust
 
       sig do
         params(
-          add_acls: T.nilable(T::Array[Braintrust::Models::ACLBatchUpdateParams::AddACL]),
-          remove_acls: T.nilable(T::Array[Braintrust::Models::ACLBatchUpdateParams::RemoveACL]),
+          add_acls: T.nilable(T::Array[T.any(Braintrust::Models::ACLBatchUpdateParams::AddACL, Braintrust::Util::AnyHash)]),
+          remove_acls: T.nilable(T::Array[T.any(Braintrust::Models::ACLBatchUpdateParams::RemoveACL, Braintrust::Util::AnyHash)]),
           request_options: T.any(Braintrust::RequestOptions, Braintrust::Util::AnyHash)
         )
           .returns(T.attached_class)

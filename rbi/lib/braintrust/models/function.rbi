@@ -194,10 +194,11 @@ module Braintrust
           _xact_id: String,
           function_data: T.any(
             Braintrust::Models::Function::FunctionData::Prompt,
+            Braintrust::Util::AnyHash,
             Braintrust::Models::Function::FunctionData::Code,
             Braintrust::Models::Function::FunctionData::Global
           ),
-          log_id: Braintrust::Models::Function::LogID::TaggedSymbol,
+          log_id: Braintrust::Models::Function::LogID::OrSymbol,
           name: String,
           org_id: String,
           project_id: String,
@@ -205,7 +206,7 @@ module Braintrust
           created: T.nilable(Time),
           description: T.nilable(String),
           function_schema: T.nilable(T.any(Braintrust::Models::Function::FunctionSchema, Braintrust::Util::AnyHash)),
-          function_type: T.nilable(Braintrust::Models::Function::FunctionType::TaggedSymbol),
+          function_type: T.nilable(Braintrust::Models::Function::FunctionType::OrSymbol),
           metadata: T.nilable(T::Hash[Symbol, T.nilable(T.anything)]),
           origin: T.nilable(T.any(Braintrust::Models::Function::Origin, Braintrust::Util::AnyHash)),
           prompt_data: T.nilable(T.any(Braintrust::Models::PromptData, Braintrust::Util::AnyHash)),
@@ -289,10 +290,7 @@ module Braintrust
           def type=(_)
           end
 
-          sig do
-            params(type: Braintrust::Models::Function::FunctionData::Prompt::Type::TaggedSymbol)
-              .returns(T.attached_class)
-          end
+          sig { params(type: Braintrust::Models::Function::FunctionData::Prompt::Type::OrSymbol).returns(T.attached_class) }
           def self.new(type:)
           end
 
@@ -361,9 +359,10 @@ module Braintrust
             params(
               data: T.any(
                 Braintrust::Models::Function::FunctionData::Code::Data::Bundle,
+                Braintrust::Util::AnyHash,
                 Braintrust::Models::Function::FunctionData::Code::Data::Inline
               ),
-              type: Braintrust::Models::Function::FunctionData::Code::Type::TaggedSymbol
+              type: Braintrust::Models::Function::FunctionData::Code::Type::OrSymbol
             )
               .returns(T.attached_class)
           end
@@ -411,7 +410,7 @@ module Braintrust
               end
 
               sig do
-                params(type: Braintrust::Models::Function::FunctionData::Code::Data::Bundle::Type::TaggedSymbol)
+                params(type: Braintrust::Models::Function::FunctionData::Code::Data::Bundle::Type::OrSymbol)
                   .returns(T.attached_class)
               end
               def self.new(type:)
@@ -494,7 +493,7 @@ module Braintrust
                     Braintrust::Models::Function::FunctionData::Code::Data::Inline::RuntimeContext,
                     Braintrust::Util::AnyHash
                   ),
-                  type: Braintrust::Models::Function::FunctionData::Code::Data::Inline::Type::TaggedSymbol
+                  type: Braintrust::Models::Function::FunctionData::Code::Data::Inline::Type::OrSymbol
                 )
                   .returns(T.attached_class)
               end
@@ -544,7 +543,7 @@ module Braintrust
 
                 sig do
                   params(
-                    runtime: Braintrust::Models::Function::FunctionData::Code::Data::Inline::RuntimeContext::Runtime::TaggedSymbol,
+                    runtime: Braintrust::Models::Function::FunctionData::Code::Data::Inline::RuntimeContext::Runtime::OrSymbol,
                     version: String
                   )
                     .returns(T.attached_class)
@@ -673,7 +672,7 @@ module Braintrust
           end
 
           sig do
-            params(name: String, type: Braintrust::Models::Function::FunctionData::Global::Type::TaggedSymbol)
+            params(name: String, type: Braintrust::Models::Function::FunctionData::Global::Type::OrSymbol)
               .returns(T.attached_class)
           end
           def self.new(name:, type:)
@@ -811,7 +810,7 @@ module Braintrust
         sig do
           params(
             object_id_: String,
-            object_type: Braintrust::Models::ACLObjectType::TaggedSymbol,
+            object_type: Braintrust::Models::ACLObjectType::OrSymbol,
             internal: T.nilable(T::Boolean)
           )
             .returns(T.attached_class)

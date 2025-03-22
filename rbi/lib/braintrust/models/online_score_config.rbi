@@ -71,6 +71,7 @@ module Braintrust
           scorers: T::Array[
           T.any(
             Braintrust::Models::OnlineScoreConfig::Scorer::Function,
+            Braintrust::Util::AnyHash,
             Braintrust::Models::OnlineScoreConfig::Scorer::Global
           )
           ],

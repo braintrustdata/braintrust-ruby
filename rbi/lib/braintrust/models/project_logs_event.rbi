@@ -253,7 +253,7 @@ module Braintrust
           id: String,
           _xact_id: String,
           created: Time,
-          log_id: Braintrust::Models::ProjectLogsEvent::LogID::TaggedSymbol,
+          log_id: Braintrust::Models::ProjectLogsEvent::LogID::OrSymbol,
           org_id: String,
           project_id: String,
           root_span_id: String,

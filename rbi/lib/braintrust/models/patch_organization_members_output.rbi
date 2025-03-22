@@ -36,7 +36,7 @@ module Braintrust
       sig do
         params(
           org_id: String,
-          status: Braintrust::Models::PatchOrganizationMembersOutput::Status::TaggedSymbol,
+          status: Braintrust::Models::PatchOrganizationMembersOutput::Status::OrSymbol,
           send_email_error: T.nilable(String)
         )
           .returns(T.attached_class)
