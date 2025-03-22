@@ -117,10 +117,8 @@ module Braintrust
         variant Braintrust::Models::AISecretListParams::AISecretType::StringArray
 
         # @!parse
-        #   class << self
-        #     # @return [Array(String, Array<String>)]
-        #     def variants; end
-        #   end
+        #   # @return [Array(String, Array<String>)]
+        #   def self.variants; end
       end
 
       # Filter search results to a particular set of object IDs. To specify a list of
@@ -135,10 +133,8 @@ module Braintrust
         variant Braintrust::Models::AISecretListParams::IDs::StringArray
 
         # @!parse
-        #   class << self
-        #     # @return [Array(String, Array<String>)]
-        #     def variants; end
-        #   end
+        #   # @return [Array(String, Array<String>)]
+        #   def self.variants; end
       end
     end
   end

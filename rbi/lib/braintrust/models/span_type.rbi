@@ -16,10 +16,8 @@ module Braintrust
       TASK = T.let(:task, Braintrust::Models::SpanType::TaggedSymbol)
       TOOL = T.let(:tool, Braintrust::Models::SpanType::TaggedSymbol)
 
-      class << self
-        sig { override.returns(T::Array[Braintrust::Models::SpanType::TaggedSymbol]) }
-        def values
-        end
+      sig { override.returns(T::Array[Braintrust::Models::SpanType::TaggedSymbol]) }
+      def self.values
       end
     end
   end

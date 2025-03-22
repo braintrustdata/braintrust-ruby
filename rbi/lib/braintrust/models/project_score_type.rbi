@@ -17,10 +17,8 @@ module Braintrust
       ONLINE = T.let(:online, Braintrust::Models::ProjectScoreType::TaggedSymbol)
       FREE_FORM = T.let(:"free-form", Braintrust::Models::ProjectScoreType::TaggedSymbol)
 
-      class << self
-        sig { override.returns(T::Array[Braintrust::Models::ProjectScoreType::TaggedSymbol]) }
-        def values
-        end
+      sig { override.returns(T::Array[Braintrust::Models::ProjectScoreType::TaggedSymbol]) }
+      def self.values
       end
     end
   end

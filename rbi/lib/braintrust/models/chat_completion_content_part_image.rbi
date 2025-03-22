@@ -80,13 +80,11 @@ module Braintrust
           LOW = T.let(:low, Braintrust::Models::ChatCompletionContentPartImage::ImageURL::Detail::TaggedSymbol)
           HIGH = T.let(:high, Braintrust::Models::ChatCompletionContentPartImage::ImageURL::Detail::TaggedSymbol)
 
-          class << self
-            sig do
-              override
-                .returns(T::Array[Braintrust::Models::ChatCompletionContentPartImage::ImageURL::Detail::TaggedSymbol])
-            end
-            def values
-            end
+          sig do
+            override
+              .returns(T::Array[Braintrust::Models::ChatCompletionContentPartImage::ImageURL::Detail::TaggedSymbol])
+          end
+          def self.values
           end
         end
       end
@@ -100,10 +98,8 @@ module Braintrust
 
         IMAGE_URL = T.let(:image_url, Braintrust::Models::ChatCompletionContentPartImage::Type::TaggedSymbol)
 
-        class << self
-          sig { override.returns(T::Array[Braintrust::Models::ChatCompletionContentPartImage::Type::TaggedSymbol]) }
-          def values
-          end
+        sig { override.returns(T::Array[Braintrust::Models::ChatCompletionContentPartImage::Type::TaggedSymbol]) }
+        def self.values
         end
       end
     end

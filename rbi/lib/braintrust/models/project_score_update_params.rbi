@@ -76,11 +76,6 @@ module Braintrust
       module Categories
         extend Braintrust::Union
 
-        Variants =
-          type_template(:out) do
-            {fixed: T.any(T::Array[Braintrust::Models::ProjectScoreCategory], T::Hash[Symbol, Float], T::Array[String])}
-          end
-
         ProjectScoreCategoryArray =
           T.let(Braintrust::ArrayOf[Braintrust::Models::ProjectScoreCategory], Braintrust::Converter)
 
@@ -88,13 +83,11 @@ module Braintrust
 
         StringArray = T.let(Braintrust::ArrayOf[String], Braintrust::Converter)
 
-        class << self
-          sig do
-            override
-              .returns([T::Array[Braintrust::Models::ProjectScoreCategory], T::Hash[Symbol, Float], T::Array[String]])
-          end
-          def variants
-          end
+        sig do
+          override
+            .returns([T::Array[Braintrust::Models::ProjectScoreCategory], T::Hash[Symbol, Float], T::Array[String]])
+        end
+        def self.variants
         end
       end
     end

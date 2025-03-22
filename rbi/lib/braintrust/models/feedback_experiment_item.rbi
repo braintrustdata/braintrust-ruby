@@ -84,10 +84,8 @@ module Braintrust
         API = T.let(:api, Braintrust::Models::FeedbackExperimentItem::Source::TaggedSymbol)
         EXTERNAL = T.let(:external, Braintrust::Models::FeedbackExperimentItem::Source::TaggedSymbol)
 
-        class << self
-          sig { override.returns(T::Array[Braintrust::Models::FeedbackExperimentItem::Source::TaggedSymbol]) }
-          def values
-          end
+        sig { override.returns(T::Array[Braintrust::Models::FeedbackExperimentItem::Source::TaggedSymbol]) }
+        def self.values
         end
       end
     end

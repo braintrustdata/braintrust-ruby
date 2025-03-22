@@ -165,20 +165,6 @@ module Braintrust
       module Message
         extend Braintrust::Union
 
-        Variants =
-          type_template(:out) do
-            {
-              fixed: T.any(
-                Braintrust::Models::FunctionInvokeParams::Message::System,
-                Braintrust::Models::FunctionInvokeParams::Message::User,
-                Braintrust::Models::FunctionInvokeParams::Message::Assistant,
-                Braintrust::Models::FunctionInvokeParams::Message::Tool,
-                Braintrust::Models::FunctionInvokeParams::Message::Function,
-                Braintrust::Models::FunctionInvokeParams::Message::Fallback
-              )
-            }
-          end
-
         class System < Braintrust::BaseModel
           sig { returns(Braintrust::Models::FunctionInvokeParams::Message::System::Role::OrSymbol) }
           attr_accessor :role
@@ -225,10 +211,8 @@ module Braintrust
 
             SYSTEM = T.let(:system, Braintrust::Models::FunctionInvokeParams::Message::System::Role::TaggedSymbol)
 
-            class << self
-              sig { override.returns(T::Array[Braintrust::Models::FunctionInvokeParams::Message::System::Role::TaggedSymbol]) }
-              def values
-              end
+            sig { override.returns(T::Array[Braintrust::Models::FunctionInvokeParams::Message::System::Role::TaggedSymbol]) }
+            def self.values
             end
           end
         end
@@ -328,30 +312,13 @@ module Braintrust
 
             USER = T.let(:user, Braintrust::Models::FunctionInvokeParams::Message::User::Role::TaggedSymbol)
 
-            class << self
-              sig { override.returns(T::Array[Braintrust::Models::FunctionInvokeParams::Message::User::Role::TaggedSymbol]) }
-              def values
-              end
+            sig { override.returns(T::Array[Braintrust::Models::FunctionInvokeParams::Message::User::Role::TaggedSymbol]) }
+            def self.values
             end
           end
 
           module Content
             extend Braintrust::Union
-
-            Variants =
-              type_template(:out) do
-                {
-                  fixed: T.any(
-                    String,
-                    T::Array[
-                    T.any(
-                      Braintrust::Models::ChatCompletionContentPartText,
-                      Braintrust::Models::ChatCompletionContentPartImage
-                    )
-                    ]
-                  )
-                }
-              end
 
             Nested2DArray =
               T.let(
@@ -362,45 +329,31 @@ module Braintrust
             module Array
               extend Braintrust::Union
 
-              Variants =
-                type_template(:out) do
-                  {
-                    fixed: T.any(
-                      Braintrust::Models::ChatCompletionContentPartText,
-                      Braintrust::Models::ChatCompletionContentPartImage
-                    )
-                  }
-                end
-
-              class << self
-                sig do
-                  override
-                    .returns(
-                      [Braintrust::Models::ChatCompletionContentPartText, Braintrust::Models::ChatCompletionContentPartImage]
-                    )
-                end
-                def variants
-                end
-              end
-            end
-
-            class << self
               sig do
                 override
                   .returns(
-                    [
-                      String,
-                      T::Array[
-                                          T.any(
-                                            Braintrust::Models::ChatCompletionContentPartText,
-                                            Braintrust::Models::ChatCompletionContentPartImage
-                                          )
-                                          ]
-                    ]
+                    [Braintrust::Models::ChatCompletionContentPartText, Braintrust::Models::ChatCompletionContentPartImage]
                   )
               end
-              def variants
+              def self.variants
               end
+            end
+
+            sig do
+              override
+                .returns(
+                  [
+                    String,
+                    T::Array[
+                                      T.any(
+                                        Braintrust::Models::ChatCompletionContentPartText,
+                                        Braintrust::Models::ChatCompletionContentPartImage
+                                      )
+                                      ]
+                  ]
+                )
+            end
+            def self.variants
             end
           end
         end
@@ -478,13 +431,11 @@ module Braintrust
             ASSISTANT =
               T.let(:assistant, Braintrust::Models::FunctionInvokeParams::Message::Assistant::Role::TaggedSymbol)
 
-            class << self
-              sig do
-                override
-                  .returns(T::Array[Braintrust::Models::FunctionInvokeParams::Message::Assistant::Role::TaggedSymbol])
-              end
-              def values
-              end
+            sig do
+              override
+                .returns(T::Array[Braintrust::Models::FunctionInvokeParams::Message::Assistant::Role::TaggedSymbol])
+            end
+            def self.values
             end
           end
 
@@ -555,10 +506,8 @@ module Braintrust
 
             TOOL = T.let(:tool, Braintrust::Models::FunctionInvokeParams::Message::Tool::Role::TaggedSymbol)
 
-            class << self
-              sig { override.returns(T::Array[Braintrust::Models::FunctionInvokeParams::Message::Tool::Role::TaggedSymbol]) }
-              def values
-              end
+            sig { override.returns(T::Array[Braintrust::Models::FunctionInvokeParams::Message::Tool::Role::TaggedSymbol]) }
+            def self.values
             end
           end
         end
@@ -611,12 +560,10 @@ module Braintrust
             FUNCTION =
               T.let(:function, Braintrust::Models::FunctionInvokeParams::Message::Function::Role::TaggedSymbol)
 
-            class << self
-              sig do
-                override.returns(T::Array[Braintrust::Models::FunctionInvokeParams::Message::Function::Role::TaggedSymbol])
-              end
-              def values
-              end
+            sig do
+              override.returns(T::Array[Braintrust::Models::FunctionInvokeParams::Message::Function::Role::TaggedSymbol])
+            end
+            def self.values
             end
           end
         end
@@ -660,25 +607,21 @@ module Braintrust
 
             MODEL = T.let(:model, Braintrust::Models::FunctionInvokeParams::Message::Fallback::Role::TaggedSymbol)
 
-            class << self
-              sig do
-                override.returns(T::Array[Braintrust::Models::FunctionInvokeParams::Message::Fallback::Role::TaggedSymbol])
-              end
-              def values
-              end
+            sig do
+              override.returns(T::Array[Braintrust::Models::FunctionInvokeParams::Message::Fallback::Role::TaggedSymbol])
+            end
+            def self.values
             end
           end
         end
 
-        class << self
-          sig do
-            override
-              .returns(
-                [Braintrust::Models::FunctionInvokeParams::Message::System, Braintrust::Models::FunctionInvokeParams::Message::User, Braintrust::Models::FunctionInvokeParams::Message::Assistant, Braintrust::Models::FunctionInvokeParams::Message::Tool, Braintrust::Models::FunctionInvokeParams::Message::Function, Braintrust::Models::FunctionInvokeParams::Message::Fallback]
-              )
-          end
-          def variants
-          end
+        sig do
+          override
+            .returns(
+              [Braintrust::Models::FunctionInvokeParams::Message::System, Braintrust::Models::FunctionInvokeParams::Message::User, Braintrust::Models::FunctionInvokeParams::Message::Assistant, Braintrust::Models::FunctionInvokeParams::Message::Tool, Braintrust::Models::FunctionInvokeParams::Message::Function, Braintrust::Models::FunctionInvokeParams::Message::Fallback]
+            )
+        end
+        def self.variants
         end
       end
 
@@ -692,19 +635,14 @@ module Braintrust
         AUTO = T.let(:auto, Braintrust::Models::FunctionInvokeParams::Mode::TaggedSymbol)
         PARALLEL = T.let(:parallel, Braintrust::Models::FunctionInvokeParams::Mode::TaggedSymbol)
 
-        class << self
-          sig { override.returns(T::Array[Braintrust::Models::FunctionInvokeParams::Mode::TaggedSymbol]) }
-          def values
-          end
+        sig { override.returns(T::Array[Braintrust::Models::FunctionInvokeParams::Mode::TaggedSymbol]) }
+        def self.values
         end
       end
 
       # Options for tracing the function call
       module Parent
         extend Braintrust::Union
-
-        Variants =
-          type_template(:out) { {fixed: T.any(Braintrust::Models::FunctionInvokeParams::Parent::SpanParentStruct, String)} }
 
         class SpanParentStruct < Braintrust::BaseModel
           # The id of the container object you are logging to
@@ -796,15 +734,13 @@ module Braintrust
                 Braintrust::Models::FunctionInvokeParams::Parent::SpanParentStruct::ObjectType::TaggedSymbol
               )
 
-            class << self
-              sig do
-                override
-                  .returns(
-                    T::Array[Braintrust::Models::FunctionInvokeParams::Parent::SpanParentStruct::ObjectType::TaggedSymbol]
-                  )
-              end
-              def values
-              end
+            sig do
+              override
+                .returns(
+                  T::Array[Braintrust::Models::FunctionInvokeParams::Parent::SpanParentStruct::ObjectType::TaggedSymbol]
+                )
+            end
+            def self.values
             end
           end
 
@@ -832,10 +768,8 @@ module Braintrust
           end
         end
 
-        class << self
-          sig { override.returns([Braintrust::Models::FunctionInvokeParams::Parent::SpanParentStruct, String]) }
-          def variants
-          end
+        sig { override.returns([Braintrust::Models::FunctionInvokeParams::Parent::SpanParentStruct, String]) }
+        def self.variants
         end
       end
     end

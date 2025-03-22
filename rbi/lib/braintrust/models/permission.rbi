@@ -21,10 +21,8 @@ module Braintrust
       UPDATE_ACLS = T.let(:update_acls, Braintrust::Models::Permission::TaggedSymbol)
       DELETE_ACLS = T.let(:delete_acls, Braintrust::Models::Permission::TaggedSymbol)
 
-      class << self
-        sig { override.returns(T::Array[Braintrust::Models::Permission::TaggedSymbol]) }
-        def values
-        end
+      sig { override.returns(T::Array[Braintrust::Models::Permission::TaggedSymbol]) }
+      def self.values
       end
     end
   end
