@@ -8,15 +8,7 @@ module Braintrust
 
       # A list of dataset feedback items
       sig { returns(T::Array[Braintrust::Models::FeedbackDatasetItem]) }
-      def feedback
-      end
-
-      sig do
-        params(_: T::Array[Braintrust::Models::FeedbackDatasetItem])
-          .returns(T::Array[Braintrust::Models::FeedbackDatasetItem])
-      end
-      def feedback=(_)
-      end
+      attr_accessor :feedback
 
       sig do
         params(

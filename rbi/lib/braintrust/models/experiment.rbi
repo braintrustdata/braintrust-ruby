@@ -5,138 +5,65 @@ module Braintrust
     class Experiment < Braintrust::BaseModel
       # Unique identifier for the experiment
       sig { returns(String) }
-      def id
-      end
-
-      sig { params(_: String).returns(String) }
-      def id=(_)
-      end
+      attr_accessor :id
 
       # Name of the experiment. Within a project, experiment names are unique
       sig { returns(String) }
-      def name
-      end
-
-      sig { params(_: String).returns(String) }
-      def name=(_)
-      end
+      attr_accessor :name
 
       # Unique identifier for the project that the experiment belongs under
       sig { returns(String) }
-      def project_id
-      end
-
-      sig { params(_: String).returns(String) }
-      def project_id=(_)
-      end
+      attr_accessor :project_id
 
       # Whether or not the experiment is public. Public experiments can be viewed by
       #   anybody inside or outside the organization
       sig { returns(T::Boolean) }
-      def public
-      end
-
-      sig { params(_: T::Boolean).returns(T::Boolean) }
-      def public=(_)
-      end
+      attr_accessor :public
 
       # Id of default base experiment to compare against when viewing this experiment
       sig { returns(T.nilable(String)) }
-      def base_exp_id
-      end
-
-      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-      def base_exp_id=(_)
-      end
+      attr_accessor :base_exp_id
 
       # Commit, taken directly from `repo_info.commit`
       sig { returns(T.nilable(String)) }
-      def commit
-      end
-
-      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-      def commit=(_)
-      end
+      attr_accessor :commit
 
       # Date of experiment creation
       sig { returns(T.nilable(Time)) }
-      def created
-      end
-
-      sig { params(_: T.nilable(Time)).returns(T.nilable(Time)) }
-      def created=(_)
-      end
+      attr_accessor :created
 
       # Identifier of the linked dataset, or null if the experiment is not linked to a
       #   dataset
       sig { returns(T.nilable(String)) }
-      def dataset_id
-      end
-
-      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-      def dataset_id=(_)
-      end
+      attr_accessor :dataset_id
 
       # Version number of the linked dataset the experiment was run against. This can be
       #   used to reproduce the experiment after the dataset has been modified.
       sig { returns(T.nilable(String)) }
-      def dataset_version
-      end
-
-      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-      def dataset_version=(_)
-      end
+      attr_accessor :dataset_version
 
       # Date of experiment deletion, or null if the experiment is still active
       sig { returns(T.nilable(Time)) }
-      def deleted_at
-      end
-
-      sig { params(_: T.nilable(Time)).returns(T.nilable(Time)) }
-      def deleted_at=(_)
-      end
+      attr_accessor :deleted_at
 
       # Textual description of the experiment
       sig { returns(T.nilable(String)) }
-      def description
-      end
-
-      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-      def description=(_)
-      end
+      attr_accessor :description
 
       # User-controlled metadata about the experiment
       sig { returns(T.nilable(T::Hash[Symbol, T.nilable(T.anything)])) }
-      def metadata
-      end
-
-      sig do
-        params(_: T.nilable(T::Hash[Symbol, T.nilable(T.anything)]))
-          .returns(T.nilable(T::Hash[Symbol, T.nilable(T.anything)]))
-      end
-      def metadata=(_)
-      end
+      attr_accessor :metadata
 
       # Metadata about the state of the repo when the experiment was created
       sig { returns(T.nilable(Braintrust::Models::RepoInfo)) }
-      def repo_info
-      end
+      attr_reader :repo_info
 
-      sig do
-        params(_: T.nilable(T.any(Braintrust::Models::RepoInfo, Braintrust::Util::AnyHash)))
-          .returns(T.nilable(T.any(Braintrust::Models::RepoInfo, Braintrust::Util::AnyHash)))
-      end
-      def repo_info=(_)
-      end
+      sig { params(repo_info: T.nilable(T.any(Braintrust::Models::RepoInfo, Braintrust::Util::AnyHash))).void }
+      attr_writer :repo_info
 
       # Identifies the user who created the experiment
       sig { returns(T.nilable(String)) }
-      def user_id
-      end
-
-      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-      def user_id=(_)
-      end
+      attr_accessor :user_id
 
       sig do
         params(

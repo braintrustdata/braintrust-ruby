@@ -5,48 +5,26 @@ module Braintrust
     class ScoreSummary < Braintrust::BaseModel
       # Number of improvements in the score
       sig { returns(Integer) }
-      def improvements
-      end
-
-      sig { params(_: Integer).returns(Integer) }
-      def improvements=(_)
-      end
+      attr_accessor :improvements
 
       # Name of the score
       sig { returns(String) }
-      def name
-      end
-
-      sig { params(_: String).returns(String) }
-      def name=(_)
-      end
+      attr_accessor :name
 
       # Number of regressions in the score
       sig { returns(Integer) }
-      def regressions
-      end
-
-      sig { params(_: Integer).returns(Integer) }
-      def regressions=(_)
-      end
+      attr_accessor :regressions
 
       # Average score across all examples
       sig { returns(Float) }
-      def score
-      end
-
-      sig { params(_: Float).returns(Float) }
-      def score=(_)
-      end
+      attr_accessor :score
 
       # Difference in score between the current and comparison experiment
       sig { returns(T.nilable(Float)) }
-      def diff
-      end
+      attr_reader :diff
 
-      sig { params(_: Float).returns(Float) }
-      def diff=(_)
-      end
+      sig { params(diff: Float).void }
+      attr_writer :diff
 
       # Summary of a score's performance
       sig do

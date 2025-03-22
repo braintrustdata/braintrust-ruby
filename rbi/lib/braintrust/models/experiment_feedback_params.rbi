@@ -8,15 +8,7 @@ module Braintrust
 
       # A list of experiment feedback items
       sig { returns(T::Array[Braintrust::Models::FeedbackExperimentItem]) }
-      def feedback
-      end
-
-      sig do
-        params(_: T::Array[Braintrust::Models::FeedbackExperimentItem])
-          .returns(T::Array[Braintrust::Models::FeedbackExperimentItem])
-      end
-      def feedback=(_)
-      end
+      attr_accessor :feedback
 
       sig do
         params(

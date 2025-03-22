@@ -5,72 +5,34 @@ module Braintrust
     class Role < Braintrust::BaseModel
       # Unique identifier for the role
       sig { returns(String) }
-      def id
-      end
-
-      sig { params(_: String).returns(String) }
-      def id=(_)
-      end
+      attr_accessor :id
 
       # Name of the role
       sig { returns(String) }
-      def name
-      end
-
-      sig { params(_: String).returns(String) }
-      def name=(_)
-      end
+      attr_accessor :name
 
       # Date of role creation
       sig { returns(T.nilable(Time)) }
-      def created
-      end
-
-      sig { params(_: T.nilable(Time)).returns(T.nilable(Time)) }
-      def created=(_)
-      end
+      attr_accessor :created
 
       # Date of role deletion, or null if the role is still active
       sig { returns(T.nilable(Time)) }
-      def deleted_at
-      end
-
-      sig { params(_: T.nilable(Time)).returns(T.nilable(Time)) }
-      def deleted_at=(_)
-      end
+      attr_accessor :deleted_at
 
       # Textual description of the role
       sig { returns(T.nilable(String)) }
-      def description
-      end
-
-      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-      def description=(_)
-      end
+      attr_accessor :description
 
       # (permission, restrict_object_type) tuples which belong to this role
       sig { returns(T.nilable(T::Array[Braintrust::Models::Role::MemberPermission])) }
-      def member_permissions
-      end
-
-      sig do
-        params(_: T.nilable(T::Array[Braintrust::Models::Role::MemberPermission]))
-          .returns(T.nilable(T::Array[Braintrust::Models::Role::MemberPermission]))
-      end
-      def member_permissions=(_)
-      end
+      attr_accessor :member_permissions
 
       # Ids of the roles this role inherits from
       #
       #   An inheriting role has all the permissions contained in its member roles, as
       #   well as all of their inherited permissions
       sig { returns(T.nilable(T::Array[String])) }
-      def member_roles
-      end
-
-      sig { params(_: T.nilable(T::Array[String])).returns(T.nilable(T::Array[String])) }
-      def member_roles=(_)
-      end
+      attr_accessor :member_roles
 
       # Unique id for the organization that the role belongs under
       #
@@ -79,21 +41,11 @@ module Braintrust
       #
       #   It is forbidden to change the org after creating a role
       sig { returns(T.nilable(String)) }
-      def org_id
-      end
-
-      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-      def org_id=(_)
-      end
+      attr_accessor :org_id
 
       # Identifies the user who created the role
       sig { returns(T.nilable(String)) }
-      def user_id
-      end
-
-      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-      def user_id=(_)
-      end
+      attr_accessor :user_id
 
       # A role is a collection of permissions which can be granted as part of an ACL
       #
@@ -151,27 +103,11 @@ module Braintrust
         #   Permissions can be assigned to to objects on an individual basis, or grouped
         #   into roles
         sig { returns(Braintrust::Models::Permission::TaggedSymbol) }
-        def permission
-        end
-
-        sig do
-          params(_: Braintrust::Models::Permission::TaggedSymbol)
-            .returns(Braintrust::Models::Permission::TaggedSymbol)
-        end
-        def permission=(_)
-        end
+        attr_accessor :permission
 
         # The object type that the ACL applies to
         sig { returns(T.nilable(Braintrust::Models::ACLObjectType::TaggedSymbol)) }
-        def restrict_object_type
-        end
-
-        sig do
-          params(_: T.nilable(Braintrust::Models::ACLObjectType::TaggedSymbol))
-            .returns(T.nilable(Braintrust::Models::ACLObjectType::TaggedSymbol))
-        end
-        def restrict_object_type=(_)
-        end
+        attr_accessor :restrict_object_type
 
         sig do
           params(

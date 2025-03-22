@@ -4,44 +4,16 @@ module Braintrust
   module Models
     class ViewDataSearch < Braintrust::BaseModel
       sig { returns(T.nilable(T::Array[T.nilable(T.anything)])) }
-      def filter
-      end
-
-      sig do
-        params(_: T.nilable(T::Array[T.nilable(T.anything)])).returns(T.nilable(T::Array[T.nilable(T.anything)]))
-      end
-      def filter=(_)
-      end
+      attr_accessor :filter
 
       sig { returns(T.nilable(T::Array[T.nilable(T.anything)])) }
-      def match
-      end
-
-      sig do
-        params(_: T.nilable(T::Array[T.nilable(T.anything)])).returns(T.nilable(T::Array[T.nilable(T.anything)]))
-      end
-      def match=(_)
-      end
+      attr_accessor :match
 
       sig { returns(T.nilable(T::Array[T.nilable(T.anything)])) }
-      def sort
-      end
-
-      sig do
-        params(_: T.nilable(T::Array[T.nilable(T.anything)])).returns(T.nilable(T::Array[T.nilable(T.anything)]))
-      end
-      def sort=(_)
-      end
+      attr_accessor :sort
 
       sig { returns(T.nilable(T::Array[T.nilable(T.anything)])) }
-      def tag
-      end
-
-      sig do
-        params(_: T.nilable(T::Array[T.nilable(T.anything)])).returns(T.nilable(T::Array[T.nilable(T.anything)]))
-      end
-      def tag=(_)
-      end
+      attr_accessor :tag
 
       sig do
         params(

@@ -9,12 +9,10 @@ module Braintrust
       # Email of the user to search for. You may pass the param multiple times to filter
       #   for more than one email
       sig { returns(T.nilable(T.any(String, T::Array[String]))) }
-      def email
-      end
+      attr_reader :email
 
-      sig { params(_: T.any(String, T::Array[String])).returns(T.any(String, T::Array[String])) }
-      def email=(_)
-      end
+      sig { params(email: T.any(String, T::Array[String])).void }
+      attr_writer :email
 
       # Pagination cursor id.
       #
@@ -22,60 +20,45 @@ module Braintrust
       #   `foo`, pass `ending_before=foo` to fetch the previous page. Note: you may only
       #   pass one of `starting_after` and `ending_before`
       sig { returns(T.nilable(String)) }
-      def ending_before
-      end
+      attr_reader :ending_before
 
-      sig { params(_: String).returns(String) }
-      def ending_before=(_)
-      end
+      sig { params(ending_before: String).void }
+      attr_writer :ending_before
 
       # Family name of the user to search for. You may pass the param multiple times to
       #   filter for more than one family name
       sig { returns(T.nilable(T.any(String, T::Array[String]))) }
-      def family_name
-      end
+      attr_reader :family_name
 
-      sig { params(_: T.any(String, T::Array[String])).returns(T.any(String, T::Array[String])) }
-      def family_name=(_)
-      end
+      sig { params(family_name: T.any(String, T::Array[String])).void }
+      attr_writer :family_name
 
       # Given name of the user to search for. You may pass the param multiple times to
       #   filter for more than one given name
       sig { returns(T.nilable(T.any(String, T::Array[String]))) }
-      def given_name
-      end
+      attr_reader :given_name
 
-      sig { params(_: T.any(String, T::Array[String])).returns(T.any(String, T::Array[String])) }
-      def given_name=(_)
-      end
+      sig { params(given_name: T.any(String, T::Array[String])).void }
+      attr_writer :given_name
 
       # Filter search results to a particular set of object IDs. To specify a list of
       #   IDs, include the query param multiple times
       sig { returns(T.nilable(T.any(String, T::Array[String]))) }
-      def ids
-      end
+      attr_reader :ids
 
-      sig { params(_: T.any(String, T::Array[String])).returns(T.any(String, T::Array[String])) }
-      def ids=(_)
-      end
+      sig { params(ids: T.any(String, T::Array[String])).void }
+      attr_writer :ids
 
       # Limit the number of objects to return
       sig { returns(T.nilable(Integer)) }
-      def limit
-      end
-
-      sig { params(_: T.nilable(Integer)).returns(T.nilable(Integer)) }
-      def limit=(_)
-      end
+      attr_accessor :limit
 
       # Filter search results to within a particular organization
       sig { returns(T.nilable(String)) }
-      def org_name
-      end
+      attr_reader :org_name
 
-      sig { params(_: String).returns(String) }
-      def org_name=(_)
-      end
+      sig { params(org_name: String).void }
+      attr_writer :org_name
 
       # Pagination cursor id.
       #
@@ -83,12 +66,10 @@ module Braintrust
       #   pass `starting_after=foo` to fetch the next page. Note: you may only pass one of
       #   `starting_after` and `ending_before`
       sig { returns(T.nilable(String)) }
-      def starting_after
-      end
+      attr_reader :starting_after
 
-      sig { params(_: String).returns(String) }
-      def starting_after=(_)
-      end
+      sig { params(starting_after: String).void }
+      attr_writer :starting_after
 
       sig do
         params(

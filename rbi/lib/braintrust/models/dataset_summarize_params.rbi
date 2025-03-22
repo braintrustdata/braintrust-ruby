@@ -9,12 +9,7 @@ module Braintrust
       # Whether to summarize the data. If false (or omitted), only the metadata will be
       #   returned.
       sig { returns(T.nilable(T::Boolean)) }
-      def summarize_data
-      end
-
-      sig { params(_: T.nilable(T::Boolean)).returns(T.nilable(T::Boolean)) }
-      def summarize_data=(_)
-      end
+      attr_accessor :summarize_data
 
       sig do
         params(

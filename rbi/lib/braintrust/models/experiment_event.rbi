@@ -6,96 +6,57 @@ module Braintrust
       # A unique identifier for the experiment event. If you don't provide one,
       #   BrainTrust will generate one for you
       sig { returns(String) }
-      def id
-      end
-
-      sig { params(_: String).returns(String) }
-      def id=(_)
-      end
+      attr_accessor :id
 
       # The transaction id of an event is unique to the network operation that processed
       #   the event insertion. Transaction ids are monotonically increasing over time and
       #   can be used to retrieve a versioned snapshot of the experiment (see the
       #   `version` parameter)
       sig { returns(String) }
-      def _xact_id
-      end
-
-      sig { params(_: String).returns(String) }
-      def _xact_id=(_)
-      end
+      attr_accessor :_xact_id
 
       # The timestamp the experiment event was created
       sig { returns(Time) }
-      def created
-      end
-
-      sig { params(_: Time).returns(Time) }
-      def created=(_)
-      end
+      attr_accessor :created
 
       # Unique identifier for the experiment
       sig { returns(String) }
-      def experiment_id
-      end
-
-      sig { params(_: String).returns(String) }
-      def experiment_id=(_)
-      end
+      attr_accessor :experiment_id
 
       # Unique identifier for the project that the experiment belongs under
       sig { returns(String) }
-      def project_id
-      end
-
-      sig { params(_: String).returns(String) }
-      def project_id=(_)
-      end
+      attr_accessor :project_id
 
       # A unique identifier for the trace this experiment event belongs to
       sig { returns(String) }
-      def root_span_id
-      end
-
-      sig { params(_: String).returns(String) }
-      def root_span_id=(_)
-      end
+      attr_accessor :root_span_id
 
       # A unique identifier used to link different experiment events together as part of
       #   a full trace. See the
       #   [tracing guide](https://www.braintrust.dev/docs/guides/tracing) for full details
       #   on tracing
       sig { returns(String) }
-      def span_id
-      end
-
-      sig { params(_: String).returns(String) }
-      def span_id=(_)
-      end
+      attr_accessor :span_id
 
       # Context is additional information about the code that produced the experiment
       #   event. It is essentially the textual counterpart to `metrics`. Use the
       #   `caller_*` attributes to track the location in code which produced the
       #   experiment event
       sig { returns(T.nilable(Braintrust::Models::ExperimentEvent::Context)) }
-      def context
-      end
+      attr_reader :context
 
       sig do
-        params(_: T.nilable(T.any(Braintrust::Models::ExperimentEvent::Context, Braintrust::Util::AnyHash)))
-          .returns(T.nilable(T.any(Braintrust::Models::ExperimentEvent::Context, Braintrust::Util::AnyHash)))
+        params(context: T.nilable(T.any(Braintrust::Models::ExperimentEvent::Context, Braintrust::Util::AnyHash)))
+          .void
       end
-      def context=(_)
-      end
+      attr_writer :context
 
       # The error that occurred, if any.
       sig { returns(T.nilable(T.anything)) }
-      def error
-      end
+      attr_reader :error
 
-      sig { params(_: T.anything).returns(T.anything) }
-      def error=(_)
-      end
+      sig { params(error: T.anything).void }
+      attr_writer :error
 
       # The ground truth value (an arbitrary, JSON serializable object) that you'd
       #   compare to `output` to determine if your `output` value is correct or not.
@@ -105,12 +66,10 @@ module Braintrust
       #   However, we may later use these values to re-score outputs or fine-tune your
       #   models
       sig { returns(T.nilable(T.anything)) }
-      def expected
-      end
+      attr_reader :expected
 
-      sig { params(_: T.anything).returns(T.anything) }
-      def expected=(_)
-      end
+      sig { params(expected: T.anything).void }
+      attr_writer :expected
 
       # The arguments that uniquely define a test case (an arbitrary, JSON serializable
       #   object). Later on, Braintrust will use the `input` to know whether two test
@@ -118,21 +77,14 @@ module Braintrust
       #   experiment-specific state. A simple rule of thumb is that if you run the same
       #   experiment twice, the `input` should be identical
       sig { returns(T.nilable(T.anything)) }
-      def input
-      end
+      attr_reader :input
 
-      sig { params(_: T.anything).returns(T.anything) }
-      def input=(_)
-      end
+      sig { params(input: T.anything).void }
+      attr_writer :input
 
       # Whether this span is a root span
       sig { returns(T.nilable(T::Boolean)) }
-      def is_root
-      end
-
-      sig { params(_: T.nilable(T::Boolean)).returns(T.nilable(T::Boolean)) }
-      def is_root=(_)
-      end
+      attr_accessor :is_root
 
       # A dictionary with additional data about the test example, model outputs, or just
       #   about anything else that's relevant, that you can use to help find and analyze
@@ -140,41 +92,34 @@ module Braintrust
       #   anything else that would be useful to slice/dice later. The values in `metadata`
       #   can be any JSON-serializable type, but its keys must be strings
       sig { returns(T.nilable(Braintrust::Models::ExperimentEvent::Metadata)) }
-      def metadata
-      end
+      attr_reader :metadata
 
       sig do
-        params(_: T.nilable(T.any(Braintrust::Models::ExperimentEvent::Metadata, Braintrust::Util::AnyHash)))
-          .returns(T.nilable(T.any(Braintrust::Models::ExperimentEvent::Metadata, Braintrust::Util::AnyHash)))
+        params(
+          metadata: T.nilable(T.any(Braintrust::Models::ExperimentEvent::Metadata, Braintrust::Util::AnyHash))
+        )
+          .void
       end
-      def metadata=(_)
-      end
+      attr_writer :metadata
 
       # Metrics are numerical measurements tracking the execution of the code that
       #   produced the experiment event. Use "start" and "end" to track the time span over
       #   which the experiment event was produced
       sig { returns(T.nilable(Braintrust::Models::ExperimentEvent::Metrics)) }
-      def metrics
-      end
+      attr_reader :metrics
 
       sig do
-        params(_: T.nilable(T.any(Braintrust::Models::ExperimentEvent::Metrics, Braintrust::Util::AnyHash)))
-          .returns(T.nilable(T.any(Braintrust::Models::ExperimentEvent::Metrics, Braintrust::Util::AnyHash)))
+        params(metrics: T.nilable(T.any(Braintrust::Models::ExperimentEvent::Metrics, Braintrust::Util::AnyHash)))
+          .void
       end
-      def metrics=(_)
-      end
+      attr_writer :metrics
 
       # Indicates the event was copied from another object.
       sig { returns(T.nilable(Braintrust::Models::ObjectReference)) }
-      def origin
-      end
+      attr_reader :origin
 
-      sig do
-        params(_: T.nilable(T.any(Braintrust::Models::ObjectReference, Braintrust::Util::AnyHash)))
-          .returns(T.nilable(T.any(Braintrust::Models::ObjectReference, Braintrust::Util::AnyHash)))
-      end
-      def origin=(_)
-      end
+      sig { params(origin: T.nilable(T.any(Braintrust::Models::ObjectReference, Braintrust::Util::AnyHash))).void }
+      attr_writer :origin
 
       # The output of your application, including post-processing (an arbitrary, JSON
       #   serializable object), that allows you to determine whether the result is correct
@@ -182,12 +127,10 @@ module Braintrust
       #   be the _result_ of the SQL query generated by the model, not the query itself,
       #   because there may be multiple valid queries that answer a single question
       sig { returns(T.nilable(T.anything)) }
-      def output
-      end
+      attr_reader :output
 
-      sig { params(_: T.anything).returns(T.anything) }
-      def output=(_)
-      end
+      sig { params(output: T.anything).void }
+      attr_writer :output
 
       # A dictionary of numeric values (between 0 and 1) to log. The scores should give
       #   you a variety of signals that help you determine how accurate the outputs are
@@ -198,47 +141,27 @@ module Braintrust
       #   summarization was covering similar concepts or not. You can use these scores to
       #   help you sort, filter, and compare experiments
       sig { returns(T.nilable(T::Hash[Symbol, T.nilable(Float)])) }
-      def scores
-      end
-
-      sig do
-        params(_: T.nilable(T::Hash[Symbol, T.nilable(Float)]))
-          .returns(T.nilable(T::Hash[Symbol, T.nilable(Float)]))
-      end
-      def scores=(_)
-      end
+      attr_accessor :scores
 
       # Human-identifying attributes of the span, such as name, type, etc.
       sig { returns(T.nilable(Braintrust::Models::SpanAttributes)) }
-      def span_attributes
-      end
+      attr_reader :span_attributes
 
       sig do
-        params(_: T.nilable(T.any(Braintrust::Models::SpanAttributes, Braintrust::Util::AnyHash)))
-          .returns(T.nilable(T.any(Braintrust::Models::SpanAttributes, Braintrust::Util::AnyHash)))
+        params(span_attributes: T.nilable(T.any(Braintrust::Models::SpanAttributes, Braintrust::Util::AnyHash)))
+          .void
       end
-      def span_attributes=(_)
-      end
+      attr_writer :span_attributes
 
       # An array of the parent `span_ids` of this experiment event. This should be empty
       #   for the root span of a trace, and should most often contain just one parent
       #   element for subspans
       sig { returns(T.nilable(T::Array[String])) }
-      def span_parents
-      end
-
-      sig { params(_: T.nilable(T::Array[String])).returns(T.nilable(T::Array[String])) }
-      def span_parents=(_)
-      end
+      attr_accessor :span_parents
 
       # A list of tags to log
       sig { returns(T.nilable(T::Array[String])) }
-      def tags
-      end
-
-      sig { params(_: T.nilable(T::Array[String])).returns(T.nilable(T::Array[String])) }
-      def tags=(_)
-      end
+      attr_accessor :tags
 
       sig do
         params(
@@ -322,30 +245,15 @@ module Braintrust
       class Context < Braintrust::BaseModel
         # Name of the file in code where the experiment event was created
         sig { returns(T.nilable(String)) }
-        def caller_filename
-        end
-
-        sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-        def caller_filename=(_)
-        end
+        attr_accessor :caller_filename
 
         # The function in code which created the experiment event
         sig { returns(T.nilable(String)) }
-        def caller_functionname
-        end
-
-        sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-        def caller_functionname=(_)
-        end
+        attr_accessor :caller_functionname
 
         # Line of code where the experiment event was created
         sig { returns(T.nilable(Integer)) }
-        def caller_lineno
-        end
-
-        sig { params(_: T.nilable(Integer)).returns(T.nilable(Integer)) }
-        def caller_lineno=(_)
-        end
+        attr_accessor :caller_lineno
 
         # Context is additional information about the code that produced the experiment
         #   event. It is essentially the textual counterpart to `metrics`. Use the
@@ -379,12 +287,7 @@ module Braintrust
       class Metadata < Braintrust::BaseModel
         # The model used for this example
         sig { returns(T.nilable(String)) }
-        def model
-        end
-
-        sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-        def model=(_)
-        end
+        attr_accessor :model
 
         # A dictionary with additional data about the test example, model outputs, or just
         #   about anything else that's relevant, that you can use to help find and analyze
@@ -403,79 +306,48 @@ module Braintrust
       class Metrics < Braintrust::BaseModel
         # This metric is deprecated
         sig { returns(T.nilable(T.anything)) }
-        def caller_filename
-        end
+        attr_reader :caller_filename
 
-        sig { params(_: T.anything).returns(T.anything) }
-        def caller_filename=(_)
-        end
+        sig { params(caller_filename: T.anything).void }
+        attr_writer :caller_filename
 
         # This metric is deprecated
         sig { returns(T.nilable(T.anything)) }
-        def caller_functionname
-        end
+        attr_reader :caller_functionname
 
-        sig { params(_: T.anything).returns(T.anything) }
-        def caller_functionname=(_)
-        end
+        sig { params(caller_functionname: T.anything).void }
+        attr_writer :caller_functionname
 
         # This metric is deprecated
         sig { returns(T.nilable(T.anything)) }
-        def caller_lineno
-        end
+        attr_reader :caller_lineno
 
-        sig { params(_: T.anything).returns(T.anything) }
-        def caller_lineno=(_)
-        end
+        sig { params(caller_lineno: T.anything).void }
+        attr_writer :caller_lineno
 
         # The number of tokens in the completion generated by the model (only set if this
         #   is an LLM span)
         sig { returns(T.nilable(Integer)) }
-        def completion_tokens
-        end
-
-        sig { params(_: T.nilable(Integer)).returns(T.nilable(Integer)) }
-        def completion_tokens=(_)
-        end
+        attr_accessor :completion_tokens
 
         # A unix timestamp recording when the section of code which produced the
         #   experiment event finished
         sig { returns(T.nilable(Float)) }
-        def end_
-        end
-
-        sig { params(_: T.nilable(Float)).returns(T.nilable(Float)) }
-        def end_=(_)
-        end
+        attr_accessor :end_
 
         # The number of tokens in the prompt used to generate the experiment event (only
         #   set if this is an LLM span)
         sig { returns(T.nilable(Integer)) }
-        def prompt_tokens
-        end
-
-        sig { params(_: T.nilable(Integer)).returns(T.nilable(Integer)) }
-        def prompt_tokens=(_)
-        end
+        attr_accessor :prompt_tokens
 
         # A unix timestamp recording when the section of code which produced the
         #   experiment event started
         sig { returns(T.nilable(Float)) }
-        def start
-        end
-
-        sig { params(_: T.nilable(Float)).returns(T.nilable(Float)) }
-        def start=(_)
-        end
+        attr_accessor :start
 
         # The total number of tokens in the input and output of the experiment event.
         sig { returns(T.nilable(Integer)) }
-        def tokens
-        end
-
-        sig { params(_: T.nilable(Integer)).returns(T.nilable(Integer)) }
-        def tokens=(_)
-        end
+        attr_accessor :tokens
 
         # Metrics are numerical measurements tracking the execution of the code that
         #   produced the experiment event. Use "start" and "end" to track the time span over

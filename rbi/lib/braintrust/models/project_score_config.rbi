@@ -4,31 +4,16 @@ module Braintrust
   module Models
     class ProjectScoreConfig < Braintrust::BaseModel
       sig { returns(T.nilable(String)) }
-      def destination
-      end
-
-      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-      def destination=(_)
-      end
+      attr_accessor :destination
 
       sig { returns(T.nilable(T::Boolean)) }
-      def multi_select
-      end
-
-      sig { params(_: T.nilable(T::Boolean)).returns(T.nilable(T::Boolean)) }
-      def multi_select=(_)
-      end
+      attr_accessor :multi_select
 
       sig { returns(T.nilable(Braintrust::Models::OnlineScoreConfig)) }
-      def online
-      end
+      attr_reader :online
 
-      sig do
-        params(_: T.nilable(T.any(Braintrust::Models::OnlineScoreConfig, Braintrust::Util::AnyHash)))
-          .returns(T.nilable(T.any(Braintrust::Models::OnlineScoreConfig, Braintrust::Util::AnyHash)))
-      end
-      def online=(_)
-      end
+      sig { params(online: T.nilable(T.any(Braintrust::Models::OnlineScoreConfig, Braintrust::Util::AnyHash))).void }
+      attr_writer :online
 
       sig do
         params(

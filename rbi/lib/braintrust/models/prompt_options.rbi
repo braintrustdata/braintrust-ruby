@@ -4,12 +4,10 @@ module Braintrust
   module Models
     class PromptOptions < Braintrust::BaseModel
       sig { returns(T.nilable(String)) }
-      def model
-      end
+      attr_reader :model
 
-      sig { params(_: String).returns(String) }
-      def model=(_)
-      end
+      sig { params(model: String).void }
+      attr_writer :model
 
       sig do
         returns(
@@ -24,12 +22,11 @@ module Braintrust
           )
         )
       end
-      def params
-      end
+      attr_reader :params
 
       sig do
         params(
-          _: T.any(
+          params: T.any(
             Braintrust::Models::PromptOptions::Params::OpenAIModelParams,
             Braintrust::Util::AnyHash,
             Braintrust::Models::PromptOptions::Params::AnthropicModelParams,
@@ -38,27 +35,15 @@ module Braintrust
             Braintrust::Models::PromptOptions::Params::JsCompletionParams
           )
         )
-          .returns(
-            T.any(
-              Braintrust::Models::PromptOptions::Params::OpenAIModelParams,
-              Braintrust::Util::AnyHash,
-              Braintrust::Models::PromptOptions::Params::AnthropicModelParams,
-              Braintrust::Models::PromptOptions::Params::GoogleModelParams,
-              Braintrust::Models::PromptOptions::Params::WindowAIModelParams,
-              Braintrust::Models::PromptOptions::Params::JsCompletionParams
-            )
-          )
+          .void
       end
-      def params=(_)
-      end
+      attr_writer :params
 
       sig { returns(T.nilable(String)) }
-      def position
-      end
+      attr_reader :position
 
-      sig { params(_: String).returns(String) }
-      def position=(_)
-      end
+      sig { params(position: String).void }
+      attr_writer :position
 
       sig do
         params(
@@ -115,12 +100,10 @@ module Braintrust
 
         class OpenAIModelParams < Braintrust::BaseModel
           sig { returns(T.nilable(Float)) }
-          def frequency_penalty
-          end
+          attr_reader :frequency_penalty
 
-          sig { params(_: Float).returns(Float) }
-          def frequency_penalty=(_)
-          end
+          sig { params(frequency_penalty: Float).void }
+          attr_writer :frequency_penalty
 
           sig do
             returns(
@@ -132,75 +115,59 @@ module Braintrust
               )
             )
           end
-          def function_call
-          end
+          attr_reader :function_call
 
           sig do
             params(
-              _: T.any(
+              function_call: T.any(
                 Braintrust::Models::PromptOptions::Params::OpenAIModelParams::FunctionCall::OrSymbol,
                 Braintrust::Models::PromptOptions::Params::OpenAIModelParams::FunctionCall::Function,
                 Braintrust::Util::AnyHash
               )
             )
-              .returns(
-                T.any(
-                  Braintrust::Models::PromptOptions::Params::OpenAIModelParams::FunctionCall::OrSymbol,
-                  Braintrust::Models::PromptOptions::Params::OpenAIModelParams::FunctionCall::Function,
-                  Braintrust::Util::AnyHash
-                )
-              )
+              .void
           end
-          def function_call=(_)
-          end
+          attr_writer :function_call
 
           # The successor to max_tokens
           sig { returns(T.nilable(Float)) }
-          def max_completion_tokens
-          end
+          attr_reader :max_completion_tokens
 
-          sig { params(_: Float).returns(Float) }
-          def max_completion_tokens=(_)
-          end
+          sig { params(max_completion_tokens: Float).void }
+          attr_writer :max_completion_tokens
 
           sig { returns(T.nilable(Float)) }
-          def max_tokens
-          end
+          attr_reader :max_tokens
 
-          sig { params(_: Float).returns(Float) }
-          def max_tokens=(_)
-          end
+          sig { params(max_tokens: Float).void }
+          attr_writer :max_tokens
 
           sig { returns(T.nilable(Float)) }
-          def n
-          end
+          attr_reader :n
 
-          sig { params(_: Float).returns(Float) }
-          def n=(_)
-          end
+          sig { params(n: Float).void }
+          attr_writer :n
 
           sig { returns(T.nilable(Float)) }
-          def presence_penalty
-          end
+          attr_reader :presence_penalty
 
-          sig { params(_: Float).returns(Float) }
-          def presence_penalty=(_)
-          end
+          sig { params(presence_penalty: Float).void }
+          attr_writer :presence_penalty
 
           sig do
             returns(
               T.nilable(Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ReasoningEffort::OrSymbol)
             )
           end
-          def reasoning_effort
-          end
+          attr_reader :reasoning_effort
 
           sig do
-            params(_: Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ReasoningEffort::OrSymbol)
-              .returns(Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ReasoningEffort::OrSymbol)
+            params(
+              reasoning_effort: Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ReasoningEffort::OrSymbol
+            )
+              .void
           end
-          def reasoning_effort=(_)
-          end
+          attr_writer :reasoning_effort
 
           sig do
             returns(
@@ -213,47 +180,19 @@ module Braintrust
               )
             )
           end
-          def response_format
-          end
-
-          sig do
-            params(
-              _: T.nilable(
-                T.any(
-                  Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ResponseFormat::JsonObject,
-                  Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ResponseFormat::JsonSchema,
-                  Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ResponseFormat::Text
-                )
-              )
-            )
-              .returns(
-                T.nilable(
-                  T.any(
-                    Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ResponseFormat::JsonObject,
-                    Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ResponseFormat::JsonSchema,
-                    Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ResponseFormat::Text
-                  )
-                )
-              )
-          end
-          def response_format=(_)
-          end
+          attr_accessor :response_format
 
           sig { returns(T.nilable(T::Array[String])) }
-          def stop
-          end
+          attr_reader :stop
 
-          sig { params(_: T::Array[String]).returns(T::Array[String]) }
-          def stop=(_)
-          end
+          sig { params(stop: T::Array[String]).void }
+          attr_writer :stop
 
           sig { returns(T.nilable(Float)) }
-          def temperature
-          end
+          attr_reader :temperature
 
-          sig { params(_: Float).returns(Float) }
-          def temperature=(_)
-          end
+          sig { params(temperature: Float).void }
+          attr_writer :temperature
 
           sig do
             returns(
@@ -265,43 +204,31 @@ module Braintrust
               )
             )
           end
-          def tool_choice
-          end
+          attr_reader :tool_choice
 
           sig do
             params(
-              _: T.any(
+              tool_choice: T.any(
                 Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ToolChoice::OrSymbol,
                 Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ToolChoice::Function,
                 Braintrust::Util::AnyHash
               )
             )
-              .returns(
-                T.any(
-                  Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ToolChoice::OrSymbol,
-                  Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ToolChoice::Function,
-                  Braintrust::Util::AnyHash
-                )
-              )
+              .void
           end
-          def tool_choice=(_)
-          end
+          attr_writer :tool_choice
 
           sig { returns(T.nilable(Float)) }
-          def top_p
-          end
+          attr_reader :top_p
 
-          sig { params(_: Float).returns(Float) }
-          def top_p=(_)
-          end
+          sig { params(top_p: Float).void }
+          attr_writer :top_p
 
           sig { returns(T.nilable(T::Boolean)) }
-          def use_cache
-          end
+          attr_reader :use_cache
 
-          sig { params(_: T::Boolean).returns(T::Boolean) }
-          def use_cache=(_)
-          end
+          sig { params(use_cache: T::Boolean).void }
+          attr_writer :use_cache
 
           sig do
             params(
@@ -413,12 +340,7 @@ module Braintrust
 
             class Function < Braintrust::BaseModel
               sig { returns(String) }
-              def name
-              end
-
-              sig { params(_: String).returns(String) }
-              def name=(_)
-              end
+              attr_accessor :name
 
               sig { params(name: String).returns(T.attached_class) }
               def self.new(name:)
@@ -491,19 +413,7 @@ module Braintrust
                   Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ResponseFormat::JsonObject::Type::OrSymbol
                 )
               end
-              def type
-              end
-
-              sig do
-                params(
-                  _: Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ResponseFormat::JsonObject::Type::OrSymbol
-                )
-                  .returns(
-                    Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ResponseFormat::JsonObject::Type::OrSymbol
-                  )
-              end
-              def type=(_)
-              end
+              attr_accessor :type
 
               sig do
                 params(
@@ -567,44 +477,25 @@ module Braintrust
                   Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ResponseFormat::JsonSchema::JsonSchema
                 )
               end
-              def json_schema
-              end
+              attr_reader :json_schema
 
               sig do
                 params(
-                  _: T.any(
+                  json_schema: T.any(
                     Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ResponseFormat::JsonSchema::JsonSchema,
                     Braintrust::Util::AnyHash
                   )
                 )
-                  .returns(
-                    T.any(
-                      Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ResponseFormat::JsonSchema::JsonSchema,
-                      Braintrust::Util::AnyHash
-                    )
-                  )
+                  .void
               end
-              def json_schema=(_)
-              end
+              attr_writer :json_schema
 
               sig do
                 returns(
                   Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ResponseFormat::JsonSchema::Type::OrSymbol
                 )
               end
-              def type
-              end
-
-              sig do
-                params(
-                  _: Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ResponseFormat::JsonSchema::Type::OrSymbol
-                )
-                  .returns(
-                    Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ResponseFormat::JsonSchema::Type::OrSymbol
-                  )
-              end
-              def type=(_)
-              end
+              attr_accessor :type
 
               sig do
                 params(
@@ -633,39 +524,22 @@ module Braintrust
 
               class JsonSchema < Braintrust::BaseModel
                 sig { returns(String) }
-                def name
-                end
-
-                sig { params(_: String).returns(String) }
-                def name=(_)
-                end
+                attr_accessor :name
 
                 sig { returns(T.nilable(String)) }
-                def description
-                end
+                attr_reader :description
 
-                sig { params(_: String).returns(String) }
-                def description=(_)
-                end
+                sig { params(description: String).void }
+                attr_writer :description
 
                 sig { returns(T.nilable(T.any(T::Hash[Symbol, T.nilable(T.anything)], String))) }
-                def schema
-                end
+                attr_reader :schema
 
-                sig do
-                  params(_: T.any(T::Hash[Symbol, T.nilable(T.anything)], String))
-                    .returns(T.any(T::Hash[Symbol, T.nilable(T.anything)], String))
-                end
-                def schema=(_)
-                end
+                sig { params(schema: T.any(T::Hash[Symbol, T.nilable(T.anything)], String)).void }
+                attr_writer :schema
 
                 sig { returns(T.nilable(T::Boolean)) }
-                def strict
-                end
-
-                sig { params(_: T.nilable(T::Boolean)).returns(T.nilable(T::Boolean)) }
-                def strict=(_)
-                end
+                attr_accessor :strict
 
                 sig do
                   params(
@@ -755,19 +629,7 @@ module Braintrust
                   Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ResponseFormat::Text::Type::OrSymbol
                 )
               end
-              def type
-              end
-
-              sig do
-                params(
-                  _: Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ResponseFormat::Text::Type::OrSymbol
-                )
-                  .returns(
-                    Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ResponseFormat::Text::Type::OrSymbol
-                  )
-              end
-              def type=(_)
-              end
+              attr_accessor :type
 
               sig do
                 params(
@@ -858,44 +720,25 @@ module Braintrust
 
             class Function < Braintrust::BaseModel
               sig { returns(Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ToolChoice::Function::Function) }
-              def function
-              end
+              attr_reader :function
 
               sig do
                 params(
-                  _: T.any(
+                  function: T.any(
                     Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ToolChoice::Function::Function,
                     Braintrust::Util::AnyHash
                   )
                 )
-                  .returns(
-                    T.any(
-                      Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ToolChoice::Function::Function,
-                      Braintrust::Util::AnyHash
-                    )
-                  )
+                  .void
               end
-              def function=(_)
-              end
+              attr_writer :function
 
               sig do
                 returns(
                   Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ToolChoice::Function::Type::OrSymbol
                 )
               end
-              def type
-              end
-
-              sig do
-                params(
-                  _: Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ToolChoice::Function::Type::OrSymbol
-                )
-                  .returns(
-                    Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ToolChoice::Function::Type::OrSymbol
-                  )
-              end
-              def type=(_)
-              end
+              attr_accessor :type
 
               sig do
                 params(
@@ -924,12 +767,7 @@ module Braintrust
 
               class Function < Braintrust::BaseModel
                 sig { returns(String) }
-                def name
-                end
-
-                sig { params(_: String).returns(String) }
-                def name=(_)
-                end
+                attr_accessor :name
 
                 sig { params(name: String).returns(T.attached_class) }
                 def self.new(name:)
@@ -987,61 +825,41 @@ module Braintrust
 
         class AnthropicModelParams < Braintrust::BaseModel
           sig { returns(Float) }
-          def max_tokens
-          end
-
-          sig { params(_: Float).returns(Float) }
-          def max_tokens=(_)
-          end
+          attr_accessor :max_tokens
 
           sig { returns(Float) }
-          def temperature
-          end
-
-          sig { params(_: Float).returns(Float) }
-          def temperature=(_)
-          end
+          attr_accessor :temperature
 
           # This is a legacy parameter that should not be used.
           sig { returns(T.nilable(Float)) }
-          def max_tokens_to_sample
-          end
+          attr_reader :max_tokens_to_sample
 
-          sig { params(_: Float).returns(Float) }
-          def max_tokens_to_sample=(_)
-          end
+          sig { params(max_tokens_to_sample: Float).void }
+          attr_writer :max_tokens_to_sample
 
           sig { returns(T.nilable(T::Array[String])) }
-          def stop_sequences
-          end
+          attr_reader :stop_sequences
 
-          sig { params(_: T::Array[String]).returns(T::Array[String]) }
-          def stop_sequences=(_)
-          end
+          sig { params(stop_sequences: T::Array[String]).void }
+          attr_writer :stop_sequences
 
           sig { returns(T.nilable(Float)) }
-          def top_k
-          end
+          attr_reader :top_k
 
-          sig { params(_: Float).returns(Float) }
-          def top_k=(_)
-          end
+          sig { params(top_k: Float).void }
+          attr_writer :top_k
 
           sig { returns(T.nilable(Float)) }
-          def top_p
-          end
+          attr_reader :top_p
 
-          sig { params(_: Float).returns(Float) }
-          def top_p=(_)
-          end
+          sig { params(top_p: Float).void }
+          attr_writer :top_p
 
           sig { returns(T.nilable(T::Boolean)) }
-          def use_cache
-          end
+          attr_reader :use_cache
 
-          sig { params(_: T::Boolean).returns(T::Boolean) }
-          def use_cache=(_)
-          end
+          sig { params(use_cache: T::Boolean).void }
+          attr_writer :use_cache
 
           sig do
             params(
@@ -1086,44 +904,34 @@ module Braintrust
 
         class GoogleModelParams < Braintrust::BaseModel
           sig { returns(T.nilable(Float)) }
-          def max_output_tokens
-          end
+          attr_reader :max_output_tokens
 
-          sig { params(_: Float).returns(Float) }
-          def max_output_tokens=(_)
-          end
+          sig { params(max_output_tokens: Float).void }
+          attr_writer :max_output_tokens
 
           sig { returns(T.nilable(Float)) }
-          def temperature
-          end
+          attr_reader :temperature
 
-          sig { params(_: Float).returns(Float) }
-          def temperature=(_)
-          end
+          sig { params(temperature: Float).void }
+          attr_writer :temperature
 
           sig { returns(T.nilable(Float)) }
-          def top_k
-          end
+          attr_reader :top_k
 
-          sig { params(_: Float).returns(Float) }
-          def top_k=(_)
-          end
+          sig { params(top_k: Float).void }
+          attr_writer :top_k
 
           sig { returns(T.nilable(Float)) }
-          def top_p
-          end
+          attr_reader :top_p
 
-          sig { params(_: Float).returns(Float) }
-          def top_p=(_)
-          end
+          sig { params(top_p: Float).void }
+          attr_writer :top_p
 
           sig { returns(T.nilable(T::Boolean)) }
-          def use_cache
-          end
+          attr_reader :use_cache
 
-          sig { params(_: T::Boolean).returns(T::Boolean) }
-          def use_cache=(_)
-          end
+          sig { params(use_cache: T::Boolean).void }
+          attr_writer :use_cache
 
           sig do
             params(
@@ -1154,28 +962,22 @@ module Braintrust
 
         class WindowAIModelParams < Braintrust::BaseModel
           sig { returns(T.nilable(Float)) }
-          def temperature
-          end
+          attr_reader :temperature
 
-          sig { params(_: Float).returns(Float) }
-          def temperature=(_)
-          end
+          sig { params(temperature: Float).void }
+          attr_writer :temperature
 
           sig { returns(T.nilable(Float)) }
-          def top_k
-          end
+          attr_reader :top_k
 
-          sig { params(_: Float).returns(Float) }
-          def top_k=(_)
-          end
+          sig { params(top_k: Float).void }
+          attr_writer :top_k
 
           sig { returns(T.nilable(T::Boolean)) }
-          def use_cache
-          end
+          attr_reader :use_cache
 
-          sig { params(_: T::Boolean).returns(T::Boolean) }
-          def use_cache=(_)
-          end
+          sig { params(use_cache: T::Boolean).void }
+          attr_writer :use_cache
 
           sig { params(temperature: Float, top_k: Float, use_cache: T::Boolean).returns(T.attached_class) }
           def self.new(temperature: nil, top_k: nil, use_cache: nil)
@@ -1188,12 +990,10 @@ module Braintrust
 
         class JsCompletionParams < Braintrust::BaseModel
           sig { returns(T.nilable(T::Boolean)) }
-          def use_cache
-          end
+          attr_reader :use_cache
 
-          sig { params(_: T::Boolean).returns(T::Boolean) }
-          def use_cache=(_)
-          end
+          sig { params(use_cache: T::Boolean).void }
+          attr_writer :use_cache
 
           sig { params(use_cache: T::Boolean).returns(T.attached_class) }
           def self.new(use_cache: nil)

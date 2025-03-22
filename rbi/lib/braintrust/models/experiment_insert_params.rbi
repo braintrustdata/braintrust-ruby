@@ -8,15 +8,7 @@ module Braintrust
 
       # A list of experiment events to insert
       sig { returns(T::Array[Braintrust::Models::InsertExperimentEvent]) }
-      def events
-      end
-
-      sig do
-        params(_: T::Array[Braintrust::Models::InsertExperimentEvent])
-          .returns(T::Array[Braintrust::Models::InsertExperimentEvent])
-      end
-      def events=(_)
-      end
+      attr_accessor :events
 
       sig do
         params(

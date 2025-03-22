@@ -5,85 +5,40 @@ module Braintrust
     class RepoInfo < Braintrust::BaseModel
       # Email of the author of the most recent commit
       sig { returns(T.nilable(String)) }
-      def author_email
-      end
-
-      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-      def author_email=(_)
-      end
+      attr_accessor :author_email
 
       # Name of the author of the most recent commit
       sig { returns(T.nilable(String)) }
-      def author_name
-      end
-
-      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-      def author_name=(_)
-      end
+      attr_accessor :author_name
 
       # Name of the branch the most recent commit belongs to
       sig { returns(T.nilable(String)) }
-      def branch
-      end
-
-      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-      def branch=(_)
-      end
+      attr_accessor :branch
 
       # SHA of most recent commit
       sig { returns(T.nilable(String)) }
-      def commit
-      end
-
-      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-      def commit=(_)
-      end
+      attr_accessor :commit
 
       # Most recent commit message
       sig { returns(T.nilable(String)) }
-      def commit_message
-      end
-
-      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-      def commit_message=(_)
-      end
+      attr_accessor :commit_message
 
       # Time of the most recent commit
       sig { returns(T.nilable(String)) }
-      def commit_time
-      end
-
-      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-      def commit_time=(_)
-      end
+      attr_accessor :commit_time
 
       # Whether or not the repo had uncommitted changes when snapshotted
       sig { returns(T.nilable(T::Boolean)) }
-      def dirty
-      end
-
-      sig { params(_: T.nilable(T::Boolean)).returns(T.nilable(T::Boolean)) }
-      def dirty=(_)
-      end
+      attr_accessor :dirty
 
       # If the repo was dirty when run, this includes the diff between the current state
       #   of the repo and the most recent commit.
       sig { returns(T.nilable(String)) }
-      def git_diff
-      end
-
-      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-      def git_diff=(_)
-      end
+      attr_accessor :git_diff
 
       # Name of the tag on the most recent commit
       sig { returns(T.nilable(String)) }
-      def tag
-      end
-
-      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-      def tag=(_)
-      end
+      attr_accessor :tag
 
       # Metadata about the state of the repo when the experiment was created
       sig do

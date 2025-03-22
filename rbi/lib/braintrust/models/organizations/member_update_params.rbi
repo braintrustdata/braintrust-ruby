@@ -9,67 +9,45 @@ module Braintrust
 
         # Users to invite to the organization
         sig { returns(T.nilable(Braintrust::Models::Organizations::MemberUpdateParams::InviteUsers)) }
-        def invite_users
-        end
+        attr_reader :invite_users
 
         sig do
           params(
-            _: T.nilable(
+            invite_users: T.nilable(
               T.any(Braintrust::Models::Organizations::MemberUpdateParams::InviteUsers, Braintrust::Util::AnyHash)
             )
           )
-            .returns(
-              T.nilable(
-                T.any(Braintrust::Models::Organizations::MemberUpdateParams::InviteUsers, Braintrust::Util::AnyHash)
-              )
-            )
+            .void
         end
-        def invite_users=(_)
-        end
+        attr_writer :invite_users
 
         # For nearly all users, this parameter should be unnecessary. But in the rare case
         #   that your API key belongs to multiple organizations, or in case you want to
         #   explicitly assert the organization you are modifying, you may specify the id of
         #   the organization.
         sig { returns(T.nilable(String)) }
-        def org_id
-        end
-
-        sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-        def org_id=(_)
-        end
+        attr_accessor :org_id
 
         # For nearly all users, this parameter should be unnecessary. But in the rare case
         #   that your API key belongs to multiple organizations, or in case you want to
         #   explicitly assert the organization you are modifying, you may specify the name
         #   of the organization.
         sig { returns(T.nilable(String)) }
-        def org_name
-        end
-
-        sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-        def org_name=(_)
-        end
+        attr_accessor :org_name
 
         # Users to remove from the organization
         sig { returns(T.nilable(Braintrust::Models::Organizations::MemberUpdateParams::RemoveUsers)) }
-        def remove_users
-        end
+        attr_reader :remove_users
 
         sig do
           params(
-            _: T.nilable(
+            remove_users: T.nilable(
               T.any(Braintrust::Models::Organizations::MemberUpdateParams::RemoveUsers, Braintrust::Util::AnyHash)
             )
           )
-            .returns(
-              T.nilable(
-                T.any(Braintrust::Models::Organizations::MemberUpdateParams::RemoveUsers, Braintrust::Util::AnyHash)
-              )
-            )
+            .void
         end
-        def remove_users=(_)
-        end
+        attr_writer :remove_users
 
         sig do
           params(
@@ -106,66 +84,31 @@ module Braintrust
         class InviteUsers < Braintrust::BaseModel
           # Emails of users to invite
           sig { returns(T.nilable(T::Array[String])) }
-          def emails
-          end
-
-          sig { params(_: T.nilable(T::Array[String])).returns(T.nilable(T::Array[String])) }
-          def emails=(_)
-          end
+          attr_accessor :emails
 
           # Singular form of group_ids
           sig { returns(T.nilable(String)) }
-          def group_id
-          end
-
-          sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-          def group_id=(_)
-          end
+          attr_accessor :group_id
 
           # Optional list of group ids to add newly-invited users to.
           sig { returns(T.nilable(T::Array[String])) }
-          def group_ids
-          end
-
-          sig { params(_: T.nilable(T::Array[String])).returns(T.nilable(T::Array[String])) }
-          def group_ids=(_)
-          end
+          attr_accessor :group_ids
 
           # Singular form of group_names
           sig { returns(T.nilable(String)) }
-          def group_name
-          end
-
-          sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-          def group_name=(_)
-          end
+          attr_accessor :group_name
 
           # Optional list of group names to add newly-invited users to.
           sig { returns(T.nilable(T::Array[String])) }
-          def group_names
-          end
-
-          sig { params(_: T.nilable(T::Array[String])).returns(T.nilable(T::Array[String])) }
-          def group_names=(_)
-          end
+          attr_accessor :group_names
 
           # Ids of existing users to invite
           sig { returns(T.nilable(T::Array[String])) }
-          def ids
-          end
-
-          sig { params(_: T.nilable(T::Array[String])).returns(T.nilable(T::Array[String])) }
-          def ids=(_)
-          end
+          attr_accessor :ids
 
           # If true, send invite emails to the users who wore actually added
           sig { returns(T.nilable(T::Boolean)) }
-          def send_invite_emails
-          end
-
-          sig { params(_: T.nilable(T::Boolean)).returns(T.nilable(T::Boolean)) }
-          def send_invite_emails=(_)
-          end
+          attr_accessor :send_invite_emails
 
           # Users to invite to the organization
           sig do
@@ -212,21 +155,11 @@ module Braintrust
         class RemoveUsers < Braintrust::BaseModel
           # Emails of users to remove
           sig { returns(T.nilable(T::Array[String])) }
-          def emails
-          end
-
-          sig { params(_: T.nilable(T::Array[String])).returns(T.nilable(T::Array[String])) }
-          def emails=(_)
-          end
+          attr_accessor :emails
 
           # Ids of users to remove
           sig { returns(T.nilable(T::Array[String])) }
-          def ids
-          end
-
-          sig { params(_: T.nilable(T::Array[String])).returns(T.nilable(T::Array[String])) }
-          def ids=(_)
-          end
+          attr_accessor :ids
 
           # Users to remove from the organization
           sig do

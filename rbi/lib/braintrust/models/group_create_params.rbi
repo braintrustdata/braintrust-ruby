@@ -8,53 +8,28 @@ module Braintrust
 
       # Name of the group
       sig { returns(String) }
-      def name
-      end
-
-      sig { params(_: String).returns(String) }
-      def name=(_)
-      end
+      attr_accessor :name
 
       # Textual description of the group
       sig { returns(T.nilable(String)) }
-      def description
-      end
-
-      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-      def description=(_)
-      end
+      attr_accessor :description
 
       # Ids of the groups this group inherits from
       #
       #   An inheriting group has all the users contained in its member groups, as well as
       #   all of their inherited users
       sig { returns(T.nilable(T::Array[String])) }
-      def member_groups
-      end
-
-      sig { params(_: T.nilable(T::Array[String])).returns(T.nilable(T::Array[String])) }
-      def member_groups=(_)
-      end
+      attr_accessor :member_groups
 
       # Ids of users which belong to this group
       sig { returns(T.nilable(T::Array[String])) }
-      def member_users
-      end
-
-      sig { params(_: T.nilable(T::Array[String])).returns(T.nilable(T::Array[String])) }
-      def member_users=(_)
-      end
+      attr_accessor :member_users
 
       # For nearly all users, this parameter should be unnecessary. But in the rare case
       #   that your API key belongs to multiple organizations, you may specify the name of
       #   the organization the group belongs in.
       sig { returns(T.nilable(String)) }
-      def org_name
-      end
-
-      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-      def org_name=(_)
-      end
+      attr_accessor :org_name
 
       sig do
         params(

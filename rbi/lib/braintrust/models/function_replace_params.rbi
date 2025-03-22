@@ -15,122 +15,60 @@ module Braintrust
           )
         )
       end
-      def function_data
-      end
-
-      sig do
-        params(
-          _: T.any(
-            Braintrust::Models::FunctionReplaceParams::FunctionData::Prompt,
-            Braintrust::Models::FunctionReplaceParams::FunctionData::Code,
-            Braintrust::Models::FunctionReplaceParams::FunctionData::Global
-          )
-        )
-          .returns(
-            T.any(
-              Braintrust::Models::FunctionReplaceParams::FunctionData::Prompt,
-              Braintrust::Models::FunctionReplaceParams::FunctionData::Code,
-              Braintrust::Models::FunctionReplaceParams::FunctionData::Global
-            )
-          )
-      end
-      def function_data=(_)
-      end
+      attr_accessor :function_data
 
       # Name of the prompt
       sig { returns(String) }
-      def name
-      end
-
-      sig { params(_: String).returns(String) }
-      def name=(_)
-      end
+      attr_accessor :name
 
       # Unique identifier for the project that the prompt belongs under
       sig { returns(String) }
-      def project_id
-      end
-
-      sig { params(_: String).returns(String) }
-      def project_id=(_)
-      end
+      attr_accessor :project_id
 
       # Unique identifier for the prompt
       sig { returns(String) }
-      def slug
-      end
-
-      sig { params(_: String).returns(String) }
-      def slug=(_)
-      end
+      attr_accessor :slug
 
       # Textual description of the prompt
       sig { returns(T.nilable(String)) }
-      def description
-      end
-
-      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-      def description=(_)
-      end
+      attr_accessor :description
 
       # JSON schema for the function's parameters and return type
       sig { returns(T.nilable(Braintrust::Models::FunctionReplaceParams::FunctionSchema)) }
-      def function_schema
-      end
+      attr_reader :function_schema
 
       sig do
         params(
-          _: T.nilable(T.any(Braintrust::Models::FunctionReplaceParams::FunctionSchema, Braintrust::Util::AnyHash))
+          function_schema: T.nilable(T.any(Braintrust::Models::FunctionReplaceParams::FunctionSchema, Braintrust::Util::AnyHash))
         )
-          .returns(
-            T.nilable(T.any(Braintrust::Models::FunctionReplaceParams::FunctionSchema, Braintrust::Util::AnyHash))
-          )
+          .void
       end
-      def function_schema=(_)
-      end
+      attr_writer :function_schema
 
       sig { returns(T.nilable(Braintrust::Models::FunctionReplaceParams::FunctionType::OrSymbol)) }
-      def function_type
-      end
-
-      sig do
-        params(_: T.nilable(Braintrust::Models::FunctionReplaceParams::FunctionType::OrSymbol))
-          .returns(T.nilable(Braintrust::Models::FunctionReplaceParams::FunctionType::OrSymbol))
-      end
-      def function_type=(_)
-      end
+      attr_accessor :function_type
 
       sig { returns(T.nilable(Braintrust::Models::FunctionReplaceParams::Origin)) }
-      def origin
-      end
+      attr_reader :origin
 
       sig do
-        params(_: T.nilable(T.any(Braintrust::Models::FunctionReplaceParams::Origin, Braintrust::Util::AnyHash)))
-          .returns(T.nilable(T.any(Braintrust::Models::FunctionReplaceParams::Origin, Braintrust::Util::AnyHash)))
+        params(
+          origin: T.nilable(T.any(Braintrust::Models::FunctionReplaceParams::Origin, Braintrust::Util::AnyHash))
+        )
+          .void
       end
-      def origin=(_)
-      end
+      attr_writer :origin
 
       # The prompt, model, and its parameters
       sig { returns(T.nilable(Braintrust::Models::PromptData)) }
-      def prompt_data
-      end
+      attr_reader :prompt_data
 
-      sig do
-        params(_: T.nilable(T.any(Braintrust::Models::PromptData, Braintrust::Util::AnyHash)))
-          .returns(T.nilable(T.any(Braintrust::Models::PromptData, Braintrust::Util::AnyHash)))
-      end
-      def prompt_data=(_)
-      end
+      sig { params(prompt_data: T.nilable(T.any(Braintrust::Models::PromptData, Braintrust::Util::AnyHash))).void }
+      attr_writer :prompt_data
 
       # A list of tags for the prompt
       sig { returns(T.nilable(T::Array[String])) }
-      def tags
-      end
-
-      sig { params(_: T.nilable(T::Array[String])).returns(T.nilable(T::Array[String])) }
-      def tags=(_)
-      end
+      attr_accessor :tags
 
       sig do
         params(
@@ -209,15 +147,7 @@ module Braintrust
 
         class Prompt < Braintrust::BaseModel
           sig { returns(Braintrust::Models::FunctionReplaceParams::FunctionData::Prompt::Type::OrSymbol) }
-          def type
-          end
-
-          sig do
-            params(_: Braintrust::Models::FunctionReplaceParams::FunctionData::Prompt::Type::OrSymbol)
-              .returns(Braintrust::Models::FunctionReplaceParams::FunctionData::Prompt::Type::OrSymbol)
-          end
-          def type=(_)
-          end
+          attr_accessor :type
 
           sig do
             params(type: Braintrust::Models::FunctionReplaceParams::FunctionData::Prompt::Type::OrSymbol)
@@ -261,36 +191,10 @@ module Braintrust
               )
             )
           end
-          def data
-          end
-
-          sig do
-            params(
-              _: T.any(
-                Braintrust::Models::FunctionReplaceParams::FunctionData::Code::Data::Bundle,
-                Braintrust::Models::FunctionReplaceParams::FunctionData::Code::Data::Inline
-              )
-            )
-              .returns(
-                T.any(
-                  Braintrust::Models::FunctionReplaceParams::FunctionData::Code::Data::Bundle,
-                  Braintrust::Models::FunctionReplaceParams::FunctionData::Code::Data::Inline
-                )
-              )
-          end
-          def data=(_)
-          end
+          attr_accessor :data
 
           sig { returns(Braintrust::Models::FunctionReplaceParams::FunctionData::Code::Type::OrSymbol) }
-          def type
-          end
-
-          sig do
-            params(_: Braintrust::Models::FunctionReplaceParams::FunctionData::Code::Type::OrSymbol)
-              .returns(Braintrust::Models::FunctionReplaceParams::FunctionData::Code::Type::OrSymbol)
-          end
-          def type=(_)
-          end
+          attr_accessor :type
 
           sig do
             params(
@@ -336,15 +240,7 @@ module Braintrust
 
             class Bundle < Braintrust::Models::CodeBundle
               sig { returns(Braintrust::Models::FunctionReplaceParams::FunctionData::Code::Data::Bundle::Type::OrSymbol) }
-              def type
-              end
-
-              sig do
-                params(_: Braintrust::Models::FunctionReplaceParams::FunctionData::Code::Data::Bundle::Type::OrSymbol)
-                  .returns(Braintrust::Models::FunctionReplaceParams::FunctionData::Code::Data::Bundle::Type::OrSymbol)
-              end
-              def type=(_)
-              end
+              attr_accessor :type
 
               sig do
                 params(type: Braintrust::Models::FunctionReplaceParams::FunctionData::Code::Data::Bundle::Type::OrSymbol)
@@ -396,44 +292,24 @@ module Braintrust
 
             class Inline < Braintrust::BaseModel
               sig { returns(String) }
-              def code
-              end
-
-              sig { params(_: String).returns(String) }
-              def code=(_)
-              end
+              attr_accessor :code
 
               sig { returns(Braintrust::Models::FunctionReplaceParams::FunctionData::Code::Data::Inline::RuntimeContext) }
-              def runtime_context
-              end
+              attr_reader :runtime_context
 
               sig do
                 params(
-                  _: T.any(
+                  runtime_context: T.any(
                     Braintrust::Models::FunctionReplaceParams::FunctionData::Code::Data::Inline::RuntimeContext,
                     Braintrust::Util::AnyHash
                   )
                 )
-                  .returns(
-                    T.any(
-                      Braintrust::Models::FunctionReplaceParams::FunctionData::Code::Data::Inline::RuntimeContext,
-                      Braintrust::Util::AnyHash
-                    )
-                  )
+                  .void
               end
-              def runtime_context=(_)
-              end
+              attr_writer :runtime_context
 
               sig { returns(Braintrust::Models::FunctionReplaceParams::FunctionData::Code::Data::Inline::Type::OrSymbol) }
-              def type
-              end
-
-              sig do
-                params(_: Braintrust::Models::FunctionReplaceParams::FunctionData::Code::Data::Inline::Type::OrSymbol)
-                  .returns(Braintrust::Models::FunctionReplaceParams::FunctionData::Code::Data::Inline::Type::OrSymbol)
-              end
-              def type=(_)
-              end
+              attr_accessor :type
 
               sig do
                 params(
@@ -468,27 +344,10 @@ module Braintrust
                     Braintrust::Models::FunctionReplaceParams::FunctionData::Code::Data::Inline::RuntimeContext::Runtime::OrSymbol
                   )
                 end
-                def runtime
-                end
-
-                sig do
-                  params(
-                    _: Braintrust::Models::FunctionReplaceParams::FunctionData::Code::Data::Inline::RuntimeContext::Runtime::OrSymbol
-                  )
-                    .returns(
-                      Braintrust::Models::FunctionReplaceParams::FunctionData::Code::Data::Inline::RuntimeContext::Runtime::OrSymbol
-                    )
-                end
-                def runtime=(_)
-                end
+                attr_accessor :runtime
 
                 sig { returns(String) }
-                def version
-                end
-
-                sig { params(_: String).returns(String) }
-                def version=(_)
-                end
+                attr_accessor :version
 
                 sig do
                   params(
@@ -620,23 +479,10 @@ module Braintrust
 
         class Global < Braintrust::BaseModel
           sig { returns(String) }
-          def name
-          end
-
-          sig { params(_: String).returns(String) }
-          def name=(_)
-          end
+          attr_accessor :name
 
           sig { returns(Braintrust::Models::FunctionReplaceParams::FunctionData::Global::Type::OrSymbol) }
-          def type
-          end
-
-          sig do
-            params(_: Braintrust::Models::FunctionReplaceParams::FunctionData::Global::Type::OrSymbol)
-              .returns(Braintrust::Models::FunctionReplaceParams::FunctionData::Global::Type::OrSymbol)
-          end
-          def type=(_)
-          end
+          attr_accessor :type
 
           sig do
             params(
@@ -693,20 +539,16 @@ module Braintrust
 
       class FunctionSchema < Braintrust::BaseModel
         sig { returns(T.nilable(T.anything)) }
-        def parameters
-        end
+        attr_reader :parameters
 
-        sig { params(_: T.anything).returns(T.anything) }
-        def parameters=(_)
-        end
+        sig { params(parameters: T.anything).void }
+        attr_writer :parameters
 
         sig { returns(T.nilable(T.anything)) }
-        def returns
-        end
+        attr_reader :returns
 
-        sig { params(_: T.anything).returns(T.anything) }
-        def returns=(_)
-        end
+        sig { params(returns: T.anything).void }
+        attr_writer :returns
 
         # JSON schema for the function's parameters and return type
         sig { params(parameters: T.anything, returns: T.anything).returns(T.attached_class) }
@@ -740,33 +582,16 @@ module Braintrust
       class Origin < Braintrust::BaseModel
         # Id of the object the function is originating from
         sig { returns(String) }
-        def object_id_
-        end
-
-        sig { params(_: String).returns(String) }
-        def object_id_=(_)
-        end
+        attr_accessor :object_id_
 
         # The object type that the ACL applies to
         sig { returns(Braintrust::Models::ACLObjectType::OrSymbol) }
-        def object_type
-        end
-
-        sig do
-          params(_: Braintrust::Models::ACLObjectType::OrSymbol).returns(Braintrust::Models::ACLObjectType::OrSymbol)
-        end
-        def object_type=(_)
-        end
+        attr_accessor :object_type
 
         # The function exists for internal purposes and should not be displayed in the
         #   list of functions.
         sig { returns(T.nilable(T::Boolean)) }
-        def internal
-        end
-
-        sig { params(_: T.nilable(T::Boolean)).returns(T.nilable(T::Boolean)) }
-        def internal=(_)
-        end
+        attr_accessor :internal
 
         sig do
           params(

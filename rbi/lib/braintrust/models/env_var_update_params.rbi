@@ -8,21 +8,11 @@ module Braintrust
 
       # The name of the environment variable
       sig { returns(String) }
-      def name
-      end
-
-      sig { params(_: String).returns(String) }
-      def name=(_)
-      end
+      attr_accessor :name
 
       # The value of the environment variable. Will be encrypted at rest.
       sig { returns(T.nilable(String)) }
-      def value
-      end
-
-      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-      def value=(_)
-      end
+      attr_accessor :value
 
       sig do
         params(

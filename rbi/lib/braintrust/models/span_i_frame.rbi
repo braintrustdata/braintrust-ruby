@@ -5,85 +5,40 @@ module Braintrust
     class SpanIFrame < Braintrust::BaseModel
       # Unique identifier for the span iframe
       sig { returns(String) }
-      def id
-      end
-
-      sig { params(_: String).returns(String) }
-      def id=(_)
-      end
+      attr_accessor :id
 
       # Name of the span iframe
       sig { returns(String) }
-      def name
-      end
-
-      sig { params(_: String).returns(String) }
-      def name=(_)
-      end
+      attr_accessor :name
 
       # Unique identifier for the project that the span iframe belongs under
       sig { returns(String) }
-      def project_id
-      end
-
-      sig { params(_: String).returns(String) }
-      def project_id=(_)
-      end
+      attr_accessor :project_id
 
       # URL to embed the project viewer in an iframe
       sig { returns(String) }
-      def url
-      end
-
-      sig { params(_: String).returns(String) }
-      def url=(_)
-      end
+      attr_accessor :url
 
       # Date of span iframe creation
       sig { returns(T.nilable(Time)) }
-      def created
-      end
-
-      sig { params(_: T.nilable(Time)).returns(T.nilable(Time)) }
-      def created=(_)
-      end
+      attr_accessor :created
 
       # Date of span iframe deletion, or null if the span iframe is still active
       sig { returns(T.nilable(Time)) }
-      def deleted_at
-      end
-
-      sig { params(_: T.nilable(Time)).returns(T.nilable(Time)) }
-      def deleted_at=(_)
-      end
+      attr_accessor :deleted_at
 
       # Textual description of the span iframe
       sig { returns(T.nilable(String)) }
-      def description
-      end
-
-      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-      def description=(_)
-      end
+      attr_accessor :description
 
       # Whether to post messages to the iframe containing the span's data. This is
       #   useful when you want to render more data than fits in the URL.
       sig { returns(T.nilable(T::Boolean)) }
-      def post_message
-      end
-
-      sig { params(_: T.nilable(T::Boolean)).returns(T.nilable(T::Boolean)) }
-      def post_message=(_)
-      end
+      attr_accessor :post_message
 
       # Identifies the user who created the span iframe
       sig { returns(T.nilable(String)) }
-      def user_id
-      end
-
-      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-      def user_id=(_)
-      end
+      attr_accessor :user_id
 
       sig do
         params(

@@ -8,71 +8,33 @@ module Braintrust
 
       # Name of the prompt
       sig { returns(String) }
-      def name
-      end
-
-      sig { params(_: String).returns(String) }
-      def name=(_)
-      end
+      attr_accessor :name
 
       # Unique identifier for the project that the prompt belongs under
       sig { returns(String) }
-      def project_id
-      end
-
-      sig { params(_: String).returns(String) }
-      def project_id=(_)
-      end
+      attr_accessor :project_id
 
       # Unique identifier for the prompt
       sig { returns(String) }
-      def slug
-      end
-
-      sig { params(_: String).returns(String) }
-      def slug=(_)
-      end
+      attr_accessor :slug
 
       # Textual description of the prompt
       sig { returns(T.nilable(String)) }
-      def description
-      end
-
-      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-      def description=(_)
-      end
+      attr_accessor :description
 
       sig { returns(T.nilable(Braintrust::Models::PromptCreateParams::FunctionType::OrSymbol)) }
-      def function_type
-      end
-
-      sig do
-        params(_: T.nilable(Braintrust::Models::PromptCreateParams::FunctionType::OrSymbol))
-          .returns(T.nilable(Braintrust::Models::PromptCreateParams::FunctionType::OrSymbol))
-      end
-      def function_type=(_)
-      end
+      attr_accessor :function_type
 
       # The prompt, model, and its parameters
       sig { returns(T.nilable(Braintrust::Models::PromptData)) }
-      def prompt_data
-      end
+      attr_reader :prompt_data
 
-      sig do
-        params(_: T.nilable(T.any(Braintrust::Models::PromptData, Braintrust::Util::AnyHash)))
-          .returns(T.nilable(T.any(Braintrust::Models::PromptData, Braintrust::Util::AnyHash)))
-      end
-      def prompt_data=(_)
-      end
+      sig { params(prompt_data: T.nilable(T.any(Braintrust::Models::PromptData, Braintrust::Util::AnyHash))).void }
+      attr_writer :prompt_data
 
       # A list of tags for the prompt
       sig { returns(T.nilable(T::Array[String])) }
-      def tags
-      end
-
-      sig { params(_: T.nilable(T::Array[String])).returns(T.nilable(T::Array[String])) }
-      def tags=(_)
-      end
+      attr_accessor :tags
 
       sig do
         params(

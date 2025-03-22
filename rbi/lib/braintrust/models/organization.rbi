@@ -5,62 +5,27 @@ module Braintrust
     class Organization < Braintrust::BaseModel
       # Unique identifier for the organization
       sig { returns(String) }
-      def id
-      end
-
-      sig { params(_: String).returns(String) }
-      def id=(_)
-      end
+      attr_accessor :id
 
       # Name of the organization
       sig { returns(String) }
-      def name
-      end
-
-      sig { params(_: String).returns(String) }
-      def name=(_)
-      end
+      attr_accessor :name
 
       sig { returns(T.nilable(String)) }
-      def api_url
-      end
-
-      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-      def api_url=(_)
-      end
+      attr_accessor :api_url
 
       # Date of organization creation
       sig { returns(T.nilable(Time)) }
-      def created
-      end
-
-      sig { params(_: T.nilable(Time)).returns(T.nilable(Time)) }
-      def created=(_)
-      end
+      attr_accessor :created
 
       sig { returns(T.nilable(T::Boolean)) }
-      def is_universal_api
-      end
-
-      sig { params(_: T.nilable(T::Boolean)).returns(T.nilable(T::Boolean)) }
-      def is_universal_api=(_)
-      end
+      attr_accessor :is_universal_api
 
       sig { returns(T.nilable(String)) }
-      def proxy_url
-      end
-
-      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-      def proxy_url=(_)
-      end
+      attr_accessor :proxy_url
 
       sig { returns(T.nilable(String)) }
-      def realtime_url
-      end
-
-      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-      def realtime_url=(_)
-      end
+      attr_accessor :realtime_url
 
       sig do
         params(

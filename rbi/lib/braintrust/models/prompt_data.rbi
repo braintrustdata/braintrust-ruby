@@ -4,37 +4,22 @@ module Braintrust
   module Models
     class PromptData < Braintrust::BaseModel
       sig { returns(T.nilable(Braintrust::Models::PromptOptions)) }
-      def options
-      end
+      attr_reader :options
 
-      sig do
-        params(_: T.nilable(T.any(Braintrust::Models::PromptOptions, Braintrust::Util::AnyHash)))
-          .returns(T.nilable(T.any(Braintrust::Models::PromptOptions, Braintrust::Util::AnyHash)))
-      end
-      def options=(_)
-      end
+      sig { params(options: T.nilable(T.any(Braintrust::Models::PromptOptions, Braintrust::Util::AnyHash))).void }
+      attr_writer :options
 
       sig { returns(T.nilable(Braintrust::Models::PromptData::Origin)) }
-      def origin
-      end
+      attr_reader :origin
 
-      sig do
-        params(_: T.nilable(T.any(Braintrust::Models::PromptData::Origin, Braintrust::Util::AnyHash)))
-          .returns(T.nilable(T.any(Braintrust::Models::PromptData::Origin, Braintrust::Util::AnyHash)))
-      end
-      def origin=(_)
-      end
+      sig { params(origin: T.nilable(T.any(Braintrust::Models::PromptData::Origin, Braintrust::Util::AnyHash))).void }
+      attr_writer :origin
 
       sig { returns(T.nilable(Braintrust::Models::PromptData::Parser)) }
-      def parser
-      end
+      attr_reader :parser
 
-      sig do
-        params(_: T.nilable(T.any(Braintrust::Models::PromptData::Parser, Braintrust::Util::AnyHash)))
-          .returns(T.nilable(T.any(Braintrust::Models::PromptData::Parser, Braintrust::Util::AnyHash)))
-      end
-      def parser=(_)
-      end
+      sig { params(parser: T.nilable(T.any(Braintrust::Models::PromptData::Parser, Braintrust::Util::AnyHash))).void }
+      attr_writer :parser
 
       sig do
         returns(
@@ -43,23 +28,7 @@ module Braintrust
           )
         )
       end
-      def prompt
-      end
-
-      sig do
-        params(
-          _: T.nilable(
-            T.any(Braintrust::Models::PromptData::Prompt::Completion, Braintrust::Models::PromptData::Prompt::Chat)
-          )
-        )
-          .returns(
-            T.nilable(
-              T.any(Braintrust::Models::PromptData::Prompt::Completion, Braintrust::Models::PromptData::Prompt::Chat)
-            )
-          )
-      end
-      def prompt=(_)
-      end
+      attr_accessor :prompt
 
       sig do
         returns(
@@ -73,33 +42,7 @@ module Braintrust
           )
         )
       end
-      def tool_functions
-      end
-
-      sig do
-        params(
-          _: T.nilable(
-            T::Array[
-            T.any(
-              Braintrust::Models::PromptData::ToolFunction::Function,
-              Braintrust::Models::PromptData::ToolFunction::Global
-            )
-            ]
-          )
-        )
-          .returns(
-            T.nilable(
-              T::Array[
-              T.any(
-                Braintrust::Models::PromptData::ToolFunction::Function,
-                Braintrust::Models::PromptData::ToolFunction::Global
-              )
-              ]
-            )
-          )
-      end
-      def tool_functions=(_)
-      end
+      attr_accessor :tool_functions
 
       # The prompt, model, and its parameters
       sig do
@@ -155,28 +98,22 @@ module Braintrust
 
       class Origin < Braintrust::BaseModel
         sig { returns(T.nilable(String)) }
-        def project_id
-        end
+        attr_reader :project_id
 
-        sig { params(_: String).returns(String) }
-        def project_id=(_)
-        end
+        sig { params(project_id: String).void }
+        attr_writer :project_id
 
         sig { returns(T.nilable(String)) }
-        def prompt_id
-        end
+        attr_reader :prompt_id
 
-        sig { params(_: String).returns(String) }
-        def prompt_id=(_)
-        end
+        sig { params(prompt_id: String).void }
+        attr_writer :prompt_id
 
         sig { returns(T.nilable(String)) }
-        def prompt_version
-        end
+        attr_reader :prompt_version
 
-        sig { params(_: String).returns(String) }
-        def prompt_version=(_)
-        end
+        sig { params(prompt_version: String).void }
+        attr_writer :prompt_version
 
         sig do
           params(project_id: String, prompt_id: String, prompt_version: String).returns(T.attached_class)
@@ -191,31 +128,13 @@ module Braintrust
 
       class Parser < Braintrust::BaseModel
         sig { returns(T::Hash[Symbol, Float]) }
-        def choice_scores
-        end
-
-        sig { params(_: T::Hash[Symbol, Float]).returns(T::Hash[Symbol, Float]) }
-        def choice_scores=(_)
-        end
+        attr_accessor :choice_scores
 
         sig { returns(Braintrust::Models::PromptData::Parser::Type::OrSymbol) }
-        def type
-        end
-
-        sig do
-          params(_: Braintrust::Models::PromptData::Parser::Type::OrSymbol)
-            .returns(Braintrust::Models::PromptData::Parser::Type::OrSymbol)
-        end
-        def type=(_)
-        end
+        attr_accessor :type
 
         sig { returns(T::Boolean) }
-        def use_cot
-        end
-
-        sig { params(_: T::Boolean).returns(T::Boolean) }
-        def use_cot=(_)
-        end
+        attr_accessor :use_cot
 
         sig do
           params(
@@ -269,23 +188,10 @@ module Braintrust
 
         class Completion < Braintrust::BaseModel
           sig { returns(String) }
-          def content
-          end
-
-          sig { params(_: String).returns(String) }
-          def content=(_)
-          end
+          attr_accessor :content
 
           sig { returns(Braintrust::Models::PromptData::Prompt::Completion::Type::OrSymbol) }
-          def type
-          end
-
-          sig do
-            params(_: Braintrust::Models::PromptData::Prompt::Completion::Type::OrSymbol)
-              .returns(Braintrust::Models::PromptData::Prompt::Completion::Type::OrSymbol)
-          end
-          def type=(_)
-          end
+          attr_accessor :type
 
           sig do
             params(content: String, type: Braintrust::Models::PromptData::Prompt::Completion::Type::OrSymbol)
@@ -333,56 +239,16 @@ module Braintrust
               ]
             )
           end
-          def messages
-          end
-
-          sig do
-            params(
-              _: T::Array[
-              T.any(
-                Braintrust::Models::PromptData::Prompt::Chat::Message::System,
-                Braintrust::Models::PromptData::Prompt::Chat::Message::User,
-                Braintrust::Models::PromptData::Prompt::Chat::Message::Assistant,
-                Braintrust::Models::PromptData::Prompt::Chat::Message::Tool,
-                Braintrust::Models::PromptData::Prompt::Chat::Message::Function,
-                Braintrust::Models::PromptData::Prompt::Chat::Message::Fallback
-              )
-              ]
-            )
-              .returns(
-                T::Array[
-                T.any(
-                  Braintrust::Models::PromptData::Prompt::Chat::Message::System,
-                  Braintrust::Models::PromptData::Prompt::Chat::Message::User,
-                  Braintrust::Models::PromptData::Prompt::Chat::Message::Assistant,
-                  Braintrust::Models::PromptData::Prompt::Chat::Message::Tool,
-                  Braintrust::Models::PromptData::Prompt::Chat::Message::Function,
-                  Braintrust::Models::PromptData::Prompt::Chat::Message::Fallback
-                )
-                ]
-              )
-          end
-          def messages=(_)
-          end
+          attr_accessor :messages
 
           sig { returns(Braintrust::Models::PromptData::Prompt::Chat::Type::OrSymbol) }
-          def type
-          end
-
-          sig do
-            params(_: Braintrust::Models::PromptData::Prompt::Chat::Type::OrSymbol)
-              .returns(Braintrust::Models::PromptData::Prompt::Chat::Type::OrSymbol)
-          end
-          def type=(_)
-          end
+          attr_accessor :type
 
           sig { returns(T.nilable(String)) }
-          def tools
-          end
+          attr_reader :tools
 
-          sig { params(_: String).returns(String) }
-          def tools=(_)
-          end
+          sig { params(tools: String).void }
+          attr_writer :tools
 
           sig do
             params(
@@ -446,31 +312,19 @@ module Braintrust
 
             class System < Braintrust::BaseModel
               sig { returns(Braintrust::Models::PromptData::Prompt::Chat::Message::System::Role::OrSymbol) }
-              def role
-              end
-
-              sig do
-                params(_: Braintrust::Models::PromptData::Prompt::Chat::Message::System::Role::OrSymbol)
-                  .returns(Braintrust::Models::PromptData::Prompt::Chat::Message::System::Role::OrSymbol)
-              end
-              def role=(_)
-              end
+              attr_accessor :role
 
               sig { returns(T.nilable(String)) }
-              def content
-              end
+              attr_reader :content
 
-              sig { params(_: String).returns(String) }
-              def content=(_)
-              end
+              sig { params(content: String).void }
+              attr_writer :content
 
               sig { returns(T.nilable(String)) }
-              def name
-              end
+              attr_reader :name
 
-              sig { params(_: String).returns(String) }
-              def name=(_)
-              end
+              sig { params(name: String).void }
+              attr_writer :name
 
               sig do
                 params(
@@ -520,15 +374,7 @@ module Braintrust
 
             class User < Braintrust::BaseModel
               sig { returns(Braintrust::Models::PromptData::Prompt::Chat::Message::User::Role::OrSymbol) }
-              def role
-              end
-
-              sig do
-                params(_: Braintrust::Models::PromptData::Prompt::Chat::Message::User::Role::OrSymbol)
-                  .returns(Braintrust::Models::PromptData::Prompt::Chat::Message::User::Role::OrSymbol)
-              end
-              def role=(_)
-              end
+              attr_accessor :role
 
               sig do
                 returns(
@@ -545,12 +391,11 @@ module Braintrust
                   )
                 )
               end
-              def content
-              end
+              attr_reader :content
 
               sig do
                 params(
-                  _: T.any(
+                  content: T.any(
                     String,
                     T::Array[
                     T.any(
@@ -561,29 +406,15 @@ module Braintrust
                     ]
                   )
                 )
-                  .returns(
-                    T.any(
-                      String,
-                      T::Array[
-                      T.any(
-                        Braintrust::Models::ChatCompletionContentPartText,
-                        Braintrust::Util::AnyHash,
-                        Braintrust::Models::ChatCompletionContentPartImage
-                      )
-                      ]
-                    )
-                  )
+                  .void
               end
-              def content=(_)
-              end
+              attr_writer :content
 
               sig { returns(T.nilable(String)) }
-              def name
-              end
+              attr_reader :name
 
-              sig { params(_: String).returns(String) }
-              def name=(_)
-              end
+              sig { params(name: String).void }
+              attr_writer :name
 
               sig do
                 params(
@@ -717,67 +548,32 @@ module Braintrust
 
             class Assistant < Braintrust::BaseModel
               sig { returns(Braintrust::Models::PromptData::Prompt::Chat::Message::Assistant::Role::OrSymbol) }
-              def role
-              end
-
-              sig do
-                params(_: Braintrust::Models::PromptData::Prompt::Chat::Message::Assistant::Role::OrSymbol)
-                  .returns(Braintrust::Models::PromptData::Prompt::Chat::Message::Assistant::Role::OrSymbol)
-              end
-              def role=(_)
-              end
+              attr_accessor :role
 
               sig { returns(T.nilable(String)) }
-              def content
-              end
-
-              sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-              def content=(_)
-              end
+              attr_accessor :content
 
               sig { returns(T.nilable(Braintrust::Models::PromptData::Prompt::Chat::Message::Assistant::FunctionCall)) }
-              def function_call
-              end
+              attr_reader :function_call
 
               sig do
                 params(
-                  _: T.nilable(
+                  function_call: T.nilable(
                     T.any(
                       Braintrust::Models::PromptData::Prompt::Chat::Message::Assistant::FunctionCall,
                       Braintrust::Util::AnyHash
                     )
                   )
                 )
-                  .returns(
-                    T.nilable(
-                      T.any(
-                        Braintrust::Models::PromptData::Prompt::Chat::Message::Assistant::FunctionCall,
-                        Braintrust::Util::AnyHash
-                      )
-                    )
-                  )
+                  .void
               end
-              def function_call=(_)
-              end
+              attr_writer :function_call
 
               sig { returns(T.nilable(String)) }
-              def name
-              end
-
-              sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-              def name=(_)
-              end
+              attr_accessor :name
 
               sig { returns(T.nilable(T::Array[Braintrust::Models::ChatCompletionMessageToolCall])) }
-              def tool_calls
-              end
-
-              sig do
-                params(_: T.nilable(T::Array[Braintrust::Models::ChatCompletionMessageToolCall]))
-                  .returns(T.nilable(T::Array[Braintrust::Models::ChatCompletionMessageToolCall]))
-              end
-              def tool_calls=(_)
-              end
+              attr_accessor :tool_calls
 
               sig do
                 params(
@@ -835,20 +631,10 @@ module Braintrust
 
               class FunctionCall < Braintrust::BaseModel
                 sig { returns(String) }
-                def arguments
-                end
-
-                sig { params(_: String).returns(String) }
-                def arguments=(_)
-                end
+                attr_accessor :arguments
 
                 sig { returns(String) }
-                def name
-                end
-
-                sig { params(_: String).returns(String) }
-                def name=(_)
-                end
+                attr_accessor :name
 
                 sig { params(arguments: String, name: String).returns(T.attached_class) }
                 def self.new(arguments:, name:)
@@ -862,31 +648,19 @@ module Braintrust
 
             class Tool < Braintrust::BaseModel
               sig { returns(Braintrust::Models::PromptData::Prompt::Chat::Message::Tool::Role::OrSymbol) }
-              def role
-              end
-
-              sig do
-                params(_: Braintrust::Models::PromptData::Prompt::Chat::Message::Tool::Role::OrSymbol)
-                  .returns(Braintrust::Models::PromptData::Prompt::Chat::Message::Tool::Role::OrSymbol)
-              end
-              def role=(_)
-              end
+              attr_accessor :role
 
               sig { returns(T.nilable(String)) }
-              def content
-              end
+              attr_reader :content
 
-              sig { params(_: String).returns(String) }
-              def content=(_)
-              end
+              sig { params(content: String).void }
+              attr_writer :content
 
               sig { returns(T.nilable(String)) }
-              def tool_call_id
-              end
+              attr_reader :tool_call_id
 
-              sig { params(_: String).returns(String) }
-              def tool_call_id=(_)
-              end
+              sig { params(tool_call_id: String).void }
+              attr_writer :tool_call_id
 
               sig do
                 params(
@@ -934,31 +708,16 @@ module Braintrust
 
             class Function < Braintrust::BaseModel
               sig { returns(String) }
-              def name
-              end
-
-              sig { params(_: String).returns(String) }
-              def name=(_)
-              end
+              attr_accessor :name
 
               sig { returns(Braintrust::Models::PromptData::Prompt::Chat::Message::Function::Role::OrSymbol) }
-              def role
-              end
-
-              sig do
-                params(_: Braintrust::Models::PromptData::Prompt::Chat::Message::Function::Role::OrSymbol)
-                  .returns(Braintrust::Models::PromptData::Prompt::Chat::Message::Function::Role::OrSymbol)
-              end
-              def role=(_)
-              end
+              attr_accessor :role
 
               sig { returns(T.nilable(String)) }
-              def content
-              end
+              attr_reader :content
 
-              sig { params(_: String).returns(String) }
-              def content=(_)
-              end
+              sig { params(content: String).void }
+              attr_writer :content
 
               sig do
                 params(
@@ -1008,23 +767,10 @@ module Braintrust
 
             class Fallback < Braintrust::BaseModel
               sig { returns(Braintrust::Models::PromptData::Prompt::Chat::Message::Fallback::Role::OrSymbol) }
-              def role
-              end
-
-              sig do
-                params(_: Braintrust::Models::PromptData::Prompt::Chat::Message::Fallback::Role::OrSymbol)
-                  .returns(Braintrust::Models::PromptData::Prompt::Chat::Message::Fallback::Role::OrSymbol)
-              end
-              def role=(_)
-              end
+              attr_accessor :role
 
               sig { returns(T.nilable(String)) }
-              def content
-              end
-
-              sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-              def content=(_)
-              end
+              attr_accessor :content
 
               sig do
                 params(
@@ -1126,23 +872,10 @@ module Braintrust
 
         class Function < Braintrust::BaseModel
           sig { returns(String) }
-          def id
-          end
-
-          sig { params(_: String).returns(String) }
-          def id=(_)
-          end
+          attr_accessor :id
 
           sig { returns(Braintrust::Models::PromptData::ToolFunction::Function::Type::OrSymbol) }
-          def type
-          end
-
-          sig do
-            params(_: Braintrust::Models::PromptData::ToolFunction::Function::Type::OrSymbol)
-              .returns(Braintrust::Models::PromptData::ToolFunction::Function::Type::OrSymbol)
-          end
-          def type=(_)
-          end
+          attr_accessor :type
 
           sig do
             params(id: String, type: Braintrust::Models::PromptData::ToolFunction::Function::Type::OrSymbol)
@@ -1178,23 +911,10 @@ module Braintrust
 
         class Global < Braintrust::BaseModel
           sig { returns(String) }
-          def name
-          end
-
-          sig { params(_: String).returns(String) }
-          def name=(_)
-          end
+          attr_accessor :name
 
           sig { returns(Braintrust::Models::PromptData::ToolFunction::Global::Type::OrSymbol) }
-          def type
-          end
-
-          sig do
-            params(_: Braintrust::Models::PromptData::ToolFunction::Global::Type::OrSymbol)
-              .returns(Braintrust::Models::PromptData::ToolFunction::Global::Type::OrSymbol)
-          end
-          def type=(_)
-          end
+          attr_accessor :type
 
           sig do
             params(name: String, type: Braintrust::Models::PromptData::ToolFunction::Global::Type::OrSymbol)

@@ -16,36 +16,11 @@ module Braintrust
           )
         )
       end
-      def data
-      end
-
-      sig do
-        params(
-          _: T.any(
-            Braintrust::Models::EvalCreateParams::Data::DatasetID,
-            Braintrust::Models::EvalCreateParams::Data::ProjectDatasetName,
-            Braintrust::Models::EvalCreateParams::Data::DatasetRows
-          )
-        )
-          .returns(
-            T.any(
-              Braintrust::Models::EvalCreateParams::Data::DatasetID,
-              Braintrust::Models::EvalCreateParams::Data::ProjectDatasetName,
-              Braintrust::Models::EvalCreateParams::Data::DatasetRows
-            )
-          )
-      end
-      def data=(_)
-      end
+      attr_accessor :data
 
       # Unique identifier for the project to run the eval in
       sig { returns(String) }
-      def project_id
-      end
-
-      sig { params(_: String).returns(String) }
-      def project_id=(_)
-      end
+      attr_accessor :project_id
 
       # The functions to score the eval on
       sig do
@@ -62,37 +37,7 @@ module Braintrust
           ]
         )
       end
-      def scores
-      end
-
-      sig do
-        params(
-          _: T::Array[
-          T.any(
-            Braintrust::Models::EvalCreateParams::Score::FunctionID,
-            Braintrust::Models::EvalCreateParams::Score::ProjectSlug,
-            Braintrust::Models::EvalCreateParams::Score::GlobalFunction,
-            Braintrust::Models::EvalCreateParams::Score::PromptSessionID,
-            Braintrust::Models::EvalCreateParams::Score::InlineCode,
-            Braintrust::Models::EvalCreateParams::Score::InlinePrompt
-          )
-          ]
-        )
-          .returns(
-            T::Array[
-            T.any(
-              Braintrust::Models::EvalCreateParams::Score::FunctionID,
-              Braintrust::Models::EvalCreateParams::Score::ProjectSlug,
-              Braintrust::Models::EvalCreateParams::Score::GlobalFunction,
-              Braintrust::Models::EvalCreateParams::Score::PromptSessionID,
-              Braintrust::Models::EvalCreateParams::Score::InlineCode,
-              Braintrust::Models::EvalCreateParams::Score::InlinePrompt
-            )
-            ]
-          )
-      end
-      def scores=(_)
-      end
+      attr_accessor :scores
 
       # The function to evaluate
       sig do
@@ -107,171 +52,94 @@ module Braintrust
           )
         )
       end
-      def task
-      end
-
-      sig do
-        params(
-          _: T.any(
-            Braintrust::Models::EvalCreateParams::Task::FunctionID,
-            Braintrust::Models::EvalCreateParams::Task::ProjectSlug,
-            Braintrust::Models::EvalCreateParams::Task::GlobalFunction,
-            Braintrust::Models::EvalCreateParams::Task::PromptSessionID,
-            Braintrust::Models::EvalCreateParams::Task::InlineCode,
-            Braintrust::Models::EvalCreateParams::Task::InlinePrompt
-          )
-        )
-          .returns(
-            T.any(
-              Braintrust::Models::EvalCreateParams::Task::FunctionID,
-              Braintrust::Models::EvalCreateParams::Task::ProjectSlug,
-              Braintrust::Models::EvalCreateParams::Task::GlobalFunction,
-              Braintrust::Models::EvalCreateParams::Task::PromptSessionID,
-              Braintrust::Models::EvalCreateParams::Task::InlineCode,
-              Braintrust::Models::EvalCreateParams::Task::InlinePrompt
-            )
-          )
-      end
-      def task=(_)
-      end
+      attr_accessor :task
 
       # An optional experiment id to use as a base. If specified, the new experiment
       #   will be summarized and compared to this experiment.
       sig { returns(T.nilable(String)) }
-      def base_experiment_id
-      end
-
-      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-      def base_experiment_id=(_)
-      end
+      attr_accessor :base_experiment_id
 
       # An optional experiment name to use as a base. If specified, the new experiment
       #   will be summarized and compared to this experiment.
       sig { returns(T.nilable(String)) }
-      def base_experiment_name
-      end
-
-      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-      def base_experiment_name=(_)
-      end
+      attr_accessor :base_experiment_name
 
       # An optional name for the experiment created by this eval. If it conflicts with
       #   an existing experiment, it will be suffixed with a unique identifier.
       sig { returns(T.nilable(String)) }
-      def experiment_name
-      end
+      attr_reader :experiment_name
 
-      sig { params(_: String).returns(String) }
-      def experiment_name=(_)
-      end
+      sig { params(experiment_name: String).void }
+      attr_writer :experiment_name
 
       # Optional settings for collecting git metadata. By default, will collect all git
       #   metadata fields allowed in org-level settings.
       sig { returns(T.nilable(Braintrust::Models::EvalCreateParams::GitMetadataSettings)) }
-      def git_metadata_settings
-      end
+      attr_reader :git_metadata_settings
 
       sig do
         params(
-          _: T.nilable(T.any(Braintrust::Models::EvalCreateParams::GitMetadataSettings, Braintrust::Util::AnyHash))
+          git_metadata_settings: T.nilable(T.any(Braintrust::Models::EvalCreateParams::GitMetadataSettings, Braintrust::Util::AnyHash))
         )
-          .returns(
-            T.nilable(T.any(Braintrust::Models::EvalCreateParams::GitMetadataSettings, Braintrust::Util::AnyHash))
-          )
+          .void
       end
-      def git_metadata_settings=(_)
-      end
+      attr_writer :git_metadata_settings
 
       # Whether the experiment should be public. Defaults to false.
       sig { returns(T.nilable(T::Boolean)) }
-      def is_public
-      end
-
-      sig { params(_: T.nilable(T::Boolean)).returns(T.nilable(T::Boolean)) }
-      def is_public=(_)
-      end
+      attr_accessor :is_public
 
       # The maximum number of tasks/scorers that will be run concurrently. Defaults to
       #   undefined, in which case there is no max concurrency.
       sig { returns(T.nilable(Float)) }
-      def max_concurrency
-      end
-
-      sig { params(_: T.nilable(Float)).returns(T.nilable(Float)) }
-      def max_concurrency=(_)
-      end
+      attr_accessor :max_concurrency
 
       # Optional experiment-level metadata to store about the evaluation. You can later
       #   use this to slice & dice across experiments.
       sig { returns(T.nilable(T::Hash[Symbol, T.nilable(T.anything)])) }
-      def metadata
-      end
+      attr_reader :metadata
 
-      sig do
-        params(_: T::Hash[Symbol, T.nilable(T.anything)]).returns(T::Hash[Symbol, T.nilable(T.anything)])
-      end
-      def metadata=(_)
-      end
+      sig { params(metadata: T::Hash[Symbol, T.nilable(T.anything)]).void }
+      attr_writer :metadata
 
       # Options for tracing the evaluation
       sig { returns(T.nilable(T.any(Braintrust::Models::EvalCreateParams::Parent::SpanParentStruct, String))) }
-      def parent
-      end
+      attr_reader :parent
 
       sig do
         params(
-          _: T.any(Braintrust::Models::EvalCreateParams::Parent::SpanParentStruct, Braintrust::Util::AnyHash, String)
+          parent: T.any(Braintrust::Models::EvalCreateParams::Parent::SpanParentStruct, Braintrust::Util::AnyHash, String)
         )
-          .returns(
-            T.any(Braintrust::Models::EvalCreateParams::Parent::SpanParentStruct, Braintrust::Util::AnyHash, String)
-          )
+          .void
       end
-      def parent=(_)
-      end
+      attr_writer :parent
 
       # Metadata about the state of the repo when the experiment was created
       sig { returns(T.nilable(Braintrust::Models::RepoInfo)) }
-      def repo_info
-      end
+      attr_reader :repo_info
 
-      sig do
-        params(_: T.nilable(T.any(Braintrust::Models::RepoInfo, Braintrust::Util::AnyHash)))
-          .returns(T.nilable(T.any(Braintrust::Models::RepoInfo, Braintrust::Util::AnyHash)))
-      end
-      def repo_info=(_)
-      end
+      sig { params(repo_info: T.nilable(T.any(Braintrust::Models::RepoInfo, Braintrust::Util::AnyHash))).void }
+      attr_writer :repo_info
 
       # Whether to stream the results of the eval. If true, the request will return two
       #   events: one to indicate the experiment has started, and another upon completion.
       #   If false, the request will return the evaluation's summary upon completion.
       sig { returns(T.nilable(T::Boolean)) }
-      def stream
-      end
+      attr_reader :stream
 
-      sig { params(_: T::Boolean).returns(T::Boolean) }
-      def stream=(_)
-      end
+      sig { params(stream: T::Boolean).void }
+      attr_writer :stream
 
       # The maximum duration, in milliseconds, to run the evaluation. Defaults to
       #   undefined, in which case there is no timeout.
       sig { returns(T.nilable(Float)) }
-      def timeout
-      end
-
-      sig { params(_: T.nilable(Float)).returns(T.nilable(Float)) }
-      def timeout=(_)
-      end
+      attr_accessor :timeout
 
       # The number of times to run the evaluator per input. This is useful for
       #   evaluating applications that have non-deterministic behavior and gives you both
       #   a stronger aggregate measure and a sense of the variance in the results.
       sig { returns(T.nilable(Float)) }
-      def trial_count
-      end
-
-      sig { params(_: T.nilable(Float)).returns(T.nilable(Float)) }
-      def trial_count=(_)
-      end
+      attr_accessor :trial_count
 
       sig do
         params(
@@ -403,23 +271,10 @@ module Braintrust
 
         class DatasetID < Braintrust::BaseModel
           sig { returns(String) }
-          def dataset_id
-          end
-
-          sig { params(_: String).returns(String) }
-          def dataset_id=(_)
-          end
+          attr_accessor :dataset_id
 
           sig { returns(T.nilable(T::Hash[Symbol, T.nilable(T.anything)])) }
-          def _internal_btql
-          end
-
-          sig do
-            params(_: T.nilable(T::Hash[Symbol, T.nilable(T.anything)]))
-              .returns(T.nilable(T::Hash[Symbol, T.nilable(T.anything)]))
-          end
-          def _internal_btql=(_)
-          end
+          attr_accessor :_internal_btql
 
           # Dataset id
           sig do
@@ -443,31 +298,13 @@ module Braintrust
 
         class ProjectDatasetName < Braintrust::BaseModel
           sig { returns(String) }
-          def dataset_name
-          end
-
-          sig { params(_: String).returns(String) }
-          def dataset_name=(_)
-          end
+          attr_accessor :dataset_name
 
           sig { returns(String) }
-          def project_name
-          end
-
-          sig { params(_: String).returns(String) }
-          def project_name=(_)
-          end
+          attr_accessor :project_name
 
           sig { returns(T.nilable(T::Hash[Symbol, T.nilable(T.anything)])) }
-          def _internal_btql
-          end
-
-          sig do
-            params(_: T.nilable(T::Hash[Symbol, T.nilable(T.anything)]))
-              .returns(T.nilable(T::Hash[Symbol, T.nilable(T.anything)]))
-          end
-          def _internal_btql=(_)
-          end
+          attr_accessor :_internal_btql
 
           # Project and dataset name
           sig do
@@ -497,12 +334,7 @@ module Braintrust
 
         class DatasetRows < Braintrust::BaseModel
           sig { returns(T::Array[T.nilable(T.anything)]) }
-          def data
-          end
-
-          sig { params(_: T::Array[T.nilable(T.anything)]).returns(T::Array[T.nilable(T.anything)]) }
-          def data=(_)
-          end
+          attr_accessor :data
 
           # Dataset rows
           sig { params(data: T::Array[T.nilable(T.anything)]).returns(T.attached_class) }
@@ -547,21 +379,14 @@ module Braintrust
         class FunctionID < Braintrust::BaseModel
           # The ID of the function
           sig { returns(String) }
-          def function_id
-          end
-
-          sig { params(_: String).returns(String) }
-          def function_id=(_)
-          end
+          attr_accessor :function_id
 
           # The version of the function
           sig { returns(T.nilable(String)) }
-          def version
-          end
+          attr_reader :version
 
-          sig { params(_: String).returns(String) }
-          def version=(_)
-          end
+          sig { params(version: String).void }
+          attr_writer :version
 
           # Function id
           sig { params(function_id: String, version: String).returns(T.attached_class) }
@@ -576,30 +401,18 @@ module Braintrust
         class ProjectSlug < Braintrust::BaseModel
           # The name of the project containing the function
           sig { returns(String) }
-          def project_name
-          end
-
-          sig { params(_: String).returns(String) }
-          def project_name=(_)
-          end
+          attr_accessor :project_name
 
           # The slug of the function
           sig { returns(String) }
-          def slug
-          end
-
-          sig { params(_: String).returns(String) }
-          def slug=(_)
-          end
+          attr_accessor :slug
 
           # The version of the function
           sig { returns(T.nilable(String)) }
-          def version
-          end
+          attr_reader :version
 
-          sig { params(_: String).returns(String) }
-          def version=(_)
-          end
+          sig { params(version: String).void }
+          attr_writer :version
 
           # Project name and slug
           sig { params(project_name: String, slug: String, version: String).returns(T.attached_class) }
@@ -615,12 +428,7 @@ module Braintrust
           # The name of the global function. Currently, the global namespace includes the
           #   functions in autoevals
           sig { returns(String) }
-          def global_function
-          end
-
-          sig { params(_: String).returns(String) }
-          def global_function=(_)
-          end
+          attr_accessor :global_function
 
           # Global function name
           sig { params(global_function: String).returns(T.attached_class) }
@@ -635,30 +443,18 @@ module Braintrust
         class PromptSessionID < Braintrust::BaseModel
           # The ID of the function in the prompt session
           sig { returns(String) }
-          def prompt_session_function_id
-          end
-
-          sig { params(_: String).returns(String) }
-          def prompt_session_function_id=(_)
-          end
+          attr_accessor :prompt_session_function_id
 
           # The ID of the prompt session
           sig { returns(String) }
-          def prompt_session_id
-          end
-
-          sig { params(_: String).returns(String) }
-          def prompt_session_id=(_)
-          end
+          attr_accessor :prompt_session_id
 
           # The version of the function
           sig { returns(T.nilable(String)) }
-          def version
-          end
+          attr_reader :version
 
-          sig { params(_: String).returns(String) }
-          def version=(_)
-          end
+          sig { params(version: String).void }
+          attr_writer :version
 
           # Prompt session id
           sig do
@@ -678,36 +474,22 @@ module Braintrust
         class InlineCode < Braintrust::BaseModel
           # The inline code to execute
           sig { returns(String) }
-          def code
-          end
-
-          sig { params(_: String).returns(String) }
-          def code=(_)
-          end
+          attr_accessor :code
 
           sig { returns(Braintrust::Models::EvalCreateParams::Score::InlineCode::InlineContext) }
-          def inline_context
-          end
+          attr_reader :inline_context
 
           sig do
             params(
-              _: T.any(Braintrust::Models::EvalCreateParams::Score::InlineCode::InlineContext, Braintrust::Util::AnyHash)
+              inline_context: T.any(Braintrust::Models::EvalCreateParams::Score::InlineCode::InlineContext, Braintrust::Util::AnyHash)
             )
-              .returns(
-                T.any(Braintrust::Models::EvalCreateParams::Score::InlineCode::InlineContext, Braintrust::Util::AnyHash)
-              )
+              .void
           end
-          def inline_context=(_)
-          end
+          attr_writer :inline_context
 
           # The name of the inline code function
           sig { returns(T.nilable(String)) }
-          def name
-          end
-
-          sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-          def name=(_)
-          end
+          attr_accessor :name
 
           # Inline code function
           sig do
@@ -736,23 +518,10 @@ module Braintrust
 
           class InlineContext < Braintrust::BaseModel
             sig { returns(Braintrust::Models::EvalCreateParams::Score::InlineCode::InlineContext::Runtime::OrSymbol) }
-            def runtime
-            end
-
-            sig do
-              params(_: Braintrust::Models::EvalCreateParams::Score::InlineCode::InlineContext::Runtime::OrSymbol)
-                .returns(Braintrust::Models::EvalCreateParams::Score::InlineCode::InlineContext::Runtime::OrSymbol)
-            end
-            def runtime=(_)
-            end
+            attr_accessor :runtime
 
             sig { returns(String) }
-            def version
-            end
-
-            sig { params(_: String).returns(String) }
-            def version=(_)
-            end
+            attr_accessor :version
 
             sig do
               params(
@@ -817,24 +586,14 @@ module Braintrust
         class InlinePrompt < Braintrust::BaseModel
           # The prompt, model, and its parameters
           sig { returns(T.nilable(Braintrust::Models::PromptData)) }
-          def inline_prompt
-          end
+          attr_reader :inline_prompt
 
-          sig do
-            params(_: T.nilable(T.any(Braintrust::Models::PromptData, Braintrust::Util::AnyHash)))
-              .returns(T.nilable(T.any(Braintrust::Models::PromptData, Braintrust::Util::AnyHash)))
-          end
-          def inline_prompt=(_)
-          end
+          sig { params(inline_prompt: T.nilable(T.any(Braintrust::Models::PromptData, Braintrust::Util::AnyHash))).void }
+          attr_writer :inline_prompt
 
           # The name of the inline prompt
           sig { returns(T.nilable(String)) }
-          def name
-          end
-
-          sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-          def name=(_)
-          end
+          attr_accessor :name
 
           # Inline prompt definition
           sig do
@@ -885,21 +644,14 @@ module Braintrust
         class FunctionID < Braintrust::BaseModel
           # The ID of the function
           sig { returns(String) }
-          def function_id
-          end
-
-          sig { params(_: String).returns(String) }
-          def function_id=(_)
-          end
+          attr_accessor :function_id
 
           # The version of the function
           sig { returns(T.nilable(String)) }
-          def version
-          end
+          attr_reader :version
 
-          sig { params(_: String).returns(String) }
-          def version=(_)
-          end
+          sig { params(version: String).void }
+          attr_writer :version
 
           # Function id
           sig { params(function_id: String, version: String).returns(T.attached_class) }
@@ -914,30 +666,18 @@ module Braintrust
         class ProjectSlug < Braintrust::BaseModel
           # The name of the project containing the function
           sig { returns(String) }
-          def project_name
-          end
-
-          sig { params(_: String).returns(String) }
-          def project_name=(_)
-          end
+          attr_accessor :project_name
 
           # The slug of the function
           sig { returns(String) }
-          def slug
-          end
-
-          sig { params(_: String).returns(String) }
-          def slug=(_)
-          end
+          attr_accessor :slug
 
           # The version of the function
           sig { returns(T.nilable(String)) }
-          def version
-          end
+          attr_reader :version
 
-          sig { params(_: String).returns(String) }
-          def version=(_)
-          end
+          sig { params(version: String).void }
+          attr_writer :version
 
           # Project name and slug
           sig { params(project_name: String, slug: String, version: String).returns(T.attached_class) }
@@ -953,12 +693,7 @@ module Braintrust
           # The name of the global function. Currently, the global namespace includes the
           #   functions in autoevals
           sig { returns(String) }
-          def global_function
-          end
-
-          sig { params(_: String).returns(String) }
-          def global_function=(_)
-          end
+          attr_accessor :global_function
 
           # Global function name
           sig { params(global_function: String).returns(T.attached_class) }
@@ -973,30 +708,18 @@ module Braintrust
         class PromptSessionID < Braintrust::BaseModel
           # The ID of the function in the prompt session
           sig { returns(String) }
-          def prompt_session_function_id
-          end
-
-          sig { params(_: String).returns(String) }
-          def prompt_session_function_id=(_)
-          end
+          attr_accessor :prompt_session_function_id
 
           # The ID of the prompt session
           sig { returns(String) }
-          def prompt_session_id
-          end
-
-          sig { params(_: String).returns(String) }
-          def prompt_session_id=(_)
-          end
+          attr_accessor :prompt_session_id
 
           # The version of the function
           sig { returns(T.nilable(String)) }
-          def version
-          end
+          attr_reader :version
 
-          sig { params(_: String).returns(String) }
-          def version=(_)
-          end
+          sig { params(version: String).void }
+          attr_writer :version
 
           # Prompt session id
           sig do
@@ -1016,36 +739,22 @@ module Braintrust
         class InlineCode < Braintrust::BaseModel
           # The inline code to execute
           sig { returns(String) }
-          def code
-          end
-
-          sig { params(_: String).returns(String) }
-          def code=(_)
-          end
+          attr_accessor :code
 
           sig { returns(Braintrust::Models::EvalCreateParams::Task::InlineCode::InlineContext) }
-          def inline_context
-          end
+          attr_reader :inline_context
 
           sig do
             params(
-              _: T.any(Braintrust::Models::EvalCreateParams::Task::InlineCode::InlineContext, Braintrust::Util::AnyHash)
+              inline_context: T.any(Braintrust::Models::EvalCreateParams::Task::InlineCode::InlineContext, Braintrust::Util::AnyHash)
             )
-              .returns(
-                T.any(Braintrust::Models::EvalCreateParams::Task::InlineCode::InlineContext, Braintrust::Util::AnyHash)
-              )
+              .void
           end
-          def inline_context=(_)
-          end
+          attr_writer :inline_context
 
           # The name of the inline code function
           sig { returns(T.nilable(String)) }
-          def name
-          end
-
-          sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-          def name=(_)
-          end
+          attr_accessor :name
 
           # Inline code function
           sig do
@@ -1074,23 +783,10 @@ module Braintrust
 
           class InlineContext < Braintrust::BaseModel
             sig { returns(Braintrust::Models::EvalCreateParams::Task::InlineCode::InlineContext::Runtime::OrSymbol) }
-            def runtime
-            end
-
-            sig do
-              params(_: Braintrust::Models::EvalCreateParams::Task::InlineCode::InlineContext::Runtime::OrSymbol)
-                .returns(Braintrust::Models::EvalCreateParams::Task::InlineCode::InlineContext::Runtime::OrSymbol)
-            end
-            def runtime=(_)
-            end
+            attr_accessor :runtime
 
             sig { returns(String) }
-            def version
-            end
-
-            sig { params(_: String).returns(String) }
-            def version=(_)
-            end
+            attr_accessor :version
 
             sig do
               params(
@@ -1152,24 +848,14 @@ module Braintrust
         class InlinePrompt < Braintrust::BaseModel
           # The prompt, model, and its parameters
           sig { returns(T.nilable(Braintrust::Models::PromptData)) }
-          def inline_prompt
-          end
+          attr_reader :inline_prompt
 
-          sig do
-            params(_: T.nilable(T.any(Braintrust::Models::PromptData, Braintrust::Util::AnyHash)))
-              .returns(T.nilable(T.any(Braintrust::Models::PromptData, Braintrust::Util::AnyHash)))
-          end
-          def inline_prompt=(_)
-          end
+          sig { params(inline_prompt: T.nilable(T.any(Braintrust::Models::PromptData, Braintrust::Util::AnyHash))).void }
+          attr_writer :inline_prompt
 
           # The name of the inline prompt
           sig { returns(T.nilable(String)) }
-          def name
-          end
-
-          sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-          def name=(_)
-          end
+          attr_accessor :name
 
           # Inline prompt definition
           sig do
@@ -1201,26 +887,13 @@ module Braintrust
 
       class GitMetadataSettings < Braintrust::BaseModel
         sig { returns(Braintrust::Models::EvalCreateParams::GitMetadataSettings::Collect::OrSymbol) }
-        def collect
-        end
-
-        sig do
-          params(_: Braintrust::Models::EvalCreateParams::GitMetadataSettings::Collect::OrSymbol)
-            .returns(Braintrust::Models::EvalCreateParams::GitMetadataSettings::Collect::OrSymbol)
-        end
-        def collect=(_)
-        end
+        attr_accessor :collect
 
         sig { returns(T.nilable(T::Array[Braintrust::Models::EvalCreateParams::GitMetadataSettings::Field::OrSymbol])) }
-        def fields
-        end
+        attr_reader :fields
 
-        sig do
-          params(_: T::Array[Braintrust::Models::EvalCreateParams::GitMetadataSettings::Field::OrSymbol])
-            .returns(T::Array[Braintrust::Models::EvalCreateParams::GitMetadataSettings::Field::OrSymbol])
-        end
-        def fields=(_)
-        end
+        sig { params(fields: T::Array[Braintrust::Models::EvalCreateParams::GitMetadataSettings::Field::OrSymbol]).void }
+        attr_writer :fields
 
         # Optional settings for collecting git metadata. By default, will collect all git
         #   metadata fields allowed in org-level settings.
@@ -1309,55 +982,28 @@ module Braintrust
         class SpanParentStruct < Braintrust::BaseModel
           # The id of the container object you are logging to
           sig { returns(String) }
-          def object_id_
-          end
-
-          sig { params(_: String).returns(String) }
-          def object_id_=(_)
-          end
+          attr_accessor :object_id_
 
           sig { returns(Braintrust::Models::EvalCreateParams::Parent::SpanParentStruct::ObjectType::OrSymbol) }
-          def object_type
-          end
-
-          sig do
-            params(_: Braintrust::Models::EvalCreateParams::Parent::SpanParentStruct::ObjectType::OrSymbol)
-              .returns(Braintrust::Models::EvalCreateParams::Parent::SpanParentStruct::ObjectType::OrSymbol)
-          end
-          def object_type=(_)
-          end
+          attr_accessor :object_type
 
           # Include these properties in every span created under this parent
           sig { returns(T.nilable(T::Hash[Symbol, T.nilable(T.anything)])) }
-          def propagated_event
-          end
-
-          sig do
-            params(_: T.nilable(T::Hash[Symbol, T.nilable(T.anything)]))
-              .returns(T.nilable(T::Hash[Symbol, T.nilable(T.anything)]))
-          end
-          def propagated_event=(_)
-          end
+          attr_accessor :propagated_event
 
           # Identifiers for the row to to log a subspan under
           sig { returns(T.nilable(Braintrust::Models::EvalCreateParams::Parent::SpanParentStruct::RowIDs)) }
-          def row_ids
-          end
+          attr_reader :row_ids
 
           sig do
             params(
-              _: T.nilable(
+              row_ids: T.nilable(
                 T.any(Braintrust::Models::EvalCreateParams::Parent::SpanParentStruct::RowIDs, Braintrust::Util::AnyHash)
               )
             )
-              .returns(
-                T.nilable(
-                  T.any(Braintrust::Models::EvalCreateParams::Parent::SpanParentStruct::RowIDs, Braintrust::Util::AnyHash)
-                )
-              )
+              .void
           end
-          def row_ids=(_)
-          end
+          attr_writer :row_ids
 
           # Span parent properties
           sig do
@@ -1427,30 +1073,15 @@ module Braintrust
           class RowIDs < Braintrust::BaseModel
             # The id of the row
             sig { returns(String) }
-            def id
-            end
-
-            sig { params(_: String).returns(String) }
-            def id=(_)
-            end
+            attr_accessor :id
 
             # The root_span_id of the row
             sig { returns(String) }
-            def root_span_id
-            end
-
-            sig { params(_: String).returns(String) }
-            def root_span_id=(_)
-            end
+            attr_accessor :root_span_id
 
             # The span_id of the row
             sig { returns(String) }
-            def span_id
-            end
-
-            sig { params(_: String).returns(String) }
-            def span_id=(_)
-            end
+            attr_accessor :span_id
 
             # Identifiers for the row to to log a subspan under
             sig { params(id: String, root_span_id: String, span_id: String).returns(T.attached_class) }

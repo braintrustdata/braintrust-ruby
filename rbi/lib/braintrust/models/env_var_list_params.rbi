@@ -8,52 +8,36 @@ module Braintrust
 
       # Name of the env_var to search for
       sig { returns(T.nilable(String)) }
-      def env_var_name
-      end
+      attr_reader :env_var_name
 
-      sig { params(_: String).returns(String) }
-      def env_var_name=(_)
-      end
+      sig { params(env_var_name: String).void }
+      attr_writer :env_var_name
 
       # Filter search results to a particular set of object IDs. To specify a list of
       #   IDs, include the query param multiple times
       sig { returns(T.nilable(T.any(String, T::Array[String]))) }
-      def ids
-      end
+      attr_reader :ids
 
-      sig { params(_: T.any(String, T::Array[String])).returns(T.any(String, T::Array[String])) }
-      def ids=(_)
-      end
+      sig { params(ids: T.any(String, T::Array[String])).void }
+      attr_writer :ids
 
       # Limit the number of objects to return
       sig { returns(T.nilable(Integer)) }
-      def limit
-      end
-
-      sig { params(_: T.nilable(Integer)).returns(T.nilable(Integer)) }
-      def limit=(_)
-      end
+      attr_accessor :limit
 
       # The id of the object the environment variable is scoped for
       sig { returns(T.nilable(String)) }
-      def object_id_
-      end
+      attr_reader :object_id_
 
-      sig { params(_: String).returns(String) }
-      def object_id_=(_)
-      end
+      sig { params(object_id_: String).void }
+      attr_writer :object_id_
 
       # The type of the object the environment variable is scoped for
       sig { returns(T.nilable(Braintrust::Models::EnvVarObjectType::OrSymbol)) }
-      def object_type
-      end
+      attr_reader :object_type
 
-      sig do
-        params(_: Braintrust::Models::EnvVarObjectType::OrSymbol)
-          .returns(Braintrust::Models::EnvVarObjectType::OrSymbol)
-      end
-      def object_type=(_)
-      end
+      sig { params(object_type: Braintrust::Models::EnvVarObjectType::OrSymbol).void }
+      attr_writer :object_type
 
       sig do
         params(
