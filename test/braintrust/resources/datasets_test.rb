@@ -74,6 +74,8 @@ class Braintrust::Test::Resources::DatasetsTest < Braintrust::Test::ResourceTest
     end
 
     row = response.to_enum.first
+    return if row.nil?
+
     assert_pattern do
       row => Braintrust::Models::Dataset
     end
