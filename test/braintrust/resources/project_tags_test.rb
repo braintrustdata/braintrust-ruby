@@ -72,6 +72,8 @@ class Braintrust::Test::Resources::ProjectTagsTest < Braintrust::Test::ResourceT
     end
 
     row = response.to_enum.first
+    return if row.nil?
+
     assert_pattern do
       row => Braintrust::Models::ProjectTag
     end

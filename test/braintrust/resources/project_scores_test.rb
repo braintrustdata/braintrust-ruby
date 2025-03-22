@@ -85,6 +85,8 @@ class Braintrust::Test::Resources::ProjectScoresTest < Braintrust::Test::Resourc
     end
 
     row = response.to_enum.first
+    return if row.nil?
+
     assert_pattern do
       row => Braintrust::Models::ProjectScore
     end

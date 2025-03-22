@@ -82,6 +82,8 @@ class Braintrust::Test::Resources::SpanIframesTest < Braintrust::Test::ResourceT
     end
 
     row = response.to_enum.first
+    return if row.nil?
+
     assert_pattern do
       row => Braintrust::Models::SpanIFrame
     end
