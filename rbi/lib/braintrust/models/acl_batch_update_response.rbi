@@ -40,7 +40,10 @@ module Braintrust
       end
 
       sig do
-        params(added_acls: T::Array[Braintrust::Models::ACL], removed_acls: T::Array[Braintrust::Models::ACL])
+        params(
+          added_acls: T::Array[T.any(Braintrust::Models::ACL, Braintrust::Util::AnyHash)],
+          removed_acls: T::Array[T.any(Braintrust::Models::ACL, Braintrust::Util::AnyHash)]
+        )
           .returns(T.attached_class)
       end
       def self.new(added_acls:, removed_acls:)

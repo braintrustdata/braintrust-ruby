@@ -12,7 +12,10 @@ module Braintrust
       def objects=(_)
       end
 
-      sig { params(objects: T::Array[Braintrust::Models::EnvVar]).returns(T.attached_class) }
+      sig do
+        params(objects: T::Array[T.any(Braintrust::Models::EnvVar, Braintrust::Util::AnyHash)])
+          .returns(T.attached_class)
+      end
       def self.new(objects:)
       end
 

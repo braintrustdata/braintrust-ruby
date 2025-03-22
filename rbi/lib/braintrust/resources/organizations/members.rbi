@@ -7,10 +7,14 @@ module Braintrust
         # Modify organization membership
         sig do
           params(
-            invite_users: T.nilable(Braintrust::Models::Organizations::MemberUpdateParams::InviteUsers),
+            invite_users: T.nilable(
+              T.any(Braintrust::Models::Organizations::MemberUpdateParams::InviteUsers, Braintrust::Util::AnyHash)
+            ),
             org_id: T.nilable(String),
             org_name: T.nilable(String),
-            remove_users: T.nilable(Braintrust::Models::Organizations::MemberUpdateParams::RemoveUsers),
+            remove_users: T.nilable(
+              T.any(Braintrust::Models::Organizations::MemberUpdateParams::RemoveUsers, Braintrust::Util::AnyHash)
+            ),
             request_options: T.nilable(T.any(Braintrust::RequestOptions, Braintrust::Util::AnyHash))
           )
             .returns(Braintrust::Models::PatchOrganizationMembersOutput)

@@ -31,6 +31,7 @@ module Braintrust
         params(
           _: T.any(
             Braintrust::Models::PromptOptions::Params::OpenAIModelParams,
+            Braintrust::Util::AnyHash,
             Braintrust::Models::PromptOptions::Params::AnthropicModelParams,
             Braintrust::Models::PromptOptions::Params::GoogleModelParams,
             Braintrust::Models::PromptOptions::Params::WindowAIModelParams,
@@ -40,6 +41,7 @@ module Braintrust
           .returns(
             T.any(
               Braintrust::Models::PromptOptions::Params::OpenAIModelParams,
+              Braintrust::Util::AnyHash,
               Braintrust::Models::PromptOptions::Params::AnthropicModelParams,
               Braintrust::Models::PromptOptions::Params::GoogleModelParams,
               Braintrust::Models::PromptOptions::Params::WindowAIModelParams,
@@ -63,6 +65,7 @@ module Braintrust
           model: String,
           params: T.any(
             Braintrust::Models::PromptOptions::Params::OpenAIModelParams,
+            Braintrust::Util::AnyHash,
             Braintrust::Models::PromptOptions::Params::AnthropicModelParams,
             Braintrust::Models::PromptOptions::Params::GoogleModelParams,
             Braintrust::Models::PromptOptions::Params::WindowAIModelParams,
@@ -136,13 +139,15 @@ module Braintrust
             params(
               _: T.any(
                 Braintrust::Models::PromptOptions::Params::OpenAIModelParams::FunctionCall::OrSymbol,
-                Braintrust::Models::PromptOptions::Params::OpenAIModelParams::FunctionCall::Function
+                Braintrust::Models::PromptOptions::Params::OpenAIModelParams::FunctionCall::Function,
+                Braintrust::Util::AnyHash
               )
             )
               .returns(
                 T.any(
                   Braintrust::Models::PromptOptions::Params::OpenAIModelParams::FunctionCall::OrSymbol,
-                  Braintrust::Models::PromptOptions::Params::OpenAIModelParams::FunctionCall::Function
+                  Braintrust::Models::PromptOptions::Params::OpenAIModelParams::FunctionCall::Function,
+                  Braintrust::Util::AnyHash
                 )
               )
           end
@@ -267,13 +272,15 @@ module Braintrust
             params(
               _: T.any(
                 Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ToolChoice::OrSymbol,
-                Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ToolChoice::Function
+                Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ToolChoice::Function,
+                Braintrust::Util::AnyHash
               )
             )
               .returns(
                 T.any(
                   Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ToolChoice::OrSymbol,
-                  Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ToolChoice::Function
+                  Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ToolChoice::Function,
+                  Braintrust::Util::AnyHash
                 )
               )
           end
@@ -301,7 +308,8 @@ module Braintrust
               frequency_penalty: Float,
               function_call: T.any(
                 Braintrust::Models::PromptOptions::Params::OpenAIModelParams::FunctionCall::OrSymbol,
-                Braintrust::Models::PromptOptions::Params::OpenAIModelParams::FunctionCall::Function
+                Braintrust::Models::PromptOptions::Params::OpenAIModelParams::FunctionCall::Function,
+                Braintrust::Util::AnyHash
               ),
               max_completion_tokens: Float,
               max_tokens: Float,
@@ -311,6 +319,7 @@ module Braintrust
               response_format: T.nilable(
                 T.any(
                   Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ResponseFormat::JsonObject,
+                  Braintrust::Util::AnyHash,
                   Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ResponseFormat::JsonSchema,
                   Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ResponseFormat::Text
                 )
@@ -319,7 +328,8 @@ module Braintrust
               temperature: Float,
               tool_choice: T.any(
                 Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ToolChoice::OrSymbol,
-                Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ToolChoice::Function
+                Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ToolChoice::Function,
+                Braintrust::Util::AnyHash
               ),
               top_p: Float,
               use_cache: T::Boolean

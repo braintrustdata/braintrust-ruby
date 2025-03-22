@@ -28,7 +28,10 @@ module Braintrust
       end
 
       sig do
-        params(events: T::Array[Braintrust::Models::ProjectLogsEvent], cursor: T.nilable(String))
+        params(
+          events: T::Array[T.any(Braintrust::Models::ProjectLogsEvent, Braintrust::Util::AnyHash)],
+          cursor: T.nilable(String)
+        )
           .returns(T.attached_class)
       end
       def self.new(events:, cursor: nil)

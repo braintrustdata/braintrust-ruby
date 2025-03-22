@@ -49,6 +49,7 @@ module Braintrust
           _: T::Array[
           T.any(
             Braintrust::Models::FunctionInvokeParams::Message::System,
+            Braintrust::Util::AnyHash,
             Braintrust::Models::FunctionInvokeParams::Message::User,
             Braintrust::Models::FunctionInvokeParams::Message::Assistant,
             Braintrust::Models::FunctionInvokeParams::Message::Tool,
@@ -61,6 +62,7 @@ module Braintrust
             T::Array[
             T.any(
               Braintrust::Models::FunctionInvokeParams::Message::System,
+              Braintrust::Util::AnyHash,
               Braintrust::Models::FunctionInvokeParams::Message::User,
               Braintrust::Models::FunctionInvokeParams::Message::Assistant,
               Braintrust::Models::FunctionInvokeParams::Message::Tool,
@@ -103,8 +105,20 @@ module Braintrust
       end
 
       sig do
-        params(_: T.any(Braintrust::Models::FunctionInvokeParams::Parent::SpanParentStruct, String))
-          .returns(T.any(Braintrust::Models::FunctionInvokeParams::Parent::SpanParentStruct, String))
+        params(
+          _: T.any(
+            Braintrust::Models::FunctionInvokeParams::Parent::SpanParentStruct,
+            Braintrust::Util::AnyHash,
+            String
+          )
+        )
+          .returns(
+            T.any(
+              Braintrust::Models::FunctionInvokeParams::Parent::SpanParentStruct,
+              Braintrust::Util::AnyHash,
+              String
+            )
+          )
       end
       def parent=(_)
       end
@@ -135,6 +149,7 @@ module Braintrust
           messages: T::Array[
           T.any(
             Braintrust::Models::FunctionInvokeParams::Message::System,
+            Braintrust::Util::AnyHash,
             Braintrust::Models::FunctionInvokeParams::Message::User,
             Braintrust::Models::FunctionInvokeParams::Message::Assistant,
             Braintrust::Models::FunctionInvokeParams::Message::Tool,
@@ -144,7 +159,11 @@ module Braintrust
           ],
           metadata: T.nilable(T::Hash[Symbol, T.nilable(T.anything)]),
           mode: T.nilable(Braintrust::Models::FunctionInvokeParams::Mode::OrSymbol),
-          parent: T.any(Braintrust::Models::FunctionInvokeParams::Parent::SpanParentStruct, String),
+          parent: T.any(
+            Braintrust::Models::FunctionInvokeParams::Parent::SpanParentStruct,
+            Braintrust::Util::AnyHash,
+            String
+          ),
           stream: T.nilable(T::Boolean),
           version: String,
           request_options: T.any(Braintrust::RequestOptions, Braintrust::Util::AnyHash)
@@ -312,6 +331,7 @@ module Braintrust
                 T::Array[
                 T.any(
                   Braintrust::Models::ChatCompletionContentPartText,
+                  Braintrust::Util::AnyHash,
                   Braintrust::Models::ChatCompletionContentPartImage
                 )
                 ]
@@ -323,6 +343,7 @@ module Braintrust
                   T::Array[
                   T.any(
                     Braintrust::Models::ChatCompletionContentPartText,
+                    Braintrust::Util::AnyHash,
                     Braintrust::Models::ChatCompletionContentPartImage
                   )
                   ]
@@ -348,6 +369,7 @@ module Braintrust
                 T::Array[
                 T.any(
                   Braintrust::Models::ChatCompletionContentPartText,
+                  Braintrust::Util::AnyHash,
                   Braintrust::Models::ChatCompletionContentPartImage
                 )
                 ]
@@ -542,7 +564,7 @@ module Braintrust
                 )
               ),
               name: T.nilable(String),
-              tool_calls: T.nilable(T::Array[Braintrust::Models::ChatCompletionMessageToolCall])
+              tool_calls: T.nilable(T::Array[T.any(Braintrust::Models::ChatCompletionMessageToolCall, Braintrust::Util::AnyHash)])
             )
               .returns(T.attached_class)
           end

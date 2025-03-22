@@ -68,11 +68,15 @@ module Braintrust
 
       sig do
         params(
-          add_member_permissions: T.nilable(T::Array[Braintrust::Models::RoleUpdateParams::AddMemberPermission]),
+          add_member_permissions: T.nilable(
+            T::Array[T.any(Braintrust::Models::RoleUpdateParams::AddMemberPermission, Braintrust::Util::AnyHash)]
+          ),
           add_member_roles: T.nilable(T::Array[String]),
           description: T.nilable(String),
           name: T.nilable(String),
-          remove_member_permissions: T.nilable(T::Array[Braintrust::Models::RoleUpdateParams::RemoveMemberPermission]),
+          remove_member_permissions: T.nilable(
+            T::Array[T.any(Braintrust::Models::RoleUpdateParams::RemoveMemberPermission, Braintrust::Util::AnyHash)]
+          ),
           remove_member_roles: T.nilable(T::Array[String]),
           request_options: T.any(Braintrust::RequestOptions, Braintrust::Util::AnyHash)
         )
