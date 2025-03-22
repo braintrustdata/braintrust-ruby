@@ -20,7 +20,7 @@ module Braintrust
 
       sig do
         params(
-          feedback: T::Array[Braintrust::Models::FeedbackDatasetItem],
+          feedback: T::Array[T.any(Braintrust::Models::FeedbackDatasetItem, Braintrust::Util::AnyHash)],
           request_options: T.any(Braintrust::RequestOptions, Braintrust::Util::AnyHash)
         )
           .returns(T.attached_class)

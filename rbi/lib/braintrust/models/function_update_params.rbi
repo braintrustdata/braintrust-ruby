@@ -88,6 +88,7 @@ module Braintrust
           function_data: T.nilable(
             T.any(
               Braintrust::Models::FunctionUpdateParams::FunctionData::Prompt,
+              Braintrust::Util::AnyHash,
               Braintrust::Models::FunctionUpdateParams::FunctionData::Code,
               Braintrust::Models::FunctionUpdateParams::FunctionData::Global
             )
@@ -227,6 +228,7 @@ module Braintrust
             params(
               data: T.any(
                 Braintrust::Models::FunctionUpdateParams::FunctionData::Code::Data::Bundle,
+                Braintrust::Util::AnyHash,
                 Braintrust::Models::FunctionUpdateParams::FunctionData::Code::Data::Inline
               ),
               type: Braintrust::Models::FunctionUpdateParams::FunctionData::Code::Type::OrSymbol

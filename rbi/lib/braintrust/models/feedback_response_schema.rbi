@@ -14,7 +14,7 @@ module Braintrust
       def status=(_)
       end
 
-      sig { params(status: Braintrust::Models::FeedbackResponseSchema::Status::TaggedSymbol).returns(T.attached_class) }
+      sig { params(status: Braintrust::Models::FeedbackResponseSchema::Status::OrSymbol).returns(T.attached_class) }
       def self.new(status:)
       end
 

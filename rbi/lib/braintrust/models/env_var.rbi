@@ -65,7 +65,7 @@ module Braintrust
           id: String,
           name: String,
           object_id_: String,
-          object_type: Braintrust::Models::EnvVar::ObjectType::TaggedSymbol,
+          object_type: Braintrust::Models::EnvVar::ObjectType::OrSymbol,
           created: T.nilable(Time),
           used: T.nilable(Time)
         )

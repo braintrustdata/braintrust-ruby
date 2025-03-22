@@ -108,12 +108,17 @@ module Braintrust
           origin: T.nilable(T.any(Braintrust::Models::PromptData::Origin, Braintrust::Util::AnyHash)),
           parser: T.nilable(T.any(Braintrust::Models::PromptData::Parser, Braintrust::Util::AnyHash)),
           prompt: T.nilable(
-            T.any(Braintrust::Models::PromptData::Prompt::Completion, Braintrust::Models::PromptData::Prompt::Chat)
+            T.any(
+              Braintrust::Models::PromptData::Prompt::Completion,
+              Braintrust::Util::AnyHash,
+              Braintrust::Models::PromptData::Prompt::Chat
+            )
           ),
           tool_functions: T.nilable(
             T::Array[
             T.any(
               Braintrust::Models::PromptData::ToolFunction::Function,
+              Braintrust::Util::AnyHash,
               Braintrust::Models::PromptData::ToolFunction::Global
             )
             ]
@@ -384,6 +389,7 @@ module Braintrust
               messages: T::Array[
               T.any(
                 Braintrust::Models::PromptData::Prompt::Chat::Message::System,
+                Braintrust::Util::AnyHash,
                 Braintrust::Models::PromptData::Prompt::Chat::Message::User,
                 Braintrust::Models::PromptData::Prompt::Chat::Message::Assistant,
                 Braintrust::Models::PromptData::Prompt::Chat::Message::Tool,
@@ -549,6 +555,7 @@ module Braintrust
                     T::Array[
                     T.any(
                       Braintrust::Models::ChatCompletionContentPartText,
+                      Braintrust::Util::AnyHash,
                       Braintrust::Models::ChatCompletionContentPartImage
                     )
                     ]
@@ -560,6 +567,7 @@ module Braintrust
                       T::Array[
                       T.any(
                         Braintrust::Models::ChatCompletionContentPartText,
+                        Braintrust::Util::AnyHash,
                         Braintrust::Models::ChatCompletionContentPartImage
                       )
                       ]
@@ -585,6 +593,7 @@ module Braintrust
                     T::Array[
                     T.any(
                       Braintrust::Models::ChatCompletionContentPartText,
+                      Braintrust::Util::AnyHash,
                       Braintrust::Models::ChatCompletionContentPartImage
                     )
                     ]
@@ -781,7 +790,7 @@ module Braintrust
                     )
                   ),
                   name: T.nilable(String),
-                  tool_calls: T.nilable(T::Array[Braintrust::Models::ChatCompletionMessageToolCall])
+                  tool_calls: T.nilable(T::Array[T.any(Braintrust::Models::ChatCompletionMessageToolCall, Braintrust::Util::AnyHash)])
                 )
                   .returns(T.attached_class)
               end

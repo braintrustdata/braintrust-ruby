@@ -122,10 +122,14 @@ module Braintrust
           id: String,
           name: String,
           project_id: String,
-          score_type: Braintrust::Models::ProjectScoreType::TaggedSymbol,
+          score_type: Braintrust::Models::ProjectScoreType::OrSymbol,
           user_id: String,
           categories: T.nilable(
-            T.any(T::Array[Braintrust::Models::ProjectScoreCategory], T::Hash[Symbol, Float], T::Array[String])
+            T.any(
+              T::Array[T.any(Braintrust::Models::ProjectScoreCategory, Braintrust::Util::AnyHash)],
+              T::Hash[Symbol, Float],
+              T::Array[String]
+            )
           ),
           config: T.nilable(T.any(Braintrust::Models::ProjectScoreConfig, Braintrust::Util::AnyHash)),
           created: T.nilable(Time),

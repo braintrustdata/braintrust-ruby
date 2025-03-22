@@ -50,7 +50,7 @@ module Braintrust
         params(
           project_id: String,
           name: T.nilable(String),
-          settings: T.nilable(Braintrust::Models::ProjectSettings),
+          settings: T.nilable(T.any(Braintrust::Models::ProjectSettings, Braintrust::Util::AnyHash)),
           request_options: T.nilable(T.any(Braintrust::RequestOptions, Braintrust::Util::AnyHash))
         )
           .returns(Braintrust::Models::Project)

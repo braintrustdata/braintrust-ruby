@@ -88,7 +88,11 @@ module Braintrust
           project_id: String,
           score_type: Braintrust::Models::ProjectScoreType::OrSymbol,
           categories: T.nilable(
-            T.any(T::Array[Braintrust::Models::ProjectScoreCategory], T::Hash[Symbol, Float], T::Array[String])
+            T.any(
+              T::Array[T.any(Braintrust::Models::ProjectScoreCategory, Braintrust::Util::AnyHash)],
+              T::Hash[Symbol, Float],
+              T::Array[String]
+            )
           ),
           config: T.nilable(T.any(Braintrust::Models::ProjectScoreConfig, Braintrust::Util::AnyHash)),
           description: T.nilable(String),

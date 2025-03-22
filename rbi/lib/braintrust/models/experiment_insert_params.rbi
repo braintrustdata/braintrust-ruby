@@ -20,7 +20,7 @@ module Braintrust
 
       sig do
         params(
-          events: T::Array[Braintrust::Models::InsertExperimentEvent],
+          events: T::Array[T.any(Braintrust::Models::InsertExperimentEvent, Braintrust::Util::AnyHash)],
           request_options: T.any(Braintrust::RequestOptions, Braintrust::Util::AnyHash)
         )
           .returns(T.attached_class)

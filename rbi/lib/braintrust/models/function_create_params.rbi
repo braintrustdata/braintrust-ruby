@@ -136,6 +136,7 @@ module Braintrust
         params(
           function_data: T.any(
             Braintrust::Models::FunctionCreateParams::FunctionData::Prompt,
+            Braintrust::Util::AnyHash,
             Braintrust::Models::FunctionCreateParams::FunctionData::Code,
             Braintrust::Models::FunctionCreateParams::FunctionData::Global
           ),
@@ -295,6 +296,7 @@ module Braintrust
             params(
               data: T.any(
                 Braintrust::Models::FunctionCreateParams::FunctionData::Code::Data::Bundle,
+                Braintrust::Util::AnyHash,
                 Braintrust::Models::FunctionCreateParams::FunctionData::Code::Data::Inline
               ),
               type: Braintrust::Models::FunctionCreateParams::FunctionData::Code::Type::OrSymbol

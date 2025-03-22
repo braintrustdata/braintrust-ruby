@@ -17,7 +17,7 @@ module Braintrust
           metadata: T.nilable(T::Hash[Symbol, T.nilable(T.anything)]),
           name: T.nilable(String),
           public: T.nilable(T::Boolean),
-          repo_info: T.nilable(Braintrust::Models::RepoInfo),
+          repo_info: T.nilable(T.any(Braintrust::Models::RepoInfo, Braintrust::Util::AnyHash)),
           request_options: T.nilable(T.any(Braintrust::RequestOptions, Braintrust::Util::AnyHash))
         )
           .returns(Braintrust::Models::Experiment)
@@ -81,7 +81,7 @@ module Braintrust
           metadata: T.nilable(T::Hash[Symbol, T.nilable(T.anything)]),
           name: T.nilable(String),
           public: T.nilable(T::Boolean),
-          repo_info: T.nilable(Braintrust::Models::RepoInfo),
+          repo_info: T.nilable(T.any(Braintrust::Models::RepoInfo, Braintrust::Util::AnyHash)),
           request_options: T.nilable(T.any(Braintrust::RequestOptions, Braintrust::Util::AnyHash))
         )
           .returns(Braintrust::Models::Experiment)
@@ -177,7 +177,7 @@ module Braintrust
       sig do
         params(
           experiment_id: String,
-          feedback: T::Array[Braintrust::Models::FeedbackExperimentItem],
+          feedback: T::Array[T.any(Braintrust::Models::FeedbackExperimentItem, Braintrust::Util::AnyHash)],
           request_options: T.nilable(T.any(Braintrust::RequestOptions, Braintrust::Util::AnyHash))
         )
           .returns(Braintrust::Models::FeedbackResponseSchema)
@@ -330,7 +330,7 @@ module Braintrust
       sig do
         params(
           experiment_id: String,
-          events: T::Array[Braintrust::Models::InsertExperimentEvent],
+          events: T::Array[T.any(Braintrust::Models::InsertExperimentEvent, Braintrust::Util::AnyHash)],
           request_options: T.nilable(T.any(Braintrust::RequestOptions, Braintrust::Util::AnyHash))
         )
           .returns(Braintrust::Models::InsertEventsResponse)
