@@ -5,57 +5,27 @@ module Braintrust
     class User < Braintrust::BaseModel
       # Unique identifier for the user
       sig { returns(String) }
-      def id
-      end
-
-      sig { params(_: String).returns(String) }
-      def id=(_)
-      end
+      attr_accessor :id
 
       # URL of the user's Avatar image
       sig { returns(T.nilable(String)) }
-      def avatar_url
-      end
-
-      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-      def avatar_url=(_)
-      end
+      attr_accessor :avatar_url
 
       # Date of user creation
       sig { returns(T.nilable(Time)) }
-      def created
-      end
-
-      sig { params(_: T.nilable(Time)).returns(T.nilable(Time)) }
-      def created=(_)
-      end
+      attr_accessor :created
 
       # The user's email
       sig { returns(T.nilable(String)) }
-      def email
-      end
-
-      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-      def email=(_)
-      end
+      attr_accessor :email
 
       # Family name of the user
       sig { returns(T.nilable(String)) }
-      def family_name
-      end
-
-      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-      def family_name=(_)
-      end
+      attr_accessor :family_name
 
       # Given name of the user
       sig { returns(T.nilable(String)) }
-      def given_name
-      end
-
-      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-      def given_name=(_)
-      end
+      attr_accessor :given_name
 
       sig do
         params(

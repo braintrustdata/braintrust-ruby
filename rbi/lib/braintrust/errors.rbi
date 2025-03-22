@@ -3,12 +3,7 @@
 module Braintrust
   class Error < StandardError
     sig { returns(T.nilable(StandardError)) }
-    def cause
-    end
-
-    sig { params(_: T.nilable(StandardError)).returns(T.nilable(StandardError)) }
-    def cause=(_)
-    end
+    attr_accessor :cause
   end
 
   class ConversionError < Braintrust::Error
@@ -16,28 +11,13 @@ module Braintrust
 
   class APIError < Braintrust::Error
     sig { returns(URI::Generic) }
-    def url
-    end
-
-    sig { params(_: URI::Generic).returns(URI::Generic) }
-    def url=(_)
-    end
+    attr_accessor :url
 
     sig { returns(T.nilable(Integer)) }
-    def status
-    end
-
-    sig { params(_: T.nilable(Integer)).returns(T.nilable(Integer)) }
-    def status=(_)
-    end
+    attr_accessor :status
 
     sig { returns(T.nilable(T.anything)) }
-    def body
-    end
-
-    sig { params(_: T.nilable(T.anything)).returns(T.nilable(T.anything)) }
-    def body=(_)
-    end
+    attr_accessor :body
 
     # @api private
     sig do
@@ -57,20 +37,10 @@ module Braintrust
 
   class APIConnectionError < Braintrust::APIError
     sig { void }
-    def status
-    end
-
-    sig { params(_: NilClass).void }
-    def status=(_)
-    end
+    attr_accessor :status
 
     sig { void }
-    def body
-    end
-
-    sig { params(_: NilClass).void }
-    def body=(_)
-    end
+    attr_accessor :body
 
     # @api private
     sig do
@@ -122,12 +92,7 @@ module Braintrust
     end
 
     sig { returns(Integer) }
-    def status
-    end
-
-    sig { params(_: Integer).returns(Integer) }
-    def status=(_)
-    end
+    attr_accessor :status
 
     # @api private
     sig do

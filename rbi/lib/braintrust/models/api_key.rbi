@@ -5,56 +5,26 @@ module Braintrust
     class APIKey < Braintrust::BaseModel
       # Unique identifier for the api key
       sig { returns(String) }
-      def id
-      end
-
-      sig { params(_: String).returns(String) }
-      def id=(_)
-      end
+      attr_accessor :id
 
       # Name of the api key
       sig { returns(String) }
-      def name
-      end
-
-      sig { params(_: String).returns(String) }
-      def name=(_)
-      end
+      attr_accessor :name
 
       sig { returns(String) }
-      def preview_name
-      end
-
-      sig { params(_: String).returns(String) }
-      def preview_name=(_)
-      end
+      attr_accessor :preview_name
 
       # Date of api key creation
       sig { returns(T.nilable(Time)) }
-      def created
-      end
-
-      sig { params(_: T.nilable(Time)).returns(T.nilable(Time)) }
-      def created=(_)
-      end
+      attr_accessor :created
 
       # Unique identifier for the organization
       sig { returns(T.nilable(String)) }
-      def org_id
-      end
-
-      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-      def org_id=(_)
-      end
+      attr_accessor :org_id
 
       # Unique identifier for the user
       sig { returns(T.nilable(String)) }
-      def user_id
-      end
-
-      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-      def user_id=(_)
-      end
+      attr_accessor :user_id
 
       sig do
         params(

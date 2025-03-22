@@ -5,89 +5,44 @@ module Braintrust
     class Group < Braintrust::BaseModel
       # Unique identifier for the group
       sig { returns(String) }
-      def id
-      end
-
-      sig { params(_: String).returns(String) }
-      def id=(_)
-      end
+      attr_accessor :id
 
       # Name of the group
       sig { returns(String) }
-      def name
-      end
-
-      sig { params(_: String).returns(String) }
-      def name=(_)
-      end
+      attr_accessor :name
 
       # Unique id for the organization that the group belongs under
       #
       #   It is forbidden to change the org after creating a group
       sig { returns(String) }
-      def org_id
-      end
-
-      sig { params(_: String).returns(String) }
-      def org_id=(_)
-      end
+      attr_accessor :org_id
 
       # Date of group creation
       sig { returns(T.nilable(Time)) }
-      def created
-      end
-
-      sig { params(_: T.nilable(Time)).returns(T.nilable(Time)) }
-      def created=(_)
-      end
+      attr_accessor :created
 
       # Date of group deletion, or null if the group is still active
       sig { returns(T.nilable(Time)) }
-      def deleted_at
-      end
-
-      sig { params(_: T.nilable(Time)).returns(T.nilable(Time)) }
-      def deleted_at=(_)
-      end
+      attr_accessor :deleted_at
 
       # Textual description of the group
       sig { returns(T.nilable(String)) }
-      def description
-      end
-
-      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-      def description=(_)
-      end
+      attr_accessor :description
 
       # Ids of the groups this group inherits from
       #
       #   An inheriting group has all the users contained in its member groups, as well as
       #   all of their inherited users
       sig { returns(T.nilable(T::Array[String])) }
-      def member_groups
-      end
-
-      sig { params(_: T.nilable(T::Array[String])).returns(T.nilable(T::Array[String])) }
-      def member_groups=(_)
-      end
+      attr_accessor :member_groups
 
       # Ids of users which belong to this group
       sig { returns(T.nilable(T::Array[String])) }
-      def member_users
-      end
-
-      sig { params(_: T.nilable(T::Array[String])).returns(T.nilable(T::Array[String])) }
-      def member_users=(_)
-      end
+      attr_accessor :member_users
 
       # Identifies the user who created the group
       sig { returns(T.nilable(String)) }
-      def user_id
-      end
-
-      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-      def user_id=(_)
-      end
+      attr_accessor :user_id
 
       # A group is a collection of users which can be assigned an ACL
       #

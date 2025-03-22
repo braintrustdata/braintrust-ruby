@@ -5,65 +5,30 @@ module Braintrust
     class ProjectTag < Braintrust::BaseModel
       # Unique identifier for the project tag
       sig { returns(String) }
-      def id
-      end
-
-      sig { params(_: String).returns(String) }
-      def id=(_)
-      end
+      attr_accessor :id
 
       # Name of the project tag
       sig { returns(String) }
-      def name
-      end
-
-      sig { params(_: String).returns(String) }
-      def name=(_)
-      end
+      attr_accessor :name
 
       # Unique identifier for the project that the project tag belongs under
       sig { returns(String) }
-      def project_id
-      end
-
-      sig { params(_: String).returns(String) }
-      def project_id=(_)
-      end
+      attr_accessor :project_id
 
       sig { returns(String) }
-      def user_id
-      end
-
-      sig { params(_: String).returns(String) }
-      def user_id=(_)
-      end
+      attr_accessor :user_id
 
       # Color of the tag for the UI
       sig { returns(T.nilable(String)) }
-      def color
-      end
-
-      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-      def color=(_)
-      end
+      attr_accessor :color
 
       # Date of project tag creation
       sig { returns(T.nilable(Time)) }
-      def created
-      end
-
-      sig { params(_: T.nilable(Time)).returns(T.nilable(Time)) }
-      def created=(_)
-      end
+      attr_accessor :created
 
       # Textual description of the project tag
       sig { returns(T.nilable(String)) }
-      def description
-      end
-
-      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-      def description=(_)
-      end
+      attr_accessor :description
 
       # A project tag is a user-configured tag for tracking and filtering your
       #   experiments, logs, and other data

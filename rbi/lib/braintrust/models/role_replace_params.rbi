@@ -8,56 +8,28 @@ module Braintrust
 
       # Name of the role
       sig { returns(String) }
-      def name
-      end
-
-      sig { params(_: String).returns(String) }
-      def name=(_)
-      end
+      attr_accessor :name
 
       # Textual description of the role
       sig { returns(T.nilable(String)) }
-      def description
-      end
-
-      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-      def description=(_)
-      end
+      attr_accessor :description
 
       # (permission, restrict_object_type) tuples which belong to this role
       sig { returns(T.nilable(T::Array[Braintrust::Models::RoleReplaceParams::MemberPermission])) }
-      def member_permissions
-      end
-
-      sig do
-        params(_: T.nilable(T::Array[Braintrust::Models::RoleReplaceParams::MemberPermission]))
-          .returns(T.nilable(T::Array[Braintrust::Models::RoleReplaceParams::MemberPermission]))
-      end
-      def member_permissions=(_)
-      end
+      attr_accessor :member_permissions
 
       # Ids of the roles this role inherits from
       #
       #   An inheriting role has all the permissions contained in its member roles, as
       #   well as all of their inherited permissions
       sig { returns(T.nilable(T::Array[String])) }
-      def member_roles
-      end
-
-      sig { params(_: T.nilable(T::Array[String])).returns(T.nilable(T::Array[String])) }
-      def member_roles=(_)
-      end
+      attr_accessor :member_roles
 
       # For nearly all users, this parameter should be unnecessary. But in the rare case
       #   that your API key belongs to multiple organizations, you may specify the name of
       #   the organization the role belongs in.
       sig { returns(T.nilable(String)) }
-      def org_name
-      end
-
-      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-      def org_name=(_)
-      end
+      attr_accessor :org_name
 
       sig do
         params(
@@ -97,24 +69,11 @@ module Braintrust
         #   Permissions can be assigned to to objects on an individual basis, or grouped
         #   into roles
         sig { returns(Braintrust::Models::Permission::OrSymbol) }
-        def permission
-        end
-
-        sig { params(_: Braintrust::Models::Permission::OrSymbol).returns(Braintrust::Models::Permission::OrSymbol) }
-        def permission=(_)
-        end
+        attr_accessor :permission
 
         # The object type that the ACL applies to
         sig { returns(T.nilable(Braintrust::Models::ACLObjectType::OrSymbol)) }
-        def restrict_object_type
-        end
-
-        sig do
-          params(_: T.nilable(Braintrust::Models::ACLObjectType::OrSymbol))
-            .returns(T.nilable(Braintrust::Models::ACLObjectType::OrSymbol))
-        end
-        def restrict_object_type=(_)
-        end
+        attr_accessor :restrict_object_type
 
         sig do
           params(

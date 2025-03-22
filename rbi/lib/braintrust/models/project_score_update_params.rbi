@@ -14,64 +14,25 @@ module Braintrust
           )
         )
       end
-      def categories
-      end
-
-      sig do
-        params(
-          _: T.nilable(
-            T.any(T::Array[Braintrust::Models::ProjectScoreCategory], T::Hash[Symbol, Float], T::Array[String])
-          )
-        )
-          .returns(
-            T.nilable(
-              T.any(T::Array[Braintrust::Models::ProjectScoreCategory], T::Hash[Symbol, Float], T::Array[String])
-            )
-          )
-      end
-      def categories=(_)
-      end
+      attr_accessor :categories
 
       sig { returns(T.nilable(Braintrust::Models::ProjectScoreConfig)) }
-      def config
-      end
+      attr_reader :config
 
-      sig do
-        params(_: T.nilable(T.any(Braintrust::Models::ProjectScoreConfig, Braintrust::Util::AnyHash)))
-          .returns(T.nilable(T.any(Braintrust::Models::ProjectScoreConfig, Braintrust::Util::AnyHash)))
-      end
-      def config=(_)
-      end
+      sig { params(config: T.nilable(T.any(Braintrust::Models::ProjectScoreConfig, Braintrust::Util::AnyHash))).void }
+      attr_writer :config
 
       # Textual description of the project score
       sig { returns(T.nilable(String)) }
-      def description
-      end
-
-      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-      def description=(_)
-      end
+      attr_accessor :description
 
       # Name of the project score
       sig { returns(T.nilable(String)) }
-      def name
-      end
-
-      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-      def name=(_)
-      end
+      attr_accessor :name
 
       # The type of the configured score
       sig { returns(T.nilable(Braintrust::Models::ProjectScoreType::OrSymbol)) }
-      def score_type
-      end
-
-      sig do
-        params(_: T.nilable(Braintrust::Models::ProjectScoreType::OrSymbol))
-          .returns(T.nilable(Braintrust::Models::ProjectScoreType::OrSymbol))
-      end
-      def score_type=(_)
-      end
+      attr_accessor :score_type
 
       sig do
         params(

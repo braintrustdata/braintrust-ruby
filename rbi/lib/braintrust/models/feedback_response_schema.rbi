@@ -4,15 +4,7 @@ module Braintrust
   module Models
     class FeedbackResponseSchema < Braintrust::BaseModel
       sig { returns(Braintrust::Models::FeedbackResponseSchema::Status::TaggedSymbol) }
-      def status
-      end
-
-      sig do
-        params(_: Braintrust::Models::FeedbackResponseSchema::Status::TaggedSymbol)
-          .returns(Braintrust::Models::FeedbackResponseSchema::Status::TaggedSymbol)
-      end
-      def status=(_)
-      end
+      attr_accessor :status
 
       sig { params(status: Braintrust::Models::FeedbackResponseSchema::Status::OrSymbol).returns(T.attached_class) }
       def self.new(status:)

@@ -4,54 +4,22 @@ module Braintrust
   module Models
     class ViewOptions < Braintrust::BaseModel
       sig { returns(T.nilable(T::Array[String])) }
-      def column_order
-      end
-
-      sig { params(_: T.nilable(T::Array[String])).returns(T.nilable(T::Array[String])) }
-      def column_order=(_)
-      end
+      attr_accessor :column_order
 
       sig { returns(T.nilable(T::Hash[Symbol, Float])) }
-      def column_sizing
-      end
-
-      sig { params(_: T.nilable(T::Hash[Symbol, Float])).returns(T.nilable(T::Hash[Symbol, Float])) }
-      def column_sizing=(_)
-      end
+      attr_accessor :column_sizing
 
       sig { returns(T.nilable(T::Hash[Symbol, T::Boolean])) }
-      def column_visibility
-      end
-
-      sig do
-        params(_: T.nilable(T::Hash[Symbol, T::Boolean])).returns(T.nilable(T::Hash[Symbol, T::Boolean]))
-      end
-      def column_visibility=(_)
-      end
+      attr_accessor :column_visibility
 
       sig { returns(T.nilable(String)) }
-      def grouping
-      end
-
-      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-      def grouping=(_)
-      end
+      attr_accessor :grouping
 
       sig { returns(T.nilable(String)) }
-      def layout
-      end
-
-      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-      def layout=(_)
-      end
+      attr_accessor :layout
 
       sig { returns(T.nilable(String)) }
-      def row_height
-      end
-
-      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-      def row_height=(_)
-      end
+      attr_accessor :row_height
 
       # Options for the view in the app
       sig do

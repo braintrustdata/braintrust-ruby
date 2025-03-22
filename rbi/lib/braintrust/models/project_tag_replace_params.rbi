@@ -8,39 +8,19 @@ module Braintrust
 
       # Name of the project tag
       sig { returns(String) }
-      def name
-      end
-
-      sig { params(_: String).returns(String) }
-      def name=(_)
-      end
+      attr_accessor :name
 
       # Unique identifier for the project that the project tag belongs under
       sig { returns(String) }
-      def project_id
-      end
-
-      sig { params(_: String).returns(String) }
-      def project_id=(_)
-      end
+      attr_accessor :project_id
 
       # Color of the tag for the UI
       sig { returns(T.nilable(String)) }
-      def color
-      end
-
-      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-      def color=(_)
-      end
+      attr_accessor :color
 
       # Textual description of the project tag
       sig { returns(T.nilable(String)) }
-      def description
-      end
-
-      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-      def description=(_)
-      end
+      attr_accessor :description
 
       sig do
         params(

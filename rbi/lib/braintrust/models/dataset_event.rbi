@@ -6,101 +6,57 @@ module Braintrust
       # A unique identifier for the dataset event. If you don't provide one, BrainTrust
       #   will generate one for you
       sig { returns(String) }
-      def id
-      end
-
-      sig { params(_: String).returns(String) }
-      def id=(_)
-      end
+      attr_accessor :id
 
       # The transaction id of an event is unique to the network operation that processed
       #   the event insertion. Transaction ids are monotonically increasing over time and
       #   can be used to retrieve a versioned snapshot of the dataset (see the `version`
       #   parameter)
       sig { returns(String) }
-      def _xact_id
-      end
-
-      sig { params(_: String).returns(String) }
-      def _xact_id=(_)
-      end
+      attr_accessor :_xact_id
 
       # The timestamp the dataset event was created
       sig { returns(Time) }
-      def created
-      end
-
-      sig { params(_: Time).returns(Time) }
-      def created=(_)
-      end
+      attr_accessor :created
 
       # Unique identifier for the dataset
       sig { returns(String) }
-      def dataset_id
-      end
-
-      sig { params(_: String).returns(String) }
-      def dataset_id=(_)
-      end
+      attr_accessor :dataset_id
 
       # Unique identifier for the project that the dataset belongs under
       sig { returns(String) }
-      def project_id
-      end
-
-      sig { params(_: String).returns(String) }
-      def project_id=(_)
-      end
+      attr_accessor :project_id
 
       # A unique identifier for the trace this dataset event belongs to
       sig { returns(String) }
-      def root_span_id
-      end
-
-      sig { params(_: String).returns(String) }
-      def root_span_id=(_)
-      end
+      attr_accessor :root_span_id
 
       # A unique identifier used to link different dataset events together as part of a
       #   full trace. See the
       #   [tracing guide](https://www.braintrust.dev/docs/guides/tracing) for full details
       #   on tracing
       sig { returns(String) }
-      def span_id
-      end
-
-      sig { params(_: String).returns(String) }
-      def span_id=(_)
-      end
+      attr_accessor :span_id
 
       # The output of your application, including post-processing (an arbitrary, JSON
       #   serializable object)
       sig { returns(T.nilable(T.anything)) }
-      def expected
-      end
+      attr_reader :expected
 
-      sig { params(_: T.anything).returns(T.anything) }
-      def expected=(_)
-      end
+      sig { params(expected: T.anything).void }
+      attr_writer :expected
 
       # The argument that uniquely define an input case (an arbitrary, JSON serializable
       #   object)
       sig { returns(T.nilable(T.anything)) }
-      def input
-      end
+      attr_reader :input
 
-      sig { params(_: T.anything).returns(T.anything) }
-      def input=(_)
-      end
+      sig { params(input: T.anything).void }
+      attr_writer :input
 
       # Whether this span is a root span
       sig { returns(T.nilable(T::Boolean)) }
-      def is_root
-      end
-
-      sig { params(_: T.nilable(T::Boolean)).returns(T.nilable(T::Boolean)) }
-      def is_root=(_)
-      end
+      attr_accessor :is_root
 
       # A dictionary with additional data about the test example, model outputs, or just
       #   about anything else that's relevant, that you can use to help find and analyze
@@ -108,36 +64,24 @@ module Braintrust
       #   anything else that would be useful to slice/dice later. The values in `metadata`
       #   can be any JSON-serializable type, but its keys must be strings
       sig { returns(T.nilable(Braintrust::Models::DatasetEvent::Metadata)) }
-      def metadata
-      end
+      attr_reader :metadata
 
       sig do
-        params(_: T.nilable(T.any(Braintrust::Models::DatasetEvent::Metadata, Braintrust::Util::AnyHash)))
-          .returns(T.nilable(T.any(Braintrust::Models::DatasetEvent::Metadata, Braintrust::Util::AnyHash)))
+        params(metadata: T.nilable(T.any(Braintrust::Models::DatasetEvent::Metadata, Braintrust::Util::AnyHash)))
+          .void
       end
-      def metadata=(_)
-      end
+      attr_writer :metadata
 
       # Indicates the event was copied from another object.
       sig { returns(T.nilable(Braintrust::Models::ObjectReference)) }
-      def origin
-      end
+      attr_reader :origin
 
-      sig do
-        params(_: T.nilable(T.any(Braintrust::Models::ObjectReference, Braintrust::Util::AnyHash)))
-          .returns(T.nilable(T.any(Braintrust::Models::ObjectReference, Braintrust::Util::AnyHash)))
-      end
-      def origin=(_)
-      end
+      sig { params(origin: T.nilable(T.any(Braintrust::Models::ObjectReference, Braintrust::Util::AnyHash))).void }
+      attr_writer :origin
 
       # A list of tags to log
       sig { returns(T.nilable(T::Array[String])) }
-      def tags
-      end
-
-      sig { params(_: T.nilable(T::Array[String])).returns(T.nilable(T::Array[String])) }
-      def tags=(_)
-      end
+      attr_accessor :tags
 
       sig do
         params(
@@ -200,12 +144,7 @@ module Braintrust
       class Metadata < Braintrust::BaseModel
         # The model used for this example
         sig { returns(T.nilable(String)) }
-        def model
-        end
-
-        sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-        def model=(_)
-        end
+        attr_accessor :model
 
         # A dictionary with additional data about the test example, model outputs, or just
         #   about anything else that's relevant, that you can use to help find and analyze

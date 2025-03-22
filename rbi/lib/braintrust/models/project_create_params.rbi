@@ -8,23 +8,13 @@ module Braintrust
 
       # Name of the project
       sig { returns(String) }
-      def name
-      end
-
-      sig { params(_: String).returns(String) }
-      def name=(_)
-      end
+      attr_accessor :name
 
       # For nearly all users, this parameter should be unnecessary. But in the rare case
       #   that your API key belongs to multiple organizations, you may specify the name of
       #   the organization the project belongs in.
       sig { returns(T.nilable(String)) }
-      def org_name
-      end
-
-      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-      def org_name=(_)
-      end
+      attr_accessor :org_name
 
       sig do
         params(

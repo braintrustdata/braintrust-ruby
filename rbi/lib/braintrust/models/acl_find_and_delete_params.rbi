@@ -8,79 +8,36 @@ module Braintrust
 
       # The id of the object the ACL applies to
       sig { returns(String) }
-      def object_id_
-      end
-
-      sig { params(_: String).returns(String) }
-      def object_id_=(_)
-      end
+      attr_accessor :object_id_
 
       # The object type that the ACL applies to
       sig { returns(Braintrust::Models::ACLObjectType::OrSymbol) }
-      def object_type
-      end
-
-      sig do
-        params(_: Braintrust::Models::ACLObjectType::OrSymbol).returns(Braintrust::Models::ACLObjectType::OrSymbol)
-      end
-      def object_type=(_)
-      end
+      attr_accessor :object_type
 
       # Id of the group the ACL applies to. Exactly one of `user_id` and `group_id` will
       #   be provided
       sig { returns(T.nilable(String)) }
-      def group_id
-      end
-
-      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-      def group_id=(_)
-      end
+      attr_accessor :group_id
 
       # Permission the ACL grants. Exactly one of `permission` and `role_id` will be
       #   provided
       sig { returns(T.nilable(Braintrust::Models::Permission::OrSymbol)) }
-      def permission
-      end
-
-      sig do
-        params(_: T.nilable(Braintrust::Models::Permission::OrSymbol))
-          .returns(T.nilable(Braintrust::Models::Permission::OrSymbol))
-      end
-      def permission=(_)
-      end
+      attr_accessor :permission
 
       # When setting a permission directly, optionally restricts the permission grant to
       #   just the specified object type. Cannot be set alongside a `role_id`.
       sig { returns(T.nilable(Braintrust::Models::ACLObjectType::OrSymbol)) }
-      def restrict_object_type
-      end
-
-      sig do
-        params(_: T.nilable(Braintrust::Models::ACLObjectType::OrSymbol))
-          .returns(T.nilable(Braintrust::Models::ACLObjectType::OrSymbol))
-      end
-      def restrict_object_type=(_)
-      end
+      attr_accessor :restrict_object_type
 
       # Id of the role the ACL grants. Exactly one of `permission` and `role_id` will be
       #   provided
       sig { returns(T.nilable(String)) }
-      def role_id
-      end
-
-      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-      def role_id=(_)
-      end
+      attr_accessor :role_id
 
       # Id of the user the ACL applies to. Exactly one of `user_id` and `group_id` will
       #   be provided
       sig { returns(T.nilable(String)) }
-      def user_id
-      end
-
-      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-      def user_id=(_)
-      end
+      attr_accessor :user_id
 
       sig do
         params(

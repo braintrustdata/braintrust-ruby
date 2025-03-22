@@ -12,67 +12,50 @@ module Braintrust
       #   `foo`, pass `ending_before=foo` to fetch the previous page. Note: you may only
       #   pass one of `starting_after` and `ending_before`
       sig { returns(T.nilable(String)) }
-      def ending_before
-      end
+      attr_reader :ending_before
 
-      sig { params(_: String).returns(String) }
-      def ending_before=(_)
-      end
+      sig { params(ending_before: String).void }
+      attr_writer :ending_before
 
       # Filter search results to a particular set of object IDs. To specify a list of
       #   IDs, include the query param multiple times
       sig { returns(T.nilable(T.any(String, T::Array[String]))) }
-      def ids
-      end
+      attr_reader :ids
 
-      sig { params(_: T.any(String, T::Array[String])).returns(T.any(String, T::Array[String])) }
-      def ids=(_)
-      end
+      sig { params(ids: T.any(String, T::Array[String])).void }
+      attr_writer :ids
 
       # Limit the number of objects to return
       sig { returns(T.nilable(Integer)) }
-      def limit
-      end
-
-      sig { params(_: T.nilable(Integer)).returns(T.nilable(Integer)) }
-      def limit=(_)
-      end
+      attr_accessor :limit
 
       # Filter search results to within a particular organization
       sig { returns(T.nilable(String)) }
-      def org_name
-      end
+      attr_reader :org_name
 
-      sig { params(_: String).returns(String) }
-      def org_name=(_)
-      end
+      sig { params(org_name: String).void }
+      attr_writer :org_name
 
       # Project id
       sig { returns(T.nilable(String)) }
-      def project_id
-      end
+      attr_reader :project_id
 
-      sig { params(_: String).returns(String) }
-      def project_id=(_)
-      end
+      sig { params(project_id: String).void }
+      attr_writer :project_id
 
       # Name of the project to search for
       sig { returns(T.nilable(String)) }
-      def project_name
-      end
+      attr_reader :project_name
 
-      sig { params(_: String).returns(String) }
-      def project_name=(_)
-      end
+      sig { params(project_name: String).void }
+      attr_writer :project_name
 
       # Name of the project_score to search for
       sig { returns(T.nilable(String)) }
-      def project_score_name
-      end
+      attr_reader :project_score_name
 
-      sig { params(_: String).returns(String) }
-      def project_score_name=(_)
-      end
+      sig { params(project_score_name: String).void }
+      attr_writer :project_score_name
 
       # The type of the configured score
       sig do
@@ -85,25 +68,18 @@ module Braintrust
           )
         )
       end
-      def score_type
-      end
+      attr_reader :score_type
 
       sig do
         params(
-          _: T.any(
+          score_type: T.any(
             Braintrust::Models::ProjectScoreType::OrSymbol,
             T::Array[Braintrust::Models::ProjectScoreType::OrSymbol]
           )
         )
-          .returns(
-            T.any(
-              Braintrust::Models::ProjectScoreType::OrSymbol,
-              T::Array[Braintrust::Models::ProjectScoreType::OrSymbol]
-            )
-          )
+          .void
       end
-      def score_type=(_)
-      end
+      attr_writer :score_type
 
       # Pagination cursor id.
       #
@@ -111,12 +87,10 @@ module Braintrust
       #   pass `starting_after=foo` to fetch the next page. Note: you may only pass one of
       #   `starting_after` and `ending_before`
       sig { returns(T.nilable(String)) }
-      def starting_after
-      end
+      attr_reader :starting_after
 
-      sig { params(_: String).returns(String) }
-      def starting_after=(_)
-      end
+      sig { params(starting_after: String).void }
+      attr_writer :starting_after
 
       sig do
         params(

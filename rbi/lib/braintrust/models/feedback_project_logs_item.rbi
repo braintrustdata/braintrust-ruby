@@ -6,80 +6,39 @@ module Braintrust
       # The id of the project logs event to log feedback for. This is the row `id`
       #   returned by `POST /v1/project_logs/{project_id}/insert`
       sig { returns(String) }
-      def id
-      end
-
-      sig { params(_: String).returns(String) }
-      def id=(_)
-      end
+      attr_accessor :id
 
       # An optional comment string to log about the project logs event
       sig { returns(T.nilable(String)) }
-      def comment
-      end
-
-      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-      def comment=(_)
-      end
+      attr_accessor :comment
 
       # The ground truth value (an arbitrary, JSON serializable object) that you'd
       #   compare to `output` to determine if your `output` value is correct or not
       sig { returns(T.nilable(T.anything)) }
-      def expected
-      end
+      attr_reader :expected
 
-      sig { params(_: T.anything).returns(T.anything) }
-      def expected=(_)
-      end
+      sig { params(expected: T.anything).void }
+      attr_writer :expected
 
       # A dictionary with additional data about the feedback. If you have a `user_id`,
       #   you can log it here and access it in the Braintrust UI. Note, this metadata does
       #   not correspond to the main event itself, but rather the audit log attached to
       #   the event.
       sig { returns(T.nilable(T::Hash[Symbol, T.nilable(T.anything)])) }
-      def metadata
-      end
-
-      sig do
-        params(_: T.nilable(T::Hash[Symbol, T.nilable(T.anything)]))
-          .returns(T.nilable(T::Hash[Symbol, T.nilable(T.anything)]))
-      end
-      def metadata=(_)
-      end
+      attr_accessor :metadata
 
       # A dictionary of numeric values (between 0 and 1) to log. These scores will be
       #   merged into the existing scores for the project logs event
       sig { returns(T.nilable(T::Hash[Symbol, T.nilable(Float)])) }
-      def scores
-      end
-
-      sig do
-        params(_: T.nilable(T::Hash[Symbol, T.nilable(Float)]))
-          .returns(T.nilable(T::Hash[Symbol, T.nilable(Float)]))
-      end
-      def scores=(_)
-      end
+      attr_accessor :scores
 
       # The source of the feedback. Must be one of "external" (default), "app", or "api"
       sig { returns(T.nilable(Braintrust::Models::FeedbackProjectLogsItem::Source::OrSymbol)) }
-      def source
-      end
-
-      sig do
-        params(_: T.nilable(Braintrust::Models::FeedbackProjectLogsItem::Source::OrSymbol))
-          .returns(T.nilable(Braintrust::Models::FeedbackProjectLogsItem::Source::OrSymbol))
-      end
-      def source=(_)
-      end
+      attr_accessor :source
 
       # A list of tags to log
       sig { returns(T.nilable(T::Array[String])) }
-      def tags
-      end
-
-      sig { params(_: T.nilable(T::Array[String])).returns(T.nilable(T::Array[String])) }
-      def tags=(_)
-      end
+      attr_accessor :tags
 
       sig do
         params(

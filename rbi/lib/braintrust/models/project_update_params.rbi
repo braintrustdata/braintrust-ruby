@@ -8,25 +8,15 @@ module Braintrust
 
       # Name of the project
       sig { returns(T.nilable(String)) }
-      def name
-      end
-
-      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-      def name=(_)
-      end
+      attr_accessor :name
 
       # Project settings. Patch operations replace all settings, so make sure you
       #   include all settings you want to keep.
       sig { returns(T.nilable(Braintrust::Models::ProjectSettings)) }
-      def settings
-      end
+      attr_reader :settings
 
-      sig do
-        params(_: T.nilable(T.any(Braintrust::Models::ProjectSettings, Braintrust::Util::AnyHash)))
-          .returns(T.nilable(T.any(Braintrust::Models::ProjectSettings, Braintrust::Util::AnyHash)))
-      end
-      def settings=(_)
-      end
+      sig { params(settings: T.nilable(T.any(Braintrust::Models::ProjectSettings, Braintrust::Util::AnyHash))).void }
+      attr_writer :settings
 
       sig do
         params(

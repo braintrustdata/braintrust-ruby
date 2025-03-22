@@ -8,52 +8,24 @@ module Braintrust
 
       # Name of the AI secret
       sig { returns(String) }
-      def name
-      end
-
-      sig { params(_: String).returns(String) }
-      def name=(_)
-      end
+      attr_accessor :name
 
       sig { returns(T.nilable(T::Hash[Symbol, T.nilable(T.anything)])) }
-      def metadata
-      end
-
-      sig do
-        params(_: T.nilable(T::Hash[Symbol, T.nilable(T.anything)]))
-          .returns(T.nilable(T::Hash[Symbol, T.nilable(T.anything)]))
-      end
-      def metadata=(_)
-      end
+      attr_accessor :metadata
 
       # For nearly all users, this parameter should be unnecessary. But in the rare case
       #   that your API key belongs to multiple organizations, you may specify the name of
       #   the organization the AI Secret belongs in.
       sig { returns(T.nilable(String)) }
-      def org_name
-      end
-
-      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-      def org_name=(_)
-      end
+      attr_accessor :org_name
 
       # Secret value. If omitted in a PUT request, the existing secret value will be
       #   left intact, not replaced with null.
       sig { returns(T.nilable(String)) }
-      def secret
-      end
-
-      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-      def secret=(_)
-      end
+      attr_accessor :secret
 
       sig { returns(T.nilable(String)) }
-      def type
-      end
-
-      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-      def type=(_)
-      end
+      attr_accessor :type
 
       sig do
         params(

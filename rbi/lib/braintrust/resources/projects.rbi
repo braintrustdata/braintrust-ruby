@@ -4,8 +4,7 @@ module Braintrust
   module Resources
     class Projects
       sig { returns(Braintrust::Resources::Projects::Logs) }
-      def logs
-      end
+      attr_reader :logs
 
       # Create a new project. If there is an existing project with the same name as the
       #   one specified in the request, will return the existing project unmodified

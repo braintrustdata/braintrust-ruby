@@ -8,15 +8,7 @@ module Braintrust
 
       # A list of dataset events to insert
       sig { returns(T::Array[Braintrust::Models::InsertDatasetEvent]) }
-      def events
-      end
-
-      sig do
-        params(_: T::Array[Braintrust::Models::InsertDatasetEvent])
-          .returns(T::Array[Braintrust::Models::InsertDatasetEvent])
-      end
-      def events=(_)
-      end
+      attr_accessor :events
 
       sig do
         params(

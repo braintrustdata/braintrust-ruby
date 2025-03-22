@@ -4,26 +4,18 @@ module Braintrust
   module Models
     class ChatCompletionContentPartImage < Braintrust::BaseModel
       sig { returns(Braintrust::Models::ChatCompletionContentPartImage::ImageURL) }
-      def image_url
-      end
+      attr_reader :image_url
 
       sig do
-        params(_: T.any(Braintrust::Models::ChatCompletionContentPartImage::ImageURL, Braintrust::Util::AnyHash))
-          .returns(T.any(Braintrust::Models::ChatCompletionContentPartImage::ImageURL, Braintrust::Util::AnyHash))
+        params(
+          image_url: T.any(Braintrust::Models::ChatCompletionContentPartImage::ImageURL, Braintrust::Util::AnyHash)
+        )
+          .void
       end
-      def image_url=(_)
-      end
+      attr_writer :image_url
 
       sig { returns(Braintrust::Models::ChatCompletionContentPartImage::Type::OrSymbol) }
-      def type
-      end
-
-      sig do
-        params(_: Braintrust::Models::ChatCompletionContentPartImage::Type::OrSymbol)
-          .returns(Braintrust::Models::ChatCompletionContentPartImage::Type::OrSymbol)
-      end
-      def type=(_)
-      end
+      attr_accessor :type
 
       sig do
         params(
@@ -49,23 +41,13 @@ module Braintrust
 
       class ImageURL < Braintrust::BaseModel
         sig { returns(String) }
-        def url
-        end
-
-        sig { params(_: String).returns(String) }
-        def url=(_)
-        end
+        attr_accessor :url
 
         sig { returns(T.nilable(Braintrust::Models::ChatCompletionContentPartImage::ImageURL::Detail::OrSymbol)) }
-        def detail
-        end
+        attr_reader :detail
 
-        sig do
-          params(_: Braintrust::Models::ChatCompletionContentPartImage::ImageURL::Detail::OrSymbol)
-            .returns(Braintrust::Models::ChatCompletionContentPartImage::ImageURL::Detail::OrSymbol)
-        end
-        def detail=(_)
-        end
+        sig { params(detail: Braintrust::Models::ChatCompletionContentPartImage::ImageURL::Detail::OrSymbol).void }
+        attr_writer :detail
 
         sig do
           params(
