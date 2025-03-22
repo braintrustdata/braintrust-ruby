@@ -5,57 +5,30 @@ module Braintrust
     class MetricSummary < Braintrust::BaseModel
       # Number of improvements in the metric
       sig { returns(Integer) }
-      def improvements
-      end
-
-      sig { params(_: Integer).returns(Integer) }
-      def improvements=(_)
-      end
+      attr_accessor :improvements
 
       # Average metric across all examples
       sig { returns(Float) }
-      def metric
-      end
-
-      sig { params(_: Float).returns(Float) }
-      def metric=(_)
-      end
+      attr_accessor :metric
 
       # Name of the metric
       sig { returns(String) }
-      def name
-      end
-
-      sig { params(_: String).returns(String) }
-      def name=(_)
-      end
+      attr_accessor :name
 
       # Number of regressions in the metric
       sig { returns(Integer) }
-      def regressions
-      end
-
-      sig { params(_: Integer).returns(Integer) }
-      def regressions=(_)
-      end
+      attr_accessor :regressions
 
       # Unit label for the metric
       sig { returns(String) }
-      def unit
-      end
-
-      sig { params(_: String).returns(String) }
-      def unit=(_)
-      end
+      attr_accessor :unit
 
       # Difference in metric between the current and comparison experiment
       sig { returns(T.nilable(Float)) }
-      def diff
-      end
+      attr_reader :diff
 
-      sig { params(_: Float).returns(Float) }
-      def diff=(_)
-      end
+      sig { params(diff: Float).void }
+      attr_writer :diff
 
       # Summary of a metric's performance
       sig do

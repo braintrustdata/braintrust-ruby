@@ -8,23 +8,11 @@ module Braintrust
 
       # The id of the object the ACL applies to
       sig { returns(String) }
-      def object_id_
-      end
-
-      sig { params(_: String).returns(String) }
-      def object_id_=(_)
-      end
+      attr_accessor :object_id_
 
       # The object type that the ACL applies to
       sig { returns(Braintrust::Models::ACLObjectType::OrSymbol) }
-      def object_type
-      end
-
-      sig do
-        params(_: Braintrust::Models::ACLObjectType::OrSymbol).returns(Braintrust::Models::ACLObjectType::OrSymbol)
-      end
-      def object_type=(_)
-      end
+      attr_accessor :object_type
 
       # Pagination cursor id.
       #
@@ -32,31 +20,22 @@ module Braintrust
       #   `foo`, pass `ending_before=foo` to fetch the previous page. Note: you may only
       #   pass one of `starting_after` and `ending_before`
       sig { returns(T.nilable(String)) }
-      def ending_before
-      end
+      attr_reader :ending_before
 
-      sig { params(_: String).returns(String) }
-      def ending_before=(_)
-      end
+      sig { params(ending_before: String).void }
+      attr_writer :ending_before
 
       # Filter search results to a particular set of object IDs. To specify a list of
       #   IDs, include the query param multiple times
       sig { returns(T.nilable(T.any(String, T::Array[String]))) }
-      def ids
-      end
+      attr_reader :ids
 
-      sig { params(_: T.any(String, T::Array[String])).returns(T.any(String, T::Array[String])) }
-      def ids=(_)
-      end
+      sig { params(ids: T.any(String, T::Array[String])).void }
+      attr_writer :ids
 
       # Limit the number of objects to return
       sig { returns(T.nilable(Integer)) }
-      def limit
-      end
-
-      sig { params(_: T.nilable(Integer)).returns(T.nilable(Integer)) }
-      def limit=(_)
-      end
+      attr_accessor :limit
 
       # Pagination cursor id.
       #
@@ -64,12 +43,10 @@ module Braintrust
       #   pass `starting_after=foo` to fetch the next page. Note: you may only pass one of
       #   `starting_after` and `ending_before`
       sig { returns(T.nilable(String)) }
-      def starting_after
-      end
+      attr_reader :starting_after
 
-      sig { params(_: String).returns(String) }
-      def starting_after=(_)
-      end
+      sig { params(starting_after: String).void }
+      attr_writer :starting_after
 
       sig do
         params(

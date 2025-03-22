@@ -7,45 +7,20 @@ module Braintrust
       include Braintrust::RequestParameters
 
       sig { returns(T.nilable(String)) }
-      def api_url
-      end
-
-      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-      def api_url=(_)
-      end
+      attr_accessor :api_url
 
       sig { returns(T.nilable(T::Boolean)) }
-      def is_universal_api
-      end
-
-      sig { params(_: T.nilable(T::Boolean)).returns(T.nilable(T::Boolean)) }
-      def is_universal_api=(_)
-      end
+      attr_accessor :is_universal_api
 
       # Name of the organization
       sig { returns(T.nilable(String)) }
-      def name
-      end
-
-      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-      def name=(_)
-      end
+      attr_accessor :name
 
       sig { returns(T.nilable(String)) }
-      def proxy_url
-      end
-
-      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-      def proxy_url=(_)
-      end
+      attr_accessor :proxy_url
 
       sig { returns(T.nilable(String)) }
-      def realtime_url
-      end
-
-      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-      def realtime_url=(_)
-      end
+      attr_accessor :realtime_url
 
       sig do
         params(

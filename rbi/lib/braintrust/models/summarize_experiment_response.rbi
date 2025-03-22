@@ -5,72 +5,31 @@ module Braintrust
     class SummarizeExperimentResponse < Braintrust::BaseModel
       # Name of the experiment
       sig { returns(String) }
-      def experiment_name
-      end
-
-      sig { params(_: String).returns(String) }
-      def experiment_name=(_)
-      end
+      attr_accessor :experiment_name
 
       # URL to the experiment's page in the Braintrust app
       sig { returns(String) }
-      def experiment_url
-      end
-
-      sig { params(_: String).returns(String) }
-      def experiment_url=(_)
-      end
+      attr_accessor :experiment_url
 
       # Name of the project that the experiment belongs to
       sig { returns(String) }
-      def project_name
-      end
-
-      sig { params(_: String).returns(String) }
-      def project_name=(_)
-      end
+      attr_accessor :project_name
 
       # URL to the project's page in the Braintrust app
       sig { returns(String) }
-      def project_url
-      end
-
-      sig { params(_: String).returns(String) }
-      def project_url=(_)
-      end
+      attr_accessor :project_url
 
       # The experiment which scores are baselined against
       sig { returns(T.nilable(String)) }
-      def comparison_experiment_name
-      end
-
-      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-      def comparison_experiment_name=(_)
-      end
+      attr_accessor :comparison_experiment_name
 
       # Summary of the experiment's metrics
       sig { returns(T.nilable(T::Hash[Symbol, Braintrust::Models::MetricSummary])) }
-      def metrics
-      end
-
-      sig do
-        params(_: T.nilable(T::Hash[Symbol, Braintrust::Models::MetricSummary]))
-          .returns(T.nilable(T::Hash[Symbol, Braintrust::Models::MetricSummary]))
-      end
-      def metrics=(_)
-      end
+      attr_accessor :metrics
 
       # Summary of the experiment's scores
       sig { returns(T.nilable(T::Hash[Symbol, Braintrust::Models::ScoreSummary])) }
-      def scores
-      end
-
-      sig do
-        params(_: T.nilable(T::Hash[Symbol, Braintrust::Models::ScoreSummary]))
-          .returns(T.nilable(T::Hash[Symbol, Braintrust::Models::ScoreSummary]))
-      end
-      def scores=(_)
-      end
+      attr_accessor :scores
 
       # Summary of an experiment
       sig do

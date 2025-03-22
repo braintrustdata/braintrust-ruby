@@ -4,12 +4,7 @@ module Braintrust
   module Models
     class CodeBundle < Braintrust::BaseModel
       sig { returns(String) }
-      def bundle_id
-      end
-
-      sig { params(_: String).returns(String) }
-      def bundle_id=(_)
-      end
+      attr_accessor :bundle_id
 
       sig do
         returns(
@@ -19,45 +14,20 @@ module Braintrust
           )
         )
       end
-      def location
-      end
-
-      sig do
-        params(
-          _: T.any(
-            Braintrust::Models::CodeBundle::Location::Experiment,
-            Braintrust::Models::CodeBundle::Location::Function
-          )
-        )
-          .returns(
-            T.any(
-              Braintrust::Models::CodeBundle::Location::Experiment,
-              Braintrust::Models::CodeBundle::Location::Function
-            )
-          )
-      end
-      def location=(_)
-      end
+      attr_accessor :location
 
       sig { returns(Braintrust::Models::CodeBundle::RuntimeContext) }
-      def runtime_context
-      end
+      attr_reader :runtime_context
 
       sig do
-        params(_: T.any(Braintrust::Models::CodeBundle::RuntimeContext, Braintrust::Util::AnyHash))
-          .returns(T.any(Braintrust::Models::CodeBundle::RuntimeContext, Braintrust::Util::AnyHash))
+        params(runtime_context: T.any(Braintrust::Models::CodeBundle::RuntimeContext, Braintrust::Util::AnyHash))
+          .void
       end
-      def runtime_context=(_)
-      end
+      attr_writer :runtime_context
 
       # A preview of the code
       sig { returns(T.nilable(String)) }
-      def preview
-      end
-
-      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-      def preview=(_)
-      end
+      attr_accessor :preview
 
       sig do
         params(
@@ -107,12 +77,7 @@ module Braintrust
 
         class Experiment < Braintrust::BaseModel
           sig { returns(String) }
-          def eval_name
-          end
-
-          sig { params(_: String).returns(String) }
-          def eval_name=(_)
-          end
+          attr_accessor :eval_name
 
           sig do
             returns(
@@ -122,36 +87,10 @@ module Braintrust
               )
             )
           end
-          def position
-          end
-
-          sig do
-            params(
-              _: T.any(
-                Braintrust::Models::CodeBundle::Location::Experiment::Position::Type,
-                Braintrust::Models::CodeBundle::Location::Experiment::Position::Scorer
-              )
-            )
-              .returns(
-                T.any(
-                  Braintrust::Models::CodeBundle::Location::Experiment::Position::Type,
-                  Braintrust::Models::CodeBundle::Location::Experiment::Position::Scorer
-                )
-              )
-          end
-          def position=(_)
-          end
+          attr_accessor :position
 
           sig { returns(Braintrust::Models::CodeBundle::Location::Experiment::Type::OrSymbol) }
-          def type
-          end
-
-          sig do
-            params(_: Braintrust::Models::CodeBundle::Location::Experiment::Type::OrSymbol)
-              .returns(Braintrust::Models::CodeBundle::Location::Experiment::Type::OrSymbol)
-          end
-          def type=(_)
-          end
+          attr_accessor :type
 
           sig do
             params(
@@ -199,15 +138,7 @@ module Braintrust
 
             class Type < Braintrust::BaseModel
               sig { returns(Braintrust::Models::CodeBundle::Location::Experiment::Position::Type::Type::OrSymbol) }
-              def type
-              end
-
-              sig do
-                params(_: Braintrust::Models::CodeBundle::Location::Experiment::Position::Type::Type::OrSymbol)
-                  .returns(Braintrust::Models::CodeBundle::Location::Experiment::Position::Type::Type::OrSymbol)
-              end
-              def type=(_)
-              end
+              attr_accessor :type
 
               sig do
                 params(type: Braintrust::Models::CodeBundle::Location::Experiment::Position::Type::Type::OrSymbol)
@@ -249,23 +180,10 @@ module Braintrust
 
             class Scorer < Braintrust::BaseModel
               sig { returns(Integer) }
-              def index
-              end
-
-              sig { params(_: Integer).returns(Integer) }
-              def index=(_)
-              end
+              attr_accessor :index
 
               sig { returns(Braintrust::Models::CodeBundle::Location::Experiment::Position::Scorer::Type::OrSymbol) }
-              def type
-              end
-
-              sig do
-                params(_: Braintrust::Models::CodeBundle::Location::Experiment::Position::Scorer::Type::OrSymbol)
-                  .returns(Braintrust::Models::CodeBundle::Location::Experiment::Position::Scorer::Type::OrSymbol)
-              end
-              def type=(_)
-              end
+              attr_accessor :type
 
               sig do
                 params(
@@ -341,23 +259,10 @@ module Braintrust
 
         class Function < Braintrust::BaseModel
           sig { returns(Integer) }
-          def index
-          end
-
-          sig { params(_: Integer).returns(Integer) }
-          def index=(_)
-          end
+          attr_accessor :index
 
           sig { returns(Braintrust::Models::CodeBundle::Location::Function::Type::OrSymbol) }
-          def type
-          end
-
-          sig do
-            params(_: Braintrust::Models::CodeBundle::Location::Function::Type::OrSymbol)
-              .returns(Braintrust::Models::CodeBundle::Location::Function::Type::OrSymbol)
-          end
-          def type=(_)
-          end
+          attr_accessor :type
 
           sig do
             params(index: Integer, type: Braintrust::Models::CodeBundle::Location::Function::Type::OrSymbol)
@@ -404,23 +309,10 @@ module Braintrust
 
       class RuntimeContext < Braintrust::BaseModel
         sig { returns(Braintrust::Models::CodeBundle::RuntimeContext::Runtime::OrSymbol) }
-        def runtime
-        end
-
-        sig do
-          params(_: Braintrust::Models::CodeBundle::RuntimeContext::Runtime::OrSymbol)
-            .returns(Braintrust::Models::CodeBundle::RuntimeContext::Runtime::OrSymbol)
-        end
-        def runtime=(_)
-        end
+        attr_accessor :runtime
 
         sig { returns(String) }
-        def version
-        end
-
-        sig { params(_: String).returns(String) }
-        def version=(_)
-        end
+        attr_accessor :version
 
         sig do
           params(runtime: Braintrust::Models::CodeBundle::RuntimeContext::Runtime::OrSymbol, version: String)

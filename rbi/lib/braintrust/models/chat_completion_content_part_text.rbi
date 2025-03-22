@@ -4,23 +4,13 @@ module Braintrust
   module Models
     class ChatCompletionContentPartText < Braintrust::BaseModel
       sig { returns(Braintrust::Models::ChatCompletionContentPartText::Type::OrSymbol) }
-      def type
-      end
-
-      sig do
-        params(_: Braintrust::Models::ChatCompletionContentPartText::Type::OrSymbol)
-          .returns(Braintrust::Models::ChatCompletionContentPartText::Type::OrSymbol)
-      end
-      def type=(_)
-      end
+      attr_accessor :type
 
       sig { returns(T.nilable(String)) }
-      def text
-      end
+      attr_reader :text
 
-      sig { params(_: String).returns(String) }
-      def text=(_)
-      end
+      sig { params(text: String).void }
+      attr_writer :text
 
       sig do
         params(type: Braintrust::Models::ChatCompletionContentPartText::Type::OrSymbol, text: String)

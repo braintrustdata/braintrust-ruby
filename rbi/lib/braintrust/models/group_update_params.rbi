@@ -8,57 +8,27 @@ module Braintrust
 
       # A list of group IDs to add to the group's inheriting-from set
       sig { returns(T.nilable(T::Array[String])) }
-      def add_member_groups
-      end
-
-      sig { params(_: T.nilable(T::Array[String])).returns(T.nilable(T::Array[String])) }
-      def add_member_groups=(_)
-      end
+      attr_accessor :add_member_groups
 
       # A list of user IDs to add to the group
       sig { returns(T.nilable(T::Array[String])) }
-      def add_member_users
-      end
-
-      sig { params(_: T.nilable(T::Array[String])).returns(T.nilable(T::Array[String])) }
-      def add_member_users=(_)
-      end
+      attr_accessor :add_member_users
 
       # Textual description of the group
       sig { returns(T.nilable(String)) }
-      def description
-      end
-
-      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-      def description=(_)
-      end
+      attr_accessor :description
 
       # Name of the group
       sig { returns(T.nilable(String)) }
-      def name
-      end
-
-      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-      def name=(_)
-      end
+      attr_accessor :name
 
       # A list of group IDs to remove from the group's inheriting-from set
       sig { returns(T.nilable(T::Array[String])) }
-      def remove_member_groups
-      end
-
-      sig { params(_: T.nilable(T::Array[String])).returns(T.nilable(T::Array[String])) }
-      def remove_member_groups=(_)
-      end
+      attr_accessor :remove_member_groups
 
       # A list of user IDs to remove from the group
       sig { returns(T.nilable(T::Array[String])) }
-      def remove_member_users
-      end
-
-      sig { params(_: T.nilable(T::Array[String])).returns(T.nilable(T::Array[String])) }
-      def remove_member_users=(_)
-      end
+      attr_accessor :remove_member_users
 
       sig do
         params(

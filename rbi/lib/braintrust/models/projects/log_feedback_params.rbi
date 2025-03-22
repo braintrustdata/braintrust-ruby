@@ -9,15 +9,7 @@ module Braintrust
 
         # A list of project logs feedback items
         sig { returns(T::Array[Braintrust::Models::FeedbackProjectLogsItem]) }
-        def feedback
-        end
-
-        sig do
-          params(_: T::Array[Braintrust::Models::FeedbackProjectLogsItem])
-            .returns(T::Array[Braintrust::Models::FeedbackProjectLogsItem])
-        end
-        def feedback=(_)
-        end
+        attr_accessor :feedback
 
         sig do
           params(

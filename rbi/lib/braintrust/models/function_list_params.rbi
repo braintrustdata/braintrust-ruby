@@ -12,76 +12,57 @@ module Braintrust
       #   `foo`, pass `ending_before=foo` to fetch the previous page. Note: you may only
       #   pass one of `starting_after` and `ending_before`
       sig { returns(T.nilable(String)) }
-      def ending_before
-      end
+      attr_reader :ending_before
 
-      sig { params(_: String).returns(String) }
-      def ending_before=(_)
-      end
+      sig { params(ending_before: String).void }
+      attr_writer :ending_before
 
       # Name of the function to search for
       sig { returns(T.nilable(String)) }
-      def function_name
-      end
+      attr_reader :function_name
 
-      sig { params(_: String).returns(String) }
-      def function_name=(_)
-      end
+      sig { params(function_name: String).void }
+      attr_writer :function_name
 
       # Filter search results to a particular set of object IDs. To specify a list of
       #   IDs, include the query param multiple times
       sig { returns(T.nilable(T.any(String, T::Array[String]))) }
-      def ids
-      end
+      attr_reader :ids
 
-      sig { params(_: T.any(String, T::Array[String])).returns(T.any(String, T::Array[String])) }
-      def ids=(_)
-      end
+      sig { params(ids: T.any(String, T::Array[String])).void }
+      attr_writer :ids
 
       # Limit the number of objects to return
       sig { returns(T.nilable(Integer)) }
-      def limit
-      end
-
-      sig { params(_: T.nilable(Integer)).returns(T.nilable(Integer)) }
-      def limit=(_)
-      end
+      attr_accessor :limit
 
       # Filter search results to within a particular organization
       sig { returns(T.nilable(String)) }
-      def org_name
-      end
+      attr_reader :org_name
 
-      sig { params(_: String).returns(String) }
-      def org_name=(_)
-      end
+      sig { params(org_name: String).void }
+      attr_writer :org_name
 
       # Project id
       sig { returns(T.nilable(String)) }
-      def project_id
-      end
+      attr_reader :project_id
 
-      sig { params(_: String).returns(String) }
-      def project_id=(_)
-      end
+      sig { params(project_id: String).void }
+      attr_writer :project_id
 
       # Name of the project to search for
       sig { returns(T.nilable(String)) }
-      def project_name
-      end
+      attr_reader :project_name
 
-      sig { params(_: String).returns(String) }
-      def project_name=(_)
-      end
+      sig { params(project_name: String).void }
+      attr_writer :project_name
 
       # Retrieve prompt with a specific slug
       sig { returns(T.nilable(String)) }
-      def slug
-      end
+      attr_reader :slug
 
-      sig { params(_: String).returns(String) }
-      def slug=(_)
-      end
+      sig { params(slug: String).void }
+      attr_writer :slug
 
       # Pagination cursor id.
       #
@@ -89,24 +70,20 @@ module Braintrust
       #   pass `starting_after=foo` to fetch the next page. Note: you may only pass one of
       #   `starting_after` and `ending_before`
       sig { returns(T.nilable(String)) }
-      def starting_after
-      end
+      attr_reader :starting_after
 
-      sig { params(_: String).returns(String) }
-      def starting_after=(_)
-      end
+      sig { params(starting_after: String).void }
+      attr_writer :starting_after
 
       # Retrieve prompt at a specific version.
       #
       #   The version id can either be a transaction id (e.g. '1000192656880881099') or a
       #   version identifier (e.g. '81cd05ee665fdfb3').
       sig { returns(T.nilable(String)) }
-      def version
-      end
+      attr_reader :version
 
-      sig { params(_: String).returns(String) }
-      def version=(_)
-      end
+      sig { params(version: String).void }
+      attr_writer :version
 
       sig do
         params(

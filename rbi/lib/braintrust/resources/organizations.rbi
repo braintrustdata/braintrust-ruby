@@ -4,8 +4,7 @@ module Braintrust
   module Resources
     class Organizations
       sig { returns(Braintrust::Resources::Organizations::Members) }
-      def members
-      end
+      attr_reader :members
 
       # Get an organization object by its id
       sig do

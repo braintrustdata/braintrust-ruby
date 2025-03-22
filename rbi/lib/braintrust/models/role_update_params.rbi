@@ -8,63 +8,27 @@ module Braintrust
 
       # A list of permissions to add to the role
       sig { returns(T.nilable(T::Array[Braintrust::Models::RoleUpdateParams::AddMemberPermission])) }
-      def add_member_permissions
-      end
-
-      sig do
-        params(_: T.nilable(T::Array[Braintrust::Models::RoleUpdateParams::AddMemberPermission]))
-          .returns(T.nilable(T::Array[Braintrust::Models::RoleUpdateParams::AddMemberPermission]))
-      end
-      def add_member_permissions=(_)
-      end
+      attr_accessor :add_member_permissions
 
       # A list of role IDs to add to the role's inheriting-from set
       sig { returns(T.nilable(T::Array[String])) }
-      def add_member_roles
-      end
-
-      sig { params(_: T.nilable(T::Array[String])).returns(T.nilable(T::Array[String])) }
-      def add_member_roles=(_)
-      end
+      attr_accessor :add_member_roles
 
       # Textual description of the role
       sig { returns(T.nilable(String)) }
-      def description
-      end
-
-      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-      def description=(_)
-      end
+      attr_accessor :description
 
       # Name of the role
       sig { returns(T.nilable(String)) }
-      def name
-      end
-
-      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-      def name=(_)
-      end
+      attr_accessor :name
 
       # A list of permissions to remove from the role
       sig { returns(T.nilable(T::Array[Braintrust::Models::RoleUpdateParams::RemoveMemberPermission])) }
-      def remove_member_permissions
-      end
-
-      sig do
-        params(_: T.nilable(T::Array[Braintrust::Models::RoleUpdateParams::RemoveMemberPermission]))
-          .returns(T.nilable(T::Array[Braintrust::Models::RoleUpdateParams::RemoveMemberPermission]))
-      end
-      def remove_member_permissions=(_)
-      end
+      attr_accessor :remove_member_permissions
 
       # A list of role IDs to remove from the role's inheriting-from set
       sig { returns(T.nilable(T::Array[String])) }
-      def remove_member_roles
-      end
-
-      sig { params(_: T.nilable(T::Array[String])).returns(T.nilable(T::Array[String])) }
-      def remove_member_roles=(_)
-      end
+      attr_accessor :remove_member_roles
 
       sig do
         params(
@@ -116,24 +80,11 @@ module Braintrust
         #   Permissions can be assigned to to objects on an individual basis, or grouped
         #   into roles
         sig { returns(Braintrust::Models::Permission::OrSymbol) }
-        def permission
-        end
-
-        sig { params(_: Braintrust::Models::Permission::OrSymbol).returns(Braintrust::Models::Permission::OrSymbol) }
-        def permission=(_)
-        end
+        attr_accessor :permission
 
         # The object type that the ACL applies to
         sig { returns(T.nilable(Braintrust::Models::ACLObjectType::OrSymbol)) }
-        def restrict_object_type
-        end
-
-        sig do
-          params(_: T.nilable(Braintrust::Models::ACLObjectType::OrSymbol))
-            .returns(T.nilable(Braintrust::Models::ACLObjectType::OrSymbol))
-        end
-        def restrict_object_type=(_)
-        end
+        attr_accessor :restrict_object_type
 
         sig do
           params(
@@ -164,24 +115,11 @@ module Braintrust
         #   Permissions can be assigned to to objects on an individual basis, or grouped
         #   into roles
         sig { returns(Braintrust::Models::Permission::OrSymbol) }
-        def permission
-        end
-
-        sig { params(_: Braintrust::Models::Permission::OrSymbol).returns(Braintrust::Models::Permission::OrSymbol) }
-        def permission=(_)
-        end
+        attr_accessor :permission
 
         # The object type that the ACL applies to
         sig { returns(T.nilable(Braintrust::Models::ACLObjectType::OrSymbol)) }
-        def restrict_object_type
-        end
-
-        sig do
-          params(_: T.nilable(Braintrust::Models::ACLObjectType::OrSymbol))
-            .returns(T.nilable(Braintrust::Models::ACLObjectType::OrSymbol))
-        end
-        def restrict_object_type=(_)
-        end
+        attr_accessor :restrict_object_type
 
         sig do
           params(

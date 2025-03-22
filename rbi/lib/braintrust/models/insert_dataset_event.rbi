@@ -6,12 +6,7 @@ module Braintrust
       # A unique identifier for the dataset event. If you don't provide one, BrainTrust
       #   will generate one for you
       sig { returns(T.nilable(String)) }
-      def id
-      end
-
-      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-      def id=(_)
-      end
+      attr_accessor :id
 
       # The `_is_merge` field controls how the row is merged with any existing row with
       #   the same id in the DB. By default (or when set to `false`), the existing row is
@@ -26,12 +21,7 @@ module Braintrust
       #   new row as `{"id": "foo", "input": {"b": 11, "c": 20}}`, the new row will be
       #   `{"id": "foo", "input": {"b": 11, "c": 20}}`
       sig { returns(T.nilable(T::Boolean)) }
-      def _is_merge
-      end
-
-      sig { params(_: T.nilable(T::Boolean)).returns(T.nilable(T::Boolean)) }
-      def _is_merge=(_)
-      end
+      attr_accessor :_is_merge
 
       # The `_merge_paths` field allows controlling the depth of the merge, when
       #   `_is_merge=true`. `_merge_paths` is a list of paths, where each path is a list
@@ -47,22 +37,12 @@ module Braintrust
       #   In this case, due to the merge paths, we have replaced `input.a` and `output`,
       #   but have still deep-merged `input` and `input.c`.
       sig { returns(T.nilable(T::Array[T::Array[String]])) }
-      def _merge_paths
-      end
-
-      sig { params(_: T.nilable(T::Array[T::Array[String]])).returns(T.nilable(T::Array[T::Array[String]])) }
-      def _merge_paths=(_)
-      end
+      attr_accessor :_merge_paths
 
       # Pass `_object_delete=true` to mark the dataset event deleted. Deleted events
       #   will not show up in subsequent fetches for this dataset
       sig { returns(T.nilable(T::Boolean)) }
-      def _object_delete
-      end
-
-      sig { params(_: T.nilable(T::Boolean)).returns(T.nilable(T::Boolean)) }
-      def _object_delete=(_)
-      end
+      attr_accessor :_object_delete
 
       # DEPRECATED: The `_parent_id` field is deprecated and should not be used. Support
       #   for `_parent_id` will be dropped in a future version of Braintrust. Log
@@ -82,41 +62,27 @@ module Braintrust
       #
       #   If the row is being merged into an existing row, this field will be ignored.
       sig { returns(T.nilable(String)) }
-      def _parent_id
-      end
-
-      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-      def _parent_id=(_)
-      end
+      attr_accessor :_parent_id
 
       # The timestamp the dataset event was created
       sig { returns(T.nilable(Time)) }
-      def created
-      end
-
-      sig { params(_: T.nilable(Time)).returns(T.nilable(Time)) }
-      def created=(_)
-      end
+      attr_accessor :created
 
       # The output of your application, including post-processing (an arbitrary, JSON
       #   serializable object)
       sig { returns(T.nilable(T.anything)) }
-      def expected
-      end
+      attr_reader :expected
 
-      sig { params(_: T.anything).returns(T.anything) }
-      def expected=(_)
-      end
+      sig { params(expected: T.anything).void }
+      attr_writer :expected
 
       # The argument that uniquely define an input case (an arbitrary, JSON serializable
       #   object)
       sig { returns(T.nilable(T.anything)) }
-      def input
-      end
+      attr_reader :input
 
-      sig { params(_: T.anything).returns(T.anything) }
-      def input=(_)
-      end
+      sig { params(input: T.anything).void }
+      attr_writer :input
 
       # A dictionary with additional data about the test example, model outputs, or just
       #   about anything else that's relevant, that you can use to help find and analyze
@@ -124,27 +90,22 @@ module Braintrust
       #   anything else that would be useful to slice/dice later. The values in `metadata`
       #   can be any JSON-serializable type, but its keys must be strings
       sig { returns(T.nilable(Braintrust::Models::InsertDatasetEvent::Metadata)) }
-      def metadata
-      end
+      attr_reader :metadata
 
       sig do
-        params(_: T.nilable(T.any(Braintrust::Models::InsertDatasetEvent::Metadata, Braintrust::Util::AnyHash)))
-          .returns(T.nilable(T.any(Braintrust::Models::InsertDatasetEvent::Metadata, Braintrust::Util::AnyHash)))
+        params(
+          metadata: T.nilable(T.any(Braintrust::Models::InsertDatasetEvent::Metadata, Braintrust::Util::AnyHash))
+        )
+          .void
       end
-      def metadata=(_)
-      end
+      attr_writer :metadata
 
       # Indicates the event was copied from another object.
       sig { returns(T.nilable(Braintrust::Models::ObjectReference)) }
-      def origin
-      end
+      attr_reader :origin
 
-      sig do
-        params(_: T.nilable(T.any(Braintrust::Models::ObjectReference, Braintrust::Util::AnyHash)))
-          .returns(T.nilable(T.any(Braintrust::Models::ObjectReference, Braintrust::Util::AnyHash)))
-      end
-      def origin=(_)
-      end
+      sig { params(origin: T.nilable(T.any(Braintrust::Models::ObjectReference, Braintrust::Util::AnyHash))).void }
+      attr_writer :origin
 
       # Use `span_id`, `root_span_id`, and `span_parents` instead of `_parent_id`, which
       #   is now deprecated. The span_id is a unique identifier describing the row's place
@@ -162,12 +123,7 @@ module Braintrust
       #
       #   If the row is being merged into an existing row, this field will be ignored.
       sig { returns(T.nilable(String)) }
-      def root_span_id
-      end
-
-      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-      def root_span_id=(_)
-      end
+      attr_accessor :root_span_id
 
       # Use `span_id`, `root_span_id`, and `span_parents` instead of `_parent_id`, which
       #   is now deprecated. The span_id is a unique identifier describing the row's place
@@ -185,12 +141,7 @@ module Braintrust
       #
       #   If the row is being merged into an existing row, this field will be ignored.
       sig { returns(T.nilable(String)) }
-      def span_id
-      end
-
-      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-      def span_id=(_)
-      end
+      attr_accessor :span_id
 
       # Use `span_id`, `root_span_id`, and `span_parents` instead of `_parent_id`, which
       #   is now deprecated. The span_id is a unique identifier describing the row's place
@@ -208,21 +159,11 @@ module Braintrust
       #
       #   If the row is being merged into an existing row, this field will be ignored.
       sig { returns(T.nilable(T::Array[String])) }
-      def span_parents
-      end
-
-      sig { params(_: T.nilable(T::Array[String])).returns(T.nilable(T::Array[String])) }
-      def span_parents=(_)
-      end
+      attr_accessor :span_parents
 
       # A list of tags to log
       sig { returns(T.nilable(T::Array[String])) }
-      def tags
-      end
-
-      sig { params(_: T.nilable(T::Array[String])).returns(T.nilable(T::Array[String])) }
-      def tags=(_)
-      end
+      attr_accessor :tags
 
       # A dataset event
       sig do
@@ -289,12 +230,7 @@ module Braintrust
       class Metadata < Braintrust::BaseModel
         # The model used for this example
         sig { returns(T.nilable(String)) }
-        def model
-        end
-
-        sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-        def model=(_)
-        end
+        attr_accessor :model
 
         # A dictionary with additional data about the test example, model outputs, or just
         #   about anything else that's relevant, that you can use to help find and analyze

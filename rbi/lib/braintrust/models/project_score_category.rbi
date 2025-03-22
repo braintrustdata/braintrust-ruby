@@ -5,21 +5,11 @@ module Braintrust
     class ProjectScoreCategory < Braintrust::BaseModel
       # Name of the category
       sig { returns(String) }
-      def name
-      end
-
-      sig { params(_: String).returns(String) }
-      def name=(_)
-      end
+      attr_accessor :name
 
       # Numerical value of the category. Must be between 0 and 1, inclusive
       sig { returns(Float) }
-      def value
-      end
-
-      sig { params(_: Float).returns(Float) }
-      def value=(_)
-      end
+      attr_accessor :value
 
       # For categorical-type project scores, defines a single category
       sig { params(name: String, value: Float).returns(T.attached_class) }

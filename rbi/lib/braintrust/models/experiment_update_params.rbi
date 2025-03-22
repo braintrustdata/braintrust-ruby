@@ -8,84 +8,41 @@ module Braintrust
 
       # Id of default base experiment to compare against when viewing this experiment
       sig { returns(T.nilable(String)) }
-      def base_exp_id
-      end
-
-      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-      def base_exp_id=(_)
-      end
+      attr_accessor :base_exp_id
 
       # Identifier of the linked dataset, or null if the experiment is not linked to a
       #   dataset
       sig { returns(T.nilable(String)) }
-      def dataset_id
-      end
-
-      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-      def dataset_id=(_)
-      end
+      attr_accessor :dataset_id
 
       # Version number of the linked dataset the experiment was run against. This can be
       #   used to reproduce the experiment after the dataset has been modified.
       sig { returns(T.nilable(String)) }
-      def dataset_version
-      end
-
-      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-      def dataset_version=(_)
-      end
+      attr_accessor :dataset_version
 
       # Textual description of the experiment
       sig { returns(T.nilable(String)) }
-      def description
-      end
-
-      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-      def description=(_)
-      end
+      attr_accessor :description
 
       # User-controlled metadata about the experiment
       sig { returns(T.nilable(T::Hash[Symbol, T.nilable(T.anything)])) }
-      def metadata
-      end
-
-      sig do
-        params(_: T.nilable(T::Hash[Symbol, T.nilable(T.anything)]))
-          .returns(T.nilable(T::Hash[Symbol, T.nilable(T.anything)]))
-      end
-      def metadata=(_)
-      end
+      attr_accessor :metadata
 
       # Name of the experiment. Within a project, experiment names are unique
       sig { returns(T.nilable(String)) }
-      def name
-      end
-
-      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-      def name=(_)
-      end
+      attr_accessor :name
 
       # Whether or not the experiment is public. Public experiments can be viewed by
       #   anybody inside or outside the organization
       sig { returns(T.nilable(T::Boolean)) }
-      def public
-      end
-
-      sig { params(_: T.nilable(T::Boolean)).returns(T.nilable(T::Boolean)) }
-      def public=(_)
-      end
+      attr_accessor :public
 
       # Metadata about the state of the repo when the experiment was created
       sig { returns(T.nilable(Braintrust::Models::RepoInfo)) }
-      def repo_info
-      end
+      attr_reader :repo_info
 
-      sig do
-        params(_: T.nilable(T.any(Braintrust::Models::RepoInfo, Braintrust::Util::AnyHash)))
-          .returns(T.nilable(T.any(Braintrust::Models::RepoInfo, Braintrust::Util::AnyHash)))
-      end
-      def repo_info=(_)
-      end
+      sig { params(repo_info: T.nilable(T.any(Braintrust::Models::RepoInfo, Braintrust::Util::AnyHash))).void }
+      attr_writer :repo_info
 
       sig do
         params(

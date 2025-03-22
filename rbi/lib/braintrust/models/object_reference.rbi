@@ -5,51 +5,23 @@ module Braintrust
     class ObjectReference < Braintrust::BaseModel
       # ID of the original event.
       sig { returns(String) }
-      def id
-      end
-
-      sig { params(_: String).returns(String) }
-      def id=(_)
-      end
+      attr_accessor :id
 
       # Transaction ID of the original event.
       sig { returns(String) }
-      def _xact_id
-      end
-
-      sig { params(_: String).returns(String) }
-      def _xact_id=(_)
-      end
+      attr_accessor :_xact_id
 
       # ID of the object the event is originating from.
       sig { returns(String) }
-      def object_id_
-      end
-
-      sig { params(_: String).returns(String) }
-      def object_id_=(_)
-      end
+      attr_accessor :object_id_
 
       # Type of the object the event is originating from.
       sig { returns(Braintrust::Models::ObjectReference::ObjectType::OrSymbol) }
-      def object_type
-      end
-
-      sig do
-        params(_: Braintrust::Models::ObjectReference::ObjectType::OrSymbol)
-          .returns(Braintrust::Models::ObjectReference::ObjectType::OrSymbol)
-      end
-      def object_type=(_)
-      end
+      attr_accessor :object_type
 
       # Created timestamp of the original event. Used to help sort in the UI
       sig { returns(T.nilable(String)) }
-      def created
-      end
-
-      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-      def created=(_)
-      end
+      attr_accessor :created
 
       # Indicates the event was copied from another object.
       sig do

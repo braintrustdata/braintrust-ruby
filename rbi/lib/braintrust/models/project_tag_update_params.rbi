@@ -8,30 +8,15 @@ module Braintrust
 
       # Color of the tag for the UI
       sig { returns(T.nilable(String)) }
-      def color
-      end
-
-      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-      def color=(_)
-      end
+      attr_accessor :color
 
       # Textual description of the project tag
       sig { returns(T.nilable(String)) }
-      def description
-      end
-
-      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-      def description=(_)
-      end
+      attr_accessor :description
 
       # Name of the project tag
       sig { returns(T.nilable(String)) }
-      def name
-      end
-
-      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-      def name=(_)
-      end
+      attr_accessor :name
 
       sig do
         params(
