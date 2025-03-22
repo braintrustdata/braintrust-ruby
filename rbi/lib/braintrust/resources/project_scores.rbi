@@ -12,9 +12,13 @@ module Braintrust
           project_id: String,
           score_type: Braintrust::Models::ProjectScoreType::OrSymbol,
           categories: T.nilable(
-            T.any(T::Array[Braintrust::Models::ProjectScoreCategory], T::Hash[Symbol, Float], T::Array[String])
+            T.any(
+              T::Array[T.any(Braintrust::Models::ProjectScoreCategory, Braintrust::Util::AnyHash)],
+              T::Hash[Symbol, Float],
+              T::Array[String]
+            )
           ),
-          config: T.nilable(Braintrust::Models::ProjectScoreConfig),
+          config: T.nilable(T.any(Braintrust::Models::ProjectScoreConfig, Braintrust::Util::AnyHash)),
           description: T.nilable(String),
           request_options: T.nilable(T.any(Braintrust::RequestOptions, Braintrust::Util::AnyHash))
         )
@@ -58,9 +62,13 @@ module Braintrust
         params(
           project_score_id: String,
           categories: T.nilable(
-            T.any(T::Array[Braintrust::Models::ProjectScoreCategory], T::Hash[Symbol, Float], T::Array[String])
+            T.any(
+              T::Array[T.any(Braintrust::Models::ProjectScoreCategory, Braintrust::Util::AnyHash)],
+              T::Hash[Symbol, Float],
+              T::Array[String]
+            )
           ),
-          config: T.nilable(Braintrust::Models::ProjectScoreConfig),
+          config: T.nilable(T.any(Braintrust::Models::ProjectScoreConfig, Braintrust::Util::AnyHash)),
           description: T.nilable(String),
           name: T.nilable(String),
           score_type: T.nilable(Braintrust::Models::ProjectScoreType::OrSymbol),
@@ -160,9 +168,13 @@ module Braintrust
           project_id: String,
           score_type: Braintrust::Models::ProjectScoreType::OrSymbol,
           categories: T.nilable(
-            T.any(T::Array[Braintrust::Models::ProjectScoreCategory], T::Hash[Symbol, Float], T::Array[String])
+            T.any(
+              T::Array[T.any(Braintrust::Models::ProjectScoreCategory, Braintrust::Util::AnyHash)],
+              T::Hash[Symbol, Float],
+              T::Array[String]
+            )
           ),
-          config: T.nilable(Braintrust::Models::ProjectScoreConfig),
+          config: T.nilable(T.any(Braintrust::Models::ProjectScoreConfig, Braintrust::Util::AnyHash)),
           description: T.nilable(String),
           request_options: T.nilable(T.any(Braintrust::RequestOptions, Braintrust::Util::AnyHash))
         )

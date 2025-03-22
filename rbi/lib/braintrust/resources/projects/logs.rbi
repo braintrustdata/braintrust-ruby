@@ -8,7 +8,7 @@ module Braintrust
         sig do
           params(
             project_id: String,
-            feedback: T::Array[Braintrust::Models::FeedbackProjectLogsItem],
+            feedback: T::Array[T.any(Braintrust::Models::FeedbackProjectLogsItem, Braintrust::Util::AnyHash)],
             request_options: T.nilable(T.any(Braintrust::RequestOptions, Braintrust::Util::AnyHash))
           )
             .returns(Braintrust::Models::FeedbackResponseSchema)
@@ -161,7 +161,7 @@ module Braintrust
         sig do
           params(
             project_id: String,
-            events: T::Array[Braintrust::Models::InsertProjectLogsEvent],
+            events: T::Array[T.any(Braintrust::Models::InsertProjectLogsEvent, Braintrust::Util::AnyHash)],
             request_options: T.nilable(T.any(Braintrust::RequestOptions, Braintrust::Util::AnyHash))
           )
             .returns(Braintrust::Models::InsertEventsResponse)

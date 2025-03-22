@@ -106,7 +106,7 @@ module Braintrust
           created: T.nilable(Time),
           deleted_at: T.nilable(Time),
           description: T.nilable(String),
-          member_permissions: T.nilable(T::Array[Braintrust::Models::Role::MemberPermission]),
+          member_permissions: T.nilable(T::Array[T.any(Braintrust::Models::Role::MemberPermission, Braintrust::Util::AnyHash)]),
           member_roles: T.nilable(T::Array[String]),
           org_id: T.nilable(String),
           user_id: T.nilable(String)
@@ -175,8 +175,8 @@ module Braintrust
 
         sig do
           params(
-            permission: Braintrust::Models::Permission::TaggedSymbol,
-            restrict_object_type: T.nilable(Braintrust::Models::ACLObjectType::TaggedSymbol)
+            permission: Braintrust::Models::Permission::OrSymbol,
+            restrict_object_type: T.nilable(Braintrust::Models::ACLObjectType::OrSymbol)
           )
             .returns(T.attached_class)
         end

@@ -219,8 +219,12 @@ module Braintrust
       end
 
       sig do
-        params(_: T.any(Braintrust::Models::EvalCreateParams::Parent::SpanParentStruct, String))
-          .returns(T.any(Braintrust::Models::EvalCreateParams::Parent::SpanParentStruct, String))
+        params(
+          _: T.any(Braintrust::Models::EvalCreateParams::Parent::SpanParentStruct, Braintrust::Util::AnyHash, String)
+        )
+          .returns(
+            T.any(Braintrust::Models::EvalCreateParams::Parent::SpanParentStruct, Braintrust::Util::AnyHash, String)
+          )
       end
       def parent=(_)
       end
@@ -273,6 +277,7 @@ module Braintrust
         params(
           data: T.any(
             Braintrust::Models::EvalCreateParams::Data::DatasetID,
+            Braintrust::Util::AnyHash,
             Braintrust::Models::EvalCreateParams::Data::ProjectDatasetName,
             Braintrust::Models::EvalCreateParams::Data::DatasetRows
           ),
@@ -280,6 +285,7 @@ module Braintrust
           scores: T::Array[
           T.any(
             Braintrust::Models::EvalCreateParams::Score::FunctionID,
+            Braintrust::Util::AnyHash,
             Braintrust::Models::EvalCreateParams::Score::ProjectSlug,
             Braintrust::Models::EvalCreateParams::Score::GlobalFunction,
             Braintrust::Models::EvalCreateParams::Score::PromptSessionID,
@@ -289,6 +295,7 @@ module Braintrust
           ],
           task: T.any(
             Braintrust::Models::EvalCreateParams::Task::FunctionID,
+            Braintrust::Util::AnyHash,
             Braintrust::Models::EvalCreateParams::Task::ProjectSlug,
             Braintrust::Models::EvalCreateParams::Task::GlobalFunction,
             Braintrust::Models::EvalCreateParams::Task::PromptSessionID,
@@ -302,7 +309,7 @@ module Braintrust
           is_public: T.nilable(T::Boolean),
           max_concurrency: T.nilable(Float),
           metadata: T::Hash[Symbol, T.nilable(T.anything)],
-          parent: T.any(Braintrust::Models::EvalCreateParams::Parent::SpanParentStruct, String),
+          parent: T.any(Braintrust::Models::EvalCreateParams::Parent::SpanParentStruct, Braintrust::Util::AnyHash, String),
           repo_info: T.nilable(T.any(Braintrust::Models::RepoInfo, Braintrust::Util::AnyHash)),
           stream: T::Boolean,
           timeout: T.nilable(Float),

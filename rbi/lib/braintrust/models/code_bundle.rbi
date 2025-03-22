@@ -64,6 +64,7 @@ module Braintrust
           bundle_id: String,
           location: T.any(
             Braintrust::Models::CodeBundle::Location::Experiment,
+            Braintrust::Util::AnyHash,
             Braintrust::Models::CodeBundle::Location::Function
           ),
           runtime_context: T.any(Braintrust::Models::CodeBundle::RuntimeContext, Braintrust::Util::AnyHash),
@@ -157,6 +158,7 @@ module Braintrust
               eval_name: String,
               position: T.any(
                 Braintrust::Models::CodeBundle::Location::Experiment::Position::Type,
+                Braintrust::Util::AnyHash,
                 Braintrust::Models::CodeBundle::Location::Experiment::Position::Scorer
               ),
               type: Braintrust::Models::CodeBundle::Location::Experiment::Type::OrSymbol

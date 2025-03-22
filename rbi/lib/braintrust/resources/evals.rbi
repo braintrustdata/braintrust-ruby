@@ -13,6 +13,7 @@ module Braintrust
         params(
           data: T.any(
             Braintrust::Models::EvalCreateParams::Data::DatasetID,
+            Braintrust::Util::AnyHash,
             Braintrust::Models::EvalCreateParams::Data::ProjectDatasetName,
             Braintrust::Models::EvalCreateParams::Data::DatasetRows
           ),
@@ -20,6 +21,7 @@ module Braintrust
           scores: T::Array[
           T.any(
             Braintrust::Models::EvalCreateParams::Score::FunctionID,
+            Braintrust::Util::AnyHash,
             Braintrust::Models::EvalCreateParams::Score::ProjectSlug,
             Braintrust::Models::EvalCreateParams::Score::GlobalFunction,
             Braintrust::Models::EvalCreateParams::Score::PromptSessionID,
@@ -29,6 +31,7 @@ module Braintrust
           ],
           task: T.any(
             Braintrust::Models::EvalCreateParams::Task::FunctionID,
+            Braintrust::Util::AnyHash,
             Braintrust::Models::EvalCreateParams::Task::ProjectSlug,
             Braintrust::Models::EvalCreateParams::Task::GlobalFunction,
             Braintrust::Models::EvalCreateParams::Task::PromptSessionID,
@@ -38,12 +41,12 @@ module Braintrust
           base_experiment_id: T.nilable(String),
           base_experiment_name: T.nilable(String),
           experiment_name: String,
-          git_metadata_settings: T.nilable(Braintrust::Models::EvalCreateParams::GitMetadataSettings),
+          git_metadata_settings: T.nilable(T.any(Braintrust::Models::EvalCreateParams::GitMetadataSettings, Braintrust::Util::AnyHash)),
           is_public: T.nilable(T::Boolean),
           max_concurrency: T.nilable(Float),
           metadata: T::Hash[Symbol, T.nilable(T.anything)],
-          parent: T.any(Braintrust::Models::EvalCreateParams::Parent::SpanParentStruct, String),
-          repo_info: T.nilable(Braintrust::Models::RepoInfo),
+          parent: T.any(Braintrust::Models::EvalCreateParams::Parent::SpanParentStruct, Braintrust::Util::AnyHash, String),
+          repo_info: T.nilable(T.any(Braintrust::Models::RepoInfo, Braintrust::Util::AnyHash)),
           stream: T::Boolean,
           timeout: T.nilable(Float),
           trial_count: T.nilable(Float),

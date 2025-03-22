@@ -13,7 +13,7 @@ module Braintrust
           slug: String,
           description: T.nilable(String),
           function_type: T.nilable(Braintrust::Models::PromptCreateParams::FunctionType::OrSymbol),
-          prompt_data: T.nilable(Braintrust::Models::PromptData),
+          prompt_data: T.nilable(T.any(Braintrust::Models::PromptData, Braintrust::Util::AnyHash)),
           tags: T.nilable(T::Array[String]),
           request_options: T.nilable(T.any(Braintrust::RequestOptions, Braintrust::Util::AnyHash))
         )
@@ -60,7 +60,7 @@ module Braintrust
           prompt_id: String,
           description: T.nilable(String),
           name: T.nilable(String),
-          prompt_data: T.nilable(Braintrust::Models::PromptData),
+          prompt_data: T.nilable(T.any(Braintrust::Models::PromptData, Braintrust::Util::AnyHash)),
           slug: T.nilable(String),
           tags: T.nilable(T::Array[String]),
           request_options: T.nilable(T.any(Braintrust::RequestOptions, Braintrust::Util::AnyHash))
@@ -164,7 +164,7 @@ module Braintrust
           slug: String,
           description: T.nilable(String),
           function_type: T.nilable(Braintrust::Models::PromptReplaceParams::FunctionType::OrSymbol),
-          prompt_data: T.nilable(Braintrust::Models::PromptData),
+          prompt_data: T.nilable(T.any(Braintrust::Models::PromptData, Braintrust::Util::AnyHash)),
           tags: T.nilable(T::Array[String]),
           request_options: T.nilable(T.any(Braintrust::RequestOptions, Braintrust::Util::AnyHash))
         )

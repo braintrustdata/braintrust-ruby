@@ -135,7 +135,7 @@ module Braintrust
       sig do
         params(
           dataset_id: String,
-          feedback: T::Array[Braintrust::Models::FeedbackDatasetItem],
+          feedback: T::Array[T.any(Braintrust::Models::FeedbackDatasetItem, Braintrust::Util::AnyHash)],
           request_options: T.nilable(T.any(Braintrust::RequestOptions, Braintrust::Util::AnyHash))
         )
           .returns(Braintrust::Models::FeedbackResponseSchema)
@@ -288,7 +288,7 @@ module Braintrust
       sig do
         params(
           dataset_id: String,
-          events: T::Array[Braintrust::Models::InsertDatasetEvent],
+          events: T::Array[T.any(Braintrust::Models::InsertDatasetEvent, Braintrust::Util::AnyHash)],
           request_options: T.nilable(T.any(Braintrust::RequestOptions, Braintrust::Util::AnyHash))
         )
           .returns(Braintrust::Models::InsertEventsResponse)

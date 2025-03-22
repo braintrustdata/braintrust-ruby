@@ -122,11 +122,11 @@ module Braintrust
           id: String,
           _object_org_id: String,
           object_id_: String,
-          object_type: Braintrust::Models::ACLObjectType::TaggedSymbol,
+          object_type: Braintrust::Models::ACLObjectType::OrSymbol,
           created: T.nilable(Time),
           group_id: T.nilable(String),
-          permission: T.nilable(Braintrust::Models::Permission::TaggedSymbol),
-          restrict_object_type: T.nilable(Braintrust::Models::ACLObjectType::TaggedSymbol),
+          permission: T.nilable(Braintrust::Models::Permission::OrSymbol),
+          restrict_object_type: T.nilable(Braintrust::Models::ACLObjectType::OrSymbol),
           role_id: T.nilable(String),
           user_id: T.nilable(String)
         )
