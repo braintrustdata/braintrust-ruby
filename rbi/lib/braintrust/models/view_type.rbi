@@ -21,10 +21,8 @@ module Braintrust
       SCORERS = T.let(:scorers, Braintrust::Models::ViewType::TaggedSymbol)
       LOGS = T.let(:logs, Braintrust::Models::ViewType::TaggedSymbol)
 
-      class << self
-        sig { override.returns(T::Array[Braintrust::Models::ViewType::TaggedSymbol]) }
-        def values
-        end
+      sig { override.returns(T::Array[Braintrust::Models::ViewType::TaggedSymbol]) }
+      def self.values
       end
     end
   end

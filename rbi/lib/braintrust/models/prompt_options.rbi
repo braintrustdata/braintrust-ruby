@@ -85,19 +85,6 @@ module Braintrust
       module Params
         extend Braintrust::Union
 
-        Variants =
-          type_template(:out) do
-            {
-              fixed: T.any(
-                Braintrust::Models::PromptOptions::Params::OpenAIModelParams,
-                Braintrust::Models::PromptOptions::Params::AnthropicModelParams,
-                Braintrust::Models::PromptOptions::Params::GoogleModelParams,
-                Braintrust::Models::PromptOptions::Params::WindowAIModelParams,
-                Braintrust::Models::PromptOptions::Params::JsCompletionParams
-              )
-            }
-          end
-
         class OpenAIModelParams < Braintrust::BaseModel
           sig { returns(T.nilable(Float)) }
           attr_reader :frequency_penalty
@@ -318,16 +305,6 @@ module Braintrust
           module FunctionCall
             extend Braintrust::Union
 
-            Variants =
-              type_template(:out) do
-                {
-                  fixed: T.any(
-                    Braintrust::Models::PromptOptions::Params::OpenAIModelParams::FunctionCall::OrSymbol,
-                    Braintrust::Models::PromptOptions::Params::OpenAIModelParams::FunctionCall::Function
-                  )
-                }
-              end
-
             TaggedSymbol =
               T.type_alias { T.all(Symbol, Braintrust::Models::PromptOptions::Params::OpenAIModelParams::FunctionCall) }
             OrSymbol =
@@ -351,15 +328,13 @@ module Braintrust
               end
             end
 
-            class << self
-              sig do
-                override
-                  .returns(
-                    [Braintrust::Models::PromptOptions::Params::OpenAIModelParams::FunctionCall::OrSymbol, Braintrust::Models::PromptOptions::Params::OpenAIModelParams::FunctionCall::Function]
-                  )
-              end
-              def variants
-              end
+            sig do
+              override
+                .returns(
+                  [Braintrust::Models::PromptOptions::Params::OpenAIModelParams::FunctionCall::OrSymbol, Braintrust::Models::PromptOptions::Params::OpenAIModelParams::FunctionCall::Function]
+                )
+            end
+            def self.variants
             end
           end
 
@@ -381,31 +356,18 @@ module Braintrust
             HIGH =
               T.let(:high, Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ReasoningEffort::TaggedSymbol)
 
-            class << self
-              sig do
-                override
-                  .returns(
-                    T::Array[Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ReasoningEffort::TaggedSymbol]
-                  )
-              end
-              def values
-              end
+            sig do
+              override
+                .returns(
+                  T::Array[Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ReasoningEffort::TaggedSymbol]
+                )
+            end
+            def self.values
             end
           end
 
           module ResponseFormat
             extend Braintrust::Union
-
-            Variants =
-              type_template(:out) do
-                {
-                  fixed: T.any(
-                    Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ResponseFormat::JsonObject,
-                    Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ResponseFormat::JsonSchema,
-                    Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ResponseFormat::Text
-                  )
-                }
-              end
 
             class JsonObject < Braintrust::BaseModel
               sig do
@@ -456,17 +418,15 @@ module Braintrust
                     Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ResponseFormat::JsonObject::Type::TaggedSymbol
                   )
 
-                class << self
-                  sig do
-                    override
-                      .returns(
-                        T::Array[
-                        Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ResponseFormat::JsonObject::Type::TaggedSymbol
-                        ]
-                      )
-                  end
-                  def values
-                  end
+                sig do
+                  override
+                    .returns(
+                      T::Array[
+                      Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ResponseFormat::JsonObject::Type::TaggedSymbol
+                      ]
+                    )
+                end
+                def self.values
                 end
               end
             end
@@ -570,19 +530,13 @@ module Braintrust
                 module Schema
                   extend Braintrust::Union
 
-                  Variants = type_template(:out) do
-                    {fixed: T.any(T::Hash[Symbol, T.nilable(T.anything)], String)}
-                  end
-
                   ObjectMap = T.let(
                     Braintrust::HashOf[Braintrust::Unknown, nil?: true],
                     Braintrust::Converter
                   )
 
-                  class << self
-                    sig { override.returns([T::Hash[Symbol, T.nilable(T.anything)], String]) }
-                    def variants
-                    end
+                  sig { override.returns([T::Hash[Symbol, T.nilable(T.anything)], String]) }
+                  def self.variants
                   end
                 end
               end
@@ -608,17 +562,15 @@ module Braintrust
                     Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ResponseFormat::JsonSchema::Type::TaggedSymbol
                   )
 
-                class << self
-                  sig do
-                    override
-                      .returns(
-                        T::Array[
-                        Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ResponseFormat::JsonSchema::Type::TaggedSymbol
-                        ]
-                      )
-                  end
-                  def values
-                  end
+                sig do
+                  override
+                    .returns(
+                      T::Array[
+                      Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ResponseFormat::JsonSchema::Type::TaggedSymbol
+                      ]
+                    )
+                end
+                def self.values
                 end
               end
             end
@@ -668,43 +620,29 @@ module Braintrust
                     Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ResponseFormat::Text::Type::TaggedSymbol
                   )
 
-                class << self
-                  sig do
-                    override
-                      .returns(
-                        T::Array[Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ResponseFormat::Text::Type::TaggedSymbol]
-                      )
-                  end
-                  def values
-                  end
+                sig do
+                  override
+                    .returns(
+                      T::Array[Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ResponseFormat::Text::Type::TaggedSymbol]
+                    )
+                end
+                def self.values
                 end
               end
             end
 
-            class << self
-              sig do
-                override
-                  .returns(
-                    [Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ResponseFormat::JsonObject, Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ResponseFormat::JsonSchema, Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ResponseFormat::Text]
-                  )
-              end
-              def variants
-              end
+            sig do
+              override
+                .returns(
+                  [Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ResponseFormat::JsonObject, Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ResponseFormat::JsonSchema, Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ResponseFormat::Text]
+                )
+            end
+            def self.variants
             end
           end
 
           module ToolChoice
             extend Braintrust::Union
-
-            Variants =
-              type_template(:out) do
-                {
-                  fixed: T.any(
-                    Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ToolChoice::OrSymbol,
-                    Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ToolChoice::Function
-                  )
-                }
-              end
 
             TaggedSymbol =
               T.type_alias { T.all(Symbol, Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ToolChoice) }
@@ -797,28 +735,24 @@ module Braintrust
                     Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ToolChoice::Function::Type::TaggedSymbol
                   )
 
-                class << self
-                  sig do
-                    override
-                      .returns(
-                        T::Array[Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ToolChoice::Function::Type::TaggedSymbol]
-                      )
-                  end
-                  def values
-                  end
+                sig do
+                  override
+                    .returns(
+                      T::Array[Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ToolChoice::Function::Type::TaggedSymbol]
+                    )
+                end
+                def self.values
                 end
               end
             end
 
-            class << self
-              sig do
-                override
-                  .returns(
-                    [Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ToolChoice::OrSymbol, Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ToolChoice::Function]
-                  )
-              end
-              def variants
-              end
+            sig do
+              override
+                .returns(
+                  [Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ToolChoice::OrSymbol, Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ToolChoice::Function]
+                )
+            end
+            def self.variants
             end
           end
         end
@@ -1004,15 +938,13 @@ module Braintrust
           end
         end
 
-        class << self
-          sig do
-            override
-              .returns(
-                [Braintrust::Models::PromptOptions::Params::OpenAIModelParams, Braintrust::Models::PromptOptions::Params::AnthropicModelParams, Braintrust::Models::PromptOptions::Params::GoogleModelParams, Braintrust::Models::PromptOptions::Params::WindowAIModelParams, Braintrust::Models::PromptOptions::Params::JsCompletionParams]
-              )
-          end
-          def variants
-          end
+        sig do
+          override
+            .returns(
+              [Braintrust::Models::PromptOptions::Params::OpenAIModelParams, Braintrust::Models::PromptOptions::Params::AnthropicModelParams, Braintrust::Models::PromptOptions::Params::GoogleModelParams, Braintrust::Models::PromptOptions::Params::WindowAIModelParams, Braintrust::Models::PromptOptions::Params::JsCompletionParams]
+            )
+        end
+        def self.variants
         end
       end
     end

@@ -68,16 +68,6 @@ module Braintrust
       module Scorer
         extend Braintrust::Union
 
-        Variants =
-          type_template(:out) do
-            {
-              fixed: T.any(
-                Braintrust::Models::OnlineScoreConfig::Scorer::Function,
-                Braintrust::Models::OnlineScoreConfig::Scorer::Global
-              )
-            }
-          end
-
         class Function < Braintrust::BaseModel
           sig { returns(String) }
           attr_accessor :id
@@ -109,10 +99,8 @@ module Braintrust
 
             FUNCTION = T.let(:function, Braintrust::Models::OnlineScoreConfig::Scorer::Function::Type::TaggedSymbol)
 
-            class << self
-              sig { override.returns(T::Array[Braintrust::Models::OnlineScoreConfig::Scorer::Function::Type::TaggedSymbol]) }
-              def values
-              end
+            sig { override.returns(T::Array[Braintrust::Models::OnlineScoreConfig::Scorer::Function::Type::TaggedSymbol]) }
+            def self.values
             end
           end
         end
@@ -148,23 +136,19 @@ module Braintrust
 
             GLOBAL = T.let(:global, Braintrust::Models::OnlineScoreConfig::Scorer::Global::Type::TaggedSymbol)
 
-            class << self
-              sig { override.returns(T::Array[Braintrust::Models::OnlineScoreConfig::Scorer::Global::Type::TaggedSymbol]) }
-              def values
-              end
+            sig { override.returns(T::Array[Braintrust::Models::OnlineScoreConfig::Scorer::Global::Type::TaggedSymbol]) }
+            def self.values
             end
           end
         end
 
-        class << self
-          sig do
-            override
-              .returns(
-                [Braintrust::Models::OnlineScoreConfig::Scorer::Function, Braintrust::Models::OnlineScoreConfig::Scorer::Global]
-              )
-          end
-          def variants
-          end
+        sig do
+          override
+            .returns(
+              [Braintrust::Models::OnlineScoreConfig::Scorer::Function, Braintrust::Models::OnlineScoreConfig::Scorer::Global]
+            )
+        end
+        def self.variants
         end
       end
     end

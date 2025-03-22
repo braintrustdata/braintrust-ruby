@@ -13,10 +13,8 @@ module Braintrust
       PROJECT = T.let(:project, Braintrust::Models::EnvVarObjectType::TaggedSymbol)
       FUNCTION = T.let(:function, Braintrust::Models::EnvVarObjectType::TaggedSymbol)
 
-      class << self
-        sig { override.returns(T::Array[Braintrust::Models::EnvVarObjectType::TaggedSymbol]) }
-        def values
-        end
+      sig { override.returns(T::Array[Braintrust::Models::EnvVarObjectType::TaggedSymbol]) }
+      def self.values
       end
     end
   end

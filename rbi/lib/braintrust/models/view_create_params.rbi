@@ -109,10 +109,8 @@ module Braintrust
         SCORERS = T.let(:scorers, Braintrust::Models::ViewCreateParams::ViewType::TaggedSymbol)
         LOGS = T.let(:logs, Braintrust::Models::ViewCreateParams::ViewType::TaggedSymbol)
 
-        class << self
-          sig { override.returns(T::Array[Braintrust::Models::ViewCreateParams::ViewType::TaggedSymbol]) }
-          def values
-          end
+        sig { override.returns(T::Array[Braintrust::Models::ViewCreateParams::ViewType::TaggedSymbol]) }
+        def self.values
         end
       end
     end

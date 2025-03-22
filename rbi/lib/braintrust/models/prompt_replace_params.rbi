@@ -91,10 +91,8 @@ module Braintrust
         TASK = T.let(:task, Braintrust::Models::PromptReplaceParams::FunctionType::TaggedSymbol)
         TOOL = T.let(:tool, Braintrust::Models::PromptReplaceParams::FunctionType::TaggedSymbol)
 
-        class << self
-          sig { override.returns(T::Array[Braintrust::Models::PromptReplaceParams::FunctionType::TaggedSymbol]) }
-          def values
-          end
+        sig { override.returns(T::Array[Braintrust::Models::PromptReplaceParams::FunctionType::TaggedSymbol]) }
+        def self.values
         end
       end
     end

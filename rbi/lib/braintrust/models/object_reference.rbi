@@ -66,10 +66,8 @@ module Braintrust
         PROMPT_SESSION = T.let(:prompt_session, Braintrust::Models::ObjectReference::ObjectType::TaggedSymbol)
         PROJECT_LOGS = T.let(:project_logs, Braintrust::Models::ObjectReference::ObjectType::TaggedSymbol)
 
-        class << self
-          sig { override.returns(T::Array[Braintrust::Models::ObjectReference::ObjectType::TaggedSymbol]) }
-          def values
-          end
+        sig { override.returns(T::Array[Braintrust::Models::ObjectReference::ObjectType::TaggedSymbol]) }
+        def self.values
         end
       end
     end

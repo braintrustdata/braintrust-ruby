@@ -134,17 +134,6 @@ module Braintrust
       module FunctionData
         extend Braintrust::Union
 
-        Variants =
-          type_template(:out) do
-            {
-              fixed: T.any(
-                Braintrust::Models::FunctionCreateParams::FunctionData::Prompt,
-                Braintrust::Models::FunctionCreateParams::FunctionData::Code,
-                Braintrust::Models::FunctionCreateParams::FunctionData::Global
-              )
-            }
-          end
-
         class Prompt < Braintrust::BaseModel
           sig { returns(Braintrust::Models::FunctionCreateParams::FunctionData::Prompt::Type::OrSymbol) }
           attr_accessor :type
@@ -171,13 +160,11 @@ module Braintrust
             PROMPT =
               T.let(:prompt, Braintrust::Models::FunctionCreateParams::FunctionData::Prompt::Type::TaggedSymbol)
 
-            class << self
-              sig do
-                override
-                  .returns(T::Array[Braintrust::Models::FunctionCreateParams::FunctionData::Prompt::Type::TaggedSymbol])
-              end
-              def values
-              end
+            sig do
+              override
+                .returns(T::Array[Braintrust::Models::FunctionCreateParams::FunctionData::Prompt::Type::TaggedSymbol])
+            end
+            def self.values
             end
           end
         end
@@ -228,16 +215,6 @@ module Braintrust
           module Data
             extend Braintrust::Union
 
-            Variants =
-              type_template(:out) do
-                {
-                  fixed: T.any(
-                    Braintrust::Models::FunctionCreateParams::FunctionData::Code::Data::Bundle,
-                    Braintrust::Models::FunctionCreateParams::FunctionData::Code::Data::Inline
-                  )
-                }
-              end
-
             class Bundle < Braintrust::Models::CodeBundle
               sig { returns(Braintrust::Models::FunctionCreateParams::FunctionData::Code::Data::Bundle::Type::OrSymbol) }
               attr_accessor :type
@@ -277,15 +254,13 @@ module Braintrust
                     Braintrust::Models::FunctionCreateParams::FunctionData::Code::Data::Bundle::Type::TaggedSymbol
                   )
 
-                class << self
-                  sig do
-                    override
-                      .returns(
-                        T::Array[Braintrust::Models::FunctionCreateParams::FunctionData::Code::Data::Bundle::Type::TaggedSymbol]
-                      )
-                  end
-                  def values
-                  end
+                sig do
+                  override
+                    .returns(
+                      T::Array[Braintrust::Models::FunctionCreateParams::FunctionData::Code::Data::Bundle::Type::TaggedSymbol]
+                    )
+                end
+                def self.values
                 end
               end
             end
@@ -397,17 +372,15 @@ module Braintrust
                       Braintrust::Models::FunctionCreateParams::FunctionData::Code::Data::Inline::RuntimeContext::Runtime::TaggedSymbol
                     )
 
-                  class << self
-                    sig do
-                      override
-                        .returns(
-                          T::Array[
-                          Braintrust::Models::FunctionCreateParams::FunctionData::Code::Data::Inline::RuntimeContext::Runtime::TaggedSymbol
-                          ]
-                        )
-                    end
-                    def values
-                    end
+                  sig do
+                    override
+                      .returns(
+                        T::Array[
+                        Braintrust::Models::FunctionCreateParams::FunctionData::Code::Data::Inline::RuntimeContext::Runtime::TaggedSymbol
+                        ]
+                      )
+                  end
+                  def self.values
                   end
                 end
               end
@@ -431,28 +404,24 @@ module Braintrust
                     Braintrust::Models::FunctionCreateParams::FunctionData::Code::Data::Inline::Type::TaggedSymbol
                   )
 
-                class << self
-                  sig do
-                    override
-                      .returns(
-                        T::Array[Braintrust::Models::FunctionCreateParams::FunctionData::Code::Data::Inline::Type::TaggedSymbol]
-                      )
-                  end
-                  def values
-                  end
+                sig do
+                  override
+                    .returns(
+                      T::Array[Braintrust::Models::FunctionCreateParams::FunctionData::Code::Data::Inline::Type::TaggedSymbol]
+                    )
+                end
+                def self.values
                 end
               end
             end
 
-            class << self
-              sig do
-                override
-                  .returns(
-                    [Braintrust::Models::FunctionCreateParams::FunctionData::Code::Data::Bundle, Braintrust::Models::FunctionCreateParams::FunctionData::Code::Data::Inline]
-                  )
-              end
-              def variants
-              end
+            sig do
+              override
+                .returns(
+                  [Braintrust::Models::FunctionCreateParams::FunctionData::Code::Data::Bundle, Braintrust::Models::FunctionCreateParams::FunctionData::Code::Data::Inline]
+                )
+            end
+            def self.variants
             end
           end
 
@@ -466,13 +435,11 @@ module Braintrust
 
             CODE = T.let(:code, Braintrust::Models::FunctionCreateParams::FunctionData::Code::Type::TaggedSymbol)
 
-            class << self
-              sig do
-                override
-                  .returns(T::Array[Braintrust::Models::FunctionCreateParams::FunctionData::Code::Type::TaggedSymbol])
-              end
-              def values
-              end
+            sig do
+              override
+                .returns(T::Array[Braintrust::Models::FunctionCreateParams::FunctionData::Code::Type::TaggedSymbol])
+            end
+            def self.values
             end
           end
         end
@@ -511,26 +478,22 @@ module Braintrust
             GLOBAL =
               T.let(:global, Braintrust::Models::FunctionCreateParams::FunctionData::Global::Type::TaggedSymbol)
 
-            class << self
-              sig do
-                override
-                  .returns(T::Array[Braintrust::Models::FunctionCreateParams::FunctionData::Global::Type::TaggedSymbol])
-              end
-              def values
-              end
+            sig do
+              override
+                .returns(T::Array[Braintrust::Models::FunctionCreateParams::FunctionData::Global::Type::TaggedSymbol])
+            end
+            def self.values
             end
           end
         end
 
-        class << self
-          sig do
-            override
-              .returns(
-                [Braintrust::Models::FunctionCreateParams::FunctionData::Prompt, Braintrust::Models::FunctionCreateParams::FunctionData::Code, Braintrust::Models::FunctionCreateParams::FunctionData::Global]
-              )
-          end
-          def variants
-          end
+        sig do
+          override
+            .returns(
+              [Braintrust::Models::FunctionCreateParams::FunctionData::Prompt, Braintrust::Models::FunctionCreateParams::FunctionData::Code, Braintrust::Models::FunctionCreateParams::FunctionData::Global]
+            )
+        end
+        def self.variants
         end
       end
 
@@ -569,10 +532,8 @@ module Braintrust
         TASK = T.let(:task, Braintrust::Models::FunctionCreateParams::FunctionType::TaggedSymbol)
         TOOL = T.let(:tool, Braintrust::Models::FunctionCreateParams::FunctionType::TaggedSymbol)
 
-        class << self
-          sig { override.returns(T::Array[Braintrust::Models::FunctionCreateParams::FunctionType::TaggedSymbol]) }
-          def values
-          end
+        sig { override.returns(T::Array[Braintrust::Models::FunctionCreateParams::FunctionType::TaggedSymbol]) }
+        def self.values
         end
       end
 
