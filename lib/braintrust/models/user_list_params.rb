@@ -135,10 +135,8 @@ module Braintrust
         variant Braintrust::Models::UserListParams::Email::StringArray
 
         # @!parse
-        #   class << self
-        #     # @return [Array(String, Array<String>)]
-        #     def variants; end
-        #   end
+        #   # @return [Array(String, Array<String>)]
+        #   def self.variants; end
       end
 
       # Family name of the user to search for. You may pass the param multiple times to
@@ -153,10 +151,8 @@ module Braintrust
         variant Braintrust::Models::UserListParams::FamilyName::StringArray
 
         # @!parse
-        #   class << self
-        #     # @return [Array(String, Array<String>)]
-        #     def variants; end
-        #   end
+        #   # @return [Array(String, Array<String>)]
+        #   def self.variants; end
       end
 
       # Given name of the user to search for. You may pass the param multiple times to
@@ -171,10 +167,8 @@ module Braintrust
         variant Braintrust::Models::UserListParams::GivenName::StringArray
 
         # @!parse
-        #   class << self
-        #     # @return [Array(String, Array<String>)]
-        #     def variants; end
-        #   end
+        #   # @return [Array(String, Array<String>)]
+        #   def self.variants; end
       end
 
       # Filter search results to a particular set of object IDs. To specify a list of
@@ -189,10 +183,8 @@ module Braintrust
         variant Braintrust::Models::UserListParams::IDs::StringArray
 
         # @!parse
-        #   class << self
-        #     # @return [Array(String, Array<String>)]
-        #     def variants; end
-        #   end
+        #   # @return [Array(String, Array<String>)]
+        #   def self.variants; end
       end
     end
   end

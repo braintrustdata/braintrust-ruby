@@ -32,10 +32,8 @@ module Braintrust
 
         TEXT = T.let(:text, Braintrust::Models::ChatCompletionContentPartText::Type::TaggedSymbol)
 
-        class << self
-          sig { override.returns(T::Array[Braintrust::Models::ChatCompletionContentPartText::Type::TaggedSymbol]) }
-          def values
-          end
+        sig { override.returns(T::Array[Braintrust::Models::ChatCompletionContentPartText::Type::TaggedSymbol]) }
+        def self.values
         end
       end
     end

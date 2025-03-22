@@ -62,10 +62,8 @@ module Braintrust
         PROJECT = T.let(:project, Braintrust::Models::EnvVarReplaceParams::ObjectType::TaggedSymbol)
         FUNCTION = T.let(:function, Braintrust::Models::EnvVarReplaceParams::ObjectType::TaggedSymbol)
 
-        class << self
-          sig { override.returns(T::Array[Braintrust::Models::EnvVarReplaceParams::ObjectType::TaggedSymbol]) }
-          def values
-          end
+        sig { override.returns(T::Array[Braintrust::Models::EnvVarReplaceParams::ObjectType::TaggedSymbol]) }
+        def self.values
         end
       end
     end

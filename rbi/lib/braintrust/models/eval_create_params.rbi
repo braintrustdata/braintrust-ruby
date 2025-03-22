@@ -258,17 +258,6 @@ module Braintrust
       module Data
         extend Braintrust::Union
 
-        Variants =
-          type_template(:out) do
-            {
-              fixed: T.any(
-                Braintrust::Models::EvalCreateParams::Data::DatasetID,
-                Braintrust::Models::EvalCreateParams::Data::ProjectDatasetName,
-                Braintrust::Models::EvalCreateParams::Data::DatasetRows
-              )
-            }
-          end
-
         class DatasetID < Braintrust::BaseModel
           sig { returns(String) }
           attr_accessor :dataset_id
@@ -346,35 +335,19 @@ module Braintrust
           end
         end
 
-        class << self
-          sig do
-            override
-              .returns(
-                [Braintrust::Models::EvalCreateParams::Data::DatasetID, Braintrust::Models::EvalCreateParams::Data::ProjectDatasetName, Braintrust::Models::EvalCreateParams::Data::DatasetRows]
-              )
-          end
-          def variants
-          end
+        sig do
+          override
+            .returns(
+              [Braintrust::Models::EvalCreateParams::Data::DatasetID, Braintrust::Models::EvalCreateParams::Data::ProjectDatasetName, Braintrust::Models::EvalCreateParams::Data::DatasetRows]
+            )
+        end
+        def self.variants
         end
       end
 
       # The function to evaluate
       module Score
         extend Braintrust::Union
-
-        Variants =
-          type_template(:out) do
-            {
-              fixed: T.any(
-                Braintrust::Models::EvalCreateParams::Score::FunctionID,
-                Braintrust::Models::EvalCreateParams::Score::ProjectSlug,
-                Braintrust::Models::EvalCreateParams::Score::GlobalFunction,
-                Braintrust::Models::EvalCreateParams::Score::PromptSessionID,
-                Braintrust::Models::EvalCreateParams::Score::InlineCode,
-                Braintrust::Models::EvalCreateParams::Score::InlinePrompt
-              )
-            }
-          end
 
         class FunctionID < Braintrust::BaseModel
           # The ID of the function
@@ -569,15 +542,13 @@ module Braintrust
                   Braintrust::Models::EvalCreateParams::Score::InlineCode::InlineContext::Runtime::TaggedSymbol
                 )
 
-              class << self
-                sig do
-                  override
-                    .returns(
-                      T::Array[Braintrust::Models::EvalCreateParams::Score::InlineCode::InlineContext::Runtime::TaggedSymbol]
-                    )
-                end
-                def values
-                end
+              sig do
+                override
+                  .returns(
+                    T::Array[Braintrust::Models::EvalCreateParams::Score::InlineCode::InlineContext::Runtime::TaggedSymbol]
+                  )
+              end
+              def self.values
               end
             end
           end
@@ -611,35 +582,19 @@ module Braintrust
           end
         end
 
-        class << self
-          sig do
-            override
-              .returns(
-                [Braintrust::Models::EvalCreateParams::Score::FunctionID, Braintrust::Models::EvalCreateParams::Score::ProjectSlug, Braintrust::Models::EvalCreateParams::Score::GlobalFunction, Braintrust::Models::EvalCreateParams::Score::PromptSessionID, Braintrust::Models::EvalCreateParams::Score::InlineCode, Braintrust::Models::EvalCreateParams::Score::InlinePrompt]
-              )
-          end
-          def variants
-          end
+        sig do
+          override
+            .returns(
+              [Braintrust::Models::EvalCreateParams::Score::FunctionID, Braintrust::Models::EvalCreateParams::Score::ProjectSlug, Braintrust::Models::EvalCreateParams::Score::GlobalFunction, Braintrust::Models::EvalCreateParams::Score::PromptSessionID, Braintrust::Models::EvalCreateParams::Score::InlineCode, Braintrust::Models::EvalCreateParams::Score::InlinePrompt]
+            )
+        end
+        def self.variants
         end
       end
 
       # The function to evaluate
       module Task
         extend Braintrust::Union
-
-        Variants =
-          type_template(:out) do
-            {
-              fixed: T.any(
-                Braintrust::Models::EvalCreateParams::Task::FunctionID,
-                Braintrust::Models::EvalCreateParams::Task::ProjectSlug,
-                Braintrust::Models::EvalCreateParams::Task::GlobalFunction,
-                Braintrust::Models::EvalCreateParams::Task::PromptSessionID,
-                Braintrust::Models::EvalCreateParams::Task::InlineCode,
-                Braintrust::Models::EvalCreateParams::Task::InlinePrompt
-              )
-            }
-          end
 
         class FunctionID < Braintrust::BaseModel
           # The ID of the function
@@ -831,15 +786,13 @@ module Braintrust
                   Braintrust::Models::EvalCreateParams::Task::InlineCode::InlineContext::Runtime::TaggedSymbol
                 )
 
-              class << self
-                sig do
-                  override
-                    .returns(
-                      T::Array[Braintrust::Models::EvalCreateParams::Task::InlineCode::InlineContext::Runtime::TaggedSymbol]
-                    )
-                end
-                def values
-                end
+              sig do
+                override
+                  .returns(
+                    T::Array[Braintrust::Models::EvalCreateParams::Task::InlineCode::InlineContext::Runtime::TaggedSymbol]
+                  )
+              end
+              def self.values
               end
             end
           end
@@ -873,15 +826,13 @@ module Braintrust
           end
         end
 
-        class << self
-          sig do
-            override
-              .returns(
-                [Braintrust::Models::EvalCreateParams::Task::FunctionID, Braintrust::Models::EvalCreateParams::Task::ProjectSlug, Braintrust::Models::EvalCreateParams::Task::GlobalFunction, Braintrust::Models::EvalCreateParams::Task::PromptSessionID, Braintrust::Models::EvalCreateParams::Task::InlineCode, Braintrust::Models::EvalCreateParams::Task::InlinePrompt]
-              )
-          end
-          def variants
-          end
+        sig do
+          override
+            .returns(
+              [Braintrust::Models::EvalCreateParams::Task::FunctionID, Braintrust::Models::EvalCreateParams::Task::ProjectSlug, Braintrust::Models::EvalCreateParams::Task::GlobalFunction, Braintrust::Models::EvalCreateParams::Task::PromptSessionID, Braintrust::Models::EvalCreateParams::Task::InlineCode, Braintrust::Models::EvalCreateParams::Task::InlinePrompt]
+            )
+        end
+        def self.variants
         end
       end
 
@@ -931,13 +882,11 @@ module Braintrust
           NONE = T.let(:none, Braintrust::Models::EvalCreateParams::GitMetadataSettings::Collect::TaggedSymbol)
           SOME = T.let(:some, Braintrust::Models::EvalCreateParams::GitMetadataSettings::Collect::TaggedSymbol)
 
-          class << self
-            sig do
-              override
-                .returns(T::Array[Braintrust::Models::EvalCreateParams::GitMetadataSettings::Collect::TaggedSymbol])
-            end
-            def values
-            end
+          sig do
+            override
+              .returns(T::Array[Braintrust::Models::EvalCreateParams::GitMetadataSettings::Collect::TaggedSymbol])
+          end
+          def self.values
           end
         end
 
@@ -964,10 +913,8 @@ module Braintrust
           GIT_DIFF =
             T.let(:git_diff, Braintrust::Models::EvalCreateParams::GitMetadataSettings::Field::TaggedSymbol)
 
-          class << self
-            sig { override.returns(T::Array[Braintrust::Models::EvalCreateParams::GitMetadataSettings::Field::TaggedSymbol]) }
-            def values
-            end
+          sig { override.returns(T::Array[Braintrust::Models::EvalCreateParams::GitMetadataSettings::Field::TaggedSymbol]) }
+          def self.values
           end
         end
       end
@@ -975,9 +922,6 @@ module Braintrust
       # Options for tracing the evaluation
       module Parent
         extend Braintrust::Union
-
-        Variants =
-          type_template(:out) { {fixed: T.any(Braintrust::Models::EvalCreateParams::Parent::SpanParentStruct, String)} }
 
         class SpanParentStruct < Braintrust::BaseModel
           # The id of the container object you are logging to
@@ -1058,15 +1002,13 @@ module Braintrust
                 Braintrust::Models::EvalCreateParams::Parent::SpanParentStruct::ObjectType::TaggedSymbol
               )
 
-            class << self
-              sig do
-                override
-                  .returns(
-                    T::Array[Braintrust::Models::EvalCreateParams::Parent::SpanParentStruct::ObjectType::TaggedSymbol]
-                  )
-              end
-              def values
-              end
+            sig do
+              override
+                .returns(
+                  T::Array[Braintrust::Models::EvalCreateParams::Parent::SpanParentStruct::ObjectType::TaggedSymbol]
+                )
+            end
+            def self.values
             end
           end
 
@@ -1094,10 +1036,8 @@ module Braintrust
           end
         end
 
-        class << self
-          sig { override.returns([Braintrust::Models::EvalCreateParams::Parent::SpanParentStruct, String]) }
-          def variants
-          end
+        sig { override.returns([Braintrust::Models::EvalCreateParams::Parent::SpanParentStruct, String]) }
+        def self.variants
         end
       end
     end

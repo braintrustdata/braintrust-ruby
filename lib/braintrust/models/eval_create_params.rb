@@ -256,10 +256,8 @@ module Braintrust
         end
 
         # @!parse
-        #   class << self
-        #     # @return [Array(Braintrust::Models::EvalCreateParams::Data::DatasetID, Braintrust::Models::EvalCreateParams::Data::ProjectDatasetName, Braintrust::Models::EvalCreateParams::Data::DatasetRows)]
-        #     def variants; end
-        #   end
+        #   # @return [Array(Braintrust::Models::EvalCreateParams::Data::DatasetID, Braintrust::Models::EvalCreateParams::Data::ProjectDatasetName, Braintrust::Models::EvalCreateParams::Data::DatasetRows)]
+        #   def self.variants; end
       end
 
       # The function to evaluate
@@ -457,11 +455,9 @@ module Braintrust
 
               finalize!
 
-              class << self
-                # @!parse
-                #   # @return [Array<Symbol>]
-                #   def values; end
-              end
+              # @!parse
+              #   # @return [Array<Symbol>]
+              #   def self.values; end
             end
           end
         end
@@ -491,10 +487,8 @@ module Braintrust
         end
 
         # @!parse
-        #   class << self
-        #     # @return [Array(Braintrust::Models::EvalCreateParams::Score::FunctionID, Braintrust::Models::EvalCreateParams::Score::ProjectSlug, Braintrust::Models::EvalCreateParams::Score::GlobalFunction, Braintrust::Models::EvalCreateParams::Score::PromptSessionID, Braintrust::Models::EvalCreateParams::Score::InlineCode, Braintrust::Models::EvalCreateParams::Score::InlinePrompt)]
-        #     def variants; end
-        #   end
+        #   # @return [Array(Braintrust::Models::EvalCreateParams::Score::FunctionID, Braintrust::Models::EvalCreateParams::Score::ProjectSlug, Braintrust::Models::EvalCreateParams::Score::GlobalFunction, Braintrust::Models::EvalCreateParams::Score::PromptSessionID, Braintrust::Models::EvalCreateParams::Score::InlineCode, Braintrust::Models::EvalCreateParams::Score::InlinePrompt)]
+        #   def self.variants; end
       end
 
       # The function to evaluate
@@ -692,11 +686,9 @@ module Braintrust
 
               finalize!
 
-              class << self
-                # @!parse
-                #   # @return [Array<Symbol>]
-                #   def values; end
-              end
+              # @!parse
+              #   # @return [Array<Symbol>]
+              #   def self.values; end
             end
           end
         end
@@ -726,10 +718,8 @@ module Braintrust
         end
 
         # @!parse
-        #   class << self
-        #     # @return [Array(Braintrust::Models::EvalCreateParams::Task::FunctionID, Braintrust::Models::EvalCreateParams::Task::ProjectSlug, Braintrust::Models::EvalCreateParams::Task::GlobalFunction, Braintrust::Models::EvalCreateParams::Task::PromptSessionID, Braintrust::Models::EvalCreateParams::Task::InlineCode, Braintrust::Models::EvalCreateParams::Task::InlinePrompt)]
-        #     def variants; end
-        #   end
+        #   # @return [Array(Braintrust::Models::EvalCreateParams::Task::FunctionID, Braintrust::Models::EvalCreateParams::Task::ProjectSlug, Braintrust::Models::EvalCreateParams::Task::GlobalFunction, Braintrust::Models::EvalCreateParams::Task::PromptSessionID, Braintrust::Models::EvalCreateParams::Task::InlineCode, Braintrust::Models::EvalCreateParams::Task::InlinePrompt)]
+        #   def self.variants; end
       end
 
       class GitMetadataSettings < Braintrust::BaseModel
@@ -768,11 +758,9 @@ module Braintrust
 
           finalize!
 
-          class << self
-            # @!parse
-            #   # @return [Array<Symbol>]
-            #   def values; end
-          end
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   def self.values; end
         end
 
         module Field
@@ -790,11 +778,9 @@ module Braintrust
 
           finalize!
 
-          class << self
-            # @!parse
-            #   # @return [Array<Symbol>]
-            #   def values; end
-          end
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   def self.values; end
         end
       end
 
@@ -856,11 +842,9 @@ module Braintrust
 
             finalize!
 
-            class << self
-              # @!parse
-              #   # @return [Array<Symbol>]
-              #   def values; end
-            end
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   def self.values; end
           end
 
           class RowIDs < Braintrust::BaseModel
@@ -896,10 +880,8 @@ module Braintrust
         end
 
         # @!parse
-        #   class << self
-        #     # @return [Array(Braintrust::Models::EvalCreateParams::Parent::SpanParentStruct, String)]
-        #     def variants; end
-        #   end
+        #   # @return [Array(Braintrust::Models::EvalCreateParams::Parent::SpanParentStruct, String)]
+        #   def self.variants; end
       end
     end
   end

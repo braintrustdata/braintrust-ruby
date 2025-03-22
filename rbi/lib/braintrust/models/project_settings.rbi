@@ -90,10 +90,8 @@ module Braintrust
           TWO_COLUMN =
             T.let(:two_column, Braintrust::Models::ProjectSettings::SpanFieldOrder::Layout::TaggedSymbol)
 
-          class << self
-            sig { override.returns(T::Array[Braintrust::Models::ProjectSettings::SpanFieldOrder::Layout::TaggedSymbol]) }
-            def values
-            end
+          sig { override.returns(T::Array[Braintrust::Models::ProjectSettings::SpanFieldOrder::Layout::TaggedSymbol]) }
+          def self.values
           end
         end
       end

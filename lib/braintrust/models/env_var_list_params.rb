@@ -78,10 +78,8 @@ module Braintrust
         variant Braintrust::Models::EnvVarListParams::IDs::StringArray
 
         # @!parse
-        #   class << self
-        #     # @return [Array(String, Array<String>)]
-        #     def variants; end
-        #   end
+        #   # @return [Array(String, Array<String>)]
+        #   def self.variants; end
       end
     end
   end

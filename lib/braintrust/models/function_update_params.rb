@@ -77,11 +77,9 @@ module Braintrust
 
             finalize!
 
-            class << self
-              # @!parse
-              #   # @return [Array<Symbol>]
-              #   def values; end
-            end
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   def self.values; end
           end
         end
 
@@ -132,11 +130,9 @@ module Braintrust
 
                 finalize!
 
-                class << self
-                  # @!parse
-                  #   # @return [Array<Symbol>]
-                  #   def values; end
-                end
+                # @!parse
+                #   # @return [Array<Symbol>]
+                #   def self.values; end
               end
             end
 
@@ -195,11 +191,9 @@ module Braintrust
 
                   finalize!
 
-                  class << self
-                    # @!parse
-                    #   # @return [Array<Symbol>]
-                    #   def values; end
-                  end
+                  # @!parse
+                  #   # @return [Array<Symbol>]
+                  #   def self.values; end
                 end
               end
 
@@ -210,19 +204,15 @@ module Braintrust
 
                 finalize!
 
-                class << self
-                  # @!parse
-                  #   # @return [Array<Symbol>]
-                  #   def values; end
-                end
+                # @!parse
+                #   # @return [Array<Symbol>]
+                #   def self.values; end
               end
             end
 
             # @!parse
-            #   class << self
-            #     # @return [Array(Braintrust::Models::FunctionUpdateParams::FunctionData::Code::Data::Bundle, Braintrust::Models::FunctionUpdateParams::FunctionData::Code::Data::Inline)]
-            #     def variants; end
-            #   end
+            #   # @return [Array(Braintrust::Models::FunctionUpdateParams::FunctionData::Code::Data::Bundle, Braintrust::Models::FunctionUpdateParams::FunctionData::Code::Data::Inline)]
+            #   def self.variants; end
           end
 
           module Type
@@ -232,11 +222,9 @@ module Braintrust
 
             finalize!
 
-            class << self
-              # @!parse
-              #   # @return [Array<Symbol>]
-              #   def values; end
-            end
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   def self.values; end
           end
         end
 
@@ -266,19 +254,15 @@ module Braintrust
 
             finalize!
 
-            class << self
-              # @!parse
-              #   # @return [Array<Symbol>]
-              #   def values; end
-            end
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   def self.values; end
           end
         end
 
         # @!parse
-        #   class << self
-        #     # @return [Array(Braintrust::Models::FunctionUpdateParams::FunctionData::Prompt, Braintrust::Models::FunctionUpdateParams::FunctionData::Code, Braintrust::Models::FunctionUpdateParams::FunctionData::Global)]
-        #     def variants; end
-        #   end
+        #   # @return [Array(Braintrust::Models::FunctionUpdateParams::FunctionData::Prompt, Braintrust::Models::FunctionUpdateParams::FunctionData::Code, Braintrust::Models::FunctionUpdateParams::FunctionData::Global)]
+        #   def self.variants; end
       end
     end
   end
