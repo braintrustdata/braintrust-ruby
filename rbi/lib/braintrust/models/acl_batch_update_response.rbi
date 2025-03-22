@@ -14,12 +14,7 @@ module Braintrust
       #   `restrict_object_type` in the ACL, as part of a direct permission grant or as
       #   part of a role.
       sig { returns(T::Array[Braintrust::Models::ACL]) }
-      def added_acls
-      end
-
-      sig { params(_: T::Array[Braintrust::Models::ACL]).returns(T::Array[Braintrust::Models::ACL]) }
-      def added_acls=(_)
-      end
+      attr_accessor :added_acls
 
       # An ACL grants a certain permission or role to a certain user or group on an
       #   object.
@@ -32,12 +27,7 @@ module Braintrust
       #   `restrict_object_type` in the ACL, as part of a direct permission grant or as
       #   part of a role.
       sig { returns(T::Array[Braintrust::Models::ACL]) }
-      def removed_acls
-      end
-
-      sig { params(_: T::Array[Braintrust::Models::ACL]).returns(T::Array[Braintrust::Models::ACL]) }
-      def removed_acls=(_)
-      end
+      attr_accessor :removed_acls
 
       sig do
         params(

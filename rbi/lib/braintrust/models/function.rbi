@@ -5,24 +5,14 @@ module Braintrust
     class Function < Braintrust::BaseModel
       # Unique identifier for the prompt
       sig { returns(String) }
-      def id
-      end
-
-      sig { params(_: String).returns(String) }
-      def id=(_)
-      end
+      attr_accessor :id
 
       # The transaction id of an event is unique to the network operation that processed
       #   the event insertion. Transaction ids are monotonically increasing over time and
       #   can be used to retrieve a versioned snapshot of the prompt (see the `version`
       #   parameter)
       sig { returns(String) }
-      def _xact_id
-      end
-
-      sig { params(_: String).returns(String) }
-      def _xact_id=(_)
-      end
+      attr_accessor :_xact_id
 
       sig do
         returns(
@@ -33,160 +23,71 @@ module Braintrust
           )
         )
       end
-      def function_data
-      end
-
-      sig do
-        params(
-          _: T.any(
-            Braintrust::Models::Function::FunctionData::Prompt,
-            Braintrust::Models::Function::FunctionData::Code,
-            Braintrust::Models::Function::FunctionData::Global
-          )
-        )
-          .returns(
-            T.any(
-              Braintrust::Models::Function::FunctionData::Prompt,
-              Braintrust::Models::Function::FunctionData::Code,
-              Braintrust::Models::Function::FunctionData::Global
-            )
-          )
-      end
-      def function_data=(_)
-      end
+      attr_accessor :function_data
 
       # A literal 'p' which identifies the object as a project prompt
       sig { returns(Braintrust::Models::Function::LogID::TaggedSymbol) }
-      def log_id
-      end
-
-      sig do
-        params(_: Braintrust::Models::Function::LogID::TaggedSymbol)
-          .returns(Braintrust::Models::Function::LogID::TaggedSymbol)
-      end
-      def log_id=(_)
-      end
+      attr_accessor :log_id
 
       # Name of the prompt
       sig { returns(String) }
-      def name
-      end
-
-      sig { params(_: String).returns(String) }
-      def name=(_)
-      end
+      attr_accessor :name
 
       # Unique identifier for the organization
       sig { returns(String) }
-      def org_id
-      end
-
-      sig { params(_: String).returns(String) }
-      def org_id=(_)
-      end
+      attr_accessor :org_id
 
       # Unique identifier for the project that the prompt belongs under
       sig { returns(String) }
-      def project_id
-      end
-
-      sig { params(_: String).returns(String) }
-      def project_id=(_)
-      end
+      attr_accessor :project_id
 
       # Unique identifier for the prompt
       sig { returns(String) }
-      def slug
-      end
-
-      sig { params(_: String).returns(String) }
-      def slug=(_)
-      end
+      attr_accessor :slug
 
       # Date of prompt creation
       sig { returns(T.nilable(Time)) }
-      def created
-      end
-
-      sig { params(_: T.nilable(Time)).returns(T.nilable(Time)) }
-      def created=(_)
-      end
+      attr_accessor :created
 
       # Textual description of the prompt
       sig { returns(T.nilable(String)) }
-      def description
-      end
-
-      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-      def description=(_)
-      end
+      attr_accessor :description
 
       # JSON schema for the function's parameters and return type
       sig { returns(T.nilable(Braintrust::Models::Function::FunctionSchema)) }
-      def function_schema
-      end
+      attr_reader :function_schema
 
       sig do
-        params(_: T.nilable(T.any(Braintrust::Models::Function::FunctionSchema, Braintrust::Util::AnyHash)))
-          .returns(T.nilable(T.any(Braintrust::Models::Function::FunctionSchema, Braintrust::Util::AnyHash)))
+        params(
+          function_schema: T.nilable(T.any(Braintrust::Models::Function::FunctionSchema, Braintrust::Util::AnyHash))
+        )
+          .void
       end
-      def function_schema=(_)
-      end
+      attr_writer :function_schema
 
       sig { returns(T.nilable(Braintrust::Models::Function::FunctionType::TaggedSymbol)) }
-      def function_type
-      end
-
-      sig do
-        params(_: T.nilable(Braintrust::Models::Function::FunctionType::TaggedSymbol))
-          .returns(T.nilable(Braintrust::Models::Function::FunctionType::TaggedSymbol))
-      end
-      def function_type=(_)
-      end
+      attr_accessor :function_type
 
       # User-controlled metadata about the prompt
       sig { returns(T.nilable(T::Hash[Symbol, T.nilable(T.anything)])) }
-      def metadata
-      end
-
-      sig do
-        params(_: T.nilable(T::Hash[Symbol, T.nilable(T.anything)]))
-          .returns(T.nilable(T::Hash[Symbol, T.nilable(T.anything)]))
-      end
-      def metadata=(_)
-      end
+      attr_accessor :metadata
 
       sig { returns(T.nilable(Braintrust::Models::Function::Origin)) }
-      def origin
-      end
+      attr_reader :origin
 
-      sig do
-        params(_: T.nilable(T.any(Braintrust::Models::Function::Origin, Braintrust::Util::AnyHash)))
-          .returns(T.nilable(T.any(Braintrust::Models::Function::Origin, Braintrust::Util::AnyHash)))
-      end
-      def origin=(_)
-      end
+      sig { params(origin: T.nilable(T.any(Braintrust::Models::Function::Origin, Braintrust::Util::AnyHash))).void }
+      attr_writer :origin
 
       # The prompt, model, and its parameters
       sig { returns(T.nilable(Braintrust::Models::PromptData)) }
-      def prompt_data
-      end
+      attr_reader :prompt_data
 
-      sig do
-        params(_: T.nilable(T.any(Braintrust::Models::PromptData, Braintrust::Util::AnyHash)))
-          .returns(T.nilable(T.any(Braintrust::Models::PromptData, Braintrust::Util::AnyHash)))
-      end
-      def prompt_data=(_)
-      end
+      sig { params(prompt_data: T.nilable(T.any(Braintrust::Models::PromptData, Braintrust::Util::AnyHash))).void }
+      attr_writer :prompt_data
 
       # A list of tags for the prompt
       sig { returns(T.nilable(T::Array[String])) }
-      def tags
-      end
-
-      sig { params(_: T.nilable(T::Array[String])).returns(T.nilable(T::Array[String])) }
-      def tags=(_)
-      end
+      attr_accessor :tags
 
       sig do
         params(
@@ -280,15 +181,7 @@ module Braintrust
 
         class Prompt < Braintrust::BaseModel
           sig { returns(Braintrust::Models::Function::FunctionData::Prompt::Type::TaggedSymbol) }
-          def type
-          end
-
-          sig do
-            params(_: Braintrust::Models::Function::FunctionData::Prompt::Type::TaggedSymbol)
-              .returns(Braintrust::Models::Function::FunctionData::Prompt::Type::TaggedSymbol)
-          end
-          def type=(_)
-          end
+          attr_accessor :type
 
           sig { params(type: Braintrust::Models::Function::FunctionData::Prompt::Type::OrSymbol).returns(T.attached_class) }
           def self.new(type:)
@@ -324,36 +217,10 @@ module Braintrust
               )
             )
           end
-          def data
-          end
-
-          sig do
-            params(
-              _: T.any(
-                Braintrust::Models::Function::FunctionData::Code::Data::Bundle,
-                Braintrust::Models::Function::FunctionData::Code::Data::Inline
-              )
-            )
-              .returns(
-                T.any(
-                  Braintrust::Models::Function::FunctionData::Code::Data::Bundle,
-                  Braintrust::Models::Function::FunctionData::Code::Data::Inline
-                )
-              )
-          end
-          def data=(_)
-          end
+          attr_accessor :data
 
           sig { returns(Braintrust::Models::Function::FunctionData::Code::Type::TaggedSymbol) }
-          def type
-          end
-
-          sig do
-            params(_: Braintrust::Models::Function::FunctionData::Code::Type::TaggedSymbol)
-              .returns(Braintrust::Models::Function::FunctionData::Code::Type::TaggedSymbol)
-          end
-          def type=(_)
-          end
+          attr_accessor :type
 
           sig do
             params(
@@ -399,15 +266,7 @@ module Braintrust
 
             class Bundle < Braintrust::Models::CodeBundle
               sig { returns(Braintrust::Models::Function::FunctionData::Code::Data::Bundle::Type::TaggedSymbol) }
-              def type
-              end
-
-              sig do
-                params(_: Braintrust::Models::Function::FunctionData::Code::Data::Bundle::Type::TaggedSymbol)
-                  .returns(Braintrust::Models::Function::FunctionData::Code::Data::Bundle::Type::TaggedSymbol)
-              end
-              def type=(_)
-              end
+              attr_accessor :type
 
               sig do
                 params(type: Braintrust::Models::Function::FunctionData::Code::Data::Bundle::Type::OrSymbol)
@@ -447,44 +306,24 @@ module Braintrust
 
             class Inline < Braintrust::BaseModel
               sig { returns(String) }
-              def code
-              end
-
-              sig { params(_: String).returns(String) }
-              def code=(_)
-              end
+              attr_accessor :code
 
               sig { returns(Braintrust::Models::Function::FunctionData::Code::Data::Inline::RuntimeContext) }
-              def runtime_context
-              end
+              attr_reader :runtime_context
 
               sig do
                 params(
-                  _: T.any(
+                  runtime_context: T.any(
                     Braintrust::Models::Function::FunctionData::Code::Data::Inline::RuntimeContext,
                     Braintrust::Util::AnyHash
                   )
                 )
-                  .returns(
-                    T.any(
-                      Braintrust::Models::Function::FunctionData::Code::Data::Inline::RuntimeContext,
-                      Braintrust::Util::AnyHash
-                    )
-                  )
+                  .void
               end
-              def runtime_context=(_)
-              end
+              attr_writer :runtime_context
 
               sig { returns(Braintrust::Models::Function::FunctionData::Code::Data::Inline::Type::TaggedSymbol) }
-              def type
-              end
-
-              sig do
-                params(_: Braintrust::Models::Function::FunctionData::Code::Data::Inline::Type::TaggedSymbol)
-                  .returns(Braintrust::Models::Function::FunctionData::Code::Data::Inline::Type::TaggedSymbol)
-              end
-              def type=(_)
-              end
+              attr_accessor :type
 
               sig do
                 params(
@@ -519,27 +358,10 @@ module Braintrust
                     Braintrust::Models::Function::FunctionData::Code::Data::Inline::RuntimeContext::Runtime::TaggedSymbol
                   )
                 end
-                def runtime
-                end
-
-                sig do
-                  params(
-                    _: Braintrust::Models::Function::FunctionData::Code::Data::Inline::RuntimeContext::Runtime::TaggedSymbol
-                  )
-                    .returns(
-                      Braintrust::Models::Function::FunctionData::Code::Data::Inline::RuntimeContext::Runtime::TaggedSymbol
-                    )
-                end
-                def runtime=(_)
-                end
+                attr_accessor :runtime
 
                 sig { returns(String) }
-                def version
-                end
-
-                sig { params(_: String).returns(String) }
-                def version=(_)
-                end
+                attr_accessor :version
 
                 sig do
                   params(
@@ -653,23 +475,10 @@ module Braintrust
 
         class Global < Braintrust::BaseModel
           sig { returns(String) }
-          def name
-          end
-
-          sig { params(_: String).returns(String) }
-          def name=(_)
-          end
+          attr_accessor :name
 
           sig { returns(Braintrust::Models::Function::FunctionData::Global::Type::TaggedSymbol) }
-          def type
-          end
-
-          sig do
-            params(_: Braintrust::Models::Function::FunctionData::Global::Type::TaggedSymbol)
-              .returns(Braintrust::Models::Function::FunctionData::Global::Type::TaggedSymbol)
-          end
-          def type=(_)
-          end
+          attr_accessor :type
 
           sig do
             params(name: String, type: Braintrust::Models::Function::FunctionData::Global::Type::OrSymbol)
@@ -732,20 +541,16 @@ module Braintrust
 
       class FunctionSchema < Braintrust::BaseModel
         sig { returns(T.nilable(T.anything)) }
-        def parameters
-        end
+        attr_reader :parameters
 
-        sig { params(_: T.anything).returns(T.anything) }
-        def parameters=(_)
-        end
+        sig { params(parameters: T.anything).void }
+        attr_writer :parameters
 
         sig { returns(T.nilable(T.anything)) }
-        def returns
-        end
+        attr_reader :returns
 
-        sig { params(_: T.anything).returns(T.anything) }
-        def returns=(_)
-        end
+        sig { params(returns: T.anything).void }
+        attr_writer :returns
 
         # JSON schema for the function's parameters and return type
         sig { params(parameters: T.anything, returns: T.anything).returns(T.attached_class) }
@@ -778,34 +583,16 @@ module Braintrust
       class Origin < Braintrust::BaseModel
         # Id of the object the function is originating from
         sig { returns(String) }
-        def object_id_
-        end
-
-        sig { params(_: String).returns(String) }
-        def object_id_=(_)
-        end
+        attr_accessor :object_id_
 
         # The object type that the ACL applies to
         sig { returns(Braintrust::Models::ACLObjectType::TaggedSymbol) }
-        def object_type
-        end
-
-        sig do
-          params(_: Braintrust::Models::ACLObjectType::TaggedSymbol)
-            .returns(Braintrust::Models::ACLObjectType::TaggedSymbol)
-        end
-        def object_type=(_)
-        end
+        attr_accessor :object_type
 
         # The function exists for internal purposes and should not be displayed in the
         #   list of functions.
         sig { returns(T.nilable(T::Boolean)) }
-        def internal
-        end
-
-        sig { params(_: T.nilable(T::Boolean)).returns(T.nilable(T::Boolean)) }
-        def internal=(_)
-        end
+        attr_accessor :internal
 
         sig do
           params(

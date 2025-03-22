@@ -8,51 +8,26 @@ module Braintrust
 
       # Textual description of the prompt
       sig { returns(T.nilable(String)) }
-      def description
-      end
-
-      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-      def description=(_)
-      end
+      attr_accessor :description
 
       # Name of the prompt
       sig { returns(T.nilable(String)) }
-      def name
-      end
-
-      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-      def name=(_)
-      end
+      attr_accessor :name
 
       # The prompt, model, and its parameters
       sig { returns(T.nilable(Braintrust::Models::PromptData)) }
-      def prompt_data
-      end
+      attr_reader :prompt_data
 
-      sig do
-        params(_: T.nilable(T.any(Braintrust::Models::PromptData, Braintrust::Util::AnyHash)))
-          .returns(T.nilable(T.any(Braintrust::Models::PromptData, Braintrust::Util::AnyHash)))
-      end
-      def prompt_data=(_)
-      end
+      sig { params(prompt_data: T.nilable(T.any(Braintrust::Models::PromptData, Braintrust::Util::AnyHash))).void }
+      attr_writer :prompt_data
 
       # Unique identifier for the prompt
       sig { returns(T.nilable(String)) }
-      def slug
-      end
-
-      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-      def slug=(_)
-      end
+      attr_accessor :slug
 
       # A list of tags for the prompt
       sig { returns(T.nilable(T::Array[String])) }
-      def tags
-      end
-
-      sig { params(_: T.nilable(T::Array[String])).returns(T.nilable(T::Array[String])) }
-      def tags=(_)
-      end
+      attr_accessor :tags
 
       sig do
         params(

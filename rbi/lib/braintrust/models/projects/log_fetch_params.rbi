@@ -22,12 +22,7 @@ module Braintrust
         #   end up with more individual rows than the specified limit if you are fetching
         #   events containing traces.
         sig { returns(T.nilable(Integer)) }
-        def limit
-        end
-
-        sig { params(_: T.nilable(Integer)).returns(T.nilable(Integer)) }
-        def limit=(_)
-        end
+        attr_accessor :limit
 
         # DEPRECATION NOTICE: The manually-constructed pagination cursor is deprecated in
         #   favor of the explicit 'cursor' returned by object fetch requests. Please prefer
@@ -40,12 +35,10 @@ module Braintrust
         #   value of the tuple `(_xact_id, root_span_id)`. See the documentation of `limit`
         #   for an overview of paginating fetch queries.
         sig { returns(T.nilable(String)) }
-        def max_root_span_id
-        end
+        attr_reader :max_root_span_id
 
-        sig { params(_: String).returns(String) }
-        def max_root_span_id=(_)
-        end
+        sig { params(max_root_span_id: String).void }
+        attr_writer :max_root_span_id
 
         # DEPRECATION NOTICE: The manually-constructed pagination cursor is deprecated in
         #   favor of the explicit 'cursor' returned by object fetch requests. Please prefer
@@ -58,12 +51,10 @@ module Braintrust
         #   value of the tuple `(_xact_id, root_span_id)`. See the documentation of `limit`
         #   for an overview of paginating fetch queries.
         sig { returns(T.nilable(String)) }
-        def max_xact_id
-        end
+        attr_reader :max_xact_id
 
-        sig { params(_: String).returns(String) }
-        def max_xact_id=(_)
-        end
+        sig { params(max_xact_id: String).void }
+        attr_writer :max_xact_id
 
         # Retrieve a snapshot of events from a past time
         #
@@ -71,12 +62,10 @@ module Braintrust
         #   can use the `max_xact_id` returned by a past fetch as the version to reproduce
         #   that exact fetch.
         sig { returns(T.nilable(String)) }
-        def version
-        end
+        attr_reader :version
 
-        sig { params(_: String).returns(String) }
-        def version=(_)
-        end
+        sig { params(version: String).void }
+        attr_writer :version
 
         sig do
           params(

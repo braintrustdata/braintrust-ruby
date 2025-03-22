@@ -5,68 +5,33 @@ module Braintrust
     class Project < Braintrust::BaseModel
       # Unique identifier for the project
       sig { returns(String) }
-      def id
-      end
-
-      sig { params(_: String).returns(String) }
-      def id=(_)
-      end
+      attr_accessor :id
 
       # Name of the project
       sig { returns(String) }
-      def name
-      end
-
-      sig { params(_: String).returns(String) }
-      def name=(_)
-      end
+      attr_accessor :name
 
       # Unique id for the organization that the project belongs under
       sig { returns(String) }
-      def org_id
-      end
-
-      sig { params(_: String).returns(String) }
-      def org_id=(_)
-      end
+      attr_accessor :org_id
 
       # Date of project creation
       sig { returns(T.nilable(Time)) }
-      def created
-      end
-
-      sig { params(_: T.nilable(Time)).returns(T.nilable(Time)) }
-      def created=(_)
-      end
+      attr_accessor :created
 
       # Date of project deletion, or null if the project is still active
       sig { returns(T.nilable(Time)) }
-      def deleted_at
-      end
-
-      sig { params(_: T.nilable(Time)).returns(T.nilable(Time)) }
-      def deleted_at=(_)
-      end
+      attr_accessor :deleted_at
 
       sig { returns(T.nilable(Braintrust::Models::ProjectSettings)) }
-      def settings
-      end
+      attr_reader :settings
 
-      sig do
-        params(_: T.nilable(T.any(Braintrust::Models::ProjectSettings, Braintrust::Util::AnyHash)))
-          .returns(T.nilable(T.any(Braintrust::Models::ProjectSettings, Braintrust::Util::AnyHash)))
-      end
-      def settings=(_)
-      end
+      sig { params(settings: T.nilable(T.any(Braintrust::Models::ProjectSettings, Braintrust::Util::AnyHash))).void }
+      attr_writer :settings
 
       # Identifies the user who created the project
       sig { returns(T.nilable(String)) }
-      def user_id
-      end
-
-      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-      def user_id=(_)
-      end
+      attr_accessor :user_id
 
       sig do
         params(

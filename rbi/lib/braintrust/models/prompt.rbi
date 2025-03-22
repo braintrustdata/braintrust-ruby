@@ -5,134 +5,60 @@ module Braintrust
     class Prompt < Braintrust::BaseModel
       # Unique identifier for the prompt
       sig { returns(String) }
-      def id
-      end
-
-      sig { params(_: String).returns(String) }
-      def id=(_)
-      end
+      attr_accessor :id
 
       # The transaction id of an event is unique to the network operation that processed
       #   the event insertion. Transaction ids are monotonically increasing over time and
       #   can be used to retrieve a versioned snapshot of the prompt (see the `version`
       #   parameter)
       sig { returns(String) }
-      def _xact_id
-      end
-
-      sig { params(_: String).returns(String) }
-      def _xact_id=(_)
-      end
+      attr_accessor :_xact_id
 
       # A literal 'p' which identifies the object as a project prompt
       sig { returns(Braintrust::Models::Prompt::LogID::TaggedSymbol) }
-      def log_id
-      end
-
-      sig do
-        params(_: Braintrust::Models::Prompt::LogID::TaggedSymbol)
-          .returns(Braintrust::Models::Prompt::LogID::TaggedSymbol)
-      end
-      def log_id=(_)
-      end
+      attr_accessor :log_id
 
       # Name of the prompt
       sig { returns(String) }
-      def name
-      end
-
-      sig { params(_: String).returns(String) }
-      def name=(_)
-      end
+      attr_accessor :name
 
       # Unique identifier for the organization
       sig { returns(String) }
-      def org_id
-      end
-
-      sig { params(_: String).returns(String) }
-      def org_id=(_)
-      end
+      attr_accessor :org_id
 
       # Unique identifier for the project that the prompt belongs under
       sig { returns(String) }
-      def project_id
-      end
-
-      sig { params(_: String).returns(String) }
-      def project_id=(_)
-      end
+      attr_accessor :project_id
 
       # Unique identifier for the prompt
       sig { returns(String) }
-      def slug
-      end
-
-      sig { params(_: String).returns(String) }
-      def slug=(_)
-      end
+      attr_accessor :slug
 
       # Date of prompt creation
       sig { returns(T.nilable(Time)) }
-      def created
-      end
-
-      sig { params(_: T.nilable(Time)).returns(T.nilable(Time)) }
-      def created=(_)
-      end
+      attr_accessor :created
 
       # Textual description of the prompt
       sig { returns(T.nilable(String)) }
-      def description
-      end
-
-      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-      def description=(_)
-      end
+      attr_accessor :description
 
       sig { returns(T.nilable(Braintrust::Models::Prompt::FunctionType::TaggedSymbol)) }
-      def function_type
-      end
-
-      sig do
-        params(_: T.nilable(Braintrust::Models::Prompt::FunctionType::TaggedSymbol))
-          .returns(T.nilable(Braintrust::Models::Prompt::FunctionType::TaggedSymbol))
-      end
-      def function_type=(_)
-      end
+      attr_accessor :function_type
 
       # User-controlled metadata about the prompt
       sig { returns(T.nilable(T::Hash[Symbol, T.nilable(T.anything)])) }
-      def metadata
-      end
-
-      sig do
-        params(_: T.nilable(T::Hash[Symbol, T.nilable(T.anything)]))
-          .returns(T.nilable(T::Hash[Symbol, T.nilable(T.anything)]))
-      end
-      def metadata=(_)
-      end
+      attr_accessor :metadata
 
       # The prompt, model, and its parameters
       sig { returns(T.nilable(Braintrust::Models::PromptData)) }
-      def prompt_data
-      end
+      attr_reader :prompt_data
 
-      sig do
-        params(_: T.nilable(T.any(Braintrust::Models::PromptData, Braintrust::Util::AnyHash)))
-          .returns(T.nilable(T.any(Braintrust::Models::PromptData, Braintrust::Util::AnyHash)))
-      end
-      def prompt_data=(_)
-      end
+      sig { params(prompt_data: T.nilable(T.any(Braintrust::Models::PromptData, Braintrust::Util::AnyHash))).void }
+      attr_writer :prompt_data
 
       # A list of tags for the prompt
       sig { returns(T.nilable(T::Array[String])) }
-      def tags
-      end
-
-      sig { params(_: T.nilable(T::Array[String])).returns(T.nilable(T::Array[String])) }
-      def tags=(_)
-      end
+      attr_accessor :tags
 
       sig do
         params(

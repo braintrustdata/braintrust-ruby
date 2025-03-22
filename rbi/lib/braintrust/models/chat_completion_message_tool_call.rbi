@@ -4,34 +4,21 @@ module Braintrust
   module Models
     class ChatCompletionMessageToolCall < Braintrust::BaseModel
       sig { returns(String) }
-      def id
-      end
-
-      sig { params(_: String).returns(String) }
-      def id=(_)
-      end
+      attr_accessor :id
 
       sig { returns(Braintrust::Models::ChatCompletionMessageToolCall::Function) }
-      def function
-      end
+      attr_reader :function
 
       sig do
-        params(_: T.any(Braintrust::Models::ChatCompletionMessageToolCall::Function, Braintrust::Util::AnyHash))
-          .returns(T.any(Braintrust::Models::ChatCompletionMessageToolCall::Function, Braintrust::Util::AnyHash))
+        params(
+          function: T.any(Braintrust::Models::ChatCompletionMessageToolCall::Function, Braintrust::Util::AnyHash)
+        )
+          .void
       end
-      def function=(_)
-      end
+      attr_writer :function
 
       sig { returns(Braintrust::Models::ChatCompletionMessageToolCall::Type::OrSymbol) }
-      def type
-      end
-
-      sig do
-        params(_: Braintrust::Models::ChatCompletionMessageToolCall::Type::OrSymbol)
-          .returns(Braintrust::Models::ChatCompletionMessageToolCall::Type::OrSymbol)
-      end
-      def type=(_)
-      end
+      attr_accessor :type
 
       sig do
         params(
@@ -59,20 +46,10 @@ module Braintrust
 
       class Function < Braintrust::BaseModel
         sig { returns(String) }
-        def arguments
-        end
-
-        sig { params(_: String).returns(String) }
-        def arguments=(_)
-        end
+        attr_accessor :arguments
 
         sig { returns(String) }
-        def name
-        end
-
-        sig { params(_: String).returns(String) }
-        def name=(_)
-        end
+        attr_accessor :name
 
         sig { params(arguments: String, name: String).returns(T.attached_class) }
         def self.new(arguments:, name:)

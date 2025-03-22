@@ -5,50 +5,22 @@ module Braintrust
     class ProjectScore < Braintrust::BaseModel
       # Unique identifier for the project score
       sig { returns(String) }
-      def id
-      end
-
-      sig { params(_: String).returns(String) }
-      def id=(_)
-      end
+      attr_accessor :id
 
       # Name of the project score
       sig { returns(String) }
-      def name
-      end
-
-      sig { params(_: String).returns(String) }
-      def name=(_)
-      end
+      attr_accessor :name
 
       # Unique identifier for the project that the project score belongs under
       sig { returns(String) }
-      def project_id
-      end
-
-      sig { params(_: String).returns(String) }
-      def project_id=(_)
-      end
+      attr_accessor :project_id
 
       # The type of the configured score
       sig { returns(Braintrust::Models::ProjectScoreType::TaggedSymbol) }
-      def score_type
-      end
-
-      sig do
-        params(_: Braintrust::Models::ProjectScoreType::TaggedSymbol)
-          .returns(Braintrust::Models::ProjectScoreType::TaggedSymbol)
-      end
-      def score_type=(_)
-      end
+      attr_accessor :score_type
 
       sig { returns(String) }
-      def user_id
-      end
-
-      sig { params(_: String).returns(String) }
-      def user_id=(_)
-      end
+      attr_accessor :user_id
 
       # For categorical-type project scores, the list of all categories
       sig do
@@ -58,62 +30,26 @@ module Braintrust
           )
         )
       end
-      def categories
-      end
-
-      sig do
-        params(
-          _: T.nilable(
-            T.any(T::Array[Braintrust::Models::ProjectScoreCategory], T::Hash[Symbol, Float], T::Array[String])
-          )
-        )
-          .returns(
-            T.nilable(
-              T.any(T::Array[Braintrust::Models::ProjectScoreCategory], T::Hash[Symbol, Float], T::Array[String])
-            )
-          )
-      end
-      def categories=(_)
-      end
+      attr_accessor :categories
 
       sig { returns(T.nilable(Braintrust::Models::ProjectScoreConfig)) }
-      def config
-      end
+      attr_reader :config
 
-      sig do
-        params(_: T.nilable(T.any(Braintrust::Models::ProjectScoreConfig, Braintrust::Util::AnyHash)))
-          .returns(T.nilable(T.any(Braintrust::Models::ProjectScoreConfig, Braintrust::Util::AnyHash)))
-      end
-      def config=(_)
-      end
+      sig { params(config: T.nilable(T.any(Braintrust::Models::ProjectScoreConfig, Braintrust::Util::AnyHash))).void }
+      attr_writer :config
 
       # Date of project score creation
       sig { returns(T.nilable(Time)) }
-      def created
-      end
-
-      sig { params(_: T.nilable(Time)).returns(T.nilable(Time)) }
-      def created=(_)
-      end
+      attr_accessor :created
 
       # Textual description of the project score
       sig { returns(T.nilable(String)) }
-      def description
-      end
-
-      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-      def description=(_)
-      end
+      attr_accessor :description
 
       # An optional LexoRank-based string that sets the sort position for the score in
       #   the UI
       sig { returns(T.nilable(String)) }
-      def position
-      end
-
-      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-      def position=(_)
-      end
+      attr_accessor :position
 
       # A project score is a user-configured score, which can be manually-labeled
       #   through the UI

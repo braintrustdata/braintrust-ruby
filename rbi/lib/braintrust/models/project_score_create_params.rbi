@@ -8,33 +8,15 @@ module Braintrust
 
       # Name of the project score
       sig { returns(String) }
-      def name
-      end
-
-      sig { params(_: String).returns(String) }
-      def name=(_)
-      end
+      attr_accessor :name
 
       # Unique identifier for the project that the project score belongs under
       sig { returns(String) }
-      def project_id
-      end
-
-      sig { params(_: String).returns(String) }
-      def project_id=(_)
-      end
+      attr_accessor :project_id
 
       # The type of the configured score
       sig { returns(Braintrust::Models::ProjectScoreType::OrSymbol) }
-      def score_type
-      end
-
-      sig do
-        params(_: Braintrust::Models::ProjectScoreType::OrSymbol)
-          .returns(Braintrust::Models::ProjectScoreType::OrSymbol)
-      end
-      def score_type=(_)
-      end
+      attr_accessor :score_type
 
       # For categorical-type project scores, the list of all categories
       sig do
@@ -44,43 +26,17 @@ module Braintrust
           )
         )
       end
-      def categories
-      end
-
-      sig do
-        params(
-          _: T.nilable(
-            T.any(T::Array[Braintrust::Models::ProjectScoreCategory], T::Hash[Symbol, Float], T::Array[String])
-          )
-        )
-          .returns(
-            T.nilable(
-              T.any(T::Array[Braintrust::Models::ProjectScoreCategory], T::Hash[Symbol, Float], T::Array[String])
-            )
-          )
-      end
-      def categories=(_)
-      end
+      attr_accessor :categories
 
       sig { returns(T.nilable(Braintrust::Models::ProjectScoreConfig)) }
-      def config
-      end
+      attr_reader :config
 
-      sig do
-        params(_: T.nilable(T.any(Braintrust::Models::ProjectScoreConfig, Braintrust::Util::AnyHash)))
-          .returns(T.nilable(T.any(Braintrust::Models::ProjectScoreConfig, Braintrust::Util::AnyHash)))
-      end
-      def config=(_)
-      end
+      sig { params(config: T.nilable(T.any(Braintrust::Models::ProjectScoreConfig, Braintrust::Util::AnyHash))).void }
+      attr_writer :config
 
       # Textual description of the project score
       sig { returns(T.nilable(String)) }
-      def description
-      end
-
-      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-      def description=(_)
-      end
+      attr_accessor :description
 
       sig do
         params(

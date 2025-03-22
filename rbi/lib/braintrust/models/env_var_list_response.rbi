@@ -5,12 +5,7 @@ module Braintrust
     class EnvVarListResponse < Braintrust::BaseModel
       # A list of env_var objects
       sig { returns(T::Array[Braintrust::Models::EnvVar]) }
-      def objects
-      end
-
-      sig { params(_: T::Array[Braintrust::Models::EnvVar]).returns(T::Array[Braintrust::Models::EnvVar]) }
-      def objects=(_)
-      end
+      attr_accessor :objects
 
       sig do
         params(objects: T::Array[T.any(Braintrust::Models::EnvVar, Braintrust::Util::AnyHash)])

@@ -5,39 +5,15 @@ module Braintrust
     class CrossObjectInsertResponse < Braintrust::BaseModel
       # A mapping from dataset id to row ids for inserted `events`
       sig { returns(T.nilable(T::Hash[Symbol, Braintrust::Models::InsertEventsResponse])) }
-      def dataset
-      end
-
-      sig do
-        params(_: T.nilable(T::Hash[Symbol, Braintrust::Models::InsertEventsResponse]))
-          .returns(T.nilable(T::Hash[Symbol, Braintrust::Models::InsertEventsResponse]))
-      end
-      def dataset=(_)
-      end
+      attr_accessor :dataset
 
       # A mapping from experiment id to row ids for inserted `events`
       sig { returns(T.nilable(T::Hash[Symbol, Braintrust::Models::InsertEventsResponse])) }
-      def experiment
-      end
-
-      sig do
-        params(_: T.nilable(T::Hash[Symbol, Braintrust::Models::InsertEventsResponse]))
-          .returns(T.nilable(T::Hash[Symbol, Braintrust::Models::InsertEventsResponse]))
-      end
-      def experiment=(_)
-      end
+      attr_accessor :experiment
 
       # A mapping from project id to row ids for inserted `events`
       sig { returns(T.nilable(T::Hash[Symbol, Braintrust::Models::InsertEventsResponse])) }
-      def project_logs
-      end
-
-      sig do
-        params(_: T.nilable(T::Hash[Symbol, Braintrust::Models::InsertEventsResponse]))
-          .returns(T.nilable(T::Hash[Symbol, Braintrust::Models::InsertEventsResponse]))
-      end
-      def project_logs=(_)
-      end
+      attr_accessor :project_logs
 
       sig do
         params(

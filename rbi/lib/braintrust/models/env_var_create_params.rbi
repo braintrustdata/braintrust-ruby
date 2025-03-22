@@ -8,42 +8,19 @@ module Braintrust
 
       # The name of the environment variable
       sig { returns(String) }
-      def name
-      end
-
-      sig { params(_: String).returns(String) }
-      def name=(_)
-      end
+      attr_accessor :name
 
       # The id of the object the environment variable is scoped for
       sig { returns(String) }
-      def object_id_
-      end
-
-      sig { params(_: String).returns(String) }
-      def object_id_=(_)
-      end
+      attr_accessor :object_id_
 
       # The type of the object the environment variable is scoped for
       sig { returns(Braintrust::Models::EnvVarCreateParams::ObjectType::OrSymbol) }
-      def object_type
-      end
-
-      sig do
-        params(_: Braintrust::Models::EnvVarCreateParams::ObjectType::OrSymbol)
-          .returns(Braintrust::Models::EnvVarCreateParams::ObjectType::OrSymbol)
-      end
-      def object_type=(_)
-      end
+      attr_accessor :object_type
 
       # The value of the environment variable. Will be encrypted at rest.
       sig { returns(T.nilable(String)) }
-      def value
-      end
-
-      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-      def value=(_)
-      end
+      attr_accessor :value
 
       sig do
         params(

@@ -8,21 +8,17 @@ module Braintrust
 
       # The expected output of the function
       sig { returns(T.nilable(T.anything)) }
-      def expected
-      end
+      attr_reader :expected
 
-      sig { params(_: T.anything).returns(T.anything) }
-      def expected=(_)
-      end
+      sig { params(expected: T.anything).void }
+      attr_writer :expected
 
       # Argument to the function, which can be any JSON serializable value
       sig { returns(T.nilable(T.anything)) }
-      def input
-      end
+      attr_reader :input
 
-      sig { params(_: T.anything).returns(T.anything) }
-      def input=(_)
-      end
+      sig { params(input: T.anything).void }
+      attr_writer :input
 
       # If the function is an LLM, additional messages to pass along to it
       sig do
@@ -41,12 +37,11 @@ module Braintrust
           )
         )
       end
-      def messages
-      end
+      attr_reader :messages
 
       sig do
         params(
-          _: T::Array[
+          messages: T::Array[
           T.any(
             Braintrust::Models::FunctionInvokeParams::Message::System,
             Braintrust::Util::AnyHash,
@@ -58,89 +53,45 @@ module Braintrust
           )
           ]
         )
-          .returns(
-            T::Array[
-            T.any(
-              Braintrust::Models::FunctionInvokeParams::Message::System,
-              Braintrust::Util::AnyHash,
-              Braintrust::Models::FunctionInvokeParams::Message::User,
-              Braintrust::Models::FunctionInvokeParams::Message::Assistant,
-              Braintrust::Models::FunctionInvokeParams::Message::Tool,
-              Braintrust::Models::FunctionInvokeParams::Message::Function,
-              Braintrust::Models::FunctionInvokeParams::Message::Fallback
-            )
-            ]
-          )
+          .void
       end
-      def messages=(_)
-      end
+      attr_writer :messages
 
       # Any relevant metadata
       sig { returns(T.nilable(T::Hash[Symbol, T.nilable(T.anything)])) }
-      def metadata
-      end
-
-      sig do
-        params(_: T.nilable(T::Hash[Symbol, T.nilable(T.anything)]))
-          .returns(T.nilable(T::Hash[Symbol, T.nilable(T.anything)]))
-      end
-      def metadata=(_)
-      end
+      attr_accessor :metadata
 
       # The mode format of the returned value (defaults to 'auto')
       sig { returns(T.nilable(Braintrust::Models::FunctionInvokeParams::Mode::OrSymbol)) }
-      def mode
-      end
-
-      sig do
-        params(_: T.nilable(Braintrust::Models::FunctionInvokeParams::Mode::OrSymbol))
-          .returns(T.nilable(Braintrust::Models::FunctionInvokeParams::Mode::OrSymbol))
-      end
-      def mode=(_)
-      end
+      attr_accessor :mode
 
       # Options for tracing the function call
       sig { returns(T.nilable(T.any(Braintrust::Models::FunctionInvokeParams::Parent::SpanParentStruct, String))) }
-      def parent
-      end
+      attr_reader :parent
 
       sig do
         params(
-          _: T.any(
+          parent: T.any(
             Braintrust::Models::FunctionInvokeParams::Parent::SpanParentStruct,
             Braintrust::Util::AnyHash,
             String
           )
         )
-          .returns(
-            T.any(
-              Braintrust::Models::FunctionInvokeParams::Parent::SpanParentStruct,
-              Braintrust::Util::AnyHash,
-              String
-            )
-          )
+          .void
       end
-      def parent=(_)
-      end
+      attr_writer :parent
 
       # Whether to stream the response. If true, results will be returned in the
       #   Braintrust SSE format.
       sig { returns(T.nilable(T::Boolean)) }
-      def stream
-      end
-
-      sig { params(_: T.nilable(T::Boolean)).returns(T.nilable(T::Boolean)) }
-      def stream=(_)
-      end
+      attr_accessor :stream
 
       # The version of the function
       sig { returns(T.nilable(String)) }
-      def version
-      end
+      attr_reader :version
 
-      sig { params(_: String).returns(String) }
-      def version=(_)
-      end
+      sig { params(version: String).void }
+      attr_writer :version
 
       sig do
         params(
@@ -230,31 +181,19 @@ module Braintrust
 
         class System < Braintrust::BaseModel
           sig { returns(Braintrust::Models::FunctionInvokeParams::Message::System::Role::OrSymbol) }
-          def role
-          end
-
-          sig do
-            params(_: Braintrust::Models::FunctionInvokeParams::Message::System::Role::OrSymbol)
-              .returns(Braintrust::Models::FunctionInvokeParams::Message::System::Role::OrSymbol)
-          end
-          def role=(_)
-          end
+          attr_accessor :role
 
           sig { returns(T.nilable(String)) }
-          def content
-          end
+          attr_reader :content
 
-          sig { params(_: String).returns(String) }
-          def content=(_)
-          end
+          sig { params(content: String).void }
+          attr_writer :content
 
           sig { returns(T.nilable(String)) }
-          def name
-          end
+          attr_reader :name
 
-          sig { params(_: String).returns(String) }
-          def name=(_)
-          end
+          sig { params(name: String).void }
+          attr_writer :name
 
           sig do
             params(
@@ -296,15 +235,7 @@ module Braintrust
 
         class User < Braintrust::BaseModel
           sig { returns(Braintrust::Models::FunctionInvokeParams::Message::User::Role::OrSymbol) }
-          def role
-          end
-
-          sig do
-            params(_: Braintrust::Models::FunctionInvokeParams::Message::User::Role::OrSymbol)
-              .returns(Braintrust::Models::FunctionInvokeParams::Message::User::Role::OrSymbol)
-          end
-          def role=(_)
-          end
+          attr_accessor :role
 
           sig do
             returns(
@@ -321,12 +252,11 @@ module Braintrust
               )
             )
           end
-          def content
-          end
+          attr_reader :content
 
           sig do
             params(
-              _: T.any(
+              content: T.any(
                 String,
                 T::Array[
                 T.any(
@@ -337,29 +267,15 @@ module Braintrust
                 ]
               )
             )
-              .returns(
-                T.any(
-                  String,
-                  T::Array[
-                  T.any(
-                    Braintrust::Models::ChatCompletionContentPartText,
-                    Braintrust::Util::AnyHash,
-                    Braintrust::Models::ChatCompletionContentPartImage
-                  )
-                  ]
-                )
-              )
+              .void
           end
-          def content=(_)
-          end
+          attr_writer :content
 
           sig { returns(T.nilable(String)) }
-          def name
-          end
+          attr_reader :name
 
-          sig { params(_: String).returns(String) }
-          def name=(_)
-          end
+          sig { params(name: String).void }
+          attr_writer :name
 
           sig do
             params(
@@ -491,67 +407,32 @@ module Braintrust
 
         class Assistant < Braintrust::BaseModel
           sig { returns(Braintrust::Models::FunctionInvokeParams::Message::Assistant::Role::OrSymbol) }
-          def role
-          end
-
-          sig do
-            params(_: Braintrust::Models::FunctionInvokeParams::Message::Assistant::Role::OrSymbol)
-              .returns(Braintrust::Models::FunctionInvokeParams::Message::Assistant::Role::OrSymbol)
-          end
-          def role=(_)
-          end
+          attr_accessor :role
 
           sig { returns(T.nilable(String)) }
-          def content
-          end
-
-          sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-          def content=(_)
-          end
+          attr_accessor :content
 
           sig { returns(T.nilable(Braintrust::Models::FunctionInvokeParams::Message::Assistant::FunctionCall)) }
-          def function_call
-          end
+          attr_reader :function_call
 
           sig do
             params(
-              _: T.nilable(
+              function_call: T.nilable(
                 T.any(
                   Braintrust::Models::FunctionInvokeParams::Message::Assistant::FunctionCall,
                   Braintrust::Util::AnyHash
                 )
               )
             )
-              .returns(
-                T.nilable(
-                  T.any(
-                    Braintrust::Models::FunctionInvokeParams::Message::Assistant::FunctionCall,
-                    Braintrust::Util::AnyHash
-                  )
-                )
-              )
+              .void
           end
-          def function_call=(_)
-          end
+          attr_writer :function_call
 
           sig { returns(T.nilable(String)) }
-          def name
-          end
-
-          sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-          def name=(_)
-          end
+          attr_accessor :name
 
           sig { returns(T.nilable(T::Array[Braintrust::Models::ChatCompletionMessageToolCall])) }
-          def tool_calls
-          end
-
-          sig do
-            params(_: T.nilable(T::Array[Braintrust::Models::ChatCompletionMessageToolCall]))
-              .returns(T.nilable(T::Array[Braintrust::Models::ChatCompletionMessageToolCall]))
-          end
-          def tool_calls=(_)
-          end
+          attr_accessor :tool_calls
 
           sig do
             params(
@@ -609,20 +490,10 @@ module Braintrust
 
           class FunctionCall < Braintrust::BaseModel
             sig { returns(String) }
-            def arguments
-            end
-
-            sig { params(_: String).returns(String) }
-            def arguments=(_)
-            end
+            attr_accessor :arguments
 
             sig { returns(String) }
-            def name
-            end
-
-            sig { params(_: String).returns(String) }
-            def name=(_)
-            end
+            attr_accessor :name
 
             sig { params(arguments: String, name: String).returns(T.attached_class) }
             def self.new(arguments:, name:)
@@ -636,31 +507,19 @@ module Braintrust
 
         class Tool < Braintrust::BaseModel
           sig { returns(Braintrust::Models::FunctionInvokeParams::Message::Tool::Role::OrSymbol) }
-          def role
-          end
-
-          sig do
-            params(_: Braintrust::Models::FunctionInvokeParams::Message::Tool::Role::OrSymbol)
-              .returns(Braintrust::Models::FunctionInvokeParams::Message::Tool::Role::OrSymbol)
-          end
-          def role=(_)
-          end
+          attr_accessor :role
 
           sig { returns(T.nilable(String)) }
-          def content
-          end
+          attr_reader :content
 
-          sig { params(_: String).returns(String) }
-          def content=(_)
-          end
+          sig { params(content: String).void }
+          attr_writer :content
 
           sig { returns(T.nilable(String)) }
-          def tool_call_id
-          end
+          attr_reader :tool_call_id
 
-          sig { params(_: String).returns(String) }
-          def tool_call_id=(_)
-          end
+          sig { params(tool_call_id: String).void }
+          attr_writer :tool_call_id
 
           sig do
             params(
@@ -706,31 +565,16 @@ module Braintrust
 
         class Function < Braintrust::BaseModel
           sig { returns(String) }
-          def name
-          end
-
-          sig { params(_: String).returns(String) }
-          def name=(_)
-          end
+          attr_accessor :name
 
           sig { returns(Braintrust::Models::FunctionInvokeParams::Message::Function::Role::OrSymbol) }
-          def role
-          end
-
-          sig do
-            params(_: Braintrust::Models::FunctionInvokeParams::Message::Function::Role::OrSymbol)
-              .returns(Braintrust::Models::FunctionInvokeParams::Message::Function::Role::OrSymbol)
-          end
-          def role=(_)
-          end
+          attr_accessor :role
 
           sig { returns(T.nilable(String)) }
-          def content
-          end
+          attr_reader :content
 
-          sig { params(_: String).returns(String) }
-          def content=(_)
-          end
+          sig { params(content: String).void }
+          attr_writer :content
 
           sig do
             params(
@@ -779,23 +623,10 @@ module Braintrust
 
         class Fallback < Braintrust::BaseModel
           sig { returns(Braintrust::Models::FunctionInvokeParams::Message::Fallback::Role::OrSymbol) }
-          def role
-          end
-
-          sig do
-            params(_: Braintrust::Models::FunctionInvokeParams::Message::Fallback::Role::OrSymbol)
-              .returns(Braintrust::Models::FunctionInvokeParams::Message::Fallback::Role::OrSymbol)
-          end
-          def role=(_)
-          end
+          attr_accessor :role
 
           sig { returns(T.nilable(String)) }
-          def content
-          end
-
-          sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-          def content=(_)
-          end
+          attr_accessor :content
 
           sig do
             params(
@@ -878,61 +709,31 @@ module Braintrust
         class SpanParentStruct < Braintrust::BaseModel
           # The id of the container object you are logging to
           sig { returns(String) }
-          def object_id_
-          end
-
-          sig { params(_: String).returns(String) }
-          def object_id_=(_)
-          end
+          attr_accessor :object_id_
 
           sig { returns(Braintrust::Models::FunctionInvokeParams::Parent::SpanParentStruct::ObjectType::OrSymbol) }
-          def object_type
-          end
-
-          sig do
-            params(_: Braintrust::Models::FunctionInvokeParams::Parent::SpanParentStruct::ObjectType::OrSymbol)
-              .returns(Braintrust::Models::FunctionInvokeParams::Parent::SpanParentStruct::ObjectType::OrSymbol)
-          end
-          def object_type=(_)
-          end
+          attr_accessor :object_type
 
           # Include these properties in every span created under this parent
           sig { returns(T.nilable(T::Hash[Symbol, T.nilable(T.anything)])) }
-          def propagated_event
-          end
-
-          sig do
-            params(_: T.nilable(T::Hash[Symbol, T.nilable(T.anything)]))
-              .returns(T.nilable(T::Hash[Symbol, T.nilable(T.anything)]))
-          end
-          def propagated_event=(_)
-          end
+          attr_accessor :propagated_event
 
           # Identifiers for the row to to log a subspan under
           sig { returns(T.nilable(Braintrust::Models::FunctionInvokeParams::Parent::SpanParentStruct::RowIDs)) }
-          def row_ids
-          end
+          attr_reader :row_ids
 
           sig do
             params(
-              _: T.nilable(
+              row_ids: T.nilable(
                 T.any(
                   Braintrust::Models::FunctionInvokeParams::Parent::SpanParentStruct::RowIDs,
                   Braintrust::Util::AnyHash
                 )
               )
             )
-              .returns(
-                T.nilable(
-                  T.any(
-                    Braintrust::Models::FunctionInvokeParams::Parent::SpanParentStruct::RowIDs,
-                    Braintrust::Util::AnyHash
-                  )
-                )
-              )
+              .void
           end
-          def row_ids=(_)
-          end
+          attr_writer :row_ids
 
           # Span parent properties
           sig do
@@ -1010,30 +811,15 @@ module Braintrust
           class RowIDs < Braintrust::BaseModel
             # The id of the row
             sig { returns(String) }
-            def id
-            end
-
-            sig { params(_: String).returns(String) }
-            def id=(_)
-            end
+            attr_accessor :id
 
             # The root_span_id of the row
             sig { returns(String) }
-            def root_span_id
-            end
-
-            sig { params(_: String).returns(String) }
-            def root_span_id=(_)
-            end
+            attr_accessor :root_span_id
 
             # The span_id of the row
             sig { returns(String) }
-            def span_id
-            end
-
-            sig { params(_: String).returns(String) }
-            def span_id=(_)
-            end
+            attr_accessor :span_id
 
             # Identifiers for the row to to log a subspan under
             sig { params(id: String, root_span_id: String, span_id: String).returns(T.attached_class) }

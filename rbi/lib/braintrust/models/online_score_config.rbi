@@ -5,12 +5,7 @@ module Braintrust
     class OnlineScoreConfig < Braintrust::BaseModel
       # The sampling rate for online scoring
       sig { returns(Float) }
-      def sampling_rate
-      end
-
-      sig { params(_: Float).returns(Float) }
-      def sampling_rate=(_)
-      end
+      attr_accessor :sampling_rate
 
       # The list of scorers to use for online scoring
       sig do
@@ -23,47 +18,15 @@ module Braintrust
           ]
         )
       end
-      def scorers
-      end
-
-      sig do
-        params(
-          _: T::Array[
-          T.any(
-            Braintrust::Models::OnlineScoreConfig::Scorer::Function,
-            Braintrust::Models::OnlineScoreConfig::Scorer::Global
-          )
-          ]
-        )
-          .returns(
-            T::Array[
-            T.any(
-              Braintrust::Models::OnlineScoreConfig::Scorer::Function,
-              Braintrust::Models::OnlineScoreConfig::Scorer::Global
-            )
-            ]
-          )
-      end
-      def scorers=(_)
-      end
+      attr_accessor :scorers
 
       # Whether to trigger online scoring on the root span of each trace
       sig { returns(T.nilable(T::Boolean)) }
-      def apply_to_root_span
-      end
-
-      sig { params(_: T.nilable(T::Boolean)).returns(T.nilable(T::Boolean)) }
-      def apply_to_root_span=(_)
-      end
+      attr_accessor :apply_to_root_span
 
       # Trigger online scoring on any spans with a name in this list
       sig { returns(T.nilable(T::Array[String])) }
-      def apply_to_span_names
-      end
-
-      sig { params(_: T.nilable(T::Array[String])).returns(T.nilable(T::Array[String])) }
-      def apply_to_span_names=(_)
-      end
+      attr_accessor :apply_to_span_names
 
       sig do
         params(
@@ -117,23 +80,10 @@ module Braintrust
 
         class Function < Braintrust::BaseModel
           sig { returns(String) }
-          def id
-          end
-
-          sig { params(_: String).returns(String) }
-          def id=(_)
-          end
+          attr_accessor :id
 
           sig { returns(Braintrust::Models::OnlineScoreConfig::Scorer::Function::Type::OrSymbol) }
-          def type
-          end
-
-          sig do
-            params(_: Braintrust::Models::OnlineScoreConfig::Scorer::Function::Type::OrSymbol)
-              .returns(Braintrust::Models::OnlineScoreConfig::Scorer::Function::Type::OrSymbol)
-          end
-          def type=(_)
-          end
+          attr_accessor :type
 
           sig do
             params(id: String, type: Braintrust::Models::OnlineScoreConfig::Scorer::Function::Type::OrSymbol)
@@ -169,23 +119,10 @@ module Braintrust
 
         class Global < Braintrust::BaseModel
           sig { returns(String) }
-          def name
-          end
-
-          sig { params(_: String).returns(String) }
-          def name=(_)
-          end
+          attr_accessor :name
 
           sig { returns(Braintrust::Models::OnlineScoreConfig::Scorer::Global::Type::OrSymbol) }
-          def type
-          end
-
-          sig do
-            params(_: Braintrust::Models::OnlineScoreConfig::Scorer::Global::Type::OrSymbol)
-              .returns(Braintrust::Models::OnlineScoreConfig::Scorer::Global::Type::OrSymbol)
-          end
-          def type=(_)
-          end
+          attr_accessor :type
 
           sig do
             params(name: String, type: Braintrust::Models::OnlineScoreConfig::Scorer::Global::Type::OrSymbol)

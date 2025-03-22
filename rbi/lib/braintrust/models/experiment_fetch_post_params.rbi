@@ -12,12 +12,7 @@ module Braintrust
       #   The string can be obtained directly from the `cursor` property of the previous
       #   fetch query
       sig { returns(T.nilable(String)) }
-      def cursor
-      end
-
-      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-      def cursor=(_)
-      end
+      attr_accessor :cursor
 
       # limit the number of traces fetched
       #
@@ -34,12 +29,7 @@ module Braintrust
       #   end up with more individual rows than the specified limit if you are fetching
       #   events containing traces.
       sig { returns(T.nilable(Integer)) }
-      def limit
-      end
-
-      sig { params(_: T.nilable(Integer)).returns(T.nilable(Integer)) }
-      def limit=(_)
-      end
+      attr_accessor :limit
 
       # DEPRECATION NOTICE: The manually-constructed pagination cursor is deprecated in
       #   favor of the explicit 'cursor' returned by object fetch requests. Please prefer
@@ -52,12 +42,7 @@ module Braintrust
       #   value of the tuple `(_xact_id, root_span_id)`. See the documentation of `limit`
       #   for an overview of paginating fetch queries.
       sig { returns(T.nilable(String)) }
-      def max_root_span_id
-      end
-
-      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-      def max_root_span_id=(_)
-      end
+      attr_accessor :max_root_span_id
 
       # DEPRECATION NOTICE: The manually-constructed pagination cursor is deprecated in
       #   favor of the explicit 'cursor' returned by object fetch requests. Please prefer
@@ -70,12 +55,7 @@ module Braintrust
       #   value of the tuple `(_xact_id, root_span_id)`. See the documentation of `limit`
       #   for an overview of paginating fetch queries.
       sig { returns(T.nilable(String)) }
-      def max_xact_id
-      end
-
-      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-      def max_xact_id=(_)
-      end
+      attr_accessor :max_xact_id
 
       # Retrieve a snapshot of events from a past time
       #
@@ -83,12 +63,7 @@ module Braintrust
       #   can use the `max_xact_id` returned by a past fetch as the version to reproduce
       #   that exact fetch.
       sig { returns(T.nilable(String)) }
-      def version
-      end
-
-      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-      def version=(_)
-      end
+      attr_accessor :version
 
       sig do
         params(

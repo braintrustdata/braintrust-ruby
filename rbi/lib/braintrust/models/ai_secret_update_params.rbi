@@ -7,40 +7,17 @@ module Braintrust
       include Braintrust::RequestParameters
 
       sig { returns(T.nilable(T::Hash[Symbol, T.nilable(T.anything)])) }
-      def metadata
-      end
-
-      sig do
-        params(_: T.nilable(T::Hash[Symbol, T.nilable(T.anything)]))
-          .returns(T.nilable(T::Hash[Symbol, T.nilable(T.anything)]))
-      end
-      def metadata=(_)
-      end
+      attr_accessor :metadata
 
       # Name of the AI secret
       sig { returns(T.nilable(String)) }
-      def name
-      end
-
-      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-      def name=(_)
-      end
+      attr_accessor :name
 
       sig { returns(T.nilable(String)) }
-      def secret
-      end
-
-      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-      def secret=(_)
-      end
+      attr_accessor :secret
 
       sig { returns(T.nilable(String)) }
-      def type
-      end
-
-      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-      def type=(_)
-      end
+      attr_accessor :type
 
       sig do
         params(

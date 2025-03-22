@@ -5,24 +5,11 @@ module Braintrust
     class SpanAttributes < Braintrust::BaseModel
       # Name of the span, for display purposes only
       sig { returns(T.nilable(String)) }
-      def name
-      end
-
-      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-      def name=(_)
-      end
+      attr_accessor :name
 
       # Type of the span, for display purposes only
       sig { returns(T.nilable(Braintrust::Models::SpanType::OrSymbol)) }
-      def type
-      end
-
-      sig do
-        params(_: T.nilable(Braintrust::Models::SpanType::OrSymbol))
-          .returns(T.nilable(Braintrust::Models::SpanType::OrSymbol))
-      end
-      def type=(_)
-      end
+      attr_accessor :type
 
       # Human-identifying attributes of the span, such as name, type, etc.
       sig do

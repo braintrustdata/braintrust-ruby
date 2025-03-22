@@ -5,60 +5,27 @@ module Braintrust
     class EnvVar < Braintrust::BaseModel
       # Unique identifier for the environment variable
       sig { returns(String) }
-      def id
-      end
-
-      sig { params(_: String).returns(String) }
-      def id=(_)
-      end
+      attr_accessor :id
 
       # The name of the environment variable
       sig { returns(String) }
-      def name
-      end
-
-      sig { params(_: String).returns(String) }
-      def name=(_)
-      end
+      attr_accessor :name
 
       # The id of the object the environment variable is scoped for
       sig { returns(String) }
-      def object_id_
-      end
-
-      sig { params(_: String).returns(String) }
-      def object_id_=(_)
-      end
+      attr_accessor :object_id_
 
       # The type of the object the environment variable is scoped for
       sig { returns(Braintrust::Models::EnvVar::ObjectType::TaggedSymbol) }
-      def object_type
-      end
-
-      sig do
-        params(_: Braintrust::Models::EnvVar::ObjectType::TaggedSymbol)
-          .returns(Braintrust::Models::EnvVar::ObjectType::TaggedSymbol)
-      end
-      def object_type=(_)
-      end
+      attr_accessor :object_type
 
       # Date of environment variable creation
       sig { returns(T.nilable(Time)) }
-      def created
-      end
-
-      sig { params(_: T.nilable(Time)).returns(T.nilable(Time)) }
-      def created=(_)
-      end
+      attr_accessor :created
 
       # Date the environment variable was last used
       sig { returns(T.nilable(Time)) }
-      def used
-      end
-
-      sig { params(_: T.nilable(Time)).returns(T.nilable(Time)) }
-      def used=(_)
-      end
+      attr_accessor :used
 
       sig do
         params(

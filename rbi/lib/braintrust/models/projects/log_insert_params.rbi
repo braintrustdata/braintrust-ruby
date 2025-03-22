@@ -9,15 +9,7 @@ module Braintrust
 
         # A list of project logs events to insert
         sig { returns(T::Array[Braintrust::Models::InsertProjectLogsEvent]) }
-        def events
-        end
-
-        sig do
-          params(_: T::Array[Braintrust::Models::InsertProjectLogsEvent])
-            .returns(T::Array[Braintrust::Models::InsertProjectLogsEvent])
-        end
-        def events=(_)
-        end
+        attr_accessor :events
 
         sig do
           params(

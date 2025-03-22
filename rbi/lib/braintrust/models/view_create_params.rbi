@@ -8,86 +8,41 @@ module Braintrust
 
       # Name of the view
       sig { returns(String) }
-      def name
-      end
-
-      sig { params(_: String).returns(String) }
-      def name=(_)
-      end
+      attr_accessor :name
 
       # The id of the object the view applies to
       sig { returns(String) }
-      def object_id_
-      end
-
-      sig { params(_: String).returns(String) }
-      def object_id_=(_)
-      end
+      attr_accessor :object_id_
 
       # The object type that the ACL applies to
       sig { returns(Braintrust::Models::ACLObjectType::OrSymbol) }
-      def object_type
-      end
-
-      sig do
-        params(_: Braintrust::Models::ACLObjectType::OrSymbol).returns(Braintrust::Models::ACLObjectType::OrSymbol)
-      end
-      def object_type=(_)
-      end
+      attr_accessor :object_type
 
       # Type of table that the view corresponds to.
       sig { returns(T.nilable(Braintrust::Models::ViewCreateParams::ViewType::OrSymbol)) }
-      def view_type
-      end
-
-      sig do
-        params(_: T.nilable(Braintrust::Models::ViewCreateParams::ViewType::OrSymbol))
-          .returns(T.nilable(Braintrust::Models::ViewCreateParams::ViewType::OrSymbol))
-      end
-      def view_type=(_)
-      end
+      attr_accessor :view_type
 
       # Date of role deletion, or null if the role is still active
       sig { returns(T.nilable(Time)) }
-      def deleted_at
-      end
-
-      sig { params(_: T.nilable(Time)).returns(T.nilable(Time)) }
-      def deleted_at=(_)
-      end
+      attr_accessor :deleted_at
 
       # Options for the view in the app
       sig { returns(T.nilable(Braintrust::Models::ViewOptions)) }
-      def options
-      end
+      attr_reader :options
 
-      sig do
-        params(_: T.nilable(T.any(Braintrust::Models::ViewOptions, Braintrust::Util::AnyHash)))
-          .returns(T.nilable(T.any(Braintrust::Models::ViewOptions, Braintrust::Util::AnyHash)))
-      end
-      def options=(_)
-      end
+      sig { params(options: T.nilable(T.any(Braintrust::Models::ViewOptions, Braintrust::Util::AnyHash))).void }
+      attr_writer :options
 
       # Identifies the user who created the view
       sig { returns(T.nilable(String)) }
-      def user_id
-      end
-
-      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-      def user_id=(_)
-      end
+      attr_accessor :user_id
 
       # The view definition
       sig { returns(T.nilable(Braintrust::Models::ViewData)) }
-      def view_data
-      end
+      attr_reader :view_data
 
-      sig do
-        params(_: T.nilable(T.any(Braintrust::Models::ViewData, Braintrust::Util::AnyHash)))
-          .returns(T.nilable(T.any(Braintrust::Models::ViewData, Braintrust::Util::AnyHash)))
-      end
-      def view_data=(_)
-      end
+      sig { params(view_data: T.nilable(T.any(Braintrust::Models::ViewData, Braintrust::Util::AnyHash))).void }
+      attr_writer :view_data
 
       sig do
         params(

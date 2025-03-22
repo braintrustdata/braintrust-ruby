@@ -5,51 +5,26 @@ module Braintrust
     class SummarizeDatasetResponse < Braintrust::BaseModel
       # Name of the dataset
       sig { returns(String) }
-      def dataset_name
-      end
-
-      sig { params(_: String).returns(String) }
-      def dataset_name=(_)
-      end
+      attr_accessor :dataset_name
 
       # URL to the dataset's page in the Braintrust app
       sig { returns(String) }
-      def dataset_url
-      end
-
-      sig { params(_: String).returns(String) }
-      def dataset_url=(_)
-      end
+      attr_accessor :dataset_url
 
       # Name of the project that the dataset belongs to
       sig { returns(String) }
-      def project_name
-      end
-
-      sig { params(_: String).returns(String) }
-      def project_name=(_)
-      end
+      attr_accessor :project_name
 
       # URL to the project's page in the Braintrust app
       sig { returns(String) }
-      def project_url
-      end
-
-      sig { params(_: String).returns(String) }
-      def project_url=(_)
-      end
+      attr_accessor :project_url
 
       # Summary of a dataset's data
       sig { returns(T.nilable(Braintrust::Models::DataSummary)) }
-      def data_summary
-      end
+      attr_reader :data_summary
 
-      sig do
-        params(_: T.nilable(T.any(Braintrust::Models::DataSummary, Braintrust::Util::AnyHash)))
-          .returns(T.nilable(T.any(Braintrust::Models::DataSummary, Braintrust::Util::AnyHash)))
-      end
-      def data_summary=(_)
-      end
+      sig { params(data_summary: T.nilable(T.any(Braintrust::Models::DataSummary, Braintrust::Util::AnyHash))).void }
+      attr_writer :data_summary
 
       # Summary of a dataset
       sig do

@@ -5,27 +5,14 @@ module Braintrust
     class FetchExperimentEventsResponse < Braintrust::BaseModel
       # A list of fetched events
       sig { returns(T::Array[Braintrust::Models::ExperimentEvent]) }
-      def events
-      end
-
-      sig do
-        params(_: T::Array[Braintrust::Models::ExperimentEvent])
-          .returns(T::Array[Braintrust::Models::ExperimentEvent])
-      end
-      def events=(_)
-      end
+      attr_accessor :events
 
       # Pagination cursor
       #
       #   Pass this string directly as the `cursor` param to your next fetch request to
       #   get the next page of results. Not provided if the returned result set is empty.
       sig { returns(T.nilable(String)) }
-      def cursor
-      end
-
-      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-      def cursor=(_)
-      end
+      attr_accessor :cursor
 
       sig do
         params(

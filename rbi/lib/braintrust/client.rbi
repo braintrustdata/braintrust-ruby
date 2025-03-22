@@ -11,84 +11,64 @@ module Braintrust
     DEFAULT_MAX_RETRY_DELAY = T.let(8.0, Float)
 
     sig { returns(T.nilable(String)) }
-    def api_key
-    end
+    attr_reader :api_key
 
     sig { returns(Braintrust::Resources::TopLevel) }
-    def top_level
-    end
+    attr_reader :top_level
 
     sig { returns(Braintrust::Resources::Projects) }
-    def projects
-    end
+    attr_reader :projects
 
     sig { returns(Braintrust::Resources::Experiments) }
-    def experiments
-    end
+    attr_reader :experiments
 
     sig { returns(Braintrust::Resources::Datasets) }
-    def datasets
-    end
+    attr_reader :datasets
 
     sig { returns(Braintrust::Resources::Prompts) }
-    def prompts
-    end
+    attr_reader :prompts
 
     sig { returns(Braintrust::Resources::Roles) }
-    def roles
-    end
+    attr_reader :roles
 
     sig { returns(Braintrust::Resources::Groups) }
-    def groups
-    end
+    attr_reader :groups
 
     sig { returns(Braintrust::Resources::ACLs) }
-    def acls
-    end
+    attr_reader :acls
 
     sig { returns(Braintrust::Resources::Users) }
-    def users
-    end
+    attr_reader :users
 
     sig { returns(Braintrust::Resources::ProjectScores) }
-    def project_scores
-    end
+    attr_reader :project_scores
 
     sig { returns(Braintrust::Resources::ProjectTags) }
-    def project_tags
-    end
+    attr_reader :project_tags
 
     sig { returns(Braintrust::Resources::SpanIframes) }
-    def span_iframes
-    end
+    attr_reader :span_iframes
 
     sig { returns(Braintrust::Resources::Functions) }
-    def functions
-    end
+    attr_reader :functions
 
     sig { returns(Braintrust::Resources::Views) }
-    def views
-    end
+    attr_reader :views
 
     sig { returns(Braintrust::Resources::Organizations) }
-    def organizations
-    end
+    attr_reader :organizations
 
     sig { returns(Braintrust::Resources::APIKeys) }
-    def api_keys
-    end
+    attr_reader :api_keys
 
     sig { returns(Braintrust::Resources::AISecrets) }
-    def ai_secrets
-    end
+    attr_reader :ai_secrets
 
     sig { returns(Braintrust::Resources::EnvVars) }
-    def env_vars
-    end
+    attr_reader :env_vars
 
     sig { returns(Braintrust::Resources::Evals) }
-    def evals
-    end
+    attr_reader :evals
 
     # @api private
     sig { override.returns(T::Hash[String, String]) }

@@ -8,40 +8,20 @@ module Braintrust
 
       # Textual description of the span iframe
       sig { returns(T.nilable(String)) }
-      def description
-      end
-
-      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-      def description=(_)
-      end
+      attr_accessor :description
 
       # Name of the span iframe
       sig { returns(T.nilable(String)) }
-      def name
-      end
-
-      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-      def name=(_)
-      end
+      attr_accessor :name
 
       # Whether to post messages to the iframe containing the span's data. This is
       #   useful when you want to render more data than fits in the URL.
       sig { returns(T.nilable(T::Boolean)) }
-      def post_message
-      end
-
-      sig { params(_: T.nilable(T::Boolean)).returns(T.nilable(T::Boolean)) }
-      def post_message=(_)
-      end
+      attr_accessor :post_message
 
       # URL to embed the project viewer in an iframe
       sig { returns(T.nilable(String)) }
-      def url
-      end
-
-      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-      def url=(_)
-      end
+      attr_accessor :url
 
       sig do
         params(

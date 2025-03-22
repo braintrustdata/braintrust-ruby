@@ -11,22 +11,15 @@ module Braintrust
       #   and then to the most recent experiment run in the same project. Must pass
       #   `summarize_scores=true` for this id to be used
       sig { returns(T.nilable(String)) }
-      def comparison_experiment_id
-      end
+      attr_reader :comparison_experiment_id
 
-      sig { params(_: String).returns(String) }
-      def comparison_experiment_id=(_)
-      end
+      sig { params(comparison_experiment_id: String).void }
+      attr_writer :comparison_experiment_id
 
       # Whether to summarize the scores and metrics. If false (or omitted), only the
       #   metadata will be returned.
       sig { returns(T.nilable(T::Boolean)) }
-      def summarize_scores
-      end
-
-      sig { params(_: T.nilable(T::Boolean)).returns(T.nilable(T::Boolean)) }
-      def summarize_scores=(_)
-      end
+      attr_accessor :summarize_scores
 
       sig do
         params(

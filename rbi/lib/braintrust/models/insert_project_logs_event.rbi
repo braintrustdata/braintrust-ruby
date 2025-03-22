@@ -6,12 +6,7 @@ module Braintrust
       # A unique identifier for the project logs event. If you don't provide one,
       #   BrainTrust will generate one for you
       sig { returns(T.nilable(String)) }
-      def id
-      end
-
-      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-      def id=(_)
-      end
+      attr_accessor :id
 
       # The `_is_merge` field controls how the row is merged with any existing row with
       #   the same id in the DB. By default (or when set to `false`), the existing row is
@@ -26,12 +21,7 @@ module Braintrust
       #   new row as `{"id": "foo", "input": {"b": 11, "c": 20}}`, the new row will be
       #   `{"id": "foo", "input": {"b": 11, "c": 20}}`
       sig { returns(T.nilable(T::Boolean)) }
-      def _is_merge
-      end
-
-      sig { params(_: T.nilable(T::Boolean)).returns(T.nilable(T::Boolean)) }
-      def _is_merge=(_)
-      end
+      attr_accessor :_is_merge
 
       # The `_merge_paths` field allows controlling the depth of the merge, when
       #   `_is_merge=true`. `_merge_paths` is a list of paths, where each path is a list
@@ -47,22 +37,12 @@ module Braintrust
       #   In this case, due to the merge paths, we have replaced `input.a` and `output`,
       #   but have still deep-merged `input` and `input.c`.
       sig { returns(T.nilable(T::Array[T::Array[String]])) }
-      def _merge_paths
-      end
-
-      sig { params(_: T.nilable(T::Array[T::Array[String]])).returns(T.nilable(T::Array[T::Array[String]])) }
-      def _merge_paths=(_)
-      end
+      attr_accessor :_merge_paths
 
       # Pass `_object_delete=true` to mark the project logs event deleted. Deleted
       #   events will not show up in subsequent fetches for this project logs
       sig { returns(T.nilable(T::Boolean)) }
-      def _object_delete
-      end
-
-      sig { params(_: T.nilable(T::Boolean)).returns(T.nilable(T::Boolean)) }
-      def _object_delete=(_)
-      end
+      attr_accessor :_object_delete
 
       # DEPRECATED: The `_parent_id` field is deprecated and should not be used. Support
       #   for `_parent_id` will be dropped in a future version of Braintrust. Log
@@ -82,47 +62,33 @@ module Braintrust
       #
       #   If the row is being merged into an existing row, this field will be ignored.
       sig { returns(T.nilable(String)) }
-      def _parent_id
-      end
-
-      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-      def _parent_id=(_)
-      end
+      attr_accessor :_parent_id
 
       # Context is additional information about the code that produced the project logs
       #   event. It is essentially the textual counterpart to `metrics`. Use the
       #   `caller_*` attributes to track the location in code which produced the project
       #   logs event
       sig { returns(T.nilable(Braintrust::Models::InsertProjectLogsEvent::Context)) }
-      def context
-      end
+      attr_reader :context
 
       sig do
         params(
-          _: T.nilable(T.any(Braintrust::Models::InsertProjectLogsEvent::Context, Braintrust::Util::AnyHash))
+          context: T.nilable(T.any(Braintrust::Models::InsertProjectLogsEvent::Context, Braintrust::Util::AnyHash))
         )
-          .returns(T.nilable(T.any(Braintrust::Models::InsertProjectLogsEvent::Context, Braintrust::Util::AnyHash)))
+          .void
       end
-      def context=(_)
-      end
+      attr_writer :context
 
       # The timestamp the project logs event was created
       sig { returns(T.nilable(Time)) }
-      def created
-      end
-
-      sig { params(_: T.nilable(Time)).returns(T.nilable(Time)) }
-      def created=(_)
-      end
+      attr_accessor :created
 
       # The error that occurred, if any.
       sig { returns(T.nilable(T.anything)) }
-      def error
-      end
+      attr_reader :error
 
-      sig { params(_: T.anything).returns(T.anything) }
-      def error=(_)
-      end
+      sig { params(error: T.anything).void }
+      attr_writer :error
 
       # The ground truth value (an arbitrary, JSON serializable object) that you'd
       #   compare to `output` to determine if your `output` value is correct or not.
@@ -131,22 +97,18 @@ module Braintrust
       #   just used to help you navigate while digging into analyses. However, we may
       #   later use these values to re-score outputs or fine-tune your models.
       sig { returns(T.nilable(T.anything)) }
-      def expected
-      end
+      attr_reader :expected
 
-      sig { params(_: T.anything).returns(T.anything) }
-      def expected=(_)
-      end
+      sig { params(expected: T.anything).void }
+      attr_writer :expected
 
       # The arguments that uniquely define a user input (an arbitrary, JSON serializable
       #   object).
       sig { returns(T.nilable(T.anything)) }
-      def input
-      end
+      attr_reader :input
 
-      sig { params(_: T.anything).returns(T.anything) }
-      def input=(_)
-      end
+      sig { params(input: T.anything).void }
+      attr_writer :input
 
       # A dictionary with additional data about the test example, model outputs, or just
       #   about anything else that's relevant, that you can use to help find and analyze
@@ -154,45 +116,36 @@ module Braintrust
       #   anything else that would be useful to slice/dice later. The values in `metadata`
       #   can be any JSON-serializable type, but its keys must be strings
       sig { returns(T.nilable(Braintrust::Models::InsertProjectLogsEvent::Metadata)) }
-      def metadata
-      end
+      attr_reader :metadata
 
       sig do
         params(
-          _: T.nilable(T.any(Braintrust::Models::InsertProjectLogsEvent::Metadata, Braintrust::Util::AnyHash))
+          metadata: T.nilable(T.any(Braintrust::Models::InsertProjectLogsEvent::Metadata, Braintrust::Util::AnyHash))
         )
-          .returns(T.nilable(T.any(Braintrust::Models::InsertProjectLogsEvent::Metadata, Braintrust::Util::AnyHash)))
+          .void
       end
-      def metadata=(_)
-      end
+      attr_writer :metadata
 
       # Metrics are numerical measurements tracking the execution of the code that
       #   produced the project logs event. Use "start" and "end" to track the time span
       #   over which the project logs event was produced
       sig { returns(T.nilable(Braintrust::Models::InsertProjectLogsEvent::Metrics)) }
-      def metrics
-      end
+      attr_reader :metrics
 
       sig do
         params(
-          _: T.nilable(T.any(Braintrust::Models::InsertProjectLogsEvent::Metrics, Braintrust::Util::AnyHash))
+          metrics: T.nilable(T.any(Braintrust::Models::InsertProjectLogsEvent::Metrics, Braintrust::Util::AnyHash))
         )
-          .returns(T.nilable(T.any(Braintrust::Models::InsertProjectLogsEvent::Metrics, Braintrust::Util::AnyHash)))
+          .void
       end
-      def metrics=(_)
-      end
+      attr_writer :metrics
 
       # Indicates the event was copied from another object.
       sig { returns(T.nilable(Braintrust::Models::ObjectReference)) }
-      def origin
-      end
+      attr_reader :origin
 
-      sig do
-        params(_: T.nilable(T.any(Braintrust::Models::ObjectReference, Braintrust::Util::AnyHash)))
-          .returns(T.nilable(T.any(Braintrust::Models::ObjectReference, Braintrust::Util::AnyHash)))
-      end
-      def origin=(_)
-      end
+      sig { params(origin: T.nilable(T.any(Braintrust::Models::ObjectReference, Braintrust::Util::AnyHash))).void }
+      attr_writer :origin
 
       # The output of your application, including post-processing (an arbitrary, JSON
       #   serializable object), that allows you to determine whether the result is correct
@@ -200,12 +153,10 @@ module Braintrust
       #   be the _result_ of the SQL query generated by the model, not the query itself,
       #   because there may be multiple valid queries that answer a single question.
       sig { returns(T.nilable(T.anything)) }
-      def output
-      end
+      attr_reader :output
 
-      sig { params(_: T.anything).returns(T.anything) }
-      def output=(_)
-      end
+      sig { params(output: T.anything).void }
+      attr_writer :output
 
       # Use `span_id`, `root_span_id`, and `span_parents` instead of `_parent_id`, which
       #   is now deprecated. The span_id is a unique identifier describing the row's place
@@ -223,12 +174,7 @@ module Braintrust
       #
       #   If the row is being merged into an existing row, this field will be ignored.
       sig { returns(T.nilable(String)) }
-      def root_span_id
-      end
-
-      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-      def root_span_id=(_)
-      end
+      attr_accessor :root_span_id
 
       # A dictionary of numeric values (between 0 and 1) to log. The scores should give
       #   you a variety of signals that help you determine how accurate the outputs are
@@ -239,27 +185,17 @@ module Braintrust
       #   summarization was covering similar concepts or not. You can use these scores to
       #   help you sort, filter, and compare logs.
       sig { returns(T.nilable(T::Hash[Symbol, T.nilable(Float)])) }
-      def scores
-      end
-
-      sig do
-        params(_: T.nilable(T::Hash[Symbol, T.nilable(Float)]))
-          .returns(T.nilable(T::Hash[Symbol, T.nilable(Float)]))
-      end
-      def scores=(_)
-      end
+      attr_accessor :scores
 
       # Human-identifying attributes of the span, such as name, type, etc.
       sig { returns(T.nilable(Braintrust::Models::SpanAttributes)) }
-      def span_attributes
-      end
+      attr_reader :span_attributes
 
       sig do
-        params(_: T.nilable(T.any(Braintrust::Models::SpanAttributes, Braintrust::Util::AnyHash)))
-          .returns(T.nilable(T.any(Braintrust::Models::SpanAttributes, Braintrust::Util::AnyHash)))
+        params(span_attributes: T.nilable(T.any(Braintrust::Models::SpanAttributes, Braintrust::Util::AnyHash)))
+          .void
       end
-      def span_attributes=(_)
-      end
+      attr_writer :span_attributes
 
       # Use `span_id`, `root_span_id`, and `span_parents` instead of `_parent_id`, which
       #   is now deprecated. The span_id is a unique identifier describing the row's place
@@ -277,12 +213,7 @@ module Braintrust
       #
       #   If the row is being merged into an existing row, this field will be ignored.
       sig { returns(T.nilable(String)) }
-      def span_id
-      end
-
-      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-      def span_id=(_)
-      end
+      attr_accessor :span_id
 
       # Use `span_id`, `root_span_id`, and `span_parents` instead of `_parent_id`, which
       #   is now deprecated. The span_id is a unique identifier describing the row's place
@@ -300,21 +231,11 @@ module Braintrust
       #
       #   If the row is being merged into an existing row, this field will be ignored.
       sig { returns(T.nilable(T::Array[String])) }
-      def span_parents
-      end
-
-      sig { params(_: T.nilable(T::Array[String])).returns(T.nilable(T::Array[String])) }
-      def span_parents=(_)
-      end
+      attr_accessor :span_parents
 
       # A list of tags to log
       sig { returns(T.nilable(T::Array[String])) }
-      def tags
-      end
-
-      sig { params(_: T.nilable(T::Array[String])).returns(T.nilable(T::Array[String])) }
-      def tags=(_)
-      end
+      attr_accessor :tags
 
       # A project logs event
       sig do
@@ -399,30 +320,15 @@ module Braintrust
       class Context < Braintrust::BaseModel
         # Name of the file in code where the project logs event was created
         sig { returns(T.nilable(String)) }
-        def caller_filename
-        end
-
-        sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-        def caller_filename=(_)
-        end
+        attr_accessor :caller_filename
 
         # The function in code which created the project logs event
         sig { returns(T.nilable(String)) }
-        def caller_functionname
-        end
-
-        sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-        def caller_functionname=(_)
-        end
+        attr_accessor :caller_functionname
 
         # Line of code where the project logs event was created
         sig { returns(T.nilable(Integer)) }
-        def caller_lineno
-        end
-
-        sig { params(_: T.nilable(Integer)).returns(T.nilable(Integer)) }
-        def caller_lineno=(_)
-        end
+        attr_accessor :caller_lineno
 
         # Context is additional information about the code that produced the project logs
         #   event. It is essentially the textual counterpart to `metrics`. Use the
@@ -456,12 +362,7 @@ module Braintrust
       class Metadata < Braintrust::BaseModel
         # The model used for this example
         sig { returns(T.nilable(String)) }
-        def model
-        end
-
-        sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-        def model=(_)
-        end
+        attr_accessor :model
 
         # A dictionary with additional data about the test example, model outputs, or just
         #   about anything else that's relevant, that you can use to help find and analyze
@@ -480,79 +381,48 @@ module Braintrust
       class Metrics < Braintrust::BaseModel
         # This metric is deprecated
         sig { returns(T.nilable(T.anything)) }
-        def caller_filename
-        end
+        attr_reader :caller_filename
 
-        sig { params(_: T.anything).returns(T.anything) }
-        def caller_filename=(_)
-        end
+        sig { params(caller_filename: T.anything).void }
+        attr_writer :caller_filename
 
         # This metric is deprecated
         sig { returns(T.nilable(T.anything)) }
-        def caller_functionname
-        end
+        attr_reader :caller_functionname
 
-        sig { params(_: T.anything).returns(T.anything) }
-        def caller_functionname=(_)
-        end
+        sig { params(caller_functionname: T.anything).void }
+        attr_writer :caller_functionname
 
         # This metric is deprecated
         sig { returns(T.nilable(T.anything)) }
-        def caller_lineno
-        end
+        attr_reader :caller_lineno
 
-        sig { params(_: T.anything).returns(T.anything) }
-        def caller_lineno=(_)
-        end
+        sig { params(caller_lineno: T.anything).void }
+        attr_writer :caller_lineno
 
         # The number of tokens in the completion generated by the model (only set if this
         #   is an LLM span)
         sig { returns(T.nilable(Integer)) }
-        def completion_tokens
-        end
-
-        sig { params(_: T.nilable(Integer)).returns(T.nilable(Integer)) }
-        def completion_tokens=(_)
-        end
+        attr_accessor :completion_tokens
 
         # A unix timestamp recording when the section of code which produced the project
         #   logs event finished
         sig { returns(T.nilable(Float)) }
-        def end_
-        end
-
-        sig { params(_: T.nilable(Float)).returns(T.nilable(Float)) }
-        def end_=(_)
-        end
+        attr_accessor :end_
 
         # The number of tokens in the prompt used to generate the project logs event (only
         #   set if this is an LLM span)
         sig { returns(T.nilable(Integer)) }
-        def prompt_tokens
-        end
-
-        sig { params(_: T.nilable(Integer)).returns(T.nilable(Integer)) }
-        def prompt_tokens=(_)
-        end
+        attr_accessor :prompt_tokens
 
         # A unix timestamp recording when the section of code which produced the project
         #   logs event started
         sig { returns(T.nilable(Float)) }
-        def start
-        end
-
-        sig { params(_: T.nilable(Float)).returns(T.nilable(Float)) }
-        def start=(_)
-        end
+        attr_accessor :start
 
         # The total number of tokens in the input and output of the project logs event.
         sig { returns(T.nilable(Integer)) }
-        def tokens
-        end
-
-        sig { params(_: T.nilable(Integer)).returns(T.nilable(Integer)) }
-        def tokens=(_)
-        end
+        attr_accessor :tokens
 
         # Metrics are numerical measurements tracking the execution of the code that
         #   produced the project logs event. Use "start" and "end" to track the time span

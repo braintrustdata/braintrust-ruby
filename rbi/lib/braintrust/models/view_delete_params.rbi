@@ -8,23 +8,11 @@ module Braintrust
 
       # The id of the object the view applies to
       sig { returns(String) }
-      def object_id_
-      end
-
-      sig { params(_: String).returns(String) }
-      def object_id_=(_)
-      end
+      attr_accessor :object_id_
 
       # The object type that the ACL applies to
       sig { returns(Braintrust::Models::ACLObjectType::OrSymbol) }
-      def object_type
-      end
-
-      sig do
-        params(_: Braintrust::Models::ACLObjectType::OrSymbol).returns(Braintrust::Models::ACLObjectType::OrSymbol)
-      end
-      def object_type=(_)
-      end
+      attr_accessor :object_type
 
       sig do
         params(

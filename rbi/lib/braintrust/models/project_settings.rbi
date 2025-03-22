@@ -5,33 +5,15 @@ module Braintrust
     class ProjectSettings < Braintrust::BaseModel
       # The id of the experiment to use as the default baseline for comparisons
       sig { returns(T.nilable(String)) }
-      def baseline_experiment_id
-      end
-
-      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-      def baseline_experiment_id=(_)
-      end
+      attr_accessor :baseline_experiment_id
 
       # The key used to join two experiments (defaults to `input`)
       sig { returns(T.nilable(String)) }
-      def comparison_key
-      end
-
-      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
-      def comparison_key=(_)
-      end
+      attr_accessor :comparison_key
 
       # The order of the fields to display in the trace view
       sig { returns(T.nilable(T::Array[Braintrust::Models::ProjectSettings::SpanFieldOrder])) }
-      def span_field_order
-      end
-
-      sig do
-        params(_: T.nilable(T::Array[Braintrust::Models::ProjectSettings::SpanFieldOrder]))
-          .returns(T.nilable(T::Array[Braintrust::Models::ProjectSettings::SpanFieldOrder]))
-      end
-      def span_field_order=(_)
-      end
+      attr_accessor :span_field_order
 
       sig do
         params(
@@ -59,39 +41,16 @@ module Braintrust
 
       class SpanFieldOrder < Braintrust::BaseModel
         sig { returns(String) }
-        def column_id
-        end
-
-        sig { params(_: String).returns(String) }
-        def column_id=(_)
-        end
+        attr_accessor :column_id
 
         sig { returns(String) }
-        def object_type
-        end
-
-        sig { params(_: String).returns(String) }
-        def object_type=(_)
-        end
+        attr_accessor :object_type
 
         sig { returns(String) }
-        def position
-        end
-
-        sig { params(_: String).returns(String) }
-        def position=(_)
-        end
+        attr_accessor :position
 
         sig { returns(T.nilable(Braintrust::Models::ProjectSettings::SpanFieldOrder::Layout::OrSymbol)) }
-        def layout
-        end
-
-        sig do
-          params(_: T.nilable(Braintrust::Models::ProjectSettings::SpanFieldOrder::Layout::OrSymbol))
-            .returns(T.nilable(Braintrust::Models::ProjectSettings::SpanFieldOrder::Layout::OrSymbol))
-        end
-        def layout=(_)
-        end
+        attr_accessor :layout
 
         sig do
           params(
