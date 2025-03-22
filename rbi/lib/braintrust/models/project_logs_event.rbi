@@ -258,10 +258,8 @@ module Braintrust
 
         G = T.let(:g, Braintrust::Models::ProjectLogsEvent::LogID::TaggedSymbol)
 
-        class << self
-          sig { override.returns(T::Array[Braintrust::Models::ProjectLogsEvent::LogID::TaggedSymbol]) }
-          def values
-          end
+        sig { override.returns(T::Array[Braintrust::Models::ProjectLogsEvent::LogID::TaggedSymbol]) }
+        def self.values
         end
       end
 

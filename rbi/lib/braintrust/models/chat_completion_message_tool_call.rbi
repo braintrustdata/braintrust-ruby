@@ -69,10 +69,8 @@ module Braintrust
 
         FUNCTION = T.let(:function, Braintrust::Models::ChatCompletionMessageToolCall::Type::TaggedSymbol)
 
-        class << self
-          sig { override.returns(T::Array[Braintrust::Models::ChatCompletionMessageToolCall::Type::TaggedSymbol]) }
-          def values
-          end
+        sig { override.returns(T::Array[Braintrust::Models::ChatCompletionMessageToolCall::Type::TaggedSymbol]) }
+        def self.values
         end
       end
     end

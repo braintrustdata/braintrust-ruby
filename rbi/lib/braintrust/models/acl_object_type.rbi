@@ -21,10 +21,8 @@ module Braintrust
       PROJECT_LOG = T.let(:project_log, Braintrust::Models::ACLObjectType::TaggedSymbol)
       ORG_PROJECT = T.let(:org_project, Braintrust::Models::ACLObjectType::TaggedSymbol)
 
-      class << self
-        sig { override.returns(T::Array[Braintrust::Models::ACLObjectType::TaggedSymbol]) }
-        def values
-        end
+      sig { override.returns(T::Array[Braintrust::Models::ACLObjectType::TaggedSymbol]) }
+      def self.values
       end
     end
   end

@@ -48,10 +48,8 @@ module Braintrust
 
         SUCCESS = T.let(:success, Braintrust::Models::PatchOrganizationMembersOutput::Status::TaggedSymbol)
 
-        class << self
-          sig { override.returns(T::Array[Braintrust::Models::PatchOrganizationMembersOutput::Status::TaggedSymbol]) }
-          def values
-          end
+        sig { override.returns(T::Array[Braintrust::Models::PatchOrganizationMembersOutput::Status::TaggedSymbol]) }
+        def self.values
         end
       end
     end

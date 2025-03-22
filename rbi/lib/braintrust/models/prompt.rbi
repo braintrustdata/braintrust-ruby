@@ -127,10 +127,8 @@ module Braintrust
 
         P = T.let(:p, Braintrust::Models::Prompt::LogID::TaggedSymbol)
 
-        class << self
-          sig { override.returns(T::Array[Braintrust::Models::Prompt::LogID::TaggedSymbol]) }
-          def values
-          end
+        sig { override.returns(T::Array[Braintrust::Models::Prompt::LogID::TaggedSymbol]) }
+        def self.values
         end
       end
 
@@ -145,10 +143,8 @@ module Braintrust
         TASK = T.let(:task, Braintrust::Models::Prompt::FunctionType::TaggedSymbol)
         TOOL = T.let(:tool, Braintrust::Models::Prompt::FunctionType::TaggedSymbol)
 
-        class << self
-          sig { override.returns(T::Array[Braintrust::Models::Prompt::FunctionType::TaggedSymbol]) }
-          def values
-          end
+        sig { override.returns(T::Array[Braintrust::Models::Prompt::FunctionType::TaggedSymbol]) }
+        def self.values
         end
       end
     end
