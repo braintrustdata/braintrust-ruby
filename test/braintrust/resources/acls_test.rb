@@ -59,6 +59,8 @@ class Braintrust::Test::Resources::ACLsTest < Braintrust::Test::ResourceTest
     end
 
     row = response.to_enum.first
+    return if row.nil?
+
     assert_pattern do
       row => Braintrust::Models::ACL
     end

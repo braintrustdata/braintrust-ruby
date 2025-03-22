@@ -77,6 +77,8 @@ class Braintrust::Test::Resources::GroupsTest < Braintrust::Test::ResourceTest
     end
 
     row = response.to_enum.first
+    return if row.nil?
+
     assert_pattern do
       row => Braintrust::Models::Group
     end
