@@ -74,11 +74,11 @@ module Braintrust
       module Email
         extend Braintrust::Union
 
+        def self?.variants: -> [String, ::Array[String]]
+
         type string_array = ::Array[String]
 
         StringArray: string_array
-
-        def self?.variants: -> [String, ::Array[String]]
       end
 
       type family_name = String | ::Array[String]
@@ -86,11 +86,11 @@ module Braintrust
       module FamilyName
         extend Braintrust::Union
 
+        def self?.variants: -> [String, ::Array[String]]
+
         type string_array = ::Array[String]
 
         StringArray: string_array
-
-        def self?.variants: -> [String, ::Array[String]]
       end
 
       type given_name = String | ::Array[String]
@@ -98,11 +98,11 @@ module Braintrust
       module GivenName
         extend Braintrust::Union
 
+        def self?.variants: -> [String, ::Array[String]]
+
         type string_array = ::Array[String]
 
         StringArray: string_array
-
-        def self?.variants: -> [String, ::Array[String]]
       end
 
       type ids = String | ::Array[String]
@@ -110,11 +110,11 @@ module Braintrust
       module IDs
         extend Braintrust::Union
 
+        def self?.variants: -> [String, ::Array[String]]
+
         type string_array = ::Array[String]
 
         StringArray: string_array
-
-        def self?.variants: -> [String, ::Array[String]]
       end
     end
   end

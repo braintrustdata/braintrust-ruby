@@ -110,15 +110,15 @@ module Braintrust
       module AISecretType
         extend Braintrust::Union
 
-        StringArray = Braintrust::ArrayOf[String]
-
         variant String
 
-        variant Braintrust::Models::AISecretListParams::AISecretType::StringArray
+        variant -> { Braintrust::Models::AISecretListParams::AISecretType::StringArray }
 
         # @!parse
         #   # @return [Array(String, Array<String>)]
         #   def self.variants; end
+
+        StringArray = Braintrust::ArrayOf[String]
       end
 
       # Filter search results to a particular set of object IDs. To specify a list of
@@ -126,15 +126,15 @@ module Braintrust
       module IDs
         extend Braintrust::Union
 
-        StringArray = Braintrust::ArrayOf[String]
-
         variant String
 
-        variant Braintrust::Models::AISecretListParams::IDs::StringArray
+        variant -> { Braintrust::Models::AISecretListParams::IDs::StringArray }
 
         # @!parse
         #   # @return [Array(String, Array<String>)]
         #   def self.variants; end
+
+        StringArray = Braintrust::ArrayOf[String]
       end
     end
   end

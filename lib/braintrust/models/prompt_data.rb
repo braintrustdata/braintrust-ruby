@@ -297,12 +297,9 @@ module Braintrust
               module Content
                 extend Braintrust::Union
 
-                Nested2DArray =
-                  Braintrust::ArrayOf[union: -> { Braintrust::Models::PromptData::Prompt::Chat::Message::User::Content::Array }]
-
                 variant String
 
-                variant Braintrust::Models::PromptData::Prompt::Chat::Message::User::Content::Nested2DArray
+                variant -> { Braintrust::Models::PromptData::Prompt::Chat::Message::User::Content::Nested2DArray }
 
                 module Array
                   extend Braintrust::Union
@@ -319,6 +316,9 @@ module Braintrust
                 # @!parse
                 #   # @return [Array(String, Array<Braintrust::Models::ChatCompletionContentPartText, Braintrust::Models::ChatCompletionContentPartImage>)]
                 #   def self.variants; end
+
+                Nested2DArray =
+                  Braintrust::ArrayOf[union: -> { Braintrust::Models::PromptData::Prompt::Chat::Message::User::Content::Array }]
               end
             end
 

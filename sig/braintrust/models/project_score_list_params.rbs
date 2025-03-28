@@ -76,11 +76,11 @@ module Braintrust
       module IDs
         extend Braintrust::Union
 
+        def self?.variants: -> [String, ::Array[String]]
+
         type string_array = ::Array[String]
 
         StringArray: string_array
-
-        def self?.variants: -> [String, ::Array[String]]
       end
 
       type score_type =
@@ -90,12 +90,12 @@ module Braintrust
       module ScoreType
         extend Braintrust::Union
 
+        def self?.variants: -> [Braintrust::Models::project_score_type, ::Array[Braintrust::Models::project_score_type]]
+
         type project_score_type_array =
           ::Array[Braintrust::Models::project_score_type]
 
         ProjectScoreTypeArray: project_score_type_array
-
-        def self?.variants: -> [Braintrust::Models::project_score_type, ::Array[Braintrust::Models::project_score_type]]
       end
     end
   end

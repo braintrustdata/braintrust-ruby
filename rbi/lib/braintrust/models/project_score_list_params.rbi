@@ -152,19 +152,16 @@ module Braintrust
       module IDs
         extend Braintrust::Union
 
-        StringArray = T.let(Braintrust::ArrayOf[String], Braintrust::Converter)
-
         sig { override.returns([String, T::Array[String]]) }
         def self.variants
         end
+
+        StringArray = T.let(Braintrust::ArrayOf[String], Braintrust::Converter)
       end
 
       # The type of the configured score
       module ScoreType
         extend Braintrust::Union
-
-        ProjectScoreTypeArray =
-          T.let(Braintrust::ArrayOf[enum: Braintrust::Models::ProjectScoreType], Braintrust::Converter)
 
         sig do
           override
@@ -174,6 +171,9 @@ module Braintrust
         end
         def self.variants
         end
+
+        ProjectScoreTypeArray =
+          T.let(Braintrust::ArrayOf[enum: Braintrust::Models::ProjectScoreType], Braintrust::Converter)
       end
     end
   end

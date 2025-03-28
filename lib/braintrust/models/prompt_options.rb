@@ -211,16 +211,9 @@ module Braintrust
           module FunctionCall
             extend Braintrust::Union
 
-            # @!group
+            variant const: -> { Braintrust::Models::PromptOptions::Params::OpenAIModelParams::FunctionCall::AUTO }
 
-            AUTO = :auto
-            NONE = :none
-
-            # @!endgroup
-
-            variant const: Braintrust::Models::PromptOptions::Params::OpenAIModelParams::FunctionCall::AUTO
-
-            variant const: Braintrust::Models::PromptOptions::Params::OpenAIModelParams::FunctionCall::NONE
+            variant const: -> { Braintrust::Models::PromptOptions::Params::OpenAIModelParams::FunctionCall::NONE }
 
             variant -> { Braintrust::Models::PromptOptions::Params::OpenAIModelParams::FunctionCall::Function }
 
@@ -241,6 +234,13 @@ module Braintrust
             # @!parse
             #   # @return [Array(Symbol, Braintrust::Models::PromptOptions::Params::OpenAIModelParams::FunctionCall::Function)]
             #   def self.variants; end
+
+            # @!group
+
+            AUTO = :auto
+            NONE = :none
+
+            # @!endgroup
           end
 
           module ReasoningEffort
@@ -357,15 +357,15 @@ module Braintrust
                 module Schema
                   extend Braintrust::Union
 
-                  ObjectMap = Braintrust::HashOf[Braintrust::Unknown, nil?: true]
-
-                  variant Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ResponseFormat::JsonSchema::JsonSchema::Schema::ObjectMap
+                  variant -> { Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ResponseFormat::JsonSchema::JsonSchema::Schema::ObjectMap }
 
                   variant String
 
                   # @!parse
                   #   # @return [Array(Hash{Symbol=>Object, nil}, String)]
                   #   def self.variants; end
+
+                  ObjectMap = Braintrust::HashOf[Braintrust::Unknown, nil?: true]
                 end
               end
 
@@ -417,19 +417,11 @@ module Braintrust
           module ToolChoice
             extend Braintrust::Union
 
-            # @!group
+            variant const: -> { Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ToolChoice::AUTO }
 
-            AUTO = :auto
-            NONE = :none
-            REQUIRED = :required
+            variant const: -> { Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ToolChoice::NONE }
 
-            # @!endgroup
-
-            variant const: Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ToolChoice::AUTO
-
-            variant const: Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ToolChoice::NONE
-
-            variant const: Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ToolChoice::REQUIRED
+            variant const: -> { Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ToolChoice::REQUIRED }
 
             variant -> { Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ToolChoice::Function }
 
@@ -484,6 +476,14 @@ module Braintrust
             # @!parse
             #   # @return [Array(Symbol, Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ToolChoice::Function)]
             #   def self.variants; end
+
+            # @!group
+
+            AUTO = :auto
+            NONE = :none
+            REQUIRED = :required
+
+            # @!endgroup
           end
         end
 
