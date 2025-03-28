@@ -142,11 +142,11 @@ module Braintrust
       module IDs
         extend Braintrust::Union
 
-        StringArray = T.let(Braintrust::ArrayOf[String], Braintrust::Converter)
-
         sig { override.returns([String, T::Array[String]]) }
         def self.variants
         end
+
+        StringArray = T.let(Braintrust::ArrayOf[String], Braintrust::Converter)
       end
     end
   end

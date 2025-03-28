@@ -82,19 +82,19 @@ module Braintrust
       module Categories
         extend Braintrust::Union
 
-        ProjectScoreCategoryArray =
-          T.let(Braintrust::ArrayOf[Braintrust::Models::ProjectScoreCategory], Braintrust::Converter)
-
-        FloatMap = T.let(Braintrust::HashOf[Float], Braintrust::Converter)
-
-        StringArray = T.let(Braintrust::ArrayOf[String], Braintrust::Converter)
-
         sig do
           override
             .returns([T::Array[Braintrust::Models::ProjectScoreCategory], T::Hash[Symbol, Float], T::Array[String]])
         end
         def self.variants
         end
+
+        ProjectScoreCategoryArray =
+          T.let(Braintrust::ArrayOf[Braintrust::Models::ProjectScoreCategory], Braintrust::Converter)
+
+        FloatMap = T.let(Braintrust::HashOf[Float], Braintrust::Converter)
+
+        StringArray = T.let(Braintrust::ArrayOf[String], Braintrust::Converter)
       end
     end
   end

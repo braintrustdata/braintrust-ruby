@@ -450,12 +450,6 @@ module Braintrust
               module Content
                 extend Braintrust::Union
 
-                Nested2DArray =
-                  T.let(
-                    Braintrust::ArrayOf[union: Braintrust::Models::PromptData::Prompt::Chat::Message::User::Content::Array],
-                    Braintrust::Converter
-                  )
-
                 module Array
                   extend Braintrust::Union
 
@@ -485,6 +479,12 @@ module Braintrust
                 end
                 def self.variants
                 end
+
+                Nested2DArray =
+                  T.let(
+                    Braintrust::ArrayOf[union: Braintrust::Models::PromptData::Prompt::Chat::Message::User::Content::Array],
+                    Braintrust::Converter
+                  )
               end
             end
 

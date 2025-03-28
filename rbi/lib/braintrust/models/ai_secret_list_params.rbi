@@ -106,11 +106,11 @@ module Braintrust
       module AISecretType
         extend Braintrust::Union
 
-        StringArray = T.let(Braintrust::ArrayOf[String], Braintrust::Converter)
-
         sig { override.returns([String, T::Array[String]]) }
         def self.variants
         end
+
+        StringArray = T.let(Braintrust::ArrayOf[String], Braintrust::Converter)
       end
 
       # Filter search results to a particular set of object IDs. To specify a list of
@@ -118,11 +118,11 @@ module Braintrust
       module IDs
         extend Braintrust::Union
 
-        StringArray = T.let(Braintrust::ArrayOf[String], Braintrust::Converter)
-
         sig { override.returns([String, T::Array[String]]) }
         def self.variants
         end
+
+        StringArray = T.let(Braintrust::ArrayOf[String], Braintrust::Converter)
       end
     end
   end

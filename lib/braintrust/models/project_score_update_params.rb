@@ -52,24 +52,24 @@ module Braintrust
       module Categories
         extend Braintrust::Union
 
+        # For categorical-type project scores, the list of all categories
+        variant -> { Braintrust::Models::ProjectScoreUpdateParams::Categories::ProjectScoreCategoryArray }
+
+        # For weighted-type project scores, the weights of each score
+        variant -> { Braintrust::Models::ProjectScoreUpdateParams::Categories::FloatMap }
+
+        # For minimum-type project scores, the list of included scores
+        variant -> { Braintrust::Models::ProjectScoreUpdateParams::Categories::StringArray }
+
+        # @!parse
+        #   # @return [Array(Array<Braintrust::Models::ProjectScoreCategory>, Hash{Symbol=>Float}, Array<String>)]
+        #   def self.variants; end
+
         ProjectScoreCategoryArray = Braintrust::ArrayOf[-> { Braintrust::Models::ProjectScoreCategory }]
 
         FloatMap = Braintrust::HashOf[Float]
 
         StringArray = Braintrust::ArrayOf[String]
-
-        # For categorical-type project scores, the list of all categories
-        variant Braintrust::Models::ProjectScoreUpdateParams::Categories::ProjectScoreCategoryArray
-
-        # For weighted-type project scores, the weights of each score
-        variant Braintrust::Models::ProjectScoreUpdateParams::Categories::FloatMap
-
-        # For minimum-type project scores, the list of included scores
-        variant Braintrust::Models::ProjectScoreUpdateParams::Categories::StringArray
-
-        # @!parse
-        #   # @return [Array(Array<Braintrust::Models::ProjectScoreCategory>, Hash{Symbol=>Float}, Array<String>)]
-        #   def self.variants; end
       end
     end
   end
