@@ -128,15 +128,15 @@ module Braintrust
       module Email
         extend Braintrust::Union
 
-        StringArray = Braintrust::ArrayOf[String]
-
         variant String
 
-        variant Braintrust::Models::UserListParams::Email::StringArray
+        variant -> { Braintrust::Models::UserListParams::Email::StringArray }
 
         # @!parse
         #   # @return [Array(String, Array<String>)]
         #   def self.variants; end
+
+        StringArray = Braintrust::ArrayOf[String]
       end
 
       # Family name of the user to search for. You may pass the param multiple times to
@@ -144,15 +144,15 @@ module Braintrust
       module FamilyName
         extend Braintrust::Union
 
-        StringArray = Braintrust::ArrayOf[String]
-
         variant String
 
-        variant Braintrust::Models::UserListParams::FamilyName::StringArray
+        variant -> { Braintrust::Models::UserListParams::FamilyName::StringArray }
 
         # @!parse
         #   # @return [Array(String, Array<String>)]
         #   def self.variants; end
+
+        StringArray = Braintrust::ArrayOf[String]
       end
 
       # Given name of the user to search for. You may pass the param multiple times to
@@ -160,15 +160,15 @@ module Braintrust
       module GivenName
         extend Braintrust::Union
 
-        StringArray = Braintrust::ArrayOf[String]
-
         variant String
 
-        variant Braintrust::Models::UserListParams::GivenName::StringArray
+        variant -> { Braintrust::Models::UserListParams::GivenName::StringArray }
 
         # @!parse
         #   # @return [Array(String, Array<String>)]
         #   def self.variants; end
+
+        StringArray = Braintrust::ArrayOf[String]
       end
 
       # Filter search results to a particular set of object IDs. To specify a list of
@@ -176,15 +176,15 @@ module Braintrust
       module IDs
         extend Braintrust::Union
 
-        StringArray = Braintrust::ArrayOf[String]
-
         variant String
 
-        variant Braintrust::Models::UserListParams::IDs::StringArray
+        variant -> { Braintrust::Models::UserListParams::IDs::StringArray }
 
         # @!parse
         #   # @return [Array(String, Array<String>)]
         #   def self.variants; end
+
+        StringArray = Braintrust::ArrayOf[String]
       end
     end
   end

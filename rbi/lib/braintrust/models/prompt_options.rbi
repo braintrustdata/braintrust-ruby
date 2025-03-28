@@ -305,16 +305,6 @@ module Braintrust
           module FunctionCall
             extend Braintrust::Union
 
-            TaggedSymbol =
-              T.type_alias { T.all(Symbol, Braintrust::Models::PromptOptions::Params::OpenAIModelParams::FunctionCall) }
-            OrSymbol =
-              T.type_alias { T.any(Symbol, Braintrust::Models::PromptOptions::Params::OpenAIModelParams::FunctionCall::TaggedSymbol) }
-
-            AUTO =
-              T.let(:auto, Braintrust::Models::PromptOptions::Params::OpenAIModelParams::FunctionCall::TaggedSymbol)
-            NONE =
-              T.let(:none, Braintrust::Models::PromptOptions::Params::OpenAIModelParams::FunctionCall::TaggedSymbol)
-
             class Function < Braintrust::BaseModel
               sig { returns(String) }
               attr_accessor :name
@@ -336,6 +326,16 @@ module Braintrust
             end
             def self.variants
             end
+
+            TaggedSymbol =
+              T.type_alias { T.all(Symbol, Braintrust::Models::PromptOptions::Params::OpenAIModelParams::FunctionCall) }
+            OrSymbol =
+              T.type_alias { T.any(Symbol, Braintrust::Models::PromptOptions::Params::OpenAIModelParams::FunctionCall::TaggedSymbol) }
+
+            AUTO =
+              T.let(:auto, Braintrust::Models::PromptOptions::Params::OpenAIModelParams::FunctionCall::TaggedSymbol)
+            NONE =
+              T.let(:none, Braintrust::Models::PromptOptions::Params::OpenAIModelParams::FunctionCall::TaggedSymbol)
           end
 
           module ReasoningEffort
@@ -530,14 +530,14 @@ module Braintrust
                 module Schema
                   extend Braintrust::Union
 
+                  sig { override.returns([T::Hash[Symbol, T.nilable(T.anything)], String]) }
+                  def self.variants
+                  end
+
                   ObjectMap = T.let(
                     Braintrust::HashOf[Braintrust::Unknown, nil?: true],
                     Braintrust::Converter
                   )
-
-                  sig { override.returns([T::Hash[Symbol, T.nilable(T.anything)], String]) }
-                  def self.variants
-                  end
                 end
               end
 
@@ -644,18 +644,6 @@ module Braintrust
           module ToolChoice
             extend Braintrust::Union
 
-            TaggedSymbol =
-              T.type_alias { T.all(Symbol, Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ToolChoice) }
-            OrSymbol =
-              T.type_alias { T.any(Symbol, Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ToolChoice::TaggedSymbol) }
-
-            AUTO =
-              T.let(:auto, Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ToolChoice::TaggedSymbol)
-            NONE =
-              T.let(:none, Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ToolChoice::TaggedSymbol)
-            REQUIRED =
-              T.let(:required, Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ToolChoice::TaggedSymbol)
-
             class Function < Braintrust::BaseModel
               sig { returns(Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ToolChoice::Function::Function) }
               attr_reader :function
@@ -754,6 +742,18 @@ module Braintrust
             end
             def self.variants
             end
+
+            TaggedSymbol =
+              T.type_alias { T.all(Symbol, Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ToolChoice) }
+            OrSymbol =
+              T.type_alias { T.any(Symbol, Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ToolChoice::TaggedSymbol) }
+
+            AUTO =
+              T.let(:auto, Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ToolChoice::TaggedSymbol)
+            NONE =
+              T.let(:none, Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ToolChoice::TaggedSymbol)
+            REQUIRED =
+              T.let(:required, Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ToolChoice::TaggedSymbol)
           end
         end
 

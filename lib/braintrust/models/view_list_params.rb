@@ -113,15 +113,15 @@ module Braintrust
       module IDs
         extend Braintrust::Union
 
-        StringArray = Braintrust::ArrayOf[String]
-
         variant String
 
-        variant Braintrust::Models::ViewListParams::IDs::StringArray
+        variant -> { Braintrust::Models::ViewListParams::IDs::StringArray }
 
         # @!parse
         #   # @return [Array(String, Array<String>)]
         #   def self.variants; end
+
+        StringArray = Braintrust::ArrayOf[String]
       end
     end
   end

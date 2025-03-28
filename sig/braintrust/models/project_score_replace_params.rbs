@@ -47,6 +47,8 @@ module Braintrust
       module Categories
         extend Braintrust::Union
 
+        def self?.variants: -> [::Array[Braintrust::Models::ProjectScoreCategory], ::Hash[Symbol, Float], ::Array[String]]
+
         type project_score_category_array =
           ::Array[Braintrust::Models::ProjectScoreCategory]
 
@@ -59,8 +61,6 @@ module Braintrust
         type string_array = ::Array[String]
 
         StringArray: string_array
-
-        def self?.variants: -> [::Array[Braintrust::Models::ProjectScoreCategory], ::Hash[Symbol, Float], ::Array[String]]
       end
     end
   end
