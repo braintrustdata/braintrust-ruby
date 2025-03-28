@@ -154,11 +154,6 @@ module Braintrust
           module Content
             extend Braintrust::Union
 
-            type nested2_d_array =
-              ::Array[Braintrust::Models::FunctionInvokeParams::Message::User::Content::array]
-
-            Nested2DArray: nested2_d_array
-
             type array =
               Braintrust::Models::ChatCompletionContentPartText
               | Braintrust::Models::ChatCompletionContentPartImage
@@ -170,6 +165,11 @@ module Braintrust
             end
 
             def self?.variants: -> [String, ::Array[Braintrust::Models::FunctionInvokeParams::Message::User::Content::array]]
+
+            type nested2_d_array =
+              ::Array[Braintrust::Models::FunctionInvokeParams::Message::User::Content::array]
+
+            Nested2DArray: nested2_d_array
           end
         end
 

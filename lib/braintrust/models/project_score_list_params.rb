@@ -137,32 +137,32 @@ module Braintrust
       module IDs
         extend Braintrust::Union
 
-        StringArray = Braintrust::ArrayOf[String]
-
         variant String
 
-        variant Braintrust::Models::ProjectScoreListParams::IDs::StringArray
+        variant -> { Braintrust::Models::ProjectScoreListParams::IDs::StringArray }
 
         # @!parse
         #   # @return [Array(String, Array<String>)]
         #   def self.variants; end
+
+        StringArray = Braintrust::ArrayOf[String]
       end
 
       # The type of the configured score
       module ScoreType
         extend Braintrust::Union
 
-        ProjectScoreTypeArray = Braintrust::ArrayOf[enum: -> { Braintrust::Models::ProjectScoreType }]
-
         # The type of the configured score
         variant enum: -> { Braintrust::Models::ProjectScoreType }
 
         # The type of the configured score
-        variant Braintrust::Models::ProjectScoreListParams::ScoreType::ProjectScoreTypeArray
+        variant -> { Braintrust::Models::ProjectScoreListParams::ScoreType::ProjectScoreTypeArray }
 
         # @!parse
         #   # @return [Array(Symbol, Braintrust::Models::ProjectScoreType, Array<Symbol, Braintrust::Models::ProjectScoreType>)]
         #   def self.variants; end
+
+        ProjectScoreTypeArray = Braintrust::ArrayOf[enum: -> { Braintrust::Models::ProjectScoreType }]
       end
     end
   end

@@ -140,9 +140,6 @@ module Braintrust
           module FunctionCall
             extend Braintrust::Union
 
-            AUTO: :auto
-            NONE: :none
-
             type function = { name: String }
 
             class Function < Braintrust::BaseModel
@@ -155,6 +152,9 @@ module Braintrust
 
             def self?.variants: -> [(:auto
             | :none), Braintrust::Models::PromptOptions::Params::OpenAIModelParams::FunctionCall::Function]
+
+            AUTO: :auto
+            NONE: :none
           end
 
           type reasoning_effort = :low | :medium | :high
@@ -257,11 +257,11 @@ module Braintrust
                 module Schema
                   extend Braintrust::Union
 
+                  def self?.variants: -> [::Hash[Symbol, top?], String]
+
                   type object_map = ::Hash[Symbol, top?]
 
                   ObjectMap: object_map
-
-                  def self?.variants: -> [::Hash[Symbol, top?], String]
                 end
               end
 
@@ -313,10 +313,6 @@ module Braintrust
           module ToolChoice
             extend Braintrust::Union
 
-            AUTO: :auto
-            NONE: :none
-            REQUIRED: :required
-
             type function =
               {
                 function: Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ToolChoice::Function::Function,
@@ -359,6 +355,10 @@ module Braintrust
             def self?.variants: -> [(:auto
             | :none
             | :required), Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ToolChoice::Function]
+
+            AUTO: :auto
+            NONE: :none
+            REQUIRED: :required
           end
         end
 
