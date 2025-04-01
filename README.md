@@ -12,22 +12,16 @@ The underlying REST API documentation can be found on [www.braintrustdata.com](h
 
 ## Installation
 
-To use this gem during the beta, install directly from GitHub with Bundler by adding the following to your application's `Gemfile`:
+To use this gem, install via Bundler by adding the following to your application's `Gemfile`:
 
 ```ruby
-gem "braintrust", git: "https://github.com/braintrustdata/braintrust-ruby", branch: "main"
+gem "braintrust", "~> 0.1.0.pre.alpha.5"
 ```
 
 To fetch an initial copy of the gem:
 
 ```sh
 bundle install
-```
-
-To update the version used by your application when updates are pushed to GitHub:
-
-```sh
-bundle update braintrust
 ```
 
 ## Usage
