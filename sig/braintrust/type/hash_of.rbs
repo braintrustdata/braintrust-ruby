@@ -1,6 +1,6 @@
 module Braintrust
   module Type
-    class HashOf
+    class HashOf[Elem]
       include Braintrust::Type::Converter
 
       def self.[]: (
@@ -21,7 +21,7 @@ module Braintrust
 
       def dump: (::Hash[top, top] | top value) -> (::Hash[Symbol, top] | top)
 
-      def item_type: -> top
+      def item_type: -> Elem
 
       def nilable?: -> bool
 
