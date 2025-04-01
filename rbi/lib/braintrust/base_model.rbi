@@ -38,7 +38,7 @@ module Braintrust
             Braintrust::Converter::Input
           )
         )
-          .returns(T.proc.returns(T.anything).void)
+          .returns(T.proc.returns(T.anything))
       end
       def self.type_info(spec)
       end
@@ -606,10 +606,6 @@ module Braintrust
     # Create a new instance of a model.
     sig { params(data: T.any(T::Hash[Symbol, T.anything], T.self_type)).returns(T.attached_class) }
     def self.new(data = {})
-    end
-
-    sig { returns(String) }
-    def to_s
     end
 
     sig { returns(String) }

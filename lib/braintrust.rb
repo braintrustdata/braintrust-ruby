@@ -36,7 +36,6 @@ require "connection_pool"
 # Package files.
 require_relative "braintrust/version"
 require_relative "braintrust/util"
-require_relative "braintrust/extern"
 require_relative "braintrust/base_model"
 require_relative "braintrust/base_page"
 require_relative "braintrust/request_options"
