@@ -3,7 +3,7 @@
 module Braintrust
   module Models
     class AISecretUpdateParams < Braintrust::BaseModel
-      extend Braintrust::RequestParameters::Converter
+      extend Braintrust::Type::RequestParameters::Converter
       include Braintrust::RequestParameters
 
       sig { returns(T.nilable(T::Hash[Symbol, T.nilable(T.anything)])) }

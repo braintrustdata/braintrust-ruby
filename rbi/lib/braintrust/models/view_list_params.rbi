@@ -3,7 +3,7 @@
 module Braintrust
   module Models
     class ViewListParams < Braintrust::BaseModel
-      extend Braintrust::RequestParameters::Converter
+      extend Braintrust::Type::RequestParameters::Converter
       include Braintrust::RequestParameters
 
       # The id of the object the ACL applies to
@@ -114,7 +114,7 @@ module Braintrust
         def self.variants
         end
 
-        StringArray = T.let(Braintrust::ArrayOf[String], Braintrust::Converter)
+        StringArray = T.let(Braintrust::ArrayOf[String], Braintrust::Type::Converter)
       end
     end
   end

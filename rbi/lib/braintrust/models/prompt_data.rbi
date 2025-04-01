@@ -483,7 +483,7 @@ module Braintrust
                 Nested2DArray =
                   T.let(
                     Braintrust::ArrayOf[union: Braintrust::Models::PromptData::Prompt::Chat::Message::User::Content::Array],
-                    Braintrust::Converter
+                    Braintrust::Type::Converter
                   )
               end
             end

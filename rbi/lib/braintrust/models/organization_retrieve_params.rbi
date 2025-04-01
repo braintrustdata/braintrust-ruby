@@ -3,7 +3,7 @@
 module Braintrust
   module Models
     class OrganizationRetrieveParams < Braintrust::BaseModel
-      extend Braintrust::RequestParameters::Converter
+      extend Braintrust::Type::RequestParameters::Converter
       include Braintrust::RequestParameters
 
       sig do

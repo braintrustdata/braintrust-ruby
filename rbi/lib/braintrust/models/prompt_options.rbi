@@ -536,7 +536,7 @@ module Braintrust
 
                   ObjectMap = T.let(
                     Braintrust::HashOf[Braintrust::Unknown, nil?: true],
-                    Braintrust::Converter
+                    Braintrust::Type::Converter
                   )
                 end
               end

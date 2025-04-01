@@ -2,7 +2,7 @@
 
 module Braintrust
   class ListObjects
-    include Braintrust::BasePage
+    include Braintrust::Type::BasePage
 
     Elem = type_member
 

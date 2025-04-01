@@ -1,0 +1,22 @@
+module Braintrust
+  module Type
+    module BasePage[Elem]
+      def next_page?: -> bool
+
+      def next_page: -> self
+
+      def auto_paging_each: { (Elem arg0) -> void } -> void
+
+      def to_enum: -> Enumerable[Elem]
+
+      alias enum_for to_enum
+
+      def initialize: (
+        client: Braintrust::Transport::BaseClient,
+        req: Braintrust::Transport::BaseClient::request_components,
+        headers: ::Hash[String, String],
+        page_data: top
+      ) -> void
+    end
+  end
+end

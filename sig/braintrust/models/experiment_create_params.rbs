@@ -16,7 +16,7 @@ module Braintrust
       & Braintrust::request_parameters
 
     class ExperimentCreateParams < Braintrust::BaseModel
-      extend Braintrust::RequestParameters::Converter
+      extend Braintrust::Type::RequestParameters::Converter
       include Braintrust::RequestParameters
 
       attr_accessor project_id: String

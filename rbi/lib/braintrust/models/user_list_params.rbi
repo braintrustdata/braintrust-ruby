@@ -3,7 +3,7 @@
 module Braintrust
   module Models
     class UserListParams < Braintrust::BaseModel
-      extend Braintrust::RequestParameters::Converter
+      extend Braintrust::Type::RequestParameters::Converter
       include Braintrust::RequestParameters
 
       # Email of the user to search for. You may pass the param multiple times to filter
@@ -126,7 +126,7 @@ module Braintrust
         def self.variants
         end
 
-        StringArray = T.let(Braintrust::ArrayOf[String], Braintrust::Converter)
+        StringArray = T.let(Braintrust::ArrayOf[String], Braintrust::Type::Converter)
       end
 
       # Family name of the user to search for. You may pass the param multiple times to
@@ -138,7 +138,7 @@ module Braintrust
         def self.variants
         end
 
-        StringArray = T.let(Braintrust::ArrayOf[String], Braintrust::Converter)
+        StringArray = T.let(Braintrust::ArrayOf[String], Braintrust::Type::Converter)
       end
 
       # Given name of the user to search for. You may pass the param multiple times to
@@ -150,7 +150,7 @@ module Braintrust
         def self.variants
         end
 
-        StringArray = T.let(Braintrust::ArrayOf[String], Braintrust::Converter)
+        StringArray = T.let(Braintrust::ArrayOf[String], Braintrust::Type::Converter)
       end
 
       # Filter search results to a particular set of object IDs. To specify a list of
@@ -162,7 +162,7 @@ module Braintrust
         def self.variants
         end
 
-        StringArray = T.let(Braintrust::ArrayOf[String], Braintrust::Converter)
+        StringArray = T.let(Braintrust::ArrayOf[String], Braintrust::Type::Converter)
       end
     end
   end

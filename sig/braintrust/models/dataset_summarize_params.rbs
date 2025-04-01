@@ -4,7 +4,7 @@ module Braintrust
       { summarize_data: bool? } & Braintrust::request_parameters
 
     class DatasetSummarizeParams < Braintrust::BaseModel
-      extend Braintrust::RequestParameters::Converter
+      extend Braintrust::Type::RequestParameters::Converter
       include Braintrust::RequestParameters
 
       attr_accessor summarize_data: bool?

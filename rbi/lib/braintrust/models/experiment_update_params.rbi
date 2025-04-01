@@ -3,7 +3,7 @@
 module Braintrust
   module Models
     class ExperimentUpdateParams < Braintrust::BaseModel
-      extend Braintrust::RequestParameters::Converter
+      extend Braintrust::Type::RequestParameters::Converter
       include Braintrust::RequestParameters
 
       # Id of default base experiment to compare against when viewing this experiment

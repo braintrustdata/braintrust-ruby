@@ -4,7 +4,7 @@ module Braintrust
   module Models
     module Organizations
       class MemberUpdateParams < Braintrust::BaseModel
-        extend Braintrust::RequestParameters::Converter
+        extend Braintrust::Type::RequestParameters::Converter
         include Braintrust::RequestParameters
 
         # Users to invite to the organization

@@ -3,7 +3,7 @@
 module Braintrust
   module Models
     class EnvVarUpdateParams < Braintrust::BaseModel
-      extend Braintrust::RequestParameters::Converter
+      extend Braintrust::Type::RequestParameters::Converter
       include Braintrust::RequestParameters
 
       # The name of the environment variable
