@@ -77,7 +77,14 @@ module Braintrust
           )
             .returns(T.attached_class)
         end
-        def self.new(cursor: nil, limit: nil, max_root_span_id: nil, max_xact_id: nil, version: nil, request_options: {})
+        def self.new(
+          cursor: nil,
+          limit: nil,
+          max_root_span_id: nil,
+          max_xact_id: nil,
+          version: nil,
+          request_options: {}
+        )
         end
 
         sig do

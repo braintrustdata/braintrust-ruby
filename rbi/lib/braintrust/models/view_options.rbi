@@ -33,7 +33,14 @@ module Braintrust
         )
           .returns(T.attached_class)
       end
-      def self.new(column_order: nil, column_sizing: nil, column_visibility: nil, grouping: nil, layout: nil, row_height: nil)
+      def self.new(
+        column_order: nil,
+        column_sizing: nil,
+        column_visibility: nil,
+        grouping: nil,
+        layout: nil,
+        row_height: nil
+      )
       end
 
       sig do
