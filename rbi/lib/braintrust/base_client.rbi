@@ -85,7 +85,7 @@ module Braintrust
     end
 
     # @api private
-    sig { returns(T.anything) }
+    sig { returns(Braintrust::PooledNetRequester) }
     attr_accessor :requester
 
     # @api private
