@@ -3,7 +3,7 @@
 module Braintrust
   module Models
     class ExperimentFeedbackParams < Braintrust::BaseModel
-      extend Braintrust::RequestParameters::Converter
+      extend Braintrust::Type::RequestParameters::Converter
       include Braintrust::RequestParameters
 
       # A list of experiment feedback items

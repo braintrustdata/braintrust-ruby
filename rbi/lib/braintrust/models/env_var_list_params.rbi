@@ -3,7 +3,7 @@
 module Braintrust
   module Models
     class EnvVarListParams < Braintrust::BaseModel
-      extend Braintrust::RequestParameters::Converter
+      extend Braintrust::Type::RequestParameters::Converter
       include Braintrust::RequestParameters
 
       # Name of the env_var to search for
@@ -78,7 +78,7 @@ module Braintrust
         def self.variants
         end
 
-        StringArray = T.let(Braintrust::ArrayOf[String], Braintrust::Converter)
+        StringArray = T.let(Braintrust::ArrayOf[String], Braintrust::Type::Converter)
       end
     end
   end

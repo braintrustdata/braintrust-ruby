@@ -23,14 +23,14 @@ module Braintrust
   #
   #   projects => Array
   class ListObjects
-    include Braintrust::BasePage
+    include Braintrust::Type::BasePage
 
     # @return [Array<Object>, nil]
     attr_accessor :objects
 
     # @api private
     #
-    # @param client [Braintrust::BaseClient]
+    # @param client [Braintrust::Transport::BaseClient]
     # @param req [Hash{Symbol=>Object}]
     # @param headers [Hash{String=>String}, Net::HTTPHeader]
     # @param page_data [Hash{Symbol=>Object}]
@@ -40,7 +40,7 @@ module Braintrust
 
       case page_data
       in {objects: Array | nil => objects}
-        @objects = objects&.map { Braintrust::Converter.coerce(model, _1) }
+        @objects = objects&.map { Braintrust::Type::Converter.coerce(model, _1) }
       else
       end
     end

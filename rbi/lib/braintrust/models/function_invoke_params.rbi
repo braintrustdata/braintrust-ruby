@@ -3,7 +3,7 @@
 module Braintrust
   module Models
     class FunctionInvokeParams < Braintrust::BaseModel
-      extend Braintrust::RequestParameters::Converter
+      extend Braintrust::Type::RequestParameters::Converter
       include Braintrust::RequestParameters
 
       # The expected output of the function
@@ -353,7 +353,7 @@ module Braintrust
             Nested2DArray =
               T.let(
                 Braintrust::ArrayOf[union: Braintrust::Models::FunctionInvokeParams::Message::User::Content::Array],
-                Braintrust::Converter
+                Braintrust::Type::Converter
               )
           end
         end

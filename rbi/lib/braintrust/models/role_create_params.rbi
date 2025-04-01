@@ -3,7 +3,7 @@
 module Braintrust
   module Models
     class RoleCreateParams < Braintrust::BaseModel
-      extend Braintrust::RequestParameters::Converter
+      extend Braintrust::Type::RequestParameters::Converter
       include Braintrust::RequestParameters
 
       # Name of the role

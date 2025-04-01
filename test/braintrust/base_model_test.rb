@@ -32,7 +32,7 @@ class Braintrust::Test::PrimitiveModelTest < Minitest::Test
 
     converters.each do |conv|
       assert_pattern do
-        conv => Braintrust::Converter
+        conv => Braintrust::Type::Converter
       end
     end
   end
@@ -68,7 +68,7 @@ class Braintrust::Test::PrimitiveModelTest < Minitest::Test
       exactness, expect = rhs
       state = {strictness: true, exactness: {yes: 0, no: 0, maybe: 0}, branched: 0}
       assert_pattern do
-        Braintrust::Converter.coerce(target, input, state: state) => ^expect
+        Braintrust::Type::Converter.coerce(target, input, state: state) => ^expect
         state.fetch(:exactness).filter { _2.nonzero? }.to_h => ^exactness
       end
     end
@@ -99,7 +99,7 @@ class Braintrust::Test::PrimitiveModelTest < Minitest::Test
       target, input = _1
       expect = _2
       assert_pattern do
-        Braintrust::Converter.dump(target, input) => ^expect
+        Braintrust::Type::Converter.dump(target, input) => ^expect
       end
     end
   end
@@ -118,7 +118,7 @@ class Braintrust::Test::PrimitiveModelTest < Minitest::Test
       target, input = _1
       state = {strictness: :strong, exactness: {yes: 0, no: 0, maybe: 0}, branched: 0}
       assert_raises(_2) do
-        Braintrust::Converter.coerce(target, input, state: state)
+        Braintrust::Type::Converter.coerce(target, input, state: state)
       end
     end
   end
@@ -179,7 +179,7 @@ class Braintrust::Test::EnumModelTest < Minitest::Test
       exactness, expect = rhs
       state = {strictness: true, exactness: {yes: 0, no: 0, maybe: 0}, branched: 0}
       assert_pattern do
-        Braintrust::Converter.coerce(target, input, state: state) => ^expect
+        Braintrust::Type::Converter.coerce(target, input, state: state) => ^expect
         state.fetch(:exactness).filter { _2.nonzero? }.to_h => ^exactness
       end
     end
@@ -207,7 +207,7 @@ class Braintrust::Test::EnumModelTest < Minitest::Test
       target, input = _1
       expect = _2
       assert_pattern do
-        Braintrust::Converter.dump(target, input) => ^expect
+        Braintrust::Type::Converter.dump(target, input) => ^expect
       end
     end
   end
@@ -253,7 +253,7 @@ class Braintrust::Test::CollectionModelTest < Minitest::Test
       exactness, expect = rhs
       state = {strictness: true, exactness: {yes: 0, no: 0, maybe: 0}, branched: 0}
       assert_pattern do
-        Braintrust::Converter.coerce(target, input, state: state) => ^expect
+        Braintrust::Type::Converter.coerce(target, input, state: state) => ^expect
         state.fetch(:exactness).filter { _2.nonzero? }.to_h => ^exactness
       end
     end
@@ -333,7 +333,7 @@ class Braintrust::Test::BaseModelTest < Minitest::Test
       exactness, expect = rhs
       state = {strictness: true, exactness: {yes: 0, no: 0, maybe: 0}, branched: 0}
       assert_pattern do
-        coerced = Braintrust::Converter.coerce(target, input, state: state)
+        coerced = Braintrust::Type::Converter.coerce(target, input, state: state)
         assert_equal(coerced, coerced)
         if coerced.is_a?(Braintrust::BaseModel)
           coerced.to_h => ^expect
@@ -363,7 +363,7 @@ class Braintrust::Test::BaseModelTest < Minitest::Test
       target, input = _1
       expect = _2
       assert_pattern do
-        Braintrust::Converter.dump(target, input) => ^expect
+        Braintrust::Type::Converter.dump(target, input) => ^expect
       end
     end
   end
@@ -509,7 +509,7 @@ class Braintrust::Test::UnionTest < Minitest::Test
       exactness, branched, expect = rhs
       state = {strictness: true, exactness: {yes: 0, no: 0, maybe: 0}, branched: 0}
       assert_pattern do
-        coerced = Braintrust::Converter.coerce(target, input, state: state)
+        coerced = Braintrust::Type::Converter.coerce(target, input, state: state)
         assert_equal(coerced, coerced)
         if coerced.is_a?(Braintrust::BaseModel)
           coerced.to_h => ^expect

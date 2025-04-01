@@ -5,7 +5,7 @@ module Braintrust
       & Braintrust::request_parameters
 
     class ProjectTagCreateParams < Braintrust::BaseModel
-      extend Braintrust::RequestParameters::Converter
+      extend Braintrust::Type::RequestParameters::Converter
       include Braintrust::RequestParameters
 
       attr_accessor name: String

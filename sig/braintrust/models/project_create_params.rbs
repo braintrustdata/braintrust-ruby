@@ -4,7 +4,7 @@ module Braintrust
       { name: String, org_name: String? } & Braintrust::request_parameters
 
     class ProjectCreateParams < Braintrust::BaseModel
-      extend Braintrust::RequestParameters::Converter
+      extend Braintrust::Type::RequestParameters::Converter
       include Braintrust::RequestParameters
 
       attr_accessor name: String

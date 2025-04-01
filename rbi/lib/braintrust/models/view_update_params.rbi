@@ -3,7 +3,7 @@
 module Braintrust
   module Models
     class ViewUpdateParams < Braintrust::BaseModel
-      extend Braintrust::RequestParameters::Converter
+      extend Braintrust::Type::RequestParameters::Converter
       include Braintrust::RequestParameters
 
       # The id of the object the view applies to

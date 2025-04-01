@@ -3,7 +3,7 @@
 module Braintrust
   module Models
     class GroupUpdateParams < Braintrust::BaseModel
-      extend Braintrust::RequestParameters::Converter
+      extend Braintrust::Type::RequestParameters::Converter
       include Braintrust::RequestParameters
 
       # A list of group IDs to add to the group's inheriting-from set

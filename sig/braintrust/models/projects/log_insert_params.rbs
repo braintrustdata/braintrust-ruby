@@ -6,7 +6,7 @@ module Braintrust
         & Braintrust::request_parameters
 
       class LogInsertParams < Braintrust::BaseModel
-        extend Braintrust::RequestParameters::Converter
+        extend Braintrust::Type::RequestParameters::Converter
         include Braintrust::RequestParameters
 
         attr_accessor events: ::Array[Braintrust::Models::InsertProjectLogsEvent]
