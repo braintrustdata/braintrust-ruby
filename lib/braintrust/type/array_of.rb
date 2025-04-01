@@ -31,7 +31,9 @@ module Braintrust
       # @param other [Object]
       #
       # @return [Boolean]
-      def ==(other) = other.is_a?(Braintrust::ArrayOf) && other.nilable? == nilable? && other.item_type == item_type
+      def ==(other)
+        other.is_a?(Braintrust::ArrayOf) && other.nilable? == nilable? && other.item_type == item_type
+      end
 
       # @api private
       #
