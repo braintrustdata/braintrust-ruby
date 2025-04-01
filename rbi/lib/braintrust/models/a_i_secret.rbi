@@ -45,7 +45,16 @@ module Braintrust
         )
           .returns(T.attached_class)
       end
-      def self.new(id:, name:, org_id:, created: nil, metadata: nil, preview_secret: nil, type: nil, updated_at: nil)
+      def self.new(
+        id:,
+        name:,
+        org_id:,
+        created: nil,
+        metadata: nil,
+        preview_secret: nil,
+        type: nil,
+        updated_at: nil
+      )
       end
 
       sig do
