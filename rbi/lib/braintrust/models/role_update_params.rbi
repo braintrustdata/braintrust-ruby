@@ -3,7 +3,7 @@
 module Braintrust
   module Models
     class RoleUpdateParams < Braintrust::BaseModel
-      extend Braintrust::RequestParameters::Converter
+      extend Braintrust::Type::RequestParameters::Converter
       include Braintrust::RequestParameters
 
       # A list of permissions to add to the role

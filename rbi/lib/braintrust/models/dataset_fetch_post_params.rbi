@@ -3,7 +3,7 @@
 module Braintrust
   module Models
     class DatasetFetchPostParams < Braintrust::BaseModel
-      extend Braintrust::RequestParameters::Converter
+      extend Braintrust::Type::RequestParameters::Converter
       include Braintrust::RequestParameters
 
       # An opaque string to be used as a cursor for the next page of results, in order

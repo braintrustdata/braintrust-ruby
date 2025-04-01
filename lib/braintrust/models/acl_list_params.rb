@@ -4,7 +4,7 @@ module Braintrust
   module Models
     class ACLListParams < Braintrust::BaseModel
       # @!parse
-      #   extend Braintrust::RequestParameters::Converter
+      #   extend Braintrust::Type::RequestParameters::Converter
       include Braintrust::RequestParameters
 
       # @!attribute object_id_

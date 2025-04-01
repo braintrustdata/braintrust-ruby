@@ -3,7 +3,7 @@
 module Braintrust
   module Models
     class ExperimentCreateParams < Braintrust::BaseModel
-      extend Braintrust::RequestParameters::Converter
+      extend Braintrust::Type::RequestParameters::Converter
       include Braintrust::RequestParameters
 
       # Unique identifier for the project that the experiment belongs under

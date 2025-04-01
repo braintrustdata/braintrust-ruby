@@ -1,0 +1,37 @@
+module Braintrust
+  module Type
+    module Union
+      include Braintrust::Type::Converter
+
+      private def self.known_variants: -> ::Array[[Symbol?, (^-> Braintrust::Type::Converter::input)]]
+
+      def self.derefed_variants: -> ::Array[[Symbol?, top]]
+
+      def self.variants: -> ::Array[top]
+
+      private def self.discriminator: (Symbol property) -> void
+
+      private def self.variant: (
+        Symbol
+        | ::Hash[Symbol, top]
+        | ^-> Braintrust::Type::Converter::input
+        | Braintrust::Type::Converter::input key,
+        ?::Hash[Symbol, top]
+        | ^-> Braintrust::Type::Converter::input
+        | Braintrust::Type::Converter::input spec
+      ) -> void
+
+      private def self.resolve_variant: (
+        top value
+      ) -> Braintrust::Type::Converter::input?
+
+      def ===: (top other) -> bool
+
+      def ==: (top other) -> bool
+
+      def coerce: (top value, state: Braintrust::Type::Converter::state) -> top
+
+      def dump: (top value) -> top
+    end
+  end
+end

@@ -3,7 +3,7 @@
 module Braintrust
   module Models
     class ProjectScoreListParams < Braintrust::BaseModel
-      extend Braintrust::RequestParameters::Converter
+      extend Braintrust::Type::RequestParameters::Converter
       include Braintrust::RequestParameters
 
       # Pagination cursor id.
@@ -156,7 +156,7 @@ module Braintrust
         def self.variants
         end
 
-        StringArray = T.let(Braintrust::ArrayOf[String], Braintrust::Converter)
+        StringArray = T.let(Braintrust::ArrayOf[String], Braintrust::Type::Converter)
       end
 
       # The type of the configured score
@@ -173,7 +173,7 @@ module Braintrust
         end
 
         ProjectScoreTypeArray =
-          T.let(Braintrust::ArrayOf[enum: Braintrust::Models::ProjectScoreType], Braintrust::Converter)
+          T.let(Braintrust::ArrayOf[enum: Braintrust::Models::ProjectScoreType], Braintrust::Type::Converter)
       end
     end
   end

@@ -5,7 +5,7 @@ module Braintrust
       & Braintrust::request_parameters
 
     class ExperimentSummarizeParams < Braintrust::BaseModel
-      extend Braintrust::RequestParameters::Converter
+      extend Braintrust::Type::RequestParameters::Converter
       include Braintrust::RequestParameters
 
       attr_reader comparison_experiment_id: String?

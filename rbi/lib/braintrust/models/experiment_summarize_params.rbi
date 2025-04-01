@@ -3,7 +3,7 @@
 module Braintrust
   module Models
     class ExperimentSummarizeParams < Braintrust::BaseModel
-      extend Braintrust::RequestParameters::Converter
+      extend Braintrust::Type::RequestParameters::Converter
       include Braintrust::RequestParameters
 
       # The experiment to compare against, if summarizing scores and metrics. If
