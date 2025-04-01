@@ -33,7 +33,14 @@ module Braintrust
         )
           .returns(T.attached_class)
       end
-      def self.new(api_url: nil, is_universal_api: nil, name: nil, proxy_url: nil, realtime_url: nil, request_options: {})
+      def self.new(
+        api_url: nil,
+        is_universal_api: nil,
+        name: nil,
+        proxy_url: nil,
+        realtime_url: nil,
+        request_options: {}
+      )
       end
 
       sig do
