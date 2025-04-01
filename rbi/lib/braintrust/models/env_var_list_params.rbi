@@ -50,7 +50,14 @@ module Braintrust
         )
           .returns(T.attached_class)
       end
-      def self.new(env_var_name: nil, ids: nil, limit: nil, object_id_: nil, object_type: nil, request_options: {})
+      def self.new(
+        env_var_name: nil,
+        ids: nil,
+        limit: nil,
+        object_id_: nil,
+        object_type: nil,
+        request_options: {}
+      )
       end
 
       sig do
