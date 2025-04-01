@@ -16,7 +16,7 @@ module Braintrust
       & Braintrust::request_parameters
 
     class FunctionCreateParams < Braintrust::BaseModel
-      extend Braintrust::RequestParameters::Converter
+      extend Braintrust::Type::RequestParameters::Converter
       include Braintrust::RequestParameters
 
       attr_accessor function_data: Braintrust::Models::FunctionCreateParams::function_data

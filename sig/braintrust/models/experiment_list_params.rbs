@@ -14,7 +14,7 @@ module Braintrust
       & Braintrust::request_parameters
 
     class ExperimentListParams < Braintrust::BaseModel
-      extend Braintrust::RequestParameters::Converter
+      extend Braintrust::Type::RequestParameters::Converter
       include Braintrust::RequestParameters
 
       attr_reader ending_before: String?

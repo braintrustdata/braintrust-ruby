@@ -3,7 +3,7 @@
 module Braintrust
   module Models
     class DatasetSummarizeParams < Braintrust::BaseModel
-      extend Braintrust::RequestParameters::Converter
+      extend Braintrust::Type::RequestParameters::Converter
       include Braintrust::RequestParameters
 
       # Whether to summarize the data. If false (or omitted), only the metadata will be

@@ -3,7 +3,7 @@
 module Braintrust
   module Models
     class PromptListParams < Braintrust::BaseModel
-      extend Braintrust::RequestParameters::Converter
+      extend Braintrust::Type::RequestParameters::Converter
       include Braintrust::RequestParameters
 
       # Pagination cursor id.
@@ -146,7 +146,7 @@ module Braintrust
         def self.variants
         end
 
-        StringArray = T.let(Braintrust::ArrayOf[String], Braintrust::Converter)
+        StringArray = T.let(Braintrust::ArrayOf[String], Braintrust::Type::Converter)
       end
     end
   end

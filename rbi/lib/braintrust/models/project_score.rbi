@@ -122,11 +122,11 @@ module Braintrust
         end
 
         ProjectScoreCategoryArray =
-          T.let(Braintrust::ArrayOf[Braintrust::Models::ProjectScoreCategory], Braintrust::Converter)
+          T.let(Braintrust::ArrayOf[Braintrust::Models::ProjectScoreCategory], Braintrust::Type::Converter)
 
-        FloatMap = T.let(Braintrust::HashOf[Float], Braintrust::Converter)
+        FloatMap = T.let(Braintrust::HashOf[Float], Braintrust::Type::Converter)
 
-        StringArray = T.let(Braintrust::ArrayOf[String], Braintrust::Converter)
+        StringArray = T.let(Braintrust::ArrayOf[String], Braintrust::Type::Converter)
       end
     end
   end

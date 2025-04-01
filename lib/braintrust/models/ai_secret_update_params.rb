@@ -4,7 +4,7 @@ module Braintrust
   module Models
     class AISecretUpdateParams < Braintrust::BaseModel
       # @!parse
-      #   extend Braintrust::RequestParameters::Converter
+      #   extend Braintrust::Type::RequestParameters::Converter
       include Braintrust::RequestParameters
 
       # @!attribute metadata

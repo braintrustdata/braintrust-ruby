@@ -5,7 +5,7 @@ module Braintrust
     module Projects
       class LogFetchParams < Braintrust::BaseModel
         # @!parse
-        #   extend Braintrust::RequestParameters::Converter
+        #   extend Braintrust::Type::RequestParameters::Converter
         include Braintrust::RequestParameters
 
         # @!attribute limit

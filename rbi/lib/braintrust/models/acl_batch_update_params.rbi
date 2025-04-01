@@ -3,7 +3,7 @@
 module Braintrust
   module Models
     class ACLBatchUpdateParams < Braintrust::BaseModel
-      extend Braintrust::RequestParameters::Converter
+      extend Braintrust::Type::RequestParameters::Converter
       include Braintrust::RequestParameters
 
       # An ACL grants a certain permission or role to a certain user or group on an

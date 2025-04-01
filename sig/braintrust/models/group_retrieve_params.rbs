@@ -3,7 +3,7 @@ module Braintrust
     type group_retrieve_params = {  } & Braintrust::request_parameters
 
     class GroupRetrieveParams < Braintrust::BaseModel
-      extend Braintrust::RequestParameters::Converter
+      extend Braintrust::Type::RequestParameters::Converter
       include Braintrust::RequestParameters
 
       def initialize: (?request_options: Braintrust::request_opts) -> void

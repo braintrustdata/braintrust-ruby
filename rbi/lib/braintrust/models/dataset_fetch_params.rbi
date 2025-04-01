@@ -3,7 +3,7 @@
 module Braintrust
   module Models
     class DatasetFetchParams < Braintrust::BaseModel
-      extend Braintrust::RequestParameters::Converter
+      extend Braintrust::Type::RequestParameters::Converter
       include Braintrust::RequestParameters
 
       # limit the number of traces fetched
