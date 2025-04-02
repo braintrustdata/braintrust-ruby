@@ -135,7 +135,7 @@ Due to limitations with the Sorbet type system, where a method otherwise can tak
 Please follow Sorbet's [setup guides](https://sorbet.org/docs/adopting) for best experience.
 
 ```ruby
-model = ProjectCreateParams.new(name: "foobar")
+model = Braintrust::Models::ProjectCreateParams.new(name: "foobar")
 
 braintrust.projects.create(**model)
 ```
