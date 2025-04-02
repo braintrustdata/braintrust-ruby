@@ -29,7 +29,7 @@ module Braintrust
       # @return [Boolean]
       def next_page? = (raise NotImplementedError)
 
-      # @raise [Braintrust::APIError]
+      # @raise [Braintrust::Errors::APIError]
       # @return [Braintrust::Type::BasePage]
       def next_page = (raise NotImplementedError)
 
