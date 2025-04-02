@@ -187,7 +187,7 @@ class BraintrustTest < Minitest::Test
     requester = MockRequester.new(307, {"location" => "/redirected"}, {})
     braintrust.requester = requester
 
-    assert_raises(Braintrust::APIConnectionError) do
+    assert_raises(Braintrust::Errors::APIConnectionError) do
       braintrust.projects.create(name: "x", request_options: {extra_headers: {}})
     end
 
@@ -205,7 +205,7 @@ class BraintrustTest < Minitest::Test
     requester = MockRequester.new(303, {"location" => "/redirected"}, {})
     braintrust.requester = requester
 
-    assert_raises(Braintrust::APIConnectionError) do
+    assert_raises(Braintrust::Errors::APIConnectionError) do
       braintrust.projects.create(name: "x", request_options: {extra_headers: {}})
     end
 
@@ -220,7 +220,7 @@ class BraintrustTest < Minitest::Test
     requester = MockRequester.new(307, {"location" => "/redirected"}, {})
     braintrust.requester = requester
 
-    assert_raises(Braintrust::APIConnectionError) do
+    assert_raises(Braintrust::Errors::APIConnectionError) do
       braintrust.projects.create(
         name: "x",
         request_options: {extra_headers: {"Authorization" => "Bearer xyz"}}
@@ -238,7 +238,7 @@ class BraintrustTest < Minitest::Test
     requester = MockRequester.new(307, {"location" => "https://example.com/redirected"}, {})
     braintrust.requester = requester
 
-    assert_raises(Braintrust::APIConnectionError) do
+    assert_raises(Braintrust::Errors::APIConnectionError) do
       braintrust.projects.create(
         name: "x",
         request_options: {extra_headers: {"Authorization" => "Bearer xyz"}}
