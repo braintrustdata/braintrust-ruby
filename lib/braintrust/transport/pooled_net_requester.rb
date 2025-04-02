@@ -153,7 +153,7 @@ module Braintrust
             end
           end
         rescue Timeout::Error
-          raise Braintrust::APITimeoutError
+          raise Braintrust::Errors::APITimeoutError
         end
 
         conn, _, response = enum.next

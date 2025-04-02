@@ -1,144 +1,174 @@
 # typed: strong
 
 module Braintrust
-  class Error < StandardError
-    sig { returns(T.nilable(StandardError)) }
-    attr_accessor :cause
-  end
-
-  class ConversionError < Braintrust::Error
-  end
-
-  class APIError < Braintrust::Error
-    sig { returns(URI::Generic) }
-    attr_accessor :url
-
-    sig { returns(T.nilable(Integer)) }
-    attr_accessor :status
-
-    sig { returns(T.nilable(T.anything)) }
-    attr_accessor :body
-
-    # @api private
-    sig do
-      params(
-        url: URI::Generic,
-        status: T.nilable(Integer),
-        body: T.nilable(Object),
-        request: NilClass,
-        response: NilClass,
-        message: T.nilable(String)
-      )
-        .returns(T.attached_class)
-    end
-    def self.new(url:, status: nil, body: nil, request: nil, response: nil, message: nil)
-    end
-  end
-
-  class APIConnectionError < Braintrust::APIError
-    sig { void }
-    attr_accessor :status
-
-    sig { void }
-    attr_accessor :body
-
-    # @api private
-    sig do
-      params(
-        url: URI::Generic,
-        status: NilClass,
-        body: NilClass,
-        request: NilClass,
-        response: NilClass,
-        message: T.nilable(String)
-      )
-        .returns(T.attached_class)
-    end
-    def self.new(url:, status: nil, body: nil, request: nil, response: nil, message: "Connection error.")
-    end
-  end
-
-  class APITimeoutError < Braintrust::APIConnectionError
-    # @api private
-    sig do
-      params(
-        url: URI::Generic,
-        status: NilClass,
-        body: NilClass,
-        request: NilClass,
-        response: NilClass,
-        message: T.nilable(String)
-      )
-        .returns(T.attached_class)
-    end
-    def self.new(url:, status: nil, body: nil, request: nil, response: nil, message: "Request timed out.")
-    end
-  end
-
-  class APIStatusError < Braintrust::APIError
-    # @api private
-    sig do
-      params(
-        url: URI::Generic,
-        status: Integer,
-        body: T.nilable(Object),
-        request: NilClass,
-        response: NilClass,
-        message: T.nilable(String)
-      )
-        .returns(T.attached_class)
-    end
-    def self.for(url:, status:, body:, request:, response:, message: nil)
+  module Errors
+    class Error < StandardError
+      sig { returns(T.nilable(StandardError)) }
+      attr_accessor :cause
     end
 
-    sig { returns(Integer) }
-    attr_accessor :status
-
-    # @api private
-    sig do
-      params(
-        url: URI::Generic,
-        status: Integer,
-        body: T.nilable(Object),
-        request: NilClass,
-        response: NilClass,
-        message: T.nilable(String)
-      )
-        .returns(T.attached_class)
+    class ConversionError < Braintrust::Errors::Error
     end
-    def self.new(url:, status:, body:, request:, response:, message: nil)
+
+    class APIError < Braintrust::Errors::Error
+      sig { returns(URI::Generic) }
+      attr_accessor :url
+
+      sig { returns(T.nilable(Integer)) }
+      attr_accessor :status
+
+      sig { returns(T.nilable(T.anything)) }
+      attr_accessor :body
+
+      # @api private
+      sig do
+        params(
+          url: URI::Generic,
+          status: T.nilable(Integer),
+          body: T.nilable(Object),
+          request: NilClass,
+          response: NilClass,
+          message: T.nilable(String)
+        )
+          .returns(T.attached_class)
+      end
+      def self.new(url:, status: nil, body: nil, request: nil, response: nil, message: nil)
+      end
+    end
+
+    class APIConnectionError < Braintrust::Errors::APIError
+      sig { void }
+      attr_accessor :status
+
+      sig { void }
+      attr_accessor :body
+
+      # @api private
+      sig do
+        params(
+          url: URI::Generic,
+          status: NilClass,
+          body: NilClass,
+          request: NilClass,
+          response: NilClass,
+          message: T.nilable(String)
+        )
+          .returns(T.attached_class)
+      end
+      def self.new(url:, status: nil, body: nil, request: nil, response: nil, message: "Connection error.")
+      end
+    end
+
+    class APITimeoutError < Braintrust::Errors::APIConnectionError
+      # @api private
+      sig do
+        params(
+          url: URI::Generic,
+          status: NilClass,
+          body: NilClass,
+          request: NilClass,
+          response: NilClass,
+          message: T.nilable(String)
+        )
+          .returns(T.attached_class)
+      end
+      def self.new(url:, status: nil, body: nil, request: nil, response: nil, message: "Request timed out.")
+      end
+    end
+
+    class APIStatusError < Braintrust::Errors::APIError
+      # @api private
+      sig do
+        params(
+          url: URI::Generic,
+          status: Integer,
+          body: T.nilable(Object),
+          request: NilClass,
+          response: NilClass,
+          message: T.nilable(String)
+        )
+          .returns(T.attached_class)
+      end
+      def self.for(url:, status:, body:, request:, response:, message: nil)
+      end
+
+      sig { returns(Integer) }
+      attr_accessor :status
+
+      # @api private
+      sig do
+        params(
+          url: URI::Generic,
+          status: Integer,
+          body: T.nilable(Object),
+          request: NilClass,
+          response: NilClass,
+          message: T.nilable(String)
+        )
+          .returns(T.attached_class)
+      end
+      def self.new(url:, status:, body:, request:, response:, message: nil)
+      end
+    end
+
+    class BadRequestError < Braintrust::Errors::APIStatusError
+      HTTP_STATUS = 400
+    end
+
+    class AuthenticationError < Braintrust::Errors::APIStatusError
+      HTTP_STATUS = 401
+    end
+
+    class PermissionDeniedError < Braintrust::Errors::APIStatusError
+      HTTP_STATUS = 403
+    end
+
+    class NotFoundError < Braintrust::Errors::APIStatusError
+      HTTP_STATUS = 404
+    end
+
+    class ConflictError < Braintrust::Errors::APIStatusError
+      HTTP_STATUS = 409
+    end
+
+    class UnprocessableEntityError < Braintrust::Errors::APIStatusError
+      HTTP_STATUS = 422
+    end
+
+    class RateLimitError < Braintrust::Errors::APIStatusError
+      HTTP_STATUS = 429
+    end
+
+    class InternalServerError < Braintrust::Errors::APIStatusError
+      HTTP_STATUS = T.let((500..), T::Range[Integer])
     end
   end
 
-  class BadRequestError < Braintrust::APIStatusError
-    HTTP_STATUS = 400
-  end
+  Error = Braintrust::Errors::Error
 
-  class AuthenticationError < Braintrust::APIStatusError
-    HTTP_STATUS = 401
-  end
+  ConversionError = Braintrust::Errors::ConversionError
 
-  class PermissionDeniedError < Braintrust::APIStatusError
-    HTTP_STATUS = 403
-  end
+  APIError = Braintrust::Errors::APIError
 
-  class NotFoundError < Braintrust::APIStatusError
-    HTTP_STATUS = 404
-  end
+  APIStatusError = Braintrust::Errors::APIStatusError
 
-  class ConflictError < Braintrust::APIStatusError
-    HTTP_STATUS = 409
-  end
+  APIConnectionError = Braintrust::Errors::APIConnectionError
 
-  class UnprocessableEntityError < Braintrust::APIStatusError
-    HTTP_STATUS = 422
-  end
+  APITimeoutError = Braintrust::Errors::APITimeoutError
 
-  class RateLimitError < Braintrust::APIStatusError
-    HTTP_STATUS = 429
-  end
+  BadRequestError = Braintrust::Errors::BadRequestError
 
-  class InternalServerError < Braintrust::APIStatusError
-    HTTP_STATUS = T.let((500..), T::Range[Integer])
-  end
+  AuthenticationError = Braintrust::Errors::AuthenticationError
+
+  PermissionDeniedError = Braintrust::Errors::PermissionDeniedError
+
+  NotFoundError = Braintrust::Errors::NotFoundError
+
+  ConflictError = Braintrust::Errors::ConflictError
+
+  UnprocessableEntityError = Braintrust::Errors::UnprocessableEntityError
+
+  RateLimitError = Braintrust::Errors::RateLimitError
+
+  InternalServerError = Braintrust::Errors::InternalServerError
 end
