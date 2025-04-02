@@ -2,6 +2,7 @@
 
 module Braintrust
   module Models
+    # @see Braintrust::Resources::EnvVars#list
     class EnvVarListResponse < Braintrust::BaseModel
       # @!attribute objects
       #   A list of env_var objects
