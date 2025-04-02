@@ -61,7 +61,7 @@ module Braintrust
       def retrieve(experiment_id, params = {})
         @client.request(
           method: :get,
-          path: ["v1/experiment/%0s", experiment_id],
+          path: ["v1/experiment/%1$s", experiment_id],
           model: Braintrust::Models::Experiment,
           options: params[:request_options]
         )
@@ -101,7 +101,7 @@ module Braintrust
         parsed, options = Braintrust::Models::ExperimentUpdateParams.dump_request(params)
         @client.request(
           method: :patch,
-          path: ["v1/experiment/%0s", experiment_id],
+          path: ["v1/experiment/%1$s", experiment_id],
           body: parsed,
           model: Braintrust::Models::Experiment,
           options: options
@@ -165,7 +165,7 @@ module Braintrust
       def delete(experiment_id, params = {})
         @client.request(
           method: :delete,
-          path: ["v1/experiment/%0s", experiment_id],
+          path: ["v1/experiment/%1$s", experiment_id],
           model: Braintrust::Models::Experiment,
           options: params[:request_options]
         )
@@ -186,7 +186,7 @@ module Braintrust
         parsed, options = Braintrust::Models::ExperimentFeedbackParams.dump_request(params)
         @client.request(
           method: :post,
-          path: ["v1/experiment/%0s/feedback", experiment_id],
+          path: ["v1/experiment/%1$s/feedback", experiment_id],
           body: parsed,
           model: Braintrust::Models::FeedbackResponseSchema,
           options: options
@@ -251,7 +251,7 @@ module Braintrust
         parsed, options = Braintrust::Models::ExperimentFetchParams.dump_request(params)
         @client.request(
           method: :get,
-          path: ["v1/experiment/%0s/fetch", experiment_id],
+          path: ["v1/experiment/%1$s/fetch", experiment_id],
           query: parsed,
           model: Braintrust::Models::FetchExperimentEventsResponse,
           options: options
@@ -322,7 +322,7 @@ module Braintrust
         parsed, options = Braintrust::Models::ExperimentFetchPostParams.dump_request(params)
         @client.request(
           method: :post,
-          path: ["v1/experiment/%0s/fetch", experiment_id],
+          path: ["v1/experiment/%1$s/fetch", experiment_id],
           body: parsed,
           model: Braintrust::Models::FetchExperimentEventsResponse,
           options: options
@@ -344,7 +344,7 @@ module Braintrust
         parsed, options = Braintrust::Models::ExperimentInsertParams.dump_request(params)
         @client.request(
           method: :post,
-          path: ["v1/experiment/%0s/insert", experiment_id],
+          path: ["v1/experiment/%1$s/insert", experiment_id],
           body: parsed,
           model: Braintrust::Models::InsertEventsResponse,
           options: options
@@ -372,7 +372,7 @@ module Braintrust
         parsed, options = Braintrust::Models::ExperimentSummarizeParams.dump_request(params)
         @client.request(
           method: :get,
-          path: ["v1/experiment/%0s/summarize", experiment_id],
+          path: ["v1/experiment/%1$s/summarize", experiment_id],
           query: parsed,
           model: Braintrust::Models::SummarizeExperimentResponse,
           options: options

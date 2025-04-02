@@ -46,7 +46,7 @@ module Braintrust
       def retrieve(span_iframe_id, params = {})
         @client.request(
           method: :get,
-          path: ["v1/span_iframe/%0s", span_iframe_id],
+          path: ["v1/span_iframe/%1$s", span_iframe_id],
           model: Braintrust::Models::SpanIFrame,
           options: params[:request_options]
         )
@@ -76,7 +76,7 @@ module Braintrust
         parsed, options = Braintrust::Models::SpanIframeUpdateParams.dump_request(params)
         @client.request(
           method: :patch,
-          path: ["v1/span_iframe/%0s", span_iframe_id],
+          path: ["v1/span_iframe/%1$s", span_iframe_id],
           body: parsed,
           model: Braintrust::Models::SpanIFrame,
           options: options
@@ -136,7 +136,7 @@ module Braintrust
       def delete(span_iframe_id, params = {})
         @client.request(
           method: :delete,
-          path: ["v1/span_iframe/%0s", span_iframe_id],
+          path: ["v1/span_iframe/%1$s", span_iframe_id],
           model: Braintrust::Models::SpanIFrame,
           options: params[:request_options]
         )

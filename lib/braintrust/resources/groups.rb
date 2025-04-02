@@ -49,7 +49,7 @@ module Braintrust
       def retrieve(group_id, params = {})
         @client.request(
           method: :get,
-          path: ["v1/group/%0s", group_id],
+          path: ["v1/group/%1$s", group_id],
           model: Braintrust::Models::Group,
           options: params[:request_options]
         )
@@ -82,7 +82,7 @@ module Braintrust
         parsed, options = Braintrust::Models::GroupUpdateParams.dump_request(params)
         @client.request(
           method: :patch,
-          path: ["v1/group/%0s", group_id],
+          path: ["v1/group/%1$s", group_id],
           body: parsed,
           model: Braintrust::Models::Group,
           options: options
@@ -142,7 +142,7 @@ module Braintrust
       def delete(group_id, params = {})
         @client.request(
           method: :delete,
-          path: ["v1/group/%0s", group_id],
+          path: ["v1/group/%1$s", group_id],
           model: Braintrust::Models::Group,
           options: params[:request_options]
         )

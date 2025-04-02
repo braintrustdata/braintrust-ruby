@@ -18,7 +18,7 @@ module Braintrust
       def retrieve(organization_id, params = {})
         @client.request(
           method: :get,
-          path: ["v1/organization/%0s", organization_id],
+          path: ["v1/organization/%1$s", organization_id],
           model: Braintrust::Models::Organization,
           options: params[:request_options]
         )
@@ -49,7 +49,7 @@ module Braintrust
         parsed, options = Braintrust::Models::OrganizationUpdateParams.dump_request(params)
         @client.request(
           method: :patch,
-          path: ["v1/organization/%0s", organization_id],
+          path: ["v1/organization/%1$s", organization_id],
           body: parsed,
           model: Braintrust::Models::Organization,
           options: options
@@ -107,7 +107,7 @@ module Braintrust
       def delete(organization_id, params = {})
         @client.request(
           method: :delete,
-          path: ["v1/organization/%0s", organization_id],
+          path: ["v1/organization/%1$s", organization_id],
           model: Braintrust::Models::Organization,
           options: params[:request_options]
         )

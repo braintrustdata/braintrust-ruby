@@ -53,7 +53,7 @@ module Braintrust
       def retrieve(acl_id, params = {})
         @client.request(
           method: :get,
-          path: ["v1/acl/%0s", acl_id],
+          path: ["v1/acl/%1$s", acl_id],
           model: Braintrust::Models::ACL,
           options: params[:request_options]
         )
@@ -112,7 +112,7 @@ module Braintrust
       def delete(acl_id, params = {})
         @client.request(
           method: :delete,
-          path: ["v1/acl/%0s", acl_id],
+          path: ["v1/acl/%1$s", acl_id],
           model: Braintrust::Models::ACL,
           options: params[:request_options]
         )
