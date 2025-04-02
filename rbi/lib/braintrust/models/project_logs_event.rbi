@@ -254,7 +254,8 @@ module Braintrust
         extend Braintrust::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Braintrust::Models::ProjectLogsEvent::LogID) }
-        OrSymbol = T.type_alias { T.any(Symbol, Braintrust::Models::ProjectLogsEvent::LogID::TaggedSymbol) }
+        OrSymbol =
+          T.type_alias { T.any(Symbol, String, Braintrust::Models::ProjectLogsEvent::LogID::TaggedSymbol) }
 
         G = T.let(:g, Braintrust::Models::ProjectLogsEvent::LogID::TaggedSymbol)
 

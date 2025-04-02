@@ -155,7 +155,7 @@ module Braintrust
             TaggedSymbol =
               T.type_alias { T.all(Symbol, Braintrust::Models::FunctionReplaceParams::FunctionData::Prompt::Type) }
             OrSymbol =
-              T.type_alias { T.any(Symbol, Braintrust::Models::FunctionReplaceParams::FunctionData::Prompt::Type::TaggedSymbol) }
+              T.type_alias { T.any(Symbol, String, Braintrust::Models::FunctionReplaceParams::FunctionData::Prompt::Type::TaggedSymbol) }
 
             PROMPT =
               T.let(:prompt, Braintrust::Models::FunctionReplaceParams::FunctionData::Prompt::Type::TaggedSymbol)
@@ -244,6 +244,7 @@ module Braintrust
                   T.type_alias do
                     T.any(
                       Symbol,
+                      String,
                       Braintrust::Models::FunctionReplaceParams::FunctionData::Code::Data::Bundle::Type::TaggedSymbol
                     )
                   end
@@ -357,6 +358,7 @@ module Braintrust
                     T.type_alias do
                       T.any(
                         Symbol,
+                        String,
                         Braintrust::Models::FunctionReplaceParams::FunctionData::Code::Data::Inline::RuntimeContext::Runtime::TaggedSymbol
                       )
                     end
@@ -394,6 +396,7 @@ module Braintrust
                   T.type_alias do
                     T.any(
                       Symbol,
+                      String,
                       Braintrust::Models::FunctionReplaceParams::FunctionData::Code::Data::Inline::Type::TaggedSymbol
                     )
                   end
@@ -431,7 +434,7 @@ module Braintrust
             TaggedSymbol =
               T.type_alias { T.all(Symbol, Braintrust::Models::FunctionReplaceParams::FunctionData::Code::Type) }
             OrSymbol =
-              T.type_alias { T.any(Symbol, Braintrust::Models::FunctionReplaceParams::FunctionData::Code::Type::TaggedSymbol) }
+              T.type_alias { T.any(Symbol, String, Braintrust::Models::FunctionReplaceParams::FunctionData::Code::Type::TaggedSymbol) }
 
             CODE = T.let(:code, Braintrust::Models::FunctionReplaceParams::FunctionData::Code::Type::TaggedSymbol)
 
@@ -476,7 +479,7 @@ module Braintrust
             TaggedSymbol =
               T.type_alias { T.all(Symbol, Braintrust::Models::FunctionReplaceParams::FunctionData::Global::Type) }
             OrSymbol =
-              T.type_alias { T.any(Symbol, Braintrust::Models::FunctionReplaceParams::FunctionData::Global::Type::TaggedSymbol) }
+              T.type_alias { T.any(Symbol, String, Braintrust::Models::FunctionReplaceParams::FunctionData::Global::Type::TaggedSymbol) }
 
             GLOBAL =
               T.let(:global, Braintrust::Models::FunctionReplaceParams::FunctionData::Global::Type::TaggedSymbol)
@@ -528,7 +531,7 @@ module Braintrust
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Braintrust::Models::FunctionReplaceParams::FunctionType) }
         OrSymbol =
-          T.type_alias { T.any(Symbol, Braintrust::Models::FunctionReplaceParams::FunctionType::TaggedSymbol) }
+          T.type_alias { T.any(Symbol, String, Braintrust::Models::FunctionReplaceParams::FunctionType::TaggedSymbol) }
 
         LLM = T.let(:llm, Braintrust::Models::FunctionReplaceParams::FunctionType::TaggedSymbol)
         SCORER = T.let(:scorer, Braintrust::Models::FunctionReplaceParams::FunctionType::TaggedSymbol)

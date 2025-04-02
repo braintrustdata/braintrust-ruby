@@ -164,7 +164,8 @@ module Braintrust
           extend Braintrust::Enum
 
           TaggedSymbol = T.type_alias { T.all(Symbol, Braintrust::Models::PromptData::Parser::Type) }
-          OrSymbol = T.type_alias { T.any(Symbol, Braintrust::Models::PromptData::Parser::Type::TaggedSymbol) }
+          OrSymbol =
+            T.type_alias { T.any(Symbol, String, Braintrust::Models::PromptData::Parser::Type::TaggedSymbol) }
 
           LLM_CLASSIFIER = T.let(:llm_classifier, Braintrust::Models::PromptData::Parser::Type::TaggedSymbol)
 
@@ -203,7 +204,7 @@ module Braintrust
 
             TaggedSymbol = T.type_alias { T.all(Symbol, Braintrust::Models::PromptData::Prompt::Completion::Type) }
             OrSymbol =
-              T.type_alias { T.any(Symbol, Braintrust::Models::PromptData::Prompt::Completion::Type::TaggedSymbol) }
+              T.type_alias { T.any(Symbol, String, Braintrust::Models::PromptData::Prompt::Completion::Type::TaggedSymbol) }
 
             COMPLETION = T.let(:completion, Braintrust::Models::PromptData::Prompt::Completion::Type::TaggedSymbol)
 
@@ -331,7 +332,7 @@ module Braintrust
                 TaggedSymbol =
                   T.type_alias { T.all(Symbol, Braintrust::Models::PromptData::Prompt::Chat::Message::System::Role) }
                 OrSymbol =
-                  T.type_alias { T.any(Symbol, Braintrust::Models::PromptData::Prompt::Chat::Message::System::Role::TaggedSymbol) }
+                  T.type_alias { T.any(Symbol, String, Braintrust::Models::PromptData::Prompt::Chat::Message::System::Role::TaggedSymbol) }
 
                 SYSTEM =
                   T.let(:system, Braintrust::Models::PromptData::Prompt::Chat::Message::System::Role::TaggedSymbol)
@@ -436,7 +437,7 @@ module Braintrust
                 TaggedSymbol =
                   T.type_alias { T.all(Symbol, Braintrust::Models::PromptData::Prompt::Chat::Message::User::Role) }
                 OrSymbol =
-                  T.type_alias { T.any(Symbol, Braintrust::Models::PromptData::Prompt::Chat::Message::User::Role::TaggedSymbol) }
+                  T.type_alias { T.any(Symbol, String, Braintrust::Models::PromptData::Prompt::Chat::Message::User::Role::TaggedSymbol) }
 
                 USER = T.let(:user, Braintrust::Models::PromptData::Prompt::Chat::Message::User::Role::TaggedSymbol)
 
@@ -556,7 +557,13 @@ module Braintrust
                 TaggedSymbol =
                   T.type_alias { T.all(Symbol, Braintrust::Models::PromptData::Prompt::Chat::Message::Assistant::Role) }
                 OrSymbol =
-                  T.type_alias { T.any(Symbol, Braintrust::Models::PromptData::Prompt::Chat::Message::Assistant::Role::TaggedSymbol) }
+                  T.type_alias do
+                    T.any(
+                      Symbol,
+                      String,
+                      Braintrust::Models::PromptData::Prompt::Chat::Message::Assistant::Role::TaggedSymbol
+                    )
+                  end
 
                 ASSISTANT =
                   T.let(:assistant, Braintrust::Models::PromptData::Prompt::Chat::Message::Assistant::Role::TaggedSymbol)
@@ -632,7 +639,7 @@ module Braintrust
                 TaggedSymbol =
                   T.type_alias { T.all(Symbol, Braintrust::Models::PromptData::Prompt::Chat::Message::Tool::Role) }
                 OrSymbol =
-                  T.type_alias { T.any(Symbol, Braintrust::Models::PromptData::Prompt::Chat::Message::Tool::Role::TaggedSymbol) }
+                  T.type_alias { T.any(Symbol, String, Braintrust::Models::PromptData::Prompt::Chat::Message::Tool::Role::TaggedSymbol) }
 
                 TOOL = T.let(:tool, Braintrust::Models::PromptData::Prompt::Chat::Message::Tool::Role::TaggedSymbol)
 
@@ -687,7 +694,7 @@ module Braintrust
                 TaggedSymbol =
                   T.type_alias { T.all(Symbol, Braintrust::Models::PromptData::Prompt::Chat::Message::Function::Role) }
                 OrSymbol =
-                  T.type_alias { T.any(Symbol, Braintrust::Models::PromptData::Prompt::Chat::Message::Function::Role::TaggedSymbol) }
+                  T.type_alias { T.any(Symbol, String, Braintrust::Models::PromptData::Prompt::Chat::Message::Function::Role::TaggedSymbol) }
 
                 FUNCTION =
                   T.let(:function, Braintrust::Models::PromptData::Prompt::Chat::Message::Function::Role::TaggedSymbol)
@@ -736,7 +743,7 @@ module Braintrust
                 TaggedSymbol =
                   T.type_alias { T.all(Symbol, Braintrust::Models::PromptData::Prompt::Chat::Message::Fallback::Role) }
                 OrSymbol =
-                  T.type_alias { T.any(Symbol, Braintrust::Models::PromptData::Prompt::Chat::Message::Fallback::Role::TaggedSymbol) }
+                  T.type_alias { T.any(Symbol, String, Braintrust::Models::PromptData::Prompt::Chat::Message::Fallback::Role::TaggedSymbol) }
 
                 MODEL =
                   T.let(:model, Braintrust::Models::PromptData::Prompt::Chat::Message::Fallback::Role::TaggedSymbol)
@@ -765,7 +772,7 @@ module Braintrust
 
             TaggedSymbol = T.type_alias { T.all(Symbol, Braintrust::Models::PromptData::Prompt::Chat::Type) }
             OrSymbol =
-              T.type_alias { T.any(Symbol, Braintrust::Models::PromptData::Prompt::Chat::Type::TaggedSymbol) }
+              T.type_alias { T.any(Symbol, String, Braintrust::Models::PromptData::Prompt::Chat::Type::TaggedSymbol) }
 
             CHAT = T.let(:chat, Braintrust::Models::PromptData::Prompt::Chat::Type::TaggedSymbol)
 
@@ -815,7 +822,7 @@ module Braintrust
             TaggedSymbol =
               T.type_alias { T.all(Symbol, Braintrust::Models::PromptData::ToolFunction::Function::Type) }
             OrSymbol =
-              T.type_alias { T.any(Symbol, Braintrust::Models::PromptData::ToolFunction::Function::Type::TaggedSymbol) }
+              T.type_alias { T.any(Symbol, String, Braintrust::Models::PromptData::ToolFunction::Function::Type::TaggedSymbol) }
 
             FUNCTION = T.let(:function, Braintrust::Models::PromptData::ToolFunction::Function::Type::TaggedSymbol)
 
@@ -851,7 +858,7 @@ module Braintrust
 
             TaggedSymbol = T.type_alias { T.all(Symbol, Braintrust::Models::PromptData::ToolFunction::Global::Type) }
             OrSymbol =
-              T.type_alias { T.any(Symbol, Braintrust::Models::PromptData::ToolFunction::Global::Type::TaggedSymbol) }
+              T.type_alias { T.any(Symbol, String, Braintrust::Models::PromptData::ToolFunction::Global::Type::TaggedSymbol) }
 
             GLOBAL = T.let(:global, Braintrust::Models::PromptData::ToolFunction::Global::Type::TaggedSymbol)
 

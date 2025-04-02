@@ -19,7 +19,7 @@ module Braintrust
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Braintrust::Models::FeedbackResponseSchema::Status) }
         OrSymbol =
-          T.type_alias { T.any(Symbol, Braintrust::Models::FeedbackResponseSchema::Status::TaggedSymbol) }
+          T.type_alias { T.any(Symbol, String, Braintrust::Models::FeedbackResponseSchema::Status::TaggedSymbol) }
 
         SUCCESS = T.let(:success, Braintrust::Models::FeedbackResponseSchema::Status::TaggedSymbol)
 

@@ -123,7 +123,7 @@ module Braintrust
         extend Braintrust::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Braintrust::Models::Prompt::LogID) }
-        OrSymbol = T.type_alias { T.any(Symbol, Braintrust::Models::Prompt::LogID::TaggedSymbol) }
+        OrSymbol = T.type_alias { T.any(Symbol, String, Braintrust::Models::Prompt::LogID::TaggedSymbol) }
 
         P = T.let(:p, Braintrust::Models::Prompt::LogID::TaggedSymbol)
 
@@ -136,7 +136,7 @@ module Braintrust
         extend Braintrust::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Braintrust::Models::Prompt::FunctionType) }
-        OrSymbol = T.type_alias { T.any(Symbol, Braintrust::Models::Prompt::FunctionType::TaggedSymbol) }
+        OrSymbol = T.type_alias { T.any(Symbol, String, Braintrust::Models::Prompt::FunctionType::TaggedSymbol) }
 
         LLM = T.let(:llm, Braintrust::Models::Prompt::FunctionType::TaggedSymbol)
         SCORER = T.let(:scorer, Braintrust::Models::Prompt::FunctionType::TaggedSymbol)
