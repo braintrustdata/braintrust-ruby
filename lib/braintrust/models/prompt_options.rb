@@ -39,6 +39,7 @@ module Braintrust
 
       # def initialize: (Hash | Braintrust::BaseModel) -> void
 
+      # @see Braintrust::Models::PromptOptions#params
       module Params
         extend Braintrust::Union
 
@@ -208,6 +209,7 @@ module Braintrust
 
           # def initialize: (Hash | Braintrust::BaseModel) -> void
 
+          # @see Braintrust::Models::PromptOptions::Params::OpenAIModelParams#function_call
           module FunctionCall
             extend Braintrust::Union
 
@@ -243,6 +245,7 @@ module Braintrust
             # @!endgroup
           end
 
+          # @see Braintrust::Models::PromptOptions::Params::OpenAIModelParams#reasoning_effort
           module ReasoningEffort
             extend Braintrust::Enum
 
@@ -257,6 +260,7 @@ module Braintrust
             #   def self.values; end
           end
 
+          # @see Braintrust::Models::PromptOptions::Params::OpenAIModelParams#response_format
           module ResponseFormat
             extend Braintrust::Union
 
@@ -280,6 +284,7 @@ module Braintrust
 
               # def initialize: (Hash | Braintrust::BaseModel) -> void
 
+              # @see Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ResponseFormat::JsonObject#type
               module Type
                 extend Braintrust::Enum
 
@@ -314,6 +319,7 @@ module Braintrust
 
               # def initialize: (Hash | Braintrust::BaseModel) -> void
 
+              # @see Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ResponseFormat::JsonSchema#json_schema
               class JsonSchema < Braintrust::BaseModel
                 # @!attribute name
                 #
@@ -354,6 +360,7 @@ module Braintrust
 
                 # def initialize: (Hash | Braintrust::BaseModel) -> void
 
+                # @see Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ResponseFormat::JsonSchema::JsonSchema#schema
                 module Schema
                   extend Braintrust::Union
 
@@ -369,6 +376,7 @@ module Braintrust
                 end
               end
 
+              # @see Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ResponseFormat::JsonSchema#type
               module Type
                 extend Braintrust::Enum
 
@@ -396,6 +404,7 @@ module Braintrust
 
               # def initialize: (Hash | Braintrust::BaseModel) -> void
 
+              # @see Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ResponseFormat::Text#type
               module Type
                 extend Braintrust::Enum
 
@@ -414,6 +423,7 @@ module Braintrust
             #   def self.variants; end
           end
 
+          # @see Braintrust::Models::PromptOptions::Params::OpenAIModelParams#tool_choice
           module ToolChoice
             extend Braintrust::Union
 
@@ -446,6 +456,7 @@ module Braintrust
 
               # def initialize: (Hash | Braintrust::BaseModel) -> void
 
+              # @see Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ToolChoice::Function#function
               class Function < Braintrust::BaseModel
                 # @!attribute name
                 #
@@ -460,6 +471,7 @@ module Braintrust
                 # def initialize: (Hash | Braintrust::BaseModel) -> void
               end
 
+              # @see Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ToolChoice::Function#type
               module Type
                 extend Braintrust::Enum
 

@@ -26,6 +26,8 @@ module Braintrust
       #   @option params [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Braintrust::Models::Role]
+      #
+      # @see Braintrust::Models::RoleCreateParams
       def create(params)
         parsed, options = Braintrust::Models::RoleCreateParams.dump_request(params)
         @client.request(
@@ -46,6 +48,8 @@ module Braintrust
       #   @option params [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Braintrust::Models::Role]
+      #
+      # @see Braintrust::Models::RoleRetrieveParams
       def retrieve(role_id, params = {})
         @client.request(
           method: :get,
@@ -78,6 +82,8 @@ module Braintrust
       #   @option params [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Braintrust::Models::Role]
+      #
+      # @see Braintrust::Models::RoleUpdateParams
       def update(role_id, params = {})
         parsed, options = Braintrust::Models::RoleUpdateParams.dump_request(params)
         @client.request(
@@ -118,6 +124,8 @@ module Braintrust
       #   @option params [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Braintrust::ListObjects<Braintrust::Models::Role>]
+      #
+      # @see Braintrust::Models::RoleListParams
       def list(params = {})
         parsed, options = Braintrust::Models::RoleListParams.dump_request(params)
         @client.request(
@@ -139,6 +147,8 @@ module Braintrust
       #   @option params [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Braintrust::Models::Role]
+      #
+      # @see Braintrust::Models::RoleDeleteParams
       def delete(role_id, params = {})
         @client.request(
           method: :delete,
@@ -172,6 +182,8 @@ module Braintrust
       #   @option params [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Braintrust::Models::Role]
+      #
+      # @see Braintrust::Models::RoleReplaceParams
       def replace(params)
         parsed, options = Braintrust::Models::RoleReplaceParams.dump_request(params)
         @client.request(
@@ -183,6 +195,8 @@ module Braintrust
         )
       end
 
+      # @api private
+      #
       # @param client [Braintrust::Client]
       def initialize(client:)
         @client = client

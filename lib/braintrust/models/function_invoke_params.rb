@@ -2,6 +2,7 @@
 
 module Braintrust
   module Models
+    # @see Braintrust::Resources::Functions#invoke
     class FunctionInvokeParams < Braintrust::BaseModel
       # @!parse
       #   extend Braintrust::Type::RequestParameters::Converter
@@ -152,6 +153,7 @@ module Braintrust
 
           # def initialize: (Hash | Braintrust::BaseModel) -> void
 
+          # @see Braintrust::Models::FunctionInvokeParams::Message::System#role
           module Role
             extend Braintrust::Enum
 
@@ -198,6 +200,7 @@ module Braintrust
 
           # def initialize: (Hash | Braintrust::BaseModel) -> void
 
+          # @see Braintrust::Models::FunctionInvokeParams::Message::User#role
           module Role
             extend Braintrust::Enum
 
@@ -210,6 +213,7 @@ module Braintrust
             #   def self.values; end
           end
 
+          # @see Braintrust::Models::FunctionInvokeParams::Message::User#content
           module Content
             extend Braintrust::Union
 
@@ -279,6 +283,7 @@ module Braintrust
 
           # def initialize: (Hash | Braintrust::BaseModel) -> void
 
+          # @see Braintrust::Models::FunctionInvokeParams::Message::Assistant#role
           module Role
             extend Braintrust::Enum
 
@@ -291,6 +296,7 @@ module Braintrust
             #   def self.values; end
           end
 
+          # @see Braintrust::Models::FunctionInvokeParams::Message::Assistant#function_call
           class FunctionCall < Braintrust::BaseModel
             # @!attribute arguments
             #
@@ -345,6 +351,7 @@ module Braintrust
 
           # def initialize: (Hash | Braintrust::BaseModel) -> void
 
+          # @see Braintrust::Models::FunctionInvokeParams::Message::Tool#role
           module Role
             extend Braintrust::Enum
 
@@ -387,6 +394,7 @@ module Braintrust
 
           # def initialize: (Hash | Braintrust::BaseModel) -> void
 
+          # @see Braintrust::Models::FunctionInvokeParams::Message::Function#role
           module Role
             extend Braintrust::Enum
 
@@ -419,6 +427,7 @@ module Braintrust
 
           # def initialize: (Hash | Braintrust::BaseModel) -> void
 
+          # @see Braintrust::Models::FunctionInvokeParams::Message::Fallback#role
           module Role
             extend Braintrust::Enum
 
@@ -500,6 +509,7 @@ module Braintrust
 
           # def initialize: (Hash | Braintrust::BaseModel) -> void
 
+          # @see Braintrust::Models::FunctionInvokeParams::Parent::SpanParentStruct#object_type
           module ObjectType
             extend Braintrust::Enum
 
@@ -514,6 +524,7 @@ module Braintrust
             #   def self.values; end
           end
 
+          # @see Braintrust::Models::FunctionInvokeParams::Parent::SpanParentStruct#row_ids
           class RowIDs < Braintrust::BaseModel
             # @!attribute id
             #   The id of the row

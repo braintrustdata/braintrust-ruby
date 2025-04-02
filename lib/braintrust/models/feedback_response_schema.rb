@@ -15,6 +15,7 @@ module Braintrust
 
       # def initialize: (Hash | Braintrust::BaseModel) -> void
 
+      # @see Braintrust::Models::FeedbackResponseSchema#status
       module Status
         extend Braintrust::Enum
 

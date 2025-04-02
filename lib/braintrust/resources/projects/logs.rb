@@ -15,6 +15,8 @@ module Braintrust
         #   @option params [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
         #
         # @return [Braintrust::Models::FeedbackResponseSchema]
+        #
+        # @see Braintrust::Models::Projects::LogFeedbackParams
         def feedback(project_id, params)
           parsed, options = Braintrust::Models::Projects::LogFeedbackParams.dump_request(params)
           @client.request(
@@ -80,6 +82,8 @@ module Braintrust
         #   @option params [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
         #
         # @return [Braintrust::Models::FetchProjectLogsEventsResponse]
+        #
+        # @see Braintrust::Models::Projects::LogFetchParams
         def fetch(project_id, params = {})
           parsed, options = Braintrust::Models::Projects::LogFetchParams.dump_request(params)
           @client.request(
@@ -151,6 +155,8 @@ module Braintrust
         #   @option params [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
         #
         # @return [Braintrust::Models::FetchProjectLogsEventsResponse]
+        #
+        # @see Braintrust::Models::Projects::LogFetchPostParams
         def fetch_post(project_id, params = {})
           parsed, options = Braintrust::Models::Projects::LogFetchPostParams.dump_request(params)
           @client.request(
@@ -173,6 +179,8 @@ module Braintrust
         #   @option params [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
         #
         # @return [Braintrust::Models::InsertEventsResponse]
+        #
+        # @see Braintrust::Models::Projects::LogInsertParams
         def insert(project_id, params)
           parsed, options = Braintrust::Models::Projects::LogInsertParams.dump_request(params)
           @client.request(
@@ -184,6 +192,8 @@ module Braintrust
           )
         end
 
+        # @api private
+        #
         # @param client [Braintrust::Client]
         def initialize(client:)
           @client = client

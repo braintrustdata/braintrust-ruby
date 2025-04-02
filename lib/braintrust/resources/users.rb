@@ -12,6 +12,8 @@ module Braintrust
       #   @option params [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Braintrust::Models::User]
+      #
+      # @see Braintrust::Models::UserRetrieveParams
       def retrieve(user_id, params = {})
         @client.request(
           method: :get,
@@ -57,6 +59,8 @@ module Braintrust
       #   @option params [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Braintrust::ListObjects<Braintrust::Models::User>]
+      #
+      # @see Braintrust::Models::UserListParams
       def list(params = {})
         parsed, options = Braintrust::Models::UserListParams.dump_request(params)
         @client.request(
@@ -69,6 +73,8 @@ module Braintrust
         )
       end
 
+      # @api private
+      #
       # @param client [Braintrust::Client]
       def initialize(client:)
         @client = client

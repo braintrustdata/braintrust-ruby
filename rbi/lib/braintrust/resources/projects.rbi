@@ -121,6 +121,7 @@ module Braintrust
       )
       end
 
+      # @api private
       sig { params(client: Braintrust::Client).returns(T.attached_class) }
       def self.new(client:)
       end

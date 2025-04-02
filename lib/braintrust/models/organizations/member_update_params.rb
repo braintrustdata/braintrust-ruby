@@ -3,6 +3,7 @@
 module Braintrust
   module Models
     module Organizations
+      # @see Braintrust::Resources::Organizations::Members#update
       class MemberUpdateParams < Braintrust::BaseModel
         # @!parse
         #   extend Braintrust::Type::RequestParameters::Converter

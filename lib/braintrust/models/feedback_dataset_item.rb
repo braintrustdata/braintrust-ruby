@@ -49,6 +49,8 @@ module Braintrust
       # def initialize: (Hash | Braintrust::BaseModel) -> void
 
       # The source of the feedback. Must be one of "external" (default), "app", or "api"
+      #
+      # @see Braintrust::Models::FeedbackDatasetItem#source
       module Source
         extend Braintrust::Enum
 

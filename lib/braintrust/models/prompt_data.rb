@@ -43,6 +43,7 @@ module Braintrust
 
       # def initialize: (Hash | Braintrust::BaseModel) -> void
 
+      # @see Braintrust::Models::PromptData#origin
       class Origin < Braintrust::BaseModel
         # @!attribute [r] project_id
         #
@@ -81,6 +82,7 @@ module Braintrust
         # def initialize: (Hash | Braintrust::BaseModel) -> void
       end
 
+      # @see Braintrust::Models::PromptData#parser
       class Parser < Braintrust::BaseModel
         # @!attribute choice_scores
         #
@@ -106,6 +108,7 @@ module Braintrust
 
         # def initialize: (Hash | Braintrust::BaseModel) -> void
 
+        # @see Braintrust::Models::PromptData::Parser#type
         module Type
           extend Braintrust::Enum
 
@@ -119,6 +122,7 @@ module Braintrust
         end
       end
 
+      # @see Braintrust::Models::PromptData#prompt
       module Prompt
         extend Braintrust::Union
 
@@ -145,6 +149,7 @@ module Braintrust
 
           # def initialize: (Hash | Braintrust::BaseModel) -> void
 
+          # @see Braintrust::Models::PromptData::Prompt::Completion#type
           module Type
             extend Braintrust::Enum
 
@@ -236,6 +241,7 @@ module Braintrust
 
               # def initialize: (Hash | Braintrust::BaseModel) -> void
 
+              # @see Braintrust::Models::PromptData::Prompt::Chat::Message::System#role
               module Role
                 extend Braintrust::Enum
 
@@ -282,6 +288,7 @@ module Braintrust
 
               # def initialize: (Hash | Braintrust::BaseModel) -> void
 
+              # @see Braintrust::Models::PromptData::Prompt::Chat::Message::User#role
               module Role
                 extend Braintrust::Enum
 
@@ -294,6 +301,7 @@ module Braintrust
                 #   def self.values; end
               end
 
+              # @see Braintrust::Models::PromptData::Prompt::Chat::Message::User#content
               module Content
                 extend Braintrust::Union
 
@@ -363,6 +371,7 @@ module Braintrust
 
               # def initialize: (Hash | Braintrust::BaseModel) -> void
 
+              # @see Braintrust::Models::PromptData::Prompt::Chat::Message::Assistant#role
               module Role
                 extend Braintrust::Enum
 
@@ -375,6 +384,7 @@ module Braintrust
                 #   def self.values; end
               end
 
+              # @see Braintrust::Models::PromptData::Prompt::Chat::Message::Assistant#function_call
               class FunctionCall < Braintrust::BaseModel
                 # @!attribute arguments
                 #
@@ -429,6 +439,7 @@ module Braintrust
 
               # def initialize: (Hash | Braintrust::BaseModel) -> void
 
+              # @see Braintrust::Models::PromptData::Prompt::Chat::Message::Tool#role
               module Role
                 extend Braintrust::Enum
 
@@ -471,6 +482,7 @@ module Braintrust
 
               # def initialize: (Hash | Braintrust::BaseModel) -> void
 
+              # @see Braintrust::Models::PromptData::Prompt::Chat::Message::Function#role
               module Role
                 extend Braintrust::Enum
 
@@ -503,6 +515,7 @@ module Braintrust
 
               # def initialize: (Hash | Braintrust::BaseModel) -> void
 
+              # @see Braintrust::Models::PromptData::Prompt::Chat::Message::Fallback#role
               module Role
                 extend Braintrust::Enum
 
@@ -521,6 +534,7 @@ module Braintrust
             #   def self.variants; end
           end
 
+          # @see Braintrust::Models::PromptData::Prompt::Chat#type
           module Type
             extend Braintrust::Enum
 
@@ -565,6 +579,7 @@ module Braintrust
 
           # def initialize: (Hash | Braintrust::BaseModel) -> void
 
+          # @see Braintrust::Models::PromptData::ToolFunction::Function#type
           module Type
             extend Braintrust::Enum
 
@@ -597,6 +612,7 @@ module Braintrust
 
           # def initialize: (Hash | Braintrust::BaseModel) -> void
 
+          # @see Braintrust::Models::PromptData::ToolFunction::Global#type
           module Type
             extend Braintrust::Enum
 

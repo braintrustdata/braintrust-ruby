@@ -300,6 +300,7 @@ module Braintrust
 
       # def initialize: (Hash | Braintrust::BaseModel) -> void
 
+      # @see Braintrust::Models::InsertProjectLogsEvent#context
       class Context < Braintrust::BaseModel
         # @!attribute caller_filename
         #   Name of the file in code where the project logs event was created
@@ -334,6 +335,7 @@ module Braintrust
         # def initialize: (Hash | Braintrust::BaseModel) -> void
       end
 
+      # @see Braintrust::Models::InsertProjectLogsEvent#metadata
       class Metadata < Braintrust::BaseModel
         # @!attribute model
         #   The model used for this example
@@ -355,6 +357,7 @@ module Braintrust
         # def initialize: (Hash | Braintrust::BaseModel) -> void
       end
 
+      # @see Braintrust::Models::InsertProjectLogsEvent#metrics
       class Metrics < Braintrust::BaseModel
         # @!attribute [r] caller_filename
         #   This metric is deprecated

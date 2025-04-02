@@ -58,6 +58,8 @@ module Braintrust
       #   @option params [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Braintrust::Models::SummarizeExperimentResponse]
+      #
+      # @see Braintrust::Models::EvalCreateParams
       def create(params)
         parsed, options = Braintrust::Models::EvalCreateParams.dump_request(params)
         @client.request(
@@ -69,6 +71,8 @@ module Braintrust
         )
       end
 
+      # @api private
+      #
       # @param client [Braintrust::Client]
       def initialize(client:)
         @client = client
