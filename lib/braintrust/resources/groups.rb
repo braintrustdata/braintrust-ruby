@@ -6,24 +6,14 @@ module Braintrust
       # Create a new group. If there is an existing group with the same name as the one
       #   specified in the request, will return the existing group unmodified
       #
-      # @param params [Braintrust::Models::GroupCreateParams, Hash{Symbol=>Object}] .
+      # @overload create(name:, description: nil, member_groups: nil, member_users: nil, org_name: nil, request_options: {})
       #
-      #   @option params [String] :name Name of the group
-      #
-      #   @option params [String, nil] :description Textual description of the group
-      #
-      #   @option params [Array<String>, nil] :member_groups Ids of the groups this group inherits from
-      #
-      #     An inheriting group has all the users contained in its member groups, as well as
-      #     all of their inherited users
-      #
-      #   @option params [Array<String>, nil] :member_users Ids of users which belong to this group
-      #
-      #   @option params [String, nil] :org_name For nearly all users, this parameter should be unnecessary. But in the rare case
-      #     that your API key belongs to multiple organizations, you may specify the name of
-      #     the organization the group belongs in.
-      #
-      #   @option params [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
+      # @param name [String]
+      # @param description [String, nil]
+      # @param member_groups [Array<String>, nil]
+      # @param member_users [Array<String>, nil]
+      # @param org_name [String, nil]
+      # @param request_options [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil]
       #
       # @return [Braintrust::Models::Group]
       #
@@ -41,11 +31,10 @@ module Braintrust
 
       # Get a group object by its id
       #
-      # @param group_id [String] Group id
+      # @overload retrieve(group_id, request_options: {})
       #
-      # @param params [Braintrust::Models::GroupRetrieveParams, Hash{Symbol=>Object}] .
-      #
-      #   @option params [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
+      # @param group_id [String]
+      # @param request_options [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil]
       #
       # @return [Braintrust::Models::Group]
       #
@@ -63,23 +52,16 @@ module Braintrust
       #   Any object-type fields will be deep-merged with existing content. Currently we
       #   do not support removing fields or setting them to null.
       #
-      # @param group_id [String] Group id
+      # @overload update(group_id, add_member_groups: nil, add_member_users: nil, description: nil, name: nil, remove_member_groups: nil, remove_member_users: nil, request_options: {})
       #
-      # @param params [Braintrust::Models::GroupUpdateParams, Hash{Symbol=>Object}] .
-      #
-      #   @option params [Array<String>, nil] :add_member_groups A list of group IDs to add to the group's inheriting-from set
-      #
-      #   @option params [Array<String>, nil] :add_member_users A list of user IDs to add to the group
-      #
-      #   @option params [String, nil] :description Textual description of the group
-      #
-      #   @option params [String, nil] :name Name of the group
-      #
-      #   @option params [Array<String>, nil] :remove_member_groups A list of group IDs to remove from the group's inheriting-from set
-      #
-      #   @option params [Array<String>, nil] :remove_member_users A list of user IDs to remove from the group
-      #
-      #   @option params [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
+      # @param group_id [String]
+      # @param add_member_groups [Array<String>, nil]
+      # @param add_member_users [Array<String>, nil]
+      # @param description [String, nil]
+      # @param name [String, nil]
+      # @param remove_member_groups [Array<String>, nil]
+      # @param remove_member_users [Array<String>, nil]
+      # @param request_options [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil]
       #
       # @return [Braintrust::Models::Group]
       #
@@ -98,30 +80,15 @@ module Braintrust
       # List out all groups. The groups are sorted by creation date, with the most
       #   recently-created groups coming first
       #
-      # @param params [Braintrust::Models::GroupListParams, Hash{Symbol=>Object}] .
+      # @overload list(ending_before: nil, group_name: nil, ids: nil, limit: nil, org_name: nil, starting_after: nil, request_options: {})
       #
-      #   @option params [String] :ending_before Pagination cursor id.
-      #
-      #     For example, if the initial item in the last page you fetched had an id of
-      #     `foo`, pass `ending_before=foo` to fetch the previous page. Note: you may only
-      #     pass one of `starting_after` and `ending_before`
-      #
-      #   @option params [String] :group_name Name of the group to search for
-      #
-      #   @option params [String, Array<String>] :ids Filter search results to a particular set of object IDs. To specify a list of
-      #     IDs, include the query param multiple times
-      #
-      #   @option params [Integer, nil] :limit Limit the number of objects to return
-      #
-      #   @option params [String] :org_name Filter search results to within a particular organization
-      #
-      #   @option params [String] :starting_after Pagination cursor id.
-      #
-      #     For example, if the final item in the last page you fetched had an id of `foo`,
-      #     pass `starting_after=foo` to fetch the next page. Note: you may only pass one of
-      #     `starting_after` and `ending_before`
-      #
-      #   @option params [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
+      # @param ending_before [String]
+      # @param group_name [String]
+      # @param ids [String, Array<String>]
+      # @param limit [Integer, nil]
+      # @param org_name [String]
+      # @param starting_after [String]
+      # @param request_options [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil]
       #
       # @return [Braintrust::ListObjects<Braintrust::Models::Group>]
       #
@@ -140,11 +107,10 @@ module Braintrust
 
       # Delete a group object by its id
       #
-      # @param group_id [String] Group id
+      # @overload delete(group_id, request_options: {})
       #
-      # @param params [Braintrust::Models::GroupDeleteParams, Hash{Symbol=>Object}] .
-      #
-      #   @option params [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
+      # @param group_id [String]
+      # @param request_options [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil]
       #
       # @return [Braintrust::Models::Group]
       #
@@ -162,24 +128,14 @@ module Braintrust
       #   one specified in the request, will replace the existing group with the provided
       #   fields
       #
-      # @param params [Braintrust::Models::GroupReplaceParams, Hash{Symbol=>Object}] .
+      # @overload replace(name:, description: nil, member_groups: nil, member_users: nil, org_name: nil, request_options: {})
       #
-      #   @option params [String] :name Name of the group
-      #
-      #   @option params [String, nil] :description Textual description of the group
-      #
-      #   @option params [Array<String>, nil] :member_groups Ids of the groups this group inherits from
-      #
-      #     An inheriting group has all the users contained in its member groups, as well as
-      #     all of their inherited users
-      #
-      #   @option params [Array<String>, nil] :member_users Ids of users which belong to this group
-      #
-      #   @option params [String, nil] :org_name For nearly all users, this parameter should be unnecessary. But in the rare case
-      #     that your API key belongs to multiple organizations, you may specify the name of
-      #     the organization the group belongs in.
-      #
-      #   @option params [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
+      # @param name [String]
+      # @param description [String, nil]
+      # @param member_groups [Array<String>, nil]
+      # @param member_users [Array<String>, nil]
+      # @param org_name [String, nil]
+      # @param request_options [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil]
       #
       # @return [Braintrust::Models::Group]
       #

@@ -7,20 +7,14 @@ module Braintrust
       #   as the one specified in the request, will return the existing span_iframe
       #   unmodified
       #
-      # @param params [Braintrust::Models::SpanIframeCreateParams, Hash{Symbol=>Object}] .
+      # @overload create(name:, project_id:, url:, description: nil, post_message: nil, request_options: {})
       #
-      #   @option params [String] :name Name of the span iframe
-      #
-      #   @option params [String] :project_id Unique identifier for the project that the span iframe belongs under
-      #
-      #   @option params [String] :url URL to embed the project viewer in an iframe
-      #
-      #   @option params [String, nil] :description Textual description of the span iframe
-      #
-      #   @option params [Boolean, nil] :post_message Whether to post messages to the iframe containing the span's data. This is
-      #     useful when you want to render more data than fits in the URL.
-      #
-      #   @option params [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
+      # @param name [String]
+      # @param project_id [String]
+      # @param url [String]
+      # @param description [String, nil]
+      # @param post_message [Boolean, nil]
+      # @param request_options [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil]
       #
       # @return [Braintrust::Models::SpanIFrame]
       #
@@ -38,11 +32,10 @@ module Braintrust
 
       # Get a span_iframe object by its id
       #
-      # @param span_iframe_id [String] SpanIframe id
+      # @overload retrieve(span_iframe_id, request_options: {})
       #
-      # @param params [Braintrust::Models::SpanIframeRetrieveParams, Hash{Symbol=>Object}] .
-      #
-      #   @option params [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
+      # @param span_iframe_id [String]
+      # @param request_options [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil]
       #
       # @return [Braintrust::Models::SpanIFrame]
       #
@@ -60,20 +53,14 @@ module Braintrust
       #   payload. Any object-type fields will be deep-merged with existing content.
       #   Currently we do not support removing fields or setting them to null.
       #
-      # @param span_iframe_id [String] SpanIframe id
+      # @overload update(span_iframe_id, description: nil, name: nil, post_message: nil, url: nil, request_options: {})
       #
-      # @param params [Braintrust::Models::SpanIframeUpdateParams, Hash{Symbol=>Object}] .
-      #
-      #   @option params [String, nil] :description Textual description of the span iframe
-      #
-      #   @option params [String, nil] :name Name of the span iframe
-      #
-      #   @option params [Boolean, nil] :post_message Whether to post messages to the iframe containing the span's data. This is
-      #     useful when you want to render more data than fits in the URL.
-      #
-      #   @option params [String, nil] :url URL to embed the project viewer in an iframe
-      #
-      #   @option params [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
+      # @param span_iframe_id [String]
+      # @param description [String, nil]
+      # @param name [String, nil]
+      # @param post_message [Boolean, nil]
+      # @param url [String, nil]
+      # @param request_options [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil]
       #
       # @return [Braintrust::Models::SpanIFrame]
       #
@@ -92,30 +79,15 @@ module Braintrust
       # List out all span_iframes. The span_iframes are sorted by creation date, with
       #   the most recently-created span_iframes coming first
       #
-      # @param params [Braintrust::Models::SpanIframeListParams, Hash{Symbol=>Object}] .
+      # @overload list(ending_before: nil, ids: nil, limit: nil, org_name: nil, span_iframe_name: nil, starting_after: nil, request_options: {})
       #
-      #   @option params [String] :ending_before Pagination cursor id.
-      #
-      #     For example, if the initial item in the last page you fetched had an id of
-      #     `foo`, pass `ending_before=foo` to fetch the previous page. Note: you may only
-      #     pass one of `starting_after` and `ending_before`
-      #
-      #   @option params [String, Array<String>] :ids Filter search results to a particular set of object IDs. To specify a list of
-      #     IDs, include the query param multiple times
-      #
-      #   @option params [Integer, nil] :limit Limit the number of objects to return
-      #
-      #   @option params [String] :org_name Filter search results to within a particular organization
-      #
-      #   @option params [String] :span_iframe_name Name of the span_iframe to search for
-      #
-      #   @option params [String] :starting_after Pagination cursor id.
-      #
-      #     For example, if the final item in the last page you fetched had an id of `foo`,
-      #     pass `starting_after=foo` to fetch the next page. Note: you may only pass one of
-      #     `starting_after` and `ending_before`
-      #
-      #   @option params [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
+      # @param ending_before [String]
+      # @param ids [String, Array<String>]
+      # @param limit [Integer, nil]
+      # @param org_name [String]
+      # @param span_iframe_name [String]
+      # @param starting_after [String]
+      # @param request_options [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil]
       #
       # @return [Braintrust::ListObjects<Braintrust::Models::SpanIFrame>]
       #
@@ -134,11 +106,10 @@ module Braintrust
 
       # Delete a span_iframe object by its id
       #
-      # @param span_iframe_id [String] SpanIframe id
+      # @overload delete(span_iframe_id, request_options: {})
       #
-      # @param params [Braintrust::Models::SpanIframeDeleteParams, Hash{Symbol=>Object}] .
-      #
-      #   @option params [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
+      # @param span_iframe_id [String]
+      # @param request_options [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil]
       #
       # @return [Braintrust::Models::SpanIFrame]
       #
@@ -156,20 +127,14 @@ module Braintrust
       #   name as the one specified in the request, will replace the existing span_iframe
       #   with the provided fields
       #
-      # @param params [Braintrust::Models::SpanIframeReplaceParams, Hash{Symbol=>Object}] .
+      # @overload replace(name:, project_id:, url:, description: nil, post_message: nil, request_options: {})
       #
-      #   @option params [String] :name Name of the span iframe
-      #
-      #   @option params [String] :project_id Unique identifier for the project that the span iframe belongs under
-      #
-      #   @option params [String] :url URL to embed the project viewer in an iframe
-      #
-      #   @option params [String, nil] :description Textual description of the span iframe
-      #
-      #   @option params [Boolean, nil] :post_message Whether to post messages to the iframe containing the span's data. This is
-      #     useful when you want to render more data than fits in the URL.
-      #
-      #   @option params [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
+      # @param name [String]
+      # @param project_id [String]
+      # @param url [String]
+      # @param description [String, nil]
+      # @param post_message [Boolean, nil]
+      # @param request_options [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil]
       #
       # @return [Braintrust::Models::SpanIFrame]
       #

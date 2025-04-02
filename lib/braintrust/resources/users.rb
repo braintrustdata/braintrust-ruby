@@ -5,11 +5,10 @@ module Braintrust
     class Users
       # Get a user object by its id
       #
-      # @param user_id [String] User id
+      # @overload retrieve(user_id, request_options: {})
       #
-      # @param params [Braintrust::Models::UserRetrieveParams, Hash{Symbol=>Object}] .
-      #
-      #   @option params [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
+      # @param user_id [String]
+      # @param request_options [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil]
       #
       # @return [Braintrust::Models::User]
       #
@@ -26,37 +25,17 @@ module Braintrust
       # List out all users. The users are sorted by creation date, with the most
       #   recently-created users coming first
       #
-      # @param params [Braintrust::Models::UserListParams, Hash{Symbol=>Object}] .
+      # @overload list(email: nil, ending_before: nil, family_name: nil, given_name: nil, ids: nil, limit: nil, org_name: nil, starting_after: nil, request_options: {})
       #
-      #   @option params [String, Array<String>] :email Email of the user to search for. You may pass the param multiple times to filter
-      #     for more than one email
-      #
-      #   @option params [String] :ending_before Pagination cursor id.
-      #
-      #     For example, if the initial item in the last page you fetched had an id of
-      #     `foo`, pass `ending_before=foo` to fetch the previous page. Note: you may only
-      #     pass one of `starting_after` and `ending_before`
-      #
-      #   @option params [String, Array<String>] :family_name Family name of the user to search for. You may pass the param multiple times to
-      #     filter for more than one family name
-      #
-      #   @option params [String, Array<String>] :given_name Given name of the user to search for. You may pass the param multiple times to
-      #     filter for more than one given name
-      #
-      #   @option params [String, Array<String>] :ids Filter search results to a particular set of object IDs. To specify a list of
-      #     IDs, include the query param multiple times
-      #
-      #   @option params [Integer, nil] :limit Limit the number of objects to return
-      #
-      #   @option params [String] :org_name Filter search results to within a particular organization
-      #
-      #   @option params [String] :starting_after Pagination cursor id.
-      #
-      #     For example, if the final item in the last page you fetched had an id of `foo`,
-      #     pass `starting_after=foo` to fetch the next page. Note: you may only pass one of
-      #     `starting_after` and `ending_before`
-      #
-      #   @option params [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
+      # @param email [String, Array<String>]
+      # @param ending_before [String]
+      # @param family_name [String, Array<String>]
+      # @param given_name [String, Array<String>]
+      # @param ids [String, Array<String>]
+      # @param limit [Integer, nil]
+      # @param org_name [String]
+      # @param starting_after [String]
+      # @param request_options [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil]
       #
       # @return [Braintrust::ListObjects<Braintrust::Models::User>]
       #
