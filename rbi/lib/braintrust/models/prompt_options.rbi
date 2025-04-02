@@ -330,7 +330,13 @@ module Braintrust
             TaggedSymbol =
               T.type_alias { T.all(Symbol, Braintrust::Models::PromptOptions::Params::OpenAIModelParams::FunctionCall) }
             OrSymbol =
-              T.type_alias { T.any(Symbol, Braintrust::Models::PromptOptions::Params::OpenAIModelParams::FunctionCall::TaggedSymbol) }
+              T.type_alias do
+                T.any(
+                  Symbol,
+                  String,
+                  Braintrust::Models::PromptOptions::Params::OpenAIModelParams::FunctionCall::TaggedSymbol
+                )
+              end
 
             AUTO =
               T.let(:auto, Braintrust::Models::PromptOptions::Params::OpenAIModelParams::FunctionCall::TaggedSymbol)
@@ -344,7 +350,13 @@ module Braintrust
             TaggedSymbol =
               T.type_alias { T.all(Symbol, Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ReasoningEffort) }
             OrSymbol =
-              T.type_alias { T.any(Symbol, Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ReasoningEffort::TaggedSymbol) }
+              T.type_alias do
+                T.any(
+                  Symbol,
+                  String,
+                  Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ReasoningEffort::TaggedSymbol
+                )
+              end
 
             LOW =
               T.let(:low, Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ReasoningEffort::TaggedSymbol)
@@ -408,6 +420,7 @@ module Braintrust
                   T.type_alias do
                     T.any(
                       Symbol,
+                      String,
                       Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ResponseFormat::JsonObject::Type::TaggedSymbol
                     )
                   end
@@ -552,6 +565,7 @@ module Braintrust
                   T.type_alias do
                     T.any(
                       Symbol,
+                      String,
                       Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ResponseFormat::JsonSchema::Type::TaggedSymbol
                     )
                   end
@@ -610,6 +624,7 @@ module Braintrust
                   T.type_alias do
                     T.any(
                       Symbol,
+                      String,
                       Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ResponseFormat::Text::Type::TaggedSymbol
                     )
                   end
@@ -713,6 +728,7 @@ module Braintrust
                   T.type_alias do
                     T.any(
                       Symbol,
+                      String,
                       Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ToolChoice::Function::Type::TaggedSymbol
                     )
                   end
@@ -746,7 +762,13 @@ module Braintrust
             TaggedSymbol =
               T.type_alias { T.all(Symbol, Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ToolChoice) }
             OrSymbol =
-              T.type_alias { T.any(Symbol, Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ToolChoice::TaggedSymbol) }
+              T.type_alias do
+                T.any(
+                  Symbol,
+                  String,
+                  Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ToolChoice::TaggedSymbol
+                )
+              end
 
             AUTO =
               T.let(:auto, Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ToolChoice::TaggedSymbol)

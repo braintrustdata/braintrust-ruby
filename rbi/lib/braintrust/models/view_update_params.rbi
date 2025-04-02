@@ -88,7 +88,8 @@ module Braintrust
         extend Braintrust::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Braintrust::Models::ViewUpdateParams::ViewType) }
-        OrSymbol = T.type_alias { T.any(Symbol, Braintrust::Models::ViewUpdateParams::ViewType::TaggedSymbol) }
+        OrSymbol =
+          T.type_alias { T.any(Symbol, String, Braintrust::Models::ViewUpdateParams::ViewType::TaggedSymbol) }
 
         PROJECTS = T.let(:projects, Braintrust::Models::ViewUpdateParams::ViewType::TaggedSymbol)
         EXPERIMENTS = T.let(:experiments, Braintrust::Models::ViewUpdateParams::ViewType::TaggedSymbol)

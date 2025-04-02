@@ -28,7 +28,7 @@ module Braintrust
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Braintrust::Models::ChatCompletionContentPartText::Type) }
         OrSymbol =
-          T.type_alias { T.any(Symbol, Braintrust::Models::ChatCompletionContentPartText::Type::TaggedSymbol) }
+          T.type_alias { T.any(Symbol, String, Braintrust::Models::ChatCompletionContentPartText::Type::TaggedSymbol) }
 
         TEXT = T.let(:text, Braintrust::Models::ChatCompletionContentPartText::Type::TaggedSymbol)
 

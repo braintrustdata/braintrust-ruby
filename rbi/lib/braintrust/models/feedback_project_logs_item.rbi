@@ -78,7 +78,7 @@ module Braintrust
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Braintrust::Models::FeedbackProjectLogsItem::Source) }
         OrSymbol =
-          T.type_alias { T.any(Symbol, Braintrust::Models::FeedbackProjectLogsItem::Source::TaggedSymbol) }
+          T.type_alias { T.any(Symbol, String, Braintrust::Models::FeedbackProjectLogsItem::Source::TaggedSymbol) }
 
         APP = T.let(:app, Braintrust::Models::FeedbackProjectLogsItem::Source::TaggedSymbol)
         API = T.let(:api, Braintrust::Models::FeedbackProjectLogsItem::Source::TaggedSymbol)

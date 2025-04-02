@@ -207,7 +207,7 @@ module Braintrust
             TaggedSymbol =
               T.type_alias { T.all(Symbol, Braintrust::Models::FunctionInvokeParams::Message::System::Role) }
             OrSymbol =
-              T.type_alias { T.any(Symbol, Braintrust::Models::FunctionInvokeParams::Message::System::Role::TaggedSymbol) }
+              T.type_alias { T.any(Symbol, String, Braintrust::Models::FunctionInvokeParams::Message::System::Role::TaggedSymbol) }
 
             SYSTEM = T.let(:system, Braintrust::Models::FunctionInvokeParams::Message::System::Role::TaggedSymbol)
 
@@ -308,7 +308,7 @@ module Braintrust
             TaggedSymbol =
               T.type_alias { T.all(Symbol, Braintrust::Models::FunctionInvokeParams::Message::User::Role) }
             OrSymbol =
-              T.type_alias { T.any(Symbol, Braintrust::Models::FunctionInvokeParams::Message::User::Role::TaggedSymbol) }
+              T.type_alias { T.any(Symbol, String, Braintrust::Models::FunctionInvokeParams::Message::User::Role::TaggedSymbol) }
 
             USER = T.let(:user, Braintrust::Models::FunctionInvokeParams::Message::User::Role::TaggedSymbol)
 
@@ -426,7 +426,7 @@ module Braintrust
             TaggedSymbol =
               T.type_alias { T.all(Symbol, Braintrust::Models::FunctionInvokeParams::Message::Assistant::Role) }
             OrSymbol =
-              T.type_alias { T.any(Symbol, Braintrust::Models::FunctionInvokeParams::Message::Assistant::Role::TaggedSymbol) }
+              T.type_alias { T.any(Symbol, String, Braintrust::Models::FunctionInvokeParams::Message::Assistant::Role::TaggedSymbol) }
 
             ASSISTANT =
               T.let(:assistant, Braintrust::Models::FunctionInvokeParams::Message::Assistant::Role::TaggedSymbol)
@@ -502,7 +502,7 @@ module Braintrust
             TaggedSymbol =
               T.type_alias { T.all(Symbol, Braintrust::Models::FunctionInvokeParams::Message::Tool::Role) }
             OrSymbol =
-              T.type_alias { T.any(Symbol, Braintrust::Models::FunctionInvokeParams::Message::Tool::Role::TaggedSymbol) }
+              T.type_alias { T.any(Symbol, String, Braintrust::Models::FunctionInvokeParams::Message::Tool::Role::TaggedSymbol) }
 
             TOOL = T.let(:tool, Braintrust::Models::FunctionInvokeParams::Message::Tool::Role::TaggedSymbol)
 
@@ -555,7 +555,7 @@ module Braintrust
             TaggedSymbol =
               T.type_alias { T.all(Symbol, Braintrust::Models::FunctionInvokeParams::Message::Function::Role) }
             OrSymbol =
-              T.type_alias { T.any(Symbol, Braintrust::Models::FunctionInvokeParams::Message::Function::Role::TaggedSymbol) }
+              T.type_alias { T.any(Symbol, String, Braintrust::Models::FunctionInvokeParams::Message::Function::Role::TaggedSymbol) }
 
             FUNCTION =
               T.let(:function, Braintrust::Models::FunctionInvokeParams::Message::Function::Role::TaggedSymbol)
@@ -603,7 +603,7 @@ module Braintrust
             TaggedSymbol =
               T.type_alias { T.all(Symbol, Braintrust::Models::FunctionInvokeParams::Message::Fallback::Role) }
             OrSymbol =
-              T.type_alias { T.any(Symbol, Braintrust::Models::FunctionInvokeParams::Message::Fallback::Role::TaggedSymbol) }
+              T.type_alias { T.any(Symbol, String, Braintrust::Models::FunctionInvokeParams::Message::Fallback::Role::TaggedSymbol) }
 
             MODEL = T.let(:model, Braintrust::Models::FunctionInvokeParams::Message::Fallback::Role::TaggedSymbol)
 
@@ -630,7 +630,8 @@ module Braintrust
         extend Braintrust::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Braintrust::Models::FunctionInvokeParams::Mode) }
-        OrSymbol = T.type_alias { T.any(Symbol, Braintrust::Models::FunctionInvokeParams::Mode::TaggedSymbol) }
+        OrSymbol =
+          T.type_alias { T.any(Symbol, String, Braintrust::Models::FunctionInvokeParams::Mode::TaggedSymbol) }
 
         AUTO = T.let(:auto, Braintrust::Models::FunctionInvokeParams::Mode::TaggedSymbol)
         PARALLEL = T.let(:parallel, Braintrust::Models::FunctionInvokeParams::Mode::TaggedSymbol)
@@ -714,6 +715,7 @@ module Braintrust
               T.type_alias do
                 T.any(
                   Symbol,
+                  String,
                   Braintrust::Models::FunctionInvokeParams::Parent::SpanParentStruct::ObjectType::TaggedSymbol
                 )
               end
