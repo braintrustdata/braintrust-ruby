@@ -49,7 +49,7 @@ module Braintrust
       def retrieve(prompt_id, params = {})
         @client.request(
           method: :get,
-          path: ["v1/prompt/%0s", prompt_id],
+          path: ["v1/prompt/%1$s", prompt_id],
           model: Braintrust::Models::Prompt,
           options: params[:request_options]
         )
@@ -80,7 +80,7 @@ module Braintrust
         parsed, options = Braintrust::Models::PromptUpdateParams.dump_request(params)
         @client.request(
           method: :patch,
-          path: ["v1/prompt/%0s", prompt_id],
+          path: ["v1/prompt/%1$s", prompt_id],
           body: parsed,
           model: Braintrust::Models::Prompt,
           options: options
@@ -151,7 +151,7 @@ module Braintrust
       def delete(prompt_id, params = {})
         @client.request(
           method: :delete,
-          path: ["v1/prompt/%0s", prompt_id],
+          path: ["v1/prompt/%1$s", prompt_id],
           model: Braintrust::Models::Prompt,
           options: params[:request_options]
         )

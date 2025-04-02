@@ -15,7 +15,7 @@ module Braintrust
       def retrieve(user_id, params = {})
         @client.request(
           method: :get,
-          path: ["v1/user/%0s", user_id],
+          path: ["v1/user/%1$s", user_id],
           model: Braintrust::Models::User,
           options: params[:request_options]
         )

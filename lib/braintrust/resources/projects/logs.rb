@@ -19,7 +19,7 @@ module Braintrust
           parsed, options = Braintrust::Models::Projects::LogFeedbackParams.dump_request(params)
           @client.request(
             method: :post,
-            path: ["v1/project_logs/%0s/feedback", project_id],
+            path: ["v1/project_logs/%1$s/feedback", project_id],
             body: parsed,
             model: Braintrust::Models::FeedbackResponseSchema,
             options: options
@@ -84,7 +84,7 @@ module Braintrust
           parsed, options = Braintrust::Models::Projects::LogFetchParams.dump_request(params)
           @client.request(
             method: :get,
-            path: ["v1/project_logs/%0s/fetch", project_id],
+            path: ["v1/project_logs/%1$s/fetch", project_id],
             query: parsed,
             model: Braintrust::Models::FetchProjectLogsEventsResponse,
             options: options
@@ -155,7 +155,7 @@ module Braintrust
           parsed, options = Braintrust::Models::Projects::LogFetchPostParams.dump_request(params)
           @client.request(
             method: :post,
-            path: ["v1/project_logs/%0s/fetch", project_id],
+            path: ["v1/project_logs/%1$s/fetch", project_id],
             body: parsed,
             model: Braintrust::Models::FetchProjectLogsEventsResponse,
             options: options
@@ -177,7 +177,7 @@ module Braintrust
           parsed, options = Braintrust::Models::Projects::LogInsertParams.dump_request(params)
           @client.request(
             method: :post,
-            path: ["v1/project_logs/%0s/insert", project_id],
+            path: ["v1/project_logs/%1$s/insert", project_id],
             body: parsed,
             model: Braintrust::Models::InsertEventsResponse,
             options: options

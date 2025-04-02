@@ -47,7 +47,7 @@ module Braintrust
       def retrieve(ai_secret_id, params = {})
         @client.request(
           method: :get,
-          path: ["v1/ai_secret/%0s", ai_secret_id],
+          path: ["v1/ai_secret/%1$s", ai_secret_id],
           model: Braintrust::Models::AISecret,
           options: params[:request_options]
         )
@@ -76,7 +76,7 @@ module Braintrust
         parsed, options = Braintrust::Models::AISecretUpdateParams.dump_request(params)
         @client.request(
           method: :patch,
-          path: ["v1/ai_secret/%0s", ai_secret_id],
+          path: ["v1/ai_secret/%1$s", ai_secret_id],
           body: parsed,
           model: Braintrust::Models::AISecret,
           options: options
@@ -138,7 +138,7 @@ module Braintrust
       def delete(ai_secret_id, params = {})
         @client.request(
           method: :delete,
-          path: ["v1/ai_secret/%0s", ai_secret_id],
+          path: ["v1/ai_secret/%1$s", ai_secret_id],
           model: Braintrust::Models::AISecret,
           options: params[:request_options]
         )
