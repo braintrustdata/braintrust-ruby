@@ -27,6 +27,8 @@ module Braintrust
       #   @option params [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Braintrust::Models::View]
+      #
+      # @see Braintrust::Models::ViewCreateParams
       def create(params)
         parsed, options = Braintrust::Models::ViewCreateParams.dump_request(params)
         @client.request(
@@ -51,6 +53,8 @@ module Braintrust
       #   @option params [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Braintrust::Models::View]
+      #
+      # @see Braintrust::Models::ViewRetrieveParams
       def retrieve(view_id, params)
         parsed, options = Braintrust::Models::ViewRetrieveParams.dump_request(params)
         @client.request(
@@ -87,6 +91,8 @@ module Braintrust
       #   @option params [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Braintrust::Models::View]
+      #
+      # @see Braintrust::Models::ViewUpdateParams
       def update(view_id, params)
         parsed, options = Braintrust::Models::ViewUpdateParams.dump_request(params)
         @client.request(
@@ -131,6 +137,8 @@ module Braintrust
       #   @option params [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Braintrust::ListObjects<Braintrust::Models::View>]
+      #
+      # @see Braintrust::Models::ViewListParams
       def list(params)
         parsed, options = Braintrust::Models::ViewListParams.dump_request(params)
         @client.request(
@@ -156,6 +164,8 @@ module Braintrust
       #   @option params [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Braintrust::Models::View]
+      #
+      # @see Braintrust::Models::ViewDeleteParams
       def delete(view_id, params)
         parsed, options = Braintrust::Models::ViewDeleteParams.dump_request(params)
         @client.request(
@@ -192,6 +202,8 @@ module Braintrust
       #   @option params [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Braintrust::Models::View]
+      #
+      # @see Braintrust::Models::ViewReplaceParams
       def replace(params)
         parsed, options = Braintrust::Models::ViewReplaceParams.dump_request(params)
         @client.request(
@@ -203,6 +215,8 @@ module Braintrust
         )
       end
 
+      # @api private
+      #
       # @param client [Braintrust::Client]
       def initialize(client:)
         @client = client

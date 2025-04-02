@@ -2,6 +2,7 @@
 
 module Braintrust
   module Models
+    # @see Braintrust::Resources::Functions#update
     class FunctionUpdateParams < Braintrust::BaseModel
       # @!parse
       #   extend Braintrust::Type::RequestParameters::Converter
@@ -70,6 +71,7 @@ module Braintrust
 
           # def initialize: (Hash | Braintrust::BaseModel) -> void
 
+          # @see Braintrust::Models::FunctionUpdateParams::FunctionData::Prompt#type
           module Type
             extend Braintrust::Enum
 
@@ -102,6 +104,7 @@ module Braintrust
 
           # def initialize: (Hash | Braintrust::BaseModel) -> void
 
+          # @see Braintrust::Models::FunctionUpdateParams::FunctionData::Code#data
           module Data
             extend Braintrust::Union
 
@@ -163,6 +166,7 @@ module Braintrust
 
               # def initialize: (Hash | Braintrust::BaseModel) -> void
 
+              # @see Braintrust::Models::FunctionUpdateParams::FunctionData::Code::Data::Inline#runtime_context
               class RuntimeContext < Braintrust::BaseModel
                 # @!attribute runtime
                 #
@@ -183,6 +187,7 @@ module Braintrust
 
                 # def initialize: (Hash | Braintrust::BaseModel) -> void
 
+                # @see Braintrust::Models::FunctionUpdateParams::FunctionData::Code::Data::Inline::RuntimeContext#runtime
                 module Runtime
                   extend Braintrust::Enum
 
@@ -197,6 +202,7 @@ module Braintrust
                 end
               end
 
+              # @see Braintrust::Models::FunctionUpdateParams::FunctionData::Code::Data::Inline#type
               module Type
                 extend Braintrust::Enum
 
@@ -215,6 +221,7 @@ module Braintrust
             #   def self.variants; end
           end
 
+          # @see Braintrust::Models::FunctionUpdateParams::FunctionData::Code#type
           module Type
             extend Braintrust::Enum
 
@@ -247,6 +254,7 @@ module Braintrust
 
           # def initialize: (Hash | Braintrust::BaseModel) -> void
 
+          # @see Braintrust::Models::FunctionUpdateParams::FunctionData::Global#type
           module Type
             extend Braintrust::Enum
 

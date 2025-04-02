@@ -141,6 +141,7 @@ module Braintrust
 
       # def initialize: (Hash | Braintrust::BaseModel) -> void
 
+      # @see Braintrust::Models::Function#function_data
       module FunctionData
         extend Braintrust::Union
 
@@ -163,6 +164,7 @@ module Braintrust
 
           # def initialize: (Hash | Braintrust::BaseModel) -> void
 
+          # @see Braintrust::Models::Function::FunctionData::Prompt#type
           module Type
             extend Braintrust::Enum
 
@@ -195,6 +197,7 @@ module Braintrust
 
           # def initialize: (Hash | Braintrust::BaseModel) -> void
 
+          # @see Braintrust::Models::Function::FunctionData::Code#data
           module Data
             extend Braintrust::Union
 
@@ -254,6 +257,7 @@ module Braintrust
 
               # def initialize: (Hash | Braintrust::BaseModel) -> void
 
+              # @see Braintrust::Models::Function::FunctionData::Code::Data::Inline#runtime_context
               class RuntimeContext < Braintrust::BaseModel
                 # @!attribute runtime
                 #
@@ -274,6 +278,7 @@ module Braintrust
 
                 # def initialize: (Hash | Braintrust::BaseModel) -> void
 
+                # @see Braintrust::Models::Function::FunctionData::Code::Data::Inline::RuntimeContext#runtime
                 module Runtime
                   extend Braintrust::Enum
 
@@ -288,6 +293,7 @@ module Braintrust
                 end
               end
 
+              # @see Braintrust::Models::Function::FunctionData::Code::Data::Inline#type
               module Type
                 extend Braintrust::Enum
 
@@ -306,6 +312,7 @@ module Braintrust
             #   def self.variants; end
           end
 
+          # @see Braintrust::Models::Function::FunctionData::Code#type
           module Type
             extend Braintrust::Enum
 
@@ -338,6 +345,7 @@ module Braintrust
 
           # def initialize: (Hash | Braintrust::BaseModel) -> void
 
+          # @see Braintrust::Models::Function::FunctionData::Global#type
           module Type
             extend Braintrust::Enum
 
@@ -357,6 +365,8 @@ module Braintrust
       end
 
       # A literal 'p' which identifies the object as a project prompt
+      #
+      # @see Braintrust::Models::Function#log_id
       module LogID
         extend Braintrust::Enum
 
@@ -369,6 +379,7 @@ module Braintrust
         #   def self.values; end
       end
 
+      # @see Braintrust::Models::Function#function_schema
       class FunctionSchema < Braintrust::BaseModel
         # @!attribute [r] parameters
         #
@@ -399,6 +410,7 @@ module Braintrust
         # def initialize: (Hash | Braintrust::BaseModel) -> void
       end
 
+      # @see Braintrust::Models::Function#function_type
       module FunctionType
         extend Braintrust::Enum
 
@@ -414,6 +426,7 @@ module Braintrust
         #   def self.values; end
       end
 
+      # @see Braintrust::Models::Function#origin
       class Origin < Braintrust::BaseModel
         # @!attribute object_id_
         #   Id of the object the function is originating from

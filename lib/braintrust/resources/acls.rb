@@ -30,6 +30,8 @@ module Braintrust
       #   @option params [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Braintrust::Models::ACL]
+      #
+      # @see Braintrust::Models::ACLCreateParams
       def create(params)
         parsed, options = Braintrust::Models::ACLCreateParams.dump_request(params)
         @client.request(
@@ -50,6 +52,8 @@ module Braintrust
       #   @option params [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Braintrust::Models::ACL]
+      #
+      # @see Braintrust::Models::ACLRetrieveParams
       def retrieve(acl_id, params = {})
         @client.request(
           method: :get,
@@ -88,6 +92,8 @@ module Braintrust
       #   @option params [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Braintrust::ListObjects<Braintrust::Models::ACL>]
+      #
+      # @see Braintrust::Models::ACLListParams
       def list(params)
         parsed, options = Braintrust::Models::ACLListParams.dump_request(params)
         @client.request(
@@ -109,6 +115,8 @@ module Braintrust
       #   @option params [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Braintrust::Models::ACL]
+      #
+      # @see Braintrust::Models::ACLDeleteParams
       def delete(acl_id, params = {})
         @client.request(
           method: :delete,
@@ -149,6 +157,8 @@ module Braintrust
       #   @option params [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Braintrust::Models::ACLBatchUpdateResponse]
+      #
+      # @see Braintrust::Models::ACLBatchUpdateParams
       def batch_update(params = {})
         parsed, options = Braintrust::Models::ACLBatchUpdateParams.dump_request(params)
         @client.request(
@@ -186,6 +196,8 @@ module Braintrust
       #   @option params [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Braintrust::Models::ACL]
+      #
+      # @see Braintrust::Models::ACLFindAndDeleteParams
       def find_and_delete(params)
         parsed, options = Braintrust::Models::ACLFindAndDeleteParams.dump_request(params)
         @client.request(
@@ -197,6 +209,8 @@ module Braintrust
         )
       end
 
+      # @api private
+      #
       # @param client [Braintrust::Client]
       def initialize(client:)
         @client = client

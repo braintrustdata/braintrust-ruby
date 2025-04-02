@@ -20,6 +20,8 @@ module Braintrust
       #   @option params [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Braintrust::Models::Project]
+      #
+      # @see Braintrust::Models::ProjectCreateParams
       def create(params)
         parsed, options = Braintrust::Models::ProjectCreateParams.dump_request(params)
         @client.request(
@@ -40,6 +42,8 @@ module Braintrust
       #   @option params [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Braintrust::Models::Project]
+      #
+      # @see Braintrust::Models::ProjectRetrieveParams
       def retrieve(project_id, params = {})
         @client.request(
           method: :get,
@@ -65,6 +69,8 @@ module Braintrust
       #   @option params [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Braintrust::Models::Project]
+      #
+      # @see Braintrust::Models::ProjectUpdateParams
       def update(project_id, params = {})
         parsed, options = Braintrust::Models::ProjectUpdateParams.dump_request(params)
         @client.request(
@@ -105,6 +111,8 @@ module Braintrust
       #   @option params [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Braintrust::ListObjects<Braintrust::Models::Project>]
+      #
+      # @see Braintrust::Models::ProjectListParams
       def list(params = {})
         parsed, options = Braintrust::Models::ProjectListParams.dump_request(params)
         @client.request(
@@ -126,6 +134,8 @@ module Braintrust
       #   @option params [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Braintrust::Models::Project]
+      #
+      # @see Braintrust::Models::ProjectDeleteParams
       def delete(project_id, params = {})
         @client.request(
           method: :delete,
@@ -135,6 +145,8 @@ module Braintrust
         )
       end
 
+      # @api private
+      #
       # @param client [Braintrust::Client]
       def initialize(client:)
         @client = client

@@ -34,6 +34,7 @@ module Braintrust
 
       # def initialize: (Hash | Braintrust::BaseModel) -> void
 
+      # @see Braintrust::Models::CodeBundle#location
       module Location
         extend Braintrust::Union
 
@@ -66,6 +67,7 @@ module Braintrust
 
           # def initialize: (Hash | Braintrust::BaseModel) -> void
 
+          # @see Braintrust::Models::CodeBundle::Location::Experiment#position
           module Position
             extend Braintrust::Union
 
@@ -86,6 +88,7 @@ module Braintrust
 
               # def initialize: (Hash | Braintrust::BaseModel) -> void
 
+              # @see Braintrust::Models::CodeBundle::Location::Experiment::Position::Type#type
               module Type
                 extend Braintrust::Enum
 
@@ -118,6 +121,7 @@ module Braintrust
 
               # def initialize: (Hash | Braintrust::BaseModel) -> void
 
+              # @see Braintrust::Models::CodeBundle::Location::Experiment::Position::Scorer#type
               module Type
                 extend Braintrust::Enum
 
@@ -136,6 +140,7 @@ module Braintrust
             #   def self.variants; end
           end
 
+          # @see Braintrust::Models::CodeBundle::Location::Experiment#type
           module Type
             extend Braintrust::Enum
 
@@ -168,6 +173,7 @@ module Braintrust
 
           # def initialize: (Hash | Braintrust::BaseModel) -> void
 
+          # @see Braintrust::Models::CodeBundle::Location::Function#type
           module Type
             extend Braintrust::Enum
 
@@ -186,6 +192,7 @@ module Braintrust
         #   def self.variants; end
       end
 
+      # @see Braintrust::Models::CodeBundle#runtime_context
       class RuntimeContext < Braintrust::BaseModel
         # @!attribute runtime
         #
@@ -205,6 +212,7 @@ module Braintrust
 
         # def initialize: (Hash | Braintrust::BaseModel) -> void
 
+        # @see Braintrust::Models::CodeBundle::RuntimeContext#runtime
         module Runtime
           extend Braintrust::Enum
 

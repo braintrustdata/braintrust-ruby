@@ -30,6 +30,7 @@ module Braintrust
 
       # def initialize: (Hash | Braintrust::BaseModel) -> void
 
+      # @see Braintrust::Models::PatchOrganizationMembersOutput#status
       module Status
         extend Braintrust::Enum
 

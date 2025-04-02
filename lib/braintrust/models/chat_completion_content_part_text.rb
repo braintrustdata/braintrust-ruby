@@ -25,6 +25,7 @@ module Braintrust
 
       # def initialize: (Hash | Braintrust::BaseModel) -> void
 
+      # @see Braintrust::Models::ChatCompletionContentPartText#type
       module Type
         extend Braintrust::Enum
 

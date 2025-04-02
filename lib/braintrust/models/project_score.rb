@@ -96,6 +96,8 @@ module Braintrust
       # def initialize: (Hash | Braintrust::BaseModel) -> void
 
       # For categorical-type project scores, the list of all categories
+      #
+      # @see Braintrust::Models::ProjectScore#categories
       module Categories
         extend Braintrust::Union
 

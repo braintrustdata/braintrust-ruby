@@ -19,6 +19,8 @@ module Braintrust
       #   @option params [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Braintrust::Models::EnvVar]
+      #
+      # @see Braintrust::Models::EnvVarCreateParams
       def create(params)
         parsed, options = Braintrust::Models::EnvVarCreateParams.dump_request(params)
         @client.request(
@@ -39,6 +41,8 @@ module Braintrust
       #   @option params [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Braintrust::Models::EnvVar]
+      #
+      # @see Braintrust::Models::EnvVarRetrieveParams
       def retrieve(env_var_id, params = {})
         @client.request(
           method: :get,
@@ -63,6 +67,8 @@ module Braintrust
       #   @option params [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Braintrust::Models::EnvVar]
+      #
+      # @see Braintrust::Models::EnvVarUpdateParams
       def update(env_var_id, params)
         parsed, options = Braintrust::Models::EnvVarUpdateParams.dump_request(params)
         @client.request(
@@ -93,6 +99,8 @@ module Braintrust
       #   @option params [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Braintrust::Models::EnvVarListResponse]
+      #
+      # @see Braintrust::Models::EnvVarListParams
       def list(params = {})
         parsed, options = Braintrust::Models::EnvVarListParams.dump_request(params)
         @client.request(
@@ -113,6 +121,8 @@ module Braintrust
       #   @option params [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Braintrust::Models::EnvVar]
+      #
+      # @see Braintrust::Models::EnvVarDeleteParams
       def delete(env_var_id, params = {})
         @client.request(
           method: :delete,
@@ -139,6 +149,8 @@ module Braintrust
       #   @option params [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Braintrust::Models::EnvVar]
+      #
+      # @see Braintrust::Models::EnvVarReplaceParams
       def replace(params)
         parsed, options = Braintrust::Models::EnvVarReplaceParams.dump_request(params)
         @client.request(
@@ -150,6 +162,8 @@ module Braintrust
         )
       end
 
+      # @api private
+      #
       # @param client [Braintrust::Client]
       def initialize(client:)
         @client = client

@@ -15,6 +15,8 @@ module Braintrust
       #   @option params [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Braintrust::Models::Organization]
+      #
+      # @see Braintrust::Models::OrganizationRetrieveParams
       def retrieve(organization_id, params = {})
         @client.request(
           method: :get,
@@ -45,6 +47,8 @@ module Braintrust
       #   @option params [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Braintrust::Models::Organization]
+      #
+      # @see Braintrust::Models::OrganizationUpdateParams
       def update(organization_id, params = {})
         parsed, options = Braintrust::Models::OrganizationUpdateParams.dump_request(params)
         @client.request(
@@ -83,6 +87,8 @@ module Braintrust
       #   @option params [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Braintrust::ListObjects<Braintrust::Models::Organization>]
+      #
+      # @see Braintrust::Models::OrganizationListParams
       def list(params = {})
         parsed, options = Braintrust::Models::OrganizationListParams.dump_request(params)
         @client.request(
@@ -104,6 +110,8 @@ module Braintrust
       #   @option params [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Braintrust::Models::Organization]
+      #
+      # @see Braintrust::Models::OrganizationDeleteParams
       def delete(organization_id, params = {})
         @client.request(
           method: :delete,
@@ -113,6 +121,8 @@ module Braintrust
         )
       end
 
+      # @api private
+      #
       # @param client [Braintrust::Client]
       def initialize(client:)
         @client = client

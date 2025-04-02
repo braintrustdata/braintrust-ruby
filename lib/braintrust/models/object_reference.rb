@@ -47,6 +47,8 @@ module Braintrust
       # def initialize: (Hash | Braintrust::BaseModel) -> void
 
       # Type of the object the event is originating from.
+      #
+      # @see Braintrust::Models::ObjectReference#object_type
       module ObjectType
         extend Braintrust::Enum
 

@@ -38,6 +38,8 @@ module Braintrust
       #   @option params [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Braintrust::Models::Experiment]
+      #
+      # @see Braintrust::Models::ExperimentCreateParams
       def create(params)
         parsed, options = Braintrust::Models::ExperimentCreateParams.dump_request(params)
         @client.request(
@@ -58,6 +60,8 @@ module Braintrust
       #   @option params [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Braintrust::Models::Experiment]
+      #
+      # @see Braintrust::Models::ExperimentRetrieveParams
       def retrieve(experiment_id, params = {})
         @client.request(
           method: :get,
@@ -97,6 +101,8 @@ module Braintrust
       #   @option params [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Braintrust::Models::Experiment]
+      #
+      # @see Braintrust::Models::ExperimentUpdateParams
       def update(experiment_id, params = {})
         parsed, options = Braintrust::Models::ExperimentUpdateParams.dump_request(params)
         @client.request(
@@ -141,6 +147,8 @@ module Braintrust
       #   @option params [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Braintrust::ListObjects<Braintrust::Models::Experiment>]
+      #
+      # @see Braintrust::Models::ExperimentListParams
       def list(params = {})
         parsed, options = Braintrust::Models::ExperimentListParams.dump_request(params)
         @client.request(
@@ -162,6 +170,8 @@ module Braintrust
       #   @option params [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Braintrust::Models::Experiment]
+      #
+      # @see Braintrust::Models::ExperimentDeleteParams
       def delete(experiment_id, params = {})
         @client.request(
           method: :delete,
@@ -182,6 +192,8 @@ module Braintrust
       #   @option params [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Braintrust::Models::FeedbackResponseSchema]
+      #
+      # @see Braintrust::Models::ExperimentFeedbackParams
       def feedback(experiment_id, params)
         parsed, options = Braintrust::Models::ExperimentFeedbackParams.dump_request(params)
         @client.request(
@@ -247,6 +259,8 @@ module Braintrust
       #   @option params [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Braintrust::Models::FetchExperimentEventsResponse]
+      #
+      # @see Braintrust::Models::ExperimentFetchParams
       def fetch(experiment_id, params = {})
         parsed, options = Braintrust::Models::ExperimentFetchParams.dump_request(params)
         @client.request(
@@ -318,6 +332,8 @@ module Braintrust
       #   @option params [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Braintrust::Models::FetchExperimentEventsResponse]
+      #
+      # @see Braintrust::Models::ExperimentFetchPostParams
       def fetch_post(experiment_id, params = {})
         parsed, options = Braintrust::Models::ExperimentFetchPostParams.dump_request(params)
         @client.request(
@@ -340,6 +356,8 @@ module Braintrust
       #   @option params [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Braintrust::Models::InsertEventsResponse]
+      #
+      # @see Braintrust::Models::ExperimentInsertParams
       def insert(experiment_id, params)
         parsed, options = Braintrust::Models::ExperimentInsertParams.dump_request(params)
         @client.request(
@@ -368,6 +386,8 @@ module Braintrust
       #   @option params [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Braintrust::Models::SummarizeExperimentResponse]
+      #
+      # @see Braintrust::Models::ExperimentSummarizeParams
       def summarize(experiment_id, params = {})
         parsed, options = Braintrust::Models::ExperimentSummarizeParams.dump_request(params)
         @client.request(
@@ -379,6 +399,8 @@ module Braintrust
         )
       end
 
+      # @api private
+      #
       # @param client [Braintrust::Client]
       def initialize(client:)
         @client = client
