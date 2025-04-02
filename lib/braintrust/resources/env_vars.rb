@@ -6,17 +6,13 @@ module Braintrust
       # Create a new env_var. If there is an existing env_var with the same name as the
       #   one specified in the request, will return the existing env_var unmodified
       #
-      # @param params [Braintrust::Models::EnvVarCreateParams, Hash{Symbol=>Object}] .
+      # @overload create(name:, object_id_:, object_type:, value: nil, request_options: {})
       #
-      #   @option params [String] :name The name of the environment variable
-      #
-      #   @option params [String] :object_id_ The id of the object the environment variable is scoped for
-      #
-      #   @option params [Symbol, Braintrust::Models::EnvVarCreateParams::ObjectType] :object_type The type of the object the environment variable is scoped for
-      #
-      #   @option params [String, nil] :value The value of the environment variable. Will be encrypted at rest.
-      #
-      #   @option params [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
+      # @param name [String]
+      # @param object_id_ [String]
+      # @param object_type [Symbol, Braintrust::Models::EnvVarCreateParams::ObjectType]
+      # @param value [String, nil]
+      # @param request_options [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil]
       #
       # @return [Braintrust::Models::EnvVar]
       #
@@ -34,11 +30,10 @@ module Braintrust
 
       # Get an env_var object by its id
       #
-      # @param env_var_id [String] EnvVar id
+      # @overload retrieve(env_var_id, request_options: {})
       #
-      # @param params [Braintrust::Models::EnvVarRetrieveParams, Hash{Symbol=>Object}] .
-      #
-      #   @option params [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
+      # @param env_var_id [String]
+      # @param request_options [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil]
       #
       # @return [Braintrust::Models::EnvVar]
       #
@@ -56,15 +51,12 @@ module Braintrust
       #   Any object-type fields will be deep-merged with existing content. Currently we
       #   do not support removing fields or setting them to null.
       #
-      # @param env_var_id [String] EnvVar id
+      # @overload update(env_var_id, name:, value: nil, request_options: {})
       #
-      # @param params [Braintrust::Models::EnvVarUpdateParams, Hash{Symbol=>Object}] .
-      #
-      #   @option params [String] :name The name of the environment variable
-      #
-      #   @option params [String, nil] :value The value of the environment variable. Will be encrypted at rest.
-      #
-      #   @option params [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
+      # @param env_var_id [String]
+      # @param name [String]
+      # @param value [String, nil]
+      # @param request_options [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil]
       #
       # @return [Braintrust::Models::EnvVar]
       #
@@ -83,20 +75,14 @@ module Braintrust
       # List out all env_vars. The env_vars are sorted by creation date, with the most
       #   recently-created env_vars coming first
       #
-      # @param params [Braintrust::Models::EnvVarListParams, Hash{Symbol=>Object}] .
+      # @overload list(env_var_name: nil, ids: nil, limit: nil, object_id_: nil, object_type: nil, request_options: {})
       #
-      #   @option params [String] :env_var_name Name of the env_var to search for
-      #
-      #   @option params [String, Array<String>] :ids Filter search results to a particular set of object IDs. To specify a list of
-      #     IDs, include the query param multiple times
-      #
-      #   @option params [Integer, nil] :limit Limit the number of objects to return
-      #
-      #   @option params [String] :object_id_ The id of the object the environment variable is scoped for
-      #
-      #   @option params [Symbol, Braintrust::Models::EnvVarObjectType] :object_type The type of the object the environment variable is scoped for
-      #
-      #   @option params [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
+      # @param env_var_name [String]
+      # @param ids [String, Array<String>]
+      # @param limit [Integer, nil]
+      # @param object_id_ [String]
+      # @param object_type [Symbol, Braintrust::Models::EnvVarObjectType]
+      # @param request_options [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil]
       #
       # @return [Braintrust::Models::EnvVarListResponse]
       #
@@ -114,11 +100,10 @@ module Braintrust
 
       # Delete an env_var object by its id
       #
-      # @param env_var_id [String] EnvVar id
+      # @overload delete(env_var_id, request_options: {})
       #
-      # @param params [Braintrust::Models::EnvVarDeleteParams, Hash{Symbol=>Object}] .
-      #
-      #   @option params [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
+      # @param env_var_id [String]
+      # @param request_options [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil]
       #
       # @return [Braintrust::Models::EnvVar]
       #
@@ -136,17 +121,13 @@ module Braintrust
       #   the one specified in the request, will replace the existing env_var with the
       #   provided fields
       #
-      # @param params [Braintrust::Models::EnvVarReplaceParams, Hash{Symbol=>Object}] .
+      # @overload replace(name:, object_id_:, object_type:, value: nil, request_options: {})
       #
-      #   @option params [String] :name The name of the environment variable
-      #
-      #   @option params [String] :object_id_ The id of the object the environment variable is scoped for
-      #
-      #   @option params [Symbol, Braintrust::Models::EnvVarReplaceParams::ObjectType] :object_type The type of the object the environment variable is scoped for
-      #
-      #   @option params [String, nil] :value The value of the environment variable. Will be encrypted at rest.
-      #
-      #   @option params [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
+      # @param name [String]
+      # @param object_id_ [String]
+      # @param object_type [Symbol, Braintrust::Models::EnvVarReplaceParams::ObjectType]
+      # @param value [String, nil]
+      # @param request_options [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil]
       #
       # @return [Braintrust::Models::EnvVar]
       #

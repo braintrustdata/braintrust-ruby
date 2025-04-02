@@ -6,25 +6,17 @@ module Braintrust
       # Create a new view. If there is an existing view with the same name as the one
       #   specified in the request, will return the existing view unmodified
       #
-      # @param params [Braintrust::Models::ViewCreateParams, Hash{Symbol=>Object}] .
+      # @overload create(name:, object_id_:, object_type:, view_type:, deleted_at: nil, options: nil, user_id: nil, view_data: nil, request_options: {})
       #
-      #   @option params [String] :name Name of the view
-      #
-      #   @option params [String] :object_id_ The id of the object the view applies to
-      #
-      #   @option params [Symbol, Braintrust::Models::ACLObjectType] :object_type The object type that the ACL applies to
-      #
-      #   @option params [Symbol, Braintrust::Models::ViewCreateParams::ViewType, nil] :view_type Type of table that the view corresponds to.
-      #
-      #   @option params [Time, nil] :deleted_at Date of role deletion, or null if the role is still active
-      #
-      #   @option params [Braintrust::Models::ViewOptions, nil] :options Options for the view in the app
-      #
-      #   @option params [String, nil] :user_id Identifies the user who created the view
-      #
-      #   @option params [Braintrust::Models::ViewData, nil] :view_data The view definition
-      #
-      #   @option params [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
+      # @param name [String]
+      # @param object_id_ [String]
+      # @param object_type [Symbol, Braintrust::Models::ACLObjectType]
+      # @param view_type [Symbol, Braintrust::Models::ViewCreateParams::ViewType, nil]
+      # @param deleted_at [Time, nil]
+      # @param options [Braintrust::Models::ViewOptions, nil]
+      # @param user_id [String, nil]
+      # @param view_data [Braintrust::Models::ViewData, nil]
+      # @param request_options [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil]
       #
       # @return [Braintrust::Models::View]
       #
@@ -42,15 +34,12 @@ module Braintrust
 
       # Get a view object by its id
       #
-      # @param view_id [String] View id
+      # @overload retrieve(view_id, object_id_:, object_type:, request_options: {})
       #
-      # @param params [Braintrust::Models::ViewRetrieveParams, Hash{Symbol=>Object}] .
-      #
-      #   @option params [String] :object_id_ The id of the object the ACL applies to
-      #
-      #   @option params [Symbol, Braintrust::Models::ACLObjectType] :object_type The object type that the ACL applies to
-      #
-      #   @option params [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
+      # @param view_id [String]
+      # @param object_id_ [String]
+      # @param object_type [Symbol, Braintrust::Models::ACLObjectType]
+      # @param request_options [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil]
       #
       # @return [Braintrust::Models::View]
       #
@@ -70,25 +59,17 @@ module Braintrust
       #   object-type fields will be deep-merged with existing content. Currently we do
       #   not support removing fields or setting them to null.
       #
-      # @param view_id [String] View id
+      # @overload update(view_id, object_id_:, object_type:, name: nil, options: nil, user_id: nil, view_data: nil, view_type: nil, request_options: {})
       #
-      # @param params [Braintrust::Models::ViewUpdateParams, Hash{Symbol=>Object}] .
-      #
-      #   @option params [String] :object_id_ The id of the object the view applies to
-      #
-      #   @option params [Symbol, Braintrust::Models::ACLObjectType] :object_type The object type that the ACL applies to
-      #
-      #   @option params [String, nil] :name Name of the view
-      #
-      #   @option params [Braintrust::Models::ViewOptions, nil] :options Options for the view in the app
-      #
-      #   @option params [String, nil] :user_id Identifies the user who created the view
-      #
-      #   @option params [Braintrust::Models::ViewData, nil] :view_data The view definition
-      #
-      #   @option params [Symbol, Braintrust::Models::ViewUpdateParams::ViewType, nil] :view_type Type of table that the view corresponds to.
-      #
-      #   @option params [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
+      # @param view_id [String]
+      # @param object_id_ [String]
+      # @param object_type [Symbol, Braintrust::Models::ACLObjectType]
+      # @param name [String, nil]
+      # @param options [Braintrust::Models::ViewOptions, nil]
+      # @param user_id [String, nil]
+      # @param view_data [Braintrust::Models::ViewData, nil]
+      # @param view_type [Symbol, Braintrust::Models::ViewUpdateParams::ViewType, nil]
+      # @param request_options [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil]
       #
       # @return [Braintrust::Models::View]
       #
@@ -107,34 +88,17 @@ module Braintrust
       # List out all views. The views are sorted by creation date, with the most
       #   recently-created views coming first
       #
-      # @param params [Braintrust::Models::ViewListParams, Hash{Symbol=>Object}] .
+      # @overload list(object_id_:, object_type:, ending_before: nil, ids: nil, limit: nil, starting_after: nil, view_name: nil, view_type: nil, request_options: {})
       #
-      #   @option params [String] :object_id_ The id of the object the ACL applies to
-      #
-      #   @option params [Symbol, Braintrust::Models::ACLObjectType] :object_type The object type that the ACL applies to
-      #
-      #   @option params [String] :ending_before Pagination cursor id.
-      #
-      #     For example, if the initial item in the last page you fetched had an id of
-      #     `foo`, pass `ending_before=foo` to fetch the previous page. Note: you may only
-      #     pass one of `starting_after` and `ending_before`
-      #
-      #   @option params [String, Array<String>] :ids Filter search results to a particular set of object IDs. To specify a list of
-      #     IDs, include the query param multiple times
-      #
-      #   @option params [Integer, nil] :limit Limit the number of objects to return
-      #
-      #   @option params [String] :starting_after Pagination cursor id.
-      #
-      #     For example, if the final item in the last page you fetched had an id of `foo`,
-      #     pass `starting_after=foo` to fetch the next page. Note: you may only pass one of
-      #     `starting_after` and `ending_before`
-      #
-      #   @option params [String] :view_name Name of the view to search for
-      #
-      #   @option params [Symbol, Braintrust::Models::ViewType, nil] :view_type Type of table that the view corresponds to.
-      #
-      #   @option params [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
+      # @param object_id_ [String]
+      # @param object_type [Symbol, Braintrust::Models::ACLObjectType]
+      # @param ending_before [String]
+      # @param ids [String, Array<String>]
+      # @param limit [Integer, nil]
+      # @param starting_after [String]
+      # @param view_name [String]
+      # @param view_type [Symbol, Braintrust::Models::ViewType, nil]
+      # @param request_options [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil]
       #
       # @return [Braintrust::ListObjects<Braintrust::Models::View>]
       #
@@ -153,15 +117,12 @@ module Braintrust
 
       # Delete a view object by its id
       #
-      # @param view_id [String] View id
+      # @overload delete(view_id, object_id_:, object_type:, request_options: {})
       #
-      # @param params [Braintrust::Models::ViewDeleteParams, Hash{Symbol=>Object}] .
-      #
-      #   @option params [String] :object_id_ The id of the object the view applies to
-      #
-      #   @option params [Symbol, Braintrust::Models::ACLObjectType] :object_type The object type that the ACL applies to
-      #
-      #   @option params [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
+      # @param view_id [String]
+      # @param object_id_ [String]
+      # @param object_type [Symbol, Braintrust::Models::ACLObjectType]
+      # @param request_options [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil]
       #
       # @return [Braintrust::Models::View]
       #
@@ -181,25 +142,17 @@ module Braintrust
       #   one specified in the request, will replace the existing view with the provided
       #   fields
       #
-      # @param params [Braintrust::Models::ViewReplaceParams, Hash{Symbol=>Object}] .
+      # @overload replace(name:, object_id_:, object_type:, view_type:, deleted_at: nil, options: nil, user_id: nil, view_data: nil, request_options: {})
       #
-      #   @option params [String] :name Name of the view
-      #
-      #   @option params [String] :object_id_ The id of the object the view applies to
-      #
-      #   @option params [Symbol, Braintrust::Models::ACLObjectType] :object_type The object type that the ACL applies to
-      #
-      #   @option params [Symbol, Braintrust::Models::ViewReplaceParams::ViewType, nil] :view_type Type of table that the view corresponds to.
-      #
-      #   @option params [Time, nil] :deleted_at Date of role deletion, or null if the role is still active
-      #
-      #   @option params [Braintrust::Models::ViewOptions, nil] :options Options for the view in the app
-      #
-      #   @option params [String, nil] :user_id Identifies the user who created the view
-      #
-      #   @option params [Braintrust::Models::ViewData, nil] :view_data The view definition
-      #
-      #   @option params [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
+      # @param name [String]
+      # @param object_id_ [String]
+      # @param object_type [Symbol, Braintrust::Models::ACLObjectType]
+      # @param view_type [Symbol, Braintrust::Models::ViewReplaceParams::ViewType, nil]
+      # @param deleted_at [Time, nil]
+      # @param options [Braintrust::Models::ViewOptions, nil]
+      # @param user_id [String, nil]
+      # @param view_data [Braintrust::Models::ViewData, nil]
+      # @param request_options [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil]
       #
       # @return [Braintrust::Models::View]
       #

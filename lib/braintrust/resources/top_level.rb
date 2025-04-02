@@ -6,9 +6,9 @@ module Braintrust
       # Default endpoint. Simply replies with 'Hello, World!'. Authorization is not
       #   required
       #
-      # @param params [Braintrust::Models::TopLevelHelloWorldParams, Hash{Symbol=>Object}] .
+      # @overload hello_world(request_options: {})
       #
-      #   @option params [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
+      # @param request_options [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil]
       #
       # @return [String]
       #

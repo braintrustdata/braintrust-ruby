@@ -6,23 +6,13 @@ module Braintrust
       class Members
         # Modify organization membership
         #
-        # @param params [Braintrust::Models::Organizations::MemberUpdateParams, Hash{Symbol=>Object}] .
+        # @overload update(invite_users: nil, org_id: nil, org_name: nil, remove_users: nil, request_options: {})
         #
-        #   @option params [Braintrust::Models::Organizations::MemberUpdateParams::InviteUsers, nil] :invite_users Users to invite to the organization
-        #
-        #   @option params [String, nil] :org_id For nearly all users, this parameter should be unnecessary. But in the rare case
-        #     that your API key belongs to multiple organizations, or in case you want to
-        #     explicitly assert the organization you are modifying, you may specify the id of
-        #     the organization.
-        #
-        #   @option params [String, nil] :org_name For nearly all users, this parameter should be unnecessary. But in the rare case
-        #     that your API key belongs to multiple organizations, or in case you want to
-        #     explicitly assert the organization you are modifying, you may specify the name
-        #     of the organization.
-        #
-        #   @option params [Braintrust::Models::Organizations::MemberUpdateParams::RemoveUsers, nil] :remove_users Users to remove from the organization
-        #
-        #   @option params [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
+        # @param invite_users [Braintrust::Models::Organizations::MemberUpdateParams::InviteUsers, nil]
+        # @param org_id [String, nil]
+        # @param org_name [String, nil]
+        # @param remove_users [Braintrust::Models::Organizations::MemberUpdateParams::RemoveUsers, nil]
+        # @param request_options [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil]
         #
         # @return [Braintrust::Models::PatchOrganizationMembersOutput]
         #

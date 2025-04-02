@@ -10,52 +10,25 @@ module Braintrust
       #   the experiment. To learn more about evals, see the
       #   [Evals guide](https://www.braintrust.dev/docs/guides/evals).
       #
-      # @param params [Braintrust::Models::EvalCreateParams, Hash{Symbol=>Object}] .
+      # @overload create(data:, project_id:, scores:, task:, base_experiment_id: nil, base_experiment_name: nil, experiment_name: nil, git_metadata_settings: nil, is_public: nil, max_concurrency: nil, metadata: nil, parent: nil, repo_info: nil, stream: nil, timeout: nil, trial_count: nil, request_options: {})
       #
-      #   @option params [Braintrust::Models::EvalCreateParams::Data::DatasetID, Braintrust::Models::EvalCreateParams::Data::ProjectDatasetName, Braintrust::Models::EvalCreateParams::Data::DatasetRows] :data The dataset to use
-      #
-      #   @option params [String] :project_id Unique identifier for the project to run the eval in
-      #
-      #   @option params [Array<Braintrust::Models::EvalCreateParams::Score::FunctionID, Braintrust::Models::EvalCreateParams::Score::ProjectSlug, Braintrust::Models::EvalCreateParams::Score::GlobalFunction, Braintrust::Models::EvalCreateParams::Score::PromptSessionID, Braintrust::Models::EvalCreateParams::Score::InlineCode, Braintrust::Models::EvalCreateParams::Score::InlinePrompt>] :scores The functions to score the eval on
-      #
-      #   @option params [Braintrust::Models::EvalCreateParams::Task::FunctionID, Braintrust::Models::EvalCreateParams::Task::ProjectSlug, Braintrust::Models::EvalCreateParams::Task::GlobalFunction, Braintrust::Models::EvalCreateParams::Task::PromptSessionID, Braintrust::Models::EvalCreateParams::Task::InlineCode, Braintrust::Models::EvalCreateParams::Task::InlinePrompt] :task The function to evaluate
-      #
-      #   @option params [String, nil] :base_experiment_id An optional experiment id to use as a base. If specified, the new experiment
-      #     will be summarized and compared to this experiment.
-      #
-      #   @option params [String, nil] :base_experiment_name An optional experiment name to use as a base. If specified, the new experiment
-      #     will be summarized and compared to this experiment.
-      #
-      #   @option params [String] :experiment_name An optional name for the experiment created by this eval. If it conflicts with
-      #     an existing experiment, it will be suffixed with a unique identifier.
-      #
-      #   @option params [Braintrust::Models::EvalCreateParams::GitMetadataSettings, nil] :git_metadata_settings Optional settings for collecting git metadata. By default, will collect all git
-      #     metadata fields allowed in org-level settings.
-      #
-      #   @option params [Boolean, nil] :is_public Whether the experiment should be public. Defaults to false.
-      #
-      #   @option params [Float, nil] :max_concurrency The maximum number of tasks/scorers that will be run concurrently. Defaults to
-      #     undefined, in which case there is no max concurrency.
-      #
-      #   @option params [Hash{Symbol=>Object, nil}] :metadata Optional experiment-level metadata to store about the evaluation. You can later
-      #     use this to slice & dice across experiments.
-      #
-      #   @option params [Braintrust::Models::EvalCreateParams::Parent::SpanParentStruct, String] :parent Options for tracing the evaluation
-      #
-      #   @option params [Braintrust::Models::RepoInfo, nil] :repo_info Metadata about the state of the repo when the experiment was created
-      #
-      #   @option params [Boolean] :stream Whether to stream the results of the eval. If true, the request will return two
-      #     events: one to indicate the experiment has started, and another upon completion.
-      #     If false, the request will return the evaluation's summary upon completion.
-      #
-      #   @option params [Float, nil] :timeout The maximum duration, in milliseconds, to run the evaluation. Defaults to
-      #     undefined, in which case there is no timeout.
-      #
-      #   @option params [Float, nil] :trial_count The number of times to run the evaluator per input. This is useful for
-      #     evaluating applications that have non-deterministic behavior and gives you both
-      #     a stronger aggregate measure and a sense of the variance in the results.
-      #
-      #   @option params [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
+      # @param data [Braintrust::Models::EvalCreateParams::Data::DatasetID, Braintrust::Models::EvalCreateParams::Data::ProjectDatasetName, Braintrust::Models::EvalCreateParams::Data::DatasetRows]
+      # @param project_id [String]
+      # @param scores [Array<Braintrust::Models::EvalCreateParams::Score::FunctionID, Braintrust::Models::EvalCreateParams::Score::ProjectSlug, Braintrust::Models::EvalCreateParams::Score::GlobalFunction, Braintrust::Models::EvalCreateParams::Score::PromptSessionID, Braintrust::Models::EvalCreateParams::Score::InlineCode, Braintrust::Models::EvalCreateParams::Score::InlinePrompt>]
+      # @param task [Braintrust::Models::EvalCreateParams::Task::FunctionID, Braintrust::Models::EvalCreateParams::Task::ProjectSlug, Braintrust::Models::EvalCreateParams::Task::GlobalFunction, Braintrust::Models::EvalCreateParams::Task::PromptSessionID, Braintrust::Models::EvalCreateParams::Task::InlineCode, Braintrust::Models::EvalCreateParams::Task::InlinePrompt]
+      # @param base_experiment_id [String, nil]
+      # @param base_experiment_name [String, nil]
+      # @param experiment_name [String]
+      # @param git_metadata_settings [Braintrust::Models::EvalCreateParams::GitMetadataSettings, nil]
+      # @param is_public [Boolean, nil]
+      # @param max_concurrency [Float, nil]
+      # @param metadata [Hash{Symbol=>Object, nil}]
+      # @param parent [Braintrust::Models::EvalCreateParams::Parent::SpanParentStruct, String]
+      # @param repo_info [Braintrust::Models::RepoInfo, nil]
+      # @param stream [Boolean]
+      # @param timeout [Float, nil]
+      # @param trial_count [Float, nil]
+      # @param request_options [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil]
       #
       # @return [Braintrust::Models::SummarizeExperimentResponse]
       #
