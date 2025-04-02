@@ -2,6 +2,7 @@
 
 module Braintrust
   module Models
+    # @see Braintrust::Resources::Functions#delete
     class FunctionDeleteParams < Braintrust::BaseModel
       # @!parse
       #   extend Braintrust::Type::RequestParameters::Converter

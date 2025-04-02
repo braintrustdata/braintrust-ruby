@@ -94,6 +94,8 @@ module Braintrust
       # def initialize: (Hash | Braintrust::BaseModel) -> void
 
       # Type of table that the view corresponds to.
+      #
+      # @see Braintrust::Models::View#view_type
       module ViewType
         extend Braintrust::Enum
 

@@ -2,6 +2,7 @@
 
 module Braintrust
   module Models
+    # @see Braintrust::Resources::APIKeys#list
     class APIKeyListParams < Braintrust::BaseModel
       # @!parse
       #   extend Braintrust::Type::RequestParameters::Converter

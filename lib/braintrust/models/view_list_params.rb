@@ -2,6 +2,7 @@
 
 module Braintrust
   module Models
+    # @see Braintrust::Resources::Views#list
     class ViewListParams < Braintrust::BaseModel
       # @!parse
       #   extend Braintrust::Type::RequestParameters::Converter

@@ -2,6 +2,7 @@
 
 module Braintrust
   module Models
+    # @see Braintrust::Resources::Evals#create
     class EvalCreateParams < Braintrust::BaseModel
       # @!parse
       #   extend Braintrust::Type::RequestParameters::Converter
@@ -427,6 +428,7 @@ module Braintrust
 
           # def initialize: (Hash | Braintrust::BaseModel) -> void
 
+          # @see Braintrust::Models::EvalCreateParams::Score::InlineCode#inline_context
           class InlineContext < Braintrust::BaseModel
             # @!attribute runtime
             #
@@ -447,6 +449,7 @@ module Braintrust
 
             # def initialize: (Hash | Braintrust::BaseModel) -> void
 
+            # @see Braintrust::Models::EvalCreateParams::Score::InlineCode::InlineContext#runtime
             module Runtime
               extend Braintrust::Enum
 
@@ -658,6 +661,7 @@ module Braintrust
 
           # def initialize: (Hash | Braintrust::BaseModel) -> void
 
+          # @see Braintrust::Models::EvalCreateParams::Task::InlineCode#inline_context
           class InlineContext < Braintrust::BaseModel
             # @!attribute runtime
             #
@@ -678,6 +682,7 @@ module Braintrust
 
             # def initialize: (Hash | Braintrust::BaseModel) -> void
 
+            # @see Braintrust::Models::EvalCreateParams::Task::InlineCode::InlineContext#runtime
             module Runtime
               extend Braintrust::Enum
 
@@ -749,6 +754,7 @@ module Braintrust
 
         # def initialize: (Hash | Braintrust::BaseModel) -> void
 
+        # @see Braintrust::Models::EvalCreateParams::GitMetadataSettings#collect
         module Collect
           extend Braintrust::Enum
 
@@ -833,6 +839,7 @@ module Braintrust
 
           # def initialize: (Hash | Braintrust::BaseModel) -> void
 
+          # @see Braintrust::Models::EvalCreateParams::Parent::SpanParentStruct#object_type
           module ObjectType
             extend Braintrust::Enum
 
@@ -847,6 +854,7 @@ module Braintrust
             #   def self.values; end
           end
 
+          # @see Braintrust::Models::EvalCreateParams::Parent::SpanParentStruct#row_ids
           class RowIDs < Braintrust::BaseModel
             # @!attribute id
             #   The id of the row

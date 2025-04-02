@@ -3,6 +3,7 @@
 module Braintrust
   module Models
     module Projects
+      # @see Braintrust::Resources::Projects::Logs#fetch
       class LogFetchParams < Braintrust::BaseModel
         # @!parse
         #   extend Braintrust::Type::RequestParameters::Converter

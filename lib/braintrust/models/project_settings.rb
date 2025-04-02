@@ -64,6 +64,7 @@ module Braintrust
 
         # def initialize: (Hash | Braintrust::BaseModel) -> void
 
+        # @see Braintrust::Models::ProjectSettings::SpanFieldOrder#layout
         module Layout
           extend Braintrust::Enum
 

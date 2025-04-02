@@ -52,6 +52,8 @@ module Braintrust
       # def initialize: (Hash | Braintrust::BaseModel) -> void
 
       # The type of the object the environment variable is scoped for
+      #
+      # @see Braintrust::Models::EnvVar#object_type
       module ObjectType
         extend Braintrust::Enum
 

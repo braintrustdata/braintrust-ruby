@@ -24,6 +24,8 @@ module Braintrust
       #   @option params [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Braintrust::Models::AISecret]
+      #
+      # @see Braintrust::Models::AISecretCreateParams
       def create(params)
         parsed, options = Braintrust::Models::AISecretCreateParams.dump_request(params)
         @client.request(
@@ -44,6 +46,8 @@ module Braintrust
       #   @option params [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Braintrust::Models::AISecret]
+      #
+      # @see Braintrust::Models::AISecretRetrieveParams
       def retrieve(ai_secret_id, params = {})
         @client.request(
           method: :get,
@@ -72,6 +76,8 @@ module Braintrust
       #   @option params [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Braintrust::Models::AISecret]
+      #
+      # @see Braintrust::Models::AISecretUpdateParams
       def update(ai_secret_id, params = {})
         parsed, options = Braintrust::Models::AISecretUpdateParams.dump_request(params)
         @client.request(
@@ -114,6 +120,8 @@ module Braintrust
       #   @option params [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Braintrust::ListObjects<Braintrust::Models::AISecret>]
+      #
+      # @see Braintrust::Models::AISecretListParams
       def list(params = {})
         parsed, options = Braintrust::Models::AISecretListParams.dump_request(params)
         @client.request(
@@ -135,6 +143,8 @@ module Braintrust
       #   @option params [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Braintrust::Models::AISecret]
+      #
+      # @see Braintrust::Models::AISecretDeleteParams
       def delete(ai_secret_id, params = {})
         @client.request(
           method: :delete,
@@ -157,6 +167,8 @@ module Braintrust
       #   @option params [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Braintrust::Models::AISecret]
+      #
+      # @see Braintrust::Models::AISecretFindAndDeleteParams
       def find_and_delete(params)
         parsed, options = Braintrust::Models::AISecretFindAndDeleteParams.dump_request(params)
         @client.request(
@@ -190,6 +202,8 @@ module Braintrust
       #   @option params [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Braintrust::Models::AISecret]
+      #
+      # @see Braintrust::Models::AISecretReplaceParams
       def replace(params)
         parsed, options = Braintrust::Models::AISecretReplaceParams.dump_request(params)
         @client.request(
@@ -201,6 +215,8 @@ module Braintrust
         )
       end
 
+      # @api private
+      #
       # @param client [Braintrust::Client]
       def initialize(client:)
         @client = client

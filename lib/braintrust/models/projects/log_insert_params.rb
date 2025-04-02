@@ -3,6 +3,7 @@
 module Braintrust
   module Models
     module Projects
+      # @see Braintrust::Resources::Projects::Logs#insert
       class LogInsertParams < Braintrust::BaseModel
         # @!parse
         #   extend Braintrust::Type::RequestParameters::Converter

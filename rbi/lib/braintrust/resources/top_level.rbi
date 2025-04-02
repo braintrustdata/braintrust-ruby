@@ -12,6 +12,7 @@ module Braintrust
       def hello_world(request_options: {})
       end
 
+      # @api private
       sig { params(client: Braintrust::Client).returns(T.attached_class) }
       def self.new(client:)
       end

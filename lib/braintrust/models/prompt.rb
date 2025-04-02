@@ -120,6 +120,8 @@ module Braintrust
       # def initialize: (Hash | Braintrust::BaseModel) -> void
 
       # A literal 'p' which identifies the object as a project prompt
+      #
+      # @see Braintrust::Models::Prompt#log_id
       module LogID
         extend Braintrust::Enum
 
@@ -132,6 +134,7 @@ module Braintrust
         #   def self.values; end
       end
 
+      # @see Braintrust::Models::Prompt#function_type
       module FunctionType
         extend Braintrust::Enum
 

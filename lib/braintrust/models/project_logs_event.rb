@@ -233,6 +233,8 @@ module Braintrust
       # def initialize: (Hash | Braintrust::BaseModel) -> void
 
       # A literal 'g' which identifies the log as a project log
+      #
+      # @see Braintrust::Models::ProjectLogsEvent#log_id
       module LogID
         extend Braintrust::Enum
 
@@ -245,6 +247,7 @@ module Braintrust
         #   def self.values; end
       end
 
+      # @see Braintrust::Models::ProjectLogsEvent#context
       class Context < Braintrust::BaseModel
         # @!attribute caller_filename
         #   Name of the file in code where the project logs event was created
@@ -279,6 +282,7 @@ module Braintrust
         # def initialize: (Hash | Braintrust::BaseModel) -> void
       end
 
+      # @see Braintrust::Models::ProjectLogsEvent#metadata
       class Metadata < Braintrust::BaseModel
         # @!attribute model
         #   The model used for this example
@@ -300,6 +304,7 @@ module Braintrust
         # def initialize: (Hash | Braintrust::BaseModel) -> void
       end
 
+      # @see Braintrust::Models::ProjectLogsEvent#metrics
       class Metrics < Braintrust::BaseModel
         # @!attribute [r] caller_filename
         #   This metric is deprecated
