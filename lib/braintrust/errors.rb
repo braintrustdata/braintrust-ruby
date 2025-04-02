@@ -1,183 +1,220 @@
 # frozen_string_literal: true
 
 module Braintrust
-  class Error < StandardError
-    # @!parse
-    #   # @return [StandardError, nil]
-    #   attr_accessor :cause
-  end
-
-  class ConversionError < Braintrust::Error
-  end
-
-  class APIError < Braintrust::Error
-    # @return [URI::Generic]
-    attr_accessor :url
-
-    # @return [Integer, nil]
-    attr_accessor :status
-
-    # @return [Object, nil]
-    attr_accessor :body
-
-    # @api private
-    #
-    # @param url [URI::Generic]
-    # @param status [Integer, nil]
-    # @param body [Object, nil]
-    # @param request [nil]
-    # @param response [nil]
-    # @param message [String, nil]
-    def initialize(url:, status: nil, body: nil, request: nil, response: nil, message: nil)
-      @url = url
-      @status = status
-      @body = body
-      @request = request
-      @response = response
-      super(message)
+  module Errors
+    class Error < StandardError
+      # @!parse
+      #   # @return [StandardError, nil]
+      #   attr_accessor :cause
     end
-  end
 
-  class APIConnectionError < Braintrust::APIError
-    # @!parse
-    #   # @return [nil]
-    #   attr_accessor :status
-
-    # @!parse
-    #   # @return [nil]
-    #   attr_accessor :body
-
-    # @api private
-    #
-    # @param url [URI::Generic]
-    # @param status [nil]
-    # @param body [nil]
-    # @param request [nil]
-    # @param response [nil]
-    # @param message [String, nil]
-    def initialize(
-      url:,
-      status: nil,
-      body: nil,
-      request: nil,
-      response: nil,
-      message: "Connection error."
-    )
-      super
+    class ConversionError < Braintrust::Errors::Error
     end
-  end
 
-  class APITimeoutError < Braintrust::APIConnectionError
-    # @api private
-    #
-    # @param url [URI::Generic]
-    # @param status [nil]
-    # @param body [nil]
-    # @param request [nil]
-    # @param response [nil]
-    # @param message [String, nil]
-    def initialize(
-      url:,
-      status: nil,
-      body: nil,
-      request: nil,
-      response: nil,
-      message: "Request timed out."
-    )
-      super
-    end
-  end
+    class APIError < Braintrust::Errors::Error
+      # @return [URI::Generic]
+      attr_accessor :url
 
-  class APIStatusError < Braintrust::APIError
-    # @api private
-    #
-    # @param url [URI::Generic]
-    # @param status [Integer]
-    # @param body [Object, nil]
-    # @param request [nil]
-    # @param response [nil]
-    # @param message [String, nil]
-    #
-    # @return [Braintrust::APIStatusError]
-    def self.for(url:, status:, body:, request:, response:, message: nil)
-      kwargs = {url: url, status: status, body: body, request: request, response: response, message: message}
+      # @return [Integer, nil]
+      attr_accessor :status
 
-      case status
-      in 400
-        Braintrust::BadRequestError.new(**kwargs)
-      in 401
-        Braintrust::AuthenticationError.new(**kwargs)
-      in 403
-        Braintrust::PermissionDeniedError.new(**kwargs)
-      in 404
-        Braintrust::NotFoundError.new(**kwargs)
-      in 409
-        Braintrust::ConflictError.new(**kwargs)
-      in 422
-        Braintrust::UnprocessableEntityError.new(**kwargs)
-      in 429
-        Braintrust::RateLimitError.new(**kwargs)
-      in (500..)
-        Braintrust::InternalServerError.new(**kwargs)
-      else
-        Braintrust::APIStatusError.new(**kwargs)
+      # @return [Object, nil]
+      attr_accessor :body
+
+      # @api private
+      #
+      # @param url [URI::Generic]
+      # @param status [Integer, nil]
+      # @param body [Object, nil]
+      # @param request [nil]
+      # @param response [nil]
+      # @param message [String, nil]
+      def initialize(url:, status: nil, body: nil, request: nil, response: nil, message: nil)
+        @url = url
+        @status = status
+        @body = body
+        @request = request
+        @response = response
+        super(message)
       end
     end
 
-    # @!parse
-    #   # @return [Integer]
-    #   attr_accessor :status
+    class APIConnectionError < Braintrust::Errors::APIError
+      # @!parse
+      #   # @return [nil]
+      #   attr_accessor :status
 
-    # @api private
-    #
-    # @param url [URI::Generic]
-    # @param status [Integer]
-    # @param body [Object, nil]
-    # @param request [nil]
-    # @param response [nil]
-    # @param message [String, nil]
-    def initialize(url:, status:, body:, request:, response:, message: nil)
-      message ||= {url: url.to_s, status: status, body: body}
-      super(
-        url: url,
-        status: status,
-        body: body,
-        request: request,
-        response: response,
-        message: message&.to_s
+      # @!parse
+      #   # @return [nil]
+      #   attr_accessor :body
+
+      # @api private
+      #
+      # @param url [URI::Generic]
+      # @param status [nil]
+      # @param body [nil]
+      # @param request [nil]
+      # @param response [nil]
+      # @param message [String, nil]
+      def initialize(
+        url:,
+        status: nil,
+        body: nil,
+        request: nil,
+        response: nil,
+        message: "Connection error."
       )
+        super
+      end
+    end
+
+    class APITimeoutError < Braintrust::Errors::APIConnectionError
+      # @api private
+      #
+      # @param url [URI::Generic]
+      # @param status [nil]
+      # @param body [nil]
+      # @param request [nil]
+      # @param response [nil]
+      # @param message [String, nil]
+      def initialize(
+        url:,
+        status: nil,
+        body: nil,
+        request: nil,
+        response: nil,
+        message: "Request timed out."
+      )
+        super
+      end
+    end
+
+    class APIStatusError < Braintrust::Errors::APIError
+      # @api private
+      #
+      # @param url [URI::Generic]
+      # @param status [Integer]
+      # @param body [Object, nil]
+      # @param request [nil]
+      # @param response [nil]
+      # @param message [String, nil]
+      #
+      # @return [Braintrust::Errors::APIStatusError]
+      def self.for(url:, status:, body:, request:, response:, message: nil)
+        kwargs = {
+          url: url,
+          status: status,
+          body: body,
+          request: request,
+          response: response,
+          message: message
+        }
+
+        case status
+        in 400
+          Braintrust::Errors::BadRequestError.new(**kwargs)
+        in 401
+          Braintrust::Errors::AuthenticationError.new(**kwargs)
+        in 403
+          Braintrust::Errors::PermissionDeniedError.new(**kwargs)
+        in 404
+          Braintrust::Errors::NotFoundError.new(**kwargs)
+        in 409
+          Braintrust::Errors::ConflictError.new(**kwargs)
+        in 422
+          Braintrust::Errors::UnprocessableEntityError.new(**kwargs)
+        in 429
+          Braintrust::Errors::RateLimitError.new(**kwargs)
+        in (500..)
+          Braintrust::Errors::InternalServerError.new(**kwargs)
+        else
+          Braintrust::Errors::APIStatusError.new(**kwargs)
+        end
+      end
+
+      # @!parse
+      #   # @return [Integer]
+      #   attr_accessor :status
+
+      # @api private
+      #
+      # @param url [URI::Generic]
+      # @param status [Integer]
+      # @param body [Object, nil]
+      # @param request [nil]
+      # @param response [nil]
+      # @param message [String, nil]
+      def initialize(url:, status:, body:, request:, response:, message: nil)
+        message ||= {url: url.to_s, status: status, body: body}
+        super(
+          url: url,
+          status: status,
+          body: body,
+          request: request,
+          response: response,
+          message: message&.to_s
+        )
+      end
+    end
+
+    class BadRequestError < Braintrust::Errors::APIStatusError
+      HTTP_STATUS = 400
+    end
+
+    class AuthenticationError < Braintrust::Errors::APIStatusError
+      HTTP_STATUS = 401
+    end
+
+    class PermissionDeniedError < Braintrust::Errors::APIStatusError
+      HTTP_STATUS = 403
+    end
+
+    class NotFoundError < Braintrust::Errors::APIStatusError
+      HTTP_STATUS = 404
+    end
+
+    class ConflictError < Braintrust::Errors::APIStatusError
+      HTTP_STATUS = 409
+    end
+
+    class UnprocessableEntityError < Braintrust::Errors::APIStatusError
+      HTTP_STATUS = 422
+    end
+
+    class RateLimitError < Braintrust::Errors::APIStatusError
+      HTTP_STATUS = 429
+    end
+
+    class InternalServerError < Braintrust::Errors::APIStatusError
+      HTTP_STATUS = (500..)
     end
   end
 
-  class BadRequestError < Braintrust::APIStatusError
-    HTTP_STATUS = 400
-  end
+  Error = Braintrust::Errors::Error
 
-  class AuthenticationError < Braintrust::APIStatusError
-    HTTP_STATUS = 401
-  end
+  ConversionError = Braintrust::Errors::ConversionError
 
-  class PermissionDeniedError < Braintrust::APIStatusError
-    HTTP_STATUS = 403
-  end
+  APIError = Braintrust::Errors::APIError
 
-  class NotFoundError < Braintrust::APIStatusError
-    HTTP_STATUS = 404
-  end
+  APIStatusError = Braintrust::Errors::APIStatusError
 
-  class ConflictError < Braintrust::APIStatusError
-    HTTP_STATUS = 409
-  end
+  APIConnectionError = Braintrust::Errors::APIConnectionError
 
-  class UnprocessableEntityError < Braintrust::APIStatusError
-    HTTP_STATUS = 422
-  end
+  APITimeoutError = Braintrust::Errors::APITimeoutError
 
-  class RateLimitError < Braintrust::APIStatusError
-    HTTP_STATUS = 429
-  end
+  BadRequestError = Braintrust::Errors::BadRequestError
 
-  class InternalServerError < Braintrust::APIStatusError
-    HTTP_STATUS = (500..)
-  end
+  AuthenticationError = Braintrust::Errors::AuthenticationError
+
+  PermissionDeniedError = Braintrust::Errors::PermissionDeniedError
+
+  NotFoundError = Braintrust::Errors::NotFoundError
+
+  ConflictError = Braintrust::Errors::ConflictError
+
+  UnprocessableEntityError = Braintrust::Errors::UnprocessableEntityError
+
+  RateLimitError = Braintrust::Errors::RateLimitError
+
+  InternalServerError = Braintrust::Errors::InternalServerError
 end

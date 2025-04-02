@@ -82,7 +82,7 @@ module Braintrust
         # @api private
         sig do
           params(
-            status: T.any(Integer, Braintrust::APIConnectionError),
+            status: T.any(Integer, Braintrust::Errors::APIConnectionError),
             stream: T.nilable(T::Enumerable[String])
           )
             .void
