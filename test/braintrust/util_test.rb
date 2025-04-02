@@ -233,7 +233,7 @@ class Braintrust::Test::UtilIOAdapterTest < Minitest::Test
       StringIO.new("abc") => "abc"
     }
     cases.each do |input, expected|
-      enum = Braintrust::Util.string_io do |y|
+      enum = Braintrust::Util.writable_enum do |y|
         IO.copy_stream(input, y)
       end
       assert_equal(expected, enum.to_a.join)
