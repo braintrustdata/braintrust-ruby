@@ -56,7 +56,7 @@ module Braintrust
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Braintrust::Models::EnvVarReplaceParams::ObjectType) }
         OrSymbol =
-          T.type_alias { T.any(Symbol, Braintrust::Models::EnvVarReplaceParams::ObjectType::TaggedSymbol) }
+          T.type_alias { T.any(Symbol, String, Braintrust::Models::EnvVarReplaceParams::ObjectType::TaggedSymbol) }
 
         ORGANIZATION = T.let(:organization, Braintrust::Models::EnvVarReplaceParams::ObjectType::TaggedSymbol)
         PROJECT = T.let(:project, Braintrust::Models::EnvVarReplaceParams::ObjectType::TaggedSymbol)

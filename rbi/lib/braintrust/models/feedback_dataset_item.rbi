@@ -60,7 +60,8 @@ module Braintrust
         extend Braintrust::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Braintrust::Models::FeedbackDatasetItem::Source) }
-        OrSymbol = T.type_alias { T.any(Symbol, Braintrust::Models::FeedbackDatasetItem::Source::TaggedSymbol) }
+        OrSymbol =
+          T.type_alias { T.any(Symbol, String, Braintrust::Models::FeedbackDatasetItem::Source::TaggedSymbol) }
 
         APP = T.let(:app, Braintrust::Models::FeedbackDatasetItem::Source::TaggedSymbol)
         API = T.let(:api, Braintrust::Models::FeedbackDatasetItem::Source::TaggedSymbol)

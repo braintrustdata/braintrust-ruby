@@ -7,7 +7,7 @@ module Braintrust
       extend Braintrust::Enum
 
       TaggedSymbol = T.type_alias { T.all(Symbol, Braintrust::Models::SpanType) }
-      OrSymbol = T.type_alias { T.any(Symbol, Braintrust::Models::SpanType::TaggedSymbol) }
+      OrSymbol = T.type_alias { T.any(Symbol, String, Braintrust::Models::SpanType::TaggedSymbol) }
 
       LLM = T.let(:llm, Braintrust::Models::SpanType::TaggedSymbol)
       SCORE = T.let(:score, Braintrust::Models::SpanType::TaggedSymbol)

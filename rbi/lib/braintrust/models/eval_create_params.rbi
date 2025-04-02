@@ -527,6 +527,7 @@ module Braintrust
                 T.type_alias do
                   T.any(
                     Symbol,
+                    String,
                     Braintrust::Models::EvalCreateParams::Score::InlineCode::InlineContext::Runtime::TaggedSymbol
                   )
                 end
@@ -774,6 +775,7 @@ module Braintrust
                 T.type_alias do
                   T.any(
                     Symbol,
+                    String,
                     Braintrust::Models::EvalCreateParams::Task::InlineCode::InlineContext::Runtime::TaggedSymbol
                   )
                 end
@@ -876,7 +878,7 @@ module Braintrust
           TaggedSymbol =
             T.type_alias { T.all(Symbol, Braintrust::Models::EvalCreateParams::GitMetadataSettings::Collect) }
           OrSymbol =
-            T.type_alias { T.any(Symbol, Braintrust::Models::EvalCreateParams::GitMetadataSettings::Collect::TaggedSymbol) }
+            T.type_alias { T.any(Symbol, String, Braintrust::Models::EvalCreateParams::GitMetadataSettings::Collect::TaggedSymbol) }
 
           ALL = T.let(:all, Braintrust::Models::EvalCreateParams::GitMetadataSettings::Collect::TaggedSymbol)
           NONE = T.let(:none, Braintrust::Models::EvalCreateParams::GitMetadataSettings::Collect::TaggedSymbol)
@@ -896,7 +898,7 @@ module Braintrust
           TaggedSymbol =
             T.type_alias { T.all(Symbol, Braintrust::Models::EvalCreateParams::GitMetadataSettings::Field) }
           OrSymbol =
-            T.type_alias { T.any(Symbol, Braintrust::Models::EvalCreateParams::GitMetadataSettings::Field::TaggedSymbol) }
+            T.type_alias { T.any(Symbol, String, Braintrust::Models::EvalCreateParams::GitMetadataSettings::Field::TaggedSymbol) }
 
           COMMIT = T.let(:commit, Braintrust::Models::EvalCreateParams::GitMetadataSettings::Field::TaggedSymbol)
           BRANCH = T.let(:branch, Braintrust::Models::EvalCreateParams::GitMetadataSettings::Field::TaggedSymbol)
@@ -984,7 +986,13 @@ module Braintrust
             TaggedSymbol =
               T.type_alias { T.all(Symbol, Braintrust::Models::EvalCreateParams::Parent::SpanParentStruct::ObjectType) }
             OrSymbol =
-              T.type_alias { T.any(Symbol, Braintrust::Models::EvalCreateParams::Parent::SpanParentStruct::ObjectType::TaggedSymbol) }
+              T.type_alias do
+                T.any(
+                  Symbol,
+                  String,
+                  Braintrust::Models::EvalCreateParams::Parent::SpanParentStruct::ObjectType::TaggedSymbol
+                )
+              end
 
             PROJECT_LOGS =
               T.let(

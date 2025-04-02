@@ -95,7 +95,7 @@ module Braintrust
             TaggedSymbol =
               T.type_alias { T.all(Symbol, Braintrust::Models::OnlineScoreConfig::Scorer::Function::Type) }
             OrSymbol =
-              T.type_alias { T.any(Symbol, Braintrust::Models::OnlineScoreConfig::Scorer::Function::Type::TaggedSymbol) }
+              T.type_alias { T.any(Symbol, String, Braintrust::Models::OnlineScoreConfig::Scorer::Function::Type::TaggedSymbol) }
 
             FUNCTION = T.let(:function, Braintrust::Models::OnlineScoreConfig::Scorer::Function::Type::TaggedSymbol)
 
@@ -132,7 +132,7 @@ module Braintrust
             TaggedSymbol =
               T.type_alias { T.all(Symbol, Braintrust::Models::OnlineScoreConfig::Scorer::Global::Type) }
             OrSymbol =
-              T.type_alias { T.any(Symbol, Braintrust::Models::OnlineScoreConfig::Scorer::Global::Type::TaggedSymbol) }
+              T.type_alias { T.any(Symbol, String, Braintrust::Models::OnlineScoreConfig::Scorer::Global::Type::TaggedSymbol) }
 
             GLOBAL = T.let(:global, Braintrust::Models::OnlineScoreConfig::Scorer::Global::Type::TaggedSymbol)
 

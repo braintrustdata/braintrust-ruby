@@ -84,7 +84,7 @@ module Braintrust
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Braintrust::Models::PromptReplaceParams::FunctionType) }
         OrSymbol =
-          T.type_alias { T.any(Symbol, Braintrust::Models::PromptReplaceParams::FunctionType::TaggedSymbol) }
+          T.type_alias { T.any(Symbol, String, Braintrust::Models::PromptReplaceParams::FunctionType::TaggedSymbol) }
 
         LLM = T.let(:llm, Braintrust::Models::PromptReplaceParams::FunctionType::TaggedSymbol)
         SCORER = T.let(:scorer, Braintrust::Models::PromptReplaceParams::FunctionType::TaggedSymbol)

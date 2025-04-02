@@ -84,7 +84,7 @@ module Braintrust
           TaggedSymbol =
             T.type_alias { T.all(Symbol, Braintrust::Models::ProjectSettings::SpanFieldOrder::Layout) }
           OrSymbol =
-            T.type_alias { T.any(Symbol, Braintrust::Models::ProjectSettings::SpanFieldOrder::Layout::TaggedSymbol) }
+            T.type_alias { T.any(Symbol, String, Braintrust::Models::ProjectSettings::SpanFieldOrder::Layout::TaggedSymbol) }
 
           FULL = T.let(:full, Braintrust::Models::ProjectSettings::SpanFieldOrder::Layout::TaggedSymbol)
           TWO_COLUMN =

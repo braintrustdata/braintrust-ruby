@@ -65,7 +65,7 @@ module Braintrust
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Braintrust::Models::ChatCompletionMessageToolCall::Type) }
         OrSymbol =
-          T.type_alias { T.any(Symbol, Braintrust::Models::ChatCompletionMessageToolCall::Type::TaggedSymbol) }
+          T.type_alias { T.any(Symbol, String, Braintrust::Models::ChatCompletionMessageToolCall::Type::TaggedSymbol) }
 
         FUNCTION = T.let(:function, Braintrust::Models::ChatCompletionMessageToolCall::Type::TaggedSymbol)
 
