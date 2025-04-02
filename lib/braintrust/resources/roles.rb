@@ -6,24 +6,14 @@ module Braintrust
       # Create a new role. If there is an existing role with the same name as the one
       #   specified in the request, will return the existing role unmodified
       #
-      # @param params [Braintrust::Models::RoleCreateParams, Hash{Symbol=>Object}] .
+      # @overload create(name:, description: nil, member_permissions: nil, member_roles: nil, org_name: nil, request_options: {})
       #
-      #   @option params [String] :name Name of the role
-      #
-      #   @option params [String, nil] :description Textual description of the role
-      #
-      #   @option params [Array<Braintrust::Models::RoleCreateParams::MemberPermission>, nil] :member_permissions (permission, restrict_object_type) tuples which belong to this role
-      #
-      #   @option params [Array<String>, nil] :member_roles Ids of the roles this role inherits from
-      #
-      #     An inheriting role has all the permissions contained in its member roles, as
-      #     well as all of their inherited permissions
-      #
-      #   @option params [String, nil] :org_name For nearly all users, this parameter should be unnecessary. But in the rare case
-      #     that your API key belongs to multiple organizations, you may specify the name of
-      #     the organization the role belongs in.
-      #
-      #   @option params [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
+      # @param name [String]
+      # @param description [String, nil]
+      # @param member_permissions [Array<Braintrust::Models::RoleCreateParams::MemberPermission>, nil]
+      # @param member_roles [Array<String>, nil]
+      # @param org_name [String, nil]
+      # @param request_options [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil]
       #
       # @return [Braintrust::Models::Role]
       #
@@ -41,11 +31,10 @@ module Braintrust
 
       # Get a role object by its id
       #
-      # @param role_id [String] Role id
+      # @overload retrieve(role_id, request_options: {})
       #
-      # @param params [Braintrust::Models::RoleRetrieveParams, Hash{Symbol=>Object}] .
-      #
-      #   @option params [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
+      # @param role_id [String]
+      # @param request_options [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil]
       #
       # @return [Braintrust::Models::Role]
       #
@@ -63,23 +52,16 @@ module Braintrust
       #   object-type fields will be deep-merged with existing content. Currently we do
       #   not support removing fields or setting them to null.
       #
-      # @param role_id [String] Role id
+      # @overload update(role_id, add_member_permissions: nil, add_member_roles: nil, description: nil, name: nil, remove_member_permissions: nil, remove_member_roles: nil, request_options: {})
       #
-      # @param params [Braintrust::Models::RoleUpdateParams, Hash{Symbol=>Object}] .
-      #
-      #   @option params [Array<Braintrust::Models::RoleUpdateParams::AddMemberPermission>, nil] :add_member_permissions A list of permissions to add to the role
-      #
-      #   @option params [Array<String>, nil] :add_member_roles A list of role IDs to add to the role's inheriting-from set
-      #
-      #   @option params [String, nil] :description Textual description of the role
-      #
-      #   @option params [String, nil] :name Name of the role
-      #
-      #   @option params [Array<Braintrust::Models::RoleUpdateParams::RemoveMemberPermission>, nil] :remove_member_permissions A list of permissions to remove from the role
-      #
-      #   @option params [Array<String>, nil] :remove_member_roles A list of role IDs to remove from the role's inheriting-from set
-      #
-      #   @option params [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
+      # @param role_id [String]
+      # @param add_member_permissions [Array<Braintrust::Models::RoleUpdateParams::AddMemberPermission>, nil]
+      # @param add_member_roles [Array<String>, nil]
+      # @param description [String, nil]
+      # @param name [String, nil]
+      # @param remove_member_permissions [Array<Braintrust::Models::RoleUpdateParams::RemoveMemberPermission>, nil]
+      # @param remove_member_roles [Array<String>, nil]
+      # @param request_options [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil]
       #
       # @return [Braintrust::Models::Role]
       #
@@ -98,30 +80,15 @@ module Braintrust
       # List out all roles. The roles are sorted by creation date, with the most
       #   recently-created roles coming first
       #
-      # @param params [Braintrust::Models::RoleListParams, Hash{Symbol=>Object}] .
+      # @overload list(ending_before: nil, ids: nil, limit: nil, org_name: nil, role_name: nil, starting_after: nil, request_options: {})
       #
-      #   @option params [String] :ending_before Pagination cursor id.
-      #
-      #     For example, if the initial item in the last page you fetched had an id of
-      #     `foo`, pass `ending_before=foo` to fetch the previous page. Note: you may only
-      #     pass one of `starting_after` and `ending_before`
-      #
-      #   @option params [String, Array<String>] :ids Filter search results to a particular set of object IDs. To specify a list of
-      #     IDs, include the query param multiple times
-      #
-      #   @option params [Integer, nil] :limit Limit the number of objects to return
-      #
-      #   @option params [String] :org_name Filter search results to within a particular organization
-      #
-      #   @option params [String] :role_name Name of the role to search for
-      #
-      #   @option params [String] :starting_after Pagination cursor id.
-      #
-      #     For example, if the final item in the last page you fetched had an id of `foo`,
-      #     pass `starting_after=foo` to fetch the next page. Note: you may only pass one of
-      #     `starting_after` and `ending_before`
-      #
-      #   @option params [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
+      # @param ending_before [String]
+      # @param ids [String, Array<String>]
+      # @param limit [Integer, nil]
+      # @param org_name [String]
+      # @param role_name [String]
+      # @param starting_after [String]
+      # @param request_options [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil]
       #
       # @return [Braintrust::ListObjects<Braintrust::Models::Role>]
       #
@@ -140,11 +107,10 @@ module Braintrust
 
       # Delete a role object by its id
       #
-      # @param role_id [String] Role id
+      # @overload delete(role_id, request_options: {})
       #
-      # @param params [Braintrust::Models::RoleDeleteParams, Hash{Symbol=>Object}] .
-      #
-      #   @option params [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
+      # @param role_id [String]
+      # @param request_options [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil]
       #
       # @return [Braintrust::Models::Role]
       #
@@ -162,24 +128,14 @@ module Braintrust
       #   one specified in the request, will replace the existing role with the provided
       #   fields
       #
-      # @param params [Braintrust::Models::RoleReplaceParams, Hash{Symbol=>Object}] .
+      # @overload replace(name:, description: nil, member_permissions: nil, member_roles: nil, org_name: nil, request_options: {})
       #
-      #   @option params [String] :name Name of the role
-      #
-      #   @option params [String, nil] :description Textual description of the role
-      #
-      #   @option params [Array<Braintrust::Models::RoleReplaceParams::MemberPermission>, nil] :member_permissions (permission, restrict_object_type) tuples which belong to this role
-      #
-      #   @option params [Array<String>, nil] :member_roles Ids of the roles this role inherits from
-      #
-      #     An inheriting role has all the permissions contained in its member roles, as
-      #     well as all of their inherited permissions
-      #
-      #   @option params [String, nil] :org_name For nearly all users, this parameter should be unnecessary. But in the rare case
-      #     that your API key belongs to multiple organizations, you may specify the name of
-      #     the organization the role belongs in.
-      #
-      #   @option params [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
+      # @param name [String]
+      # @param description [String, nil]
+      # @param member_permissions [Array<Braintrust::Models::RoleReplaceParams::MemberPermission>, nil]
+      # @param member_roles [Array<String>, nil]
+      # @param org_name [String, nil]
+      # @param request_options [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil]
       #
       # @return [Braintrust::Models::Role]
       #
