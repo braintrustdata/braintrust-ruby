@@ -43,7 +43,7 @@ module Braintrust
       def retrieve(dataset_id, params = {})
         @client.request(
           method: :get,
-          path: ["v1/dataset/%0s", dataset_id],
+          path: ["v1/dataset/%1$s", dataset_id],
           model: Braintrust::Models::Dataset,
           options: params[:request_options]
         )
@@ -70,7 +70,7 @@ module Braintrust
         parsed, options = Braintrust::Models::DatasetUpdateParams.dump_request(params)
         @client.request(
           method: :patch,
-          path: ["v1/dataset/%0s", dataset_id],
+          path: ["v1/dataset/%1$s", dataset_id],
           body: parsed,
           model: Braintrust::Models::Dataset,
           options: options
@@ -134,7 +134,7 @@ module Braintrust
       def delete(dataset_id, params = {})
         @client.request(
           method: :delete,
-          path: ["v1/dataset/%0s", dataset_id],
+          path: ["v1/dataset/%1$s", dataset_id],
           model: Braintrust::Models::Dataset,
           options: params[:request_options]
         )
@@ -155,7 +155,7 @@ module Braintrust
         parsed, options = Braintrust::Models::DatasetFeedbackParams.dump_request(params)
         @client.request(
           method: :post,
-          path: ["v1/dataset/%0s/feedback", dataset_id],
+          path: ["v1/dataset/%1$s/feedback", dataset_id],
           body: parsed,
           model: Braintrust::Models::FeedbackResponseSchema,
           options: options
@@ -220,7 +220,7 @@ module Braintrust
         parsed, options = Braintrust::Models::DatasetFetchParams.dump_request(params)
         @client.request(
           method: :get,
-          path: ["v1/dataset/%0s/fetch", dataset_id],
+          path: ["v1/dataset/%1$s/fetch", dataset_id],
           query: parsed,
           model: Braintrust::Models::FetchDatasetEventsResponse,
           options: options
@@ -291,7 +291,7 @@ module Braintrust
         parsed, options = Braintrust::Models::DatasetFetchPostParams.dump_request(params)
         @client.request(
           method: :post,
-          path: ["v1/dataset/%0s/fetch", dataset_id],
+          path: ["v1/dataset/%1$s/fetch", dataset_id],
           body: parsed,
           model: Braintrust::Models::FetchDatasetEventsResponse,
           options: options
@@ -313,7 +313,7 @@ module Braintrust
         parsed, options = Braintrust::Models::DatasetInsertParams.dump_request(params)
         @client.request(
           method: :post,
-          path: ["v1/dataset/%0s/insert", dataset_id],
+          path: ["v1/dataset/%1$s/insert", dataset_id],
           body: parsed,
           model: Braintrust::Models::InsertEventsResponse,
           options: options
@@ -336,7 +336,7 @@ module Braintrust
         parsed, options = Braintrust::Models::DatasetSummarizeParams.dump_request(params)
         @client.request(
           method: :get,
-          path: ["v1/dataset/%0s/summarize", dataset_id],
+          path: ["v1/dataset/%1$s/summarize", dataset_id],
           query: parsed,
           model: Braintrust::Models::SummarizeDatasetResponse,
           options: options

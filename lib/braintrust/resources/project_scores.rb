@@ -47,7 +47,7 @@ module Braintrust
       def retrieve(project_score_id, params = {})
         @client.request(
           method: :get,
-          path: ["v1/project_score/%0s", project_score_id],
+          path: ["v1/project_score/%1$s", project_score_id],
           model: Braintrust::Models::ProjectScore,
           options: params[:request_options]
         )
@@ -78,7 +78,7 @@ module Braintrust
         parsed, options = Braintrust::Models::ProjectScoreUpdateParams.dump_request(params)
         @client.request(
           method: :patch,
-          path: ["v1/project_score/%0s", project_score_id],
+          path: ["v1/project_score/%1$s", project_score_id],
           body: parsed,
           model: Braintrust::Models::ProjectScore,
           options: options
@@ -144,7 +144,7 @@ module Braintrust
       def delete(project_score_id, params = {})
         @client.request(
           method: :delete,
-          path: ["v1/project_score/%0s", project_score_id],
+          path: ["v1/project_score/%1$s", project_score_id],
           model: Braintrust::Models::ProjectScore,
           options: params[:request_options]
         )

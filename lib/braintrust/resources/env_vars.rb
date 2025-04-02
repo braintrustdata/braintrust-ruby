@@ -42,7 +42,7 @@ module Braintrust
       def retrieve(env_var_id, params = {})
         @client.request(
           method: :get,
-          path: ["v1/env_var/%0s", env_var_id],
+          path: ["v1/env_var/%1$s", env_var_id],
           model: Braintrust::Models::EnvVar,
           options: params[:request_options]
         )
@@ -67,7 +67,7 @@ module Braintrust
         parsed, options = Braintrust::Models::EnvVarUpdateParams.dump_request(params)
         @client.request(
           method: :patch,
-          path: ["v1/env_var/%0s", env_var_id],
+          path: ["v1/env_var/%1$s", env_var_id],
           body: parsed,
           model: Braintrust::Models::EnvVar,
           options: options
@@ -116,7 +116,7 @@ module Braintrust
       def delete(env_var_id, params = {})
         @client.request(
           method: :delete,
-          path: ["v1/env_var/%0s", env_var_id],
+          path: ["v1/env_var/%1$s", env_var_id],
           model: Braintrust::Models::EnvVar,
           options: params[:request_options]
         )

@@ -55,7 +55,7 @@ module Braintrust
       def retrieve(function_id, params = {})
         @client.request(
           method: :get,
-          path: ["v1/function/%0s", function_id],
+          path: ["v1/function/%1$s", function_id],
           model: Braintrust::Models::Function,
           options: params[:request_options]
         )
@@ -86,7 +86,7 @@ module Braintrust
         parsed, options = Braintrust::Models::FunctionUpdateParams.dump_request(params)
         @client.request(
           method: :patch,
-          path: ["v1/function/%0s", function_id],
+          path: ["v1/function/%1$s", function_id],
           body: parsed,
           model: Braintrust::Models::Function,
           options: options
@@ -157,7 +157,7 @@ module Braintrust
       def delete(function_id, params = {})
         @client.request(
           method: :delete,
-          path: ["v1/function/%0s", function_id],
+          path: ["v1/function/%1$s", function_id],
           model: Braintrust::Models::Function,
           options: params[:request_options]
         )
@@ -193,7 +193,7 @@ module Braintrust
         parsed, options = Braintrust::Models::FunctionInvokeParams.dump_request(params)
         @client.request(
           method: :post,
-          path: ["v1/function/%0s/invoke", function_id],
+          path: ["v1/function/%1$s/invoke", function_id],
           body: parsed,
           model: Braintrust::Unknown,
           options: options

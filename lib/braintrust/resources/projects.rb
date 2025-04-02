@@ -43,7 +43,7 @@ module Braintrust
       def retrieve(project_id, params = {})
         @client.request(
           method: :get,
-          path: ["v1/project/%0s", project_id],
+          path: ["v1/project/%1$s", project_id],
           model: Braintrust::Models::Project,
           options: params[:request_options]
         )
@@ -69,7 +69,7 @@ module Braintrust
         parsed, options = Braintrust::Models::ProjectUpdateParams.dump_request(params)
         @client.request(
           method: :patch,
-          path: ["v1/project/%0s", project_id],
+          path: ["v1/project/%1$s", project_id],
           body: parsed,
           model: Braintrust::Models::Project,
           options: options
@@ -129,7 +129,7 @@ module Braintrust
       def delete(project_id, params = {})
         @client.request(
           method: :delete,
-          path: ["v1/project/%0s", project_id],
+          path: ["v1/project/%1$s", project_id],
           model: Braintrust::Models::Project,
           options: params[:request_options]
         )
