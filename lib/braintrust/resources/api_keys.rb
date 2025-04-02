@@ -40,7 +40,7 @@ module Braintrust
       def retrieve(api_key_id, params = {})
         @client.request(
           method: :get,
-          path: ["v1/api_key/%0s", api_key_id],
+          path: ["v1/api_key/%1$s", api_key_id],
           model: Braintrust::Models::APIKey,
           options: params[:request_options]
         )
@@ -99,7 +99,7 @@ module Braintrust
       def delete(api_key_id, params = {})
         @client.request(
           method: :delete,
-          path: ["v1/api_key/%0s", api_key_id],
+          path: ["v1/api_key/%1$s", api_key_id],
           model: Braintrust::Models::APIKey,
           options: params[:request_options]
         )

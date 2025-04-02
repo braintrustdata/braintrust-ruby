@@ -55,7 +55,7 @@ module Braintrust
         parsed, options = Braintrust::Models::ViewRetrieveParams.dump_request(params)
         @client.request(
           method: :get,
-          path: ["v1/view/%0s", view_id],
+          path: ["v1/view/%1$s", view_id],
           query: parsed,
           model: Braintrust::Models::View,
           options: options
@@ -91,7 +91,7 @@ module Braintrust
         parsed, options = Braintrust::Models::ViewUpdateParams.dump_request(params)
         @client.request(
           method: :patch,
-          path: ["v1/view/%0s", view_id],
+          path: ["v1/view/%1$s", view_id],
           body: parsed,
           model: Braintrust::Models::View,
           options: options
@@ -160,7 +160,7 @@ module Braintrust
         parsed, options = Braintrust::Models::ViewDeleteParams.dump_request(params)
         @client.request(
           method: :delete,
-          path: ["v1/view/%0s", view_id],
+          path: ["v1/view/%1$s", view_id],
           body: parsed,
           model: Braintrust::Models::View,
           options: options

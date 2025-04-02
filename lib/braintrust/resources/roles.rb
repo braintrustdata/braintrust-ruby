@@ -49,7 +49,7 @@ module Braintrust
       def retrieve(role_id, params = {})
         @client.request(
           method: :get,
-          path: ["v1/role/%0s", role_id],
+          path: ["v1/role/%1$s", role_id],
           model: Braintrust::Models::Role,
           options: params[:request_options]
         )
@@ -82,7 +82,7 @@ module Braintrust
         parsed, options = Braintrust::Models::RoleUpdateParams.dump_request(params)
         @client.request(
           method: :patch,
-          path: ["v1/role/%0s", role_id],
+          path: ["v1/role/%1$s", role_id],
           body: parsed,
           model: Braintrust::Models::Role,
           options: options
@@ -142,7 +142,7 @@ module Braintrust
       def delete(role_id, params = {})
         @client.request(
           method: :delete,
-          path: ["v1/role/%0s", role_id],
+          path: ["v1/role/%1$s", role_id],
           model: Braintrust::Models::Role,
           options: params[:request_options]
         )
