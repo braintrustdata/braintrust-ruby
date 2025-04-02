@@ -138,6 +138,7 @@ module Braintrust
 
       # def initialize: (Hash | Braintrust::BaseModel) -> void
 
+      # @see Braintrust::Models::DatasetEvent#metadata
       class Metadata < Braintrust::BaseModel
         # @!attribute model
         #   The model used for this example

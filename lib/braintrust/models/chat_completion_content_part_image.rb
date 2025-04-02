@@ -21,6 +21,7 @@ module Braintrust
 
       # def initialize: (Hash | Braintrust::BaseModel) -> void
 
+      # @see Braintrust::Models::ChatCompletionContentPartImage#image_url
       class ImageURL < Braintrust::BaseModel
         # @!attribute url
         #
@@ -44,6 +45,7 @@ module Braintrust
 
         # def initialize: (Hash | Braintrust::BaseModel) -> void
 
+        # @see Braintrust::Models::ChatCompletionContentPartImage::ImageURL#detail
         module Detail
           extend Braintrust::Enum
 
@@ -59,6 +61,7 @@ module Braintrust
         end
       end
 
+      # @see Braintrust::Models::ChatCompletionContentPartImage#type
       module Type
         extend Braintrust::Enum
 

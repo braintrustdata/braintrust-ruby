@@ -26,6 +26,8 @@ module Braintrust
       #   @option params [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Braintrust::Models::Group]
+      #
+      # @see Braintrust::Models::GroupCreateParams
       def create(params)
         parsed, options = Braintrust::Models::GroupCreateParams.dump_request(params)
         @client.request(
@@ -46,6 +48,8 @@ module Braintrust
       #   @option params [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Braintrust::Models::Group]
+      #
+      # @see Braintrust::Models::GroupRetrieveParams
       def retrieve(group_id, params = {})
         @client.request(
           method: :get,
@@ -78,6 +82,8 @@ module Braintrust
       #   @option params [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Braintrust::Models::Group]
+      #
+      # @see Braintrust::Models::GroupUpdateParams
       def update(group_id, params = {})
         parsed, options = Braintrust::Models::GroupUpdateParams.dump_request(params)
         @client.request(
@@ -118,6 +124,8 @@ module Braintrust
       #   @option params [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Braintrust::ListObjects<Braintrust::Models::Group>]
+      #
+      # @see Braintrust::Models::GroupListParams
       def list(params = {})
         parsed, options = Braintrust::Models::GroupListParams.dump_request(params)
         @client.request(
@@ -139,6 +147,8 @@ module Braintrust
       #   @option params [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Braintrust::Models::Group]
+      #
+      # @see Braintrust::Models::GroupDeleteParams
       def delete(group_id, params = {})
         @client.request(
           method: :delete,
@@ -172,6 +182,8 @@ module Braintrust
       #   @option params [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Braintrust::Models::Group]
+      #
+      # @see Braintrust::Models::GroupReplaceParams
       def replace(params)
         parsed, options = Braintrust::Models::GroupReplaceParams.dump_request(params)
         @client.request(
@@ -183,6 +195,8 @@ module Braintrust
         )
       end
 
+      # @api private
+      #
       # @param client [Braintrust::Client]
       def initialize(client:)
         @client = client

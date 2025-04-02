@@ -63,6 +63,7 @@ module Braintrust
 
           # def initialize: (Hash | Braintrust::BaseModel) -> void
 
+          # @see Braintrust::Models::OnlineScoreConfig::Scorer::Function#type
           module Type
             extend Braintrust::Enum
 
@@ -95,6 +96,7 @@ module Braintrust
 
           # def initialize: (Hash | Braintrust::BaseModel) -> void
 
+          # @see Braintrust::Models::OnlineScoreConfig::Scorer::Global#type
           module Type
             extend Braintrust::Enum
 

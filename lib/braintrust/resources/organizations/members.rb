@@ -25,6 +25,8 @@ module Braintrust
         #   @option params [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
         #
         # @return [Braintrust::Models::PatchOrganizationMembersOutput]
+        #
+        # @see Braintrust::Models::Organizations::MemberUpdateParams
         def update(params = {})
           parsed, options = Braintrust::Models::Organizations::MemberUpdateParams.dump_request(params)
           @client.request(
@@ -36,6 +38,8 @@ module Braintrust
           )
         end
 
+        # @api private
+        #
         # @param client [Braintrust::Client]
         def initialize(client:)
           @client = client

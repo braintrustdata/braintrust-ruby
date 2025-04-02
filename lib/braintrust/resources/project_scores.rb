@@ -24,6 +24,8 @@ module Braintrust
       #   @option params [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Braintrust::Models::ProjectScore]
+      #
+      # @see Braintrust::Models::ProjectScoreCreateParams
       def create(params)
         parsed, options = Braintrust::Models::ProjectScoreCreateParams.dump_request(params)
         @client.request(
@@ -44,6 +46,8 @@ module Braintrust
       #   @option params [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Braintrust::Models::ProjectScore]
+      #
+      # @see Braintrust::Models::ProjectScoreRetrieveParams
       def retrieve(project_score_id, params = {})
         @client.request(
           method: :get,
@@ -74,6 +78,8 @@ module Braintrust
       #   @option params [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Braintrust::Models::ProjectScore]
+      #
+      # @see Braintrust::Models::ProjectScoreUpdateParams
       def update(project_score_id, params = {})
         parsed, options = Braintrust::Models::ProjectScoreUpdateParams.dump_request(params)
         @client.request(
@@ -120,6 +126,8 @@ module Braintrust
       #   @option params [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Braintrust::ListObjects<Braintrust::Models::ProjectScore>]
+      #
+      # @see Braintrust::Models::ProjectScoreListParams
       def list(params = {})
         parsed, options = Braintrust::Models::ProjectScoreListParams.dump_request(params)
         @client.request(
@@ -141,6 +149,8 @@ module Braintrust
       #   @option params [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Braintrust::Models::ProjectScore]
+      #
+      # @see Braintrust::Models::ProjectScoreDeleteParams
       def delete(project_score_id, params = {})
         @client.request(
           method: :delete,
@@ -171,6 +181,8 @@ module Braintrust
       #   @option params [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Braintrust::Models::ProjectScore]
+      #
+      # @see Braintrust::Models::ProjectScoreReplaceParams
       def replace(params)
         parsed, options = Braintrust::Models::ProjectScoreReplaceParams.dump_request(params)
         @client.request(
@@ -182,6 +194,8 @@ module Braintrust
         )
       end
 
+      # @api private
+      #
       # @param client [Braintrust::Client]
       def initialize(client:)
         @client = client

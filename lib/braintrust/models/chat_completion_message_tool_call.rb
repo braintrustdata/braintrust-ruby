@@ -27,6 +27,7 @@ module Braintrust
 
       # def initialize: (Hash | Braintrust::BaseModel) -> void
 
+      # @see Braintrust::Models::ChatCompletionMessageToolCall#function
       class Function < Braintrust::BaseModel
         # @!attribute arguments
         #
@@ -47,6 +48,7 @@ module Braintrust
         # def initialize: (Hash | Braintrust::BaseModel) -> void
       end
 
+      # @see Braintrust::Models::ChatCompletionMessageToolCall#type
       module Type
         extend Braintrust::Enum
 
