@@ -7,7 +7,7 @@ module Braintrust
       extend Braintrust::Enum
 
       TaggedSymbol = T.type_alias { T.all(Symbol, Braintrust::Models::EnvVarObjectType) }
-      OrSymbol = T.type_alias { T.any(Symbol, Braintrust::Models::EnvVarObjectType::TaggedSymbol) }
+      OrSymbol = T.type_alias { T.any(Symbol, String, Braintrust::Models::EnvVarObjectType::TaggedSymbol) }
 
       ORGANIZATION = T.let(:organization, Braintrust::Models::EnvVarObjectType::TaggedSymbol)
       PROJECT = T.let(:project, Braintrust::Models::EnvVarObjectType::TaggedSymbol)
