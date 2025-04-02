@@ -6,28 +6,16 @@ module Braintrust
       # Create a new acl. If there is an existing acl with the same contents as the one
       #   specified in the request, will return the existing acl unmodified
       #
-      # @param params [Braintrust::Models::ACLCreateParams, Hash{Symbol=>Object}] .
+      # @overload create(object_id_:, object_type:, group_id: nil, permission: nil, restrict_object_type: nil, role_id: nil, user_id: nil, request_options: {})
       #
-      #   @option params [String] :object_id_ The id of the object the ACL applies to
-      #
-      #   @option params [Symbol, Braintrust::Models::ACLObjectType] :object_type The object type that the ACL applies to
-      #
-      #   @option params [String, nil] :group_id Id of the group the ACL applies to. Exactly one of `user_id` and `group_id` will
-      #     be provided
-      #
-      #   @option params [Symbol, Braintrust::Models::Permission, nil] :permission Permission the ACL grants. Exactly one of `permission` and `role_id` will be
-      #     provided
-      #
-      #   @option params [Symbol, Braintrust::Models::ACLObjectType, nil] :restrict_object_type When setting a permission directly, optionally restricts the permission grant to
-      #     just the specified object type. Cannot be set alongside a `role_id`.
-      #
-      #   @option params [String, nil] :role_id Id of the role the ACL grants. Exactly one of `permission` and `role_id` will be
-      #     provided
-      #
-      #   @option params [String, nil] :user_id Id of the user the ACL applies to. Exactly one of `user_id` and `group_id` will
-      #     be provided
-      #
-      #   @option params [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
+      # @param object_id_ [String]
+      # @param object_type [Symbol, Braintrust::Models::ACLObjectType]
+      # @param group_id [String, nil]
+      # @param permission [Symbol, Braintrust::Models::Permission, nil]
+      # @param restrict_object_type [Symbol, Braintrust::Models::ACLObjectType, nil]
+      # @param role_id [String, nil]
+      # @param user_id [String, nil]
+      # @param request_options [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil]
       #
       # @return [Braintrust::Models::ACL]
       #
@@ -45,11 +33,10 @@ module Braintrust
 
       # Get an acl object by its id
       #
-      # @param acl_id [String] Acl id
+      # @overload retrieve(acl_id, request_options: {})
       #
-      # @param params [Braintrust::Models::ACLRetrieveParams, Hash{Symbol=>Object}] .
-      #
-      #   @option params [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
+      # @param acl_id [String]
+      # @param request_options [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil]
       #
       # @return [Braintrust::Models::ACL]
       #
@@ -66,30 +53,15 @@ module Braintrust
       # List out all acls. The acls are sorted by creation date, with the most
       #   recently-created acls coming first
       #
-      # @param params [Braintrust::Models::ACLListParams, Hash{Symbol=>Object}] .
+      # @overload list(object_id_:, object_type:, ending_before: nil, ids: nil, limit: nil, starting_after: nil, request_options: {})
       #
-      #   @option params [String] :object_id_ The id of the object the ACL applies to
-      #
-      #   @option params [Symbol, Braintrust::Models::ACLObjectType] :object_type The object type that the ACL applies to
-      #
-      #   @option params [String] :ending_before Pagination cursor id.
-      #
-      #     For example, if the initial item in the last page you fetched had an id of
-      #     `foo`, pass `ending_before=foo` to fetch the previous page. Note: you may only
-      #     pass one of `starting_after` and `ending_before`
-      #
-      #   @option params [String, Array<String>] :ids Filter search results to a particular set of object IDs. To specify a list of
-      #     IDs, include the query param multiple times
-      #
-      #   @option params [Integer, nil] :limit Limit the number of objects to return
-      #
-      #   @option params [String] :starting_after Pagination cursor id.
-      #
-      #     For example, if the final item in the last page you fetched had an id of `foo`,
-      #     pass `starting_after=foo` to fetch the next page. Note: you may only pass one of
-      #     `starting_after` and `ending_before`
-      #
-      #   @option params [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
+      # @param object_id_ [String]
+      # @param object_type [Symbol, Braintrust::Models::ACLObjectType]
+      # @param ending_before [String]
+      # @param ids [String, Array<String>]
+      # @param limit [Integer, nil]
+      # @param starting_after [String]
+      # @param request_options [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil]
       #
       # @return [Braintrust::ListObjects<Braintrust::Models::ACL>]
       #
@@ -108,11 +80,10 @@ module Braintrust
 
       # Delete an acl object by its id
       #
-      # @param acl_id [String] Acl id
+      # @overload delete(acl_id, request_options: {})
       #
-      # @param params [Braintrust::Models::ACLDeleteParams, Hash{Symbol=>Object}] .
-      #
-      #   @option params [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
+      # @param acl_id [String]
+      # @param request_options [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil]
       #
       # @return [Braintrust::Models::ACL]
       #
@@ -130,31 +101,11 @@ module Braintrust
       #   exist will have no effect, and removing acls which do not exist will have no
       #   effect.
       #
-      # @param params [Braintrust::Models::ACLBatchUpdateParams, Hash{Symbol=>Object}] .
+      # @overload batch_update(add_acls: nil, remove_acls: nil, request_options: {})
       #
-      #   @option params [Array<Braintrust::Models::ACLBatchUpdateParams::AddACL>, nil] :add_acls An ACL grants a certain permission or role to a certain user or group on an
-      #     object.
-      #
-      #     ACLs are inherited across the object hierarchy. So for example, if a user has
-      #     read permissions on a project, they will also have read permissions on any
-      #     experiment, dataset, etc. created within that project.
-      #
-      #     To restrict a grant to a particular sub-object, you may specify
-      #     `restrict_object_type` in the ACL, as part of a direct permission grant or as
-      #     part of a role.
-      #
-      #   @option params [Array<Braintrust::Models::ACLBatchUpdateParams::RemoveACL>, nil] :remove_acls An ACL grants a certain permission or role to a certain user or group on an
-      #     object.
-      #
-      #     ACLs are inherited across the object hierarchy. So for example, if a user has
-      #     read permissions on a project, they will also have read permissions on any
-      #     experiment, dataset, etc. created within that project.
-      #
-      #     To restrict a grant to a particular sub-object, you may specify
-      #     `restrict_object_type` in the ACL, as part of a direct permission grant or as
-      #     part of a role.
-      #
-      #   @option params [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
+      # @param add_acls [Array<Braintrust::Models::ACLBatchUpdateParams::AddACL>, nil]
+      # @param remove_acls [Array<Braintrust::Models::ACLBatchUpdateParams::RemoveACL>, nil]
+      # @param request_options [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil]
       #
       # @return [Braintrust::Models::ACLBatchUpdateResponse]
       #
@@ -172,28 +123,16 @@ module Braintrust
 
       # Delete a single acl
       #
-      # @param params [Braintrust::Models::ACLFindAndDeleteParams, Hash{Symbol=>Object}] .
+      # @overload find_and_delete(object_id_:, object_type:, group_id: nil, permission: nil, restrict_object_type: nil, role_id: nil, user_id: nil, request_options: {})
       #
-      #   @option params [String] :object_id_ The id of the object the ACL applies to
-      #
-      #   @option params [Symbol, Braintrust::Models::ACLObjectType] :object_type The object type that the ACL applies to
-      #
-      #   @option params [String, nil] :group_id Id of the group the ACL applies to. Exactly one of `user_id` and `group_id` will
-      #     be provided
-      #
-      #   @option params [Symbol, Braintrust::Models::Permission, nil] :permission Permission the ACL grants. Exactly one of `permission` and `role_id` will be
-      #     provided
-      #
-      #   @option params [Symbol, Braintrust::Models::ACLObjectType, nil] :restrict_object_type When setting a permission directly, optionally restricts the permission grant to
-      #     just the specified object type. Cannot be set alongside a `role_id`.
-      #
-      #   @option params [String, nil] :role_id Id of the role the ACL grants. Exactly one of `permission` and `role_id` will be
-      #     provided
-      #
-      #   @option params [String, nil] :user_id Id of the user the ACL applies to. Exactly one of `user_id` and `group_id` will
-      #     be provided
-      #
-      #   @option params [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
+      # @param object_id_ [String]
+      # @param object_type [Symbol, Braintrust::Models::ACLObjectType]
+      # @param group_id [String, nil]
+      # @param permission [Symbol, Braintrust::Models::Permission, nil]
+      # @param restrict_object_type [Symbol, Braintrust::Models::ACLObjectType, nil]
+      # @param role_id [String, nil]
+      # @param user_id [String, nil]
+      # @param request_options [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil]
       #
       # @return [Braintrust::Models::ACL]
       #
