@@ -2,7 +2,7 @@
 
 module Braintrust
   module Models
-    class ProjectScore < Braintrust::BaseModel
+    class ProjectScore < Braintrust::Internal::Type::BaseModel
       # Unique identifier for the project score
       sig { returns(String) }
       attr_accessor :id
@@ -36,9 +36,7 @@ module Braintrust
       attr_reader :config
 
       sig do
-        params(
-          config: T.nilable(T.any(Braintrust::Models::ProjectScoreConfig, Braintrust::Internal::Util::AnyHash))
-        )
+        params(config: T.nilable(T.any(Braintrust::Models::ProjectScoreConfig, Braintrust::Internal::AnyHash)))
           .void
       end
       attr_writer :config
@@ -67,12 +65,12 @@ module Braintrust
           user_id: String,
           categories: T.nilable(
             T.any(
-              T::Array[T.any(Braintrust::Models::ProjectScoreCategory, Braintrust::Internal::Util::AnyHash)],
+              T::Array[T.any(Braintrust::Models::ProjectScoreCategory, Braintrust::Internal::AnyHash)],
               T::Hash[Symbol, Float],
               T::Array[String]
             )
           ),
-          config: T.nilable(T.any(Braintrust::Models::ProjectScoreConfig, Braintrust::Internal::Util::AnyHash)),
+          config: T.nilable(T.any(Braintrust::Models::ProjectScoreConfig, Braintrust::Internal::AnyHash)),
           created: T.nilable(Time),
           description: T.nilable(String),
           position: T.nilable(String)
@@ -117,7 +115,7 @@ module Braintrust
 
       # For categorical-type project scores, the list of all categories
       module Categories
-        extend Braintrust::Union
+        extend Braintrust::Internal::Type::Union
 
         sig do
           override
@@ -128,13 +126,16 @@ module Braintrust
 
         ProjectScoreCategoryArray =
           T.let(
-            Braintrust::ArrayOf[Braintrust::Models::ProjectScoreCategory],
+            Braintrust::Internal::Type::ArrayOf[Braintrust::Models::ProjectScoreCategory],
             Braintrust::Internal::Type::Converter
           )
 
-        FloatMap = T.let(Braintrust::HashOf[Float], Braintrust::Internal::Type::Converter)
+        FloatMap = T.let(Braintrust::Internal::Type::HashOf[Float], Braintrust::Internal::Type::Converter)
 
-        StringArray = T.let(Braintrust::ArrayOf[String], Braintrust::Internal::Type::Converter)
+        StringArray = T.let(
+          Braintrust::Internal::Type::ArrayOf[String],
+          Braintrust::Internal::Type::Converter
+        )
       end
     end
   end

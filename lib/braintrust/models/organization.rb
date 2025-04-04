@@ -2,7 +2,7 @@
 
 module Braintrust
   module Models
-    class Organization < Braintrust::BaseModel
+    class Organization < Braintrust::Internal::Type::BaseModel
       # @!attribute id
       #   Unique identifier for the organization
       #
@@ -29,7 +29,7 @@ module Braintrust
       # @!attribute is_universal_api
       #
       #   @return [Boolean, nil]
-      optional :is_universal_api, Braintrust::BooleanModel, nil?: true
+      optional :is_universal_api, Braintrust::Internal::Type::BooleanModel, nil?: true
 
       # @!attribute proxy_url
       #
@@ -52,7 +52,7 @@ module Braintrust
       #   #
       #   def initialize(id:, name:, api_url: nil, created: nil, is_universal_api: nil, proxy_url: nil, realtime_url: nil, **) = super
 
-      # def initialize: (Hash | Braintrust::BaseModel) -> void
+      # def initialize: (Hash | Braintrust::Internal::Type::BaseModel) -> void
     end
   end
 end

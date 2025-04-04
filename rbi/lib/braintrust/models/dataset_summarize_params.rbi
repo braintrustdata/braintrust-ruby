@@ -2,7 +2,7 @@
 
 module Braintrust
   module Models
-    class DatasetSummarizeParams < Braintrust::BaseModel
+    class DatasetSummarizeParams < Braintrust::Internal::Type::BaseModel
       extend Braintrust::Internal::Type::RequestParameters::Converter
       include Braintrust::Internal::Type::RequestParameters
 
@@ -14,7 +14,7 @@ module Braintrust
       sig do
         params(
           summarize_data: T.nilable(T::Boolean),
-          request_options: T.any(Braintrust::RequestOptions, Braintrust::Internal::Util::AnyHash)
+          request_options: T.any(Braintrust::RequestOptions, Braintrust::Internal::AnyHash)
         )
           .returns(T.attached_class)
       end

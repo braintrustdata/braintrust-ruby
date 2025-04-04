@@ -2,7 +2,7 @@
 
 module Braintrust
   module Models
-    class OrganizationUpdateParams < Braintrust::BaseModel
+    class OrganizationUpdateParams < Braintrust::Internal::Type::BaseModel
       extend Braintrust::Internal::Type::RequestParameters::Converter
       include Braintrust::Internal::Type::RequestParameters
 
@@ -29,7 +29,7 @@ module Braintrust
           name: T.nilable(String),
           proxy_url: T.nilable(String),
           realtime_url: T.nilable(String),
-          request_options: T.any(Braintrust::RequestOptions, Braintrust::Internal::Util::AnyHash)
+          request_options: T.any(Braintrust::RequestOptions, Braintrust::Internal::AnyHash)
         )
           .returns(T.attached_class)
       end

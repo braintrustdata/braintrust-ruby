@@ -2,7 +2,7 @@
 
 module Braintrust
   module Models
-    class MetricSummary < Braintrust::BaseModel
+    class MetricSummary < Braintrust::Internal::Type::BaseModel
       # @!attribute improvements
       #   Number of improvements in the metric
       #
@@ -55,7 +55,7 @@ module Braintrust
       #   #
       #   def initialize(improvements:, metric:, name:, regressions:, unit:, diff: nil, **) = super
 
-      # def initialize: (Hash | Braintrust::BaseModel) -> void
+      # def initialize: (Hash | Braintrust::Internal::Type::BaseModel) -> void
     end
   end
 end

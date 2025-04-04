@@ -9,7 +9,7 @@ module Braintrust
       }
       & Braintrust::Internal::Type::request_parameters
 
-    class EnvVarReplaceParams < Braintrust::BaseModel
+    class EnvVarReplaceParams < Braintrust::Internal::Type::BaseModel
       extend Braintrust::Internal::Type::RequestParameters::Converter
       include Braintrust::Internal::Type::RequestParameters
 
@@ -34,7 +34,7 @@ module Braintrust
       type object_type = :organization | :project | :function
 
       module ObjectType
-        extend Braintrust::Enum
+        extend Braintrust::Internal::Type::Enum
 
         ORGANIZATION: :organization
         PROJECT: :project

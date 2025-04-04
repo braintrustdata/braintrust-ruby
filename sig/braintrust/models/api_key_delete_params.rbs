@@ -3,7 +3,7 @@ module Braintrust
     type api_key_delete_params =
       {  } & Braintrust::Internal::Type::request_parameters
 
-    class APIKeyDeleteParams < Braintrust::BaseModel
+    class APIKeyDeleteParams < Braintrust::Internal::Type::BaseModel
       extend Braintrust::Internal::Type::RequestParameters::Converter
       include Braintrust::Internal::Type::RequestParameters
 

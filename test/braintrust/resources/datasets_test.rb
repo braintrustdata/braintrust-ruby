@@ -18,7 +18,8 @@ class Braintrust::Test::Resources::DatasetsTest < Braintrust::Test::ResourceTest
         created: Time | nil,
         deleted_at: Time | nil,
         description: String | nil,
-        metadata: ^(Braintrust::HashOf[Braintrust::Unknown, nil?: true]) | nil,
+        metadata: ^(Braintrust::Internal::Type::HashOf[Braintrust::Internal::Type::Unknown,
+                                                       nil?: true]) | nil,
         user_id: String | nil
       }
     end
@@ -39,7 +40,8 @@ class Braintrust::Test::Resources::DatasetsTest < Braintrust::Test::ResourceTest
         created: Time | nil,
         deleted_at: Time | nil,
         description: String | nil,
-        metadata: ^(Braintrust::HashOf[Braintrust::Unknown, nil?: true]) | nil,
+        metadata: ^(Braintrust::Internal::Type::HashOf[Braintrust::Internal::Type::Unknown,
+                                                       nil?: true]) | nil,
         user_id: String | nil
       }
     end
@@ -60,7 +62,8 @@ class Braintrust::Test::Resources::DatasetsTest < Braintrust::Test::ResourceTest
         created: Time | nil,
         deleted_at: Time | nil,
         description: String | nil,
-        metadata: ^(Braintrust::HashOf[Braintrust::Unknown, nil?: true]) | nil,
+        metadata: ^(Braintrust::Internal::Type::HashOf[Braintrust::Internal::Type::Unknown,
+                                                       nil?: true]) | nil,
         user_id: String | nil
       }
     end
@@ -88,7 +91,8 @@ class Braintrust::Test::Resources::DatasetsTest < Braintrust::Test::ResourceTest
         created: Time | nil,
         deleted_at: Time | nil,
         description: String | nil,
-        metadata: ^(Braintrust::HashOf[Braintrust::Unknown, nil?: true]) | nil,
+        metadata: ^(Braintrust::Internal::Type::HashOf[Braintrust::Internal::Type::Unknown,
+                                                       nil?: true]) | nil,
         user_id: String | nil
       }
     end
@@ -109,7 +113,8 @@ class Braintrust::Test::Resources::DatasetsTest < Braintrust::Test::ResourceTest
         created: Time | nil,
         deleted_at: Time | nil,
         description: String | nil,
-        metadata: ^(Braintrust::HashOf[Braintrust::Unknown, nil?: true]) | nil,
+        metadata: ^(Braintrust::Internal::Type::HashOf[Braintrust::Internal::Type::Unknown,
+                                                       nil?: true]) | nil,
         user_id: String | nil
       }
     end
@@ -138,7 +143,7 @@ class Braintrust::Test::Resources::DatasetsTest < Braintrust::Test::ResourceTest
 
     assert_pattern do
       response => {
-        events: ^(Braintrust::ArrayOf[Braintrust::Models::DatasetEvent]),
+        events: ^(Braintrust::Internal::Type::ArrayOf[Braintrust::Models::DatasetEvent]),
         cursor: String | nil
       }
     end
@@ -153,7 +158,7 @@ class Braintrust::Test::Resources::DatasetsTest < Braintrust::Test::ResourceTest
 
     assert_pattern do
       response => {
-        events: ^(Braintrust::ArrayOf[Braintrust::Models::DatasetEvent]),
+        events: ^(Braintrust::Internal::Type::ArrayOf[Braintrust::Models::DatasetEvent]),
         cursor: String | nil
       }
     end
@@ -168,7 +173,7 @@ class Braintrust::Test::Resources::DatasetsTest < Braintrust::Test::ResourceTest
 
     assert_pattern do
       response => {
-        row_ids: ^(Braintrust::ArrayOf[String])
+        row_ids: ^(Braintrust::Internal::Type::ArrayOf[String])
       }
     end
   end

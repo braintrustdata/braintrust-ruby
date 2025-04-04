@@ -3,7 +3,7 @@ module Braintrust
     type span_type = :llm | :score | :function | :eval | :task | :tool
 
     module SpanType
-      extend Braintrust::Enum
+      extend Braintrust::Internal::Type::Enum
 
       LLM: :llm
       SCORE: :score

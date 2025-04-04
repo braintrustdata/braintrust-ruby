@@ -62,7 +62,7 @@ module Braintrust
         #
         # @return [Boolean]
         def ==(other)
-          other.is_a?(Module) && other.singleton_class <= Braintrust::Enum && other.values.to_set == values.to_set
+          other.is_a?(Module) && other.singleton_class <= Braintrust::Internal::Type::Enum && other.values.to_set == values.to_set
         end
 
         # @api private

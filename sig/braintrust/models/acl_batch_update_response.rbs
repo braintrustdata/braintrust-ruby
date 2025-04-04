@@ -6,7 +6,7 @@ module Braintrust
         removed_acls: ::Array[Braintrust::Models::ACL]
       }
 
-    class ACLBatchUpdateResponse < Braintrust::BaseModel
+    class ACLBatchUpdateResponse < Braintrust::Internal::Type::BaseModel
       attr_accessor added_acls: ::Array[Braintrust::Models::ACL]
 
       attr_accessor removed_acls: ::Array[Braintrust::Models::ACL]

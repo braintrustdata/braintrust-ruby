@@ -9,7 +9,7 @@ module Braintrust
         tool_functions: ::Array[Braintrust::Models::PromptData::tool_function]?
       }
 
-    class PromptData < Braintrust::BaseModel
+    class PromptData < Braintrust::Internal::Type::BaseModel
       attr_accessor options: Braintrust::Models::PromptOptions?
 
       attr_accessor origin: Braintrust::Models::PromptData::Origin?
@@ -33,7 +33,7 @@ module Braintrust
       type origin =
         { project_id: String, prompt_id: String, prompt_version: String }
 
-      class Origin < Braintrust::BaseModel
+      class Origin < Braintrust::Internal::Type::BaseModel
         attr_reader project_id: String?
 
         def project_id=: (String) -> String
@@ -62,7 +62,7 @@ module Braintrust
           use_cot: bool
         }
 
-      class Parser < Braintrust::BaseModel
+      class Parser < Braintrust::Internal::Type::BaseModel
         attr_accessor choice_scores: ::Hash[Symbol, Float]
 
         attr_accessor type: Braintrust::Models::PromptData::Parser::type_
@@ -80,7 +80,7 @@ module Braintrust
         type type_ = :llm_classifier
 
         module Type
-          extend Braintrust::Enum
+          extend Braintrust::Internal::Type::Enum
 
           LLM_CLASSIFIER: :llm_classifier
 
@@ -93,7 +93,7 @@ module Braintrust
         | Braintrust::Models::PromptData::Prompt::Chat
 
       module Prompt
-        extend Braintrust::Union
+        extend Braintrust::Internal::Type::Union
 
         type completion =
           {
@@ -101,7 +101,7 @@ module Braintrust
             type: Braintrust::Models::PromptData::Prompt::Completion::type_
           }
 
-        class Completion < Braintrust::BaseModel
+        class Completion < Braintrust::Internal::Type::BaseModel
           attr_accessor content: String
 
           attr_accessor type: Braintrust::Models::PromptData::Prompt::Completion::type_
@@ -116,7 +116,7 @@ module Braintrust
           type type_ = :completion
 
           module Type
-            extend Braintrust::Enum
+            extend Braintrust::Internal::Type::Enum
 
             COMPLETION: :completion
 
@@ -131,7 +131,7 @@ module Braintrust
             tools: String
           }
 
-        class Chat < Braintrust::BaseModel
+        class Chat < Braintrust::Internal::Type::BaseModel
           attr_accessor messages: ::Array[Braintrust::Models::PromptData::Prompt::Chat::message]
 
           attr_accessor type: Braintrust::Models::PromptData::Prompt::Chat::type_
@@ -157,7 +157,7 @@ module Braintrust
             | Braintrust::Models::PromptData::Prompt::Chat::Message::Fallback
 
           module Message
-            extend Braintrust::Union
+            extend Braintrust::Internal::Type::Union
 
             type system_ =
               {
@@ -166,7 +166,7 @@ module Braintrust
                 name: String
               }
 
-            class System < Braintrust::BaseModel
+            class System < Braintrust::Internal::Type::BaseModel
               attr_accessor role: Braintrust::Models::PromptData::Prompt::Chat::Message::System::role
 
               attr_reader content: String?
@@ -188,7 +188,7 @@ module Braintrust
               type role = :system
 
               module Role
-                extend Braintrust::Enum
+                extend Braintrust::Internal::Type::Enum
 
                 SYSTEM: :system
 
@@ -203,7 +203,7 @@ module Braintrust
                 name: String
               }
 
-            class User < Braintrust::BaseModel
+            class User < Braintrust::Internal::Type::BaseModel
               attr_accessor role: Braintrust::Models::PromptData::Prompt::Chat::Message::User::role
 
               attr_reader content: Braintrust::Models::PromptData::Prompt::Chat::Message::User::content?
@@ -227,7 +227,7 @@ module Braintrust
               type role = :user
 
               module Role
-                extend Braintrust::Enum
+                extend Braintrust::Internal::Type::Enum
 
                 USER: :user
 
@@ -239,14 +239,14 @@ module Braintrust
                 | ::Array[Braintrust::Models::PromptData::Prompt::Chat::Message::User::Content::array]
 
               module Content
-                extend Braintrust::Union
+                extend Braintrust::Internal::Type::Union
 
                 type array =
                   Braintrust::Models::ChatCompletionContentPartText
                   | Braintrust::Models::ChatCompletionContentPartImage
 
                 module Array
-                  extend Braintrust::Union
+                  extend Braintrust::Internal::Type::Union
 
                   def self?.variants: -> [Braintrust::Models::ChatCompletionContentPartText, Braintrust::Models::ChatCompletionContentPartImage]
                 end
@@ -269,7 +269,7 @@ module Braintrust
                 tool_calls: ::Array[Braintrust::Models::ChatCompletionMessageToolCall]?
               }
 
-            class Assistant < Braintrust::BaseModel
+            class Assistant < Braintrust::Internal::Type::BaseModel
               attr_accessor role: Braintrust::Models::PromptData::Prompt::Chat::Message::Assistant::role
 
               attr_accessor content: String?
@@ -293,7 +293,7 @@ module Braintrust
               type role = :assistant
 
               module Role
-                extend Braintrust::Enum
+                extend Braintrust::Internal::Type::Enum
 
                 ASSISTANT: :assistant
 
@@ -302,7 +302,7 @@ module Braintrust
 
               type function_call = { arguments: String, name: String }
 
-              class FunctionCall < Braintrust::BaseModel
+              class FunctionCall < Braintrust::Internal::Type::BaseModel
                 attr_accessor arguments: String
 
                 attr_accessor name: String
@@ -320,7 +320,7 @@ module Braintrust
                 tool_call_id: String
               }
 
-            class Tool < Braintrust::BaseModel
+            class Tool < Braintrust::Internal::Type::BaseModel
               attr_accessor role: Braintrust::Models::PromptData::Prompt::Chat::Message::Tool::role
 
               attr_reader content: String?
@@ -342,7 +342,7 @@ module Braintrust
               type role = :tool
 
               module Role
-                extend Braintrust::Enum
+                extend Braintrust::Internal::Type::Enum
 
                 TOOL: :tool
 
@@ -357,7 +357,7 @@ module Braintrust
                 content: String
               }
 
-            class Function < Braintrust::BaseModel
+            class Function < Braintrust::Internal::Type::BaseModel
               attr_accessor name: String
 
               attr_accessor role: Braintrust::Models::PromptData::Prompt::Chat::Message::Function::role
@@ -377,7 +377,7 @@ module Braintrust
               type role = :function
 
               module Role
-                extend Braintrust::Enum
+                extend Braintrust::Internal::Type::Enum
 
                 FUNCTION: :function
 
@@ -391,7 +391,7 @@ module Braintrust
                 content: String?
               }
 
-            class Fallback < Braintrust::BaseModel
+            class Fallback < Braintrust::Internal::Type::BaseModel
               attr_accessor role: Braintrust::Models::PromptData::Prompt::Chat::Message::Fallback::role
 
               attr_accessor content: String?
@@ -406,7 +406,7 @@ module Braintrust
               type role = :model
 
               module Role
-                extend Braintrust::Enum
+                extend Braintrust::Internal::Type::Enum
 
                 MODEL: :model
 
@@ -420,7 +420,7 @@ module Braintrust
           type type_ = :chat
 
           module Type
-            extend Braintrust::Enum
+            extend Braintrust::Internal::Type::Enum
 
             CHAT: :chat
 
@@ -436,7 +436,7 @@ module Braintrust
         | Braintrust::Models::PromptData::ToolFunction::Global
 
       module ToolFunction
-        extend Braintrust::Union
+        extend Braintrust::Internal::Type::Union
 
         type function =
           {
@@ -444,7 +444,7 @@ module Braintrust
             type: Braintrust::Models::PromptData::ToolFunction::Function::type_
           }
 
-        class Function < Braintrust::BaseModel
+        class Function < Braintrust::Internal::Type::BaseModel
           attr_accessor id: String
 
           attr_accessor type: Braintrust::Models::PromptData::ToolFunction::Function::type_
@@ -459,7 +459,7 @@ module Braintrust
           type type_ = :function
 
           module Type
-            extend Braintrust::Enum
+            extend Braintrust::Internal::Type::Enum
 
             FUNCTION: :function
 
@@ -473,7 +473,7 @@ module Braintrust
             type: Braintrust::Models::PromptData::ToolFunction::Global::type_
           }
 
-        class Global < Braintrust::BaseModel
+        class Global < Braintrust::Internal::Type::BaseModel
           attr_accessor name: String
 
           attr_accessor type: Braintrust::Models::PromptData::ToolFunction::Global::type_
@@ -488,7 +488,7 @@ module Braintrust
           type type_ = :global
 
           module Type
-            extend Braintrust::Enum
+            extend Braintrust::Internal::Type::Enum
 
             GLOBAL: :global
 

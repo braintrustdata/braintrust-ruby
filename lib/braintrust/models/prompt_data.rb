@@ -2,7 +2,7 @@
 
 module Braintrust
   module Models
-    class PromptData < Braintrust::BaseModel
+    class PromptData < Braintrust::Internal::Type::BaseModel
       # @!attribute options
       #
       #   @return [Braintrust::Models::PromptOptions, nil]
@@ -27,7 +27,7 @@ module Braintrust
       #
       #   @return [Array<Braintrust::Models::PromptData::ToolFunction::Function, Braintrust::Models::PromptData::ToolFunction::Global>, nil]
       optional :tool_functions,
-               -> { Braintrust::ArrayOf[union: Braintrust::Models::PromptData::ToolFunction] },
+               -> { Braintrust::Internal::Type::ArrayOf[union: Braintrust::Models::PromptData::ToolFunction] },
                nil?: true
 
       # @!parse
@@ -41,10 +41,10 @@ module Braintrust
       #   #
       #   def initialize(options: nil, origin: nil, parser: nil, prompt: nil, tool_functions: nil, **) = super
 
-      # def initialize: (Hash | Braintrust::BaseModel) -> void
+      # def initialize: (Hash | Braintrust::Internal::Type::BaseModel) -> void
 
       # @see Braintrust::Models::PromptData#origin
-      class Origin < Braintrust::BaseModel
+      class Origin < Braintrust::Internal::Type::BaseModel
         # @!attribute [r] project_id
         #
         #   @return [String, nil]
@@ -79,15 +79,15 @@ module Braintrust
         #   #
         #   def initialize(project_id: nil, prompt_id: nil, prompt_version: nil, **) = super
 
-        # def initialize: (Hash | Braintrust::BaseModel) -> void
+        # def initialize: (Hash | Braintrust::Internal::Type::BaseModel) -> void
       end
 
       # @see Braintrust::Models::PromptData#parser
-      class Parser < Braintrust::BaseModel
+      class Parser < Braintrust::Internal::Type::BaseModel
         # @!attribute choice_scores
         #
         #   @return [Hash{Symbol=>Float}]
-        required :choice_scores, Braintrust::HashOf[Float]
+        required :choice_scores, Braintrust::Internal::Type::HashOf[Float]
 
         # @!attribute type
         #
@@ -97,7 +97,7 @@ module Braintrust
         # @!attribute use_cot
         #
         #   @return [Boolean]
-        required :use_cot, Braintrust::BooleanModel
+        required :use_cot, Braintrust::Internal::Type::BooleanModel
 
         # @!parse
         #   # @param choice_scores [Hash{Symbol=>Float}]
@@ -106,11 +106,11 @@ module Braintrust
         #   #
         #   def initialize(choice_scores:, type:, use_cot:, **) = super
 
-        # def initialize: (Hash | Braintrust::BaseModel) -> void
+        # def initialize: (Hash | Braintrust::Internal::Type::BaseModel) -> void
 
         # @see Braintrust::Models::PromptData::Parser#type
         module Type
-          extend Braintrust::Enum
+          extend Braintrust::Internal::Type::Enum
 
           LLM_CLASSIFIER = :llm_classifier
 
@@ -124,13 +124,13 @@ module Braintrust
 
       # @see Braintrust::Models::PromptData#prompt
       module Prompt
-        extend Braintrust::Union
+        extend Braintrust::Internal::Type::Union
 
         variant -> { Braintrust::Models::PromptData::Prompt::Completion }
 
         variant -> { Braintrust::Models::PromptData::Prompt::Chat }
 
-        class Completion < Braintrust::BaseModel
+        class Completion < Braintrust::Internal::Type::BaseModel
           # @!attribute content
           #
           #   @return [String]
@@ -147,11 +147,11 @@ module Braintrust
           #   #
           #   def initialize(content:, type:, **) = super
 
-          # def initialize: (Hash | Braintrust::BaseModel) -> void
+          # def initialize: (Hash | Braintrust::Internal::Type::BaseModel) -> void
 
           # @see Braintrust::Models::PromptData::Prompt::Completion#type
           module Type
-            extend Braintrust::Enum
+            extend Braintrust::Internal::Type::Enum
 
             COMPLETION = :completion
 
@@ -163,12 +163,12 @@ module Braintrust
           end
         end
 
-        class Chat < Braintrust::BaseModel
+        class Chat < Braintrust::Internal::Type::BaseModel
           # @!attribute messages
           #
           #   @return [Array<Braintrust::Models::PromptData::Prompt::Chat::Message::System, Braintrust::Models::PromptData::Prompt::Chat::Message::User, Braintrust::Models::PromptData::Prompt::Chat::Message::Assistant, Braintrust::Models::PromptData::Prompt::Chat::Message::Tool, Braintrust::Models::PromptData::Prompt::Chat::Message::Function, Braintrust::Models::PromptData::Prompt::Chat::Message::Fallback>]
           required :messages,
-                   -> { Braintrust::ArrayOf[union: Braintrust::Models::PromptData::Prompt::Chat::Message] }
+                   -> { Braintrust::Internal::Type::ArrayOf[union: Braintrust::Models::PromptData::Prompt::Chat::Message] }
 
           # @!attribute type
           #
@@ -191,10 +191,10 @@ module Braintrust
           #   #
           #   def initialize(messages:, type:, tools: nil, **) = super
 
-          # def initialize: (Hash | Braintrust::BaseModel) -> void
+          # def initialize: (Hash | Braintrust::Internal::Type::BaseModel) -> void
 
           module Message
-            extend Braintrust::Union
+            extend Braintrust::Internal::Type::Union
 
             variant -> { Braintrust::Models::PromptData::Prompt::Chat::Message::System }
 
@@ -208,7 +208,7 @@ module Braintrust
 
             variant -> { Braintrust::Models::PromptData::Prompt::Chat::Message::Fallback }
 
-            class System < Braintrust::BaseModel
+            class System < Braintrust::Internal::Type::BaseModel
               # @!attribute role
               #
               #   @return [Symbol, Braintrust::Models::PromptData::Prompt::Chat::Message::System::Role]
@@ -239,11 +239,11 @@ module Braintrust
               #   #
               #   def initialize(role:, content: nil, name: nil, **) = super
 
-              # def initialize: (Hash | Braintrust::BaseModel) -> void
+              # def initialize: (Hash | Braintrust::Internal::Type::BaseModel) -> void
 
               # @see Braintrust::Models::PromptData::Prompt::Chat::Message::System#role
               module Role
-                extend Braintrust::Enum
+                extend Braintrust::Internal::Type::Enum
 
                 SYSTEM = :system
 
@@ -255,7 +255,7 @@ module Braintrust
               end
             end
 
-            class User < Braintrust::BaseModel
+            class User < Braintrust::Internal::Type::BaseModel
               # @!attribute role
               #
               #   @return [Symbol, Braintrust::Models::PromptData::Prompt::Chat::Message::User::Role]
@@ -286,11 +286,11 @@ module Braintrust
               #   #
               #   def initialize(role:, content: nil, name: nil, **) = super
 
-              # def initialize: (Hash | Braintrust::BaseModel) -> void
+              # def initialize: (Hash | Braintrust::Internal::Type::BaseModel) -> void
 
               # @see Braintrust::Models::PromptData::Prompt::Chat::Message::User#role
               module Role
-                extend Braintrust::Enum
+                extend Braintrust::Internal::Type::Enum
 
                 USER = :user
 
@@ -303,14 +303,14 @@ module Braintrust
 
               # @see Braintrust::Models::PromptData::Prompt::Chat::Message::User#content
               module Content
-                extend Braintrust::Union
+                extend Braintrust::Internal::Type::Union
 
                 variant String
 
                 variant -> { Braintrust::Models::PromptData::Prompt::Chat::Message::User::Content::Nested2DArray }
 
                 module Array
-                  extend Braintrust::Union
+                  extend Braintrust::Internal::Type::Union
 
                   variant -> { Braintrust::Models::ChatCompletionContentPartText }
 
@@ -326,11 +326,11 @@ module Braintrust
                 #   def self.variants; end
 
                 Nested2DArray =
-                  Braintrust::ArrayOf[union: -> { Braintrust::Models::PromptData::Prompt::Chat::Message::User::Content::Array }]
+                  Braintrust::Internal::Type::ArrayOf[union: -> { Braintrust::Models::PromptData::Prompt::Chat::Message::User::Content::Array }]
               end
             end
 
-            class Assistant < Braintrust::BaseModel
+            class Assistant < Braintrust::Internal::Type::BaseModel
               # @!attribute role
               #
               #   @return [Symbol, Braintrust::Models::PromptData::Prompt::Chat::Message::Assistant::Role]
@@ -357,7 +357,7 @@ module Braintrust
               #
               #   @return [Array<Braintrust::Models::ChatCompletionMessageToolCall>, nil]
               optional :tool_calls,
-                       -> { Braintrust::ArrayOf[Braintrust::Models::ChatCompletionMessageToolCall] },
+                       -> { Braintrust::Internal::Type::ArrayOf[Braintrust::Models::ChatCompletionMessageToolCall] },
                        nil?: true
 
               # @!parse
@@ -369,11 +369,11 @@ module Braintrust
               #   #
               #   def initialize(role:, content: nil, function_call: nil, name: nil, tool_calls: nil, **) = super
 
-              # def initialize: (Hash | Braintrust::BaseModel) -> void
+              # def initialize: (Hash | Braintrust::Internal::Type::BaseModel) -> void
 
               # @see Braintrust::Models::PromptData::Prompt::Chat::Message::Assistant#role
               module Role
-                extend Braintrust::Enum
+                extend Braintrust::Internal::Type::Enum
 
                 ASSISTANT = :assistant
 
@@ -385,7 +385,7 @@ module Braintrust
               end
 
               # @see Braintrust::Models::PromptData::Prompt::Chat::Message::Assistant#function_call
-              class FunctionCall < Braintrust::BaseModel
+              class FunctionCall < Braintrust::Internal::Type::BaseModel
                 # @!attribute arguments
                 #
                 #   @return [String]
@@ -402,11 +402,11 @@ module Braintrust
                 #   #
                 #   def initialize(arguments:, name:, **) = super
 
-                # def initialize: (Hash | Braintrust::BaseModel) -> void
+                # def initialize: (Hash | Braintrust::Internal::Type::BaseModel) -> void
               end
             end
 
-            class Tool < Braintrust::BaseModel
+            class Tool < Braintrust::Internal::Type::BaseModel
               # @!attribute role
               #
               #   @return [Symbol, Braintrust::Models::PromptData::Prompt::Chat::Message::Tool::Role]
@@ -437,11 +437,11 @@ module Braintrust
               #   #
               #   def initialize(role:, content: nil, tool_call_id: nil, **) = super
 
-              # def initialize: (Hash | Braintrust::BaseModel) -> void
+              # def initialize: (Hash | Braintrust::Internal::Type::BaseModel) -> void
 
               # @see Braintrust::Models::PromptData::Prompt::Chat::Message::Tool#role
               module Role
-                extend Braintrust::Enum
+                extend Braintrust::Internal::Type::Enum
 
                 TOOL = :tool
 
@@ -453,7 +453,7 @@ module Braintrust
               end
             end
 
-            class Function < Braintrust::BaseModel
+            class Function < Braintrust::Internal::Type::BaseModel
               # @!attribute name
               #
               #   @return [String]
@@ -480,11 +480,11 @@ module Braintrust
               #   #
               #   def initialize(name:, role:, content: nil, **) = super
 
-              # def initialize: (Hash | Braintrust::BaseModel) -> void
+              # def initialize: (Hash | Braintrust::Internal::Type::BaseModel) -> void
 
               # @see Braintrust::Models::PromptData::Prompt::Chat::Message::Function#role
               module Role
-                extend Braintrust::Enum
+                extend Braintrust::Internal::Type::Enum
 
                 FUNCTION = :function
 
@@ -496,7 +496,7 @@ module Braintrust
               end
             end
 
-            class Fallback < Braintrust::BaseModel
+            class Fallback < Braintrust::Internal::Type::BaseModel
               # @!attribute role
               #
               #   @return [Symbol, Braintrust::Models::PromptData::Prompt::Chat::Message::Fallback::Role]
@@ -513,11 +513,11 @@ module Braintrust
               #   #
               #   def initialize(role:, content: nil, **) = super
 
-              # def initialize: (Hash | Braintrust::BaseModel) -> void
+              # def initialize: (Hash | Braintrust::Internal::Type::BaseModel) -> void
 
               # @see Braintrust::Models::PromptData::Prompt::Chat::Message::Fallback#role
               module Role
-                extend Braintrust::Enum
+                extend Braintrust::Internal::Type::Enum
 
                 MODEL = :model
 
@@ -536,7 +536,7 @@ module Braintrust
 
           # @see Braintrust::Models::PromptData::Prompt::Chat#type
           module Type
-            extend Braintrust::Enum
+            extend Braintrust::Internal::Type::Enum
 
             CHAT = :chat
 
@@ -554,13 +554,13 @@ module Braintrust
       end
 
       module ToolFunction
-        extend Braintrust::Union
+        extend Braintrust::Internal::Type::Union
 
         variant -> { Braintrust::Models::PromptData::ToolFunction::Function }
 
         variant -> { Braintrust::Models::PromptData::ToolFunction::Global }
 
-        class Function < Braintrust::BaseModel
+        class Function < Braintrust::Internal::Type::BaseModel
           # @!attribute id
           #
           #   @return [String]
@@ -577,11 +577,11 @@ module Braintrust
           #   #
           #   def initialize(id:, type:, **) = super
 
-          # def initialize: (Hash | Braintrust::BaseModel) -> void
+          # def initialize: (Hash | Braintrust::Internal::Type::BaseModel) -> void
 
           # @see Braintrust::Models::PromptData::ToolFunction::Function#type
           module Type
-            extend Braintrust::Enum
+            extend Braintrust::Internal::Type::Enum
 
             FUNCTION = :function
 
@@ -593,7 +593,7 @@ module Braintrust
           end
         end
 
-        class Global < Braintrust::BaseModel
+        class Global < Braintrust::Internal::Type::BaseModel
           # @!attribute name
           #
           #   @return [String]
@@ -610,11 +610,11 @@ module Braintrust
           #   #
           #   def initialize(name:, type:, **) = super
 
-          # def initialize: (Hash | Braintrust::BaseModel) -> void
+          # def initialize: (Hash | Braintrust::Internal::Type::BaseModel) -> void
 
           # @see Braintrust::Models::PromptData::ToolFunction::Global#type
           module Type
-            extend Braintrust::Enum
+            extend Braintrust::Internal::Type::Enum
 
             GLOBAL = :global
 

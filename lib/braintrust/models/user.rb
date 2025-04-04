@@ -2,7 +2,7 @@
 
 module Braintrust
   module Models
-    class User < Braintrust::BaseModel
+    class User < Braintrust::Internal::Type::BaseModel
       # @!attribute id
       #   Unique identifier for the user
       #
@@ -49,7 +49,7 @@ module Braintrust
       #   #
       #   def initialize(id:, avatar_url: nil, created: nil, email: nil, family_name: nil, given_name: nil, **) = super
 
-      # def initialize: (Hash | Braintrust::BaseModel) -> void
+      # def initialize: (Hash | Braintrust::Internal::Type::BaseModel) -> void
     end
   end
 end

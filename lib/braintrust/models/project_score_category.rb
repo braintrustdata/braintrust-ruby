@@ -2,7 +2,7 @@
 
 module Braintrust
   module Models
-    class ProjectScoreCategory < Braintrust::BaseModel
+    class ProjectScoreCategory < Braintrust::Internal::Type::BaseModel
       # @!attribute name
       #   Name of the category
       #
@@ -23,7 +23,7 @@ module Braintrust
       #   #
       #   def initialize(name:, value:, **) = super
 
-      # def initialize: (Hash | Braintrust::BaseModel) -> void
+      # def initialize: (Hash | Braintrust::Internal::Type::BaseModel) -> void
     end
   end
 end

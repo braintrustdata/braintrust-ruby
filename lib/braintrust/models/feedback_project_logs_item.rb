@@ -2,7 +2,7 @@
 
 module Braintrust
   module Models
-    class FeedbackProjectLogsItem < Braintrust::BaseModel
+    class FeedbackProjectLogsItem < Braintrust::Internal::Type::BaseModel
       # @!attribute id
       #   The id of the project logs event to log feedback for. This is the row `id`
       #     returned by `POST /v1/project_logs/{project_id}/insert`
@@ -21,7 +21,7 @@ module Braintrust
       #     compare to `output` to determine if your `output` value is correct or not
       #
       #   @return [Object, nil]
-      optional :expected, Braintrust::Unknown
+      optional :expected, Braintrust::Internal::Type::Unknown
 
       # @!parse
       #   # @return [Object]
@@ -34,14 +34,16 @@ module Braintrust
       #     the event.
       #
       #   @return [Hash{Symbol=>Object, nil}, nil]
-      optional :metadata, Braintrust::HashOf[Braintrust::Unknown, nil?: true], nil?: true
+      optional :metadata,
+               Braintrust::Internal::Type::HashOf[Braintrust::Internal::Type::Unknown, nil?: true],
+               nil?: true
 
       # @!attribute scores
       #   A dictionary of numeric values (between 0 and 1) to log. These scores will be
       #     merged into the existing scores for the project logs event
       #
       #   @return [Hash{Symbol=>Float, nil}, nil]
-      optional :scores, Braintrust::HashOf[Float, nil?: true], nil?: true
+      optional :scores, Braintrust::Internal::Type::HashOf[Float, nil?: true], nil?: true
 
       # @!attribute source
       #   The source of the feedback. Must be one of "external" (default), "app", or "api"
@@ -53,7 +55,7 @@ module Braintrust
       #   A list of tags to log
       #
       #   @return [Array<String>, nil]
-      optional :tags, Braintrust::ArrayOf[String], nil?: true
+      optional :tags, Braintrust::Internal::Type::ArrayOf[String], nil?: true
 
       # @!parse
       #   # @param id [String]
@@ -66,13 +68,13 @@ module Braintrust
       #   #
       #   def initialize(id:, comment: nil, expected: nil, metadata: nil, scores: nil, source: nil, tags: nil, **) = super
 
-      # def initialize: (Hash | Braintrust::BaseModel) -> void
+      # def initialize: (Hash | Braintrust::Internal::Type::BaseModel) -> void
 
       # The source of the feedback. Must be one of "external" (default), "app", or "api"
       #
       # @see Braintrust::Models::FeedbackProjectLogsItem#source
       module Source
-        extend Braintrust::Enum
+        extend Braintrust::Internal::Type::Enum
 
         APP = :app
         API = :api

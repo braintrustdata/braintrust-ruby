@@ -10,7 +10,7 @@ module Braintrust
       }
       & Braintrust::Internal::Type::request_parameters
 
-    class OrganizationUpdateParams < Braintrust::BaseModel
+    class OrganizationUpdateParams < Braintrust::Internal::Type::BaseModel
       extend Braintrust::Internal::Type::RequestParameters::Converter
       include Braintrust::Internal::Type::RequestParameters
 

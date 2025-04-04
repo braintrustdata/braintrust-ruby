@@ -3,7 +3,7 @@
 module Braintrust
   module Models
     # @see Braintrust::Resources::AISecrets#replace
-    class AISecretReplaceParams < Braintrust::BaseModel
+    class AISecretReplaceParams < Braintrust::Internal::Type::BaseModel
       # @!parse
       #   extend Braintrust::Internal::Type::RequestParameters::Converter
       include Braintrust::Internal::Type::RequestParameters
@@ -17,7 +17,9 @@ module Braintrust
       # @!attribute metadata
       #
       #   @return [Hash{Symbol=>Object, nil}, nil]
-      optional :metadata, Braintrust::HashOf[Braintrust::Unknown, nil?: true], nil?: true
+      optional :metadata,
+               Braintrust::Internal::Type::HashOf[Braintrust::Internal::Type::Unknown, nil?: true],
+               nil?: true
 
       # @!attribute org_name
       #   For nearly all users, this parameter should be unnecessary. But in the rare case
@@ -49,7 +51,7 @@ module Braintrust
       #   #
       #   def initialize(name:, metadata: nil, org_name: nil, secret: nil, type: nil, request_options: {}, **) = super
 
-      # def initialize: (Hash | Braintrust::BaseModel) -> void
+      # def initialize: (Hash | Braintrust::Internal::Type::BaseModel) -> void
     end
   end
 end

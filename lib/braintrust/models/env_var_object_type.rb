@@ -4,7 +4,7 @@ module Braintrust
   module Models
     # The type of the object the environment variable is scoped for
     module EnvVarObjectType
-      extend Braintrust::Enum
+      extend Braintrust::Internal::Type::Enum
 
       ORGANIZATION = :organization
       PROJECT = :project

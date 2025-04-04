@@ -2,7 +2,7 @@
 
 module Braintrust
   module Models
-    class GroupReplaceParams < Braintrust::BaseModel
+    class GroupReplaceParams < Braintrust::Internal::Type::BaseModel
       extend Braintrust::Internal::Type::RequestParameters::Converter
       include Braintrust::Internal::Type::RequestParameters
 
@@ -38,7 +38,7 @@ module Braintrust
           member_groups: T.nilable(T::Array[String]),
           member_users: T.nilable(T::Array[String]),
           org_name: T.nilable(String),
-          request_options: T.any(Braintrust::RequestOptions, Braintrust::Internal::Util::AnyHash)
+          request_options: T.any(Braintrust::RequestOptions, Braintrust::Internal::AnyHash)
         )
           .returns(T.attached_class)
       end

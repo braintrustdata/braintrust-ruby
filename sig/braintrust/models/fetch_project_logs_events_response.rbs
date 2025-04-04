@@ -3,7 +3,7 @@ module Braintrust
     type fetch_project_logs_events_response =
       { events: ::Array[Braintrust::Models::ProjectLogsEvent], cursor: String? }
 
-    class FetchProjectLogsEventsResponse < Braintrust::BaseModel
+    class FetchProjectLogsEventsResponse < Braintrust::Internal::Type::BaseModel
       attr_accessor events: ::Array[Braintrust::Models::ProjectLogsEvent]
 
       attr_accessor cursor: String?

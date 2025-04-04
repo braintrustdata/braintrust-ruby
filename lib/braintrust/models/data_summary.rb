@@ -2,7 +2,7 @@
 
 module Braintrust
   module Models
-    class DataSummary < Braintrust::BaseModel
+    class DataSummary < Braintrust::Internal::Type::BaseModel
       # @!attribute total_records
       #   Total number of records in the dataset
       #
@@ -16,7 +16,7 @@ module Braintrust
       #   #
       #   def initialize(total_records:, **) = super
 
-      # def initialize: (Hash | Braintrust::BaseModel) -> void
+      # def initialize: (Hash | Braintrust::Internal::Type::BaseModel) -> void
     end
   end
 end

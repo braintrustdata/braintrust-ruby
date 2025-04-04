@@ -4,7 +4,7 @@ module Braintrust
       { feedback: ::Array[Braintrust::Models::FeedbackExperimentItem] }
       & Braintrust::Internal::Type::request_parameters
 
-    class ExperimentFeedbackParams < Braintrust::BaseModel
+    class ExperimentFeedbackParams < Braintrust::Internal::Type::BaseModel
       extend Braintrust::Internal::Type::RequestParameters::Converter
       include Braintrust::Internal::Type::RequestParameters
 

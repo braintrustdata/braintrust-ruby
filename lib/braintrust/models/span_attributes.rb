@@ -2,7 +2,7 @@
 
 module Braintrust
   module Models
-    class SpanAttributes < Braintrust::BaseModel
+    class SpanAttributes < Braintrust::Internal::Type::BaseModel
       # @!attribute name
       #   Name of the span, for display purposes only
       #
@@ -23,7 +23,7 @@ module Braintrust
       #   #
       #   def initialize(name: nil, type: nil, **) = super
 
-      # def initialize: (Hash | Braintrust::BaseModel) -> void
+      # def initialize: (Hash | Braintrust::Internal::Type::BaseModel) -> void
     end
   end
 end

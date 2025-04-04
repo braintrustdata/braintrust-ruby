@@ -12,7 +12,7 @@ module Braintrust
         user_id: String?
       }
 
-    class Dataset < Braintrust::BaseModel
+    class Dataset < Braintrust::Internal::Type::BaseModel
       attr_accessor id: String
 
       attr_accessor name: String

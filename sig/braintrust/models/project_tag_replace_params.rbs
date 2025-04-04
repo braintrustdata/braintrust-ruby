@@ -4,7 +4,7 @@ module Braintrust
       { name: String, project_id: String, color: String?, description: String? }
       & Braintrust::Internal::Type::request_parameters
 
-    class ProjectTagReplaceParams < Braintrust::BaseModel
+    class ProjectTagReplaceParams < Braintrust::Internal::Type::BaseModel
       extend Braintrust::Internal::Type::RequestParameters::Converter
       include Braintrust::Internal::Type::RequestParameters
 

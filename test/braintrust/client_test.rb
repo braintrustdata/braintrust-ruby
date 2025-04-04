@@ -48,7 +48,7 @@ class BraintrustTest < Minitest::Test
     requester = MockRequester.new(500, {}, {})
     braintrust.requester = requester
 
-    assert_raises(Braintrust::InternalServerError) do
+    assert_raises(Braintrust::Errors::InternalServerError) do
       braintrust.projects.create(name: "x")
     end
 
@@ -61,7 +61,7 @@ class BraintrustTest < Minitest::Test
     requester = MockRequester.new(500, {}, {})
     braintrust.requester = requester
 
-    assert_raises(Braintrust::InternalServerError) do
+    assert_raises(Braintrust::Errors::InternalServerError) do
       braintrust.projects.create(name: "x")
     end
 
@@ -73,7 +73,7 @@ class BraintrustTest < Minitest::Test
     requester = MockRequester.new(500, {}, {})
     braintrust.requester = requester
 
-    assert_raises(Braintrust::InternalServerError) do
+    assert_raises(Braintrust::Errors::InternalServerError) do
       braintrust.projects.create(name: "x", request_options: {max_retries: 3})
     end
 
@@ -86,7 +86,7 @@ class BraintrustTest < Minitest::Test
     requester = MockRequester.new(500, {}, {})
     braintrust.requester = requester
 
-    assert_raises(Braintrust::InternalServerError) do
+    assert_raises(Braintrust::Errors::InternalServerError) do
       braintrust.projects.create(name: "x", request_options: {max_retries: 4})
     end
 
@@ -99,7 +99,7 @@ class BraintrustTest < Minitest::Test
     requester = MockRequester.new(500, {"retry-after" => "1.3"}, {})
     braintrust.requester = requester
 
-    assert_raises(Braintrust::InternalServerError) do
+    assert_raises(Braintrust::Errors::InternalServerError) do
       braintrust.projects.create(name: "x")
     end
 
@@ -113,7 +113,7 @@ class BraintrustTest < Minitest::Test
     requester = MockRequester.new(500, {"retry-after" => (Time.now + 10).httpdate}, {})
     braintrust.requester = requester
 
-    assert_raises(Braintrust::InternalServerError) do
+    assert_raises(Braintrust::Errors::InternalServerError) do
       Thread.current.thread_variable_set(:time_now, Time.now)
       braintrust.projects.create(name: "x")
       Thread.current.thread_variable_set(:time_now, nil)
@@ -129,7 +129,7 @@ class BraintrustTest < Minitest::Test
     requester = MockRequester.new(500, {"retry-after-ms" => "1300"}, {})
     braintrust.requester = requester
 
-    assert_raises(Braintrust::InternalServerError) do
+    assert_raises(Braintrust::Errors::InternalServerError) do
       braintrust.projects.create(name: "x")
     end
 
@@ -142,7 +142,7 @@ class BraintrustTest < Minitest::Test
     requester = MockRequester.new(500, {}, {})
     braintrust.requester = requester
 
-    assert_raises(Braintrust::InternalServerError) do
+    assert_raises(Braintrust::Errors::InternalServerError) do
       braintrust.projects.create(name: "x")
     end
 
@@ -155,7 +155,7 @@ class BraintrustTest < Minitest::Test
     requester = MockRequester.new(500, {}, {})
     braintrust.requester = requester
 
-    assert_raises(Braintrust::InternalServerError) do
+    assert_raises(Braintrust::Errors::InternalServerError) do
       braintrust.projects.create(
         name: "x",
         request_options: {extra_headers: {"x-stainless-retry-count" => nil}}
@@ -171,7 +171,7 @@ class BraintrustTest < Minitest::Test
     requester = MockRequester.new(500, {}, {})
     braintrust.requester = requester
 
-    assert_raises(Braintrust::InternalServerError) do
+    assert_raises(Braintrust::Errors::InternalServerError) do
       braintrust.projects.create(
         name: "x",
         request_options: {extra_headers: {"x-stainless-retry-count" => "42"}}

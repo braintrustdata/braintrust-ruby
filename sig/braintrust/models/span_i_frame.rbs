@@ -13,7 +13,7 @@ module Braintrust
         user_id: String?
       }
 
-    class SpanIFrame < Braintrust::BaseModel
+    class SpanIFrame < Braintrust::Internal::Type::BaseModel
       attr_accessor id: String
 
       attr_accessor name: String

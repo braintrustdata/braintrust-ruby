@@ -4,7 +4,7 @@ module Braintrust
   module Models
     # The type of the configured score
     module ProjectScoreType
-      extend Braintrust::Enum
+      extend Braintrust::Internal::Type::Enum
 
       SLIDER = :slider
       CATEGORICAL = :categorical

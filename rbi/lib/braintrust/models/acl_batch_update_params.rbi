@@ -2,7 +2,7 @@
 
 module Braintrust
   module Models
-    class ACLBatchUpdateParams < Braintrust::BaseModel
+    class ACLBatchUpdateParams < Braintrust::Internal::Type::BaseModel
       extend Braintrust::Internal::Type::RequestParameters::Converter
       include Braintrust::Internal::Type::RequestParameters
 
@@ -35,12 +35,12 @@ module Braintrust
       sig do
         params(
           add_acls: T.nilable(
-            T::Array[T.any(Braintrust::Models::ACLBatchUpdateParams::AddACL, Braintrust::Internal::Util::AnyHash)]
+            T::Array[T.any(Braintrust::Models::ACLBatchUpdateParams::AddACL, Braintrust::Internal::AnyHash)]
           ),
           remove_acls: T.nilable(
-            T::Array[T.any(Braintrust::Models::ACLBatchUpdateParams::RemoveACL, Braintrust::Internal::Util::AnyHash)]
+            T::Array[T.any(Braintrust::Models::ACLBatchUpdateParams::RemoveACL, Braintrust::Internal::AnyHash)]
           ),
-          request_options: T.any(Braintrust::RequestOptions, Braintrust::Internal::Util::AnyHash)
+          request_options: T.any(Braintrust::RequestOptions, Braintrust::Internal::AnyHash)
         )
           .returns(T.attached_class)
       end
@@ -60,7 +60,7 @@ module Braintrust
       def to_hash
       end
 
-      class AddACL < Braintrust::BaseModel
+      class AddACL < Braintrust::Internal::Type::BaseModel
         # The id of the object the ACL applies to
         sig { returns(String) }
         attr_accessor :object_id_
@@ -145,7 +145,7 @@ module Braintrust
         end
       end
 
-      class RemoveACL < Braintrust::BaseModel
+      class RemoveACL < Braintrust::Internal::Type::BaseModel
         # The id of the object the ACL applies to
         sig { returns(String) }
         attr_accessor :object_id_

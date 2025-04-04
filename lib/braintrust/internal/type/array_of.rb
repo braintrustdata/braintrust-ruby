@@ -33,7 +33,9 @@ module Braintrust
         #
         # @return [Boolean]
         def ==(other)
-          other.is_a?(Braintrust::ArrayOf) && other.nilable? == nilable? && other.item_type == item_type
+          # rubocop:disable Layout/LineLength
+          other.is_a?(Braintrust::Internal::Type::ArrayOf) && other.nilable? == nilable? && other.item_type == item_type
+          # rubocop:enable Layout/LineLength
         end
 
         # @api private

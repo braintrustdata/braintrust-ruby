@@ -12,7 +12,7 @@ module Braintrust
       }
       & Braintrust::Internal::Type::request_parameters
 
-    class ViewUpdateParams < Braintrust::BaseModel
+    class ViewUpdateParams < Braintrust::Internal::Type::BaseModel
       extend Braintrust::Internal::Type::RequestParameters::Converter
       include Braintrust::Internal::Type::RequestParameters
 
@@ -57,7 +57,7 @@ module Braintrust
         | :logs
 
       module ViewType
-        extend Braintrust::Enum
+        extend Braintrust::Internal::Type::Enum
 
         PROJECTS: :projects
         EXPERIMENTS: :experiments

@@ -2,7 +2,7 @@
 
 module Braintrust
   module Models
-    class MetricSummary < Braintrust::BaseModel
+    class MetricSummary < Braintrust::Internal::Type::BaseModel
       # Number of improvements in the metric
       sig { returns(Integer) }
       attr_accessor :improvements

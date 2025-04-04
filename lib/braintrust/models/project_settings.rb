@@ -2,7 +2,7 @@
 
 module Braintrust
   module Models
-    class ProjectSettings < Braintrust::BaseModel
+    class ProjectSettings < Braintrust::Internal::Type::BaseModel
       # @!attribute baseline_experiment_id
       #   The id of the experiment to use as the default baseline for comparisons
       #
@@ -20,7 +20,7 @@ module Braintrust
       #
       #   @return [Array<Braintrust::Models::ProjectSettings::SpanFieldOrder>, nil]
       optional :span_field_order,
-               -> { Braintrust::ArrayOf[Braintrust::Models::ProjectSettings::SpanFieldOrder] },
+               -> { Braintrust::Internal::Type::ArrayOf[Braintrust::Models::ProjectSettings::SpanFieldOrder] },
                api_name: :spanFieldOrder,
                nil?: true
 
@@ -31,9 +31,9 @@ module Braintrust
       #   #
       #   def initialize(baseline_experiment_id: nil, comparison_key: nil, span_field_order: nil, **) = super
 
-      # def initialize: (Hash | Braintrust::BaseModel) -> void
+      # def initialize: (Hash | Braintrust::Internal::Type::BaseModel) -> void
 
-      class SpanFieldOrder < Braintrust::BaseModel
+      class SpanFieldOrder < Braintrust::Internal::Type::BaseModel
         # @!attribute column_id
         #
         #   @return [String]
@@ -62,11 +62,11 @@ module Braintrust
         #   #
         #   def initialize(column_id:, object_type:, position:, layout: nil, **) = super
 
-        # def initialize: (Hash | Braintrust::BaseModel) -> void
+        # def initialize: (Hash | Braintrust::Internal::Type::BaseModel) -> void
 
         # @see Braintrust::Models::ProjectSettings::SpanFieldOrder#layout
         module Layout
-          extend Braintrust::Enum
+          extend Braintrust::Internal::Type::Enum
 
           FULL = :full
           TWO_COLUMN = :two_column

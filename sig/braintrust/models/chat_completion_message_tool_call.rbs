@@ -7,7 +7,7 @@ module Braintrust
         type: Braintrust::Models::ChatCompletionMessageToolCall::type_
       }
 
-    class ChatCompletionMessageToolCall < Braintrust::BaseModel
+    class ChatCompletionMessageToolCall < Braintrust::Internal::Type::BaseModel
       attr_accessor id: String
 
       attr_accessor function: Braintrust::Models::ChatCompletionMessageToolCall::Function
@@ -24,7 +24,7 @@ module Braintrust
 
       type function = { arguments: String, name: String }
 
-      class Function < Braintrust::BaseModel
+      class Function < Braintrust::Internal::Type::BaseModel
         attr_accessor arguments: String
 
         attr_accessor name: String
@@ -37,7 +37,7 @@ module Braintrust
       type type_ = :function
 
       module Type
-        extend Braintrust::Enum
+        extend Braintrust::Internal::Type::Enum
 
         FUNCTION: :function
 

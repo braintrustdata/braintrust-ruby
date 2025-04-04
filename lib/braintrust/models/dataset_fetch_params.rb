@@ -3,7 +3,7 @@
 module Braintrust
   module Models
     # @see Braintrust::Resources::Datasets#fetch
-    class DatasetFetchParams < Braintrust::BaseModel
+    class DatasetFetchParams < Braintrust::Internal::Type::BaseModel
       # @!parse
       #   extend Braintrust::Internal::Type::RequestParameters::Converter
       include Braintrust::Internal::Type::RequestParameters
@@ -88,7 +88,7 @@ module Braintrust
       #   #
       #   def initialize(limit: nil, max_root_span_id: nil, max_xact_id: nil, version: nil, request_options: {}, **) = super
 
-      # def initialize: (Hash | Braintrust::BaseModel) -> void
+      # def initialize: (Hash | Braintrust::Internal::Type::BaseModel) -> void
     end
   end
 end

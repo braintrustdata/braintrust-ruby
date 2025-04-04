@@ -3,7 +3,7 @@ module Braintrust
     type prompt_retrieve_params =
       {  } & Braintrust::Internal::Type::request_parameters
 
-    class PromptRetrieveParams < Braintrust::BaseModel
+    class PromptRetrieveParams < Braintrust::Internal::Type::BaseModel
       extend Braintrust::Internal::Type::RequestParameters::Converter
       include Braintrust::Internal::Type::RequestParameters
 

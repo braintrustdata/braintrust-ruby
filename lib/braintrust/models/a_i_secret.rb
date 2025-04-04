@@ -2,7 +2,7 @@
 
 module Braintrust
   module Models
-    class AISecret < Braintrust::BaseModel
+    class AISecret < Braintrust::Internal::Type::BaseModel
       # @!attribute id
       #   Unique identifier for the AI secret
       #
@@ -30,7 +30,9 @@ module Braintrust
       # @!attribute metadata
       #
       #   @return [Hash{Symbol=>Object, nil}, nil]
-      optional :metadata, Braintrust::HashOf[Braintrust::Unknown, nil?: true], nil?: true
+      optional :metadata,
+               Braintrust::Internal::Type::HashOf[Braintrust::Internal::Type::Unknown, nil?: true],
+               nil?: true
 
       # @!attribute preview_secret
       #
@@ -60,7 +62,7 @@ module Braintrust
       #   #
       #   def initialize(id:, name:, org_id:, created: nil, metadata: nil, preview_secret: nil, type: nil, updated_at: nil, **) = super
 
-      # def initialize: (Hash | Braintrust::BaseModel) -> void
+      # def initialize: (Hash | Braintrust::Internal::Type::BaseModel) -> void
     end
   end
 end

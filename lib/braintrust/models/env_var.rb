@@ -2,7 +2,7 @@
 
 module Braintrust
   module Models
-    class EnvVar < Braintrust::BaseModel
+    class EnvVar < Braintrust::Internal::Type::BaseModel
       # @!attribute id
       #   Unique identifier for the environment variable
       #
@@ -49,13 +49,13 @@ module Braintrust
       #   #
       #   def initialize(id:, name:, object_id_:, object_type:, created: nil, used: nil, **) = super
 
-      # def initialize: (Hash | Braintrust::BaseModel) -> void
+      # def initialize: (Hash | Braintrust::Internal::Type::BaseModel) -> void
 
       # The type of the object the environment variable is scoped for
       #
       # @see Braintrust::Models::EnvVar#object_type
       module ObjectType
-        extend Braintrust::Enum
+        extend Braintrust::Internal::Type::Enum
 
         ORGANIZATION = :organization
         PROJECT = :project

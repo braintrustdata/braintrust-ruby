@@ -12,7 +12,7 @@ module Braintrust
 
         # @param mod [Module]
         def self.included(mod)
-          return unless mod <= Braintrust::BaseModel
+          return unless mod <= Braintrust::Internal::Type::BaseModel
 
           mod.extend(Braintrust::Internal::Type::RequestParameters::Converter)
           mod.optional(:request_options, Braintrust::RequestOptions)

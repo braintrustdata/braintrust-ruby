@@ -3,7 +3,7 @@
 module Braintrust
   module Models
     # @see Braintrust::Resources::Groups#update
-    class GroupUpdateParams < Braintrust::BaseModel
+    class GroupUpdateParams < Braintrust::Internal::Type::BaseModel
       # @!parse
       #   extend Braintrust::Internal::Type::RequestParameters::Converter
       include Braintrust::Internal::Type::RequestParameters
@@ -12,13 +12,13 @@ module Braintrust
       #   A list of group IDs to add to the group's inheriting-from set
       #
       #   @return [Array<String>, nil]
-      optional :add_member_groups, Braintrust::ArrayOf[String], nil?: true
+      optional :add_member_groups, Braintrust::Internal::Type::ArrayOf[String], nil?: true
 
       # @!attribute add_member_users
       #   A list of user IDs to add to the group
       #
       #   @return [Array<String>, nil]
-      optional :add_member_users, Braintrust::ArrayOf[String], nil?: true
+      optional :add_member_users, Braintrust::Internal::Type::ArrayOf[String], nil?: true
 
       # @!attribute description
       #   Textual description of the group
@@ -36,13 +36,13 @@ module Braintrust
       #   A list of group IDs to remove from the group's inheriting-from set
       #
       #   @return [Array<String>, nil]
-      optional :remove_member_groups, Braintrust::ArrayOf[String], nil?: true
+      optional :remove_member_groups, Braintrust::Internal::Type::ArrayOf[String], nil?: true
 
       # @!attribute remove_member_users
       #   A list of user IDs to remove from the group
       #
       #   @return [Array<String>, nil]
-      optional :remove_member_users, Braintrust::ArrayOf[String], nil?: true
+      optional :remove_member_users, Braintrust::Internal::Type::ArrayOf[String], nil?: true
 
       # @!parse
       #   # @param add_member_groups [Array<String>, nil]
@@ -66,7 +66,7 @@ module Braintrust
       #     super
       #   end
 
-      # def initialize: (Hash | Braintrust::BaseModel) -> void
+      # def initialize: (Hash | Braintrust::Internal::Type::BaseModel) -> void
     end
   end
 end

@@ -3,7 +3,7 @@ module Braintrust
     type organization_retrieve_params =
       {  } & Braintrust::Internal::Type::request_parameters
 
-    class OrganizationRetrieveParams < Braintrust::BaseModel
+    class OrganizationRetrieveParams < Braintrust::Internal::Type::BaseModel
       extend Braintrust::Internal::Type::RequestParameters::Converter
       include Braintrust::Internal::Type::RequestParameters
 

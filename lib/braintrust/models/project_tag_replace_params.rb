@@ -3,7 +3,7 @@
 module Braintrust
   module Models
     # @see Braintrust::Resources::ProjectTags#replace
-    class ProjectTagReplaceParams < Braintrust::BaseModel
+    class ProjectTagReplaceParams < Braintrust::Internal::Type::BaseModel
       # @!parse
       #   extend Braintrust::Internal::Type::RequestParameters::Converter
       include Braintrust::Internal::Type::RequestParameters
@@ -41,7 +41,7 @@ module Braintrust
       #   #
       #   def initialize(name:, project_id:, color: nil, description: nil, request_options: {}, **) = super
 
-      # def initialize: (Hash | Braintrust::BaseModel) -> void
+      # def initialize: (Hash | Braintrust::Internal::Type::BaseModel) -> void
     end
   end
 end

@@ -4,7 +4,7 @@ module Braintrust
   module Models
     # The type of the configured score
     module ProjectScoreType
-      extend Braintrust::Enum
+      extend Braintrust::Internal::Type::Enum
 
       TaggedSymbol = T.type_alias { T.all(Symbol, Braintrust::Models::ProjectScoreType) }
       OrSymbol = T.type_alias { T.any(Symbol, String, Braintrust::Models::ProjectScoreType::TaggedSymbol) }

@@ -2,7 +2,7 @@
 
 module Braintrust
   module Models
-    class AISecretUpdateParams < Braintrust::BaseModel
+    class AISecretUpdateParams < Braintrust::Internal::Type::BaseModel
       extend Braintrust::Internal::Type::RequestParameters::Converter
       include Braintrust::Internal::Type::RequestParameters
 
@@ -25,7 +25,7 @@ module Braintrust
           name: T.nilable(String),
           secret: T.nilable(String),
           type: T.nilable(String),
-          request_options: T.any(Braintrust::RequestOptions, Braintrust::Internal::Util::AnyHash)
+          request_options: T.any(Braintrust::RequestOptions, Braintrust::Internal::AnyHash)
         )
           .returns(T.attached_class)
       end

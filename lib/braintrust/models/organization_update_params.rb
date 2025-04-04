@@ -3,7 +3,7 @@
 module Braintrust
   module Models
     # @see Braintrust::Resources::Organizations#update
-    class OrganizationUpdateParams < Braintrust::BaseModel
+    class OrganizationUpdateParams < Braintrust::Internal::Type::BaseModel
       # @!parse
       #   extend Braintrust::Internal::Type::RequestParameters::Converter
       include Braintrust::Internal::Type::RequestParameters
@@ -16,7 +16,7 @@ module Braintrust
       # @!attribute is_universal_api
       #
       #   @return [Boolean, nil]
-      optional :is_universal_api, Braintrust::BooleanModel, nil?: true
+      optional :is_universal_api, Braintrust::Internal::Type::BooleanModel, nil?: true
 
       # @!attribute name
       #   Name of the organization
@@ -44,7 +44,7 @@ module Braintrust
       #   #
       #   def initialize(api_url: nil, is_universal_api: nil, name: nil, proxy_url: nil, realtime_url: nil, request_options: {}, **) = super
 
-      # def initialize: (Hash | Braintrust::BaseModel) -> void
+      # def initialize: (Hash | Braintrust::Internal::Type::BaseModel) -> void
     end
   end
 end

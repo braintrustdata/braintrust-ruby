@@ -2,7 +2,7 @@
 
 module Braintrust
   module Models
-    class ProjectTagUpdateParams < Braintrust::BaseModel
+    class ProjectTagUpdateParams < Braintrust::Internal::Type::BaseModel
       extend Braintrust::Internal::Type::RequestParameters::Converter
       include Braintrust::Internal::Type::RequestParameters
 
@@ -23,7 +23,7 @@ module Braintrust
           color: T.nilable(String),
           description: T.nilable(String),
           name: T.nilable(String),
-          request_options: T.any(Braintrust::RequestOptions, Braintrust::Internal::Util::AnyHash)
+          request_options: T.any(Braintrust::RequestOptions, Braintrust::Internal::AnyHash)
         )
           .returns(T.attached_class)
       end

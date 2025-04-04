@@ -2,7 +2,7 @@
 
 module Braintrust
   module Models
-    class Prompt < Braintrust::BaseModel
+    class Prompt < Braintrust::Internal::Type::BaseModel
       # @!attribute id
       #   Unique identifier for the prompt
       #
@@ -69,7 +69,9 @@ module Braintrust
       #   User-controlled metadata about the prompt
       #
       #   @return [Hash{Symbol=>Object, nil}, nil]
-      optional :metadata, Braintrust::HashOf[Braintrust::Unknown, nil?: true], nil?: true
+      optional :metadata,
+               Braintrust::Internal::Type::HashOf[Braintrust::Internal::Type::Unknown, nil?: true],
+               nil?: true
 
       # @!attribute prompt_data
       #   The prompt, model, and its parameters
@@ -81,7 +83,7 @@ module Braintrust
       #   A list of tags for the prompt
       #
       #   @return [Array<String>, nil]
-      optional :tags, Braintrust::ArrayOf[String], nil?: true
+      optional :tags, Braintrust::Internal::Type::ArrayOf[String], nil?: true
 
       # @!parse
       #   # @param id [String]
@@ -117,13 +119,13 @@ module Braintrust
       #     super
       #   end
 
-      # def initialize: (Hash | Braintrust::BaseModel) -> void
+      # def initialize: (Hash | Braintrust::Internal::Type::BaseModel) -> void
 
       # A literal 'p' which identifies the object as a project prompt
       #
       # @see Braintrust::Models::Prompt#log_id
       module LogID
-        extend Braintrust::Enum
+        extend Braintrust::Internal::Type::Enum
 
         P = :p
 
@@ -136,7 +138,7 @@ module Braintrust
 
       # @see Braintrust::Models::Prompt#function_type
       module FunctionType
-        extend Braintrust::Enum
+        extend Braintrust::Internal::Type::Enum
 
         LLM = :llm
         SCORER = :scorer

@@ -3,7 +3,7 @@
 module Braintrust
   module Models
     # @see Braintrust::Resources::ACLs#delete
-    class ACLDeleteParams < Braintrust::BaseModel
+    class ACLDeleteParams < Braintrust::Internal::Type::BaseModel
       # @!parse
       #   extend Braintrust::Internal::Type::RequestParameters::Converter
       include Braintrust::Internal::Type::RequestParameters
@@ -13,7 +13,7 @@ module Braintrust
       #   #
       #   def initialize(request_options: {}, **) = super
 
-      # def initialize: (Hash | Braintrust::BaseModel) -> void
+      # def initialize: (Hash | Braintrust::Internal::Type::BaseModel) -> void
     end
   end
 end

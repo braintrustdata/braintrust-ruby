@@ -9,7 +9,7 @@ module Braintrust
         diff: Float
       }
 
-    class ScoreSummary < Braintrust::BaseModel
+    class ScoreSummary < Braintrust::Internal::Type::BaseModel
       attr_accessor improvements: Integer
 
       attr_accessor name: String

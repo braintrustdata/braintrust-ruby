@@ -2,7 +2,7 @@
 
 module Braintrust
   module Models
-    class ChatCompletionContentPartImage < Braintrust::BaseModel
+    class ChatCompletionContentPartImage < Braintrust::Internal::Type::BaseModel
       # @!attribute image_url
       #
       #   @return [Braintrust::Models::ChatCompletionContentPartImage::ImageURL]
@@ -19,10 +19,10 @@ module Braintrust
       #   #
       #   def initialize(image_url:, type:, **) = super
 
-      # def initialize: (Hash | Braintrust::BaseModel) -> void
+      # def initialize: (Hash | Braintrust::Internal::Type::BaseModel) -> void
 
       # @see Braintrust::Models::ChatCompletionContentPartImage#image_url
-      class ImageURL < Braintrust::BaseModel
+      class ImageURL < Braintrust::Internal::Type::BaseModel
         # @!attribute url
         #
         #   @return [String]
@@ -43,11 +43,11 @@ module Braintrust
         #   #
         #   def initialize(url:, detail: nil, **) = super
 
-        # def initialize: (Hash | Braintrust::BaseModel) -> void
+        # def initialize: (Hash | Braintrust::Internal::Type::BaseModel) -> void
 
         # @see Braintrust::Models::ChatCompletionContentPartImage::ImageURL#detail
         module Detail
-          extend Braintrust::Enum
+          extend Braintrust::Internal::Type::Enum
 
           AUTO = :auto
           LOW = :low
@@ -63,7 +63,7 @@ module Braintrust
 
       # @see Braintrust::Models::ChatCompletionContentPartImage#type
       module Type
-        extend Braintrust::Enum
+        extend Braintrust::Internal::Type::Enum
 
         IMAGE_URL = :image_url
 

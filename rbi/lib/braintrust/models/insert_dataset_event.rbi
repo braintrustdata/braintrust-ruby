@@ -2,7 +2,7 @@
 
 module Braintrust
   module Models
-    class InsertDatasetEvent < Braintrust::BaseModel
+    class InsertDatasetEvent < Braintrust::Internal::Type::BaseModel
       # A unique identifier for the dataset event. If you don't provide one, BrainTrust
       #   will generate one for you
       sig { returns(T.nilable(String)) }
@@ -94,7 +94,7 @@ module Braintrust
 
       sig do
         params(
-          metadata: T.nilable(T.any(Braintrust::Models::InsertDatasetEvent::Metadata, Braintrust::Internal::Util::AnyHash))
+          metadata: T.nilable(T.any(Braintrust::Models::InsertDatasetEvent::Metadata, Braintrust::Internal::AnyHash))
         )
           .void
       end
@@ -104,10 +104,7 @@ module Braintrust
       sig { returns(T.nilable(Braintrust::Models::ObjectReference)) }
       attr_reader :origin
 
-      sig do
-        params(origin: T.nilable(T.any(Braintrust::Models::ObjectReference, Braintrust::Internal::Util::AnyHash)))
-          .void
-      end
+      sig { params(origin: T.nilable(T.any(Braintrust::Models::ObjectReference, Braintrust::Internal::AnyHash))).void }
       attr_writer :origin
 
       # Use `span_id`, `root_span_id`, and `span_parents` instead of `_parent_id`, which
@@ -179,8 +176,8 @@ module Braintrust
           created: T.nilable(Time),
           expected: T.anything,
           input: T.anything,
-          metadata: T.nilable(T.any(Braintrust::Models::InsertDatasetEvent::Metadata, Braintrust::Internal::Util::AnyHash)),
-          origin: T.nilable(T.any(Braintrust::Models::ObjectReference, Braintrust::Internal::Util::AnyHash)),
+          metadata: T.nilable(T.any(Braintrust::Models::InsertDatasetEvent::Metadata, Braintrust::Internal::AnyHash)),
+          origin: T.nilable(T.any(Braintrust::Models::ObjectReference, Braintrust::Internal::AnyHash)),
           root_span_id: T.nilable(String),
           span_id: T.nilable(String),
           span_parents: T.nilable(T::Array[String]),
@@ -230,7 +227,7 @@ module Braintrust
       def to_hash
       end
 
-      class Metadata < Braintrust::BaseModel
+      class Metadata < Braintrust::Internal::Type::BaseModel
         # The model used for this example
         sig { returns(T.nilable(String)) }
         attr_accessor :model

@@ -3,7 +3,7 @@
 module Braintrust
   module Models
     # @see Braintrust::Resources::EnvVars#list
-    class EnvVarListParams < Braintrust::BaseModel
+    class EnvVarListParams < Braintrust::Internal::Type::BaseModel
       # @!parse
       #   extend Braintrust::Internal::Type::RequestParameters::Converter
       include Braintrust::Internal::Type::RequestParameters
@@ -65,12 +65,12 @@ module Braintrust
       #   #
       #   def initialize(env_var_name: nil, ids: nil, limit: nil, object_id_: nil, object_type: nil, request_options: {}, **) = super
 
-      # def initialize: (Hash | Braintrust::BaseModel) -> void
+      # def initialize: (Hash | Braintrust::Internal::Type::BaseModel) -> void
 
       # Filter search results to a particular set of object IDs. To specify a list of
       #   IDs, include the query param multiple times
       module IDs
-        extend Braintrust::Union
+        extend Braintrust::Internal::Type::Union
 
         variant String
 
@@ -80,7 +80,7 @@ module Braintrust
         #   # @return [Array(String, Array<String>)]
         #   def self.variants; end
 
-        StringArray = Braintrust::ArrayOf[String]
+        StringArray = Braintrust::Internal::Type::ArrayOf[String]
       end
     end
   end

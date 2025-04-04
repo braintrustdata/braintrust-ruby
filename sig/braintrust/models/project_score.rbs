@@ -14,7 +14,7 @@ module Braintrust
         position: String?
       }
 
-    class ProjectScore < Braintrust::BaseModel
+    class ProjectScore < Braintrust::Internal::Type::BaseModel
       attr_accessor id: String
 
       attr_accessor name: String
@@ -56,7 +56,7 @@ module Braintrust
         | ::Array[String]
 
       module Categories
-        extend Braintrust::Union
+        extend Braintrust::Internal::Type::Union
 
         def self?.variants: -> [::Array[Braintrust::Models::ProjectScoreCategory], ::Hash[Symbol, Float], ::Array[String]]
 

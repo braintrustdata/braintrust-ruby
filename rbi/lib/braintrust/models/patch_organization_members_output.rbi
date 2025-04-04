@@ -2,7 +2,7 @@
 
 module Braintrust
   module Models
-    class PatchOrganizationMembersOutput < Braintrust::BaseModel
+    class PatchOrganizationMembersOutput < Braintrust::Internal::Type::BaseModel
       # The id of the org that was modified.
       sig { returns(String) }
       attr_accessor :org_id
@@ -40,7 +40,7 @@ module Braintrust
       end
 
       module Status
-        extend Braintrust::Enum
+        extend Braintrust::Internal::Type::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Braintrust::Models::PatchOrganizationMembersOutput::Status) }
         OrSymbol =

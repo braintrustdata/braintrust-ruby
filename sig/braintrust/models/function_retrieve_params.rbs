@@ -3,7 +3,7 @@ module Braintrust
     type function_retrieve_params =
       {  } & Braintrust::Internal::Type::request_parameters
 
-    class FunctionRetrieveParams < Braintrust::BaseModel
+    class FunctionRetrieveParams < Braintrust::Internal::Type::BaseModel
       extend Braintrust::Internal::Type::RequestParameters::Converter
       include Braintrust::Internal::Type::RequestParameters
 

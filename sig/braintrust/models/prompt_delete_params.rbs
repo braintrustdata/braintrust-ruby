@@ -3,7 +3,7 @@ module Braintrust
     type prompt_delete_params =
       {  } & Braintrust::Internal::Type::request_parameters
 
-    class PromptDeleteParams < Braintrust::BaseModel
+    class PromptDeleteParams < Braintrust::Internal::Type::BaseModel
       extend Braintrust::Internal::Type::RequestParameters::Converter
       include Braintrust::Internal::Type::RequestParameters
 

@@ -4,7 +4,7 @@ module Braintrust
   module Models
     # The object type that the ACL applies to
     module ACLObjectType
-      extend Braintrust::Enum
+      extend Braintrust::Internal::Type::Enum
 
       ORGANIZATION = :organization
       PROJECT = :project

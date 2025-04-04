@@ -14,7 +14,7 @@ module Braintrust
       | :org_project
 
     module ACLObjectType
-      extend Braintrust::Enum
+      extend Braintrust::Internal::Type::Enum
 
       ORGANIZATION: :organization
       PROJECT: :project

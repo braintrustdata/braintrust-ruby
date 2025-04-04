@@ -3,7 +3,7 @@
 module Braintrust
   module Models
     # @see Braintrust::Resources::Prompts#replace
-    class PromptReplaceParams < Braintrust::BaseModel
+    class PromptReplaceParams < Braintrust::Internal::Type::BaseModel
       # @!parse
       #   extend Braintrust::Internal::Type::RequestParameters::Converter
       include Braintrust::Internal::Type::RequestParameters
@@ -47,7 +47,7 @@ module Braintrust
       #   A list of tags for the prompt
       #
       #   @return [Array<String>, nil]
-      optional :tags, Braintrust::ArrayOf[String], nil?: true
+      optional :tags, Braintrust::Internal::Type::ArrayOf[String], nil?: true
 
       # @!parse
       #   # @param name [String]
@@ -73,10 +73,10 @@ module Braintrust
       #     super
       #   end
 
-      # def initialize: (Hash | Braintrust::BaseModel) -> void
+      # def initialize: (Hash | Braintrust::Internal::Type::BaseModel) -> void
 
       module FunctionType
-        extend Braintrust::Enum
+        extend Braintrust::Internal::Type::Enum
 
         LLM = :llm
         SCORER = :scorer

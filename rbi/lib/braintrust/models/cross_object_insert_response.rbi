@@ -2,7 +2,7 @@
 
 module Braintrust
   module Models
-    class CrossObjectInsertResponse < Braintrust::BaseModel
+    class CrossObjectInsertResponse < Braintrust::Internal::Type::BaseModel
       # A mapping from dataset id to row ids for inserted `events`
       sig { returns(T.nilable(T::Hash[Symbol, Braintrust::Models::InsertEventsResponse])) }
       attr_accessor :dataset
@@ -17,15 +17,9 @@ module Braintrust
 
       sig do
         params(
-          dataset: T.nilable(
-            T::Hash[Symbol, T.any(Braintrust::Models::InsertEventsResponse, Braintrust::Internal::Util::AnyHash)]
-          ),
-          experiment: T.nilable(
-            T::Hash[Symbol, T.any(Braintrust::Models::InsertEventsResponse, Braintrust::Internal::Util::AnyHash)]
-          ),
-          project_logs: T.nilable(
-            T::Hash[Symbol, T.any(Braintrust::Models::InsertEventsResponse, Braintrust::Internal::Util::AnyHash)]
-          )
+          dataset: T.nilable(T::Hash[Symbol, T.any(Braintrust::Models::InsertEventsResponse, Braintrust::Internal::AnyHash)]),
+          experiment: T.nilable(T::Hash[Symbol, T.any(Braintrust::Models::InsertEventsResponse, Braintrust::Internal::AnyHash)]),
+          project_logs: T.nilable(T::Hash[Symbol, T.any(Braintrust::Models::InsertEventsResponse, Braintrust::Internal::AnyHash)])
         )
           .returns(T.attached_class)
       end

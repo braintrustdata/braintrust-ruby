@@ -2,7 +2,7 @@
 
 module Braintrust
   module Models
-    class FetchDatasetEventsResponse < Braintrust::BaseModel
+    class FetchDatasetEventsResponse < Braintrust::Internal::Type::BaseModel
       # A list of fetched events
       sig { returns(T::Array[Braintrust::Models::DatasetEvent]) }
       attr_accessor :events
@@ -16,7 +16,7 @@ module Braintrust
 
       sig do
         params(
-          events: T::Array[T.any(Braintrust::Models::DatasetEvent, Braintrust::Internal::Util::AnyHash)],
+          events: T::Array[T.any(Braintrust::Models::DatasetEvent, Braintrust::Internal::AnyHash)],
           cursor: T.nilable(String)
         )
           .returns(T.attached_class)

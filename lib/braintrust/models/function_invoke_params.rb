@@ -3,7 +3,7 @@
 module Braintrust
   module Models
     # @see Braintrust::Resources::Functions#invoke
-    class FunctionInvokeParams < Braintrust::BaseModel
+    class FunctionInvokeParams < Braintrust::Internal::Type::BaseModel
       # @!parse
       #   extend Braintrust::Internal::Type::RequestParameters::Converter
       include Braintrust::Internal::Type::RequestParameters
@@ -12,7 +12,7 @@ module Braintrust
       #   The expected output of the function
       #
       #   @return [Object, nil]
-      optional :expected, Braintrust::Unknown
+      optional :expected, Braintrust::Internal::Type::Unknown
 
       # @!parse
       #   # @return [Object]
@@ -22,7 +22,7 @@ module Braintrust
       #   Argument to the function, which can be any JSON serializable value
       #
       #   @return [Object, nil]
-      optional :input, Braintrust::Unknown
+      optional :input, Braintrust::Internal::Type::Unknown
 
       # @!parse
       #   # @return [Object]
@@ -32,7 +32,8 @@ module Braintrust
       #   If the function is an LLM, additional messages to pass along to it
       #
       #   @return [Array<Braintrust::Models::FunctionInvokeParams::Message::System, Braintrust::Models::FunctionInvokeParams::Message::User, Braintrust::Models::FunctionInvokeParams::Message::Assistant, Braintrust::Models::FunctionInvokeParams::Message::Tool, Braintrust::Models::FunctionInvokeParams::Message::Function, Braintrust::Models::FunctionInvokeParams::Message::Fallback>, nil]
-      optional :messages, -> { Braintrust::ArrayOf[union: Braintrust::Models::FunctionInvokeParams::Message] }
+      optional :messages,
+               -> { Braintrust::Internal::Type::ArrayOf[union: Braintrust::Models::FunctionInvokeParams::Message] }
 
       # @!parse
       #   # @return [Array<Braintrust::Models::FunctionInvokeParams::Message::System, Braintrust::Models::FunctionInvokeParams::Message::User, Braintrust::Models::FunctionInvokeParams::Message::Assistant, Braintrust::Models::FunctionInvokeParams::Message::Tool, Braintrust::Models::FunctionInvokeParams::Message::Function, Braintrust::Models::FunctionInvokeParams::Message::Fallback>]
@@ -42,7 +43,9 @@ module Braintrust
       #   Any relevant metadata
       #
       #   @return [Hash{Symbol=>Object, nil}, nil]
-      optional :metadata, Braintrust::HashOf[Braintrust::Unknown, nil?: true], nil?: true
+      optional :metadata,
+               Braintrust::Internal::Type::HashOf[Braintrust::Internal::Type::Unknown, nil?: true],
+               nil?: true
 
       # @!attribute mode
       #   The mode format of the returned value (defaults to 'auto')
@@ -65,7 +68,7 @@ module Braintrust
       #     Braintrust SSE format.
       #
       #   @return [Boolean, nil]
-      optional :stream, Braintrust::BooleanModel, nil?: true
+      optional :stream, Braintrust::Internal::Type::BooleanModel, nil?: true
 
       # @!attribute [r] version
       #   The version of the function
@@ -103,10 +106,10 @@ module Braintrust
       #     super
       #   end
 
-      # def initialize: (Hash | Braintrust::BaseModel) -> void
+      # def initialize: (Hash | Braintrust::Internal::Type::BaseModel) -> void
 
       module Message
-        extend Braintrust::Union
+        extend Braintrust::Internal::Type::Union
 
         variant -> { Braintrust::Models::FunctionInvokeParams::Message::System }
 
@@ -120,7 +123,7 @@ module Braintrust
 
         variant -> { Braintrust::Models::FunctionInvokeParams::Message::Fallback }
 
-        class System < Braintrust::BaseModel
+        class System < Braintrust::Internal::Type::BaseModel
           # @!attribute role
           #
           #   @return [Symbol, Braintrust::Models::FunctionInvokeParams::Message::System::Role]
@@ -151,11 +154,11 @@ module Braintrust
           #   #
           #   def initialize(role:, content: nil, name: nil, **) = super
 
-          # def initialize: (Hash | Braintrust::BaseModel) -> void
+          # def initialize: (Hash | Braintrust::Internal::Type::BaseModel) -> void
 
           # @see Braintrust::Models::FunctionInvokeParams::Message::System#role
           module Role
-            extend Braintrust::Enum
+            extend Braintrust::Internal::Type::Enum
 
             SYSTEM = :system
 
@@ -167,7 +170,7 @@ module Braintrust
           end
         end
 
-        class User < Braintrust::BaseModel
+        class User < Braintrust::Internal::Type::BaseModel
           # @!attribute role
           #
           #   @return [Symbol, Braintrust::Models::FunctionInvokeParams::Message::User::Role]
@@ -198,11 +201,11 @@ module Braintrust
           #   #
           #   def initialize(role:, content: nil, name: nil, **) = super
 
-          # def initialize: (Hash | Braintrust::BaseModel) -> void
+          # def initialize: (Hash | Braintrust::Internal::Type::BaseModel) -> void
 
           # @see Braintrust::Models::FunctionInvokeParams::Message::User#role
           module Role
-            extend Braintrust::Enum
+            extend Braintrust::Internal::Type::Enum
 
             USER = :user
 
@@ -215,14 +218,14 @@ module Braintrust
 
           # @see Braintrust::Models::FunctionInvokeParams::Message::User#content
           module Content
-            extend Braintrust::Union
+            extend Braintrust::Internal::Type::Union
 
             variant String
 
             variant -> { Braintrust::Models::FunctionInvokeParams::Message::User::Content::Nested2DArray }
 
             module Array
-              extend Braintrust::Union
+              extend Braintrust::Internal::Type::Union
 
               variant -> { Braintrust::Models::ChatCompletionContentPartText }
 
@@ -238,11 +241,11 @@ module Braintrust
             #   def self.variants; end
 
             Nested2DArray =
-              Braintrust::ArrayOf[union: -> { Braintrust::Models::FunctionInvokeParams::Message::User::Content::Array }]
+              Braintrust::Internal::Type::ArrayOf[union: -> { Braintrust::Models::FunctionInvokeParams::Message::User::Content::Array }]
           end
         end
 
-        class Assistant < Braintrust::BaseModel
+        class Assistant < Braintrust::Internal::Type::BaseModel
           # @!attribute role
           #
           #   @return [Symbol, Braintrust::Models::FunctionInvokeParams::Message::Assistant::Role]
@@ -269,7 +272,7 @@ module Braintrust
           #
           #   @return [Array<Braintrust::Models::ChatCompletionMessageToolCall>, nil]
           optional :tool_calls,
-                   -> { Braintrust::ArrayOf[Braintrust::Models::ChatCompletionMessageToolCall] },
+                   -> { Braintrust::Internal::Type::ArrayOf[Braintrust::Models::ChatCompletionMessageToolCall] },
                    nil?: true
 
           # @!parse
@@ -281,11 +284,11 @@ module Braintrust
           #   #
           #   def initialize(role:, content: nil, function_call: nil, name: nil, tool_calls: nil, **) = super
 
-          # def initialize: (Hash | Braintrust::BaseModel) -> void
+          # def initialize: (Hash | Braintrust::Internal::Type::BaseModel) -> void
 
           # @see Braintrust::Models::FunctionInvokeParams::Message::Assistant#role
           module Role
-            extend Braintrust::Enum
+            extend Braintrust::Internal::Type::Enum
 
             ASSISTANT = :assistant
 
@@ -297,7 +300,7 @@ module Braintrust
           end
 
           # @see Braintrust::Models::FunctionInvokeParams::Message::Assistant#function_call
-          class FunctionCall < Braintrust::BaseModel
+          class FunctionCall < Braintrust::Internal::Type::BaseModel
             # @!attribute arguments
             #
             #   @return [String]
@@ -314,11 +317,11 @@ module Braintrust
             #   #
             #   def initialize(arguments:, name:, **) = super
 
-            # def initialize: (Hash | Braintrust::BaseModel) -> void
+            # def initialize: (Hash | Braintrust::Internal::Type::BaseModel) -> void
           end
         end
 
-        class Tool < Braintrust::BaseModel
+        class Tool < Braintrust::Internal::Type::BaseModel
           # @!attribute role
           #
           #   @return [Symbol, Braintrust::Models::FunctionInvokeParams::Message::Tool::Role]
@@ -349,11 +352,11 @@ module Braintrust
           #   #
           #   def initialize(role:, content: nil, tool_call_id: nil, **) = super
 
-          # def initialize: (Hash | Braintrust::BaseModel) -> void
+          # def initialize: (Hash | Braintrust::Internal::Type::BaseModel) -> void
 
           # @see Braintrust::Models::FunctionInvokeParams::Message::Tool#role
           module Role
-            extend Braintrust::Enum
+            extend Braintrust::Internal::Type::Enum
 
             TOOL = :tool
 
@@ -365,7 +368,7 @@ module Braintrust
           end
         end
 
-        class Function < Braintrust::BaseModel
+        class Function < Braintrust::Internal::Type::BaseModel
           # @!attribute name
           #
           #   @return [String]
@@ -392,11 +395,11 @@ module Braintrust
           #   #
           #   def initialize(name:, role:, content: nil, **) = super
 
-          # def initialize: (Hash | Braintrust::BaseModel) -> void
+          # def initialize: (Hash | Braintrust::Internal::Type::BaseModel) -> void
 
           # @see Braintrust::Models::FunctionInvokeParams::Message::Function#role
           module Role
-            extend Braintrust::Enum
+            extend Braintrust::Internal::Type::Enum
 
             FUNCTION = :function
 
@@ -408,7 +411,7 @@ module Braintrust
           end
         end
 
-        class Fallback < Braintrust::BaseModel
+        class Fallback < Braintrust::Internal::Type::BaseModel
           # @!attribute role
           #
           #   @return [Symbol, Braintrust::Models::FunctionInvokeParams::Message::Fallback::Role]
@@ -425,11 +428,11 @@ module Braintrust
           #   #
           #   def initialize(role:, content: nil, **) = super
 
-          # def initialize: (Hash | Braintrust::BaseModel) -> void
+          # def initialize: (Hash | Braintrust::Internal::Type::BaseModel) -> void
 
           # @see Braintrust::Models::FunctionInvokeParams::Message::Fallback#role
           module Role
-            extend Braintrust::Enum
+            extend Braintrust::Internal::Type::Enum
 
             MODEL = :model
 
@@ -448,7 +451,7 @@ module Braintrust
 
       # The mode format of the returned value (defaults to 'auto')
       module Mode
-        extend Braintrust::Enum
+        extend Braintrust::Internal::Type::Enum
 
         AUTO = :auto
         PARALLEL = :parallel
@@ -462,7 +465,7 @@ module Braintrust
 
       # Options for tracing the function call
       module Parent
-        extend Braintrust::Union
+        extend Braintrust::Internal::Type::Union
 
         # Span parent properties
         variant -> { Braintrust::Models::FunctionInvokeParams::Parent::SpanParentStruct }
@@ -470,7 +473,7 @@ module Braintrust
         # The parent's span identifier, created by calling `.export()` on a span
         variant String
 
-        class SpanParentStruct < Braintrust::BaseModel
+        class SpanParentStruct < Braintrust::Internal::Type::BaseModel
           # @!attribute object_id_
           #   The id of the container object you are logging to
           #
@@ -487,7 +490,9 @@ module Braintrust
           #   Include these properties in every span created under this parent
           #
           #   @return [Hash{Symbol=>Object, nil}, nil]
-          optional :propagated_event, Braintrust::HashOf[Braintrust::Unknown, nil?: true], nil?: true
+          optional :propagated_event,
+                   Braintrust::Internal::Type::HashOf[Braintrust::Internal::Type::Unknown, nil?: true],
+                   nil?: true
 
           # @!attribute row_ids
           #   Identifiers for the row to to log a subspan under
@@ -507,11 +512,11 @@ module Braintrust
           #   #
           #   def initialize(object_id_:, object_type:, propagated_event: nil, row_ids: nil, **) = super
 
-          # def initialize: (Hash | Braintrust::BaseModel) -> void
+          # def initialize: (Hash | Braintrust::Internal::Type::BaseModel) -> void
 
           # @see Braintrust::Models::FunctionInvokeParams::Parent::SpanParentStruct#object_type
           module ObjectType
-            extend Braintrust::Enum
+            extend Braintrust::Internal::Type::Enum
 
             PROJECT_LOGS = :project_logs
             EXPERIMENT = :experiment
@@ -525,7 +530,7 @@ module Braintrust
           end
 
           # @see Braintrust::Models::FunctionInvokeParams::Parent::SpanParentStruct#row_ids
-          class RowIDs < Braintrust::BaseModel
+          class RowIDs < Braintrust::Internal::Type::BaseModel
             # @!attribute id
             #   The id of the row
             #
@@ -553,7 +558,7 @@ module Braintrust
             #   #
             #   def initialize(id:, root_span_id:, span_id:, **) = super
 
-            # def initialize: (Hash | Braintrust::BaseModel) -> void
+            # def initialize: (Hash | Braintrust::Internal::Type::BaseModel) -> void
           end
         end
 
