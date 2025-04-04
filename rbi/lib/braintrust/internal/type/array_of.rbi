@@ -39,11 +39,10 @@ module Braintrust
         # @api private
         sig(:final) do
           override
-            .params(value: T.any(
-              T::Enumerable[Elem],
-              T.anything
-            ),
-                    state: Braintrust::Internal::Type::Converter::State)
+            .params(
+              value: T.any(T::Array[T.anything], T.anything),
+              state: Braintrust::Internal::Type::Converter::State
+            )
             .returns(T.any(T::Array[T.anything], T.anything))
         end
         def coerce(value, state:)
@@ -52,7 +51,7 @@ module Braintrust
         # @api private
         sig(:final) do
           override
-            .params(value: T.any(T::Enumerable[Elem], T.anything))
+            .params(value: T.any(T::Array[T.anything], T.anything))
             .returns(T.any(T::Array[T.anything], T.anything))
         end
         def dump(value)

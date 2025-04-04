@@ -131,7 +131,7 @@ module Braintrust
           # @api private
           #
           # @param status [Integer, Braintrust::Errors::APIConnectionError]
-          # @param stream [Enumerable, nil]
+          # @param stream [Enumerable<String>, nil]
           def reap_connection!(status, stream:)
             case status
             in (..199) | (300..499)
@@ -328,7 +328,7 @@ module Braintrust
         # @param send_retry_header [Boolean]
         #
         # @raise [Braintrust::Errors::APIError]
-        # @return [Array(Integer, Net::HTTPResponse, Enumerable)]
+        # @return [Array(Integer, Net::HTTPResponse, Enumerable<String>)]
         private def send_request(request, redirect_count:, retry_count:, send_retry_header:)
           url, headers, max_retries, timeout = request.fetch_values(:url, :headers, :max_retries, :timeout)
           input = {**request.except(:timeout), deadline: Braintrust::Internal::Util.monotonic_secs + timeout}
