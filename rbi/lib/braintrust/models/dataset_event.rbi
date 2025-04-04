@@ -67,7 +67,9 @@ module Braintrust
       attr_reader :metadata
 
       sig do
-        params(metadata: T.nilable(T.any(Braintrust::Models::DatasetEvent::Metadata, Braintrust::Util::AnyHash)))
+        params(
+          metadata: T.nilable(T.any(Braintrust::Models::DatasetEvent::Metadata, Braintrust::Internal::Util::AnyHash))
+        )
           .void
       end
       attr_writer :metadata
@@ -76,7 +78,10 @@ module Braintrust
       sig { returns(T.nilable(Braintrust::Models::ObjectReference)) }
       attr_reader :origin
 
-      sig { params(origin: T.nilable(T.any(Braintrust::Models::ObjectReference, Braintrust::Util::AnyHash))).void }
+      sig do
+        params(origin: T.nilable(T.any(Braintrust::Models::ObjectReference, Braintrust::Internal::Util::AnyHash)))
+          .void
+      end
       attr_writer :origin
 
       # A list of tags to log
@@ -95,8 +100,8 @@ module Braintrust
           expected: T.anything,
           input: T.anything,
           is_root: T.nilable(T::Boolean),
-          metadata: T.nilable(T.any(Braintrust::Models::DatasetEvent::Metadata, Braintrust::Util::AnyHash)),
-          origin: T.nilable(T.any(Braintrust::Models::ObjectReference, Braintrust::Util::AnyHash)),
+          metadata: T.nilable(T.any(Braintrust::Models::DatasetEvent::Metadata, Braintrust::Internal::Util::AnyHash)),
+          origin: T.nilable(T.any(Braintrust::Models::ObjectReference, Braintrust::Internal::Util::AnyHash)),
           tags: T.nilable(T::Array[String])
         )
           .returns(T.attached_class)

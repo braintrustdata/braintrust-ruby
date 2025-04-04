@@ -5,8 +5,8 @@ module Braintrust
     # @see Braintrust::Resources::APIKeys#create
     class APIKeyCreateParams < Braintrust::BaseModel
       # @!parse
-      #   extend Braintrust::Type::RequestParameters::Converter
-      include Braintrust::RequestParameters
+      #   extend Braintrust::Internal::Type::RequestParameters::Converter
+      include Braintrust::Internal::Type::RequestParameters
 
       # @!attribute name
       #   Name of the api key. Does not have to be unique

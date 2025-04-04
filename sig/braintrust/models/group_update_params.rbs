@@ -9,11 +9,11 @@ module Braintrust
         remove_member_groups: ::Array[String]?,
         remove_member_users: ::Array[String]?
       }
-      & Braintrust::request_parameters
+      & Braintrust::Internal::Type::request_parameters
 
     class GroupUpdateParams < Braintrust::BaseModel
-      extend Braintrust::Type::RequestParameters::Converter
-      include Braintrust::RequestParameters
+      extend Braintrust::Internal::Type::RequestParameters::Converter
+      include Braintrust::Internal::Type::RequestParameters
 
       attr_accessor add_member_groups: ::Array[String]?
 

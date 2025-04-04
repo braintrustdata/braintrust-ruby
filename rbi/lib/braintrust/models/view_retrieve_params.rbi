@@ -3,8 +3,8 @@
 module Braintrust
   module Models
     class ViewRetrieveParams < Braintrust::BaseModel
-      extend Braintrust::Type::RequestParameters::Converter
-      include Braintrust::RequestParameters
+      extend Braintrust::Internal::Type::RequestParameters::Converter
+      include Braintrust::Internal::Type::RequestParameters
 
       # The id of the object the ACL applies to
       sig { returns(String) }
@@ -18,7 +18,7 @@ module Braintrust
         params(
           object_id_: String,
           object_type: Braintrust::Models::ACLObjectType::OrSymbol,
-          request_options: T.any(Braintrust::RequestOptions, Braintrust::Util::AnyHash)
+          request_options: T.any(Braintrust::RequestOptions, Braintrust::Internal::Util::AnyHash)
         )
           .returns(T.attached_class)
       end

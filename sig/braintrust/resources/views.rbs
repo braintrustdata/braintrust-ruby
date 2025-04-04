@@ -42,7 +42,7 @@ module Braintrust
         ?view_name: String,
         ?view_type: Braintrust::Models::view_type?,
         ?request_options: Braintrust::request_opts
-      ) -> Braintrust::ListObjects[Braintrust::Models::View]
+      ) -> Braintrust::Internal::ListObjects[Braintrust::Models::View]
 
       def delete: (
         String view_id,

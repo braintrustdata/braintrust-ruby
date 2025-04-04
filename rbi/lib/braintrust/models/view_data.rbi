@@ -6,12 +6,15 @@ module Braintrust
       sig { returns(T.nilable(Braintrust::Models::ViewDataSearch)) }
       attr_reader :search
 
-      sig { params(search: T.nilable(T.any(Braintrust::Models::ViewDataSearch, Braintrust::Util::AnyHash))).void }
+      sig do
+        params(search: T.nilable(T.any(Braintrust::Models::ViewDataSearch, Braintrust::Internal::Util::AnyHash)))
+          .void
+      end
       attr_writer :search
 
       # The view definition
       sig do
-        params(search: T.nilable(T.any(Braintrust::Models::ViewDataSearch, Braintrust::Util::AnyHash)))
+        params(search: T.nilable(T.any(Braintrust::Models::ViewDataSearch, Braintrust::Internal::Util::AnyHash)))
           .returns(T.attached_class)
       end
       def self.new(search: nil)

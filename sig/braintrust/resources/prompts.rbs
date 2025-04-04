@@ -39,7 +39,7 @@ module Braintrust
         ?starting_after: String,
         ?version: String,
         ?request_options: Braintrust::request_opts
-      ) -> Braintrust::ListObjects[Braintrust::Models::Prompt]
+      ) -> Braintrust::Internal::ListObjects[Braintrust::Models::Prompt]
 
       def delete: (
         String prompt_id,

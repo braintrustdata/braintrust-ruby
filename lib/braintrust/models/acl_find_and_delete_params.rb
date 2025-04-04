@@ -5,8 +5,8 @@ module Braintrust
     # @see Braintrust::Resources::ACLs#find_and_delete
     class ACLFindAndDeleteParams < Braintrust::BaseModel
       # @!parse
-      #   extend Braintrust::Type::RequestParameters::Converter
-      include Braintrust::RequestParameters
+      #   extend Braintrust::Internal::Type::RequestParameters::Converter
+      include Braintrust::Internal::Type::RequestParameters
 
       # @!attribute object_id_
       #   The id of the object the ACL applies to

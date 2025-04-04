@@ -32,7 +32,7 @@ module Braintrust
         ?project_tag_name: String,
         ?starting_after: String,
         ?request_options: Braintrust::request_opts
-      ) -> Braintrust::ListObjects[Braintrust::Models::ProjectTag]
+      ) -> Braintrust::Internal::ListObjects[Braintrust::Models::ProjectTag]
 
       def delete: (
         String project_tag_id,

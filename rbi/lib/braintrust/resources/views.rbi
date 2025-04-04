@@ -12,10 +12,10 @@ module Braintrust
           object_type: Braintrust::Models::ACLObjectType::OrSymbol,
           view_type: T.nilable(Braintrust::Models::ViewCreateParams::ViewType::OrSymbol),
           deleted_at: T.nilable(Time),
-          options: T.nilable(T.any(Braintrust::Models::ViewOptions, Braintrust::Util::AnyHash)),
+          options: T.nilable(T.any(Braintrust::Models::ViewOptions, Braintrust::Internal::Util::AnyHash)),
           user_id: T.nilable(String),
-          view_data: T.nilable(T.any(Braintrust::Models::ViewData, Braintrust::Util::AnyHash)),
-          request_options: T.nilable(T.any(Braintrust::RequestOptions, Braintrust::Util::AnyHash))
+          view_data: T.nilable(T.any(Braintrust::Models::ViewData, Braintrust::Internal::Util::AnyHash)),
+          request_options: T.nilable(T.any(Braintrust::RequestOptions, Braintrust::Internal::Util::AnyHash))
         )
           .returns(Braintrust::Models::View)
       end
@@ -46,7 +46,7 @@ module Braintrust
           view_id: String,
           object_id_: String,
           object_type: Braintrust::Models::ACLObjectType::OrSymbol,
-          request_options: T.nilable(T.any(Braintrust::RequestOptions, Braintrust::Util::AnyHash))
+          request_options: T.nilable(T.any(Braintrust::RequestOptions, Braintrust::Internal::Util::AnyHash))
         )
           .returns(Braintrust::Models::View)
       end
@@ -70,11 +70,11 @@ module Braintrust
           object_id_: String,
           object_type: Braintrust::Models::ACLObjectType::OrSymbol,
           name: T.nilable(String),
-          options: T.nilable(T.any(Braintrust::Models::ViewOptions, Braintrust::Util::AnyHash)),
+          options: T.nilable(T.any(Braintrust::Models::ViewOptions, Braintrust::Internal::Util::AnyHash)),
           user_id: T.nilable(String),
-          view_data: T.nilable(T.any(Braintrust::Models::ViewData, Braintrust::Util::AnyHash)),
+          view_data: T.nilable(T.any(Braintrust::Models::ViewData, Braintrust::Internal::Util::AnyHash)),
           view_type: T.nilable(Braintrust::Models::ViewUpdateParams::ViewType::OrSymbol),
-          request_options: T.nilable(T.any(Braintrust::RequestOptions, Braintrust::Util::AnyHash))
+          request_options: T.nilable(T.any(Braintrust::RequestOptions, Braintrust::Internal::Util::AnyHash))
         )
           .returns(Braintrust::Models::View)
       end
@@ -111,9 +111,9 @@ module Braintrust
           starting_after: String,
           view_name: String,
           view_type: T.nilable(Braintrust::Models::ViewType::OrSymbol),
-          request_options: T.nilable(T.any(Braintrust::RequestOptions, Braintrust::Util::AnyHash))
+          request_options: T.nilable(T.any(Braintrust::RequestOptions, Braintrust::Internal::Util::AnyHash))
         )
-          .returns(Braintrust::ListObjects[Braintrust::Models::View])
+          .returns(Braintrust::Internal::ListObjects[Braintrust::Models::View])
       end
       def list(
         # The id of the object the ACL applies to
@@ -151,7 +151,7 @@ module Braintrust
           view_id: String,
           object_id_: String,
           object_type: Braintrust::Models::ACLObjectType::OrSymbol,
-          request_options: T.nilable(T.any(Braintrust::RequestOptions, Braintrust::Util::AnyHash))
+          request_options: T.nilable(T.any(Braintrust::RequestOptions, Braintrust::Internal::Util::AnyHash))
         )
           .returns(Braintrust::Models::View)
       end
@@ -176,10 +176,10 @@ module Braintrust
           object_type: Braintrust::Models::ACLObjectType::OrSymbol,
           view_type: T.nilable(Braintrust::Models::ViewReplaceParams::ViewType::OrSymbol),
           deleted_at: T.nilable(Time),
-          options: T.nilable(T.any(Braintrust::Models::ViewOptions, Braintrust::Util::AnyHash)),
+          options: T.nilable(T.any(Braintrust::Models::ViewOptions, Braintrust::Internal::Util::AnyHash)),
           user_id: T.nilable(String),
-          view_data: T.nilable(T.any(Braintrust::Models::ViewData, Braintrust::Util::AnyHash)),
-          request_options: T.nilable(T.any(Braintrust::RequestOptions, Braintrust::Util::AnyHash))
+          view_data: T.nilable(T.any(Braintrust::Models::ViewData, Braintrust::Internal::Util::AnyHash)),
+          request_options: T.nilable(T.any(Braintrust::RequestOptions, Braintrust::Internal::Util::AnyHash))
         )
           .returns(Braintrust::Models::View)
       end

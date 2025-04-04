@@ -39,8 +39,8 @@ module Braintrust
           project_name: String,
           project_url: String,
           comparison_experiment_name: T.nilable(String),
-          metrics: T.nilable(T::Hash[Symbol, T.any(Braintrust::Models::MetricSummary, Braintrust::Util::AnyHash)]),
-          scores: T.nilable(T::Hash[Symbol, T.any(Braintrust::Models::ScoreSummary, Braintrust::Util::AnyHash)])
+          metrics: T.nilable(T::Hash[Symbol, T.any(Braintrust::Models::MetricSummary, Braintrust::Internal::Util::AnyHash)]),
+          scores: T.nilable(T::Hash[Symbol, T.any(Braintrust::Models::ScoreSummary, Braintrust::Internal::Util::AnyHash)])
         )
           .returns(T.attached_class)
       end

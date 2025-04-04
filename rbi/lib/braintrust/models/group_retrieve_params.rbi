@@ -3,11 +3,11 @@
 module Braintrust
   module Models
     class GroupRetrieveParams < Braintrust::BaseModel
-      extend Braintrust::Type::RequestParameters::Converter
-      include Braintrust::RequestParameters
+      extend Braintrust::Internal::Type::RequestParameters::Converter
+      include Braintrust::Internal::Type::RequestParameters
 
       sig do
-        params(request_options: T.any(Braintrust::RequestOptions, Braintrust::Util::AnyHash))
+        params(request_options: T.any(Braintrust::RequestOptions, Braintrust::Internal::Util::AnyHash))
           .returns(T.attached_class)
       end
       def self.new(request_options: {})

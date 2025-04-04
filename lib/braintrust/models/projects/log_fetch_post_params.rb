@@ -6,8 +6,8 @@ module Braintrust
       # @see Braintrust::Resources::Projects::Logs#fetch_post
       class LogFetchPostParams < Braintrust::BaseModel
         # @!parse
-        #   extend Braintrust::Type::RequestParameters::Converter
-        include Braintrust::RequestParameters
+        #   extend Braintrust::Internal::Type::RequestParameters::Converter
+        include Braintrust::Internal::Type::RequestParameters
 
         # @!attribute cursor
         #   An opaque string to be used as a cursor for the next page of results, in order

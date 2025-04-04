@@ -8,11 +8,11 @@ module Braintrust
           org_name: String?,
           remove_users: Braintrust::Models::Organizations::MemberUpdateParams::RemoveUsers?
         }
-        & Braintrust::request_parameters
+        & Braintrust::Internal::Type::request_parameters
 
       class MemberUpdateParams < Braintrust::BaseModel
-        extend Braintrust::Type::RequestParameters::Converter
-        include Braintrust::RequestParameters
+        extend Braintrust::Internal::Type::RequestParameters::Converter
+        include Braintrust::Internal::Type::RequestParameters
 
         attr_accessor invite_users: Braintrust::Models::Organizations::MemberUpdateParams::InviteUsers?
 

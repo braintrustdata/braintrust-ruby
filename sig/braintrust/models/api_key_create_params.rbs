@@ -1,11 +1,12 @@
 module Braintrust
   module Models
     type api_key_create_params =
-      { name: String, org_name: String? } & Braintrust::request_parameters
+      { name: String, org_name: String? }
+      & Braintrust::Internal::Type::request_parameters
 
     class APIKeyCreateParams < Braintrust::BaseModel
-      extend Braintrust::Type::RequestParameters::Converter
-      include Braintrust::RequestParameters
+      extend Braintrust::Internal::Type::RequestParameters::Converter
+      include Braintrust::Internal::Type::RequestParameters
 
       attr_accessor name: String
 

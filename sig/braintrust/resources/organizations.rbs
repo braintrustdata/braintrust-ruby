@@ -25,7 +25,7 @@ module Braintrust
         ?org_name: String,
         ?starting_after: String,
         ?request_options: Braintrust::request_opts
-      ) -> Braintrust::ListObjects[Braintrust::Models::Organization]
+      ) -> Braintrust::Internal::ListObjects[Braintrust::Models::Organization]
 
       def delete: (
         String organization_id,

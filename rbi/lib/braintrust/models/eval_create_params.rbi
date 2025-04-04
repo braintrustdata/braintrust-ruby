@@ -3,8 +3,8 @@
 module Braintrust
   module Models
     class EvalCreateParams < Braintrust::BaseModel
-      extend Braintrust::Type::RequestParameters::Converter
-      include Braintrust::RequestParameters
+      extend Braintrust::Internal::Type::RequestParameters::Converter
+      include Braintrust::Internal::Type::RequestParameters
 
       # The dataset to use
       sig do
@@ -79,7 +79,9 @@ module Braintrust
 
       sig do
         params(
-          git_metadata_settings: T.nilable(T.any(Braintrust::Models::EvalCreateParams::GitMetadataSettings, Braintrust::Util::AnyHash))
+          git_metadata_settings: T.nilable(
+            T.any(Braintrust::Models::EvalCreateParams::GitMetadataSettings, Braintrust::Internal::Util::AnyHash)
+          )
         )
           .void
       end
@@ -108,7 +110,11 @@ module Braintrust
 
       sig do
         params(
-          parent: T.any(Braintrust::Models::EvalCreateParams::Parent::SpanParentStruct, Braintrust::Util::AnyHash, String)
+          parent: T.any(
+            Braintrust::Models::EvalCreateParams::Parent::SpanParentStruct,
+            Braintrust::Internal::Util::AnyHash,
+            String
+          )
         )
           .void
       end
@@ -118,7 +124,7 @@ module Braintrust
       sig { returns(T.nilable(Braintrust::Models::RepoInfo)) }
       attr_reader :repo_info
 
-      sig { params(repo_info: T.nilable(T.any(Braintrust::Models::RepoInfo, Braintrust::Util::AnyHash))).void }
+      sig { params(repo_info: T.nilable(T.any(Braintrust::Models::RepoInfo, Braintrust::Internal::Util::AnyHash))).void }
       attr_writer :repo_info
 
       # Whether to stream the results of the eval. If true, the request will return two
@@ -145,7 +151,7 @@ module Braintrust
         params(
           data: T.any(
             Braintrust::Models::EvalCreateParams::Data::DatasetID,
-            Braintrust::Util::AnyHash,
+            Braintrust::Internal::Util::AnyHash,
             Braintrust::Models::EvalCreateParams::Data::ProjectDatasetName,
             Braintrust::Models::EvalCreateParams::Data::DatasetRows
           ),
@@ -153,7 +159,7 @@ module Braintrust
           scores: T::Array[
           T.any(
             Braintrust::Models::EvalCreateParams::Score::FunctionID,
-            Braintrust::Util::AnyHash,
+            Braintrust::Internal::Util::AnyHash,
             Braintrust::Models::EvalCreateParams::Score::ProjectSlug,
             Braintrust::Models::EvalCreateParams::Score::GlobalFunction,
             Braintrust::Models::EvalCreateParams::Score::PromptSessionID,
@@ -163,7 +169,7 @@ module Braintrust
           ],
           task: T.any(
             Braintrust::Models::EvalCreateParams::Task::FunctionID,
-            Braintrust::Util::AnyHash,
+            Braintrust::Internal::Util::AnyHash,
             Braintrust::Models::EvalCreateParams::Task::ProjectSlug,
             Braintrust::Models::EvalCreateParams::Task::GlobalFunction,
             Braintrust::Models::EvalCreateParams::Task::PromptSessionID,
@@ -173,16 +179,22 @@ module Braintrust
           base_experiment_id: T.nilable(String),
           base_experiment_name: T.nilable(String),
           experiment_name: String,
-          git_metadata_settings: T.nilable(T.any(Braintrust::Models::EvalCreateParams::GitMetadataSettings, Braintrust::Util::AnyHash)),
+          git_metadata_settings: T.nilable(
+            T.any(Braintrust::Models::EvalCreateParams::GitMetadataSettings, Braintrust::Internal::Util::AnyHash)
+          ),
           is_public: T.nilable(T::Boolean),
           max_concurrency: T.nilable(Float),
           metadata: T::Hash[Symbol, T.nilable(T.anything)],
-          parent: T.any(Braintrust::Models::EvalCreateParams::Parent::SpanParentStruct, Braintrust::Util::AnyHash, String),
-          repo_info: T.nilable(T.any(Braintrust::Models::RepoInfo, Braintrust::Util::AnyHash)),
+          parent: T.any(
+            Braintrust::Models::EvalCreateParams::Parent::SpanParentStruct,
+            Braintrust::Internal::Util::AnyHash,
+            String
+          ),
+          repo_info: T.nilable(T.any(Braintrust::Models::RepoInfo, Braintrust::Internal::Util::AnyHash)),
           stream: T::Boolean,
           timeout: T.nilable(Float),
           trial_count: T.nilable(Float),
-          request_options: T.any(Braintrust::RequestOptions, Braintrust::Util::AnyHash)
+          request_options: T.any(Braintrust::RequestOptions, Braintrust::Internal::Util::AnyHash)
         )
           .returns(T.attached_class)
       end
@@ -454,7 +466,10 @@ module Braintrust
 
           sig do
             params(
-              inline_context: T.any(Braintrust::Models::EvalCreateParams::Score::InlineCode::InlineContext, Braintrust::Util::AnyHash)
+              inline_context: T.any(
+                Braintrust::Models::EvalCreateParams::Score::InlineCode::InlineContext,
+                Braintrust::Internal::Util::AnyHash
+              )
             )
               .void
           end
@@ -468,7 +483,10 @@ module Braintrust
           sig do
             params(
               code: String,
-              inline_context: T.any(Braintrust::Models::EvalCreateParams::Score::InlineCode::InlineContext, Braintrust::Util::AnyHash),
+              inline_context: T.any(
+                Braintrust::Models::EvalCreateParams::Score::InlineCode::InlineContext,
+                Braintrust::Internal::Util::AnyHash
+              ),
               name: T.nilable(String)
             )
               .returns(T.attached_class)
@@ -560,7 +578,12 @@ module Braintrust
           sig { returns(T.nilable(Braintrust::Models::PromptData)) }
           attr_reader :inline_prompt
 
-          sig { params(inline_prompt: T.nilable(T.any(Braintrust::Models::PromptData, Braintrust::Util::AnyHash))).void }
+          sig do
+            params(
+              inline_prompt: T.nilable(T.any(Braintrust::Models::PromptData, Braintrust::Internal::Util::AnyHash))
+            )
+              .void
+          end
           attr_writer :inline_prompt
 
           # The name of the inline prompt
@@ -570,7 +593,7 @@ module Braintrust
           # Inline prompt definition
           sig do
             params(
-              inline_prompt: T.nilable(T.any(Braintrust::Models::PromptData, Braintrust::Util::AnyHash)),
+              inline_prompt: T.nilable(T.any(Braintrust::Models::PromptData, Braintrust::Internal::Util::AnyHash)),
               name: T.nilable(String)
             )
               .returns(T.attached_class)
@@ -702,7 +725,10 @@ module Braintrust
 
           sig do
             params(
-              inline_context: T.any(Braintrust::Models::EvalCreateParams::Task::InlineCode::InlineContext, Braintrust::Util::AnyHash)
+              inline_context: T.any(
+                Braintrust::Models::EvalCreateParams::Task::InlineCode::InlineContext,
+                Braintrust::Internal::Util::AnyHash
+              )
             )
               .void
           end
@@ -716,7 +742,10 @@ module Braintrust
           sig do
             params(
               code: String,
-              inline_context: T.any(Braintrust::Models::EvalCreateParams::Task::InlineCode::InlineContext, Braintrust::Util::AnyHash),
+              inline_context: T.any(
+                Braintrust::Models::EvalCreateParams::Task::InlineCode::InlineContext,
+                Braintrust::Internal::Util::AnyHash
+              ),
               name: T.nilable(String)
             )
               .returns(T.attached_class)
@@ -805,7 +834,12 @@ module Braintrust
           sig { returns(T.nilable(Braintrust::Models::PromptData)) }
           attr_reader :inline_prompt
 
-          sig { params(inline_prompt: T.nilable(T.any(Braintrust::Models::PromptData, Braintrust::Util::AnyHash))).void }
+          sig do
+            params(
+              inline_prompt: T.nilable(T.any(Braintrust::Models::PromptData, Braintrust::Internal::Util::AnyHash))
+            )
+              .void
+          end
           attr_writer :inline_prompt
 
           # The name of the inline prompt
@@ -815,7 +849,7 @@ module Braintrust
           # Inline prompt definition
           sig do
             params(
-              inline_prompt: T.nilable(T.any(Braintrust::Models::PromptData, Braintrust::Util::AnyHash)),
+              inline_prompt: T.nilable(T.any(Braintrust::Models::PromptData, Braintrust::Internal::Util::AnyHash)),
               name: T.nilable(String)
             )
               .returns(T.attached_class)
@@ -944,7 +978,10 @@ module Braintrust
           sig do
             params(
               row_ids: T.nilable(
-                T.any(Braintrust::Models::EvalCreateParams::Parent::SpanParentStruct::RowIDs, Braintrust::Util::AnyHash)
+                T.any(
+                  Braintrust::Models::EvalCreateParams::Parent::SpanParentStruct::RowIDs,
+                  Braintrust::Internal::Util::AnyHash
+                )
               )
             )
               .void
@@ -958,7 +995,10 @@ module Braintrust
               object_type: Braintrust::Models::EvalCreateParams::Parent::SpanParentStruct::ObjectType::OrSymbol,
               propagated_event: T.nilable(T::Hash[Symbol, T.nilable(T.anything)]),
               row_ids: T.nilable(
-                T.any(Braintrust::Models::EvalCreateParams::Parent::SpanParentStruct::RowIDs, Braintrust::Util::AnyHash)
+                T.any(
+                  Braintrust::Models::EvalCreateParams::Parent::SpanParentStruct::RowIDs,
+                  Braintrust::Internal::Util::AnyHash
+                )
               )
             )
               .returns(T.attached_class)

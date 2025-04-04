@@ -3,8 +3,8 @@
 module Braintrust
   module Models
     class ProjectScoreReplaceParams < Braintrust::BaseModel
-      extend Braintrust::Type::RequestParameters::Converter
-      include Braintrust::RequestParameters
+      extend Braintrust::Internal::Type::RequestParameters::Converter
+      include Braintrust::Internal::Type::RequestParameters
 
       # Name of the project score
       sig { returns(String) }
@@ -31,7 +31,12 @@ module Braintrust
       sig { returns(T.nilable(Braintrust::Models::ProjectScoreConfig)) }
       attr_reader :config
 
-      sig { params(config: T.nilable(T.any(Braintrust::Models::ProjectScoreConfig, Braintrust::Util::AnyHash))).void }
+      sig do
+        params(
+          config: T.nilable(T.any(Braintrust::Models::ProjectScoreConfig, Braintrust::Internal::Util::AnyHash))
+        )
+          .void
+      end
       attr_writer :config
 
       # Textual description of the project score
@@ -45,14 +50,14 @@ module Braintrust
           score_type: Braintrust::Models::ProjectScoreType::OrSymbol,
           categories: T.nilable(
             T.any(
-              T::Array[T.any(Braintrust::Models::ProjectScoreCategory, Braintrust::Util::AnyHash)],
+              T::Array[T.any(Braintrust::Models::ProjectScoreCategory, Braintrust::Internal::Util::AnyHash)],
               T::Hash[Symbol, Float],
               T::Array[String]
             )
           ),
-          config: T.nilable(T.any(Braintrust::Models::ProjectScoreConfig, Braintrust::Util::AnyHash)),
+          config: T.nilable(T.any(Braintrust::Models::ProjectScoreConfig, Braintrust::Internal::Util::AnyHash)),
           description: T.nilable(String),
-          request_options: T.any(Braintrust::RequestOptions, Braintrust::Util::AnyHash)
+          request_options: T.any(Braintrust::RequestOptions, Braintrust::Internal::Util::AnyHash)
         )
           .returns(T.attached_class)
       end
@@ -98,11 +103,14 @@ module Braintrust
         end
 
         ProjectScoreCategoryArray =
-          T.let(Braintrust::ArrayOf[Braintrust::Models::ProjectScoreCategory], Braintrust::Type::Converter)
+          T.let(
+            Braintrust::ArrayOf[Braintrust::Models::ProjectScoreCategory],
+            Braintrust::Internal::Type::Converter
+          )
 
-        FloatMap = T.let(Braintrust::HashOf[Float], Braintrust::Type::Converter)
+        FloatMap = T.let(Braintrust::HashOf[Float], Braintrust::Internal::Type::Converter)
 
-        StringArray = T.let(Braintrust::ArrayOf[String], Braintrust::Type::Converter)
+        StringArray = T.let(Braintrust::ArrayOf[String], Braintrust::Internal::Type::Converter)
       end
     end
   end

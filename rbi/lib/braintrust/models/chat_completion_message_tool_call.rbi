@@ -11,7 +11,7 @@ module Braintrust
 
       sig do
         params(
-          function: T.any(Braintrust::Models::ChatCompletionMessageToolCall::Function, Braintrust::Util::AnyHash)
+          function: T.any(Braintrust::Models::ChatCompletionMessageToolCall::Function, Braintrust::Internal::Util::AnyHash)
         )
           .void
       end
@@ -23,7 +23,7 @@ module Braintrust
       sig do
         params(
           id: String,
-          function: T.any(Braintrust::Models::ChatCompletionMessageToolCall::Function, Braintrust::Util::AnyHash),
+          function: T.any(Braintrust::Models::ChatCompletionMessageToolCall::Function, Braintrust::Internal::Util::AnyHash),
           type: Braintrust::Models::ChatCompletionMessageToolCall::Type::OrSymbol
         )
           .returns(T.attached_class)

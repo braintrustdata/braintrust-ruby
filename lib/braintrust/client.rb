@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module Braintrust
-  class Client < Braintrust::Transport::BaseClient
+  class Client < Braintrust::Internal::Transport::BaseClient
     # Default max number of retries to attempt after a failed retryable request.
     DEFAULT_MAX_RETRIES = 2
 

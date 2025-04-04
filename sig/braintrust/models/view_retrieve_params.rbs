@@ -2,11 +2,11 @@ module Braintrust
   module Models
     type view_retrieve_params =
       { object_id_: String, object_type: Braintrust::Models::acl_object_type }
-      & Braintrust::request_parameters
+      & Braintrust::Internal::Type::request_parameters
 
     class ViewRetrieveParams < Braintrust::BaseModel
-      extend Braintrust::Type::RequestParameters::Converter
-      include Braintrust::RequestParameters
+      extend Braintrust::Internal::Type::RequestParameters::Converter
+      include Braintrust::Internal::Type::RequestParameters
 
       attr_accessor object_id_: String
 
