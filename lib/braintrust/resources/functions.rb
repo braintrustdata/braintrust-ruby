@@ -157,7 +157,7 @@ module Braintrust
           method: :post,
           path: ["v1/function/%1$s/invoke", function_id],
           body: parsed,
-          model: Braintrust::Unknown,
+          model: Braintrust::Internal::Type::Unknown,
           options: options
         )
       end

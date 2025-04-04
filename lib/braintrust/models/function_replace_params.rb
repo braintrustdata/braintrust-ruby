@@ -3,7 +3,7 @@
 module Braintrust
   module Models
     # @see Braintrust::Resources::Functions#replace
-    class FunctionReplaceParams < Braintrust::BaseModel
+    class FunctionReplaceParams < Braintrust::Internal::Type::BaseModel
       # @!parse
       #   extend Braintrust::Internal::Type::RequestParameters::Converter
       include Braintrust::Internal::Type::RequestParameters
@@ -63,7 +63,7 @@ module Braintrust
       #   A list of tags for the prompt
       #
       #   @return [Array<String>, nil]
-      optional :tags, Braintrust::ArrayOf[String], nil?: true
+      optional :tags, Braintrust::Internal::Type::ArrayOf[String], nil?: true
 
       # @!parse
       #   # @param function_data [Braintrust::Models::FunctionReplaceParams::FunctionData::Prompt, Braintrust::Models::FunctionReplaceParams::FunctionData::Code, Braintrust::Models::FunctionReplaceParams::FunctionData::Global]
@@ -95,10 +95,10 @@ module Braintrust
       #     super
       #   end
 
-      # def initialize: (Hash | Braintrust::BaseModel) -> void
+      # def initialize: (Hash | Braintrust::Internal::Type::BaseModel) -> void
 
       module FunctionData
-        extend Braintrust::Union
+        extend Braintrust::Internal::Type::Union
 
         variant -> { Braintrust::Models::FunctionReplaceParams::FunctionData::Prompt }
 
@@ -106,7 +106,7 @@ module Braintrust
 
         variant -> { Braintrust::Models::FunctionReplaceParams::FunctionData::Global }
 
-        class Prompt < Braintrust::BaseModel
+        class Prompt < Braintrust::Internal::Type::BaseModel
           # @!attribute type
           #
           #   @return [Symbol, Braintrust::Models::FunctionReplaceParams::FunctionData::Prompt::Type]
@@ -117,11 +117,11 @@ module Braintrust
           #   #
           #   def initialize(type:, **) = super
 
-          # def initialize: (Hash | Braintrust::BaseModel) -> void
+          # def initialize: (Hash | Braintrust::Internal::Type::BaseModel) -> void
 
           # @see Braintrust::Models::FunctionReplaceParams::FunctionData::Prompt#type
           module Type
-            extend Braintrust::Enum
+            extend Braintrust::Internal::Type::Enum
 
             PROMPT = :prompt
 
@@ -133,7 +133,7 @@ module Braintrust
           end
         end
 
-        class Code < Braintrust::BaseModel
+        class Code < Braintrust::Internal::Type::BaseModel
           # @!attribute data
           #
           #   @return [Braintrust::Models::FunctionReplaceParams::FunctionData::Code::Data::Bundle, Braintrust::Models::FunctionReplaceParams::FunctionData::Code::Data::Inline]
@@ -150,11 +150,11 @@ module Braintrust
           #   #
           #   def initialize(data:, type:, **) = super
 
-          # def initialize: (Hash | Braintrust::BaseModel) -> void
+          # def initialize: (Hash | Braintrust::Internal::Type::BaseModel) -> void
 
           # @see Braintrust::Models::FunctionReplaceParams::FunctionData::Code#data
           module Data
-            extend Braintrust::Union
+            extend Braintrust::Internal::Type::Union
 
             variant -> { Braintrust::Models::FunctionReplaceParams::FunctionData::Code::Data::Bundle }
 
@@ -172,10 +172,10 @@ module Braintrust
               #   #
               #   def initialize(type:, **) = super
 
-              # def initialize: (Hash | Braintrust::BaseModel) -> void
+              # def initialize: (Hash | Braintrust::Internal::Type::BaseModel) -> void
 
               module Type
-                extend Braintrust::Enum
+                extend Braintrust::Internal::Type::Enum
 
                 BUNDLE = :bundle
 
@@ -187,7 +187,7 @@ module Braintrust
               end
             end
 
-            class Inline < Braintrust::BaseModel
+            class Inline < Braintrust::Internal::Type::BaseModel
               # @!attribute code
               #
               #   @return [String]
@@ -212,10 +212,10 @@ module Braintrust
               #   #
               #   def initialize(code:, runtime_context:, type:, **) = super
 
-              # def initialize: (Hash | Braintrust::BaseModel) -> void
+              # def initialize: (Hash | Braintrust::Internal::Type::BaseModel) -> void
 
               # @see Braintrust::Models::FunctionReplaceParams::FunctionData::Code::Data::Inline#runtime_context
-              class RuntimeContext < Braintrust::BaseModel
+              class RuntimeContext < Braintrust::Internal::Type::BaseModel
                 # @!attribute runtime
                 #
                 #   @return [Symbol, Braintrust::Models::FunctionReplaceParams::FunctionData::Code::Data::Inline::RuntimeContext::Runtime]
@@ -233,11 +233,11 @@ module Braintrust
                 #   #
                 #   def initialize(runtime:, version:, **) = super
 
-                # def initialize: (Hash | Braintrust::BaseModel) -> void
+                # def initialize: (Hash | Braintrust::Internal::Type::BaseModel) -> void
 
                 # @see Braintrust::Models::FunctionReplaceParams::FunctionData::Code::Data::Inline::RuntimeContext#runtime
                 module Runtime
-                  extend Braintrust::Enum
+                  extend Braintrust::Internal::Type::Enum
 
                   NODE = :node
                   PYTHON = :python
@@ -252,7 +252,7 @@ module Braintrust
 
               # @see Braintrust::Models::FunctionReplaceParams::FunctionData::Code::Data::Inline#type
               module Type
-                extend Braintrust::Enum
+                extend Braintrust::Internal::Type::Enum
 
                 INLINE = :inline
 
@@ -271,7 +271,7 @@ module Braintrust
 
           # @see Braintrust::Models::FunctionReplaceParams::FunctionData::Code#type
           module Type
-            extend Braintrust::Enum
+            extend Braintrust::Internal::Type::Enum
 
             CODE = :code
 
@@ -283,7 +283,7 @@ module Braintrust
           end
         end
 
-        class Global < Braintrust::BaseModel
+        class Global < Braintrust::Internal::Type::BaseModel
           # @!attribute name
           #
           #   @return [String]
@@ -300,11 +300,11 @@ module Braintrust
           #   #
           #   def initialize(name:, type:, **) = super
 
-          # def initialize: (Hash | Braintrust::BaseModel) -> void
+          # def initialize: (Hash | Braintrust::Internal::Type::BaseModel) -> void
 
           # @see Braintrust::Models::FunctionReplaceParams::FunctionData::Global#type
           module Type
-            extend Braintrust::Enum
+            extend Braintrust::Internal::Type::Enum
 
             GLOBAL = :global
 
@@ -321,11 +321,11 @@ module Braintrust
         #   def self.variants; end
       end
 
-      class FunctionSchema < Braintrust::BaseModel
+      class FunctionSchema < Braintrust::Internal::Type::BaseModel
         # @!attribute [r] parameters
         #
         #   @return [Object, nil]
-        optional :parameters, Braintrust::Unknown
+        optional :parameters, Braintrust::Internal::Type::Unknown
 
         # @!parse
         #   # @return [Object]
@@ -334,7 +334,7 @@ module Braintrust
         # @!attribute [r] returns
         #
         #   @return [Object, nil]
-        optional :returns, Braintrust::Unknown
+        optional :returns, Braintrust::Internal::Type::Unknown
 
         # @!parse
         #   # @return [Object]
@@ -348,11 +348,11 @@ module Braintrust
         #   #
         #   def initialize(parameters: nil, returns: nil, **) = super
 
-        # def initialize: (Hash | Braintrust::BaseModel) -> void
+        # def initialize: (Hash | Braintrust::Internal::Type::BaseModel) -> void
       end
 
       module FunctionType
-        extend Braintrust::Enum
+        extend Braintrust::Internal::Type::Enum
 
         LLM = :llm
         SCORER = :scorer
@@ -366,7 +366,7 @@ module Braintrust
         #   def self.values; end
       end
 
-      class Origin < Braintrust::BaseModel
+      class Origin < Braintrust::Internal::Type::BaseModel
         # @!attribute object_id_
         #   Id of the object the function is originating from
         #
@@ -384,7 +384,7 @@ module Braintrust
         #     list of functions.
         #
         #   @return [Boolean, nil]
-        optional :internal, Braintrust::BooleanModel, nil?: true
+        optional :internal, Braintrust::Internal::Type::BooleanModel, nil?: true
 
         # @!parse
         #   # @param object_id_ [String]
@@ -393,7 +393,7 @@ module Braintrust
         #   #
         #   def initialize(object_id_:, object_type:, internal: nil, **) = super
 
-        # def initialize: (Hash | Braintrust::BaseModel) -> void
+        # def initialize: (Hash | Braintrust::Internal::Type::BaseModel) -> void
       end
     end
   end

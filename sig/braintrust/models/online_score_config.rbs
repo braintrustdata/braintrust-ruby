@@ -8,7 +8,7 @@ module Braintrust
         apply_to_span_names: ::Array[String]?
       }
 
-    class OnlineScoreConfig < Braintrust::BaseModel
+    class OnlineScoreConfig < Braintrust::Internal::Type::BaseModel
       attr_accessor sampling_rate: Float
 
       attr_accessor scorers: ::Array[Braintrust::Models::OnlineScoreConfig::scorer]
@@ -31,7 +31,7 @@ module Braintrust
         | Braintrust::Models::OnlineScoreConfig::Scorer::Global
 
       module Scorer
-        extend Braintrust::Union
+        extend Braintrust::Internal::Type::Union
 
         type function =
           {
@@ -39,7 +39,7 @@ module Braintrust
             type: Braintrust::Models::OnlineScoreConfig::Scorer::Function::type_
           }
 
-        class Function < Braintrust::BaseModel
+        class Function < Braintrust::Internal::Type::BaseModel
           attr_accessor id: String
 
           attr_accessor type: Braintrust::Models::OnlineScoreConfig::Scorer::Function::type_
@@ -54,7 +54,7 @@ module Braintrust
           type type_ = :function
 
           module Type
-            extend Braintrust::Enum
+            extend Braintrust::Internal::Type::Enum
 
             FUNCTION: :function
 
@@ -68,7 +68,7 @@ module Braintrust
             type: Braintrust::Models::OnlineScoreConfig::Scorer::Global::type_
           }
 
-        class Global < Braintrust::BaseModel
+        class Global < Braintrust::Internal::Type::BaseModel
           attr_accessor name: String
 
           attr_accessor type: Braintrust::Models::OnlineScoreConfig::Scorer::Global::type_
@@ -83,7 +83,7 @@ module Braintrust
           type type_ = :global
 
           module Type
-            extend Braintrust::Enum
+            extend Braintrust::Internal::Type::Enum
 
             GLOBAL: :global
 

@@ -3,7 +3,7 @@
 module Braintrust
   module Models
     # @see Braintrust::Resources::ACLs#batch_update
-    class ACLBatchUpdateParams < Braintrust::BaseModel
+    class ACLBatchUpdateParams < Braintrust::Internal::Type::BaseModel
       # @!parse
       #   extend Braintrust::Internal::Type::RequestParameters::Converter
       include Braintrust::Internal::Type::RequestParameters
@@ -22,7 +22,7 @@ module Braintrust
       #
       #   @return [Array<Braintrust::Models::ACLBatchUpdateParams::AddACL>, nil]
       optional :add_acls,
-               -> { Braintrust::ArrayOf[Braintrust::Models::ACLBatchUpdateParams::AddACL] },
+               -> { Braintrust::Internal::Type::ArrayOf[Braintrust::Models::ACLBatchUpdateParams::AddACL] },
                nil?: true
 
       # @!attribute remove_acls
@@ -39,7 +39,7 @@ module Braintrust
       #
       #   @return [Array<Braintrust::Models::ACLBatchUpdateParams::RemoveACL>, nil]
       optional :remove_acls,
-               -> { Braintrust::ArrayOf[Braintrust::Models::ACLBatchUpdateParams::RemoveACL] },
+               -> { Braintrust::Internal::Type::ArrayOf[Braintrust::Models::ACLBatchUpdateParams::RemoveACL] },
                nil?: true
 
       # @!parse
@@ -49,9 +49,9 @@ module Braintrust
       #   #
       #   def initialize(add_acls: nil, remove_acls: nil, request_options: {}, **) = super
 
-      # def initialize: (Hash | Braintrust::BaseModel) -> void
+      # def initialize: (Hash | Braintrust::Internal::Type::BaseModel) -> void
 
-      class AddACL < Braintrust::BaseModel
+      class AddACL < Braintrust::Internal::Type::BaseModel
         # @!attribute object_id_
         #   The id of the object the ACL applies to
         #
@@ -132,10 +132,10 @@ module Braintrust
         #     super
         #   end
 
-        # def initialize: (Hash | Braintrust::BaseModel) -> void
+        # def initialize: (Hash | Braintrust::Internal::Type::BaseModel) -> void
       end
 
-      class RemoveACL < Braintrust::BaseModel
+      class RemoveACL < Braintrust::Internal::Type::BaseModel
         # @!attribute object_id_
         #   The id of the object the ACL applies to
         #
@@ -216,7 +216,7 @@ module Braintrust
         #     super
         #   end
 
-        # def initialize: (Hash | Braintrust::BaseModel) -> void
+        # def initialize: (Hash | Braintrust::Internal::Type::BaseModel) -> void
       end
     end
   end

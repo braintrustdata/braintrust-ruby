@@ -2,7 +2,7 @@
 
 module Braintrust
   module Models
-    class FunctionInvokeParams < Braintrust::BaseModel
+    class FunctionInvokeParams < Braintrust::Internal::Type::BaseModel
       extend Braintrust::Internal::Type::RequestParameters::Converter
       include Braintrust::Internal::Type::RequestParameters
 
@@ -44,7 +44,7 @@ module Braintrust
           messages: T::Array[
           T.any(
             Braintrust::Models::FunctionInvokeParams::Message::System,
-            Braintrust::Internal::Util::AnyHash,
+            Braintrust::Internal::AnyHash,
             Braintrust::Models::FunctionInvokeParams::Message::User,
             Braintrust::Models::FunctionInvokeParams::Message::Assistant,
             Braintrust::Models::FunctionInvokeParams::Message::Tool,
@@ -73,7 +73,7 @@ module Braintrust
         params(
           parent: T.any(
             Braintrust::Models::FunctionInvokeParams::Parent::SpanParentStruct,
-            Braintrust::Internal::Util::AnyHash,
+            Braintrust::Internal::AnyHash,
             String
           )
         )
@@ -100,7 +100,7 @@ module Braintrust
           messages: T::Array[
           T.any(
             Braintrust::Models::FunctionInvokeParams::Message::System,
-            Braintrust::Internal::Util::AnyHash,
+            Braintrust::Internal::AnyHash,
             Braintrust::Models::FunctionInvokeParams::Message::User,
             Braintrust::Models::FunctionInvokeParams::Message::Assistant,
             Braintrust::Models::FunctionInvokeParams::Message::Tool,
@@ -112,12 +112,12 @@ module Braintrust
           mode: T.nilable(Braintrust::Models::FunctionInvokeParams::Mode::OrSymbol),
           parent: T.any(
             Braintrust::Models::FunctionInvokeParams::Parent::SpanParentStruct,
-            Braintrust::Internal::Util::AnyHash,
+            Braintrust::Internal::AnyHash,
             String
           ),
           stream: T.nilable(T::Boolean),
           version: String,
-          request_options: T.any(Braintrust::RequestOptions, Braintrust::Internal::Util::AnyHash)
+          request_options: T.any(Braintrust::RequestOptions, Braintrust::Internal::AnyHash)
         )
           .returns(T.attached_class)
       end
@@ -163,9 +163,9 @@ module Braintrust
       end
 
       module Message
-        extend Braintrust::Union
+        extend Braintrust::Internal::Type::Union
 
-        class System < Braintrust::BaseModel
+        class System < Braintrust::Internal::Type::BaseModel
           sig { returns(Braintrust::Models::FunctionInvokeParams::Message::System::Role::OrSymbol) }
           attr_accessor :role
 
@@ -202,7 +202,7 @@ module Braintrust
           end
 
           module Role
-            extend Braintrust::Enum
+            extend Braintrust::Internal::Type::Enum
 
             TaggedSymbol =
               T.type_alias { T.all(Symbol, Braintrust::Models::FunctionInvokeParams::Message::System::Role) }
@@ -217,7 +217,7 @@ module Braintrust
           end
         end
 
-        class User < Braintrust::BaseModel
+        class User < Braintrust::Internal::Type::BaseModel
           sig { returns(Braintrust::Models::FunctionInvokeParams::Message::User::Role::OrSymbol) }
           attr_accessor :role
 
@@ -245,7 +245,7 @@ module Braintrust
                 T::Array[
                 T.any(
                   Braintrust::Models::ChatCompletionContentPartText,
-                  Braintrust::Internal::Util::AnyHash,
+                  Braintrust::Internal::AnyHash,
                   Braintrust::Models::ChatCompletionContentPartImage
                 )
                 ]
@@ -269,7 +269,7 @@ module Braintrust
                 T::Array[
                 T.any(
                   Braintrust::Models::ChatCompletionContentPartText,
-                  Braintrust::Internal::Util::AnyHash,
+                  Braintrust::Internal::AnyHash,
                   Braintrust::Models::ChatCompletionContentPartImage
                 )
                 ]
@@ -303,7 +303,7 @@ module Braintrust
           end
 
           module Role
-            extend Braintrust::Enum
+            extend Braintrust::Internal::Type::Enum
 
             TaggedSymbol =
               T.type_alias { T.all(Symbol, Braintrust::Models::FunctionInvokeParams::Message::User::Role) }
@@ -318,10 +318,10 @@ module Braintrust
           end
 
           module Content
-            extend Braintrust::Union
+            extend Braintrust::Internal::Type::Union
 
             module Array
-              extend Braintrust::Union
+              extend Braintrust::Internal::Type::Union
 
               sig do
                 override
@@ -352,13 +352,13 @@ module Braintrust
 
             Nested2DArray =
               T.let(
-                Braintrust::ArrayOf[union: Braintrust::Models::FunctionInvokeParams::Message::User::Content::Array],
+                Braintrust::Internal::Type::ArrayOf[union: Braintrust::Models::FunctionInvokeParams::Message::User::Content::Array],
                 Braintrust::Internal::Type::Converter
               )
           end
         end
 
-        class Assistant < Braintrust::BaseModel
+        class Assistant < Braintrust::Internal::Type::BaseModel
           sig { returns(Braintrust::Models::FunctionInvokeParams::Message::Assistant::Role::OrSymbol) }
           attr_accessor :role
 
@@ -373,7 +373,7 @@ module Braintrust
               function_call: T.nilable(
                 T.any(
                   Braintrust::Models::FunctionInvokeParams::Message::Assistant::FunctionCall,
-                  Braintrust::Internal::Util::AnyHash
+                  Braintrust::Internal::AnyHash
                 )
               )
             )
@@ -394,12 +394,12 @@ module Braintrust
               function_call: T.nilable(
                 T.any(
                   Braintrust::Models::FunctionInvokeParams::Message::Assistant::FunctionCall,
-                  Braintrust::Internal::Util::AnyHash
+                  Braintrust::Internal::AnyHash
                 )
               ),
               name: T.nilable(String),
               tool_calls: T.nilable(
-                T::Array[T.any(Braintrust::Models::ChatCompletionMessageToolCall, Braintrust::Internal::Util::AnyHash)]
+                T::Array[T.any(Braintrust::Models::ChatCompletionMessageToolCall, Braintrust::Internal::AnyHash)]
               )
             )
               .returns(T.attached_class)
@@ -423,7 +423,7 @@ module Braintrust
           end
 
           module Role
-            extend Braintrust::Enum
+            extend Braintrust::Internal::Type::Enum
 
             TaggedSymbol =
               T.type_alias { T.all(Symbol, Braintrust::Models::FunctionInvokeParams::Message::Assistant::Role) }
@@ -441,7 +441,7 @@ module Braintrust
             end
           end
 
-          class FunctionCall < Braintrust::BaseModel
+          class FunctionCall < Braintrust::Internal::Type::BaseModel
             sig { returns(String) }
             attr_accessor :arguments
 
@@ -458,7 +458,7 @@ module Braintrust
           end
         end
 
-        class Tool < Braintrust::BaseModel
+        class Tool < Braintrust::Internal::Type::BaseModel
           sig { returns(Braintrust::Models::FunctionInvokeParams::Message::Tool::Role::OrSymbol) }
           attr_accessor :role
 
@@ -499,7 +499,7 @@ module Braintrust
           end
 
           module Role
-            extend Braintrust::Enum
+            extend Braintrust::Internal::Type::Enum
 
             TaggedSymbol =
               T.type_alias { T.all(Symbol, Braintrust::Models::FunctionInvokeParams::Message::Tool::Role) }
@@ -514,7 +514,7 @@ module Braintrust
           end
         end
 
-        class Function < Braintrust::BaseModel
+        class Function < Braintrust::Internal::Type::BaseModel
           sig { returns(String) }
           attr_accessor :name
 
@@ -552,7 +552,7 @@ module Braintrust
           end
 
           module Role
-            extend Braintrust::Enum
+            extend Braintrust::Internal::Type::Enum
 
             TaggedSymbol =
               T.type_alias { T.all(Symbol, Braintrust::Models::FunctionInvokeParams::Message::Function::Role) }
@@ -570,7 +570,7 @@ module Braintrust
           end
         end
 
-        class Fallback < Braintrust::BaseModel
+        class Fallback < Braintrust::Internal::Type::BaseModel
           sig { returns(Braintrust::Models::FunctionInvokeParams::Message::Fallback::Role::OrSymbol) }
           attr_accessor :role
 
@@ -600,7 +600,7 @@ module Braintrust
           end
 
           module Role
-            extend Braintrust::Enum
+            extend Braintrust::Internal::Type::Enum
 
             TaggedSymbol =
               T.type_alias { T.all(Symbol, Braintrust::Models::FunctionInvokeParams::Message::Fallback::Role) }
@@ -629,7 +629,7 @@ module Braintrust
 
       # The mode format of the returned value (defaults to 'auto')
       module Mode
-        extend Braintrust::Enum
+        extend Braintrust::Internal::Type::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Braintrust::Models::FunctionInvokeParams::Mode) }
         OrSymbol =
@@ -645,9 +645,9 @@ module Braintrust
 
       # Options for tracing the function call
       module Parent
-        extend Braintrust::Union
+        extend Braintrust::Internal::Type::Union
 
-        class SpanParentStruct < Braintrust::BaseModel
+        class SpanParentStruct < Braintrust::Internal::Type::BaseModel
           # The id of the container object you are logging to
           sig { returns(String) }
           attr_accessor :object_id_
@@ -668,7 +668,7 @@ module Braintrust
               row_ids: T.nilable(
                 T.any(
                   Braintrust::Models::FunctionInvokeParams::Parent::SpanParentStruct::RowIDs,
-                  Braintrust::Internal::Util::AnyHash
+                  Braintrust::Internal::AnyHash
                 )
               )
             )
@@ -685,7 +685,7 @@ module Braintrust
               row_ids: T.nilable(
                 T.any(
                   Braintrust::Models::FunctionInvokeParams::Parent::SpanParentStruct::RowIDs,
-                  Braintrust::Internal::Util::AnyHash
+                  Braintrust::Internal::AnyHash
                 )
               )
             )
@@ -709,7 +709,7 @@ module Braintrust
           end
 
           module ObjectType
-            extend Braintrust::Enum
+            extend Braintrust::Internal::Type::Enum
 
             TaggedSymbol =
               T.type_alias { T.all(Symbol, Braintrust::Models::FunctionInvokeParams::Parent::SpanParentStruct::ObjectType) }
@@ -748,7 +748,7 @@ module Braintrust
             end
           end
 
-          class RowIDs < Braintrust::BaseModel
+          class RowIDs < Braintrust::Internal::Type::BaseModel
             # The id of the row
             sig { returns(String) }
             attr_accessor :id

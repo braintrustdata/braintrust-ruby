@@ -3,26 +3,26 @@
 require_relative "../../test_helper"
 
 class Braintrust::Test::PrimitiveModelTest < Minitest::Test
-  A = Braintrust::ArrayOf[-> { Integer }]
-  H = Braintrust::HashOf[-> { Integer }, nil?: true]
+  A = Braintrust::Internal::Type::ArrayOf[-> { Integer }]
+  H = Braintrust::Internal::Type::HashOf[-> { Integer }, nil?: true]
 
   module E
-    extend Braintrust::Enum
+    extend Braintrust::Internal::Type::Enum
   end
 
   module U
-    extend Braintrust::Union
+    extend Braintrust::Internal::Type::Union
   end
 
-  class B < Braintrust::BaseModel
+  class B < Braintrust::Internal::Type::BaseModel
     optional :a, Integer
     optional :b, B
   end
 
   def test_typing
     converters = [
-      Braintrust::Unknown,
-      Braintrust::BooleanModel,
+      Braintrust::Internal::Type::Unknown,
+      Braintrust::Internal::Type::BooleanModel,
       A,
       H,
       E,
@@ -39,11 +39,11 @@ class Braintrust::Test::PrimitiveModelTest < Minitest::Test
 
   def test_coerce
     cases = {
-      [Braintrust::Unknown, :a] => [{yes: 1}, :a],
+      [Braintrust::Internal::Type::Unknown, :a] => [{yes: 1}, :a],
       [NilClass, :a] => [{maybe: 1}, nil],
       [NilClass, nil] => [{yes: 1}, nil],
-      [Braintrust::BooleanModel, true] => [{yes: 1}, true],
-      [Braintrust::BooleanModel, "true"] => [{no: 1}, "true"],
+      [Braintrust::Internal::Type::BooleanModel, true] => [{yes: 1}, true],
+      [Braintrust::Internal::Type::BooleanModel, "true"] => [{no: 1}, "true"],
       [Integer, 1] => [{yes: 1}, 1],
       [Integer, 1.0] => [{maybe: 1}, 1],
       [Integer, "1"] => [{maybe: 1}, 1],
@@ -76,7 +76,7 @@ class Braintrust::Test::PrimitiveModelTest < Minitest::Test
 
   def test_dump
     cases = {
-      [Braintrust::Unknown, B.new(a: "one", b: B.new(a: 1.0))] => {a: "one", b: {a: 1}},
+      [Braintrust::Internal::Type::Unknown, B.new(a: "one", b: B.new(a: 1.0))] => {a: "one", b: {a: 1}},
       [A, B.new(a: "one", b: B.new(a: 1.0))] => {a: "one", b: {a: 1}},
       [H, B.new(a: "one", b: B.new(a: 1.0))] => {a: "one", b: {a: 1}},
       [E, B.new(a: "one", b: B.new(a: 1.0))] => {a: "one", b: {a: 1}},
@@ -85,8 +85,8 @@ class Braintrust::Test::PrimitiveModelTest < Minitest::Test
       [String, B.new(a: "one", b: B.new(a: 1.0))] => {a: "one", b: {a: 1}},
       [:b, B.new(a: "one", b: B.new(a: 1.0))] => {a: "one", b: {a: 1}},
       [nil, B.new(a: "one", b: B.new(a: 1.0))] => {a: "one", b: {a: 1}},
-      [Braintrust::BooleanModel, true] => true,
-      [Braintrust::BooleanModel, "true"] => "true",
+      [Braintrust::Internal::Type::BooleanModel, true] => true,
+      [Braintrust::Internal::Type::BooleanModel, "true"] => "true",
       [Integer, "1"] => "1",
       [Float, 1] => 1,
       [String, "one"] => "one",
@@ -126,27 +126,27 @@ end
 
 class Braintrust::Test::EnumModelTest < Minitest::Test
   module E1
-    extend Braintrust::Enum
+    extend Braintrust::Internal::Type::Enum
 
     TRUE = true
   end
 
   module E2
-    extend Braintrust::Enum
+    extend Braintrust::Internal::Type::Enum
 
     ONE = 1
     TWO = 2
   end
 
   module E3
-    extend Braintrust::Enum
+    extend Braintrust::Internal::Type::Enum
 
     ONE = 1.0
     TWO = 2.0
   end
 
   module E4
-    extend Braintrust::Enum
+    extend Braintrust::Internal::Type::Enum
 
     ONE = :one
     TWO = :two
@@ -216,14 +216,14 @@ class Braintrust::Test::EnumModelTest < Minitest::Test
 end
 
 class Braintrust::Test::CollectionModelTest < Minitest::Test
-  A1 = Braintrust::ArrayOf[-> { Integer }]
-  H1 = Braintrust::HashOf[Integer]
+  A1 = Braintrust::Internal::Type::ArrayOf[-> { Integer }]
+  H1 = Braintrust::Internal::Type::HashOf[Integer]
 
-  A2 = Braintrust::ArrayOf[H1]
-  H2 = Braintrust::HashOf[-> { A1 }]
+  A2 = Braintrust::Internal::Type::ArrayOf[H1]
+  H2 = Braintrust::Internal::Type::HashOf[-> { A1 }]
 
-  A3 = Braintrust::ArrayOf[Integer, nil?: true]
-  H3 = Braintrust::HashOf[Integer, nil?: true]
+  A3 = Braintrust::Internal::Type::ArrayOf[Integer, nil?: true]
+  H3 = Braintrust::Internal::Type::HashOf[Integer, nil?: true]
 
   def test_coerce
     cases = {
@@ -263,7 +263,7 @@ class Braintrust::Test::CollectionModelTest < Minitest::Test
 end
 
 class Braintrust::Test::BaseModelTest < Minitest::Test
-  class M1 < Braintrust::BaseModel
+  class M1 < Braintrust::Internal::Type::BaseModel
     required :a, Integer
   end
 
@@ -273,7 +273,7 @@ class Braintrust::Test::BaseModelTest < Minitest::Test
     optional :c, String
   end
 
-  class M3 < Braintrust::BaseModel
+  class M3 < Braintrust::Internal::Type::BaseModel
     optional :c, const: :c
     required :d, const: :d
   end
@@ -290,7 +290,7 @@ class Braintrust::Test::BaseModelTest < Minitest::Test
     end
   end
 
-  class M5 < Braintrust::BaseModel
+  class M5 < Braintrust::Internal::Type::BaseModel
     request_only do
       required :c, const: :c
     end
@@ -301,7 +301,7 @@ class Braintrust::Test::BaseModelTest < Minitest::Test
   end
 
   class M6 < M1
-    required :a, Braintrust::ArrayOf[M6]
+    required :a, Braintrust::Internal::Type::ArrayOf[M6]
   end
 
   def test_coerce
@@ -337,7 +337,7 @@ class Braintrust::Test::BaseModelTest < Minitest::Test
       assert_pattern do
         coerced = Braintrust::Internal::Type::Converter.coerce(target, input, state: state)
         assert_equal(coerced, coerced)
-        if coerced.is_a?(Braintrust::BaseModel)
+        if coerced.is_a?(Braintrust::Internal::Type::BaseModel)
           coerced.to_h => ^expect
         else
           coerced => ^expect
@@ -403,27 +403,27 @@ end
 
 class Braintrust::Test::UnionTest < Minitest::Test
   module U0
-    extend Braintrust::Union
+    extend Braintrust::Internal::Type::Union
   end
 
   module U1
-    extend Braintrust::Union
+    extend Braintrust::Internal::Type::Union
     variant const: :a
     variant const: 2
   end
 
-  class M1 < Braintrust::BaseModel
+  class M1 < Braintrust::Internal::Type::BaseModel
     required :t, const: :a, api_name: :type
     optional :c, String
   end
 
-  class M2 < Braintrust::BaseModel
+  class M2 < Braintrust::Internal::Type::BaseModel
     required :type, const: :b
     optional :c, String
   end
 
   module U2
-    extend Braintrust::Union
+    extend Braintrust::Internal::Type::Union
     discriminator :type
 
     variant :a, M1
@@ -431,7 +431,7 @@ class Braintrust::Test::UnionTest < Minitest::Test
   end
 
   module U3
-    extend Braintrust::Union
+    extend Braintrust::Internal::Type::Union
     discriminator :type
 
     variant :a, M1
@@ -439,37 +439,37 @@ class Braintrust::Test::UnionTest < Minitest::Test
   end
 
   module U4
-    extend Braintrust::Union
+    extend Braintrust::Internal::Type::Union
     discriminator :type
 
     variant String
     variant :a, M1
   end
 
-  class M3 < Braintrust::BaseModel
+  class M3 < Braintrust::Internal::Type::BaseModel
     optional :recur, -> { U5 }
     required :a, Integer
   end
 
-  class M4 < Braintrust::BaseModel
+  class M4 < Braintrust::Internal::Type::BaseModel
     optional :recur, -> { U5 }
-    required :a, Braintrust::ArrayOf[-> { U5 }]
+    required :a, Braintrust::Internal::Type::ArrayOf[-> { U5 }]
   end
 
-  class M5 < Braintrust::BaseModel
+  class M5 < Braintrust::Internal::Type::BaseModel
     optional :recur, -> { U5 }
-    required :b, Braintrust::ArrayOf[-> { U5 }]
+    required :b, Braintrust::Internal::Type::ArrayOf[-> { U5 }]
   end
 
   module U5
-    extend Braintrust::Union
+    extend Braintrust::Internal::Type::Union
 
     variant -> { M3 }
     variant -> { M4 }
   end
 
   module U6
-    extend Braintrust::Union
+    extend Braintrust::Internal::Type::Union
 
     variant -> { M3 }
     variant -> { M5 }
@@ -480,7 +480,7 @@ class Braintrust::Test::UnionTest < Minitest::Test
     tap do
       model.recur
       flunk
-    rescue Braintrust::ConversionError => e
+    rescue Braintrust::Errors::ConversionError => e
       assert_kind_of(ArgumentError, e.cause)
     end
   end
@@ -513,7 +513,7 @@ class Braintrust::Test::UnionTest < Minitest::Test
       assert_pattern do
         coerced = Braintrust::Internal::Type::Converter.coerce(target, input, state: state)
         assert_equal(coerced, coerced)
-        if coerced.is_a?(Braintrust::BaseModel)
+        if coerced.is_a?(Braintrust::Internal::Type::BaseModel)
           coerced.to_h => ^expect
         else
           coerced => ^expect
@@ -527,29 +527,29 @@ end
 
 class Braintrust::Test::BaseModelQoLTest < Minitest::Test
   module E1
-    extend Braintrust::Enum
+    extend Braintrust::Internal::Type::Enum
 
     A = 1
   end
 
   module E2
-    extend Braintrust::Enum
+    extend Braintrust::Internal::Type::Enum
 
     A = 1
   end
 
   module E3
-    extend Braintrust::Enum
+    extend Braintrust::Internal::Type::Enum
 
     A = 2
     B = 3
   end
 
-  class M1 < Braintrust::BaseModel
+  class M1 < Braintrust::Internal::Type::BaseModel
     required :a, Integer
   end
 
-  class M2 < Braintrust::BaseModel
+  class M2 < Braintrust::Internal::Type::BaseModel
     required :a, Integer, nil?: true
   end
 
@@ -559,9 +559,9 @@ class Braintrust::Test::BaseModelQoLTest < Minitest::Test
 
   def test_equality
     cases = {
-      [Braintrust::Unknown, Braintrust::Unknown] => true,
-      [Braintrust::BooleanModel, Braintrust::BooleanModel] => true,
-      [Braintrust::Unknown, Braintrust::BooleanModel] => false,
+      [Braintrust::Internal::Type::Unknown, Braintrust::Internal::Type::Unknown] => true,
+      [Braintrust::Internal::Type::BooleanModel, Braintrust::Internal::Type::BooleanModel] => true,
+      [Braintrust::Internal::Type::Unknown, Braintrust::Internal::Type::BooleanModel] => false,
       [E1, E2] => true,
       [E1, E3] => false,
       [M1, M2] => false,

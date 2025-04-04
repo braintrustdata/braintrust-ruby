@@ -2,7 +2,7 @@
 
 module Braintrust
   module Models
-    class DatasetEvent < Braintrust::BaseModel
+    class DatasetEvent < Braintrust::Internal::Type::BaseModel
       # @!attribute id
       #   A unique identifier for the dataset event. If you don't provide one, BrainTrust
       #     will generate one for you
@@ -57,7 +57,7 @@ module Braintrust
       #     serializable object)
       #
       #   @return [Object, nil]
-      optional :expected, Braintrust::Unknown
+      optional :expected, Braintrust::Internal::Type::Unknown
 
       # @!parse
       #   # @return [Object]
@@ -68,7 +68,7 @@ module Braintrust
       #     object)
       #
       #   @return [Object, nil]
-      optional :input, Braintrust::Unknown
+      optional :input, Braintrust::Internal::Type::Unknown
 
       # @!parse
       #   # @return [Object]
@@ -78,7 +78,7 @@ module Braintrust
       #   Whether this span is a root span
       #
       #   @return [Boolean, nil]
-      optional :is_root, Braintrust::BooleanModel, nil?: true
+      optional :is_root, Braintrust::Internal::Type::BooleanModel, nil?: true
 
       # @!attribute metadata
       #   A dictionary with additional data about the test example, model outputs, or just
@@ -100,7 +100,7 @@ module Braintrust
       #   A list of tags to log
       #
       #   @return [Array<String>, nil]
-      optional :tags, Braintrust::ArrayOf[String], nil?: true
+      optional :tags, Braintrust::Internal::Type::ArrayOf[String], nil?: true
 
       # @!parse
       #   # @param id [String]
@@ -136,10 +136,10 @@ module Braintrust
       #     super
       #   end
 
-      # def initialize: (Hash | Braintrust::BaseModel) -> void
+      # def initialize: (Hash | Braintrust::Internal::Type::BaseModel) -> void
 
       # @see Braintrust::Models::DatasetEvent#metadata
-      class Metadata < Braintrust::BaseModel
+      class Metadata < Braintrust::Internal::Type::BaseModel
         # @!attribute model
         #   The model used for this example
         #
@@ -157,7 +157,7 @@ module Braintrust
         #   #
         #   def initialize(model: nil, **) = super
 
-        # def initialize: (Hash | Braintrust::BaseModel) -> void
+        # def initialize: (Hash | Braintrust::Internal::Type::BaseModel) -> void
       end
     end
   end

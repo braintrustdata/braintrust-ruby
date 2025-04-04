@@ -2,7 +2,7 @@
 
 module Braintrust
   module Models
-    class ExperimentFeedbackParams < Braintrust::BaseModel
+    class ExperimentFeedbackParams < Braintrust::Internal::Type::BaseModel
       extend Braintrust::Internal::Type::RequestParameters::Converter
       include Braintrust::Internal::Type::RequestParameters
 
@@ -12,8 +12,8 @@ module Braintrust
 
       sig do
         params(
-          feedback: T::Array[T.any(Braintrust::Models::FeedbackExperimentItem, Braintrust::Internal::Util::AnyHash)],
-          request_options: T.any(Braintrust::RequestOptions, Braintrust::Internal::Util::AnyHash)
+          feedback: T::Array[T.any(Braintrust::Models::FeedbackExperimentItem, Braintrust::Internal::AnyHash)],
+          request_options: T.any(Braintrust::RequestOptions, Braintrust::Internal::AnyHash)
         )
           .returns(T.attached_class)
       end

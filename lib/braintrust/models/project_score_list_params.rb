@@ -3,7 +3,7 @@
 module Braintrust
   module Models
     # @see Braintrust::Resources::ProjectScores#list
-    class ProjectScoreListParams < Braintrust::BaseModel
+    class ProjectScoreListParams < Braintrust::Internal::Type::BaseModel
       # @!parse
       #   extend Braintrust::Internal::Type::RequestParameters::Converter
       include Braintrust::Internal::Type::RequestParameters
@@ -131,12 +131,12 @@ module Braintrust
       #     super
       #   end
 
-      # def initialize: (Hash | Braintrust::BaseModel) -> void
+      # def initialize: (Hash | Braintrust::Internal::Type::BaseModel) -> void
 
       # Filter search results to a particular set of object IDs. To specify a list of
       #   IDs, include the query param multiple times
       module IDs
-        extend Braintrust::Union
+        extend Braintrust::Internal::Type::Union
 
         variant String
 
@@ -146,12 +146,12 @@ module Braintrust
         #   # @return [Array(String, Array<String>)]
         #   def self.variants; end
 
-        StringArray = Braintrust::ArrayOf[String]
+        StringArray = Braintrust::Internal::Type::ArrayOf[String]
       end
 
       # The type of the configured score
       module ScoreType
-        extend Braintrust::Union
+        extend Braintrust::Internal::Type::Union
 
         # The type of the configured score
         variant enum: -> { Braintrust::Models::ProjectScoreType }
@@ -163,7 +163,8 @@ module Braintrust
         #   # @return [Array(Symbol, Braintrust::Models::ProjectScoreType, Array<Symbol, Braintrust::Models::ProjectScoreType>)]
         #   def self.variants; end
 
-        ProjectScoreTypeArray = Braintrust::ArrayOf[enum: -> { Braintrust::Models::ProjectScoreType }]
+        ProjectScoreTypeArray =
+          Braintrust::Internal::Type::ArrayOf[enum: -> { Braintrust::Models::ProjectScoreType }]
       end
     end
   end

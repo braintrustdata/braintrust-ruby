@@ -14,7 +14,7 @@ module Braintrust
       timeout: Float?
     }
 
-  class RequestOptions < Braintrust::BaseModel
+  class RequestOptions < Braintrust::Internal::Type::BaseModel
     def self.validate!: (self | ::Hash[Symbol, top] opts) -> void
 
     attr_accessor idempotency_key: String?

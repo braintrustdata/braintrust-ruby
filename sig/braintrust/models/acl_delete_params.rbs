@@ -3,7 +3,7 @@ module Braintrust
     type acl_delete_params =
       {  } & Braintrust::Internal::Type::request_parameters
 
-    class ACLDeleteParams < Braintrust::BaseModel
+    class ACLDeleteParams < Braintrust::Internal::Type::BaseModel
       extend Braintrust::Internal::Type::RequestParameters::Converter
       include Braintrust::Internal::Type::RequestParameters
 

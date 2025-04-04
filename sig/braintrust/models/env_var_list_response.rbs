@@ -3,7 +3,7 @@ module Braintrust
     type env_var_list_response =
       { objects: ::Array[Braintrust::Models::EnvVar] }
 
-    class EnvVarListResponse < Braintrust::BaseModel
+    class EnvVarListResponse < Braintrust::Internal::Type::BaseModel
       attr_accessor objects: ::Array[Braintrust::Models::EnvVar]
 
       def initialize: (objects: ::Array[Braintrust::Models::EnvVar]) -> void

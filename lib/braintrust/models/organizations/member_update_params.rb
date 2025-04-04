@@ -4,7 +4,7 @@ module Braintrust
   module Models
     module Organizations
       # @see Braintrust::Resources::Organizations::Members#update
-      class MemberUpdateParams < Braintrust::BaseModel
+      class MemberUpdateParams < Braintrust::Internal::Type::BaseModel
         # @!parse
         #   extend Braintrust::Internal::Type::RequestParameters::Converter
         include Braintrust::Internal::Type::RequestParameters
@@ -52,14 +52,14 @@ module Braintrust
         #   #
         #   def initialize(invite_users: nil, org_id: nil, org_name: nil, remove_users: nil, request_options: {}, **) = super
 
-        # def initialize: (Hash | Braintrust::BaseModel) -> void
+        # def initialize: (Hash | Braintrust::Internal::Type::BaseModel) -> void
 
-        class InviteUsers < Braintrust::BaseModel
+        class InviteUsers < Braintrust::Internal::Type::BaseModel
           # @!attribute emails
           #   Emails of users to invite
           #
           #   @return [Array<String>, nil]
-          optional :emails, Braintrust::ArrayOf[String], nil?: true
+          optional :emails, Braintrust::Internal::Type::ArrayOf[String], nil?: true
 
           # @!attribute group_id
           #   Singular form of group_ids
@@ -71,7 +71,7 @@ module Braintrust
           #   Optional list of group ids to add newly-invited users to.
           #
           #   @return [Array<String>, nil]
-          optional :group_ids, Braintrust::ArrayOf[String], nil?: true
+          optional :group_ids, Braintrust::Internal::Type::ArrayOf[String], nil?: true
 
           # @!attribute group_name
           #   Singular form of group_names
@@ -83,19 +83,19 @@ module Braintrust
           #   Optional list of group names to add newly-invited users to.
           #
           #   @return [Array<String>, nil]
-          optional :group_names, Braintrust::ArrayOf[String], nil?: true
+          optional :group_names, Braintrust::Internal::Type::ArrayOf[String], nil?: true
 
           # @!attribute ids
           #   Ids of existing users to invite
           #
           #   @return [Array<String>, nil]
-          optional :ids, Braintrust::ArrayOf[String], nil?: true
+          optional :ids, Braintrust::Internal::Type::ArrayOf[String], nil?: true
 
           # @!attribute send_invite_emails
           #   If true, send invite emails to the users who wore actually added
           #
           #   @return [Boolean, nil]
-          optional :send_invite_emails, Braintrust::BooleanModel, nil?: true
+          optional :send_invite_emails, Braintrust::Internal::Type::BooleanModel, nil?: true
 
           # @!parse
           #   # Users to invite to the organization
@@ -121,21 +121,21 @@ module Braintrust
           #     super
           #   end
 
-          # def initialize: (Hash | Braintrust::BaseModel) -> void
+          # def initialize: (Hash | Braintrust::Internal::Type::BaseModel) -> void
         end
 
-        class RemoveUsers < Braintrust::BaseModel
+        class RemoveUsers < Braintrust::Internal::Type::BaseModel
           # @!attribute emails
           #   Emails of users to remove
           #
           #   @return [Array<String>, nil]
-          optional :emails, Braintrust::ArrayOf[String], nil?: true
+          optional :emails, Braintrust::Internal::Type::ArrayOf[String], nil?: true
 
           # @!attribute ids
           #   Ids of users to remove
           #
           #   @return [Array<String>, nil]
-          optional :ids, Braintrust::ArrayOf[String], nil?: true
+          optional :ids, Braintrust::Internal::Type::ArrayOf[String], nil?: true
 
           # @!parse
           #   # Users to remove from the organization
@@ -145,7 +145,7 @@ module Braintrust
           #   #
           #   def initialize(emails: nil, ids: nil, **) = super
 
-          # def initialize: (Hash | Braintrust::BaseModel) -> void
+          # def initialize: (Hash | Braintrust::Internal::Type::BaseModel) -> void
         end
       end
     end

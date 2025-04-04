@@ -2,7 +2,7 @@
 
 module Braintrust
   module Models
-    class SummarizeExperimentResponse < Braintrust::BaseModel
+    class SummarizeExperimentResponse < Braintrust::Internal::Type::BaseModel
       # @!attribute experiment_name
       #   Name of the experiment
       #
@@ -37,13 +37,15 @@ module Braintrust
       #   Summary of the experiment's metrics
       #
       #   @return [Hash{Symbol=>Braintrust::Models::MetricSummary}, nil]
-      optional :metrics, -> { Braintrust::HashOf[Braintrust::Models::MetricSummary] }, nil?: true
+      optional :metrics,
+               -> { Braintrust::Internal::Type::HashOf[Braintrust::Models::MetricSummary] },
+               nil?: true
 
       # @!attribute scores
       #   Summary of the experiment's scores
       #
       #   @return [Hash{Symbol=>Braintrust::Models::ScoreSummary}, nil]
-      optional :scores, -> { Braintrust::HashOf[Braintrust::Models::ScoreSummary] }, nil?: true
+      optional :scores, -> { Braintrust::Internal::Type::HashOf[Braintrust::Models::ScoreSummary] }, nil?: true
 
       # @!parse
       #   # Summary of an experiment
@@ -69,7 +71,7 @@ module Braintrust
       #     super
       #   end
 
-      # def initialize: (Hash | Braintrust::BaseModel) -> void
+      # def initialize: (Hash | Braintrust::Internal::Type::BaseModel) -> void
     end
   end
 end

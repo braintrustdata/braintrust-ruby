@@ -11,7 +11,7 @@ module Braintrust
         scores: ::Hash[Symbol, Braintrust::Models::ScoreSummary]?
       }
 
-    class SummarizeExperimentResponse < Braintrust::BaseModel
+    class SummarizeExperimentResponse < Braintrust::Internal::Type::BaseModel
       attr_accessor experiment_name: String
 
       attr_accessor experiment_url: String

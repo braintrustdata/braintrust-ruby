@@ -3,7 +3,7 @@
 module Braintrust
   module Models
     # @see Braintrust::Resources::AISecrets#update
-    class AISecretUpdateParams < Braintrust::BaseModel
+    class AISecretUpdateParams < Braintrust::Internal::Type::BaseModel
       # @!parse
       #   extend Braintrust::Internal::Type::RequestParameters::Converter
       include Braintrust::Internal::Type::RequestParameters
@@ -11,7 +11,9 @@ module Braintrust
       # @!attribute metadata
       #
       #   @return [Hash{Symbol=>Object, nil}, nil]
-      optional :metadata, Braintrust::HashOf[Braintrust::Unknown, nil?: true], nil?: true
+      optional :metadata,
+               Braintrust::Internal::Type::HashOf[Braintrust::Internal::Type::Unknown, nil?: true],
+               nil?: true
 
       # @!attribute name
       #   Name of the AI secret
@@ -38,7 +40,7 @@ module Braintrust
       #   #
       #   def initialize(metadata: nil, name: nil, secret: nil, type: nil, request_options: {}, **) = super
 
-      # def initialize: (Hash | Braintrust::BaseModel) -> void
+      # def initialize: (Hash | Braintrust::Internal::Type::BaseModel) -> void
     end
   end
 end

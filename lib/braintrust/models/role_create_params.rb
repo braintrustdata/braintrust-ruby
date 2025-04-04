@@ -3,7 +3,7 @@
 module Braintrust
   module Models
     # @see Braintrust::Resources::Roles#create
-    class RoleCreateParams < Braintrust::BaseModel
+    class RoleCreateParams < Braintrust::Internal::Type::BaseModel
       # @!parse
       #   extend Braintrust::Internal::Type::RequestParameters::Converter
       include Braintrust::Internal::Type::RequestParameters
@@ -25,7 +25,7 @@ module Braintrust
       #
       #   @return [Array<Braintrust::Models::RoleCreateParams::MemberPermission>, nil]
       optional :member_permissions,
-               -> { Braintrust::ArrayOf[Braintrust::Models::RoleCreateParams::MemberPermission] },
+               -> { Braintrust::Internal::Type::ArrayOf[Braintrust::Models::RoleCreateParams::MemberPermission] },
                nil?: true
 
       # @!attribute member_roles
@@ -35,7 +35,7 @@ module Braintrust
       #     well as all of their inherited permissions
       #
       #   @return [Array<String>, nil]
-      optional :member_roles, Braintrust::ArrayOf[String], nil?: true
+      optional :member_roles, Braintrust::Internal::Type::ArrayOf[String], nil?: true
 
       # @!attribute org_name
       #   For nearly all users, this parameter should be unnecessary. But in the rare case
@@ -65,9 +65,9 @@ module Braintrust
       #     super
       #   end
 
-      # def initialize: (Hash | Braintrust::BaseModel) -> void
+      # def initialize: (Hash | Braintrust::Internal::Type::BaseModel) -> void
 
-      class MemberPermission < Braintrust::BaseModel
+      class MemberPermission < Braintrust::Internal::Type::BaseModel
         # @!attribute permission
         #   Each permission permits a certain type of operation on an object in the system
         #
@@ -89,7 +89,7 @@ module Braintrust
         #   #
         #   def initialize(permission:, restrict_object_type: nil, **) = super
 
-        # def initialize: (Hash | Braintrust::BaseModel) -> void
+        # def initialize: (Hash | Braintrust::Internal::Type::BaseModel) -> void
       end
     end
   end

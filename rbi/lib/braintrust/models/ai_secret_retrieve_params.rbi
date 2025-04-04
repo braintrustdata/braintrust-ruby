@@ -2,12 +2,12 @@
 
 module Braintrust
   module Models
-    class AISecretRetrieveParams < Braintrust::BaseModel
+    class AISecretRetrieveParams < Braintrust::Internal::Type::BaseModel
       extend Braintrust::Internal::Type::RequestParameters::Converter
       include Braintrust::Internal::Type::RequestParameters
 
       sig do
-        params(request_options: T.any(Braintrust::RequestOptions, Braintrust::Internal::Util::AnyHash))
+        params(request_options: T.any(Braintrust::RequestOptions, Braintrust::Internal::AnyHash))
           .returns(T.attached_class)
       end
       def self.new(request_options: {})

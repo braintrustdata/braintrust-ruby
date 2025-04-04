@@ -13,7 +13,7 @@ module Braintrust
         tag: String?
       }
 
-    class RepoInfo < Braintrust::BaseModel
+    class RepoInfo < Braintrust::Internal::Type::BaseModel
       attr_accessor author_email: String?
 
       attr_accessor author_name: String?

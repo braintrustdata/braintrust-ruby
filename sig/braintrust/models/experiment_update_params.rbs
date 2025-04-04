@@ -13,7 +13,7 @@ module Braintrust
       }
       & Braintrust::Internal::Type::request_parameters
 
-    class ExperimentUpdateParams < Braintrust::BaseModel
+    class ExperimentUpdateParams < Braintrust::Internal::Type::BaseModel
       extend Braintrust::Internal::Type::RequestParameters::Converter
       include Braintrust::Internal::Type::RequestParameters
 

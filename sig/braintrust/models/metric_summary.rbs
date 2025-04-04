@@ -10,7 +10,7 @@ module Braintrust
         diff: Float
       }
 
-    class MetricSummary < Braintrust::BaseModel
+    class MetricSummary < Braintrust::Internal::Type::BaseModel
       attr_accessor improvements: Integer
 
       attr_accessor metric: Float

@@ -2,7 +2,7 @@
 
 module Braintrust
   module Models
-    class ACL < Braintrust::BaseModel
+    class ACL < Braintrust::Internal::Type::BaseModel
       # @!attribute id
       #   Unique identifier for the acl
       #
@@ -107,7 +107,7 @@ module Braintrust
       #     super
       #   end
 
-      # def initialize: (Hash | Braintrust::BaseModel) -> void
+      # def initialize: (Hash | Braintrust::Internal::Type::BaseModel) -> void
     end
   end
 end

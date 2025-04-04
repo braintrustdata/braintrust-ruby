@@ -2,7 +2,7 @@
 
 module Braintrust
   module Models
-    class ExperimentInsertParams < Braintrust::BaseModel
+    class ExperimentInsertParams < Braintrust::Internal::Type::BaseModel
       extend Braintrust::Internal::Type::RequestParameters::Converter
       include Braintrust::Internal::Type::RequestParameters
 
@@ -12,8 +12,8 @@ module Braintrust
 
       sig do
         params(
-          events: T::Array[T.any(Braintrust::Models::InsertExperimentEvent, Braintrust::Internal::Util::AnyHash)],
-          request_options: T.any(Braintrust::RequestOptions, Braintrust::Internal::Util::AnyHash)
+          events: T::Array[T.any(Braintrust::Models::InsertExperimentEvent, Braintrust::Internal::AnyHash)],
+          request_options: T.any(Braintrust::RequestOptions, Braintrust::Internal::AnyHash)
         )
           .returns(T.attached_class)
       end

@@ -2,13 +2,13 @@
 
 module Braintrust
   module Models
-    class EnvVarListResponse < Braintrust::BaseModel
+    class EnvVarListResponse < Braintrust::Internal::Type::BaseModel
       # A list of env_var objects
       sig { returns(T::Array[Braintrust::Models::EnvVar]) }
       attr_accessor :objects
 
       sig do
-        params(objects: T::Array[T.any(Braintrust::Models::EnvVar, Braintrust::Internal::Util::AnyHash)])
+        params(objects: T::Array[T.any(Braintrust::Models::EnvVar, Braintrust::Internal::AnyHash)])
           .returns(T.attached_class)
       end
       def self.new(objects:)

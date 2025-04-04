@@ -2,7 +2,7 @@
 
 module Braintrust
   module Models
-    class CodeBundle < Braintrust::BaseModel
+    class CodeBundle < Braintrust::Internal::Type::BaseModel
       # @!attribute bundle_id
       #
       #   @return [String]
@@ -32,17 +32,17 @@ module Braintrust
       #   #
       #   def initialize(bundle_id:, location:, runtime_context:, preview: nil, **) = super
 
-      # def initialize: (Hash | Braintrust::BaseModel) -> void
+      # def initialize: (Hash | Braintrust::Internal::Type::BaseModel) -> void
 
       # @see Braintrust::Models::CodeBundle#location
       module Location
-        extend Braintrust::Union
+        extend Braintrust::Internal::Type::Union
 
         variant -> { Braintrust::Models::CodeBundle::Location::Experiment }
 
         variant -> { Braintrust::Models::CodeBundle::Location::Function }
 
-        class Experiment < Braintrust::BaseModel
+        class Experiment < Braintrust::Internal::Type::BaseModel
           # @!attribute eval_name
           #
           #   @return [String]
@@ -65,17 +65,17 @@ module Braintrust
           #   #
           #   def initialize(eval_name:, position:, type:, **) = super
 
-          # def initialize: (Hash | Braintrust::BaseModel) -> void
+          # def initialize: (Hash | Braintrust::Internal::Type::BaseModel) -> void
 
           # @see Braintrust::Models::CodeBundle::Location::Experiment#position
           module Position
-            extend Braintrust::Union
+            extend Braintrust::Internal::Type::Union
 
             variant -> { Braintrust::Models::CodeBundle::Location::Experiment::Position::Type }
 
             variant -> { Braintrust::Models::CodeBundle::Location::Experiment::Position::Scorer }
 
-            class Type < Braintrust::BaseModel
+            class Type < Braintrust::Internal::Type::BaseModel
               # @!attribute type
               #
               #   @return [Symbol, Braintrust::Models::CodeBundle::Location::Experiment::Position::Type::Type]
@@ -86,11 +86,11 @@ module Braintrust
               #   #
               #   def initialize(type:, **) = super
 
-              # def initialize: (Hash | Braintrust::BaseModel) -> void
+              # def initialize: (Hash | Braintrust::Internal::Type::BaseModel) -> void
 
               # @see Braintrust::Models::CodeBundle::Location::Experiment::Position::Type#type
               module Type
-                extend Braintrust::Enum
+                extend Braintrust::Internal::Type::Enum
 
                 TASK = :task
 
@@ -102,7 +102,7 @@ module Braintrust
               end
             end
 
-            class Scorer < Braintrust::BaseModel
+            class Scorer < Braintrust::Internal::Type::BaseModel
               # @!attribute index
               #
               #   @return [Integer]
@@ -119,11 +119,11 @@ module Braintrust
               #   #
               #   def initialize(index:, type:, **) = super
 
-              # def initialize: (Hash | Braintrust::BaseModel) -> void
+              # def initialize: (Hash | Braintrust::Internal::Type::BaseModel) -> void
 
               # @see Braintrust::Models::CodeBundle::Location::Experiment::Position::Scorer#type
               module Type
-                extend Braintrust::Enum
+                extend Braintrust::Internal::Type::Enum
 
                 SCORER = :scorer
 
@@ -142,7 +142,7 @@ module Braintrust
 
           # @see Braintrust::Models::CodeBundle::Location::Experiment#type
           module Type
-            extend Braintrust::Enum
+            extend Braintrust::Internal::Type::Enum
 
             EXPERIMENT = :experiment
 
@@ -154,7 +154,7 @@ module Braintrust
           end
         end
 
-        class Function < Braintrust::BaseModel
+        class Function < Braintrust::Internal::Type::BaseModel
           # @!attribute index
           #
           #   @return [Integer]
@@ -171,11 +171,11 @@ module Braintrust
           #   #
           #   def initialize(index:, type:, **) = super
 
-          # def initialize: (Hash | Braintrust::BaseModel) -> void
+          # def initialize: (Hash | Braintrust::Internal::Type::BaseModel) -> void
 
           # @see Braintrust::Models::CodeBundle::Location::Function#type
           module Type
-            extend Braintrust::Enum
+            extend Braintrust::Internal::Type::Enum
 
             FUNCTION = :function
 
@@ -193,7 +193,7 @@ module Braintrust
       end
 
       # @see Braintrust::Models::CodeBundle#runtime_context
-      class RuntimeContext < Braintrust::BaseModel
+      class RuntimeContext < Braintrust::Internal::Type::BaseModel
         # @!attribute runtime
         #
         #   @return [Symbol, Braintrust::Models::CodeBundle::RuntimeContext::Runtime]
@@ -210,11 +210,11 @@ module Braintrust
         #   #
         #   def initialize(runtime:, version:, **) = super
 
-        # def initialize: (Hash | Braintrust::BaseModel) -> void
+        # def initialize: (Hash | Braintrust::Internal::Type::BaseModel) -> void
 
         # @see Braintrust::Models::CodeBundle::RuntimeContext#runtime
         module Runtime
-          extend Braintrust::Enum
+          extend Braintrust::Internal::Type::Enum
 
           NODE = :node
           PYTHON = :python

@@ -22,7 +22,7 @@ module Braintrust
               T::Hash[
               Symbol,
               T.all(
-                Braintrust::BaseModel::KnownFieldShape,
+                Braintrust::Internal::Type::BaseModel::KnownFieldShape,
                 {type_fn: T.proc.returns(Braintrust::Internal::Type::Converter::Input)}
               )
               ]
@@ -34,11 +34,13 @@ module Braintrust
           # @api private
           sig do
             returns(
-              T::Hash[Symbol,
-                      T.all(
-                        Braintrust::BaseModel::KnownFieldShape,
-                        {type: Braintrust::Internal::Type::Converter::Input}
-                      )]
+              T::Hash[
+              Symbol,
+              T.all(
+                Braintrust::Internal::Type::BaseModel::KnownFieldShape,
+                {type: Braintrust::Internal::Type::Converter::Input}
+              )
+              ]
             )
           end
           def fields
@@ -60,7 +62,7 @@ module Braintrust
                 T.proc.returns(Braintrust::Internal::Type::Converter::Input),
                 Braintrust::Internal::Type::Converter::Input
               ),
-              spec: Braintrust::Internal::Util::AnyHash
+              spec: Braintrust::Internal::AnyHash
             )
               .void
           end
@@ -72,11 +74,11 @@ module Braintrust
             params(
               name_sym: Symbol,
               type_info: T.any(
-                Braintrust::Internal::Util::AnyHash,
+                Braintrust::Internal::AnyHash,
                 T.proc.returns(Braintrust::Internal::Type::Converter::Input),
                 Braintrust::Internal::Type::Converter::Input
               ),
-              spec: Braintrust::Internal::Util::AnyHash
+              spec: Braintrust::Internal::AnyHash
             )
               .void
           end
@@ -88,11 +90,11 @@ module Braintrust
             params(
               name_sym: Symbol,
               type_info: T.any(
-                Braintrust::Internal::Util::AnyHash,
+                Braintrust::Internal::AnyHash,
                 T.proc.returns(Braintrust::Internal::Type::Converter::Input),
                 Braintrust::Internal::Type::Converter::Input
               ),
-              spec: Braintrust::Internal::Util::AnyHash
+              spec: Braintrust::Internal::AnyHash
             )
               .void
           end
@@ -128,7 +130,11 @@ module Braintrust
           sig do
             override
               .params(
-                value: T.any(Braintrust::BaseModel, T::Hash[T.anything, T.anything], T.anything),
+                value: T.any(
+                  Braintrust::Internal::Type::BaseModel,
+                  T::Hash[T.anything, T.anything],
+                  T.anything
+                ),
                 state: Braintrust::Internal::Type::Converter::State
               )
               .returns(T.any(T.attached_class, T.anything))
@@ -164,7 +170,7 @@ module Braintrust
         #
         #   This method is not recursive. The returned value is shared by the object, so it
         #   should not be mutated.
-        sig { overridable.returns(Braintrust::Internal::Util::AnyHash) }
+        sig { overridable.returns(Braintrust::Internal::AnyHash) }
         def to_h
         end
 
@@ -176,11 +182,11 @@ module Braintrust
         #
         #   This method is not recursive. The returned value is shared by the object, so it
         #   should not be mutated.
-        sig { overridable.returns(Braintrust::Internal::Util::AnyHash) }
+        sig { overridable.returns(Braintrust::Internal::AnyHash) }
         def to_hash
         end
 
-        sig { params(keys: T.nilable(T::Array[Symbol])).returns(Braintrust::Internal::Util::AnyHash) }
+        sig { params(keys: T.nilable(T::Array[Symbol])).returns(Braintrust::Internal::AnyHash) }
         def deconstruct_keys(keys)
         end
 

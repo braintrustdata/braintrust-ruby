@@ -2,7 +2,7 @@
 
 module Braintrust
   module Models
-    class ProjectTag < Braintrust::BaseModel
+    class ProjectTag < Braintrust::Internal::Type::BaseModel
       # Unique identifier for the project tag
       sig { returns(String) }
       attr_accessor :id

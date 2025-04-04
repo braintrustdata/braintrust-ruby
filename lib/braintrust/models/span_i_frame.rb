@@ -2,7 +2,7 @@
 
 module Braintrust
   module Models
-    class SpanIFrame < Braintrust::BaseModel
+    class SpanIFrame < Braintrust::Internal::Type::BaseModel
       # @!attribute id
       #   Unique identifier for the span iframe
       #
@@ -50,7 +50,7 @@ module Braintrust
       #     useful when you want to render more data than fits in the URL.
       #
       #   @return [Boolean, nil]
-      optional :post_message, Braintrust::BooleanModel, nil?: true
+      optional :post_message, Braintrust::Internal::Type::BooleanModel, nil?: true
 
       # @!attribute user_id
       #   Identifies the user who created the span iframe
@@ -84,7 +84,7 @@ module Braintrust
       #     super
       #   end
 
-      # def initialize: (Hash | Braintrust::BaseModel) -> void
+      # def initialize: (Hash | Braintrust::Internal::Type::BaseModel) -> void
     end
   end
 end

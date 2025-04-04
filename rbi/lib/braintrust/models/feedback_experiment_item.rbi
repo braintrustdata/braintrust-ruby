@@ -2,7 +2,7 @@
 
 module Braintrust
   module Models
-    class FeedbackExperimentItem < Braintrust::BaseModel
+    class FeedbackExperimentItem < Braintrust::Internal::Type::BaseModel
       # The id of the experiment event to log feedback for. This is the row `id`
       #   returned by `POST /v1/experiment/{experiment_id}/insert`
       sig { returns(String) }
@@ -74,7 +74,7 @@ module Braintrust
 
       # The source of the feedback. Must be one of "external" (default), "app", or "api"
       module Source
-        extend Braintrust::Enum
+        extend Braintrust::Internal::Type::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Braintrust::Models::FeedbackExperimentItem::Source) }
         OrSymbol =

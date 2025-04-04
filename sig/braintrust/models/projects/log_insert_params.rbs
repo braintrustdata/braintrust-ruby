@@ -5,7 +5,7 @@ module Braintrust
         { events: ::Array[Braintrust::Models::InsertProjectLogsEvent] }
         & Braintrust::Internal::Type::request_parameters
 
-      class LogInsertParams < Braintrust::BaseModel
+      class LogInsertParams < Braintrust::Internal::Type::BaseModel
         extend Braintrust::Internal::Type::RequestParameters::Converter
         include Braintrust::Internal::Type::RequestParameters
 

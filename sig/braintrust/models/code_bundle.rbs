@@ -8,7 +8,7 @@ module Braintrust
         preview: String?
       }
 
-    class CodeBundle < Braintrust::BaseModel
+    class CodeBundle < Braintrust::Internal::Type::BaseModel
       attr_accessor bundle_id: String
 
       attr_accessor location: Braintrust::Models::CodeBundle::location
@@ -31,7 +31,7 @@ module Braintrust
         | Braintrust::Models::CodeBundle::Location::Function
 
       module Location
-        extend Braintrust::Union
+        extend Braintrust::Internal::Type::Union
 
         type experiment =
           {
@@ -40,7 +40,7 @@ module Braintrust
             type: Braintrust::Models::CodeBundle::Location::Experiment::type_
           }
 
-        class Experiment < Braintrust::BaseModel
+        class Experiment < Braintrust::Internal::Type::BaseModel
           attr_accessor eval_name: String
 
           attr_accessor position: Braintrust::Models::CodeBundle::Location::Experiment::position
@@ -60,14 +60,14 @@ module Braintrust
             | Braintrust::Models::CodeBundle::Location::Experiment::Position::Scorer
 
           module Position
-            extend Braintrust::Union
+            extend Braintrust::Internal::Type::Union
 
             type type_ =
               {
                 type: Braintrust::Models::CodeBundle::Location::Experiment::Position::Type::type_
               }
 
-            class Type < Braintrust::BaseModel
+            class Type < Braintrust::Internal::Type::BaseModel
               attr_accessor type: Braintrust::Models::CodeBundle::Location::Experiment::Position::Type::type_
 
               def initialize: (
@@ -79,7 +79,7 @@ module Braintrust
               type type_ = :task
 
               module Type
-                extend Braintrust::Enum
+                extend Braintrust::Internal::Type::Enum
 
                 TASK: :task
 
@@ -93,7 +93,7 @@ module Braintrust
                 type: Braintrust::Models::CodeBundle::Location::Experiment::Position::Scorer::type_
               }
 
-            class Scorer < Braintrust::BaseModel
+            class Scorer < Braintrust::Internal::Type::BaseModel
               attr_accessor index: Integer
 
               attr_accessor type: Braintrust::Models::CodeBundle::Location::Experiment::Position::Scorer::type_
@@ -108,7 +108,7 @@ module Braintrust
               type type_ = :scorer
 
               module Type
-                extend Braintrust::Enum
+                extend Braintrust::Internal::Type::Enum
 
                 SCORER: :scorer
 
@@ -122,7 +122,7 @@ module Braintrust
           type type_ = :experiment
 
           module Type
-            extend Braintrust::Enum
+            extend Braintrust::Internal::Type::Enum
 
             EXPERIMENT: :experiment
 
@@ -136,7 +136,7 @@ module Braintrust
             type: Braintrust::Models::CodeBundle::Location::Function::type_
           }
 
-        class Function < Braintrust::BaseModel
+        class Function < Braintrust::Internal::Type::BaseModel
           attr_accessor index: Integer
 
           attr_accessor type: Braintrust::Models::CodeBundle::Location::Function::type_
@@ -151,7 +151,7 @@ module Braintrust
           type type_ = :function
 
           module Type
-            extend Braintrust::Enum
+            extend Braintrust::Internal::Type::Enum
 
             FUNCTION: :function
 
@@ -168,7 +168,7 @@ module Braintrust
           version: String
         }
 
-      class RuntimeContext < Braintrust::BaseModel
+      class RuntimeContext < Braintrust::Internal::Type::BaseModel
         attr_accessor runtime: Braintrust::Models::CodeBundle::RuntimeContext::runtime
 
         attr_accessor version: String
@@ -183,7 +183,7 @@ module Braintrust
         type runtime = :node | :python
 
         module Runtime
-          extend Braintrust::Enum
+          extend Braintrust::Internal::Type::Enum
 
           NODE: :node
           PYTHON: :python

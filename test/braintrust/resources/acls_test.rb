@@ -113,8 +113,8 @@ class Braintrust::Test::Resources::ACLsTest < Braintrust::Test::ResourceTest
 
     assert_pattern do
       response => {
-        added_acls: ^(Braintrust::ArrayOf[Braintrust::Models::ACL]),
-        removed_acls: ^(Braintrust::ArrayOf[Braintrust::Models::ACL])
+        added_acls: ^(Braintrust::Internal::Type::ArrayOf[Braintrust::Models::ACL]),
+        removed_acls: ^(Braintrust::Internal::Type::ArrayOf[Braintrust::Models::ACL])
       }
     end
   end

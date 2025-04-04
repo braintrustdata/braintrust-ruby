@@ -3,7 +3,7 @@ module Braintrust
     type feedback_response_schema =
       { status: Braintrust::Models::FeedbackResponseSchema::status }
 
-    class FeedbackResponseSchema < Braintrust::BaseModel
+    class FeedbackResponseSchema < Braintrust::Internal::Type::BaseModel
       attr_accessor status: Braintrust::Models::FeedbackResponseSchema::status
 
       def initialize: (
@@ -15,7 +15,7 @@ module Braintrust
       type status = :success
 
       module Status
-        extend Braintrust::Enum
+        extend Braintrust::Internal::Type::Enum
 
         SUCCESS: :success
 

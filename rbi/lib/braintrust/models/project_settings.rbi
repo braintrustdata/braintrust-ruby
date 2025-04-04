@@ -2,7 +2,7 @@
 
 module Braintrust
   module Models
-    class ProjectSettings < Braintrust::BaseModel
+    class ProjectSettings < Braintrust::Internal::Type::BaseModel
       # The id of the experiment to use as the default baseline for comparisons
       sig { returns(T.nilable(String)) }
       attr_accessor :baseline_experiment_id
@@ -20,7 +20,7 @@ module Braintrust
           baseline_experiment_id: T.nilable(String),
           comparison_key: T.nilable(String),
           span_field_order: T.nilable(
-            T::Array[T.any(Braintrust::Models::ProjectSettings::SpanFieldOrder, Braintrust::Internal::Util::AnyHash)]
+            T::Array[T.any(Braintrust::Models::ProjectSettings::SpanFieldOrder, Braintrust::Internal::AnyHash)]
           )
         )
           .returns(T.attached_class)
@@ -41,7 +41,7 @@ module Braintrust
       def to_hash
       end
 
-      class SpanFieldOrder < Braintrust::BaseModel
+      class SpanFieldOrder < Braintrust::Internal::Type::BaseModel
         sig { returns(String) }
         attr_accessor :column_id
 
@@ -81,7 +81,7 @@ module Braintrust
         end
 
         module Layout
-          extend Braintrust::Enum
+          extend Braintrust::Internal::Type::Enum
 
           TaggedSymbol =
             T.type_alias { T.all(Symbol, Braintrust::Models::ProjectSettings::SpanFieldOrder::Layout) }

@@ -2,13 +2,13 @@
 
 module Braintrust
   module Models
-    class ChatCompletionContentPartImage < Braintrust::BaseModel
+    class ChatCompletionContentPartImage < Braintrust::Internal::Type::BaseModel
       sig { returns(Braintrust::Models::ChatCompletionContentPartImage::ImageURL) }
       attr_reader :image_url
 
       sig do
         params(
-          image_url: T.any(Braintrust::Models::ChatCompletionContentPartImage::ImageURL, Braintrust::Internal::Util::AnyHash)
+          image_url: T.any(Braintrust::Models::ChatCompletionContentPartImage::ImageURL, Braintrust::Internal::AnyHash)
         )
           .void
       end
@@ -19,7 +19,7 @@ module Braintrust
 
       sig do
         params(
-          image_url: T.any(Braintrust::Models::ChatCompletionContentPartImage::ImageURL, Braintrust::Internal::Util::AnyHash),
+          image_url: T.any(Braintrust::Models::ChatCompletionContentPartImage::ImageURL, Braintrust::Internal::AnyHash),
           type: Braintrust::Models::ChatCompletionContentPartImage::Type::OrSymbol
         )
           .returns(T.attached_class)
@@ -39,7 +39,7 @@ module Braintrust
       def to_hash
       end
 
-      class ImageURL < Braintrust::BaseModel
+      class ImageURL < Braintrust::Internal::Type::BaseModel
         sig { returns(String) }
         attr_accessor :url
 
@@ -69,7 +69,7 @@ module Braintrust
         end
 
         module Detail
-          extend Braintrust::Enum
+          extend Braintrust::Internal::Type::Enum
 
           TaggedSymbol =
             T.type_alias { T.all(Symbol, Braintrust::Models::ChatCompletionContentPartImage::ImageURL::Detail) }
@@ -90,7 +90,7 @@ module Braintrust
       end
 
       module Type
-        extend Braintrust::Enum
+        extend Braintrust::Internal::Type::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Braintrust::Models::ChatCompletionContentPartImage::Type) }
         OrSymbol =

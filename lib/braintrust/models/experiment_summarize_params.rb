@@ -3,7 +3,7 @@
 module Braintrust
   module Models
     # @see Braintrust::Resources::Experiments#summarize
-    class ExperimentSummarizeParams < Braintrust::BaseModel
+    class ExperimentSummarizeParams < Braintrust::Internal::Type::BaseModel
       # @!parse
       #   extend Braintrust::Internal::Type::RequestParameters::Converter
       include Braintrust::Internal::Type::RequestParameters
@@ -26,7 +26,7 @@ module Braintrust
       #     metadata will be returned.
       #
       #   @return [Boolean, nil]
-      optional :summarize_scores, Braintrust::BooleanModel, nil?: true
+      optional :summarize_scores, Braintrust::Internal::Type::BooleanModel, nil?: true
 
       # @!parse
       #   # @param comparison_experiment_id [String]
@@ -35,7 +35,7 @@ module Braintrust
       #   #
       #   def initialize(comparison_experiment_id: nil, summarize_scores: nil, request_options: {}, **) = super
 
-      # def initialize: (Hash | Braintrust::BaseModel) -> void
+      # def initialize: (Hash | Braintrust::Internal::Type::BaseModel) -> void
     end
   end
 end

@@ -2,7 +2,7 @@ module Braintrust
   module Models
     type project_score_category = { name: String, value: Float }
 
-    class ProjectScoreCategory < Braintrust::BaseModel
+    class ProjectScoreCategory < Braintrust::Internal::Type::BaseModel
       attr_accessor name: String
 
       attr_accessor value: Float

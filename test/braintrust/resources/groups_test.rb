@@ -18,8 +18,8 @@ class Braintrust::Test::Resources::GroupsTest < Braintrust::Test::ResourceTest
         created: Time | nil,
         deleted_at: Time | nil,
         description: String | nil,
-        member_groups: ^(Braintrust::ArrayOf[String]) | nil,
-        member_users: ^(Braintrust::ArrayOf[String]) | nil,
+        member_groups: ^(Braintrust::Internal::Type::ArrayOf[String]) | nil,
+        member_users: ^(Braintrust::Internal::Type::ArrayOf[String]) | nil,
         user_id: String | nil
       }
     end
@@ -40,8 +40,8 @@ class Braintrust::Test::Resources::GroupsTest < Braintrust::Test::ResourceTest
         created: Time | nil,
         deleted_at: Time | nil,
         description: String | nil,
-        member_groups: ^(Braintrust::ArrayOf[String]) | nil,
-        member_users: ^(Braintrust::ArrayOf[String]) | nil,
+        member_groups: ^(Braintrust::Internal::Type::ArrayOf[String]) | nil,
+        member_users: ^(Braintrust::Internal::Type::ArrayOf[String]) | nil,
         user_id: String | nil
       }
     end
@@ -62,8 +62,8 @@ class Braintrust::Test::Resources::GroupsTest < Braintrust::Test::ResourceTest
         created: Time | nil,
         deleted_at: Time | nil,
         description: String | nil,
-        member_groups: ^(Braintrust::ArrayOf[String]) | nil,
-        member_users: ^(Braintrust::ArrayOf[String]) | nil,
+        member_groups: ^(Braintrust::Internal::Type::ArrayOf[String]) | nil,
+        member_users: ^(Braintrust::Internal::Type::ArrayOf[String]) | nil,
         user_id: String | nil
       }
     end
@@ -91,8 +91,8 @@ class Braintrust::Test::Resources::GroupsTest < Braintrust::Test::ResourceTest
         created: Time | nil,
         deleted_at: Time | nil,
         description: String | nil,
-        member_groups: ^(Braintrust::ArrayOf[String]) | nil,
-        member_users: ^(Braintrust::ArrayOf[String]) | nil,
+        member_groups: ^(Braintrust::Internal::Type::ArrayOf[String]) | nil,
+        member_users: ^(Braintrust::Internal::Type::ArrayOf[String]) | nil,
         user_id: String | nil
       }
     end
@@ -113,8 +113,8 @@ class Braintrust::Test::Resources::GroupsTest < Braintrust::Test::ResourceTest
         created: Time | nil,
         deleted_at: Time | nil,
         description: String | nil,
-        member_groups: ^(Braintrust::ArrayOf[String]) | nil,
-        member_users: ^(Braintrust::ArrayOf[String]) | nil,
+        member_groups: ^(Braintrust::Internal::Type::ArrayOf[String]) | nil,
+        member_users: ^(Braintrust::Internal::Type::ArrayOf[String]) | nil,
         user_id: String | nil
       }
     end
@@ -135,8 +135,8 @@ class Braintrust::Test::Resources::GroupsTest < Braintrust::Test::ResourceTest
         created: Time | nil,
         deleted_at: Time | nil,
         description: String | nil,
-        member_groups: ^(Braintrust::ArrayOf[String]) | nil,
-        member_users: ^(Braintrust::ArrayOf[String]) | nil,
+        member_groups: ^(Braintrust::Internal::Type::ArrayOf[String]) | nil,
+        member_users: ^(Braintrust::Internal::Type::ArrayOf[String]) | nil,
         user_id: String | nil
       }
     end

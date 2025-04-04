@@ -2,7 +2,7 @@
 
 module Braintrust
   module Models
-    class Group < Braintrust::BaseModel
+    class Group < Braintrust::Internal::Type::BaseModel
       # Unique identifier for the group
       sig { returns(String) }
       attr_accessor :id

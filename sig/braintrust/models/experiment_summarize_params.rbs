@@ -4,7 +4,7 @@ module Braintrust
       { comparison_experiment_id: String, summarize_scores: bool? }
       & Braintrust::Internal::Type::request_parameters
 
-    class ExperimentSummarizeParams < Braintrust::BaseModel
+    class ExperimentSummarizeParams < Braintrust::Internal::Type::BaseModel
       extend Braintrust::Internal::Type::RequestParameters::Converter
       include Braintrust::Internal::Type::RequestParameters
 

@@ -3,7 +3,7 @@
 module Braintrust
   module Models
     module Projects
-      class LogFeedbackParams < Braintrust::BaseModel
+      class LogFeedbackParams < Braintrust::Internal::Type::BaseModel
         extend Braintrust::Internal::Type::RequestParameters::Converter
         include Braintrust::Internal::Type::RequestParameters
 
@@ -13,8 +13,8 @@ module Braintrust
 
         sig do
           params(
-            feedback: T::Array[T.any(Braintrust::Models::FeedbackProjectLogsItem, Braintrust::Internal::Util::AnyHash)],
-            request_options: T.any(Braintrust::RequestOptions, Braintrust::Internal::Util::AnyHash)
+            feedback: T::Array[T.any(Braintrust::Models::FeedbackProjectLogsItem, Braintrust::Internal::AnyHash)],
+            request_options: T.any(Braintrust::RequestOptions, Braintrust::Internal::AnyHash)
           )
             .returns(T.attached_class)
         end

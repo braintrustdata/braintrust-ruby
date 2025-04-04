@@ -2,7 +2,7 @@
 
 module Braintrust
   module Models
-    class Organization < Braintrust::BaseModel
+    class Organization < Braintrust::Internal::Type::BaseModel
       # Unique identifier for the organization
       sig { returns(String) }
       attr_accessor :id

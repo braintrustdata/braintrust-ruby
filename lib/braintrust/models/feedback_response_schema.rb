@@ -2,7 +2,7 @@
 
 module Braintrust
   module Models
-    class FeedbackResponseSchema < Braintrust::BaseModel
+    class FeedbackResponseSchema < Braintrust::Internal::Type::BaseModel
       # @!attribute status
       #
       #   @return [Symbol, Braintrust::Models::FeedbackResponseSchema::Status]
@@ -13,11 +13,11 @@ module Braintrust
       #   #
       #   def initialize(status:, **) = super
 
-      # def initialize: (Hash | Braintrust::BaseModel) -> void
+      # def initialize: (Hash | Braintrust::Internal::Type::BaseModel) -> void
 
       # @see Braintrust::Models::FeedbackResponseSchema#status
       module Status
-        extend Braintrust::Enum
+        extend Braintrust::Internal::Type::Enum
 
         SUCCESS = :success
 

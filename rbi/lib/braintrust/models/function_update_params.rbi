@@ -2,7 +2,7 @@
 
 module Braintrust
   module Models
-    class FunctionUpdateParams < Braintrust::BaseModel
+    class FunctionUpdateParams < Braintrust::Internal::Type::BaseModel
       extend Braintrust::Internal::Type::RequestParameters::Converter
       include Braintrust::Internal::Type::RequestParameters
 
@@ -31,10 +31,7 @@ module Braintrust
       sig { returns(T.nilable(Braintrust::Models::PromptData)) }
       attr_reader :prompt_data
 
-      sig do
-        params(prompt_data: T.nilable(T.any(Braintrust::Models::PromptData, Braintrust::Internal::Util::AnyHash)))
-          .void
-      end
+      sig { params(prompt_data: T.nilable(T.any(Braintrust::Models::PromptData, Braintrust::Internal::AnyHash))).void }
       attr_writer :prompt_data
 
       # A list of tags for the prompt
@@ -47,15 +44,15 @@ module Braintrust
           function_data: T.nilable(
             T.any(
               Braintrust::Models::FunctionUpdateParams::FunctionData::Prompt,
-              Braintrust::Internal::Util::AnyHash,
+              Braintrust::Internal::AnyHash,
               Braintrust::Models::FunctionUpdateParams::FunctionData::Code,
               Braintrust::Models::FunctionUpdateParams::FunctionData::Global
             )
           ),
           name: T.nilable(String),
-          prompt_data: T.nilable(T.any(Braintrust::Models::PromptData, Braintrust::Internal::Util::AnyHash)),
+          prompt_data: T.nilable(T.any(Braintrust::Models::PromptData, Braintrust::Internal::AnyHash)),
           tags: T.nilable(T::Array[String]),
-          request_options: T.any(Braintrust::RequestOptions, Braintrust::Internal::Util::AnyHash)
+          request_options: T.any(Braintrust::RequestOptions, Braintrust::Internal::AnyHash)
         )
           .returns(T.attached_class)
       end
@@ -92,9 +89,9 @@ module Braintrust
       end
 
       module FunctionData
-        extend Braintrust::Union
+        extend Braintrust::Internal::Type::Union
 
-        class Prompt < Braintrust::BaseModel
+        class Prompt < Braintrust::Internal::Type::BaseModel
           sig { returns(Braintrust::Models::FunctionUpdateParams::FunctionData::Prompt::Type::OrSymbol) }
           attr_accessor :type
 
@@ -110,7 +107,7 @@ module Braintrust
           end
 
           module Type
-            extend Braintrust::Enum
+            extend Braintrust::Internal::Type::Enum
 
             TaggedSymbol =
               T.type_alias { T.all(Symbol, Braintrust::Models::FunctionUpdateParams::FunctionData::Prompt::Type) }
@@ -129,7 +126,7 @@ module Braintrust
           end
         end
 
-        class Code < Braintrust::BaseModel
+        class Code < Braintrust::Internal::Type::BaseModel
           sig do
             returns(
               T.any(
@@ -147,7 +144,7 @@ module Braintrust
             params(
               data: T.any(
                 Braintrust::Models::FunctionUpdateParams::FunctionData::Code::Data::Bundle,
-                Braintrust::Internal::Util::AnyHash,
+                Braintrust::Internal::AnyHash,
                 Braintrust::Models::FunctionUpdateParams::FunctionData::Code::Data::Inline
               ),
               type: Braintrust::Models::FunctionUpdateParams::FunctionData::Code::Type::OrSymbol
@@ -173,7 +170,7 @@ module Braintrust
           end
 
           module Data
-            extend Braintrust::Union
+            extend Braintrust::Internal::Type::Union
 
             class Bundle < Braintrust::Models::CodeBundle
               sig { returns(Braintrust::Models::FunctionUpdateParams::FunctionData::Code::Data::Bundle::Type::OrSymbol) }
@@ -196,7 +193,7 @@ module Braintrust
               end
 
               module Type
-                extend Braintrust::Enum
+                extend Braintrust::Internal::Type::Enum
 
                 TaggedSymbol =
                   T.type_alias { T.all(Symbol, Braintrust::Models::FunctionUpdateParams::FunctionData::Code::Data::Bundle::Type) }
@@ -226,7 +223,7 @@ module Braintrust
               end
             end
 
-            class Inline < Braintrust::BaseModel
+            class Inline < Braintrust::Internal::Type::BaseModel
               sig { returns(String) }
               attr_accessor :code
 
@@ -237,7 +234,7 @@ module Braintrust
                 params(
                   runtime_context: T.any(
                     Braintrust::Models::FunctionUpdateParams::FunctionData::Code::Data::Inline::RuntimeContext,
-                    Braintrust::Internal::Util::AnyHash
+                    Braintrust::Internal::AnyHash
                   )
                 )
                   .void
@@ -252,7 +249,7 @@ module Braintrust
                   code: String,
                   runtime_context: T.any(
                     Braintrust::Models::FunctionUpdateParams::FunctionData::Code::Data::Inline::RuntimeContext,
-                    Braintrust::Internal::Util::AnyHash
+                    Braintrust::Internal::AnyHash
                   ),
                   type: Braintrust::Models::FunctionUpdateParams::FunctionData::Code::Data::Inline::Type::OrSymbol
                 )
@@ -274,7 +271,7 @@ module Braintrust
               def to_hash
               end
 
-              class RuntimeContext < Braintrust::BaseModel
+              class RuntimeContext < Braintrust::Internal::Type::BaseModel
                 sig do
                   returns(
                     Braintrust::Models::FunctionUpdateParams::FunctionData::Code::Data::Inline::RuntimeContext::Runtime::OrSymbol
@@ -308,7 +305,7 @@ module Braintrust
                 end
 
                 module Runtime
-                  extend Braintrust::Enum
+                  extend Braintrust::Internal::Type::Enum
 
                   TaggedSymbol =
                     T.type_alias do
@@ -348,7 +345,7 @@ module Braintrust
               end
 
               module Type
-                extend Braintrust::Enum
+                extend Braintrust::Internal::Type::Enum
 
                 TaggedSymbol =
                   T.type_alias { T.all(Symbol, Braintrust::Models::FunctionUpdateParams::FunctionData::Code::Data::Inline::Type) }
@@ -389,7 +386,7 @@ module Braintrust
           end
 
           module Type
-            extend Braintrust::Enum
+            extend Braintrust::Internal::Type::Enum
 
             TaggedSymbol =
               T.type_alias { T.all(Symbol, Braintrust::Models::FunctionUpdateParams::FunctionData::Code::Type) }
@@ -407,7 +404,7 @@ module Braintrust
           end
         end
 
-        class Global < Braintrust::BaseModel
+        class Global < Braintrust::Internal::Type::BaseModel
           sig { returns(String) }
           attr_accessor :name
 
@@ -431,7 +428,7 @@ module Braintrust
           end
 
           module Type
-            extend Braintrust::Enum
+            extend Braintrust::Internal::Type::Enum
 
             TaggedSymbol =
               T.type_alias { T.all(Symbol, Braintrust::Models::FunctionUpdateParams::FunctionData::Global::Type) }

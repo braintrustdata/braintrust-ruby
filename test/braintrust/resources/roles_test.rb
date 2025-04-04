@@ -17,8 +17,8 @@ class Braintrust::Test::Resources::RolesTest < Braintrust::Test::ResourceTest
         created: Time | nil,
         deleted_at: Time | nil,
         description: String | nil,
-        member_permissions: ^(Braintrust::ArrayOf[Braintrust::Models::Role::MemberPermission]) | nil,
-        member_roles: ^(Braintrust::ArrayOf[String]) | nil,
+        member_permissions: ^(Braintrust::Internal::Type::ArrayOf[Braintrust::Models::Role::MemberPermission]) | nil,
+        member_roles: ^(Braintrust::Internal::Type::ArrayOf[String]) | nil,
         org_id: String | nil,
         user_id: String | nil
       }
@@ -39,8 +39,8 @@ class Braintrust::Test::Resources::RolesTest < Braintrust::Test::ResourceTest
         created: Time | nil,
         deleted_at: Time | nil,
         description: String | nil,
-        member_permissions: ^(Braintrust::ArrayOf[Braintrust::Models::Role::MemberPermission]) | nil,
-        member_roles: ^(Braintrust::ArrayOf[String]) | nil,
+        member_permissions: ^(Braintrust::Internal::Type::ArrayOf[Braintrust::Models::Role::MemberPermission]) | nil,
+        member_roles: ^(Braintrust::Internal::Type::ArrayOf[String]) | nil,
         org_id: String | nil,
         user_id: String | nil
       }
@@ -61,8 +61,8 @@ class Braintrust::Test::Resources::RolesTest < Braintrust::Test::ResourceTest
         created: Time | nil,
         deleted_at: Time | nil,
         description: String | nil,
-        member_permissions: ^(Braintrust::ArrayOf[Braintrust::Models::Role::MemberPermission]) | nil,
-        member_roles: ^(Braintrust::ArrayOf[String]) | nil,
+        member_permissions: ^(Braintrust::Internal::Type::ArrayOf[Braintrust::Models::Role::MemberPermission]) | nil,
+        member_roles: ^(Braintrust::Internal::Type::ArrayOf[String]) | nil,
         org_id: String | nil,
         user_id: String | nil
       }
@@ -90,8 +90,8 @@ class Braintrust::Test::Resources::RolesTest < Braintrust::Test::ResourceTest
         created: Time | nil,
         deleted_at: Time | nil,
         description: String | nil,
-        member_permissions: ^(Braintrust::ArrayOf[Braintrust::Models::Role::MemberPermission]) | nil,
-        member_roles: ^(Braintrust::ArrayOf[String]) | nil,
+        member_permissions: ^(Braintrust::Internal::Type::ArrayOf[Braintrust::Models::Role::MemberPermission]) | nil,
+        member_roles: ^(Braintrust::Internal::Type::ArrayOf[String]) | nil,
         org_id: String | nil,
         user_id: String | nil
       }
@@ -112,8 +112,8 @@ class Braintrust::Test::Resources::RolesTest < Braintrust::Test::ResourceTest
         created: Time | nil,
         deleted_at: Time | nil,
         description: String | nil,
-        member_permissions: ^(Braintrust::ArrayOf[Braintrust::Models::Role::MemberPermission]) | nil,
-        member_roles: ^(Braintrust::ArrayOf[String]) | nil,
+        member_permissions: ^(Braintrust::Internal::Type::ArrayOf[Braintrust::Models::Role::MemberPermission]) | nil,
+        member_roles: ^(Braintrust::Internal::Type::ArrayOf[String]) | nil,
         org_id: String | nil,
         user_id: String | nil
       }
@@ -134,8 +134,8 @@ class Braintrust::Test::Resources::RolesTest < Braintrust::Test::ResourceTest
         created: Time | nil,
         deleted_at: Time | nil,
         description: String | nil,
-        member_permissions: ^(Braintrust::ArrayOf[Braintrust::Models::Role::MemberPermission]) | nil,
-        member_roles: ^(Braintrust::ArrayOf[String]) | nil,
+        member_permissions: ^(Braintrust::Internal::Type::ArrayOf[Braintrust::Models::Role::MemberPermission]) | nil,
+        member_roles: ^(Braintrust::Internal::Type::ArrayOf[String]) | nil,
         org_id: String | nil,
         user_id: String | nil
       }

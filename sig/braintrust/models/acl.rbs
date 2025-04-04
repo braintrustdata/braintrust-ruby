@@ -14,7 +14,7 @@ module Braintrust
         user_id: String?
       }
 
-    class ACL < Braintrust::BaseModel
+    class ACL < Braintrust::Internal::Type::BaseModel
       attr_accessor id: String
 
       attr_accessor _object_org_id: String

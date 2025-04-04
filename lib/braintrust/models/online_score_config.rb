@@ -2,7 +2,7 @@
 
 module Braintrust
   module Models
-    class OnlineScoreConfig < Braintrust::BaseModel
+    class OnlineScoreConfig < Braintrust::Internal::Type::BaseModel
       # @!attribute sampling_rate
       #   The sampling rate for online scoring
       #
@@ -13,19 +13,20 @@ module Braintrust
       #   The list of scorers to use for online scoring
       #
       #   @return [Array<Braintrust::Models::OnlineScoreConfig::Scorer::Function, Braintrust::Models::OnlineScoreConfig::Scorer::Global>]
-      required :scorers, -> { Braintrust::ArrayOf[union: Braintrust::Models::OnlineScoreConfig::Scorer] }
+      required :scorers,
+               -> { Braintrust::Internal::Type::ArrayOf[union: Braintrust::Models::OnlineScoreConfig::Scorer] }
 
       # @!attribute apply_to_root_span
       #   Whether to trigger online scoring on the root span of each trace
       #
       #   @return [Boolean, nil]
-      optional :apply_to_root_span, Braintrust::BooleanModel, nil?: true
+      optional :apply_to_root_span, Braintrust::Internal::Type::BooleanModel, nil?: true
 
       # @!attribute apply_to_span_names
       #   Trigger online scoring on any spans with a name in this list
       #
       #   @return [Array<String>, nil]
-      optional :apply_to_span_names, Braintrust::ArrayOf[String], nil?: true
+      optional :apply_to_span_names, Braintrust::Internal::Type::ArrayOf[String], nil?: true
 
       # @!parse
       #   # @param sampling_rate [Float]
@@ -35,16 +36,16 @@ module Braintrust
       #   #
       #   def initialize(sampling_rate:, scorers:, apply_to_root_span: nil, apply_to_span_names: nil, **) = super
 
-      # def initialize: (Hash | Braintrust::BaseModel) -> void
+      # def initialize: (Hash | Braintrust::Internal::Type::BaseModel) -> void
 
       module Scorer
-        extend Braintrust::Union
+        extend Braintrust::Internal::Type::Union
 
         variant -> { Braintrust::Models::OnlineScoreConfig::Scorer::Function }
 
         variant -> { Braintrust::Models::OnlineScoreConfig::Scorer::Global }
 
-        class Function < Braintrust::BaseModel
+        class Function < Braintrust::Internal::Type::BaseModel
           # @!attribute id
           #
           #   @return [String]
@@ -61,11 +62,11 @@ module Braintrust
           #   #
           #   def initialize(id:, type:, **) = super
 
-          # def initialize: (Hash | Braintrust::BaseModel) -> void
+          # def initialize: (Hash | Braintrust::Internal::Type::BaseModel) -> void
 
           # @see Braintrust::Models::OnlineScoreConfig::Scorer::Function#type
           module Type
-            extend Braintrust::Enum
+            extend Braintrust::Internal::Type::Enum
 
             FUNCTION = :function
 
@@ -77,7 +78,7 @@ module Braintrust
           end
         end
 
-        class Global < Braintrust::BaseModel
+        class Global < Braintrust::Internal::Type::BaseModel
           # @!attribute name
           #
           #   @return [String]
@@ -94,11 +95,11 @@ module Braintrust
           #   #
           #   def initialize(name:, type:, **) = super
 
-          # def initialize: (Hash | Braintrust::BaseModel) -> void
+          # def initialize: (Hash | Braintrust::Internal::Type::BaseModel) -> void
 
           # @see Braintrust::Models::OnlineScoreConfig::Scorer::Global#type
           module Type
-            extend Braintrust::Enum
+            extend Braintrust::Internal::Type::Enum
 
             GLOBAL = :global
 

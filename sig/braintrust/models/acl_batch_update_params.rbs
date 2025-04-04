@@ -7,7 +7,7 @@ module Braintrust
       }
       & Braintrust::Internal::Type::request_parameters
 
-    class ACLBatchUpdateParams < Braintrust::BaseModel
+    class ACLBatchUpdateParams < Braintrust::Internal::Type::BaseModel
       extend Braintrust::Internal::Type::RequestParameters::Converter
       include Braintrust::Internal::Type::RequestParameters
 
@@ -34,7 +34,7 @@ module Braintrust
           user_id: String?
         }
 
-      class AddACL < Braintrust::BaseModel
+      class AddACL < Braintrust::Internal::Type::BaseModel
         attr_accessor object_id_: String
 
         attr_accessor object_type: Braintrust::Models::acl_object_type
@@ -73,7 +73,7 @@ module Braintrust
           user_id: String?
         }
 
-      class RemoveACL < Braintrust::BaseModel
+      class RemoveACL < Braintrust::Internal::Type::BaseModel
         attr_accessor object_id_: String
 
         attr_accessor object_type: Braintrust::Models::acl_object_type

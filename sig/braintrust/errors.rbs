@@ -98,32 +98,4 @@ module Braintrust
       HTTP_STATUS: Range[Integer]
     end
   end
-
-  class Error = Braintrust::Errors::Error
-
-  class ConversionError = Braintrust::Errors::ConversionError
-
-  class APIError = Braintrust::Errors::APIError
-
-  class APIStatusError = Braintrust::Errors::APIStatusError
-
-  class APIConnectionError = Braintrust::Errors::APIConnectionError
-
-  class APITimeoutError = Braintrust::Errors::APITimeoutError
-
-  class BadRequestError = Braintrust::Errors::BadRequestError
-
-  class AuthenticationError = Braintrust::Errors::AuthenticationError
-
-  class PermissionDeniedError = Braintrust::Errors::PermissionDeniedError
-
-  class NotFoundError = Braintrust::Errors::NotFoundError
-
-  class ConflictError = Braintrust::Errors::ConflictError
-
-  class UnprocessableEntityError = Braintrust::Errors::UnprocessableEntityError
-
-  class RateLimitError = Braintrust::Errors::RateLimitError
-
-  class InternalServerError = Braintrust::Errors::InternalServerError
 end

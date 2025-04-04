@@ -2,7 +2,7 @@
 
 module Braintrust
   module Models
-    class ProjectScore < Braintrust::BaseModel
+    class ProjectScore < Braintrust::Internal::Type::BaseModel
       # @!attribute id
       #   Unique identifier for the project score
       #
@@ -93,13 +93,13 @@ module Braintrust
       #     super
       #   end
 
-      # def initialize: (Hash | Braintrust::BaseModel) -> void
+      # def initialize: (Hash | Braintrust::Internal::Type::BaseModel) -> void
 
       # For categorical-type project scores, the list of all categories
       #
       # @see Braintrust::Models::ProjectScore#categories
       module Categories
-        extend Braintrust::Union
+        extend Braintrust::Internal::Type::Union
 
         # For categorical-type project scores, the list of all categories
         variant -> { Braintrust::Models::ProjectScore::Categories::ProjectScoreCategoryArray }
@@ -114,11 +114,12 @@ module Braintrust
         #   # @return [Array(Array<Braintrust::Models::ProjectScoreCategory>, Hash{Symbol=>Float}, Array<String>)]
         #   def self.variants; end
 
-        ProjectScoreCategoryArray = Braintrust::ArrayOf[-> { Braintrust::Models::ProjectScoreCategory }]
+        ProjectScoreCategoryArray =
+          Braintrust::Internal::Type::ArrayOf[-> { Braintrust::Models::ProjectScoreCategory }]
 
-        FloatMap = Braintrust::HashOf[Float]
+        FloatMap = Braintrust::Internal::Type::HashOf[Float]
 
-        StringArray = Braintrust::ArrayOf[String]
+        StringArray = Braintrust::Internal::Type::ArrayOf[String]
       end
     end
   end

@@ -3,7 +3,7 @@ module Braintrust
     type env_var_object_type = :organization | :project | :function
 
     module EnvVarObjectType
-      extend Braintrust::Enum
+      extend Braintrust::Internal::Type::Enum
 
       ORGANIZATION: :organization
       PROJECT: :project

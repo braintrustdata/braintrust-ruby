@@ -2,7 +2,7 @@
 
 module Braintrust
   module Models
-    class AISecret < Braintrust::BaseModel
+    class AISecret < Braintrust::Internal::Type::BaseModel
       # Unique identifier for the AI secret
       sig { returns(String) }
       attr_accessor :id

@@ -3,7 +3,7 @@
 module Braintrust
   module Models
     # @see Braintrust::Resources::Views#update
-    class ViewUpdateParams < Braintrust::BaseModel
+    class ViewUpdateParams < Braintrust::Internal::Type::BaseModel
       # @!parse
       #   extend Braintrust::Internal::Type::RequestParameters::Converter
       include Braintrust::Internal::Type::RequestParameters
@@ -74,11 +74,11 @@ module Braintrust
       #     super
       #   end
 
-      # def initialize: (Hash | Braintrust::BaseModel) -> void
+      # def initialize: (Hash | Braintrust::Internal::Type::BaseModel) -> void
 
       # Type of table that the view corresponds to.
       module ViewType
-        extend Braintrust::Enum
+        extend Braintrust::Internal::Type::Enum
 
         PROJECTS = :projects
         EXPERIMENTS = :experiments

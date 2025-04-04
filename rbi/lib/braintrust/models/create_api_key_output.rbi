@@ -2,7 +2,7 @@
 
 module Braintrust
   module Models
-    class CreateAPIKeyOutput < Braintrust::BaseModel
+    class CreateAPIKeyOutput < Braintrust::Internal::Type::BaseModel
       # Unique identifier for the api key
       sig { returns(String) }
       attr_accessor :id

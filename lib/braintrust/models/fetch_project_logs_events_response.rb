@@ -2,12 +2,12 @@
 
 module Braintrust
   module Models
-    class FetchProjectLogsEventsResponse < Braintrust::BaseModel
+    class FetchProjectLogsEventsResponse < Braintrust::Internal::Type::BaseModel
       # @!attribute events
       #   A list of fetched events
       #
       #   @return [Array<Braintrust::Models::ProjectLogsEvent>]
-      required :events, -> { Braintrust::ArrayOf[Braintrust::Models::ProjectLogsEvent] }
+      required :events, -> { Braintrust::Internal::Type::ArrayOf[Braintrust::Models::ProjectLogsEvent] }
 
       # @!attribute cursor
       #   Pagination cursor
@@ -24,7 +24,7 @@ module Braintrust
       #   #
       #   def initialize(events:, cursor: nil, **) = super
 
-      # def initialize: (Hash | Braintrust::BaseModel) -> void
+      # def initialize: (Hash | Braintrust::Internal::Type::BaseModel) -> void
     end
   end
 end

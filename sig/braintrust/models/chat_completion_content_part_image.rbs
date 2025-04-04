@@ -6,7 +6,7 @@ module Braintrust
         type: Braintrust::Models::ChatCompletionContentPartImage::type_
       }
 
-    class ChatCompletionContentPartImage < Braintrust::BaseModel
+    class ChatCompletionContentPartImage < Braintrust::Internal::Type::BaseModel
       attr_accessor image_url: Braintrust::Models::ChatCompletionContentPartImage::ImageURL
 
       attr_accessor type: Braintrust::Models::ChatCompletionContentPartImage::type_
@@ -24,7 +24,7 @@ module Braintrust
           detail: Braintrust::Models::ChatCompletionContentPartImage::ImageURL::detail
         }
 
-      class ImageURL < Braintrust::BaseModel
+      class ImageURL < Braintrust::Internal::Type::BaseModel
         attr_accessor url: String
 
         attr_reader detail: Braintrust::Models::ChatCompletionContentPartImage::ImageURL::detail?
@@ -43,7 +43,7 @@ module Braintrust
         type detail = :auto | :low | :high
 
         module Detail
-          extend Braintrust::Enum
+          extend Braintrust::Internal::Type::Enum
 
           AUTO: :auto
           LOW: :low
@@ -56,7 +56,7 @@ module Braintrust
       type type_ = :image_url
 
       module Type
-        extend Braintrust::Enum
+        extend Braintrust::Internal::Type::Enum
 
         IMAGE_URL: :image_url
 

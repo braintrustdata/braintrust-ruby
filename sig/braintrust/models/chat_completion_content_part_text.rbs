@@ -6,7 +6,7 @@ module Braintrust
         text: String
       }
 
-    class ChatCompletionContentPartText < Braintrust::BaseModel
+    class ChatCompletionContentPartText < Braintrust::Internal::Type::BaseModel
       attr_accessor type: Braintrust::Models::ChatCompletionContentPartText::type_
 
       attr_reader text: String?
@@ -23,7 +23,7 @@ module Braintrust
       type type_ = :text
 
       module Type
-        extend Braintrust::Enum
+        extend Braintrust::Internal::Type::Enum
 
         TEXT: :text
 

@@ -7,7 +7,7 @@ module Braintrust
         position: String
       }
 
-    class PromptOptions < Braintrust::BaseModel
+    class PromptOptions < Braintrust::Internal::Type::BaseModel
       attr_reader model: String?
 
       def model=: (String) -> String
@@ -38,7 +38,7 @@ module Braintrust
         | Braintrust::Models::PromptOptions::Params::JsCompletionParams
 
       module Params
-        extend Braintrust::Union
+        extend Braintrust::Internal::Type::Union
 
         type openai_model_params =
           {
@@ -57,7 +57,7 @@ module Braintrust
             use_cache: bool
           }
 
-        class OpenAIModelParams < Braintrust::BaseModel
+        class OpenAIModelParams < Braintrust::Internal::Type::BaseModel
           attr_reader frequency_penalty: Float?
 
           def frequency_penalty=: (Float) -> Float
@@ -138,11 +138,11 @@ module Braintrust
             | Braintrust::Models::PromptOptions::Params::OpenAIModelParams::FunctionCall::Function
 
           module FunctionCall
-            extend Braintrust::Union
+            extend Braintrust::Internal::Type::Union
 
             type function = { name: String }
 
-            class Function < Braintrust::BaseModel
+            class Function < Braintrust::Internal::Type::BaseModel
               attr_accessor name: String
 
               def initialize: (name: String) -> void
@@ -160,7 +160,7 @@ module Braintrust
           type reasoning_effort = :low | :medium | :high
 
           module ReasoningEffort
-            extend Braintrust::Enum
+            extend Braintrust::Internal::Type::Enum
 
             LOW: :low
             MEDIUM: :medium
@@ -175,14 +175,14 @@ module Braintrust
             | Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ResponseFormat::Text
 
           module ResponseFormat
-            extend Braintrust::Union
+            extend Braintrust::Internal::Type::Union
 
             type json_object =
               {
                 type: Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ResponseFormat::JsonObject::type_
               }
 
-            class JsonObject < Braintrust::BaseModel
+            class JsonObject < Braintrust::Internal::Type::BaseModel
               attr_accessor type: Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ResponseFormat::JsonObject::type_
 
               def initialize: (
@@ -194,7 +194,7 @@ module Braintrust
               type type_ = :json_object
 
               module Type
-                extend Braintrust::Enum
+                extend Braintrust::Internal::Type::Enum
 
                 JSON_OBJECT: :json_object
 
@@ -208,7 +208,7 @@ module Braintrust
                 type: Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ResponseFormat::JsonSchema::type_
               }
 
-            class JsonSchema < Braintrust::BaseModel
+            class JsonSchema < Braintrust::Internal::Type::BaseModel
               attr_accessor json_schema: Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ResponseFormat::JsonSchema::JsonSchema
 
               attr_accessor type: Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ResponseFormat::JsonSchema::type_
@@ -228,7 +228,7 @@ module Braintrust
                   strict: bool?
                 }
 
-              class JsonSchema < Braintrust::BaseModel
+              class JsonSchema < Braintrust::Internal::Type::BaseModel
                 attr_accessor name: String
 
                 attr_reader description: String?
@@ -255,7 +255,7 @@ module Braintrust
                 type schema = ::Hash[Symbol, top?] | String
 
                 module Schema
-                  extend Braintrust::Union
+                  extend Braintrust::Internal::Type::Union
 
                   def self?.variants: -> [::Hash[Symbol, top?], String]
 
@@ -268,7 +268,7 @@ module Braintrust
               type type_ = :json_schema
 
               module Type
-                extend Braintrust::Enum
+                extend Braintrust::Internal::Type::Enum
 
                 JSON_SCHEMA: :json_schema
 
@@ -281,7 +281,7 @@ module Braintrust
                 type: Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ResponseFormat::Text::type_
               }
 
-            class Text < Braintrust::BaseModel
+            class Text < Braintrust::Internal::Type::BaseModel
               attr_accessor type: Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ResponseFormat::Text::type_
 
               def initialize: (
@@ -293,7 +293,7 @@ module Braintrust
               type type_ = :text
 
               module Type
-                extend Braintrust::Enum
+                extend Braintrust::Internal::Type::Enum
 
                 TEXT: :text
 
@@ -311,7 +311,7 @@ module Braintrust
             | Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ToolChoice::Function
 
           module ToolChoice
-            extend Braintrust::Union
+            extend Braintrust::Internal::Type::Union
 
             type function =
               {
@@ -319,7 +319,7 @@ module Braintrust
                 type: Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ToolChoice::Function::type_
               }
 
-            class Function < Braintrust::BaseModel
+            class Function < Braintrust::Internal::Type::BaseModel
               attr_accessor function: Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ToolChoice::Function::Function
 
               attr_accessor type: Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ToolChoice::Function::type_
@@ -333,7 +333,7 @@ module Braintrust
 
               type function = { name: String }
 
-              class Function < Braintrust::BaseModel
+              class Function < Braintrust::Internal::Type::BaseModel
                 attr_accessor name: String
 
                 def initialize: (name: String) -> void
@@ -344,7 +344,7 @@ module Braintrust
               type type_ = :function
 
               module Type
-                extend Braintrust::Enum
+                extend Braintrust::Internal::Type::Enum
 
                 FUNCTION: :function
 
@@ -373,7 +373,7 @@ module Braintrust
             use_cache: bool
           }
 
-        class AnthropicModelParams < Braintrust::BaseModel
+        class AnthropicModelParams < Braintrust::Internal::Type::BaseModel
           attr_accessor max_tokens: Float
 
           attr_accessor temperature: Float
@@ -420,7 +420,7 @@ module Braintrust
             use_cache: bool
           }
 
-        class GoogleModelParams < Braintrust::BaseModel
+        class GoogleModelParams < Braintrust::Internal::Type::BaseModel
           attr_reader max_output_tokens: Float?
 
           def max_output_tokens=: (Float) -> Float
@@ -455,7 +455,7 @@ module Braintrust
         type window_ai_model_params =
           { temperature: Float, top_k: Float, use_cache: bool }
 
-        class WindowAIModelParams < Braintrust::BaseModel
+        class WindowAIModelParams < Braintrust::Internal::Type::BaseModel
           attr_reader temperature: Float?
 
           def temperature=: (Float) -> Float
@@ -479,7 +479,7 @@ module Braintrust
 
         type js_completion_params = { use_cache: bool }
 
-        class JsCompletionParams < Braintrust::BaseModel
+        class JsCompletionParams < Braintrust::Internal::Type::BaseModel
           attr_reader use_cache: bool?
 
           def use_cache=: (bool) -> bool

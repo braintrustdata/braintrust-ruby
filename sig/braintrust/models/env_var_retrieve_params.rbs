@@ -3,7 +3,7 @@ module Braintrust
     type env_var_retrieve_params =
       {  } & Braintrust::Internal::Type::request_parameters
 
-    class EnvVarRetrieveParams < Braintrust::BaseModel
+    class EnvVarRetrieveParams < Braintrust::Internal::Type::BaseModel
       extend Braintrust::Internal::Type::RequestParameters::Converter
       include Braintrust::Internal::Type::RequestParameters
 

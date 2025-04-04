@@ -2,7 +2,7 @@
 
 module Braintrust
   module Models
-    class ObjectReference < Braintrust::BaseModel
+    class ObjectReference < Braintrust::Internal::Type::BaseModel
       # @!attribute id
       #   ID of the original event.
       #
@@ -44,13 +44,13 @@ module Braintrust
       #   #
       #   def initialize(id:, _xact_id:, object_id_:, object_type:, created: nil, **) = super
 
-      # def initialize: (Hash | Braintrust::BaseModel) -> void
+      # def initialize: (Hash | Braintrust::Internal::Type::BaseModel) -> void
 
       # Type of the object the event is originating from.
       #
       # @see Braintrust::Models::ObjectReference#object_type
       module ObjectType
-        extend Braintrust::Enum
+        extend Braintrust::Internal::Type::Enum
 
         EXPERIMENT = :experiment
         DATASET = :dataset

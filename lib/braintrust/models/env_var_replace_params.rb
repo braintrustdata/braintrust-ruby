@@ -3,7 +3,7 @@
 module Braintrust
   module Models
     # @see Braintrust::Resources::EnvVars#replace
-    class EnvVarReplaceParams < Braintrust::BaseModel
+    class EnvVarReplaceParams < Braintrust::Internal::Type::BaseModel
       # @!parse
       #   extend Braintrust::Internal::Type::RequestParameters::Converter
       include Braintrust::Internal::Type::RequestParameters
@@ -41,11 +41,11 @@ module Braintrust
       #   #
       #   def initialize(name:, object_id_:, object_type:, value: nil, request_options: {}, **) = super
 
-      # def initialize: (Hash | Braintrust::BaseModel) -> void
+      # def initialize: (Hash | Braintrust::Internal::Type::BaseModel) -> void
 
       # The type of the object the environment variable is scoped for
       module ObjectType
-        extend Braintrust::Enum
+        extend Braintrust::Internal::Type::Enum
 
         ORGANIZATION = :organization
         PROJECT = :project

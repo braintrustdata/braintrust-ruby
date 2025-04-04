@@ -17,7 +17,7 @@ module Braintrust
         tags: ::Array[String]?
       }
 
-    class Prompt < Braintrust::BaseModel
+    class Prompt < Braintrust::Internal::Type::BaseModel
       attr_accessor id: String
 
       attr_accessor _xact_id: String
@@ -65,7 +65,7 @@ module Braintrust
       type log_id = :p
 
       module LogID
-        extend Braintrust::Enum
+        extend Braintrust::Internal::Type::Enum
 
         P: :p
 
@@ -75,7 +75,7 @@ module Braintrust
       type function_type = :llm | :scorer | :task | :tool
 
       module FunctionType
-        extend Braintrust::Enum
+        extend Braintrust::Internal::Type::Enum
 
         LLM: :llm
         SCORER: :scorer
