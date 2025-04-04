@@ -2,7 +2,7 @@
 
 module Braintrust
   module Models
-    class User < Braintrust::BaseModel
+    class User < Braintrust::Internal::Type::BaseModel
       # Unique identifier for the user
       sig { returns(String) }
       attr_accessor :id

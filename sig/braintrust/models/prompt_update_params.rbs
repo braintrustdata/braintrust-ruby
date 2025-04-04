@@ -10,7 +10,7 @@ module Braintrust
       }
       & Braintrust::Internal::Type::request_parameters
 
-    class PromptUpdateParams < Braintrust::BaseModel
+    class PromptUpdateParams < Braintrust::Internal::Type::BaseModel
       extend Braintrust::Internal::Type::RequestParameters::Converter
       include Braintrust::Internal::Type::RequestParameters
 

@@ -2,7 +2,7 @@
 
 module Braintrust
   module Models
-    class Group < Braintrust::BaseModel
+    class Group < Braintrust::Internal::Type::BaseModel
       # @!attribute id
       #   Unique identifier for the group
       #
@@ -48,13 +48,13 @@ module Braintrust
       #     all of their inherited users
       #
       #   @return [Array<String>, nil]
-      optional :member_groups, Braintrust::ArrayOf[String], nil?: true
+      optional :member_groups, Braintrust::Internal::Type::ArrayOf[String], nil?: true
 
       # @!attribute member_users
       #   Ids of users which belong to this group
       #
       #   @return [Array<String>, nil]
-      optional :member_users, Braintrust::ArrayOf[String], nil?: true
+      optional :member_users, Braintrust::Internal::Type::ArrayOf[String], nil?: true
 
       # @!attribute user_id
       #   Identifies the user who created the group
@@ -93,7 +93,7 @@ module Braintrust
       #     super
       #   end
 
-      # def initialize: (Hash | Braintrust::BaseModel) -> void
+      # def initialize: (Hash | Braintrust::Internal::Type::BaseModel) -> void
     end
   end
 end

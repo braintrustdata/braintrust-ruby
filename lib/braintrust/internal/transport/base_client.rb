@@ -339,7 +339,7 @@ module Braintrust
 
           begin
             status, response, stream = @requester.execute(input)
-          rescue Braintrust::APIConnectionError => e
+          rescue Braintrust::Errors::APIConnectionError => e
             status = e
           end
 
@@ -361,7 +361,7 @@ module Braintrust
               retry_count: retry_count,
               send_retry_header: send_retry_header
             )
-          in Braintrust::APIConnectionError if retry_count >= max_retries
+          in Braintrust::Errors::APIConnectionError if retry_count >= max_retries
             raise status
           in (400..) if retry_count >= max_retries || !self.class.should_retry?(status, headers: response)
             decoded = Kernel.then do
@@ -421,7 +421,7 @@ module Braintrust
         # @return [Object]
         def request(req)
           self.class.validate!(req)
-          model = req.fetch(:model) { Braintrust::Unknown }
+          model = req.fetch(:model) { Braintrust::Internal::Type::Unknown }
           opts = req[:options].to_h
           Braintrust::RequestOptions.validate!(opts)
           request = build_request(req.except(:options), opts)

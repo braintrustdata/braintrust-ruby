@@ -2,7 +2,7 @@
 
 module Braintrust
   module Models
-    class SummarizeDatasetResponse < Braintrust::BaseModel
+    class SummarizeDatasetResponse < Braintrust::Internal::Type::BaseModel
       # @!attribute dataset_name
       #   Name of the dataset
       #
@@ -44,7 +44,7 @@ module Braintrust
       #   #
       #   def initialize(dataset_name:, dataset_url:, project_name:, project_url:, data_summary: nil, **) = super
 
-      # def initialize: (Hash | Braintrust::BaseModel) -> void
+      # def initialize: (Hash | Braintrust::Internal::Type::BaseModel) -> void
     end
   end
 end

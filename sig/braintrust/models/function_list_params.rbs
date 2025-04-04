@@ -15,7 +15,7 @@ module Braintrust
       }
       & Braintrust::Internal::Type::request_parameters
 
-    class FunctionListParams < Braintrust::BaseModel
+    class FunctionListParams < Braintrust::Internal::Type::BaseModel
       extend Braintrust::Internal::Type::RequestParameters::Converter
       include Braintrust::Internal::Type::RequestParameters
 
@@ -78,7 +78,7 @@ module Braintrust
       type ids = String | ::Array[String]
 
       module IDs
-        extend Braintrust::Union
+        extend Braintrust::Internal::Type::Union
 
         def self?.variants: -> [String, ::Array[String]]
 

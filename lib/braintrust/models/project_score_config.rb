@@ -2,7 +2,7 @@
 
 module Braintrust
   module Models
-    class ProjectScoreConfig < Braintrust::BaseModel
+    class ProjectScoreConfig < Braintrust::Internal::Type::BaseModel
       # @!attribute destination
       #
       #   @return [String, nil]
@@ -11,7 +11,7 @@ module Braintrust
       # @!attribute multi_select
       #
       #   @return [Boolean, nil]
-      optional :multi_select, Braintrust::BooleanModel, nil?: true
+      optional :multi_select, Braintrust::Internal::Type::BooleanModel, nil?: true
 
       # @!attribute online
       #
@@ -25,7 +25,7 @@ module Braintrust
       #   #
       #   def initialize(destination: nil, multi_select: nil, online: nil, **) = super
 
-      # def initialize: (Hash | Braintrust::BaseModel) -> void
+      # def initialize: (Hash | Braintrust::Internal::Type::BaseModel) -> void
     end
   end
 end

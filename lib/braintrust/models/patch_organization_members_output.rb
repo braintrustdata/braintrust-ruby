@@ -2,7 +2,7 @@
 
 module Braintrust
   module Models
-    class PatchOrganizationMembersOutput < Braintrust::BaseModel
+    class PatchOrganizationMembersOutput < Braintrust::Internal::Type::BaseModel
       # @!attribute org_id
       #   The id of the org that was modified.
       #
@@ -28,11 +28,11 @@ module Braintrust
       #   #
       #   def initialize(org_id:, status:, send_email_error: nil, **) = super
 
-      # def initialize: (Hash | Braintrust::BaseModel) -> void
+      # def initialize: (Hash | Braintrust::Internal::Type::BaseModel) -> void
 
       # @see Braintrust::Models::PatchOrganizationMembersOutput#status
       module Status
-        extend Braintrust::Enum
+        extend Braintrust::Internal::Type::Enum
 
         SUCCESS = :success
 

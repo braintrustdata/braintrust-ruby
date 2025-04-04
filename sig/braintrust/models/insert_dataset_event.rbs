@@ -18,7 +18,7 @@ module Braintrust
         tags: ::Array[String]?
       }
 
-    class InsertDatasetEvent < Braintrust::BaseModel
+    class InsertDatasetEvent < Braintrust::Internal::Type::BaseModel
       attr_accessor id: String?
 
       attr_accessor _is_merge: bool?
@@ -72,7 +72,7 @@ module Braintrust
 
       type metadata = { model: String? }
 
-      class Metadata < Braintrust::BaseModel
+      class Metadata < Braintrust::Internal::Type::BaseModel
         attr_accessor model: String?
 
         def initialize: (?model: String?) -> void

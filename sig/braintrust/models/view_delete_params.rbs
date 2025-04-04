@@ -4,7 +4,7 @@ module Braintrust
       { object_id_: String, object_type: Braintrust::Models::acl_object_type }
       & Braintrust::Internal::Type::request_parameters
 
-    class ViewDeleteParams < Braintrust::BaseModel
+    class ViewDeleteParams < Braintrust::Internal::Type::BaseModel
       extend Braintrust::Internal::Type::RequestParameters::Converter
       include Braintrust::Internal::Type::RequestParameters
 

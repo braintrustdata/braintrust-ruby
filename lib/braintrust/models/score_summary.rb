@@ -2,7 +2,7 @@
 
 module Braintrust
   module Models
-    class ScoreSummary < Braintrust::BaseModel
+    class ScoreSummary < Braintrust::Internal::Type::BaseModel
       # @!attribute improvements
       #   Number of improvements in the score
       #
@@ -48,7 +48,7 @@ module Braintrust
       #   #
       #   def initialize(improvements:, name:, regressions:, score:, diff: nil, **) = super
 
-      # def initialize: (Hash | Braintrust::BaseModel) -> void
+      # def initialize: (Hash | Braintrust::Internal::Type::BaseModel) -> void
     end
   end
 end

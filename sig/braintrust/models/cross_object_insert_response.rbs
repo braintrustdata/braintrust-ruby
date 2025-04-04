@@ -7,7 +7,7 @@ module Braintrust
         project_logs: ::Hash[Symbol, Braintrust::Models::InsertEventsResponse]?
       }
 
-    class CrossObjectInsertResponse < Braintrust::BaseModel
+    class CrossObjectInsertResponse < Braintrust::Internal::Type::BaseModel
       attr_accessor dataset: ::Hash[Symbol, Braintrust::Models::InsertEventsResponse]?
 
       attr_accessor experiment: ::Hash[Symbol, Braintrust::Models::InsertEventsResponse]?

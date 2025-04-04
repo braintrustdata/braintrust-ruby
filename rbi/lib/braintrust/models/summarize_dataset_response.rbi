@@ -2,7 +2,7 @@
 
 module Braintrust
   module Models
-    class SummarizeDatasetResponse < Braintrust::BaseModel
+    class SummarizeDatasetResponse < Braintrust::Internal::Type::BaseModel
       # Name of the dataset
       sig { returns(String) }
       attr_accessor :dataset_name
@@ -23,12 +23,7 @@ module Braintrust
       sig { returns(T.nilable(Braintrust::Models::DataSummary)) }
       attr_reader :data_summary
 
-      sig do
-        params(
-          data_summary: T.nilable(T.any(Braintrust::Models::DataSummary, Braintrust::Internal::Util::AnyHash))
-        )
-          .void
-      end
+      sig { params(data_summary: T.nilable(T.any(Braintrust::Models::DataSummary, Braintrust::Internal::AnyHash))).void }
       attr_writer :data_summary
 
       # Summary of a dataset
@@ -38,7 +33,7 @@ module Braintrust
           dataset_url: String,
           project_name: String,
           project_url: String,
-          data_summary: T.nilable(T.any(Braintrust::Models::DataSummary, Braintrust::Internal::Util::AnyHash))
+          data_summary: T.nilable(T.any(Braintrust::Models::DataSummary, Braintrust::Internal::AnyHash))
         )
           .returns(T.attached_class)
       end

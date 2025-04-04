@@ -8,7 +8,7 @@ module Braintrust
         tag: ::Array[top?]?
       }
 
-    class ViewDataSearch < Braintrust::BaseModel
+    class ViewDataSearch < Braintrust::Internal::Type::BaseModel
       attr_accessor filter: ::Array[top?]?
 
       attr_accessor match: ::Array[top?]?

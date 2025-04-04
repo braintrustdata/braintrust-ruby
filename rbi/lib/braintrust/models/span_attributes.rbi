@@ -2,7 +2,7 @@
 
 module Braintrust
   module Models
-    class SpanAttributes < Braintrust::BaseModel
+    class SpanAttributes < Braintrust::Internal::Type::BaseModel
       # Name of the span, for display purposes only
       sig { returns(T.nilable(String)) }
       attr_accessor :name

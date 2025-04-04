@@ -2,7 +2,7 @@
 
 module Braintrust
   module Models
-    class ChatCompletionContentPartText < Braintrust::BaseModel
+    class ChatCompletionContentPartText < Braintrust::Internal::Type::BaseModel
       # @!attribute type
       #
       #   @return [Symbol, Braintrust::Models::ChatCompletionContentPartText::Type]
@@ -23,11 +23,11 @@ module Braintrust
       #   #
       #   def initialize(type:, text: nil, **) = super
 
-      # def initialize: (Hash | Braintrust::BaseModel) -> void
+      # def initialize: (Hash | Braintrust::Internal::Type::BaseModel) -> void
 
       # @see Braintrust::Models::ChatCompletionContentPartText#type
       module Type
-        extend Braintrust::Enum
+        extend Braintrust::Internal::Type::Enum
 
         TEXT = :text
 

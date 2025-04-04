@@ -2,7 +2,7 @@
 
 module Braintrust
   module Models
-    class Project < Braintrust::BaseModel
+    class Project < Braintrust::Internal::Type::BaseModel
       # Unique identifier for the project
       sig { returns(String) }
       attr_accessor :id
@@ -26,12 +26,7 @@ module Braintrust
       sig { returns(T.nilable(Braintrust::Models::ProjectSettings)) }
       attr_reader :settings
 
-      sig do
-        params(
-          settings: T.nilable(T.any(Braintrust::Models::ProjectSettings, Braintrust::Internal::Util::AnyHash))
-        )
-          .void
-      end
+      sig { params(settings: T.nilable(T.any(Braintrust::Models::ProjectSettings, Braintrust::Internal::AnyHash))).void }
       attr_writer :settings
 
       # Identifies the user who created the project
@@ -45,7 +40,7 @@ module Braintrust
           org_id: String,
           created: T.nilable(Time),
           deleted_at: T.nilable(Time),
-          settings: T.nilable(T.any(Braintrust::Models::ProjectSettings, Braintrust::Internal::Util::AnyHash)),
+          settings: T.nilable(T.any(Braintrust::Models::ProjectSettings, Braintrust::Internal::AnyHash)),
           user_id: T.nilable(String)
         )
           .returns(T.attached_class)

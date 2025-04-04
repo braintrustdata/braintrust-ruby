@@ -3,7 +3,7 @@
 module Braintrust
   module Models
     # @see Braintrust::Resources::Evals#create
-    class EvalCreateParams < Braintrust::BaseModel
+    class EvalCreateParams < Braintrust::Internal::Type::BaseModel
       # @!parse
       #   extend Braintrust::Internal::Type::RequestParameters::Converter
       include Braintrust::Internal::Type::RequestParameters
@@ -24,7 +24,8 @@ module Braintrust
       #   The functions to score the eval on
       #
       #   @return [Array<Braintrust::Models::EvalCreateParams::Score::FunctionID, Braintrust::Models::EvalCreateParams::Score::ProjectSlug, Braintrust::Models::EvalCreateParams::Score::GlobalFunction, Braintrust::Models::EvalCreateParams::Score::PromptSessionID, Braintrust::Models::EvalCreateParams::Score::InlineCode, Braintrust::Models::EvalCreateParams::Score::InlinePrompt>]
-      required :scores, -> { Braintrust::ArrayOf[union: Braintrust::Models::EvalCreateParams::Score] }
+      required :scores,
+               -> { Braintrust::Internal::Type::ArrayOf[union: Braintrust::Models::EvalCreateParams::Score] }
 
       # @!attribute task
       #   The function to evaluate
@@ -70,7 +71,7 @@ module Braintrust
       #   Whether the experiment should be public. Defaults to false.
       #
       #   @return [Boolean, nil]
-      optional :is_public, Braintrust::BooleanModel, nil?: true
+      optional :is_public, Braintrust::Internal::Type::BooleanModel, nil?: true
 
       # @!attribute max_concurrency
       #   The maximum number of tasks/scorers that will be run concurrently. Defaults to
@@ -84,7 +85,7 @@ module Braintrust
       #     use this to slice & dice across experiments.
       #
       #   @return [Hash{Symbol=>Object, nil}, nil]
-      optional :metadata, Braintrust::HashOf[Braintrust::Unknown, nil?: true]
+      optional :metadata, Braintrust::Internal::Type::HashOf[Braintrust::Internal::Type::Unknown, nil?: true]
 
       # @!parse
       #   # @return [Hash{Symbol=>Object, nil}]
@@ -112,7 +113,7 @@ module Braintrust
       #     If false, the request will return the evaluation's summary upon completion.
       #
       #   @return [Boolean, nil]
-      optional :stream, Braintrust::BooleanModel
+      optional :stream, Braintrust::Internal::Type::BooleanModel
 
       # @!parse
       #   # @return [Boolean]
@@ -175,11 +176,11 @@ module Braintrust
       #     super
       #   end
 
-      # def initialize: (Hash | Braintrust::BaseModel) -> void
+      # def initialize: (Hash | Braintrust::Internal::Type::BaseModel) -> void
 
       # The dataset to use
       module Data
-        extend Braintrust::Union
+        extend Braintrust::Internal::Type::Union
 
         # Dataset id
         variant -> { Braintrust::Models::EvalCreateParams::Data::DatasetID }
@@ -190,7 +191,7 @@ module Braintrust
         # Dataset rows
         variant -> { Braintrust::Models::EvalCreateParams::Data::DatasetRows }
 
-        class DatasetID < Braintrust::BaseModel
+        class DatasetID < Braintrust::Internal::Type::BaseModel
           # @!attribute dataset_id
           #
           #   @return [String]
@@ -199,7 +200,9 @@ module Braintrust
           # @!attribute _internal_btql
           #
           #   @return [Hash{Symbol=>Object, nil}, nil]
-          optional :_internal_btql, Braintrust::HashOf[Braintrust::Unknown, nil?: true], nil?: true
+          optional :_internal_btql,
+                   Braintrust::Internal::Type::HashOf[Braintrust::Internal::Type::Unknown, nil?: true],
+                   nil?: true
 
           # @!parse
           #   # Dataset id
@@ -209,10 +212,10 @@ module Braintrust
           #   #
           #   def initialize(dataset_id:, _internal_btql: nil, **) = super
 
-          # def initialize: (Hash | Braintrust::BaseModel) -> void
+          # def initialize: (Hash | Braintrust::Internal::Type::BaseModel) -> void
         end
 
-        class ProjectDatasetName < Braintrust::BaseModel
+        class ProjectDatasetName < Braintrust::Internal::Type::BaseModel
           # @!attribute dataset_name
           #
           #   @return [String]
@@ -226,7 +229,9 @@ module Braintrust
           # @!attribute _internal_btql
           #
           #   @return [Hash{Symbol=>Object, nil}, nil]
-          optional :_internal_btql, Braintrust::HashOf[Braintrust::Unknown, nil?: true], nil?: true
+          optional :_internal_btql,
+                   Braintrust::Internal::Type::HashOf[Braintrust::Internal::Type::Unknown, nil?: true],
+                   nil?: true
 
           # @!parse
           #   # Project and dataset name
@@ -237,14 +242,14 @@ module Braintrust
           #   #
           #   def initialize(dataset_name:, project_name:, _internal_btql: nil, **) = super
 
-          # def initialize: (Hash | Braintrust::BaseModel) -> void
+          # def initialize: (Hash | Braintrust::Internal::Type::BaseModel) -> void
         end
 
-        class DatasetRows < Braintrust::BaseModel
+        class DatasetRows < Braintrust::Internal::Type::BaseModel
           # @!attribute data
           #
           #   @return [Array<Object, nil>]
-          required :data, Braintrust::ArrayOf[Braintrust::Unknown, nil?: true]
+          required :data, Braintrust::Internal::Type::ArrayOf[Braintrust::Internal::Type::Unknown, nil?: true]
 
           # @!parse
           #   # Dataset rows
@@ -253,7 +258,7 @@ module Braintrust
           #   #
           #   def initialize(data:, **) = super
 
-          # def initialize: (Hash | Braintrust::BaseModel) -> void
+          # def initialize: (Hash | Braintrust::Internal::Type::BaseModel) -> void
         end
 
         # @!parse
@@ -263,7 +268,7 @@ module Braintrust
 
       # The function to evaluate
       module Score
-        extend Braintrust::Union
+        extend Braintrust::Internal::Type::Union
 
         # Function id
         variant -> { Braintrust::Models::EvalCreateParams::Score::FunctionID }
@@ -283,7 +288,7 @@ module Braintrust
         # Inline prompt definition
         variant -> { Braintrust::Models::EvalCreateParams::Score::InlinePrompt }
 
-        class FunctionID < Braintrust::BaseModel
+        class FunctionID < Braintrust::Internal::Type::BaseModel
           # @!attribute function_id
           #   The ID of the function
           #
@@ -308,10 +313,10 @@ module Braintrust
           #   #
           #   def initialize(function_id:, version: nil, **) = super
 
-          # def initialize: (Hash | Braintrust::BaseModel) -> void
+          # def initialize: (Hash | Braintrust::Internal::Type::BaseModel) -> void
         end
 
-        class ProjectSlug < Braintrust::BaseModel
+        class ProjectSlug < Braintrust::Internal::Type::BaseModel
           # @!attribute project_name
           #   The name of the project containing the function
           #
@@ -343,10 +348,10 @@ module Braintrust
           #   #
           #   def initialize(project_name:, slug:, version: nil, **) = super
 
-          # def initialize: (Hash | Braintrust::BaseModel) -> void
+          # def initialize: (Hash | Braintrust::Internal::Type::BaseModel) -> void
         end
 
-        class GlobalFunction < Braintrust::BaseModel
+        class GlobalFunction < Braintrust::Internal::Type::BaseModel
           # @!attribute global_function
           #   The name of the global function. Currently, the global namespace includes the
           #     functions in autoevals
@@ -361,10 +366,10 @@ module Braintrust
           #   #
           #   def initialize(global_function:, **) = super
 
-          # def initialize: (Hash | Braintrust::BaseModel) -> void
+          # def initialize: (Hash | Braintrust::Internal::Type::BaseModel) -> void
         end
 
-        class PromptSessionID < Braintrust::BaseModel
+        class PromptSessionID < Braintrust::Internal::Type::BaseModel
           # @!attribute prompt_session_function_id
           #   The ID of the function in the prompt session
           #
@@ -396,10 +401,10 @@ module Braintrust
           #   #
           #   def initialize(prompt_session_function_id:, prompt_session_id:, version: nil, **) = super
 
-          # def initialize: (Hash | Braintrust::BaseModel) -> void
+          # def initialize: (Hash | Braintrust::Internal::Type::BaseModel) -> void
         end
 
-        class InlineCode < Braintrust::BaseModel
+        class InlineCode < Braintrust::Internal::Type::BaseModel
           # @!attribute code
           #   The inline code to execute
           #
@@ -426,10 +431,10 @@ module Braintrust
           #   #
           #   def initialize(code:, inline_context:, name: nil, **) = super
 
-          # def initialize: (Hash | Braintrust::BaseModel) -> void
+          # def initialize: (Hash | Braintrust::Internal::Type::BaseModel) -> void
 
           # @see Braintrust::Models::EvalCreateParams::Score::InlineCode#inline_context
-          class InlineContext < Braintrust::BaseModel
+          class InlineContext < Braintrust::Internal::Type::BaseModel
             # @!attribute runtime
             #
             #   @return [Symbol, Braintrust::Models::EvalCreateParams::Score::InlineCode::InlineContext::Runtime]
@@ -447,11 +452,11 @@ module Braintrust
             #   #
             #   def initialize(runtime:, version:, **) = super
 
-            # def initialize: (Hash | Braintrust::BaseModel) -> void
+            # def initialize: (Hash | Braintrust::Internal::Type::BaseModel) -> void
 
             # @see Braintrust::Models::EvalCreateParams::Score::InlineCode::InlineContext#runtime
             module Runtime
-              extend Braintrust::Enum
+              extend Braintrust::Internal::Type::Enum
 
               NODE = :node
               PYTHON = :python
@@ -465,7 +470,7 @@ module Braintrust
           end
         end
 
-        class InlinePrompt < Braintrust::BaseModel
+        class InlinePrompt < Braintrust::Internal::Type::BaseModel
           # @!attribute inline_prompt
           #   The prompt, model, and its parameters
           #
@@ -486,7 +491,7 @@ module Braintrust
           #   #
           #   def initialize(inline_prompt:, name: nil, **) = super
 
-          # def initialize: (Hash | Braintrust::BaseModel) -> void
+          # def initialize: (Hash | Braintrust::Internal::Type::BaseModel) -> void
         end
 
         # @!parse
@@ -496,7 +501,7 @@ module Braintrust
 
       # The function to evaluate
       module Task
-        extend Braintrust::Union
+        extend Braintrust::Internal::Type::Union
 
         # Function id
         variant -> { Braintrust::Models::EvalCreateParams::Task::FunctionID }
@@ -516,7 +521,7 @@ module Braintrust
         # Inline prompt definition
         variant -> { Braintrust::Models::EvalCreateParams::Task::InlinePrompt }
 
-        class FunctionID < Braintrust::BaseModel
+        class FunctionID < Braintrust::Internal::Type::BaseModel
           # @!attribute function_id
           #   The ID of the function
           #
@@ -541,10 +546,10 @@ module Braintrust
           #   #
           #   def initialize(function_id:, version: nil, **) = super
 
-          # def initialize: (Hash | Braintrust::BaseModel) -> void
+          # def initialize: (Hash | Braintrust::Internal::Type::BaseModel) -> void
         end
 
-        class ProjectSlug < Braintrust::BaseModel
+        class ProjectSlug < Braintrust::Internal::Type::BaseModel
           # @!attribute project_name
           #   The name of the project containing the function
           #
@@ -576,10 +581,10 @@ module Braintrust
           #   #
           #   def initialize(project_name:, slug:, version: nil, **) = super
 
-          # def initialize: (Hash | Braintrust::BaseModel) -> void
+          # def initialize: (Hash | Braintrust::Internal::Type::BaseModel) -> void
         end
 
-        class GlobalFunction < Braintrust::BaseModel
+        class GlobalFunction < Braintrust::Internal::Type::BaseModel
           # @!attribute global_function
           #   The name of the global function. Currently, the global namespace includes the
           #     functions in autoevals
@@ -594,10 +599,10 @@ module Braintrust
           #   #
           #   def initialize(global_function:, **) = super
 
-          # def initialize: (Hash | Braintrust::BaseModel) -> void
+          # def initialize: (Hash | Braintrust::Internal::Type::BaseModel) -> void
         end
 
-        class PromptSessionID < Braintrust::BaseModel
+        class PromptSessionID < Braintrust::Internal::Type::BaseModel
           # @!attribute prompt_session_function_id
           #   The ID of the function in the prompt session
           #
@@ -629,10 +634,10 @@ module Braintrust
           #   #
           #   def initialize(prompt_session_function_id:, prompt_session_id:, version: nil, **) = super
 
-          # def initialize: (Hash | Braintrust::BaseModel) -> void
+          # def initialize: (Hash | Braintrust::Internal::Type::BaseModel) -> void
         end
 
-        class InlineCode < Braintrust::BaseModel
+        class InlineCode < Braintrust::Internal::Type::BaseModel
           # @!attribute code
           #   The inline code to execute
           #
@@ -659,10 +664,10 @@ module Braintrust
           #   #
           #   def initialize(code:, inline_context:, name: nil, **) = super
 
-          # def initialize: (Hash | Braintrust::BaseModel) -> void
+          # def initialize: (Hash | Braintrust::Internal::Type::BaseModel) -> void
 
           # @see Braintrust::Models::EvalCreateParams::Task::InlineCode#inline_context
-          class InlineContext < Braintrust::BaseModel
+          class InlineContext < Braintrust::Internal::Type::BaseModel
             # @!attribute runtime
             #
             #   @return [Symbol, Braintrust::Models::EvalCreateParams::Task::InlineCode::InlineContext::Runtime]
@@ -680,11 +685,11 @@ module Braintrust
             #   #
             #   def initialize(runtime:, version:, **) = super
 
-            # def initialize: (Hash | Braintrust::BaseModel) -> void
+            # def initialize: (Hash | Braintrust::Internal::Type::BaseModel) -> void
 
             # @see Braintrust::Models::EvalCreateParams::Task::InlineCode::InlineContext#runtime
             module Runtime
-              extend Braintrust::Enum
+              extend Braintrust::Internal::Type::Enum
 
               NODE = :node
               PYTHON = :python
@@ -698,7 +703,7 @@ module Braintrust
           end
         end
 
-        class InlinePrompt < Braintrust::BaseModel
+        class InlinePrompt < Braintrust::Internal::Type::BaseModel
           # @!attribute inline_prompt
           #   The prompt, model, and its parameters
           #
@@ -719,7 +724,7 @@ module Braintrust
           #   #
           #   def initialize(inline_prompt:, name: nil, **) = super
 
-          # def initialize: (Hash | Braintrust::BaseModel) -> void
+          # def initialize: (Hash | Braintrust::Internal::Type::BaseModel) -> void
         end
 
         # @!parse
@@ -727,7 +732,7 @@ module Braintrust
         #   def self.variants; end
       end
 
-      class GitMetadataSettings < Braintrust::BaseModel
+      class GitMetadataSettings < Braintrust::Internal::Type::BaseModel
         # @!attribute collect
         #
         #   @return [Symbol, Braintrust::Models::EvalCreateParams::GitMetadataSettings::Collect]
@@ -737,7 +742,7 @@ module Braintrust
         #
         #   @return [Array<Symbol, Braintrust::Models::EvalCreateParams::GitMetadataSettings::Field>, nil]
         optional :fields,
-                 -> { Braintrust::ArrayOf[enum: Braintrust::Models::EvalCreateParams::GitMetadataSettings::Field] }
+                 -> { Braintrust::Internal::Type::ArrayOf[enum: Braintrust::Models::EvalCreateParams::GitMetadataSettings::Field] }
 
         # @!parse
         #   # @return [Array<Symbol, Braintrust::Models::EvalCreateParams::GitMetadataSettings::Field>]
@@ -752,11 +757,11 @@ module Braintrust
         #   #
         #   def initialize(collect:, fields: nil, **) = super
 
-        # def initialize: (Hash | Braintrust::BaseModel) -> void
+        # def initialize: (Hash | Braintrust::Internal::Type::BaseModel) -> void
 
         # @see Braintrust::Models::EvalCreateParams::GitMetadataSettings#collect
         module Collect
-          extend Braintrust::Enum
+          extend Braintrust::Internal::Type::Enum
 
           ALL = :all
           NONE = :none
@@ -770,7 +775,7 @@ module Braintrust
         end
 
         module Field
-          extend Braintrust::Enum
+          extend Braintrust::Internal::Type::Enum
 
           COMMIT = :commit
           BRANCH = :branch
@@ -792,7 +797,7 @@ module Braintrust
 
       # Options for tracing the evaluation
       module Parent
-        extend Braintrust::Union
+        extend Braintrust::Internal::Type::Union
 
         # Span parent properties
         variant -> { Braintrust::Models::EvalCreateParams::Parent::SpanParentStruct }
@@ -800,7 +805,7 @@ module Braintrust
         # The parent's span identifier, created by calling `.export()` on a span
         variant String
 
-        class SpanParentStruct < Braintrust::BaseModel
+        class SpanParentStruct < Braintrust::Internal::Type::BaseModel
           # @!attribute object_id_
           #   The id of the container object you are logging to
           #
@@ -817,7 +822,9 @@ module Braintrust
           #   Include these properties in every span created under this parent
           #
           #   @return [Hash{Symbol=>Object, nil}, nil]
-          optional :propagated_event, Braintrust::HashOf[Braintrust::Unknown, nil?: true], nil?: true
+          optional :propagated_event,
+                   Braintrust::Internal::Type::HashOf[Braintrust::Internal::Type::Unknown, nil?: true],
+                   nil?: true
 
           # @!attribute row_ids
           #   Identifiers for the row to to log a subspan under
@@ -837,11 +844,11 @@ module Braintrust
           #   #
           #   def initialize(object_id_:, object_type:, propagated_event: nil, row_ids: nil, **) = super
 
-          # def initialize: (Hash | Braintrust::BaseModel) -> void
+          # def initialize: (Hash | Braintrust::Internal::Type::BaseModel) -> void
 
           # @see Braintrust::Models::EvalCreateParams::Parent::SpanParentStruct#object_type
           module ObjectType
-            extend Braintrust::Enum
+            extend Braintrust::Internal::Type::Enum
 
             PROJECT_LOGS = :project_logs
             EXPERIMENT = :experiment
@@ -855,7 +862,7 @@ module Braintrust
           end
 
           # @see Braintrust::Models::EvalCreateParams::Parent::SpanParentStruct#row_ids
-          class RowIDs < Braintrust::BaseModel
+          class RowIDs < Braintrust::Internal::Type::BaseModel
             # @!attribute id
             #   The id of the row
             #
@@ -883,7 +890,7 @@ module Braintrust
             #   #
             #   def initialize(id:, root_span_id:, span_id:, **) = super
 
-            # def initialize: (Hash | Braintrust::BaseModel) -> void
+            # def initialize: (Hash | Braintrust::Internal::Type::BaseModel) -> void
           end
         end
 

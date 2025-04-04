@@ -15,7 +15,7 @@ class Braintrust::Test::Resources::ExperimentsTest < Braintrust::Test::ResourceT
         id: String,
         name: String,
         project_id: String,
-        public: Braintrust::BooleanModel,
+        public: Braintrust::Internal::Type::BooleanModel,
         base_exp_id: String | nil,
         commit: String | nil,
         created: Time | nil,
@@ -23,7 +23,8 @@ class Braintrust::Test::Resources::ExperimentsTest < Braintrust::Test::ResourceT
         dataset_version: String | nil,
         deleted_at: Time | nil,
         description: String | nil,
-        metadata: ^(Braintrust::HashOf[Braintrust::Unknown, nil?: true]) | nil,
+        metadata: ^(Braintrust::Internal::Type::HashOf[Braintrust::Internal::Type::Unknown,
+                                                       nil?: true]) | nil,
         repo_info: Braintrust::Models::RepoInfo | nil,
         user_id: String | nil
       }
@@ -42,7 +43,7 @@ class Braintrust::Test::Resources::ExperimentsTest < Braintrust::Test::ResourceT
         id: String,
         name: String,
         project_id: String,
-        public: Braintrust::BooleanModel,
+        public: Braintrust::Internal::Type::BooleanModel,
         base_exp_id: String | nil,
         commit: String | nil,
         created: Time | nil,
@@ -50,7 +51,8 @@ class Braintrust::Test::Resources::ExperimentsTest < Braintrust::Test::ResourceT
         dataset_version: String | nil,
         deleted_at: Time | nil,
         description: String | nil,
-        metadata: ^(Braintrust::HashOf[Braintrust::Unknown, nil?: true]) | nil,
+        metadata: ^(Braintrust::Internal::Type::HashOf[Braintrust::Internal::Type::Unknown,
+                                                       nil?: true]) | nil,
         repo_info: Braintrust::Models::RepoInfo | nil,
         user_id: String | nil
       }
@@ -69,7 +71,7 @@ class Braintrust::Test::Resources::ExperimentsTest < Braintrust::Test::ResourceT
         id: String,
         name: String,
         project_id: String,
-        public: Braintrust::BooleanModel,
+        public: Braintrust::Internal::Type::BooleanModel,
         base_exp_id: String | nil,
         commit: String | nil,
         created: Time | nil,
@@ -77,7 +79,8 @@ class Braintrust::Test::Resources::ExperimentsTest < Braintrust::Test::ResourceT
         dataset_version: String | nil,
         deleted_at: Time | nil,
         description: String | nil,
-        metadata: ^(Braintrust::HashOf[Braintrust::Unknown, nil?: true]) | nil,
+        metadata: ^(Braintrust::Internal::Type::HashOf[Braintrust::Internal::Type::Unknown,
+                                                       nil?: true]) | nil,
         repo_info: Braintrust::Models::RepoInfo | nil,
         user_id: String | nil
       }
@@ -103,7 +106,7 @@ class Braintrust::Test::Resources::ExperimentsTest < Braintrust::Test::ResourceT
         id: String,
         name: String,
         project_id: String,
-        public: Braintrust::BooleanModel,
+        public: Braintrust::Internal::Type::BooleanModel,
         base_exp_id: String | nil,
         commit: String | nil,
         created: Time | nil,
@@ -111,7 +114,8 @@ class Braintrust::Test::Resources::ExperimentsTest < Braintrust::Test::ResourceT
         dataset_version: String | nil,
         deleted_at: Time | nil,
         description: String | nil,
-        metadata: ^(Braintrust::HashOf[Braintrust::Unknown, nil?: true]) | nil,
+        metadata: ^(Braintrust::Internal::Type::HashOf[Braintrust::Internal::Type::Unknown,
+                                                       nil?: true]) | nil,
         repo_info: Braintrust::Models::RepoInfo | nil,
         user_id: String | nil
       }
@@ -130,7 +134,7 @@ class Braintrust::Test::Resources::ExperimentsTest < Braintrust::Test::ResourceT
         id: String,
         name: String,
         project_id: String,
-        public: Braintrust::BooleanModel,
+        public: Braintrust::Internal::Type::BooleanModel,
         base_exp_id: String | nil,
         commit: String | nil,
         created: Time | nil,
@@ -138,7 +142,8 @@ class Braintrust::Test::Resources::ExperimentsTest < Braintrust::Test::ResourceT
         dataset_version: String | nil,
         deleted_at: Time | nil,
         description: String | nil,
-        metadata: ^(Braintrust::HashOf[Braintrust::Unknown, nil?: true]) | nil,
+        metadata: ^(Braintrust::Internal::Type::HashOf[Braintrust::Internal::Type::Unknown,
+                                                       nil?: true]) | nil,
         repo_info: Braintrust::Models::RepoInfo | nil,
         user_id: String | nil
       }
@@ -169,7 +174,7 @@ class Braintrust::Test::Resources::ExperimentsTest < Braintrust::Test::ResourceT
 
     assert_pattern do
       response => {
-        events: ^(Braintrust::ArrayOf[Braintrust::Models::ExperimentEvent]),
+        events: ^(Braintrust::Internal::Type::ArrayOf[Braintrust::Models::ExperimentEvent]),
         cursor: String | nil
       }
     end
@@ -184,7 +189,7 @@ class Braintrust::Test::Resources::ExperimentsTest < Braintrust::Test::ResourceT
 
     assert_pattern do
       response => {
-        events: ^(Braintrust::ArrayOf[Braintrust::Models::ExperimentEvent]),
+        events: ^(Braintrust::Internal::Type::ArrayOf[Braintrust::Models::ExperimentEvent]),
         cursor: String | nil
       }
     end
@@ -199,7 +204,7 @@ class Braintrust::Test::Resources::ExperimentsTest < Braintrust::Test::ResourceT
 
     assert_pattern do
       response => {
-        row_ids: ^(Braintrust::ArrayOf[String])
+        row_ids: ^(Braintrust::Internal::Type::ArrayOf[String])
       }
     end
   end
@@ -218,8 +223,8 @@ class Braintrust::Test::Resources::ExperimentsTest < Braintrust::Test::ResourceT
         project_name: String,
         project_url: String,
         comparison_experiment_name: String | nil,
-        metrics: ^(Braintrust::HashOf[Braintrust::Models::MetricSummary]) | nil,
-        scores: ^(Braintrust::HashOf[Braintrust::Models::ScoreSummary]) | nil
+        metrics: ^(Braintrust::Internal::Type::HashOf[Braintrust::Models::MetricSummary]) | nil,
+        scores: ^(Braintrust::Internal::Type::HashOf[Braintrust::Models::ScoreSummary]) | nil
       }
     end
   end

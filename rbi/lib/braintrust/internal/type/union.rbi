@@ -34,8 +34,8 @@ module Braintrust
         # @api private
         sig do
           params(
-            key: T.any(Symbol, Braintrust::Internal::Util::AnyHash, T.proc.returns(T.anything), T.anything),
-            spec: T.any(Braintrust::Internal::Util::AnyHash, T.proc.returns(T.anything), T.anything)
+            key: T.any(Symbol, Braintrust::Internal::AnyHash, T.proc.returns(T.anything), T.anything),
+            spec: T.any(Braintrust::Internal::AnyHash, T.proc.returns(T.anything), T.anything)
           )
             .void
         end

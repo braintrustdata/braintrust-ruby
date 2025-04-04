@@ -2,7 +2,7 @@
 
 module Braintrust
   module Models
-    class ViewDataSearch < Braintrust::BaseModel
+    class ViewDataSearch < Braintrust::Internal::Type::BaseModel
       sig { returns(T.nilable(T::Array[T.nilable(T.anything)])) }
       attr_accessor :filter
 

@@ -13,7 +13,7 @@ module Braintrust
       }
       & Braintrust::Internal::Type::request_parameters
 
-    class UserListParams < Braintrust::BaseModel
+    class UserListParams < Braintrust::Internal::Type::BaseModel
       extend Braintrust::Internal::Type::RequestParameters::Converter
       include Braintrust::Internal::Type::RequestParameters
 
@@ -72,7 +72,7 @@ module Braintrust
       type email = String | ::Array[String]
 
       module Email
-        extend Braintrust::Union
+        extend Braintrust::Internal::Type::Union
 
         def self?.variants: -> [String, ::Array[String]]
 
@@ -84,7 +84,7 @@ module Braintrust
       type family_name = String | ::Array[String]
 
       module FamilyName
-        extend Braintrust::Union
+        extend Braintrust::Internal::Type::Union
 
         def self?.variants: -> [String, ::Array[String]]
 
@@ -96,7 +96,7 @@ module Braintrust
       type given_name = String | ::Array[String]
 
       module GivenName
-        extend Braintrust::Union
+        extend Braintrust::Internal::Type::Union
 
         def self?.variants: -> [String, ::Array[String]]
 
@@ -108,7 +108,7 @@ module Braintrust
       type ids = String | ::Array[String]
 
       module IDs
-        extend Braintrust::Union
+        extend Braintrust::Internal::Type::Union
 
         def self?.variants: -> [String, ::Array[String]]
 

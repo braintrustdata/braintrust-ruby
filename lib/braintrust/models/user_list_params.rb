@@ -3,7 +3,7 @@
 module Braintrust
   module Models
     # @see Braintrust::Resources::Users#list
-    class UserListParams < Braintrust::BaseModel
+    class UserListParams < Braintrust::Internal::Type::BaseModel
       # @!parse
       #   extend Braintrust::Internal::Type::RequestParameters::Converter
       include Braintrust::Internal::Type::RequestParameters
@@ -122,12 +122,12 @@ module Braintrust
       #     super
       #   end
 
-      # def initialize: (Hash | Braintrust::BaseModel) -> void
+      # def initialize: (Hash | Braintrust::Internal::Type::BaseModel) -> void
 
       # Email of the user to search for. You may pass the param multiple times to filter
       #   for more than one email
       module Email
-        extend Braintrust::Union
+        extend Braintrust::Internal::Type::Union
 
         variant String
 
@@ -137,13 +137,13 @@ module Braintrust
         #   # @return [Array(String, Array<String>)]
         #   def self.variants; end
 
-        StringArray = Braintrust::ArrayOf[String]
+        StringArray = Braintrust::Internal::Type::ArrayOf[String]
       end
 
       # Family name of the user to search for. You may pass the param multiple times to
       #   filter for more than one family name
       module FamilyName
-        extend Braintrust::Union
+        extend Braintrust::Internal::Type::Union
 
         variant String
 
@@ -153,13 +153,13 @@ module Braintrust
         #   # @return [Array(String, Array<String>)]
         #   def self.variants; end
 
-        StringArray = Braintrust::ArrayOf[String]
+        StringArray = Braintrust::Internal::Type::ArrayOf[String]
       end
 
       # Given name of the user to search for. You may pass the param multiple times to
       #   filter for more than one given name
       module GivenName
-        extend Braintrust::Union
+        extend Braintrust::Internal::Type::Union
 
         variant String
 
@@ -169,13 +169,13 @@ module Braintrust
         #   # @return [Array(String, Array<String>)]
         #   def self.variants; end
 
-        StringArray = Braintrust::ArrayOf[String]
+        StringArray = Braintrust::Internal::Type::ArrayOf[String]
       end
 
       # Filter search results to a particular set of object IDs. To specify a list of
       #   IDs, include the query param multiple times
       module IDs
-        extend Braintrust::Union
+        extend Braintrust::Internal::Type::Union
 
         variant String
 
@@ -185,7 +185,7 @@ module Braintrust
         #   # @return [Array(String, Array<String>)]
         #   def self.variants; end
 
-        StringArray = Braintrust::ArrayOf[String]
+        StringArray = Braintrust::Internal::Type::ArrayOf[String]
       end
     end
   end

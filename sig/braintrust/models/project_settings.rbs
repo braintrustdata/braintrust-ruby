@@ -7,7 +7,7 @@ module Braintrust
         span_field_order: ::Array[Braintrust::Models::ProjectSettings::SpanFieldOrder]?
       }
 
-    class ProjectSettings < Braintrust::BaseModel
+    class ProjectSettings < Braintrust::Internal::Type::BaseModel
       attr_accessor baseline_experiment_id: String?
 
       attr_accessor comparison_key: String?
@@ -30,7 +30,7 @@ module Braintrust
           layout: Braintrust::Models::ProjectSettings::SpanFieldOrder::layout?
         }
 
-      class SpanFieldOrder < Braintrust::BaseModel
+      class SpanFieldOrder < Braintrust::Internal::Type::BaseModel
         attr_accessor column_id: String
 
         attr_accessor object_type: String
@@ -51,7 +51,7 @@ module Braintrust
         type layout = :full | :two_column
 
         module Layout
-          extend Braintrust::Enum
+          extend Braintrust::Internal::Type::Enum
 
           FULL: :full
           TWO_COLUMN: :two_column

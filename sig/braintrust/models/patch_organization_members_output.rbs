@@ -7,7 +7,7 @@ module Braintrust
         send_email_error: String?
       }
 
-    class PatchOrganizationMembersOutput < Braintrust::BaseModel
+    class PatchOrganizationMembersOutput < Braintrust::Internal::Type::BaseModel
       attr_accessor org_id: String
 
       attr_accessor status: Braintrust::Models::PatchOrganizationMembersOutput::status
@@ -25,7 +25,7 @@ module Braintrust
       type status = :success
 
       module Status
-        extend Braintrust::Enum
+        extend Braintrust::Internal::Type::Enum
 
         SUCCESS: :success
 

@@ -10,7 +10,7 @@ module Braintrust
         }
         & Braintrust::Internal::Type::request_parameters
 
-      class MemberUpdateParams < Braintrust::BaseModel
+      class MemberUpdateParams < Braintrust::Internal::Type::BaseModel
         extend Braintrust::Internal::Type::RequestParameters::Converter
         include Braintrust::Internal::Type::RequestParameters
 
@@ -43,7 +43,7 @@ module Braintrust
             send_invite_emails: bool?
           }
 
-        class InviteUsers < Braintrust::BaseModel
+        class InviteUsers < Braintrust::Internal::Type::BaseModel
           attr_accessor emails: ::Array[String]?
 
           attr_accessor group_id: String?
@@ -73,7 +73,7 @@ module Braintrust
 
         type remove_users = { emails: ::Array[String]?, ids: ::Array[String]? }
 
-        class RemoveUsers < Braintrust::BaseModel
+        class RemoveUsers < Braintrust::Internal::Type::BaseModel
           attr_accessor emails: ::Array[String]?
 
           attr_accessor ids: ::Array[String]?

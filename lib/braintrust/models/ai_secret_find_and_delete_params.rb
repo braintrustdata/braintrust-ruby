@@ -3,7 +3,7 @@
 module Braintrust
   module Models
     # @see Braintrust::Resources::AISecrets#find_and_delete
-    class AISecretFindAndDeleteParams < Braintrust::BaseModel
+    class AISecretFindAndDeleteParams < Braintrust::Internal::Type::BaseModel
       # @!parse
       #   extend Braintrust::Internal::Type::RequestParameters::Converter
       include Braintrust::Internal::Type::RequestParameters
@@ -29,7 +29,7 @@ module Braintrust
       #   #
       #   def initialize(name:, org_name: nil, request_options: {}, **) = super
 
-      # def initialize: (Hash | Braintrust::BaseModel) -> void
+      # def initialize: (Hash | Braintrust::Internal::Type::BaseModel) -> void
     end
   end
 end

@@ -3,7 +3,7 @@ module Braintrust
     type role_delete_params =
       {  } & Braintrust::Internal::Type::request_parameters
 
-    class RoleDeleteParams < Braintrust::BaseModel
+    class RoleDeleteParams < Braintrust::Internal::Type::BaseModel
       extend Braintrust::Internal::Type::RequestParameters::Converter
       include Braintrust::Internal::Type::RequestParameters
 

@@ -2,7 +2,7 @@
 
 module Braintrust
   module Models
-    class Function < Braintrust::BaseModel
+    class Function < Braintrust::Internal::Type::BaseModel
       # Unique identifier for the prompt
       sig { returns(String) }
       attr_accessor :id
@@ -59,7 +59,7 @@ module Braintrust
 
       sig do
         params(
-          function_schema: T.nilable(T.any(Braintrust::Models::Function::FunctionSchema, Braintrust::Internal::Util::AnyHash))
+          function_schema: T.nilable(T.any(Braintrust::Models::Function::FunctionSchema, Braintrust::Internal::AnyHash))
         )
           .void
       end
@@ -75,22 +75,14 @@ module Braintrust
       sig { returns(T.nilable(Braintrust::Models::Function::Origin)) }
       attr_reader :origin
 
-      sig do
-        params(
-          origin: T.nilable(T.any(Braintrust::Models::Function::Origin, Braintrust::Internal::Util::AnyHash))
-        )
-          .void
-      end
+      sig { params(origin: T.nilable(T.any(Braintrust::Models::Function::Origin, Braintrust::Internal::AnyHash))).void }
       attr_writer :origin
 
       # The prompt, model, and its parameters
       sig { returns(T.nilable(Braintrust::Models::PromptData)) }
       attr_reader :prompt_data
 
-      sig do
-        params(prompt_data: T.nilable(T.any(Braintrust::Models::PromptData, Braintrust::Internal::Util::AnyHash)))
-          .void
-      end
+      sig { params(prompt_data: T.nilable(T.any(Braintrust::Models::PromptData, Braintrust::Internal::AnyHash))).void }
       attr_writer :prompt_data
 
       # A list of tags for the prompt
@@ -103,7 +95,7 @@ module Braintrust
           _xact_id: String,
           function_data: T.any(
             Braintrust::Models::Function::FunctionData::Prompt,
-            Braintrust::Internal::Util::AnyHash,
+            Braintrust::Internal::AnyHash,
             Braintrust::Models::Function::FunctionData::Code,
             Braintrust::Models::Function::FunctionData::Global
           ),
@@ -114,11 +106,11 @@ module Braintrust
           slug: String,
           created: T.nilable(Time),
           description: T.nilable(String),
-          function_schema: T.nilable(T.any(Braintrust::Models::Function::FunctionSchema, Braintrust::Internal::Util::AnyHash)),
+          function_schema: T.nilable(T.any(Braintrust::Models::Function::FunctionSchema, Braintrust::Internal::AnyHash)),
           function_type: T.nilable(Braintrust::Models::Function::FunctionType::OrSymbol),
           metadata: T.nilable(T::Hash[Symbol, T.nilable(T.anything)]),
-          origin: T.nilable(T.any(Braintrust::Models::Function::Origin, Braintrust::Internal::Util::AnyHash)),
-          prompt_data: T.nilable(T.any(Braintrust::Models::PromptData, Braintrust::Internal::Util::AnyHash)),
+          origin: T.nilable(T.any(Braintrust::Models::Function::Origin, Braintrust::Internal::AnyHash)),
+          prompt_data: T.nilable(T.any(Braintrust::Models::PromptData, Braintrust::Internal::AnyHash)),
           tags: T.nilable(T::Array[String])
         )
           .returns(T.attached_class)
@@ -174,9 +166,9 @@ module Braintrust
       end
 
       module FunctionData
-        extend Braintrust::Union
+        extend Braintrust::Internal::Type::Union
 
-        class Prompt < Braintrust::BaseModel
+        class Prompt < Braintrust::Internal::Type::BaseModel
           sig { returns(Braintrust::Models::Function::FunctionData::Prompt::Type::TaggedSymbol) }
           attr_accessor :type
 
@@ -189,7 +181,7 @@ module Braintrust
           end
 
           module Type
-            extend Braintrust::Enum
+            extend Braintrust::Internal::Type::Enum
 
             TaggedSymbol = T.type_alias { T.all(Symbol, Braintrust::Models::Function::FunctionData::Prompt::Type) }
             OrSymbol =
@@ -203,7 +195,7 @@ module Braintrust
           end
         end
 
-        class Code < Braintrust::BaseModel
+        class Code < Braintrust::Internal::Type::BaseModel
           sig do
             returns(
               T.any(
@@ -221,7 +213,7 @@ module Braintrust
             params(
               data: T.any(
                 Braintrust::Models::Function::FunctionData::Code::Data::Bundle,
-                Braintrust::Internal::Util::AnyHash,
+                Braintrust::Internal::AnyHash,
                 Braintrust::Models::Function::FunctionData::Code::Data::Inline
               ),
               type: Braintrust::Models::Function::FunctionData::Code::Type::OrSymbol
@@ -247,7 +239,7 @@ module Braintrust
           end
 
           module Data
-            extend Braintrust::Union
+            extend Braintrust::Internal::Type::Union
 
             class Bundle < Braintrust::Models::CodeBundle
               sig { returns(Braintrust::Models::Function::FunctionData::Code::Data::Bundle::Type::TaggedSymbol) }
@@ -268,7 +260,7 @@ module Braintrust
               end
 
               module Type
-                extend Braintrust::Enum
+                extend Braintrust::Internal::Type::Enum
 
                 TaggedSymbol =
                   T.type_alias { T.all(Symbol, Braintrust::Models::Function::FunctionData::Code::Data::Bundle::Type) }
@@ -287,7 +279,7 @@ module Braintrust
               end
             end
 
-            class Inline < Braintrust::BaseModel
+            class Inline < Braintrust::Internal::Type::BaseModel
               sig { returns(String) }
               attr_accessor :code
 
@@ -298,7 +290,7 @@ module Braintrust
                 params(
                   runtime_context: T.any(
                     Braintrust::Models::Function::FunctionData::Code::Data::Inline::RuntimeContext,
-                    Braintrust::Internal::Util::AnyHash
+                    Braintrust::Internal::AnyHash
                   )
                 )
                   .void
@@ -313,7 +305,7 @@ module Braintrust
                   code: String,
                   runtime_context: T.any(
                     Braintrust::Models::Function::FunctionData::Code::Data::Inline::RuntimeContext,
-                    Braintrust::Internal::Util::AnyHash
+                    Braintrust::Internal::AnyHash
                   ),
                   type: Braintrust::Models::Function::FunctionData::Code::Data::Inline::Type::OrSymbol
                 )
@@ -335,7 +327,7 @@ module Braintrust
               def to_hash
               end
 
-              class RuntimeContext < Braintrust::BaseModel
+              class RuntimeContext < Braintrust::Internal::Type::BaseModel
                 sig do
                   returns(
                     Braintrust::Models::Function::FunctionData::Code::Data::Inline::RuntimeContext::Runtime::TaggedSymbol
@@ -369,7 +361,7 @@ module Braintrust
                 end
 
                 module Runtime
-                  extend Braintrust::Enum
+                  extend Braintrust::Internal::Type::Enum
 
                   TaggedSymbol =
                     T.type_alias { T.all(Symbol, Braintrust::Models::Function::FunctionData::Code::Data::Inline::RuntimeContext::Runtime) }
@@ -405,7 +397,7 @@ module Braintrust
               end
 
               module Type
-                extend Braintrust::Enum
+                extend Braintrust::Internal::Type::Enum
 
                 TaggedSymbol =
                   T.type_alias { T.all(Symbol, Braintrust::Models::Function::FunctionData::Code::Data::Inline::Type) }
@@ -435,7 +427,7 @@ module Braintrust
           end
 
           module Type
-            extend Braintrust::Enum
+            extend Braintrust::Internal::Type::Enum
 
             TaggedSymbol = T.type_alias { T.all(Symbol, Braintrust::Models::Function::FunctionData::Code::Type) }
             OrSymbol =
@@ -449,7 +441,7 @@ module Braintrust
           end
         end
 
-        class Global < Braintrust::BaseModel
+        class Global < Braintrust::Internal::Type::BaseModel
           sig { returns(String) }
           attr_accessor :name
 
@@ -471,7 +463,7 @@ module Braintrust
           end
 
           module Type
-            extend Braintrust::Enum
+            extend Braintrust::Internal::Type::Enum
 
             TaggedSymbol = T.type_alias { T.all(Symbol, Braintrust::Models::Function::FunctionData::Global::Type) }
             OrSymbol =
@@ -497,7 +489,7 @@ module Braintrust
 
       # A literal 'p' which identifies the object as a project prompt
       module LogID
-        extend Braintrust::Enum
+        extend Braintrust::Internal::Type::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Braintrust::Models::Function::LogID) }
         OrSymbol = T.type_alias { T.any(Symbol, String, Braintrust::Models::Function::LogID::TaggedSymbol) }
@@ -509,7 +501,7 @@ module Braintrust
         end
       end
 
-      class FunctionSchema < Braintrust::BaseModel
+      class FunctionSchema < Braintrust::Internal::Type::BaseModel
         sig { returns(T.nilable(T.anything)) }
         attr_reader :parameters
 
@@ -533,7 +525,7 @@ module Braintrust
       end
 
       module FunctionType
-        extend Braintrust::Enum
+        extend Braintrust::Internal::Type::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Braintrust::Models::Function::FunctionType) }
         OrSymbol =
@@ -549,7 +541,7 @@ module Braintrust
         end
       end
 
-      class Origin < Braintrust::BaseModel
+      class Origin < Braintrust::Internal::Type::BaseModel
         # Id of the object the function is originating from
         sig { returns(String) }
         attr_accessor :object_id_

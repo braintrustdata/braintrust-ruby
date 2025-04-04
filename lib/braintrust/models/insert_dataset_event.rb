@@ -2,7 +2,7 @@
 
 module Braintrust
   module Models
-    class InsertDatasetEvent < Braintrust::BaseModel
+    class InsertDatasetEvent < Braintrust::Internal::Type::BaseModel
       # @!attribute id
       #   A unique identifier for the dataset event. If you don't provide one, BrainTrust
       #     will generate one for you
@@ -25,7 +25,7 @@ module Braintrust
       #     `{"id": "foo", "input": {"b": 11, "c": 20}}`
       #
       #   @return [Boolean, nil]
-      optional :_is_merge, Braintrust::BooleanModel, nil?: true
+      optional :_is_merge, Braintrust::Internal::Type::BooleanModel, nil?: true
 
       # @!attribute _merge_paths
       #   The `_merge_paths` field allows controlling the depth of the merge, when
@@ -43,14 +43,16 @@ module Braintrust
       #     but have still deep-merged `input` and `input.c`.
       #
       #   @return [Array<Array<String>>, nil]
-      optional :_merge_paths, Braintrust::ArrayOf[Braintrust::ArrayOf[String]], nil?: true
+      optional :_merge_paths,
+               Braintrust::Internal::Type::ArrayOf[Braintrust::Internal::Type::ArrayOf[String]],
+               nil?: true
 
       # @!attribute _object_delete
       #   Pass `_object_delete=true` to mark the dataset event deleted. Deleted events
       #     will not show up in subsequent fetches for this dataset
       #
       #   @return [Boolean, nil]
-      optional :_object_delete, Braintrust::BooleanModel, nil?: true
+      optional :_object_delete, Braintrust::Internal::Type::BooleanModel, nil?: true
 
       # @!attribute _parent_id
       #   DEPRECATED: The `_parent_id` field is deprecated and should not be used. Support
@@ -85,7 +87,7 @@ module Braintrust
       #     serializable object)
       #
       #   @return [Object, nil]
-      optional :expected, Braintrust::Unknown
+      optional :expected, Braintrust::Internal::Type::Unknown
 
       # @!parse
       #   # @return [Object]
@@ -96,7 +98,7 @@ module Braintrust
       #     object)
       #
       #   @return [Object, nil]
-      optional :input, Braintrust::Unknown
+      optional :input, Braintrust::Internal::Type::Unknown
 
       # @!parse
       #   # @return [Object]
@@ -176,13 +178,13 @@ module Braintrust
       #     If the row is being merged into an existing row, this field will be ignored.
       #
       #   @return [Array<String>, nil]
-      optional :span_parents, Braintrust::ArrayOf[String], nil?: true
+      optional :span_parents, Braintrust::Internal::Type::ArrayOf[String], nil?: true
 
       # @!attribute tags
       #   A list of tags to log
       #
       #   @return [Array<String>, nil]
-      optional :tags, Braintrust::ArrayOf[String], nil?: true
+      optional :tags, Braintrust::Internal::Type::ArrayOf[String], nil?: true
 
       # @!parse
       #   # A dataset event
@@ -222,10 +224,10 @@ module Braintrust
       #     super
       #   end
 
-      # def initialize: (Hash | Braintrust::BaseModel) -> void
+      # def initialize: (Hash | Braintrust::Internal::Type::BaseModel) -> void
 
       # @see Braintrust::Models::InsertDatasetEvent#metadata
-      class Metadata < Braintrust::BaseModel
+      class Metadata < Braintrust::Internal::Type::BaseModel
         # @!attribute model
         #   The model used for this example
         #
@@ -243,7 +245,7 @@ module Braintrust
         #   #
         #   def initialize(model: nil, **) = super
 
-        # def initialize: (Hash | Braintrust::BaseModel) -> void
+        # def initialize: (Hash | Braintrust::Internal::Type::BaseModel) -> void
       end
     end
   end

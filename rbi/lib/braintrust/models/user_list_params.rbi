@@ -2,7 +2,7 @@
 
 module Braintrust
   module Models
-    class UserListParams < Braintrust::BaseModel
+    class UserListParams < Braintrust::Internal::Type::BaseModel
       extend Braintrust::Internal::Type::RequestParameters::Converter
       include Braintrust::Internal::Type::RequestParameters
 
@@ -81,7 +81,7 @@ module Braintrust
           limit: T.nilable(Integer),
           org_name: String,
           starting_after: String,
-          request_options: T.any(Braintrust::RequestOptions, Braintrust::Internal::Util::AnyHash)
+          request_options: T.any(Braintrust::RequestOptions, Braintrust::Internal::AnyHash)
         )
           .returns(T.attached_class)
       end
@@ -120,49 +120,61 @@ module Braintrust
       # Email of the user to search for. You may pass the param multiple times to filter
       #   for more than one email
       module Email
-        extend Braintrust::Union
+        extend Braintrust::Internal::Type::Union
 
         sig { override.returns([String, T::Array[String]]) }
         def self.variants
         end
 
-        StringArray = T.let(Braintrust::ArrayOf[String], Braintrust::Internal::Type::Converter)
+        StringArray = T.let(
+          Braintrust::Internal::Type::ArrayOf[String],
+          Braintrust::Internal::Type::Converter
+        )
       end
 
       # Family name of the user to search for. You may pass the param multiple times to
       #   filter for more than one family name
       module FamilyName
-        extend Braintrust::Union
+        extend Braintrust::Internal::Type::Union
 
         sig { override.returns([String, T::Array[String]]) }
         def self.variants
         end
 
-        StringArray = T.let(Braintrust::ArrayOf[String], Braintrust::Internal::Type::Converter)
+        StringArray = T.let(
+          Braintrust::Internal::Type::ArrayOf[String],
+          Braintrust::Internal::Type::Converter
+        )
       end
 
       # Given name of the user to search for. You may pass the param multiple times to
       #   filter for more than one given name
       module GivenName
-        extend Braintrust::Union
+        extend Braintrust::Internal::Type::Union
 
         sig { override.returns([String, T::Array[String]]) }
         def self.variants
         end
 
-        StringArray = T.let(Braintrust::ArrayOf[String], Braintrust::Internal::Type::Converter)
+        StringArray = T.let(
+          Braintrust::Internal::Type::ArrayOf[String],
+          Braintrust::Internal::Type::Converter
+        )
       end
 
       # Filter search results to a particular set of object IDs. To specify a list of
       #   IDs, include the query param multiple times
       module IDs
-        extend Braintrust::Union
+        extend Braintrust::Internal::Type::Union
 
         sig { override.returns([String, T::Array[String]]) }
         def self.variants
         end
 
-        StringArray = T.let(Braintrust::ArrayOf[String], Braintrust::Internal::Type::Converter)
+        StringArray = T.let(
+          Braintrust::Internal::Type::ArrayOf[String],
+          Braintrust::Internal::Type::Converter
+        )
       end
     end
   end

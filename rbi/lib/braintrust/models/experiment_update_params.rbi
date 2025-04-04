@@ -2,7 +2,7 @@
 
 module Braintrust
   module Models
-    class ExperimentUpdateParams < Braintrust::BaseModel
+    class ExperimentUpdateParams < Braintrust::Internal::Type::BaseModel
       extend Braintrust::Internal::Type::RequestParameters::Converter
       include Braintrust::Internal::Type::RequestParameters
 
@@ -41,7 +41,7 @@ module Braintrust
       sig { returns(T.nilable(Braintrust::Models::RepoInfo)) }
       attr_reader :repo_info
 
-      sig { params(repo_info: T.nilable(T.any(Braintrust::Models::RepoInfo, Braintrust::Internal::Util::AnyHash))).void }
+      sig { params(repo_info: T.nilable(T.any(Braintrust::Models::RepoInfo, Braintrust::Internal::AnyHash))).void }
       attr_writer :repo_info
 
       sig do
@@ -53,8 +53,8 @@ module Braintrust
           metadata: T.nilable(T::Hash[Symbol, T.nilable(T.anything)]),
           name: T.nilable(String),
           public: T.nilable(T::Boolean),
-          repo_info: T.nilable(T.any(Braintrust::Models::RepoInfo, Braintrust::Internal::Util::AnyHash)),
-          request_options: T.any(Braintrust::RequestOptions, Braintrust::Internal::Util::AnyHash)
+          repo_info: T.nilable(T.any(Braintrust::Models::RepoInfo, Braintrust::Internal::AnyHash)),
+          request_options: T.any(Braintrust::RequestOptions, Braintrust::Internal::AnyHash)
         )
           .returns(T.attached_class)
       end

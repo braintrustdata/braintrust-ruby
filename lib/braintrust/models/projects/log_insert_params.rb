@@ -4,7 +4,7 @@ module Braintrust
   module Models
     module Projects
       # @see Braintrust::Resources::Projects::Logs#insert
-      class LogInsertParams < Braintrust::BaseModel
+      class LogInsertParams < Braintrust::Internal::Type::BaseModel
         # @!parse
         #   extend Braintrust::Internal::Type::RequestParameters::Converter
         include Braintrust::Internal::Type::RequestParameters
@@ -13,7 +13,7 @@ module Braintrust
         #   A list of project logs events to insert
         #
         #   @return [Array<Braintrust::Models::InsertProjectLogsEvent>]
-        required :events, -> { Braintrust::ArrayOf[Braintrust::Models::InsertProjectLogsEvent] }
+        required :events, -> { Braintrust::Internal::Type::ArrayOf[Braintrust::Models::InsertProjectLogsEvent] }
 
         # @!parse
         #   # @param events [Array<Braintrust::Models::InsertProjectLogsEvent>]
@@ -21,7 +21,7 @@ module Braintrust
         #   #
         #   def initialize(events:, request_options: {}, **) = super
 
-        # def initialize: (Hash | Braintrust::BaseModel) -> void
+        # def initialize: (Hash | Braintrust::Internal::Type::BaseModel) -> void
       end
     end
   end

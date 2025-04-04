@@ -4,7 +4,7 @@ module Braintrust
   module Models
     module Projects
       # @see Braintrust::Resources::Projects::Logs#feedback
-      class LogFeedbackParams < Braintrust::BaseModel
+      class LogFeedbackParams < Braintrust::Internal::Type::BaseModel
         # @!parse
         #   extend Braintrust::Internal::Type::RequestParameters::Converter
         include Braintrust::Internal::Type::RequestParameters
@@ -13,7 +13,8 @@ module Braintrust
         #   A list of project logs feedback items
         #
         #   @return [Array<Braintrust::Models::FeedbackProjectLogsItem>]
-        required :feedback, -> { Braintrust::ArrayOf[Braintrust::Models::FeedbackProjectLogsItem] }
+        required :feedback,
+                 -> { Braintrust::Internal::Type::ArrayOf[Braintrust::Models::FeedbackProjectLogsItem] }
 
         # @!parse
         #   # @param feedback [Array<Braintrust::Models::FeedbackProjectLogsItem>]
@@ -21,7 +22,7 @@ module Braintrust
         #   #
         #   def initialize(feedback:, request_options: {}, **) = super
 
-        # def initialize: (Hash | Braintrust::BaseModel) -> void
+        # def initialize: (Hash | Braintrust::Internal::Type::BaseModel) -> void
       end
     end
   end

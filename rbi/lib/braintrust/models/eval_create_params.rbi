@@ -2,7 +2,7 @@
 
 module Braintrust
   module Models
-    class EvalCreateParams < Braintrust::BaseModel
+    class EvalCreateParams < Braintrust::Internal::Type::BaseModel
       extend Braintrust::Internal::Type::RequestParameters::Converter
       include Braintrust::Internal::Type::RequestParameters
 
@@ -79,9 +79,7 @@ module Braintrust
 
       sig do
         params(
-          git_metadata_settings: T.nilable(
-            T.any(Braintrust::Models::EvalCreateParams::GitMetadataSettings, Braintrust::Internal::Util::AnyHash)
-          )
+          git_metadata_settings: T.nilable(T.any(Braintrust::Models::EvalCreateParams::GitMetadataSettings, Braintrust::Internal::AnyHash))
         )
           .void
       end
@@ -112,7 +110,7 @@ module Braintrust
         params(
           parent: T.any(
             Braintrust::Models::EvalCreateParams::Parent::SpanParentStruct,
-            Braintrust::Internal::Util::AnyHash,
+            Braintrust::Internal::AnyHash,
             String
           )
         )
@@ -124,7 +122,7 @@ module Braintrust
       sig { returns(T.nilable(Braintrust::Models::RepoInfo)) }
       attr_reader :repo_info
 
-      sig { params(repo_info: T.nilable(T.any(Braintrust::Models::RepoInfo, Braintrust::Internal::Util::AnyHash))).void }
+      sig { params(repo_info: T.nilable(T.any(Braintrust::Models::RepoInfo, Braintrust::Internal::AnyHash))).void }
       attr_writer :repo_info
 
       # Whether to stream the results of the eval. If true, the request will return two
@@ -151,7 +149,7 @@ module Braintrust
         params(
           data: T.any(
             Braintrust::Models::EvalCreateParams::Data::DatasetID,
-            Braintrust::Internal::Util::AnyHash,
+            Braintrust::Internal::AnyHash,
             Braintrust::Models::EvalCreateParams::Data::ProjectDatasetName,
             Braintrust::Models::EvalCreateParams::Data::DatasetRows
           ),
@@ -159,7 +157,7 @@ module Braintrust
           scores: T::Array[
           T.any(
             Braintrust::Models::EvalCreateParams::Score::FunctionID,
-            Braintrust::Internal::Util::AnyHash,
+            Braintrust::Internal::AnyHash,
             Braintrust::Models::EvalCreateParams::Score::ProjectSlug,
             Braintrust::Models::EvalCreateParams::Score::GlobalFunction,
             Braintrust::Models::EvalCreateParams::Score::PromptSessionID,
@@ -169,7 +167,7 @@ module Braintrust
           ],
           task: T.any(
             Braintrust::Models::EvalCreateParams::Task::FunctionID,
-            Braintrust::Internal::Util::AnyHash,
+            Braintrust::Internal::AnyHash,
             Braintrust::Models::EvalCreateParams::Task::ProjectSlug,
             Braintrust::Models::EvalCreateParams::Task::GlobalFunction,
             Braintrust::Models::EvalCreateParams::Task::PromptSessionID,
@@ -179,22 +177,20 @@ module Braintrust
           base_experiment_id: T.nilable(String),
           base_experiment_name: T.nilable(String),
           experiment_name: String,
-          git_metadata_settings: T.nilable(
-            T.any(Braintrust::Models::EvalCreateParams::GitMetadataSettings, Braintrust::Internal::Util::AnyHash)
-          ),
+          git_metadata_settings: T.nilable(T.any(Braintrust::Models::EvalCreateParams::GitMetadataSettings, Braintrust::Internal::AnyHash)),
           is_public: T.nilable(T::Boolean),
           max_concurrency: T.nilable(Float),
           metadata: T::Hash[Symbol, T.nilable(T.anything)],
           parent: T.any(
             Braintrust::Models::EvalCreateParams::Parent::SpanParentStruct,
-            Braintrust::Internal::Util::AnyHash,
+            Braintrust::Internal::AnyHash,
             String
           ),
-          repo_info: T.nilable(T.any(Braintrust::Models::RepoInfo, Braintrust::Internal::Util::AnyHash)),
+          repo_info: T.nilable(T.any(Braintrust::Models::RepoInfo, Braintrust::Internal::AnyHash)),
           stream: T::Boolean,
           timeout: T.nilable(Float),
           trial_count: T.nilable(Float),
-          request_options: T.any(Braintrust::RequestOptions, Braintrust::Internal::Util::AnyHash)
+          request_options: T.any(Braintrust::RequestOptions, Braintrust::Internal::AnyHash)
         )
           .returns(T.attached_class)
       end
@@ -268,9 +264,9 @@ module Braintrust
 
       # The dataset to use
       module Data
-        extend Braintrust::Union
+        extend Braintrust::Internal::Type::Union
 
-        class DatasetID < Braintrust::BaseModel
+        class DatasetID < Braintrust::Internal::Type::BaseModel
           sig { returns(String) }
           attr_accessor :dataset_id
 
@@ -297,7 +293,7 @@ module Braintrust
           end
         end
 
-        class ProjectDatasetName < Braintrust::BaseModel
+        class ProjectDatasetName < Braintrust::Internal::Type::BaseModel
           sig { returns(String) }
           attr_accessor :dataset_name
 
@@ -333,7 +329,7 @@ module Braintrust
           end
         end
 
-        class DatasetRows < Braintrust::BaseModel
+        class DatasetRows < Braintrust::Internal::Type::BaseModel
           sig { returns(T::Array[T.nilable(T.anything)]) }
           attr_accessor :data
 
@@ -359,9 +355,9 @@ module Braintrust
 
       # The function to evaluate
       module Score
-        extend Braintrust::Union
+        extend Braintrust::Internal::Type::Union
 
-        class FunctionID < Braintrust::BaseModel
+        class FunctionID < Braintrust::Internal::Type::BaseModel
           # The ID of the function
           sig { returns(String) }
           attr_accessor :function_id
@@ -383,7 +379,7 @@ module Braintrust
           end
         end
 
-        class ProjectSlug < Braintrust::BaseModel
+        class ProjectSlug < Braintrust::Internal::Type::BaseModel
           # The name of the project containing the function
           sig { returns(String) }
           attr_accessor :project_name
@@ -409,7 +405,7 @@ module Braintrust
           end
         end
 
-        class GlobalFunction < Braintrust::BaseModel
+        class GlobalFunction < Braintrust::Internal::Type::BaseModel
           # The name of the global function. Currently, the global namespace includes the
           #   functions in autoevals
           sig { returns(String) }
@@ -425,7 +421,7 @@ module Braintrust
           end
         end
 
-        class PromptSessionID < Braintrust::BaseModel
+        class PromptSessionID < Braintrust::Internal::Type::BaseModel
           # The ID of the function in the prompt session
           sig { returns(String) }
           attr_accessor :prompt_session_function_id
@@ -456,7 +452,7 @@ module Braintrust
           end
         end
 
-        class InlineCode < Braintrust::BaseModel
+        class InlineCode < Braintrust::Internal::Type::BaseModel
           # The inline code to execute
           sig { returns(String) }
           attr_accessor :code
@@ -468,7 +464,7 @@ module Braintrust
             params(
               inline_context: T.any(
                 Braintrust::Models::EvalCreateParams::Score::InlineCode::InlineContext,
-                Braintrust::Internal::Util::AnyHash
+                Braintrust::Internal::AnyHash
               )
             )
               .void
@@ -485,7 +481,7 @@ module Braintrust
               code: String,
               inline_context: T.any(
                 Braintrust::Models::EvalCreateParams::Score::InlineCode::InlineContext,
-                Braintrust::Internal::Util::AnyHash
+                Braintrust::Internal::AnyHash
               ),
               name: T.nilable(String)
             )
@@ -507,7 +503,7 @@ module Braintrust
           def to_hash
           end
 
-          class InlineContext < Braintrust::BaseModel
+          class InlineContext < Braintrust::Internal::Type::BaseModel
             sig { returns(Braintrust::Models::EvalCreateParams::Score::InlineCode::InlineContext::Runtime::OrSymbol) }
             attr_accessor :runtime
 
@@ -537,7 +533,7 @@ module Braintrust
             end
 
             module Runtime
-              extend Braintrust::Enum
+              extend Braintrust::Internal::Type::Enum
 
               TaggedSymbol =
                 T.type_alias { T.all(Symbol, Braintrust::Models::EvalCreateParams::Score::InlineCode::InlineContext::Runtime) }
@@ -573,17 +569,12 @@ module Braintrust
           end
         end
 
-        class InlinePrompt < Braintrust::BaseModel
+        class InlinePrompt < Braintrust::Internal::Type::BaseModel
           # The prompt, model, and its parameters
           sig { returns(T.nilable(Braintrust::Models::PromptData)) }
           attr_reader :inline_prompt
 
-          sig do
-            params(
-              inline_prompt: T.nilable(T.any(Braintrust::Models::PromptData, Braintrust::Internal::Util::AnyHash))
-            )
-              .void
-          end
+          sig { params(inline_prompt: T.nilable(T.any(Braintrust::Models::PromptData, Braintrust::Internal::AnyHash))).void }
           attr_writer :inline_prompt
 
           # The name of the inline prompt
@@ -593,7 +584,7 @@ module Braintrust
           # Inline prompt definition
           sig do
             params(
-              inline_prompt: T.nilable(T.any(Braintrust::Models::PromptData, Braintrust::Internal::Util::AnyHash)),
+              inline_prompt: T.nilable(T.any(Braintrust::Models::PromptData, Braintrust::Internal::AnyHash)),
               name: T.nilable(String)
             )
               .returns(T.attached_class)
@@ -618,9 +609,9 @@ module Braintrust
 
       # The function to evaluate
       module Task
-        extend Braintrust::Union
+        extend Braintrust::Internal::Type::Union
 
-        class FunctionID < Braintrust::BaseModel
+        class FunctionID < Braintrust::Internal::Type::BaseModel
           # The ID of the function
           sig { returns(String) }
           attr_accessor :function_id
@@ -642,7 +633,7 @@ module Braintrust
           end
         end
 
-        class ProjectSlug < Braintrust::BaseModel
+        class ProjectSlug < Braintrust::Internal::Type::BaseModel
           # The name of the project containing the function
           sig { returns(String) }
           attr_accessor :project_name
@@ -668,7 +659,7 @@ module Braintrust
           end
         end
 
-        class GlobalFunction < Braintrust::BaseModel
+        class GlobalFunction < Braintrust::Internal::Type::BaseModel
           # The name of the global function. Currently, the global namespace includes the
           #   functions in autoevals
           sig { returns(String) }
@@ -684,7 +675,7 @@ module Braintrust
           end
         end
 
-        class PromptSessionID < Braintrust::BaseModel
+        class PromptSessionID < Braintrust::Internal::Type::BaseModel
           # The ID of the function in the prompt session
           sig { returns(String) }
           attr_accessor :prompt_session_function_id
@@ -715,7 +706,7 @@ module Braintrust
           end
         end
 
-        class InlineCode < Braintrust::BaseModel
+        class InlineCode < Braintrust::Internal::Type::BaseModel
           # The inline code to execute
           sig { returns(String) }
           attr_accessor :code
@@ -727,7 +718,7 @@ module Braintrust
             params(
               inline_context: T.any(
                 Braintrust::Models::EvalCreateParams::Task::InlineCode::InlineContext,
-                Braintrust::Internal::Util::AnyHash
+                Braintrust::Internal::AnyHash
               )
             )
               .void
@@ -744,7 +735,7 @@ module Braintrust
               code: String,
               inline_context: T.any(
                 Braintrust::Models::EvalCreateParams::Task::InlineCode::InlineContext,
-                Braintrust::Internal::Util::AnyHash
+                Braintrust::Internal::AnyHash
               ),
               name: T.nilable(String)
             )
@@ -766,7 +757,7 @@ module Braintrust
           def to_hash
           end
 
-          class InlineContext < Braintrust::BaseModel
+          class InlineContext < Braintrust::Internal::Type::BaseModel
             sig { returns(Braintrust::Models::EvalCreateParams::Task::InlineCode::InlineContext::Runtime::OrSymbol) }
             attr_accessor :runtime
 
@@ -796,7 +787,7 @@ module Braintrust
             end
 
             module Runtime
-              extend Braintrust::Enum
+              extend Braintrust::Internal::Type::Enum
 
               TaggedSymbol =
                 T.type_alias { T.all(Symbol, Braintrust::Models::EvalCreateParams::Task::InlineCode::InlineContext::Runtime) }
@@ -829,17 +820,12 @@ module Braintrust
           end
         end
 
-        class InlinePrompt < Braintrust::BaseModel
+        class InlinePrompt < Braintrust::Internal::Type::BaseModel
           # The prompt, model, and its parameters
           sig { returns(T.nilable(Braintrust::Models::PromptData)) }
           attr_reader :inline_prompt
 
-          sig do
-            params(
-              inline_prompt: T.nilable(T.any(Braintrust::Models::PromptData, Braintrust::Internal::Util::AnyHash))
-            )
-              .void
-          end
+          sig { params(inline_prompt: T.nilable(T.any(Braintrust::Models::PromptData, Braintrust::Internal::AnyHash))).void }
           attr_writer :inline_prompt
 
           # The name of the inline prompt
@@ -849,7 +835,7 @@ module Braintrust
           # Inline prompt definition
           sig do
             params(
-              inline_prompt: T.nilable(T.any(Braintrust::Models::PromptData, Braintrust::Internal::Util::AnyHash)),
+              inline_prompt: T.nilable(T.any(Braintrust::Models::PromptData, Braintrust::Internal::AnyHash)),
               name: T.nilable(String)
             )
               .returns(T.attached_class)
@@ -872,7 +858,7 @@ module Braintrust
         end
       end
 
-      class GitMetadataSettings < Braintrust::BaseModel
+      class GitMetadataSettings < Braintrust::Internal::Type::BaseModel
         sig { returns(Braintrust::Models::EvalCreateParams::GitMetadataSettings::Collect::OrSymbol) }
         attr_accessor :collect
 
@@ -907,7 +893,7 @@ module Braintrust
         end
 
         module Collect
-          extend Braintrust::Enum
+          extend Braintrust::Internal::Type::Enum
 
           TaggedSymbol =
             T.type_alias { T.all(Symbol, Braintrust::Models::EvalCreateParams::GitMetadataSettings::Collect) }
@@ -927,7 +913,7 @@ module Braintrust
         end
 
         module Field
-          extend Braintrust::Enum
+          extend Braintrust::Internal::Type::Enum
 
           TaggedSymbol =
             T.type_alias { T.all(Symbol, Braintrust::Models::EvalCreateParams::GitMetadataSettings::Field) }
@@ -957,9 +943,9 @@ module Braintrust
 
       # Options for tracing the evaluation
       module Parent
-        extend Braintrust::Union
+        extend Braintrust::Internal::Type::Union
 
-        class SpanParentStruct < Braintrust::BaseModel
+        class SpanParentStruct < Braintrust::Internal::Type::BaseModel
           # The id of the container object you are logging to
           sig { returns(String) }
           attr_accessor :object_id_
@@ -980,7 +966,7 @@ module Braintrust
               row_ids: T.nilable(
                 T.any(
                   Braintrust::Models::EvalCreateParams::Parent::SpanParentStruct::RowIDs,
-                  Braintrust::Internal::Util::AnyHash
+                  Braintrust::Internal::AnyHash
                 )
               )
             )
@@ -997,7 +983,7 @@ module Braintrust
               row_ids: T.nilable(
                 T.any(
                   Braintrust::Models::EvalCreateParams::Parent::SpanParentStruct::RowIDs,
-                  Braintrust::Internal::Util::AnyHash
+                  Braintrust::Internal::AnyHash
                 )
               )
             )
@@ -1021,7 +1007,7 @@ module Braintrust
           end
 
           module ObjectType
-            extend Braintrust::Enum
+            extend Braintrust::Internal::Type::Enum
 
             TaggedSymbol =
               T.type_alias { T.all(Symbol, Braintrust::Models::EvalCreateParams::Parent::SpanParentStruct::ObjectType) }
@@ -1060,7 +1046,7 @@ module Braintrust
             end
           end
 
-          class RowIDs < Braintrust::BaseModel
+          class RowIDs < Braintrust::Internal::Type::BaseModel
             # The id of the row
             sig { returns(String) }
             attr_accessor :id

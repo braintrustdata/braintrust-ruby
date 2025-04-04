@@ -4,7 +4,7 @@ module Braintrust
       { name: String, org_name: String? }
       & Braintrust::Internal::Type::request_parameters
 
-    class APIKeyCreateParams < Braintrust::BaseModel
+    class APIKeyCreateParams < Braintrust::Internal::Type::BaseModel
       extend Braintrust::Internal::Type::RequestParameters::Converter
       include Braintrust::Internal::Type::RequestParameters
 

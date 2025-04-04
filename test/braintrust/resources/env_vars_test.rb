@@ -74,7 +74,7 @@ class Braintrust::Test::Resources::EnvVarsTest < Braintrust::Test::ResourceTest
 
     assert_pattern do
       response => {
-        objects: ^(Braintrust::ArrayOf[Braintrust::Models::EnvVar])
+        objects: ^(Braintrust::Internal::Type::ArrayOf[Braintrust::Models::EnvVar])
       }
     end
   end

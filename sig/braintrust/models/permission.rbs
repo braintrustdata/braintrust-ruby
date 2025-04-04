@@ -11,7 +11,7 @@ module Braintrust
       | :delete_acls
 
     module Permission
-      extend Braintrust::Enum
+      extend Braintrust::Internal::Type::Enum
 
       CREATE: :create
       READ: :read

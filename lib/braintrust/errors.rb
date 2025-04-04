@@ -189,32 +189,4 @@ module Braintrust
       HTTP_STATUS = (500..)
     end
   end
-
-  Error = Braintrust::Errors::Error
-
-  ConversionError = Braintrust::Errors::ConversionError
-
-  APIError = Braintrust::Errors::APIError
-
-  APIStatusError = Braintrust::Errors::APIStatusError
-
-  APIConnectionError = Braintrust::Errors::APIConnectionError
-
-  APITimeoutError = Braintrust::Errors::APITimeoutError
-
-  BadRequestError = Braintrust::Errors::BadRequestError
-
-  AuthenticationError = Braintrust::Errors::AuthenticationError
-
-  PermissionDeniedError = Braintrust::Errors::PermissionDeniedError
-
-  NotFoundError = Braintrust::Errors::NotFoundError
-
-  ConflictError = Braintrust::Errors::ConflictError
-
-  UnprocessableEntityError = Braintrust::Errors::UnprocessableEntityError
-
-  RateLimitError = Braintrust::Errors::RateLimitError
-
-  InternalServerError = Braintrust::Errors::InternalServerError
 end

@@ -10,7 +10,7 @@ module Braintrust
       sig do
         params(
           organization_id: String,
-          request_options: T.nilable(T.any(Braintrust::RequestOptions, Braintrust::Internal::Util::AnyHash))
+          request_options: T.nilable(T.any(Braintrust::RequestOptions, Braintrust::Internal::AnyHash))
         )
           .returns(Braintrust::Models::Organization)
       end
@@ -32,7 +32,7 @@ module Braintrust
           name: T.nilable(String),
           proxy_url: T.nilable(String),
           realtime_url: T.nilable(String),
-          request_options: T.nilable(T.any(Braintrust::RequestOptions, Braintrust::Internal::Util::AnyHash))
+          request_options: T.nilable(T.any(Braintrust::RequestOptions, Braintrust::Internal::AnyHash))
         )
           .returns(Braintrust::Models::Organization)
       end
@@ -58,7 +58,7 @@ module Braintrust
           limit: T.nilable(Integer),
           org_name: String,
           starting_after: String,
-          request_options: T.nilable(T.any(Braintrust::RequestOptions, Braintrust::Internal::Util::AnyHash))
+          request_options: T.nilable(T.any(Braintrust::RequestOptions, Braintrust::Internal::AnyHash))
         )
           .returns(Braintrust::Internal::ListObjects[Braintrust::Models::Organization])
       end
@@ -90,7 +90,7 @@ module Braintrust
       sig do
         params(
           organization_id: String,
-          request_options: T.nilable(T.any(Braintrust::RequestOptions, Braintrust::Internal::Util::AnyHash))
+          request_options: T.nilable(T.any(Braintrust::RequestOptions, Braintrust::Internal::AnyHash))
         )
           .returns(Braintrust::Models::Organization)
       end

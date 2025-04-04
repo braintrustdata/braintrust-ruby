@@ -2,7 +2,7 @@
 
 module Braintrust
   module Models
-    class ViewReplaceParams < Braintrust::BaseModel
+    class ViewReplaceParams < Braintrust::Internal::Type::BaseModel
       extend Braintrust::Internal::Type::RequestParameters::Converter
       include Braintrust::Internal::Type::RequestParameters
 
@@ -30,10 +30,7 @@ module Braintrust
       sig { returns(T.nilable(Braintrust::Models::ViewOptions)) }
       attr_reader :options
 
-      sig do
-        params(options: T.nilable(T.any(Braintrust::Models::ViewOptions, Braintrust::Internal::Util::AnyHash)))
-          .void
-      end
+      sig { params(options: T.nilable(T.any(Braintrust::Models::ViewOptions, Braintrust::Internal::AnyHash))).void }
       attr_writer :options
 
       # Identifies the user who created the view
@@ -44,7 +41,7 @@ module Braintrust
       sig { returns(T.nilable(Braintrust::Models::ViewData)) }
       attr_reader :view_data
 
-      sig { params(view_data: T.nilable(T.any(Braintrust::Models::ViewData, Braintrust::Internal::Util::AnyHash))).void }
+      sig { params(view_data: T.nilable(T.any(Braintrust::Models::ViewData, Braintrust::Internal::AnyHash))).void }
       attr_writer :view_data
 
       sig do
@@ -54,10 +51,10 @@ module Braintrust
           object_type: Braintrust::Models::ACLObjectType::OrSymbol,
           view_type: T.nilable(Braintrust::Models::ViewReplaceParams::ViewType::OrSymbol),
           deleted_at: T.nilable(Time),
-          options: T.nilable(T.any(Braintrust::Models::ViewOptions, Braintrust::Internal::Util::AnyHash)),
+          options: T.nilable(T.any(Braintrust::Models::ViewOptions, Braintrust::Internal::AnyHash)),
           user_id: T.nilable(String),
-          view_data: T.nilable(T.any(Braintrust::Models::ViewData, Braintrust::Internal::Util::AnyHash)),
-          request_options: T.any(Braintrust::RequestOptions, Braintrust::Internal::Util::AnyHash)
+          view_data: T.nilable(T.any(Braintrust::Models::ViewData, Braintrust::Internal::AnyHash)),
+          request_options: T.any(Braintrust::RequestOptions, Braintrust::Internal::AnyHash)
         )
           .returns(T.attached_class)
       end
@@ -95,7 +92,7 @@ module Braintrust
 
       # Type of table that the view corresponds to.
       module ViewType
-        extend Braintrust::Enum
+        extend Braintrust::Internal::Type::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Braintrust::Models::ViewReplaceParams::ViewType) }
         OrSymbol =

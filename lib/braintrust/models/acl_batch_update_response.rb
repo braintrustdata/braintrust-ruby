@@ -2,7 +2,7 @@
 
 module Braintrust
   module Models
-    class ACLBatchUpdateResponse < Braintrust::BaseModel
+    class ACLBatchUpdateResponse < Braintrust::Internal::Type::BaseModel
       # @!attribute added_acls
       #   An ACL grants a certain permission or role to a certain user or group on an
       #     object.
@@ -16,7 +16,7 @@ module Braintrust
       #     part of a role.
       #
       #   @return [Array<Braintrust::Models::ACL>]
-      required :added_acls, -> { Braintrust::ArrayOf[Braintrust::Models::ACL] }
+      required :added_acls, -> { Braintrust::Internal::Type::ArrayOf[Braintrust::Models::ACL] }
 
       # @!attribute removed_acls
       #   An ACL grants a certain permission or role to a certain user or group on an
@@ -31,7 +31,7 @@ module Braintrust
       #     part of a role.
       #
       #   @return [Array<Braintrust::Models::ACL>]
-      required :removed_acls, -> { Braintrust::ArrayOf[Braintrust::Models::ACL] }
+      required :removed_acls, -> { Braintrust::Internal::Type::ArrayOf[Braintrust::Models::ACL] }
 
       # @!parse
       #   # @param added_acls [Array<Braintrust::Models::ACL>]
@@ -39,7 +39,7 @@ module Braintrust
       #   #
       #   def initialize(added_acls:, removed_acls:, **) = super
 
-      # def initialize: (Hash | Braintrust::BaseModel) -> void
+      # def initialize: (Hash | Braintrust::Internal::Type::BaseModel) -> void
     end
   end
 end

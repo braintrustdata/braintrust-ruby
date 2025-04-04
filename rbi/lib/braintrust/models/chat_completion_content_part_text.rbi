@@ -2,7 +2,7 @@
 
 module Braintrust
   module Models
-    class ChatCompletionContentPartText < Braintrust::BaseModel
+    class ChatCompletionContentPartText < Braintrust::Internal::Type::BaseModel
       sig { returns(Braintrust::Models::ChatCompletionContentPartText::Type::OrSymbol) }
       attr_accessor :type
 
@@ -24,7 +24,7 @@ module Braintrust
       end
 
       module Type
-        extend Braintrust::Enum
+        extend Braintrust::Internal::Type::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Braintrust::Models::ChatCompletionContentPartText::Type) }
         OrSymbol =

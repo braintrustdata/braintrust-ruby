@@ -10,7 +10,7 @@ module Braintrust
         row_height: String?
       }
 
-    class ViewOptions < Braintrust::BaseModel
+    class ViewOptions < Braintrust::Internal::Type::BaseModel
       attr_accessor column_order: ::Array[String]?
 
       attr_accessor column_sizing: ::Hash[Symbol, Float]?

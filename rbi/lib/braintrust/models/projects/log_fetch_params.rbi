@@ -3,7 +3,7 @@
 module Braintrust
   module Models
     module Projects
-      class LogFetchParams < Braintrust::BaseModel
+      class LogFetchParams < Braintrust::Internal::Type::BaseModel
         extend Braintrust::Internal::Type::RequestParameters::Converter
         include Braintrust::Internal::Type::RequestParameters
 
@@ -73,7 +73,7 @@ module Braintrust
             max_root_span_id: String,
             max_xact_id: String,
             version: String,
-            request_options: T.any(Braintrust::RequestOptions, Braintrust::Internal::Util::AnyHash)
+            request_options: T.any(Braintrust::RequestOptions, Braintrust::Internal::AnyHash)
           )
             .returns(T.attached_class)
         end

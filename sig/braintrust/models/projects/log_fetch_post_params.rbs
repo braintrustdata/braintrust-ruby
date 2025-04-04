@@ -11,7 +11,7 @@ module Braintrust
         }
         & Braintrust::Internal::Type::request_parameters
 
-      class LogFetchPostParams < Braintrust::BaseModel
+      class LogFetchPostParams < Braintrust::Internal::Type::BaseModel
         extend Braintrust::Internal::Type::RequestParameters::Converter
         include Braintrust::Internal::Type::RequestParameters
 

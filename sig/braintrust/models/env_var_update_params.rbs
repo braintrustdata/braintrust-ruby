@@ -4,7 +4,7 @@ module Braintrust
       { name: String, value: String? }
       & Braintrust::Internal::Type::request_parameters
 
-    class EnvVarUpdateParams < Braintrust::BaseModel
+    class EnvVarUpdateParams < Braintrust::Internal::Type::BaseModel
       extend Braintrust::Internal::Type::RequestParameters::Converter
       include Braintrust::Internal::Type::RequestParameters
 

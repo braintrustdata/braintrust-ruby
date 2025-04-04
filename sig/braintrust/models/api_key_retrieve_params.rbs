@@ -3,7 +3,7 @@ module Braintrust
     type api_key_retrieve_params =
       {  } & Braintrust::Internal::Type::request_parameters
 
-    class APIKeyRetrieveParams < Braintrust::BaseModel
+    class APIKeyRetrieveParams < Braintrust::Internal::Type::BaseModel
       extend Braintrust::Internal::Type::RequestParameters::Converter
       include Braintrust::Internal::Type::RequestParameters
 

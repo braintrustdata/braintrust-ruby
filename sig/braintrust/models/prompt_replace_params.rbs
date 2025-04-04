@@ -12,7 +12,7 @@ module Braintrust
       }
       & Braintrust::Internal::Type::request_parameters
 
-    class PromptReplaceParams < Braintrust::BaseModel
+    class PromptReplaceParams < Braintrust::Internal::Type::BaseModel
       extend Braintrust::Internal::Type::RequestParameters::Converter
       include Braintrust::Internal::Type::RequestParameters
 
@@ -46,7 +46,7 @@ module Braintrust
       type function_type = :llm | :scorer | :task | :tool
 
       module FunctionType
-        extend Braintrust::Enum
+        extend Braintrust::Internal::Type::Enum
 
         LLM: :llm
         SCORER: :scorer

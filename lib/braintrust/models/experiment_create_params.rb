@@ -3,7 +3,7 @@
 module Braintrust
   module Models
     # @see Braintrust::Resources::Experiments#create
-    class ExperimentCreateParams < Braintrust::BaseModel
+    class ExperimentCreateParams < Braintrust::Internal::Type::BaseModel
       # @!parse
       #   extend Braintrust::Internal::Type::RequestParameters::Converter
       include Braintrust::Internal::Type::RequestParameters
@@ -47,13 +47,15 @@ module Braintrust
       #     conflict.
       #
       #   @return [Boolean, nil]
-      optional :ensure_new, Braintrust::BooleanModel, nil?: true
+      optional :ensure_new, Braintrust::Internal::Type::BooleanModel, nil?: true
 
       # @!attribute metadata
       #   User-controlled metadata about the experiment
       #
       #   @return [Hash{Symbol=>Object, nil}, nil]
-      optional :metadata, Braintrust::HashOf[Braintrust::Unknown, nil?: true], nil?: true
+      optional :metadata,
+               Braintrust::Internal::Type::HashOf[Braintrust::Internal::Type::Unknown, nil?: true],
+               nil?: true
 
       # @!attribute name
       #   Name of the experiment. Within a project, experiment names are unique
@@ -66,7 +68,7 @@ module Braintrust
       #     anybody inside or outside the organization
       #
       #   @return [Boolean, nil]
-      optional :public, Braintrust::BooleanModel, nil?: true
+      optional :public, Braintrust::Internal::Type::BooleanModel, nil?: true
 
       # @!attribute repo_info
       #   Metadata about the state of the repo when the experiment was created
@@ -104,7 +106,7 @@ module Braintrust
       #     super
       #   end
 
-      # def initialize: (Hash | Braintrust::BaseModel) -> void
+      # def initialize: (Hash | Braintrust::Internal::Type::BaseModel) -> void
     end
   end
 end

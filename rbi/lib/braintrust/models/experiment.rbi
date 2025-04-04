@@ -2,7 +2,7 @@
 
 module Braintrust
   module Models
-    class Experiment < Braintrust::BaseModel
+    class Experiment < Braintrust::Internal::Type::BaseModel
       # Unique identifier for the experiment
       sig { returns(String) }
       attr_accessor :id
@@ -58,7 +58,7 @@ module Braintrust
       sig { returns(T.nilable(Braintrust::Models::RepoInfo)) }
       attr_reader :repo_info
 
-      sig { params(repo_info: T.nilable(T.any(Braintrust::Models::RepoInfo, Braintrust::Internal::Util::AnyHash))).void }
+      sig { params(repo_info: T.nilable(T.any(Braintrust::Models::RepoInfo, Braintrust::Internal::AnyHash))).void }
       attr_writer :repo_info
 
       # Identifies the user who created the experiment
@@ -79,7 +79,7 @@ module Braintrust
           deleted_at: T.nilable(Time),
           description: T.nilable(String),
           metadata: T.nilable(T::Hash[Symbol, T.nilable(T.anything)]),
-          repo_info: T.nilable(T.any(Braintrust::Models::RepoInfo, Braintrust::Internal::Util::AnyHash)),
+          repo_info: T.nilable(T.any(Braintrust::Models::RepoInfo, Braintrust::Internal::AnyHash)),
           user_id: T.nilable(String)
         )
           .returns(T.attached_class)

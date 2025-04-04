@@ -9,7 +9,7 @@ module Braintrust
         created: String?
       }
 
-    class ObjectReference < Braintrust::BaseModel
+    class ObjectReference < Braintrust::Internal::Type::BaseModel
       attr_accessor id: String
 
       attr_accessor _xact_id: String
@@ -39,7 +39,7 @@ module Braintrust
         | :project_logs
 
       module ObjectType
-        extend Braintrust::Enum
+        extend Braintrust::Internal::Type::Enum
 
         EXPERIMENT: :experiment
         DATASET: :dataset

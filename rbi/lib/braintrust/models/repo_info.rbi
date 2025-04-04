@@ -2,7 +2,7 @@
 
 module Braintrust
   module Models
-    class RepoInfo < Braintrust::BaseModel
+    class RepoInfo < Braintrust::Internal::Type::BaseModel
       # Email of the author of the most recent commit
       sig { returns(T.nilable(String)) }
       attr_accessor :author_email

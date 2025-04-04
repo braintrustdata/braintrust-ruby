@@ -2,7 +2,7 @@
 
 module Braintrust
   module Models
-    class ViewData < Braintrust::BaseModel
+    class ViewData < Braintrust::Internal::Type::BaseModel
       # @!attribute search
       #
       #   @return [Braintrust::Models::ViewDataSearch, nil]
@@ -15,7 +15,7 @@ module Braintrust
       #   #
       #   def initialize(search: nil, **) = super
 
-      # def initialize: (Hash | Braintrust::BaseModel) -> void
+      # def initialize: (Hash | Braintrust::Internal::Type::BaseModel) -> void
     end
   end
 end

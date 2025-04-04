@@ -3,7 +3,7 @@ module Braintrust
     type organization_delete_params =
       {  } & Braintrust::Internal::Type::request_parameters
 
-    class OrganizationDeleteParams < Braintrust::BaseModel
+    class OrganizationDeleteParams < Braintrust::Internal::Type::BaseModel
       extend Braintrust::Internal::Type::RequestParameters::Converter
       include Braintrust::Internal::Type::RequestParameters
 

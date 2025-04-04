@@ -10,7 +10,7 @@ module Braintrust
       }
       & Braintrust::Internal::Type::request_parameters
 
-    class ProjectScoreUpdateParams < Braintrust::BaseModel
+    class ProjectScoreUpdateParams < Braintrust::Internal::Type::BaseModel
       extend Braintrust::Internal::Type::RequestParameters::Converter
       include Braintrust::Internal::Type::RequestParameters
 
@@ -41,7 +41,7 @@ module Braintrust
         | ::Array[String]
 
       module Categories
-        extend Braintrust::Union
+        extend Braintrust::Internal::Type::Union
 
         def self?.variants: -> [::Array[Braintrust::Models::ProjectScoreCategory], ::Hash[Symbol, Float], ::Array[String]]
 

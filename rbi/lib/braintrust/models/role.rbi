@@ -2,7 +2,7 @@
 
 module Braintrust
   module Models
-    class Role < Braintrust::BaseModel
+    class Role < Braintrust::Internal::Type::BaseModel
       # Unique identifier for the role
       sig { returns(String) }
       attr_accessor :id
@@ -58,9 +58,7 @@ module Braintrust
           created: T.nilable(Time),
           deleted_at: T.nilable(Time),
           description: T.nilable(String),
-          member_permissions: T.nilable(
-            T::Array[T.any(Braintrust::Models::Role::MemberPermission, Braintrust::Internal::Util::AnyHash)]
-          ),
+          member_permissions: T.nilable(T::Array[T.any(Braintrust::Models::Role::MemberPermission, Braintrust::Internal::AnyHash)]),
           member_roles: T.nilable(T::Array[String]),
           org_id: T.nilable(String),
           user_id: T.nilable(String)
@@ -99,7 +97,7 @@ module Braintrust
       def to_hash
       end
 
-      class MemberPermission < Braintrust::BaseModel
+      class MemberPermission < Braintrust::Internal::Type::BaseModel
         # Each permission permits a certain type of operation on an object in the system
         #
         #   Permissions can be assigned to to objects on an individual basis, or grouped

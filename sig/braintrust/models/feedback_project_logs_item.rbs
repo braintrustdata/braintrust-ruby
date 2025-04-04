@@ -11,7 +11,7 @@ module Braintrust
         tags: ::Array[String]?
       }
 
-    class FeedbackProjectLogsItem < Braintrust::BaseModel
+    class FeedbackProjectLogsItem < Braintrust::Internal::Type::BaseModel
       attr_accessor id: String
 
       attr_accessor comment: String?
@@ -43,7 +43,7 @@ module Braintrust
       type source = :app | :api | :external
 
       module Source
-        extend Braintrust::Enum
+        extend Braintrust::Internal::Type::Enum
 
         APP: :app
         API: :api

@@ -4,7 +4,7 @@ module Braintrust
   module Models
     # Type of table that the view corresponds to.
     module ViewType
-      extend Braintrust::Enum
+      extend Braintrust::Internal::Type::Enum
 
       PROJECTS = :projects
       EXPERIMENTS = :experiments

@@ -17,11 +17,11 @@ module Braintrust
         sig(:final) do
           params(
             type_info: T.any(
-              Braintrust::Internal::Util::AnyHash,
+              Braintrust::Internal::AnyHash,
               T.proc.returns(Braintrust::Internal::Type::Converter::Input),
               Braintrust::Internal::Type::Converter::Input
             ),
-            spec: Braintrust::Internal::Util::AnyHash
+            spec: Braintrust::Internal::AnyHash
           )
             .returns(T.attached_class)
         end
@@ -72,11 +72,11 @@ module Braintrust
         sig(:final) do
           params(
             type_info: T.any(
-              Braintrust::Internal::Util::AnyHash,
+              Braintrust::Internal::AnyHash,
               T.proc.returns(Braintrust::Internal::Type::Converter::Input),
               Braintrust::Internal::Type::Converter::Input
             ),
-            spec: Braintrust::Internal::Util::AnyHash
+            spec: Braintrust::Internal::AnyHash
           )
             .void
         end

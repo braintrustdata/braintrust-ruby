@@ -13,7 +13,7 @@ module Braintrust
         params(
           data: T.any(
             Braintrust::Models::EvalCreateParams::Data::DatasetID,
-            Braintrust::Internal::Util::AnyHash,
+            Braintrust::Internal::AnyHash,
             Braintrust::Models::EvalCreateParams::Data::ProjectDatasetName,
             Braintrust::Models::EvalCreateParams::Data::DatasetRows
           ),
@@ -21,7 +21,7 @@ module Braintrust
           scores: T::Array[
           T.any(
             Braintrust::Models::EvalCreateParams::Score::FunctionID,
-            Braintrust::Internal::Util::AnyHash,
+            Braintrust::Internal::AnyHash,
             Braintrust::Models::EvalCreateParams::Score::ProjectSlug,
             Braintrust::Models::EvalCreateParams::Score::GlobalFunction,
             Braintrust::Models::EvalCreateParams::Score::PromptSessionID,
@@ -31,7 +31,7 @@ module Braintrust
           ],
           task: T.any(
             Braintrust::Models::EvalCreateParams::Task::FunctionID,
-            Braintrust::Internal::Util::AnyHash,
+            Braintrust::Internal::AnyHash,
             Braintrust::Models::EvalCreateParams::Task::ProjectSlug,
             Braintrust::Models::EvalCreateParams::Task::GlobalFunction,
             Braintrust::Models::EvalCreateParams::Task::PromptSessionID,
@@ -41,22 +41,20 @@ module Braintrust
           base_experiment_id: T.nilable(String),
           base_experiment_name: T.nilable(String),
           experiment_name: String,
-          git_metadata_settings: T.nilable(
-            T.any(Braintrust::Models::EvalCreateParams::GitMetadataSettings, Braintrust::Internal::Util::AnyHash)
-          ),
+          git_metadata_settings: T.nilable(T.any(Braintrust::Models::EvalCreateParams::GitMetadataSettings, Braintrust::Internal::AnyHash)),
           is_public: T.nilable(T::Boolean),
           max_concurrency: T.nilable(Float),
           metadata: T::Hash[Symbol, T.nilable(T.anything)],
           parent: T.any(
             Braintrust::Models::EvalCreateParams::Parent::SpanParentStruct,
-            Braintrust::Internal::Util::AnyHash,
+            Braintrust::Internal::AnyHash,
             String
           ),
-          repo_info: T.nilable(T.any(Braintrust::Models::RepoInfo, Braintrust::Internal::Util::AnyHash)),
+          repo_info: T.nilable(T.any(Braintrust::Models::RepoInfo, Braintrust::Internal::AnyHash)),
           stream: T::Boolean,
           timeout: T.nilable(Float),
           trial_count: T.nilable(Float),
-          request_options: T.nilable(T.any(Braintrust::RequestOptions, Braintrust::Internal::Util::AnyHash))
+          request_options: T.nilable(T.any(Braintrust::RequestOptions, Braintrust::Internal::AnyHash))
         )
           .returns(Braintrust::Models::SummarizeExperimentResponse)
       end
