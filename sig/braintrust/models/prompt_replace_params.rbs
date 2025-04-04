@@ -10,11 +10,11 @@ module Braintrust
         prompt_data: Braintrust::Models::PromptData?,
         tags: ::Array[String]?
       }
-      & Braintrust::request_parameters
+      & Braintrust::Internal::Type::request_parameters
 
     class PromptReplaceParams < Braintrust::BaseModel
-      extend Braintrust::Type::RequestParameters::Converter
-      include Braintrust::RequestParameters
+      extend Braintrust::Internal::Type::RequestParameters::Converter
+      include Braintrust::Internal::Type::RequestParameters
 
       attr_accessor name: String
 

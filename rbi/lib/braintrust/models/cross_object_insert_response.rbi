@@ -17,9 +17,15 @@ module Braintrust
 
       sig do
         params(
-          dataset: T.nilable(T::Hash[Symbol, T.any(Braintrust::Models::InsertEventsResponse, Braintrust::Util::AnyHash)]),
-          experiment: T.nilable(T::Hash[Symbol, T.any(Braintrust::Models::InsertEventsResponse, Braintrust::Util::AnyHash)]),
-          project_logs: T.nilable(T::Hash[Symbol, T.any(Braintrust::Models::InsertEventsResponse, Braintrust::Util::AnyHash)])
+          dataset: T.nilable(
+            T::Hash[Symbol, T.any(Braintrust::Models::InsertEventsResponse, Braintrust::Internal::Util::AnyHash)]
+          ),
+          experiment: T.nilable(
+            T::Hash[Symbol, T.any(Braintrust::Models::InsertEventsResponse, Braintrust::Internal::Util::AnyHash)]
+          ),
+          project_logs: T.nilable(
+            T::Hash[Symbol, T.any(Braintrust::Models::InsertEventsResponse, Braintrust::Internal::Util::AnyHash)]
+          )
         )
           .returns(T.attached_class)
       end

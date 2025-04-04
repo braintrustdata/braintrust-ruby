@@ -10,11 +10,11 @@ module Braintrust
         view_data: Braintrust::Models::ViewData?,
         view_type: Braintrust::Models::ViewUpdateParams::view_type?
       }
-      & Braintrust::request_parameters
+      & Braintrust::Internal::Type::request_parameters
 
     class ViewUpdateParams < Braintrust::BaseModel
-      extend Braintrust::Type::RequestParameters::Converter
-      include Braintrust::RequestParameters
+      extend Braintrust::Internal::Type::RequestParameters::Converter
+      include Braintrust::Internal::Type::RequestParameters
 
       attr_accessor object_id_: String
 

@@ -6,7 +6,14 @@ module Braintrust
       # Default endpoint. Simply replies with 'Hello, World!'. Authorization is not
       #   required
       sig do
-        params(request_options: T.nilable(T.any(Braintrust::RequestOptions, Braintrust::Util::AnyHash)))
+        params(
+          request_options: T.nilable(
+            T.any(
+              Braintrust::RequestOptions,
+              Braintrust::Internal::Util::AnyHash
+            )
+          )
+        )
           .returns(String)
       end
       def hello_world(request_options: {})

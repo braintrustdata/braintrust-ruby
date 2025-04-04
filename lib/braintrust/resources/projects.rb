@@ -86,7 +86,7 @@ module Braintrust
       # @param starting_after [String]
       # @param request_options [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Braintrust::ListObjects<Braintrust::Models::Project>]
+      # @return [Braintrust::Internal::ListObjects<Braintrust::Models::Project>]
       #
       # @see Braintrust::Models::ProjectListParams
       def list(params = {})
@@ -95,7 +95,7 @@ module Braintrust
           method: :get,
           path: "v1/project",
           query: parsed,
-          page: Braintrust::ListObjects,
+          page: Braintrust::Internal::ListObjects,
           model: Braintrust::Models::Project,
           options: options
         )

@@ -3,8 +3,8 @@
 module Braintrust
   module Models
     class ProjectUpdateParams < Braintrust::BaseModel
-      extend Braintrust::Type::RequestParameters::Converter
-      include Braintrust::RequestParameters
+      extend Braintrust::Internal::Type::RequestParameters::Converter
+      include Braintrust::Internal::Type::RequestParameters
 
       # Name of the project
       sig { returns(T.nilable(String)) }
@@ -15,14 +15,19 @@ module Braintrust
       sig { returns(T.nilable(Braintrust::Models::ProjectSettings)) }
       attr_reader :settings
 
-      sig { params(settings: T.nilable(T.any(Braintrust::Models::ProjectSettings, Braintrust::Util::AnyHash))).void }
+      sig do
+        params(
+          settings: T.nilable(T.any(Braintrust::Models::ProjectSettings, Braintrust::Internal::Util::AnyHash))
+        )
+          .void
+      end
       attr_writer :settings
 
       sig do
         params(
           name: T.nilable(String),
-          settings: T.nilable(T.any(Braintrust::Models::ProjectSettings, Braintrust::Util::AnyHash)),
-          request_options: T.any(Braintrust::RequestOptions, Braintrust::Util::AnyHash)
+          settings: T.nilable(T.any(Braintrust::Models::ProjectSettings, Braintrust::Internal::Util::AnyHash)),
+          request_options: T.any(Braintrust::RequestOptions, Braintrust::Internal::Util::AnyHash)
         )
           .returns(T.attached_class)
       end

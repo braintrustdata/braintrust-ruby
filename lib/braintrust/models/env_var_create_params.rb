@@ -5,8 +5,8 @@ module Braintrust
     # @see Braintrust::Resources::EnvVars#create
     class EnvVarCreateParams < Braintrust::BaseModel
       # @!parse
-      #   extend Braintrust::Type::RequestParameters::Converter
-      include Braintrust::RequestParameters
+      #   extend Braintrust::Internal::Type::RequestParameters::Converter
+      include Braintrust::Internal::Type::RequestParameters
 
       # @!attribute name
       #   The name of the environment variable

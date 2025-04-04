@@ -23,7 +23,12 @@ module Braintrust
       sig { returns(T.nilable(Braintrust::Models::DataSummary)) }
       attr_reader :data_summary
 
-      sig { params(data_summary: T.nilable(T.any(Braintrust::Models::DataSummary, Braintrust::Util::AnyHash))).void }
+      sig do
+        params(
+          data_summary: T.nilable(T.any(Braintrust::Models::DataSummary, Braintrust::Internal::Util::AnyHash))
+        )
+          .void
+      end
       attr_writer :data_summary
 
       # Summary of a dataset
@@ -33,7 +38,7 @@ module Braintrust
           dataset_url: String,
           project_name: String,
           project_url: String,
-          data_summary: T.nilable(T.any(Braintrust::Models::DataSummary, Braintrust::Util::AnyHash))
+          data_summary: T.nilable(T.any(Braintrust::Models::DataSummary, Braintrust::Internal::Util::AnyHash))
         )
           .returns(T.attached_class)
       end

@@ -8,7 +8,7 @@ module Braintrust
       attr_accessor :objects
 
       sig do
-        params(objects: T::Array[T.any(Braintrust::Models::EnvVar, Braintrust::Util::AnyHash)])
+        params(objects: T::Array[T.any(Braintrust::Models::EnvVar, Braintrust::Internal::Util::AnyHash)])
           .returns(T.attached_class)
       end
       def self.new(objects:)

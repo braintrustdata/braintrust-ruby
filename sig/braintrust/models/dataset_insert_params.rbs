@@ -2,11 +2,11 @@ module Braintrust
   module Models
     type dataset_insert_params =
       { events: ::Array[Braintrust::Models::InsertDatasetEvent] }
-      & Braintrust::request_parameters
+      & Braintrust::Internal::Type::request_parameters
 
     class DatasetInsertParams < Braintrust::BaseModel
-      extend Braintrust::Type::RequestParameters::Converter
-      include Braintrust::RequestParameters
+      extend Braintrust::Internal::Type::RequestParameters::Converter
+      include Braintrust::Internal::Type::RequestParameters
 
       attr_accessor events: ::Array[Braintrust::Models::InsertDatasetEvent]
 

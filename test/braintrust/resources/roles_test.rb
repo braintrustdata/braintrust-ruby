@@ -73,7 +73,7 @@ class Braintrust::Test::Resources::RolesTest < Braintrust::Test::ResourceTest
     response = @braintrust.roles.list
 
     assert_pattern do
-      response => Braintrust::ListObjects
+      response => Braintrust::Internal::ListObjects
     end
 
     row = response.to_enum.first

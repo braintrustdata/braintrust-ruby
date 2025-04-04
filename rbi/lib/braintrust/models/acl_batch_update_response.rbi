@@ -31,8 +31,8 @@ module Braintrust
 
       sig do
         params(
-          added_acls: T::Array[T.any(Braintrust::Models::ACL, Braintrust::Util::AnyHash)],
-          removed_acls: T::Array[T.any(Braintrust::Models::ACL, Braintrust::Util::AnyHash)]
+          added_acls: T::Array[T.any(Braintrust::Models::ACL, Braintrust::Internal::Util::AnyHash)],
+          removed_acls: T::Array[T.any(Braintrust::Models::ACL, Braintrust::Internal::Util::AnyHash)]
         )
           .returns(T.attached_class)
       end

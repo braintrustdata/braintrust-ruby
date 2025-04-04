@@ -12,7 +12,7 @@ module Braintrust
           project_id: String,
           description: T.nilable(String),
           metadata: T.nilable(T::Hash[Symbol, T.nilable(T.anything)]),
-          request_options: T.nilable(T.any(Braintrust::RequestOptions, Braintrust::Util::AnyHash))
+          request_options: T.nilable(T.any(Braintrust::RequestOptions, Braintrust::Internal::Util::AnyHash))
         )
           .returns(Braintrust::Models::Dataset)
       end
@@ -33,7 +33,7 @@ module Braintrust
       sig do
         params(
           dataset_id: String,
-          request_options: T.nilable(T.any(Braintrust::RequestOptions, Braintrust::Util::AnyHash))
+          request_options: T.nilable(T.any(Braintrust::RequestOptions, Braintrust::Internal::Util::AnyHash))
         )
           .returns(Braintrust::Models::Dataset)
       end
@@ -53,7 +53,7 @@ module Braintrust
           description: T.nilable(String),
           metadata: T.nilable(T::Hash[Symbol, T.nilable(T.anything)]),
           name: T.nilable(String),
-          request_options: T.nilable(T.any(Braintrust::RequestOptions, Braintrust::Util::AnyHash))
+          request_options: T.nilable(T.any(Braintrust::RequestOptions, Braintrust::Internal::Util::AnyHash))
         )
           .returns(Braintrust::Models::Dataset)
       end
@@ -82,9 +82,9 @@ module Braintrust
           project_id: String,
           project_name: String,
           starting_after: String,
-          request_options: T.nilable(T.any(Braintrust::RequestOptions, Braintrust::Util::AnyHash))
+          request_options: T.nilable(T.any(Braintrust::RequestOptions, Braintrust::Internal::Util::AnyHash))
         )
-          .returns(Braintrust::ListObjects[Braintrust::Models::Dataset])
+          .returns(Braintrust::Internal::ListObjects[Braintrust::Models::Dataset])
       end
       def list(
         # Name of the dataset to search for
@@ -120,7 +120,7 @@ module Braintrust
       sig do
         params(
           dataset_id: String,
-          request_options: T.nilable(T.any(Braintrust::RequestOptions, Braintrust::Util::AnyHash))
+          request_options: T.nilable(T.any(Braintrust::RequestOptions, Braintrust::Internal::Util::AnyHash))
         )
           .returns(Braintrust::Models::Dataset)
       end
@@ -135,8 +135,8 @@ module Braintrust
       sig do
         params(
           dataset_id: String,
-          feedback: T::Array[T.any(Braintrust::Models::FeedbackDatasetItem, Braintrust::Util::AnyHash)],
-          request_options: T.nilable(T.any(Braintrust::RequestOptions, Braintrust::Util::AnyHash))
+          feedback: T::Array[T.any(Braintrust::Models::FeedbackDatasetItem, Braintrust::Internal::Util::AnyHash)],
+          request_options: T.nilable(T.any(Braintrust::RequestOptions, Braintrust::Internal::Util::AnyHash))
         )
           .returns(Braintrust::Models::FeedbackResponseSchema)
       end
@@ -159,7 +159,7 @@ module Braintrust
           max_root_span_id: String,
           max_xact_id: String,
           version: String,
-          request_options: T.nilable(T.any(Braintrust::RequestOptions, Braintrust::Util::AnyHash))
+          request_options: T.nilable(T.any(Braintrust::RequestOptions, Braintrust::Internal::Util::AnyHash))
         )
           .returns(Braintrust::Models::FetchDatasetEventsResponse)
       end
@@ -224,7 +224,7 @@ module Braintrust
           max_root_span_id: T.nilable(String),
           max_xact_id: T.nilable(String),
           version: T.nilable(String),
-          request_options: T.nilable(T.any(Braintrust::RequestOptions, Braintrust::Util::AnyHash))
+          request_options: T.nilable(T.any(Braintrust::RequestOptions, Braintrust::Internal::Util::AnyHash))
         )
           .returns(Braintrust::Models::FetchDatasetEventsResponse)
       end
@@ -288,8 +288,8 @@ module Braintrust
       sig do
         params(
           dataset_id: String,
-          events: T::Array[T.any(Braintrust::Models::InsertDatasetEvent, Braintrust::Util::AnyHash)],
-          request_options: T.nilable(T.any(Braintrust::RequestOptions, Braintrust::Util::AnyHash))
+          events: T::Array[T.any(Braintrust::Models::InsertDatasetEvent, Braintrust::Internal::Util::AnyHash)],
+          request_options: T.nilable(T.any(Braintrust::RequestOptions, Braintrust::Internal::Util::AnyHash))
         )
           .returns(Braintrust::Models::InsertEventsResponse)
       end
@@ -307,7 +307,7 @@ module Braintrust
         params(
           dataset_id: String,
           summarize_data: T.nilable(T::Boolean),
-          request_options: T.nilable(T.any(Braintrust::RequestOptions, Braintrust::Util::AnyHash))
+          request_options: T.nilable(T.any(Braintrust::RequestOptions, Braintrust::Internal::Util::AnyHash))
         )
           .returns(Braintrust::Models::SummarizeDatasetResponse)
       end

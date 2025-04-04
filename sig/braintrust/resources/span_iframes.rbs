@@ -32,7 +32,7 @@ module Braintrust
         ?span_iframe_name: String,
         ?starting_after: String,
         ?request_options: Braintrust::request_opts
-      ) -> Braintrust::ListObjects[Braintrust::Models::SpanIFrame]
+      ) -> Braintrust::Internal::ListObjects[Braintrust::Models::SpanIFrame]
 
       def delete: (
         String span_iframe_id,

@@ -2,11 +2,11 @@ module Braintrust
   module Models
     type dataset_update_params =
       { description: String?, metadata: ::Hash[Symbol, top?]?, name: String? }
-      & Braintrust::request_parameters
+      & Braintrust::Internal::Type::request_parameters
 
     class DatasetUpdateParams < Braintrust::BaseModel
-      extend Braintrust::Type::RequestParameters::Converter
-      include Braintrust::RequestParameters
+      extend Braintrust::Internal::Type::RequestParameters::Converter
+      include Braintrust::Internal::Type::RequestParameters
 
       attr_accessor description: String?
 

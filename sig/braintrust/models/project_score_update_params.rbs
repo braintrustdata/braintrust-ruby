@@ -8,11 +8,11 @@ module Braintrust
         name: String?,
         score_type: Braintrust::Models::project_score_type?
       }
-      & Braintrust::request_parameters
+      & Braintrust::Internal::Type::request_parameters
 
     class ProjectScoreUpdateParams < Braintrust::BaseModel
-      extend Braintrust::Type::RequestParameters::Converter
-      include Braintrust::RequestParameters
+      extend Braintrust::Internal::Type::RequestParameters::Converter
+      include Braintrust::Internal::Type::RequestParameters
 
       attr_accessor categories: Braintrust::Models::ProjectScoreUpdateParams::categories?
 

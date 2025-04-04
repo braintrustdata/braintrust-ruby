@@ -7,11 +7,11 @@ module Braintrust
         object_type: Braintrust::Models::EnvVarCreateParams::object_type,
         value: String?
       }
-      & Braintrust::request_parameters
+      & Braintrust::Internal::Type::request_parameters
 
     class EnvVarCreateParams < Braintrust::BaseModel
-      extend Braintrust::Type::RequestParameters::Converter
-      include Braintrust::RequestParameters
+      extend Braintrust::Internal::Type::RequestParameters::Converter
+      include Braintrust::Internal::Type::RequestParameters
 
       attr_accessor name: String
 

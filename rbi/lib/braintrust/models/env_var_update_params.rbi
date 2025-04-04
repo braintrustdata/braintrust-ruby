@@ -3,8 +3,8 @@
 module Braintrust
   module Models
     class EnvVarUpdateParams < Braintrust::BaseModel
-      extend Braintrust::Type::RequestParameters::Converter
-      include Braintrust::RequestParameters
+      extend Braintrust::Internal::Type::RequestParameters::Converter
+      include Braintrust::Internal::Type::RequestParameters
 
       # The name of the environment variable
       sig { returns(String) }
@@ -18,7 +18,7 @@ module Braintrust
         params(
           name: String,
           value: T.nilable(String),
-          request_options: T.any(Braintrust::RequestOptions, Braintrust::Util::AnyHash)
+          request_options: T.any(Braintrust::RequestOptions, Braintrust::Internal::Util::AnyHash)
         )
           .returns(T.attached_class)
       end

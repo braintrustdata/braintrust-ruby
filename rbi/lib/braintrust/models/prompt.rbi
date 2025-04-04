@@ -53,7 +53,10 @@ module Braintrust
       sig { returns(T.nilable(Braintrust::Models::PromptData)) }
       attr_reader :prompt_data
 
-      sig { params(prompt_data: T.nilable(T.any(Braintrust::Models::PromptData, Braintrust::Util::AnyHash))).void }
+      sig do
+        params(prompt_data: T.nilable(T.any(Braintrust::Models::PromptData, Braintrust::Internal::Util::AnyHash)))
+          .void
+      end
       attr_writer :prompt_data
 
       # A list of tags for the prompt
@@ -73,7 +76,7 @@ module Braintrust
           description: T.nilable(String),
           function_type: T.nilable(Braintrust::Models::Prompt::FunctionType::OrSymbol),
           metadata: T.nilable(T::Hash[Symbol, T.nilable(T.anything)]),
-          prompt_data: T.nilable(T.any(Braintrust::Models::PromptData, Braintrust::Util::AnyHash)),
+          prompt_data: T.nilable(T.any(Braintrust::Models::PromptData, Braintrust::Internal::Util::AnyHash)),
           tags: T.nilable(T::Array[String])
         )
           .returns(T.attached_class)

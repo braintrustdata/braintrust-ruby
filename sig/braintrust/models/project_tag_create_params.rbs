@@ -2,11 +2,11 @@ module Braintrust
   module Models
     type project_tag_create_params =
       { name: String, project_id: String, color: String?, description: String? }
-      & Braintrust::request_parameters
+      & Braintrust::Internal::Type::request_parameters
 
     class ProjectTagCreateParams < Braintrust::BaseModel
-      extend Braintrust::Type::RequestParameters::Converter
-      include Braintrust::RequestParameters
+      extend Braintrust::Internal::Type::RequestParameters::Converter
+      include Braintrust::Internal::Type::RequestParameters
 
       attr_accessor name: String
 

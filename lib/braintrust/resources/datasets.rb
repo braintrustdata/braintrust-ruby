@@ -89,7 +89,7 @@ module Braintrust
       # @param starting_after [String]
       # @param request_options [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Braintrust::ListObjects<Braintrust::Models::Dataset>]
+      # @return [Braintrust::Internal::ListObjects<Braintrust::Models::Dataset>]
       #
       # @see Braintrust::Models::DatasetListParams
       def list(params = {})
@@ -98,7 +98,7 @@ module Braintrust
           method: :get,
           path: "v1/dataset",
           query: parsed,
-          page: Braintrust::ListObjects,
+          page: Braintrust::Internal::ListObjects,
           model: Braintrust::Models::Dataset,
           options: options
         )

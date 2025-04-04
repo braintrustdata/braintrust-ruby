@@ -14,7 +14,7 @@ module Braintrust
           restrict_object_type: T.nilable(Braintrust::Models::ACLObjectType::OrSymbol),
           role_id: T.nilable(String),
           user_id: T.nilable(String),
-          request_options: T.nilable(T.any(Braintrust::RequestOptions, Braintrust::Util::AnyHash))
+          request_options: T.nilable(T.any(Braintrust::RequestOptions, Braintrust::Internal::Util::AnyHash))
         )
           .returns(Braintrust::Models::ACL)
       end
@@ -46,7 +46,7 @@ module Braintrust
       sig do
         params(
           acl_id: String,
-          request_options: T.nilable(T.any(Braintrust::RequestOptions, Braintrust::Util::AnyHash))
+          request_options: T.nilable(T.any(Braintrust::RequestOptions, Braintrust::Internal::Util::AnyHash))
         )
           .returns(Braintrust::Models::ACL)
       end
@@ -67,9 +67,9 @@ module Braintrust
           ids: T.any(String, T::Array[String]),
           limit: T.nilable(Integer),
           starting_after: String,
-          request_options: T.nilable(T.any(Braintrust::RequestOptions, Braintrust::Util::AnyHash))
+          request_options: T.nilable(T.any(Braintrust::RequestOptions, Braintrust::Internal::Util::AnyHash))
         )
-          .returns(Braintrust::ListObjects[Braintrust::Models::ACL])
+          .returns(Braintrust::Internal::ListObjects[Braintrust::Models::ACL])
       end
       def list(
         # The id of the object the ACL applies to
@@ -101,7 +101,7 @@ module Braintrust
       sig do
         params(
           acl_id: String,
-          request_options: T.nilable(T.any(Braintrust::RequestOptions, Braintrust::Util::AnyHash))
+          request_options: T.nilable(T.any(Braintrust::RequestOptions, Braintrust::Internal::Util::AnyHash))
         )
           .returns(Braintrust::Models::ACL)
       end
@@ -117,9 +117,13 @@ module Braintrust
       #   effect.
       sig do
         params(
-          add_acls: T.nilable(T::Array[T.any(Braintrust::Models::ACLBatchUpdateParams::AddACL, Braintrust::Util::AnyHash)]),
-          remove_acls: T.nilable(T::Array[T.any(Braintrust::Models::ACLBatchUpdateParams::RemoveACL, Braintrust::Util::AnyHash)]),
-          request_options: T.nilable(T.any(Braintrust::RequestOptions, Braintrust::Util::AnyHash))
+          add_acls: T.nilable(
+            T::Array[T.any(Braintrust::Models::ACLBatchUpdateParams::AddACL, Braintrust::Internal::Util::AnyHash)]
+          ),
+          remove_acls: T.nilable(
+            T::Array[T.any(Braintrust::Models::ACLBatchUpdateParams::RemoveACL, Braintrust::Internal::Util::AnyHash)]
+          ),
+          request_options: T.nilable(T.any(Braintrust::RequestOptions, Braintrust::Internal::Util::AnyHash))
         )
           .returns(Braintrust::Models::ACLBatchUpdateResponse)
       end
@@ -160,7 +164,7 @@ module Braintrust
           restrict_object_type: T.nilable(Braintrust::Models::ACLObjectType::OrSymbol),
           role_id: T.nilable(String),
           user_id: T.nilable(String),
-          request_options: T.nilable(T.any(Braintrust::RequestOptions, Braintrust::Util::AnyHash))
+          request_options: T.nilable(T.any(Braintrust::RequestOptions, Braintrust::Internal::Util::AnyHash))
         )
           .returns(Braintrust::Models::ACL)
       end

@@ -6,8 +6,8 @@ module Braintrust
       # @see Braintrust::Resources::Projects::Logs#insert
       class LogInsertParams < Braintrust::BaseModel
         # @!parse
-        #   extend Braintrust::Type::RequestParameters::Converter
-        include Braintrust::RequestParameters
+        #   extend Braintrust::Internal::Type::RequestParameters::Converter
+        include Braintrust::Internal::Type::RequestParameters
 
         # @!attribute events
         #   A list of project logs events to insert

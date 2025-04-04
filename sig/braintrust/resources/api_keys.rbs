@@ -20,7 +20,7 @@ module Braintrust
         ?org_name: String,
         ?starting_after: String,
         ?request_options: Braintrust::request_opts
-      ) -> Braintrust::ListObjects[Braintrust::Models::APIKey]
+      ) -> Braintrust::Internal::ListObjects[Braintrust::Models::APIKey]
 
       def delete: (
         String api_key_id,

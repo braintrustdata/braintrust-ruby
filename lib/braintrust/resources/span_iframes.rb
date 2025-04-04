@@ -89,7 +89,7 @@ module Braintrust
       # @param starting_after [String]
       # @param request_options [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Braintrust::ListObjects<Braintrust::Models::SpanIFrame>]
+      # @return [Braintrust::Internal::ListObjects<Braintrust::Models::SpanIFrame>]
       #
       # @see Braintrust::Models::SpanIframeListParams
       def list(params = {})
@@ -98,7 +98,7 @@ module Braintrust
           method: :get,
           path: "v1/span_iframe",
           query: parsed,
-          page: Braintrust::ListObjects,
+          page: Braintrust::Internal::ListObjects,
           model: Braintrust::Models::SpanIFrame,
           options: options
         )

@@ -3,8 +3,8 @@
 module Braintrust
   module Models
     class RoleListParams < Braintrust::BaseModel
-      extend Braintrust::Type::RequestParameters::Converter
-      include Braintrust::RequestParameters
+      extend Braintrust::Internal::Type::RequestParameters::Converter
+      include Braintrust::Internal::Type::RequestParameters
 
       # Pagination cursor id.
       #
@@ -62,7 +62,7 @@ module Braintrust
           org_name: String,
           role_name: String,
           starting_after: String,
-          request_options: T.any(Braintrust::RequestOptions, Braintrust::Util::AnyHash)
+          request_options: T.any(Braintrust::RequestOptions, Braintrust::Internal::Util::AnyHash)
         )
           .returns(T.attached_class)
       end
@@ -103,7 +103,7 @@ module Braintrust
         def self.variants
         end
 
-        StringArray = T.let(Braintrust::ArrayOf[String], Braintrust::Type::Converter)
+        StringArray = T.let(Braintrust::ArrayOf[String], Braintrust::Internal::Type::Converter)
       end
     end
   end

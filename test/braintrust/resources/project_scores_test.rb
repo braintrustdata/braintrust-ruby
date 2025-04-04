@@ -81,7 +81,7 @@ class Braintrust::Test::Resources::ProjectScoresTest < Braintrust::Test::Resourc
     response = @braintrust.project_scores.list
 
     assert_pattern do
-      response => Braintrust::ListObjects
+      response => Braintrust::Internal::ListObjects
     end
 
     row = response.to_enum.first

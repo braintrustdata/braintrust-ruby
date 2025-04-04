@@ -5,8 +5,8 @@ module Braintrust
     # @see Braintrust::Resources::Experiments#create
     class ExperimentCreateParams < Braintrust::BaseModel
       # @!parse
-      #   extend Braintrust::Type::RequestParameters::Converter
-      include Braintrust::RequestParameters
+      #   extend Braintrust::Internal::Type::RequestParameters::Converter
+      include Braintrust::Internal::Type::RequestParameters
 
       # @!attribute project_id
       #   Unique identifier for the project that the experiment belongs under

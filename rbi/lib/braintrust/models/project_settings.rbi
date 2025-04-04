@@ -19,7 +19,9 @@ module Braintrust
         params(
           baseline_experiment_id: T.nilable(String),
           comparison_key: T.nilable(String),
-          span_field_order: T.nilable(T::Array[T.any(Braintrust::Models::ProjectSettings::SpanFieldOrder, Braintrust::Util::AnyHash)])
+          span_field_order: T.nilable(
+            T::Array[T.any(Braintrust::Models::ProjectSettings::SpanFieldOrder, Braintrust::Internal::Util::AnyHash)]
+          )
         )
           .returns(T.attached_class)
       end

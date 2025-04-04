@@ -1,11 +1,12 @@
 module Braintrust
   module Models
     type env_var_update_params =
-      { name: String, value: String? } & Braintrust::request_parameters
+      { name: String, value: String? }
+      & Braintrust::Internal::Type::request_parameters
 
     class EnvVarUpdateParams < Braintrust::BaseModel
-      extend Braintrust::Type::RequestParameters::Converter
-      include Braintrust::RequestParameters
+      extend Braintrust::Internal::Type::RequestParameters::Converter
+      include Braintrust::Internal::Type::RequestParameters
 
       attr_accessor name: String
 

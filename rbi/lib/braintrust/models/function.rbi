@@ -59,7 +59,7 @@ module Braintrust
 
       sig do
         params(
-          function_schema: T.nilable(T.any(Braintrust::Models::Function::FunctionSchema, Braintrust::Util::AnyHash))
+          function_schema: T.nilable(T.any(Braintrust::Models::Function::FunctionSchema, Braintrust::Internal::Util::AnyHash))
         )
           .void
       end
@@ -75,14 +75,22 @@ module Braintrust
       sig { returns(T.nilable(Braintrust::Models::Function::Origin)) }
       attr_reader :origin
 
-      sig { params(origin: T.nilable(T.any(Braintrust::Models::Function::Origin, Braintrust::Util::AnyHash))).void }
+      sig do
+        params(
+          origin: T.nilable(T.any(Braintrust::Models::Function::Origin, Braintrust::Internal::Util::AnyHash))
+        )
+          .void
+      end
       attr_writer :origin
 
       # The prompt, model, and its parameters
       sig { returns(T.nilable(Braintrust::Models::PromptData)) }
       attr_reader :prompt_data
 
-      sig { params(prompt_data: T.nilable(T.any(Braintrust::Models::PromptData, Braintrust::Util::AnyHash))).void }
+      sig do
+        params(prompt_data: T.nilable(T.any(Braintrust::Models::PromptData, Braintrust::Internal::Util::AnyHash)))
+          .void
+      end
       attr_writer :prompt_data
 
       # A list of tags for the prompt
@@ -95,7 +103,7 @@ module Braintrust
           _xact_id: String,
           function_data: T.any(
             Braintrust::Models::Function::FunctionData::Prompt,
-            Braintrust::Util::AnyHash,
+            Braintrust::Internal::Util::AnyHash,
             Braintrust::Models::Function::FunctionData::Code,
             Braintrust::Models::Function::FunctionData::Global
           ),
@@ -106,11 +114,11 @@ module Braintrust
           slug: String,
           created: T.nilable(Time),
           description: T.nilable(String),
-          function_schema: T.nilable(T.any(Braintrust::Models::Function::FunctionSchema, Braintrust::Util::AnyHash)),
+          function_schema: T.nilable(T.any(Braintrust::Models::Function::FunctionSchema, Braintrust::Internal::Util::AnyHash)),
           function_type: T.nilable(Braintrust::Models::Function::FunctionType::OrSymbol),
           metadata: T.nilable(T::Hash[Symbol, T.nilable(T.anything)]),
-          origin: T.nilable(T.any(Braintrust::Models::Function::Origin, Braintrust::Util::AnyHash)),
-          prompt_data: T.nilable(T.any(Braintrust::Models::PromptData, Braintrust::Util::AnyHash)),
+          origin: T.nilable(T.any(Braintrust::Models::Function::Origin, Braintrust::Internal::Util::AnyHash)),
+          prompt_data: T.nilable(T.any(Braintrust::Models::PromptData, Braintrust::Internal::Util::AnyHash)),
           tags: T.nilable(T::Array[String])
         )
           .returns(T.attached_class)
@@ -213,7 +221,7 @@ module Braintrust
             params(
               data: T.any(
                 Braintrust::Models::Function::FunctionData::Code::Data::Bundle,
-                Braintrust::Util::AnyHash,
+                Braintrust::Internal::Util::AnyHash,
                 Braintrust::Models::Function::FunctionData::Code::Data::Inline
               ),
               type: Braintrust::Models::Function::FunctionData::Code::Type::OrSymbol
@@ -290,7 +298,7 @@ module Braintrust
                 params(
                   runtime_context: T.any(
                     Braintrust::Models::Function::FunctionData::Code::Data::Inline::RuntimeContext,
-                    Braintrust::Util::AnyHash
+                    Braintrust::Internal::Util::AnyHash
                   )
                 )
                   .void
@@ -305,7 +313,7 @@ module Braintrust
                   code: String,
                   runtime_context: T.any(
                     Braintrust::Models::Function::FunctionData::Code::Data::Inline::RuntimeContext,
-                    Braintrust::Util::AnyHash
+                    Braintrust::Internal::Util::AnyHash
                   ),
                   type: Braintrust::Models::Function::FunctionData::Code::Data::Inline::Type::OrSymbol
                 )

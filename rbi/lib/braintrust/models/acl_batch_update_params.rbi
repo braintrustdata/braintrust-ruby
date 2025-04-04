@@ -3,8 +3,8 @@
 module Braintrust
   module Models
     class ACLBatchUpdateParams < Braintrust::BaseModel
-      extend Braintrust::Type::RequestParameters::Converter
-      include Braintrust::RequestParameters
+      extend Braintrust::Internal::Type::RequestParameters::Converter
+      include Braintrust::Internal::Type::RequestParameters
 
       # An ACL grants a certain permission or role to a certain user or group on an
       #   object.
@@ -34,9 +34,13 @@ module Braintrust
 
       sig do
         params(
-          add_acls: T.nilable(T::Array[T.any(Braintrust::Models::ACLBatchUpdateParams::AddACL, Braintrust::Util::AnyHash)]),
-          remove_acls: T.nilable(T::Array[T.any(Braintrust::Models::ACLBatchUpdateParams::RemoveACL, Braintrust::Util::AnyHash)]),
-          request_options: T.any(Braintrust::RequestOptions, Braintrust::Util::AnyHash)
+          add_acls: T.nilable(
+            T::Array[T.any(Braintrust::Models::ACLBatchUpdateParams::AddACL, Braintrust::Internal::Util::AnyHash)]
+          ),
+          remove_acls: T.nilable(
+            T::Array[T.any(Braintrust::Models::ACLBatchUpdateParams::RemoveACL, Braintrust::Internal::Util::AnyHash)]
+          ),
+          request_options: T.any(Braintrust::RequestOptions, Braintrust::Internal::Util::AnyHash)
         )
           .returns(T.attached_class)
       end

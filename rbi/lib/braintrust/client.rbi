@@ -1,7 +1,7 @@
 # typed: strong
 
 module Braintrust
-  class Client < Braintrust::Transport::BaseClient
+  class Client < Braintrust::Internal::Transport::BaseClient
     DEFAULT_MAX_RETRIES = 2
 
     DEFAULT_TIMEOUT_IN_SECONDS = T.let(60.0, Float)

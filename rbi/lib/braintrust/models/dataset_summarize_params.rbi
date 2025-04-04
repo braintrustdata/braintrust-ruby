@@ -3,8 +3,8 @@
 module Braintrust
   module Models
     class DatasetSummarizeParams < Braintrust::BaseModel
-      extend Braintrust::Type::RequestParameters::Converter
-      include Braintrust::RequestParameters
+      extend Braintrust::Internal::Type::RequestParameters::Converter
+      include Braintrust::Internal::Type::RequestParameters
 
       # Whether to summarize the data. If false (or omitted), only the metadata will be
       #   returned.
@@ -14,7 +14,7 @@ module Braintrust
       sig do
         params(
           summarize_data: T.nilable(T::Boolean),
-          request_options: T.any(Braintrust::RequestOptions, Braintrust::Util::AnyHash)
+          request_options: T.any(Braintrust::RequestOptions, Braintrust::Internal::Util::AnyHash)
         )
           .returns(T.attached_class)
       end

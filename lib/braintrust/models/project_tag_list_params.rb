@@ -5,8 +5,8 @@ module Braintrust
     # @see Braintrust::Resources::ProjectTags#list
     class ProjectTagListParams < Braintrust::BaseModel
       # @!parse
-      #   extend Braintrust::Type::RequestParameters::Converter
-      include Braintrust::RequestParameters
+      #   extend Braintrust::Internal::Type::RequestParameters::Converter
+      include Braintrust::Internal::Type::RequestParameters
 
       # @!attribute [r] ending_before
       #   Pagination cursor id.

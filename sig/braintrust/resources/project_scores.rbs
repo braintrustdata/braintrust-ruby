@@ -37,7 +37,7 @@ module Braintrust
         ?score_type: Braintrust::Models::ProjectScoreListParams::score_type,
         ?starting_after: String,
         ?request_options: Braintrust::request_opts
-      ) -> Braintrust::ListObjects[Braintrust::Models::ProjectScore]
+      ) -> Braintrust::Internal::ListObjects[Braintrust::Models::ProjectScore]
 
       def delete: (
         String project_score_id,

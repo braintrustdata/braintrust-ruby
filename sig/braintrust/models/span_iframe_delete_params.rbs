@@ -1,10 +1,11 @@
 module Braintrust
   module Models
-    type span_iframe_delete_params = {  } & Braintrust::request_parameters
+    type span_iframe_delete_params =
+      {  } & Braintrust::Internal::Type::request_parameters
 
     class SpanIframeDeleteParams < Braintrust::BaseModel
-      extend Braintrust::Type::RequestParameters::Converter
-      include Braintrust::RequestParameters
+      extend Braintrust::Internal::Type::RequestParameters::Converter
+      include Braintrust::Internal::Type::RequestParameters
 
       def initialize: (?request_options: Braintrust::request_opts) -> void
 

@@ -7,7 +7,7 @@ module Braintrust
       sig do
         params(
           user_id: String,
-          request_options: T.nilable(T.any(Braintrust::RequestOptions, Braintrust::Util::AnyHash))
+          request_options: T.nilable(T.any(Braintrust::RequestOptions, Braintrust::Internal::Util::AnyHash))
         )
           .returns(Braintrust::Models::User)
       end
@@ -30,9 +30,9 @@ module Braintrust
           limit: T.nilable(Integer),
           org_name: String,
           starting_after: String,
-          request_options: T.nilable(T.any(Braintrust::RequestOptions, Braintrust::Util::AnyHash))
+          request_options: T.nilable(T.any(Braintrust::RequestOptions, Braintrust::Internal::Util::AnyHash))
         )
-          .returns(Braintrust::ListObjects[Braintrust::Models::User])
+          .returns(Braintrust::Internal::ListObjects[Braintrust::Models::User])
       end
       def list(
         # Email of the user to search for. You may pass the param multiple times to filter
