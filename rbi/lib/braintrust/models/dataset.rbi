@@ -2,7 +2,7 @@
 
 module Braintrust
   module Models
-    class Dataset < Braintrust::BaseModel
+    class Dataset < Braintrust::Internal::Type::BaseModel
       # Unique identifier for the dataset
       sig { returns(String) }
       attr_accessor :id

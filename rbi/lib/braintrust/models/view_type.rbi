@@ -4,7 +4,7 @@ module Braintrust
   module Models
     # Type of table that the view corresponds to.
     module ViewType
-      extend Braintrust::Enum
+      extend Braintrust::Internal::Type::Enum
 
       TaggedSymbol = T.type_alias { T.all(Symbol, Braintrust::Models::ViewType) }
       OrSymbol = T.type_alias { T.any(Symbol, String, Braintrust::Models::ViewType::TaggedSymbol) }

@@ -3,7 +3,7 @@ module Braintrust
     type dataset_summarize_params =
       { summarize_data: bool? } & Braintrust::Internal::Type::request_parameters
 
-    class DatasetSummarizeParams < Braintrust::BaseModel
+    class DatasetSummarizeParams < Braintrust::Internal::Type::BaseModel
       extend Braintrust::Internal::Type::RequestParameters::Converter
       include Braintrust::Internal::Type::RequestParameters
 

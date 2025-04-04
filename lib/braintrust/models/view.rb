@@ -2,7 +2,7 @@
 
 module Braintrust
   module Models
-    class View < Braintrust::BaseModel
+    class View < Braintrust::Internal::Type::BaseModel
       # @!attribute id
       #   Unique identifier for the view
       #
@@ -91,13 +91,13 @@ module Braintrust
       #     super
       #   end
 
-      # def initialize: (Hash | Braintrust::BaseModel) -> void
+      # def initialize: (Hash | Braintrust::Internal::Type::BaseModel) -> void
 
       # Type of table that the view corresponds to.
       #
       # @see Braintrust::Models::View#view_type
       module ViewType
-        extend Braintrust::Enum
+        extend Braintrust::Internal::Type::Enum
 
         PROJECTS = :projects
         EXPERIMENTS = :experiments

@@ -7,7 +7,7 @@ module Braintrust
     #   Permissions can be assigned to to objects on an individual basis, or grouped
     #   into roles
     module Permission
-      extend Braintrust::Enum
+      extend Braintrust::Internal::Type::Enum
 
       TaggedSymbol = T.type_alias { T.all(Symbol, Braintrust::Models::Permission) }
       OrSymbol = T.type_alias { T.any(Symbol, String, Braintrust::Models::Permission::TaggedSymbol) }

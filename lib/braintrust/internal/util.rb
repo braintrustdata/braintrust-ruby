@@ -148,13 +148,6 @@ module Braintrust
         end
       end
 
-      # Use this to indicate that a value should be explicitly removed from a data
-      #   structure when using `Braintrust::Internal::Util.deep_merge`.
-      #
-      #   e.g. merging `{a: 1}` and `{a: OMIT}` should produce `{}`, where merging
-      #   `{a: 1}` and `{}` would produce `{a: 1}`.
-      OMIT = Object.new.freeze
-
       class << self
         # @api private
         #
@@ -166,9 +159,9 @@ module Braintrust
         private def deep_merge_lr(lhs, rhs, concat: false)
           case [lhs, rhs, concat]
           in [Hash, Hash, _]
-            rhs_cleaned = rhs.reject { _2 == Braintrust::Internal::Util::OMIT }
+            rhs_cleaned = rhs.reject { _2 == Braintrust::Internal::OMIT }
             lhs
-              .reject { |key, _| rhs[key] == Braintrust::Internal::Util::OMIT }
+              .reject { |key, _| rhs[key] == Braintrust::Internal::OMIT }
               .merge(rhs_cleaned) do |_, old_val, new_val|
                 deep_merge_lr(old_val, new_val, concat: concat)
               end

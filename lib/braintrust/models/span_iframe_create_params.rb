@@ -3,7 +3,7 @@
 module Braintrust
   module Models
     # @see Braintrust::Resources::SpanIframes#create
-    class SpanIframeCreateParams < Braintrust::BaseModel
+    class SpanIframeCreateParams < Braintrust::Internal::Type::BaseModel
       # @!parse
       #   extend Braintrust::Internal::Type::RequestParameters::Converter
       include Braintrust::Internal::Type::RequestParameters
@@ -37,7 +37,7 @@ module Braintrust
       #     useful when you want to render more data than fits in the URL.
       #
       #   @return [Boolean, nil]
-      optional :post_message, Braintrust::BooleanModel, nil?: true
+      optional :post_message, Braintrust::Internal::Type::BooleanModel, nil?: true
 
       # @!parse
       #   # @param name [String]
@@ -49,7 +49,7 @@ module Braintrust
       #   #
       #   def initialize(name:, project_id:, url:, description: nil, post_message: nil, request_options: {}, **) = super
 
-      # def initialize: (Hash | Braintrust::BaseModel) -> void
+      # def initialize: (Hash | Braintrust::Internal::Type::BaseModel) -> void
     end
   end
 end

@@ -2,7 +2,7 @@
 
 module Braintrust
   module Models
-    class PromptReplaceParams < Braintrust::BaseModel
+    class PromptReplaceParams < Braintrust::Internal::Type::BaseModel
       extend Braintrust::Internal::Type::RequestParameters::Converter
       include Braintrust::Internal::Type::RequestParameters
 
@@ -29,10 +29,7 @@ module Braintrust
       sig { returns(T.nilable(Braintrust::Models::PromptData)) }
       attr_reader :prompt_data
 
-      sig do
-        params(prompt_data: T.nilable(T.any(Braintrust::Models::PromptData, Braintrust::Internal::Util::AnyHash)))
-          .void
-      end
+      sig { params(prompt_data: T.nilable(T.any(Braintrust::Models::PromptData, Braintrust::Internal::AnyHash))).void }
       attr_writer :prompt_data
 
       # A list of tags for the prompt
@@ -46,9 +43,9 @@ module Braintrust
           slug: String,
           description: T.nilable(String),
           function_type: T.nilable(Braintrust::Models::PromptReplaceParams::FunctionType::OrSymbol),
-          prompt_data: T.nilable(T.any(Braintrust::Models::PromptData, Braintrust::Internal::Util::AnyHash)),
+          prompt_data: T.nilable(T.any(Braintrust::Models::PromptData, Braintrust::Internal::AnyHash)),
           tags: T.nilable(T::Array[String]),
-          request_options: T.any(Braintrust::RequestOptions, Braintrust::Internal::Util::AnyHash)
+          request_options: T.any(Braintrust::RequestOptions, Braintrust::Internal::AnyHash)
         )
           .returns(T.attached_class)
       end
@@ -83,7 +80,7 @@ module Braintrust
       end
 
       module FunctionType
-        extend Braintrust::Enum
+        extend Braintrust::Internal::Type::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Braintrust::Models::PromptReplaceParams::FunctionType) }
         OrSymbol =

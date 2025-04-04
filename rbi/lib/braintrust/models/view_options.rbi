@@ -2,7 +2,7 @@
 
 module Braintrust
   module Models
-    class ViewOptions < Braintrust::BaseModel
+    class ViewOptions < Braintrust::Internal::Type::BaseModel
       sig { returns(T.nilable(T::Array[String])) }
       attr_accessor :column_order
 

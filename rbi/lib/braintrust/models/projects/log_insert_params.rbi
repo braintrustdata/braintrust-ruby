@@ -3,7 +3,7 @@
 module Braintrust
   module Models
     module Projects
-      class LogInsertParams < Braintrust::BaseModel
+      class LogInsertParams < Braintrust::Internal::Type::BaseModel
         extend Braintrust::Internal::Type::RequestParameters::Converter
         include Braintrust::Internal::Type::RequestParameters
 
@@ -13,8 +13,8 @@ module Braintrust
 
         sig do
           params(
-            events: T::Array[T.any(Braintrust::Models::InsertProjectLogsEvent, Braintrust::Internal::Util::AnyHash)],
-            request_options: T.any(Braintrust::RequestOptions, Braintrust::Internal::Util::AnyHash)
+            events: T::Array[T.any(Braintrust::Models::InsertProjectLogsEvent, Braintrust::Internal::AnyHash)],
+            request_options: T.any(Braintrust::RequestOptions, Braintrust::Internal::AnyHash)
           )
             .returns(T.attached_class)
         end

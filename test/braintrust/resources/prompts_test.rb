@@ -23,9 +23,10 @@ class Braintrust::Test::Resources::PromptsTest < Braintrust::Test::ResourceTest
         created: Time | nil,
         description: String | nil,
         function_type: Braintrust::Models::Prompt::FunctionType | nil,
-        metadata: ^(Braintrust::HashOf[Braintrust::Unknown, nil?: true]) | nil,
+        metadata: ^(Braintrust::Internal::Type::HashOf[Braintrust::Internal::Type::Unknown,
+                                                       nil?: true]) | nil,
         prompt_data: Braintrust::Models::PromptData | nil,
-        tags: ^(Braintrust::ArrayOf[String]) | nil
+        tags: ^(Braintrust::Internal::Type::ArrayOf[String]) | nil
       }
     end
   end
@@ -49,9 +50,10 @@ class Braintrust::Test::Resources::PromptsTest < Braintrust::Test::ResourceTest
         created: Time | nil,
         description: String | nil,
         function_type: Braintrust::Models::Prompt::FunctionType | nil,
-        metadata: ^(Braintrust::HashOf[Braintrust::Unknown, nil?: true]) | nil,
+        metadata: ^(Braintrust::Internal::Type::HashOf[Braintrust::Internal::Type::Unknown,
+                                                       nil?: true]) | nil,
         prompt_data: Braintrust::Models::PromptData | nil,
-        tags: ^(Braintrust::ArrayOf[String]) | nil
+        tags: ^(Braintrust::Internal::Type::ArrayOf[String]) | nil
       }
     end
   end
@@ -75,9 +77,10 @@ class Braintrust::Test::Resources::PromptsTest < Braintrust::Test::ResourceTest
         created: Time | nil,
         description: String | nil,
         function_type: Braintrust::Models::Prompt::FunctionType | nil,
-        metadata: ^(Braintrust::HashOf[Braintrust::Unknown, nil?: true]) | nil,
+        metadata: ^(Braintrust::Internal::Type::HashOf[Braintrust::Internal::Type::Unknown,
+                                                       nil?: true]) | nil,
         prompt_data: Braintrust::Models::PromptData | nil,
-        tags: ^(Braintrust::ArrayOf[String]) | nil
+        tags: ^(Braintrust::Internal::Type::ArrayOf[String]) | nil
       }
     end
   end
@@ -108,9 +111,10 @@ class Braintrust::Test::Resources::PromptsTest < Braintrust::Test::ResourceTest
         created: Time | nil,
         description: String | nil,
         function_type: Braintrust::Models::Prompt::FunctionType | nil,
-        metadata: ^(Braintrust::HashOf[Braintrust::Unknown, nil?: true]) | nil,
+        metadata: ^(Braintrust::Internal::Type::HashOf[Braintrust::Internal::Type::Unknown,
+                                                       nil?: true]) | nil,
         prompt_data: Braintrust::Models::PromptData | nil,
-        tags: ^(Braintrust::ArrayOf[String]) | nil
+        tags: ^(Braintrust::Internal::Type::ArrayOf[String]) | nil
       }
     end
   end
@@ -134,9 +138,10 @@ class Braintrust::Test::Resources::PromptsTest < Braintrust::Test::ResourceTest
         created: Time | nil,
         description: String | nil,
         function_type: Braintrust::Models::Prompt::FunctionType | nil,
-        metadata: ^(Braintrust::HashOf[Braintrust::Unknown, nil?: true]) | nil,
+        metadata: ^(Braintrust::Internal::Type::HashOf[Braintrust::Internal::Type::Unknown,
+                                                       nil?: true]) | nil,
         prompt_data: Braintrust::Models::PromptData | nil,
-        tags: ^(Braintrust::ArrayOf[String]) | nil
+        tags: ^(Braintrust::Internal::Type::ArrayOf[String]) | nil
       }
     end
   end
@@ -161,9 +166,10 @@ class Braintrust::Test::Resources::PromptsTest < Braintrust::Test::ResourceTest
         created: Time | nil,
         description: String | nil,
         function_type: Braintrust::Models::Prompt::FunctionType | nil,
-        metadata: ^(Braintrust::HashOf[Braintrust::Unknown, nil?: true]) | nil,
+        metadata: ^(Braintrust::Internal::Type::HashOf[Braintrust::Internal::Type::Unknown,
+                                                       nil?: true]) | nil,
         prompt_data: Braintrust::Models::PromptData | nil,
-        tags: ^(Braintrust::ArrayOf[String]) | nil
+        tags: ^(Braintrust::Internal::Type::ArrayOf[String]) | nil
       }
     end
   end

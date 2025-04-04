@@ -2,7 +2,7 @@
 
 module Braintrust
   module Models
-    class CodeBundle < Braintrust::BaseModel
+    class CodeBundle < Braintrust::Internal::Type::BaseModel
       sig { returns(String) }
       attr_accessor :bundle_id
 
@@ -21,7 +21,7 @@ module Braintrust
 
       sig do
         params(
-          runtime_context: T.any(Braintrust::Models::CodeBundle::RuntimeContext, Braintrust::Internal::Util::AnyHash)
+          runtime_context: T.any(Braintrust::Models::CodeBundle::RuntimeContext, Braintrust::Internal::AnyHash)
         )
           .void
       end
@@ -36,10 +36,10 @@ module Braintrust
           bundle_id: String,
           location: T.any(
             Braintrust::Models::CodeBundle::Location::Experiment,
-            Braintrust::Internal::Util::AnyHash,
+            Braintrust::Internal::AnyHash,
             Braintrust::Models::CodeBundle::Location::Function
           ),
-          runtime_context: T.any(Braintrust::Models::CodeBundle::RuntimeContext, Braintrust::Internal::Util::AnyHash),
+          runtime_context: T.any(Braintrust::Models::CodeBundle::RuntimeContext, Braintrust::Internal::AnyHash),
           preview: T.nilable(String)
         )
           .returns(T.attached_class)
@@ -65,9 +65,9 @@ module Braintrust
       end
 
       module Location
-        extend Braintrust::Union
+        extend Braintrust::Internal::Type::Union
 
-        class Experiment < Braintrust::BaseModel
+        class Experiment < Braintrust::Internal::Type::BaseModel
           sig { returns(String) }
           attr_accessor :eval_name
 
@@ -89,7 +89,7 @@ module Braintrust
               eval_name: String,
               position: T.any(
                 Braintrust::Models::CodeBundle::Location::Experiment::Position::Type,
-                Braintrust::Internal::Util::AnyHash,
+                Braintrust::Internal::AnyHash,
                 Braintrust::Models::CodeBundle::Location::Experiment::Position::Scorer
               ),
               type: Braintrust::Models::CodeBundle::Location::Experiment::Type::OrSymbol
@@ -116,9 +116,9 @@ module Braintrust
           end
 
           module Position
-            extend Braintrust::Union
+            extend Braintrust::Internal::Type::Union
 
-            class Type < Braintrust::BaseModel
+            class Type < Braintrust::Internal::Type::BaseModel
               sig { returns(Braintrust::Models::CodeBundle::Location::Experiment::Position::Type::Type::OrSymbol) }
               attr_accessor :type
 
@@ -137,7 +137,7 @@ module Braintrust
               end
 
               module Type
-                extend Braintrust::Enum
+                extend Braintrust::Internal::Type::Enum
 
                 TaggedSymbol =
                   T.type_alias { T.all(Symbol, Braintrust::Models::CodeBundle::Location::Experiment::Position::Type::Type) }
@@ -164,7 +164,7 @@ module Braintrust
               end
             end
 
-            class Scorer < Braintrust::BaseModel
+            class Scorer < Braintrust::Internal::Type::BaseModel
               sig { returns(Integer) }
               attr_accessor :index
 
@@ -191,7 +191,7 @@ module Braintrust
               end
 
               module Type
-                extend Braintrust::Enum
+                extend Braintrust::Internal::Type::Enum
 
                 TaggedSymbol =
                   T.type_alias { T.all(Symbol, Braintrust::Models::CodeBundle::Location::Experiment::Position::Scorer::Type) }
@@ -229,7 +229,7 @@ module Braintrust
           end
 
           module Type
-            extend Braintrust::Enum
+            extend Braintrust::Internal::Type::Enum
 
             TaggedSymbol = T.type_alias { T.all(Symbol, Braintrust::Models::CodeBundle::Location::Experiment::Type) }
             OrSymbol =
@@ -243,7 +243,7 @@ module Braintrust
           end
         end
 
-        class Function < Braintrust::BaseModel
+        class Function < Braintrust::Internal::Type::BaseModel
           sig { returns(Integer) }
           attr_accessor :index
 
@@ -265,7 +265,7 @@ module Braintrust
           end
 
           module Type
-            extend Braintrust::Enum
+            extend Braintrust::Internal::Type::Enum
 
             TaggedSymbol = T.type_alias { T.all(Symbol, Braintrust::Models::CodeBundle::Location::Function::Type) }
             OrSymbol =
@@ -289,7 +289,7 @@ module Braintrust
         end
       end
 
-      class RuntimeContext < Braintrust::BaseModel
+      class RuntimeContext < Braintrust::Internal::Type::BaseModel
         sig { returns(Braintrust::Models::CodeBundle::RuntimeContext::Runtime::OrSymbol) }
         attr_accessor :runtime
 
@@ -311,7 +311,7 @@ module Braintrust
         end
 
         module Runtime
-          extend Braintrust::Enum
+          extend Braintrust::Internal::Type::Enum
 
           TaggedSymbol = T.type_alias { T.all(Symbol, Braintrust::Models::CodeBundle::RuntimeContext::Runtime) }
           OrSymbol =

@@ -17,11 +17,11 @@ module Braintrust
         sig(:final) do
           params(
             type_info: T.any(
-              Braintrust::Internal::Util::AnyHash,
+              Braintrust::Internal::AnyHash,
               T.proc.returns(Braintrust::Internal::Type::Converter::Input),
               Braintrust::Internal::Type::Converter::Input
             ),
-            spec: Braintrust::Internal::Util::AnyHash
+            spec: Braintrust::Internal::AnyHash
           )
             .returns(T.attached_class)
         end
@@ -43,7 +43,7 @@ module Braintrust
               value: T.any(T::Hash[T.anything, T.anything], T.anything),
               state: Braintrust::Internal::Type::Converter::State
             )
-            .returns(T.any(Braintrust::Internal::Util::AnyHash, T.anything))
+            .returns(T.any(Braintrust::Internal::AnyHash, T.anything))
         end
         def coerce(value, state:)
         end
@@ -52,7 +52,7 @@ module Braintrust
         sig(:final) do
           override
             .params(value: T.any(T::Hash[T.anything, T.anything], T.anything))
-            .returns(T.any(Braintrust::Internal::Util::AnyHash, T.anything))
+            .returns(T.any(Braintrust::Internal::AnyHash, T.anything))
         end
         def dump(value)
         end
@@ -71,11 +71,11 @@ module Braintrust
         sig(:final) do
           params(
             type_info: T.any(
-              Braintrust::Internal::Util::AnyHash,
+              Braintrust::Internal::AnyHash,
               T.proc.returns(Braintrust::Internal::Type::Converter::Input),
               Braintrust::Internal::Type::Converter::Input
             ),
-            spec: Braintrust::Internal::Util::AnyHash
+            spec: Braintrust::Internal::AnyHash
           )
             .void
         end

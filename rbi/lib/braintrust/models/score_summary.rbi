@@ -2,7 +2,7 @@
 
 module Braintrust
   module Models
-    class ScoreSummary < Braintrust::BaseModel
+    class ScoreSummary < Braintrust::Internal::Type::BaseModel
       # Number of improvements in the score
       sig { returns(Integer) }
       attr_accessor :improvements

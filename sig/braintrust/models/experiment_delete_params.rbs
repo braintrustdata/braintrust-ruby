@@ -3,7 +3,7 @@ module Braintrust
     type experiment_delete_params =
       {  } & Braintrust::Internal::Type::request_parameters
 
-    class ExperimentDeleteParams < Braintrust::BaseModel
+    class ExperimentDeleteParams < Braintrust::Internal::Type::BaseModel
       extend Braintrust::Internal::Type::RequestParameters::Converter
       include Braintrust::Internal::Type::RequestParameters
 

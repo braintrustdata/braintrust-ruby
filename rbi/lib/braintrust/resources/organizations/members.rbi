@@ -8,25 +8,14 @@ module Braintrust
         sig do
           params(
             invite_users: T.nilable(
-              T.any(
-                Braintrust::Models::Organizations::MemberUpdateParams::InviteUsers,
-                Braintrust::Internal::Util::AnyHash
-              )
+              T.any(Braintrust::Models::Organizations::MemberUpdateParams::InviteUsers, Braintrust::Internal::AnyHash)
             ),
             org_id: T.nilable(String),
             org_name: T.nilable(String),
             remove_users: T.nilable(
-              T.any(
-                Braintrust::Models::Organizations::MemberUpdateParams::RemoveUsers,
-                Braintrust::Internal::Util::AnyHash
-              )
+              T.any(Braintrust::Models::Organizations::MemberUpdateParams::RemoveUsers, Braintrust::Internal::AnyHash)
             ),
-            request_options: T.nilable(
-              T.any(
-                Braintrust::RequestOptions,
-                Braintrust::Internal::Util::AnyHash
-              )
-            )
+            request_options: T.nilable(T.any(Braintrust::RequestOptions, Braintrust::Internal::AnyHash))
           )
             .returns(Braintrust::Models::PatchOrganizationMembersOutput)
         end

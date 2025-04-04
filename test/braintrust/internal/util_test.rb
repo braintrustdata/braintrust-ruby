@@ -42,7 +42,7 @@ class Braintrust::Test::UtilDataHandlingTest < Minitest::Test
   def test_omission
     merged = Braintrust::Internal::Util.deep_merge(
       {b: {b2: 1, b3: {c: 4, d: 5}}},
-      {b: {b2: 1, b3: {c: Braintrust::Internal::Util::OMIT, d: 5}}}
+      {b: {b2: 1, b3: {c: Braintrust::Internal::OMIT, d: 5}}}
     )
 
     assert_pattern do

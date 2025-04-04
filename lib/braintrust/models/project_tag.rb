@@ -2,7 +2,7 @@
 
 module Braintrust
   module Models
-    class ProjectTag < Braintrust::BaseModel
+    class ProjectTag < Braintrust::Internal::Type::BaseModel
       # @!attribute id
       #   Unique identifier for the project tag
       #
@@ -58,7 +58,7 @@ module Braintrust
       #   #
       #   def initialize(id:, name:, project_id:, user_id:, color: nil, created: nil, description: nil, **) = super
 
-      # def initialize: (Hash | Braintrust::BaseModel) -> void
+      # def initialize: (Hash | Braintrust::Internal::Type::BaseModel) -> void
     end
   end
 end

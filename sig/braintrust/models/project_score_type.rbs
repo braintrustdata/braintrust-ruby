@@ -10,7 +10,7 @@ module Braintrust
       | :"free-form"
 
     module ProjectScoreType
-      extend Braintrust::Enum
+      extend Braintrust::Internal::Type::Enum
 
       SLIDER: :slider
       CATEGORICAL: :categorical

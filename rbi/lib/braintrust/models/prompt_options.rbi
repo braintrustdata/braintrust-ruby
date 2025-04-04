@@ -2,7 +2,7 @@
 
 module Braintrust
   module Models
-    class PromptOptions < Braintrust::BaseModel
+    class PromptOptions < Braintrust::Internal::Type::BaseModel
       sig { returns(T.nilable(String)) }
       attr_reader :model
 
@@ -28,7 +28,7 @@ module Braintrust
         params(
           params: T.any(
             Braintrust::Models::PromptOptions::Params::OpenAIModelParams,
-            Braintrust::Internal::Util::AnyHash,
+            Braintrust::Internal::AnyHash,
             Braintrust::Models::PromptOptions::Params::AnthropicModelParams,
             Braintrust::Models::PromptOptions::Params::GoogleModelParams,
             Braintrust::Models::PromptOptions::Params::WindowAIModelParams,
@@ -50,7 +50,7 @@ module Braintrust
           model: String,
           params: T.any(
             Braintrust::Models::PromptOptions::Params::OpenAIModelParams,
-            Braintrust::Internal::Util::AnyHash,
+            Braintrust::Internal::AnyHash,
             Braintrust::Models::PromptOptions::Params::AnthropicModelParams,
             Braintrust::Models::PromptOptions::Params::GoogleModelParams,
             Braintrust::Models::PromptOptions::Params::WindowAIModelParams,
@@ -83,9 +83,9 @@ module Braintrust
       end
 
       module Params
-        extend Braintrust::Union
+        extend Braintrust::Internal::Type::Union
 
-        class OpenAIModelParams < Braintrust::BaseModel
+        class OpenAIModelParams < Braintrust::Internal::Type::BaseModel
           sig { returns(T.nilable(Float)) }
           attr_reader :frequency_penalty
 
@@ -109,7 +109,7 @@ module Braintrust
               function_call: T.any(
                 Braintrust::Models::PromptOptions::Params::OpenAIModelParams::FunctionCall::OrSymbol,
                 Braintrust::Models::PromptOptions::Params::OpenAIModelParams::FunctionCall::Function,
-                Braintrust::Internal::Util::AnyHash
+                Braintrust::Internal::AnyHash
               )
             )
               .void
@@ -198,7 +198,7 @@ module Braintrust
               tool_choice: T.any(
                 Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ToolChoice::OrSymbol,
                 Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ToolChoice::Function,
-                Braintrust::Internal::Util::AnyHash
+                Braintrust::Internal::AnyHash
               )
             )
               .void
@@ -223,7 +223,7 @@ module Braintrust
               function_call: T.any(
                 Braintrust::Models::PromptOptions::Params::OpenAIModelParams::FunctionCall::OrSymbol,
                 Braintrust::Models::PromptOptions::Params::OpenAIModelParams::FunctionCall::Function,
-                Braintrust::Internal::Util::AnyHash
+                Braintrust::Internal::AnyHash
               ),
               max_completion_tokens: Float,
               max_tokens: Float,
@@ -233,7 +233,7 @@ module Braintrust
               response_format: T.nilable(
                 T.any(
                   Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ResponseFormat::JsonObject,
-                  Braintrust::Internal::Util::AnyHash,
+                  Braintrust::Internal::AnyHash,
                   Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ResponseFormat::JsonSchema,
                   Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ResponseFormat::Text
                 )
@@ -243,7 +243,7 @@ module Braintrust
               tool_choice: T.any(
                 Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ToolChoice::OrSymbol,
                 Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ToolChoice::Function,
-                Braintrust::Internal::Util::AnyHash
+                Braintrust::Internal::AnyHash
               ),
               top_p: Float,
               use_cache: T::Boolean
@@ -303,9 +303,9 @@ module Braintrust
           end
 
           module FunctionCall
-            extend Braintrust::Union
+            extend Braintrust::Internal::Type::Union
 
-            class Function < Braintrust::BaseModel
+            class Function < Braintrust::Internal::Type::BaseModel
               sig { returns(String) }
               attr_accessor :name
 
@@ -345,7 +345,7 @@ module Braintrust
           end
 
           module ReasoningEffort
-            extend Braintrust::Enum
+            extend Braintrust::Internal::Type::Enum
 
             TaggedSymbol =
               T.type_alias { T.all(Symbol, Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ReasoningEffort) }
@@ -379,9 +379,9 @@ module Braintrust
           end
 
           module ResponseFormat
-            extend Braintrust::Union
+            extend Braintrust::Internal::Type::Union
 
-            class JsonObject < Braintrust::BaseModel
+            class JsonObject < Braintrust::Internal::Type::BaseModel
               sig do
                 returns(
                   Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ResponseFormat::JsonObject::Type::OrSymbol
@@ -410,7 +410,7 @@ module Braintrust
               end
 
               module Type
-                extend Braintrust::Enum
+                extend Braintrust::Internal::Type::Enum
 
                 TaggedSymbol =
                   T.type_alias do
@@ -444,7 +444,7 @@ module Braintrust
               end
             end
 
-            class JsonSchema < Braintrust::BaseModel
+            class JsonSchema < Braintrust::Internal::Type::BaseModel
               sig do
                 returns(
                   Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ResponseFormat::JsonSchema::JsonSchema
@@ -456,7 +456,7 @@ module Braintrust
                 params(
                   json_schema: T.any(
                     Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ResponseFormat::JsonSchema::JsonSchema,
-                    Braintrust::Internal::Util::AnyHash
+                    Braintrust::Internal::AnyHash
                   )
                 )
                   .void
@@ -474,7 +474,7 @@ module Braintrust
                 params(
                   json_schema: T.any(
                     Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ResponseFormat::JsonSchema::JsonSchema,
-                    Braintrust::Internal::Util::AnyHash
+                    Braintrust::Internal::AnyHash
                   ),
                   type: Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ResponseFormat::JsonSchema::Type::OrSymbol
                 )
@@ -495,7 +495,7 @@ module Braintrust
               def to_hash
               end
 
-              class JsonSchema < Braintrust::BaseModel
+              class JsonSchema < Braintrust::Internal::Type::BaseModel
                 sig { returns(String) }
                 attr_accessor :name
 
@@ -541,7 +541,7 @@ module Braintrust
                 end
 
                 module Schema
-                  extend Braintrust::Union
+                  extend Braintrust::Internal::Type::Union
 
                   sig { override.returns([T::Hash[Symbol, T.nilable(T.anything)], String]) }
                   def self.variants
@@ -549,14 +549,14 @@ module Braintrust
 
                   ObjectMap =
                     T.let(
-                      Braintrust::HashOf[Braintrust::Unknown, nil?: true],
+                      Braintrust::Internal::Type::HashOf[Braintrust::Internal::Type::Unknown, nil?: true],
                       Braintrust::Internal::Type::Converter
                     )
                 end
               end
 
               module Type
-                extend Braintrust::Enum
+                extend Braintrust::Internal::Type::Enum
 
                 TaggedSymbol =
                   T.type_alias do
@@ -590,7 +590,7 @@ module Braintrust
               end
             end
 
-            class Text < Braintrust::BaseModel
+            class Text < Braintrust::Internal::Type::BaseModel
               sig do
                 returns(
                   Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ResponseFormat::Text::Type::OrSymbol
@@ -617,7 +617,7 @@ module Braintrust
               end
 
               module Type
-                extend Braintrust::Enum
+                extend Braintrust::Internal::Type::Enum
 
                 TaggedSymbol =
                   T.type_alias { T.all(Symbol, Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ResponseFormat::Text::Type) }
@@ -658,9 +658,9 @@ module Braintrust
           end
 
           module ToolChoice
-            extend Braintrust::Union
+            extend Braintrust::Internal::Type::Union
 
-            class Function < Braintrust::BaseModel
+            class Function < Braintrust::Internal::Type::BaseModel
               sig { returns(Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ToolChoice::Function::Function) }
               attr_reader :function
 
@@ -668,7 +668,7 @@ module Braintrust
                 params(
                   function: T.any(
                     Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ToolChoice::Function::Function,
-                    Braintrust::Internal::Util::AnyHash
+                    Braintrust::Internal::AnyHash
                   )
                 )
                   .void
@@ -686,7 +686,7 @@ module Braintrust
                 params(
                   function: T.any(
                     Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ToolChoice::Function::Function,
-                    Braintrust::Internal::Util::AnyHash
+                    Braintrust::Internal::AnyHash
                   ),
                   type: Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ToolChoice::Function::Type::OrSymbol
                 )
@@ -707,7 +707,7 @@ module Braintrust
               def to_hash
               end
 
-              class Function < Braintrust::BaseModel
+              class Function < Braintrust::Internal::Type::BaseModel
                 sig { returns(String) }
                 attr_accessor :name
 
@@ -721,7 +721,7 @@ module Braintrust
               end
 
               module Type
-                extend Braintrust::Enum
+                extend Braintrust::Internal::Type::Enum
 
                 TaggedSymbol =
                   T.type_alias { T.all(Symbol, Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ToolChoice::Function::Type) }
@@ -780,7 +780,7 @@ module Braintrust
           end
         end
 
-        class AnthropicModelParams < Braintrust::BaseModel
+        class AnthropicModelParams < Braintrust::Internal::Type::BaseModel
           sig { returns(Float) }
           attr_accessor :max_tokens
 
@@ -859,7 +859,7 @@ module Braintrust
           end
         end
 
-        class GoogleModelParams < Braintrust::BaseModel
+        class GoogleModelParams < Braintrust::Internal::Type::BaseModel
           sig { returns(T.nilable(Float)) }
           attr_reader :max_output_tokens
 
@@ -917,7 +917,7 @@ module Braintrust
           end
         end
 
-        class WindowAIModelParams < Braintrust::BaseModel
+        class WindowAIModelParams < Braintrust::Internal::Type::BaseModel
           sig { returns(T.nilable(Float)) }
           attr_reader :temperature
 
@@ -945,7 +945,7 @@ module Braintrust
           end
         end
 
-        class JsCompletionParams < Braintrust::BaseModel
+        class JsCompletionParams < Braintrust::Internal::Type::BaseModel
           sig { returns(T.nilable(T::Boolean)) }
           attr_reader :use_cache
 

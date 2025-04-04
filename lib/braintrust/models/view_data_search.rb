@@ -2,26 +2,34 @@
 
 module Braintrust
   module Models
-    class ViewDataSearch < Braintrust::BaseModel
+    class ViewDataSearch < Braintrust::Internal::Type::BaseModel
       # @!attribute filter
       #
       #   @return [Array<Object, nil>, nil]
-      optional :filter, Braintrust::ArrayOf[Braintrust::Unknown, nil?: true], nil?: true
+      optional :filter,
+               Braintrust::Internal::Type::ArrayOf[Braintrust::Internal::Type::Unknown, nil?: true],
+               nil?: true
 
       # @!attribute match
       #
       #   @return [Array<Object, nil>, nil]
-      optional :match, Braintrust::ArrayOf[Braintrust::Unknown, nil?: true], nil?: true
+      optional :match,
+               Braintrust::Internal::Type::ArrayOf[Braintrust::Internal::Type::Unknown, nil?: true],
+               nil?: true
 
       # @!attribute sort
       #
       #   @return [Array<Object, nil>, nil]
-      optional :sort, Braintrust::ArrayOf[Braintrust::Unknown, nil?: true], nil?: true
+      optional :sort,
+               Braintrust::Internal::Type::ArrayOf[Braintrust::Internal::Type::Unknown, nil?: true],
+               nil?: true
 
       # @!attribute tag
       #
       #   @return [Array<Object, nil>, nil]
-      optional :tag, Braintrust::ArrayOf[Braintrust::Unknown, nil?: true], nil?: true
+      optional :tag,
+               Braintrust::Internal::Type::ArrayOf[Braintrust::Internal::Type::Unknown, nil?: true],
+               nil?: true
 
       # @!parse
       #   # @param filter [Array<Object, nil>, nil]
@@ -31,7 +39,7 @@ module Braintrust
       #   #
       #   def initialize(filter: nil, match: nil, sort: nil, tag: nil, **) = super
 
-      # def initialize: (Hash | Braintrust::BaseModel) -> void
+      # def initialize: (Hash | Braintrust::Internal::Type::BaseModel) -> void
     end
   end
 end

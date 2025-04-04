@@ -2,7 +2,7 @@
 
 module Braintrust
   module Models
-    class EnvVarCreateParams < Braintrust::BaseModel
+    class EnvVarCreateParams < Braintrust::Internal::Type::BaseModel
       extend Braintrust::Internal::Type::RequestParameters::Converter
       include Braintrust::Internal::Type::RequestParameters
 
@@ -28,7 +28,7 @@ module Braintrust
           object_id_: String,
           object_type: Braintrust::Models::EnvVarCreateParams::ObjectType::OrSymbol,
           value: T.nilable(String),
-          request_options: T.any(Braintrust::RequestOptions, Braintrust::Internal::Util::AnyHash)
+          request_options: T.any(Braintrust::RequestOptions, Braintrust::Internal::AnyHash)
         )
           .returns(T.attached_class)
       end
@@ -52,7 +52,7 @@ module Braintrust
 
       # The type of the object the environment variable is scoped for
       module ObjectType
-        extend Braintrust::Enum
+        extend Braintrust::Internal::Type::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Braintrust::Models::EnvVarCreateParams::ObjectType) }
         OrSymbol =

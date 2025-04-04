@@ -2,7 +2,7 @@
 
 module Braintrust
   module Models
-    class DataSummary < Braintrust::BaseModel
+    class DataSummary < Braintrust::Internal::Type::BaseModel
       # Total number of records in the dataset
       sig { returns(Integer) }
       attr_accessor :total_records

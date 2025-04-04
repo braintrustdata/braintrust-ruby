@@ -10,7 +10,7 @@ module Braintrust
         given_name: String?
       }
 
-    class User < Braintrust::BaseModel
+    class User < Braintrust::Internal::Type::BaseModel
       attr_accessor id: String
 
       attr_accessor avatar_url: String?

@@ -9,7 +9,7 @@ module Braintrust
         data_summary: Braintrust::Models::DataSummary?
       }
 
-    class SummarizeDatasetResponse < Braintrust::BaseModel
+    class SummarizeDatasetResponse < Braintrust::Internal::Type::BaseModel
       attr_accessor dataset_name: String
 
       attr_accessor dataset_url: String

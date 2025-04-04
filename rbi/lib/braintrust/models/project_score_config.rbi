@@ -2,7 +2,7 @@
 
 module Braintrust
   module Models
-    class ProjectScoreConfig < Braintrust::BaseModel
+    class ProjectScoreConfig < Braintrust::Internal::Type::BaseModel
       sig { returns(T.nilable(String)) }
       attr_accessor :destination
 
@@ -12,19 +12,14 @@ module Braintrust
       sig { returns(T.nilable(Braintrust::Models::OnlineScoreConfig)) }
       attr_reader :online
 
-      sig do
-        params(
-          online: T.nilable(T.any(Braintrust::Models::OnlineScoreConfig, Braintrust::Internal::Util::AnyHash))
-        )
-          .void
-      end
+      sig { params(online: T.nilable(T.any(Braintrust::Models::OnlineScoreConfig, Braintrust::Internal::AnyHash))).void }
       attr_writer :online
 
       sig do
         params(
           destination: T.nilable(String),
           multi_select: T.nilable(T::Boolean),
-          online: T.nilable(T.any(Braintrust::Models::OnlineScoreConfig, Braintrust::Internal::Util::AnyHash))
+          online: T.nilable(T.any(Braintrust::Models::OnlineScoreConfig, Braintrust::Internal::AnyHash))
         )
           .returns(T.attached_class)
       end

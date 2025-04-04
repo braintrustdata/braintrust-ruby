@@ -2,7 +2,7 @@
 
 module Braintrust
   module Models
-    class RoleCreateParams < Braintrust::BaseModel
+    class RoleCreateParams < Braintrust::Internal::Type::BaseModel
       extend Braintrust::Internal::Type::RequestParameters::Converter
       include Braintrust::Internal::Type::RequestParameters
 
@@ -36,11 +36,11 @@ module Braintrust
           name: String,
           description: T.nilable(String),
           member_permissions: T.nilable(
-            T::Array[T.any(Braintrust::Models::RoleCreateParams::MemberPermission, Braintrust::Internal::Util::AnyHash)]
+            T::Array[T.any(Braintrust::Models::RoleCreateParams::MemberPermission, Braintrust::Internal::AnyHash)]
           ),
           member_roles: T.nilable(T::Array[String]),
           org_name: T.nilable(String),
-          request_options: T.any(Braintrust::RequestOptions, Braintrust::Internal::Util::AnyHash)
+          request_options: T.any(Braintrust::RequestOptions, Braintrust::Internal::AnyHash)
         )
           .returns(T.attached_class)
       end
@@ -70,7 +70,7 @@ module Braintrust
       def to_hash
       end
 
-      class MemberPermission < Braintrust::BaseModel
+      class MemberPermission < Braintrust::Internal::Type::BaseModel
         # Each permission permits a certain type of operation on an object in the system
         #
         #   Permissions can be assigned to to objects on an individual basis, or grouped

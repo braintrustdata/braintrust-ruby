@@ -2,7 +2,7 @@
 
 module Braintrust
   module Models
-    class Experiment < Braintrust::BaseModel
+    class Experiment < Braintrust::Internal::Type::BaseModel
       # @!attribute id
       #   Unique identifier for the experiment
       #
@@ -26,7 +26,7 @@ module Braintrust
       #     anybody inside or outside the organization
       #
       #   @return [Boolean]
-      required :public, Braintrust::BooleanModel
+      required :public, Braintrust::Internal::Type::BooleanModel
 
       # @!attribute base_exp_id
       #   Id of default base experiment to compare against when viewing this experiment
@@ -76,7 +76,9 @@ module Braintrust
       #   User-controlled metadata about the experiment
       #
       #   @return [Hash{Symbol=>Object, nil}, nil]
-      optional :metadata, Braintrust::HashOf[Braintrust::Unknown, nil?: true], nil?: true
+      optional :metadata,
+               Braintrust::Internal::Type::HashOf[Braintrust::Internal::Type::Unknown, nil?: true],
+               nil?: true
 
       # @!attribute repo_info
       #   Metadata about the state of the repo when the experiment was created
@@ -126,7 +128,7 @@ module Braintrust
       #     super
       #   end
 
-      # def initialize: (Hash | Braintrust::BaseModel) -> void
+      # def initialize: (Hash | Braintrust::Internal::Type::BaseModel) -> void
     end
   end
 end

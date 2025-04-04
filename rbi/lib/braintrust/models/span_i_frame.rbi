@@ -2,7 +2,7 @@
 
 module Braintrust
   module Models
-    class SpanIFrame < Braintrust::BaseModel
+    class SpanIFrame < Braintrust::Internal::Type::BaseModel
       # Unique identifier for the span iframe
       sig { returns(String) }
       attr_accessor :id

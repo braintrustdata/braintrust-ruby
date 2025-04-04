@@ -27,7 +27,7 @@ class Braintrust::Test::Resources::Projects::LogsTest < Braintrust::Test::Resour
 
     assert_pattern do
       response => {
-        events: ^(Braintrust::ArrayOf[Braintrust::Models::ProjectLogsEvent]),
+        events: ^(Braintrust::Internal::Type::ArrayOf[Braintrust::Models::ProjectLogsEvent]),
         cursor: String | nil
       }
     end
@@ -42,7 +42,7 @@ class Braintrust::Test::Resources::Projects::LogsTest < Braintrust::Test::Resour
 
     assert_pattern do
       response => {
-        events: ^(Braintrust::ArrayOf[Braintrust::Models::ProjectLogsEvent]),
+        events: ^(Braintrust::Internal::Type::ArrayOf[Braintrust::Models::ProjectLogsEvent]),
         cursor: String | nil
       }
     end
@@ -57,7 +57,7 @@ class Braintrust::Test::Resources::Projects::LogsTest < Braintrust::Test::Resour
 
     assert_pattern do
       response => {
-        row_ids: ^(Braintrust::ArrayOf[String])
+        row_ids: ^(Braintrust::Internal::Type::ArrayOf[String])
       }
     end
   end

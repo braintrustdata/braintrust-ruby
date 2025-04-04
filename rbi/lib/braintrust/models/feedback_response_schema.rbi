@@ -2,7 +2,7 @@
 
 module Braintrust
   module Models
-    class FeedbackResponseSchema < Braintrust::BaseModel
+    class FeedbackResponseSchema < Braintrust::Internal::Type::BaseModel
       sig { returns(Braintrust::Models::FeedbackResponseSchema::Status::TaggedSymbol) }
       attr_accessor :status
 
@@ -15,7 +15,7 @@ module Braintrust
       end
 
       module Status
-        extend Braintrust::Enum
+        extend Braintrust::Internal::Type::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Braintrust::Models::FeedbackResponseSchema::Status) }
         OrSymbol =

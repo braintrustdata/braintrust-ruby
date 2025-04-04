@@ -2,7 +2,7 @@
 
 module Braintrust
   module Models
-    class DatasetEvent < Braintrust::BaseModel
+    class DatasetEvent < Braintrust::Internal::Type::BaseModel
       # A unique identifier for the dataset event. If you don't provide one, BrainTrust
       #   will generate one for you
       sig { returns(String) }
@@ -68,7 +68,7 @@ module Braintrust
 
       sig do
         params(
-          metadata: T.nilable(T.any(Braintrust::Models::DatasetEvent::Metadata, Braintrust::Internal::Util::AnyHash))
+          metadata: T.nilable(T.any(Braintrust::Models::DatasetEvent::Metadata, Braintrust::Internal::AnyHash))
         )
           .void
       end
@@ -78,10 +78,7 @@ module Braintrust
       sig { returns(T.nilable(Braintrust::Models::ObjectReference)) }
       attr_reader :origin
 
-      sig do
-        params(origin: T.nilable(T.any(Braintrust::Models::ObjectReference, Braintrust::Internal::Util::AnyHash)))
-          .void
-      end
+      sig { params(origin: T.nilable(T.any(Braintrust::Models::ObjectReference, Braintrust::Internal::AnyHash))).void }
       attr_writer :origin
 
       # A list of tags to log
@@ -100,8 +97,8 @@ module Braintrust
           expected: T.anything,
           input: T.anything,
           is_root: T.nilable(T::Boolean),
-          metadata: T.nilable(T.any(Braintrust::Models::DatasetEvent::Metadata, Braintrust::Internal::Util::AnyHash)),
-          origin: T.nilable(T.any(Braintrust::Models::ObjectReference, Braintrust::Internal::Util::AnyHash)),
+          metadata: T.nilable(T.any(Braintrust::Models::DatasetEvent::Metadata, Braintrust::Internal::AnyHash)),
+          origin: T.nilable(T.any(Braintrust::Models::ObjectReference, Braintrust::Internal::AnyHash)),
           tags: T.nilable(T::Array[String])
         )
           .returns(T.attached_class)
@@ -146,7 +143,7 @@ module Braintrust
       def to_hash
       end
 
-      class Metadata < Braintrust::BaseModel
+      class Metadata < Braintrust::Internal::Type::BaseModel
         # The model used for this example
         sig { returns(T.nilable(String)) }
         attr_accessor :model

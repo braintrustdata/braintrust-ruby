@@ -30,10 +30,11 @@ class Braintrust::Test::Resources::FunctionsTest < Braintrust::Test::ResourceTes
         description: String | nil,
         function_schema: Braintrust::Models::Function::FunctionSchema | nil,
         function_type: Braintrust::Models::Function::FunctionType | nil,
-        metadata: ^(Braintrust::HashOf[Braintrust::Unknown, nil?: true]) | nil,
+        metadata: ^(Braintrust::Internal::Type::HashOf[Braintrust::Internal::Type::Unknown,
+                                                       nil?: true]) | nil,
         origin: Braintrust::Models::Function::Origin | nil,
         prompt_data: Braintrust::Models::PromptData | nil,
-        tags: ^(Braintrust::ArrayOf[String]) | nil
+        tags: ^(Braintrust::Internal::Type::ArrayOf[String]) | nil
       }
     end
   end
@@ -59,10 +60,11 @@ class Braintrust::Test::Resources::FunctionsTest < Braintrust::Test::ResourceTes
         description: String | nil,
         function_schema: Braintrust::Models::Function::FunctionSchema | nil,
         function_type: Braintrust::Models::Function::FunctionType | nil,
-        metadata: ^(Braintrust::HashOf[Braintrust::Unknown, nil?: true]) | nil,
+        metadata: ^(Braintrust::Internal::Type::HashOf[Braintrust::Internal::Type::Unknown,
+                                                       nil?: true]) | nil,
         origin: Braintrust::Models::Function::Origin | nil,
         prompt_data: Braintrust::Models::PromptData | nil,
-        tags: ^(Braintrust::ArrayOf[String]) | nil
+        tags: ^(Braintrust::Internal::Type::ArrayOf[String]) | nil
       }
     end
   end
@@ -88,10 +90,11 @@ class Braintrust::Test::Resources::FunctionsTest < Braintrust::Test::ResourceTes
         description: String | nil,
         function_schema: Braintrust::Models::Function::FunctionSchema | nil,
         function_type: Braintrust::Models::Function::FunctionType | nil,
-        metadata: ^(Braintrust::HashOf[Braintrust::Unknown, nil?: true]) | nil,
+        metadata: ^(Braintrust::Internal::Type::HashOf[Braintrust::Internal::Type::Unknown,
+                                                       nil?: true]) | nil,
         origin: Braintrust::Models::Function::Origin | nil,
         prompt_data: Braintrust::Models::PromptData | nil,
-        tags: ^(Braintrust::ArrayOf[String]) | nil
+        tags: ^(Braintrust::Internal::Type::ArrayOf[String]) | nil
       }
     end
   end
@@ -124,10 +127,11 @@ class Braintrust::Test::Resources::FunctionsTest < Braintrust::Test::ResourceTes
         description: String | nil,
         function_schema: Braintrust::Models::Function::FunctionSchema | nil,
         function_type: Braintrust::Models::Function::FunctionType | nil,
-        metadata: ^(Braintrust::HashOf[Braintrust::Unknown, nil?: true]) | nil,
+        metadata: ^(Braintrust::Internal::Type::HashOf[Braintrust::Internal::Type::Unknown,
+                                                       nil?: true]) | nil,
         origin: Braintrust::Models::Function::Origin | nil,
         prompt_data: Braintrust::Models::PromptData | nil,
-        tags: ^(Braintrust::ArrayOf[String]) | nil
+        tags: ^(Braintrust::Internal::Type::ArrayOf[String]) | nil
       }
     end
   end
@@ -153,10 +157,11 @@ class Braintrust::Test::Resources::FunctionsTest < Braintrust::Test::ResourceTes
         description: String | nil,
         function_schema: Braintrust::Models::Function::FunctionSchema | nil,
         function_type: Braintrust::Models::Function::FunctionType | nil,
-        metadata: ^(Braintrust::HashOf[Braintrust::Unknown, nil?: true]) | nil,
+        metadata: ^(Braintrust::Internal::Type::HashOf[Braintrust::Internal::Type::Unknown,
+                                                       nil?: true]) | nil,
         origin: Braintrust::Models::Function::Origin | nil,
         prompt_data: Braintrust::Models::PromptData | nil,
-        tags: ^(Braintrust::ArrayOf[String]) | nil
+        tags: ^(Braintrust::Internal::Type::ArrayOf[String]) | nil
       }
     end
   end
@@ -165,7 +170,7 @@ class Braintrust::Test::Resources::FunctionsTest < Braintrust::Test::ResourceTes
     response = @braintrust.functions.invoke("182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e")
 
     assert_pattern do
-      response => Braintrust::Unknown
+      response => Braintrust::Internal::Type::Unknown
     end
   end
 
@@ -196,10 +201,11 @@ class Braintrust::Test::Resources::FunctionsTest < Braintrust::Test::ResourceTes
         description: String | nil,
         function_schema: Braintrust::Models::Function::FunctionSchema | nil,
         function_type: Braintrust::Models::Function::FunctionType | nil,
-        metadata: ^(Braintrust::HashOf[Braintrust::Unknown, nil?: true]) | nil,
+        metadata: ^(Braintrust::Internal::Type::HashOf[Braintrust::Internal::Type::Unknown,
+                                                       nil?: true]) | nil,
         origin: Braintrust::Models::Function::Origin | nil,
         prompt_data: Braintrust::Models::PromptData | nil,
-        tags: ^(Braintrust::ArrayOf[String]) | nil
+        tags: ^(Braintrust::Internal::Type::ArrayOf[String]) | nil
       }
     end
   end

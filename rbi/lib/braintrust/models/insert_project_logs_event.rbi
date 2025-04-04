@@ -2,7 +2,7 @@
 
 module Braintrust
   module Models
-    class InsertProjectLogsEvent < Braintrust::BaseModel
+    class InsertProjectLogsEvent < Braintrust::Internal::Type::BaseModel
       # A unique identifier for the project logs event. If you don't provide one,
       #   BrainTrust will generate one for you
       sig { returns(T.nilable(String)) }
@@ -73,7 +73,7 @@ module Braintrust
 
       sig do
         params(
-          context: T.nilable(T.any(Braintrust::Models::InsertProjectLogsEvent::Context, Braintrust::Internal::Util::AnyHash))
+          context: T.nilable(T.any(Braintrust::Models::InsertProjectLogsEvent::Context, Braintrust::Internal::AnyHash))
         )
           .void
       end
@@ -120,9 +120,7 @@ module Braintrust
 
       sig do
         params(
-          metadata: T.nilable(
-            T.any(Braintrust::Models::InsertProjectLogsEvent::Metadata, Braintrust::Internal::Util::AnyHash)
-          )
+          metadata: T.nilable(T.any(Braintrust::Models::InsertProjectLogsEvent::Metadata, Braintrust::Internal::AnyHash))
         )
           .void
       end
@@ -136,7 +134,7 @@ module Braintrust
 
       sig do
         params(
-          metrics: T.nilable(T.any(Braintrust::Models::InsertProjectLogsEvent::Metrics, Braintrust::Internal::Util::AnyHash))
+          metrics: T.nilable(T.any(Braintrust::Models::InsertProjectLogsEvent::Metrics, Braintrust::Internal::AnyHash))
         )
           .void
       end
@@ -146,10 +144,7 @@ module Braintrust
       sig { returns(T.nilable(Braintrust::Models::ObjectReference)) }
       attr_reader :origin
 
-      sig do
-        params(origin: T.nilable(T.any(Braintrust::Models::ObjectReference, Braintrust::Internal::Util::AnyHash)))
-          .void
-      end
+      sig { params(origin: T.nilable(T.any(Braintrust::Models::ObjectReference, Braintrust::Internal::AnyHash))).void }
       attr_writer :origin
 
       # The output of your application, including post-processing (an arbitrary, JSON
@@ -198,7 +193,7 @@ module Braintrust
 
       sig do
         params(
-          span_attributes: T.nilable(T.any(Braintrust::Models::SpanAttributes, Braintrust::Internal::Util::AnyHash))
+          span_attributes: T.nilable(T.any(Braintrust::Models::SpanAttributes, Braintrust::Internal::AnyHash))
         )
           .void
       end
@@ -252,20 +247,18 @@ module Braintrust
           _merge_paths: T.nilable(T::Array[T::Array[String]]),
           _object_delete: T.nilable(T::Boolean),
           _parent_id: T.nilable(String),
-          context: T.nilable(T.any(Braintrust::Models::InsertProjectLogsEvent::Context, Braintrust::Internal::Util::AnyHash)),
+          context: T.nilable(T.any(Braintrust::Models::InsertProjectLogsEvent::Context, Braintrust::Internal::AnyHash)),
           created: T.nilable(Time),
           error: T.anything,
           expected: T.anything,
           input: T.anything,
-          metadata: T.nilable(
-            T.any(Braintrust::Models::InsertProjectLogsEvent::Metadata, Braintrust::Internal::Util::AnyHash)
-          ),
-          metrics: T.nilable(T.any(Braintrust::Models::InsertProjectLogsEvent::Metrics, Braintrust::Internal::Util::AnyHash)),
-          origin: T.nilable(T.any(Braintrust::Models::ObjectReference, Braintrust::Internal::Util::AnyHash)),
+          metadata: T.nilable(T.any(Braintrust::Models::InsertProjectLogsEvent::Metadata, Braintrust::Internal::AnyHash)),
+          metrics: T.nilable(T.any(Braintrust::Models::InsertProjectLogsEvent::Metrics, Braintrust::Internal::AnyHash)),
+          origin: T.nilable(T.any(Braintrust::Models::ObjectReference, Braintrust::Internal::AnyHash)),
           output: T.anything,
           root_span_id: T.nilable(String),
           scores: T.nilable(T::Hash[Symbol, T.nilable(Float)]),
-          span_attributes: T.nilable(T.any(Braintrust::Models::SpanAttributes, Braintrust::Internal::Util::AnyHash)),
+          span_attributes: T.nilable(T.any(Braintrust::Models::SpanAttributes, Braintrust::Internal::AnyHash)),
           span_id: T.nilable(String),
           span_parents: T.nilable(T::Array[String]),
           tags: T.nilable(T::Array[String])
@@ -326,7 +319,7 @@ module Braintrust
       def to_hash
       end
 
-      class Context < Braintrust::BaseModel
+      class Context < Braintrust::Internal::Type::BaseModel
         # Name of the file in code where the project logs event was created
         sig { returns(T.nilable(String)) }
         attr_accessor :caller_filename
@@ -368,7 +361,7 @@ module Braintrust
         end
       end
 
-      class Metadata < Braintrust::BaseModel
+      class Metadata < Braintrust::Internal::Type::BaseModel
         # The model used for this example
         sig { returns(T.nilable(String)) }
         attr_accessor :model
@@ -387,7 +380,7 @@ module Braintrust
         end
       end
 
-      class Metrics < Braintrust::BaseModel
+      class Metrics < Braintrust::Internal::Type::BaseModel
         # This metric is deprecated
         sig { returns(T.nilable(T.anything)) }
         attr_reader :caller_filename

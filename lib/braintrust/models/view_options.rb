@@ -2,22 +2,22 @@
 
 module Braintrust
   module Models
-    class ViewOptions < Braintrust::BaseModel
+    class ViewOptions < Braintrust::Internal::Type::BaseModel
       # @!attribute column_order
       #
       #   @return [Array<String>, nil]
-      optional :column_order, Braintrust::ArrayOf[String], api_name: :columnOrder, nil?: true
+      optional :column_order, Braintrust::Internal::Type::ArrayOf[String], api_name: :columnOrder, nil?: true
 
       # @!attribute column_sizing
       #
       #   @return [Hash{Symbol=>Float}, nil]
-      optional :column_sizing, Braintrust::HashOf[Float], api_name: :columnSizing, nil?: true
+      optional :column_sizing, Braintrust::Internal::Type::HashOf[Float], api_name: :columnSizing, nil?: true
 
       # @!attribute column_visibility
       #
       #   @return [Hash{Symbol=>Boolean}, nil]
       optional :column_visibility,
-               Braintrust::HashOf[Braintrust::BooleanModel],
+               Braintrust::Internal::Type::HashOf[Braintrust::Internal::Type::BooleanModel],
                api_name: :columnVisibility,
                nil?: true
 
@@ -58,7 +58,7 @@ module Braintrust
       #     super
       #   end
 
-      # def initialize: (Hash | Braintrust::BaseModel) -> void
+      # def initialize: (Hash | Braintrust::Internal::Type::BaseModel) -> void
     end
   end
 end

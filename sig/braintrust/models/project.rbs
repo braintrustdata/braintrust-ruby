@@ -11,7 +11,7 @@ module Braintrust
         user_id: String?
       }
 
-    class Project < Braintrust::BaseModel
+    class Project < Braintrust::Internal::Type::BaseModel
       attr_accessor id: String
 
       attr_accessor name: String

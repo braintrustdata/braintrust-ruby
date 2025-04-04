@@ -31,10 +31,10 @@ module Braintrust
         def dump(value)
           case value
           in Array
-            value.map { Braintrust::Unknown.dump(_1) }
+            value.map { Braintrust::Internal::Type::Unknown.dump(_1) }
           in Hash
-            value.transform_values { Braintrust::Unknown.dump(_1) }
-          in Braintrust::BaseModel
+            value.transform_values { Braintrust::Internal::Type::Unknown.dump(_1) }
+          in Braintrust::Internal::Type::BaseModel
             value.class.dump(value)
           else
             value
@@ -64,7 +64,7 @@ module Braintrust
             in Hash
               type_info(spec.slice(:const, :enum, :union).first&.last)
             in true | false
-              -> { Braintrust::BooleanModel }
+              -> { Braintrust::Internal::Type::BooleanModel }
             in Braintrust::Internal::Type::Converter | Class | Symbol
               -> { spec }
             in NilClass | Integer | Float
@@ -209,7 +209,7 @@ module Braintrust
           #
           # @return [Object]
           def dump(target, value)
-            target.is_a?(Braintrust::Internal::Type::Converter) ? target.dump(value) : Braintrust::Unknown.dump(value)
+            target.is_a?(Braintrust::Internal::Type::Converter) ? target.dump(value) : Braintrust::Internal::Type::Unknown.dump(value)
           end
         end
       end

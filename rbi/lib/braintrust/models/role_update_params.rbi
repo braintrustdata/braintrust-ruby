@@ -2,7 +2,7 @@
 
 module Braintrust
   module Models
-    class RoleUpdateParams < Braintrust::BaseModel
+    class RoleUpdateParams < Braintrust::Internal::Type::BaseModel
       extend Braintrust::Internal::Type::RequestParameters::Converter
       include Braintrust::Internal::Type::RequestParameters
 
@@ -33,16 +33,16 @@ module Braintrust
       sig do
         params(
           add_member_permissions: T.nilable(
-            T::Array[T.any(Braintrust::Models::RoleUpdateParams::AddMemberPermission, Braintrust::Internal::Util::AnyHash)]
+            T::Array[T.any(Braintrust::Models::RoleUpdateParams::AddMemberPermission, Braintrust::Internal::AnyHash)]
           ),
           add_member_roles: T.nilable(T::Array[String]),
           description: T.nilable(String),
           name: T.nilable(String),
           remove_member_permissions: T.nilable(
-            T::Array[T.any(Braintrust::Models::RoleUpdateParams::RemoveMemberPermission, Braintrust::Internal::Util::AnyHash)]
+            T::Array[T.any(Braintrust::Models::RoleUpdateParams::RemoveMemberPermission, Braintrust::Internal::AnyHash)]
           ),
           remove_member_roles: T.nilable(T::Array[String]),
-          request_options: T.any(Braintrust::RequestOptions, Braintrust::Internal::Util::AnyHash)
+          request_options: T.any(Braintrust::RequestOptions, Braintrust::Internal::AnyHash)
         )
           .returns(T.attached_class)
       end
@@ -74,7 +74,7 @@ module Braintrust
       def to_hash
       end
 
-      class AddMemberPermission < Braintrust::BaseModel
+      class AddMemberPermission < Braintrust::Internal::Type::BaseModel
         # Each permission permits a certain type of operation on an object in the system
         #
         #   Permissions can be assigned to to objects on an individual basis, or grouped
@@ -109,7 +109,7 @@ module Braintrust
         end
       end
 
-      class RemoveMemberPermission < Braintrust::BaseModel
+      class RemoveMemberPermission < Braintrust::Internal::Type::BaseModel
         # Each permission permits a certain type of operation on an object in the system
         #
         #   Permissions can be assigned to to objects on an individual basis, or grouped

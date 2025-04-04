@@ -2,7 +2,7 @@
 
 module Braintrust
   module Models
-    class InsertExperimentEvent < Braintrust::BaseModel
+    class InsertExperimentEvent < Braintrust::Internal::Type::BaseModel
       # @!attribute id
       #   A unique identifier for the experiment event. If you don't provide one,
       #     BrainTrust will generate one for you
@@ -25,7 +25,7 @@ module Braintrust
       #     `{"id": "foo", "input": {"b": 11, "c": 20}}`
       #
       #   @return [Boolean, nil]
-      optional :_is_merge, Braintrust::BooleanModel, nil?: true
+      optional :_is_merge, Braintrust::Internal::Type::BooleanModel, nil?: true
 
       # @!attribute _merge_paths
       #   The `_merge_paths` field allows controlling the depth of the merge, when
@@ -43,14 +43,16 @@ module Braintrust
       #     but have still deep-merged `input` and `input.c`.
       #
       #   @return [Array<Array<String>>, nil]
-      optional :_merge_paths, Braintrust::ArrayOf[Braintrust::ArrayOf[String]], nil?: true
+      optional :_merge_paths,
+               Braintrust::Internal::Type::ArrayOf[Braintrust::Internal::Type::ArrayOf[String]],
+               nil?: true
 
       # @!attribute _object_delete
       #   Pass `_object_delete=true` to mark the experiment event deleted. Deleted events
       #     will not show up in subsequent fetches for this experiment
       #
       #   @return [Boolean, nil]
-      optional :_object_delete, Braintrust::BooleanModel, nil?: true
+      optional :_object_delete, Braintrust::Internal::Type::BooleanModel, nil?: true
 
       # @!attribute _parent_id
       #   DEPRECATED: The `_parent_id` field is deprecated and should not be used. Support
@@ -93,7 +95,7 @@ module Braintrust
       #   The error that occurred, if any.
       #
       #   @return [Object, nil]
-      optional :error, Braintrust::Unknown
+      optional :error, Braintrust::Internal::Type::Unknown
 
       # @!parse
       #   # @return [Object]
@@ -109,7 +111,7 @@ module Braintrust
       #     models
       #
       #   @return [Object, nil]
-      optional :expected, Braintrust::Unknown
+      optional :expected, Braintrust::Internal::Type::Unknown
 
       # @!parse
       #   # @return [Object]
@@ -123,7 +125,7 @@ module Braintrust
       #     experiment twice, the `input` should be identical
       #
       #   @return [Object, nil]
-      optional :input, Braintrust::Unknown
+      optional :input, Braintrust::Internal::Type::Unknown
 
       # @!parse
       #   # @return [Object]
@@ -161,7 +163,7 @@ module Braintrust
       #     because there may be multiple valid queries that answer a single question
       #
       #   @return [Object, nil]
-      optional :output, Braintrust::Unknown
+      optional :output, Braintrust::Internal::Type::Unknown
 
       # @!parse
       #   # @return [Object]
@@ -198,7 +200,7 @@ module Braintrust
       #     help you sort, filter, and compare experiments
       #
       #   @return [Hash{Symbol=>Float, nil}, nil]
-      optional :scores, Braintrust::HashOf[Float, nil?: true], nil?: true
+      optional :scores, Braintrust::Internal::Type::HashOf[Float, nil?: true], nil?: true
 
       # @!attribute span_attributes
       #   Human-identifying attributes of the span, such as name, type, etc.
@@ -244,13 +246,13 @@ module Braintrust
       #     If the row is being merged into an existing row, this field will be ignored.
       #
       #   @return [Array<String>, nil]
-      optional :span_parents, Braintrust::ArrayOf[String], nil?: true
+      optional :span_parents, Braintrust::Internal::Type::ArrayOf[String], nil?: true
 
       # @!attribute tags
       #   A list of tags to log
       #
       #   @return [Array<String>, nil]
-      optional :tags, Braintrust::ArrayOf[String], nil?: true
+      optional :tags, Braintrust::Internal::Type::ArrayOf[String], nil?: true
 
       # @!parse
       #   # An experiment event
@@ -302,10 +304,10 @@ module Braintrust
       #     super
       #   end
 
-      # def initialize: (Hash | Braintrust::BaseModel) -> void
+      # def initialize: (Hash | Braintrust::Internal::Type::BaseModel) -> void
 
       # @see Braintrust::Models::InsertExperimentEvent#context
-      class Context < Braintrust::BaseModel
+      class Context < Braintrust::Internal::Type::BaseModel
         # @!attribute caller_filename
         #   Name of the file in code where the experiment event was created
         #
@@ -336,11 +338,11 @@ module Braintrust
         #   #
         #   def initialize(caller_filename: nil, caller_functionname: nil, caller_lineno: nil, **) = super
 
-        # def initialize: (Hash | Braintrust::BaseModel) -> void
+        # def initialize: (Hash | Braintrust::Internal::Type::BaseModel) -> void
       end
 
       # @see Braintrust::Models::InsertExperimentEvent#metadata
-      class Metadata < Braintrust::BaseModel
+      class Metadata < Braintrust::Internal::Type::BaseModel
         # @!attribute model
         #   The model used for this example
         #
@@ -358,16 +360,16 @@ module Braintrust
         #   #
         #   def initialize(model: nil, **) = super
 
-        # def initialize: (Hash | Braintrust::BaseModel) -> void
+        # def initialize: (Hash | Braintrust::Internal::Type::BaseModel) -> void
       end
 
       # @see Braintrust::Models::InsertExperimentEvent#metrics
-      class Metrics < Braintrust::BaseModel
+      class Metrics < Braintrust::Internal::Type::BaseModel
         # @!attribute [r] caller_filename
         #   This metric is deprecated
         #
         #   @return [Object, nil]
-        optional :caller_filename, Braintrust::Unknown
+        optional :caller_filename, Braintrust::Internal::Type::Unknown
 
         # @!parse
         #   # @return [Object]
@@ -377,7 +379,7 @@ module Braintrust
         #   This metric is deprecated
         #
         #   @return [Object, nil]
-        optional :caller_functionname, Braintrust::Unknown
+        optional :caller_functionname, Braintrust::Internal::Type::Unknown
 
         # @!parse
         #   # @return [Object]
@@ -387,7 +389,7 @@ module Braintrust
         #   This metric is deprecated
         #
         #   @return [Object, nil]
-        optional :caller_lineno, Braintrust::Unknown
+        optional :caller_lineno, Braintrust::Internal::Type::Unknown
 
         # @!parse
         #   # @return [Object]
@@ -455,7 +457,7 @@ module Braintrust
         #     super
         #   end
 
-        # def initialize: (Hash | Braintrust::BaseModel) -> void
+        # def initialize: (Hash | Braintrust::Internal::Type::BaseModel) -> void
       end
     end
   end

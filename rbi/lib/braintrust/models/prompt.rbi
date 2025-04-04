@@ -2,7 +2,7 @@
 
 module Braintrust
   module Models
-    class Prompt < Braintrust::BaseModel
+    class Prompt < Braintrust::Internal::Type::BaseModel
       # Unique identifier for the prompt
       sig { returns(String) }
       attr_accessor :id
@@ -53,10 +53,7 @@ module Braintrust
       sig { returns(T.nilable(Braintrust::Models::PromptData)) }
       attr_reader :prompt_data
 
-      sig do
-        params(prompt_data: T.nilable(T.any(Braintrust::Models::PromptData, Braintrust::Internal::Util::AnyHash)))
-          .void
-      end
+      sig { params(prompt_data: T.nilable(T.any(Braintrust::Models::PromptData, Braintrust::Internal::AnyHash))).void }
       attr_writer :prompt_data
 
       # A list of tags for the prompt
@@ -76,7 +73,7 @@ module Braintrust
           description: T.nilable(String),
           function_type: T.nilable(Braintrust::Models::Prompt::FunctionType::OrSymbol),
           metadata: T.nilable(T::Hash[Symbol, T.nilable(T.anything)]),
-          prompt_data: T.nilable(T.any(Braintrust::Models::PromptData, Braintrust::Internal::Util::AnyHash)),
+          prompt_data: T.nilable(T.any(Braintrust::Models::PromptData, Braintrust::Internal::AnyHash)),
           tags: T.nilable(T::Array[String])
         )
           .returns(T.attached_class)
@@ -123,7 +120,7 @@ module Braintrust
 
       # A literal 'p' which identifies the object as a project prompt
       module LogID
-        extend Braintrust::Enum
+        extend Braintrust::Internal::Type::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Braintrust::Models::Prompt::LogID) }
         OrSymbol = T.type_alias { T.any(Symbol, String, Braintrust::Models::Prompt::LogID::TaggedSymbol) }
@@ -136,7 +133,7 @@ module Braintrust
       end
 
       module FunctionType
-        extend Braintrust::Enum
+        extend Braintrust::Internal::Type::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Braintrust::Models::Prompt::FunctionType) }
         OrSymbol = T.type_alias { T.any(Symbol, String, Braintrust::Models::Prompt::FunctionType::TaggedSymbol) }

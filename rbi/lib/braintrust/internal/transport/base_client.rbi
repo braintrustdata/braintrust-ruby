@@ -25,10 +25,10 @@ module Braintrust
               ),
               body: T.nilable(T.anything),
               unwrap: T.nilable(Symbol),
-              page: T.nilable(T::Class[Braintrust::Internal::Type::BasePage[Braintrust::BaseModel]]),
+              page: T.nilable(T::Class[Braintrust::Internal::Type::BasePage[Braintrust::Internal::Type::BaseModel]]),
               stream: T.nilable(T::Class[T.anything]),
               model: T.nilable(Braintrust::Internal::Type::Converter::Input),
-              options: T.nilable(T.any(Braintrust::RequestOptions, Braintrust::Internal::Util::AnyHash))
+              options: T.nilable(T.any(Braintrust::RequestOptions, Braintrust::Internal::AnyHash))
             }
           end
 
@@ -136,7 +136,7 @@ module Braintrust
           overridable
             .params(
               req: Braintrust::Internal::Transport::BaseClient::RequestComponentsShape,
-              opts: Braintrust::Internal::Util::AnyHash
+              opts: Braintrust::Internal::AnyHash
             )
             .returns(Braintrust::Internal::Transport::BaseClient::RequestInputShape)
         end
@@ -180,10 +180,10 @@ module Braintrust
             ),
             body: T.nilable(T.anything),
             unwrap: T.nilable(Symbol),
-            page: T.nilable(T::Class[Braintrust::Internal::Type::BasePage[Braintrust::BaseModel]]),
+            page: T.nilable(T::Class[Braintrust::Internal::Type::BasePage[Braintrust::Internal::Type::BaseModel]]),
             stream: T.nilable(T::Class[T.anything]),
             model: T.nilable(Braintrust::Internal::Type::Converter::Input),
-            options: T.nilable(T.any(Braintrust::RequestOptions, Braintrust::Internal::Util::AnyHash))
+            options: T.nilable(T.any(Braintrust::RequestOptions, Braintrust::Internal::AnyHash))
           )
             .returns(T.anything)
         end
@@ -196,7 +196,7 @@ module Braintrust
           unwrap: nil,
           page: nil,
           stream: nil,
-          model: Braintrust::Unknown,
+          model: Braintrust::Internal::Type::Unknown,
           options: {}
         )
         end

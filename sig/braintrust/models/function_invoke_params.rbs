@@ -13,7 +13,7 @@ module Braintrust
       }
       & Braintrust::Internal::Type::request_parameters
 
-    class FunctionInvokeParams < Braintrust::BaseModel
+    class FunctionInvokeParams < Braintrust::Internal::Type::BaseModel
       extend Braintrust::Internal::Type::RequestParameters::Converter
       include Braintrust::Internal::Type::RequestParameters
 
@@ -70,7 +70,7 @@ module Braintrust
         | Braintrust::Models::FunctionInvokeParams::Message::Fallback
 
       module Message
-        extend Braintrust::Union
+        extend Braintrust::Internal::Type::Union
 
         type system_ =
           {
@@ -79,7 +79,7 @@ module Braintrust
             name: String
           }
 
-        class System < Braintrust::BaseModel
+        class System < Braintrust::Internal::Type::BaseModel
           attr_accessor role: Braintrust::Models::FunctionInvokeParams::Message::System::role
 
           attr_reader content: String?
@@ -101,7 +101,7 @@ module Braintrust
           type role = :system
 
           module Role
-            extend Braintrust::Enum
+            extend Braintrust::Internal::Type::Enum
 
             SYSTEM: :system
 
@@ -116,7 +116,7 @@ module Braintrust
             name: String
           }
 
-        class User < Braintrust::BaseModel
+        class User < Braintrust::Internal::Type::BaseModel
           attr_accessor role: Braintrust::Models::FunctionInvokeParams::Message::User::role
 
           attr_reader content: Braintrust::Models::FunctionInvokeParams::Message::User::content?
@@ -140,7 +140,7 @@ module Braintrust
           type role = :user
 
           module Role
-            extend Braintrust::Enum
+            extend Braintrust::Internal::Type::Enum
 
             USER: :user
 
@@ -152,14 +152,14 @@ module Braintrust
             | ::Array[Braintrust::Models::FunctionInvokeParams::Message::User::Content::array]
 
           module Content
-            extend Braintrust::Union
+            extend Braintrust::Internal::Type::Union
 
             type array =
               Braintrust::Models::ChatCompletionContentPartText
               | Braintrust::Models::ChatCompletionContentPartImage
 
             module Array
-              extend Braintrust::Union
+              extend Braintrust::Internal::Type::Union
 
               def self?.variants: -> [Braintrust::Models::ChatCompletionContentPartText, Braintrust::Models::ChatCompletionContentPartImage]
             end
@@ -182,7 +182,7 @@ module Braintrust
             tool_calls: ::Array[Braintrust::Models::ChatCompletionMessageToolCall]?
           }
 
-        class Assistant < Braintrust::BaseModel
+        class Assistant < Braintrust::Internal::Type::BaseModel
           attr_accessor role: Braintrust::Models::FunctionInvokeParams::Message::Assistant::role
 
           attr_accessor content: String?
@@ -206,7 +206,7 @@ module Braintrust
           type role = :assistant
 
           module Role
-            extend Braintrust::Enum
+            extend Braintrust::Internal::Type::Enum
 
             ASSISTANT: :assistant
 
@@ -215,7 +215,7 @@ module Braintrust
 
           type function_call = { arguments: String, name: String }
 
-          class FunctionCall < Braintrust::BaseModel
+          class FunctionCall < Braintrust::Internal::Type::BaseModel
             attr_accessor arguments: String
 
             attr_accessor name: String
@@ -233,7 +233,7 @@ module Braintrust
             tool_call_id: String
           }
 
-        class Tool < Braintrust::BaseModel
+        class Tool < Braintrust::Internal::Type::BaseModel
           attr_accessor role: Braintrust::Models::FunctionInvokeParams::Message::Tool::role
 
           attr_reader content: String?
@@ -255,7 +255,7 @@ module Braintrust
           type role = :tool
 
           module Role
-            extend Braintrust::Enum
+            extend Braintrust::Internal::Type::Enum
 
             TOOL: :tool
 
@@ -270,7 +270,7 @@ module Braintrust
             content: String
           }
 
-        class Function < Braintrust::BaseModel
+        class Function < Braintrust::Internal::Type::BaseModel
           attr_accessor name: String
 
           attr_accessor role: Braintrust::Models::FunctionInvokeParams::Message::Function::role
@@ -290,7 +290,7 @@ module Braintrust
           type role = :function
 
           module Role
-            extend Braintrust::Enum
+            extend Braintrust::Internal::Type::Enum
 
             FUNCTION: :function
 
@@ -304,7 +304,7 @@ module Braintrust
             content: String?
           }
 
-        class Fallback < Braintrust::BaseModel
+        class Fallback < Braintrust::Internal::Type::BaseModel
           attr_accessor role: Braintrust::Models::FunctionInvokeParams::Message::Fallback::role
 
           attr_accessor content: String?
@@ -319,7 +319,7 @@ module Braintrust
           type role = :model
 
           module Role
-            extend Braintrust::Enum
+            extend Braintrust::Internal::Type::Enum
 
             MODEL: :model
 
@@ -333,7 +333,7 @@ module Braintrust
       type mode = :auto | :parallel
 
       module Mode
-        extend Braintrust::Enum
+        extend Braintrust::Internal::Type::Enum
 
         AUTO: :auto
         PARALLEL: :parallel
@@ -346,7 +346,7 @@ module Braintrust
         | String
 
       module Parent
-        extend Braintrust::Union
+        extend Braintrust::Internal::Type::Union
 
         type span_parent_struct =
           {
@@ -356,7 +356,7 @@ module Braintrust
             row_ids: Braintrust::Models::FunctionInvokeParams::Parent::SpanParentStruct::RowIDs?
           }
 
-        class SpanParentStruct < Braintrust::BaseModel
+        class SpanParentStruct < Braintrust::Internal::Type::BaseModel
           attr_accessor object_id_: String
 
           attr_accessor object_type: Braintrust::Models::FunctionInvokeParams::Parent::SpanParentStruct::object_type
@@ -377,7 +377,7 @@ module Braintrust
           type object_type = :project_logs | :experiment | :playground_logs
 
           module ObjectType
-            extend Braintrust::Enum
+            extend Braintrust::Internal::Type::Enum
 
             PROJECT_LOGS: :project_logs
             EXPERIMENT: :experiment
@@ -388,7 +388,7 @@ module Braintrust
 
           type row_ids = { id: String, root_span_id: String, span_id: String }
 
-          class RowIDs < Braintrust::BaseModel
+          class RowIDs < Braintrust::Internal::Type::BaseModel
             attr_accessor id: String
 
             attr_accessor root_span_id: String

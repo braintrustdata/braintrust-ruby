@@ -2,7 +2,7 @@
 
 module Braintrust
   module Models
-    class Dataset < Braintrust::BaseModel
+    class Dataset < Braintrust::Internal::Type::BaseModel
       # @!attribute id
       #   Unique identifier for the dataset
       #
@@ -43,7 +43,9 @@ module Braintrust
       #   User-controlled metadata about the dataset
       #
       #   @return [Hash{Symbol=>Object, nil}, nil]
-      optional :metadata, Braintrust::HashOf[Braintrust::Unknown, nil?: true], nil?: true
+      optional :metadata,
+               Braintrust::Internal::Type::HashOf[Braintrust::Internal::Type::Unknown, nil?: true],
+               nil?: true
 
       # @!attribute user_id
       #   Identifies the user who created the dataset
@@ -63,7 +65,7 @@ module Braintrust
       #   #
       #   def initialize(id:, name:, project_id:, created: nil, deleted_at: nil, description: nil, metadata: nil, user_id: nil, **) = super
 
-      # def initialize: (Hash | Braintrust::BaseModel) -> void
+      # def initialize: (Hash | Braintrust::Internal::Type::BaseModel) -> void
     end
   end
 end

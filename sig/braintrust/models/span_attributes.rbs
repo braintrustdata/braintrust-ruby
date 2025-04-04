@@ -3,7 +3,7 @@ module Braintrust
     type span_attributes =
       { name: String?, type: Braintrust::Models::span_type? }
 
-    class SpanAttributes < Braintrust::BaseModel
+    class SpanAttributes < Braintrust::Internal::Type::BaseModel
       attr_accessor name: String?
 
       attr_accessor type: Braintrust::Models::span_type?

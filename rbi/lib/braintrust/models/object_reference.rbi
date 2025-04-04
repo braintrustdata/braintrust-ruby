@@ -2,7 +2,7 @@
 
 module Braintrust
   module Models
-    class ObjectReference < Braintrust::BaseModel
+    class ObjectReference < Braintrust::Internal::Type::BaseModel
       # ID of the original event.
       sig { returns(String) }
       attr_accessor :id
@@ -54,7 +54,7 @@ module Braintrust
 
       # Type of the object the event is originating from.
       module ObjectType
-        extend Braintrust::Enum
+        extend Braintrust::Internal::Type::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Braintrust::Models::ObjectReference::ObjectType) }
         OrSymbol =

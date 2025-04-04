@@ -2,7 +2,7 @@
 
 module Braintrust
   module Models
-    class ACLBatchUpdateResponse < Braintrust::BaseModel
+    class ACLBatchUpdateResponse < Braintrust::Internal::Type::BaseModel
       # An ACL grants a certain permission or role to a certain user or group on an
       #   object.
       #
@@ -31,8 +31,8 @@ module Braintrust
 
       sig do
         params(
-          added_acls: T::Array[T.any(Braintrust::Models::ACL, Braintrust::Internal::Util::AnyHash)],
-          removed_acls: T::Array[T.any(Braintrust::Models::ACL, Braintrust::Internal::Util::AnyHash)]
+          added_acls: T::Array[T.any(Braintrust::Models::ACL, Braintrust::Internal::AnyHash)],
+          removed_acls: T::Array[T.any(Braintrust::Models::ACL, Braintrust::Internal::AnyHash)]
         )
           .returns(T.attached_class)
       end

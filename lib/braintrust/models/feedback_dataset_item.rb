@@ -2,7 +2,7 @@
 
 module Braintrust
   module Models
-    class FeedbackDatasetItem < Braintrust::BaseModel
+    class FeedbackDatasetItem < Braintrust::Internal::Type::BaseModel
       # @!attribute id
       #   The id of the dataset event to log feedback for. This is the row `id` returned
       #     by `POST /v1/dataset/{dataset_id}/insert`
@@ -23,7 +23,9 @@ module Braintrust
       #     the event.
       #
       #   @return [Hash{Symbol=>Object, nil}, nil]
-      optional :metadata, Braintrust::HashOf[Braintrust::Unknown, nil?: true], nil?: true
+      optional :metadata,
+               Braintrust::Internal::Type::HashOf[Braintrust::Internal::Type::Unknown, nil?: true],
+               nil?: true
 
       # @!attribute source
       #   The source of the feedback. Must be one of "external" (default), "app", or "api"
@@ -35,7 +37,7 @@ module Braintrust
       #   A list of tags to log
       #
       #   @return [Array<String>, nil]
-      optional :tags, Braintrust::ArrayOf[String], nil?: true
+      optional :tags, Braintrust::Internal::Type::ArrayOf[String], nil?: true
 
       # @!parse
       #   # @param id [String]
@@ -46,13 +48,13 @@ module Braintrust
       #   #
       #   def initialize(id:, comment: nil, metadata: nil, source: nil, tags: nil, **) = super
 
-      # def initialize: (Hash | Braintrust::BaseModel) -> void
+      # def initialize: (Hash | Braintrust::Internal::Type::BaseModel) -> void
 
       # The source of the feedback. Must be one of "external" (default), "app", or "api"
       #
       # @see Braintrust::Models::FeedbackDatasetItem#source
       module Source
-        extend Braintrust::Enum
+        extend Braintrust::Internal::Type::Enum
 
         APP = :app
         API = :api

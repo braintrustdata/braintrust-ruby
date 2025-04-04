@@ -2,7 +2,7 @@
 
 module Braintrust
   module Models
-    class EnvVar < Braintrust::BaseModel
+    class EnvVar < Braintrust::Internal::Type::BaseModel
       # Unique identifier for the environment variable
       sig { returns(String) }
       attr_accessor :id
@@ -59,7 +59,7 @@ module Braintrust
 
       # The type of the object the environment variable is scoped for
       module ObjectType
-        extend Braintrust::Enum
+        extend Braintrust::Internal::Type::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Braintrust::Models::EnvVar::ObjectType) }
         OrSymbol = T.type_alias { T.any(Symbol, String, Braintrust::Models::EnvVar::ObjectType::TaggedSymbol) }

@@ -19,7 +19,7 @@ module Braintrust
         # @param other [Object]
         #
         # @return [Boolean]
-        def self.==(other) = other.is_a?(Class) && other <= Braintrust::BooleanModel
+        def self.==(other) = other.is_a?(Class) && other <= Braintrust::Internal::Type::BooleanModel
 
         class << self
           # @api private

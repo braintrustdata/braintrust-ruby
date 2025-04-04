@@ -2,7 +2,7 @@
 
 module Braintrust
   module Models
-    class PromptOptions < Braintrust::BaseModel
+    class PromptOptions < Braintrust::Internal::Type::BaseModel
       # @!attribute [r] model
       #
       #   @return [String, nil]
@@ -37,11 +37,11 @@ module Braintrust
       #   #
       #   def initialize(model: nil, params: nil, position: nil, **) = super
 
-      # def initialize: (Hash | Braintrust::BaseModel) -> void
+      # def initialize: (Hash | Braintrust::Internal::Type::BaseModel) -> void
 
       # @see Braintrust::Models::PromptOptions#params
       module Params
-        extend Braintrust::Union
+        extend Braintrust::Internal::Type::Union
 
         variant -> { Braintrust::Models::PromptOptions::Params::OpenAIModelParams }
 
@@ -53,7 +53,7 @@ module Braintrust
 
         variant -> { Braintrust::Models::PromptOptions::Params::JsCompletionParams }
 
-        class OpenAIModelParams < Braintrust::BaseModel
+        class OpenAIModelParams < Braintrust::Internal::Type::BaseModel
           # @!attribute [r] frequency_penalty
           #
           #   @return [Float, nil]
@@ -130,7 +130,7 @@ module Braintrust
           # @!attribute [r] stop
           #
           #   @return [Array<String>, nil]
-          optional :stop, Braintrust::ArrayOf[String]
+          optional :stop, Braintrust::Internal::Type::ArrayOf[String]
 
           # @!parse
           #   # @return [Array<String>]
@@ -167,7 +167,7 @@ module Braintrust
           # @!attribute [r] use_cache
           #
           #   @return [Boolean, nil]
-          optional :use_cache, Braintrust::BooleanModel
+          optional :use_cache, Braintrust::Internal::Type::BooleanModel
 
           # @!parse
           #   # @return [Boolean]
@@ -207,11 +207,11 @@ module Braintrust
           #     super
           #   end
 
-          # def initialize: (Hash | Braintrust::BaseModel) -> void
+          # def initialize: (Hash | Braintrust::Internal::Type::BaseModel) -> void
 
           # @see Braintrust::Models::PromptOptions::Params::OpenAIModelParams#function_call
           module FunctionCall
-            extend Braintrust::Union
+            extend Braintrust::Internal::Type::Union
 
             variant const: -> { Braintrust::Models::PromptOptions::Params::OpenAIModelParams::FunctionCall::AUTO }
 
@@ -219,7 +219,7 @@ module Braintrust
 
             variant -> { Braintrust::Models::PromptOptions::Params::OpenAIModelParams::FunctionCall::Function }
 
-            class Function < Braintrust::BaseModel
+            class Function < Braintrust::Internal::Type::BaseModel
               # @!attribute name
               #
               #   @return [String]
@@ -230,7 +230,7 @@ module Braintrust
               #   #
               #   def initialize(name:, **) = super
 
-              # def initialize: (Hash | Braintrust::BaseModel) -> void
+              # def initialize: (Hash | Braintrust::Internal::Type::BaseModel) -> void
             end
 
             # @!parse
@@ -247,7 +247,7 @@ module Braintrust
 
           # @see Braintrust::Models::PromptOptions::Params::OpenAIModelParams#reasoning_effort
           module ReasoningEffort
-            extend Braintrust::Enum
+            extend Braintrust::Internal::Type::Enum
 
             LOW = :low
             MEDIUM = :medium
@@ -262,7 +262,7 @@ module Braintrust
 
           # @see Braintrust::Models::PromptOptions::Params::OpenAIModelParams#response_format
           module ResponseFormat
-            extend Braintrust::Union
+            extend Braintrust::Internal::Type::Union
 
             variant -> { Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ResponseFormat::JsonObject }
 
@@ -270,7 +270,7 @@ module Braintrust
 
             variant -> { Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ResponseFormat::Text }
 
-            class JsonObject < Braintrust::BaseModel
+            class JsonObject < Braintrust::Internal::Type::BaseModel
               # @!attribute type
               #
               #   @return [Symbol, Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ResponseFormat::JsonObject::Type]
@@ -282,11 +282,11 @@ module Braintrust
               #   #
               #   def initialize(type:, **) = super
 
-              # def initialize: (Hash | Braintrust::BaseModel) -> void
+              # def initialize: (Hash | Braintrust::Internal::Type::BaseModel) -> void
 
               # @see Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ResponseFormat::JsonObject#type
               module Type
-                extend Braintrust::Enum
+                extend Braintrust::Internal::Type::Enum
 
                 JSON_OBJECT = :json_object
 
@@ -298,7 +298,7 @@ module Braintrust
               end
             end
 
-            class JsonSchema < Braintrust::BaseModel
+            class JsonSchema < Braintrust::Internal::Type::BaseModel
               # @!attribute json_schema
               #
               #   @return [Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ResponseFormat::JsonSchema::JsonSchema]
@@ -317,10 +317,10 @@ module Braintrust
               #   #
               #   def initialize(json_schema:, type:, **) = super
 
-              # def initialize: (Hash | Braintrust::BaseModel) -> void
+              # def initialize: (Hash | Braintrust::Internal::Type::BaseModel) -> void
 
               # @see Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ResponseFormat::JsonSchema#json_schema
-              class JsonSchema < Braintrust::BaseModel
+              class JsonSchema < Braintrust::Internal::Type::BaseModel
                 # @!attribute name
                 #
                 #   @return [String]
@@ -348,7 +348,7 @@ module Braintrust
                 # @!attribute strict
                 #
                 #   @return [Boolean, nil]
-                optional :strict, Braintrust::BooleanModel, nil?: true
+                optional :strict, Braintrust::Internal::Type::BooleanModel, nil?: true
 
                 # @!parse
                 #   # @param name [String]
@@ -358,11 +358,11 @@ module Braintrust
                 #   #
                 #   def initialize(name:, description: nil, schema: nil, strict: nil, **) = super
 
-                # def initialize: (Hash | Braintrust::BaseModel) -> void
+                # def initialize: (Hash | Braintrust::Internal::Type::BaseModel) -> void
 
                 # @see Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ResponseFormat::JsonSchema::JsonSchema#schema
                 module Schema
-                  extend Braintrust::Union
+                  extend Braintrust::Internal::Type::Union
 
                   variant -> { Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ResponseFormat::JsonSchema::JsonSchema::Schema::ObjectMap }
 
@@ -372,13 +372,14 @@ module Braintrust
                   #   # @return [Array(Hash{Symbol=>Object, nil}, String)]
                   #   def self.variants; end
 
-                  ObjectMap = Braintrust::HashOf[Braintrust::Unknown, nil?: true]
+                  ObjectMap = Braintrust::Internal::Type::HashOf[Braintrust::Internal::Type::Unknown,
+                                                                 nil?: true]
                 end
               end
 
               # @see Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ResponseFormat::JsonSchema#type
               module Type
-                extend Braintrust::Enum
+                extend Braintrust::Internal::Type::Enum
 
                 JSON_SCHEMA = :json_schema
 
@@ -390,7 +391,7 @@ module Braintrust
               end
             end
 
-            class Text < Braintrust::BaseModel
+            class Text < Braintrust::Internal::Type::BaseModel
               # @!attribute type
               #
               #   @return [Symbol, Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ResponseFormat::Text::Type]
@@ -402,11 +403,11 @@ module Braintrust
               #   #
               #   def initialize(type:, **) = super
 
-              # def initialize: (Hash | Braintrust::BaseModel) -> void
+              # def initialize: (Hash | Braintrust::Internal::Type::BaseModel) -> void
 
               # @see Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ResponseFormat::Text#type
               module Type
-                extend Braintrust::Enum
+                extend Braintrust::Internal::Type::Enum
 
                 TEXT = :text
 
@@ -425,7 +426,7 @@ module Braintrust
 
           # @see Braintrust::Models::PromptOptions::Params::OpenAIModelParams#tool_choice
           module ToolChoice
-            extend Braintrust::Union
+            extend Braintrust::Internal::Type::Union
 
             variant const: -> { Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ToolChoice::AUTO }
 
@@ -435,7 +436,7 @@ module Braintrust
 
             variant -> { Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ToolChoice::Function }
 
-            class Function < Braintrust::BaseModel
+            class Function < Braintrust::Internal::Type::BaseModel
               # @!attribute function
               #
               #   @return [Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ToolChoice::Function::Function]
@@ -454,10 +455,10 @@ module Braintrust
               #   #
               #   def initialize(function:, type:, **) = super
 
-              # def initialize: (Hash | Braintrust::BaseModel) -> void
+              # def initialize: (Hash | Braintrust::Internal::Type::BaseModel) -> void
 
               # @see Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ToolChoice::Function#function
-              class Function < Braintrust::BaseModel
+              class Function < Braintrust::Internal::Type::BaseModel
                 # @!attribute name
                 #
                 #   @return [String]
@@ -468,12 +469,12 @@ module Braintrust
                 #   #
                 #   def initialize(name:, **) = super
 
-                # def initialize: (Hash | Braintrust::BaseModel) -> void
+                # def initialize: (Hash | Braintrust::Internal::Type::BaseModel) -> void
               end
 
               # @see Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ToolChoice::Function#type
               module Type
-                extend Braintrust::Enum
+                extend Braintrust::Internal::Type::Enum
 
                 FUNCTION = :function
 
@@ -499,7 +500,7 @@ module Braintrust
           end
         end
 
-        class AnthropicModelParams < Braintrust::BaseModel
+        class AnthropicModelParams < Braintrust::Internal::Type::BaseModel
           # @!attribute max_tokens
           #
           #   @return [Float]
@@ -523,7 +524,7 @@ module Braintrust
           # @!attribute [r] stop_sequences
           #
           #   @return [Array<String>, nil]
-          optional :stop_sequences, Braintrust::ArrayOf[String]
+          optional :stop_sequences, Braintrust::Internal::Type::ArrayOf[String]
 
           # @!parse
           #   # @return [Array<String>]
@@ -550,7 +551,7 @@ module Braintrust
           # @!attribute [r] use_cache
           #
           #   @return [Boolean, nil]
-          optional :use_cache, Braintrust::BooleanModel
+          optional :use_cache, Braintrust::Internal::Type::BooleanModel
 
           # @!parse
           #   # @return [Boolean]
@@ -578,10 +579,10 @@ module Braintrust
           #     super
           #   end
 
-          # def initialize: (Hash | Braintrust::BaseModel) -> void
+          # def initialize: (Hash | Braintrust::Internal::Type::BaseModel) -> void
         end
 
-        class GoogleModelParams < Braintrust::BaseModel
+        class GoogleModelParams < Braintrust::Internal::Type::BaseModel
           # @!attribute [r] max_output_tokens
           #
           #   @return [Float, nil]
@@ -621,7 +622,7 @@ module Braintrust
           # @!attribute [r] use_cache
           #
           #   @return [Boolean, nil]
-          optional :use_cache, Braintrust::BooleanModel
+          optional :use_cache, Braintrust::Internal::Type::BooleanModel
 
           # @!parse
           #   # @return [Boolean]
@@ -636,10 +637,10 @@ module Braintrust
           #   #
           #   def initialize(max_output_tokens: nil, temperature: nil, top_k: nil, top_p: nil, use_cache: nil, **) = super
 
-          # def initialize: (Hash | Braintrust::BaseModel) -> void
+          # def initialize: (Hash | Braintrust::Internal::Type::BaseModel) -> void
         end
 
-        class WindowAIModelParams < Braintrust::BaseModel
+        class WindowAIModelParams < Braintrust::Internal::Type::BaseModel
           # @!attribute [r] temperature
           #
           #   @return [Float, nil]
@@ -661,7 +662,7 @@ module Braintrust
           # @!attribute [r] use_cache
           #
           #   @return [Boolean, nil]
-          optional :use_cache, Braintrust::BooleanModel
+          optional :use_cache, Braintrust::Internal::Type::BooleanModel
 
           # @!parse
           #   # @return [Boolean]
@@ -674,14 +675,14 @@ module Braintrust
           #   #
           #   def initialize(temperature: nil, top_k: nil, use_cache: nil, **) = super
 
-          # def initialize: (Hash | Braintrust::BaseModel) -> void
+          # def initialize: (Hash | Braintrust::Internal::Type::BaseModel) -> void
         end
 
-        class JsCompletionParams < Braintrust::BaseModel
+        class JsCompletionParams < Braintrust::Internal::Type::BaseModel
           # @!attribute [r] use_cache
           #
           #   @return [Boolean, nil]
-          optional :use_cache, Braintrust::BooleanModel
+          optional :use_cache, Braintrust::Internal::Type::BooleanModel
 
           # @!parse
           #   # @return [Boolean]
@@ -692,7 +693,7 @@ module Braintrust
           #   #
           #   def initialize(use_cache: nil, **) = super
 
-          # def initialize: (Hash | Braintrust::BaseModel) -> void
+          # def initialize: (Hash | Braintrust::Internal::Type::BaseModel) -> void
         end
 
         # @!parse

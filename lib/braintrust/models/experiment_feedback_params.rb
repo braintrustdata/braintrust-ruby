@@ -3,7 +3,7 @@
 module Braintrust
   module Models
     # @see Braintrust::Resources::Experiments#feedback
-    class ExperimentFeedbackParams < Braintrust::BaseModel
+    class ExperimentFeedbackParams < Braintrust::Internal::Type::BaseModel
       # @!parse
       #   extend Braintrust::Internal::Type::RequestParameters::Converter
       include Braintrust::Internal::Type::RequestParameters
@@ -12,7 +12,7 @@ module Braintrust
       #   A list of experiment feedback items
       #
       #   @return [Array<Braintrust::Models::FeedbackExperimentItem>]
-      required :feedback, -> { Braintrust::ArrayOf[Braintrust::Models::FeedbackExperimentItem] }
+      required :feedback, -> { Braintrust::Internal::Type::ArrayOf[Braintrust::Models::FeedbackExperimentItem] }
 
       # @!parse
       #   # @param feedback [Array<Braintrust::Models::FeedbackExperimentItem>]
@@ -20,7 +20,7 @@ module Braintrust
       #   #
       #   def initialize(feedback:, request_options: {}, **) = super
 
-      # def initialize: (Hash | Braintrust::BaseModel) -> void
+      # def initialize: (Hash | Braintrust::Internal::Type::BaseModel) -> void
     end
   end
 end

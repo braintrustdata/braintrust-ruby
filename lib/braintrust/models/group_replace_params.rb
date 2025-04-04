@@ -3,7 +3,7 @@
 module Braintrust
   module Models
     # @see Braintrust::Resources::Groups#replace
-    class GroupReplaceParams < Braintrust::BaseModel
+    class GroupReplaceParams < Braintrust::Internal::Type::BaseModel
       # @!parse
       #   extend Braintrust::Internal::Type::RequestParameters::Converter
       include Braintrust::Internal::Type::RequestParameters
@@ -27,13 +27,13 @@ module Braintrust
       #     all of their inherited users
       #
       #   @return [Array<String>, nil]
-      optional :member_groups, Braintrust::ArrayOf[String], nil?: true
+      optional :member_groups, Braintrust::Internal::Type::ArrayOf[String], nil?: true
 
       # @!attribute member_users
       #   Ids of users which belong to this group
       #
       #   @return [Array<String>, nil]
-      optional :member_users, Braintrust::ArrayOf[String], nil?: true
+      optional :member_users, Braintrust::Internal::Type::ArrayOf[String], nil?: true
 
       # @!attribute org_name
       #   For nearly all users, this parameter should be unnecessary. But in the rare case
@@ -53,7 +53,7 @@ module Braintrust
       #   #
       #   def initialize(name:, description: nil, member_groups: nil, member_users: nil, org_name: nil, request_options: {}, **) = super
 
-      # def initialize: (Hash | Braintrust::BaseModel) -> void
+      # def initialize: (Hash | Braintrust::Internal::Type::BaseModel) -> void
     end
   end
 end

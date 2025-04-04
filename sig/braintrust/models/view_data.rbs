@@ -2,7 +2,7 @@ module Braintrust
   module Models
     type view_data = { search: Braintrust::Models::ViewDataSearch? }
 
-    class ViewData < Braintrust::BaseModel
+    class ViewData < Braintrust::Internal::Type::BaseModel
       attr_accessor search: Braintrust::Models::ViewDataSearch?
 
       def initialize: (?search: Braintrust::Models::ViewDataSearch?) -> void

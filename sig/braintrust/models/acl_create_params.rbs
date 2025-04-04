@@ -12,7 +12,7 @@ module Braintrust
       }
       & Braintrust::Internal::Type::request_parameters
 
-    class ACLCreateParams < Braintrust::BaseModel
+    class ACLCreateParams < Braintrust::Internal::Type::BaseModel
       extend Braintrust::Internal::Type::RequestParameters::Converter
       include Braintrust::Internal::Type::RequestParameters
 

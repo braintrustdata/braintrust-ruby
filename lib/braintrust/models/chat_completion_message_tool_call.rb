@@ -2,7 +2,7 @@
 
 module Braintrust
   module Models
-    class ChatCompletionMessageToolCall < Braintrust::BaseModel
+    class ChatCompletionMessageToolCall < Braintrust::Internal::Type::BaseModel
       # @!attribute id
       #
       #   @return [String]
@@ -25,10 +25,10 @@ module Braintrust
       #   #
       #   def initialize(id:, function:, type:, **) = super
 
-      # def initialize: (Hash | Braintrust::BaseModel) -> void
+      # def initialize: (Hash | Braintrust::Internal::Type::BaseModel) -> void
 
       # @see Braintrust::Models::ChatCompletionMessageToolCall#function
-      class Function < Braintrust::BaseModel
+      class Function < Braintrust::Internal::Type::BaseModel
         # @!attribute arguments
         #
         #   @return [String]
@@ -45,12 +45,12 @@ module Braintrust
         #   #
         #   def initialize(arguments:, name:, **) = super
 
-        # def initialize: (Hash | Braintrust::BaseModel) -> void
+        # def initialize: (Hash | Braintrust::Internal::Type::BaseModel) -> void
       end
 
       # @see Braintrust::Models::ChatCompletionMessageToolCall#type
       module Type
-        extend Braintrust::Enum
+        extend Braintrust::Internal::Type::Enum
 
         FUNCTION = :function
 

@@ -3,7 +3,7 @@ module Braintrust
     type top_level_hello_world_params =
       {  } & Braintrust::Internal::Type::request_parameters
 
-    class TopLevelHelloWorldParams < Braintrust::BaseModel
+    class TopLevelHelloWorldParams < Braintrust::Internal::Type::BaseModel
       extend Braintrust::Internal::Type::RequestParameters::Converter
       include Braintrust::Internal::Type::RequestParameters
 

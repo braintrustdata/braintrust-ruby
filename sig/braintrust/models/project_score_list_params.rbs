@@ -14,7 +14,7 @@ module Braintrust
       }
       & Braintrust::Internal::Type::request_parameters
 
-    class ProjectScoreListParams < Braintrust::BaseModel
+    class ProjectScoreListParams < Braintrust::Internal::Type::BaseModel
       extend Braintrust::Internal::Type::RequestParameters::Converter
       include Braintrust::Internal::Type::RequestParameters
 
@@ -74,7 +74,7 @@ module Braintrust
       type ids = String | ::Array[String]
 
       module IDs
-        extend Braintrust::Union
+        extend Braintrust::Internal::Type::Union
 
         def self?.variants: -> [String, ::Array[String]]
 
@@ -88,7 +88,7 @@ module Braintrust
         | ::Array[Braintrust::Models::project_score_type]
 
       module ScoreType
-        extend Braintrust::Union
+        extend Braintrust::Internal::Type::Union
 
         def self?.variants: -> [Braintrust::Models::project_score_type, ::Array[Braintrust::Models::project_score_type]]
 

@@ -2,7 +2,7 @@
 
 module Braintrust
   module Models
-    class OnlineScoreConfig < Braintrust::BaseModel
+    class OnlineScoreConfig < Braintrust::Internal::Type::BaseModel
       # The sampling rate for online scoring
       sig { returns(Float) }
       attr_accessor :sampling_rate
@@ -34,7 +34,7 @@ module Braintrust
           scorers: T::Array[
           T.any(
             Braintrust::Models::OnlineScoreConfig::Scorer::Function,
-            Braintrust::Internal::Util::AnyHash,
+            Braintrust::Internal::AnyHash,
             Braintrust::Models::OnlineScoreConfig::Scorer::Global
           )
           ],
@@ -66,9 +66,9 @@ module Braintrust
       end
 
       module Scorer
-        extend Braintrust::Union
+        extend Braintrust::Internal::Type::Union
 
-        class Function < Braintrust::BaseModel
+        class Function < Braintrust::Internal::Type::BaseModel
           sig { returns(String) }
           attr_accessor :id
 
@@ -90,7 +90,7 @@ module Braintrust
           end
 
           module Type
-            extend Braintrust::Enum
+            extend Braintrust::Internal::Type::Enum
 
             TaggedSymbol =
               T.type_alias { T.all(Symbol, Braintrust::Models::OnlineScoreConfig::Scorer::Function::Type) }
@@ -105,7 +105,7 @@ module Braintrust
           end
         end
 
-        class Global < Braintrust::BaseModel
+        class Global < Braintrust::Internal::Type::BaseModel
           sig { returns(String) }
           attr_accessor :name
 
@@ -127,7 +127,7 @@ module Braintrust
           end
 
           module Type
-            extend Braintrust::Enum
+            extend Braintrust::Internal::Type::Enum
 
             TaggedSymbol =
               T.type_alias { T.all(Symbol, Braintrust::Models::OnlineScoreConfig::Scorer::Global::Type) }

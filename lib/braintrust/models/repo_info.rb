@@ -2,7 +2,7 @@
 
 module Braintrust
   module Models
-    class RepoInfo < Braintrust::BaseModel
+    class RepoInfo < Braintrust::Internal::Type::BaseModel
       # @!attribute author_email
       #   Email of the author of the most recent commit
       #
@@ -43,7 +43,7 @@ module Braintrust
       #   Whether or not the repo had uncommitted changes when snapshotted
       #
       #   @return [Boolean, nil]
-      optional :dirty, Braintrust::BooleanModel, nil?: true
+      optional :dirty, Braintrust::Internal::Type::BooleanModel, nil?: true
 
       # @!attribute git_diff
       #   If the repo was dirty when run, this includes the diff between the current state
@@ -86,7 +86,7 @@ module Braintrust
       #     super
       #   end
 
-      # def initialize: (Hash | Braintrust::BaseModel) -> void
+      # def initialize: (Hash | Braintrust::Internal::Type::BaseModel) -> void
     end
   end
 end

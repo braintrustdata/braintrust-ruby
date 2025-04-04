@@ -3,7 +3,7 @@
 module Braintrust
   module Models
     # @see Braintrust::Resources::ProjectScores#update
-    class ProjectScoreUpdateParams < Braintrust::BaseModel
+    class ProjectScoreUpdateParams < Braintrust::Internal::Type::BaseModel
       # @!parse
       #   extend Braintrust::Internal::Type::RequestParameters::Converter
       include Braintrust::Internal::Type::RequestParameters
@@ -47,11 +47,11 @@ module Braintrust
       #   #
       #   def initialize(categories: nil, config: nil, description: nil, name: nil, score_type: nil, request_options: {}, **) = super
 
-      # def initialize: (Hash | Braintrust::BaseModel) -> void
+      # def initialize: (Hash | Braintrust::Internal::Type::BaseModel) -> void
 
       # For categorical-type project scores, the list of all categories
       module Categories
-        extend Braintrust::Union
+        extend Braintrust::Internal::Type::Union
 
         # For categorical-type project scores, the list of all categories
         variant -> { Braintrust::Models::ProjectScoreUpdateParams::Categories::ProjectScoreCategoryArray }
@@ -66,11 +66,12 @@ module Braintrust
         #   # @return [Array(Array<Braintrust::Models::ProjectScoreCategory>, Hash{Symbol=>Float}, Array<String>)]
         #   def self.variants; end
 
-        ProjectScoreCategoryArray = Braintrust::ArrayOf[-> { Braintrust::Models::ProjectScoreCategory }]
+        ProjectScoreCategoryArray =
+          Braintrust::Internal::Type::ArrayOf[-> { Braintrust::Models::ProjectScoreCategory }]
 
-        FloatMap = Braintrust::HashOf[Float]
+        FloatMap = Braintrust::Internal::Type::HashOf[Float]
 
-        StringArray = Braintrust::ArrayOf[String]
+        StringArray = Braintrust::Internal::Type::ArrayOf[String]
       end
     end
   end

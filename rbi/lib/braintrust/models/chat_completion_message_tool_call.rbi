@@ -2,7 +2,7 @@
 
 module Braintrust
   module Models
-    class ChatCompletionMessageToolCall < Braintrust::BaseModel
+    class ChatCompletionMessageToolCall < Braintrust::Internal::Type::BaseModel
       sig { returns(String) }
       attr_accessor :id
 
@@ -11,7 +11,7 @@ module Braintrust
 
       sig do
         params(
-          function: T.any(Braintrust::Models::ChatCompletionMessageToolCall::Function, Braintrust::Internal::Util::AnyHash)
+          function: T.any(Braintrust::Models::ChatCompletionMessageToolCall::Function, Braintrust::Internal::AnyHash)
         )
           .void
       end
@@ -23,7 +23,7 @@ module Braintrust
       sig do
         params(
           id: String,
-          function: T.any(Braintrust::Models::ChatCompletionMessageToolCall::Function, Braintrust::Internal::Util::AnyHash),
+          function: T.any(Braintrust::Models::ChatCompletionMessageToolCall::Function, Braintrust::Internal::AnyHash),
           type: Braintrust::Models::ChatCompletionMessageToolCall::Type::OrSymbol
         )
           .returns(T.attached_class)
@@ -44,7 +44,7 @@ module Braintrust
       def to_hash
       end
 
-      class Function < Braintrust::BaseModel
+      class Function < Braintrust::Internal::Type::BaseModel
         sig { returns(String) }
         attr_accessor :arguments
 
@@ -61,7 +61,7 @@ module Braintrust
       end
 
       module Type
-        extend Braintrust::Enum
+        extend Braintrust::Internal::Type::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Braintrust::Models::ChatCompletionMessageToolCall::Type) }
         OrSymbol =

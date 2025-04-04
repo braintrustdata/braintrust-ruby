@@ -2,7 +2,7 @@
 
 module Braintrust
   module Models
-    class ACL < Braintrust::BaseModel
+    class ACL < Braintrust::Internal::Type::BaseModel
       # Unique identifier for the acl
       sig { returns(String) }
       attr_accessor :id

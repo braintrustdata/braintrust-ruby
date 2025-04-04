@@ -3,7 +3,7 @@
 module Braintrust
   module Models
     # @see Braintrust::Resources::Datasets#summarize
-    class DatasetSummarizeParams < Braintrust::BaseModel
+    class DatasetSummarizeParams < Braintrust::Internal::Type::BaseModel
       # @!parse
       #   extend Braintrust::Internal::Type::RequestParameters::Converter
       include Braintrust::Internal::Type::RequestParameters
@@ -13,7 +13,7 @@ module Braintrust
       #     returned.
       #
       #   @return [Boolean, nil]
-      optional :summarize_data, Braintrust::BooleanModel, nil?: true
+      optional :summarize_data, Braintrust::Internal::Type::BooleanModel, nil?: true
 
       # @!parse
       #   # @param summarize_data [Boolean, nil]
@@ -21,7 +21,7 @@ module Braintrust
       #   #
       #   def initialize(summarize_data: nil, request_options: {}, **) = super
 
-      # def initialize: (Hash | Braintrust::BaseModel) -> void
+      # def initialize: (Hash | Braintrust::Internal::Type::BaseModel) -> void
     end
   end
 end

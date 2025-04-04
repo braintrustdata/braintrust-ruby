@@ -12,7 +12,7 @@ module Braintrust
         params(
           name: String,
           org_name: T.nilable(String),
-          request_options: T.nilable(T.any(Braintrust::RequestOptions, Braintrust::Internal::Util::AnyHash))
+          request_options: T.nilable(T.any(Braintrust::RequestOptions, Braintrust::Internal::AnyHash))
         )
           .returns(Braintrust::Models::Project)
       end
@@ -31,7 +31,7 @@ module Braintrust
       sig do
         params(
           project_id: String,
-          request_options: T.nilable(T.any(Braintrust::RequestOptions, Braintrust::Internal::Util::AnyHash))
+          request_options: T.nilable(T.any(Braintrust::RequestOptions, Braintrust::Internal::AnyHash))
         )
           .returns(Braintrust::Models::Project)
       end
@@ -49,8 +49,8 @@ module Braintrust
         params(
           project_id: String,
           name: T.nilable(String),
-          settings: T.nilable(T.any(Braintrust::Models::ProjectSettings, Braintrust::Internal::Util::AnyHash)),
-          request_options: T.nilable(T.any(Braintrust::RequestOptions, Braintrust::Internal::Util::AnyHash))
+          settings: T.nilable(T.any(Braintrust::Models::ProjectSettings, Braintrust::Internal::AnyHash)),
+          request_options: T.nilable(T.any(Braintrust::RequestOptions, Braintrust::Internal::AnyHash))
         )
           .returns(Braintrust::Models::Project)
       end
@@ -76,7 +76,7 @@ module Braintrust
           org_name: String,
           project_name: String,
           starting_after: String,
-          request_options: T.nilable(T.any(Braintrust::RequestOptions, Braintrust::Internal::Util::AnyHash))
+          request_options: T.nilable(T.any(Braintrust::RequestOptions, Braintrust::Internal::AnyHash))
         )
           .returns(Braintrust::Internal::ListObjects[Braintrust::Models::Project])
       end
@@ -110,7 +110,7 @@ module Braintrust
       sig do
         params(
           project_id: String,
-          request_options: T.nilable(T.any(Braintrust::RequestOptions, Braintrust::Internal::Util::AnyHash))
+          request_options: T.nilable(T.any(Braintrust::RequestOptions, Braintrust::Internal::AnyHash))
         )
           .returns(Braintrust::Models::Project)
       end

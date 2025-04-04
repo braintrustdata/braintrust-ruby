@@ -10,7 +10,7 @@ module Braintrust
         used: Time?
       }
 
-    class EnvVar < Braintrust::BaseModel
+    class EnvVar < Braintrust::Internal::Type::BaseModel
       attr_accessor id: String
 
       attr_accessor name: String
@@ -37,7 +37,7 @@ module Braintrust
       type object_type = :organization | :project | :function
 
       module ObjectType
-        extend Braintrust::Enum
+        extend Braintrust::Internal::Type::Enum
 
         ORGANIZATION: :organization
         PROJECT: :project

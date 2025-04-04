@@ -16,7 +16,8 @@ class Braintrust::Test::Resources::AISecretsTest < Braintrust::Test::ResourceTes
         name: String,
         org_id: String,
         created: Time | nil,
-        metadata: ^(Braintrust::HashOf[Braintrust::Unknown, nil?: true]) | nil,
+        metadata: ^(Braintrust::Internal::Type::HashOf[Braintrust::Internal::Type::Unknown,
+                                                       nil?: true]) | nil,
         preview_secret: String | nil,
         type: String | nil,
         updated_at: Time | nil
@@ -37,7 +38,8 @@ class Braintrust::Test::Resources::AISecretsTest < Braintrust::Test::ResourceTes
         name: String,
         org_id: String,
         created: Time | nil,
-        metadata: ^(Braintrust::HashOf[Braintrust::Unknown, nil?: true]) | nil,
+        metadata: ^(Braintrust::Internal::Type::HashOf[Braintrust::Internal::Type::Unknown,
+                                                       nil?: true]) | nil,
         preview_secret: String | nil,
         type: String | nil,
         updated_at: Time | nil
@@ -58,7 +60,8 @@ class Braintrust::Test::Resources::AISecretsTest < Braintrust::Test::ResourceTes
         name: String,
         org_id: String,
         created: Time | nil,
-        metadata: ^(Braintrust::HashOf[Braintrust::Unknown, nil?: true]) | nil,
+        metadata: ^(Braintrust::Internal::Type::HashOf[Braintrust::Internal::Type::Unknown,
+                                                       nil?: true]) | nil,
         preview_secret: String | nil,
         type: String | nil,
         updated_at: Time | nil
@@ -86,7 +89,8 @@ class Braintrust::Test::Resources::AISecretsTest < Braintrust::Test::ResourceTes
         name: String,
         org_id: String,
         created: Time | nil,
-        metadata: ^(Braintrust::HashOf[Braintrust::Unknown, nil?: true]) | nil,
+        metadata: ^(Braintrust::Internal::Type::HashOf[Braintrust::Internal::Type::Unknown,
+                                                       nil?: true]) | nil,
         preview_secret: String | nil,
         type: String | nil,
         updated_at: Time | nil
@@ -107,7 +111,8 @@ class Braintrust::Test::Resources::AISecretsTest < Braintrust::Test::ResourceTes
         name: String,
         org_id: String,
         created: Time | nil,
-        metadata: ^(Braintrust::HashOf[Braintrust::Unknown, nil?: true]) | nil,
+        metadata: ^(Braintrust::Internal::Type::HashOf[Braintrust::Internal::Type::Unknown,
+                                                       nil?: true]) | nil,
         preview_secret: String | nil,
         type: String | nil,
         updated_at: Time | nil
@@ -128,7 +133,8 @@ class Braintrust::Test::Resources::AISecretsTest < Braintrust::Test::ResourceTes
         name: String,
         org_id: String,
         created: Time | nil,
-        metadata: ^(Braintrust::HashOf[Braintrust::Unknown, nil?: true]) | nil,
+        metadata: ^(Braintrust::Internal::Type::HashOf[Braintrust::Internal::Type::Unknown,
+                                                       nil?: true]) | nil,
         preview_secret: String | nil,
         type: String | nil,
         updated_at: Time | nil
@@ -149,7 +155,8 @@ class Braintrust::Test::Resources::AISecretsTest < Braintrust::Test::ResourceTes
         name: String,
         org_id: String,
         created: Time | nil,
-        metadata: ^(Braintrust::HashOf[Braintrust::Unknown, nil?: true]) | nil,
+        metadata: ^(Braintrust::Internal::Type::HashOf[Braintrust::Internal::Type::Unknown,
+                                                       nil?: true]) | nil,
         preview_secret: String | nil,
         type: String | nil,
         updated_at: Time | nil

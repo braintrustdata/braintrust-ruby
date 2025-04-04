@@ -11,7 +11,7 @@ module Braintrust
       }
       & Braintrust::Internal::Type::request_parameters
 
-    class RoleUpdateParams < Braintrust::BaseModel
+    class RoleUpdateParams < Braintrust::Internal::Type::BaseModel
       extend Braintrust::Internal::Type::RequestParameters::Converter
       include Braintrust::Internal::Type::RequestParameters
 
@@ -45,7 +45,7 @@ module Braintrust
           restrict_object_type: Braintrust::Models::acl_object_type?
         }
 
-      class AddMemberPermission < Braintrust::BaseModel
+      class AddMemberPermission < Braintrust::Internal::Type::BaseModel
         attr_accessor permission: Braintrust::Models::permission
 
         attr_accessor restrict_object_type: Braintrust::Models::acl_object_type?
@@ -64,7 +64,7 @@ module Braintrust
           restrict_object_type: Braintrust::Models::acl_object_type?
         }
 
-      class RemoveMemberPermission < Braintrust::BaseModel
+      class RemoveMemberPermission < Braintrust::Internal::Type::BaseModel
         attr_accessor permission: Braintrust::Models::permission
 
         attr_accessor restrict_object_type: Braintrust::Models::acl_object_type?

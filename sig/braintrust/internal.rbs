@@ -1,0 +1,4 @@
+module Braintrust
+  module Internal
+  end
+end

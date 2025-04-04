@@ -2,7 +2,7 @@
 
 module Braintrust
   module Models
-    class ViewRetrieveParams < Braintrust::BaseModel
+    class ViewRetrieveParams < Braintrust::Internal::Type::BaseModel
       extend Braintrust::Internal::Type::RequestParameters::Converter
       include Braintrust::Internal::Type::RequestParameters
 
@@ -18,7 +18,7 @@ module Braintrust
         params(
           object_id_: String,
           object_type: Braintrust::Models::ACLObjectType::OrSymbol,
-          request_options: T.any(Braintrust::RequestOptions, Braintrust::Internal::Util::AnyHash)
+          request_options: T.any(Braintrust::RequestOptions, Braintrust::Internal::AnyHash)
         )
           .returns(T.attached_class)
       end

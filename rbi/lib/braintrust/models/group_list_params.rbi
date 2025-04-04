@@ -2,7 +2,7 @@
 
 module Braintrust
   module Models
-    class GroupListParams < Braintrust::BaseModel
+    class GroupListParams < Braintrust::Internal::Type::BaseModel
       extend Braintrust::Internal::Type::RequestParameters::Converter
       include Braintrust::Internal::Type::RequestParameters
 
@@ -62,7 +62,7 @@ module Braintrust
           limit: T.nilable(Integer),
           org_name: String,
           starting_after: String,
-          request_options: T.any(Braintrust::RequestOptions, Braintrust::Internal::Util::AnyHash)
+          request_options: T.any(Braintrust::RequestOptions, Braintrust::Internal::AnyHash)
         )
           .returns(T.attached_class)
       end
@@ -97,13 +97,16 @@ module Braintrust
       # Filter search results to a particular set of object IDs. To specify a list of
       #   IDs, include the query param multiple times
       module IDs
-        extend Braintrust::Union
+        extend Braintrust::Internal::Type::Union
 
         sig { override.returns([String, T::Array[String]]) }
         def self.variants
         end
 
-        StringArray = T.let(Braintrust::ArrayOf[String], Braintrust::Internal::Type::Converter)
+        StringArray = T.let(
+          Braintrust::Internal::Type::ArrayOf[String],
+          Braintrust::Internal::Type::Converter
+        )
       end
     end
   end

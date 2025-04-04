@@ -2,7 +2,7 @@
 
 module Braintrust
   module Models
-    class ProjectScoreCategory < Braintrust::BaseModel
+    class ProjectScoreCategory < Braintrust::Internal::Type::BaseModel
       # Name of the category
       sig { returns(String) }
       attr_accessor :name

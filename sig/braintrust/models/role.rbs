@@ -13,7 +13,7 @@ module Braintrust
         user_id: String?
       }
 
-    class Role < Braintrust::BaseModel
+    class Role < Braintrust::Internal::Type::BaseModel
       attr_accessor id: String
 
       attr_accessor name: String
@@ -52,7 +52,7 @@ module Braintrust
           restrict_object_type: Braintrust::Models::acl_object_type?
         }
 
-      class MemberPermission < Braintrust::BaseModel
+      class MemberPermission < Braintrust::Internal::Type::BaseModel
         attr_accessor permission: Braintrust::Models::permission
 
         attr_accessor restrict_object_type: Braintrust::Models::acl_object_type?

@@ -24,7 +24,7 @@ module Braintrust
         tags: ::Array[String]?
       }
 
-    class InsertExperimentEvent < Braintrust::BaseModel
+    class InsertExperimentEvent < Braintrust::Internal::Type::BaseModel
       attr_accessor id: String?
 
       attr_accessor _is_merge: bool?
@@ -105,7 +105,7 @@ module Braintrust
           caller_lineno: Integer?
         }
 
-      class Context < Braintrust::BaseModel
+      class Context < Braintrust::Internal::Type::BaseModel
         attr_accessor caller_filename: String?
 
         attr_accessor caller_functionname: String?
@@ -123,7 +123,7 @@ module Braintrust
 
       type metadata = { model: String? }
 
-      class Metadata < Braintrust::BaseModel
+      class Metadata < Braintrust::Internal::Type::BaseModel
         attr_accessor model: String?
 
         def initialize: (?model: String?) -> void
@@ -143,7 +143,7 @@ module Braintrust
           tokens: Integer?
         }
 
-      class Metrics < Braintrust::BaseModel
+      class Metrics < Braintrust::Internal::Type::BaseModel
         attr_reader caller_filename: top?
 
         def caller_filename=: (top) -> top

@@ -3,7 +3,7 @@ module Braintrust
     type dataset_retrieve_params =
       {  } & Braintrust::Internal::Type::request_parameters
 
-    class DatasetRetrieveParams < Braintrust::BaseModel
+    class DatasetRetrieveParams < Braintrust::Internal::Type::BaseModel
       extend Braintrust::Internal::Type::RequestParameters::Converter
       include Braintrust::Internal::Type::RequestParameters
 

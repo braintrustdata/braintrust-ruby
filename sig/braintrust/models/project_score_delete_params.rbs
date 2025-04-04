@@ -3,7 +3,7 @@ module Braintrust
     type project_score_delete_params =
       {  } & Braintrust::Internal::Type::request_parameters
 
-    class ProjectScoreDeleteParams < Braintrust::BaseModel
+    class ProjectScoreDeleteParams < Braintrust::Internal::Type::BaseModel
       extend Braintrust::Internal::Type::RequestParameters::Converter
       include Braintrust::Internal::Type::RequestParameters
 

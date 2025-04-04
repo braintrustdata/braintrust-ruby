@@ -14,7 +14,7 @@ module Braintrust
         view_data: Braintrust::Models::ViewData?
       }
 
-    class View < Braintrust::BaseModel
+    class View < Braintrust::Internal::Type::BaseModel
       attr_accessor id: String
 
       attr_accessor name: String
@@ -64,7 +64,7 @@ module Braintrust
         | :logs
 
       module ViewType
-        extend Braintrust::Enum
+        extend Braintrust::Internal::Type::Enum
 
         PROJECTS: :projects
         EXPERIMENTS: :experiments

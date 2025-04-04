@@ -11,7 +11,7 @@ module Braintrust
         description: String?
       }
 
-    class ProjectTag < Braintrust::BaseModel
+    class ProjectTag < Braintrust::Internal::Type::BaseModel
       attr_accessor id: String
 
       attr_accessor name: String

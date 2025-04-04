@@ -12,7 +12,7 @@ module Braintrust
           org_name: T.nilable(String),
           secret: T.nilable(String),
           type: T.nilable(String),
-          request_options: T.nilable(T.any(Braintrust::RequestOptions, Braintrust::Internal::Util::AnyHash))
+          request_options: T.nilable(T.any(Braintrust::RequestOptions, Braintrust::Internal::AnyHash))
         )
           .returns(Braintrust::Models::AISecret)
       end
@@ -36,7 +36,7 @@ module Braintrust
       sig do
         params(
           ai_secret_id: String,
-          request_options: T.nilable(T.any(Braintrust::RequestOptions, Braintrust::Internal::Util::AnyHash))
+          request_options: T.nilable(T.any(Braintrust::RequestOptions, Braintrust::Internal::AnyHash))
         )
           .returns(Braintrust::Models::AISecret)
       end
@@ -57,7 +57,7 @@ module Braintrust
           name: T.nilable(String),
           secret: T.nilable(String),
           type: T.nilable(String),
-          request_options: T.nilable(T.any(Braintrust::RequestOptions, Braintrust::Internal::Util::AnyHash))
+          request_options: T.nilable(T.any(Braintrust::RequestOptions, Braintrust::Internal::AnyHash))
         )
           .returns(Braintrust::Models::AISecret)
       end
@@ -84,7 +84,7 @@ module Braintrust
           limit: T.nilable(Integer),
           org_name: String,
           starting_after: String,
-          request_options: T.nilable(T.any(Braintrust::RequestOptions, Braintrust::Internal::Util::AnyHash))
+          request_options: T.nilable(T.any(Braintrust::RequestOptions, Braintrust::Internal::AnyHash))
         )
           .returns(Braintrust::Internal::ListObjects[Braintrust::Models::AISecret])
       end
@@ -119,7 +119,7 @@ module Braintrust
       sig do
         params(
           ai_secret_id: String,
-          request_options: T.nilable(T.any(Braintrust::RequestOptions, Braintrust::Internal::Util::AnyHash))
+          request_options: T.nilable(T.any(Braintrust::RequestOptions, Braintrust::Internal::AnyHash))
         )
           .returns(Braintrust::Models::AISecret)
       end
@@ -135,7 +135,7 @@ module Braintrust
         params(
           name: String,
           org_name: T.nilable(String),
-          request_options: T.nilable(T.any(Braintrust::RequestOptions, Braintrust::Internal::Util::AnyHash))
+          request_options: T.nilable(T.any(Braintrust::RequestOptions, Braintrust::Internal::AnyHash))
         )
           .returns(Braintrust::Models::AISecret)
       end
@@ -160,7 +160,7 @@ module Braintrust
           org_name: T.nilable(String),
           secret: T.nilable(String),
           type: T.nilable(String),
-          request_options: T.nilable(T.any(Braintrust::RequestOptions, Braintrust::Internal::Util::AnyHash))
+          request_options: T.nilable(T.any(Braintrust::RequestOptions, Braintrust::Internal::AnyHash))
         )
           .returns(Braintrust::Models::AISecret)
       end

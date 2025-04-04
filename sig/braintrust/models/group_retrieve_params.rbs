@@ -3,7 +3,7 @@ module Braintrust
     type group_retrieve_params =
       {  } & Braintrust::Internal::Type::request_parameters
 
-    class GroupRetrieveParams < Braintrust::BaseModel
+    class GroupRetrieveParams < Braintrust::Internal::Type::BaseModel
       extend Braintrust::Internal::Type::RequestParameters::Converter
       include Braintrust::Internal::Type::RequestParameters
 

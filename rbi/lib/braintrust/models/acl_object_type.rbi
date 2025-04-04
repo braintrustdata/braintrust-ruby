@@ -4,7 +4,7 @@ module Braintrust
   module Models
     # The object type that the ACL applies to
     module ACLObjectType
-      extend Braintrust::Enum
+      extend Braintrust::Internal::Type::Enum
 
       TaggedSymbol = T.type_alias { T.all(Symbol, Braintrust::Models::ACLObjectType) }
       OrSymbol = T.type_alias { T.any(Symbol, String, Braintrust::Models::ACLObjectType::TaggedSymbol) }
