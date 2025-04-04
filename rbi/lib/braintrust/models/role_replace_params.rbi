@@ -3,8 +3,8 @@
 module Braintrust
   module Models
     class RoleReplaceParams < Braintrust::BaseModel
-      extend Braintrust::Type::RequestParameters::Converter
-      include Braintrust::RequestParameters
+      extend Braintrust::Internal::Type::RequestParameters::Converter
+      include Braintrust::Internal::Type::RequestParameters
 
       # Name of the role
       sig { returns(String) }
@@ -36,11 +36,11 @@ module Braintrust
           name: String,
           description: T.nilable(String),
           member_permissions: T.nilable(
-            T::Array[T.any(Braintrust::Models::RoleReplaceParams::MemberPermission, Braintrust::Util::AnyHash)]
+            T::Array[T.any(Braintrust::Models::RoleReplaceParams::MemberPermission, Braintrust::Internal::Util::AnyHash)]
           ),
           member_roles: T.nilable(T::Array[String]),
           org_name: T.nilable(String),
-          request_options: T.any(Braintrust::RequestOptions, Braintrust::Util::AnyHash)
+          request_options: T.any(Braintrust::RequestOptions, Braintrust::Internal::Util::AnyHash)
         )
           .returns(T.attached_class)
       end

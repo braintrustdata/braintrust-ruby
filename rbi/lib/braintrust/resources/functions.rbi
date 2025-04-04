@@ -10,7 +10,7 @@ module Braintrust
         params(
           function_data: T.any(
             Braintrust::Models::FunctionCreateParams::FunctionData::Prompt,
-            Braintrust::Util::AnyHash,
+            Braintrust::Internal::Util::AnyHash,
             Braintrust::Models::FunctionCreateParams::FunctionData::Code,
             Braintrust::Models::FunctionCreateParams::FunctionData::Global
           ),
@@ -18,12 +18,14 @@ module Braintrust
           project_id: String,
           slug: String,
           description: T.nilable(String),
-          function_schema: T.nilable(T.any(Braintrust::Models::FunctionCreateParams::FunctionSchema, Braintrust::Util::AnyHash)),
+          function_schema: T.nilable(
+            T.any(Braintrust::Models::FunctionCreateParams::FunctionSchema, Braintrust::Internal::Util::AnyHash)
+          ),
           function_type: T.nilable(Braintrust::Models::FunctionCreateParams::FunctionType::OrSymbol),
-          origin: T.nilable(T.any(Braintrust::Models::FunctionCreateParams::Origin, Braintrust::Util::AnyHash)),
-          prompt_data: T.nilable(T.any(Braintrust::Models::PromptData, Braintrust::Util::AnyHash)),
+          origin: T.nilable(T.any(Braintrust::Models::FunctionCreateParams::Origin, Braintrust::Internal::Util::AnyHash)),
+          prompt_data: T.nilable(T.any(Braintrust::Models::PromptData, Braintrust::Internal::Util::AnyHash)),
           tags: T.nilable(T::Array[String]),
-          request_options: T.nilable(T.any(Braintrust::RequestOptions, Braintrust::Util::AnyHash))
+          request_options: T.nilable(T.any(Braintrust::RequestOptions, Braintrust::Internal::Util::AnyHash))
         )
           .returns(Braintrust::Models::Function)
       end
@@ -53,7 +55,7 @@ module Braintrust
       sig do
         params(
           function_id: String,
-          request_options: T.nilable(T.any(Braintrust::RequestOptions, Braintrust::Util::AnyHash))
+          request_options: T.nilable(T.any(Braintrust::RequestOptions, Braintrust::Internal::Util::AnyHash))
         )
           .returns(Braintrust::Models::Function)
       end
@@ -74,15 +76,15 @@ module Braintrust
           function_data: T.nilable(
             T.any(
               Braintrust::Models::FunctionUpdateParams::FunctionData::Prompt,
-              Braintrust::Util::AnyHash,
+              Braintrust::Internal::Util::AnyHash,
               Braintrust::Models::FunctionUpdateParams::FunctionData::Code,
               Braintrust::Models::FunctionUpdateParams::FunctionData::Global
             )
           ),
           name: T.nilable(String),
-          prompt_data: T.nilable(T.any(Braintrust::Models::PromptData, Braintrust::Util::AnyHash)),
+          prompt_data: T.nilable(T.any(Braintrust::Models::PromptData, Braintrust::Internal::Util::AnyHash)),
           tags: T.nilable(T::Array[String]),
-          request_options: T.nilable(T.any(Braintrust::RequestOptions, Braintrust::Util::AnyHash))
+          request_options: T.nilable(T.any(Braintrust::RequestOptions, Braintrust::Internal::Util::AnyHash))
         )
           .returns(Braintrust::Models::Function)
       end
@@ -116,9 +118,9 @@ module Braintrust
           slug: String,
           starting_after: String,
           version: String,
-          request_options: T.nilable(T.any(Braintrust::RequestOptions, Braintrust::Util::AnyHash))
+          request_options: T.nilable(T.any(Braintrust::RequestOptions, Braintrust::Internal::Util::AnyHash))
         )
-          .returns(Braintrust::ListObjects[Braintrust::Models::Function])
+          .returns(Braintrust::Internal::ListObjects[Braintrust::Models::Function])
       end
       def list(
         # Pagination cursor id.
@@ -161,7 +163,7 @@ module Braintrust
       sig do
         params(
           function_id: String,
-          request_options: T.nilable(T.any(Braintrust::RequestOptions, Braintrust::Util::AnyHash))
+          request_options: T.nilable(T.any(Braintrust::RequestOptions, Braintrust::Internal::Util::AnyHash))
         )
           .returns(Braintrust::Models::Function)
       end
@@ -181,7 +183,7 @@ module Braintrust
           messages: T::Array[
           T.any(
             Braintrust::Models::FunctionInvokeParams::Message::System,
-            Braintrust::Util::AnyHash,
+            Braintrust::Internal::Util::AnyHash,
             Braintrust::Models::FunctionInvokeParams::Message::User,
             Braintrust::Models::FunctionInvokeParams::Message::Assistant,
             Braintrust::Models::FunctionInvokeParams::Message::Tool,
@@ -193,12 +195,12 @@ module Braintrust
           mode: T.nilable(Braintrust::Models::FunctionInvokeParams::Mode::OrSymbol),
           parent: T.any(
             Braintrust::Models::FunctionInvokeParams::Parent::SpanParentStruct,
-            Braintrust::Util::AnyHash,
+            Braintrust::Internal::Util::AnyHash,
             String
           ),
           stream: T.nilable(T::Boolean),
           version: String,
-          request_options: T.nilable(T.any(Braintrust::RequestOptions, Braintrust::Util::AnyHash))
+          request_options: T.nilable(T.any(Braintrust::RequestOptions, Braintrust::Internal::Util::AnyHash))
         )
           .returns(T.nilable(T.anything))
       end
@@ -233,7 +235,7 @@ module Braintrust
         params(
           function_data: T.any(
             Braintrust::Models::FunctionReplaceParams::FunctionData::Prompt,
-            Braintrust::Util::AnyHash,
+            Braintrust::Internal::Util::AnyHash,
             Braintrust::Models::FunctionReplaceParams::FunctionData::Code,
             Braintrust::Models::FunctionReplaceParams::FunctionData::Global
           ),
@@ -241,12 +243,14 @@ module Braintrust
           project_id: String,
           slug: String,
           description: T.nilable(String),
-          function_schema: T.nilable(T.any(Braintrust::Models::FunctionReplaceParams::FunctionSchema, Braintrust::Util::AnyHash)),
+          function_schema: T.nilable(
+            T.any(Braintrust::Models::FunctionReplaceParams::FunctionSchema, Braintrust::Internal::Util::AnyHash)
+          ),
           function_type: T.nilable(Braintrust::Models::FunctionReplaceParams::FunctionType::OrSymbol),
-          origin: T.nilable(T.any(Braintrust::Models::FunctionReplaceParams::Origin, Braintrust::Util::AnyHash)),
-          prompt_data: T.nilable(T.any(Braintrust::Models::PromptData, Braintrust::Util::AnyHash)),
+          origin: T.nilable(T.any(Braintrust::Models::FunctionReplaceParams::Origin, Braintrust::Internal::Util::AnyHash)),
+          prompt_data: T.nilable(T.any(Braintrust::Models::PromptData, Braintrust::Internal::Util::AnyHash)),
           tags: T.nilable(T::Array[String]),
-          request_options: T.nilable(T.any(Braintrust::RequestOptions, Braintrust::Util::AnyHash))
+          request_options: T.nilable(T.any(Braintrust::RequestOptions, Braintrust::Internal::Util::AnyHash))
         )
           .returns(Braintrust::Models::Function)
       end

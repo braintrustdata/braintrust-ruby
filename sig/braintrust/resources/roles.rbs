@@ -34,7 +34,7 @@ module Braintrust
         ?role_name: String,
         ?starting_after: String,
         ?request_options: Braintrust::request_opts
-      ) -> Braintrust::ListObjects[Braintrust::Models::Role]
+      ) -> Braintrust::Internal::ListObjects[Braintrust::Models::Role]
 
       def delete: (
         String role_id,

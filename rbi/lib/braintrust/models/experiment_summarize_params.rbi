@@ -3,8 +3,8 @@
 module Braintrust
   module Models
     class ExperimentSummarizeParams < Braintrust::BaseModel
-      extend Braintrust::Type::RequestParameters::Converter
-      include Braintrust::RequestParameters
+      extend Braintrust::Internal::Type::RequestParameters::Converter
+      include Braintrust::Internal::Type::RequestParameters
 
       # The experiment to compare against, if summarizing scores and metrics. If
       #   omitted, will fall back to the `base_exp_id` stored in the experiment metadata,
@@ -25,7 +25,7 @@ module Braintrust
         params(
           comparison_experiment_id: String,
           summarize_scores: T.nilable(T::Boolean),
-          request_options: T.any(Braintrust::RequestOptions, Braintrust::Util::AnyHash)
+          request_options: T.any(Braintrust::RequestOptions, Braintrust::Internal::Util::AnyHash)
         )
           .returns(T.attached_class)
       end

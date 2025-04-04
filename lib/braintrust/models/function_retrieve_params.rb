@@ -5,8 +5,8 @@ module Braintrust
     # @see Braintrust::Resources::Functions#retrieve
     class FunctionRetrieveParams < Braintrust::BaseModel
       # @!parse
-      #   extend Braintrust::Type::RequestParameters::Converter
-      include Braintrust::RequestParameters
+      #   extend Braintrust::Internal::Type::RequestParameters::Converter
+      include Braintrust::Internal::Type::RequestParameters
 
       # @!parse
       #   # @param request_options [Braintrust::RequestOptions, Hash{Symbol=>Object}]

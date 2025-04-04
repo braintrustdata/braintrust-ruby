@@ -5,8 +5,8 @@ module Braintrust
     # @see Braintrust::Resources::Groups#update
     class GroupUpdateParams < Braintrust::BaseModel
       # @!parse
-      #   extend Braintrust::Type::RequestParameters::Converter
-      include Braintrust::RequestParameters
+      #   extend Braintrust::Internal::Type::RequestParameters::Converter
+      include Braintrust::Internal::Type::RequestParameters
 
       # @!attribute add_member_groups
       #   A list of group IDs to add to the group's inheriting-from set

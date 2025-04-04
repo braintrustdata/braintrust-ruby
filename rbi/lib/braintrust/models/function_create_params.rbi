@@ -3,8 +3,8 @@
 module Braintrust
   module Models
     class FunctionCreateParams < Braintrust::BaseModel
-      extend Braintrust::Type::RequestParameters::Converter
-      include Braintrust::RequestParameters
+      extend Braintrust::Internal::Type::RequestParameters::Converter
+      include Braintrust::Internal::Type::RequestParameters
 
       sig do
         returns(
@@ -39,7 +39,9 @@ module Braintrust
 
       sig do
         params(
-          function_schema: T.nilable(T.any(Braintrust::Models::FunctionCreateParams::FunctionSchema, Braintrust::Util::AnyHash))
+          function_schema: T.nilable(
+            T.any(Braintrust::Models::FunctionCreateParams::FunctionSchema, Braintrust::Internal::Util::AnyHash)
+          )
         )
           .void
       end
@@ -53,7 +55,7 @@ module Braintrust
 
       sig do
         params(
-          origin: T.nilable(T.any(Braintrust::Models::FunctionCreateParams::Origin, Braintrust::Util::AnyHash))
+          origin: T.nilable(T.any(Braintrust::Models::FunctionCreateParams::Origin, Braintrust::Internal::Util::AnyHash))
         )
           .void
       end
@@ -63,7 +65,10 @@ module Braintrust
       sig { returns(T.nilable(Braintrust::Models::PromptData)) }
       attr_reader :prompt_data
 
-      sig { params(prompt_data: T.nilable(T.any(Braintrust::Models::PromptData, Braintrust::Util::AnyHash))).void }
+      sig do
+        params(prompt_data: T.nilable(T.any(Braintrust::Models::PromptData, Braintrust::Internal::Util::AnyHash)))
+          .void
+      end
       attr_writer :prompt_data
 
       # A list of tags for the prompt
@@ -74,7 +79,7 @@ module Braintrust
         params(
           function_data: T.any(
             Braintrust::Models::FunctionCreateParams::FunctionData::Prompt,
-            Braintrust::Util::AnyHash,
+            Braintrust::Internal::Util::AnyHash,
             Braintrust::Models::FunctionCreateParams::FunctionData::Code,
             Braintrust::Models::FunctionCreateParams::FunctionData::Global
           ),
@@ -82,12 +87,14 @@ module Braintrust
           project_id: String,
           slug: String,
           description: T.nilable(String),
-          function_schema: T.nilable(T.any(Braintrust::Models::FunctionCreateParams::FunctionSchema, Braintrust::Util::AnyHash)),
+          function_schema: T.nilable(
+            T.any(Braintrust::Models::FunctionCreateParams::FunctionSchema, Braintrust::Internal::Util::AnyHash)
+          ),
           function_type: T.nilable(Braintrust::Models::FunctionCreateParams::FunctionType::OrSymbol),
-          origin: T.nilable(T.any(Braintrust::Models::FunctionCreateParams::Origin, Braintrust::Util::AnyHash)),
-          prompt_data: T.nilable(T.any(Braintrust::Models::PromptData, Braintrust::Util::AnyHash)),
+          origin: T.nilable(T.any(Braintrust::Models::FunctionCreateParams::Origin, Braintrust::Internal::Util::AnyHash)),
+          prompt_data: T.nilable(T.any(Braintrust::Models::PromptData, Braintrust::Internal::Util::AnyHash)),
           tags: T.nilable(T::Array[String]),
-          request_options: T.any(Braintrust::RequestOptions, Braintrust::Util::AnyHash)
+          request_options: T.any(Braintrust::RequestOptions, Braintrust::Internal::Util::AnyHash)
         )
           .returns(T.attached_class)
       end
@@ -187,7 +194,7 @@ module Braintrust
             params(
               data: T.any(
                 Braintrust::Models::FunctionCreateParams::FunctionData::Code::Data::Bundle,
-                Braintrust::Util::AnyHash,
+                Braintrust::Internal::Util::AnyHash,
                 Braintrust::Models::FunctionCreateParams::FunctionData::Code::Data::Inline
               ),
               type: Braintrust::Models::FunctionCreateParams::FunctionData::Code::Type::OrSymbol
@@ -277,7 +284,7 @@ module Braintrust
                 params(
                   runtime_context: T.any(
                     Braintrust::Models::FunctionCreateParams::FunctionData::Code::Data::Inline::RuntimeContext,
-                    Braintrust::Util::AnyHash
+                    Braintrust::Internal::Util::AnyHash
                   )
                 )
                   .void
@@ -292,7 +299,7 @@ module Braintrust
                   code: String,
                   runtime_context: T.any(
                     Braintrust::Models::FunctionCreateParams::FunctionData::Code::Data::Inline::RuntimeContext,
-                    Braintrust::Util::AnyHash
+                    Braintrust::Internal::Util::AnyHash
                   ),
                   type: Braintrust::Models::FunctionCreateParams::FunctionData::Code::Data::Inline::Type::OrSymbol
                 )

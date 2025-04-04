@@ -5,8 +5,8 @@ module Braintrust
     # @see Braintrust::Resources::Experiments#update
     class ExperimentUpdateParams < Braintrust::BaseModel
       # @!parse
-      #   extend Braintrust::Type::RequestParameters::Converter
-      include Braintrust::RequestParameters
+      #   extend Braintrust::Internal::Type::RequestParameters::Converter
+      include Braintrust::Internal::Type::RequestParameters
 
       # @!attribute base_exp_id
       #   Id of default base experiment to compare against when viewing this experiment

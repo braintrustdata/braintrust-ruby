@@ -3,8 +3,8 @@
 module Braintrust
   module Models
     class RoleUpdateParams < Braintrust::BaseModel
-      extend Braintrust::Type::RequestParameters::Converter
-      include Braintrust::RequestParameters
+      extend Braintrust::Internal::Type::RequestParameters::Converter
+      include Braintrust::Internal::Type::RequestParameters
 
       # A list of permissions to add to the role
       sig { returns(T.nilable(T::Array[Braintrust::Models::RoleUpdateParams::AddMemberPermission])) }
@@ -33,16 +33,16 @@ module Braintrust
       sig do
         params(
           add_member_permissions: T.nilable(
-            T::Array[T.any(Braintrust::Models::RoleUpdateParams::AddMemberPermission, Braintrust::Util::AnyHash)]
+            T::Array[T.any(Braintrust::Models::RoleUpdateParams::AddMemberPermission, Braintrust::Internal::Util::AnyHash)]
           ),
           add_member_roles: T.nilable(T::Array[String]),
           description: T.nilable(String),
           name: T.nilable(String),
           remove_member_permissions: T.nilable(
-            T::Array[T.any(Braintrust::Models::RoleUpdateParams::RemoveMemberPermission, Braintrust::Util::AnyHash)]
+            T::Array[T.any(Braintrust::Models::RoleUpdateParams::RemoveMemberPermission, Braintrust::Internal::Util::AnyHash)]
           ),
           remove_member_roles: T.nilable(T::Array[String]),
-          request_options: T.any(Braintrust::RequestOptions, Braintrust::Util::AnyHash)
+          request_options: T.any(Braintrust::RequestOptions, Braintrust::Internal::Util::AnyHash)
         )
           .returns(T.attached_class)
       end

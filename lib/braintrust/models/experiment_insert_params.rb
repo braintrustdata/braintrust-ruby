@@ -5,8 +5,8 @@ module Braintrust
     # @see Braintrust::Resources::Experiments#insert
     class ExperimentInsertParams < Braintrust::BaseModel
       # @!parse
-      #   extend Braintrust::Type::RequestParameters::Converter
-      include Braintrust::RequestParameters
+      #   extend Braintrust::Internal::Type::RequestParameters::Converter
+      include Braintrust::Internal::Type::RequestParameters
 
       # @!attribute events
       #   A list of experiment events to insert

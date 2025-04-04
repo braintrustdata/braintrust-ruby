@@ -3,8 +3,8 @@
 module Braintrust
   module Models
     class ProjectScoreListParams < Braintrust::BaseModel
-      extend Braintrust::Type::RequestParameters::Converter
-      include Braintrust::RequestParameters
+      extend Braintrust::Internal::Type::RequestParameters::Converter
+      include Braintrust::Internal::Type::RequestParameters
 
       # Pagination cursor id.
       #
@@ -106,7 +106,7 @@ module Braintrust
             T::Array[Braintrust::Models::ProjectScoreType::OrSymbol]
           ),
           starting_after: String,
-          request_options: T.any(Braintrust::RequestOptions, Braintrust::Util::AnyHash)
+          request_options: T.any(Braintrust::RequestOptions, Braintrust::Internal::Util::AnyHash)
         )
           .returns(T.attached_class)
       end
@@ -156,7 +156,7 @@ module Braintrust
         def self.variants
         end
 
-        StringArray = T.let(Braintrust::ArrayOf[String], Braintrust::Type::Converter)
+        StringArray = T.let(Braintrust::ArrayOf[String], Braintrust::Internal::Type::Converter)
       end
 
       # The type of the configured score
@@ -173,7 +173,10 @@ module Braintrust
         end
 
         ProjectScoreTypeArray =
-          T.let(Braintrust::ArrayOf[enum: Braintrust::Models::ProjectScoreType], Braintrust::Type::Converter)
+          T.let(
+            Braintrust::ArrayOf[enum: Braintrust::Models::ProjectScoreType],
+            Braintrust::Internal::Type::Converter
+          )
       end
     end
   end

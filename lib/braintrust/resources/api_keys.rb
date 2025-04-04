@@ -58,7 +58,7 @@ module Braintrust
       # @param starting_after [String]
       # @param request_options [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Braintrust::ListObjects<Braintrust::Models::APIKey>]
+      # @return [Braintrust::Internal::ListObjects<Braintrust::Models::APIKey>]
       #
       # @see Braintrust::Models::APIKeyListParams
       def list(params = {})
@@ -67,7 +67,7 @@ module Braintrust
           method: :get,
           path: "v1/api_key",
           query: parsed,
-          page: Braintrust::ListObjects,
+          page: Braintrust::Internal::ListObjects,
           model: Braintrust::Models::APIKey,
           options: options
         )

@@ -3,8 +3,8 @@
 module Braintrust
   module Models
     class PromptCreateParams < Braintrust::BaseModel
-      extend Braintrust::Type::RequestParameters::Converter
-      include Braintrust::RequestParameters
+      extend Braintrust::Internal::Type::RequestParameters::Converter
+      include Braintrust::Internal::Type::RequestParameters
 
       # Name of the prompt
       sig { returns(String) }
@@ -29,7 +29,10 @@ module Braintrust
       sig { returns(T.nilable(Braintrust::Models::PromptData)) }
       attr_reader :prompt_data
 
-      sig { params(prompt_data: T.nilable(T.any(Braintrust::Models::PromptData, Braintrust::Util::AnyHash))).void }
+      sig do
+        params(prompt_data: T.nilable(T.any(Braintrust::Models::PromptData, Braintrust::Internal::Util::AnyHash)))
+          .void
+      end
       attr_writer :prompt_data
 
       # A list of tags for the prompt
@@ -43,9 +46,9 @@ module Braintrust
           slug: String,
           description: T.nilable(String),
           function_type: T.nilable(Braintrust::Models::PromptCreateParams::FunctionType::OrSymbol),
-          prompt_data: T.nilable(T.any(Braintrust::Models::PromptData, Braintrust::Util::AnyHash)),
+          prompt_data: T.nilable(T.any(Braintrust::Models::PromptData, Braintrust::Internal::Util::AnyHash)),
           tags: T.nilable(T::Array[String]),
-          request_options: T.any(Braintrust::RequestOptions, Braintrust::Util::AnyHash)
+          request_options: T.any(Braintrust::RequestOptions, Braintrust::Internal::Util::AnyHash)
         )
           .returns(T.attached_class)
       end

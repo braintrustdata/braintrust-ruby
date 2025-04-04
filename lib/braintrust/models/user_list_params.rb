@@ -5,8 +5,8 @@ module Braintrust
     # @see Braintrust::Resources::Users#list
     class UserListParams < Braintrust::BaseModel
       # @!parse
-      #   extend Braintrust::Type::RequestParameters::Converter
-      include Braintrust::RequestParameters
+      #   extend Braintrust::Internal::Type::RequestParameters::Converter
+      include Braintrust::Internal::Type::RequestParameters
 
       # @!attribute [r] email
       #   Email of the user to search for. You may pass the param multiple times to filter

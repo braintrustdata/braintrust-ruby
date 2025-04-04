@@ -3,8 +3,8 @@
 module Braintrust
   module Models
     class SpanIframeUpdateParams < Braintrust::BaseModel
-      extend Braintrust::Type::RequestParameters::Converter
-      include Braintrust::RequestParameters
+      extend Braintrust::Internal::Type::RequestParameters::Converter
+      include Braintrust::Internal::Type::RequestParameters
 
       # Textual description of the span iframe
       sig { returns(T.nilable(String)) }
@@ -29,7 +29,7 @@ module Braintrust
           name: T.nilable(String),
           post_message: T.nilable(T::Boolean),
           url: T.nilable(String),
-          request_options: T.any(Braintrust::RequestOptions, Braintrust::Util::AnyHash)
+          request_options: T.any(Braintrust::RequestOptions, Braintrust::Internal::Util::AnyHash)
         )
           .returns(T.attached_class)
       end

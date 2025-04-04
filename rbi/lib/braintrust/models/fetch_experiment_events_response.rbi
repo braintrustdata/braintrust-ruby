@@ -16,7 +16,7 @@ module Braintrust
 
       sig do
         params(
-          events: T::Array[T.any(Braintrust::Models::ExperimentEvent, Braintrust::Util::AnyHash)],
+          events: T::Array[T.any(Braintrust::Models::ExperimentEvent, Braintrust::Internal::Util::AnyHash)],
           cursor: T.nilable(String)
         )
           .returns(T.attached_class)

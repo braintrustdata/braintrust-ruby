@@ -96,7 +96,7 @@ module Braintrust
       # @param version [String]
       # @param request_options [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Braintrust::ListObjects<Braintrust::Models::Prompt>]
+      # @return [Braintrust::Internal::ListObjects<Braintrust::Models::Prompt>]
       #
       # @see Braintrust::Models::PromptListParams
       def list(params = {})
@@ -105,7 +105,7 @@ module Braintrust
           method: :get,
           path: "v1/prompt",
           query: parsed,
-          page: Braintrust::ListObjects,
+          page: Braintrust::Internal::ListObjects,
           model: Braintrust::Models::Prompt,
           options: options
         )

@@ -1,9 +1,0 @@
-module Braintrust
-  class ListObjects[Elem]
-    include Braintrust::Type::BasePage[Elem]
-
-    attr_accessor objects: ::Array[Elem]?
-
-    def inspect: -> String
-  end
-end

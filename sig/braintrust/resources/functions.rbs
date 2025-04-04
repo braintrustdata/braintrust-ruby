@@ -42,7 +42,7 @@ module Braintrust
         ?starting_after: String,
         ?version: String,
         ?request_options: Braintrust::request_opts
-      ) -> Braintrust::ListObjects[Braintrust::Models::Function]
+      ) -> Braintrust::Internal::ListObjects[Braintrust::Models::Function]
 
       def delete: (
         String function_id,

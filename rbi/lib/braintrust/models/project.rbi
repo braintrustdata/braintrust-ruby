@@ -26,7 +26,12 @@ module Braintrust
       sig { returns(T.nilable(Braintrust::Models::ProjectSettings)) }
       attr_reader :settings
 
-      sig { params(settings: T.nilable(T.any(Braintrust::Models::ProjectSettings, Braintrust::Util::AnyHash))).void }
+      sig do
+        params(
+          settings: T.nilable(T.any(Braintrust::Models::ProjectSettings, Braintrust::Internal::Util::AnyHash))
+        )
+          .void
+      end
       attr_writer :settings
 
       # Identifies the user who created the project
@@ -40,7 +45,7 @@ module Braintrust
           org_id: String,
           created: T.nilable(Time),
           deleted_at: T.nilable(Time),
-          settings: T.nilable(T.any(Braintrust::Models::ProjectSettings, Braintrust::Util::AnyHash)),
+          settings: T.nilable(T.any(Braintrust::Models::ProjectSettings, Braintrust::Internal::Util::AnyHash)),
           user_id: T.nilable(String)
         )
           .returns(T.attached_class)

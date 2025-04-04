@@ -3,8 +3,8 @@
 module Braintrust
   module Models
     class DatasetInsertParams < Braintrust::BaseModel
-      extend Braintrust::Type::RequestParameters::Converter
-      include Braintrust::RequestParameters
+      extend Braintrust::Internal::Type::RequestParameters::Converter
+      include Braintrust::Internal::Type::RequestParameters
 
       # A list of dataset events to insert
       sig { returns(T::Array[Braintrust::Models::InsertDatasetEvent]) }
@@ -12,8 +12,8 @@ module Braintrust
 
       sig do
         params(
-          events: T::Array[T.any(Braintrust::Models::InsertDatasetEvent, Braintrust::Util::AnyHash)],
-          request_options: T.any(Braintrust::RequestOptions, Braintrust::Util::AnyHash)
+          events: T::Array[T.any(Braintrust::Models::InsertDatasetEvent, Braintrust::Internal::Util::AnyHash)],
+          request_options: T.any(Braintrust::RequestOptions, Braintrust::Internal::Util::AnyHash)
         )
           .returns(T.attached_class)
       end

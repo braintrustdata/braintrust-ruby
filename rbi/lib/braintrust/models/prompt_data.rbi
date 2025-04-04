@@ -6,19 +6,32 @@ module Braintrust
       sig { returns(T.nilable(Braintrust::Models::PromptOptions)) }
       attr_reader :options
 
-      sig { params(options: T.nilable(T.any(Braintrust::Models::PromptOptions, Braintrust::Util::AnyHash))).void }
+      sig do
+        params(options: T.nilable(T.any(Braintrust::Models::PromptOptions, Braintrust::Internal::Util::AnyHash)))
+          .void
+      end
       attr_writer :options
 
       sig { returns(T.nilable(Braintrust::Models::PromptData::Origin)) }
       attr_reader :origin
 
-      sig { params(origin: T.nilable(T.any(Braintrust::Models::PromptData::Origin, Braintrust::Util::AnyHash))).void }
+      sig do
+        params(
+          origin: T.nilable(T.any(Braintrust::Models::PromptData::Origin, Braintrust::Internal::Util::AnyHash))
+        )
+          .void
+      end
       attr_writer :origin
 
       sig { returns(T.nilable(Braintrust::Models::PromptData::Parser)) }
       attr_reader :parser
 
-      sig { params(parser: T.nilable(T.any(Braintrust::Models::PromptData::Parser, Braintrust::Util::AnyHash))).void }
+      sig do
+        params(
+          parser: T.nilable(T.any(Braintrust::Models::PromptData::Parser, Braintrust::Internal::Util::AnyHash))
+        )
+          .void
+      end
       attr_writer :parser
 
       sig do
@@ -47,13 +60,13 @@ module Braintrust
       # The prompt, model, and its parameters
       sig do
         params(
-          options: T.nilable(T.any(Braintrust::Models::PromptOptions, Braintrust::Util::AnyHash)),
-          origin: T.nilable(T.any(Braintrust::Models::PromptData::Origin, Braintrust::Util::AnyHash)),
-          parser: T.nilable(T.any(Braintrust::Models::PromptData::Parser, Braintrust::Util::AnyHash)),
+          options: T.nilable(T.any(Braintrust::Models::PromptOptions, Braintrust::Internal::Util::AnyHash)),
+          origin: T.nilable(T.any(Braintrust::Models::PromptData::Origin, Braintrust::Internal::Util::AnyHash)),
+          parser: T.nilable(T.any(Braintrust::Models::PromptData::Parser, Braintrust::Internal::Util::AnyHash)),
           prompt: T.nilable(
             T.any(
               Braintrust::Models::PromptData::Prompt::Completion,
-              Braintrust::Util::AnyHash,
+              Braintrust::Internal::Util::AnyHash,
               Braintrust::Models::PromptData::Prompt::Chat
             )
           ),
@@ -61,7 +74,7 @@ module Braintrust
             T::Array[
             T.any(
               Braintrust::Models::PromptData::ToolFunction::Function,
-              Braintrust::Util::AnyHash,
+              Braintrust::Internal::Util::AnyHash,
               Braintrust::Models::PromptData::ToolFunction::Global
             )
             ]
@@ -245,7 +258,7 @@ module Braintrust
               messages: T::Array[
               T.any(
                 Braintrust::Models::PromptData::Prompt::Chat::Message::System,
-                Braintrust::Util::AnyHash,
+                Braintrust::Internal::Util::AnyHash,
                 Braintrust::Models::PromptData::Prompt::Chat::Message::User,
                 Braintrust::Models::PromptData::Prompt::Chat::Message::Assistant,
                 Braintrust::Models::PromptData::Prompt::Chat::Message::Tool,
@@ -374,7 +387,7 @@ module Braintrust
                     T::Array[
                     T.any(
                       Braintrust::Models::ChatCompletionContentPartText,
-                      Braintrust::Util::AnyHash,
+                      Braintrust::Internal::Util::AnyHash,
                       Braintrust::Models::ChatCompletionContentPartImage
                     )
                     ]
@@ -398,7 +411,7 @@ module Braintrust
                     T::Array[
                     T.any(
                       Braintrust::Models::ChatCompletionContentPartText,
-                      Braintrust::Util::AnyHash,
+                      Braintrust::Internal::Util::AnyHash,
                       Braintrust::Models::ChatCompletionContentPartImage
                     )
                     ]
@@ -484,7 +497,7 @@ module Braintrust
                 Nested2DArray =
                   T.let(
                     Braintrust::ArrayOf[union: Braintrust::Models::PromptData::Prompt::Chat::Message::User::Content::Array],
-                    Braintrust::Type::Converter
+                    Braintrust::Internal::Type::Converter
                   )
               end
             end
@@ -504,7 +517,7 @@ module Braintrust
                   function_call: T.nilable(
                     T.any(
                       Braintrust::Models::PromptData::Prompt::Chat::Message::Assistant::FunctionCall,
-                      Braintrust::Util::AnyHash
+                      Braintrust::Internal::Util::AnyHash
                     )
                   )
                 )
@@ -525,11 +538,13 @@ module Braintrust
                   function_call: T.nilable(
                     T.any(
                       Braintrust::Models::PromptData::Prompt::Chat::Message::Assistant::FunctionCall,
-                      Braintrust::Util::AnyHash
+                      Braintrust::Internal::Util::AnyHash
                     )
                   ),
                   name: T.nilable(String),
-                  tool_calls: T.nilable(T::Array[T.any(Braintrust::Models::ChatCompletionMessageToolCall, Braintrust::Util::AnyHash)])
+                  tool_calls: T.nilable(
+                    T::Array[T.any(Braintrust::Models::ChatCompletionMessageToolCall, Braintrust::Internal::Util::AnyHash)]
+                  )
                 )
                   .returns(T.attached_class)
               end

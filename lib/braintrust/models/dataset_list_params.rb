@@ -5,8 +5,8 @@ module Braintrust
     # @see Braintrust::Resources::Datasets#list
     class DatasetListParams < Braintrust::BaseModel
       # @!parse
-      #   extend Braintrust::Type::RequestParameters::Converter
-      include Braintrust::RequestParameters
+      #   extend Braintrust::Internal::Type::RequestParameters::Converter
+      include Braintrust::Internal::Type::RequestParameters
 
       # @!attribute [r] dataset_name
       #   Name of the dataset to search for

@@ -11,7 +11,7 @@ module Braintrust
           object_id_: String,
           object_type: Braintrust::Models::EnvVarCreateParams::ObjectType::OrSymbol,
           value: T.nilable(String),
-          request_options: T.nilable(T.any(Braintrust::RequestOptions, Braintrust::Util::AnyHash))
+          request_options: T.nilable(T.any(Braintrust::RequestOptions, Braintrust::Internal::Util::AnyHash))
         )
           .returns(Braintrust::Models::EnvVar)
       end
@@ -32,7 +32,7 @@ module Braintrust
       sig do
         params(
           env_var_id: String,
-          request_options: T.nilable(T.any(Braintrust::RequestOptions, Braintrust::Util::AnyHash))
+          request_options: T.nilable(T.any(Braintrust::RequestOptions, Braintrust::Internal::Util::AnyHash))
         )
           .returns(Braintrust::Models::EnvVar)
       end
@@ -51,7 +51,7 @@ module Braintrust
           env_var_id: String,
           name: String,
           value: T.nilable(String),
-          request_options: T.nilable(T.any(Braintrust::RequestOptions, Braintrust::Util::AnyHash))
+          request_options: T.nilable(T.any(Braintrust::RequestOptions, Braintrust::Internal::Util::AnyHash))
         )
           .returns(Braintrust::Models::EnvVar)
       end
@@ -75,7 +75,7 @@ module Braintrust
           limit: T.nilable(Integer),
           object_id_: String,
           object_type: Braintrust::Models::EnvVarObjectType::OrSymbol,
-          request_options: T.nilable(T.any(Braintrust::RequestOptions, Braintrust::Util::AnyHash))
+          request_options: T.nilable(T.any(Braintrust::RequestOptions, Braintrust::Internal::Util::AnyHash))
         )
           .returns(Braintrust::Models::EnvVarListResponse)
       end
@@ -99,7 +99,7 @@ module Braintrust
       sig do
         params(
           env_var_id: String,
-          request_options: T.nilable(T.any(Braintrust::RequestOptions, Braintrust::Util::AnyHash))
+          request_options: T.nilable(T.any(Braintrust::RequestOptions, Braintrust::Internal::Util::AnyHash))
         )
           .returns(Braintrust::Models::EnvVar)
       end
@@ -119,7 +119,7 @@ module Braintrust
           object_id_: String,
           object_type: Braintrust::Models::EnvVarReplaceParams::ObjectType::OrSymbol,
           value: T.nilable(String),
-          request_options: T.nilable(T.any(Braintrust::RequestOptions, Braintrust::Util::AnyHash))
+          request_options: T.nilable(T.any(Braintrust::RequestOptions, Braintrust::Internal::Util::AnyHash))
         )
           .returns(Braintrust::Models::EnvVar)
       end

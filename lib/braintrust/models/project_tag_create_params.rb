@@ -5,8 +5,8 @@ module Braintrust
     # @see Braintrust::Resources::ProjectTags#create
     class ProjectTagCreateParams < Braintrust::BaseModel
       # @!parse
-      #   extend Braintrust::Type::RequestParameters::Converter
-      include Braintrust::RequestParameters
+      #   extend Braintrust::Internal::Type::RequestParameters::Converter
+      include Braintrust::Internal::Type::RequestParameters
 
       # @!attribute name
       #   Name of the project tag

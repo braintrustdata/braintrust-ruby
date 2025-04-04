@@ -90,7 +90,7 @@ module Braintrust
       # @param starting_after [String]
       # @param request_options [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Braintrust::ListObjects<Braintrust::Models::Group>]
+      # @return [Braintrust::Internal::ListObjects<Braintrust::Models::Group>]
       #
       # @see Braintrust::Models::GroupListParams
       def list(params = {})
@@ -99,7 +99,7 @@ module Braintrust
           method: :get,
           path: "v1/group",
           query: parsed,
-          page: Braintrust::ListObjects,
+          page: Braintrust::Internal::ListObjects,
           model: Braintrust::Models::Group,
           options: options
         )

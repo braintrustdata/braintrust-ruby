@@ -99,7 +99,7 @@ module Braintrust
       # @param version [String]
       # @param request_options [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Braintrust::ListObjects<Braintrust::Models::Function>]
+      # @return [Braintrust::Internal::ListObjects<Braintrust::Models::Function>]
       #
       # @see Braintrust::Models::FunctionListParams
       def list(params = {})
@@ -108,7 +108,7 @@ module Braintrust
           method: :get,
           path: "v1/function",
           query: parsed,
-          page: Braintrust::ListObjects,
+          page: Braintrust::Internal::ListObjects,
           model: Braintrust::Models::Function,
           options: options
         )

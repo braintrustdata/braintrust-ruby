@@ -63,7 +63,7 @@ module Braintrust
       # @param starting_after [String]
       # @param request_options [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Braintrust::ListObjects<Braintrust::Models::ACL>]
+      # @return [Braintrust::Internal::ListObjects<Braintrust::Models::ACL>]
       #
       # @see Braintrust::Models::ACLListParams
       def list(params)
@@ -72,7 +72,7 @@ module Braintrust
           method: :get,
           path: "v1/acl",
           query: parsed,
-          page: Braintrust::ListObjects,
+          page: Braintrust::Internal::ListObjects,
           model: Braintrust::Models::ACL,
           options: options
         )

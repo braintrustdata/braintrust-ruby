@@ -51,7 +51,7 @@ module Braintrust
 
       sig do
         params(
-          context: T.nilable(T.any(Braintrust::Models::ProjectLogsEvent::Context, Braintrust::Util::AnyHash))
+          context: T.nilable(T.any(Braintrust::Models::ProjectLogsEvent::Context, Braintrust::Internal::Util::AnyHash))
         )
           .void
       end
@@ -98,7 +98,7 @@ module Braintrust
 
       sig do
         params(
-          metadata: T.nilable(T.any(Braintrust::Models::ProjectLogsEvent::Metadata, Braintrust::Util::AnyHash))
+          metadata: T.nilable(T.any(Braintrust::Models::ProjectLogsEvent::Metadata, Braintrust::Internal::Util::AnyHash))
         )
           .void
       end
@@ -112,7 +112,7 @@ module Braintrust
 
       sig do
         params(
-          metrics: T.nilable(T.any(Braintrust::Models::ProjectLogsEvent::Metrics, Braintrust::Util::AnyHash))
+          metrics: T.nilable(T.any(Braintrust::Models::ProjectLogsEvent::Metrics, Braintrust::Internal::Util::AnyHash))
         )
           .void
       end
@@ -122,7 +122,10 @@ module Braintrust
       sig { returns(T.nilable(Braintrust::Models::ObjectReference)) }
       attr_reader :origin
 
-      sig { params(origin: T.nilable(T.any(Braintrust::Models::ObjectReference, Braintrust::Util::AnyHash))).void }
+      sig do
+        params(origin: T.nilable(T.any(Braintrust::Models::ObjectReference, Braintrust::Internal::Util::AnyHash)))
+          .void
+      end
       attr_writer :origin
 
       # The output of your application, including post-processing (an arbitrary, JSON
@@ -152,7 +155,9 @@ module Braintrust
       attr_reader :span_attributes
 
       sig do
-        params(span_attributes: T.nilable(T.any(Braintrust::Models::SpanAttributes, Braintrust::Util::AnyHash)))
+        params(
+          span_attributes: T.nilable(T.any(Braintrust::Models::SpanAttributes, Braintrust::Internal::Util::AnyHash))
+        )
           .void
       end
       attr_writer :span_attributes
@@ -177,17 +182,17 @@ module Braintrust
           project_id: String,
           root_span_id: String,
           span_id: String,
-          context: T.nilable(T.any(Braintrust::Models::ProjectLogsEvent::Context, Braintrust::Util::AnyHash)),
+          context: T.nilable(T.any(Braintrust::Models::ProjectLogsEvent::Context, Braintrust::Internal::Util::AnyHash)),
           error: T.anything,
           expected: T.anything,
           input: T.anything,
           is_root: T.nilable(T::Boolean),
-          metadata: T.nilable(T.any(Braintrust::Models::ProjectLogsEvent::Metadata, Braintrust::Util::AnyHash)),
-          metrics: T.nilable(T.any(Braintrust::Models::ProjectLogsEvent::Metrics, Braintrust::Util::AnyHash)),
-          origin: T.nilable(T.any(Braintrust::Models::ObjectReference, Braintrust::Util::AnyHash)),
+          metadata: T.nilable(T.any(Braintrust::Models::ProjectLogsEvent::Metadata, Braintrust::Internal::Util::AnyHash)),
+          metrics: T.nilable(T.any(Braintrust::Models::ProjectLogsEvent::Metrics, Braintrust::Internal::Util::AnyHash)),
+          origin: T.nilable(T.any(Braintrust::Models::ObjectReference, Braintrust::Internal::Util::AnyHash)),
           output: T.anything,
           scores: T.nilable(T::Hash[Symbol, T.nilable(Float)]),
-          span_attributes: T.nilable(T.any(Braintrust::Models::SpanAttributes, Braintrust::Util::AnyHash)),
+          span_attributes: T.nilable(T.any(Braintrust::Models::SpanAttributes, Braintrust::Internal::Util::AnyHash)),
           span_parents: T.nilable(T::Array[String]),
           tags: T.nilable(T::Array[String])
         )
