@@ -2,6 +2,8 @@
 
 module Braintrust
   module Internal
+    # @generic Elem
+    #
     # @example
     #   if list_objects.has_next?
     #     list_objects = list_objects.next_page
@@ -14,7 +16,7 @@ module Braintrust
     class ListObjects
       include Braintrust::Internal::Type::BasePage
 
-      # @return [Array<Object>, nil]
+      # @return [Array<generic<Elem>>, nil]
       attr_accessor :objects
 
       # @api private
@@ -52,6 +54,8 @@ module Braintrust
       end
 
       # @param blk [Proc]
+      #
+      # @yieldparam [generic<Elem>]
       def auto_paging_each(&blk)
         unless block_given?
           raise ArgumentError.new("A block must be given to ##{__method__}")
