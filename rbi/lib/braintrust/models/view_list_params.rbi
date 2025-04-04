@@ -3,8 +3,8 @@
 module Braintrust
   module Models
     class ViewListParams < Braintrust::BaseModel
-      extend Braintrust::Type::RequestParameters::Converter
-      include Braintrust::RequestParameters
+      extend Braintrust::Internal::Type::RequestParameters::Converter
+      include Braintrust::Internal::Type::RequestParameters
 
       # The id of the object the ACL applies to
       sig { returns(String) }
@@ -69,7 +69,7 @@ module Braintrust
           starting_after: String,
           view_name: String,
           view_type: T.nilable(Braintrust::Models::ViewType::OrSymbol),
-          request_options: T.any(Braintrust::RequestOptions, Braintrust::Util::AnyHash)
+          request_options: T.any(Braintrust::RequestOptions, Braintrust::Internal::Util::AnyHash)
         )
           .returns(T.attached_class)
       end
@@ -114,7 +114,7 @@ module Braintrust
         def self.variants
         end
 
-        StringArray = T.let(Braintrust::ArrayOf[String], Braintrust::Type::Converter)
+        StringArray = T.let(Braintrust::ArrayOf[String], Braintrust::Internal::Type::Converter)
       end
     end
   end

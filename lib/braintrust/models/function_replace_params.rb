@@ -5,8 +5,8 @@ module Braintrust
     # @see Braintrust::Resources::Functions#replace
     class FunctionReplaceParams < Braintrust::BaseModel
       # @!parse
-      #   extend Braintrust::Type::RequestParameters::Converter
-      include Braintrust::RequestParameters
+      #   extend Braintrust::Internal::Type::RequestParameters::Converter
+      include Braintrust::Internal::Type::RequestParameters
 
       # @!attribute function_data
       #

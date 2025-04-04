@@ -6,8 +6,8 @@ module Braintrust
       # @see Braintrust::Resources::Organizations::Members#update
       class MemberUpdateParams < Braintrust::BaseModel
         # @!parse
-        #   extend Braintrust::Type::RequestParameters::Converter
-        include Braintrust::RequestParameters
+        #   extend Braintrust::Internal::Type::RequestParameters::Converter
+        include Braintrust::Internal::Type::RequestParameters
 
         # @!attribute invite_users
         #   Users to invite to the organization

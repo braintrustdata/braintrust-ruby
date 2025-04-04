@@ -5,8 +5,8 @@ module Braintrust
     # @see Braintrust::Resources::Prompts#update
     class PromptUpdateParams < Braintrust::BaseModel
       # @!parse
-      #   extend Braintrust::Type::RequestParameters::Converter
-      include Braintrust::RequestParameters
+      #   extend Braintrust::Internal::Type::RequestParameters::Converter
+      include Braintrust::Internal::Type::RequestParameters
 
       # @!attribute description
       #   Textual description of the prompt

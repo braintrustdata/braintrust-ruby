@@ -6,8 +6,8 @@ module Braintrust
       # @see Braintrust::Resources::Projects::Logs#fetch
       class LogFetchParams < Braintrust::BaseModel
         # @!parse
-        #   extend Braintrust::Type::RequestParameters::Converter
-        include Braintrust::RequestParameters
+        #   extend Braintrust::Internal::Type::RequestParameters::Converter
+        include Braintrust::Internal::Type::RequestParameters
 
         # @!attribute limit
         #   limit the number of traces fetched

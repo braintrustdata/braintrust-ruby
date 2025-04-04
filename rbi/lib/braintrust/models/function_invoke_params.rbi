@@ -3,8 +3,8 @@
 module Braintrust
   module Models
     class FunctionInvokeParams < Braintrust::BaseModel
-      extend Braintrust::Type::RequestParameters::Converter
-      include Braintrust::RequestParameters
+      extend Braintrust::Internal::Type::RequestParameters::Converter
+      include Braintrust::Internal::Type::RequestParameters
 
       # The expected output of the function
       sig { returns(T.nilable(T.anything)) }
@@ -44,7 +44,7 @@ module Braintrust
           messages: T::Array[
           T.any(
             Braintrust::Models::FunctionInvokeParams::Message::System,
-            Braintrust::Util::AnyHash,
+            Braintrust::Internal::Util::AnyHash,
             Braintrust::Models::FunctionInvokeParams::Message::User,
             Braintrust::Models::FunctionInvokeParams::Message::Assistant,
             Braintrust::Models::FunctionInvokeParams::Message::Tool,
@@ -73,7 +73,7 @@ module Braintrust
         params(
           parent: T.any(
             Braintrust::Models::FunctionInvokeParams::Parent::SpanParentStruct,
-            Braintrust::Util::AnyHash,
+            Braintrust::Internal::Util::AnyHash,
             String
           )
         )
@@ -100,7 +100,7 @@ module Braintrust
           messages: T::Array[
           T.any(
             Braintrust::Models::FunctionInvokeParams::Message::System,
-            Braintrust::Util::AnyHash,
+            Braintrust::Internal::Util::AnyHash,
             Braintrust::Models::FunctionInvokeParams::Message::User,
             Braintrust::Models::FunctionInvokeParams::Message::Assistant,
             Braintrust::Models::FunctionInvokeParams::Message::Tool,
@@ -112,12 +112,12 @@ module Braintrust
           mode: T.nilable(Braintrust::Models::FunctionInvokeParams::Mode::OrSymbol),
           parent: T.any(
             Braintrust::Models::FunctionInvokeParams::Parent::SpanParentStruct,
-            Braintrust::Util::AnyHash,
+            Braintrust::Internal::Util::AnyHash,
             String
           ),
           stream: T.nilable(T::Boolean),
           version: String,
-          request_options: T.any(Braintrust::RequestOptions, Braintrust::Util::AnyHash)
+          request_options: T.any(Braintrust::RequestOptions, Braintrust::Internal::Util::AnyHash)
         )
           .returns(T.attached_class)
       end
@@ -245,7 +245,7 @@ module Braintrust
                 T::Array[
                 T.any(
                   Braintrust::Models::ChatCompletionContentPartText,
-                  Braintrust::Util::AnyHash,
+                  Braintrust::Internal::Util::AnyHash,
                   Braintrust::Models::ChatCompletionContentPartImage
                 )
                 ]
@@ -269,7 +269,7 @@ module Braintrust
                 T::Array[
                 T.any(
                   Braintrust::Models::ChatCompletionContentPartText,
-                  Braintrust::Util::AnyHash,
+                  Braintrust::Internal::Util::AnyHash,
                   Braintrust::Models::ChatCompletionContentPartImage
                 )
                 ]
@@ -353,7 +353,7 @@ module Braintrust
             Nested2DArray =
               T.let(
                 Braintrust::ArrayOf[union: Braintrust::Models::FunctionInvokeParams::Message::User::Content::Array],
-                Braintrust::Type::Converter
+                Braintrust::Internal::Type::Converter
               )
           end
         end
@@ -373,7 +373,7 @@ module Braintrust
               function_call: T.nilable(
                 T.any(
                   Braintrust::Models::FunctionInvokeParams::Message::Assistant::FunctionCall,
-                  Braintrust::Util::AnyHash
+                  Braintrust::Internal::Util::AnyHash
                 )
               )
             )
@@ -394,11 +394,13 @@ module Braintrust
               function_call: T.nilable(
                 T.any(
                   Braintrust::Models::FunctionInvokeParams::Message::Assistant::FunctionCall,
-                  Braintrust::Util::AnyHash
+                  Braintrust::Internal::Util::AnyHash
                 )
               ),
               name: T.nilable(String),
-              tool_calls: T.nilable(T::Array[T.any(Braintrust::Models::ChatCompletionMessageToolCall, Braintrust::Util::AnyHash)])
+              tool_calls: T.nilable(
+                T::Array[T.any(Braintrust::Models::ChatCompletionMessageToolCall, Braintrust::Internal::Util::AnyHash)]
+              )
             )
               .returns(T.attached_class)
           end
@@ -666,7 +668,7 @@ module Braintrust
               row_ids: T.nilable(
                 T.any(
                   Braintrust::Models::FunctionInvokeParams::Parent::SpanParentStruct::RowIDs,
-                  Braintrust::Util::AnyHash
+                  Braintrust::Internal::Util::AnyHash
                 )
               )
             )
@@ -683,7 +685,7 @@ module Braintrust
               row_ids: T.nilable(
                 T.any(
                   Braintrust::Models::FunctionInvokeParams::Parent::SpanParentStruct::RowIDs,
-                  Braintrust::Util::AnyHash
+                  Braintrust::Internal::Util::AnyHash
                 )
               )
             )

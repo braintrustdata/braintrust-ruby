@@ -10,11 +10,11 @@ module Braintrust
           name: String,
           description: T.nilable(String),
           member_permissions: T.nilable(
-            T::Array[T.any(Braintrust::Models::RoleCreateParams::MemberPermission, Braintrust::Util::AnyHash)]
+            T::Array[T.any(Braintrust::Models::RoleCreateParams::MemberPermission, Braintrust::Internal::Util::AnyHash)]
           ),
           member_roles: T.nilable(T::Array[String]),
           org_name: T.nilable(String),
-          request_options: T.nilable(T.any(Braintrust::RequestOptions, Braintrust::Util::AnyHash))
+          request_options: T.nilable(T.any(Braintrust::RequestOptions, Braintrust::Internal::Util::AnyHash))
         )
           .returns(Braintrust::Models::Role)
       end
@@ -42,7 +42,7 @@ module Braintrust
       sig do
         params(
           role_id: String,
-          request_options: T.nilable(T.any(Braintrust::RequestOptions, Braintrust::Util::AnyHash))
+          request_options: T.nilable(T.any(Braintrust::RequestOptions, Braintrust::Internal::Util::AnyHash))
         )
           .returns(Braintrust::Models::Role)
       end
@@ -60,16 +60,16 @@ module Braintrust
         params(
           role_id: String,
           add_member_permissions: T.nilable(
-            T::Array[T.any(Braintrust::Models::RoleUpdateParams::AddMemberPermission, Braintrust::Util::AnyHash)]
+            T::Array[T.any(Braintrust::Models::RoleUpdateParams::AddMemberPermission, Braintrust::Internal::Util::AnyHash)]
           ),
           add_member_roles: T.nilable(T::Array[String]),
           description: T.nilable(String),
           name: T.nilable(String),
           remove_member_permissions: T.nilable(
-            T::Array[T.any(Braintrust::Models::RoleUpdateParams::RemoveMemberPermission, Braintrust::Util::AnyHash)]
+            T::Array[T.any(Braintrust::Models::RoleUpdateParams::RemoveMemberPermission, Braintrust::Internal::Util::AnyHash)]
           ),
           remove_member_roles: T.nilable(T::Array[String]),
-          request_options: T.nilable(T.any(Braintrust::RequestOptions, Braintrust::Util::AnyHash))
+          request_options: T.nilable(T.any(Braintrust::RequestOptions, Braintrust::Internal::Util::AnyHash))
         )
           .returns(Braintrust::Models::Role)
       end
@@ -102,9 +102,9 @@ module Braintrust
           org_name: String,
           role_name: String,
           starting_after: String,
-          request_options: T.nilable(T.any(Braintrust::RequestOptions, Braintrust::Util::AnyHash))
+          request_options: T.nilable(T.any(Braintrust::RequestOptions, Braintrust::Internal::Util::AnyHash))
         )
-          .returns(Braintrust::ListObjects[Braintrust::Models::Role])
+          .returns(Braintrust::Internal::ListObjects[Braintrust::Models::Role])
       end
       def list(
         # Pagination cursor id.
@@ -136,7 +136,7 @@ module Braintrust
       sig do
         params(
           role_id: String,
-          request_options: T.nilable(T.any(Braintrust::RequestOptions, Braintrust::Util::AnyHash))
+          request_options: T.nilable(T.any(Braintrust::RequestOptions, Braintrust::Internal::Util::AnyHash))
         )
           .returns(Braintrust::Models::Role)
       end
@@ -155,11 +155,11 @@ module Braintrust
           name: String,
           description: T.nilable(String),
           member_permissions: T.nilable(
-            T::Array[T.any(Braintrust::Models::RoleReplaceParams::MemberPermission, Braintrust::Util::AnyHash)]
+            T::Array[T.any(Braintrust::Models::RoleReplaceParams::MemberPermission, Braintrust::Internal::Util::AnyHash)]
           ),
           member_roles: T.nilable(T::Array[String]),
           org_name: T.nilable(String),
-          request_options: T.nilable(T.any(Braintrust::RequestOptions, Braintrust::Util::AnyHash))
+          request_options: T.nilable(T.any(Braintrust::RequestOptions, Braintrust::Internal::Util::AnyHash))
         )
           .returns(Braintrust::Models::Role)
       end

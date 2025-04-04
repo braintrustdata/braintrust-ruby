@@ -94,7 +94,7 @@ module Braintrust
 
       sig do
         params(
-          metadata: T.nilable(T.any(Braintrust::Models::InsertDatasetEvent::Metadata, Braintrust::Util::AnyHash))
+          metadata: T.nilable(T.any(Braintrust::Models::InsertDatasetEvent::Metadata, Braintrust::Internal::Util::AnyHash))
         )
           .void
       end
@@ -104,7 +104,10 @@ module Braintrust
       sig { returns(T.nilable(Braintrust::Models::ObjectReference)) }
       attr_reader :origin
 
-      sig { params(origin: T.nilable(T.any(Braintrust::Models::ObjectReference, Braintrust::Util::AnyHash))).void }
+      sig do
+        params(origin: T.nilable(T.any(Braintrust::Models::ObjectReference, Braintrust::Internal::Util::AnyHash)))
+          .void
+      end
       attr_writer :origin
 
       # Use `span_id`, `root_span_id`, and `span_parents` instead of `_parent_id`, which
@@ -176,8 +179,8 @@ module Braintrust
           created: T.nilable(Time),
           expected: T.anything,
           input: T.anything,
-          metadata: T.nilable(T.any(Braintrust::Models::InsertDatasetEvent::Metadata, Braintrust::Util::AnyHash)),
-          origin: T.nilable(T.any(Braintrust::Models::ObjectReference, Braintrust::Util::AnyHash)),
+          metadata: T.nilable(T.any(Braintrust::Models::InsertDatasetEvent::Metadata, Braintrust::Internal::Util::AnyHash)),
+          origin: T.nilable(T.any(Braintrust::Models::ObjectReference, Braintrust::Internal::Util::AnyHash)),
           root_span_id: T.nilable(String),
           span_id: T.nilable(String),
           span_parents: T.nilable(T::Array[String]),

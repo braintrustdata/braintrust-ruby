@@ -9,7 +9,7 @@ module Braintrust
         params(
           name: String,
           org_name: T.nilable(String),
-          request_options: T.nilable(T.any(Braintrust::RequestOptions, Braintrust::Util::AnyHash))
+          request_options: T.nilable(T.any(Braintrust::RequestOptions, Braintrust::Internal::Util::AnyHash))
         )
           .returns(Braintrust::Models::CreateAPIKeyOutput)
       end
@@ -28,7 +28,7 @@ module Braintrust
       sig do
         params(
           api_key_id: String,
-          request_options: T.nilable(T.any(Braintrust::RequestOptions, Braintrust::Util::AnyHash))
+          request_options: T.nilable(T.any(Braintrust::RequestOptions, Braintrust::Internal::Util::AnyHash))
         )
           .returns(Braintrust::Models::APIKey)
       end
@@ -49,9 +49,9 @@ module Braintrust
           limit: T.nilable(Integer),
           org_name: String,
           starting_after: String,
-          request_options: T.nilable(T.any(Braintrust::RequestOptions, Braintrust::Util::AnyHash))
+          request_options: T.nilable(T.any(Braintrust::RequestOptions, Braintrust::Internal::Util::AnyHash))
         )
-          .returns(Braintrust::ListObjects[Braintrust::Models::APIKey])
+          .returns(Braintrust::Internal::ListObjects[Braintrust::Models::APIKey])
       end
       def list(
         # Name of the api_key to search for
@@ -83,7 +83,7 @@ module Braintrust
       sig do
         params(
           api_key_id: String,
-          request_options: T.nilable(T.any(Braintrust::RequestOptions, Braintrust::Util::AnyHash))
+          request_options: T.nilable(T.any(Braintrust::RequestOptions, Braintrust::Internal::Util::AnyHash))
         )
           .returns(Braintrust::Models::APIKey)
       end

@@ -58,7 +58,9 @@ module Braintrust
           created: T.nilable(Time),
           deleted_at: T.nilable(Time),
           description: T.nilable(String),
-          member_permissions: T.nilable(T::Array[T.any(Braintrust::Models::Role::MemberPermission, Braintrust::Util::AnyHash)]),
+          member_permissions: T.nilable(
+            T::Array[T.any(Braintrust::Models::Role::MemberPermission, Braintrust::Internal::Util::AnyHash)]
+          ),
           member_roles: T.nilable(T::Array[String]),
           org_id: T.nilable(String),
           user_id: T.nilable(String)

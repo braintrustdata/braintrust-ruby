@@ -100,7 +100,7 @@ module Braintrust
       # @param view_type [Symbol, Braintrust::Models::ViewType, nil]
       # @param request_options [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Braintrust::ListObjects<Braintrust::Models::View>]
+      # @return [Braintrust::Internal::ListObjects<Braintrust::Models::View>]
       #
       # @see Braintrust::Models::ViewListParams
       def list(params)
@@ -109,7 +109,7 @@ module Braintrust
           method: :get,
           path: "v1/view",
           query: parsed,
-          page: Braintrust::ListObjects,
+          page: Braintrust::Internal::ListObjects,
           model: Braintrust::Models::View,
           options: options
         )

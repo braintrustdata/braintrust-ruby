@@ -4,8 +4,8 @@ module Braintrust
   module Models
     module Organizations
       class MemberUpdateParams < Braintrust::BaseModel
-        extend Braintrust::Type::RequestParameters::Converter
-        include Braintrust::RequestParameters
+        extend Braintrust::Internal::Type::RequestParameters::Converter
+        include Braintrust::Internal::Type::RequestParameters
 
         # Users to invite to the organization
         sig { returns(T.nilable(Braintrust::Models::Organizations::MemberUpdateParams::InviteUsers)) }
@@ -14,7 +14,10 @@ module Braintrust
         sig do
           params(
             invite_users: T.nilable(
-              T.any(Braintrust::Models::Organizations::MemberUpdateParams::InviteUsers, Braintrust::Util::AnyHash)
+              T.any(
+                Braintrust::Models::Organizations::MemberUpdateParams::InviteUsers,
+                Braintrust::Internal::Util::AnyHash
+              )
             )
           )
             .void
@@ -42,7 +45,10 @@ module Braintrust
         sig do
           params(
             remove_users: T.nilable(
-              T.any(Braintrust::Models::Organizations::MemberUpdateParams::RemoveUsers, Braintrust::Util::AnyHash)
+              T.any(
+                Braintrust::Models::Organizations::MemberUpdateParams::RemoveUsers,
+                Braintrust::Internal::Util::AnyHash
+              )
             )
           )
             .void
@@ -52,14 +58,20 @@ module Braintrust
         sig do
           params(
             invite_users: T.nilable(
-              T.any(Braintrust::Models::Organizations::MemberUpdateParams::InviteUsers, Braintrust::Util::AnyHash)
+              T.any(
+                Braintrust::Models::Organizations::MemberUpdateParams::InviteUsers,
+                Braintrust::Internal::Util::AnyHash
+              )
             ),
             org_id: T.nilable(String),
             org_name: T.nilable(String),
             remove_users: T.nilable(
-              T.any(Braintrust::Models::Organizations::MemberUpdateParams::RemoveUsers, Braintrust::Util::AnyHash)
+              T.any(
+                Braintrust::Models::Organizations::MemberUpdateParams::RemoveUsers,
+                Braintrust::Internal::Util::AnyHash
+              )
             ),
-            request_options: T.any(Braintrust::RequestOptions, Braintrust::Util::AnyHash)
+            request_options: T.any(Braintrust::RequestOptions, Braintrust::Internal::Util::AnyHash)
           )
             .returns(T.attached_class)
         end

@@ -5,8 +5,8 @@ module Braintrust
     # @see Braintrust::Resources::Experiments#summarize
     class ExperimentSummarizeParams < Braintrust::BaseModel
       # @!parse
-      #   extend Braintrust::Type::RequestParameters::Converter
-      include Braintrust::RequestParameters
+      #   extend Braintrust::Internal::Type::RequestParameters::Converter
+      include Braintrust::Internal::Type::RequestParameters
 
       # @!attribute [r] comparison_experiment_id
       #   The experiment to compare against, if summarizing scores and metrics. If

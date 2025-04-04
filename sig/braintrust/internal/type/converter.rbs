@@ -1,0 +1,44 @@
+module Braintrust
+  module Internal
+    module Type
+      module Converter
+        type input = Braintrust::Internal::Type::Converter | Class
+
+        type state =
+          {
+            strictness: bool | :strong,
+            exactness: { yes: Integer, no: Integer, maybe: Integer },
+            branched: Integer
+          }
+
+        def coerce: (
+          top value,
+          state: Braintrust::Internal::Type::Converter::state
+        ) -> top
+
+        def dump: (top value) -> top
+
+        def self.type_info: (
+          {
+            const: (nil | bool | Integer | Float | Symbol)?,
+            enum: ^-> Braintrust::Internal::Type::Converter::input?,
+            union: ^-> Braintrust::Internal::Type::Converter::input?
+          }
+          | ^-> Braintrust::Internal::Type::Converter::input
+          | Braintrust::Internal::Type::Converter::input spec
+        ) -> (^-> top)
+
+        def self.coerce: (
+          Braintrust::Internal::Type::Converter::input target,
+          top value,
+          ?state: Braintrust::Internal::Type::Converter::state
+        ) -> top
+
+        def self.dump: (
+          Braintrust::Internal::Type::Converter::input target,
+          top value
+        ) -> top
+      end
+    end
+  end
+end

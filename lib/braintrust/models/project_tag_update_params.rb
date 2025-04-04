@@ -5,8 +5,8 @@ module Braintrust
     # @see Braintrust::Resources::ProjectTags#update
     class ProjectTagUpdateParams < Braintrust::BaseModel
       # @!parse
-      #   extend Braintrust::Type::RequestParameters::Converter
-      include Braintrust::RequestParameters
+      #   extend Braintrust::Internal::Type::RequestParameters::Converter
+      include Braintrust::Internal::Type::RequestParameters
 
       # @!attribute color
       #   Color of the tag for the UI

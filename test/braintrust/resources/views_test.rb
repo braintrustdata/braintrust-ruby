@@ -93,7 +93,7 @@ class Braintrust::Test::Resources::ViewsTest < Braintrust::Test::ResourceTest
       @braintrust.views.list(object_id_: "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e", object_type: :organization)
 
     assert_pattern do
-      response => Braintrust::ListObjects
+      response => Braintrust::Internal::ListObjects
     end
 
     row = response.to_enum.first

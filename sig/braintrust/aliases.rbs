@@ -1,0 +1,19 @@
+module Braintrust
+  class Unknown = Braintrust::Internal::Type::Unknown
+
+  class BooleanModel = Braintrust::Internal::Type::BooleanModel
+
+  module Enum = Braintrust::Internal::Type::Enum
+
+  module Union = Braintrust::Internal::Type::Union
+
+  class ArrayOf = Braintrust::Internal::Type::ArrayOf
+
+  class HashOf = Braintrust::Internal::Type::HashOf
+
+  class BaseModel = Braintrust::Internal::Type::BaseModel
+
+  type request_parameters = Braintrust::Internal::Type::request_parameters
+
+  module RequestParameters = Braintrust::Internal::Type::RequestParameters
+end

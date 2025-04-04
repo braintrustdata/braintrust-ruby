@@ -13,7 +13,7 @@ module Braintrust
           url: String,
           description: T.nilable(String),
           post_message: T.nilable(T::Boolean),
-          request_options: T.nilable(T.any(Braintrust::RequestOptions, Braintrust::Util::AnyHash))
+          request_options: T.nilable(T.any(Braintrust::RequestOptions, Braintrust::Internal::Util::AnyHash))
         )
           .returns(Braintrust::Models::SpanIFrame)
       end
@@ -37,7 +37,7 @@ module Braintrust
       sig do
         params(
           span_iframe_id: String,
-          request_options: T.nilable(T.any(Braintrust::RequestOptions, Braintrust::Util::AnyHash))
+          request_options: T.nilable(T.any(Braintrust::RequestOptions, Braintrust::Internal::Util::AnyHash))
         )
           .returns(Braintrust::Models::SpanIFrame)
       end
@@ -58,7 +58,7 @@ module Braintrust
           name: T.nilable(String),
           post_message: T.nilable(T::Boolean),
           url: T.nilable(String),
-          request_options: T.nilable(T.any(Braintrust::RequestOptions, Braintrust::Util::AnyHash))
+          request_options: T.nilable(T.any(Braintrust::RequestOptions, Braintrust::Internal::Util::AnyHash))
         )
           .returns(Braintrust::Models::SpanIFrame)
       end
@@ -88,9 +88,9 @@ module Braintrust
           org_name: String,
           span_iframe_name: String,
           starting_after: String,
-          request_options: T.nilable(T.any(Braintrust::RequestOptions, Braintrust::Util::AnyHash))
+          request_options: T.nilable(T.any(Braintrust::RequestOptions, Braintrust::Internal::Util::AnyHash))
         )
-          .returns(Braintrust::ListObjects[Braintrust::Models::SpanIFrame])
+          .returns(Braintrust::Internal::ListObjects[Braintrust::Models::SpanIFrame])
       end
       def list(
         # Pagination cursor id.
@@ -122,7 +122,7 @@ module Braintrust
       sig do
         params(
           span_iframe_id: String,
-          request_options: T.nilable(T.any(Braintrust::RequestOptions, Braintrust::Util::AnyHash))
+          request_options: T.nilable(T.any(Braintrust::RequestOptions, Braintrust::Internal::Util::AnyHash))
         )
           .returns(Braintrust::Models::SpanIFrame)
       end
@@ -143,7 +143,7 @@ module Braintrust
           url: String,
           description: T.nilable(String),
           post_message: T.nilable(T::Boolean),
-          request_options: T.nilable(T.any(Braintrust::RequestOptions, Braintrust::Util::AnyHash))
+          request_options: T.nilable(T.any(Braintrust::RequestOptions, Braintrust::Internal::Util::AnyHash))
         )
           .returns(Braintrust::Models::SpanIFrame)
       end

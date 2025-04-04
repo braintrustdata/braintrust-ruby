@@ -8,7 +8,7 @@ module Braintrust
 
       sig do
         params(
-          image_url: T.any(Braintrust::Models::ChatCompletionContentPartImage::ImageURL, Braintrust::Util::AnyHash)
+          image_url: T.any(Braintrust::Models::ChatCompletionContentPartImage::ImageURL, Braintrust::Internal::Util::AnyHash)
         )
           .void
       end
@@ -19,7 +19,7 @@ module Braintrust
 
       sig do
         params(
-          image_url: T.any(Braintrust::Models::ChatCompletionContentPartImage::ImageURL, Braintrust::Util::AnyHash),
+          image_url: T.any(Braintrust::Models::ChatCompletionContentPartImage::ImageURL, Braintrust::Internal::Util::AnyHash),
           type: Braintrust::Models::ChatCompletionContentPartImage::Type::OrSymbol
         )
           .returns(T.attached_class)

@@ -5,8 +5,8 @@ module Braintrust
     # @see Braintrust::Resources::Datasets#insert
     class DatasetInsertParams < Braintrust::BaseModel
       # @!parse
-      #   extend Braintrust::Type::RequestParameters::Converter
-      include Braintrust::RequestParameters
+      #   extend Braintrust::Internal::Type::RequestParameters::Converter
+      include Braintrust::Internal::Type::RequestParameters
 
       # @!attribute events
       #   A list of dataset events to insert

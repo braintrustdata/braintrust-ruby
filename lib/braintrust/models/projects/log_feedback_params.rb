@@ -6,8 +6,8 @@ module Braintrust
       # @see Braintrust::Resources::Projects::Logs#feedback
       class LogFeedbackParams < Braintrust::BaseModel
         # @!parse
-        #   extend Braintrust::Type::RequestParameters::Converter
-        include Braintrust::RequestParameters
+        #   extend Braintrust::Internal::Type::RequestParameters::Converter
+        include Braintrust::Internal::Type::RequestParameters
 
         # @!attribute feedback
         #   A list of project logs feedback items

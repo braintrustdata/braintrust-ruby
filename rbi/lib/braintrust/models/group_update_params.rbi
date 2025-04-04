@@ -3,8 +3,8 @@
 module Braintrust
   module Models
     class GroupUpdateParams < Braintrust::BaseModel
-      extend Braintrust::Type::RequestParameters::Converter
-      include Braintrust::RequestParameters
+      extend Braintrust::Internal::Type::RequestParameters::Converter
+      include Braintrust::Internal::Type::RequestParameters
 
       # A list of group IDs to add to the group's inheriting-from set
       sig { returns(T.nilable(T::Array[String])) }
@@ -38,7 +38,7 @@ module Braintrust
           name: T.nilable(String),
           remove_member_groups: T.nilable(T::Array[String]),
           remove_member_users: T.nilable(T::Array[String]),
-          request_options: T.any(Braintrust::RequestOptions, Braintrust::Util::AnyHash)
+          request_options: T.any(Braintrust::RequestOptions, Braintrust::Internal::Util::AnyHash)
         )
           .returns(T.attached_class)
       end

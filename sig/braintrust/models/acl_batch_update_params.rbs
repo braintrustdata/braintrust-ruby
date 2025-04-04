@@ -5,11 +5,11 @@ module Braintrust
         add_acls: ::Array[Braintrust::Models::ACLBatchUpdateParams::AddACL]?,
         remove_acls: ::Array[Braintrust::Models::ACLBatchUpdateParams::RemoveACL]?
       }
-      & Braintrust::request_parameters
+      & Braintrust::Internal::Type::request_parameters
 
     class ACLBatchUpdateParams < Braintrust::BaseModel
-      extend Braintrust::Type::RequestParameters::Converter
-      include Braintrust::RequestParameters
+      extend Braintrust::Internal::Type::RequestParameters::Converter
+      include Braintrust::Internal::Type::RequestParameters
 
       attr_accessor add_acls: ::Array[Braintrust::Models::ACLBatchUpdateParams::AddACL]?
 

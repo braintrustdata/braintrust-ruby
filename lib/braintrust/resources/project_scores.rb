@@ -94,7 +94,7 @@ module Braintrust
       # @param starting_after [String]
       # @param request_options [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Braintrust::ListObjects<Braintrust::Models::ProjectScore>]
+      # @return [Braintrust::Internal::ListObjects<Braintrust::Models::ProjectScore>]
       #
       # @see Braintrust::Models::ProjectScoreListParams
       def list(params = {})
@@ -103,7 +103,7 @@ module Braintrust
           method: :get,
           path: "v1/project_score",
           query: parsed,
-          page: Braintrust::ListObjects,
+          page: Braintrust::Internal::ListObjects,
           model: Braintrust::Models::ProjectScore,
           options: options
         )

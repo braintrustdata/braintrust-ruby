@@ -20,7 +20,9 @@ module Braintrust
       attr_reader :runtime_context
 
       sig do
-        params(runtime_context: T.any(Braintrust::Models::CodeBundle::RuntimeContext, Braintrust::Util::AnyHash))
+        params(
+          runtime_context: T.any(Braintrust::Models::CodeBundle::RuntimeContext, Braintrust::Internal::Util::AnyHash)
+        )
           .void
       end
       attr_writer :runtime_context
@@ -34,10 +36,10 @@ module Braintrust
           bundle_id: String,
           location: T.any(
             Braintrust::Models::CodeBundle::Location::Experiment,
-            Braintrust::Util::AnyHash,
+            Braintrust::Internal::Util::AnyHash,
             Braintrust::Models::CodeBundle::Location::Function
           ),
-          runtime_context: T.any(Braintrust::Models::CodeBundle::RuntimeContext, Braintrust::Util::AnyHash),
+          runtime_context: T.any(Braintrust::Models::CodeBundle::RuntimeContext, Braintrust::Internal::Util::AnyHash),
           preview: T.nilable(String)
         )
           .returns(T.attached_class)
@@ -87,7 +89,7 @@ module Braintrust
               eval_name: String,
               position: T.any(
                 Braintrust::Models::CodeBundle::Location::Experiment::Position::Type,
-                Braintrust::Util::AnyHash,
+                Braintrust::Internal::Util::AnyHash,
                 Braintrust::Models::CodeBundle::Location::Experiment::Position::Scorer
               ),
               type: Braintrust::Models::CodeBundle::Location::Experiment::Type::OrSymbol

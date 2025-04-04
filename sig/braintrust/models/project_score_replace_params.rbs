@@ -9,11 +9,11 @@ module Braintrust
         config: Braintrust::Models::ProjectScoreConfig?,
         description: String?
       }
-      & Braintrust::request_parameters
+      & Braintrust::Internal::Type::request_parameters
 
     class ProjectScoreReplaceParams < Braintrust::BaseModel
-      extend Braintrust::Type::RequestParameters::Converter
-      include Braintrust::RequestParameters
+      extend Braintrust::Internal::Type::RequestParameters::Converter
+      include Braintrust::Internal::Type::RequestParameters
 
       attr_accessor name: String
 

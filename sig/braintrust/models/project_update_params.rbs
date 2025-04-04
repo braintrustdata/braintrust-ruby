@@ -2,11 +2,11 @@ module Braintrust
   module Models
     type project_update_params =
       { name: String?, settings: Braintrust::Models::ProjectSettings? }
-      & Braintrust::request_parameters
+      & Braintrust::Internal::Type::request_parameters
 
     class ProjectUpdateParams < Braintrust::BaseModel
-      extend Braintrust::Type::RequestParameters::Converter
-      include Braintrust::RequestParameters
+      extend Braintrust::Internal::Type::RequestParameters::Converter
+      include Braintrust::Internal::Type::RequestParameters
 
       attr_accessor name: String?
 

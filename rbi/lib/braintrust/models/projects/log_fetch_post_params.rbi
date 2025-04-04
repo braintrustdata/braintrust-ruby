@@ -4,8 +4,8 @@ module Braintrust
   module Models
     module Projects
       class LogFetchPostParams < Braintrust::BaseModel
-        extend Braintrust::Type::RequestParameters::Converter
-        include Braintrust::RequestParameters
+        extend Braintrust::Internal::Type::RequestParameters::Converter
+        include Braintrust::Internal::Type::RequestParameters
 
         # An opaque string to be used as a cursor for the next page of results, in order
         #   from latest to earliest.
@@ -73,7 +73,7 @@ module Braintrust
             max_root_span_id: T.nilable(String),
             max_xact_id: T.nilable(String),
             version: T.nilable(String),
-            request_options: T.any(Braintrust::RequestOptions, Braintrust::Util::AnyHash)
+            request_options: T.any(Braintrust::RequestOptions, Braintrust::Internal::Util::AnyHash)
           )
             .returns(T.attached_class)
         end

@@ -78,7 +78,7 @@ class Braintrust::Test::Resources::SpanIframesTest < Braintrust::Test::ResourceT
     response = @braintrust.span_iframes.list
 
     assert_pattern do
-      response => Braintrust::ListObjects
+      response => Braintrust::Internal::ListObjects
     end
 
     row = response.to_enum.first

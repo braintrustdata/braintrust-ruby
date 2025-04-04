@@ -3,8 +3,8 @@
 module Braintrust
   module Models
     class AISecretListParams < Braintrust::BaseModel
-      extend Braintrust::Type::RequestParameters::Converter
-      include Braintrust::RequestParameters
+      extend Braintrust::Internal::Type::RequestParameters::Converter
+      include Braintrust::Internal::Type::RequestParameters
 
       # Name of the ai_secret to search for
       sig { returns(T.nilable(String)) }
@@ -69,7 +69,7 @@ module Braintrust
           limit: T.nilable(Integer),
           org_name: String,
           starting_after: String,
-          request_options: T.any(Braintrust::RequestOptions, Braintrust::Util::AnyHash)
+          request_options: T.any(Braintrust::RequestOptions, Braintrust::Internal::Util::AnyHash)
         )
           .returns(T.attached_class)
       end
@@ -110,7 +110,7 @@ module Braintrust
         def self.variants
         end
 
-        StringArray = T.let(Braintrust::ArrayOf[String], Braintrust::Type::Converter)
+        StringArray = T.let(Braintrust::ArrayOf[String], Braintrust::Internal::Type::Converter)
       end
 
       # Filter search results to a particular set of object IDs. To specify a list of
@@ -122,7 +122,7 @@ module Braintrust
         def self.variants
         end
 
-        StringArray = T.let(Braintrust::ArrayOf[String], Braintrust::Type::Converter)
+        StringArray = T.let(Braintrust::ArrayOf[String], Braintrust::Internal::Type::Converter)
       end
     end
   end

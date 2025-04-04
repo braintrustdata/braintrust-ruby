@@ -5,8 +5,8 @@ module Braintrust
     # @see Braintrust::Resources::Datasets#create
     class DatasetCreateParams < Braintrust::BaseModel
       # @!parse
-      #   extend Braintrust::Type::RequestParameters::Converter
-      include Braintrust::RequestParameters
+      #   extend Braintrust::Internal::Type::RequestParameters::Converter
+      include Braintrust::Internal::Type::RequestParameters
 
       # @!attribute name
       #   Name of the dataset. Within a project, dataset names are unique
