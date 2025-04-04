@@ -3,9 +3,9 @@
 module Braintrust
   module Internal
     class ListObjects
-      Elem = type_member
-
       include Braintrust::Internal::Type::BasePage
+
+      Elem = type_member
 
       sig { returns(T.nilable(T::Array[Elem])) }
       attr_accessor :objects
