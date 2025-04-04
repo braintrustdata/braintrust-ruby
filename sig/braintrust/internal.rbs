@@ -1,4 +1,5 @@
 module Braintrust
   module Internal
+    OMIT: top
   end
 end

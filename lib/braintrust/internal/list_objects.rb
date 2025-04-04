@@ -11,18 +11,6 @@ module Braintrust
     #   list_objects.auto_paging_each do |project|
     #     puts(project)
     #   end
-    #
-    # @example
-    #   projects =
-    #     list_objects
-    #     .to_enum
-    #     .lazy
-    #     .select { _1.object_id.even? }
-    #     .map(&:itself)
-    #     .take(2)
-    #     .to_a
-    #
-    #   projects => Array
     class ListObjects
       include Braintrust::Internal::Type::BasePage
 
