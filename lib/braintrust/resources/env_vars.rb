@@ -22,7 +22,7 @@ module Braintrust
         @client.request(
           method: :post,
           path: "v1/env_var",
-          body: parsed.transform_keys(object_id_: :object_id),
+          body: parsed,
           model: Braintrust::Models::EnvVar,
           options: options
         )
@@ -92,7 +92,7 @@ module Braintrust
         @client.request(
           method: :get,
           path: "v1/env_var",
-          query: parsed.transform_keys(object_id_: :object_id),
+          query: parsed.transform_keys(object_id_: "object_id"),
           model: Braintrust::Models::EnvVarListResponse,
           options: options
         )
@@ -137,7 +137,7 @@ module Braintrust
         @client.request(
           method: :put,
           path: "v1/env_var",
-          body: parsed.transform_keys(object_id_: :object_id),
+          body: parsed,
           model: Braintrust::Models::EnvVar,
           options: options
         )
