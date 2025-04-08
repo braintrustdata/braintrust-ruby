@@ -25,7 +25,7 @@ module Braintrust
         @client.request(
           method: :post,
           path: "v1/acl",
-          body: parsed,
+          body: parsed.transform_keys(object_id_: :object_id),
           model: Braintrust::Models::ACL,
           options: options
         )
@@ -71,7 +71,7 @@ module Braintrust
         @client.request(
           method: :get,
           path: "v1/acl",
-          query: parsed,
+          query: parsed.transform_keys(object_id_: :object_id),
           page: Braintrust::Internal::ListObjects,
           model: Braintrust::Models::ACL,
           options: options
@@ -142,7 +142,7 @@ module Braintrust
         @client.request(
           method: :delete,
           path: "v1/acl",
-          body: parsed,
+          body: parsed.transform_keys(object_id_: :object_id),
           model: Braintrust::Models::ACL,
           options: options
         )
