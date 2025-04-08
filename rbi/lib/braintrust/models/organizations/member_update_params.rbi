@@ -22,16 +22,16 @@ module Braintrust
         attr_writer :invite_users
 
         # For nearly all users, this parameter should be unnecessary. But in the rare case
-        #   that your API key belongs to multiple organizations, or in case you want to
-        #   explicitly assert the organization you are modifying, you may specify the id of
-        #   the organization.
+        # that your API key belongs to multiple organizations, or in case you want to
+        # explicitly assert the organization you are modifying, you may specify the id of
+        # the organization.
         sig { returns(T.nilable(String)) }
         attr_accessor :org_id
 
         # For nearly all users, this parameter should be unnecessary. But in the rare case
-        #   that your API key belongs to multiple organizations, or in case you want to
-        #   explicitly assert the organization you are modifying, you may specify the name
-        #   of the organization.
+        # that your API key belongs to multiple organizations, or in case you want to
+        # explicitly assert the organization you are modifying, you may specify the name
+        # of the organization.
         sig { returns(T.nilable(String)) }
         attr_accessor :org_name
 

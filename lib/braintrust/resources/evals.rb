@@ -4,11 +4,11 @@ module Braintrust
   module Resources
     class Evals
       # Launch an evaluation. This is the API-equivalent of the `Eval` function that is
-      #   built into the Braintrust SDK. In the Eval API, you provide pointers to a
-      #   dataset, task function, and scoring functions. The API will then run the
-      #   evaluation, create an experiment, and return the results along with a link to
-      #   the experiment. To learn more about evals, see the
-      #   [Evals guide](https://www.braintrust.dev/docs/guides/evals).
+      # built into the Braintrust SDK. In the Eval API, you provide pointers to a
+      # dataset, task function, and scoring functions. The API will then run the
+      # evaluation, create an experiment, and return the results along with a link to
+      # the experiment. To learn more about evals, see the
+      # [Evals guide](https://www.braintrust.dev/docs/guides/evals).
       #
       # @overload create(data:, project_id:, scores:, task:, base_experiment_id: nil, base_experiment_name: nil, experiment_name: nil, git_metadata_settings: nil, is_public: nil, max_concurrency: nil, metadata: nil, parent: nil, repo_info: nil, stream: nil, timeout: nil, trial_count: nil, request_options: {})
       #

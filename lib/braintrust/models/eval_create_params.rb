@@ -35,21 +35,21 @@ module Braintrust
 
       # @!attribute base_experiment_id
       #   An optional experiment id to use as a base. If specified, the new experiment
-      #     will be summarized and compared to this experiment.
+      #   will be summarized and compared to this experiment.
       #
       #   @return [String, nil]
       optional :base_experiment_id, String, nil?: true
 
       # @!attribute base_experiment_name
       #   An optional experiment name to use as a base. If specified, the new experiment
-      #     will be summarized and compared to this experiment.
+      #   will be summarized and compared to this experiment.
       #
       #   @return [String, nil]
       optional :base_experiment_name, String, nil?: true
 
       # @!attribute [r] experiment_name
       #   An optional name for the experiment created by this eval. If it conflicts with
-      #     an existing experiment, it will be suffixed with a unique identifier.
+      #   an existing experiment, it will be suffixed with a unique identifier.
       #
       #   @return [String, nil]
       optional :experiment_name, String
@@ -60,7 +60,7 @@ module Braintrust
 
       # @!attribute git_metadata_settings
       #   Optional settings for collecting git metadata. By default, will collect all git
-      #     metadata fields allowed in org-level settings.
+      #   metadata fields allowed in org-level settings.
       #
       #   @return [Braintrust::Models::EvalCreateParams::GitMetadataSettings, nil]
       optional :git_metadata_settings,
@@ -75,14 +75,14 @@ module Braintrust
 
       # @!attribute max_concurrency
       #   The maximum number of tasks/scorers that will be run concurrently. Defaults to
-      #     undefined, in which case there is no max concurrency.
+      #   undefined, in which case there is no max concurrency.
       #
       #   @return [Float, nil]
       optional :max_concurrency, Float, nil?: true
 
       # @!attribute [r] metadata
       #   Optional experiment-level metadata to store about the evaluation. You can later
-      #     use this to slice & dice across experiments.
+      #   use this to slice & dice across experiments.
       #
       #   @return [Hash{Symbol=>Object, nil}, nil]
       optional :metadata, Braintrust::Internal::Type::HashOf[Braintrust::Internal::Type::Unknown, nil?: true]
@@ -109,8 +109,8 @@ module Braintrust
 
       # @!attribute [r] stream
       #   Whether to stream the results of the eval. If true, the request will return two
-      #     events: one to indicate the experiment has started, and another upon completion.
-      #     If false, the request will return the evaluation's summary upon completion.
+      #   events: one to indicate the experiment has started, and another upon completion.
+      #   If false, the request will return the evaluation's summary upon completion.
       #
       #   @return [Boolean, nil]
       optional :stream, Braintrust::Internal::Type::Boolean
@@ -121,15 +121,15 @@ module Braintrust
 
       # @!attribute timeout
       #   The maximum duration, in milliseconds, to run the evaluation. Defaults to
-      #     undefined, in which case there is no timeout.
+      #   undefined, in which case there is no timeout.
       #
       #   @return [Float, nil]
       optional :timeout, Float, nil?: true
 
       # @!attribute trial_count
       #   The number of times to run the evaluator per input. This is useful for
-      #     evaluating applications that have non-deterministic behavior and gives you both
-      #     a stronger aggregate measure and a sense of the variance in the results.
+      #   evaluating applications that have non-deterministic behavior and gives you both
+      #   a stronger aggregate measure and a sense of the variance in the results.
       #
       #   @return [Float, nil]
       optional :trial_count, Float, nil?: true
@@ -354,7 +354,7 @@ module Braintrust
         class GlobalFunction < Braintrust::Internal::Type::BaseModel
           # @!attribute global_function
           #   The name of the global function. Currently, the global namespace includes the
-          #     functions in autoevals
+          #   functions in autoevals
           #
           #   @return [String]
           required :global_function, String
@@ -587,7 +587,7 @@ module Braintrust
         class GlobalFunction < Braintrust::Internal::Type::BaseModel
           # @!attribute global_function
           #   The name of the global function. Currently, the global namespace includes the
-          #     functions in autoevals
+          #   functions in autoevals
           #
           #   @return [String]
           required :global_function, String
@@ -750,7 +750,7 @@ module Braintrust
 
         # @!parse
         #   # Optional settings for collecting git metadata. By default, will collect all git
-        #   #   metadata fields allowed in org-level settings.
+        #   # metadata fields allowed in org-level settings.
         #   #
         #   # @param collect [Symbol, Braintrust::Models::EvalCreateParams::GitMetadataSettings::Collect]
         #   # @param fields [Array<Symbol, Braintrust::Models::EvalCreateParams::GitMetadataSettings::Field>]

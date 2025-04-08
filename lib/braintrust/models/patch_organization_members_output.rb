@@ -16,7 +16,7 @@ module Braintrust
 
       # @!attribute send_email_error
       #   If invite emails failed to send for some reason, the patch operation will still
-      #     complete, but we will return an error message here
+      #   complete, but we will return an error message here
       #
       #   @return [String, nil]
       optional :send_email_error, String, nil?: true

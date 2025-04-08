@@ -7,7 +7,7 @@ module Braintrust
       include Braintrust::Internal::Type::RequestParameters
 
       # Email of the user to search for. You may pass the param multiple times to filter
-      #   for more than one email
+      # for more than one email
       sig { returns(T.nilable(T.any(String, T::Array[String]))) }
       attr_reader :email
 
@@ -16,9 +16,9 @@ module Braintrust
 
       # Pagination cursor id.
       #
-      #   For example, if the initial item in the last page you fetched had an id of
-      #   `foo`, pass `ending_before=foo` to fetch the previous page. Note: you may only
-      #   pass one of `starting_after` and `ending_before`
+      # For example, if the initial item in the last page you fetched had an id of
+      # `foo`, pass `ending_before=foo` to fetch the previous page. Note: you may only
+      # pass one of `starting_after` and `ending_before`
       sig { returns(T.nilable(String)) }
       attr_reader :ending_before
 
@@ -26,7 +26,7 @@ module Braintrust
       attr_writer :ending_before
 
       # Family name of the user to search for. You may pass the param multiple times to
-      #   filter for more than one family name
+      # filter for more than one family name
       sig { returns(T.nilable(T.any(String, T::Array[String]))) }
       attr_reader :family_name
 
@@ -34,7 +34,7 @@ module Braintrust
       attr_writer :family_name
 
       # Given name of the user to search for. You may pass the param multiple times to
-      #   filter for more than one given name
+      # filter for more than one given name
       sig { returns(T.nilable(T.any(String, T::Array[String]))) }
       attr_reader :given_name
 
@@ -42,7 +42,7 @@ module Braintrust
       attr_writer :given_name
 
       # Filter search results to a particular set of object IDs. To specify a list of
-      #   IDs, include the query param multiple times
+      # IDs, include the query param multiple times
       sig { returns(T.nilable(T.any(String, T::Array[String]))) }
       attr_reader :ids
 
@@ -62,9 +62,9 @@ module Braintrust
 
       # Pagination cursor id.
       #
-      #   For example, if the final item in the last page you fetched had an id of `foo`,
-      #   pass `starting_after=foo` to fetch the next page. Note: you may only pass one of
-      #   `starting_after` and `ending_before`
+      # For example, if the final item in the last page you fetched had an id of `foo`,
+      # pass `starting_after=foo` to fetch the next page. Note: you may only pass one of
+      # `starting_after` and `ending_before`
       sig { returns(T.nilable(String)) }
       attr_reader :starting_after
 
@@ -115,7 +115,7 @@ module Braintrust
       def to_hash; end
 
       # Email of the user to search for. You may pass the param multiple times to filter
-      #   for more than one email
+      # for more than one email
       module Email
         extend Braintrust::Internal::Type::Union
 
@@ -129,7 +129,7 @@ module Braintrust
       end
 
       # Family name of the user to search for. You may pass the param multiple times to
-      #   filter for more than one family name
+      # filter for more than one family name
       module FamilyName
         extend Braintrust::Internal::Type::Union
 
@@ -143,7 +143,7 @@ module Braintrust
       end
 
       # Given name of the user to search for. You may pass the param multiple times to
-      #   filter for more than one given name
+      # filter for more than one given name
       module GivenName
         extend Braintrust::Internal::Type::Union
 
@@ -157,7 +157,7 @@ module Braintrust
       end
 
       # Filter search results to a particular set of object IDs. To specify a list of
-      #   IDs, include the query param multiple times
+      # IDs, include the query param multiple times
       module IDs
         extend Braintrust::Internal::Type::Union
 

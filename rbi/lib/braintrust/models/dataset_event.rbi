@@ -4,14 +4,14 @@ module Braintrust
   module Models
     class DatasetEvent < Braintrust::Internal::Type::BaseModel
       # A unique identifier for the dataset event. If you don't provide one, BrainTrust
-      #   will generate one for you
+      # will generate one for you
       sig { returns(String) }
       attr_accessor :id
 
       # The transaction id of an event is unique to the network operation that processed
-      #   the event insertion. Transaction ids are monotonically increasing over time and
-      #   can be used to retrieve a versioned snapshot of the dataset (see the `version`
-      #   parameter)
+      # the event insertion. Transaction ids are monotonically increasing over time and
+      # can be used to retrieve a versioned snapshot of the dataset (see the `version`
+      # parameter)
       sig { returns(String) }
       attr_accessor :_xact_id
 
@@ -32,14 +32,14 @@ module Braintrust
       attr_accessor :root_span_id
 
       # A unique identifier used to link different dataset events together as part of a
-      #   full trace. See the
-      #   [tracing guide](https://www.braintrust.dev/docs/guides/tracing) for full details
-      #   on tracing
+      # full trace. See the
+      # [tracing guide](https://www.braintrust.dev/docs/guides/tracing) for full details
+      # on tracing
       sig { returns(String) }
       attr_accessor :span_id
 
       # The output of your application, including post-processing (an arbitrary, JSON
-      #   serializable object)
+      # serializable object)
       sig { returns(T.nilable(T.anything)) }
       attr_reader :expected
 
@@ -47,7 +47,7 @@ module Braintrust
       attr_writer :expected
 
       # The argument that uniquely define an input case (an arbitrary, JSON serializable
-      #   object)
+      # object)
       sig { returns(T.nilable(T.anything)) }
       attr_reader :input
 
@@ -59,10 +59,10 @@ module Braintrust
       attr_accessor :is_root
 
       # A dictionary with additional data about the test example, model outputs, or just
-      #   about anything else that's relevant, that you can use to help find and analyze
-      #   examples later. For example, you could log the `prompt`, example's `id`, or
-      #   anything else that would be useful to slice/dice later. The values in `metadata`
-      #   can be any JSON-serializable type, but its keys must be strings
+      # about anything else that's relevant, that you can use to help find and analyze
+      # examples later. For example, you could log the `prompt`, example's `id`, or
+      # anything else that would be useful to slice/dice later. The values in `metadata`
+      # can be any JSON-serializable type, but its keys must be strings
       sig { returns(T.nilable(Braintrust::Models::DatasetEvent::Metadata)) }
       attr_reader :metadata
 
@@ -146,10 +146,10 @@ module Braintrust
         attr_accessor :model
 
         # A dictionary with additional data about the test example, model outputs, or just
-        #   about anything else that's relevant, that you can use to help find and analyze
-        #   examples later. For example, you could log the `prompt`, example's `id`, or
-        #   anything else that would be useful to slice/dice later. The values in `metadata`
-        #   can be any JSON-serializable type, but its keys must be strings
+        # about anything else that's relevant, that you can use to help find and analyze
+        # examples later. For example, you could log the `prompt`, example's `id`, or
+        # anything else that would be useful to slice/dice later. The values in `metadata`
+        # can be any JSON-serializable type, but its keys must be strings
         sig { params(model: T.nilable(String)).returns(T.attached_class) }
         def self.new(model: nil); end
 

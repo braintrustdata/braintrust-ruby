@@ -4,8 +4,8 @@ module Braintrust
   module Resources
     class ProjectTags
       # Create a new project_tag. If there is an existing project_tag in the project
-      #   with the same name as the one specified in the request, will return the existing
-      #   project_tag unmodified
+      # with the same name as the one specified in the request, will return the existing
+      # project_tag unmodified
       #
       # @overload create(name:, project_id:, color: nil, description: nil, request_options: {})
       #
@@ -49,8 +49,8 @@ module Braintrust
       end
 
       # Partially update a project_tag object. Specify the fields to update in the
-      #   payload. Any object-type fields will be deep-merged with existing content.
-      #   Currently we do not support removing fields or setting them to null.
+      # payload. Any object-type fields will be deep-merged with existing content.
+      # Currently we do not support removing fields or setting them to null.
       #
       # @overload update(project_tag_id, color: nil, description: nil, name: nil, request_options: {})
       #
@@ -75,7 +75,7 @@ module Braintrust
       end
 
       # List out all project_tags. The project_tags are sorted by creation date, with
-      #   the most recently-created project_tags coming first
+      # the most recently-created project_tags coming first
       #
       # @overload list(ending_before: nil, ids: nil, limit: nil, org_name: nil, project_id: nil, project_name: nil, project_tag_name: nil, starting_after: nil, request_options: {})
       #
@@ -124,8 +124,8 @@ module Braintrust
       end
 
       # Create or replace project_tag. If there is an existing project_tag in the
-      #   project with the same name as the one specified in the request, will replace the
-      #   existing project_tag with the provided fields
+      # project with the same name as the one specified in the request, will replace the
+      # existing project_tag with the provided fields
       #
       # @overload replace(name:, project_id:, color: nil, description: nil, request_options: {})
       #

@@ -57,14 +57,14 @@ module Braintrust
 
       # @!attribute position
       #   An optional LexoRank-based string that sets the sort position for the score in
-      #     the UI
+      #   the UI
       #
       #   @return [String, nil]
       optional :position, String, nil?: true
 
       # @!parse
       #   # A project score is a user-configured score, which can be manually-labeled
-      #   #   through the UI
+      #   # through the UI
       #   #
       #   # @param id [String]
       #   # @param name [String]

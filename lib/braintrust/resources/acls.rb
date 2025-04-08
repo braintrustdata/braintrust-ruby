@@ -4,7 +4,7 @@ module Braintrust
   module Resources
     class ACLs
       # Create a new acl. If there is an existing acl with the same contents as the one
-      #   specified in the request, will return the existing acl unmodified
+      # specified in the request, will return the existing acl unmodified
       #
       # @overload create(object_id_:, object_type:, group_id: nil, permission: nil, restrict_object_type: nil, role_id: nil, user_id: nil, request_options: {})
       #
@@ -51,7 +51,7 @@ module Braintrust
       end
 
       # List out all acls. The acls are sorted by creation date, with the most
-      #   recently-created acls coming first
+      # recently-created acls coming first
       #
       # @overload list(object_id_:, object_type:, ending_before: nil, ids: nil, limit: nil, starting_after: nil, request_options: {})
       #
@@ -98,8 +98,8 @@ module Braintrust
       end
 
       # Batch update acls. This operation is idempotent, so adding acls which already
-      #   exist will have no effect, and removing acls which do not exist will have no
-      #   effect.
+      # exist will have no effect, and removing acls which do not exist will have no
+      # effect.
       #
       # @overload batch_update(add_acls: nil, remove_acls: nil, request_options: {})
       #

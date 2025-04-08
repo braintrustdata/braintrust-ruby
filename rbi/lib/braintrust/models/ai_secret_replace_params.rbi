@@ -14,13 +14,13 @@ module Braintrust
       attr_accessor :metadata
 
       # For nearly all users, this parameter should be unnecessary. But in the rare case
-      #   that your API key belongs to multiple organizations, you may specify the name of
-      #   the organization the AI Secret belongs in.
+      # that your API key belongs to multiple organizations, you may specify the name of
+      # the organization the AI Secret belongs in.
       sig { returns(T.nilable(String)) }
       attr_accessor :org_name
 
       # Secret value. If omitted in a PUT request, the existing secret value will be
-      #   left intact, not replaced with null.
+      # left intact, not replaced with null.
       sig { returns(T.nilable(String)) }
       attr_accessor :secret
 

@@ -4,7 +4,7 @@ module Braintrust
   module Resources
     class Roles
       # Create a new role. If there is an existing role with the same name as the one
-      #   specified in the request, will return the existing role unmodified
+      # specified in the request, will return the existing role unmodified
       #
       # @overload create(name:, description: nil, member_permissions: nil, member_roles: nil, org_name: nil, request_options: {})
       #
@@ -49,8 +49,8 @@ module Braintrust
       end
 
       # Partially update a role object. Specify the fields to update in the payload. Any
-      #   object-type fields will be deep-merged with existing content. Currently we do
-      #   not support removing fields or setting them to null.
+      # object-type fields will be deep-merged with existing content. Currently we do
+      # not support removing fields or setting them to null.
       #
       # @overload update(role_id, add_member_permissions: nil, add_member_roles: nil, description: nil, name: nil, remove_member_permissions: nil, remove_member_roles: nil, request_options: {})
       #
@@ -78,7 +78,7 @@ module Braintrust
       end
 
       # List out all roles. The roles are sorted by creation date, with the most
-      #   recently-created roles coming first
+      # recently-created roles coming first
       #
       # @overload list(ending_before: nil, ids: nil, limit: nil, org_name: nil, role_name: nil, starting_after: nil, request_options: {})
       #
@@ -125,8 +125,8 @@ module Braintrust
       end
 
       # Create or replace role. If there is an existing role with the same name as the
-      #   one specified in the request, will replace the existing role with the provided
-      #   fields
+      # one specified in the request, will replace the existing role with the provided
+      # fields
       #
       # @overload replace(name:, description: nil, member_permissions: nil, member_roles: nil, org_name: nil, request_options: {})
       #

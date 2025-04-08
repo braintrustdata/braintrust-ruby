@@ -4,8 +4,8 @@ module Braintrust
   module Resources
     class Datasets
       # Create a new dataset. If there is an existing dataset in the project with the
-      #   same name as the one specified in the request, will return the existing dataset
-      #   unmodified
+      # same name as the one specified in the request, will return the existing dataset
+      # unmodified
       #
       # @overload create(name:, project_id:, description: nil, metadata: nil, request_options: {})
       #
@@ -49,8 +49,8 @@ module Braintrust
       end
 
       # Partially update a dataset object. Specify the fields to update in the payload.
-      #   Any object-type fields will be deep-merged with existing content. Currently we
-      #   do not support removing fields or setting them to null.
+      # Any object-type fields will be deep-merged with existing content. Currently we
+      # do not support removing fields or setting them to null.
       #
       # @overload update(dataset_id, description: nil, metadata: nil, name: nil, request_options: {})
       #
@@ -75,7 +75,7 @@ module Braintrust
       end
 
       # List out all datasets. The datasets are sorted by creation date, with the most
-      #   recently-created datasets coming first
+      # recently-created datasets coming first
       #
       # @overload list(dataset_name: nil, ending_before: nil, ids: nil, limit: nil, org_name: nil, project_id: nil, project_name: nil, starting_after: nil, request_options: {})
       #
@@ -146,8 +146,8 @@ module Braintrust
       end
 
       # Fetch the events in a dataset. Equivalent to the POST form of the same path, but
-      #   with the parameters in the URL query rather than in the request body. For more
-      #   complex queries, use the `POST /btql` endpoint.
+      # with the parameters in the URL query rather than in the request body. For more
+      # complex queries, use the `POST /btql` endpoint.
       #
       # @overload fetch(dataset_id, limit: nil, max_root_span_id: nil, max_xact_id: nil, version: nil, request_options: {})
       #
@@ -173,8 +173,8 @@ module Braintrust
       end
 
       # Fetch the events in a dataset. Equivalent to the GET form of the same path, but
-      #   with the parameters in the request body rather than in the URL query. For more
-      #   complex queries, use the `POST /btql` endpoint.
+      # with the parameters in the request body rather than in the URL query. For more
+      # complex queries, use the `POST /btql` endpoint.
       #
       # @overload fetch_post(dataset_id, cursor: nil, limit: nil, max_root_span_id: nil, max_xact_id: nil, version: nil, request_options: {})
       #

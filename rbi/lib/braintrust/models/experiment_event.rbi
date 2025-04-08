@@ -4,14 +4,14 @@ module Braintrust
   module Models
     class ExperimentEvent < Braintrust::Internal::Type::BaseModel
       # A unique identifier for the experiment event. If you don't provide one,
-      #   BrainTrust will generate one for you
+      # BrainTrust will generate one for you
       sig { returns(String) }
       attr_accessor :id
 
       # The transaction id of an event is unique to the network operation that processed
-      #   the event insertion. Transaction ids are monotonically increasing over time and
-      #   can be used to retrieve a versioned snapshot of the experiment (see the
-      #   `version` parameter)
+      # the event insertion. Transaction ids are monotonically increasing over time and
+      # can be used to retrieve a versioned snapshot of the experiment (see the
+      # `version` parameter)
       sig { returns(String) }
       attr_accessor :_xact_id
 
@@ -32,16 +32,16 @@ module Braintrust
       attr_accessor :root_span_id
 
       # A unique identifier used to link different experiment events together as part of
-      #   a full trace. See the
-      #   [tracing guide](https://www.braintrust.dev/docs/guides/tracing) for full details
-      #   on tracing
+      # a full trace. See the
+      # [tracing guide](https://www.braintrust.dev/docs/guides/tracing) for full details
+      # on tracing
       sig { returns(String) }
       attr_accessor :span_id
 
       # Context is additional information about the code that produced the experiment
-      #   event. It is essentially the textual counterpart to `metrics`. Use the
-      #   `caller_*` attributes to track the location in code which produced the
-      #   experiment event
+      # event. It is essentially the textual counterpart to `metrics`. Use the
+      # `caller_*` attributes to track the location in code which produced the
+      # experiment event
       sig { returns(T.nilable(Braintrust::Models::ExperimentEvent::Context)) }
       attr_reader :context
 
@@ -61,12 +61,12 @@ module Braintrust
       attr_writer :error
 
       # The ground truth value (an arbitrary, JSON serializable object) that you'd
-      #   compare to `output` to determine if your `output` value is correct or not.
-      #   Braintrust currently does not compare `output` to `expected` for you, since
-      #   there are so many different ways to do that correctly. Instead, these values are
-      #   just used to help you navigate your experiments while digging into analyses.
-      #   However, we may later use these values to re-score outputs or fine-tune your
-      #   models
+      # compare to `output` to determine if your `output` value is correct or not.
+      # Braintrust currently does not compare `output` to `expected` for you, since
+      # there are so many different ways to do that correctly. Instead, these values are
+      # just used to help you navigate your experiments while digging into analyses.
+      # However, we may later use these values to re-score outputs or fine-tune your
+      # models
       sig { returns(T.nilable(T.anything)) }
       attr_reader :expected
 
@@ -74,10 +74,10 @@ module Braintrust
       attr_writer :expected
 
       # The arguments that uniquely define a test case (an arbitrary, JSON serializable
-      #   object). Later on, Braintrust will use the `input` to know whether two test
-      #   cases are the same between experiments, so they should not contain
-      #   experiment-specific state. A simple rule of thumb is that if you run the same
-      #   experiment twice, the `input` should be identical
+      # object). Later on, Braintrust will use the `input` to know whether two test
+      # cases are the same between experiments, so they should not contain
+      # experiment-specific state. A simple rule of thumb is that if you run the same
+      # experiment twice, the `input` should be identical
       sig { returns(T.nilable(T.anything)) }
       attr_reader :input
 
@@ -89,10 +89,10 @@ module Braintrust
       attr_accessor :is_root
 
       # A dictionary with additional data about the test example, model outputs, or just
-      #   about anything else that's relevant, that you can use to help find and analyze
-      #   examples later. For example, you could log the `prompt`, example's `id`, or
-      #   anything else that would be useful to slice/dice later. The values in `metadata`
-      #   can be any JSON-serializable type, but its keys must be strings
+      # about anything else that's relevant, that you can use to help find and analyze
+      # examples later. For example, you could log the `prompt`, example's `id`, or
+      # anything else that would be useful to slice/dice later. The values in `metadata`
+      # can be any JSON-serializable type, but its keys must be strings
       sig { returns(T.nilable(Braintrust::Models::ExperimentEvent::Metadata)) }
       attr_reader :metadata
 
@@ -105,8 +105,8 @@ module Braintrust
       attr_writer :metadata
 
       # Metrics are numerical measurements tracking the execution of the code that
-      #   produced the experiment event. Use "start" and "end" to track the time span over
-      #   which the experiment event was produced
+      # produced the experiment event. Use "start" and "end" to track the time span over
+      # which the experiment event was produced
       sig { returns(T.nilable(Braintrust::Models::ExperimentEvent::Metrics)) }
       attr_reader :metrics
 
@@ -126,10 +126,10 @@ module Braintrust
       attr_writer :origin
 
       # The output of your application, including post-processing (an arbitrary, JSON
-      #   serializable object), that allows you to determine whether the result is correct
-      #   or not. For example, in an app that generates SQL queries, the `output` should
-      #   be the _result_ of the SQL query generated by the model, not the query itself,
-      #   because there may be multiple valid queries that answer a single question
+      # serializable object), that allows you to determine whether the result is correct
+      # or not. For example, in an app that generates SQL queries, the `output` should
+      # be the _result_ of the SQL query generated by the model, not the query itself,
+      # because there may be multiple valid queries that answer a single question
       sig { returns(T.nilable(T.anything)) }
       attr_reader :output
 
@@ -137,13 +137,13 @@ module Braintrust
       attr_writer :output
 
       # A dictionary of numeric values (between 0 and 1) to log. The scores should give
-      #   you a variety of signals that help you determine how accurate the outputs are
-      #   compared to what you expect and diagnose failures. For example, a summarization
-      #   app might have one score that tells you how accurate the summary is, and another
-      #   that measures the word similarity between the generated and grouth truth
-      #   summary. The word similarity score could help you determine whether the
-      #   summarization was covering similar concepts or not. You can use these scores to
-      #   help you sort, filter, and compare experiments
+      # you a variety of signals that help you determine how accurate the outputs are
+      # compared to what you expect and diagnose failures. For example, a summarization
+      # app might have one score that tells you how accurate the summary is, and another
+      # that measures the word similarity between the generated and grouth truth
+      # summary. The word similarity score could help you determine whether the
+      # summarization was covering similar concepts or not. You can use these scores to
+      # help you sort, filter, and compare experiments
       sig { returns(T.nilable(T::Hash[Symbol, T.nilable(Float)])) }
       attr_accessor :scores
 
@@ -160,8 +160,8 @@ module Braintrust
       attr_writer :span_attributes
 
       # An array of the parent `span_ids` of this experiment event. This should be empty
-      #   for the root span of a trace, and should most often contain just one parent
-      #   element for subspans
+      # for the root span of a trace, and should most often contain just one parent
+      # element for subspans
       sig { returns(T.nilable(T::Array[String])) }
       attr_accessor :span_parents
 
@@ -259,9 +259,9 @@ module Braintrust
         attr_accessor :caller_lineno
 
         # Context is additional information about the code that produced the experiment
-        #   event. It is essentially the textual counterpart to `metrics`. Use the
-        #   `caller_*` attributes to track the location in code which produced the
-        #   experiment event
+        # event. It is essentially the textual counterpart to `metrics`. Use the
+        # `caller_*` attributes to track the location in code which produced the
+        # experiment event
         sig do
           params(
             caller_filename: T.nilable(String),
@@ -291,10 +291,10 @@ module Braintrust
         attr_accessor :model
 
         # A dictionary with additional data about the test example, model outputs, or just
-        #   about anything else that's relevant, that you can use to help find and analyze
-        #   examples later. For example, you could log the `prompt`, example's `id`, or
-        #   anything else that would be useful to slice/dice later. The values in `metadata`
-        #   can be any JSON-serializable type, but its keys must be strings
+        # about anything else that's relevant, that you can use to help find and analyze
+        # examples later. For example, you could log the `prompt`, example's `id`, or
+        # anything else that would be useful to slice/dice later. The values in `metadata`
+        # can be any JSON-serializable type, but its keys must be strings
         sig { params(model: T.nilable(String)).returns(T.attached_class) }
         def self.new(model: nil); end
 
@@ -325,22 +325,22 @@ module Braintrust
         attr_writer :caller_lineno
 
         # The number of tokens in the completion generated by the model (only set if this
-        #   is an LLM span)
+        # is an LLM span)
         sig { returns(T.nilable(Integer)) }
         attr_accessor :completion_tokens
 
         # A unix timestamp recording when the section of code which produced the
-        #   experiment event finished
+        # experiment event finished
         sig { returns(T.nilable(Float)) }
         attr_accessor :end_
 
         # The number of tokens in the prompt used to generate the experiment event (only
-        #   set if this is an LLM span)
+        # set if this is an LLM span)
         sig { returns(T.nilable(Integer)) }
         attr_accessor :prompt_tokens
 
         # A unix timestamp recording when the section of code which produced the
-        #   experiment event started
+        # experiment event started
         sig { returns(T.nilable(Float)) }
         attr_accessor :start
 
@@ -349,8 +349,8 @@ module Braintrust
         attr_accessor :tokens
 
         # Metrics are numerical measurements tracking the execution of the code that
-        #   produced the experiment event. Use "start" and "end" to track the time span over
-        #   which the experiment event was produced
+        # produced the experiment event. Use "start" and "end" to track the time span over
+        # which the experiment event was produced
         sig do
           params(
             caller_filename: T.anything,

@@ -14,7 +14,7 @@ module Braintrust
       attr_writer :env_var_name
 
       # Filter search results to a particular set of object IDs. To specify a list of
-      #   IDs, include the query param multiple times
+      # IDs, include the query param multiple times
       sig { returns(T.nilable(T.any(String, T::Array[String]))) }
       attr_reader :ids
 
@@ -76,7 +76,7 @@ module Braintrust
       def to_hash; end
 
       # Filter search results to a particular set of object IDs. To specify a list of
-      #   IDs, include the query param multiple times
+      # IDs, include the query param multiple times
       module IDs
         extend Braintrust::Internal::Type::Union
 

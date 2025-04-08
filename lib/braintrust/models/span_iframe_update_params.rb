@@ -22,7 +22,7 @@ module Braintrust
 
       # @!attribute post_message
       #   Whether to post messages to the iframe containing the span's data. This is
-      #     useful when you want to render more data than fits in the URL.
+      #   useful when you want to render more data than fits in the URL.
       #
       #   @return [Boolean, nil]
       optional :post_message, Braintrust::Internal::Type::Boolean, nil?: true

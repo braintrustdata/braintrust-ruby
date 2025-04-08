@@ -7,7 +7,7 @@ module Braintrust
       include Braintrust::Internal::Type::RequestParameters
 
       # Whether to summarize the data. If false (or omitted), only the metadata will be
-      #   returned.
+      # returned.
       sig { returns(T.nilable(T::Boolean)) }
       attr_accessor :summarize_data
 

@@ -4,8 +4,8 @@ module Braintrust
   module Resources
     class SpanIframes
       # Create a new span_iframe. If there is an existing span_iframe with the same name
-      #   as the one specified in the request, will return the existing span_iframe
-      #   unmodified
+      # as the one specified in the request, will return the existing span_iframe
+      # unmodified
       #
       # @overload create(name:, project_id:, url:, description: nil, post_message: nil, request_options: {})
       #
@@ -50,8 +50,8 @@ module Braintrust
       end
 
       # Partially update a span_iframe object. Specify the fields to update in the
-      #   payload. Any object-type fields will be deep-merged with existing content.
-      #   Currently we do not support removing fields or setting them to null.
+      # payload. Any object-type fields will be deep-merged with existing content.
+      # Currently we do not support removing fields or setting them to null.
       #
       # @overload update(span_iframe_id, description: nil, name: nil, post_message: nil, url: nil, request_options: {})
       #
@@ -77,7 +77,7 @@ module Braintrust
       end
 
       # List out all span_iframes. The span_iframes are sorted by creation date, with
-      #   the most recently-created span_iframes coming first
+      # the most recently-created span_iframes coming first
       #
       # @overload list(ending_before: nil, ids: nil, limit: nil, org_name: nil, span_iframe_name: nil, starting_after: nil, request_options: {})
       #
@@ -124,8 +124,8 @@ module Braintrust
       end
 
       # Create or replace span_iframe. If there is an existing span_iframe with the same
-      #   name as the one specified in the request, will replace the existing span_iframe
-      #   with the provided fields
+      # name as the one specified in the request, will replace the existing span_iframe
+      # with the provided fields
       #
       # @overload replace(name:, project_id:, url:, description: nil, post_message: nil, request_options: {})
       #

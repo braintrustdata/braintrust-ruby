@@ -4,7 +4,7 @@ module Braintrust
   module Resources
     class Groups
       # Create a new group. If there is an existing group with the same name as the one
-      #   specified in the request, will return the existing group unmodified
+      # specified in the request, will return the existing group unmodified
       #
       # @overload create(name:, description: nil, member_groups: nil, member_users: nil, org_name: nil, request_options: {})
       #
@@ -49,8 +49,8 @@ module Braintrust
       end
 
       # Partially update a group object. Specify the fields to update in the payload.
-      #   Any object-type fields will be deep-merged with existing content. Currently we
-      #   do not support removing fields or setting them to null.
+      # Any object-type fields will be deep-merged with existing content. Currently we
+      # do not support removing fields or setting them to null.
       #
       # @overload update(group_id, add_member_groups: nil, add_member_users: nil, description: nil, name: nil, remove_member_groups: nil, remove_member_users: nil, request_options: {})
       #
@@ -78,7 +78,7 @@ module Braintrust
       end
 
       # List out all groups. The groups are sorted by creation date, with the most
-      #   recently-created groups coming first
+      # recently-created groups coming first
       #
       # @overload list(ending_before: nil, group_name: nil, ids: nil, limit: nil, org_name: nil, starting_after: nil, request_options: {})
       #
@@ -125,8 +125,8 @@ module Braintrust
       end
 
       # Create or replace group. If there is an existing group with the same name as the
-      #   one specified in the request, will replace the existing group with the provided
-      #   fields
+      # one specified in the request, will replace the existing group with the provided
+      # fields
       #
       # @overload replace(name:, description: nil, member_groups: nil, member_users: nil, org_name: nil, request_options: {})
       #

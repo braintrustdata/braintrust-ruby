@@ -5,7 +5,7 @@ module Braintrust
     class InsertEventsResponse < Braintrust::Internal::Type::BaseModel
       # @!attribute row_ids
       #   The ids of all rows that were inserted, aligning one-to-one with the rows
-      #     provided as input
+      #   provided as input
       #
       #   @return [Array<String>]
       required :row_ids, Braintrust::Internal::Type::ArrayOf[String]

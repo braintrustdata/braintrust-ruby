@@ -4,7 +4,7 @@ module Braintrust
   module Resources
     class TopLevel
       # Default endpoint. Simply replies with 'Hello, World!'. Authorization is not
-      #   required
+      # required
       #
       # @overload hello_world(request_options: {})
       #

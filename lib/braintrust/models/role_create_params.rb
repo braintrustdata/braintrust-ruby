@@ -31,16 +31,16 @@ module Braintrust
       # @!attribute member_roles
       #   Ids of the roles this role inherits from
       #
-      #     An inheriting role has all the permissions contained in its member roles, as
-      #     well as all of their inherited permissions
+      #   An inheriting role has all the permissions contained in its member roles, as
+      #   well as all of their inherited permissions
       #
       #   @return [Array<String>, nil]
       optional :member_roles, Braintrust::Internal::Type::ArrayOf[String], nil?: true
 
       # @!attribute org_name
       #   For nearly all users, this parameter should be unnecessary. But in the rare case
-      #     that your API key belongs to multiple organizations, you may specify the name of
-      #     the organization the role belongs in.
+      #   that your API key belongs to multiple organizations, you may specify the name of
+      #   the organization the role belongs in.
       #
       #   @return [String, nil]
       optional :org_name, String, nil?: true
@@ -71,8 +71,8 @@ module Braintrust
         # @!attribute permission
         #   Each permission permits a certain type of operation on an object in the system
         #
-        #     Permissions can be assigned to to objects on an individual basis, or grouped
-        #     into roles
+        #   Permissions can be assigned to to objects on an individual basis, or grouped
+        #   into roles
         #
         #   @return [Symbol, Braintrust::Models::Permission]
         required :permission, enum: -> { Braintrust::Models::Permission }

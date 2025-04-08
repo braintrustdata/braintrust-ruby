@@ -46,7 +46,7 @@ module Braintrust
 
       # @!parse
       #   # A project tag is a user-configured tag for tracking and filtering your
-      #   #   experiments, logs, and other data
+      #   # experiments, logs, and other data
       #   #
       #   # @param id [String]
       #   # @param name [String]
