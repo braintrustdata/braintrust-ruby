@@ -12,7 +12,7 @@ module Braintrust
       #   The id of the object the ACL applies to
       #
       #   @return [String]
-      required :object_id_, String, api_name: :object_id
+      required :object_id_, String
 
       # @!attribute object_type
       #   The object type that the ACL applies to
