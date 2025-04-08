@@ -26,7 +26,7 @@ module Braintrust
       #     anybody inside or outside the organization
       #
       #   @return [Boolean]
-      required :public, Braintrust::Internal::Type::BooleanModel
+      required :public, Braintrust::Internal::Type::Boolean
 
       # @!attribute base_exp_id
       #   Id of default base experiment to compare against when viewing this experiment

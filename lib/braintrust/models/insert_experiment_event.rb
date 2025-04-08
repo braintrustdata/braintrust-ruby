@@ -25,7 +25,7 @@ module Braintrust
       #     `{"id": "foo", "input": {"b": 11, "c": 20}}`
       #
       #   @return [Boolean, nil]
-      optional :_is_merge, Braintrust::Internal::Type::BooleanModel, nil?: true
+      optional :_is_merge, Braintrust::Internal::Type::Boolean, nil?: true
 
       # @!attribute _merge_paths
       #   The `_merge_paths` field allows controlling the depth of the merge, when
@@ -52,7 +52,7 @@ module Braintrust
       #     will not show up in subsequent fetches for this experiment
       #
       #   @return [Boolean, nil]
-      optional :_object_delete, Braintrust::Internal::Type::BooleanModel, nil?: true
+      optional :_object_delete, Braintrust::Internal::Type::Boolean, nil?: true
 
       # @!attribute _parent_id
       #   DEPRECATED: The `_parent_id` field is deprecated and should not be used. Support

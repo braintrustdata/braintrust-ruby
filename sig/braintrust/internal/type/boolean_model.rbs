@@ -1,7 +1,7 @@
 module Braintrust
   module Internal
     module Type
-      class BooleanModel
+      class Boolean
         extend Braintrust::Internal::Type::Converter
 
         def self.===: (top other) -> bool

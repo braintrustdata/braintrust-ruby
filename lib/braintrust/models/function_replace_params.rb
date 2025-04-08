@@ -384,7 +384,7 @@ module Braintrust
         #     list of functions.
         #
         #   @return [Boolean, nil]
-        optional :internal, Braintrust::Internal::Type::BooleanModel, nil?: true
+        optional :internal, Braintrust::Internal::Type::Boolean, nil?: true
 
         # @!parse
         #   # @param object_id_ [String]

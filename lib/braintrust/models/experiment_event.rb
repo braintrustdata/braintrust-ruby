@@ -105,7 +105,7 @@ module Braintrust
       #   Whether this span is a root span
       #
       #   @return [Boolean, nil]
-      optional :is_root, Braintrust::Internal::Type::BooleanModel, nil?: true
+      optional :is_root, Braintrust::Internal::Type::Boolean, nil?: true
 
       # @!attribute metadata
       #   A dictionary with additional data about the test example, model outputs, or just

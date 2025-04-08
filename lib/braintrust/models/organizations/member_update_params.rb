@@ -95,7 +95,7 @@ module Braintrust
           #   If true, send invite emails to the users who wore actually added
           #
           #   @return [Boolean, nil]
-          optional :send_invite_emails, Braintrust::Internal::Type::BooleanModel, nil?: true
+          optional :send_invite_emails, Braintrust::Internal::Type::Boolean, nil?: true
 
           # @!parse
           #   # Users to invite to the organization

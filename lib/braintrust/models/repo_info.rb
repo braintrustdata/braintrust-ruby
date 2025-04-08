@@ -43,7 +43,7 @@ module Braintrust
       #   Whether or not the repo had uncommitted changes when snapshotted
       #
       #   @return [Boolean, nil]
-      optional :dirty, Braintrust::Internal::Type::BooleanModel, nil?: true
+      optional :dirty, Braintrust::Internal::Type::Boolean, nil?: true
 
       # @!attribute git_diff
       #   If the repo was dirty when run, this includes the diff between the current state
