@@ -37,9 +37,7 @@ module Braintrust
         # The view definition
         view_data: nil,
         request_options: {}
-      )
-      end
-
+      ); end
       # Get a view object by its id
       sig do
         params(
@@ -58,9 +56,7 @@ module Braintrust
         # The object type that the ACL applies to
         object_type:,
         request_options: {}
-      )
-      end
-
+      ); end
       # Partially update a view object. Specify the fields to update in the payload. Any
       #   object-type fields will be deep-merged with existing content. Currently we do
       #   not support removing fields or setting them to null.
@@ -96,9 +92,7 @@ module Braintrust
         # Type of table that the view corresponds to.
         view_type: nil,
         request_options: {}
-      )
-      end
-
+      ); end
       # List out all views. The views are sorted by creation date, with the most
       #   recently-created views coming first
       sig do
@@ -142,9 +136,7 @@ module Braintrust
         # Type of table that the view corresponds to.
         view_type: nil,
         request_options: {}
-      )
-      end
-
+      ); end
       # Delete a view object by its id
       sig do
         params(
@@ -163,9 +155,7 @@ module Braintrust
         # The object type that the ACL applies to
         object_type:,
         request_options: {}
-      )
-      end
-
+      ); end
       # Create or replace view. If there is an existing view with the same name as the
       #   one specified in the request, will replace the existing view with the provided
       #   fields
@@ -201,13 +191,10 @@ module Braintrust
         # The view definition
         view_data: nil,
         request_options: {}
-      )
-      end
-
+      ); end
       # @api private
       sig { params(client: Braintrust::Client).returns(T.attached_class) }
-      def self.new(client:)
-      end
+      def self.new(client:); end
     end
   end
 end

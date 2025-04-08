@@ -22,8 +22,7 @@ module Braintrust
       DELETE_ACLS = T.let(:delete_acls, Braintrust::Models::Permission::TaggedSymbol)
 
       sig { override.returns(T::Array[Braintrust::Models::Permission::TaggedSymbol]) }
-      def self.values
-      end
+      def self.values; end
     end
   end
 end

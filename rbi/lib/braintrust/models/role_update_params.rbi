@@ -54,9 +54,7 @@ module Braintrust
         remove_member_permissions: nil,
         remove_member_roles: nil,
         request_options: {}
-      )
-      end
-
+      ); end
       sig do
         override
           .returns(
@@ -71,8 +69,7 @@ module Braintrust
             }
           )
       end
-      def to_hash
-      end
+      def to_hash; end
 
       class AddMemberPermission < Braintrust::Internal::Type::BaseModel
         # Each permission permits a certain type of operation on an object in the system
@@ -93,8 +90,7 @@ module Braintrust
           )
             .returns(T.attached_class)
         end
-        def self.new(permission:, restrict_object_type: nil)
-        end
+        def self.new(permission:, restrict_object_type: nil); end
 
         sig do
           override
@@ -105,8 +101,7 @@ module Braintrust
               }
             )
         end
-        def to_hash
-        end
+        def to_hash; end
       end
 
       class RemoveMemberPermission < Braintrust::Internal::Type::BaseModel
@@ -128,8 +123,7 @@ module Braintrust
           )
             .returns(T.attached_class)
         end
-        def self.new(permission:, restrict_object_type: nil)
-        end
+        def self.new(permission:, restrict_object_type: nil); end
 
         sig do
           override
@@ -140,8 +134,7 @@ module Braintrust
               }
             )
         end
-        def to_hash
-        end
+        def to_hash; end
       end
     end
   end

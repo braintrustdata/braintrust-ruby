@@ -19,15 +19,15 @@ module Braintrust
           ),
           project_id: String,
           scores: T::Array[
-          T.any(
-            Braintrust::Models::EvalCreateParams::Score::FunctionID,
-            Braintrust::Internal::AnyHash,
-            Braintrust::Models::EvalCreateParams::Score::ProjectSlug,
-            Braintrust::Models::EvalCreateParams::Score::GlobalFunction,
-            Braintrust::Models::EvalCreateParams::Score::PromptSessionID,
-            Braintrust::Models::EvalCreateParams::Score::InlineCode,
-            Braintrust::Models::EvalCreateParams::Score::InlinePrompt
-          )
+            T.any(
+              Braintrust::Models::EvalCreateParams::Score::FunctionID,
+              Braintrust::Internal::AnyHash,
+              Braintrust::Models::EvalCreateParams::Score::ProjectSlug,
+              Braintrust::Models::EvalCreateParams::Score::GlobalFunction,
+              Braintrust::Models::EvalCreateParams::Score::PromptSessionID,
+              Braintrust::Models::EvalCreateParams::Score::InlineCode,
+              Braintrust::Models::EvalCreateParams::Score::InlinePrompt
+            )
           ],
           task: T.any(
             Braintrust::Models::EvalCreateParams::Task::FunctionID,
@@ -103,13 +103,10 @@ module Braintrust
         #   a stronger aggregate measure and a sense of the variance in the results.
         trial_count: nil,
         request_options: {}
-      )
-      end
-
+      ); end
       # @api private
       sig { params(client: Braintrust::Client).returns(T.attached_class) }
-      def self.new(client:)
-      end
+      def self.new(client:); end
     end
   end
 end

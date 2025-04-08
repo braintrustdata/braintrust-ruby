@@ -21,12 +21,10 @@ module Braintrust
         )
           .returns(T.attached_class)
       end
-      def self.new(events:, cursor: nil)
-      end
+      def self.new(events:, cursor: nil); end
 
       sig { override.returns({events: T::Array[Braintrust::Models::ProjectLogsEvent], cursor: T.nilable(String)}) }
-      def to_hash
-      end
+      def to_hash; end
     end
   end
 end

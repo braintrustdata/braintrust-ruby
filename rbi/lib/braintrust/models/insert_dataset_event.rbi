@@ -200,9 +200,7 @@ module Braintrust
         span_id: nil,
         span_parents: nil,
         tags: nil
-      )
-      end
-
+      ); end
       sig do
         override
           .returns(
@@ -224,8 +222,7 @@ module Braintrust
             }
           )
       end
-      def to_hash
-      end
+      def to_hash; end
 
       class Metadata < Braintrust::Internal::Type::BaseModel
         # The model used for this example
@@ -238,12 +235,10 @@ module Braintrust
         #   anything else that would be useful to slice/dice later. The values in `metadata`
         #   can be any JSON-serializable type, but its keys must be strings
         sig { params(model: T.nilable(String)).returns(T.attached_class) }
-        def self.new(model: nil)
-        end
+        def self.new(model: nil); end
 
         sig { override.returns({model: T.nilable(String)}) }
-        def to_hash
-        end
+        def to_hash; end
       end
     end
   end

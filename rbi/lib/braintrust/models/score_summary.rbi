@@ -31,8 +31,7 @@ module Braintrust
         params(improvements: Integer, name: String, regressions: Integer, score: Float, diff: Float)
           .returns(T.attached_class)
       end
-      def self.new(improvements:, name:, regressions:, score:, diff: nil)
-      end
+      def self.new(improvements:, name:, regressions:, score:, diff: nil); end
 
       sig do
         override.returns(
@@ -45,8 +44,7 @@ module Braintrust
           }
         )
       end
-      def to_hash
-      end
+      def to_hash; end
     end
   end
 end

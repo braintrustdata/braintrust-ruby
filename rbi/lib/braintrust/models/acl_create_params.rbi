@@ -61,9 +61,7 @@ module Braintrust
         role_id: nil,
         user_id: nil,
         request_options: {}
-      )
-      end
-
+      ); end
       sig do
         override
           .returns(
@@ -79,8 +77,7 @@ module Braintrust
             }
           )
       end
-      def to_hash
-      end
+      def to_hash; end
     end
   end
 end

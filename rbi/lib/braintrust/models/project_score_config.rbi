@@ -12,7 +12,9 @@ module Braintrust
       sig { returns(T.nilable(Braintrust::Models::OnlineScoreConfig)) }
       attr_reader :online
 
-      sig { params(online: T.nilable(T.any(Braintrust::Models::OnlineScoreConfig, Braintrust::Internal::AnyHash))).void }
+      sig do
+        params(online: T.nilable(T.any(Braintrust::Models::OnlineScoreConfig, Braintrust::Internal::AnyHash))).void
+      end
       attr_writer :online
 
       sig do
@@ -23,8 +25,7 @@ module Braintrust
         )
           .returns(T.attached_class)
       end
-      def self.new(destination: nil, multi_select: nil, online: nil)
-      end
+      def self.new(destination: nil, multi_select: nil, online: nil); end
 
       sig do
         override
@@ -36,8 +37,7 @@ module Braintrust
             }
           )
       end
-      def to_hash
-      end
+      def to_hash; end
     end
   end
 end

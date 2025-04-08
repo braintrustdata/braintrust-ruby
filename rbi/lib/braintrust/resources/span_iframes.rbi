@@ -30,9 +30,7 @@ module Braintrust
         #   useful when you want to render more data than fits in the URL.
         post_message: nil,
         request_options: {}
-      )
-      end
-
+      ); end
       # Get a span_iframe object by its id
       sig do
         params(
@@ -45,9 +43,7 @@ module Braintrust
         # SpanIframe id
         span_iframe_id,
         request_options: {}
-      )
-      end
-
+      ); end
       # Partially update a span_iframe object. Specify the fields to update in the
       #   payload. Any object-type fields will be deep-merged with existing content.
       #   Currently we do not support removing fields or setting them to null.
@@ -75,9 +71,7 @@ module Braintrust
         # URL to embed the project viewer in an iframe
         url: nil,
         request_options: {}
-      )
-      end
-
+      ); end
       # List out all span_iframes. The span_iframes are sorted by creation date, with
       #   the most recently-created span_iframes coming first
       sig do
@@ -115,9 +109,7 @@ module Braintrust
         #   `starting_after` and `ending_before`
         starting_after: nil,
         request_options: {}
-      )
-      end
-
+      ); end
       # Delete a span_iframe object by its id
       sig do
         params(
@@ -130,9 +122,7 @@ module Braintrust
         # SpanIframe id
         span_iframe_id,
         request_options: {}
-      )
-      end
-
+      ); end
       # Create or replace span_iframe. If there is an existing span_iframe with the same
       #   name as the one specified in the request, will replace the existing span_iframe
       #   with the provided fields
@@ -160,13 +150,10 @@ module Braintrust
         #   useful when you want to render more data than fits in the URL.
         post_message: nil,
         request_options: {}
-      )
-      end
-
+      ); end
       # @api private
       sig { params(client: Braintrust::Client).returns(T.attached_class) }
-      def self.new(client:)
-      end
+      def self.new(client:); end
     end
   end
 end

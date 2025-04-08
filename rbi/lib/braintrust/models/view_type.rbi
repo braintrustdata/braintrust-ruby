@@ -22,8 +22,7 @@ module Braintrust
       LOGS = T.let(:logs, Braintrust::Models::ViewType::TaggedSymbol)
 
       sig { override.returns(T::Array[Braintrust::Models::ViewType::TaggedSymbol]) }
-      def self.values
-      end
+      def self.values; end
     end
   end
 end

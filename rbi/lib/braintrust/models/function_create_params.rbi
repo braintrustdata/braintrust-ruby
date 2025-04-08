@@ -103,9 +103,7 @@ module Braintrust
         prompt_data: nil,
         tags: nil,
         request_options: {}
-      )
-      end
-
+      ); end
       sig do
         override
           .returns(
@@ -128,8 +126,7 @@ module Braintrust
             }
           )
       end
-      def to_hash
-      end
+      def to_hash; end
 
       module FunctionData
         extend Braintrust::Internal::Type::Union
@@ -142,12 +139,10 @@ module Braintrust
             params(type: Braintrust::Models::FunctionCreateParams::FunctionData::Prompt::Type::OrSymbol)
               .returns(T.attached_class)
           end
-          def self.new(type:)
-          end
+          def self.new(type:); end
 
           sig { override.returns({type: Braintrust::Models::FunctionCreateParams::FunctionData::Prompt::Type::OrSymbol}) }
-          def to_hash
-          end
+          def to_hash; end
 
           module Type
             extend Braintrust::Internal::Type::Enum
@@ -164,8 +159,7 @@ module Braintrust
               override
                 .returns(T::Array[Braintrust::Models::FunctionCreateParams::FunctionData::Prompt::Type::TaggedSymbol])
             end
-            def self.values
-            end
+            def self.values; end
           end
         end
 
@@ -194,8 +188,7 @@ module Braintrust
             )
               .returns(T.attached_class)
           end
-          def self.new(data:, type:)
-          end
+          def self.new(data:, type:); end
 
           sig do
             override
@@ -209,8 +202,7 @@ module Braintrust
                 }
               )
           end
-          def to_hash
-          end
+          def to_hash; end
 
           module Data
             extend Braintrust::Internal::Type::Union
@@ -223,8 +215,7 @@ module Braintrust
                 params(type: Braintrust::Models::FunctionCreateParams::FunctionData::Code::Data::Bundle::Type::OrSymbol)
                   .returns(T.attached_class)
               end
-              def self.new(type:)
-              end
+              def self.new(type:); end
 
               sig do
                 override
@@ -232,8 +223,7 @@ module Braintrust
                     {type: Braintrust::Models::FunctionCreateParams::FunctionData::Code::Data::Bundle::Type::OrSymbol}
                   )
               end
-              def to_hash
-              end
+              def to_hash; end
 
               module Type
                 extend Braintrust::Internal::Type::Enum
@@ -261,8 +251,7 @@ module Braintrust
                       T::Array[Braintrust::Models::FunctionCreateParams::FunctionData::Code::Data::Bundle::Type::TaggedSymbol]
                     )
                 end
-                def self.values
-                end
+                def self.values; end
               end
             end
 
@@ -298,8 +287,7 @@ module Braintrust
                 )
                   .returns(T.attached_class)
               end
-              def self.new(code:, runtime_context:, type:)
-              end
+              def self.new(code:, runtime_context:, type:); end
 
               sig do
                 override
@@ -311,8 +299,7 @@ module Braintrust
                     }
                   )
               end
-              def to_hash
-              end
+              def to_hash; end
 
               class RuntimeContext < Braintrust::Internal::Type::BaseModel
                 sig do
@@ -332,8 +319,7 @@ module Braintrust
                   )
                     .returns(T.attached_class)
                 end
-                def self.new(runtime:, version:)
-                end
+                def self.new(runtime:, version:); end
 
                 sig do
                   override
@@ -344,8 +330,7 @@ module Braintrust
                       }
                     )
                 end
-                def to_hash
-                end
+                def to_hash; end
 
                 module Runtime
                   extend Braintrust::Internal::Type::Enum
@@ -378,12 +363,11 @@ module Braintrust
                     override
                       .returns(
                         T::Array[
-                        Braintrust::Models::FunctionCreateParams::FunctionData::Code::Data::Inline::RuntimeContext::Runtime::TaggedSymbol
+                          Braintrust::Models::FunctionCreateParams::FunctionData::Code::Data::Inline::RuntimeContext::Runtime::TaggedSymbol
                         ]
                       )
                   end
-                  def self.values
-                  end
+                  def self.values; end
                 end
               end
 
@@ -413,8 +397,7 @@ module Braintrust
                       T::Array[Braintrust::Models::FunctionCreateParams::FunctionData::Code::Data::Inline::Type::TaggedSymbol]
                     )
                 end
-                def self.values
-                end
+                def self.values; end
               end
             end
 
@@ -424,8 +407,7 @@ module Braintrust
                   [Braintrust::Models::FunctionCreateParams::FunctionData::Code::Data::Bundle, Braintrust::Models::FunctionCreateParams::FunctionData::Code::Data::Inline]
                 )
             end
-            def self.variants
-            end
+            def self.variants; end
           end
 
           module Type
@@ -442,8 +424,7 @@ module Braintrust
               override
                 .returns(T::Array[Braintrust::Models::FunctionCreateParams::FunctionData::Code::Type::TaggedSymbol])
             end
-            def self.values
-            end
+            def self.values; end
           end
         end
 
@@ -458,8 +439,7 @@ module Braintrust
             params(name: String, type: Braintrust::Models::FunctionCreateParams::FunctionData::Global::Type::OrSymbol)
               .returns(T.attached_class)
           end
-          def self.new(name:, type:)
-          end
+          def self.new(name:, type:); end
 
           sig do
             override
@@ -467,8 +447,7 @@ module Braintrust
                 {name: String, type: Braintrust::Models::FunctionCreateParams::FunctionData::Global::Type::OrSymbol}
               )
           end
-          def to_hash
-          end
+          def to_hash; end
 
           module Type
             extend Braintrust::Internal::Type::Enum
@@ -485,8 +464,7 @@ module Braintrust
               override
                 .returns(T::Array[Braintrust::Models::FunctionCreateParams::FunctionData::Global::Type::TaggedSymbol])
             end
-            def self.values
-            end
+            def self.values; end
           end
         end
 
@@ -496,8 +474,7 @@ module Braintrust
               [Braintrust::Models::FunctionCreateParams::FunctionData::Prompt, Braintrust::Models::FunctionCreateParams::FunctionData::Code, Braintrust::Models::FunctionCreateParams::FunctionData::Global]
             )
         end
-        def self.variants
-        end
+        def self.variants; end
       end
 
       class FunctionSchema < Braintrust::Internal::Type::BaseModel
@@ -515,12 +492,10 @@ module Braintrust
 
         # JSON schema for the function's parameters and return type
         sig { params(parameters: T.anything, returns: T.anything).returns(T.attached_class) }
-        def self.new(parameters: nil, returns: nil)
-        end
+        def self.new(parameters: nil, returns: nil); end
 
         sig { override.returns({parameters: T.anything, returns: T.anything}) }
-        def to_hash
-        end
+        def to_hash; end
       end
 
       module FunctionType
@@ -536,8 +511,7 @@ module Braintrust
         TOOL = T.let(:tool, Braintrust::Models::FunctionCreateParams::FunctionType::TaggedSymbol)
 
         sig { override.returns(T::Array[Braintrust::Models::FunctionCreateParams::FunctionType::TaggedSymbol]) }
-        def self.values
-        end
+        def self.values; end
       end
 
       class Origin < Braintrust::Internal::Type::BaseModel
@@ -562,8 +536,7 @@ module Braintrust
           )
             .returns(T.attached_class)
         end
-        def self.new(object_id_:, object_type:, internal: nil)
-        end
+        def self.new(object_id_:, object_type:, internal: nil); end
 
         sig do
           override
@@ -571,8 +544,7 @@ module Braintrust
               {object_id_: String, object_type: Braintrust::Models::ACLObjectType::OrSymbol, internal: T.nilable(T::Boolean)}
             )
         end
-        def to_hash
-        end
+        def to_hash; end
       end
     end
   end

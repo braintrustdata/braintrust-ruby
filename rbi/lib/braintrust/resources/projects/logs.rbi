@@ -19,9 +19,7 @@ module Braintrust
           # A list of project logs feedback items
           feedback:,
           request_options: {}
-        )
-        end
-
+        ); end
         # Fetch the events in a project logs. Equivalent to the POST form of the same
         #   path, but with the parameters in the URL query rather than in the request body.
         #   For more complex queries, use the `POST /btql` endpoint.
@@ -83,9 +81,7 @@ module Braintrust
           #   that exact fetch.
           version: nil,
           request_options: {}
-        )
-        end
-
+        ); end
         # Fetch the events in a project logs. Equivalent to the GET form of the same path,
         #   but with the parameters in the request body rather than in the URL query. For
         #   more complex queries, use the `POST /btql` endpoint.
@@ -154,9 +150,7 @@ module Braintrust
           #   that exact fetch.
           version: nil,
           request_options: {}
-        )
-        end
-
+        ); end
         # Insert a set of events into the project logs
         sig do
           params(
@@ -172,13 +166,10 @@ module Braintrust
           # A list of project logs events to insert
           events:,
           request_options: {}
-        )
-        end
-
+        ); end
         # @api private
         sig { params(client: Braintrust::Client).returns(T.attached_class) }
-        def self.new(client:)
-        end
+        def self.new(client:); end
       end
     end
   end

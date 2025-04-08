@@ -44,8 +44,7 @@ module Braintrust
         )
           .returns(T.attached_class)
       end
-      def self.new(add_acls: nil, remove_acls: nil, request_options: {})
-      end
+      def self.new(add_acls: nil, remove_acls: nil, request_options: {}); end
 
       sig do
         override
@@ -57,8 +56,7 @@ module Braintrust
             }
           )
       end
-      def to_hash
-      end
+      def to_hash; end
 
       class AddACL < Braintrust::Internal::Type::BaseModel
         # The id of the object the ACL applies to
@@ -124,9 +122,7 @@ module Braintrust
           restrict_object_type: nil,
           role_id: nil,
           user_id: nil
-        )
-        end
-
+        ); end
         sig do
           override
             .returns(
@@ -141,8 +137,7 @@ module Braintrust
               }
             )
         end
-        def to_hash
-        end
+        def to_hash; end
       end
 
       class RemoveACL < Braintrust::Internal::Type::BaseModel
@@ -209,9 +204,7 @@ module Braintrust
           restrict_object_type: nil,
           role_id: nil,
           user_id: nil
-        )
-        end
-
+        ); end
         sig do
           override
             .returns(
@@ -226,8 +219,7 @@ module Braintrust
               }
             )
         end
-        def to_hash
-        end
+        def to_hash; end
       end
     end
   end

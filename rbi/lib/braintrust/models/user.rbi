@@ -38,8 +38,7 @@ module Braintrust
         )
           .returns(T.attached_class)
       end
-      def self.new(id:, avatar_url: nil, created: nil, email: nil, family_name: nil, given_name: nil)
-      end
+      def self.new(id:, avatar_url: nil, created: nil, email: nil, family_name: nil, given_name: nil); end
 
       sig do
         override
@@ -54,8 +53,7 @@ module Braintrust
             }
           )
       end
-      def to_hash
-      end
+      def to_hash; end
     end
   end
 end

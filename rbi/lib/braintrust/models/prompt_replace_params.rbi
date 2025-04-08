@@ -58,9 +58,7 @@ module Braintrust
         prompt_data: nil,
         tags: nil,
         request_options: {}
-      )
-      end
-
+      ); end
       sig do
         override
           .returns(
@@ -76,8 +74,7 @@ module Braintrust
             }
           )
       end
-      def to_hash
-      end
+      def to_hash; end
 
       module FunctionType
         extend Braintrust::Internal::Type::Enum
@@ -92,8 +89,7 @@ module Braintrust
         TOOL = T.let(:tool, Braintrust::Models::PromptReplaceParams::FunctionType::TaggedSymbol)
 
         sig { override.returns(T::Array[Braintrust::Models::PromptReplaceParams::FunctionType::TaggedSymbol]) }
-        def self.values
-        end
+        def self.values; end
       end
     end
   end

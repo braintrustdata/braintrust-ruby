@@ -50,9 +50,7 @@ module Braintrust
         # Metadata about the state of the repo when the experiment was created
         repo_info: nil,
         request_options: {}
-      )
-      end
-
+      ); end
       # Get an experiment object by its id
       sig do
         params(
@@ -65,9 +63,7 @@ module Braintrust
         # Experiment id
         experiment_id,
         request_options: {}
-      )
-      end
-
+      ); end
       # Partially update an experiment object. Specify the fields to update in the
       #   payload. Any object-type fields will be deep-merged with existing content.
       #   Currently we do not support removing fields or setting them to null.
@@ -109,9 +105,7 @@ module Braintrust
         # Metadata about the state of the repo when the experiment was created
         repo_info: nil,
         request_options: {}
-      )
-      end
-
+      ); end
       # List out all experiments. The experiments are sorted by creation date, with the
       #   most recently-created experiments coming first
       sig do
@@ -155,9 +149,7 @@ module Braintrust
         #   `starting_after` and `ending_before`
         starting_after: nil,
         request_options: {}
-      )
-      end
-
+      ); end
       # Delete an experiment object by its id
       sig do
         params(
@@ -170,9 +162,7 @@ module Braintrust
         # Experiment id
         experiment_id,
         request_options: {}
-      )
-      end
-
+      ); end
       # Log feedback for a set of experiment events
       sig do
         params(
@@ -188,9 +178,7 @@ module Braintrust
         # A list of experiment feedback items
         feedback:,
         request_options: {}
-      )
-      end
-
+      ); end
       # Fetch the events in an experiment. Equivalent to the POST form of the same path,
       #   but with the parameters in the URL query rather than in the request body. For
       #   more complex queries, use the `POST /btql` endpoint.
@@ -252,9 +240,7 @@ module Braintrust
         #   that exact fetch.
         version: nil,
         request_options: {}
-      )
-      end
-
+      ); end
       # Fetch the events in an experiment. Equivalent to the GET form of the same path,
       #   but with the parameters in the request body rather than in the URL query. For
       #   more complex queries, use the `POST /btql` endpoint.
@@ -323,9 +309,7 @@ module Braintrust
         #   that exact fetch.
         version: nil,
         request_options: {}
-      )
-      end
-
+      ); end
       # Insert a set of events into the experiment
       sig do
         params(
@@ -341,9 +325,7 @@ module Braintrust
         # A list of experiment events to insert
         events:,
         request_options: {}
-      )
-      end
-
+      ); end
       # Summarize experiment
       sig do
         params(
@@ -366,13 +348,10 @@ module Braintrust
         #   metadata will be returned.
         summarize_scores: nil,
         request_options: {}
-      )
-      end
-
+      ); end
       # @api private
       sig { params(client: Braintrust::Client).returns(T.attached_class) }
-      def self.new(client:)
-      end
+      def self.new(client:); end
     end
   end
 end

@@ -11,12 +11,10 @@ module Braintrust
         params(objects: T::Array[T.any(Braintrust::Models::EnvVar, Braintrust::Internal::AnyHash)])
           .returns(T.attached_class)
       end
-      def self.new(objects:)
-      end
+      def self.new(objects:); end
 
       sig { override.returns({objects: T::Array[Braintrust::Models::EnvVar]}) }
-      def to_hash
-      end
+      def to_hash; end
     end
   end
 end
