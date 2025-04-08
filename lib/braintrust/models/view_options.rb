@@ -17,7 +17,7 @@ module Braintrust
       #
       #   @return [Hash{Symbol=>Boolean}, nil]
       optional :column_visibility,
-               Braintrust::Internal::Type::HashOf[Braintrust::Internal::Type::BooleanModel],
+               Braintrust::Internal::Type::HashOf[Braintrust::Internal::Type::Boolean],
                api_name: :columnVisibility,
                nil?: true
 

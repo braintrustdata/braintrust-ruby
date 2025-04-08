@@ -50,7 +50,7 @@ module Braintrust
       #     useful when you want to render more data than fits in the URL.
       #
       #   @return [Boolean, nil]
-      optional :post_message, Braintrust::Internal::Type::BooleanModel, nil?: true
+      optional :post_message, Braintrust::Internal::Type::Boolean, nil?: true
 
       # @!attribute user_id
       #   Identifies the user who created the span iframe

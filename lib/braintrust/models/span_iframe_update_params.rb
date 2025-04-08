@@ -25,7 +25,7 @@ module Braintrust
       #     useful when you want to render more data than fits in the URL.
       #
       #   @return [Boolean, nil]
-      optional :post_message, Braintrust::Internal::Type::BooleanModel, nil?: true
+      optional :post_message, Braintrust::Internal::Type::Boolean, nil?: true
 
       # @!attribute url
       #   URL to embed the project viewer in an iframe

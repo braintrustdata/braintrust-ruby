@@ -167,7 +167,7 @@ module Braintrust
           # @!attribute [r] use_cache
           #
           #   @return [Boolean, nil]
-          optional :use_cache, Braintrust::Internal::Type::BooleanModel
+          optional :use_cache, Braintrust::Internal::Type::Boolean
 
           # @!parse
           #   # @return [Boolean]
@@ -348,7 +348,7 @@ module Braintrust
                 # @!attribute strict
                 #
                 #   @return [Boolean, nil]
-                optional :strict, Braintrust::Internal::Type::BooleanModel, nil?: true
+                optional :strict, Braintrust::Internal::Type::Boolean, nil?: true
 
                 # @!parse
                 #   # @param name [String]
@@ -551,7 +551,7 @@ module Braintrust
           # @!attribute [r] use_cache
           #
           #   @return [Boolean, nil]
-          optional :use_cache, Braintrust::Internal::Type::BooleanModel
+          optional :use_cache, Braintrust::Internal::Type::Boolean
 
           # @!parse
           #   # @return [Boolean]
@@ -622,7 +622,7 @@ module Braintrust
           # @!attribute [r] use_cache
           #
           #   @return [Boolean, nil]
-          optional :use_cache, Braintrust::Internal::Type::BooleanModel
+          optional :use_cache, Braintrust::Internal::Type::Boolean
 
           # @!parse
           #   # @return [Boolean]
@@ -662,7 +662,7 @@ module Braintrust
           # @!attribute [r] use_cache
           #
           #   @return [Boolean, nil]
-          optional :use_cache, Braintrust::Internal::Type::BooleanModel
+          optional :use_cache, Braintrust::Internal::Type::Boolean
 
           # @!parse
           #   # @return [Boolean]
@@ -682,7 +682,7 @@ module Braintrust
           # @!attribute [r] use_cache
           #
           #   @return [Boolean, nil]
-          optional :use_cache, Braintrust::Internal::Type::BooleanModel
+          optional :use_cache, Braintrust::Internal::Type::Boolean
 
           # @!parse
           #   # @return [Boolean]

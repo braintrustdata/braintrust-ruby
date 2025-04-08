@@ -97,7 +97,7 @@ module Braintrust
         # @!attribute use_cot
         #
         #   @return [Boolean]
-        required :use_cot, Braintrust::Internal::Type::BooleanModel
+        required :use_cot, Braintrust::Internal::Type::Boolean
 
         # @!parse
         #   # @param choice_scores [Hash{Symbol=>Float}]

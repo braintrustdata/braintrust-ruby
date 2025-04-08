@@ -11,7 +11,7 @@ module Braintrust
       # @!attribute multi_select
       #
       #   @return [Boolean, nil]
-      optional :multi_select, Braintrust::Internal::Type::BooleanModel, nil?: true
+      optional :multi_select, Braintrust::Internal::Type::Boolean, nil?: true
 
       # @!attribute online
       #

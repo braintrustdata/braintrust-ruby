@@ -13,7 +13,7 @@ module Braintrust
       #     returned.
       #
       #   @return [Boolean, nil]
-      optional :summarize_data, Braintrust::Internal::Type::BooleanModel, nil?: true
+      optional :summarize_data, Braintrust::Internal::Type::Boolean, nil?: true
 
       # @!parse
       #   # @param summarize_data [Boolean, nil]
