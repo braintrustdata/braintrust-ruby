@@ -39,7 +39,7 @@ module Braintrust
       #   The id of the object the environment variable is scoped for
       #
       #   @return [String, nil]
-      optional :object_id_, String, api_name: :object_id
+      optional :object_id_, String
 
       # @!parse
       #   # @return [String]

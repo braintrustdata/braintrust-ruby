@@ -26,7 +26,7 @@ module Braintrust
         @client.request(
           method: :post,
           path: "v1/view",
-          body: parsed.transform_keys(object_id_: :object_id),
+          body: parsed,
           model: Braintrust::Models::View,
           options: options
         )
@@ -49,7 +49,7 @@ module Braintrust
         @client.request(
           method: :get,
           path: ["v1/view/%1$s", view_id],
-          query: parsed.transform_keys(object_id_: :object_id),
+          query: parsed.transform_keys(object_id_: "object_id"),
           model: Braintrust::Models::View,
           options: options
         )
@@ -79,7 +79,7 @@ module Braintrust
         @client.request(
           method: :patch,
           path: ["v1/view/%1$s", view_id],
-          body: parsed.transform_keys(object_id_: :object_id),
+          body: parsed,
           model: Braintrust::Models::View,
           options: options
         )
@@ -108,7 +108,7 @@ module Braintrust
         @client.request(
           method: :get,
           path: "v1/view",
-          query: parsed.transform_keys(object_id_: :object_id),
+          query: parsed.transform_keys(object_id_: "object_id"),
           page: Braintrust::Internal::ListObjects,
           model: Braintrust::Models::View,
           options: options
@@ -132,7 +132,7 @@ module Braintrust
         @client.request(
           method: :delete,
           path: ["v1/view/%1$s", view_id],
-          body: parsed.transform_keys(object_id_: :object_id),
+          body: parsed,
           model: Braintrust::Models::View,
           options: options
         )
@@ -162,7 +162,7 @@ module Braintrust
         @client.request(
           method: :put,
           path: "v1/view",
-          body: parsed.transform_keys(object_id_: :object_id),
+          body: parsed,
           model: Braintrust::Models::View,
           options: options
         )
