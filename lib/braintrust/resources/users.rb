@@ -23,7 +23,7 @@ module Braintrust
       end
 
       # List out all users. The users are sorted by creation date, with the most
-      #   recently-created users coming first
+      # recently-created users coming first
       #
       # @overload list(email: nil, ending_before: nil, family_name: nil, given_name: nil, ids: nil, limit: nil, org_name: nil, starting_after: nil, request_options: {})
       #

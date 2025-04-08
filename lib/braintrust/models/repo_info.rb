@@ -47,7 +47,7 @@ module Braintrust
 
       # @!attribute git_diff
       #   If the repo was dirty when run, this includes the diff between the current state
-      #     of the repo and the most recent commit.
+      #   of the repo and the most recent commit.
       #
       #   @return [String, nil]
       optional :git_diff, String, nil?: true

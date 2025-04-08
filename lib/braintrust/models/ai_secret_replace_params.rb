@@ -23,15 +23,15 @@ module Braintrust
 
       # @!attribute org_name
       #   For nearly all users, this parameter should be unnecessary. But in the rare case
-      #     that your API key belongs to multiple organizations, you may specify the name of
-      #     the organization the AI Secret belongs in.
+      #   that your API key belongs to multiple organizations, you may specify the name of
+      #   the organization the AI Secret belongs in.
       #
       #   @return [String, nil]
       optional :org_name, String, nil?: true
 
       # @!attribute secret
       #   Secret value. If omitted in a PUT request, the existing secret value will be
-      #     left intact, not replaced with null.
+      #   left intact, not replaced with null.
       #
       #   @return [String, nil]
       optional :secret, String, nil?: true

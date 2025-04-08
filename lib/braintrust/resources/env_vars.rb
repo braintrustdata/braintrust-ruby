@@ -4,7 +4,7 @@ module Braintrust
   module Resources
     class EnvVars
       # Create a new env_var. If there is an existing env_var with the same name as the
-      #   one specified in the request, will return the existing env_var unmodified
+      # one specified in the request, will return the existing env_var unmodified
       #
       # @overload create(name:, object_id_:, object_type:, value: nil, request_options: {})
       #
@@ -48,8 +48,8 @@ module Braintrust
       end
 
       # Partially update an env_var object. Specify the fields to update in the payload.
-      #   Any object-type fields will be deep-merged with existing content. Currently we
-      #   do not support removing fields or setting them to null.
+      # Any object-type fields will be deep-merged with existing content. Currently we
+      # do not support removing fields or setting them to null.
       #
       # @overload update(env_var_id, name:, value: nil, request_options: {})
       #
@@ -73,7 +73,7 @@ module Braintrust
       end
 
       # List out all env_vars. The env_vars are sorted by creation date, with the most
-      #   recently-created env_vars coming first
+      # recently-created env_vars coming first
       #
       # @overload list(env_var_name: nil, ids: nil, limit: nil, object_id_: nil, object_type: nil, request_options: {})
       #
@@ -118,8 +118,8 @@ module Braintrust
       end
 
       # Create or replace env_var. If there is an existing env_var with the same name as
-      #   the one specified in the request, will replace the existing env_var with the
-      #   provided fields
+      # the one specified in the request, will replace the existing env_var with the
+      # provided fields
       #
       # @overload replace(name:, object_id_:, object_type:, value: nil, request_options: {})
       #

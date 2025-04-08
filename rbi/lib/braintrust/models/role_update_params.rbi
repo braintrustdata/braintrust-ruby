@@ -74,8 +74,8 @@ module Braintrust
       class AddMemberPermission < Braintrust::Internal::Type::BaseModel
         # Each permission permits a certain type of operation on an object in the system
         #
-        #   Permissions can be assigned to to objects on an individual basis, or grouped
-        #   into roles
+        # Permissions can be assigned to to objects on an individual basis, or grouped
+        # into roles
         sig { returns(Braintrust::Models::Permission::OrSymbol) }
         attr_accessor :permission
 
@@ -107,8 +107,8 @@ module Braintrust
       class RemoveMemberPermission < Braintrust::Internal::Type::BaseModel
         # Each permission permits a certain type of operation on an object in the system
         #
-        #   Permissions can be assigned to to objects on an individual basis, or grouped
-        #   into roles
+        # Permissions can be assigned to to objects on an individual basis, or grouped
+        # into roles
         sig { returns(Braintrust::Models::Permission::OrSymbol) }
         attr_accessor :permission
 

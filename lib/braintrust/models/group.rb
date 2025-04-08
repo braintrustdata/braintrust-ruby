@@ -18,7 +18,7 @@ module Braintrust
       # @!attribute org_id
       #   Unique id for the organization that the group belongs under
       #
-      #     It is forbidden to change the org after creating a group
+      #   It is forbidden to change the org after creating a group
       #
       #   @return [String]
       required :org_id, String
@@ -44,8 +44,8 @@ module Braintrust
       # @!attribute member_groups
       #   Ids of the groups this group inherits from
       #
-      #     An inheriting group has all the users contained in its member groups, as well as
-      #     all of their inherited users
+      #   An inheriting group has all the users contained in its member groups, as well as
+      #   all of their inherited users
       #
       #   @return [Array<String>, nil]
       optional :member_groups, Braintrust::Internal::Type::ArrayOf[String], nil?: true
@@ -65,8 +65,8 @@ module Braintrust
       # @!parse
       #   # A group is a collection of users which can be assigned an ACL
       #   #
-      #   #   Groups can consist of individual users, as well as a set of groups they inherit
-      #   #   from
+      #   # Groups can consist of individual users, as well as a set of groups they inherit
+      #   # from
       #   #
       #   # @param id [String]
       #   # @param name [String]

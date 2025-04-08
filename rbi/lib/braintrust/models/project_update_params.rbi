@@ -11,7 +11,7 @@ module Braintrust
       attr_accessor :name
 
       # Project settings. Patch operations replace all settings, so make sure you
-      #   include all settings you want to keep.
+      # include all settings you want to keep.
       sig { returns(T.nilable(Braintrust::Models::ProjectSettings)) }
       attr_reader :settings
 

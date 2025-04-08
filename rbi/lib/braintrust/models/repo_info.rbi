@@ -32,7 +32,7 @@ module Braintrust
       attr_accessor :dirty
 
       # If the repo was dirty when run, this includes the diff between the current state
-      #   of the repo and the most recent commit.
+      # of the repo and the most recent commit.
       sig { returns(T.nilable(String)) }
       attr_accessor :git_diff
 

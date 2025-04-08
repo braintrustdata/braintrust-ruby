@@ -4,8 +4,8 @@ module Braintrust
   module Resources
     class Experiments
       # Create a new experiment. If there is an existing experiment in the project with
-      #   the same name as the one specified in the request, will return the existing
-      #   experiment unmodified
+      # the same name as the one specified in the request, will return the existing
+      # experiment unmodified
       #
       # @overload create(project_id:, base_exp_id: nil, dataset_id: nil, dataset_version: nil, description: nil, ensure_new: nil, metadata: nil, name: nil, public: nil, repo_info: nil, request_options: {})
       #
@@ -55,8 +55,8 @@ module Braintrust
       end
 
       # Partially update an experiment object. Specify the fields to update in the
-      #   payload. Any object-type fields will be deep-merged with existing content.
-      #   Currently we do not support removing fields or setting them to null.
+      # payload. Any object-type fields will be deep-merged with existing content.
+      # Currently we do not support removing fields or setting them to null.
       #
       # @overload update(experiment_id, base_exp_id: nil, dataset_id: nil, dataset_version: nil, description: nil, metadata: nil, name: nil, public: nil, repo_info: nil, request_options: {})
       #
@@ -86,7 +86,7 @@ module Braintrust
       end
 
       # List out all experiments. The experiments are sorted by creation date, with the
-      #   most recently-created experiments coming first
+      # most recently-created experiments coming first
       #
       # @overload list(ending_before: nil, experiment_name: nil, ids: nil, limit: nil, org_name: nil, project_id: nil, project_name: nil, starting_after: nil, request_options: {})
       #
@@ -157,8 +157,8 @@ module Braintrust
       end
 
       # Fetch the events in an experiment. Equivalent to the POST form of the same path,
-      #   but with the parameters in the URL query rather than in the request body. For
-      #   more complex queries, use the `POST /btql` endpoint.
+      # but with the parameters in the URL query rather than in the request body. For
+      # more complex queries, use the `POST /btql` endpoint.
       #
       # @overload fetch(experiment_id, limit: nil, max_root_span_id: nil, max_xact_id: nil, version: nil, request_options: {})
       #
@@ -184,8 +184,8 @@ module Braintrust
       end
 
       # Fetch the events in an experiment. Equivalent to the GET form of the same path,
-      #   but with the parameters in the request body rather than in the URL query. For
-      #   more complex queries, use the `POST /btql` endpoint.
+      # but with the parameters in the request body rather than in the URL query. For
+      # more complex queries, use the `POST /btql` endpoint.
       #
       # @overload fetch_post(experiment_id, cursor: nil, limit: nil, max_root_span_id: nil, max_xact_id: nil, version: nil, request_options: {})
       #
