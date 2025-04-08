@@ -29,7 +29,7 @@ module Braintrust
       # @!attribute is_universal_api
       #
       #   @return [Boolean, nil]
-      optional :is_universal_api, Braintrust::Internal::Type::BooleanModel, nil?: true
+      optional :is_universal_api, Braintrust::Internal::Type::Boolean, nil?: true
 
       # @!attribute proxy_url
       #

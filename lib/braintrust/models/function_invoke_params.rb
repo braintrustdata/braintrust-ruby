@@ -68,7 +68,7 @@ module Braintrust
       #     Braintrust SSE format.
       #
       #   @return [Boolean, nil]
-      optional :stream, Braintrust::Internal::Type::BooleanModel, nil?: true
+      optional :stream, Braintrust::Internal::Type::Boolean, nil?: true
 
       # @!attribute [r] version
       #   The version of the function

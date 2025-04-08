@@ -24,7 +24,7 @@ class Braintrust::Test::Resources::SpanIframesTest < Braintrust::Test::ResourceT
         created: Time | nil,
         deleted_at: Time | nil,
         description: String | nil,
-        post_message: Braintrust::Internal::Type::BooleanModel | nil,
+        post_message: Braintrust::Internal::Type::Boolean | nil,
         user_id: String | nil
       }
     end
@@ -46,7 +46,7 @@ class Braintrust::Test::Resources::SpanIframesTest < Braintrust::Test::ResourceT
         created: Time | nil,
         deleted_at: Time | nil,
         description: String | nil,
-        post_message: Braintrust::Internal::Type::BooleanModel | nil,
+        post_message: Braintrust::Internal::Type::Boolean | nil,
         user_id: String | nil
       }
     end
@@ -68,7 +68,7 @@ class Braintrust::Test::Resources::SpanIframesTest < Braintrust::Test::ResourceT
         created: Time | nil,
         deleted_at: Time | nil,
         description: String | nil,
-        post_message: Braintrust::Internal::Type::BooleanModel | nil,
+        post_message: Braintrust::Internal::Type::Boolean | nil,
         user_id: String | nil
       }
     end
@@ -97,7 +97,7 @@ class Braintrust::Test::Resources::SpanIframesTest < Braintrust::Test::ResourceT
         created: Time | nil,
         deleted_at: Time | nil,
         description: String | nil,
-        post_message: Braintrust::Internal::Type::BooleanModel | nil,
+        post_message: Braintrust::Internal::Type::Boolean | nil,
         user_id: String | nil
       }
     end
@@ -119,7 +119,7 @@ class Braintrust::Test::Resources::SpanIframesTest < Braintrust::Test::ResourceT
         created: Time | nil,
         deleted_at: Time | nil,
         description: String | nil,
-        post_message: Braintrust::Internal::Type::BooleanModel | nil,
+        post_message: Braintrust::Internal::Type::Boolean | nil,
         user_id: String | nil
       }
     end
@@ -146,7 +146,7 @@ class Braintrust::Test::Resources::SpanIframesTest < Braintrust::Test::ResourceT
         created: Time | nil,
         deleted_at: Time | nil,
         description: String | nil,
-        post_message: Braintrust::Internal::Type::BooleanModel | nil,
+        post_message: Braintrust::Internal::Type::Boolean | nil,
         user_id: String | nil
       }
     end

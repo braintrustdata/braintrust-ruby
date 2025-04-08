@@ -16,7 +16,7 @@ class Braintrust::Test::Resources::OrganizationsTest < Braintrust::Test::Resourc
         name: String,
         api_url: String | nil,
         created: Time | nil,
-        is_universal_api: Braintrust::Internal::Type::BooleanModel | nil,
+        is_universal_api: Braintrust::Internal::Type::Boolean | nil,
         proxy_url: String | nil,
         realtime_url: String | nil
       }
@@ -36,7 +36,7 @@ class Braintrust::Test::Resources::OrganizationsTest < Braintrust::Test::Resourc
         name: String,
         api_url: String | nil,
         created: Time | nil,
-        is_universal_api: Braintrust::Internal::Type::BooleanModel | nil,
+        is_universal_api: Braintrust::Internal::Type::Boolean | nil,
         proxy_url: String | nil,
         realtime_url: String | nil
       }
@@ -63,7 +63,7 @@ class Braintrust::Test::Resources::OrganizationsTest < Braintrust::Test::Resourc
         name: String,
         api_url: String | nil,
         created: Time | nil,
-        is_universal_api: Braintrust::Internal::Type::BooleanModel | nil,
+        is_universal_api: Braintrust::Internal::Type::Boolean | nil,
         proxy_url: String | nil,
         realtime_url: String | nil
       }
@@ -83,7 +83,7 @@ class Braintrust::Test::Resources::OrganizationsTest < Braintrust::Test::Resourc
         name: String,
         api_url: String | nil,
         created: Time | nil,
-        is_universal_api: Braintrust::Internal::Type::BooleanModel | nil,
+        is_universal_api: Braintrust::Internal::Type::Boolean | nil,
         proxy_url: String | nil,
         realtime_url: String | nil
       }

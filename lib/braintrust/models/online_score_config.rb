@@ -20,7 +20,7 @@ module Braintrust
       #   Whether to trigger online scoring on the root span of each trace
       #
       #   @return [Boolean, nil]
-      optional :apply_to_root_span, Braintrust::Internal::Type::BooleanModel, nil?: true
+      optional :apply_to_root_span, Braintrust::Internal::Type::Boolean, nil?: true
 
       # @!attribute apply_to_span_names
       #   Trigger online scoring on any spans with a name in this list

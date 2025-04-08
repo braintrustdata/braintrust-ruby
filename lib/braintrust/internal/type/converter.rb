@@ -64,7 +64,7 @@ module Braintrust
             in Hash
               type_info(spec.slice(:const, :enum, :union).first&.last)
             in true | false
-              -> { Braintrust::Internal::Type::BooleanModel }
+              -> { Braintrust::Internal::Type::Boolean }
             in Braintrust::Internal::Type::Converter | Class | Symbol
               -> { spec }
             in NilClass | Integer | Float
