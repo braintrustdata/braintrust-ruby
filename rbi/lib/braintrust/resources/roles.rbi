@@ -4,7 +4,7 @@ module Braintrust
   module Resources
     class Roles
       # Create a new role. If there is an existing role with the same name as the one
-      #   specified in the request, will return the existing role unmodified
+      # specified in the request, will return the existing role unmodified
       sig do
         params(
           name: String,
@@ -27,12 +27,12 @@ module Braintrust
         member_permissions: nil,
         # Ids of the roles this role inherits from
         #
-        #   An inheriting role has all the permissions contained in its member roles, as
-        #   well as all of their inherited permissions
+        # An inheriting role has all the permissions contained in its member roles, as
+        # well as all of their inherited permissions
         member_roles: nil,
         # For nearly all users, this parameter should be unnecessary. But in the rare case
-        #   that your API key belongs to multiple organizations, you may specify the name of
-        #   the organization the role belongs in.
+        # that your API key belongs to multiple organizations, you may specify the name of
+        # the organization the role belongs in.
         org_name: nil,
         request_options: {}
       ); end
@@ -50,8 +50,8 @@ module Braintrust
         request_options: {}
       ); end
       # Partially update a role object. Specify the fields to update in the payload. Any
-      #   object-type fields will be deep-merged with existing content. Currently we do
-      #   not support removing fields or setting them to null.
+      # object-type fields will be deep-merged with existing content. Currently we do
+      # not support removing fields or setting them to null.
       sig do
         params(
           role_id: String,
@@ -87,7 +87,7 @@ module Braintrust
         request_options: {}
       ); end
       # List out all roles. The roles are sorted by creation date, with the most
-      #   recently-created roles coming first
+      # recently-created roles coming first
       sig do
         params(
           ending_before: String,
@@ -103,12 +103,12 @@ module Braintrust
       def list(
         # Pagination cursor id.
         #
-        #   For example, if the initial item in the last page you fetched had an id of
-        #   `foo`, pass `ending_before=foo` to fetch the previous page. Note: you may only
-        #   pass one of `starting_after` and `ending_before`
+        # For example, if the initial item in the last page you fetched had an id of
+        # `foo`, pass `ending_before=foo` to fetch the previous page. Note: you may only
+        # pass one of `starting_after` and `ending_before`
         ending_before: nil,
         # Filter search results to a particular set of object IDs. To specify a list of
-        #   IDs, include the query param multiple times
+        # IDs, include the query param multiple times
         ids: nil,
         # Limit the number of objects to return
         limit: nil,
@@ -118,9 +118,9 @@ module Braintrust
         role_name: nil,
         # Pagination cursor id.
         #
-        #   For example, if the final item in the last page you fetched had an id of `foo`,
-        #   pass `starting_after=foo` to fetch the next page. Note: you may only pass one of
-        #   `starting_after` and `ending_before`
+        # For example, if the final item in the last page you fetched had an id of `foo`,
+        # pass `starting_after=foo` to fetch the next page. Note: you may only pass one of
+        # `starting_after` and `ending_before`
         starting_after: nil,
         request_options: {}
       ); end
@@ -138,8 +138,8 @@ module Braintrust
         request_options: {}
       ); end
       # Create or replace role. If there is an existing role with the same name as the
-      #   one specified in the request, will replace the existing role with the provided
-      #   fields
+      # one specified in the request, will replace the existing role with the provided
+      # fields
       sig do
         params(
           name: String,
@@ -162,12 +162,12 @@ module Braintrust
         member_permissions: nil,
         # Ids of the roles this role inherits from
         #
-        #   An inheriting role has all the permissions contained in its member roles, as
-        #   well as all of their inherited permissions
+        # An inheriting role has all the permissions contained in its member roles, as
+        # well as all of their inherited permissions
         member_roles: nil,
         # For nearly all users, this parameter should be unnecessary. But in the rare case
-        #   that your API key belongs to multiple organizations, you may specify the name of
-        #   the organization the role belongs in.
+        # that your API key belongs to multiple organizations, you may specify the name of
+        # the organization the role belongs in.
         org_name: nil,
         request_options: {}
       ); end

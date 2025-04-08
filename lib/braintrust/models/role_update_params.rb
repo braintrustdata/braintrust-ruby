@@ -76,8 +76,8 @@ module Braintrust
         # @!attribute permission
         #   Each permission permits a certain type of operation on an object in the system
         #
-        #     Permissions can be assigned to to objects on an individual basis, or grouped
-        #     into roles
+        #   Permissions can be assigned to to objects on an individual basis, or grouped
+        #   into roles
         #
         #   @return [Symbol, Braintrust::Models::Permission]
         required :permission, enum: -> { Braintrust::Models::Permission }
@@ -101,8 +101,8 @@ module Braintrust
         # @!attribute permission
         #   Each permission permits a certain type of operation on an object in the system
         #
-        #     Permissions can be assigned to to objects on an individual basis, or grouped
-        #     into roles
+        #   Permissions can be assigned to to objects on an individual basis, or grouped
+        #   into roles
         #
         #   @return [Symbol, Braintrust::Models::Permission]
         required :permission, enum: -> { Braintrust::Models::Permission }

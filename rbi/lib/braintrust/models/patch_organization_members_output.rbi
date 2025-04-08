@@ -11,7 +11,7 @@ module Braintrust
       attr_accessor :status
 
       # If invite emails failed to send for some reason, the patch operation will still
-      #   complete, but we will return an error message here
+      # complete, but we will return an error message here
       sig { returns(T.nilable(String)) }
       attr_accessor :send_email_error
 

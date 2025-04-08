@@ -82,7 +82,7 @@ module Braintrust
       attr_writer :parent
 
       # Whether to stream the response. If true, results will be returned in the
-      #   Braintrust SSE format.
+      # Braintrust SSE format.
       sig { returns(T.nilable(T::Boolean)) }
       attr_accessor :stream
 

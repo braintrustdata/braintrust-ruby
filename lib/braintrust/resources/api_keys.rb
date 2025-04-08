@@ -4,7 +4,7 @@ module Braintrust
   module Resources
     class APIKeys
       # Create a new api_key. It is possible to have multiple API keys with the same
-      #   name. There is no de-duplication
+      # name. There is no de-duplication
       #
       # @overload create(name:, org_name: nil, request_options: {})
       #
@@ -46,7 +46,7 @@ module Braintrust
       end
 
       # List out all api_keys. The api_keys are sorted by creation date, with the most
-      #   recently-created api_keys coming first
+      # recently-created api_keys coming first
       #
       # @overload list(api_key_name: nil, ending_before: nil, ids: nil, limit: nil, org_name: nil, starting_after: nil, request_options: {})
       #

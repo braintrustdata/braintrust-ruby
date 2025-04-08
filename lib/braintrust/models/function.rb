@@ -11,9 +11,9 @@ module Braintrust
 
       # @!attribute _xact_id
       #   The transaction id of an event is unique to the network operation that processed
-      #     the event insertion. Transaction ids are monotonically increasing over time and
-      #     can be used to retrieve a versioned snapshot of the prompt (see the `version`
-      #     parameter)
+      #   the event insertion. Transaction ids are monotonically increasing over time and
+      #   can be used to retrieve a versioned snapshot of the prompt (see the `version`
+      #   parameter)
       #
       #   @return [String]
       required :_xact_id, String
@@ -444,7 +444,7 @@ module Braintrust
 
         # @!attribute internal
         #   The function exists for internal purposes and should not be displayed in the
-        #     list of functions.
+        #   list of functions.
         #
         #   @return [Boolean, nil]
         optional :internal, Braintrust::Internal::Type::Boolean, nil?: true

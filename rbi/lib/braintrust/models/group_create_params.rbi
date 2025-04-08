@@ -16,8 +16,8 @@ module Braintrust
 
       # Ids of the groups this group inherits from
       #
-      #   An inheriting group has all the users contained in its member groups, as well as
-      #   all of their inherited users
+      # An inheriting group has all the users contained in its member groups, as well as
+      # all of their inherited users
       sig { returns(T.nilable(T::Array[String])) }
       attr_accessor :member_groups
 
@@ -26,8 +26,8 @@ module Braintrust
       attr_accessor :member_users
 
       # For nearly all users, this parameter should be unnecessary. But in the rare case
-      #   that your API key belongs to multiple organizations, you may specify the name of
-      #   the organization the group belongs in.
+      # that your API key belongs to multiple organizations, you may specify the name of
+      # the organization the group belongs in.
       sig { returns(T.nilable(String)) }
       attr_accessor :org_name
 

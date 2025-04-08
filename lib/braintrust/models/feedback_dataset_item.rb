@@ -5,7 +5,7 @@ module Braintrust
     class FeedbackDatasetItem < Braintrust::Internal::Type::BaseModel
       # @!attribute id
       #   The id of the dataset event to log feedback for. This is the row `id` returned
-      #     by `POST /v1/dataset/{dataset_id}/insert`
+      #   by `POST /v1/dataset/{dataset_id}/insert`
       #
       #   @return [String]
       required :id, String
@@ -18,9 +18,9 @@ module Braintrust
 
       # @!attribute metadata
       #   A dictionary with additional data about the feedback. If you have a `user_id`,
-      #     you can log it here and access it in the Braintrust UI. Note, this metadata does
-      #     not correspond to the main event itself, but rather the audit log attached to
-      #     the event.
+      #   you can log it here and access it in the Braintrust UI. Note, this metadata does
+      #   not correspond to the main event itself, but rather the audit log attached to
+      #   the event.
       #
       #   @return [Hash{Symbol=>Object, nil}, nil]
       optional :metadata,

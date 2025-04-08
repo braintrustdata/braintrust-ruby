@@ -10,7 +10,7 @@ module Braintrust
 
       # @!attribute summarize_data
       #   Whether to summarize the data. If false (or omitted), only the metadata will be
-      #     returned.
+      #   returned.
       #
       #   @return [Boolean, nil]
       optional :summarize_data, Braintrust::Internal::Type::Boolean, nil?: true

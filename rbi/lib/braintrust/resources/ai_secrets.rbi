@@ -4,7 +4,7 @@ module Braintrust
   module Resources
     class AISecrets
       # Create a new ai_secret. If there is an existing ai_secret with the same name as
-      #   the one specified in the request, will return the existing ai_secret unmodified
+      # the one specified in the request, will return the existing ai_secret unmodified
       sig do
         params(
           name: String,
@@ -21,11 +21,11 @@ module Braintrust
         name:,
         metadata: nil,
         # For nearly all users, this parameter should be unnecessary. But in the rare case
-        #   that your API key belongs to multiple organizations, you may specify the name of
-        #   the organization the AI Secret belongs in.
+        # that your API key belongs to multiple organizations, you may specify the name of
+        # the organization the AI Secret belongs in.
         org_name: nil,
         # Secret value. If omitted in a PUT request, the existing secret value will be
-        #   left intact, not replaced with null.
+        # left intact, not replaced with null.
         secret: nil,
         type: nil,
         request_options: {}
@@ -44,8 +44,8 @@ module Braintrust
         request_options: {}
       ); end
       # Partially update an ai_secret object. Specify the fields to update in the
-      #   payload. Any object-type fields will be deep-merged with existing content.
-      #   Currently we do not support removing fields or setting them to null.
+      # payload. Any object-type fields will be deep-merged with existing content.
+      # Currently we do not support removing fields or setting them to null.
       sig do
         params(
           ai_secret_id: String,
@@ -68,7 +68,7 @@ module Braintrust
         request_options: {}
       ); end
       # List out all ai_secrets. The ai_secrets are sorted by creation date, with the
-      #   most recently-created ai_secrets coming first
+      # most recently-created ai_secrets coming first
       sig do
         params(
           ai_secret_name: String,
@@ -88,12 +88,12 @@ module Braintrust
         ai_secret_type: nil,
         # Pagination cursor id.
         #
-        #   For example, if the initial item in the last page you fetched had an id of
-        #   `foo`, pass `ending_before=foo` to fetch the previous page. Note: you may only
-        #   pass one of `starting_after` and `ending_before`
+        # For example, if the initial item in the last page you fetched had an id of
+        # `foo`, pass `ending_before=foo` to fetch the previous page. Note: you may only
+        # pass one of `starting_after` and `ending_before`
         ending_before: nil,
         # Filter search results to a particular set of object IDs. To specify a list of
-        #   IDs, include the query param multiple times
+        # IDs, include the query param multiple times
         ids: nil,
         # Limit the number of objects to return
         limit: nil,
@@ -101,9 +101,9 @@ module Braintrust
         org_name: nil,
         # Pagination cursor id.
         #
-        #   For example, if the final item in the last page you fetched had an id of `foo`,
-        #   pass `starting_after=foo` to fetch the next page. Note: you may only pass one of
-        #   `starting_after` and `ending_before`
+        # For example, if the final item in the last page you fetched had an id of `foo`,
+        # pass `starting_after=foo` to fetch the next page. Note: you may only pass one of
+        # `starting_after` and `ending_before`
         starting_after: nil,
         request_options: {}
       ); end
@@ -133,14 +133,14 @@ module Braintrust
         # Name of the AI secret
         name:,
         # For nearly all users, this parameter should be unnecessary. But in the rare case
-        #   that your API key belongs to multiple organizations, you may specify the name of
-        #   the organization the AI Secret belongs in.
+        # that your API key belongs to multiple organizations, you may specify the name of
+        # the organization the AI Secret belongs in.
         org_name: nil,
         request_options: {}
       ); end
       # Create or replace ai_secret. If there is an existing ai_secret with the same
-      #   name as the one specified in the request, will replace the existing ai_secret
-      #   with the provided fields
+      # name as the one specified in the request, will replace the existing ai_secret
+      # with the provided fields
       sig do
         params(
           name: String,
@@ -157,11 +157,11 @@ module Braintrust
         name:,
         metadata: nil,
         # For nearly all users, this parameter should be unnecessary. But in the rare case
-        #   that your API key belongs to multiple organizations, you may specify the name of
-        #   the organization the AI Secret belongs in.
+        # that your API key belongs to multiple organizations, you may specify the name of
+        # the organization the AI Secret belongs in.
         org_name: nil,
         # Secret value. If omitted in a PUT request, the existing secret value will be
-        #   left intact, not replaced with null.
+        # left intact, not replaced with null.
         secret: nil,
         type: nil,
         request_options: {}

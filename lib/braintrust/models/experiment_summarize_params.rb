@@ -10,9 +10,9 @@ module Braintrust
 
       # @!attribute [r] comparison_experiment_id
       #   The experiment to compare against, if summarizing scores and metrics. If
-      #     omitted, will fall back to the `base_exp_id` stored in the experiment metadata,
-      #     and then to the most recent experiment run in the same project. Must pass
-      #     `summarize_scores=true` for this id to be used
+      #   omitted, will fall back to the `base_exp_id` stored in the experiment metadata,
+      #   and then to the most recent experiment run in the same project. Must pass
+      #   `summarize_scores=true` for this id to be used
       #
       #   @return [String, nil]
       optional :comparison_experiment_id, String
@@ -23,7 +23,7 @@ module Braintrust
 
       # @!attribute summarize_scores
       #   Whether to summarize the scores and metrics. If false (or omitted), only the
-      #     metadata will be returned.
+      #   metadata will be returned.
       #
       #   @return [Boolean, nil]
       optional :summarize_scores, Braintrust::Internal::Type::Boolean, nil?: true

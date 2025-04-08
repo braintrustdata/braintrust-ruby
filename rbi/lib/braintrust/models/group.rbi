@@ -13,7 +13,7 @@ module Braintrust
 
       # Unique id for the organization that the group belongs under
       #
-      #   It is forbidden to change the org after creating a group
+      # It is forbidden to change the org after creating a group
       sig { returns(String) }
       attr_accessor :org_id
 
@@ -31,8 +31,8 @@ module Braintrust
 
       # Ids of the groups this group inherits from
       #
-      #   An inheriting group has all the users contained in its member groups, as well as
-      #   all of their inherited users
+      # An inheriting group has all the users contained in its member groups, as well as
+      # all of their inherited users
       sig { returns(T.nilable(T::Array[String])) }
       attr_accessor :member_groups
 
@@ -46,8 +46,8 @@ module Braintrust
 
       # A group is a collection of users which can be assigned an ACL
       #
-      #   Groups can consist of individual users, as well as a set of groups they inherit
-      #   from
+      # Groups can consist of individual users, as well as a set of groups they inherit
+      # from
       sig do
         params(
           id: String,

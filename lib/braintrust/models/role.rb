@@ -44,8 +44,8 @@ module Braintrust
       # @!attribute member_roles
       #   Ids of the roles this role inherits from
       #
-      #     An inheriting role has all the permissions contained in its member roles, as
-      #     well as all of their inherited permissions
+      #   An inheriting role has all the permissions contained in its member roles, as
+      #   well as all of their inherited permissions
       #
       #   @return [Array<String>, nil]
       optional :member_roles, Braintrust::Internal::Type::ArrayOf[String], nil?: true
@@ -53,10 +53,10 @@ module Braintrust
       # @!attribute org_id
       #   Unique id for the organization that the role belongs under
       #
-      #     A null org_id indicates a system role, which may be assigned to anybody and
-      #     inherited by any other role, but cannot be edited.
+      #   A null org_id indicates a system role, which may be assigned to anybody and
+      #   inherited by any other role, but cannot be edited.
       #
-      #     It is forbidden to change the org after creating a role
+      #   It is forbidden to change the org after creating a role
       #
       #   @return [String, nil]
       optional :org_id, String, nil?: true
@@ -70,8 +70,8 @@ module Braintrust
       # @!parse
       #   # A role is a collection of permissions which can be granted as part of an ACL
       #   #
-      #   #   Roles can consist of individual permissions, as well as a set of roles they
-      #   #   inherit from
+      #   # Roles can consist of individual permissions, as well as a set of roles they
+      #   # inherit from
       #   #
       #   # @param id [String]
       #   # @param name [String]
@@ -104,8 +104,8 @@ module Braintrust
         # @!attribute permission
         #   Each permission permits a certain type of operation on an object in the system
         #
-        #     Permissions can be assigned to to objects on an individual basis, or grouped
-        #     into roles
+        #   Permissions can be assigned to to objects on an individual basis, or grouped
+        #   into roles
         #
         #   @return [Symbol, Braintrust::Models::Permission]
         required :permission, enum: -> { Braintrust::Models::Permission }

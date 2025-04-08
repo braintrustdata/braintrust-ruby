@@ -32,7 +32,7 @@ module Braintrust
       attr_accessor :description
 
       # Whether to post messages to the iframe containing the span's data. This is
-      #   useful when you want to render more data than fits in the URL.
+      # useful when you want to render more data than fits in the URL.
       sig { returns(T.nilable(T::Boolean)) }
       attr_accessor :post_message
 

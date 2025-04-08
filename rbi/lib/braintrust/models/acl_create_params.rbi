@@ -15,27 +15,27 @@ module Braintrust
       attr_accessor :object_type
 
       # Id of the group the ACL applies to. Exactly one of `user_id` and `group_id` will
-      #   be provided
+      # be provided
       sig { returns(T.nilable(String)) }
       attr_accessor :group_id
 
       # Permission the ACL grants. Exactly one of `permission` and `role_id` will be
-      #   provided
+      # provided
       sig { returns(T.nilable(Braintrust::Models::Permission::OrSymbol)) }
       attr_accessor :permission
 
       # When setting a permission directly, optionally restricts the permission grant to
-      #   just the specified object type. Cannot be set alongside a `role_id`.
+      # just the specified object type. Cannot be set alongside a `role_id`.
       sig { returns(T.nilable(Braintrust::Models::ACLObjectType::OrSymbol)) }
       attr_accessor :restrict_object_type
 
       # Id of the role the ACL grants. Exactly one of `permission` and `role_id` will be
-      #   provided
+      # provided
       sig { returns(T.nilable(String)) }
       attr_accessor :role_id
 
       # Id of the user the ACL applies to. Exactly one of `user_id` and `group_id` will
-      #   be provided
+      # be provided
       sig { returns(T.nilable(String)) }
       attr_accessor :user_id
 

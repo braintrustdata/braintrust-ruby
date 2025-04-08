@@ -4,8 +4,8 @@ module Braintrust
   module Resources
     class Functions
       # Create a new function. If there is an existing function in the project with the
-      #   same slug as the one specified in the request, will return the existing function
-      #   unmodified
+      # same slug as the one specified in the request, will return the existing function
+      # unmodified
       #
       # @overload create(function_data:, name:, project_id:, slug:, description: nil, function_schema: nil, function_type: nil, origin: nil, prompt_data: nil, tags: nil, request_options: {})
       #
@@ -55,8 +55,8 @@ module Braintrust
       end
 
       # Partially update a function object. Specify the fields to update in the payload.
-      #   Any object-type fields will be deep-merged with existing content. Currently we
-      #   do not support removing fields or setting them to null.
+      # Any object-type fields will be deep-merged with existing content. Currently we
+      # do not support removing fields or setting them to null.
       #
       # @overload update(function_id, description: nil, function_data: nil, name: nil, prompt_data: nil, tags: nil, request_options: {})
       #
@@ -83,7 +83,7 @@ module Braintrust
       end
 
       # List out all functions. The functions are sorted by creation date, with the most
-      #   recently-created functions coming first
+      # recently-created functions coming first
       #
       # @overload list(ending_before: nil, function_name: nil, ids: nil, limit: nil, org_name: nil, project_id: nil, project_name: nil, slug: nil, starting_after: nil, version: nil, request_options: {})
       #
@@ -163,8 +163,8 @@ module Braintrust
       end
 
       # Create or replace function. If there is an existing function in the project with
-      #   the same slug as the one specified in the request, will replace the existing
-      #   function with the provided fields
+      # the same slug as the one specified in the request, will replace the existing
+      # function with the provided fields
       #
       # @overload replace(function_data:, name:, project_id:, slug:, description: nil, function_schema: nil, function_type: nil, origin: nil, prompt_data: nil, tags: nil, request_options: {})
       #

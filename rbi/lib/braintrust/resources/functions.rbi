@@ -4,8 +4,8 @@ module Braintrust
   module Resources
     class Functions
       # Create a new function. If there is an existing function in the project with the
-      #   same slug as the one specified in the request, will return the existing function
-      #   unmodified
+      # same slug as the one specified in the request, will return the existing function
+      # unmodified
       sig do
         params(
           function_data: T.any(
@@ -61,8 +61,8 @@ module Braintrust
         request_options: {}
       ); end
       # Partially update a function object. Specify the fields to update in the payload.
-      #   Any object-type fields will be deep-merged with existing content. Currently we
-      #   do not support removing fields or setting them to null.
+      # Any object-type fields will be deep-merged with existing content. Currently we
+      # do not support removing fields or setting them to null.
       sig do
         params(
           function_id: String,
@@ -97,7 +97,7 @@ module Braintrust
         request_options: {}
       ); end
       # List out all functions. The functions are sorted by creation date, with the most
-      #   recently-created functions coming first
+      # recently-created functions coming first
       sig do
         params(
           ending_before: String,
@@ -117,14 +117,14 @@ module Braintrust
       def list(
         # Pagination cursor id.
         #
-        #   For example, if the initial item in the last page you fetched had an id of
-        #   `foo`, pass `ending_before=foo` to fetch the previous page. Note: you may only
-        #   pass one of `starting_after` and `ending_before`
+        # For example, if the initial item in the last page you fetched had an id of
+        # `foo`, pass `ending_before=foo` to fetch the previous page. Note: you may only
+        # pass one of `starting_after` and `ending_before`
         ending_before: nil,
         # Name of the function to search for
         function_name: nil,
         # Filter search results to a particular set of object IDs. To specify a list of
-        #   IDs, include the query param multiple times
+        # IDs, include the query param multiple times
         ids: nil,
         # Limit the number of objects to return
         limit: nil,
@@ -138,14 +138,14 @@ module Braintrust
         slug: nil,
         # Pagination cursor id.
         #
-        #   For example, if the final item in the last page you fetched had an id of `foo`,
-        #   pass `starting_after=foo` to fetch the next page. Note: you may only pass one of
-        #   `starting_after` and `ending_before`
+        # For example, if the final item in the last page you fetched had an id of `foo`,
+        # pass `starting_after=foo` to fetch the next page. Note: you may only pass one of
+        # `starting_after` and `ending_before`
         starting_after: nil,
         # Retrieve prompt at a specific version.
         #
-        #   The version id can either be a transaction id (e.g. '1000192656880881099') or a
-        #   version identifier (e.g. '81cd05ee665fdfb3').
+        # The version id can either be a transaction id (e.g. '1000192656880881099') or a
+        # version identifier (e.g. '81cd05ee665fdfb3').
         version: nil,
         request_options: {}
       ); end
@@ -208,15 +208,15 @@ module Braintrust
         # Options for tracing the function call
         parent: nil,
         # Whether to stream the response. If true, results will be returned in the
-        #   Braintrust SSE format.
+        # Braintrust SSE format.
         stream: nil,
         # The version of the function
         version: nil,
         request_options: {}
       ); end
       # Create or replace function. If there is an existing function in the project with
-      #   the same slug as the one specified in the request, will replace the existing
-      #   function with the provided fields
+      # the same slug as the one specified in the request, will replace the existing
+      # function with the provided fields
       sig do
         params(
           function_data: T.any(

@@ -65,7 +65,7 @@ module Braintrust
 
       # @!attribute stream
       #   Whether to stream the response. If true, results will be returned in the
-      #     Braintrust SSE format.
+      #   Braintrust SSE format.
       #
       #   @return [Boolean, nil]
       optional :stream, Braintrust::Internal::Type::Boolean, nil?: true

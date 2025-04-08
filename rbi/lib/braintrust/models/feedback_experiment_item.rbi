@@ -4,7 +4,7 @@ module Braintrust
   module Models
     class FeedbackExperimentItem < Braintrust::Internal::Type::BaseModel
       # The id of the experiment event to log feedback for. This is the row `id`
-      #   returned by `POST /v1/experiment/{experiment_id}/insert`
+      # returned by `POST /v1/experiment/{experiment_id}/insert`
       sig { returns(String) }
       attr_accessor :id
 
@@ -13,7 +13,7 @@ module Braintrust
       attr_accessor :comment
 
       # The ground truth value (an arbitrary, JSON serializable object) that you'd
-      #   compare to `output` to determine if your `output` value is correct or not
+      # compare to `output` to determine if your `output` value is correct or not
       sig { returns(T.nilable(T.anything)) }
       attr_reader :expected
 
@@ -21,14 +21,14 @@ module Braintrust
       attr_writer :expected
 
       # A dictionary with additional data about the feedback. If you have a `user_id`,
-      #   you can log it here and access it in the Braintrust UI. Note, this metadata does
-      #   not correspond to the main event itself, but rather the audit log attached to
-      #   the event.
+      # you can log it here and access it in the Braintrust UI. Note, this metadata does
+      # not correspond to the main event itself, but rather the audit log attached to
+      # the event.
       sig { returns(T.nilable(T::Hash[Symbol, T.nilable(T.anything)])) }
       attr_accessor :metadata
 
       # A dictionary of numeric values (between 0 and 1) to log. These scores will be
-      #   merged into the existing scores for the experiment event
+      # merged into the existing scores for the experiment event
       sig { returns(T.nilable(T::Hash[Symbol, T.nilable(Float)])) }
       attr_accessor :scores
 

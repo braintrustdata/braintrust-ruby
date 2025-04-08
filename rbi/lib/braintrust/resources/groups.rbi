@@ -4,7 +4,7 @@ module Braintrust
   module Resources
     class Groups
       # Create a new group. If there is an existing group with the same name as the one
-      #   specified in the request, will return the existing group unmodified
+      # specified in the request, will return the existing group unmodified
       sig do
         params(
           name: String,
@@ -23,14 +23,14 @@ module Braintrust
         description: nil,
         # Ids of the groups this group inherits from
         #
-        #   An inheriting group has all the users contained in its member groups, as well as
-        #   all of their inherited users
+        # An inheriting group has all the users contained in its member groups, as well as
+        # all of their inherited users
         member_groups: nil,
         # Ids of users which belong to this group
         member_users: nil,
         # For nearly all users, this parameter should be unnecessary. But in the rare case
-        #   that your API key belongs to multiple organizations, you may specify the name of
-        #   the organization the group belongs in.
+        # that your API key belongs to multiple organizations, you may specify the name of
+        # the organization the group belongs in.
         org_name: nil,
         request_options: {}
       ); end
@@ -48,8 +48,8 @@ module Braintrust
         request_options: {}
       ); end
       # Partially update a group object. Specify the fields to update in the payload.
-      #   Any object-type fields will be deep-merged with existing content. Currently we
-      #   do not support removing fields or setting them to null.
+      # Any object-type fields will be deep-merged with existing content. Currently we
+      # do not support removing fields or setting them to null.
       sig do
         params(
           group_id: String,
@@ -81,7 +81,7 @@ module Braintrust
         request_options: {}
       ); end
       # List out all groups. The groups are sorted by creation date, with the most
-      #   recently-created groups coming first
+      # recently-created groups coming first
       sig do
         params(
           ending_before: String,
@@ -97,14 +97,14 @@ module Braintrust
       def list(
         # Pagination cursor id.
         #
-        #   For example, if the initial item in the last page you fetched had an id of
-        #   `foo`, pass `ending_before=foo` to fetch the previous page. Note: you may only
-        #   pass one of `starting_after` and `ending_before`
+        # For example, if the initial item in the last page you fetched had an id of
+        # `foo`, pass `ending_before=foo` to fetch the previous page. Note: you may only
+        # pass one of `starting_after` and `ending_before`
         ending_before: nil,
         # Name of the group to search for
         group_name: nil,
         # Filter search results to a particular set of object IDs. To specify a list of
-        #   IDs, include the query param multiple times
+        # IDs, include the query param multiple times
         ids: nil,
         # Limit the number of objects to return
         limit: nil,
@@ -112,9 +112,9 @@ module Braintrust
         org_name: nil,
         # Pagination cursor id.
         #
-        #   For example, if the final item in the last page you fetched had an id of `foo`,
-        #   pass `starting_after=foo` to fetch the next page. Note: you may only pass one of
-        #   `starting_after` and `ending_before`
+        # For example, if the final item in the last page you fetched had an id of `foo`,
+        # pass `starting_after=foo` to fetch the next page. Note: you may only pass one of
+        # `starting_after` and `ending_before`
         starting_after: nil,
         request_options: {}
       ); end
@@ -132,8 +132,8 @@ module Braintrust
         request_options: {}
       ); end
       # Create or replace group. If there is an existing group with the same name as the
-      #   one specified in the request, will replace the existing group with the provided
-      #   fields
+      # one specified in the request, will replace the existing group with the provided
+      # fields
       sig do
         params(
           name: String,
@@ -152,14 +152,14 @@ module Braintrust
         description: nil,
         # Ids of the groups this group inherits from
         #
-        #   An inheriting group has all the users contained in its member groups, as well as
-        #   all of their inherited users
+        # An inheriting group has all the users contained in its member groups, as well as
+        # all of their inherited users
         member_groups: nil,
         # Ids of users which belong to this group
         member_users: nil,
         # For nearly all users, this parameter should be unnecessary. But in the rare case
-        #   that your API key belongs to multiple organizations, you may specify the name of
-        #   the organization the group belongs in.
+        # that your API key belongs to multiple organizations, you may specify the name of
+        # the organization the group belongs in.
         org_name: nil,
         request_options: {}
       ); end

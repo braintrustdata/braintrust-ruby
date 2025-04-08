@@ -20,14 +20,14 @@ module Braintrust
 
       # Ids of the roles this role inherits from
       #
-      #   An inheriting role has all the permissions contained in its member roles, as
-      #   well as all of their inherited permissions
+      # An inheriting role has all the permissions contained in its member roles, as
+      # well as all of their inherited permissions
       sig { returns(T.nilable(T::Array[String])) }
       attr_accessor :member_roles
 
       # For nearly all users, this parameter should be unnecessary. But in the rare case
-      #   that your API key belongs to multiple organizations, you may specify the name of
-      #   the organization the role belongs in.
+      # that your API key belongs to multiple organizations, you may specify the name of
+      # the organization the role belongs in.
       sig { returns(T.nilable(String)) }
       attr_accessor :org_name
 
@@ -72,8 +72,8 @@ module Braintrust
       class MemberPermission < Braintrust::Internal::Type::BaseModel
         # Each permission permits a certain type of operation on an object in the system
         #
-        #   Permissions can be assigned to to objects on an individual basis, or grouped
-        #   into roles
+        # Permissions can be assigned to to objects on an individual basis, or grouped
+        # into roles
         sig { returns(Braintrust::Models::Permission::OrSymbol) }
         attr_accessor :permission
 

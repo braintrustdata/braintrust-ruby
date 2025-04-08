@@ -8,9 +8,9 @@ module Braintrust
       attr_accessor :id
 
       # The transaction id of an event is unique to the network operation that processed
-      #   the event insertion. Transaction ids are monotonically increasing over time and
-      #   can be used to retrieve a versioned snapshot of the prompt (see the `version`
-      #   parameter)
+      # the event insertion. Transaction ids are monotonically increasing over time and
+      # can be used to retrieve a versioned snapshot of the prompt (see the `version`
+      # parameter)
       sig { returns(String) }
       attr_accessor :_xact_id
 

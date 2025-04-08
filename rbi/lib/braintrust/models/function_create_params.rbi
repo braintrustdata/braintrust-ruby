@@ -524,7 +524,7 @@ module Braintrust
         attr_accessor :object_type
 
         # The function exists for internal purposes and should not be displayed in the
-        #   list of functions.
+        # list of functions.
         sig { returns(T.nilable(T::Boolean)) }
         attr_accessor :internal
 

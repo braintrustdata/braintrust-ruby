@@ -9,8 +9,8 @@ module Braintrust
 
       # Pagination cursor
       #
-      #   Pass this string directly as the `cursor` param to your next fetch request to
-      #   get the next page of results. Not provided if the returned result set is empty.
+      # Pass this string directly as the `cursor` param to your next fetch request to
+      # get the next page of results. Not provided if the returned result set is empty.
       sig { returns(T.nilable(String)) }
       attr_accessor :cursor
 

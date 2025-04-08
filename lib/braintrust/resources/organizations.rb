@@ -26,8 +26,8 @@ module Braintrust
       end
 
       # Partially update an organization object. Specify the fields to update in the
-      #   payload. Any object-type fields will be deep-merged with existing content.
-      #   Currently we do not support removing fields or setting them to null.
+      # payload. Any object-type fields will be deep-merged with existing content.
+      # Currently we do not support removing fields or setting them to null.
       #
       # @overload update(organization_id, api_url: nil, is_universal_api: nil, name: nil, proxy_url: nil, realtime_url: nil, request_options: {})
       #
@@ -54,7 +54,7 @@ module Braintrust
       end
 
       # List out all organizations. The organizations are sorted by creation date, with
-      #   the most recently-created organizations coming first
+      # the most recently-created organizations coming first
       #
       # @overload list(ending_before: nil, ids: nil, limit: nil, org_name: nil, starting_after: nil, request_options: {})
       #

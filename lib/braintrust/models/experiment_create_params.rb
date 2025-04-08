@@ -22,14 +22,14 @@ module Braintrust
 
       # @!attribute dataset_id
       #   Identifier of the linked dataset, or null if the experiment is not linked to a
-      #     dataset
+      #   dataset
       #
       #   @return [String, nil]
       optional :dataset_id, String, nil?: true
 
       # @!attribute dataset_version
       #   Version number of the linked dataset the experiment was run against. This can be
-      #     used to reproduce the experiment after the dataset has been modified.
+      #   used to reproduce the experiment after the dataset has been modified.
       #
       #   @return [String, nil]
       optional :dataset_version, String, nil?: true
@@ -42,9 +42,9 @@ module Braintrust
 
       # @!attribute ensure_new
       #   Normally, creating an experiment with the same name as an existing experiment
-      #     will return the existing one un-modified. But if `ensure_new` is true,
-      #     registration will generate a new experiment with a unique name in case of a
-      #     conflict.
+      #   will return the existing one un-modified. But if `ensure_new` is true,
+      #   registration will generate a new experiment with a unique name in case of a
+      #   conflict.
       #
       #   @return [Boolean, nil]
       optional :ensure_new, Braintrust::Internal::Type::Boolean, nil?: true
@@ -65,7 +65,7 @@ module Braintrust
 
       # @!attribute public
       #   Whether or not the experiment is public. Public experiments can be viewed by
-      #     anybody inside or outside the organization
+      #   anybody inside or outside the organization
       #
       #   @return [Boolean, nil]
       optional :public, Braintrust::Internal::Type::Boolean, nil?: true

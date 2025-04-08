@@ -20,7 +20,7 @@ module Braintrust
 
       # @!attribute [r] ids
       #   Filter search results to a particular set of object IDs. To specify a list of
-      #     IDs, include the query param multiple times
+      #   IDs, include the query param multiple times
       #
       #   @return [String, Array<String>, nil]
       optional :ids, union: -> { Braintrust::Models::EnvVarListParams::IDs }
@@ -68,7 +68,7 @@ module Braintrust
       # def initialize: (Hash | Braintrust::Internal::Type::BaseModel) -> void
 
       # Filter search results to a particular set of object IDs. To specify a list of
-      #   IDs, include the query param multiple times
+      # IDs, include the query param multiple times
       module IDs
         extend Braintrust::Internal::Type::Union
 
