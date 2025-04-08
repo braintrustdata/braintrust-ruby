@@ -44,8 +44,7 @@ module Braintrust
         )
           .returns(T.attached_class)
       end
-      def self.new(bundle_id:, location:, runtime_context:, preview: nil)
-      end
+      def self.new(bundle_id:, location:, runtime_context:, preview: nil); end
 
       sig do
         override
@@ -61,8 +60,7 @@ module Braintrust
             }
           )
       end
-      def to_hash
-      end
+      def to_hash; end
 
       module Location
         extend Braintrust::Internal::Type::Union
@@ -96,8 +94,7 @@ module Braintrust
             )
               .returns(T.attached_class)
           end
-          def self.new(eval_name:, position:, type:)
-          end
+          def self.new(eval_name:, position:, type:); end
 
           sig do
             override
@@ -112,8 +109,7 @@ module Braintrust
                 }
               )
           end
-          def to_hash
-          end
+          def to_hash; end
 
           module Position
             extend Braintrust::Internal::Type::Union
@@ -126,15 +122,13 @@ module Braintrust
                 params(type: Braintrust::Models::CodeBundle::Location::Experiment::Position::Type::Type::OrSymbol)
                   .returns(T.attached_class)
               end
-              def self.new(type:)
-              end
+              def self.new(type:); end
 
               sig do
                 override
                   .returns({type: Braintrust::Models::CodeBundle::Location::Experiment::Position::Type::Type::OrSymbol})
               end
-              def to_hash
-              end
+              def to_hash; end
 
               module Type
                 extend Braintrust::Internal::Type::Enum
@@ -159,8 +153,7 @@ module Braintrust
                       T::Array[Braintrust::Models::CodeBundle::Location::Experiment::Position::Type::Type::TaggedSymbol]
                     )
                 end
-                def self.values
-                end
+                def self.values; end
               end
             end
 
@@ -178,8 +171,7 @@ module Braintrust
                 )
                   .returns(T.attached_class)
               end
-              def self.new(index:, type:)
-              end
+              def self.new(index:, type:); end
 
               sig do
                 override
@@ -187,8 +179,7 @@ module Braintrust
                     {index: Integer, type: Braintrust::Models::CodeBundle::Location::Experiment::Position::Scorer::Type::OrSymbol}
                   )
               end
-              def to_hash
-              end
+              def to_hash; end
 
               module Type
                 extend Braintrust::Internal::Type::Enum
@@ -213,8 +204,7 @@ module Braintrust
                       T::Array[Braintrust::Models::CodeBundle::Location::Experiment::Position::Scorer::Type::TaggedSymbol]
                     )
                 end
-                def self.values
-                end
+                def self.values; end
               end
             end
 
@@ -224,8 +214,7 @@ module Braintrust
                   [Braintrust::Models::CodeBundle::Location::Experiment::Position::Type, Braintrust::Models::CodeBundle::Location::Experiment::Position::Scorer]
                 )
             end
-            def self.variants
-            end
+            def self.variants; end
           end
 
           module Type
@@ -238,8 +227,7 @@ module Braintrust
             EXPERIMENT = T.let(:experiment, Braintrust::Models::CodeBundle::Location::Experiment::Type::TaggedSymbol)
 
             sig { override.returns(T::Array[Braintrust::Models::CodeBundle::Location::Experiment::Type::TaggedSymbol]) }
-            def self.values
-            end
+            def self.values; end
           end
         end
 
@@ -254,15 +242,13 @@ module Braintrust
             params(index: Integer, type: Braintrust::Models::CodeBundle::Location::Function::Type::OrSymbol)
               .returns(T.attached_class)
           end
-          def self.new(index:, type:)
-          end
+          def self.new(index:, type:); end
 
           sig do
             override
               .returns({index: Integer, type: Braintrust::Models::CodeBundle::Location::Function::Type::OrSymbol})
           end
-          def to_hash
-          end
+          def to_hash; end
 
           module Type
             extend Braintrust::Internal::Type::Enum
@@ -274,8 +260,7 @@ module Braintrust
             FUNCTION = T.let(:function, Braintrust::Models::CodeBundle::Location::Function::Type::TaggedSymbol)
 
             sig { override.returns(T::Array[Braintrust::Models::CodeBundle::Location::Function::Type::TaggedSymbol]) }
-            def self.values
-            end
+            def self.values; end
           end
         end
 
@@ -285,8 +270,7 @@ module Braintrust
               [Braintrust::Models::CodeBundle::Location::Experiment, Braintrust::Models::CodeBundle::Location::Function]
             )
         end
-        def self.variants
-        end
+        def self.variants; end
       end
 
       class RuntimeContext < Braintrust::Internal::Type::BaseModel
@@ -300,15 +284,13 @@ module Braintrust
           params(runtime: Braintrust::Models::CodeBundle::RuntimeContext::Runtime::OrSymbol, version: String)
             .returns(T.attached_class)
         end
-        def self.new(runtime:, version:)
-        end
+        def self.new(runtime:, version:); end
 
         sig do
           override
             .returns({runtime: Braintrust::Models::CodeBundle::RuntimeContext::Runtime::OrSymbol, version: String})
         end
-        def to_hash
-        end
+        def to_hash; end
 
         module Runtime
           extend Braintrust::Internal::Type::Enum
@@ -321,8 +303,7 @@ module Braintrust
           PYTHON = T.let(:python, Braintrust::Models::CodeBundle::RuntimeContext::Runtime::TaggedSymbol)
 
           sig { override.returns(T::Array[Braintrust::Models::CodeBundle::RuntimeContext::Runtime::TaggedSymbol]) }
-          def self.values
-          end
+          def self.values; end
         end
       end
     end

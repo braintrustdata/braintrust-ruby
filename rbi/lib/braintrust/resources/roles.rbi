@@ -35,9 +35,7 @@ module Braintrust
         #   the organization the role belongs in.
         org_name: nil,
         request_options: {}
-      )
-      end
-
+      ); end
       # Get a role object by its id
       sig do
         params(
@@ -50,9 +48,7 @@ module Braintrust
         # Role id
         role_id,
         request_options: {}
-      )
-      end
-
+      ); end
       # Partially update a role object. Specify the fields to update in the payload. Any
       #   object-type fields will be deep-merged with existing content. Currently we do
       #   not support removing fields or setting them to null.
@@ -89,9 +85,7 @@ module Braintrust
         # A list of role IDs to remove from the role's inheriting-from set
         remove_member_roles: nil,
         request_options: {}
-      )
-      end
-
+      ); end
       # List out all roles. The roles are sorted by creation date, with the most
       #   recently-created roles coming first
       sig do
@@ -129,9 +123,7 @@ module Braintrust
         #   `starting_after` and `ending_before`
         starting_after: nil,
         request_options: {}
-      )
-      end
-
+      ); end
       # Delete a role object by its id
       sig do
         params(
@@ -144,9 +136,7 @@ module Braintrust
         # Role id
         role_id,
         request_options: {}
-      )
-      end
-
+      ); end
       # Create or replace role. If there is an existing role with the same name as the
       #   one specified in the request, will replace the existing role with the provided
       #   fields
@@ -180,13 +170,10 @@ module Braintrust
         #   the organization the role belongs in.
         org_name: nil,
         request_options: {}
-      )
-      end
-
+      ); end
       # @api private
       sig { params(client: Braintrust::Client).returns(T.attached_class) }
-      def self.new(client:)
-      end
+      def self.new(client:); end
     end
   end
 end

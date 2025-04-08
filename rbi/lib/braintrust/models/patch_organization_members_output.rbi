@@ -23,8 +23,7 @@ module Braintrust
         )
           .returns(T.attached_class)
       end
-      def self.new(org_id:, status:, send_email_error: nil)
-      end
+      def self.new(org_id:, status:, send_email_error: nil); end
 
       sig do
         override
@@ -36,8 +35,7 @@ module Braintrust
             }
           )
       end
-      def to_hash
-      end
+      def to_hash; end
 
       module Status
         extend Braintrust::Internal::Type::Enum
@@ -49,8 +47,7 @@ module Braintrust
         SUCCESS = T.let(:success, Braintrust::Models::PatchOrganizationMembersOutput::Status::TaggedSymbol)
 
         sig { override.returns(T::Array[Braintrust::Models::PatchOrganizationMembersOutput::Status::TaggedSymbol]) }
-        def self.values
-        end
+        def self.values; end
       end
     end
   end

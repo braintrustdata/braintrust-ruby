@@ -86,8 +86,7 @@ module Braintrust
             }
           )
       end
-      def to_hash
-      end
+      def to_hash; end
 
       # For categorical-type project scores, the list of all categories
       module Categories
@@ -97,8 +96,7 @@ module Braintrust
           override
             .returns([T::Array[Braintrust::Models::ProjectScoreCategory], T::Hash[Symbol, Float], T::Array[String]])
         end
-        def self.variants
-        end
+        def self.variants; end
 
         ProjectScoreCategoryArray =
           T.let(

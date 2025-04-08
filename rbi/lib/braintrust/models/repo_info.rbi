@@ -65,9 +65,7 @@ module Braintrust
         dirty: nil,
         git_diff: nil,
         tag: nil
-      )
-      end
-
+      ); end
       sig do
         override
           .returns(
@@ -84,8 +82,7 @@ module Braintrust
             }
           )
       end
-      def to_hash
-      end
+      def to_hash; end
     end
   end
 end

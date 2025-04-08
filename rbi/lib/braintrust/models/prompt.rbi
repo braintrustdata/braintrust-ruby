@@ -92,9 +92,7 @@ module Braintrust
         metadata: nil,
         prompt_data: nil,
         tags: nil
-      )
-      end
-
+      ); end
       sig do
         override
           .returns(
@@ -115,8 +113,7 @@ module Braintrust
             }
           )
       end
-      def to_hash
-      end
+      def to_hash; end
 
       # A literal 'p' which identifies the object as a project prompt
       module LogID
@@ -128,8 +125,7 @@ module Braintrust
         P = T.let(:p, Braintrust::Models::Prompt::LogID::TaggedSymbol)
 
         sig { override.returns(T::Array[Braintrust::Models::Prompt::LogID::TaggedSymbol]) }
-        def self.values
-        end
+        def self.values; end
       end
 
       module FunctionType
@@ -144,8 +140,7 @@ module Braintrust
         TOOL = T.let(:tool, Braintrust::Models::Prompt::FunctionType::TaggedSymbol)
 
         sig { override.returns(T::Array[Braintrust::Models::Prompt::FunctionType::TaggedSymbol]) }
-        def self.values
-        end
+        def self.values; end
       end
     end
   end

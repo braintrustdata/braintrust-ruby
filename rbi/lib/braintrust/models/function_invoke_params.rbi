@@ -25,14 +25,14 @@ module Braintrust
         returns(
           T.nilable(
             T::Array[
-            T.any(
-              Braintrust::Models::FunctionInvokeParams::Message::System,
-              Braintrust::Models::FunctionInvokeParams::Message::User,
-              Braintrust::Models::FunctionInvokeParams::Message::Assistant,
-              Braintrust::Models::FunctionInvokeParams::Message::Tool,
-              Braintrust::Models::FunctionInvokeParams::Message::Function,
-              Braintrust::Models::FunctionInvokeParams::Message::Fallback
-            )
+              T.any(
+                Braintrust::Models::FunctionInvokeParams::Message::System,
+                Braintrust::Models::FunctionInvokeParams::Message::User,
+                Braintrust::Models::FunctionInvokeParams::Message::Assistant,
+                Braintrust::Models::FunctionInvokeParams::Message::Tool,
+                Braintrust::Models::FunctionInvokeParams::Message::Function,
+                Braintrust::Models::FunctionInvokeParams::Message::Fallback
+              )
             ]
           )
         )
@@ -42,15 +42,15 @@ module Braintrust
       sig do
         params(
           messages: T::Array[
-          T.any(
-            Braintrust::Models::FunctionInvokeParams::Message::System,
-            Braintrust::Internal::AnyHash,
-            Braintrust::Models::FunctionInvokeParams::Message::User,
-            Braintrust::Models::FunctionInvokeParams::Message::Assistant,
-            Braintrust::Models::FunctionInvokeParams::Message::Tool,
-            Braintrust::Models::FunctionInvokeParams::Message::Function,
-            Braintrust::Models::FunctionInvokeParams::Message::Fallback
-          )
+            T.any(
+              Braintrust::Models::FunctionInvokeParams::Message::System,
+              Braintrust::Internal::AnyHash,
+              Braintrust::Models::FunctionInvokeParams::Message::User,
+              Braintrust::Models::FunctionInvokeParams::Message::Assistant,
+              Braintrust::Models::FunctionInvokeParams::Message::Tool,
+              Braintrust::Models::FunctionInvokeParams::Message::Function,
+              Braintrust::Models::FunctionInvokeParams::Message::Fallback
+            )
           ]
         )
           .void
@@ -98,15 +98,15 @@ module Braintrust
           expected: T.anything,
           input: T.anything,
           messages: T::Array[
-          T.any(
-            Braintrust::Models::FunctionInvokeParams::Message::System,
-            Braintrust::Internal::AnyHash,
-            Braintrust::Models::FunctionInvokeParams::Message::User,
-            Braintrust::Models::FunctionInvokeParams::Message::Assistant,
-            Braintrust::Models::FunctionInvokeParams::Message::Tool,
-            Braintrust::Models::FunctionInvokeParams::Message::Function,
-            Braintrust::Models::FunctionInvokeParams::Message::Fallback
-          )
+            T.any(
+              Braintrust::Models::FunctionInvokeParams::Message::System,
+              Braintrust::Internal::AnyHash,
+              Braintrust::Models::FunctionInvokeParams::Message::User,
+              Braintrust::Models::FunctionInvokeParams::Message::Assistant,
+              Braintrust::Models::FunctionInvokeParams::Message::Tool,
+              Braintrust::Models::FunctionInvokeParams::Message::Function,
+              Braintrust::Models::FunctionInvokeParams::Message::Fallback
+            )
           ],
           metadata: T.nilable(T::Hash[Symbol, T.nilable(T.anything)]),
           mode: T.nilable(Braintrust::Models::FunctionInvokeParams::Mode::OrSymbol),
@@ -131,9 +131,7 @@ module Braintrust
         stream: nil,
         version: nil,
         request_options: {}
-      )
-      end
-
+      ); end
       sig do
         override
           .returns(
@@ -141,14 +139,14 @@ module Braintrust
               expected: T.anything,
               input: T.anything,
               messages: T::Array[
-              T.any(
-                Braintrust::Models::FunctionInvokeParams::Message::System,
-                Braintrust::Models::FunctionInvokeParams::Message::User,
-                Braintrust::Models::FunctionInvokeParams::Message::Assistant,
-                Braintrust::Models::FunctionInvokeParams::Message::Tool,
-                Braintrust::Models::FunctionInvokeParams::Message::Function,
-                Braintrust::Models::FunctionInvokeParams::Message::Fallback
-              )
+                T.any(
+                  Braintrust::Models::FunctionInvokeParams::Message::System,
+                  Braintrust::Models::FunctionInvokeParams::Message::User,
+                  Braintrust::Models::FunctionInvokeParams::Message::Assistant,
+                  Braintrust::Models::FunctionInvokeParams::Message::Tool,
+                  Braintrust::Models::FunctionInvokeParams::Message::Function,
+                  Braintrust::Models::FunctionInvokeParams::Message::Fallback
+                )
               ],
               metadata: T.nilable(T::Hash[Symbol, T.nilable(T.anything)]),
               mode: T.nilable(Braintrust::Models::FunctionInvokeParams::Mode::OrSymbol),
@@ -159,8 +157,7 @@ module Braintrust
             }
           )
       end
-      def to_hash
-      end
+      def to_hash; end
 
       module Message
         extend Braintrust::Internal::Type::Union
@@ -189,8 +186,7 @@ module Braintrust
             )
               .returns(T.attached_class)
           end
-          def self.new(role:, content: nil, name: nil)
-          end
+          def self.new(role:, content: nil, name: nil); end
 
           sig do
             override
@@ -198,8 +194,7 @@ module Braintrust
                 {role: Braintrust::Models::FunctionInvokeParams::Message::System::Role::OrSymbol, content: String, name: String}
               )
           end
-          def to_hash
-          end
+          def to_hash; end
 
           module Role
             extend Braintrust::Internal::Type::Enum
@@ -212,8 +207,7 @@ module Braintrust
             SYSTEM = T.let(:system, Braintrust::Models::FunctionInvokeParams::Message::System::Role::TaggedSymbol)
 
             sig { override.returns(T::Array[Braintrust::Models::FunctionInvokeParams::Message::System::Role::TaggedSymbol]) }
-            def self.values
-            end
+            def self.values; end
           end
         end
 
@@ -227,10 +221,10 @@ module Braintrust
                 T.any(
                   String,
                   T::Array[
-                  T.any(
-                    Braintrust::Models::ChatCompletionContentPartText,
-                    Braintrust::Models::ChatCompletionContentPartImage
-                  )
+                    T.any(
+                      Braintrust::Models::ChatCompletionContentPartText,
+                      Braintrust::Models::ChatCompletionContentPartImage
+                    )
                   ]
                 )
               )
@@ -243,11 +237,11 @@ module Braintrust
               content: T.any(
                 String,
                 T::Array[
-                T.any(
-                  Braintrust::Models::ChatCompletionContentPartText,
-                  Braintrust::Internal::AnyHash,
-                  Braintrust::Models::ChatCompletionContentPartImage
-                )
+                  T.any(
+                    Braintrust::Models::ChatCompletionContentPartText,
+                    Braintrust::Internal::AnyHash,
+                    Braintrust::Models::ChatCompletionContentPartImage
+                  )
                 ]
               )
             )
@@ -267,19 +261,18 @@ module Braintrust
               content: T.any(
                 String,
                 T::Array[
-                T.any(
-                  Braintrust::Models::ChatCompletionContentPartText,
-                  Braintrust::Internal::AnyHash,
-                  Braintrust::Models::ChatCompletionContentPartImage
-                )
+                  T.any(
+                    Braintrust::Models::ChatCompletionContentPartText,
+                    Braintrust::Internal::AnyHash,
+                    Braintrust::Models::ChatCompletionContentPartImage
+                  )
                 ]
               ),
               name: String
             )
               .returns(T.attached_class)
           end
-          def self.new(role:, content: nil, name: nil)
-          end
+          def self.new(role:, content: nil, name: nil); end
 
           sig do
             override
@@ -289,18 +282,17 @@ module Braintrust
                   content: T.any(
                     String,
                     T::Array[
-                    T.any(
-                      Braintrust::Models::ChatCompletionContentPartText,
-                      Braintrust::Models::ChatCompletionContentPartImage
-                    )
+                      T.any(
+                        Braintrust::Models::ChatCompletionContentPartText,
+                        Braintrust::Models::ChatCompletionContentPartImage
+                      )
                     ]
                   ),
                   name: String
                 }
               )
           end
-          def to_hash
-          end
+          def to_hash; end
 
           module Role
             extend Braintrust::Internal::Type::Enum
@@ -313,8 +305,7 @@ module Braintrust
             USER = T.let(:user, Braintrust::Models::FunctionInvokeParams::Message::User::Role::TaggedSymbol)
 
             sig { override.returns(T::Array[Braintrust::Models::FunctionInvokeParams::Message::User::Role::TaggedSymbol]) }
-            def self.values
-            end
+            def self.values; end
           end
 
           module Content
@@ -329,8 +320,7 @@ module Braintrust
                     [Braintrust::Models::ChatCompletionContentPartText, Braintrust::Models::ChatCompletionContentPartImage]
                   )
               end
-              def self.variants
-              end
+              def self.variants; end
             end
 
             sig do
@@ -339,16 +329,15 @@ module Braintrust
                   [
                     String,
                     T::Array[
-                                      T.any(
-                                        Braintrust::Models::ChatCompletionContentPartText,
-                                        Braintrust::Models::ChatCompletionContentPartImage
-                                      )
+                                        T.any(
+                                          Braintrust::Models::ChatCompletionContentPartText,
+                                          Braintrust::Models::ChatCompletionContentPartImage
+                                        )
                                       ]
                   ]
                 )
             end
-            def self.variants
-            end
+            def self.variants; end
 
             Nested2DArray =
               T.let(
@@ -404,8 +393,7 @@ module Braintrust
             )
               .returns(T.attached_class)
           end
-          def self.new(role:, content: nil, function_call: nil, name: nil, tool_calls: nil)
-          end
+          def self.new(role:, content: nil, function_call: nil, name: nil, tool_calls: nil); end
 
           sig do
             override
@@ -419,8 +407,7 @@ module Braintrust
                 }
               )
           end
-          def to_hash
-          end
+          def to_hash; end
 
           module Role
             extend Braintrust::Internal::Type::Enum
@@ -437,8 +424,7 @@ module Braintrust
               override
                 .returns(T::Array[Braintrust::Models::FunctionInvokeParams::Message::Assistant::Role::TaggedSymbol])
             end
-            def self.values
-            end
+            def self.values; end
           end
 
           class FunctionCall < Braintrust::Internal::Type::BaseModel
@@ -449,12 +435,10 @@ module Braintrust
             attr_accessor :name
 
             sig { params(arguments: String, name: String).returns(T.attached_class) }
-            def self.new(arguments:, name:)
-            end
+            def self.new(arguments:, name:); end
 
             sig { override.returns({arguments: String, name: String}) }
-            def to_hash
-            end
+            def to_hash; end
           end
         end
 
@@ -482,8 +466,7 @@ module Braintrust
             )
               .returns(T.attached_class)
           end
-          def self.new(role:, content: nil, tool_call_id: nil)
-          end
+          def self.new(role:, content: nil, tool_call_id: nil); end
 
           sig do
             override
@@ -495,8 +478,7 @@ module Braintrust
                 }
               )
           end
-          def to_hash
-          end
+          def to_hash; end
 
           module Role
             extend Braintrust::Internal::Type::Enum
@@ -509,8 +491,7 @@ module Braintrust
             TOOL = T.let(:tool, Braintrust::Models::FunctionInvokeParams::Message::Tool::Role::TaggedSymbol)
 
             sig { override.returns(T::Array[Braintrust::Models::FunctionInvokeParams::Message::Tool::Role::TaggedSymbol]) }
-            def self.values
-            end
+            def self.values; end
           end
         end
 
@@ -535,8 +516,7 @@ module Braintrust
             )
               .returns(T.attached_class)
           end
-          def self.new(name:, role:, content: nil)
-          end
+          def self.new(name:, role:, content: nil); end
 
           sig do
             override
@@ -548,8 +528,7 @@ module Braintrust
                 }
               )
           end
-          def to_hash
-          end
+          def to_hash; end
 
           module Role
             extend Braintrust::Internal::Type::Enum
@@ -565,8 +544,7 @@ module Braintrust
             sig do
               override.returns(T::Array[Braintrust::Models::FunctionInvokeParams::Message::Function::Role::TaggedSymbol])
             end
-            def self.values
-            end
+            def self.values; end
           end
         end
 
@@ -584,8 +562,7 @@ module Braintrust
             )
               .returns(T.attached_class)
           end
-          def self.new(role:, content: nil)
-          end
+          def self.new(role:, content: nil); end
 
           sig do
             override
@@ -596,8 +573,7 @@ module Braintrust
                 }
               )
           end
-          def to_hash
-          end
+          def to_hash; end
 
           module Role
             extend Braintrust::Internal::Type::Enum
@@ -612,8 +588,7 @@ module Braintrust
             sig do
               override.returns(T::Array[Braintrust::Models::FunctionInvokeParams::Message::Fallback::Role::TaggedSymbol])
             end
-            def self.values
-            end
+            def self.values; end
           end
         end
 
@@ -623,8 +598,7 @@ module Braintrust
               [Braintrust::Models::FunctionInvokeParams::Message::System, Braintrust::Models::FunctionInvokeParams::Message::User, Braintrust::Models::FunctionInvokeParams::Message::Assistant, Braintrust::Models::FunctionInvokeParams::Message::Tool, Braintrust::Models::FunctionInvokeParams::Message::Function, Braintrust::Models::FunctionInvokeParams::Message::Fallback]
             )
         end
-        def self.variants
-        end
+        def self.variants; end
       end
 
       # The mode format of the returned value (defaults to 'auto')
@@ -639,8 +613,7 @@ module Braintrust
         PARALLEL = T.let(:parallel, Braintrust::Models::FunctionInvokeParams::Mode::TaggedSymbol)
 
         sig { override.returns(T::Array[Braintrust::Models::FunctionInvokeParams::Mode::TaggedSymbol]) }
-        def self.values
-        end
+        def self.values; end
       end
 
       # Options for tracing the function call
@@ -691,8 +664,7 @@ module Braintrust
             )
               .returns(T.attached_class)
           end
-          def self.new(object_id_:, object_type:, propagated_event: nil, row_ids: nil)
-          end
+          def self.new(object_id_:, object_type:, propagated_event: nil, row_ids: nil); end
 
           sig do
             override
@@ -705,8 +677,7 @@ module Braintrust
                 }
               )
           end
-          def to_hash
-          end
+          def to_hash; end
 
           module ObjectType
             extend Braintrust::Internal::Type::Enum
@@ -744,8 +715,7 @@ module Braintrust
                   T::Array[Braintrust::Models::FunctionInvokeParams::Parent::SpanParentStruct::ObjectType::TaggedSymbol]
                 )
             end
-            def self.values
-            end
+            def self.values; end
           end
 
           class RowIDs < Braintrust::Internal::Type::BaseModel
@@ -763,18 +733,15 @@ module Braintrust
 
             # Identifiers for the row to to log a subspan under
             sig { params(id: String, root_span_id: String, span_id: String).returns(T.attached_class) }
-            def self.new(id:, root_span_id:, span_id:)
-            end
+            def self.new(id:, root_span_id:, span_id:); end
 
             sig { override.returns({id: String, root_span_id: String, span_id: String}) }
-            def to_hash
-            end
+            def to_hash; end
           end
         end
 
         sig { override.returns([Braintrust::Models::FunctionInvokeParams::Parent::SpanParentStruct, String]) }
-        def self.variants
-        end
+        def self.variants; end
       end
     end
   end

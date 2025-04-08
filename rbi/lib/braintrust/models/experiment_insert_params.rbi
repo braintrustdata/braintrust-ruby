@@ -17,8 +17,7 @@ module Braintrust
         )
           .returns(T.attached_class)
       end
-      def self.new(events:, request_options: {})
-      end
+      def self.new(events:, request_options: {}); end
 
       sig do
         override
@@ -26,8 +25,7 @@ module Braintrust
             {events: T::Array[Braintrust::Models::InsertExperimentEvent], request_options: Braintrust::RequestOptions}
           )
       end
-      def to_hash
-      end
+      def to_hash; end
     end
   end
 end

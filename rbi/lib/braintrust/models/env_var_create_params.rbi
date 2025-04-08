@@ -32,8 +32,7 @@ module Braintrust
         )
           .returns(T.attached_class)
       end
-      def self.new(name:, object_id_:, object_type:, value: nil, request_options: {})
-      end
+      def self.new(name:, object_id_:, object_type:, value: nil, request_options: {}); end
 
       sig do
         override
@@ -47,8 +46,7 @@ module Braintrust
             }
           )
       end
-      def to_hash
-      end
+      def to_hash; end
 
       # The type of the object the environment variable is scoped for
       module ObjectType
@@ -63,8 +61,7 @@ module Braintrust
         FUNCTION = T.let(:function, Braintrust::Models::EnvVarCreateParams::ObjectType::TaggedSymbol)
 
         sig { override.returns(T::Array[Braintrust::Models::EnvVarCreateParams::ObjectType::TaggedSymbol]) }
-        def self.values
-        end
+        def self.values; end
       end
     end
   end

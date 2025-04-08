@@ -46,9 +46,7 @@ module Braintrust
         # A list of tags for the prompt
         tags: nil,
         request_options: {}
-      )
-      end
-
+      ); end
       # Get a function object by its id
       sig do
         params(
@@ -61,9 +59,7 @@ module Braintrust
         # Function id
         function_id,
         request_options: {}
-      )
-      end
-
+      ); end
       # Partially update a function object. Specify the fields to update in the payload.
       #   Any object-type fields will be deep-merged with existing content. Currently we
       #   do not support removing fields or setting them to null.
@@ -99,9 +95,7 @@ module Braintrust
         # A list of tags for the prompt
         tags: nil,
         request_options: {}
-      )
-      end
-
+      ); end
       # List out all functions. The functions are sorted by creation date, with the most
       #   recently-created functions coming first
       sig do
@@ -154,9 +148,7 @@ module Braintrust
         #   version identifier (e.g. '81cd05ee665fdfb3').
         version: nil,
         request_options: {}
-      )
-      end
-
+      ); end
       # Delete a function object by its id
       sig do
         params(
@@ -169,9 +161,7 @@ module Braintrust
         # Function id
         function_id,
         request_options: {}
-      )
-      end
-
+      ); end
       # Invoke a function.
       sig do
         params(
@@ -179,15 +169,15 @@ module Braintrust
           expected: T.anything,
           input: T.anything,
           messages: T::Array[
-          T.any(
-            Braintrust::Models::FunctionInvokeParams::Message::System,
-            Braintrust::Internal::AnyHash,
-            Braintrust::Models::FunctionInvokeParams::Message::User,
-            Braintrust::Models::FunctionInvokeParams::Message::Assistant,
-            Braintrust::Models::FunctionInvokeParams::Message::Tool,
-            Braintrust::Models::FunctionInvokeParams::Message::Function,
-            Braintrust::Models::FunctionInvokeParams::Message::Fallback
-          )
+            T.any(
+              Braintrust::Models::FunctionInvokeParams::Message::System,
+              Braintrust::Internal::AnyHash,
+              Braintrust::Models::FunctionInvokeParams::Message::User,
+              Braintrust::Models::FunctionInvokeParams::Message::Assistant,
+              Braintrust::Models::FunctionInvokeParams::Message::Tool,
+              Braintrust::Models::FunctionInvokeParams::Message::Function,
+              Braintrust::Models::FunctionInvokeParams::Message::Fallback
+            )
           ],
           metadata: T.nilable(T::Hash[Symbol, T.nilable(T.anything)]),
           mode: T.nilable(Braintrust::Models::FunctionInvokeParams::Mode::OrSymbol),
@@ -223,9 +213,7 @@ module Braintrust
         # The version of the function
         version: nil,
         request_options: {}
-      )
-      end
-
+      ); end
       # Create or replace function. If there is an existing function in the project with
       #   the same slug as the one specified in the request, will replace the existing
       #   function with the provided fields
@@ -269,13 +257,10 @@ module Braintrust
         # A list of tags for the prompt
         tags: nil,
         request_options: {}
-      )
-      end
-
+      ); end
       # @api private
       sig { params(client: Braintrust::Client).returns(T.attached_class) }
-      def self.new(client:)
-      end
+      def self.new(client:); end
     end
   end
 end

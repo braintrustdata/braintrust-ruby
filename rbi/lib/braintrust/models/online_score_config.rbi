@@ -11,10 +11,10 @@ module Braintrust
       sig do
         returns(
           T::Array[
-          T.any(
-            Braintrust::Models::OnlineScoreConfig::Scorer::Function,
-            Braintrust::Models::OnlineScoreConfig::Scorer::Global
-          )
+            T.any(
+              Braintrust::Models::OnlineScoreConfig::Scorer::Function,
+              Braintrust::Models::OnlineScoreConfig::Scorer::Global
+            )
           ]
         )
       end
@@ -32,19 +32,18 @@ module Braintrust
         params(
           sampling_rate: Float,
           scorers: T::Array[
-          T.any(
-            Braintrust::Models::OnlineScoreConfig::Scorer::Function,
-            Braintrust::Internal::AnyHash,
-            Braintrust::Models::OnlineScoreConfig::Scorer::Global
-          )
+            T.any(
+              Braintrust::Models::OnlineScoreConfig::Scorer::Function,
+              Braintrust::Internal::AnyHash,
+              Braintrust::Models::OnlineScoreConfig::Scorer::Global
+            )
           ],
           apply_to_root_span: T.nilable(T::Boolean),
           apply_to_span_names: T.nilable(T::Array[String])
         )
           .returns(T.attached_class)
       end
-      def self.new(sampling_rate:, scorers:, apply_to_root_span: nil, apply_to_span_names: nil)
-      end
+      def self.new(sampling_rate:, scorers:, apply_to_root_span: nil, apply_to_span_names: nil); end
 
       sig do
         override
@@ -52,18 +51,17 @@ module Braintrust
             {
               sampling_rate: Float,
               scorers: T::Array[
-              T.any(
-                Braintrust::Models::OnlineScoreConfig::Scorer::Function,
-                Braintrust::Models::OnlineScoreConfig::Scorer::Global
-              )
+                T.any(
+                  Braintrust::Models::OnlineScoreConfig::Scorer::Function,
+                  Braintrust::Models::OnlineScoreConfig::Scorer::Global
+                )
               ],
               apply_to_root_span: T.nilable(T::Boolean),
               apply_to_span_names: T.nilable(T::Array[String])
             }
           )
       end
-      def to_hash
-      end
+      def to_hash; end
 
       module Scorer
         extend Braintrust::Internal::Type::Union
@@ -79,15 +77,13 @@ module Braintrust
             params(id: String, type: Braintrust::Models::OnlineScoreConfig::Scorer::Function::Type::OrSymbol)
               .returns(T.attached_class)
           end
-          def self.new(id:, type:)
-          end
+          def self.new(id:, type:); end
 
           sig do
             override
               .returns({id: String, type: Braintrust::Models::OnlineScoreConfig::Scorer::Function::Type::OrSymbol})
           end
-          def to_hash
-          end
+          def to_hash; end
 
           module Type
             extend Braintrust::Internal::Type::Enum
@@ -100,8 +96,7 @@ module Braintrust
             FUNCTION = T.let(:function, Braintrust::Models::OnlineScoreConfig::Scorer::Function::Type::TaggedSymbol)
 
             sig { override.returns(T::Array[Braintrust::Models::OnlineScoreConfig::Scorer::Function::Type::TaggedSymbol]) }
-            def self.values
-            end
+            def self.values; end
           end
         end
 
@@ -116,15 +111,13 @@ module Braintrust
             params(name: String, type: Braintrust::Models::OnlineScoreConfig::Scorer::Global::Type::OrSymbol)
               .returns(T.attached_class)
           end
-          def self.new(name:, type:)
-          end
+          def self.new(name:, type:); end
 
           sig do
             override
               .returns({name: String, type: Braintrust::Models::OnlineScoreConfig::Scorer::Global::Type::OrSymbol})
           end
-          def to_hash
-          end
+          def to_hash; end
 
           module Type
             extend Braintrust::Internal::Type::Enum
@@ -137,8 +130,7 @@ module Braintrust
             GLOBAL = T.let(:global, Braintrust::Models::OnlineScoreConfig::Scorer::Global::Type::TaggedSymbol)
 
             sig { override.returns(T::Array[Braintrust::Models::OnlineScoreConfig::Scorer::Global::Type::TaggedSymbol]) }
-            def self.values
-            end
+            def self.values; end
           end
         end
 
@@ -148,8 +140,7 @@ module Braintrust
               [Braintrust::Models::OnlineScoreConfig::Scorer::Function, Braintrust::Models::OnlineScoreConfig::Scorer::Global]
             )
         end
-        def self.variants
-        end
+        def self.variants; end
       end
     end
   end

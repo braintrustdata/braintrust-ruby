@@ -39,9 +39,7 @@ module Braintrust
         #   be provided
         user_id: nil,
         request_options: {}
-      )
-      end
-
+      ); end
       # Get an acl object by its id
       sig do
         params(
@@ -54,9 +52,7 @@ module Braintrust
         # Acl id
         acl_id,
         request_options: {}
-      )
-      end
-
+      ); end
       # List out all acls. The acls are sorted by creation date, with the most
       #   recently-created acls coming first
       sig do
@@ -94,9 +90,7 @@ module Braintrust
         #   `starting_after` and `ending_before`
         starting_after: nil,
         request_options: {}
-      )
-      end
-
+      ); end
       # Delete an acl object by its id
       sig do
         params(
@@ -109,9 +103,7 @@ module Braintrust
         # Acl id
         acl_id,
         request_options: {}
-      )
-      end
-
+      ); end
       # Batch update acls. This operation is idempotent, so adding acls which already
       #   exist will have no effect, and removing acls which do not exist will have no
       #   effect.
@@ -151,9 +143,7 @@ module Braintrust
         #   part of a role.
         remove_acls: nil,
         request_options: {}
-      )
-      end
-
+      ); end
       # Delete a single acl
       sig do
         params(
@@ -189,13 +179,10 @@ module Braintrust
         #   be provided
         user_id: nil,
         request_options: {}
-      )
-      end
-
+      ); end
       # @api private
       sig { params(client: Braintrust::Client).returns(T.attached_class) }
-      def self.new(client:)
-      end
+      def self.new(client:); end
     end
   end
 end

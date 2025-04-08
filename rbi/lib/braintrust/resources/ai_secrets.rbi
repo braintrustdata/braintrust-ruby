@@ -29,9 +29,7 @@ module Braintrust
         secret: nil,
         type: nil,
         request_options: {}
-      )
-      end
-
+      ); end
       # Get an ai_secret object by its id
       sig do
         params(
@@ -44,9 +42,7 @@ module Braintrust
         # AiSecret id
         ai_secret_id,
         request_options: {}
-      )
-      end
-
+      ); end
       # Partially update an ai_secret object. Specify the fields to update in the
       #   payload. Any object-type fields will be deep-merged with existing content.
       #   Currently we do not support removing fields or setting them to null.
@@ -70,9 +66,7 @@ module Braintrust
         secret: nil,
         type: nil,
         request_options: {}
-      )
-      end
-
+      ); end
       # List out all ai_secrets. The ai_secrets are sorted by creation date, with the
       #   most recently-created ai_secrets coming first
       sig do
@@ -112,9 +106,7 @@ module Braintrust
         #   `starting_after` and `ending_before`
         starting_after: nil,
         request_options: {}
-      )
-      end
-
+      ); end
       # Delete an ai_secret object by its id
       sig do
         params(
@@ -127,9 +119,7 @@ module Braintrust
         # AiSecret id
         ai_secret_id,
         request_options: {}
-      )
-      end
-
+      ); end
       # Delete a single ai_secret
       sig do
         params(
@@ -147,9 +137,7 @@ module Braintrust
         #   the organization the AI Secret belongs in.
         org_name: nil,
         request_options: {}
-      )
-      end
-
+      ); end
       # Create or replace ai_secret. If there is an existing ai_secret with the same
       #   name as the one specified in the request, will replace the existing ai_secret
       #   with the provided fields
@@ -177,13 +165,10 @@ module Braintrust
         secret: nil,
         type: nil,
         request_options: {}
-      )
-      end
-
+      ); end
       # @api private
       sig { params(client: Braintrust::Client).returns(T.attached_class) }
-      def self.new(client:)
-      end
+      def self.new(client:); end
     end
   end
 end

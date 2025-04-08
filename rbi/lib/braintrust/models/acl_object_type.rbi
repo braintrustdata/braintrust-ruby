@@ -22,8 +22,7 @@ module Braintrust
       ORG_PROJECT = T.let(:org_project, Braintrust::Models::ACLObjectType::TaggedSymbol)
 
       sig { override.returns(T::Array[Braintrust::Models::ACLObjectType::TaggedSymbol]) }
-      def self.values
-      end
+      def self.values; end
     end
   end
 end

@@ -92,9 +92,7 @@ module Braintrust
         project_tag_name: nil,
         starting_after: nil,
         request_options: {}
-      )
-      end
-
+      ); end
       sig do
         override
           .returns(
@@ -111,8 +109,7 @@ module Braintrust
             }
           )
       end
-      def to_hash
-      end
+      def to_hash; end
 
       # Filter search results to a particular set of object IDs. To specify a list of
       #   IDs, include the query param multiple times
@@ -120,8 +117,7 @@ module Braintrust
         extend Braintrust::Internal::Type::Union
 
         sig { override.returns([String, T::Array[String]]) }
-        def self.variants
-        end
+        def self.variants; end
 
         StringArray = T.let(
           Braintrust::Internal::Type::ArrayOf[String],

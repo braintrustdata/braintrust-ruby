@@ -290,9 +290,7 @@ module Braintrust
         span_id: nil,
         span_parents: nil,
         tags: nil
-      )
-      end
-
+      ); end
       sig do
         override
           .returns(
@@ -320,8 +318,7 @@ module Braintrust
             }
           )
       end
-      def to_hash
-      end
+      def to_hash; end
 
       class Context < Braintrust::Internal::Type::BaseModel
         # Name of the file in code where the experiment event was created
@@ -348,8 +345,7 @@ module Braintrust
           )
             .returns(T.attached_class)
         end
-        def self.new(caller_filename: nil, caller_functionname: nil, caller_lineno: nil)
-        end
+        def self.new(caller_filename: nil, caller_functionname: nil, caller_lineno: nil); end
 
         sig do
           override
@@ -361,8 +357,7 @@ module Braintrust
               }
             )
         end
-        def to_hash
-        end
+        def to_hash; end
       end
 
       class Metadata < Braintrust::Internal::Type::BaseModel
@@ -376,12 +371,10 @@ module Braintrust
         #   anything else that would be useful to slice/dice later. The values in `metadata`
         #   can be any JSON-serializable type, but its keys must be strings
         sig { params(model: T.nilable(String)).returns(T.attached_class) }
-        def self.new(model: nil)
-        end
+        def self.new(model: nil); end
 
         sig { override.returns({model: T.nilable(String)}) }
-        def to_hash
-        end
+        def to_hash; end
       end
 
       class Metrics < Braintrust::Internal::Type::BaseModel
@@ -455,9 +448,7 @@ module Braintrust
           prompt_tokens: nil,
           start: nil,
           tokens: nil
-        )
-        end
-
+        ); end
         sig do
           override
             .returns(
@@ -473,8 +464,7 @@ module Braintrust
               }
             )
         end
-        def to_hash
-        end
+        def to_hash; end
       end
     end
   end
