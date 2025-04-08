@@ -53,7 +53,7 @@ module Braintrust
       #     anybody inside or outside the organization
       #
       #   @return [Boolean, nil]
-      optional :public, Braintrust::Internal::Type::BooleanModel, nil?: true
+      optional :public, Braintrust::Internal::Type::Boolean, nil?: true
 
       # @!attribute repo_info
       #   Metadata about the state of the repo when the experiment was created

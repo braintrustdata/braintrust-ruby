@@ -71,7 +71,7 @@ module Braintrust
       #   Whether the experiment should be public. Defaults to false.
       #
       #   @return [Boolean, nil]
-      optional :is_public, Braintrust::Internal::Type::BooleanModel, nil?: true
+      optional :is_public, Braintrust::Internal::Type::Boolean, nil?: true
 
       # @!attribute max_concurrency
       #   The maximum number of tasks/scorers that will be run concurrently. Defaults to
@@ -113,7 +113,7 @@ module Braintrust
       #     If false, the request will return the evaluation's summary upon completion.
       #
       #   @return [Boolean, nil]
-      optional :stream, Braintrust::Internal::Type::BooleanModel
+      optional :stream, Braintrust::Internal::Type::Boolean
 
       # @!parse
       #   # @return [Boolean]
