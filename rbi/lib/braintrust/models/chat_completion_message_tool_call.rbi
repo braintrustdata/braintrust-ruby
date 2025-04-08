@@ -28,8 +28,7 @@ module Braintrust
         )
           .returns(T.attached_class)
       end
-      def self.new(id:, function:, type:)
-      end
+      def self.new(id:, function:, type:); end
 
       sig do
         override
@@ -41,8 +40,7 @@ module Braintrust
             }
           )
       end
-      def to_hash
-      end
+      def to_hash; end
 
       class Function < Braintrust::Internal::Type::BaseModel
         sig { returns(String) }
@@ -52,12 +50,10 @@ module Braintrust
         attr_accessor :name
 
         sig { params(arguments: String, name: String).returns(T.attached_class) }
-        def self.new(arguments:, name:)
-        end
+        def self.new(arguments:, name:); end
 
         sig { override.returns({arguments: String, name: String}) }
-        def to_hash
-        end
+        def to_hash; end
       end
 
       module Type
@@ -70,8 +66,7 @@ module Braintrust
         FUNCTION = T.let(:function, Braintrust::Models::ChatCompletionMessageToolCall::Type::TaggedSymbol)
 
         sig { override.returns(T::Array[Braintrust::Models::ChatCompletionMessageToolCall::Type::TaggedSymbol]) }
-        def self.values
-        end
+        def self.values; end
       end
     end
   end

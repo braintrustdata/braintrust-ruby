@@ -60,8 +60,7 @@ module Braintrust
         )
           .returns(T.attached_class)
       end
-      def self.new(model: nil, params: nil, position: nil)
-      end
+      def self.new(model: nil, params: nil, position: nil); end
 
       sig do
         override
@@ -79,8 +78,7 @@ module Braintrust
             }
           )
       end
-      def to_hash
-      end
+      def to_hash; end
 
       module Params
         extend Braintrust::Internal::Type::Union
@@ -264,9 +262,7 @@ module Braintrust
             tool_choice: nil,
             top_p: nil,
             use_cache: nil
-          )
-          end
-
+          ); end
           sig do
             override
               .returns(
@@ -299,8 +295,7 @@ module Braintrust
                 }
               )
           end
-          def to_hash
-          end
+          def to_hash; end
 
           module FunctionCall
             extend Braintrust::Internal::Type::Union
@@ -310,12 +305,10 @@ module Braintrust
               attr_accessor :name
 
               sig { params(name: String).returns(T.attached_class) }
-              def self.new(name:)
-              end
+              def self.new(name:); end
 
               sig { override.returns({name: String}) }
-              def to_hash
-              end
+              def to_hash; end
             end
 
             sig do
@@ -324,8 +317,7 @@ module Braintrust
                   [Braintrust::Models::PromptOptions::Params::OpenAIModelParams::FunctionCall::OrSymbol, Braintrust::Models::PromptOptions::Params::OpenAIModelParams::FunctionCall::Function]
                 )
             end
-            def self.variants
-            end
+            def self.variants; end
 
             TaggedSymbol =
               T.type_alias { T.all(Symbol, Braintrust::Models::PromptOptions::Params::OpenAIModelParams::FunctionCall) }
@@ -374,8 +366,7 @@ module Braintrust
                   T::Array[Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ReasoningEffort::TaggedSymbol]
                 )
             end
-            def self.values
-            end
+            def self.values; end
           end
 
           module ResponseFormat
@@ -395,8 +386,7 @@ module Braintrust
                 )
                   .returns(T.attached_class)
               end
-              def self.new(type:)
-              end
+              def self.new(type:); end
 
               sig do
                 override
@@ -406,8 +396,7 @@ module Braintrust
                     }
                   )
               end
-              def to_hash
-              end
+              def to_hash; end
 
               module Type
                 extend Braintrust::Internal::Type::Enum
@@ -435,12 +424,11 @@ module Braintrust
                   override
                     .returns(
                       T::Array[
-                      Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ResponseFormat::JsonObject::Type::TaggedSymbol
+                        Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ResponseFormat::JsonObject::Type::TaggedSymbol
                       ]
                     )
                 end
-                def self.values
-                end
+                def self.values; end
               end
             end
 
@@ -480,8 +468,7 @@ module Braintrust
                 )
                   .returns(T.attached_class)
               end
-              def self.new(json_schema:, type:)
-              end
+              def self.new(json_schema:, type:); end
 
               sig do
                 override
@@ -492,8 +479,7 @@ module Braintrust
                     }
                   )
               end
-              def to_hash
-              end
+              def to_hash; end
 
               class JsonSchema < Braintrust::Internal::Type::BaseModel
                 sig { returns(String) }
@@ -523,8 +509,7 @@ module Braintrust
                   )
                     .returns(T.attached_class)
                 end
-                def self.new(name:, description: nil, schema: nil, strict: nil)
-                end
+                def self.new(name:, description: nil, schema: nil, strict: nil); end
 
                 sig do
                   override
@@ -537,15 +522,13 @@ module Braintrust
                       }
                     )
                 end
-                def to_hash
-                end
+                def to_hash; end
 
                 module Schema
                   extend Braintrust::Internal::Type::Union
 
                   sig { override.returns([T::Hash[Symbol, T.nilable(T.anything)], String]) }
-                  def self.variants
-                  end
+                  def self.variants; end
 
                   ObjectMap =
                     T.let(
@@ -581,12 +564,11 @@ module Braintrust
                   override
                     .returns(
                       T::Array[
-                      Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ResponseFormat::JsonSchema::Type::TaggedSymbol
+                        Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ResponseFormat::JsonSchema::Type::TaggedSymbol
                       ]
                     )
                 end
-                def self.values
-                end
+                def self.values; end
               end
             end
 
@@ -604,8 +586,7 @@ module Braintrust
                 )
                   .returns(T.attached_class)
               end
-              def self.new(type:)
-              end
+              def self.new(type:); end
 
               sig do
                 override
@@ -613,8 +594,7 @@ module Braintrust
                     {type: Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ResponseFormat::Text::Type::OrSymbol}
                   )
               end
-              def to_hash
-              end
+              def to_hash; end
 
               module Type
                 extend Braintrust::Internal::Type::Enum
@@ -642,8 +622,7 @@ module Braintrust
                       T::Array[Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ResponseFormat::Text::Type::TaggedSymbol]
                     )
                 end
-                def self.values
-                end
+                def self.values; end
               end
             end
 
@@ -653,8 +632,7 @@ module Braintrust
                   [Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ResponseFormat::JsonObject, Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ResponseFormat::JsonSchema, Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ResponseFormat::Text]
                 )
             end
-            def self.variants
-            end
+            def self.variants; end
           end
 
           module ToolChoice
@@ -692,8 +670,7 @@ module Braintrust
                 )
                   .returns(T.attached_class)
               end
-              def self.new(function:, type:)
-              end
+              def self.new(function:, type:); end
 
               sig do
                 override
@@ -704,20 +681,17 @@ module Braintrust
                     }
                   )
               end
-              def to_hash
-              end
+              def to_hash; end
 
               class Function < Braintrust::Internal::Type::BaseModel
                 sig { returns(String) }
                 attr_accessor :name
 
                 sig { params(name: String).returns(T.attached_class) }
-                def self.new(name:)
-                end
+                def self.new(name:); end
 
                 sig { override.returns({name: String}) }
-                def to_hash
-                end
+                def to_hash; end
               end
 
               module Type
@@ -746,8 +720,7 @@ module Braintrust
                       T::Array[Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ToolChoice::Function::Type::TaggedSymbol]
                     )
                 end
-                def self.values
-                end
+                def self.values; end
               end
             end
 
@@ -757,8 +730,7 @@ module Braintrust
                   [Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ToolChoice::OrSymbol, Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ToolChoice::Function]
                 )
             end
-            def self.variants
-            end
+            def self.variants; end
 
             TaggedSymbol =
               T.type_alias { T.all(Symbol, Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ToolChoice) }
@@ -838,9 +810,7 @@ module Braintrust
             top_k: nil,
             top_p: nil,
             use_cache: nil
-          )
-          end
-
+          ); end
           sig do
             override
               .returns(
@@ -855,8 +825,7 @@ module Braintrust
                 }
               )
           end
-          def to_hash
-          end
+          def to_hash; end
         end
 
         class GoogleModelParams < Braintrust::Internal::Type::BaseModel
@@ -900,8 +869,7 @@ module Braintrust
             )
               .returns(T.attached_class)
           end
-          def self.new(max_output_tokens: nil, temperature: nil, top_k: nil, top_p: nil, use_cache: nil)
-          end
+          def self.new(max_output_tokens: nil, temperature: nil, top_k: nil, top_p: nil, use_cache: nil); end
 
           sig do
             override
@@ -913,8 +881,7 @@ module Braintrust
                          use_cache: T::Boolean
                        })
           end
-          def to_hash
-          end
+          def to_hash; end
         end
 
         class WindowAIModelParams < Braintrust::Internal::Type::BaseModel
@@ -937,12 +904,10 @@ module Braintrust
           attr_writer :use_cache
 
           sig { params(temperature: Float, top_k: Float, use_cache: T::Boolean).returns(T.attached_class) }
-          def self.new(temperature: nil, top_k: nil, use_cache: nil)
-          end
+          def self.new(temperature: nil, top_k: nil, use_cache: nil); end
 
           sig { override.returns({temperature: Float, top_k: Float, use_cache: T::Boolean}) }
-          def to_hash
-          end
+          def to_hash; end
         end
 
         class JsCompletionParams < Braintrust::Internal::Type::BaseModel
@@ -953,12 +918,10 @@ module Braintrust
           attr_writer :use_cache
 
           sig { params(use_cache: T::Boolean).returns(T.attached_class) }
-          def self.new(use_cache: nil)
-          end
+          def self.new(use_cache: nil); end
 
           sig { override.returns({use_cache: T::Boolean}) }
-          def to_hash
-          end
+          def to_hash; end
         end
 
         sig do
@@ -967,8 +930,7 @@ module Braintrust
               [Braintrust::Models::PromptOptions::Params::OpenAIModelParams, Braintrust::Models::PromptOptions::Params::AnthropicModelParams, Braintrust::Models::PromptOptions::Params::GoogleModelParams, Braintrust::Models::PromptOptions::Params::WindowAIModelParams, Braintrust::Models::PromptOptions::Params::JsCompletionParams]
             )
         end
-        def self.variants
-        end
+        def self.variants; end
       end
     end
   end

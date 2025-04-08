@@ -67,8 +67,7 @@ module Braintrust
             }
           )
       end
-      def to_hash
-      end
+      def to_hash; end
 
       class MemberPermission < Braintrust::Internal::Type::BaseModel
         # Each permission permits a certain type of operation on an object in the system
@@ -89,8 +88,7 @@ module Braintrust
           )
             .returns(T.attached_class)
         end
-        def self.new(permission:, restrict_object_type: nil)
-        end
+        def self.new(permission:, restrict_object_type: nil); end
 
         sig do
           override
@@ -101,8 +99,7 @@ module Braintrust
               }
             )
         end
-        def to_hash
-        end
+        def to_hash; end
       end
     end
   end

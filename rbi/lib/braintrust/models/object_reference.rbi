@@ -34,8 +34,7 @@ module Braintrust
         )
           .returns(T.attached_class)
       end
-      def self.new(id:, _xact_id:, object_id_:, object_type:, created: nil)
-      end
+      def self.new(id:, _xact_id:, object_id_:, object_type:, created: nil); end
 
       sig do
         override
@@ -49,8 +48,7 @@ module Braintrust
             }
           )
       end
-      def to_hash
-      end
+      def to_hash; end
 
       # Type of the object the event is originating from.
       module ObjectType
@@ -68,8 +66,7 @@ module Braintrust
         PROJECT_LOGS = T.let(:project_logs, Braintrust::Models::ObjectReference::ObjectType::TaggedSymbol)
 
         sig { override.returns(T::Array[Braintrust::Models::ObjectReference::ObjectType::TaggedSymbol]) }
-        def self.values
-        end
+        def self.values; end
       end
     end
   end

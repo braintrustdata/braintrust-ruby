@@ -24,8 +24,7 @@ module Braintrust
         )
           .returns(T.attached_class)
       end
-      def self.new(filter: nil, match: nil, sort: nil, tag: nil)
-      end
+      def self.new(filter: nil, match: nil, sort: nil, tag: nil); end
 
       sig do
         override
@@ -38,8 +37,7 @@ module Braintrust
             }
           )
       end
-      def to_hash
-      end
+      def to_hash; end
     end
   end
 end

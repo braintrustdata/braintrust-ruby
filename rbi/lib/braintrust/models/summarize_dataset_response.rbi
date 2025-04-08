@@ -23,7 +23,9 @@ module Braintrust
       sig { returns(T.nilable(Braintrust::Models::DataSummary)) }
       attr_reader :data_summary
 
-      sig { params(data_summary: T.nilable(T.any(Braintrust::Models::DataSummary, Braintrust::Internal::AnyHash))).void }
+      sig do
+        params(data_summary: T.nilable(T.any(Braintrust::Models::DataSummary, Braintrust::Internal::AnyHash))).void
+      end
       attr_writer :data_summary
 
       # Summary of a dataset
@@ -37,8 +39,7 @@ module Braintrust
         )
           .returns(T.attached_class)
       end
-      def self.new(dataset_name:, dataset_url:, project_name:, project_url:, data_summary: nil)
-      end
+      def self.new(dataset_name:, dataset_url:, project_name:, project_url:, data_summary: nil); end
 
       sig do
         override
@@ -52,8 +53,7 @@ module Braintrust
             }
           )
       end
-      def to_hash
-      end
+      def to_hash; end
     end
   end
 end

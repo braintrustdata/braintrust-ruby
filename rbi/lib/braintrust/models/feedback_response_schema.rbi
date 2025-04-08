@@ -7,12 +7,10 @@ module Braintrust
       attr_accessor :status
 
       sig { params(status: Braintrust::Models::FeedbackResponseSchema::Status::OrSymbol).returns(T.attached_class) }
-      def self.new(status:)
-      end
+      def self.new(status:); end
 
       sig { override.returns({status: Braintrust::Models::FeedbackResponseSchema::Status::TaggedSymbol}) }
-      def to_hash
-      end
+      def to_hash; end
 
       module Status
         extend Braintrust::Internal::Type::Enum
@@ -24,8 +22,7 @@ module Braintrust
         SUCCESS = T.let(:success, Braintrust::Models::FeedbackResponseSchema::Status::TaggedSymbol)
 
         sig { override.returns(T::Array[Braintrust::Models::FeedbackResponseSchema::Status::TaggedSymbol]) }
-        def self.values
-        end
+        def self.values; end
       end
     end
   end

@@ -37,8 +37,7 @@ module Braintrust
         )
           .returns(T.attached_class)
       end
-      def self.new(id:, comment: nil, metadata: nil, source: nil, tags: nil)
-      end
+      def self.new(id:, comment: nil, metadata: nil, source: nil, tags: nil); end
 
       sig do
         override
@@ -52,8 +51,7 @@ module Braintrust
             }
           )
       end
-      def to_hash
-      end
+      def to_hash; end
 
       # The source of the feedback. Must be one of "external" (default), "app", or "api"
       module Source
@@ -68,8 +66,7 @@ module Braintrust
         EXTERNAL = T.let(:external, Braintrust::Models::FeedbackDatasetItem::Source::TaggedSymbol)
 
         sig { override.returns(T::Array[Braintrust::Models::FeedbackDatasetItem::Source::TaggedSymbol]) }
-        def self.values
-        end
+        def self.values; end
       end
     end
   end

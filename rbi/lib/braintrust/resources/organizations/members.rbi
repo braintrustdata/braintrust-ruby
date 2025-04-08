@@ -35,13 +35,10 @@ module Braintrust
           # Users to remove from the organization
           remove_users: nil,
           request_options: {}
-        )
-        end
-
+        ); end
         # @api private
         sig { params(client: Braintrust::Client).returns(T.attached_class) }
-        def self.new(client:)
-        end
+        def self.new(client:); end
       end
     end
   end

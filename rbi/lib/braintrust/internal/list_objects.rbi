@@ -11,8 +11,7 @@ module Braintrust
       attr_accessor :objects
 
       sig { returns(String) }
-      def inspect
-      end
+      def inspect; end
     end
   end
 end

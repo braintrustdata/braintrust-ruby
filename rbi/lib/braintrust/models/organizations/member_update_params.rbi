@@ -78,8 +78,7 @@ module Braintrust
               }
             )
         end
-        def to_hash
-        end
+        def to_hash; end
 
         class InviteUsers < Braintrust::Internal::Type::BaseModel
           # Emails of users to invite
@@ -131,9 +130,7 @@ module Braintrust
             group_names: nil,
             ids: nil,
             send_invite_emails: nil
-          )
-          end
-
+          ); end
           sig do
             override
               .returns(
@@ -148,8 +145,7 @@ module Braintrust
                 }
               )
           end
-          def to_hash
-          end
+          def to_hash; end
         end
 
         class RemoveUsers < Braintrust::Internal::Type::BaseModel
@@ -168,12 +164,10 @@ module Braintrust
               ids: T.nilable(T::Array[String])
             ).returns(T.attached_class)
           end
-          def self.new(emails: nil, ids: nil)
-          end
+          def self.new(emails: nil, ids: nil); end
 
           sig { override.returns({emails: T.nilable(T::Array[String]), ids: T.nilable(T::Array[String])}) }
-          def to_hash
-          end
+          def to_hash; end
         end
       end
     end

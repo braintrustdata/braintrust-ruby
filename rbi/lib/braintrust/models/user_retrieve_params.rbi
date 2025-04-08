@@ -10,12 +10,10 @@ module Braintrust
         params(request_options: T.any(Braintrust::RequestOptions, Braintrust::Internal::AnyHash))
           .returns(T.attached_class)
       end
-      def self.new(request_options: {})
-      end
+      def self.new(request_options: {}); end
 
       sig { override.returns({request_options: Braintrust::RequestOptions}) }
-      def to_hash
-      end
+      def to_hash; end
     end
   end
 end

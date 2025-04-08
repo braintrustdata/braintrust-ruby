@@ -15,9 +15,7 @@ module Braintrust
         # User id
         user_id,
         request_options: {}
-      )
-      end
-
+      ); end
       # List out all users. The users are sorted by creation date, with the most
       #   recently-created users coming first
       sig do
@@ -64,13 +62,10 @@ module Braintrust
         #   `starting_after` and `ending_before`
         starting_after: nil,
         request_options: {}
-      )
-      end
-
+      ); end
       # @api private
       sig { params(client: Braintrust::Client).returns(T.attached_class) }
-      def self.new(client:)
-      end
+      def self.new(client:); end
     end
   end
 end

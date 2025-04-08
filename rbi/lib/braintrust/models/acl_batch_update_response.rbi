@@ -36,15 +36,13 @@ module Braintrust
         )
           .returns(T.attached_class)
       end
-      def self.new(added_acls:, removed_acls:)
-      end
+      def self.new(added_acls:, removed_acls:); end
 
       sig do
         override
           .returns({added_acls: T::Array[Braintrust::Models::ACL], removed_acls: T::Array[Braintrust::Models::ACL]})
       end
-      def to_hash
-      end
+      def to_hash; end
     end
   end
 end
