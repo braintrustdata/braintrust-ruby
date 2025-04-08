@@ -29,17 +29,17 @@ module Braintrust
 
       # Ids of the roles this role inherits from
       #
-      #   An inheriting role has all the permissions contained in its member roles, as
-      #   well as all of their inherited permissions
+      # An inheriting role has all the permissions contained in its member roles, as
+      # well as all of their inherited permissions
       sig { returns(T.nilable(T::Array[String])) }
       attr_accessor :member_roles
 
       # Unique id for the organization that the role belongs under
       #
-      #   A null org_id indicates a system role, which may be assigned to anybody and
-      #   inherited by any other role, but cannot be edited.
+      # A null org_id indicates a system role, which may be assigned to anybody and
+      # inherited by any other role, but cannot be edited.
       #
-      #   It is forbidden to change the org after creating a role
+      # It is forbidden to change the org after creating a role
       sig { returns(T.nilable(String)) }
       attr_accessor :org_id
 
@@ -49,8 +49,8 @@ module Braintrust
 
       # A role is a collection of permissions which can be granted as part of an ACL
       #
-      #   Roles can consist of individual permissions, as well as a set of roles they
-      #   inherit from
+      # Roles can consist of individual permissions, as well as a set of roles they
+      # inherit from
       sig do
         params(
           id: String,
@@ -97,8 +97,8 @@ module Braintrust
       class MemberPermission < Braintrust::Internal::Type::BaseModel
         # Each permission permits a certain type of operation on an object in the system
         #
-        #   Permissions can be assigned to to objects on an individual basis, or grouped
-        #   into roles
+        # Permissions can be assigned to to objects on an individual basis, or grouped
+        # into roles
         sig { returns(Braintrust::Models::Permission::TaggedSymbol) }
         attr_accessor :permission
 

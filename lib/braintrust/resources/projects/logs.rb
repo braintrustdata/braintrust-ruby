@@ -27,8 +27,8 @@ module Braintrust
         end
 
         # Fetch the events in a project logs. Equivalent to the POST form of the same
-        #   path, but with the parameters in the URL query rather than in the request body.
-        #   For more complex queries, use the `POST /btql` endpoint.
+        # path, but with the parameters in the URL query rather than in the request body.
+        # For more complex queries, use the `POST /btql` endpoint.
         #
         # @overload fetch(project_id, limit: nil, max_root_span_id: nil, max_xact_id: nil, version: nil, request_options: {})
         #
@@ -54,8 +54,8 @@ module Braintrust
         end
 
         # Fetch the events in a project logs. Equivalent to the GET form of the same path,
-        #   but with the parameters in the request body rather than in the URL query. For
-        #   more complex queries, use the `POST /btql` endpoint.
+        # but with the parameters in the request body rather than in the URL query. For
+        # more complex queries, use the `POST /btql` endpoint.
         #
         # @overload fetch_post(project_id, cursor: nil, limit: nil, max_root_span_id: nil, max_xact_id: nil, version: nil, request_options: {})
         #

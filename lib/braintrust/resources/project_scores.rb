@@ -4,8 +4,8 @@ module Braintrust
   module Resources
     class ProjectScores
       # Create a new project_score. If there is an existing project_score in the project
-      #   with the same name as the one specified in the request, will return the existing
-      #   project_score unmodified
+      # with the same name as the one specified in the request, will return the existing
+      # project_score unmodified
       #
       # @overload create(name:, project_id:, score_type:, categories: nil, config: nil, description: nil, request_options: {})
       #
@@ -51,8 +51,8 @@ module Braintrust
       end
 
       # Partially update a project_score object. Specify the fields to update in the
-      #   payload. Any object-type fields will be deep-merged with existing content.
-      #   Currently we do not support removing fields or setting them to null.
+      # payload. Any object-type fields will be deep-merged with existing content.
+      # Currently we do not support removing fields or setting them to null.
       #
       # @overload update(project_score_id, categories: nil, config: nil, description: nil, name: nil, score_type: nil, request_options: {})
       #
@@ -79,7 +79,7 @@ module Braintrust
       end
 
       # List out all project_scores. The project_scores are sorted by creation date,
-      #   with the most recently-created project_scores coming first
+      # with the most recently-created project_scores coming first
       #
       # @overload list(ending_before: nil, ids: nil, limit: nil, org_name: nil, project_id: nil, project_name: nil, project_score_name: nil, score_type: nil, starting_after: nil, request_options: {})
       #
@@ -129,8 +129,8 @@ module Braintrust
       end
 
       # Create or replace project_score. If there is an existing project_score in the
-      #   project with the same name as the one specified in the request, will replace the
-      #   existing project_score with the provided fields
+      # project with the same name as the one specified in the request, will replace the
+      # existing project_score with the provided fields
       #
       # @overload replace(name:, project_id:, score_type:, categories: nil, config: nil, description: nil, request_options: {})
       #

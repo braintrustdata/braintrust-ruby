@@ -50,12 +50,12 @@ module Braintrust
       attr_accessor :description
 
       # An optional LexoRank-based string that sets the sort position for the score in
-      #   the UI
+      # the UI
       sig { returns(T.nilable(String)) }
       attr_accessor :position
 
       # A project score is a user-configured score, which can be manually-labeled
-      #   through the UI
+      # through the UI
       sig do
         params(
           id: String,

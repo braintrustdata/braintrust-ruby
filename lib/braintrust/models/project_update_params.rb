@@ -16,7 +16,7 @@ module Braintrust
 
       # @!attribute settings
       #   Project settings. Patch operations replace all settings, so make sure you
-      #     include all settings you want to keep.
+      #   include all settings you want to keep.
       #
       #   @return [Braintrust::Models::ProjectSettings, nil]
       optional :settings, -> { Braintrust::Models::ProjectSettings }, nil?: true

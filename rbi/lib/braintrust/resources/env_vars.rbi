@@ -4,7 +4,7 @@ module Braintrust
   module Resources
     class EnvVars
       # Create a new env_var. If there is an existing env_var with the same name as the
-      #   one specified in the request, will return the existing env_var unmodified
+      # one specified in the request, will return the existing env_var unmodified
       sig do
         params(
           name: String,
@@ -40,8 +40,8 @@ module Braintrust
         request_options: {}
       ); end
       # Partially update an env_var object. Specify the fields to update in the payload.
-      #   Any object-type fields will be deep-merged with existing content. Currently we
-      #   do not support removing fields or setting them to null.
+      # Any object-type fields will be deep-merged with existing content. Currently we
+      # do not support removing fields or setting them to null.
       sig do
         params(
           env_var_id: String,
@@ -61,7 +61,7 @@ module Braintrust
         request_options: {}
       ); end
       # List out all env_vars. The env_vars are sorted by creation date, with the most
-      #   recently-created env_vars coming first
+      # recently-created env_vars coming first
       sig do
         params(
           env_var_name: String,
@@ -77,7 +77,7 @@ module Braintrust
         # Name of the env_var to search for
         env_var_name: nil,
         # Filter search results to a particular set of object IDs. To specify a list of
-        #   IDs, include the query param multiple times
+        # IDs, include the query param multiple times
         ids: nil,
         # Limit the number of objects to return
         limit: nil,
@@ -101,8 +101,8 @@ module Braintrust
         request_options: {}
       ); end
       # Create or replace env_var. If there is an existing env_var with the same name as
-      #   the one specified in the request, will replace the existing env_var with the
-      #   provided fields
+      # the one specified in the request, will replace the existing env_var with the
+      # provided fields
       sig do
         params(
           name: String,

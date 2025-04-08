@@ -4,7 +4,7 @@ module Braintrust
   module Resources
     class Views
       # Create a new view. If there is an existing view with the same name as the one
-      #   specified in the request, will return the existing view unmodified
+      # specified in the request, will return the existing view unmodified
       #
       # @overload create(name:, object_id_:, object_type:, view_type:, deleted_at: nil, options: nil, user_id: nil, view_data: nil, request_options: {})
       #
@@ -56,8 +56,8 @@ module Braintrust
       end
 
       # Partially update a view object. Specify the fields to update in the payload. Any
-      #   object-type fields will be deep-merged with existing content. Currently we do
-      #   not support removing fields or setting them to null.
+      # object-type fields will be deep-merged with existing content. Currently we do
+      # not support removing fields or setting them to null.
       #
       # @overload update(view_id, object_id_:, object_type:, name: nil, options: nil, user_id: nil, view_data: nil, view_type: nil, request_options: {})
       #
@@ -86,7 +86,7 @@ module Braintrust
       end
 
       # List out all views. The views are sorted by creation date, with the most
-      #   recently-created views coming first
+      # recently-created views coming first
       #
       # @overload list(object_id_:, object_type:, ending_before: nil, ids: nil, limit: nil, starting_after: nil, view_name: nil, view_type: nil, request_options: {})
       #
@@ -139,8 +139,8 @@ module Braintrust
       end
 
       # Create or replace view. If there is an existing view with the same name as the
-      #   one specified in the request, will replace the existing view with the provided
-      #   fields
+      # one specified in the request, will replace the existing view with the provided
+      # fields
       #
       # @overload replace(name:, object_id_:, object_type:, view_type:, deleted_at: nil, options: nil, user_id: nil, view_data: nil, request_options: {})
       #

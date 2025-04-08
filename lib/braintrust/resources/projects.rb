@@ -7,7 +7,7 @@ module Braintrust
       attr_reader :logs
 
       # Create a new project. If there is an existing project with the same name as the
-      #   one specified in the request, will return the existing project unmodified
+      # one specified in the request, will return the existing project unmodified
       #
       # @overload create(name:, org_name: nil, request_options: {})
       #
@@ -49,8 +49,8 @@ module Braintrust
       end
 
       # Partially update a project object. Specify the fields to update in the payload.
-      #   Any object-type fields will be deep-merged with existing content. Currently we
-      #   do not support removing fields or setting them to null.
+      # Any object-type fields will be deep-merged with existing content. Currently we
+      # do not support removing fields or setting them to null.
       #
       # @overload update(project_id, name: nil, settings: nil, request_options: {})
       #
@@ -74,7 +74,7 @@ module Braintrust
       end
 
       # List out all projects. The projects are sorted by creation date, with the most
-      #   recently-created projects coming first
+      # recently-created projects coming first
       #
       # @overload list(ending_before: nil, ids: nil, limit: nil, org_name: nil, project_name: nil, starting_after: nil, request_options: {})
       #

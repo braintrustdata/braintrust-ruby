@@ -12,8 +12,8 @@ module Braintrust
       # @!attribute cursor
       #   Pagination cursor
       #
-      #     Pass this string directly as the `cursor` param to your next fetch request to
-      #     get the next page of results. Not provided if the returned result set is empty.
+      #   Pass this string directly as the `cursor` param to your next fetch request to
+      #   get the next page of results. Not provided if the returned result set is empty.
       #
       #   @return [String, nil]
       optional :cursor, String, nil?: true

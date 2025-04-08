@@ -55,17 +55,17 @@ module Braintrust
       attr_accessor :task
 
       # An optional experiment id to use as a base. If specified, the new experiment
-      #   will be summarized and compared to this experiment.
+      # will be summarized and compared to this experiment.
       sig { returns(T.nilable(String)) }
       attr_accessor :base_experiment_id
 
       # An optional experiment name to use as a base. If specified, the new experiment
-      #   will be summarized and compared to this experiment.
+      # will be summarized and compared to this experiment.
       sig { returns(T.nilable(String)) }
       attr_accessor :base_experiment_name
 
       # An optional name for the experiment created by this eval. If it conflicts with
-      #   an existing experiment, it will be suffixed with a unique identifier.
+      # an existing experiment, it will be suffixed with a unique identifier.
       sig { returns(T.nilable(String)) }
       attr_reader :experiment_name
 
@@ -73,7 +73,7 @@ module Braintrust
       attr_writer :experiment_name
 
       # Optional settings for collecting git metadata. By default, will collect all git
-      #   metadata fields allowed in org-level settings.
+      # metadata fields allowed in org-level settings.
       sig { returns(T.nilable(Braintrust::Models::EvalCreateParams::GitMetadataSettings)) }
       attr_reader :git_metadata_settings
 
@@ -90,12 +90,12 @@ module Braintrust
       attr_accessor :is_public
 
       # The maximum number of tasks/scorers that will be run concurrently. Defaults to
-      #   undefined, in which case there is no max concurrency.
+      # undefined, in which case there is no max concurrency.
       sig { returns(T.nilable(Float)) }
       attr_accessor :max_concurrency
 
       # Optional experiment-level metadata to store about the evaluation. You can later
-      #   use this to slice & dice across experiments.
+      # use this to slice & dice across experiments.
       sig { returns(T.nilable(T::Hash[Symbol, T.nilable(T.anything)])) }
       attr_reader :metadata
 
@@ -126,8 +126,8 @@ module Braintrust
       attr_writer :repo_info
 
       # Whether to stream the results of the eval. If true, the request will return two
-      #   events: one to indicate the experiment has started, and another upon completion.
-      #   If false, the request will return the evaluation's summary upon completion.
+      # events: one to indicate the experiment has started, and another upon completion.
+      # If false, the request will return the evaluation's summary upon completion.
       sig { returns(T.nilable(T::Boolean)) }
       attr_reader :stream
 
@@ -135,13 +135,13 @@ module Braintrust
       attr_writer :stream
 
       # The maximum duration, in milliseconds, to run the evaluation. Defaults to
-      #   undefined, in which case there is no timeout.
+      # undefined, in which case there is no timeout.
       sig { returns(T.nilable(Float)) }
       attr_accessor :timeout
 
       # The number of times to run the evaluator per input. This is useful for
-      #   evaluating applications that have non-deterministic behavior and gives you both
-      #   a stronger aggregate measure and a sense of the variance in the results.
+      # evaluating applications that have non-deterministic behavior and gives you both
+      # a stronger aggregate measure and a sense of the variance in the results.
       sig { returns(T.nilable(Float)) }
       attr_accessor :trial_count
 
@@ -393,7 +393,7 @@ module Braintrust
 
         class GlobalFunction < Braintrust::Internal::Type::BaseModel
           # The name of the global function. Currently, the global namespace includes the
-          #   functions in autoevals
+          # functions in autoevals
           sig { returns(String) }
           attr_accessor :global_function
 
@@ -633,7 +633,7 @@ module Braintrust
 
         class GlobalFunction < Braintrust::Internal::Type::BaseModel
           # The name of the global function. Currently, the global namespace includes the
-          #   functions in autoevals
+          # functions in autoevals
           sig { returns(String) }
           attr_accessor :global_function
 
@@ -831,7 +831,7 @@ module Braintrust
         attr_writer :fields
 
         # Optional settings for collecting git metadata. By default, will collect all git
-        #   metadata fields allowed in org-level settings.
+        # metadata fields allowed in org-level settings.
         sig do
           params(
             collect: Braintrust::Models::EvalCreateParams::GitMetadataSettings::Collect::OrSymbol,

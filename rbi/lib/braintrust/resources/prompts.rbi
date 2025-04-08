@@ -4,8 +4,8 @@ module Braintrust
   module Resources
     class Prompts
       # Create a new prompt. If there is an existing prompt in the project with the same
-      #   slug as the one specified in the request, will return the existing prompt
-      #   unmodified
+      # slug as the one specified in the request, will return the existing prompt
+      # unmodified
       sig do
         params(
           name: String,
@@ -49,8 +49,8 @@ module Braintrust
         request_options: {}
       ); end
       # Partially update a prompt object. Specify the fields to update in the payload.
-      #   Any object-type fields will be deep-merged with existing content. Currently we
-      #   do not support removing fields or setting them to null.
+      # Any object-type fields will be deep-merged with existing content. Currently we
+      # do not support removing fields or setting them to null.
       sig do
         params(
           prompt_id: String,
@@ -79,7 +79,7 @@ module Braintrust
         request_options: {}
       ); end
       # List out all prompts. The prompts are sorted by creation date, with the most
-      #   recently-created prompts coming first
+      # recently-created prompts coming first
       sig do
         params(
           ending_before: String,
@@ -99,12 +99,12 @@ module Braintrust
       def list(
         # Pagination cursor id.
         #
-        #   For example, if the initial item in the last page you fetched had an id of
-        #   `foo`, pass `ending_before=foo` to fetch the previous page. Note: you may only
-        #   pass one of `starting_after` and `ending_before`
+        # For example, if the initial item in the last page you fetched had an id of
+        # `foo`, pass `ending_before=foo` to fetch the previous page. Note: you may only
+        # pass one of `starting_after` and `ending_before`
         ending_before: nil,
         # Filter search results to a particular set of object IDs. To specify a list of
-        #   IDs, include the query param multiple times
+        # IDs, include the query param multiple times
         ids: nil,
         # Limit the number of objects to return
         limit: nil,
@@ -120,14 +120,14 @@ module Braintrust
         slug: nil,
         # Pagination cursor id.
         #
-        #   For example, if the final item in the last page you fetched had an id of `foo`,
-        #   pass `starting_after=foo` to fetch the next page. Note: you may only pass one of
-        #   `starting_after` and `ending_before`
+        # For example, if the final item in the last page you fetched had an id of `foo`,
+        # pass `starting_after=foo` to fetch the next page. Note: you may only pass one of
+        # `starting_after` and `ending_before`
         starting_after: nil,
         # Retrieve prompt at a specific version.
         #
-        #   The version id can either be a transaction id (e.g. '1000192656880881099') or a
-        #   version identifier (e.g. '81cd05ee665fdfb3').
+        # The version id can either be a transaction id (e.g. '1000192656880881099') or a
+        # version identifier (e.g. '81cd05ee665fdfb3').
         version: nil,
         request_options: {}
       ); end
@@ -145,8 +145,8 @@ module Braintrust
         request_options: {}
       ); end
       # Create or replace prompt. If there is an existing prompt in the project with the
-      #   same slug as the one specified in the request, will replace the existing prompt
-      #   with the provided fields
+      # same slug as the one specified in the request, will replace the existing prompt
+      # with the provided fields
       sig do
         params(
           name: String,

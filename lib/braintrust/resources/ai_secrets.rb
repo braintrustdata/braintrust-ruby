@@ -4,7 +4,7 @@ module Braintrust
   module Resources
     class AISecrets
       # Create a new ai_secret. If there is an existing ai_secret with the same name as
-      #   the one specified in the request, will return the existing ai_secret unmodified
+      # the one specified in the request, will return the existing ai_secret unmodified
       #
       # @overload create(name:, metadata: nil, org_name: nil, secret: nil, type: nil, request_options: {})
       #
@@ -49,8 +49,8 @@ module Braintrust
       end
 
       # Partially update an ai_secret object. Specify the fields to update in the
-      #   payload. Any object-type fields will be deep-merged with existing content.
-      #   Currently we do not support removing fields or setting them to null.
+      # payload. Any object-type fields will be deep-merged with existing content.
+      # Currently we do not support removing fields or setting them to null.
       #
       # @overload update(ai_secret_id, metadata: nil, name: nil, secret: nil, type: nil, request_options: {})
       #
@@ -76,7 +76,7 @@ module Braintrust
       end
 
       # List out all ai_secrets. The ai_secrets are sorted by creation date, with the
-      #   most recently-created ai_secrets coming first
+      # most recently-created ai_secrets coming first
       #
       # @overload list(ai_secret_name: nil, ai_secret_type: nil, ending_before: nil, ids: nil, limit: nil, org_name: nil, starting_after: nil, request_options: {})
       #
@@ -146,8 +146,8 @@ module Braintrust
       end
 
       # Create or replace ai_secret. If there is an existing ai_secret with the same
-      #   name as the one specified in the request, will replace the existing ai_secret
-      #   with the provided fields
+      # name as the one specified in the request, will replace the existing ai_secret
+      # with the provided fields
       #
       # @overload replace(name:, metadata: nil, org_name: nil, secret: nil, type: nil, request_options: {})
       #

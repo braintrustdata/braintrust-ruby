@@ -5,16 +5,16 @@ module Braintrust
     class ProjectLogsEvent < Braintrust::Internal::Type::BaseModel
       # @!attribute id
       #   A unique identifier for the project logs event. If you don't provide one,
-      #     BrainTrust will generate one for you
+      #   BrainTrust will generate one for you
       #
       #   @return [String]
       required :id, String
 
       # @!attribute _xact_id
       #   The transaction id of an event is unique to the network operation that processed
-      #     the event insertion. Transaction ids are monotonically increasing over time and
-      #     can be used to retrieve a versioned snapshot of the project logs (see the
-      #     `version` parameter)
+      #   the event insertion. Transaction ids are monotonically increasing over time and
+      #   can be used to retrieve a versioned snapshot of the project logs (see the
+      #   `version` parameter)
       #
       #   @return [String]
       required :_xact_id, String
@@ -51,18 +51,18 @@ module Braintrust
 
       # @!attribute span_id
       #   A unique identifier used to link different project logs events together as part
-      #     of a full trace. See the
-      #     [tracing guide](https://www.braintrust.dev/docs/guides/tracing) for full details
-      #     on tracing
+      #   of a full trace. See the
+      #   [tracing guide](https://www.braintrust.dev/docs/guides/tracing) for full details
+      #   on tracing
       #
       #   @return [String]
       required :span_id, String
 
       # @!attribute context
       #   Context is additional information about the code that produced the project logs
-      #     event. It is essentially the textual counterpart to `metrics`. Use the
-      #     `caller_*` attributes to track the location in code which produced the project
-      #     logs event
+      #   event. It is essentially the textual counterpart to `metrics`. Use the
+      #   `caller_*` attributes to track the location in code which produced the project
+      #   logs event
       #
       #   @return [Braintrust::Models::ProjectLogsEvent::Context, nil]
       optional :context, -> { Braintrust::Models::ProjectLogsEvent::Context }, nil?: true
@@ -79,11 +79,11 @@ module Braintrust
 
       # @!attribute [r] expected
       #   The ground truth value (an arbitrary, JSON serializable object) that you'd
-      #     compare to `output` to determine if your `output` value is correct or not.
-      #     Braintrust currently does not compare `output` to `expected` for you, since
-      #     there are so many different ways to do that correctly. Instead, these values are
-      #     just used to help you navigate while digging into analyses. However, we may
-      #     later use these values to re-score outputs or fine-tune your models.
+      #   compare to `output` to determine if your `output` value is correct or not.
+      #   Braintrust currently does not compare `output` to `expected` for you, since
+      #   there are so many different ways to do that correctly. Instead, these values are
+      #   just used to help you navigate while digging into analyses. However, we may
+      #   later use these values to re-score outputs or fine-tune your models.
       #
       #   @return [Object, nil]
       optional :expected, Braintrust::Internal::Type::Unknown
@@ -94,7 +94,7 @@ module Braintrust
 
       # @!attribute [r] input
       #   The arguments that uniquely define a user input (an arbitrary, JSON serializable
-      #     object).
+      #   object).
       #
       #   @return [Object, nil]
       optional :input, Braintrust::Internal::Type::Unknown
@@ -111,18 +111,18 @@ module Braintrust
 
       # @!attribute metadata
       #   A dictionary with additional data about the test example, model outputs, or just
-      #     about anything else that's relevant, that you can use to help find and analyze
-      #     examples later. For example, you could log the `prompt`, example's `id`, or
-      #     anything else that would be useful to slice/dice later. The values in `metadata`
-      #     can be any JSON-serializable type, but its keys must be strings
+      #   about anything else that's relevant, that you can use to help find and analyze
+      #   examples later. For example, you could log the `prompt`, example's `id`, or
+      #   anything else that would be useful to slice/dice later. The values in `metadata`
+      #   can be any JSON-serializable type, but its keys must be strings
       #
       #   @return [Braintrust::Models::ProjectLogsEvent::Metadata, nil]
       optional :metadata, -> { Braintrust::Models::ProjectLogsEvent::Metadata }, nil?: true
 
       # @!attribute metrics
       #   Metrics are numerical measurements tracking the execution of the code that
-      #     produced the project logs event. Use "start" and "end" to track the time span
-      #     over which the project logs event was produced
+      #   produced the project logs event. Use "start" and "end" to track the time span
+      #   over which the project logs event was produced
       #
       #   @return [Braintrust::Models::ProjectLogsEvent::Metrics, nil]
       optional :metrics, -> { Braintrust::Models::ProjectLogsEvent::Metrics }, nil?: true
@@ -135,10 +135,10 @@ module Braintrust
 
       # @!attribute [r] output
       #   The output of your application, including post-processing (an arbitrary, JSON
-      #     serializable object), that allows you to determine whether the result is correct
-      #     or not. For example, in an app that generates SQL queries, the `output` should
-      #     be the _result_ of the SQL query generated by the model, not the query itself,
-      #     because there may be multiple valid queries that answer a single question.
+      #   serializable object), that allows you to determine whether the result is correct
+      #   or not. For example, in an app that generates SQL queries, the `output` should
+      #   be the _result_ of the SQL query generated by the model, not the query itself,
+      #   because there may be multiple valid queries that answer a single question.
       #
       #   @return [Object, nil]
       optional :output, Braintrust::Internal::Type::Unknown
@@ -149,13 +149,13 @@ module Braintrust
 
       # @!attribute scores
       #   A dictionary of numeric values (between 0 and 1) to log. The scores should give
-      #     you a variety of signals that help you determine how accurate the outputs are
-      #     compared to what you expect and diagnose failures. For example, a summarization
-      #     app might have one score that tells you how accurate the summary is, and another
-      #     that measures the word similarity between the generated and grouth truth
-      #     summary. The word similarity score could help you determine whether the
-      #     summarization was covering similar concepts or not. You can use these scores to
-      #     help you sort, filter, and compare logs.
+      #   you a variety of signals that help you determine how accurate the outputs are
+      #   compared to what you expect and diagnose failures. For example, a summarization
+      #   app might have one score that tells you how accurate the summary is, and another
+      #   that measures the word similarity between the generated and grouth truth
+      #   summary. The word similarity score could help you determine whether the
+      #   summarization was covering similar concepts or not. You can use these scores to
+      #   help you sort, filter, and compare logs.
       #
       #   @return [Hash{Symbol=>Float, nil}, nil]
       optional :scores, Braintrust::Internal::Type::HashOf[Float, nil?: true], nil?: true
@@ -168,8 +168,8 @@ module Braintrust
 
       # @!attribute span_parents
       #   An array of the parent `span_ids` of this project logs event. This should be
-      #     empty for the root span of a trace, and should most often contain just one
-      #     parent element for subspans
+      #   empty for the root span of a trace, and should most often contain just one
+      #   parent element for subspans
       #
       #   @return [Array<String>, nil]
       optional :span_parents, Braintrust::Internal::Type::ArrayOf[String], nil?: true
@@ -269,9 +269,9 @@ module Braintrust
 
         # @!parse
         #   # Context is additional information about the code that produced the project logs
-        #   #   event. It is essentially the textual counterpart to `metrics`. Use the
-        #   #   `caller_*` attributes to track the location in code which produced the project
-        #   #   logs event
+        #   # event. It is essentially the textual counterpart to `metrics`. Use the
+        #   # `caller_*` attributes to track the location in code which produced the project
+        #   # logs event
         #   #
         #   # @param caller_filename [String, nil]
         #   # @param caller_functionname [String, nil]
@@ -292,10 +292,10 @@ module Braintrust
 
         # @!parse
         #   # A dictionary with additional data about the test example, model outputs, or just
-        #   #   about anything else that's relevant, that you can use to help find and analyze
-        #   #   examples later. For example, you could log the `prompt`, example's `id`, or
-        #   #   anything else that would be useful to slice/dice later. The values in `metadata`
-        #   #   can be any JSON-serializable type, but its keys must be strings
+        #   # about anything else that's relevant, that you can use to help find and analyze
+        #   # examples later. For example, you could log the `prompt`, example's `id`, or
+        #   # anything else that would be useful to slice/dice later. The values in `metadata`
+        #   # can be any JSON-serializable type, but its keys must be strings
         #   #
         #   # @param model [String, nil]
         #   #
@@ -338,28 +338,28 @@ module Braintrust
 
         # @!attribute completion_tokens
         #   The number of tokens in the completion generated by the model (only set if this
-        #     is an LLM span)
+        #   is an LLM span)
         #
         #   @return [Integer, nil]
         optional :completion_tokens, Integer, nil?: true
 
         # @!attribute end_
         #   A unix timestamp recording when the section of code which produced the project
-        #     logs event finished
+        #   logs event finished
         #
         #   @return [Float, nil]
         optional :end_, Float, api_name: :end, nil?: true
 
         # @!attribute prompt_tokens
         #   The number of tokens in the prompt used to generate the project logs event (only
-        #     set if this is an LLM span)
+        #   set if this is an LLM span)
         #
         #   @return [Integer, nil]
         optional :prompt_tokens, Integer, nil?: true
 
         # @!attribute start
         #   A unix timestamp recording when the section of code which produced the project
-        #     logs event started
+        #   logs event started
         #
         #   @return [Float, nil]
         optional :start, Float, nil?: true
@@ -372,8 +372,8 @@ module Braintrust
 
         # @!parse
         #   # Metrics are numerical measurements tracking the execution of the code that
-        #   #   produced the project logs event. Use "start" and "end" to track the time span
-        #   #   over which the project logs event was produced
+        #   # produced the project logs event. Use "start" and "end" to track the time span
+        #   # over which the project logs event was produced
         #   #
         #   # @param caller_filename [Object]
         #   # @param caller_functionname [Object]

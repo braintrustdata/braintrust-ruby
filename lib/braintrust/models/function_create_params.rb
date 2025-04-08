@@ -381,7 +381,7 @@ module Braintrust
 
         # @!attribute internal
         #   The function exists for internal purposes and should not be displayed in the
-        #     list of functions.
+        #   list of functions.
         #
         #   @return [Boolean, nil]
         optional :internal, Braintrust::Internal::Type::Boolean, nil?: true

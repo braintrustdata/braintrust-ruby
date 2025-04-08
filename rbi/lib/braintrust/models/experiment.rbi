@@ -16,7 +16,7 @@ module Braintrust
       attr_accessor :project_id
 
       # Whether or not the experiment is public. Public experiments can be viewed by
-      #   anybody inside or outside the organization
+      # anybody inside or outside the organization
       sig { returns(T::Boolean) }
       attr_accessor :public
 
@@ -33,12 +33,12 @@ module Braintrust
       attr_accessor :created
 
       # Identifier of the linked dataset, or null if the experiment is not linked to a
-      #   dataset
+      # dataset
       sig { returns(T.nilable(String)) }
       attr_accessor :dataset_id
 
       # Version number of the linked dataset the experiment was run against. This can be
-      #   used to reproduce the experiment after the dataset has been modified.
+      # used to reproduce the experiment after the dataset has been modified.
       sig { returns(T.nilable(String)) }
       attr_accessor :dataset_version
 

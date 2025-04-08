@@ -4,8 +4,8 @@ module Braintrust
   module Resources
     class Experiments
       # Create a new experiment. If there is an existing experiment in the project with
-      #   the same name as the one specified in the request, will return the existing
-      #   experiment unmodified
+      # the same name as the one specified in the request, will return the existing
+      # experiment unmodified
       sig do
         params(
           project_id: String,
@@ -28,24 +28,24 @@ module Braintrust
         # Id of default base experiment to compare against when viewing this experiment
         base_exp_id: nil,
         # Identifier of the linked dataset, or null if the experiment is not linked to a
-        #   dataset
+        # dataset
         dataset_id: nil,
         # Version number of the linked dataset the experiment was run against. This can be
-        #   used to reproduce the experiment after the dataset has been modified.
+        # used to reproduce the experiment after the dataset has been modified.
         dataset_version: nil,
         # Textual description of the experiment
         description: nil,
         # Normally, creating an experiment with the same name as an existing experiment
-        #   will return the existing one un-modified. But if `ensure_new` is true,
-        #   registration will generate a new experiment with a unique name in case of a
-        #   conflict.
+        # will return the existing one un-modified. But if `ensure_new` is true,
+        # registration will generate a new experiment with a unique name in case of a
+        # conflict.
         ensure_new: nil,
         # User-controlled metadata about the experiment
         metadata: nil,
         # Name of the experiment. Within a project, experiment names are unique
         name: nil,
         # Whether or not the experiment is public. Public experiments can be viewed by
-        #   anybody inside or outside the organization
+        # anybody inside or outside the organization
         public: nil,
         # Metadata about the state of the repo when the experiment was created
         repo_info: nil,
@@ -65,8 +65,8 @@ module Braintrust
         request_options: {}
       ); end
       # Partially update an experiment object. Specify the fields to update in the
-      #   payload. Any object-type fields will be deep-merged with existing content.
-      #   Currently we do not support removing fields or setting them to null.
+      # payload. Any object-type fields will be deep-merged with existing content.
+      # Currently we do not support removing fields or setting them to null.
       sig do
         params(
           experiment_id: String,
@@ -88,10 +88,10 @@ module Braintrust
         # Id of default base experiment to compare against when viewing this experiment
         base_exp_id: nil,
         # Identifier of the linked dataset, or null if the experiment is not linked to a
-        #   dataset
+        # dataset
         dataset_id: nil,
         # Version number of the linked dataset the experiment was run against. This can be
-        #   used to reproduce the experiment after the dataset has been modified.
+        # used to reproduce the experiment after the dataset has been modified.
         dataset_version: nil,
         # Textual description of the experiment
         description: nil,
@@ -100,14 +100,14 @@ module Braintrust
         # Name of the experiment. Within a project, experiment names are unique
         name: nil,
         # Whether or not the experiment is public. Public experiments can be viewed by
-        #   anybody inside or outside the organization
+        # anybody inside or outside the organization
         public: nil,
         # Metadata about the state of the repo when the experiment was created
         repo_info: nil,
         request_options: {}
       ); end
       # List out all experiments. The experiments are sorted by creation date, with the
-      #   most recently-created experiments coming first
+      # most recently-created experiments coming first
       sig do
         params(
           ending_before: String,
@@ -125,14 +125,14 @@ module Braintrust
       def list(
         # Pagination cursor id.
         #
-        #   For example, if the initial item in the last page you fetched had an id of
-        #   `foo`, pass `ending_before=foo` to fetch the previous page. Note: you may only
-        #   pass one of `starting_after` and `ending_before`
+        # For example, if the initial item in the last page you fetched had an id of
+        # `foo`, pass `ending_before=foo` to fetch the previous page. Note: you may only
+        # pass one of `starting_after` and `ending_before`
         ending_before: nil,
         # Name of the experiment to search for
         experiment_name: nil,
         # Filter search results to a particular set of object IDs. To specify a list of
-        #   IDs, include the query param multiple times
+        # IDs, include the query param multiple times
         ids: nil,
         # Limit the number of objects to return
         limit: nil,
@@ -144,9 +144,9 @@ module Braintrust
         project_name: nil,
         # Pagination cursor id.
         #
-        #   For example, if the final item in the last page you fetched had an id of `foo`,
-        #   pass `starting_after=foo` to fetch the next page. Note: you may only pass one of
-        #   `starting_after` and `ending_before`
+        # For example, if the final item in the last page you fetched had an id of `foo`,
+        # pass `starting_after=foo` to fetch the next page. Note: you may only pass one of
+        # `starting_after` and `ending_before`
         starting_after: nil,
         request_options: {}
       ); end
@@ -180,8 +180,8 @@ module Braintrust
         request_options: {}
       ); end
       # Fetch the events in an experiment. Equivalent to the POST form of the same path,
-      #   but with the parameters in the URL query rather than in the request body. For
-      #   more complex queries, use the `POST /btql` endpoint.
+      # but with the parameters in the URL query rather than in the request body. For
+      # more complex queries, use the `POST /btql` endpoint.
       sig do
         params(
           experiment_id: String,
@@ -198,52 +198,52 @@ module Braintrust
         experiment_id,
         # limit the number of traces fetched
         #
-        #   Fetch queries may be paginated if the total result size is expected to be large
-        #   (e.g. project_logs which accumulate over a long time). Note that fetch queries
-        #   only support pagination in descending time order (from latest to earliest
-        #   `_xact_id`. Furthermore, later pages may return rows which showed up in earlier
-        #   pages, except with an earlier `_xact_id`. This happens because pagination occurs
-        #   over the whole version history of the event log. You will most likely want to
-        #   exclude any such duplicate, outdated rows (by `id`) from your combined result
-        #   set.
+        # Fetch queries may be paginated if the total result size is expected to be large
+        # (e.g. project_logs which accumulate over a long time). Note that fetch queries
+        # only support pagination in descending time order (from latest to earliest
+        # `_xact_id`. Furthermore, later pages may return rows which showed up in earlier
+        # pages, except with an earlier `_xact_id`. This happens because pagination occurs
+        # over the whole version history of the event log. You will most likely want to
+        # exclude any such duplicate, outdated rows (by `id`) from your combined result
+        # set.
         #
-        #   The `limit` parameter controls the number of full traces to return. So you may
-        #   end up with more individual rows than the specified limit if you are fetching
-        #   events containing traces.
+        # The `limit` parameter controls the number of full traces to return. So you may
+        # end up with more individual rows than the specified limit if you are fetching
+        # events containing traces.
         limit: nil,
         # DEPRECATION NOTICE: The manually-constructed pagination cursor is deprecated in
-        #   favor of the explicit 'cursor' returned by object fetch requests. Please prefer
-        #   the 'cursor' argument going forwards.
+        # favor of the explicit 'cursor' returned by object fetch requests. Please prefer
+        # the 'cursor' argument going forwards.
         #
-        #   Together, `max_xact_id` and `max_root_span_id` form a pagination cursor
+        # Together, `max_xact_id` and `max_root_span_id` form a pagination cursor
         #
-        #   Since a paginated fetch query returns results in order from latest to earliest,
-        #   the cursor for the next page can be found as the row with the minimum (earliest)
-        #   value of the tuple `(_xact_id, root_span_id)`. See the documentation of `limit`
-        #   for an overview of paginating fetch queries.
+        # Since a paginated fetch query returns results in order from latest to earliest,
+        # the cursor for the next page can be found as the row with the minimum (earliest)
+        # value of the tuple `(_xact_id, root_span_id)`. See the documentation of `limit`
+        # for an overview of paginating fetch queries.
         max_root_span_id: nil,
         # DEPRECATION NOTICE: The manually-constructed pagination cursor is deprecated in
-        #   favor of the explicit 'cursor' returned by object fetch requests. Please prefer
-        #   the 'cursor' argument going forwards.
+        # favor of the explicit 'cursor' returned by object fetch requests. Please prefer
+        # the 'cursor' argument going forwards.
         #
-        #   Together, `max_xact_id` and `max_root_span_id` form a pagination cursor
+        # Together, `max_xact_id` and `max_root_span_id` form a pagination cursor
         #
-        #   Since a paginated fetch query returns results in order from latest to earliest,
-        #   the cursor for the next page can be found as the row with the minimum (earliest)
-        #   value of the tuple `(_xact_id, root_span_id)`. See the documentation of `limit`
-        #   for an overview of paginating fetch queries.
+        # Since a paginated fetch query returns results in order from latest to earliest,
+        # the cursor for the next page can be found as the row with the minimum (earliest)
+        # value of the tuple `(_xact_id, root_span_id)`. See the documentation of `limit`
+        # for an overview of paginating fetch queries.
         max_xact_id: nil,
         # Retrieve a snapshot of events from a past time
         #
-        #   The version id is essentially a filter on the latest event transaction id. You
-        #   can use the `max_xact_id` returned by a past fetch as the version to reproduce
-        #   that exact fetch.
+        # The version id is essentially a filter on the latest event transaction id. You
+        # can use the `max_xact_id` returned by a past fetch as the version to reproduce
+        # that exact fetch.
         version: nil,
         request_options: {}
       ); end
       # Fetch the events in an experiment. Equivalent to the GET form of the same path,
-      #   but with the parameters in the request body rather than in the URL query. For
-      #   more complex queries, use the `POST /btql` endpoint.
+      # but with the parameters in the request body rather than in the URL query. For
+      # more complex queries, use the `POST /btql` endpoint.
       sig do
         params(
           experiment_id: String,
@@ -260,53 +260,53 @@ module Braintrust
         # Experiment id
         experiment_id,
         # An opaque string to be used as a cursor for the next page of results, in order
-        #   from latest to earliest.
+        # from latest to earliest.
         #
-        #   The string can be obtained directly from the `cursor` property of the previous
-        #   fetch query
+        # The string can be obtained directly from the `cursor` property of the previous
+        # fetch query
         cursor: nil,
         # limit the number of traces fetched
         #
-        #   Fetch queries may be paginated if the total result size is expected to be large
-        #   (e.g. project_logs which accumulate over a long time). Note that fetch queries
-        #   only support pagination in descending time order (from latest to earliest
-        #   `_xact_id`. Furthermore, later pages may return rows which showed up in earlier
-        #   pages, except with an earlier `_xact_id`. This happens because pagination occurs
-        #   over the whole version history of the event log. You will most likely want to
-        #   exclude any such duplicate, outdated rows (by `id`) from your combined result
-        #   set.
+        # Fetch queries may be paginated if the total result size is expected to be large
+        # (e.g. project_logs which accumulate over a long time). Note that fetch queries
+        # only support pagination in descending time order (from latest to earliest
+        # `_xact_id`. Furthermore, later pages may return rows which showed up in earlier
+        # pages, except with an earlier `_xact_id`. This happens because pagination occurs
+        # over the whole version history of the event log. You will most likely want to
+        # exclude any such duplicate, outdated rows (by `id`) from your combined result
+        # set.
         #
-        #   The `limit` parameter controls the number of full traces to return. So you may
-        #   end up with more individual rows than the specified limit if you are fetching
-        #   events containing traces.
+        # The `limit` parameter controls the number of full traces to return. So you may
+        # end up with more individual rows than the specified limit if you are fetching
+        # events containing traces.
         limit: nil,
         # DEPRECATION NOTICE: The manually-constructed pagination cursor is deprecated in
-        #   favor of the explicit 'cursor' returned by object fetch requests. Please prefer
-        #   the 'cursor' argument going forwards.
+        # favor of the explicit 'cursor' returned by object fetch requests. Please prefer
+        # the 'cursor' argument going forwards.
         #
-        #   Together, `max_xact_id` and `max_root_span_id` form a pagination cursor
+        # Together, `max_xact_id` and `max_root_span_id` form a pagination cursor
         #
-        #   Since a paginated fetch query returns results in order from latest to earliest,
-        #   the cursor for the next page can be found as the row with the minimum (earliest)
-        #   value of the tuple `(_xact_id, root_span_id)`. See the documentation of `limit`
-        #   for an overview of paginating fetch queries.
+        # Since a paginated fetch query returns results in order from latest to earliest,
+        # the cursor for the next page can be found as the row with the minimum (earliest)
+        # value of the tuple `(_xact_id, root_span_id)`. See the documentation of `limit`
+        # for an overview of paginating fetch queries.
         max_root_span_id: nil,
         # DEPRECATION NOTICE: The manually-constructed pagination cursor is deprecated in
-        #   favor of the explicit 'cursor' returned by object fetch requests. Please prefer
-        #   the 'cursor' argument going forwards.
+        # favor of the explicit 'cursor' returned by object fetch requests. Please prefer
+        # the 'cursor' argument going forwards.
         #
-        #   Together, `max_xact_id` and `max_root_span_id` form a pagination cursor
+        # Together, `max_xact_id` and `max_root_span_id` form a pagination cursor
         #
-        #   Since a paginated fetch query returns results in order from latest to earliest,
-        #   the cursor for the next page can be found as the row with the minimum (earliest)
-        #   value of the tuple `(_xact_id, root_span_id)`. See the documentation of `limit`
-        #   for an overview of paginating fetch queries.
+        # Since a paginated fetch query returns results in order from latest to earliest,
+        # the cursor for the next page can be found as the row with the minimum (earliest)
+        # value of the tuple `(_xact_id, root_span_id)`. See the documentation of `limit`
+        # for an overview of paginating fetch queries.
         max_xact_id: nil,
         # Retrieve a snapshot of events from a past time
         #
-        #   The version id is essentially a filter on the latest event transaction id. You
-        #   can use the `max_xact_id` returned by a past fetch as the version to reproduce
-        #   that exact fetch.
+        # The version id is essentially a filter on the latest event transaction id. You
+        # can use the `max_xact_id` returned by a past fetch as the version to reproduce
+        # that exact fetch.
         version: nil,
         request_options: {}
       ); end
@@ -340,12 +340,12 @@ module Braintrust
         # Experiment id
         experiment_id,
         # The experiment to compare against, if summarizing scores and metrics. If
-        #   omitted, will fall back to the `base_exp_id` stored in the experiment metadata,
-        #   and then to the most recent experiment run in the same project. Must pass
-        #   `summarize_scores=true` for this id to be used
+        # omitted, will fall back to the `base_exp_id` stored in the experiment metadata,
+        # and then to the most recent experiment run in the same project. Must pass
+        # `summarize_scores=true` for this id to be used
         comparison_experiment_id: nil,
         # Whether to summarize the scores and metrics. If false (or omitted), only the
-        #   metadata will be returned.
+        # metadata will be returned.
         summarize_scores: nil,
         request_options: {}
       ); end
