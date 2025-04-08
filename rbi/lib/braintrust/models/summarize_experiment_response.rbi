@@ -52,9 +52,7 @@ module Braintrust
         comparison_experiment_name: nil,
         metrics: nil,
         scores: nil
-      )
-      end
-
+      ); end
       sig do
         override
           .returns(
@@ -69,8 +67,7 @@ module Braintrust
             }
           )
       end
-      def to_hash
-      end
+      def to_hash; end
     end
   end
 end

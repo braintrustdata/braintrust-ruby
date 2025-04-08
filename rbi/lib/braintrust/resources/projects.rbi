@@ -24,9 +24,7 @@ module Braintrust
         #   the organization the project belongs in.
         org_name: nil,
         request_options: {}
-      )
-      end
-
+      ); end
       # Get a project object by its id
       sig do
         params(
@@ -39,9 +37,7 @@ module Braintrust
         # Project id
         project_id,
         request_options: {}
-      )
-      end
-
+      ); end
       # Partially update a project object. Specify the fields to update in the payload.
       #   Any object-type fields will be deep-merged with existing content. Currently we
       #   do not support removing fields or setting them to null.
@@ -63,9 +59,7 @@ module Braintrust
         #   include all settings you want to keep.
         settings: nil,
         request_options: {}
-      )
-      end
-
+      ); end
       # List out all projects. The projects are sorted by creation date, with the most
       #   recently-created projects coming first
       sig do
@@ -103,9 +97,7 @@ module Braintrust
         #   `starting_after` and `ending_before`
         starting_after: nil,
         request_options: {}
-      )
-      end
-
+      ); end
       # Delete a project object by its id
       sig do
         params(
@@ -118,13 +110,10 @@ module Braintrust
         # Project id
         project_id,
         request_options: {}
-      )
-      end
-
+      ); end
       # @api private
       sig { params(client: Braintrust::Client).returns(T.attached_class) }
-      def self.new(client:)
-      end
+      def self.new(client:); end
     end
   end
 end

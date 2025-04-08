@@ -21,9 +21,7 @@ module Braintrust
         #   the organization the API key belongs in.
         org_name: nil,
         request_options: {}
-      )
-      end
-
+      ); end
       # Get an api_key object by its id
       sig do
         params(
@@ -36,9 +34,7 @@ module Braintrust
         # ApiKey id
         api_key_id,
         request_options: {}
-      )
-      end
-
+      ); end
       # List out all api_keys. The api_keys are sorted by creation date, with the most
       #   recently-created api_keys coming first
       sig do
@@ -76,9 +72,7 @@ module Braintrust
         #   `starting_after` and `ending_before`
         starting_after: nil,
         request_options: {}
-      )
-      end
-
+      ); end
       # Delete an api_key object by its id
       sig do
         params(
@@ -91,13 +85,10 @@ module Braintrust
         # ApiKey id
         api_key_id,
         request_options: {}
-      )
-      end
-
+      ); end
       # @api private
       sig { params(client: Braintrust::Client).returns(T.attached_class) }
-      def self.new(client:)
-      end
+      def self.new(client:); end
     end
   end
 end

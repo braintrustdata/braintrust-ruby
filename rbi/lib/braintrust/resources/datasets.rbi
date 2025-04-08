@@ -26,9 +26,7 @@ module Braintrust
         # User-controlled metadata about the dataset
         metadata: nil,
         request_options: {}
-      )
-      end
-
+      ); end
       # Get a dataset object by its id
       sig do
         params(
@@ -41,9 +39,7 @@ module Braintrust
         # Dataset id
         dataset_id,
         request_options: {}
-      )
-      end
-
+      ); end
       # Partially update a dataset object. Specify the fields to update in the payload.
       #   Any object-type fields will be deep-merged with existing content. Currently we
       #   do not support removing fields or setting them to null.
@@ -67,9 +63,7 @@ module Braintrust
         # Name of the dataset. Within a project, dataset names are unique
         name: nil,
         request_options: {}
-      )
-      end
-
+      ); end
       # List out all datasets. The datasets are sorted by creation date, with the most
       #   recently-created datasets coming first
       sig do
@@ -113,9 +107,7 @@ module Braintrust
         #   `starting_after` and `ending_before`
         starting_after: nil,
         request_options: {}
-      )
-      end
-
+      ); end
       # Delete a dataset object by its id
       sig do
         params(
@@ -128,9 +120,7 @@ module Braintrust
         # Dataset id
         dataset_id,
         request_options: {}
-      )
-      end
-
+      ); end
       # Log feedback for a set of dataset events
       sig do
         params(
@@ -146,9 +136,7 @@ module Braintrust
         # A list of dataset feedback items
         feedback:,
         request_options: {}
-      )
-      end
-
+      ); end
       # Fetch the events in a dataset. Equivalent to the POST form of the same path, but
       #   with the parameters in the URL query rather than in the request body. For more
       #   complex queries, use the `POST /btql` endpoint.
@@ -210,9 +198,7 @@ module Braintrust
         #   that exact fetch.
         version: nil,
         request_options: {}
-      )
-      end
-
+      ); end
       # Fetch the events in a dataset. Equivalent to the GET form of the same path, but
       #   with the parameters in the request body rather than in the URL query. For more
       #   complex queries, use the `POST /btql` endpoint.
@@ -281,9 +267,7 @@ module Braintrust
         #   that exact fetch.
         version: nil,
         request_options: {}
-      )
-      end
-
+      ); end
       # Insert a set of events into the dataset
       sig do
         params(
@@ -299,9 +283,7 @@ module Braintrust
         # A list of dataset events to insert
         events:,
         request_options: {}
-      )
-      end
-
+      ); end
       # Summarize dataset
       sig do
         params(
@@ -318,13 +300,10 @@ module Braintrust
         #   returned.
         summarize_data: nil,
         request_options: {}
-      )
-      end
-
+      ); end
       # @api private
       sig { params(client: Braintrust::Client).returns(T.attached_class) }
-      def self.new(client:)
-      end
+      def self.new(client:); end
     end
   end
 end

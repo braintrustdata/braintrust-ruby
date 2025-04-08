@@ -26,7 +26,9 @@ module Braintrust
       sig { returns(T.nilable(Braintrust::Models::ProjectSettings)) }
       attr_reader :settings
 
-      sig { params(settings: T.nilable(T.any(Braintrust::Models::ProjectSettings, Braintrust::Internal::AnyHash))).void }
+      sig do
+        params(settings: T.nilable(T.any(Braintrust::Models::ProjectSettings, Braintrust::Internal::AnyHash))).void
+      end
       attr_writer :settings
 
       # Identifies the user who created the project
@@ -45,8 +47,7 @@ module Braintrust
         )
           .returns(T.attached_class)
       end
-      def self.new(id:, name:, org_id:, created: nil, deleted_at: nil, settings: nil, user_id: nil)
-      end
+      def self.new(id:, name:, org_id:, created: nil, deleted_at: nil, settings: nil, user_id: nil); end
 
       sig do
         override
@@ -62,8 +63,7 @@ module Braintrust
             }
           )
       end
-      def to_hash
-      end
+      def to_hash; end
     end
   end
 end

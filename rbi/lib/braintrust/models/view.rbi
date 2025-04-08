@@ -75,9 +75,7 @@ module Braintrust
         options: nil,
         user_id: nil,
         view_data: nil
-      )
-      end
-
+      ); end
       sig do
         override
           .returns(
@@ -95,8 +93,7 @@ module Braintrust
             }
           )
       end
-      def to_hash
-      end
+      def to_hash; end
 
       # Type of table that the view corresponds to.
       module ViewType
@@ -118,8 +115,7 @@ module Braintrust
         LOGS = T.let(:logs, Braintrust::Models::View::ViewType::TaggedSymbol)
 
         sig { override.returns(T::Array[Braintrust::Models::View::ViewType::TaggedSymbol]) }
-        def self.values
-        end
+        def self.values; end
       end
     end
   end

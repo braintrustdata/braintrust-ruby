@@ -52,8 +52,7 @@ module Braintrust
         class << self
           # @api private
           sig { params(req: Braintrust::Internal::Transport::BaseClient::RequestComponentsShape).void }
-          def validate!(req)
-          end
+          def validate!(req); end
 
           # @api private
           sig do
@@ -65,8 +64,7 @@ module Braintrust
               )
             ).returns(T::Boolean)
           end
-          def should_retry?(status, headers:)
-          end
+          def should_retry?(status, headers:); end
 
           # @api private
           sig do
@@ -77,8 +75,7 @@ module Braintrust
             )
               .returns(Braintrust::Internal::Transport::BaseClient::RequestInputShape)
           end
-          def follow_redirect(request, status:, response_headers:)
-          end
+          def follow_redirect(request, status:, response_headers:); end
 
           # @api private
           sig do
@@ -88,8 +85,7 @@ module Braintrust
             )
               .void
           end
-          def reap_connection!(status, stream:)
-          end
+          def reap_connection!(status, stream:); end
         end
 
         # @api private
@@ -118,18 +114,14 @@ module Braintrust
           max_retry_delay: 0.0,
           headers: {},
           idempotency_header: nil
-        )
-        end
-
+        ); end
         # @api private
         sig { overridable.returns(T::Hash[String, String]) }
-        private def auth_headers
-        end
+        private def auth_headers; end
 
         # @api private
         sig { returns(String) }
-        private def generate_idempotency_key
-        end
+        private def generate_idempotency_key; end
 
         # @api private
         sig do
@@ -140,13 +132,11 @@ module Braintrust
             )
             .returns(Braintrust::Internal::Transport::BaseClient::RequestInputShape)
         end
-        private def build_request(req, opts)
-        end
+        private def build_request(req, opts); end
 
         # @api private
         sig { params(headers: T::Hash[String, String], retry_count: Integer).returns(Float) }
-        private def retry_delay(headers, retry_count:)
-        end
+        private def retry_delay(headers, retry_count:); end
 
         # @api private
         sig do
@@ -158,8 +148,7 @@ module Braintrust
           )
             .returns([Integer, Net::HTTPResponse, T::Enumerable[String]])
         end
-        private def send_request(request, redirect_count:, retry_count:, send_retry_header:)
-        end
+        private def send_request(request, redirect_count:, retry_count:, send_retry_header:); end
 
         # Execute the request specified by `req`. This is the method that all resource
         #   methods call into.
@@ -200,12 +189,9 @@ module Braintrust
           stream: nil,
           model: Braintrust::Internal::Type::Unknown,
           options: {}
-        )
-        end
-
+        ); end
         sig { returns(String) }
-        def inspect
-        end
+        def inspect; end
       end
     end
   end

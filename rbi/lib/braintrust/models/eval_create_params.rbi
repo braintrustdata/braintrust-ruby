@@ -26,14 +26,14 @@ module Braintrust
       sig do
         returns(
           T::Array[
-          T.any(
-            Braintrust::Models::EvalCreateParams::Score::FunctionID,
-            Braintrust::Models::EvalCreateParams::Score::ProjectSlug,
-            Braintrust::Models::EvalCreateParams::Score::GlobalFunction,
-            Braintrust::Models::EvalCreateParams::Score::PromptSessionID,
-            Braintrust::Models::EvalCreateParams::Score::InlineCode,
-            Braintrust::Models::EvalCreateParams::Score::InlinePrompt
-          )
+            T.any(
+              Braintrust::Models::EvalCreateParams::Score::FunctionID,
+              Braintrust::Models::EvalCreateParams::Score::ProjectSlug,
+              Braintrust::Models::EvalCreateParams::Score::GlobalFunction,
+              Braintrust::Models::EvalCreateParams::Score::PromptSessionID,
+              Braintrust::Models::EvalCreateParams::Score::InlineCode,
+              Braintrust::Models::EvalCreateParams::Score::InlinePrompt
+            )
           ]
         )
       end
@@ -155,15 +155,15 @@ module Braintrust
           ),
           project_id: String,
           scores: T::Array[
-          T.any(
-            Braintrust::Models::EvalCreateParams::Score::FunctionID,
-            Braintrust::Internal::AnyHash,
-            Braintrust::Models::EvalCreateParams::Score::ProjectSlug,
-            Braintrust::Models::EvalCreateParams::Score::GlobalFunction,
-            Braintrust::Models::EvalCreateParams::Score::PromptSessionID,
-            Braintrust::Models::EvalCreateParams::Score::InlineCode,
-            Braintrust::Models::EvalCreateParams::Score::InlinePrompt
-          )
+            T.any(
+              Braintrust::Models::EvalCreateParams::Score::FunctionID,
+              Braintrust::Internal::AnyHash,
+              Braintrust::Models::EvalCreateParams::Score::ProjectSlug,
+              Braintrust::Models::EvalCreateParams::Score::GlobalFunction,
+              Braintrust::Models::EvalCreateParams::Score::PromptSessionID,
+              Braintrust::Models::EvalCreateParams::Score::InlineCode,
+              Braintrust::Models::EvalCreateParams::Score::InlinePrompt
+            )
           ],
           task: T.any(
             Braintrust::Models::EvalCreateParams::Task::FunctionID,
@@ -212,9 +212,7 @@ module Braintrust
         timeout: nil,
         trial_count: nil,
         request_options: {}
-      )
-      end
-
+      ); end
       sig do
         override
           .returns(
@@ -226,14 +224,14 @@ module Braintrust
               ),
               project_id: String,
               scores: T::Array[
-              T.any(
-                Braintrust::Models::EvalCreateParams::Score::FunctionID,
-                Braintrust::Models::EvalCreateParams::Score::ProjectSlug,
-                Braintrust::Models::EvalCreateParams::Score::GlobalFunction,
-                Braintrust::Models::EvalCreateParams::Score::PromptSessionID,
-                Braintrust::Models::EvalCreateParams::Score::InlineCode,
-                Braintrust::Models::EvalCreateParams::Score::InlinePrompt
-              )
+                T.any(
+                  Braintrust::Models::EvalCreateParams::Score::FunctionID,
+                  Braintrust::Models::EvalCreateParams::Score::ProjectSlug,
+                  Braintrust::Models::EvalCreateParams::Score::GlobalFunction,
+                  Braintrust::Models::EvalCreateParams::Score::PromptSessionID,
+                  Braintrust::Models::EvalCreateParams::Score::InlineCode,
+                  Braintrust::Models::EvalCreateParams::Score::InlinePrompt
+                )
               ],
               task: T.any(
                 Braintrust::Models::EvalCreateParams::Task::FunctionID,
@@ -259,8 +257,7 @@ module Braintrust
             }
           )
       end
-      def to_hash
-      end
+      def to_hash; end
 
       # The dataset to use
       module Data
@@ -278,8 +275,7 @@ module Braintrust
             params(dataset_id: String, _internal_btql: T.nilable(T::Hash[Symbol, T.nilable(T.anything)]))
               .returns(T.attached_class)
           end
-          def self.new(dataset_id:, _internal_btql: nil)
-          end
+          def self.new(dataset_id:, _internal_btql: nil); end
 
           sig do
             override.returns(
@@ -289,8 +285,7 @@ module Braintrust
               }
             )
           end
-          def to_hash
-          end
+          def to_hash; end
         end
 
         class ProjectDatasetName < Braintrust::Internal::Type::BaseModel
@@ -312,8 +307,7 @@ module Braintrust
             )
               .returns(T.attached_class)
           end
-          def self.new(dataset_name:, project_name:, _internal_btql: nil)
-          end
+          def self.new(dataset_name:, project_name:, _internal_btql: nil); end
 
           sig do
             override
@@ -325,8 +319,7 @@ module Braintrust
                 }
               )
           end
-          def to_hash
-          end
+          def to_hash; end
         end
 
         class DatasetRows < Braintrust::Internal::Type::BaseModel
@@ -335,12 +328,10 @@ module Braintrust
 
           # Dataset rows
           sig { params(data: T::Array[T.nilable(T.anything)]).returns(T.attached_class) }
-          def self.new(data:)
-          end
+          def self.new(data:); end
 
           sig { override.returns({data: T::Array[T.nilable(T.anything)]}) }
-          def to_hash
-          end
+          def to_hash; end
         end
 
         sig do
@@ -349,8 +340,7 @@ module Braintrust
               [Braintrust::Models::EvalCreateParams::Data::DatasetID, Braintrust::Models::EvalCreateParams::Data::ProjectDatasetName, Braintrust::Models::EvalCreateParams::Data::DatasetRows]
             )
         end
-        def self.variants
-        end
+        def self.variants; end
       end
 
       # The function to evaluate
@@ -371,12 +361,10 @@ module Braintrust
 
           # Function id
           sig { params(function_id: String, version: String).returns(T.attached_class) }
-          def self.new(function_id:, version: nil)
-          end
+          def self.new(function_id:, version: nil); end
 
           sig { override.returns({function_id: String, version: String}) }
-          def to_hash
-          end
+          def to_hash; end
         end
 
         class ProjectSlug < Braintrust::Internal::Type::BaseModel
@@ -397,12 +385,10 @@ module Braintrust
 
           # Project name and slug
           sig { params(project_name: String, slug: String, version: String).returns(T.attached_class) }
-          def self.new(project_name:, slug:, version: nil)
-          end
+          def self.new(project_name:, slug:, version: nil); end
 
           sig { override.returns({project_name: String, slug: String, version: String}) }
-          def to_hash
-          end
+          def to_hash; end
         end
 
         class GlobalFunction < Braintrust::Internal::Type::BaseModel
@@ -413,12 +399,10 @@ module Braintrust
 
           # Global function name
           sig { params(global_function: String).returns(T.attached_class) }
-          def self.new(global_function:)
-          end
+          def self.new(global_function:); end
 
           sig { override.returns({global_function: String}) }
-          def to_hash
-          end
+          def to_hash; end
         end
 
         class PromptSessionID < Braintrust::Internal::Type::BaseModel
@@ -442,14 +426,12 @@ module Braintrust
             params(prompt_session_function_id: String, prompt_session_id: String, version: String)
               .returns(T.attached_class)
           end
-          def self.new(prompt_session_function_id:, prompt_session_id:, version: nil)
-          end
+          def self.new(prompt_session_function_id:, prompt_session_id:, version: nil); end
 
           sig do
             override.returns({prompt_session_function_id: String, prompt_session_id: String, version: String})
           end
-          def to_hash
-          end
+          def to_hash; end
         end
 
         class InlineCode < Braintrust::Internal::Type::BaseModel
@@ -487,8 +469,7 @@ module Braintrust
             )
               .returns(T.attached_class)
           end
-          def self.new(code:, inline_context:, name: nil)
-          end
+          def self.new(code:, inline_context:, name: nil); end
 
           sig do
             override
@@ -500,8 +481,7 @@ module Braintrust
                 }
               )
           end
-          def to_hash
-          end
+          def to_hash; end
 
           class InlineContext < Braintrust::Internal::Type::BaseModel
             sig { returns(Braintrust::Models::EvalCreateParams::Score::InlineCode::InlineContext::Runtime::OrSymbol) }
@@ -517,8 +497,7 @@ module Braintrust
               )
                 .returns(T.attached_class)
             end
-            def self.new(runtime:, version:)
-            end
+            def self.new(runtime:, version:); end
 
             sig do
               override
@@ -529,8 +508,7 @@ module Braintrust
                   }
                 )
             end
-            def to_hash
-            end
+            def to_hash; end
 
             module Runtime
               extend Braintrust::Internal::Type::Enum
@@ -563,8 +541,7 @@ module Braintrust
                     T::Array[Braintrust::Models::EvalCreateParams::Score::InlineCode::InlineContext::Runtime::TaggedSymbol]
                   )
               end
-              def self.values
-              end
+              def self.values; end
             end
           end
         end
@@ -574,7 +551,9 @@ module Braintrust
           sig { returns(T.nilable(Braintrust::Models::PromptData)) }
           attr_reader :inline_prompt
 
-          sig { params(inline_prompt: T.nilable(T.any(Braintrust::Models::PromptData, Braintrust::Internal::AnyHash))).void }
+          sig do
+            params(inline_prompt: T.nilable(T.any(Braintrust::Models::PromptData, Braintrust::Internal::AnyHash))).void
+          end
           attr_writer :inline_prompt
 
           # The name of the inline prompt
@@ -589,12 +568,10 @@ module Braintrust
             )
               .returns(T.attached_class)
           end
-          def self.new(inline_prompt:, name: nil)
-          end
+          def self.new(inline_prompt:, name: nil); end
 
           sig { override.returns({inline_prompt: T.nilable(Braintrust::Models::PromptData), name: T.nilable(String)}) }
-          def to_hash
-          end
+          def to_hash; end
         end
 
         sig do
@@ -603,8 +580,7 @@ module Braintrust
               [Braintrust::Models::EvalCreateParams::Score::FunctionID, Braintrust::Models::EvalCreateParams::Score::ProjectSlug, Braintrust::Models::EvalCreateParams::Score::GlobalFunction, Braintrust::Models::EvalCreateParams::Score::PromptSessionID, Braintrust::Models::EvalCreateParams::Score::InlineCode, Braintrust::Models::EvalCreateParams::Score::InlinePrompt]
             )
         end
-        def self.variants
-        end
+        def self.variants; end
       end
 
       # The function to evaluate
@@ -625,12 +601,10 @@ module Braintrust
 
           # Function id
           sig { params(function_id: String, version: String).returns(T.attached_class) }
-          def self.new(function_id:, version: nil)
-          end
+          def self.new(function_id:, version: nil); end
 
           sig { override.returns({function_id: String, version: String}) }
-          def to_hash
-          end
+          def to_hash; end
         end
 
         class ProjectSlug < Braintrust::Internal::Type::BaseModel
@@ -651,12 +625,10 @@ module Braintrust
 
           # Project name and slug
           sig { params(project_name: String, slug: String, version: String).returns(T.attached_class) }
-          def self.new(project_name:, slug:, version: nil)
-          end
+          def self.new(project_name:, slug:, version: nil); end
 
           sig { override.returns({project_name: String, slug: String, version: String}) }
-          def to_hash
-          end
+          def to_hash; end
         end
 
         class GlobalFunction < Braintrust::Internal::Type::BaseModel
@@ -667,12 +639,10 @@ module Braintrust
 
           # Global function name
           sig { params(global_function: String).returns(T.attached_class) }
-          def self.new(global_function:)
-          end
+          def self.new(global_function:); end
 
           sig { override.returns({global_function: String}) }
-          def to_hash
-          end
+          def to_hash; end
         end
 
         class PromptSessionID < Braintrust::Internal::Type::BaseModel
@@ -696,14 +666,12 @@ module Braintrust
             params(prompt_session_function_id: String, prompt_session_id: String, version: String)
               .returns(T.attached_class)
           end
-          def self.new(prompt_session_function_id:, prompt_session_id:, version: nil)
-          end
+          def self.new(prompt_session_function_id:, prompt_session_id:, version: nil); end
 
           sig do
             override.returns({prompt_session_function_id: String, prompt_session_id: String, version: String})
           end
-          def to_hash
-          end
+          def to_hash; end
         end
 
         class InlineCode < Braintrust::Internal::Type::BaseModel
@@ -741,8 +709,7 @@ module Braintrust
             )
               .returns(T.attached_class)
           end
-          def self.new(code:, inline_context:, name: nil)
-          end
+          def self.new(code:, inline_context:, name: nil); end
 
           sig do
             override
@@ -754,8 +721,7 @@ module Braintrust
                 }
               )
           end
-          def to_hash
-          end
+          def to_hash; end
 
           class InlineContext < Braintrust::Internal::Type::BaseModel
             sig { returns(Braintrust::Models::EvalCreateParams::Task::InlineCode::InlineContext::Runtime::OrSymbol) }
@@ -771,8 +737,7 @@ module Braintrust
               )
                 .returns(T.attached_class)
             end
-            def self.new(runtime:, version:)
-            end
+            def self.new(runtime:, version:); end
 
             sig do
               override
@@ -783,8 +748,7 @@ module Braintrust
                   }
                 )
             end
-            def to_hash
-            end
+            def to_hash; end
 
             module Runtime
               extend Braintrust::Internal::Type::Enum
@@ -814,8 +778,7 @@ module Braintrust
                     T::Array[Braintrust::Models::EvalCreateParams::Task::InlineCode::InlineContext::Runtime::TaggedSymbol]
                   )
               end
-              def self.values
-              end
+              def self.values; end
             end
           end
         end
@@ -825,7 +788,9 @@ module Braintrust
           sig { returns(T.nilable(Braintrust::Models::PromptData)) }
           attr_reader :inline_prompt
 
-          sig { params(inline_prompt: T.nilable(T.any(Braintrust::Models::PromptData, Braintrust::Internal::AnyHash))).void }
+          sig do
+            params(inline_prompt: T.nilable(T.any(Braintrust::Models::PromptData, Braintrust::Internal::AnyHash))).void
+          end
           attr_writer :inline_prompt
 
           # The name of the inline prompt
@@ -840,12 +805,10 @@ module Braintrust
             )
               .returns(T.attached_class)
           end
-          def self.new(inline_prompt:, name: nil)
-          end
+          def self.new(inline_prompt:, name: nil); end
 
           sig { override.returns({inline_prompt: T.nilable(Braintrust::Models::PromptData), name: T.nilable(String)}) }
-          def to_hash
-          end
+          def to_hash; end
         end
 
         sig do
@@ -854,8 +817,7 @@ module Braintrust
               [Braintrust::Models::EvalCreateParams::Task::FunctionID, Braintrust::Models::EvalCreateParams::Task::ProjectSlug, Braintrust::Models::EvalCreateParams::Task::GlobalFunction, Braintrust::Models::EvalCreateParams::Task::PromptSessionID, Braintrust::Models::EvalCreateParams::Task::InlineCode, Braintrust::Models::EvalCreateParams::Task::InlinePrompt]
             )
         end
-        def self.variants
-        end
+        def self.variants; end
       end
 
       class GitMetadataSettings < Braintrust::Internal::Type::BaseModel
@@ -877,8 +839,7 @@ module Braintrust
           )
             .returns(T.attached_class)
         end
-        def self.new(collect:, fields: nil)
-        end
+        def self.new(collect:, fields: nil); end
 
         sig do
           override
@@ -889,8 +850,7 @@ module Braintrust
               }
             )
         end
-        def to_hash
-        end
+        def to_hash; end
 
         module Collect
           extend Braintrust::Internal::Type::Enum
@@ -908,8 +868,7 @@ module Braintrust
             override
               .returns(T::Array[Braintrust::Models::EvalCreateParams::GitMetadataSettings::Collect::TaggedSymbol])
           end
-          def self.values
-          end
+          def self.values; end
         end
 
         module Field
@@ -936,8 +895,7 @@ module Braintrust
             T.let(:git_diff, Braintrust::Models::EvalCreateParams::GitMetadataSettings::Field::TaggedSymbol)
 
           sig { override.returns(T::Array[Braintrust::Models::EvalCreateParams::GitMetadataSettings::Field::TaggedSymbol]) }
-          def self.values
-          end
+          def self.values; end
         end
       end
 
@@ -989,8 +947,7 @@ module Braintrust
             )
               .returns(T.attached_class)
           end
-          def self.new(object_id_:, object_type:, propagated_event: nil, row_ids: nil)
-          end
+          def self.new(object_id_:, object_type:, propagated_event: nil, row_ids: nil); end
 
           sig do
             override
@@ -1003,8 +960,7 @@ module Braintrust
                 }
               )
           end
-          def to_hash
-          end
+          def to_hash; end
 
           module ObjectType
             extend Braintrust::Internal::Type::Enum
@@ -1042,8 +998,7 @@ module Braintrust
                   T::Array[Braintrust::Models::EvalCreateParams::Parent::SpanParentStruct::ObjectType::TaggedSymbol]
                 )
             end
-            def self.values
-            end
+            def self.values; end
           end
 
           class RowIDs < Braintrust::Internal::Type::BaseModel
@@ -1061,18 +1016,15 @@ module Braintrust
 
             # Identifiers for the row to to log a subspan under
             sig { params(id: String, root_span_id: String, span_id: String).returns(T.attached_class) }
-            def self.new(id:, root_span_id:, span_id:)
-            end
+            def self.new(id:, root_span_id:, span_id:); end
 
             sig { override.returns({id: String, root_span_id: String, span_id: String}) }
-            def to_hash
-            end
+            def to_hash; end
           end
         end
 
         sig { override.returns([Braintrust::Models::EvalCreateParams::Parent::SpanParentStruct, String]) }
-        def self.variants
-        end
+        def self.variants; end
       end
     end
   end

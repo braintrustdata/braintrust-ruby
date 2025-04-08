@@ -18,8 +18,7 @@ module Braintrust
           )
             .returns(T.attached_class)
         end
-        def self.new(feedback:, request_options: {})
-        end
+        def self.new(feedback:, request_options: {}); end
 
         sig do
           override
@@ -27,8 +26,7 @@ module Braintrust
               {feedback: T::Array[Braintrust::Models::FeedbackProjectLogsItem], request_options: Braintrust::RequestOptions}
             )
         end
-        def to_hash
-        end
+        def to_hash; end
       end
     end
   end

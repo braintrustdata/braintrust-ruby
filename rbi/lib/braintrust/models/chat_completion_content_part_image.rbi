@@ -24,8 +24,7 @@ module Braintrust
         )
           .returns(T.attached_class)
       end
-      def self.new(image_url:, type:)
-      end
+      def self.new(image_url:, type:); end
 
       sig do
         override
@@ -36,8 +35,7 @@ module Braintrust
             }
           )
       end
-      def to_hash
-      end
+      def to_hash; end
 
       class ImageURL < Braintrust::Internal::Type::BaseModel
         sig { returns(String) }
@@ -56,8 +54,7 @@ module Braintrust
           )
             .returns(T.attached_class)
         end
-        def self.new(url:, detail: nil)
-        end
+        def self.new(url:, detail: nil); end
 
         sig do
           override
@@ -65,8 +62,7 @@ module Braintrust
               {url: String, detail: Braintrust::Models::ChatCompletionContentPartImage::ImageURL::Detail::OrSymbol}
             )
         end
-        def to_hash
-        end
+        def to_hash; end
 
         module Detail
           extend Braintrust::Internal::Type::Enum
@@ -84,8 +80,7 @@ module Braintrust
             override
               .returns(T::Array[Braintrust::Models::ChatCompletionContentPartImage::ImageURL::Detail::TaggedSymbol])
           end
-          def self.values
-          end
+          def self.values; end
         end
       end
 
@@ -99,8 +94,7 @@ module Braintrust
         IMAGE_URL = T.let(:image_url, Braintrust::Models::ChatCompletionContentPartImage::Type::TaggedSymbol)
 
         sig { override.returns(T::Array[Braintrust::Models::ChatCompletionContentPartImage::Type::TaggedSymbol]) }
-        def self.values
-        end
+        def self.values; end
       end
     end
   end

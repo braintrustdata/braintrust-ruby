@@ -82,9 +82,7 @@ module Braintrust
         org_name: nil,
         starting_after: nil,
         request_options: {}
-      )
-      end
-
+      ); end
       sig do
         override
           .returns(
@@ -100,15 +98,13 @@ module Braintrust
             }
           )
       end
-      def to_hash
-      end
+      def to_hash; end
 
       module AISecretType
         extend Braintrust::Internal::Type::Union
 
         sig { override.returns([String, T::Array[String]]) }
-        def self.variants
-        end
+        def self.variants; end
 
         StringArray = T.let(
           Braintrust::Internal::Type::ArrayOf[String],
@@ -122,8 +118,7 @@ module Braintrust
         extend Braintrust::Internal::Type::Union
 
         sig { override.returns([String, T::Array[String]]) }
-        def self.variants
-        end
+        def self.variants; end
 
         StringArray = T.let(
           Braintrust::Internal::Type::ArrayOf[String],

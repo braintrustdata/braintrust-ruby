@@ -34,9 +34,7 @@ module Braintrust
         # A list of tags for the prompt
         tags: nil,
         request_options: {}
-      )
-      end
-
+      ); end
       # Get a prompt object by its id
       sig do
         params(
@@ -49,9 +47,7 @@ module Braintrust
         # Prompt id
         prompt_id,
         request_options: {}
-      )
-      end
-
+      ); end
       # Partially update a prompt object. Specify the fields to update in the payload.
       #   Any object-type fields will be deep-merged with existing content. Currently we
       #   do not support removing fields or setting them to null.
@@ -81,9 +77,7 @@ module Braintrust
         # A list of tags for the prompt
         tags: nil,
         request_options: {}
-      )
-      end
-
+      ); end
       # List out all prompts. The prompts are sorted by creation date, with the most
       #   recently-created prompts coming first
       sig do
@@ -136,9 +130,7 @@ module Braintrust
         #   version identifier (e.g. '81cd05ee665fdfb3').
         version: nil,
         request_options: {}
-      )
-      end
-
+      ); end
       # Delete a prompt object by its id
       sig do
         params(
@@ -151,9 +143,7 @@ module Braintrust
         # Prompt id
         prompt_id,
         request_options: {}
-      )
-      end
-
+      ); end
       # Create or replace prompt. If there is an existing prompt in the project with the
       #   same slug as the one specified in the request, will replace the existing prompt
       #   with the provided fields
@@ -185,13 +175,10 @@ module Braintrust
         # A list of tags for the prompt
         tags: nil,
         request_options: {}
-      )
-      end
-
+      ); end
       # @api private
       sig { params(client: Braintrust::Client).returns(T.attached_class) }
-      def self.new(client:)
-      end
+      def self.new(client:); end
     end
   end
 end

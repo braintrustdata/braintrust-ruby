@@ -25,8 +25,7 @@ module Braintrust
         )
           .returns(T.attached_class)
       end
-      def self.new(baseline_experiment_id: nil, comparison_key: nil, span_field_order: nil)
-      end
+      def self.new(baseline_experiment_id: nil, comparison_key: nil, span_field_order: nil); end
 
       sig do
         override
@@ -38,8 +37,7 @@ module Braintrust
             }
           )
       end
-      def to_hash
-      end
+      def to_hash; end
 
       class SpanFieldOrder < Braintrust::Internal::Type::BaseModel
         sig { returns(String) }
@@ -63,8 +61,7 @@ module Braintrust
           )
             .returns(T.attached_class)
         end
-        def self.new(column_id:, object_type:, position:, layout: nil)
-        end
+        def self.new(column_id:, object_type:, position:, layout: nil); end
 
         sig do
           override
@@ -77,8 +74,7 @@ module Braintrust
               }
             )
         end
-        def to_hash
-        end
+        def to_hash; end
 
         module Layout
           extend Braintrust::Internal::Type::Enum
@@ -93,8 +89,7 @@ module Braintrust
             T.let(:two_column, Braintrust::Models::ProjectSettings::SpanFieldOrder::Layout::TaggedSymbol)
 
           sig { override.returns(T::Array[Braintrust::Models::ProjectSettings::SpanFieldOrder::Layout::TaggedSymbol]) }
-          def self.values
-          end
+          def self.values; end
         end
       end
     end

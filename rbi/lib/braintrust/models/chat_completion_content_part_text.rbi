@@ -16,12 +16,10 @@ module Braintrust
         params(type: Braintrust::Models::ChatCompletionContentPartText::Type::OrSymbol, text: String)
           .returns(T.attached_class)
       end
-      def self.new(type:, text: nil)
-      end
+      def self.new(type:, text: nil); end
 
       sig { override.returns({type: Braintrust::Models::ChatCompletionContentPartText::Type::OrSymbol, text: String}) }
-      def to_hash
-      end
+      def to_hash; end
 
       module Type
         extend Braintrust::Internal::Type::Enum
@@ -33,8 +31,7 @@ module Braintrust
         TEXT = T.let(:text, Braintrust::Models::ChatCompletionContentPartText::Type::TaggedSymbol)
 
         sig { override.returns(T::Array[Braintrust::Models::ChatCompletionContentPartText::Type::TaggedSymbol]) }
-        def self.values
-        end
+        def self.values; end
       end
     end
   end

@@ -15,7 +15,9 @@ module Braintrust
       sig { returns(T.nilable(Braintrust::Models::ProjectSettings)) }
       attr_reader :settings
 
-      sig { params(settings: T.nilable(T.any(Braintrust::Models::ProjectSettings, Braintrust::Internal::AnyHash))).void }
+      sig do
+        params(settings: T.nilable(T.any(Braintrust::Models::ProjectSettings, Braintrust::Internal::AnyHash))).void
+      end
       attr_writer :settings
 
       sig do
@@ -26,8 +28,7 @@ module Braintrust
         )
           .returns(T.attached_class)
       end
-      def self.new(name: nil, settings: nil, request_options: {})
-      end
+      def self.new(name: nil, settings: nil, request_options: {}); end
 
       sig do
         override
@@ -39,8 +40,7 @@ module Braintrust
             }
           )
       end
-      def to_hash
-      end
+      def to_hash; end
     end
   end
 end

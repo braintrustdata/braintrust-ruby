@@ -14,12 +14,10 @@ module Braintrust
         params(search: T.nilable(T.any(Braintrust::Models::ViewDataSearch, Braintrust::Internal::AnyHash)))
           .returns(T.attached_class)
       end
-      def self.new(search: nil)
-      end
+      def self.new(search: nil); end
 
       sig { override.returns({search: T.nilable(Braintrust::Models::ViewDataSearch)}) }
-      def to_hash
-      end
+      def to_hash; end
     end
   end
 end

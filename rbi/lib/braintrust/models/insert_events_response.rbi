@@ -9,12 +9,10 @@ module Braintrust
       attr_accessor :row_ids
 
       sig { params(row_ids: T::Array[String]).returns(T.attached_class) }
-      def self.new(row_ids:)
-      end
+      def self.new(row_ids:); end
 
       sig { override.returns({row_ids: T::Array[String]}) }
-      def to_hash
-      end
+      def to_hash; end
     end
   end
 end
