@@ -1,7 +1,7 @@
 module Braintrust
   module Internal
     module Type
-      class Unknown
+      class IOLike
         extend Braintrust::Internal::Type::Converter
 
         def self.===: (top other) -> bool
@@ -9,14 +9,14 @@ module Braintrust
         def self.==: (top other) -> bool
 
         def self.coerce: (
-          top value,
+          StringIO | String | top value,
           state: Braintrust::Internal::Type::Converter::coerce_state
-        ) -> top
+        ) -> (StringIO | top)
 
         def self.dump: (
-          top value,
+          Pathname | StringIO | IO | String | top value,
           state: Braintrust::Internal::Type::Converter::dump_state
-        ) -> top
+        ) -> (Pathname | StringIO | IO | String | top)
       end
     end
   end

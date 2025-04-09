@@ -38,7 +38,7 @@ module Braintrust
           override
             .params(
               value: T.any(T::Hash[T.anything, T.anything], T.anything),
-              state: Braintrust::Internal::Type::Converter::State
+              state: Braintrust::Internal::Type::Converter::CoerceState
             )
             .returns(T.any(Braintrust::Internal::AnyHash, T.anything))
         end
@@ -47,10 +47,13 @@ module Braintrust
         # @api private
         sig(:final) do
           override
-            .params(value: T.any(T::Hash[T.anything, T.anything], T.anything))
+            .params(
+              value: T.any(T::Hash[T.anything, T.anything], T.anything),
+              state: Braintrust::Internal::Type::Converter::DumpState
+            )
             .returns(T.any(Braintrust::Internal::AnyHash, T.anything))
         end
-        def dump(value); end
+        def dump(value, state:); end
 
         # @api private
         sig(:final) { returns(Elem) }

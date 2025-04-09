@@ -165,15 +165,19 @@ module Braintrust
         #
         # @param value [Object]
         #
+        # @param state [Hash{Symbol=>Object}] .
+        #
+        #   @option state [Boolean] :can_retry
+        #
         # @return [Object]
-        def dump(value)
+        def dump(value, state:)
           if (target = resolve_variant(value))
-            return Braintrust::Internal::Type::Converter.dump(target, value)
+            return Braintrust::Internal::Type::Converter.dump(target, value, state: state)
           end
 
           known_variants.each do
             target = _2.call
-            return Braintrust::Internal::Type::Converter.dump(target, value) if target === value
+            return Braintrust::Internal::Type::Converter.dump(target, value, state: state) if target === value
           end
 
           super

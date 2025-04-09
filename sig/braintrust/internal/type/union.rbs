@@ -32,10 +32,13 @@ module Braintrust
 
         def coerce: (
           top value,
-          state: Braintrust::Internal::Type::Converter::state
+          state: Braintrust::Internal::Type::Converter::coerce_state
         ) -> top
 
-        def dump: (top value) -> top
+        def dump: (
+          top value,
+          state: Braintrust::Internal::Type::Converter::dump_state
+        ) -> top
       end
     end
   end
