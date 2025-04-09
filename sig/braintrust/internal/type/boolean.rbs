@@ -10,10 +10,13 @@ module Braintrust
 
         def self.coerce: (
           bool | top value,
-          state: Braintrust::Internal::Type::Converter::state
+          state: Braintrust::Internal::Type::Converter::coerce_state
         ) -> (bool | top)
 
-        def self.dump: (bool | top value) -> (bool | top)
+        def self.dump: (
+          bool | top value,
+          state: Braintrust::Internal::Type::Converter::dump_state
+        ) -> (bool | top)
       end
     end
   end
