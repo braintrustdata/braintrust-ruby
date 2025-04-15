@@ -19,22 +19,6 @@ module Braintrust
       # @return [Array<generic<Elem>>, nil]
       attr_accessor :objects
 
-      # @api private
-      #
-      # @param client [Braintrust::Internal::Transport::BaseClient]
-      # @param req [Hash{Symbol=>Object}]
-      # @param headers [Hash{String=>String}, Net::HTTPHeader]
-      # @param page_data [Hash{Symbol=>Object}]
-      def initialize(client:, req:, headers:, page_data:)
-        super
-
-        case page_data
-        in {objects: Array | nil => objects}
-          @objects = objects&.map { Braintrust::Internal::Type::Converter.coerce(@model, _1) }
-        else
-        end
-      end
-
       # @return [Boolean]
       def next_page?
         !objects.to_a.empty?
@@ -71,11 +55,27 @@ module Braintrust
 
       # @api private
       #
+      # @param client [Braintrust::Internal::Transport::BaseClient]
+      # @param req [Hash{Symbol=>Object}]
+      # @param headers [Hash{String=>String}, Net::HTTPHeader]
+      # @param page_data [Hash{Symbol=>Object}]
+      def initialize(client:, req:, headers:, page_data:)
+        super
+
+        case page_data
+        in {objects: Array | nil => objects}
+          @objects = objects&.map { Braintrust::Internal::Type::Converter.coerce(@model, _1) }
+        else
+        end
+      end
+
+      # @api private
+      #
       # @return [String]
       def inspect
         model = Braintrust::Internal::Type::Converter.inspect(@model, depth: 1)
 
-        "#<#{self.class}[#{model}]:0x#{object_id.to_s(16)} >"
+        "#<#{self.class}[#{model}]:0x#{object_id.to_s(16)}>"
       end
     end
   end
