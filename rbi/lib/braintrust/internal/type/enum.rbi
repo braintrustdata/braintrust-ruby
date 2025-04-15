@@ -55,6 +55,10 @@ module Braintrust
             .returns(T.any(Symbol, T.anything))
         end
         def dump(value, state:); end
+
+        # @api private
+        sig { params(depth: Integer).returns(String) }
+        def inspect(depth: 0); end
       end
     end
   end
