@@ -460,6 +460,8 @@ module Braintrust
           end
         end
 
+        # @api private
+        #
         # @return [String]
         def inspect
           # rubocop:disable Layout/LineLength

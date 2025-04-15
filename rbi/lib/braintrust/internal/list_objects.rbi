@@ -10,6 +10,7 @@ module Braintrust
       sig { returns(T.nilable(T::Array[Elem])) }
       attr_accessor :objects
 
+      # @api private
       sig { returns(String) }
       def inspect; end
     end
