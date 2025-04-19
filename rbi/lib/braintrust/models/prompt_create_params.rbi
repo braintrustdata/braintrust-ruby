@@ -80,8 +80,7 @@ module Braintrust
         extend Braintrust::Internal::Type::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Braintrust::Models::PromptCreateParams::FunctionType) }
-        OrSymbol =
-          T.type_alias { T.any(Symbol, String, Braintrust::Models::PromptCreateParams::FunctionType::TaggedSymbol) }
+        OrSymbol = T.type_alias { T.any(Symbol, String) }
 
         LLM = T.let(:llm, Braintrust::Models::PromptCreateParams::FunctionType::TaggedSymbol)
         SCORER = T.let(:scorer, Braintrust::Models::PromptCreateParams::FunctionType::TaggedSymbol)

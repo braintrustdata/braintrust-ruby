@@ -314,21 +314,14 @@ module Braintrust
             sig do
               override
                 .returns(
-                  [Braintrust::Models::PromptOptions::Params::OpenAIModelParams::FunctionCall::OrSymbol, Braintrust::Models::PromptOptions::Params::OpenAIModelParams::FunctionCall::Function]
+                  [Braintrust::Models::PromptOptions::Params::OpenAIModelParams::FunctionCall::TaggedSymbol, Braintrust::Models::PromptOptions::Params::OpenAIModelParams::FunctionCall::Function]
                 )
             end
             def self.variants; end
 
             TaggedSymbol =
               T.type_alias { T.all(Symbol, Braintrust::Models::PromptOptions::Params::OpenAIModelParams::FunctionCall) }
-            OrSymbol =
-              T.type_alias do
-                T.any(
-                  Symbol,
-                  String,
-                  Braintrust::Models::PromptOptions::Params::OpenAIModelParams::FunctionCall::TaggedSymbol
-                )
-              end
+            OrSymbol = T.type_alias { T.any(Symbol, String) }
 
             AUTO =
               T.let(:auto, Braintrust::Models::PromptOptions::Params::OpenAIModelParams::FunctionCall::TaggedSymbol)
@@ -341,14 +334,7 @@ module Braintrust
 
             TaggedSymbol =
               T.type_alias { T.all(Symbol, Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ReasoningEffort) }
-            OrSymbol =
-              T.type_alias do
-                T.any(
-                  Symbol,
-                  String,
-                  Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ReasoningEffort::TaggedSymbol
-                )
-              end
+            OrSymbol = T.type_alias { T.any(Symbol, String) }
 
             LOW =
               T.let(:low, Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ReasoningEffort::TaggedSymbol)
@@ -405,14 +391,7 @@ module Braintrust
                   T.type_alias do
                     T.all(Symbol, Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ResponseFormat::JsonObject::Type)
                   end
-                OrSymbol =
-                  T.type_alias do
-                    T.any(
-                      Symbol,
-                      String,
-                      Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ResponseFormat::JsonObject::Type::TaggedSymbol
-                    )
-                  end
+                OrSymbol = T.type_alias { T.any(Symbol, String) }
 
                 JSON_OBJECT =
                   T.let(
@@ -545,14 +524,7 @@ module Braintrust
                   T.type_alias do
                     T.all(Symbol, Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ResponseFormat::JsonSchema::Type)
                   end
-                OrSymbol =
-                  T.type_alias do
-                    T.any(
-                      Symbol,
-                      String,
-                      Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ResponseFormat::JsonSchema::Type::TaggedSymbol
-                    )
-                  end
+                OrSymbol = T.type_alias { T.any(Symbol, String) }
 
                 JSON_SCHEMA =
                   T.let(
@@ -601,14 +573,7 @@ module Braintrust
 
                 TaggedSymbol =
                   T.type_alias { T.all(Symbol, Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ResponseFormat::Text::Type) }
-                OrSymbol =
-                  T.type_alias do
-                    T.any(
-                      Symbol,
-                      String,
-                      Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ResponseFormat::Text::Type::TaggedSymbol
-                    )
-                  end
+                OrSymbol = T.type_alias { T.any(Symbol, String) }
 
                 TEXT =
                   T.let(
@@ -699,14 +664,7 @@ module Braintrust
 
                 TaggedSymbol =
                   T.type_alias { T.all(Symbol, Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ToolChoice::Function::Type) }
-                OrSymbol =
-                  T.type_alias do
-                    T.any(
-                      Symbol,
-                      String,
-                      Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ToolChoice::Function::Type::TaggedSymbol
-                    )
-                  end
+                OrSymbol = T.type_alias { T.any(Symbol, String) }
 
                 FUNCTION =
                   T.let(
@@ -727,21 +685,14 @@ module Braintrust
             sig do
               override
                 .returns(
-                  [Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ToolChoice::OrSymbol, Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ToolChoice::Function]
+                  [Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ToolChoice::TaggedSymbol, Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ToolChoice::Function]
                 )
             end
             def self.variants; end
 
             TaggedSymbol =
               T.type_alias { T.all(Symbol, Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ToolChoice) }
-            OrSymbol =
-              T.type_alias do
-                T.any(
-                  Symbol,
-                  String,
-                  Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ToolChoice::TaggedSymbol
-                )
-              end
+            OrSymbol = T.type_alias { T.any(Symbol, String) }
 
             AUTO =
               T.let(:auto, Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ToolChoice::TaggedSymbol)

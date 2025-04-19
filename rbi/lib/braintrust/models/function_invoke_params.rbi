@@ -201,8 +201,7 @@ module Braintrust
 
             TaggedSymbol =
               T.type_alias { T.all(Symbol, Braintrust::Models::FunctionInvokeParams::Message::System::Role) }
-            OrSymbol =
-              T.type_alias { T.any(Symbol, String, Braintrust::Models::FunctionInvokeParams::Message::System::Role::TaggedSymbol) }
+            OrSymbol = T.type_alias { T.any(Symbol, String) }
 
             SYSTEM = T.let(:system, Braintrust::Models::FunctionInvokeParams::Message::System::Role::TaggedSymbol)
 
@@ -299,8 +298,7 @@ module Braintrust
 
             TaggedSymbol =
               T.type_alias { T.all(Symbol, Braintrust::Models::FunctionInvokeParams::Message::User::Role) }
-            OrSymbol =
-              T.type_alias { T.any(Symbol, String, Braintrust::Models::FunctionInvokeParams::Message::User::Role::TaggedSymbol) }
+            OrSymbol = T.type_alias { T.any(Symbol, String) }
 
             USER = T.let(:user, Braintrust::Models::FunctionInvokeParams::Message::User::Role::TaggedSymbol)
 
@@ -414,8 +412,7 @@ module Braintrust
 
             TaggedSymbol =
               T.type_alias { T.all(Symbol, Braintrust::Models::FunctionInvokeParams::Message::Assistant::Role) }
-            OrSymbol =
-              T.type_alias { T.any(Symbol, String, Braintrust::Models::FunctionInvokeParams::Message::Assistant::Role::TaggedSymbol) }
+            OrSymbol = T.type_alias { T.any(Symbol, String) }
 
             ASSISTANT =
               T.let(:assistant, Braintrust::Models::FunctionInvokeParams::Message::Assistant::Role::TaggedSymbol)
@@ -485,8 +482,7 @@ module Braintrust
 
             TaggedSymbol =
               T.type_alias { T.all(Symbol, Braintrust::Models::FunctionInvokeParams::Message::Tool::Role) }
-            OrSymbol =
-              T.type_alias { T.any(Symbol, String, Braintrust::Models::FunctionInvokeParams::Message::Tool::Role::TaggedSymbol) }
+            OrSymbol = T.type_alias { T.any(Symbol, String) }
 
             TOOL = T.let(:tool, Braintrust::Models::FunctionInvokeParams::Message::Tool::Role::TaggedSymbol)
 
@@ -535,8 +531,7 @@ module Braintrust
 
             TaggedSymbol =
               T.type_alias { T.all(Symbol, Braintrust::Models::FunctionInvokeParams::Message::Function::Role) }
-            OrSymbol =
-              T.type_alias { T.any(Symbol, String, Braintrust::Models::FunctionInvokeParams::Message::Function::Role::TaggedSymbol) }
+            OrSymbol = T.type_alias { T.any(Symbol, String) }
 
             FUNCTION =
               T.let(:function, Braintrust::Models::FunctionInvokeParams::Message::Function::Role::TaggedSymbol)
@@ -580,8 +575,7 @@ module Braintrust
 
             TaggedSymbol =
               T.type_alias { T.all(Symbol, Braintrust::Models::FunctionInvokeParams::Message::Fallback::Role) }
-            OrSymbol =
-              T.type_alias { T.any(Symbol, String, Braintrust::Models::FunctionInvokeParams::Message::Fallback::Role::TaggedSymbol) }
+            OrSymbol = T.type_alias { T.any(Symbol, String) }
 
             MODEL = T.let(:model, Braintrust::Models::FunctionInvokeParams::Message::Fallback::Role::TaggedSymbol)
 
@@ -606,8 +600,7 @@ module Braintrust
         extend Braintrust::Internal::Type::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Braintrust::Models::FunctionInvokeParams::Mode) }
-        OrSymbol =
-          T.type_alias { T.any(Symbol, String, Braintrust::Models::FunctionInvokeParams::Mode::TaggedSymbol) }
+        OrSymbol = T.type_alias { T.any(Symbol, String) }
 
         AUTO = T.let(:auto, Braintrust::Models::FunctionInvokeParams::Mode::TaggedSymbol)
         PARALLEL = T.let(:parallel, Braintrust::Models::FunctionInvokeParams::Mode::TaggedSymbol)
@@ -684,14 +677,7 @@ module Braintrust
 
             TaggedSymbol =
               T.type_alias { T.all(Symbol, Braintrust::Models::FunctionInvokeParams::Parent::SpanParentStruct::ObjectType) }
-            OrSymbol =
-              T.type_alias do
-                T.any(
-                  Symbol,
-                  String,
-                  Braintrust::Models::FunctionInvokeParams::Parent::SpanParentStruct::ObjectType::TaggedSymbol
-                )
-              end
+            OrSymbol = T.type_alias { T.any(Symbol, String) }
 
             PROJECT_LOGS =
               T.let(

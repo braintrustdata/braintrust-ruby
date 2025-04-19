@@ -41,8 +41,7 @@ module Braintrust
         extend Braintrust::Internal::Type::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Braintrust::Models::PatchOrganizationMembersOutput::Status) }
-        OrSymbol =
-          T.type_alias { T.any(Symbol, String, Braintrust::Models::PatchOrganizationMembersOutput::Status::TaggedSymbol) }
+        OrSymbol = T.type_alias { T.any(Symbol, String) }
 
         SUCCESS = T.let(:success, Braintrust::Models::PatchOrganizationMembersOutput::Status::TaggedSymbol)
 
