@@ -7,7 +7,7 @@ module Braintrust
       extend Braintrust::Internal::Type::Enum
 
       TaggedSymbol = T.type_alias { T.all(Symbol, Braintrust::Models::ProjectScoreType) }
-      OrSymbol = T.type_alias { T.any(Symbol, String, Braintrust::Models::ProjectScoreType::TaggedSymbol) }
+      OrSymbol = T.type_alias { T.any(Symbol, String) }
 
       SLIDER = T.let(:slider, Braintrust::Models::ProjectScoreType::TaggedSymbol)
       CATEGORICAL = T.let(:categorical, Braintrust::Models::ProjectScoreType::TaggedSymbol)

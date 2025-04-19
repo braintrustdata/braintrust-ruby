@@ -108,8 +108,7 @@ module Braintrust
 
             TaggedSymbol =
               T.type_alias { T.all(Symbol, Braintrust::Models::FunctionUpdateParams::FunctionData::Prompt::Type) }
-            OrSymbol =
-              T.type_alias { T.any(Symbol, String, Braintrust::Models::FunctionUpdateParams::FunctionData::Prompt::Type::TaggedSymbol) }
+            OrSymbol = T.type_alias { T.any(Symbol, String) }
 
             PROMPT =
               T.let(:prompt, Braintrust::Models::FunctionUpdateParams::FunctionData::Prompt::Type::TaggedSymbol)
@@ -189,14 +188,7 @@ module Braintrust
 
                 TaggedSymbol =
                   T.type_alias { T.all(Symbol, Braintrust::Models::FunctionUpdateParams::FunctionData::Code::Data::Bundle::Type) }
-                OrSymbol =
-                  T.type_alias do
-                    T.any(
-                      Symbol,
-                      String,
-                      Braintrust::Models::FunctionUpdateParams::FunctionData::Code::Data::Bundle::Type::TaggedSymbol
-                    )
-                  end
+                OrSymbol = T.type_alias { T.any(Symbol, String) }
 
                 BUNDLE =
                   T.let(
@@ -298,14 +290,7 @@ module Braintrust
                     T.type_alias do
                       T.all(Symbol, Braintrust::Models::FunctionUpdateParams::FunctionData::Code::Data::Inline::RuntimeContext::Runtime)
                     end
-                  OrSymbol =
-                    T.type_alias do
-                      T.any(
-                        Symbol,
-                        String,
-                        Braintrust::Models::FunctionUpdateParams::FunctionData::Code::Data::Inline::RuntimeContext::Runtime::TaggedSymbol
-                      )
-                    end
+                  OrSymbol = T.type_alias { T.any(Symbol, String) }
 
                   NODE =
                     T.let(
@@ -335,14 +320,7 @@ module Braintrust
 
                 TaggedSymbol =
                   T.type_alias { T.all(Symbol, Braintrust::Models::FunctionUpdateParams::FunctionData::Code::Data::Inline::Type) }
-                OrSymbol =
-                  T.type_alias do
-                    T.any(
-                      Symbol,
-                      String,
-                      Braintrust::Models::FunctionUpdateParams::FunctionData::Code::Data::Inline::Type::TaggedSymbol
-                    )
-                  end
+                OrSymbol = T.type_alias { T.any(Symbol, String) }
 
                 INLINE =
                   T.let(
@@ -374,8 +352,7 @@ module Braintrust
 
             TaggedSymbol =
               T.type_alias { T.all(Symbol, Braintrust::Models::FunctionUpdateParams::FunctionData::Code::Type) }
-            OrSymbol =
-              T.type_alias { T.any(Symbol, String, Braintrust::Models::FunctionUpdateParams::FunctionData::Code::Type::TaggedSymbol) }
+            OrSymbol = T.type_alias { T.any(Symbol, String) }
 
             CODE = T.let(:code, Braintrust::Models::FunctionUpdateParams::FunctionData::Code::Type::TaggedSymbol)
 
@@ -413,8 +390,7 @@ module Braintrust
 
             TaggedSymbol =
               T.type_alias { T.all(Symbol, Braintrust::Models::FunctionUpdateParams::FunctionData::Global::Type) }
-            OrSymbol =
-              T.type_alias { T.any(Symbol, String, Braintrust::Models::FunctionUpdateParams::FunctionData::Global::Type::TaggedSymbol) }
+            OrSymbol = T.type_alias { T.any(Symbol, String) }
 
             GLOBAL =
               T.let(:global, Braintrust::Models::FunctionUpdateParams::FunctionData::Global::Type::TaggedSymbol)

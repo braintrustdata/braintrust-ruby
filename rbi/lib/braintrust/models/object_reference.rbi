@@ -55,8 +55,7 @@ module Braintrust
         extend Braintrust::Internal::Type::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Braintrust::Models::ObjectReference::ObjectType) }
-        OrSymbol =
-          T.type_alias { T.any(Symbol, String, Braintrust::Models::ObjectReference::ObjectType::TaggedSymbol) }
+        OrSymbol = T.type_alias { T.any(Symbol, String) }
 
         EXPERIMENT = T.let(:experiment, Braintrust::Models::ObjectReference::ObjectType::TaggedSymbol)
         DATASET = T.let(:dataset, Braintrust::Models::ObjectReference::ObjectType::TaggedSymbol)

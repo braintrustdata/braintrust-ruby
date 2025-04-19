@@ -60,8 +60,7 @@ module Braintrust
         extend Braintrust::Internal::Type::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Braintrust::Models::ChatCompletionMessageToolCall::Type) }
-        OrSymbol =
-          T.type_alias { T.any(Symbol, String, Braintrust::Models::ChatCompletionMessageToolCall::Type::TaggedSymbol) }
+        OrSymbol = T.type_alias { T.any(Symbol, String) }
 
         FUNCTION = T.let(:function, Braintrust::Models::ChatCompletionMessageToolCall::Type::TaggedSymbol)
 

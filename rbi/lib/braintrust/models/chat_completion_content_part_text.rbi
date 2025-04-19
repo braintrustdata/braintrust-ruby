@@ -25,8 +25,7 @@ module Braintrust
         extend Braintrust::Internal::Type::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Braintrust::Models::ChatCompletionContentPartText::Type) }
-        OrSymbol =
-          T.type_alias { T.any(Symbol, String, Braintrust::Models::ChatCompletionContentPartText::Type::TaggedSymbol) }
+        OrSymbol = T.type_alias { T.any(Symbol, String) }
 
         TEXT = T.let(:text, Braintrust::Models::ChatCompletionContentPartText::Type::TaggedSymbol)
 

@@ -10,7 +10,7 @@ module Braintrust
       extend Braintrust::Internal::Type::Enum
 
       TaggedSymbol = T.type_alias { T.all(Symbol, Braintrust::Models::Permission) }
-      OrSymbol = T.type_alias { T.any(Symbol, String, Braintrust::Models::Permission::TaggedSymbol) }
+      OrSymbol = T.type_alias { T.any(Symbol, String) }
 
       CREATE = T.let(:create, Braintrust::Models::Permission::TaggedSymbol)
       READ = T.let(:read, Braintrust::Models::Permission::TaggedSymbol)
