@@ -67,38 +67,21 @@ module Braintrust
       #   @return [String, nil]
       optional :user_id, String, nil?: true
 
-      # @!parse
-      #   # A role is a collection of permissions which can be granted as part of an ACL
-      #   #
-      #   # Roles can consist of individual permissions, as well as a set of roles they
-      #   # inherit from
-      #   #
-      #   # @param id [String]
-      #   # @param name [String]
-      #   # @param created [Time, nil]
-      #   # @param deleted_at [Time, nil]
-      #   # @param description [String, nil]
-      #   # @param member_permissions [Array<Braintrust::Models::Role::MemberPermission>, nil]
-      #   # @param member_roles [Array<String>, nil]
-      #   # @param org_id [String, nil]
-      #   # @param user_id [String, nil]
-      #   #
-      #   def initialize(
-      #     id:,
-      #     name:,
-      #     created: nil,
-      #     deleted_at: nil,
-      #     description: nil,
-      #     member_permissions: nil,
-      #     member_roles: nil,
-      #     org_id: nil,
-      #     user_id: nil,
-      #     **
-      #   )
-      #     super
-      #   end
-
-      # def initialize: (Hash | Braintrust::Internal::Type::BaseModel) -> void
+      # @!method initialize(id:, name:, created: nil, deleted_at: nil, description: nil, member_permissions: nil, member_roles: nil, org_id: nil, user_id: nil)
+      #   A role is a collection of permissions which can be granted as part of an ACL
+      #
+      #   Roles can consist of individual permissions, as well as a set of roles they
+      #   inherit from
+      #
+      #   @param id [String]
+      #   @param name [String]
+      #   @param created [Time, nil]
+      #   @param deleted_at [Time, nil]
+      #   @param description [String, nil]
+      #   @param member_permissions [Array<Braintrust::Models::Role::MemberPermission>, nil]
+      #   @param member_roles [Array<String>, nil]
+      #   @param org_id [String, nil]
+      #   @param user_id [String, nil]
 
       class MemberPermission < Braintrust::Internal::Type::BaseModel
         # @!attribute permission
@@ -116,13 +99,9 @@ module Braintrust
         #   @return [Symbol, Braintrust::Models::ACLObjectType, nil]
         optional :restrict_object_type, enum: -> { Braintrust::Models::ACLObjectType }, nil?: true
 
-        # @!parse
-        #   # @param permission [Symbol, Braintrust::Models::Permission]
-        #   # @param restrict_object_type [Symbol, Braintrust::Models::ACLObjectType, nil]
-        #   #
-        #   def initialize(permission:, restrict_object_type: nil, **) = super
-
-        # def initialize: (Hash | Braintrust::Internal::Type::BaseModel) -> void
+        # @!method initialize(permission:, restrict_object_type: nil)
+        #   @param permission [Symbol, Braintrust::Models::Permission]
+        #   @param restrict_object_type [Symbol, Braintrust::Models::ACLObjectType, nil]
       end
     end
   end

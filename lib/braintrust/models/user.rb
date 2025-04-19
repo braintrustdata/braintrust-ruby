@@ -39,17 +39,13 @@ module Braintrust
       #   @return [String, nil]
       optional :given_name, String, nil?: true
 
-      # @!parse
-      #   # @param id [String]
-      #   # @param avatar_url [String, nil]
-      #   # @param created [Time, nil]
-      #   # @param email [String, nil]
-      #   # @param family_name [String, nil]
-      #   # @param given_name [String, nil]
-      #   #
-      #   def initialize(id:, avatar_url: nil, created: nil, email: nil, family_name: nil, given_name: nil, **) = super
-
-      # def initialize: (Hash | Braintrust::Internal::Type::BaseModel) -> void
+      # @!method initialize(id:, avatar_url: nil, created: nil, email: nil, family_name: nil, given_name: nil)
+      #   @param id [String]
+      #   @param avatar_url [String, nil]
+      #   @param created [Time, nil]
+      #   @param email [String, nil]
+      #   @param family_name [String, nil]
+      #   @param given_name [String, nil]
     end
   end
 end

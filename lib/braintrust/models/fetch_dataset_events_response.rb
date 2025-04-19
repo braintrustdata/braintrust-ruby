@@ -18,13 +18,9 @@ module Braintrust
       #   @return [String, nil]
       optional :cursor, String, nil?: true
 
-      # @!parse
-      #   # @param events [Array<Braintrust::Models::DatasetEvent>]
-      #   # @param cursor [String, nil]
-      #   #
-      #   def initialize(events:, cursor: nil, **) = super
-
-      # def initialize: (Hash | Braintrust::Internal::Type::BaseModel) -> void
+      # @!method initialize(events:, cursor: nil)
+      #   @param events [Array<Braintrust::Models::DatasetEvent>]
+      #   @param cursor [String, nil]
     end
   end
 end

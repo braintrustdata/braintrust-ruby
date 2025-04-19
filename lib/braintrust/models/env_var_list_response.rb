@@ -10,12 +10,8 @@ module Braintrust
       #   @return [Array<Braintrust::Models::EnvVar>]
       required :objects, -> { Braintrust::Internal::Type::ArrayOf[Braintrust::Models::EnvVar] }
 
-      # @!parse
-      #   # @param objects [Array<Braintrust::Models::EnvVar>]
-      #   #
-      #   def initialize(objects:, **) = super
-
-      # def initialize: (Hash | Braintrust::Internal::Type::BaseModel) -> void
+      # @!method initialize(objects:)
+      #   @param objects [Array<Braintrust::Models::EnvVar>]
     end
   end
 end

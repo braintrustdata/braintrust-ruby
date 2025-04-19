@@ -33,13 +33,9 @@ module Braintrust
       #   @return [Array<Braintrust::Models::ACL>]
       required :removed_acls, -> { Braintrust::Internal::Type::ArrayOf[Braintrust::Models::ACL] }
 
-      # @!parse
-      #   # @param added_acls [Array<Braintrust::Models::ACL>]
-      #   # @param removed_acls [Array<Braintrust::Models::ACL>]
-      #   #
-      #   def initialize(added_acls:, removed_acls:, **) = super
-
-      # def initialize: (Hash | Braintrust::Internal::Type::BaseModel) -> void
+      # @!method initialize(added_acls:, removed_acls:)
+      #   @param added_acls [Array<Braintrust::Models::ACL>]
+      #   @param removed_acls [Array<Braintrust::Models::ACL>]
     end
   end
 end

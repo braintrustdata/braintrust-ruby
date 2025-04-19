@@ -9,14 +9,10 @@ module Braintrust
       #   @return [Integer]
       required :total_records, Integer
 
-      # @!parse
-      #   # Summary of a dataset's data
-      #   #
-      #   # @param total_records [Integer]
-      #   #
-      #   def initialize(total_records:, **) = super
-
-      # def initialize: (Hash | Braintrust::Internal::Type::BaseModel) -> void
+      # @!method initialize(total_records:)
+      #   Summary of a dataset's data
+      #
+      #   @param total_records [Integer]
     end
   end
 end

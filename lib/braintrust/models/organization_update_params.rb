@@ -34,17 +34,13 @@ module Braintrust
       #   @return [String, nil]
       optional :realtime_url, String, nil?: true
 
-      # @!parse
-      #   # @param api_url [String, nil]
-      #   # @param is_universal_api [Boolean, nil]
-      #   # @param name [String, nil]
-      #   # @param proxy_url [String, nil]
-      #   # @param realtime_url [String, nil]
-      #   # @param request_options [Braintrust::RequestOptions, Hash{Symbol=>Object}]
-      #   #
-      #   def initialize(api_url: nil, is_universal_api: nil, name: nil, proxy_url: nil, realtime_url: nil, request_options: {}, **) = super
-
-      # def initialize: (Hash | Braintrust::Internal::Type::BaseModel) -> void
+      # @!method initialize(api_url: nil, is_universal_api: nil, name: nil, proxy_url: nil, realtime_url: nil, request_options: {})
+      #   @param api_url [String, nil]
+      #   @param is_universal_api [Boolean, nil]
+      #   @param name [String, nil]
+      #   @param proxy_url [String, nil]
+      #   @param realtime_url [String, nil]
+      #   @param request_options [Braintrust::RequestOptions, Hash{Symbol=>Object}]
     end
   end
 end

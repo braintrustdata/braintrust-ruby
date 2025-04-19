@@ -42,14 +42,10 @@ module Braintrust
                -> { Braintrust::Internal::Type::ArrayOf[Braintrust::Models::ACLBatchUpdateParams::RemoveACL] },
                nil?: true
 
-      # @!parse
-      #   # @param add_acls [Array<Braintrust::Models::ACLBatchUpdateParams::AddACL>, nil]
-      #   # @param remove_acls [Array<Braintrust::Models::ACLBatchUpdateParams::RemoveACL>, nil]
-      #   # @param request_options [Braintrust::RequestOptions, Hash{Symbol=>Object}]
-      #   #
-      #   def initialize(add_acls: nil, remove_acls: nil, request_options: {}, **) = super
-
-      # def initialize: (Hash | Braintrust::Internal::Type::BaseModel) -> void
+      # @!method initialize(add_acls: nil, remove_acls: nil, request_options: {})
+      #   @param add_acls [Array<Braintrust::Models::ACLBatchUpdateParams::AddACL>, nil]
+      #   @param remove_acls [Array<Braintrust::Models::ACLBatchUpdateParams::RemoveACL>, nil]
+      #   @param request_options [Braintrust::RequestOptions, Hash{Symbol=>Object}]
 
       class AddACL < Braintrust::Internal::Type::BaseModel
         # @!attribute object_id_
@@ -99,40 +95,25 @@ module Braintrust
         #   @return [String, nil]
         optional :user_id, String, nil?: true
 
-        # @!parse
-        #   # An ACL grants a certain permission or role to a certain user or group on an
-        #   # object.
-        #   #
-        #   # ACLs are inherited across the object hierarchy. So for example, if a user has
-        #   # read permissions on a project, they will also have read permissions on any
-        #   # experiment, dataset, etc. created within that project.
-        #   #
-        #   # To restrict a grant to a particular sub-object, you may specify
-        #   # `restrict_object_type` in the ACL, as part of a direct permission grant or as
-        #   # part of a role.
-        #   #
-        #   # @param object_id_ [String]
-        #   # @param object_type [Symbol, Braintrust::Models::ACLObjectType]
-        #   # @param group_id [String, nil]
-        #   # @param permission [Symbol, Braintrust::Models::Permission, nil]
-        #   # @param restrict_object_type [Symbol, Braintrust::Models::ACLObjectType, nil]
-        #   # @param role_id [String, nil]
-        #   # @param user_id [String, nil]
-        #   #
-        #   def initialize(
-        #     object_id_:,
-        #     object_type:,
-        #     group_id: nil,
-        #     permission: nil,
-        #     restrict_object_type: nil,
-        #     role_id: nil,
-        #     user_id: nil,
-        #     **
-        #   )
-        #     super
-        #   end
-
-        # def initialize: (Hash | Braintrust::Internal::Type::BaseModel) -> void
+        # @!method initialize(object_id_:, object_type:, group_id: nil, permission: nil, restrict_object_type: nil, role_id: nil, user_id: nil)
+        #   An ACL grants a certain permission or role to a certain user or group on an
+        #   object.
+        #
+        #   ACLs are inherited across the object hierarchy. So for example, if a user has
+        #   read permissions on a project, they will also have read permissions on any
+        #   experiment, dataset, etc. created within that project.
+        #
+        #   To restrict a grant to a particular sub-object, you may specify
+        #   `restrict_object_type` in the ACL, as part of a direct permission grant or as
+        #   part of a role.
+        #
+        #   @param object_id_ [String]
+        #   @param object_type [Symbol, Braintrust::Models::ACLObjectType]
+        #   @param group_id [String, nil]
+        #   @param permission [Symbol, Braintrust::Models::Permission, nil]
+        #   @param restrict_object_type [Symbol, Braintrust::Models::ACLObjectType, nil]
+        #   @param role_id [String, nil]
+        #   @param user_id [String, nil]
       end
 
       class RemoveACL < Braintrust::Internal::Type::BaseModel
@@ -183,40 +164,25 @@ module Braintrust
         #   @return [String, nil]
         optional :user_id, String, nil?: true
 
-        # @!parse
-        #   # An ACL grants a certain permission or role to a certain user or group on an
-        #   # object.
-        #   #
-        #   # ACLs are inherited across the object hierarchy. So for example, if a user has
-        #   # read permissions on a project, they will also have read permissions on any
-        #   # experiment, dataset, etc. created within that project.
-        #   #
-        #   # To restrict a grant to a particular sub-object, you may specify
-        #   # `restrict_object_type` in the ACL, as part of a direct permission grant or as
-        #   # part of a role.
-        #   #
-        #   # @param object_id_ [String]
-        #   # @param object_type [Symbol, Braintrust::Models::ACLObjectType]
-        #   # @param group_id [String, nil]
-        #   # @param permission [Symbol, Braintrust::Models::Permission, nil]
-        #   # @param restrict_object_type [Symbol, Braintrust::Models::ACLObjectType, nil]
-        #   # @param role_id [String, nil]
-        #   # @param user_id [String, nil]
-        #   #
-        #   def initialize(
-        #     object_id_:,
-        #     object_type:,
-        #     group_id: nil,
-        #     permission: nil,
-        #     restrict_object_type: nil,
-        #     role_id: nil,
-        #     user_id: nil,
-        #     **
-        #   )
-        #     super
-        #   end
-
-        # def initialize: (Hash | Braintrust::Internal::Type::BaseModel) -> void
+        # @!method initialize(object_id_:, object_type:, group_id: nil, permission: nil, restrict_object_type: nil, role_id: nil, user_id: nil)
+        #   An ACL grants a certain permission or role to a certain user or group on an
+        #   object.
+        #
+        #   ACLs are inherited across the object hierarchy. So for example, if a user has
+        #   read permissions on a project, they will also have read permissions on any
+        #   experiment, dataset, etc. created within that project.
+        #
+        #   To restrict a grant to a particular sub-object, you may specify
+        #   `restrict_object_type` in the ACL, as part of a direct permission grant or as
+        #   part of a role.
+        #
+        #   @param object_id_ [String]
+        #   @param object_type [Symbol, Braintrust::Models::ACLObjectType]
+        #   @param group_id [String, nil]
+        #   @param permission [Symbol, Braintrust::Models::Permission, nil]
+        #   @param restrict_object_type [Symbol, Braintrust::Models::ACLObjectType, nil]
+        #   @param role_id [String, nil]
+        #   @param user_id [String, nil]
       end
     end
   end

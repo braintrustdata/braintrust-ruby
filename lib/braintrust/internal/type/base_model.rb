@@ -344,6 +344,8 @@ module Braintrust
         end
 
         class << self
+          # @api private
+          #
           # @param model [Braintrust::Internal::Type::BaseModel]
           #
           # @return [Hash{Symbol=>Object}]

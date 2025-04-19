@@ -32,16 +32,12 @@ module Braintrust
       #   @return [String, nil]
       optional :value, String, nil?: true
 
-      # @!parse
-      #   # @param name [String]
-      #   # @param object_id_ [String]
-      #   # @param object_type [Symbol, Braintrust::Models::EnvVarReplaceParams::ObjectType]
-      #   # @param value [String, nil]
-      #   # @param request_options [Braintrust::RequestOptions, Hash{Symbol=>Object}]
-      #   #
-      #   def initialize(name:, object_id_:, object_type:, value: nil, request_options: {}, **) = super
-
-      # def initialize: (Hash | Braintrust::Internal::Type::BaseModel) -> void
+      # @!method initialize(name:, object_id_:, object_type:, value: nil, request_options: {})
+      #   @param name [String]
+      #   @param object_id_ [String]
+      #   @param object_type [Symbol, Braintrust::Models::EnvVarReplaceParams::ObjectType]
+      #   @param value [String, nil]
+      #   @param request_options [Braintrust::RequestOptions, Hash{Symbol=>Object}]
 
       # The type of the object the environment variable is scoped for
       module ObjectType
@@ -51,11 +47,8 @@ module Braintrust
         PROJECT = :project
         FUNCTION = :function
 
-        finalize!
-
-        # @!parse
-        #   # @return [Array<Symbol>]
-        #   def self.values; end
+        # @!method self.values
+        #   @return [Array<Symbol>]
       end
     end
   end

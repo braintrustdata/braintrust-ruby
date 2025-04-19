@@ -39,16 +39,12 @@ module Braintrust
       #   @return [Array<String>, nil]
       optional :tags, Braintrust::Internal::Type::ArrayOf[String], nil?: true
 
-      # @!parse
-      #   # @param id [String]
-      #   # @param comment [String, nil]
-      #   # @param metadata [Hash{Symbol=>Object, nil}, nil]
-      #   # @param source [Symbol, Braintrust::Models::FeedbackDatasetItem::Source, nil]
-      #   # @param tags [Array<String>, nil]
-      #   #
-      #   def initialize(id:, comment: nil, metadata: nil, source: nil, tags: nil, **) = super
-
-      # def initialize: (Hash | Braintrust::Internal::Type::BaseModel) -> void
+      # @!method initialize(id:, comment: nil, metadata: nil, source: nil, tags: nil)
+      #   @param id [String]
+      #   @param comment [String, nil]
+      #   @param metadata [Hash{Symbol=>Object, nil}, nil]
+      #   @param source [Symbol, Braintrust::Models::FeedbackDatasetItem::Source, nil]
+      #   @param tags [Array<String>, nil]
 
       # The source of the feedback. Must be one of "external" (default), "app", or "api"
       #
@@ -60,11 +56,8 @@ module Braintrust
         API = :api
         EXTERNAL = :external
 
-        finalize!
-
-        # @!parse
-        #   # @return [Array<Symbol>]
-        #   def self.values; end
+        # @!method self.values
+        #   @return [Array<Symbol>]
       end
     end
   end

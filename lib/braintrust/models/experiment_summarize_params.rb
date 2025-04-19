@@ -28,14 +28,10 @@ module Braintrust
       #   @return [Boolean, nil]
       optional :summarize_scores, Braintrust::Internal::Type::Boolean, nil?: true
 
-      # @!parse
-      #   # @param comparison_experiment_id [String]
-      #   # @param summarize_scores [Boolean, nil]
-      #   # @param request_options [Braintrust::RequestOptions, Hash{Symbol=>Object}]
-      #   #
-      #   def initialize(comparison_experiment_id: nil, summarize_scores: nil, request_options: {}, **) = super
-
-      # def initialize: (Hash | Braintrust::Internal::Type::BaseModel) -> void
+      # @!method initialize(comparison_experiment_id: nil, summarize_scores: nil, request_options: {})
+      #   @param comparison_experiment_id [String]
+      #   @param summarize_scores [Boolean, nil]
+      #   @param request_options [Braintrust::RequestOptions, Hash{Symbol=>Object}]
     end
   end
 end

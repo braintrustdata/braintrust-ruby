@@ -38,17 +38,13 @@ module Braintrust
       #   @return [Array<String>, nil]
       optional :tags, Braintrust::Internal::Type::ArrayOf[String], nil?: true
 
-      # @!parse
-      #   # @param description [String, nil]
-      #   # @param name [String, nil]
-      #   # @param prompt_data [Braintrust::Models::PromptData, nil]
-      #   # @param slug [String, nil]
-      #   # @param tags [Array<String>, nil]
-      #   # @param request_options [Braintrust::RequestOptions, Hash{Symbol=>Object}]
-      #   #
-      #   def initialize(description: nil, name: nil, prompt_data: nil, slug: nil, tags: nil, request_options: {}, **) = super
-
-      # def initialize: (Hash | Braintrust::Internal::Type::BaseModel) -> void
+      # @!method initialize(description: nil, name: nil, prompt_data: nil, slug: nil, tags: nil, request_options: {})
+      #   @param description [String, nil]
+      #   @param name [String, nil]
+      #   @param prompt_data [Braintrust::Models::PromptData, nil]
+      #   @param slug [String, nil]
+      #   @param tags [Array<String>, nil]
+      #   @param request_options [Braintrust::RequestOptions, Hash{Symbol=>Object}]
     end
   end
 end

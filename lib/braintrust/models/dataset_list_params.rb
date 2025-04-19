@@ -93,33 +93,16 @@ module Braintrust
       #   # @return [String]
       #   attr_writer :starting_after
 
-      # @!parse
-      #   # @param dataset_name [String]
-      #   # @param ending_before [String]
-      #   # @param ids [String, Array<String>]
-      #   # @param limit [Integer, nil]
-      #   # @param org_name [String]
-      #   # @param project_id [String]
-      #   # @param project_name [String]
-      #   # @param starting_after [String]
-      #   # @param request_options [Braintrust::RequestOptions, Hash{Symbol=>Object}]
-      #   #
-      #   def initialize(
-      #     dataset_name: nil,
-      #     ending_before: nil,
-      #     ids: nil,
-      #     limit: nil,
-      #     org_name: nil,
-      #     project_id: nil,
-      #     project_name: nil,
-      #     starting_after: nil,
-      #     request_options: {},
-      #     **
-      #   )
-      #     super
-      #   end
-
-      # def initialize: (Hash | Braintrust::Internal::Type::BaseModel) -> void
+      # @!method initialize(dataset_name: nil, ending_before: nil, ids: nil, limit: nil, org_name: nil, project_id: nil, project_name: nil, starting_after: nil, request_options: {})
+      #   @param dataset_name [String]
+      #   @param ending_before [String]
+      #   @param ids [String, Array<String>]
+      #   @param limit [Integer, nil]
+      #   @param org_name [String]
+      #   @param project_id [String]
+      #   @param project_name [String]
+      #   @param starting_after [String]
+      #   @param request_options [Braintrust::RequestOptions, Hash{Symbol=>Object}]
 
       # Filter search results to a particular set of object IDs. To specify a list of
       # IDs, include the query param multiple times
@@ -130,9 +113,8 @@ module Braintrust
 
         variant -> { Braintrust::Models::DatasetListParams::IDs::StringArray }
 
-        # @!parse
-        #   # @return [Array(String, Array<String>)]
-        #   def self.variants; end
+        # @!method self.variants
+        #   @return [Array(String, Array<String>)]
 
         StringArray = Braintrust::Internal::Type::ArrayOf[String]
       end

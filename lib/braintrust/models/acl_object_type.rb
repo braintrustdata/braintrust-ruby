@@ -18,11 +18,8 @@ module Braintrust
       PROJECT_LOG = :project_log
       ORG_PROJECT = :org_project
 
-      finalize!
-
-      # @!parse
-      #   # @return [Array<Symbol>]
-      #   def self.values; end
+      # @!method self.values
+      #   @return [Array<Symbol>]
     end
   end
 end

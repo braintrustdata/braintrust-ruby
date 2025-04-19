@@ -254,57 +254,29 @@ module Braintrust
       #   @return [Array<String>, nil]
       optional :tags, Braintrust::Internal::Type::ArrayOf[String], nil?: true
 
-      # @!parse
-      #   # An experiment event
-      #   #
-      #   # @param id [String, nil]
-      #   # @param _is_merge [Boolean, nil]
-      #   # @param _merge_paths [Array<Array<String>>, nil]
-      #   # @param _object_delete [Boolean, nil]
-      #   # @param _parent_id [String, nil]
-      #   # @param context [Braintrust::Models::InsertExperimentEvent::Context, nil]
-      #   # @param created [Time, nil]
-      #   # @param error [Object]
-      #   # @param expected [Object]
-      #   # @param input [Object]
-      #   # @param metadata [Braintrust::Models::InsertExperimentEvent::Metadata, nil]
-      #   # @param metrics [Braintrust::Models::InsertExperimentEvent::Metrics, nil]
-      #   # @param origin [Braintrust::Models::ObjectReference, nil]
-      #   # @param output [Object]
-      #   # @param root_span_id [String, nil]
-      #   # @param scores [Hash{Symbol=>Float, nil}, nil]
-      #   # @param span_attributes [Braintrust::Models::SpanAttributes, nil]
-      #   # @param span_id [String, nil]
-      #   # @param span_parents [Array<String>, nil]
-      #   # @param tags [Array<String>, nil]
-      #   #
-      #   def initialize(
-      #     id: nil,
-      #     _is_merge: nil,
-      #     _merge_paths: nil,
-      #     _object_delete: nil,
-      #     _parent_id: nil,
-      #     context: nil,
-      #     created: nil,
-      #     error: nil,
-      #     expected: nil,
-      #     input: nil,
-      #     metadata: nil,
-      #     metrics: nil,
-      #     origin: nil,
-      #     output: nil,
-      #     root_span_id: nil,
-      #     scores: nil,
-      #     span_attributes: nil,
-      #     span_id: nil,
-      #     span_parents: nil,
-      #     tags: nil,
-      #     **
-      #   )
-      #     super
-      #   end
-
-      # def initialize: (Hash | Braintrust::Internal::Type::BaseModel) -> void
+      # @!method initialize(id: nil, _is_merge: nil, _merge_paths: nil, _object_delete: nil, _parent_id: nil, context: nil, created: nil, error: nil, expected: nil, input: nil, metadata: nil, metrics: nil, origin: nil, output: nil, root_span_id: nil, scores: nil, span_attributes: nil, span_id: nil, span_parents: nil, tags: nil)
+      #   An experiment event
+      #
+      #   @param id [String, nil]
+      #   @param _is_merge [Boolean, nil]
+      #   @param _merge_paths [Array<Array<String>>, nil]
+      #   @param _object_delete [Boolean, nil]
+      #   @param _parent_id [String, nil]
+      #   @param context [Braintrust::Models::InsertExperimentEvent::Context, nil]
+      #   @param created [Time, nil]
+      #   @param error [Object]
+      #   @param expected [Object]
+      #   @param input [Object]
+      #   @param metadata [Braintrust::Models::InsertExperimentEvent::Metadata, nil]
+      #   @param metrics [Braintrust::Models::InsertExperimentEvent::Metrics, nil]
+      #   @param origin [Braintrust::Models::ObjectReference, nil]
+      #   @param output [Object]
+      #   @param root_span_id [String, nil]
+      #   @param scores [Hash{Symbol=>Float, nil}, nil]
+      #   @param span_attributes [Braintrust::Models::SpanAttributes, nil]
+      #   @param span_id [String, nil]
+      #   @param span_parents [Array<String>, nil]
+      #   @param tags [Array<String>, nil]
 
       # @see Braintrust::Models::InsertExperimentEvent#context
       class Context < Braintrust::Internal::Type::BaseModel
@@ -326,19 +298,15 @@ module Braintrust
         #   @return [Integer, nil]
         optional :caller_lineno, Integer, nil?: true
 
-        # @!parse
-        #   # Context is additional information about the code that produced the experiment
-        #   # event. It is essentially the textual counterpart to `metrics`. Use the
-        #   # `caller_*` attributes to track the location in code which produced the
-        #   # experiment event
-        #   #
-        #   # @param caller_filename [String, nil]
-        #   # @param caller_functionname [String, nil]
-        #   # @param caller_lineno [Integer, nil]
-        #   #
-        #   def initialize(caller_filename: nil, caller_functionname: nil, caller_lineno: nil, **) = super
-
-        # def initialize: (Hash | Braintrust::Internal::Type::BaseModel) -> void
+        # @!method initialize(caller_filename: nil, caller_functionname: nil, caller_lineno: nil)
+        #   Context is additional information about the code that produced the experiment
+        #   event. It is essentially the textual counterpart to `metrics`. Use the
+        #   `caller_*` attributes to track the location in code which produced the
+        #   experiment event
+        #
+        #   @param caller_filename [String, nil]
+        #   @param caller_functionname [String, nil]
+        #   @param caller_lineno [Integer, nil]
       end
 
       # @see Braintrust::Models::InsertExperimentEvent#metadata
@@ -349,18 +317,14 @@ module Braintrust
         #   @return [String, nil]
         optional :model, String, nil?: true
 
-        # @!parse
-        #   # A dictionary with additional data about the test example, model outputs, or just
-        #   # about anything else that's relevant, that you can use to help find and analyze
-        #   # examples later. For example, you could log the `prompt`, example's `id`, or
-        #   # anything else that would be useful to slice/dice later. The values in `metadata`
-        #   # can be any JSON-serializable type, but its keys must be strings
-        #   #
-        #   # @param model [String, nil]
-        #   #
-        #   def initialize(model: nil, **) = super
-
-        # def initialize: (Hash | Braintrust::Internal::Type::BaseModel) -> void
+        # @!method initialize(model: nil)
+        #   A dictionary with additional data about the test example, model outputs, or just
+        #   about anything else that's relevant, that you can use to help find and analyze
+        #   examples later. For example, you could log the `prompt`, example's `id`, or
+        #   anything else that would be useful to slice/dice later. The values in `metadata`
+        #   can be any JSON-serializable type, but its keys must be strings
+        #
+        #   @param model [String, nil]
       end
 
       # @see Braintrust::Models::InsertExperimentEvent#metrics
@@ -429,35 +393,19 @@ module Braintrust
         #   @return [Integer, nil]
         optional :tokens, Integer, nil?: true
 
-        # @!parse
-        #   # Metrics are numerical measurements tracking the execution of the code that
-        #   # produced the experiment event. Use "start" and "end" to track the time span over
-        #   # which the experiment event was produced
-        #   #
-        #   # @param caller_filename [Object]
-        #   # @param caller_functionname [Object]
-        #   # @param caller_lineno [Object]
-        #   # @param completion_tokens [Integer, nil]
-        #   # @param end_ [Float, nil]
-        #   # @param prompt_tokens [Integer, nil]
-        #   # @param start [Float, nil]
-        #   # @param tokens [Integer, nil]
-        #   #
-        #   def initialize(
-        #     caller_filename: nil,
-        #     caller_functionname: nil,
-        #     caller_lineno: nil,
-        #     completion_tokens: nil,
-        #     end_: nil,
-        #     prompt_tokens: nil,
-        #     start: nil,
-        #     tokens: nil,
-        #     **
-        #   )
-        #     super
-        #   end
-
-        # def initialize: (Hash | Braintrust::Internal::Type::BaseModel) -> void
+        # @!method initialize(caller_filename: nil, caller_functionname: nil, caller_lineno: nil, completion_tokens: nil, end_: nil, prompt_tokens: nil, start: nil, tokens: nil)
+        #   Metrics are numerical measurements tracking the execution of the code that
+        #   produced the experiment event. Use "start" and "end" to track the time span over
+        #   which the experiment event was produced
+        #
+        #   @param caller_filename [Object]
+        #   @param caller_functionname [Object]
+        #   @param caller_lineno [Object]
+        #   @param completion_tokens [Integer, nil]
+        #   @param end_ [Float, nil]
+        #   @param prompt_tokens [Integer, nil]
+        #   @param start [Float, nil]
+        #   @param tokens [Integer, nil]
       end
     end
   end

@@ -8,14 +8,10 @@ module Braintrust
       #   @return [Braintrust::Models::ViewDataSearch, nil]
       optional :search, -> { Braintrust::Models::ViewDataSearch }, nil?: true
 
-      # @!parse
-      #   # The view definition
-      #   #
-      #   # @param search [Braintrust::Models::ViewDataSearch, nil]
-      #   #
-      #   def initialize(search: nil, **) = super
-
-      # def initialize: (Hash | Braintrust::Internal::Type::BaseModel) -> void
+      # @!method initialize(search: nil)
+      #   The view definition
+      #
+      #   @param search [Braintrust::Models::ViewDataSearch, nil]
     end
   end
 end

@@ -13,13 +13,9 @@ module Braintrust
       #   @return [Symbol, Braintrust::Models::ChatCompletionContentPartImage::Type]
       required :type, enum: -> { Braintrust::Models::ChatCompletionContentPartImage::Type }
 
-      # @!parse
-      #   # @param image_url [Braintrust::Models::ChatCompletionContentPartImage::ImageURL]
-      #   # @param type [Symbol, Braintrust::Models::ChatCompletionContentPartImage::Type]
-      #   #
-      #   def initialize(image_url:, type:, **) = super
-
-      # def initialize: (Hash | Braintrust::Internal::Type::BaseModel) -> void
+      # @!method initialize(image_url:, type:)
+      #   @param image_url [Braintrust::Models::ChatCompletionContentPartImage::ImageURL]
+      #   @param type [Symbol, Braintrust::Models::ChatCompletionContentPartImage::Type]
 
       # @see Braintrust::Models::ChatCompletionContentPartImage#image_url
       class ImageURL < Braintrust::Internal::Type::BaseModel
@@ -37,13 +33,9 @@ module Braintrust
         #   # @return [Symbol, Braintrust::Models::ChatCompletionContentPartImage::ImageURL::Detail]
         #   attr_writer :detail
 
-        # @!parse
-        #   # @param url [String]
-        #   # @param detail [Symbol, Braintrust::Models::ChatCompletionContentPartImage::ImageURL::Detail]
-        #   #
-        #   def initialize(url:, detail: nil, **) = super
-
-        # def initialize: (Hash | Braintrust::Internal::Type::BaseModel) -> void
+        # @!method initialize(url:, detail: nil)
+        #   @param url [String]
+        #   @param detail [Symbol, Braintrust::Models::ChatCompletionContentPartImage::ImageURL::Detail]
 
         # @see Braintrust::Models::ChatCompletionContentPartImage::ImageURL#detail
         module Detail
@@ -53,11 +45,8 @@ module Braintrust
           LOW = :low
           HIGH = :high
 
-          finalize!
-
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   def self.values; end
+          # @!method self.values
+          #   @return [Array<Symbol>]
         end
       end
 
@@ -67,11 +56,8 @@ module Braintrust
 
         IMAGE_URL = :image_url
 
-        finalize!
-
-        # @!parse
-        #   # @return [Array<Symbol>]
-        #   def self.values; end
+        # @!method self.values
+        #   @return [Array<Symbol>]
       end
     end
   end

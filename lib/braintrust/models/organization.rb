@@ -41,18 +41,14 @@ module Braintrust
       #   @return [String, nil]
       optional :realtime_url, String, nil?: true
 
-      # @!parse
-      #   # @param id [String]
-      #   # @param name [String]
-      #   # @param api_url [String, nil]
-      #   # @param created [Time, nil]
-      #   # @param is_universal_api [Boolean, nil]
-      #   # @param proxy_url [String, nil]
-      #   # @param realtime_url [String, nil]
-      #   #
-      #   def initialize(id:, name:, api_url: nil, created: nil, is_universal_api: nil, proxy_url: nil, realtime_url: nil, **) = super
-
-      # def initialize: (Hash | Braintrust::Internal::Type::BaseModel) -> void
+      # @!method initialize(id:, name:, api_url: nil, created: nil, is_universal_api: nil, proxy_url: nil, realtime_url: nil)
+      #   @param id [String]
+      #   @param name [String]
+      #   @param api_url [String, nil]
+      #   @param created [Time, nil]
+      #   @param is_universal_api [Boolean, nil]
+      #   @param proxy_url [String, nil]
+      #   @param realtime_url [String, nil]
     end
   end
 end

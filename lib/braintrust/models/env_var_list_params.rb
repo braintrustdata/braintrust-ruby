@@ -55,17 +55,13 @@ module Braintrust
       #   # @return [Symbol, Braintrust::Models::EnvVarObjectType]
       #   attr_writer :object_type
 
-      # @!parse
-      #   # @param env_var_name [String]
-      #   # @param ids [String, Array<String>]
-      #   # @param limit [Integer, nil]
-      #   # @param object_id_ [String]
-      #   # @param object_type [Symbol, Braintrust::Models::EnvVarObjectType]
-      #   # @param request_options [Braintrust::RequestOptions, Hash{Symbol=>Object}]
-      #   #
-      #   def initialize(env_var_name: nil, ids: nil, limit: nil, object_id_: nil, object_type: nil, request_options: {}, **) = super
-
-      # def initialize: (Hash | Braintrust::Internal::Type::BaseModel) -> void
+      # @!method initialize(env_var_name: nil, ids: nil, limit: nil, object_id_: nil, object_type: nil, request_options: {})
+      #   @param env_var_name [String]
+      #   @param ids [String, Array<String>]
+      #   @param limit [Integer, nil]
+      #   @param object_id_ [String]
+      #   @param object_type [Symbol, Braintrust::Models::EnvVarObjectType]
+      #   @param request_options [Braintrust::RequestOptions, Hash{Symbol=>Object}]
 
       # Filter search results to a particular set of object IDs. To specify a list of
       # IDs, include the query param multiple times
@@ -76,9 +72,8 @@ module Braintrust
 
         variant -> { Braintrust::Models::EnvVarListParams::IDs::StringArray }
 
-        # @!parse
-        #   # @return [Array(String, Array<String>)]
-        #   def self.variants; end
+        # @!method self.variants
+        #   @return [Array(String, Array<String>)]
 
         StringArray = Braintrust::Internal::Type::ArrayOf[String]
       end

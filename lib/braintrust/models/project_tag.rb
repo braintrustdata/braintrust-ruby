@@ -44,21 +44,17 @@ module Braintrust
       #   @return [String, nil]
       optional :description, String, nil?: true
 
-      # @!parse
-      #   # A project tag is a user-configured tag for tracking and filtering your
-      #   # experiments, logs, and other data
-      #   #
-      #   # @param id [String]
-      #   # @param name [String]
-      #   # @param project_id [String]
-      #   # @param user_id [String]
-      #   # @param color [String, nil]
-      #   # @param created [Time, nil]
-      #   # @param description [String, nil]
-      #   #
-      #   def initialize(id:, name:, project_id:, user_id:, color: nil, created: nil, description: nil, **) = super
-
-      # def initialize: (Hash | Braintrust::Internal::Type::BaseModel) -> void
+      # @!method initialize(id:, name:, project_id:, user_id:, color: nil, created: nil, description: nil)
+      #   A project tag is a user-configured tag for tracking and filtering your
+      #   experiments, logs, and other data
+      #
+      #   @param id [String]
+      #   @param name [String]
+      #   @param project_id [String]
+      #   @param user_id [String]
+      #   @param color [String, nil]
+      #   @param created [Time, nil]
+      #   @param description [String, nil]
     end
   end
 end
