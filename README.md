@@ -37,6 +37,16 @@ project = braintrust.projects.create(name: "foobar")
 puts(project.id)
 ```
 
+## Sorbet
+
+This library is written with [Sorbet type definitions](https://sorbet.org/docs/rbi). However, there is no runtime dependency on the `sorbet-runtime`.
+
+When using sorbet, it is recommended to use model classes as below. This provides stronger type checking and tooling integration.
+
+```ruby
+braintrust.projects.create(name: "foobar")
+```
+
 ### Pagination
 
 List methods in the Braintrust API are paginated.
@@ -120,60 +130,33 @@ braintrust = Braintrust::Client.new(
 braintrust.projects.create(name: "foobar", request_options: {timeout: 5})
 ```
 
-## LSP Support
+## Editor support
 
-### Solargraph
+Some editor language services like [Solargraph](https://github.com/castwide/solargraph?tab=readme-ov-file#gem-support) or [Sorbet](https://sorbet.org/docs/rbi#the-hidden-definitions-rbi) require a manually triggered indexing step before functionalities like auto-completion and go to definition can operate.
 
-This library includes [Solargraph](https://solargraph.org) support for both auto completion and go to definition.
+Please refer to their respective documentation for details. This library also includes a [short guide](https://github.com/braintrustdata/braintrust-ruby/tree/main/CONTRIBUTING.md#editor-support) on how to set up various editor services for internal development.
 
-```ruby
-gem "solargraph", group: :development
-```
+## Advanced Concepts
 
-After Solargraph is installed, **you must populate its index** either via the provided editor command, or by running the following in your terminal:
+### Model DSL
 
-```sh
-bundle exec solargraph gems
-```
+This library uses a Model DSL to represent request parameters and response shapes in `lib/braintrust/models`.
 
-Note: if you had installed the gem either using a `git:` or `github:` URL, or had vendored the gem using bundler, you will need to set up your [`.solargraph.yml`](https://solargraph.org/guides/configuration) to include the path to the gem's `lib` directory.
+The model classes service as anchor points for both toolchain readable documentation, and language service assisted navigation links. This information also allows the SDK's internals to perform translation between plain and rich data types; e.g., conversion between a `Time` instance and an ISO8601 `String`, and vice versa.
 
-```yaml
-include:
-  - 'vendor/bundle/ruby/*/gems/braintrust-*/lib/**/*.rb'
-```
-
-Otherwise Solargraph will not be able to provide type information or auto-completion for any non-indexed libraries.
-
-### Sorbet
-
-This library is written with [Sorbet type definitions](https://sorbet.org/docs/rbi). However, there is no runtime dependency on the `sorbet-runtime`.
-
-What this means is that while you can use Sorbet to type check your code statically, and benefit from the [Sorbet Language Server](https://sorbet.org/docs/lsp) in your editor, there is no runtime type checking and execution overhead from Sorbet itself.
-
-Due to limitations with the Sorbet type system, where a method otherwise can take an instance of `Braintrust::BaseModel` class, you will need to use the `**` splat operator to pass the arguments:
-
-Please follow Sorbet's [setup guides](https://sorbet.org/docs/adopting) for best experience.
+In all places where a `BaseModel` type is specified, vanilla Ruby `Hash` can also be used. For example, the following are interchangeable as arguments:
 
 ```ruby
+# This has tooling readability, for auto-completion, static analysis, and goto definition with supported language services
 params = Braintrust::Models::ProjectCreateParams.new(name: "foobar")
 
-braintrust.projects.create(**params)
+# This also works
+params = {
+  name: "foobar"
+}
 ```
 
-Note: **This library emits an intentional warning under the [`tapioca` toolchain](https://github.com/Shopify/tapioca)**. This is normal, and does not impact functionality.
-
-### Ruby LSP
-
-The Ruby LSP has [best effort support](https://shopify.github.io/ruby-lsp/#guessed-types) for inferring type information from Ruby code, and as such it may not always be able to provide accurate type information.
-
-## Advanced
-
 ### Making custom/undocumented requests
-
-This library is typed for convenient access to the documented API.
-
-If you need to access undocumented endpoints, params, or response properties, the library can still be used.
 
 #### Undocumented request params
 
@@ -185,15 +168,15 @@ To make requests to undocumented endpoints, you can make requests using `client.
 
 ```ruby
 response = client.request(
-    method: :post,
-    path: '/undocumented/endpoint',
-    query: {"dog": "woof"},
-    headers: {"useful-header": "interesting-value"},
-    body: {"he": "llo"},
-  )
+  method: :post,
+  path: '/undocumented/endpoint',
+  query: {"dog": "woof"},
+  headers: {"useful-header": "interesting-value"},
+  body: {"he": "llo"},
+)
 ```
 
-### Concurrency & Connection Pooling
+### Concurrency & connection pooling
 
 The `Braintrust::Client` instances are thread-safe, and should be re-used across multiple threads. By default, each `Client` have their own HTTP connection pool, with a maximum number of connections equal to thread count.
 
@@ -202,6 +185,30 @@ When the maximum number of connections has been checked out from the connection 
 Unless otherwise specified, other classes in the SDK do not have locks protecting their underlying data structure.
 
 Currently, `Braintrust::Client` instances are only fork-safe if there are no in-flight HTTP requests.
+
+### Sorbet
+
+#### Enums
+
+Sorbet's typed enums require sub-classing of the [`T::Enum` class](https://sorbet.org/docs/tenum) from the `sorbet-runtime` gem.
+
+Since this library does not depend on `sorbet-runtime`, it uses a [`T.all` intersection type](https://sorbet.org/docs/intersection-types) with a ruby primitive type to construct a "tagged alias" instead.
+
+```ruby
+module Braintrust::Models::ACLObjectType
+  # This alias aids language service driven navigation.
+  TaggedSymbol = T.type_alias { T.all(Symbol, Braintrust::Models::ACLObjectType) }
+end
+```
+
+#### Argument passing trick
+
+It is possible to pass a compatible model / parameter class to a method that expects keyword arguments by using the `**` splat operator.
+
+```ruby
+params = Braintrust::Models::ProjectCreateParams.new(name: "foobar")
+braintrust.projects.create(**params)
+```
 
 ## Versioning
 
@@ -212,3 +219,7 @@ This package considers improvements to the (non-runtime) `*.rbi` and `*.rbs` typ
 ## Requirements
 
 Ruby 3.1.0 or higher.
+
+## Contributing
+
+See [the contributing documentation](https://github.com/braintrustdata/braintrust-ruby/tree/main/CONTRIBUTING.md).
