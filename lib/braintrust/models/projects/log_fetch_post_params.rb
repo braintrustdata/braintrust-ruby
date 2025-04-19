@@ -5,8 +5,7 @@ module Braintrust
     module Projects
       # @see Braintrust::Resources::Projects::Logs#fetch_post
       class LogFetchPostParams < Braintrust::Internal::Type::BaseModel
-        # @!parse
-        #   extend Braintrust::Internal::Type::RequestParameters::Converter
+        extend Braintrust::Internal::Type::RequestParameters::Converter
         include Braintrust::Internal::Type::RequestParameters
 
         # @!attribute cursor

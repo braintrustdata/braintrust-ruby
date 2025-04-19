@@ -4,11 +4,10 @@ module Braintrust
   module Models
     # @see Braintrust::Resources::ProjectScores#list
     class ProjectScoreListParams < Braintrust::Internal::Type::BaseModel
-      # @!parse
-      #   extend Braintrust::Internal::Type::RequestParameters::Converter
+      extend Braintrust::Internal::Type::RequestParameters::Converter
       include Braintrust::Internal::Type::RequestParameters
 
-      # @!attribute [r] ending_before
+      # @!attribute ending_before
       #   Pagination cursor id.
       #
       #   For example, if the initial item in the last page you fetched had an id of
@@ -18,20 +17,12 @@ module Braintrust
       #   @return [String, nil]
       optional :ending_before, String
 
-      # @!parse
-      #   # @return [String]
-      #   attr_writer :ending_before
-
-      # @!attribute [r] ids
+      # @!attribute ids
       #   Filter search results to a particular set of object IDs. To specify a list of
       #   IDs, include the query param multiple times
       #
       #   @return [String, Array<String>, nil]
       optional :ids, union: -> { Braintrust::Models::ProjectScoreListParams::IDs }
-
-      # @!parse
-      #   # @return [String, Array<String>]
-      #   attr_writer :ids
 
       # @!attribute limit
       #   Limit the number of objects to return
@@ -39,57 +30,37 @@ module Braintrust
       #   @return [Integer, nil]
       optional :limit, Integer, nil?: true
 
-      # @!attribute [r] org_name
+      # @!attribute org_name
       #   Filter search results to within a particular organization
       #
       #   @return [String, nil]
       optional :org_name, String
 
-      # @!parse
-      #   # @return [String]
-      #   attr_writer :org_name
-
-      # @!attribute [r] project_id
+      # @!attribute project_id
       #   Project id
       #
       #   @return [String, nil]
       optional :project_id, String
 
-      # @!parse
-      #   # @return [String]
-      #   attr_writer :project_id
-
-      # @!attribute [r] project_name
+      # @!attribute project_name
       #   Name of the project to search for
       #
       #   @return [String, nil]
       optional :project_name, String
 
-      # @!parse
-      #   # @return [String]
-      #   attr_writer :project_name
-
-      # @!attribute [r] project_score_name
+      # @!attribute project_score_name
       #   Name of the project_score to search for
       #
       #   @return [String, nil]
       optional :project_score_name, String
 
-      # @!parse
-      #   # @return [String]
-      #   attr_writer :project_score_name
-
-      # @!attribute [r] score_type
+      # @!attribute score_type
       #   The type of the configured score
       #
       #   @return [Symbol, Braintrust::Models::ProjectScoreType, Array<Symbol, Braintrust::Models::ProjectScoreType>, nil]
       optional :score_type, union: -> { Braintrust::Models::ProjectScoreListParams::ScoreType }
 
-      # @!parse
-      #   # @return [Symbol, Braintrust::Models::ProjectScoreType, Array<Symbol, Braintrust::Models::ProjectScoreType>]
-      #   attr_writer :score_type
-
-      # @!attribute [r] starting_after
+      # @!attribute starting_after
       #   Pagination cursor id.
       #
       #   For example, if the final item in the last page you fetched had an id of `foo`,
@@ -98,10 +69,6 @@ module Braintrust
       #
       #   @return [String, nil]
       optional :starting_after, String
-
-      # @!parse
-      #   # @return [String]
-      #   attr_writer :starting_after
 
       # @!method initialize(ending_before: nil, ids: nil, limit: nil, org_name: nil, project_id: nil, project_name: nil, project_score_name: nil, score_type: nil, starting_after: nil, request_options: {})
       #   @param ending_before [String]

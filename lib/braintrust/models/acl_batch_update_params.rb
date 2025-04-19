@@ -4,8 +4,7 @@ module Braintrust
   module Models
     # @see Braintrust::Resources::ACLs#batch_update
     class ACLBatchUpdateParams < Braintrust::Internal::Type::BaseModel
-      # @!parse
-      #   extend Braintrust::Internal::Type::RequestParameters::Converter
+      extend Braintrust::Internal::Type::RequestParameters::Converter
       include Braintrust::Internal::Type::RequestParameters
 
       # @!attribute add_acls

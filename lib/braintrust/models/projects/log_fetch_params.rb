@@ -5,8 +5,7 @@ module Braintrust
     module Projects
       # @see Braintrust::Resources::Projects::Logs#fetch
       class LogFetchParams < Braintrust::Internal::Type::BaseModel
-        # @!parse
-        #   extend Braintrust::Internal::Type::RequestParameters::Converter
+        extend Braintrust::Internal::Type::RequestParameters::Converter
         include Braintrust::Internal::Type::RequestParameters
 
         # @!attribute limit
@@ -28,7 +27,7 @@ module Braintrust
         #   @return [Integer, nil]
         optional :limit, Integer, nil?: true
 
-        # @!attribute [r] max_root_span_id
+        # @!attribute max_root_span_id
         #   DEPRECATION NOTICE: The manually-constructed pagination cursor is deprecated in
         #   favor of the explicit 'cursor' returned by object fetch requests. Please prefer
         #   the 'cursor' argument going forwards.
@@ -43,11 +42,7 @@ module Braintrust
         #   @return [String, nil]
         optional :max_root_span_id, String
 
-        # @!parse
-        #   # @return [String]
-        #   attr_writer :max_root_span_id
-
-        # @!attribute [r] max_xact_id
+        # @!attribute max_xact_id
         #   DEPRECATION NOTICE: The manually-constructed pagination cursor is deprecated in
         #   favor of the explicit 'cursor' returned by object fetch requests. Please prefer
         #   the 'cursor' argument going forwards.
@@ -62,11 +57,7 @@ module Braintrust
         #   @return [String, nil]
         optional :max_xact_id, String
 
-        # @!parse
-        #   # @return [String]
-        #   attr_writer :max_xact_id
-
-        # @!attribute [r] version
+        # @!attribute version
         #   Retrieve a snapshot of events from a past time
         #
         #   The version id is essentially a filter on the latest event transaction id. You
@@ -75,10 +66,6 @@ module Braintrust
         #
         #   @return [String, nil]
         optional :version, String
-
-        # @!parse
-        #   # @return [String]
-        #   attr_writer :version
 
         # @!method initialize(limit: nil, max_root_span_id: nil, max_xact_id: nil, version: nil, request_options: {})
         #   @param limit [Integer, nil]
