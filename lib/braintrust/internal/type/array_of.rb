@@ -30,11 +30,15 @@ module Braintrust
         #   @option spec [Boolean] :"nil?"
         def self.[](...) = new(...)
 
+        # @api public
+        #
         # @param other [Object]
         #
         # @return [Boolean]
         def ===(other) = other.is_a?(Array) && other.all?(item_type)
 
+        # @api public
+        #
         # @param other [Object]
         #
         # @return [Boolean]
@@ -44,6 +48,8 @@ module Braintrust
           # rubocop:enable Layout/LineLength
         end
 
+        # @api public
+        #
         # @return [Integer]
         def hash = [self.class, item_type].hash
 
