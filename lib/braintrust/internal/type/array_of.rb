@@ -44,6 +44,9 @@ module Braintrust
           # rubocop:enable Layout/LineLength
         end
 
+        # @return [Integer]
+        def hash = [self.class, item_type].hash
+
         # @api private
         #
         # @param value [Array<Object>, Object]
