@@ -30,6 +30,8 @@ module Braintrust
 
         def ==: (top other) -> bool
 
+        def hash: -> Integer
+
         def coerce: (
           top value,
           state: Braintrust::Internal::Type::Converter::coerce_state
