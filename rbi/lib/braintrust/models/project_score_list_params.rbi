@@ -165,7 +165,7 @@ module Braintrust
         sig do
           override
             .returns(
-              [Braintrust::Models::ProjectScoreType::OrSymbol, T::Array[Braintrust::Models::ProjectScoreType::OrSymbol]]
+              [Braintrust::Models::ProjectScoreType::TaggedSymbol, T::Array[Braintrust::Models::ProjectScoreType::TaggedSymbol]]
             )
         end
         def self.variants; end

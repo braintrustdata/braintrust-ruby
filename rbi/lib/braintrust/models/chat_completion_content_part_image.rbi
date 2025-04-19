@@ -69,8 +69,7 @@ module Braintrust
 
           TaggedSymbol =
             T.type_alias { T.all(Symbol, Braintrust::Models::ChatCompletionContentPartImage::ImageURL::Detail) }
-          OrSymbol =
-            T.type_alias { T.any(Symbol, String, Braintrust::Models::ChatCompletionContentPartImage::ImageURL::Detail::TaggedSymbol) }
+          OrSymbol = T.type_alias { T.any(Symbol, String) }
 
           AUTO = T.let(:auto, Braintrust::Models::ChatCompletionContentPartImage::ImageURL::Detail::TaggedSymbol)
           LOW = T.let(:low, Braintrust::Models::ChatCompletionContentPartImage::ImageURL::Detail::TaggedSymbol)
@@ -88,8 +87,7 @@ module Braintrust
         extend Braintrust::Internal::Type::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Braintrust::Models::ChatCompletionContentPartImage::Type) }
-        OrSymbol =
-          T.type_alias { T.any(Symbol, String, Braintrust::Models::ChatCompletionContentPartImage::Type::TaggedSymbol) }
+        OrSymbol = T.type_alias { T.any(Symbol, String) }
 
         IMAGE_URL = T.let(:image_url, Braintrust::Models::ChatCompletionContentPartImage::Type::TaggedSymbol)
 

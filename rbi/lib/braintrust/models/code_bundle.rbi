@@ -135,14 +135,7 @@ module Braintrust
 
                 TaggedSymbol =
                   T.type_alias { T.all(Symbol, Braintrust::Models::CodeBundle::Location::Experiment::Position::Type::Type) }
-                OrSymbol =
-                  T.type_alias do
-                    T.any(
-                      Symbol,
-                      String,
-                      Braintrust::Models::CodeBundle::Location::Experiment::Position::Type::Type::TaggedSymbol
-                    )
-                  end
+                OrSymbol = T.type_alias { T.any(Symbol, String) }
 
                 TASK =
                   T.let(:task, Braintrust::Models::CodeBundle::Location::Experiment::Position::Type::Type::TaggedSymbol)
@@ -186,14 +179,7 @@ module Braintrust
 
                 TaggedSymbol =
                   T.type_alias { T.all(Symbol, Braintrust::Models::CodeBundle::Location::Experiment::Position::Scorer::Type) }
-                OrSymbol =
-                  T.type_alias do
-                    T.any(
-                      Symbol,
-                      String,
-                      Braintrust::Models::CodeBundle::Location::Experiment::Position::Scorer::Type::TaggedSymbol
-                    )
-                  end
+                OrSymbol = T.type_alias { T.any(Symbol, String) }
 
                 SCORER =
                   T.let(:scorer, Braintrust::Models::CodeBundle::Location::Experiment::Position::Scorer::Type::TaggedSymbol)
@@ -221,8 +207,7 @@ module Braintrust
             extend Braintrust::Internal::Type::Enum
 
             TaggedSymbol = T.type_alias { T.all(Symbol, Braintrust::Models::CodeBundle::Location::Experiment::Type) }
-            OrSymbol =
-              T.type_alias { T.any(Symbol, String, Braintrust::Models::CodeBundle::Location::Experiment::Type::TaggedSymbol) }
+            OrSymbol = T.type_alias { T.any(Symbol, String) }
 
             EXPERIMENT = T.let(:experiment, Braintrust::Models::CodeBundle::Location::Experiment::Type::TaggedSymbol)
 
@@ -254,8 +239,7 @@ module Braintrust
             extend Braintrust::Internal::Type::Enum
 
             TaggedSymbol = T.type_alias { T.all(Symbol, Braintrust::Models::CodeBundle::Location::Function::Type) }
-            OrSymbol =
-              T.type_alias { T.any(Symbol, String, Braintrust::Models::CodeBundle::Location::Function::Type::TaggedSymbol) }
+            OrSymbol = T.type_alias { T.any(Symbol, String) }
 
             FUNCTION = T.let(:function, Braintrust::Models::CodeBundle::Location::Function::Type::TaggedSymbol)
 
@@ -296,8 +280,7 @@ module Braintrust
           extend Braintrust::Internal::Type::Enum
 
           TaggedSymbol = T.type_alias { T.all(Symbol, Braintrust::Models::CodeBundle::RuntimeContext::Runtime) }
-          OrSymbol =
-            T.type_alias { T.any(Symbol, String, Braintrust::Models::CodeBundle::RuntimeContext::Runtime::TaggedSymbol) }
+          OrSymbol = T.type_alias { T.any(Symbol, String) }
 
           NODE = T.let(:node, Braintrust::Models::CodeBundle::RuntimeContext::Runtime::TaggedSymbol)
           PYTHON = T.let(:python, Braintrust::Models::CodeBundle::RuntimeContext::Runtime::TaggedSymbol)
