@@ -27,15 +27,11 @@ module Braintrust
       #   @return [Float]
       required :score, Float
 
-      # @!attribute [r] diff
+      # @!attribute diff
       #   Difference in score between the current and comparison experiment
       #
       #   @return [Float, nil]
       optional :diff, Float
-
-      # @!parse
-      #   # @return [Float]
-      #   attr_writer :diff
 
       # @!method initialize(improvements:, name:, regressions:, score:, diff: nil)
       #   Summary of a score's performance

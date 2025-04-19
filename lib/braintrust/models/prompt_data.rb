@@ -41,32 +41,20 @@ module Braintrust
 
       # @see Braintrust::Models::PromptData#origin
       class Origin < Braintrust::Internal::Type::BaseModel
-        # @!attribute [r] project_id
+        # @!attribute project_id
         #
         #   @return [String, nil]
         optional :project_id, String
 
-        # @!parse
-        #   # @return [String]
-        #   attr_writer :project_id
-
-        # @!attribute [r] prompt_id
+        # @!attribute prompt_id
         #
         #   @return [String, nil]
         optional :prompt_id, String
 
-        # @!parse
-        #   # @return [String]
-        #   attr_writer :prompt_id
-
-        # @!attribute [r] prompt_version
+        # @!attribute prompt_version
         #
         #   @return [String, nil]
         optional :prompt_version, String
-
-        # @!parse
-        #   # @return [String]
-        #   attr_writer :prompt_version
 
         # @!method initialize(project_id: nil, prompt_id: nil, prompt_version: nil)
         #   @param project_id [String]
@@ -153,14 +141,10 @@ module Braintrust
           #   @return [Symbol, Braintrust::Models::PromptData::Prompt::Chat::Type]
           required :type, enum: -> { Braintrust::Models::PromptData::Prompt::Chat::Type }
 
-          # @!attribute [r] tools
+          # @!attribute tools
           #
           #   @return [String, nil]
           optional :tools, String
-
-          # @!parse
-          #   # @return [String]
-          #   attr_writer :tools
 
           # @!method initialize(messages:, type:, tools: nil)
           #   @param messages [Array<Braintrust::Models::PromptData::Prompt::Chat::Message::System, Braintrust::Models::PromptData::Prompt::Chat::Message::User, Braintrust::Models::PromptData::Prompt::Chat::Message::Assistant, Braintrust::Models::PromptData::Prompt::Chat::Message::Tool, Braintrust::Models::PromptData::Prompt::Chat::Message::Function, Braintrust::Models::PromptData::Prompt::Chat::Message::Fallback>]
@@ -188,23 +172,15 @@ module Braintrust
               #   @return [Symbol, Braintrust::Models::PromptData::Prompt::Chat::Message::System::Role]
               required :role, enum: -> { Braintrust::Models::PromptData::Prompt::Chat::Message::System::Role }
 
-              # @!attribute [r] content
+              # @!attribute content
               #
               #   @return [String, nil]
               optional :content, String
 
-              # @!parse
-              #   # @return [String]
-              #   attr_writer :content
-
-              # @!attribute [r] name
+              # @!attribute name
               #
               #   @return [String, nil]
               optional :name, String
-
-              # @!parse
-              #   # @return [String]
-              #   attr_writer :name
 
               # @!method initialize(role:, content: nil, name: nil)
               #   @param role [Symbol, Braintrust::Models::PromptData::Prompt::Chat::Message::System::Role]
@@ -228,23 +204,15 @@ module Braintrust
               #   @return [Symbol, Braintrust::Models::PromptData::Prompt::Chat::Message::User::Role]
               required :role, enum: -> { Braintrust::Models::PromptData::Prompt::Chat::Message::User::Role }
 
-              # @!attribute [r] content
+              # @!attribute content
               #
               #   @return [String, Array<Braintrust::Models::ChatCompletionContentPartText, Braintrust::Models::ChatCompletionContentPartImage>, nil]
               optional :content, union: -> { Braintrust::Models::PromptData::Prompt::Chat::Message::User::Content }
 
-              # @!parse
-              #   # @return [String, Array<Braintrust::Models::ChatCompletionContentPartText, Braintrust::Models::ChatCompletionContentPartImage>]
-              #   attr_writer :content
-
-              # @!attribute [r] name
+              # @!attribute name
               #
               #   @return [String, nil]
               optional :name, String
-
-              # @!parse
-              #   # @return [String]
-              #   attr_writer :name
 
               # @!method initialize(role:, content: nil, name: nil)
               #   @param role [Symbol, Braintrust::Models::PromptData::Prompt::Chat::Message::User::Role]
@@ -359,23 +327,15 @@ module Braintrust
               #   @return [Symbol, Braintrust::Models::PromptData::Prompt::Chat::Message::Tool::Role]
               required :role, enum: -> { Braintrust::Models::PromptData::Prompt::Chat::Message::Tool::Role }
 
-              # @!attribute [r] content
+              # @!attribute content
               #
               #   @return [String, nil]
               optional :content, String
 
-              # @!parse
-              #   # @return [String]
-              #   attr_writer :content
-
-              # @!attribute [r] tool_call_id
+              # @!attribute tool_call_id
               #
               #   @return [String, nil]
               optional :tool_call_id, String
-
-              # @!parse
-              #   # @return [String]
-              #   attr_writer :tool_call_id
 
               # @!method initialize(role:, content: nil, tool_call_id: nil)
               #   @param role [Symbol, Braintrust::Models::PromptData::Prompt::Chat::Message::Tool::Role]
@@ -404,14 +364,10 @@ module Braintrust
               #   @return [Symbol, Braintrust::Models::PromptData::Prompt::Chat::Message::Function::Role]
               required :role, enum: -> { Braintrust::Models::PromptData::Prompt::Chat::Message::Function::Role }
 
-              # @!attribute [r] content
+              # @!attribute content
               #
               #   @return [String, nil]
               optional :content, String
-
-              # @!parse
-              #   # @return [String]
-              #   attr_writer :content
 
               # @!method initialize(name:, role:, content: nil)
               #   @param name [String]

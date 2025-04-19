@@ -4,11 +4,10 @@ module Braintrust
   module Models
     # @see Braintrust::Resources::Functions#list
     class FunctionListParams < Braintrust::Internal::Type::BaseModel
-      # @!parse
-      #   extend Braintrust::Internal::Type::RequestParameters::Converter
+      extend Braintrust::Internal::Type::RequestParameters::Converter
       include Braintrust::Internal::Type::RequestParameters
 
-      # @!attribute [r] ending_before
+      # @!attribute ending_before
       #   Pagination cursor id.
       #
       #   For example, if the initial item in the last page you fetched had an id of
@@ -18,30 +17,18 @@ module Braintrust
       #   @return [String, nil]
       optional :ending_before, String
 
-      # @!parse
-      #   # @return [String]
-      #   attr_writer :ending_before
-
-      # @!attribute [r] function_name
+      # @!attribute function_name
       #   Name of the function to search for
       #
       #   @return [String, nil]
       optional :function_name, String
 
-      # @!parse
-      #   # @return [String]
-      #   attr_writer :function_name
-
-      # @!attribute [r] ids
+      # @!attribute ids
       #   Filter search results to a particular set of object IDs. To specify a list of
       #   IDs, include the query param multiple times
       #
       #   @return [String, Array<String>, nil]
       optional :ids, union: -> { Braintrust::Models::FunctionListParams::IDs }
-
-      # @!parse
-      #   # @return [String, Array<String>]
-      #   attr_writer :ids
 
       # @!attribute limit
       #   Limit the number of objects to return
@@ -49,47 +36,31 @@ module Braintrust
       #   @return [Integer, nil]
       optional :limit, Integer, nil?: true
 
-      # @!attribute [r] org_name
+      # @!attribute org_name
       #   Filter search results to within a particular organization
       #
       #   @return [String, nil]
       optional :org_name, String
 
-      # @!parse
-      #   # @return [String]
-      #   attr_writer :org_name
-
-      # @!attribute [r] project_id
+      # @!attribute project_id
       #   Project id
       #
       #   @return [String, nil]
       optional :project_id, String
 
-      # @!parse
-      #   # @return [String]
-      #   attr_writer :project_id
-
-      # @!attribute [r] project_name
+      # @!attribute project_name
       #   Name of the project to search for
       #
       #   @return [String, nil]
       optional :project_name, String
 
-      # @!parse
-      #   # @return [String]
-      #   attr_writer :project_name
-
-      # @!attribute [r] slug
+      # @!attribute slug
       #   Retrieve prompt with a specific slug
       #
       #   @return [String, nil]
       optional :slug, String
 
-      # @!parse
-      #   # @return [String]
-      #   attr_writer :slug
-
-      # @!attribute [r] starting_after
+      # @!attribute starting_after
       #   Pagination cursor id.
       #
       #   For example, if the final item in the last page you fetched had an id of `foo`,
@@ -99,11 +70,7 @@ module Braintrust
       #   @return [String, nil]
       optional :starting_after, String
 
-      # @!parse
-      #   # @return [String]
-      #   attr_writer :starting_after
-
-      # @!attribute [r] version
+      # @!attribute version
       #   Retrieve prompt at a specific version.
       #
       #   The version id can either be a transaction id (e.g. '1000192656880881099') or a
@@ -111,10 +78,6 @@ module Braintrust
       #
       #   @return [String, nil]
       optional :version, String
-
-      # @!parse
-      #   # @return [String]
-      #   attr_writer :version
 
       # @!method initialize(ending_before: nil, function_name: nil, ids: nil, limit: nil, org_name: nil, project_id: nil, project_name: nil, slug: nil, starting_after: nil, version: nil, request_options: {})
       #   @param ending_before [String]

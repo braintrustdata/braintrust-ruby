@@ -33,15 +33,11 @@ module Braintrust
       #   @return [String]
       required :unit, String
 
-      # @!attribute [r] diff
+      # @!attribute diff
       #   Difference in metric between the current and comparison experiment
       #
       #   @return [Float, nil]
       optional :diff, Float
-
-      # @!parse
-      #   # @return [Float]
-      #   attr_writer :diff
 
       # @!method initialize(improvements:, metric:, name:, regressions:, unit:, diff: nil)
       #   Summary of a metric's performance

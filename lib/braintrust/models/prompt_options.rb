@@ -3,32 +3,20 @@
 module Braintrust
   module Models
     class PromptOptions < Braintrust::Internal::Type::BaseModel
-      # @!attribute [r] model
+      # @!attribute model
       #
       #   @return [String, nil]
       optional :model, String
 
-      # @!parse
-      #   # @return [String]
-      #   attr_writer :model
-
-      # @!attribute [r] params
+      # @!attribute params
       #
       #   @return [Braintrust::Models::PromptOptions::Params::OpenAIModelParams, Braintrust::Models::PromptOptions::Params::AnthropicModelParams, Braintrust::Models::PromptOptions::Params::GoogleModelParams, Braintrust::Models::PromptOptions::Params::WindowAIModelParams, Braintrust::Models::PromptOptions::Params::JsCompletionParams, nil]
       optional :params, union: -> { Braintrust::Models::PromptOptions::Params }
 
-      # @!parse
-      #   # @return [Braintrust::Models::PromptOptions::Params::OpenAIModelParams, Braintrust::Models::PromptOptions::Params::AnthropicModelParams, Braintrust::Models::PromptOptions::Params::GoogleModelParams, Braintrust::Models::PromptOptions::Params::WindowAIModelParams, Braintrust::Models::PromptOptions::Params::JsCompletionParams]
-      #   attr_writer :params
-
-      # @!attribute [r] position
+      # @!attribute position
       #
       #   @return [String, nil]
       optional :position, String
-
-      # @!parse
-      #   # @return [String]
-      #   attr_writer :position
 
       # @!method initialize(model: nil, params: nil, position: nil)
       #   @param model [String]
@@ -50,71 +38,43 @@ module Braintrust
         variant -> { Braintrust::Models::PromptOptions::Params::JsCompletionParams }
 
         class OpenAIModelParams < Braintrust::Internal::Type::BaseModel
-          # @!attribute [r] frequency_penalty
+          # @!attribute frequency_penalty
           #
           #   @return [Float, nil]
           optional :frequency_penalty, Float
 
-          # @!parse
-          #   # @return [Float]
-          #   attr_writer :frequency_penalty
-
-          # @!attribute [r] function_call
+          # @!attribute function_call
           #
           #   @return [Symbol, Braintrust::Models::PromptOptions::Params::OpenAIModelParams::FunctionCall::Function, Braintrust::Models::PromptOptions::Params::OpenAIModelParams::FunctionCall, nil]
           optional :function_call,
                    union: -> { Braintrust::Models::PromptOptions::Params::OpenAIModelParams::FunctionCall }
 
-          # @!parse
-          #   # @return [Symbol, Braintrust::Models::PromptOptions::Params::OpenAIModelParams::FunctionCall::Function, Braintrust::Models::PromptOptions::Params::OpenAIModelParams::FunctionCall]
-          #   attr_writer :function_call
-
-          # @!attribute [r] max_completion_tokens
+          # @!attribute max_completion_tokens
           #   The successor to max_tokens
           #
           #   @return [Float, nil]
           optional :max_completion_tokens, Float
 
-          # @!parse
-          #   # @return [Float]
-          #   attr_writer :max_completion_tokens
-
-          # @!attribute [r] max_tokens
+          # @!attribute max_tokens
           #
           #   @return [Float, nil]
           optional :max_tokens, Float
 
-          # @!parse
-          #   # @return [Float]
-          #   attr_writer :max_tokens
-
-          # @!attribute [r] n
+          # @!attribute n
           #
           #   @return [Float, nil]
           optional :n, Float
 
-          # @!parse
-          #   # @return [Float]
-          #   attr_writer :n
-
-          # @!attribute [r] presence_penalty
+          # @!attribute presence_penalty
           #
           #   @return [Float, nil]
           optional :presence_penalty, Float
 
-          # @!parse
-          #   # @return [Float]
-          #   attr_writer :presence_penalty
-
-          # @!attribute [r] reasoning_effort
+          # @!attribute reasoning_effort
           #
           #   @return [Symbol, Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ReasoningEffort, nil]
           optional :reasoning_effort,
                    enum: -> { Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ReasoningEffort }
-
-          # @!parse
-          #   # @return [Symbol, Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ReasoningEffort]
-          #   attr_writer :reasoning_effort
 
           # @!attribute response_format
           #
@@ -123,51 +83,31 @@ module Braintrust
                    union: -> { Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ResponseFormat },
                    nil?: true
 
-          # @!attribute [r] stop
+          # @!attribute stop
           #
           #   @return [Array<String>, nil]
           optional :stop, Braintrust::Internal::Type::ArrayOf[String]
 
-          # @!parse
-          #   # @return [Array<String>]
-          #   attr_writer :stop
-
-          # @!attribute [r] temperature
+          # @!attribute temperature
           #
           #   @return [Float, nil]
           optional :temperature, Float
 
-          # @!parse
-          #   # @return [Float]
-          #   attr_writer :temperature
-
-          # @!attribute [r] tool_choice
+          # @!attribute tool_choice
           #
           #   @return [Symbol, Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ToolChoice::Function, Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ToolChoice, nil]
           optional :tool_choice,
                    union: -> { Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ToolChoice }
 
-          # @!parse
-          #   # @return [Symbol, Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ToolChoice::Function, Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ToolChoice]
-          #   attr_writer :tool_choice
-
-          # @!attribute [r] top_p
+          # @!attribute top_p
           #
           #   @return [Float, nil]
           optional :top_p, Float
 
-          # @!parse
-          #   # @return [Float]
-          #   attr_writer :top_p
-
-          # @!attribute [r] use_cache
+          # @!attribute use_cache
           #
           #   @return [Boolean, nil]
           optional :use_cache, Braintrust::Internal::Type::Boolean
-
-          # @!parse
-          #   # @return [Boolean]
-          #   attr_writer :use_cache
 
           # @!method initialize(frequency_penalty: nil, function_call: nil, max_completion_tokens: nil, max_tokens: nil, n: nil, presence_penalty: nil, reasoning_effort: nil, response_format: nil, stop: nil, temperature: nil, tool_choice: nil, top_p: nil, use_cache: nil)
           #   @param frequency_penalty [Float]
@@ -282,24 +222,16 @@ module Braintrust
                 #   @return [String]
                 required :name, String
 
-                # @!attribute [r] description
+                # @!attribute description
                 #
                 #   @return [String, nil]
                 optional :description, String
 
-                # @!parse
-                #   # @return [String]
-                #   attr_writer :description
-
-                # @!attribute [r] schema
+                # @!attribute schema
                 #
                 #   @return [Hash{Symbol=>Object, nil}, String, nil]
                 optional :schema,
                          union: -> { Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ResponseFormat::JsonSchema::JsonSchema::Schema }
-
-                # @!parse
-                #   # @return [Hash{Symbol=>Object, nil}, String]
-                #   attr_writer :schema
 
                 # @!attribute strict
                 #
@@ -439,51 +371,31 @@ module Braintrust
           #   @return [Float]
           required :temperature, Float
 
-          # @!attribute [r] max_tokens_to_sample
+          # @!attribute max_tokens_to_sample
           #   This is a legacy parameter that should not be used.
           #
           #   @return [Float, nil]
           optional :max_tokens_to_sample, Float
 
-          # @!parse
-          #   # @return [Float]
-          #   attr_writer :max_tokens_to_sample
-
-          # @!attribute [r] stop_sequences
+          # @!attribute stop_sequences
           #
           #   @return [Array<String>, nil]
           optional :stop_sequences, Braintrust::Internal::Type::ArrayOf[String]
 
-          # @!parse
-          #   # @return [Array<String>]
-          #   attr_writer :stop_sequences
-
-          # @!attribute [r] top_k
+          # @!attribute top_k
           #
           #   @return [Float, nil]
           optional :top_k, Float
 
-          # @!parse
-          #   # @return [Float]
-          #   attr_writer :top_k
-
-          # @!attribute [r] top_p
+          # @!attribute top_p
           #
           #   @return [Float, nil]
           optional :top_p, Float
 
-          # @!parse
-          #   # @return [Float]
-          #   attr_writer :top_p
-
-          # @!attribute [r] use_cache
+          # @!attribute use_cache
           #
           #   @return [Boolean, nil]
           optional :use_cache, Braintrust::Internal::Type::Boolean
-
-          # @!parse
-          #   # @return [Boolean]
-          #   attr_writer :use_cache
 
           # @!method initialize(max_tokens:, temperature:, max_tokens_to_sample: nil, stop_sequences: nil, top_k: nil, top_p: nil, use_cache: nil)
           #   @param max_tokens [Float]
@@ -496,50 +408,30 @@ module Braintrust
         end
 
         class GoogleModelParams < Braintrust::Internal::Type::BaseModel
-          # @!attribute [r] max_output_tokens
+          # @!attribute max_output_tokens
           #
           #   @return [Float, nil]
           optional :max_output_tokens, Float, api_name: :maxOutputTokens
 
-          # @!parse
-          #   # @return [Float]
-          #   attr_writer :max_output_tokens
-
-          # @!attribute [r] temperature
+          # @!attribute temperature
           #
           #   @return [Float, nil]
           optional :temperature, Float
 
-          # @!parse
-          #   # @return [Float]
-          #   attr_writer :temperature
-
-          # @!attribute [r] top_k
+          # @!attribute top_k
           #
           #   @return [Float, nil]
           optional :top_k, Float, api_name: :topK
 
-          # @!parse
-          #   # @return [Float]
-          #   attr_writer :top_k
-
-          # @!attribute [r] top_p
+          # @!attribute top_p
           #
           #   @return [Float, nil]
           optional :top_p, Float, api_name: :topP
 
-          # @!parse
-          #   # @return [Float]
-          #   attr_writer :top_p
-
-          # @!attribute [r] use_cache
+          # @!attribute use_cache
           #
           #   @return [Boolean, nil]
           optional :use_cache, Braintrust::Internal::Type::Boolean
-
-          # @!parse
-          #   # @return [Boolean]
-          #   attr_writer :use_cache
 
           # @!method initialize(max_output_tokens: nil, temperature: nil, top_k: nil, top_p: nil, use_cache: nil)
           #   @param max_output_tokens [Float]
@@ -550,32 +442,20 @@ module Braintrust
         end
 
         class WindowAIModelParams < Braintrust::Internal::Type::BaseModel
-          # @!attribute [r] temperature
+          # @!attribute temperature
           #
           #   @return [Float, nil]
           optional :temperature, Float
 
-          # @!parse
-          #   # @return [Float]
-          #   attr_writer :temperature
-
-          # @!attribute [r] top_k
+          # @!attribute top_k
           #
           #   @return [Float, nil]
           optional :top_k, Float, api_name: :topK
 
-          # @!parse
-          #   # @return [Float]
-          #   attr_writer :top_k
-
-          # @!attribute [r] use_cache
+          # @!attribute use_cache
           #
           #   @return [Boolean, nil]
           optional :use_cache, Braintrust::Internal::Type::Boolean
-
-          # @!parse
-          #   # @return [Boolean]
-          #   attr_writer :use_cache
 
           # @!method initialize(temperature: nil, top_k: nil, use_cache: nil)
           #   @param temperature [Float]
@@ -584,14 +464,10 @@ module Braintrust
         end
 
         class JsCompletionParams < Braintrust::Internal::Type::BaseModel
-          # @!attribute [r] use_cache
+          # @!attribute use_cache
           #
           #   @return [Boolean, nil]
           optional :use_cache, Braintrust::Internal::Type::Boolean
-
-          # @!parse
-          #   # @return [Boolean]
-          #   attr_writer :use_cache
 
           # @!method initialize(use_cache: nil)
           #   @param use_cache [Boolean]

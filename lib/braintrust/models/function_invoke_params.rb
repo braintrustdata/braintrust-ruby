@@ -4,40 +4,27 @@ module Braintrust
   module Models
     # @see Braintrust::Resources::Functions#invoke
     class FunctionInvokeParams < Braintrust::Internal::Type::BaseModel
-      # @!parse
-      #   extend Braintrust::Internal::Type::RequestParameters::Converter
+      extend Braintrust::Internal::Type::RequestParameters::Converter
       include Braintrust::Internal::Type::RequestParameters
 
-      # @!attribute [r] expected
+      # @!attribute expected
       #   The expected output of the function
       #
       #   @return [Object, nil]
       optional :expected, Braintrust::Internal::Type::Unknown
 
-      # @!parse
-      #   # @return [Object]
-      #   attr_writer :expected
-
-      # @!attribute [r] input
+      # @!attribute input
       #   Argument to the function, which can be any JSON serializable value
       #
       #   @return [Object, nil]
       optional :input, Braintrust::Internal::Type::Unknown
 
-      # @!parse
-      #   # @return [Object]
-      #   attr_writer :input
-
-      # @!attribute [r] messages
+      # @!attribute messages
       #   If the function is an LLM, additional messages to pass along to it
       #
       #   @return [Array<Braintrust::Models::FunctionInvokeParams::Message::System, Braintrust::Models::FunctionInvokeParams::Message::User, Braintrust::Models::FunctionInvokeParams::Message::Assistant, Braintrust::Models::FunctionInvokeParams::Message::Tool, Braintrust::Models::FunctionInvokeParams::Message::Function, Braintrust::Models::FunctionInvokeParams::Message::Fallback>, nil]
       optional :messages,
                -> { Braintrust::Internal::Type::ArrayOf[union: Braintrust::Models::FunctionInvokeParams::Message] }
-
-      # @!parse
-      #   # @return [Array<Braintrust::Models::FunctionInvokeParams::Message::System, Braintrust::Models::FunctionInvokeParams::Message::User, Braintrust::Models::FunctionInvokeParams::Message::Assistant, Braintrust::Models::FunctionInvokeParams::Message::Tool, Braintrust::Models::FunctionInvokeParams::Message::Function, Braintrust::Models::FunctionInvokeParams::Message::Fallback>]
-      #   attr_writer :messages
 
       # @!attribute metadata
       #   Any relevant metadata
@@ -53,15 +40,11 @@ module Braintrust
       #   @return [Symbol, Braintrust::Models::FunctionInvokeParams::Mode, nil]
       optional :mode, enum: -> { Braintrust::Models::FunctionInvokeParams::Mode }, nil?: true
 
-      # @!attribute [r] parent
+      # @!attribute parent
       #   Options for tracing the function call
       #
       #   @return [Braintrust::Models::FunctionInvokeParams::Parent::SpanParentStruct, String, nil]
       optional :parent, union: -> { Braintrust::Models::FunctionInvokeParams::Parent }
-
-      # @!parse
-      #   # @return [Braintrust::Models::FunctionInvokeParams::Parent::SpanParentStruct, String]
-      #   attr_writer :parent
 
       # @!attribute stream
       #   Whether to stream the response. If true, results will be returned in the
@@ -70,15 +53,11 @@ module Braintrust
       #   @return [Boolean, nil]
       optional :stream, Braintrust::Internal::Type::Boolean, nil?: true
 
-      # @!attribute [r] version
+      # @!attribute version
       #   The version of the function
       #
       #   @return [String, nil]
       optional :version, String
-
-      # @!parse
-      #   # @return [String]
-      #   attr_writer :version
 
       # @!method initialize(expected: nil, input: nil, messages: nil, metadata: nil, mode: nil, parent: nil, stream: nil, version: nil, request_options: {})
       #   @param expected [Object]
@@ -112,23 +91,15 @@ module Braintrust
           #   @return [Symbol, Braintrust::Models::FunctionInvokeParams::Message::System::Role]
           required :role, enum: -> { Braintrust::Models::FunctionInvokeParams::Message::System::Role }
 
-          # @!attribute [r] content
+          # @!attribute content
           #
           #   @return [String, nil]
           optional :content, String
 
-          # @!parse
-          #   # @return [String]
-          #   attr_writer :content
-
-          # @!attribute [r] name
+          # @!attribute name
           #
           #   @return [String, nil]
           optional :name, String
-
-          # @!parse
-          #   # @return [String]
-          #   attr_writer :name
 
           # @!method initialize(role:, content: nil, name: nil)
           #   @param role [Symbol, Braintrust::Models::FunctionInvokeParams::Message::System::Role]
@@ -152,23 +123,15 @@ module Braintrust
           #   @return [Symbol, Braintrust::Models::FunctionInvokeParams::Message::User::Role]
           required :role, enum: -> { Braintrust::Models::FunctionInvokeParams::Message::User::Role }
 
-          # @!attribute [r] content
+          # @!attribute content
           #
           #   @return [String, Array<Braintrust::Models::ChatCompletionContentPartText, Braintrust::Models::ChatCompletionContentPartImage>, nil]
           optional :content, union: -> { Braintrust::Models::FunctionInvokeParams::Message::User::Content }
 
-          # @!parse
-          #   # @return [String, Array<Braintrust::Models::ChatCompletionContentPartText, Braintrust::Models::ChatCompletionContentPartImage>]
-          #   attr_writer :content
-
-          # @!attribute [r] name
+          # @!attribute name
           #
           #   @return [String, nil]
           optional :name, String
-
-          # @!parse
-          #   # @return [String]
-          #   attr_writer :name
 
           # @!method initialize(role:, content: nil, name: nil)
           #   @param role [Symbol, Braintrust::Models::FunctionInvokeParams::Message::User::Role]
@@ -283,23 +246,15 @@ module Braintrust
           #   @return [Symbol, Braintrust::Models::FunctionInvokeParams::Message::Tool::Role]
           required :role, enum: -> { Braintrust::Models::FunctionInvokeParams::Message::Tool::Role }
 
-          # @!attribute [r] content
+          # @!attribute content
           #
           #   @return [String, nil]
           optional :content, String
 
-          # @!parse
-          #   # @return [String]
-          #   attr_writer :content
-
-          # @!attribute [r] tool_call_id
+          # @!attribute tool_call_id
           #
           #   @return [String, nil]
           optional :tool_call_id, String
-
-          # @!parse
-          #   # @return [String]
-          #   attr_writer :tool_call_id
 
           # @!method initialize(role:, content: nil, tool_call_id: nil)
           #   @param role [Symbol, Braintrust::Models::FunctionInvokeParams::Message::Tool::Role]
@@ -328,14 +283,10 @@ module Braintrust
           #   @return [Symbol, Braintrust::Models::FunctionInvokeParams::Message::Function::Role]
           required :role, enum: -> { Braintrust::Models::FunctionInvokeParams::Message::Function::Role }
 
-          # @!attribute [r] content
+          # @!attribute content
           #
           #   @return [String, nil]
           optional :content, String
-
-          # @!parse
-          #   # @return [String]
-          #   attr_writer :content
 
           # @!method initialize(name:, role:, content: nil)
           #   @param name [String]
