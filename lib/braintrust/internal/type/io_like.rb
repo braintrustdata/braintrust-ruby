@@ -13,6 +13,8 @@ module Braintrust
 
         private_class_method :new
 
+        # @api public
+        #
         # @param other [Object]
         #
         # @return [Boolean]
@@ -25,6 +27,8 @@ module Braintrust
           end
         end
 
+        # @api public
+        #
         # @param other [Object]
         #
         # @return [Boolean]
