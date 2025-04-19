@@ -28,15 +28,11 @@ module Braintrust
       #   @return [Array<String>, nil]
       optional :apply_to_span_names, Braintrust::Internal::Type::ArrayOf[String], nil?: true
 
-      # @!parse
-      #   # @param sampling_rate [Float]
-      #   # @param scorers [Array<Braintrust::Models::OnlineScoreConfig::Scorer::Function, Braintrust::Models::OnlineScoreConfig::Scorer::Global>]
-      #   # @param apply_to_root_span [Boolean, nil]
-      #   # @param apply_to_span_names [Array<String>, nil]
-      #   #
-      #   def initialize(sampling_rate:, scorers:, apply_to_root_span: nil, apply_to_span_names: nil, **) = super
-
-      # def initialize: (Hash | Braintrust::Internal::Type::BaseModel) -> void
+      # @!method initialize(sampling_rate:, scorers:, apply_to_root_span: nil, apply_to_span_names: nil)
+      #   @param sampling_rate [Float]
+      #   @param scorers [Array<Braintrust::Models::OnlineScoreConfig::Scorer::Function, Braintrust::Models::OnlineScoreConfig::Scorer::Global>]
+      #   @param apply_to_root_span [Boolean, nil]
+      #   @param apply_to_span_names [Array<String>, nil]
 
       module Scorer
         extend Braintrust::Internal::Type::Union
@@ -56,13 +52,9 @@ module Braintrust
           #   @return [Symbol, Braintrust::Models::OnlineScoreConfig::Scorer::Function::Type]
           required :type, enum: -> { Braintrust::Models::OnlineScoreConfig::Scorer::Function::Type }
 
-          # @!parse
-          #   # @param id [String]
-          #   # @param type [Symbol, Braintrust::Models::OnlineScoreConfig::Scorer::Function::Type]
-          #   #
-          #   def initialize(id:, type:, **) = super
-
-          # def initialize: (Hash | Braintrust::Internal::Type::BaseModel) -> void
+          # @!method initialize(id:, type:)
+          #   @param id [String]
+          #   @param type [Symbol, Braintrust::Models::OnlineScoreConfig::Scorer::Function::Type]
 
           # @see Braintrust::Models::OnlineScoreConfig::Scorer::Function#type
           module Type
@@ -70,11 +62,8 @@ module Braintrust
 
             FUNCTION = :function
 
-            finalize!
-
-            # @!parse
-            #   # @return [Array<Symbol>]
-            #   def self.values; end
+            # @!method self.values
+            #   @return [Array<Symbol>]
           end
         end
 
@@ -89,13 +78,9 @@ module Braintrust
           #   @return [Symbol, Braintrust::Models::OnlineScoreConfig::Scorer::Global::Type]
           required :type, enum: -> { Braintrust::Models::OnlineScoreConfig::Scorer::Global::Type }
 
-          # @!parse
-          #   # @param name [String]
-          #   # @param type [Symbol, Braintrust::Models::OnlineScoreConfig::Scorer::Global::Type]
-          #   #
-          #   def initialize(name:, type:, **) = super
-
-          # def initialize: (Hash | Braintrust::Internal::Type::BaseModel) -> void
+          # @!method initialize(name:, type:)
+          #   @param name [String]
+          #   @param type [Symbol, Braintrust::Models::OnlineScoreConfig::Scorer::Global::Type]
 
           # @see Braintrust::Models::OnlineScoreConfig::Scorer::Global#type
           module Type
@@ -103,17 +88,13 @@ module Braintrust
 
             GLOBAL = :global
 
-            finalize!
-
-            # @!parse
-            #   # @return [Array<Symbol>]
-            #   def self.values; end
+            # @!method self.values
+            #   @return [Array<Symbol>]
           end
         end
 
-        # @!parse
-        #   # @return [Array(Braintrust::Models::OnlineScoreConfig::Scorer::Function, Braintrust::Models::OnlineScoreConfig::Scorer::Global)]
-        #   def self.variants; end
+        # @!method self.variants
+        #   @return [Array(Braintrust::Models::OnlineScoreConfig::Scorer::Function, Braintrust::Models::OnlineScoreConfig::Scorer::Global)]
       end
     end
   end

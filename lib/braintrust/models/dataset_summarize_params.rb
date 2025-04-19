@@ -15,13 +15,9 @@ module Braintrust
       #   @return [Boolean, nil]
       optional :summarize_data, Braintrust::Internal::Type::Boolean, nil?: true
 
-      # @!parse
-      #   # @param summarize_data [Boolean, nil]
-      #   # @param request_options [Braintrust::RequestOptions, Hash{Symbol=>Object}]
-      #   #
-      #   def initialize(summarize_data: nil, request_options: {}, **) = super
-
-      # def initialize: (Hash | Braintrust::Internal::Type::BaseModel) -> void
+      # @!method initialize(summarize_data: nil, request_options: {})
+      #   @param summarize_data [Boolean, nil]
+      #   @param request_options [Braintrust::RequestOptions, Hash{Symbol=>Object}]
     end
   end
 end

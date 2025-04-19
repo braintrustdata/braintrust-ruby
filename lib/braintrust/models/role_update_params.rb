@@ -48,29 +48,14 @@ module Braintrust
       #   @return [Array<String>, nil]
       optional :remove_member_roles, Braintrust::Internal::Type::ArrayOf[String], nil?: true
 
-      # @!parse
-      #   # @param add_member_permissions [Array<Braintrust::Models::RoleUpdateParams::AddMemberPermission>, nil]
-      #   # @param add_member_roles [Array<String>, nil]
-      #   # @param description [String, nil]
-      #   # @param name [String, nil]
-      #   # @param remove_member_permissions [Array<Braintrust::Models::RoleUpdateParams::RemoveMemberPermission>, nil]
-      #   # @param remove_member_roles [Array<String>, nil]
-      #   # @param request_options [Braintrust::RequestOptions, Hash{Symbol=>Object}]
-      #   #
-      #   def initialize(
-      #     add_member_permissions: nil,
-      #     add_member_roles: nil,
-      #     description: nil,
-      #     name: nil,
-      #     remove_member_permissions: nil,
-      #     remove_member_roles: nil,
-      #     request_options: {},
-      #     **
-      #   )
-      #     super
-      #   end
-
-      # def initialize: (Hash | Braintrust::Internal::Type::BaseModel) -> void
+      # @!method initialize(add_member_permissions: nil, add_member_roles: nil, description: nil, name: nil, remove_member_permissions: nil, remove_member_roles: nil, request_options: {})
+      #   @param add_member_permissions [Array<Braintrust::Models::RoleUpdateParams::AddMemberPermission>, nil]
+      #   @param add_member_roles [Array<String>, nil]
+      #   @param description [String, nil]
+      #   @param name [String, nil]
+      #   @param remove_member_permissions [Array<Braintrust::Models::RoleUpdateParams::RemoveMemberPermission>, nil]
+      #   @param remove_member_roles [Array<String>, nil]
+      #   @param request_options [Braintrust::RequestOptions, Hash{Symbol=>Object}]
 
       class AddMemberPermission < Braintrust::Internal::Type::BaseModel
         # @!attribute permission
@@ -88,13 +73,9 @@ module Braintrust
         #   @return [Symbol, Braintrust::Models::ACLObjectType, nil]
         optional :restrict_object_type, enum: -> { Braintrust::Models::ACLObjectType }, nil?: true
 
-        # @!parse
-        #   # @param permission [Symbol, Braintrust::Models::Permission]
-        #   # @param restrict_object_type [Symbol, Braintrust::Models::ACLObjectType, nil]
-        #   #
-        #   def initialize(permission:, restrict_object_type: nil, **) = super
-
-        # def initialize: (Hash | Braintrust::Internal::Type::BaseModel) -> void
+        # @!method initialize(permission:, restrict_object_type: nil)
+        #   @param permission [Symbol, Braintrust::Models::Permission]
+        #   @param restrict_object_type [Symbol, Braintrust::Models::ACLObjectType, nil]
       end
 
       class RemoveMemberPermission < Braintrust::Internal::Type::BaseModel
@@ -113,13 +94,9 @@ module Braintrust
         #   @return [Symbol, Braintrust::Models::ACLObjectType, nil]
         optional :restrict_object_type, enum: -> { Braintrust::Models::ACLObjectType }, nil?: true
 
-        # @!parse
-        #   # @param permission [Symbol, Braintrust::Models::Permission]
-        #   # @param restrict_object_type [Symbol, Braintrust::Models::ACLObjectType, nil]
-        #   #
-        #   def initialize(permission:, restrict_object_type: nil, **) = super
-
-        # def initialize: (Hash | Braintrust::Internal::Type::BaseModel) -> void
+        # @!method initialize(permission:, restrict_object_type: nil)
+        #   @param permission [Symbol, Braintrust::Models::Permission]
+        #   @param restrict_object_type [Symbol, Braintrust::Models::ACLObjectType, nil]
       end
     end
   end

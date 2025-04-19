@@ -14,13 +14,9 @@ module Braintrust
       #   @return [Array<Braintrust::Models::InsertDatasetEvent>]
       required :events, -> { Braintrust::Internal::Type::ArrayOf[Braintrust::Models::InsertDatasetEvent] }
 
-      # @!parse
-      #   # @param events [Array<Braintrust::Models::InsertDatasetEvent>]
-      #   # @param request_options [Braintrust::RequestOptions, Hash{Symbol=>Object}]
-      #   #
-      #   def initialize(events:, request_options: {}, **) = super
-
-      # def initialize: (Hash | Braintrust::Internal::Type::BaseModel) -> void
+      # @!method initialize(events:, request_options: {})
+      #   @param events [Array<Braintrust::Models::InsertDatasetEvent>]
+      #   @param request_options [Braintrust::RequestOptions, Hash{Symbol=>Object}]
     end
   end
 end

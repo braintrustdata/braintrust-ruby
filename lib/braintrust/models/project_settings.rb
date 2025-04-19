@@ -24,14 +24,10 @@ module Braintrust
                api_name: :spanFieldOrder,
                nil?: true
 
-      # @!parse
-      #   # @param baseline_experiment_id [String, nil]
-      #   # @param comparison_key [String, nil]
-      #   # @param span_field_order [Array<Braintrust::Models::ProjectSettings::SpanFieldOrder>, nil]
-      #   #
-      #   def initialize(baseline_experiment_id: nil, comparison_key: nil, span_field_order: nil, **) = super
-
-      # def initialize: (Hash | Braintrust::Internal::Type::BaseModel) -> void
+      # @!method initialize(baseline_experiment_id: nil, comparison_key: nil, span_field_order: nil)
+      #   @param baseline_experiment_id [String, nil]
+      #   @param comparison_key [String, nil]
+      #   @param span_field_order [Array<Braintrust::Models::ProjectSettings::SpanFieldOrder>, nil]
 
       class SpanFieldOrder < Braintrust::Internal::Type::BaseModel
         # @!attribute column_id
@@ -54,15 +50,11 @@ module Braintrust
         #   @return [Symbol, Braintrust::Models::ProjectSettings::SpanFieldOrder::Layout, nil]
         optional :layout, enum: -> { Braintrust::Models::ProjectSettings::SpanFieldOrder::Layout }, nil?: true
 
-        # @!parse
-        #   # @param column_id [String]
-        #   # @param object_type [String]
-        #   # @param position [String]
-        #   # @param layout [Symbol, Braintrust::Models::ProjectSettings::SpanFieldOrder::Layout, nil]
-        #   #
-        #   def initialize(column_id:, object_type:, position:, layout: nil, **) = super
-
-        # def initialize: (Hash | Braintrust::Internal::Type::BaseModel) -> void
+        # @!method initialize(column_id:, object_type:, position:, layout: nil)
+        #   @param column_id [String]
+        #   @param object_type [String]
+        #   @param position [String]
+        #   @param layout [Symbol, Braintrust::Models::ProjectSettings::SpanFieldOrder::Layout, nil]
 
         # @see Braintrust::Models::ProjectSettings::SpanFieldOrder#layout
         module Layout
@@ -71,11 +63,8 @@ module Braintrust
           FULL = :full
           TWO_COLUMN = :two_column
 
-          finalize!
-
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   def self.values; end
+          # @!method self.values
+          #   @return [Array<Symbol>]
         end
       end
     end

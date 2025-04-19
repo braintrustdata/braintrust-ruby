@@ -62,38 +62,21 @@ module Braintrust
       #   @return [String, nil]
       optional :user_id, String, nil?: true
 
-      # @!parse
-      #   # A group is a collection of users which can be assigned an ACL
-      #   #
-      #   # Groups can consist of individual users, as well as a set of groups they inherit
-      #   # from
-      #   #
-      #   # @param id [String]
-      #   # @param name [String]
-      #   # @param org_id [String]
-      #   # @param created [Time, nil]
-      #   # @param deleted_at [Time, nil]
-      #   # @param description [String, nil]
-      #   # @param member_groups [Array<String>, nil]
-      #   # @param member_users [Array<String>, nil]
-      #   # @param user_id [String, nil]
-      #   #
-      #   def initialize(
-      #     id:,
-      #     name:,
-      #     org_id:,
-      #     created: nil,
-      #     deleted_at: nil,
-      #     description: nil,
-      #     member_groups: nil,
-      #     member_users: nil,
-      #     user_id: nil,
-      #     **
-      #   )
-      #     super
-      #   end
-
-      # def initialize: (Hash | Braintrust::Internal::Type::BaseModel) -> void
+      # @!method initialize(id:, name:, org_id:, created: nil, deleted_at: nil, description: nil, member_groups: nil, member_users: nil, user_id: nil)
+      #   A group is a collection of users which can be assigned an ACL
+      #
+      #   Groups can consist of individual users, as well as a set of groups they inherit
+      #   from
+      #
+      #   @param id [String]
+      #   @param name [String]
+      #   @param org_id [String]
+      #   @param created [Time, nil]
+      #   @param deleted_at [Time, nil]
+      #   @param description [String, nil]
+      #   @param member_groups [Array<String>, nil]
+      #   @param member_users [Array<String>, nil]
+      #   @param user_id [String, nil]
     end
   end
 end

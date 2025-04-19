@@ -103,35 +103,17 @@ module Braintrust
       #   # @return [String]
       #   attr_writer :starting_after
 
-      # @!parse
-      #   # @param ending_before [String]
-      #   # @param ids [String, Array<String>]
-      #   # @param limit [Integer, nil]
-      #   # @param org_name [String]
-      #   # @param project_id [String]
-      #   # @param project_name [String]
-      #   # @param project_score_name [String]
-      #   # @param score_type [Symbol, Braintrust::Models::ProjectScoreType, Array<Symbol, Braintrust::Models::ProjectScoreType>]
-      #   # @param starting_after [String]
-      #   # @param request_options [Braintrust::RequestOptions, Hash{Symbol=>Object}]
-      #   #
-      #   def initialize(
-      #     ending_before: nil,
-      #     ids: nil,
-      #     limit: nil,
-      #     org_name: nil,
-      #     project_id: nil,
-      #     project_name: nil,
-      #     project_score_name: nil,
-      #     score_type: nil,
-      #     starting_after: nil,
-      #     request_options: {},
-      #     **
-      #   )
-      #     super
-      #   end
-
-      # def initialize: (Hash | Braintrust::Internal::Type::BaseModel) -> void
+      # @!method initialize(ending_before: nil, ids: nil, limit: nil, org_name: nil, project_id: nil, project_name: nil, project_score_name: nil, score_type: nil, starting_after: nil, request_options: {})
+      #   @param ending_before [String]
+      #   @param ids [String, Array<String>]
+      #   @param limit [Integer, nil]
+      #   @param org_name [String]
+      #   @param project_id [String]
+      #   @param project_name [String]
+      #   @param project_score_name [String]
+      #   @param score_type [Symbol, Braintrust::Models::ProjectScoreType, Array<Symbol, Braintrust::Models::ProjectScoreType>]
+      #   @param starting_after [String]
+      #   @param request_options [Braintrust::RequestOptions, Hash{Symbol=>Object}]
 
       # Filter search results to a particular set of object IDs. To specify a list of
       # IDs, include the query param multiple times
@@ -142,9 +124,8 @@ module Braintrust
 
         variant -> { Braintrust::Models::ProjectScoreListParams::IDs::StringArray }
 
-        # @!parse
-        #   # @return [Array(String, Array<String>)]
-        #   def self.variants; end
+        # @!method self.variants
+        #   @return [Array(String, Array<String>)]
 
         StringArray = Braintrust::Internal::Type::ArrayOf[String]
       end
@@ -159,9 +140,8 @@ module Braintrust
         # The type of the configured score
         variant -> { Braintrust::Models::ProjectScoreListParams::ScoreType::ProjectScoreTypeArray }
 
-        # @!parse
-        #   # @return [Array(Symbol, Braintrust::Models::ProjectScoreType, Array<Symbol, Braintrust::Models::ProjectScoreType>)]
-        #   def self.variants; end
+        # @!method self.variants
+        #   @return [Array(Symbol, Braintrust::Models::ProjectScoreType, Array<Symbol, Braintrust::Models::ProjectScoreType>)]
 
         ProjectScoreTypeArray =
           Braintrust::Internal::Type::ArrayOf[enum: -> { Braintrust::Models::ProjectScoreType }]

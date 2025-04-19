@@ -49,31 +49,15 @@ module Braintrust
       #   @return [Array<String>, nil]
       optional :tags, Braintrust::Internal::Type::ArrayOf[String], nil?: true
 
-      # @!parse
-      #   # @param name [String]
-      #   # @param project_id [String]
-      #   # @param slug [String]
-      #   # @param description [String, nil]
-      #   # @param function_type [Symbol, Braintrust::Models::PromptCreateParams::FunctionType, nil]
-      #   # @param prompt_data [Braintrust::Models::PromptData, nil]
-      #   # @param tags [Array<String>, nil]
-      #   # @param request_options [Braintrust::RequestOptions, Hash{Symbol=>Object}]
-      #   #
-      #   def initialize(
-      #     name:,
-      #     project_id:,
-      #     slug:,
-      #     description: nil,
-      #     function_type: nil,
-      #     prompt_data: nil,
-      #     tags: nil,
-      #     request_options: {},
-      #     **
-      #   )
-      #     super
-      #   end
-
-      # def initialize: (Hash | Braintrust::Internal::Type::BaseModel) -> void
+      # @!method initialize(name:, project_id:, slug:, description: nil, function_type: nil, prompt_data: nil, tags: nil, request_options: {})
+      #   @param name [String]
+      #   @param project_id [String]
+      #   @param slug [String]
+      #   @param description [String, nil]
+      #   @param function_type [Symbol, Braintrust::Models::PromptCreateParams::FunctionType, nil]
+      #   @param prompt_data [Braintrust::Models::PromptData, nil]
+      #   @param tags [Array<String>, nil]
+      #   @param request_options [Braintrust::RequestOptions, Hash{Symbol=>Object}]
 
       module FunctionType
         extend Braintrust::Internal::Type::Enum
@@ -83,11 +67,8 @@ module Braintrust
         TASK = :task
         TOOL = :tool
 
-        finalize!
-
-        # @!parse
-        #   # @return [Array<Symbol>]
-        #   def self.values; end
+        # @!method self.values
+        #   @return [Array<Symbol>]
       end
     end
   end

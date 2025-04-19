@@ -186,45 +186,23 @@ module Braintrust
       #   @return [Array<String>, nil]
       optional :tags, Braintrust::Internal::Type::ArrayOf[String], nil?: true
 
-      # @!parse
-      #   # A dataset event
-      #   #
-      #   # @param id [String, nil]
-      #   # @param _is_merge [Boolean, nil]
-      #   # @param _merge_paths [Array<Array<String>>, nil]
-      #   # @param _object_delete [Boolean, nil]
-      #   # @param _parent_id [String, nil]
-      #   # @param created [Time, nil]
-      #   # @param expected [Object]
-      #   # @param input [Object]
-      #   # @param metadata [Braintrust::Models::InsertDatasetEvent::Metadata, nil]
-      #   # @param origin [Braintrust::Models::ObjectReference, nil]
-      #   # @param root_span_id [String, nil]
-      #   # @param span_id [String, nil]
-      #   # @param span_parents [Array<String>, nil]
-      #   # @param tags [Array<String>, nil]
-      #   #
-      #   def initialize(
-      #     id: nil,
-      #     _is_merge: nil,
-      #     _merge_paths: nil,
-      #     _object_delete: nil,
-      #     _parent_id: nil,
-      #     created: nil,
-      #     expected: nil,
-      #     input: nil,
-      #     metadata: nil,
-      #     origin: nil,
-      #     root_span_id: nil,
-      #     span_id: nil,
-      #     span_parents: nil,
-      #     tags: nil,
-      #     **
-      #   )
-      #     super
-      #   end
-
-      # def initialize: (Hash | Braintrust::Internal::Type::BaseModel) -> void
+      # @!method initialize(id: nil, _is_merge: nil, _merge_paths: nil, _object_delete: nil, _parent_id: nil, created: nil, expected: nil, input: nil, metadata: nil, origin: nil, root_span_id: nil, span_id: nil, span_parents: nil, tags: nil)
+      #   A dataset event
+      #
+      #   @param id [String, nil]
+      #   @param _is_merge [Boolean, nil]
+      #   @param _merge_paths [Array<Array<String>>, nil]
+      #   @param _object_delete [Boolean, nil]
+      #   @param _parent_id [String, nil]
+      #   @param created [Time, nil]
+      #   @param expected [Object]
+      #   @param input [Object]
+      #   @param metadata [Braintrust::Models::InsertDatasetEvent::Metadata, nil]
+      #   @param origin [Braintrust::Models::ObjectReference, nil]
+      #   @param root_span_id [String, nil]
+      #   @param span_id [String, nil]
+      #   @param span_parents [Array<String>, nil]
+      #   @param tags [Array<String>, nil]
 
       # @see Braintrust::Models::InsertDatasetEvent#metadata
       class Metadata < Braintrust::Internal::Type::BaseModel
@@ -234,18 +212,14 @@ module Braintrust
         #   @return [String, nil]
         optional :model, String, nil?: true
 
-        # @!parse
-        #   # A dictionary with additional data about the test example, model outputs, or just
-        #   # about anything else that's relevant, that you can use to help find and analyze
-        #   # examples later. For example, you could log the `prompt`, example's `id`, or
-        #   # anything else that would be useful to slice/dice later. The values in `metadata`
-        #   # can be any JSON-serializable type, but its keys must be strings
-        #   #
-        #   # @param model [String, nil]
-        #   #
-        #   def initialize(model: nil, **) = super
-
-        # def initialize: (Hash | Braintrust::Internal::Type::BaseModel) -> void
+        # @!method initialize(model: nil)
+        #   A dictionary with additional data about the test example, model outputs, or just
+        #   about anything else that's relevant, that you can use to help find and analyze
+        #   examples later. For example, you could log the `prompt`, example's `id`, or
+        #   anything else that would be useful to slice/dice later. The values in `metadata`
+        #   can be any JSON-serializable type, but its keys must be strings
+        #
+        #   @param model [String, nil]
       end
     end
   end

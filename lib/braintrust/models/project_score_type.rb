@@ -14,11 +14,8 @@ module Braintrust
       ONLINE = :online
       FREE_FORM = :"free-form"
 
-      finalize!
-
-      # @!parse
-      #   # @return [Array<Symbol>]
-      #   def self.values; end
+      # @!method self.values
+      #   @return [Array<Symbol>]
     end
   end
 end

@@ -65,29 +65,14 @@ module Braintrust
       #   # @return [String]
       #   attr_writer :starting_after
 
-      # @!parse
-      #   # @param object_id_ [String]
-      #   # @param object_type [Symbol, Braintrust::Models::ACLObjectType]
-      #   # @param ending_before [String]
-      #   # @param ids [String, Array<String>]
-      #   # @param limit [Integer, nil]
-      #   # @param starting_after [String]
-      #   # @param request_options [Braintrust::RequestOptions, Hash{Symbol=>Object}]
-      #   #
-      #   def initialize(
-      #     object_id_:,
-      #     object_type:,
-      #     ending_before: nil,
-      #     ids: nil,
-      #     limit: nil,
-      #     starting_after: nil,
-      #     request_options: {},
-      #     **
-      #   )
-      #     super
-      #   end
-
-      # def initialize: (Hash | Braintrust::Internal::Type::BaseModel) -> void
+      # @!method initialize(object_id_:, object_type:, ending_before: nil, ids: nil, limit: nil, starting_after: nil, request_options: {})
+      #   @param object_id_ [String]
+      #   @param object_type [Symbol, Braintrust::Models::ACLObjectType]
+      #   @param ending_before [String]
+      #   @param ids [String, Array<String>]
+      #   @param limit [Integer, nil]
+      #   @param starting_after [String]
+      #   @param request_options [Braintrust::RequestOptions, Hash{Symbol=>Object}]
 
       # Filter search results to a particular set of object IDs. To specify a list of
       # IDs, include the query param multiple times
@@ -98,9 +83,8 @@ module Braintrust
 
         variant -> { Braintrust::Models::ACLListParams::IDs::StringArray }
 
-        # @!parse
-        #   # @return [Array(String, Array<String>)]
-        #   def self.variants; end
+        # @!method self.variants
+        #   @return [Array(String, Array<String>)]
 
         StringArray = Braintrust::Internal::Type::ArrayOf[String]
       end

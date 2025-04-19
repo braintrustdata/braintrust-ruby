@@ -17,13 +17,9 @@ module Braintrust
       #   # @return [String]
       #   attr_writer :text
 
-      # @!parse
-      #   # @param type [Symbol, Braintrust::Models::ChatCompletionContentPartText::Type]
-      #   # @param text [String]
-      #   #
-      #   def initialize(type:, text: nil, **) = super
-
-      # def initialize: (Hash | Braintrust::Internal::Type::BaseModel) -> void
+      # @!method initialize(type:, text: nil)
+      #   @param type [Symbol, Braintrust::Models::ChatCompletionContentPartText::Type]
+      #   @param text [String]
 
       # @see Braintrust::Models::ChatCompletionContentPartText#type
       module Type
@@ -31,11 +27,8 @@ module Braintrust
 
         TEXT = :text
 
-        finalize!
-
-        # @!parse
-        #   # @return [Array<Symbol>]
-        #   def self.values; end
+        # @!method self.values
+        #   @return [Array<Symbol>]
       end
     end
   end

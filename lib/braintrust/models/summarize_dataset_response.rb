@@ -33,18 +33,14 @@ module Braintrust
       #   @return [Braintrust::Models::DataSummary, nil]
       optional :data_summary, -> { Braintrust::Models::DataSummary }, nil?: true
 
-      # @!parse
-      #   # Summary of a dataset
-      #   #
-      #   # @param dataset_name [String]
-      #   # @param dataset_url [String]
-      #   # @param project_name [String]
-      #   # @param project_url [String]
-      #   # @param data_summary [Braintrust::Models::DataSummary, nil]
-      #   #
-      #   def initialize(dataset_name:, dataset_url:, project_name:, project_url:, data_summary: nil, **) = super
-
-      # def initialize: (Hash | Braintrust::Internal::Type::BaseModel) -> void
+      # @!method initialize(dataset_name:, dataset_url:, project_name:, project_url:, data_summary: nil)
+      #   Summary of a dataset
+      #
+      #   @param dataset_name [String]
+      #   @param dataset_url [String]
+      #   @param project_name [String]
+      #   @param project_url [String]
+      #   @param data_summary [Braintrust::Models::DataSummary, nil]
     end
   end
 end

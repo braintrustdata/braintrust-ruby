@@ -34,16 +34,12 @@ module Braintrust
                Braintrust::Internal::Type::HashOf[Braintrust::Internal::Type::Unknown, nil?: true],
                nil?: true
 
-      # @!parse
-      #   # @param name [String]
-      #   # @param project_id [String]
-      #   # @param description [String, nil]
-      #   # @param metadata [Hash{Symbol=>Object, nil}, nil]
-      #   # @param request_options [Braintrust::RequestOptions, Hash{Symbol=>Object}]
-      #   #
-      #   def initialize(name:, project_id:, description: nil, metadata: nil, request_options: {}, **) = super
-
-      # def initialize: (Hash | Braintrust::Internal::Type::BaseModel) -> void
+      # @!method initialize(name:, project_id:, description: nil, metadata: nil, request_options: {})
+      #   @param name [String]
+      #   @param project_id [String]
+      #   @param description [String, nil]
+      #   @param metadata [Hash{Symbol=>Object, nil}, nil]
+      #   @param request_options [Braintrust::RequestOptions, Hash{Symbol=>Object}]
     end
   end
 end

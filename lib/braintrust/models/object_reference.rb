@@ -33,18 +33,14 @@ module Braintrust
       #   @return [String, nil]
       optional :created, String, nil?: true
 
-      # @!parse
-      #   # Indicates the event was copied from another object.
-      #   #
-      #   # @param id [String]
-      #   # @param _xact_id [String]
-      #   # @param object_id_ [String]
-      #   # @param object_type [Symbol, Braintrust::Models::ObjectReference::ObjectType]
-      #   # @param created [String, nil]
-      #   #
-      #   def initialize(id:, _xact_id:, object_id_:, object_type:, created: nil, **) = super
-
-      # def initialize: (Hash | Braintrust::Internal::Type::BaseModel) -> void
+      # @!method initialize(id:, _xact_id:, object_id_:, object_type:, created: nil)
+      #   Indicates the event was copied from another object.
+      #
+      #   @param id [String]
+      #   @param _xact_id [String]
+      #   @param object_id_ [String]
+      #   @param object_type [Symbol, Braintrust::Models::ObjectReference::ObjectType]
+      #   @param created [String, nil]
 
       # Type of the object the event is originating from.
       #
@@ -59,11 +55,8 @@ module Braintrust
         PROMPT_SESSION = :prompt_session
         PROJECT_LOGS = :project_logs
 
-        finalize!
-
-        # @!parse
-        #   # @return [Array<Symbol>]
-        #   def self.values; end
+        # @!method self.values
+        #   @return [Array<Symbol>]
       end
     end
   end

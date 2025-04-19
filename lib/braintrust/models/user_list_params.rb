@@ -96,33 +96,16 @@ module Braintrust
       #   # @return [String]
       #   attr_writer :starting_after
 
-      # @!parse
-      #   # @param email [String, Array<String>]
-      #   # @param ending_before [String]
-      #   # @param family_name [String, Array<String>]
-      #   # @param given_name [String, Array<String>]
-      #   # @param ids [String, Array<String>]
-      #   # @param limit [Integer, nil]
-      #   # @param org_name [String]
-      #   # @param starting_after [String]
-      #   # @param request_options [Braintrust::RequestOptions, Hash{Symbol=>Object}]
-      #   #
-      #   def initialize(
-      #     email: nil,
-      #     ending_before: nil,
-      #     family_name: nil,
-      #     given_name: nil,
-      #     ids: nil,
-      #     limit: nil,
-      #     org_name: nil,
-      #     starting_after: nil,
-      #     request_options: {},
-      #     **
-      #   )
-      #     super
-      #   end
-
-      # def initialize: (Hash | Braintrust::Internal::Type::BaseModel) -> void
+      # @!method initialize(email: nil, ending_before: nil, family_name: nil, given_name: nil, ids: nil, limit: nil, org_name: nil, starting_after: nil, request_options: {})
+      #   @param email [String, Array<String>]
+      #   @param ending_before [String]
+      #   @param family_name [String, Array<String>]
+      #   @param given_name [String, Array<String>]
+      #   @param ids [String, Array<String>]
+      #   @param limit [Integer, nil]
+      #   @param org_name [String]
+      #   @param starting_after [String]
+      #   @param request_options [Braintrust::RequestOptions, Hash{Symbol=>Object}]
 
       # Email of the user to search for. You may pass the param multiple times to filter
       # for more than one email
@@ -133,9 +116,8 @@ module Braintrust
 
         variant -> { Braintrust::Models::UserListParams::Email::StringArray }
 
-        # @!parse
-        #   # @return [Array(String, Array<String>)]
-        #   def self.variants; end
+        # @!method self.variants
+        #   @return [Array(String, Array<String>)]
 
         StringArray = Braintrust::Internal::Type::ArrayOf[String]
       end
@@ -149,9 +131,8 @@ module Braintrust
 
         variant -> { Braintrust::Models::UserListParams::FamilyName::StringArray }
 
-        # @!parse
-        #   # @return [Array(String, Array<String>)]
-        #   def self.variants; end
+        # @!method self.variants
+        #   @return [Array(String, Array<String>)]
 
         StringArray = Braintrust::Internal::Type::ArrayOf[String]
       end
@@ -165,9 +146,8 @@ module Braintrust
 
         variant -> { Braintrust::Models::UserListParams::GivenName::StringArray }
 
-        # @!parse
-        #   # @return [Array(String, Array<String>)]
-        #   def self.variants; end
+        # @!method self.variants
+        #   @return [Array(String, Array<String>)]
 
         StringArray = Braintrust::Internal::Type::ArrayOf[String]
       end
@@ -181,9 +161,8 @@ module Braintrust
 
         variant -> { Braintrust::Models::UserListParams::IDs::StringArray }
 
-        # @!parse
-        #   # @return [Array(String, Array<String>)]
-        #   def self.variants; end
+        # @!method self.variants
+        #   @return [Array(String, Array<String>)]
 
         StringArray = Braintrust::Internal::Type::ArrayOf[String]
       end

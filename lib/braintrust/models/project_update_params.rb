@@ -21,14 +21,10 @@ module Braintrust
       #   @return [Braintrust::Models::ProjectSettings, nil]
       optional :settings, -> { Braintrust::Models::ProjectSettings }, nil?: true
 
-      # @!parse
-      #   # @param name [String, nil]
-      #   # @param settings [Braintrust::Models::ProjectSettings, nil]
-      #   # @param request_options [Braintrust::RequestOptions, Hash{Symbol=>Object}]
-      #   #
-      #   def initialize(name: nil, settings: nil, request_options: {}, **) = super
-
-      # def initialize: (Hash | Braintrust::Internal::Type::BaseModel) -> void
+      # @!method initialize(name: nil, settings: nil, request_options: {})
+      #   @param name [String, nil]
+      #   @param settings [Braintrust::Models::ProjectSettings, nil]
+      #   @param request_options [Braintrust::RequestOptions, Hash{Symbol=>Object}]
     end
   end
 end

@@ -15,15 +15,11 @@ module Braintrust
       #   @return [Float]
       required :value, Float
 
-      # @!parse
-      #   # For categorical-type project scores, defines a single category
-      #   #
-      #   # @param name [String]
-      #   # @param value [Float]
-      #   #
-      #   def initialize(name:, value:, **) = super
-
-      # def initialize: (Hash | Braintrust::Internal::Type::BaseModel) -> void
+      # @!method initialize(name:, value:)
+      #   For categorical-type project scores, defines a single category
+      #
+      #   @param name [String]
+      #   @param value [Float]
     end
   end
 end

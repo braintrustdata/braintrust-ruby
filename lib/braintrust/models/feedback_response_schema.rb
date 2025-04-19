@@ -8,12 +8,8 @@ module Braintrust
       #   @return [Symbol, Braintrust::Models::FeedbackResponseSchema::Status]
       required :status, enum: -> { Braintrust::Models::FeedbackResponseSchema::Status }
 
-      # @!parse
-      #   # @param status [Symbol, Braintrust::Models::FeedbackResponseSchema::Status]
-      #   #
-      #   def initialize(status:, **) = super
-
-      # def initialize: (Hash | Braintrust::Internal::Type::BaseModel) -> void
+      # @!method initialize(status:)
+      #   @param status [Symbol, Braintrust::Models::FeedbackResponseSchema::Status]
 
       # @see Braintrust::Models::FeedbackResponseSchema#status
       module Status
@@ -21,11 +17,8 @@ module Braintrust
 
         SUCCESS = :success
 
-        finalize!
-
-        # @!parse
-        #   # @return [Array<Symbol>]
-        #   def self.values; end
+        # @!method self.values
+        #   @return [Array<Symbol>]
       end
     end
   end

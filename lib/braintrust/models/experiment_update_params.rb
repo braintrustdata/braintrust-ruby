@@ -61,33 +61,16 @@ module Braintrust
       #   @return [Braintrust::Models::RepoInfo, nil]
       optional :repo_info, -> { Braintrust::Models::RepoInfo }, nil?: true
 
-      # @!parse
-      #   # @param base_exp_id [String, nil]
-      #   # @param dataset_id [String, nil]
-      #   # @param dataset_version [String, nil]
-      #   # @param description [String, nil]
-      #   # @param metadata [Hash{Symbol=>Object, nil}, nil]
-      #   # @param name [String, nil]
-      #   # @param public [Boolean, nil]
-      #   # @param repo_info [Braintrust::Models::RepoInfo, nil]
-      #   # @param request_options [Braintrust::RequestOptions, Hash{Symbol=>Object}]
-      #   #
-      #   def initialize(
-      #     base_exp_id: nil,
-      #     dataset_id: nil,
-      #     dataset_version: nil,
-      #     description: nil,
-      #     metadata: nil,
-      #     name: nil,
-      #     public: nil,
-      #     repo_info: nil,
-      #     request_options: {},
-      #     **
-      #   )
-      #     super
-      #   end
-
-      # def initialize: (Hash | Braintrust::Internal::Type::BaseModel) -> void
+      # @!method initialize(base_exp_id: nil, dataset_id: nil, dataset_version: nil, description: nil, metadata: nil, name: nil, public: nil, repo_info: nil, request_options: {})
+      #   @param base_exp_id [String, nil]
+      #   @param dataset_id [String, nil]
+      #   @param dataset_version [String, nil]
+      #   @param description [String, nil]
+      #   @param metadata [Hash{Symbol=>Object, nil}, nil]
+      #   @param name [String, nil]
+      #   @param public [Boolean, nil]
+      #   @param repo_info [Braintrust::Models::RepoInfo, nil]
+      #   @param request_options [Braintrust::RequestOptions, Hash{Symbol=>Object}]
     end
   end
 end

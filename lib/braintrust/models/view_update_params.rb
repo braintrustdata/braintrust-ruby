@@ -50,31 +50,15 @@ module Braintrust
       #   @return [Symbol, Braintrust::Models::ViewUpdateParams::ViewType, nil]
       optional :view_type, enum: -> { Braintrust::Models::ViewUpdateParams::ViewType }, nil?: true
 
-      # @!parse
-      #   # @param object_id_ [String]
-      #   # @param object_type [Symbol, Braintrust::Models::ACLObjectType]
-      #   # @param name [String, nil]
-      #   # @param options [Braintrust::Models::ViewOptions, nil]
-      #   # @param user_id [String, nil]
-      #   # @param view_data [Braintrust::Models::ViewData, nil]
-      #   # @param view_type [Symbol, Braintrust::Models::ViewUpdateParams::ViewType, nil]
-      #   # @param request_options [Braintrust::RequestOptions, Hash{Symbol=>Object}]
-      #   #
-      #   def initialize(
-      #     object_id_:,
-      #     object_type:,
-      #     name: nil,
-      #     options: nil,
-      #     user_id: nil,
-      #     view_data: nil,
-      #     view_type: nil,
-      #     request_options: {},
-      #     **
-      #   )
-      #     super
-      #   end
-
-      # def initialize: (Hash | Braintrust::Internal::Type::BaseModel) -> void
+      # @!method initialize(object_id_:, object_type:, name: nil, options: nil, user_id: nil, view_data: nil, view_type: nil, request_options: {})
+      #   @param object_id_ [String]
+      #   @param object_type [Symbol, Braintrust::Models::ACLObjectType]
+      #   @param name [String, nil]
+      #   @param options [Braintrust::Models::ViewOptions, nil]
+      #   @param user_id [String, nil]
+      #   @param view_data [Braintrust::Models::ViewData, nil]
+      #   @param view_type [Symbol, Braintrust::Models::ViewUpdateParams::ViewType, nil]
+      #   @param request_options [Braintrust::RequestOptions, Hash{Symbol=>Object}]
 
       # Type of table that the view corresponds to.
       module ViewType
@@ -92,11 +76,8 @@ module Braintrust
         SCORERS = :scorers
         LOGS = :logs
 
-        finalize!
-
-        # @!parse
-        #   # @return [Array<Symbol>]
-        #   def self.values; end
+        # @!method self.values
+        #   @return [Array<Symbol>]
       end
     end
   end

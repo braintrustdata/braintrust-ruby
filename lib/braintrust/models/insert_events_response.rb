@@ -10,12 +10,8 @@ module Braintrust
       #   @return [Array<String>]
       required :row_ids, Braintrust::Internal::Type::ArrayOf[String]
 
-      # @!parse
-      #   # @param row_ids [Array<String>]
-      #   #
-      #   def initialize(row_ids:, **) = super
-
-      # def initialize: (Hash | Braintrust::Internal::Type::BaseModel) -> void
+      # @!method initialize(row_ids:)
+      #   @param row_ids [Array<String>]
     end
   end
 end

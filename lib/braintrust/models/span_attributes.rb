@@ -15,15 +15,11 @@ module Braintrust
       #   @return [Symbol, Braintrust::Models::SpanType, nil]
       optional :type, enum: -> { Braintrust::Models::SpanType }, nil?: true
 
-      # @!parse
-      #   # Human-identifying attributes of the span, such as name, type, etc.
-      #   #
-      #   # @param name [String, nil]
-      #   # @param type [Symbol, Braintrust::Models::SpanType, nil]
-      #   #
-      #   def initialize(name: nil, type: nil, **) = super
-
-      # def initialize: (Hash | Braintrust::Internal::Type::BaseModel) -> void
+      # @!method initialize(name: nil, type: nil)
+      #   Human-identifying attributes of the span, such as name, type, etc.
+      #
+      #   @param name [String, nil]
+      #   @param type [Symbol, Braintrust::Models::SpanType, nil]
     end
   end
 end

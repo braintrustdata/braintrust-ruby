@@ -82,31 +82,15 @@ module Braintrust
       #   # @return [String]
       #   attr_writer :starting_after
 
-      # @!parse
-      #   # @param ai_secret_name [String]
-      #   # @param ai_secret_type [String, Array<String>]
-      #   # @param ending_before [String]
-      #   # @param ids [String, Array<String>]
-      #   # @param limit [Integer, nil]
-      #   # @param org_name [String]
-      #   # @param starting_after [String]
-      #   # @param request_options [Braintrust::RequestOptions, Hash{Symbol=>Object}]
-      #   #
-      #   def initialize(
-      #     ai_secret_name: nil,
-      #     ai_secret_type: nil,
-      #     ending_before: nil,
-      #     ids: nil,
-      #     limit: nil,
-      #     org_name: nil,
-      #     starting_after: nil,
-      #     request_options: {},
-      #     **
-      #   )
-      #     super
-      #   end
-
-      # def initialize: (Hash | Braintrust::Internal::Type::BaseModel) -> void
+      # @!method initialize(ai_secret_name: nil, ai_secret_type: nil, ending_before: nil, ids: nil, limit: nil, org_name: nil, starting_after: nil, request_options: {})
+      #   @param ai_secret_name [String]
+      #   @param ai_secret_type [String, Array<String>]
+      #   @param ending_before [String]
+      #   @param ids [String, Array<String>]
+      #   @param limit [Integer, nil]
+      #   @param org_name [String]
+      #   @param starting_after [String]
+      #   @param request_options [Braintrust::RequestOptions, Hash{Symbol=>Object}]
 
       module AISecretType
         extend Braintrust::Internal::Type::Union
@@ -115,9 +99,8 @@ module Braintrust
 
         variant -> { Braintrust::Models::AISecretListParams::AISecretType::StringArray }
 
-        # @!parse
-        #   # @return [Array(String, Array<String>)]
-        #   def self.variants; end
+        # @!method self.variants
+        #   @return [Array(String, Array<String>)]
 
         StringArray = Braintrust::Internal::Type::ArrayOf[String]
       end
@@ -131,9 +114,8 @@ module Braintrust
 
         variant -> { Braintrust::Models::AISecretListParams::IDs::StringArray }
 
-        # @!parse
-        #   # @return [Array(String, Array<String>)]
-        #   def self.variants; end
+        # @!method self.variants
+        #   @return [Array(String, Array<String>)]
 
         StringArray = Braintrust::Internal::Type::ArrayOf[String]
       end

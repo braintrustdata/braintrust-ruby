@@ -27,14 +27,10 @@ module Braintrust
                -> { Braintrust::Internal::Type::HashOf[Braintrust::Models::InsertEventsResponse] },
                nil?: true
 
-      # @!parse
-      #   # @param dataset [Hash{Symbol=>Braintrust::Models::InsertEventsResponse}, nil]
-      #   # @param experiment [Hash{Symbol=>Braintrust::Models::InsertEventsResponse}, nil]
-      #   # @param project_logs [Hash{Symbol=>Braintrust::Models::InsertEventsResponse}, nil]
-      #   #
-      #   def initialize(dataset: nil, experiment: nil, project_logs: nil, **) = super
-
-      # def initialize: (Hash | Braintrust::Internal::Type::BaseModel) -> void
+      # @!method initialize(dataset: nil, experiment: nil, project_logs: nil)
+      #   @param dataset [Hash{Symbol=>Braintrust::Models::InsertEventsResponse}, nil]
+      #   @param experiment [Hash{Symbol=>Braintrust::Models::InsertEventsResponse}, nil]
+      #   @param project_logs [Hash{Symbol=>Braintrust::Models::InsertEventsResponse}, nil]
     end
   end
 end

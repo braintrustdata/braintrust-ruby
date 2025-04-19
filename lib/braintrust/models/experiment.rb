@@ -92,43 +92,21 @@ module Braintrust
       #   @return [String, nil]
       optional :user_id, String, nil?: true
 
-      # @!parse
-      #   # @param id [String]
-      #   # @param name [String]
-      #   # @param project_id [String]
-      #   # @param public [Boolean]
-      #   # @param base_exp_id [String, nil]
-      #   # @param commit [String, nil]
-      #   # @param created [Time, nil]
-      #   # @param dataset_id [String, nil]
-      #   # @param dataset_version [String, nil]
-      #   # @param deleted_at [Time, nil]
-      #   # @param description [String, nil]
-      #   # @param metadata [Hash{Symbol=>Object, nil}, nil]
-      #   # @param repo_info [Braintrust::Models::RepoInfo, nil]
-      #   # @param user_id [String, nil]
-      #   #
-      #   def initialize(
-      #     id:,
-      #     name:,
-      #     project_id:,
-      #     public:,
-      #     base_exp_id: nil,
-      #     commit: nil,
-      #     created: nil,
-      #     dataset_id: nil,
-      #     dataset_version: nil,
-      #     deleted_at: nil,
-      #     description: nil,
-      #     metadata: nil,
-      #     repo_info: nil,
-      #     user_id: nil,
-      #     **
-      #   )
-      #     super
-      #   end
-
-      # def initialize: (Hash | Braintrust::Internal::Type::BaseModel) -> void
+      # @!method initialize(id:, name:, project_id:, public:, base_exp_id: nil, commit: nil, created: nil, dataset_id: nil, dataset_version: nil, deleted_at: nil, description: nil, metadata: nil, repo_info: nil, user_id: nil)
+      #   @param id [String]
+      #   @param name [String]
+      #   @param project_id [String]
+      #   @param public [Boolean]
+      #   @param base_exp_id [String, nil]
+      #   @param commit [String, nil]
+      #   @param created [Time, nil]
+      #   @param dataset_id [String, nil]
+      #   @param dataset_version [String, nil]
+      #   @param deleted_at [Time, nil]
+      #   @param description [String, nil]
+      #   @param metadata [Hash{Symbol=>Object, nil}, nil]
+      #   @param repo_info [Braintrust::Models::RepoInfo, nil]
+      #   @param user_id [String, nil]
     end
   end
 end

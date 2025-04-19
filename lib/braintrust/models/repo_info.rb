@@ -58,35 +58,18 @@ module Braintrust
       #   @return [String, nil]
       optional :tag, String, nil?: true
 
-      # @!parse
-      #   # Metadata about the state of the repo when the experiment was created
-      #   #
-      #   # @param author_email [String, nil]
-      #   # @param author_name [String, nil]
-      #   # @param branch [String, nil]
-      #   # @param commit [String, nil]
-      #   # @param commit_message [String, nil]
-      #   # @param commit_time [String, nil]
-      #   # @param dirty [Boolean, nil]
-      #   # @param git_diff [String, nil]
-      #   # @param tag [String, nil]
-      #   #
-      #   def initialize(
-      #     author_email: nil,
-      #     author_name: nil,
-      #     branch: nil,
-      #     commit: nil,
-      #     commit_message: nil,
-      #     commit_time: nil,
-      #     dirty: nil,
-      #     git_diff: nil,
-      #     tag: nil,
-      #     **
-      #   )
-      #     super
-      #   end
-
-      # def initialize: (Hash | Braintrust::Internal::Type::BaseModel) -> void
+      # @!method initialize(author_email: nil, author_name: nil, branch: nil, commit: nil, commit_message: nil, commit_time: nil, dirty: nil, git_diff: nil, tag: nil)
+      #   Metadata about the state of the repo when the experiment was created
+      #
+      #   @param author_email [String, nil]
+      #   @param author_name [String, nil]
+      #   @param branch [String, nil]
+      #   @param commit [String, nil]
+      #   @param commit_message [String, nil]
+      #   @param commit_time [String, nil]
+      #   @param dirty [Boolean, nil]
+      #   @param git_diff [String, nil]
+      #   @param tag [String, nil]
     end
   end
 end

@@ -50,19 +50,15 @@ module Braintrust
       #   @return [Time, nil]
       optional :updated_at, Time, nil?: true
 
-      # @!parse
-      #   # @param id [String]
-      #   # @param name [String]
-      #   # @param org_id [String]
-      #   # @param created [Time, nil]
-      #   # @param metadata [Hash{Symbol=>Object, nil}, nil]
-      #   # @param preview_secret [String, nil]
-      #   # @param type [String, nil]
-      #   # @param updated_at [Time, nil]
-      #   #
-      #   def initialize(id:, name:, org_id:, created: nil, metadata: nil, preview_secret: nil, type: nil, updated_at: nil, **) = super
-
-      # def initialize: (Hash | Braintrust::Internal::Type::BaseModel) -> void
+      # @!method initialize(id:, name:, org_id:, created: nil, metadata: nil, preview_secret: nil, type: nil, updated_at: nil)
+      #   @param id [String]
+      #   @param name [String]
+      #   @param org_id [String]
+      #   @param created [Time, nil]
+      #   @param metadata [Hash{Symbol=>Object, nil}, nil]
+      #   @param preview_secret [String, nil]
+      #   @param type [String, nil]
+      #   @param updated_at [Time, nil]
     end
   end
 end

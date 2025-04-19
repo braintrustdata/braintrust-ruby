@@ -18,11 +18,8 @@ module Braintrust
       UPDATE_ACLS = :update_acls
       DELETE_ACLS = :delete_acls
 
-      finalize!
-
-      # @!parse
-      #   # @return [Array<Symbol>]
-      #   def self.values; end
+      # @!method self.values
+      #   @return [Array<Symbol>]
     end
   end
 end
