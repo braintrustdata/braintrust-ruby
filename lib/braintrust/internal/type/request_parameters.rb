@@ -12,9 +12,8 @@ module Braintrust
 
         # @param mod [Module]
         def self.included(mod)
-          return unless mod <= Braintrust::Internal::Type::BaseModel
+          raise ArgumentError.new(mod) unless mod <= Braintrust::Internal::Type::BaseModel
 
-          mod.extend(Braintrust::Internal::Type::RequestParameters::Converter)
           mod.optional(:request_options, Braintrust::RequestOptions)
         end
 

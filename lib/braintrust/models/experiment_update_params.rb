@@ -4,8 +4,7 @@ module Braintrust
   module Models
     # @see Braintrust::Resources::Experiments#update
     class ExperimentUpdateParams < Braintrust::Internal::Type::BaseModel
-      # @!parse
-      #   extend Braintrust::Internal::Type::RequestParameters::Converter
+      extend Braintrust::Internal::Type::RequestParameters::Converter
       include Braintrust::Internal::Type::RequestParameters
 
       # @!attribute base_exp_id

@@ -16,16 +16,12 @@ module Braintrust
       #   @return [String, nil]
       optional :comment, String, nil?: true
 
-      # @!attribute [r] expected
+      # @!attribute expected
       #   The ground truth value (an arbitrary, JSON serializable object) that you'd
       #   compare to `output` to determine if your `output` value is correct or not
       #
       #   @return [Object, nil]
       optional :expected, Braintrust::Internal::Type::Unknown
-
-      # @!parse
-      #   # @return [Object]
-      #   attr_writer :expected
 
       # @!attribute metadata
       #   A dictionary with additional data about the feedback. If you have a `user_id`,

@@ -24,14 +24,10 @@ module Braintrust
         #   @return [String]
         required :url, String
 
-        # @!attribute [r] detail
+        # @!attribute detail
         #
         #   @return [Symbol, Braintrust::Models::ChatCompletionContentPartImage::ImageURL::Detail, nil]
         optional :detail, enum: -> { Braintrust::Models::ChatCompletionContentPartImage::ImageURL::Detail }
-
-        # @!parse
-        #   # @return [Symbol, Braintrust::Models::ChatCompletionContentPartImage::ImageURL::Detail]
-        #   attr_writer :detail
 
         # @!method initialize(url:, detail: nil)
         #   @param url [String]

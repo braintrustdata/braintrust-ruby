@@ -4,8 +4,7 @@ module Braintrust
   module Models
     # @see Braintrust::Resources::Functions#create
     class FunctionCreateParams < Braintrust::Internal::Type::BaseModel
-      # @!parse
-      #   extend Braintrust::Internal::Type::RequestParameters::Converter
+      extend Braintrust::Internal::Type::RequestParameters::Converter
       include Braintrust::Internal::Type::RequestParameters
 
       # @!attribute function_data
@@ -259,23 +258,15 @@ module Braintrust
       end
 
       class FunctionSchema < Braintrust::Internal::Type::BaseModel
-        # @!attribute [r] parameters
+        # @!attribute parameters
         #
         #   @return [Object, nil]
         optional :parameters, Braintrust::Internal::Type::Unknown
 
-        # @!parse
-        #   # @return [Object]
-        #   attr_writer :parameters
-
-        # @!attribute [r] returns
+        # @!attribute returns
         #
         #   @return [Object, nil]
         optional :returns, Braintrust::Internal::Type::Unknown
-
-        # @!parse
-        #   # @return [Object]
-        #   attr_writer :returns
 
         # @!method initialize(parameters: nil, returns: nil)
         #   JSON schema for the function's parameters and return type

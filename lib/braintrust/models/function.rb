@@ -312,23 +312,15 @@ module Braintrust
 
       # @see Braintrust::Models::Function#function_schema
       class FunctionSchema < Braintrust::Internal::Type::BaseModel
-        # @!attribute [r] parameters
+        # @!attribute parameters
         #
         #   @return [Object, nil]
         optional :parameters, Braintrust::Internal::Type::Unknown
 
-        # @!parse
-        #   # @return [Object]
-        #   attr_writer :parameters
-
-        # @!attribute [r] returns
+        # @!attribute returns
         #
         #   @return [Object, nil]
         optional :returns, Braintrust::Internal::Type::Unknown
-
-        # @!parse
-        #   # @return [Object]
-        #   attr_writer :returns
 
         # @!method initialize(parameters: nil, returns: nil)
         #   JSON schema for the function's parameters and return type

@@ -4,8 +4,7 @@ module Braintrust
   module Models
     # @see Braintrust::Resources::Evals#create
     class EvalCreateParams < Braintrust::Internal::Type::BaseModel
-      # @!parse
-      #   extend Braintrust::Internal::Type::RequestParameters::Converter
+      extend Braintrust::Internal::Type::RequestParameters::Converter
       include Braintrust::Internal::Type::RequestParameters
 
       # @!attribute data
@@ -47,16 +46,12 @@ module Braintrust
       #   @return [String, nil]
       optional :base_experiment_name, String, nil?: true
 
-      # @!attribute [r] experiment_name
+      # @!attribute experiment_name
       #   An optional name for the experiment created by this eval. If it conflicts with
       #   an existing experiment, it will be suffixed with a unique identifier.
       #
       #   @return [String, nil]
       optional :experiment_name, String
-
-      # @!parse
-      #   # @return [String]
-      #   attr_writer :experiment_name
 
       # @!attribute git_metadata_settings
       #   Optional settings for collecting git metadata. By default, will collect all git
@@ -80,26 +75,18 @@ module Braintrust
       #   @return [Float, nil]
       optional :max_concurrency, Float, nil?: true
 
-      # @!attribute [r] metadata
+      # @!attribute metadata
       #   Optional experiment-level metadata to store about the evaluation. You can later
       #   use this to slice & dice across experiments.
       #
       #   @return [Hash{Symbol=>Object, nil}, nil]
       optional :metadata, Braintrust::Internal::Type::HashOf[Braintrust::Internal::Type::Unknown, nil?: true]
 
-      # @!parse
-      #   # @return [Hash{Symbol=>Object, nil}]
-      #   attr_writer :metadata
-
-      # @!attribute [r] parent
+      # @!attribute parent
       #   Options for tracing the evaluation
       #
       #   @return [Braintrust::Models::EvalCreateParams::Parent::SpanParentStruct, String, nil]
       optional :parent, union: -> { Braintrust::Models::EvalCreateParams::Parent }
-
-      # @!parse
-      #   # @return [Braintrust::Models::EvalCreateParams::Parent::SpanParentStruct, String]
-      #   attr_writer :parent
 
       # @!attribute repo_info
       #   Metadata about the state of the repo when the experiment was created
@@ -107,17 +94,13 @@ module Braintrust
       #   @return [Braintrust::Models::RepoInfo, nil]
       optional :repo_info, -> { Braintrust::Models::RepoInfo }, nil?: true
 
-      # @!attribute [r] stream
+      # @!attribute stream
       #   Whether to stream the results of the eval. If true, the request will return two
       #   events: one to indicate the experiment has started, and another upon completion.
       #   If false, the request will return the evaluation's summary upon completion.
       #
       #   @return [Boolean, nil]
       optional :stream, Braintrust::Internal::Type::Boolean
-
-      # @!parse
-      #   # @return [Boolean]
-      #   attr_writer :stream
 
       # @!attribute timeout
       #   The maximum duration, in milliseconds, to run the evaluation. Defaults to
@@ -257,15 +240,11 @@ module Braintrust
           #   @return [String]
           required :function_id, String
 
-          # @!attribute [r] version
+          # @!attribute version
           #   The version of the function
           #
           #   @return [String, nil]
           optional :version, String
-
-          # @!parse
-          #   # @return [String]
-          #   attr_writer :version
 
           # @!method initialize(function_id:, version: nil)
           #   Function id
@@ -287,15 +266,11 @@ module Braintrust
           #   @return [String]
           required :slug, String
 
-          # @!attribute [r] version
+          # @!attribute version
           #   The version of the function
           #
           #   @return [String, nil]
           optional :version, String
-
-          # @!parse
-          #   # @return [String]
-          #   attr_writer :version
 
           # @!method initialize(project_name:, slug:, version: nil)
           #   Project name and slug
@@ -332,15 +307,11 @@ module Braintrust
           #   @return [String]
           required :prompt_session_id, String
 
-          # @!attribute [r] version
+          # @!attribute version
           #   The version of the function
           #
           #   @return [String, nil]
           optional :version, String
-
-          # @!parse
-          #   # @return [String]
-          #   attr_writer :version
 
           # @!method initialize(prompt_session_function_id:, prompt_session_id:, version: nil)
           #   Prompt session id
@@ -458,15 +429,11 @@ module Braintrust
           #   @return [String]
           required :function_id, String
 
-          # @!attribute [r] version
+          # @!attribute version
           #   The version of the function
           #
           #   @return [String, nil]
           optional :version, String
-
-          # @!parse
-          #   # @return [String]
-          #   attr_writer :version
 
           # @!method initialize(function_id:, version: nil)
           #   Function id
@@ -488,15 +455,11 @@ module Braintrust
           #   @return [String]
           required :slug, String
 
-          # @!attribute [r] version
+          # @!attribute version
           #   The version of the function
           #
           #   @return [String, nil]
           optional :version, String
-
-          # @!parse
-          #   # @return [String]
-          #   attr_writer :version
 
           # @!method initialize(project_name:, slug:, version: nil)
           #   Project name and slug
@@ -533,15 +496,11 @@ module Braintrust
           #   @return [String]
           required :prompt_session_id, String
 
-          # @!attribute [r] version
+          # @!attribute version
           #   The version of the function
           #
           #   @return [String, nil]
           optional :version, String
-
-          # @!parse
-          #   # @return [String]
-          #   attr_writer :version
 
           # @!method initialize(prompt_session_function_id:, prompt_session_id:, version: nil)
           #   Prompt session id
@@ -636,15 +595,11 @@ module Braintrust
         #   @return [Symbol, Braintrust::Models::EvalCreateParams::GitMetadataSettings::Collect]
         required :collect, enum: -> { Braintrust::Models::EvalCreateParams::GitMetadataSettings::Collect }
 
-        # @!attribute [r] fields
+        # @!attribute fields
         #
         #   @return [Array<Symbol, Braintrust::Models::EvalCreateParams::GitMetadataSettings::Field>, nil]
         optional :fields,
                  -> { Braintrust::Internal::Type::ArrayOf[enum: Braintrust::Models::EvalCreateParams::GitMetadataSettings::Field] }
-
-        # @!parse
-        #   # @return [Array<Symbol, Braintrust::Models::EvalCreateParams::GitMetadataSettings::Field>]
-        #   attr_writer :fields
 
         # @!method initialize(collect:, fields: nil)
         #   Optional settings for collecting git metadata. By default, will collect all git

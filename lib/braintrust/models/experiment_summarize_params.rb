@@ -4,11 +4,10 @@ module Braintrust
   module Models
     # @see Braintrust::Resources::Experiments#summarize
     class ExperimentSummarizeParams < Braintrust::Internal::Type::BaseModel
-      # @!parse
-      #   extend Braintrust::Internal::Type::RequestParameters::Converter
+      extend Braintrust::Internal::Type::RequestParameters::Converter
       include Braintrust::Internal::Type::RequestParameters
 
-      # @!attribute [r] comparison_experiment_id
+      # @!attribute comparison_experiment_id
       #   The experiment to compare against, if summarizing scores and metrics. If
       #   omitted, will fall back to the `base_exp_id` stored in the experiment metadata,
       #   and then to the most recent experiment run in the same project. Must pass
@@ -16,10 +15,6 @@ module Braintrust
       #
       #   @return [String, nil]
       optional :comparison_experiment_id, String
-
-      # @!parse
-      #   # @return [String]
-      #   attr_writer :comparison_experiment_id
 
       # @!attribute summarize_scores
       #   Whether to summarize the scores and metrics. If false (or omitted), only the

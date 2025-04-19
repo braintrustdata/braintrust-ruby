@@ -52,27 +52,19 @@ module Braintrust
       #   @return [String]
       required :span_id, String
 
-      # @!attribute [r] expected
+      # @!attribute expected
       #   The output of your application, including post-processing (an arbitrary, JSON
       #   serializable object)
       #
       #   @return [Object, nil]
       optional :expected, Braintrust::Internal::Type::Unknown
 
-      # @!parse
-      #   # @return [Object]
-      #   attr_writer :expected
-
-      # @!attribute [r] input
+      # @!attribute input
       #   The argument that uniquely define an input case (an arbitrary, JSON serializable
       #   object)
       #
       #   @return [Object, nil]
       optional :input, Braintrust::Internal::Type::Unknown
-
-      # @!parse
-      #   # @return [Object]
-      #   attr_writer :input
 
       # @!attribute is_root
       #   Whether this span is a root span
