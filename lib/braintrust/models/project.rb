@@ -44,18 +44,14 @@ module Braintrust
       #   @return [String, nil]
       optional :user_id, String, nil?: true
 
-      # @!parse
-      #   # @param id [String]
-      #   # @param name [String]
-      #   # @param org_id [String]
-      #   # @param created [Time, nil]
-      #   # @param deleted_at [Time, nil]
-      #   # @param settings [Braintrust::Models::ProjectSettings, nil]
-      #   # @param user_id [String, nil]
-      #   #
-      #   def initialize(id:, name:, org_id:, created: nil, deleted_at: nil, settings: nil, user_id: nil, **) = super
-
-      # def initialize: (Hash | Braintrust::Internal::Type::BaseModel) -> void
+      # @!method initialize(id:, name:, org_id:, created: nil, deleted_at: nil, settings: nil, user_id: nil)
+      #   @param id [String]
+      #   @param name [String]
+      #   @param org_id [String]
+      #   @param created [Time, nil]
+      #   @param deleted_at [Time, nil]
+      #   @param settings [Braintrust::Models::ProjectSettings, nil]
+      #   @param user_id [String, nil]
     end
   end
 end

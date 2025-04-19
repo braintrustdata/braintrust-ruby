@@ -101,47 +101,23 @@ module Braintrust
       #   @return [Array<String>, nil]
       optional :tags, Braintrust::Internal::Type::ArrayOf[String], nil?: true
 
-      # @!parse
-      #   # @param id [String]
-      #   # @param _xact_id [String]
-      #   # @param function_data [Braintrust::Models::Function::FunctionData::Prompt, Braintrust::Models::Function::FunctionData::Code, Braintrust::Models::Function::FunctionData::Global]
-      #   # @param log_id [Symbol, Braintrust::Models::Function::LogID]
-      #   # @param name [String]
-      #   # @param org_id [String]
-      #   # @param project_id [String]
-      #   # @param slug [String]
-      #   # @param created [Time, nil]
-      #   # @param description [String, nil]
-      #   # @param function_schema [Braintrust::Models::Function::FunctionSchema, nil]
-      #   # @param function_type [Symbol, Braintrust::Models::Function::FunctionType, nil]
-      #   # @param metadata [Hash{Symbol=>Object, nil}, nil]
-      #   # @param origin [Braintrust::Models::Function::Origin, nil]
-      #   # @param prompt_data [Braintrust::Models::PromptData, nil]
-      #   # @param tags [Array<String>, nil]
-      #   #
-      #   def initialize(
-      #     id:,
-      #     _xact_id:,
-      #     function_data:,
-      #     log_id:,
-      #     name:,
-      #     org_id:,
-      #     project_id:,
-      #     slug:,
-      #     created: nil,
-      #     description: nil,
-      #     function_schema: nil,
-      #     function_type: nil,
-      #     metadata: nil,
-      #     origin: nil,
-      #     prompt_data: nil,
-      #     tags: nil,
-      #     **
-      #   )
-      #     super
-      #   end
-
-      # def initialize: (Hash | Braintrust::Internal::Type::BaseModel) -> void
+      # @!method initialize(id:, _xact_id:, function_data:, log_id:, name:, org_id:, project_id:, slug:, created: nil, description: nil, function_schema: nil, function_type: nil, metadata: nil, origin: nil, prompt_data: nil, tags: nil)
+      #   @param id [String]
+      #   @param _xact_id [String]
+      #   @param function_data [Braintrust::Models::Function::FunctionData::Prompt, Braintrust::Models::Function::FunctionData::Code, Braintrust::Models::Function::FunctionData::Global]
+      #   @param log_id [Symbol, Braintrust::Models::Function::LogID]
+      #   @param name [String]
+      #   @param org_id [String]
+      #   @param project_id [String]
+      #   @param slug [String]
+      #   @param created [Time, nil]
+      #   @param description [String, nil]
+      #   @param function_schema [Braintrust::Models::Function::FunctionSchema, nil]
+      #   @param function_type [Symbol, Braintrust::Models::Function::FunctionType, nil]
+      #   @param metadata [Hash{Symbol=>Object, nil}, nil]
+      #   @param origin [Braintrust::Models::Function::Origin, nil]
+      #   @param prompt_data [Braintrust::Models::PromptData, nil]
+      #   @param tags [Array<String>, nil]
 
       # @see Braintrust::Models::Function#function_data
       module FunctionData
@@ -159,12 +135,8 @@ module Braintrust
           #   @return [Symbol, Braintrust::Models::Function::FunctionData::Prompt::Type]
           required :type, enum: -> { Braintrust::Models::Function::FunctionData::Prompt::Type }
 
-          # @!parse
-          #   # @param type [Symbol, Braintrust::Models::Function::FunctionData::Prompt::Type]
-          #   #
-          #   def initialize(type:, **) = super
-
-          # def initialize: (Hash | Braintrust::Internal::Type::BaseModel) -> void
+          # @!method initialize(type:)
+          #   @param type [Symbol, Braintrust::Models::Function::FunctionData::Prompt::Type]
 
           # @see Braintrust::Models::Function::FunctionData::Prompt#type
           module Type
@@ -172,11 +144,8 @@ module Braintrust
 
             PROMPT = :prompt
 
-            finalize!
-
-            # @!parse
-            #   # @return [Array<Symbol>]
-            #   def self.values; end
+            # @!method self.values
+            #   @return [Array<Symbol>]
           end
         end
 
@@ -191,13 +160,9 @@ module Braintrust
           #   @return [Symbol, Braintrust::Models::Function::FunctionData::Code::Type]
           required :type, enum: -> { Braintrust::Models::Function::FunctionData::Code::Type }
 
-          # @!parse
-          #   # @param data [Braintrust::Models::Function::FunctionData::Code::Data::Bundle, Braintrust::Models::Function::FunctionData::Code::Data::Inline]
-          #   # @param type [Symbol, Braintrust::Models::Function::FunctionData::Code::Type]
-          #   #
-          #   def initialize(data:, type:, **) = super
-
-          # def initialize: (Hash | Braintrust::Internal::Type::BaseModel) -> void
+          # @!method initialize(data:, type:)
+          #   @param data [Braintrust::Models::Function::FunctionData::Code::Data::Bundle, Braintrust::Models::Function::FunctionData::Code::Data::Inline]
+          #   @param type [Symbol, Braintrust::Models::Function::FunctionData::Code::Type]
 
           # @see Braintrust::Models::Function::FunctionData::Code#data
           module Data
@@ -213,23 +178,16 @@ module Braintrust
               #   @return [Symbol, Braintrust::Models::Function::FunctionData::Code::Data::Bundle::Type]
               required :type, enum: -> { Braintrust::Models::Function::FunctionData::Code::Data::Bundle::Type }
 
-              # @!parse
-              #   # @param type [Symbol, Braintrust::Models::Function::FunctionData::Code::Data::Bundle::Type]
-              #   #
-              #   def initialize(type:, **) = super
-
-              # def initialize: (Hash | Braintrust::Internal::Type::BaseModel) -> void
+              # @!method initialize(type:)
+              #   @param type [Symbol, Braintrust::Models::Function::FunctionData::Code::Data::Bundle::Type]
 
               module Type
                 extend Braintrust::Internal::Type::Enum
 
                 BUNDLE = :bundle
 
-                finalize!
-
-                # @!parse
-                #   # @return [Array<Symbol>]
-                #   def self.values; end
+                # @!method self.values
+                #   @return [Array<Symbol>]
               end
             end
 
@@ -250,14 +208,10 @@ module Braintrust
               #   @return [Symbol, Braintrust::Models::Function::FunctionData::Code::Data::Inline::Type]
               required :type, enum: -> { Braintrust::Models::Function::FunctionData::Code::Data::Inline::Type }
 
-              # @!parse
-              #   # @param code [String]
-              #   # @param runtime_context [Braintrust::Models::Function::FunctionData::Code::Data::Inline::RuntimeContext]
-              #   # @param type [Symbol, Braintrust::Models::Function::FunctionData::Code::Data::Inline::Type]
-              #   #
-              #   def initialize(code:, runtime_context:, type:, **) = super
-
-              # def initialize: (Hash | Braintrust::Internal::Type::BaseModel) -> void
+              # @!method initialize(code:, runtime_context:, type:)
+              #   @param code [String]
+              #   @param runtime_context [Braintrust::Models::Function::FunctionData::Code::Data::Inline::RuntimeContext]
+              #   @param type [Symbol, Braintrust::Models::Function::FunctionData::Code::Data::Inline::Type]
 
               # @see Braintrust::Models::Function::FunctionData::Code::Data::Inline#runtime_context
               class RuntimeContext < Braintrust::Internal::Type::BaseModel
@@ -272,13 +226,9 @@ module Braintrust
                 #   @return [String]
                 required :version, String
 
-                # @!parse
-                #   # @param runtime [Symbol, Braintrust::Models::Function::FunctionData::Code::Data::Inline::RuntimeContext::Runtime]
-                #   # @param version [String]
-                #   #
-                #   def initialize(runtime:, version:, **) = super
-
-                # def initialize: (Hash | Braintrust::Internal::Type::BaseModel) -> void
+                # @!method initialize(runtime:, version:)
+                #   @param runtime [Symbol, Braintrust::Models::Function::FunctionData::Code::Data::Inline::RuntimeContext::Runtime]
+                #   @param version [String]
 
                 # @see Braintrust::Models::Function::FunctionData::Code::Data::Inline::RuntimeContext#runtime
                 module Runtime
@@ -287,11 +237,8 @@ module Braintrust
                   NODE = :node
                   PYTHON = :python
 
-                  finalize!
-
-                  # @!parse
-                  #   # @return [Array<Symbol>]
-                  #   def self.values; end
+                  # @!method self.values
+                  #   @return [Array<Symbol>]
                 end
               end
 
@@ -301,17 +248,13 @@ module Braintrust
 
                 INLINE = :inline
 
-                finalize!
-
-                # @!parse
-                #   # @return [Array<Symbol>]
-                #   def self.values; end
+                # @!method self.values
+                #   @return [Array<Symbol>]
               end
             end
 
-            # @!parse
-            #   # @return [Array(Braintrust::Models::Function::FunctionData::Code::Data::Bundle, Braintrust::Models::Function::FunctionData::Code::Data::Inline)]
-            #   def self.variants; end
+            # @!method self.variants
+            #   @return [Array(Braintrust::Models::Function::FunctionData::Code::Data::Bundle, Braintrust::Models::Function::FunctionData::Code::Data::Inline)]
           end
 
           # @see Braintrust::Models::Function::FunctionData::Code#type
@@ -320,11 +263,8 @@ module Braintrust
 
             CODE = :code
 
-            finalize!
-
-            # @!parse
-            #   # @return [Array<Symbol>]
-            #   def self.values; end
+            # @!method self.values
+            #   @return [Array<Symbol>]
           end
         end
 
@@ -339,13 +279,9 @@ module Braintrust
           #   @return [Symbol, Braintrust::Models::Function::FunctionData::Global::Type]
           required :type, enum: -> { Braintrust::Models::Function::FunctionData::Global::Type }
 
-          # @!parse
-          #   # @param name [String]
-          #   # @param type [Symbol, Braintrust::Models::Function::FunctionData::Global::Type]
-          #   #
-          #   def initialize(name:, type:, **) = super
-
-          # def initialize: (Hash | Braintrust::Internal::Type::BaseModel) -> void
+          # @!method initialize(name:, type:)
+          #   @param name [String]
+          #   @param type [Symbol, Braintrust::Models::Function::FunctionData::Global::Type]
 
           # @see Braintrust::Models::Function::FunctionData::Global#type
           module Type
@@ -353,17 +289,13 @@ module Braintrust
 
             GLOBAL = :global
 
-            finalize!
-
-            # @!parse
-            #   # @return [Array<Symbol>]
-            #   def self.values; end
+            # @!method self.values
+            #   @return [Array<Symbol>]
           end
         end
 
-        # @!parse
-        #   # @return [Array(Braintrust::Models::Function::FunctionData::Prompt, Braintrust::Models::Function::FunctionData::Code, Braintrust::Models::Function::FunctionData::Global)]
-        #   def self.variants; end
+        # @!method self.variants
+        #   @return [Array(Braintrust::Models::Function::FunctionData::Prompt, Braintrust::Models::Function::FunctionData::Code, Braintrust::Models::Function::FunctionData::Global)]
       end
 
       # A literal 'p' which identifies the object as a project prompt
@@ -374,11 +306,8 @@ module Braintrust
 
         P = :p
 
-        finalize!
-
-        # @!parse
-        #   # @return [Array<Symbol>]
-        #   def self.values; end
+        # @!method self.values
+        #   @return [Array<Symbol>]
       end
 
       # @see Braintrust::Models::Function#function_schema
@@ -401,15 +330,11 @@ module Braintrust
         #   # @return [Object]
         #   attr_writer :returns
 
-        # @!parse
-        #   # JSON schema for the function's parameters and return type
-        #   #
-        #   # @param parameters [Object]
-        #   # @param returns [Object]
-        #   #
-        #   def initialize(parameters: nil, returns: nil, **) = super
-
-        # def initialize: (Hash | Braintrust::Internal::Type::BaseModel) -> void
+        # @!method initialize(parameters: nil, returns: nil)
+        #   JSON schema for the function's parameters and return type
+        #
+        #   @param parameters [Object]
+        #   @param returns [Object]
       end
 
       # @see Braintrust::Models::Function#function_type
@@ -421,11 +346,8 @@ module Braintrust
         TASK = :task
         TOOL = :tool
 
-        finalize!
-
-        # @!parse
-        #   # @return [Array<Symbol>]
-        #   def self.values; end
+        # @!method self.values
+        #   @return [Array<Symbol>]
       end
 
       # @see Braintrust::Models::Function#origin
@@ -449,14 +371,10 @@ module Braintrust
         #   @return [Boolean, nil]
         optional :internal, Braintrust::Internal::Type::Boolean, nil?: true
 
-        # @!parse
-        #   # @param object_id_ [String]
-        #   # @param object_type [Symbol, Braintrust::Models::ACLObjectType]
-        #   # @param internal [Boolean, nil]
-        #   #
-        #   def initialize(object_id_:, object_type:, internal: nil, **) = super
-
-        # def initialize: (Hash | Braintrust::Internal::Type::BaseModel) -> void
+        # @!method initialize(object_id_:, object_type:, internal: nil)
+        #   @param object_id_ [String]
+        #   @param object_type [Symbol, Braintrust::Models::ACLObjectType]
+        #   @param internal [Boolean, nil]
       end
     end
   end

@@ -30,18 +30,14 @@ module Braintrust
                -> { Braintrust::Internal::Type::ArrayOf[union: Braintrust::Models::PromptData::ToolFunction] },
                nil?: true
 
-      # @!parse
-      #   # The prompt, model, and its parameters
-      #   #
-      #   # @param options [Braintrust::Models::PromptOptions, nil]
-      #   # @param origin [Braintrust::Models::PromptData::Origin, nil]
-      #   # @param parser [Braintrust::Models::PromptData::Parser, nil]
-      #   # @param prompt [Braintrust::Models::PromptData::Prompt::Completion, Braintrust::Models::PromptData::Prompt::Chat, nil]
-      #   # @param tool_functions [Array<Braintrust::Models::PromptData::ToolFunction::Function, Braintrust::Models::PromptData::ToolFunction::Global>, nil]
-      #   #
-      #   def initialize(options: nil, origin: nil, parser: nil, prompt: nil, tool_functions: nil, **) = super
-
-      # def initialize: (Hash | Braintrust::Internal::Type::BaseModel) -> void
+      # @!method initialize(options: nil, origin: nil, parser: nil, prompt: nil, tool_functions: nil)
+      #   The prompt, model, and its parameters
+      #
+      #   @param options [Braintrust::Models::PromptOptions, nil]
+      #   @param origin [Braintrust::Models::PromptData::Origin, nil]
+      #   @param parser [Braintrust::Models::PromptData::Parser, nil]
+      #   @param prompt [Braintrust::Models::PromptData::Prompt::Completion, Braintrust::Models::PromptData::Prompt::Chat, nil]
+      #   @param tool_functions [Array<Braintrust::Models::PromptData::ToolFunction::Function, Braintrust::Models::PromptData::ToolFunction::Global>, nil]
 
       # @see Braintrust::Models::PromptData#origin
       class Origin < Braintrust::Internal::Type::BaseModel
@@ -72,14 +68,10 @@ module Braintrust
         #   # @return [String]
         #   attr_writer :prompt_version
 
-        # @!parse
-        #   # @param project_id [String]
-        #   # @param prompt_id [String]
-        #   # @param prompt_version [String]
-        #   #
-        #   def initialize(project_id: nil, prompt_id: nil, prompt_version: nil, **) = super
-
-        # def initialize: (Hash | Braintrust::Internal::Type::BaseModel) -> void
+        # @!method initialize(project_id: nil, prompt_id: nil, prompt_version: nil)
+        #   @param project_id [String]
+        #   @param prompt_id [String]
+        #   @param prompt_version [String]
       end
 
       # @see Braintrust::Models::PromptData#parser
@@ -99,14 +91,10 @@ module Braintrust
         #   @return [Boolean]
         required :use_cot, Braintrust::Internal::Type::Boolean
 
-        # @!parse
-        #   # @param choice_scores [Hash{Symbol=>Float}]
-        #   # @param type [Symbol, Braintrust::Models::PromptData::Parser::Type]
-        #   # @param use_cot [Boolean]
-        #   #
-        #   def initialize(choice_scores:, type:, use_cot:, **) = super
-
-        # def initialize: (Hash | Braintrust::Internal::Type::BaseModel) -> void
+        # @!method initialize(choice_scores:, type:, use_cot:)
+        #   @param choice_scores [Hash{Symbol=>Float}]
+        #   @param type [Symbol, Braintrust::Models::PromptData::Parser::Type]
+        #   @param use_cot [Boolean]
 
         # @see Braintrust::Models::PromptData::Parser#type
         module Type
@@ -114,11 +102,8 @@ module Braintrust
 
           LLM_CLASSIFIER = :llm_classifier
 
-          finalize!
-
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   def self.values; end
+          # @!method self.values
+          #   @return [Array<Symbol>]
         end
       end
 
@@ -141,13 +126,9 @@ module Braintrust
           #   @return [Symbol, Braintrust::Models::PromptData::Prompt::Completion::Type]
           required :type, enum: -> { Braintrust::Models::PromptData::Prompt::Completion::Type }
 
-          # @!parse
-          #   # @param content [String]
-          #   # @param type [Symbol, Braintrust::Models::PromptData::Prompt::Completion::Type]
-          #   #
-          #   def initialize(content:, type:, **) = super
-
-          # def initialize: (Hash | Braintrust::Internal::Type::BaseModel) -> void
+          # @!method initialize(content:, type:)
+          #   @param content [String]
+          #   @param type [Symbol, Braintrust::Models::PromptData::Prompt::Completion::Type]
 
           # @see Braintrust::Models::PromptData::Prompt::Completion#type
           module Type
@@ -155,11 +136,8 @@ module Braintrust
 
             COMPLETION = :completion
 
-            finalize!
-
-            # @!parse
-            #   # @return [Array<Symbol>]
-            #   def self.values; end
+            # @!method self.values
+            #   @return [Array<Symbol>]
           end
         end
 
@@ -184,14 +162,10 @@ module Braintrust
           #   # @return [String]
           #   attr_writer :tools
 
-          # @!parse
-          #   # @param messages [Array<Braintrust::Models::PromptData::Prompt::Chat::Message::System, Braintrust::Models::PromptData::Prompt::Chat::Message::User, Braintrust::Models::PromptData::Prompt::Chat::Message::Assistant, Braintrust::Models::PromptData::Prompt::Chat::Message::Tool, Braintrust::Models::PromptData::Prompt::Chat::Message::Function, Braintrust::Models::PromptData::Prompt::Chat::Message::Fallback>]
-          #   # @param type [Symbol, Braintrust::Models::PromptData::Prompt::Chat::Type]
-          #   # @param tools [String]
-          #   #
-          #   def initialize(messages:, type:, tools: nil, **) = super
-
-          # def initialize: (Hash | Braintrust::Internal::Type::BaseModel) -> void
+          # @!method initialize(messages:, type:, tools: nil)
+          #   @param messages [Array<Braintrust::Models::PromptData::Prompt::Chat::Message::System, Braintrust::Models::PromptData::Prompt::Chat::Message::User, Braintrust::Models::PromptData::Prompt::Chat::Message::Assistant, Braintrust::Models::PromptData::Prompt::Chat::Message::Tool, Braintrust::Models::PromptData::Prompt::Chat::Message::Function, Braintrust::Models::PromptData::Prompt::Chat::Message::Fallback>]
+          #   @param type [Symbol, Braintrust::Models::PromptData::Prompt::Chat::Type]
+          #   @param tools [String]
 
           module Message
             extend Braintrust::Internal::Type::Union
@@ -232,14 +206,10 @@ module Braintrust
               #   # @return [String]
               #   attr_writer :name
 
-              # @!parse
-              #   # @param role [Symbol, Braintrust::Models::PromptData::Prompt::Chat::Message::System::Role]
-              #   # @param content [String]
-              #   # @param name [String]
-              #   #
-              #   def initialize(role:, content: nil, name: nil, **) = super
-
-              # def initialize: (Hash | Braintrust::Internal::Type::BaseModel) -> void
+              # @!method initialize(role:, content: nil, name: nil)
+              #   @param role [Symbol, Braintrust::Models::PromptData::Prompt::Chat::Message::System::Role]
+              #   @param content [String]
+              #   @param name [String]
 
               # @see Braintrust::Models::PromptData::Prompt::Chat::Message::System#role
               module Role
@@ -247,11 +217,8 @@ module Braintrust
 
                 SYSTEM = :system
 
-                finalize!
-
-                # @!parse
-                #   # @return [Array<Symbol>]
-                #   def self.values; end
+                # @!method self.values
+                #   @return [Array<Symbol>]
               end
             end
 
@@ -279,14 +246,10 @@ module Braintrust
               #   # @return [String]
               #   attr_writer :name
 
-              # @!parse
-              #   # @param role [Symbol, Braintrust::Models::PromptData::Prompt::Chat::Message::User::Role]
-              #   # @param content [String, Array<Braintrust::Models::ChatCompletionContentPartText, Braintrust::Models::ChatCompletionContentPartImage>]
-              #   # @param name [String]
-              #   #
-              #   def initialize(role:, content: nil, name: nil, **) = super
-
-              # def initialize: (Hash | Braintrust::Internal::Type::BaseModel) -> void
+              # @!method initialize(role:, content: nil, name: nil)
+              #   @param role [Symbol, Braintrust::Models::PromptData::Prompt::Chat::Message::User::Role]
+              #   @param content [String, Array<Braintrust::Models::ChatCompletionContentPartText, Braintrust::Models::ChatCompletionContentPartImage>]
+              #   @param name [String]
 
               # @see Braintrust::Models::PromptData::Prompt::Chat::Message::User#role
               module Role
@@ -294,11 +257,8 @@ module Braintrust
 
                 USER = :user
 
-                finalize!
-
-                # @!parse
-                #   # @return [Array<Symbol>]
-                #   def self.values; end
+                # @!method self.values
+                #   @return [Array<Symbol>]
               end
 
               # @see Braintrust::Models::PromptData::Prompt::Chat::Message::User#content
@@ -316,14 +276,12 @@ module Braintrust
 
                   variant -> { Braintrust::Models::ChatCompletionContentPartImage }
 
-                  # @!parse
-                  #   # @return [Array(Braintrust::Models::ChatCompletionContentPartText, Braintrust::Models::ChatCompletionContentPartImage)]
-                  #   def self.variants; end
+                  # @!method self.variants
+                  #   @return [Array(Braintrust::Models::ChatCompletionContentPartText, Braintrust::Models::ChatCompletionContentPartImage)]
                 end
 
-                # @!parse
-                #   # @return [Array(String, Array<Braintrust::Models::ChatCompletionContentPartText, Braintrust::Models::ChatCompletionContentPartImage>)]
-                #   def self.variants; end
+                # @!method self.variants
+                #   @return [Array(String, Array<Braintrust::Models::ChatCompletionContentPartText, Braintrust::Models::ChatCompletionContentPartImage>)]
 
                 Nested2DArray =
                   Braintrust::Internal::Type::ArrayOf[union: -> { Braintrust::Models::PromptData::Prompt::Chat::Message::User::Content::Array }]
@@ -360,16 +318,12 @@ module Braintrust
                        -> { Braintrust::Internal::Type::ArrayOf[Braintrust::Models::ChatCompletionMessageToolCall] },
                        nil?: true
 
-              # @!parse
-              #   # @param role [Symbol, Braintrust::Models::PromptData::Prompt::Chat::Message::Assistant::Role]
-              #   # @param content [String, nil]
-              #   # @param function_call [Braintrust::Models::PromptData::Prompt::Chat::Message::Assistant::FunctionCall, nil]
-              #   # @param name [String, nil]
-              #   # @param tool_calls [Array<Braintrust::Models::ChatCompletionMessageToolCall>, nil]
-              #   #
-              #   def initialize(role:, content: nil, function_call: nil, name: nil, tool_calls: nil, **) = super
-
-              # def initialize: (Hash | Braintrust::Internal::Type::BaseModel) -> void
+              # @!method initialize(role:, content: nil, function_call: nil, name: nil, tool_calls: nil)
+              #   @param role [Symbol, Braintrust::Models::PromptData::Prompt::Chat::Message::Assistant::Role]
+              #   @param content [String, nil]
+              #   @param function_call [Braintrust::Models::PromptData::Prompt::Chat::Message::Assistant::FunctionCall, nil]
+              #   @param name [String, nil]
+              #   @param tool_calls [Array<Braintrust::Models::ChatCompletionMessageToolCall>, nil]
 
               # @see Braintrust::Models::PromptData::Prompt::Chat::Message::Assistant#role
               module Role
@@ -377,11 +331,8 @@ module Braintrust
 
                 ASSISTANT = :assistant
 
-                finalize!
-
-                # @!parse
-                #   # @return [Array<Symbol>]
-                #   def self.values; end
+                # @!method self.values
+                #   @return [Array<Symbol>]
               end
 
               # @see Braintrust::Models::PromptData::Prompt::Chat::Message::Assistant#function_call
@@ -396,13 +347,9 @@ module Braintrust
                 #   @return [String]
                 required :name, String
 
-                # @!parse
-                #   # @param arguments [String]
-                #   # @param name [String]
-                #   #
-                #   def initialize(arguments:, name:, **) = super
-
-                # def initialize: (Hash | Braintrust::Internal::Type::BaseModel) -> void
+                # @!method initialize(arguments:, name:)
+                #   @param arguments [String]
+                #   @param name [String]
               end
             end
 
@@ -430,14 +377,10 @@ module Braintrust
               #   # @return [String]
               #   attr_writer :tool_call_id
 
-              # @!parse
-              #   # @param role [Symbol, Braintrust::Models::PromptData::Prompt::Chat::Message::Tool::Role]
-              #   # @param content [String]
-              #   # @param tool_call_id [String]
-              #   #
-              #   def initialize(role:, content: nil, tool_call_id: nil, **) = super
-
-              # def initialize: (Hash | Braintrust::Internal::Type::BaseModel) -> void
+              # @!method initialize(role:, content: nil, tool_call_id: nil)
+              #   @param role [Symbol, Braintrust::Models::PromptData::Prompt::Chat::Message::Tool::Role]
+              #   @param content [String]
+              #   @param tool_call_id [String]
 
               # @see Braintrust::Models::PromptData::Prompt::Chat::Message::Tool#role
               module Role
@@ -445,11 +388,8 @@ module Braintrust
 
                 TOOL = :tool
 
-                finalize!
-
-                # @!parse
-                #   # @return [Array<Symbol>]
-                #   def self.values; end
+                # @!method self.values
+                #   @return [Array<Symbol>]
               end
             end
 
@@ -473,14 +413,10 @@ module Braintrust
               #   # @return [String]
               #   attr_writer :content
 
-              # @!parse
-              #   # @param name [String]
-              #   # @param role [Symbol, Braintrust::Models::PromptData::Prompt::Chat::Message::Function::Role]
-              #   # @param content [String]
-              #   #
-              #   def initialize(name:, role:, content: nil, **) = super
-
-              # def initialize: (Hash | Braintrust::Internal::Type::BaseModel) -> void
+              # @!method initialize(name:, role:, content: nil)
+              #   @param name [String]
+              #   @param role [Symbol, Braintrust::Models::PromptData::Prompt::Chat::Message::Function::Role]
+              #   @param content [String]
 
               # @see Braintrust::Models::PromptData::Prompt::Chat::Message::Function#role
               module Role
@@ -488,11 +424,8 @@ module Braintrust
 
                 FUNCTION = :function
 
-                finalize!
-
-                # @!parse
-                #   # @return [Array<Symbol>]
-                #   def self.values; end
+                # @!method self.values
+                #   @return [Array<Symbol>]
               end
             end
 
@@ -507,13 +440,9 @@ module Braintrust
               #   @return [String, nil]
               optional :content, String, nil?: true
 
-              # @!parse
-              #   # @param role [Symbol, Braintrust::Models::PromptData::Prompt::Chat::Message::Fallback::Role]
-              #   # @param content [String, nil]
-              #   #
-              #   def initialize(role:, content: nil, **) = super
-
-              # def initialize: (Hash | Braintrust::Internal::Type::BaseModel) -> void
+              # @!method initialize(role:, content: nil)
+              #   @param role [Symbol, Braintrust::Models::PromptData::Prompt::Chat::Message::Fallback::Role]
+              #   @param content [String, nil]
 
               # @see Braintrust::Models::PromptData::Prompt::Chat::Message::Fallback#role
               module Role
@@ -521,17 +450,13 @@ module Braintrust
 
                 MODEL = :model
 
-                finalize!
-
-                # @!parse
-                #   # @return [Array<Symbol>]
-                #   def self.values; end
+                # @!method self.values
+                #   @return [Array<Symbol>]
               end
             end
 
-            # @!parse
-            #   # @return [Array(Braintrust::Models::PromptData::Prompt::Chat::Message::System, Braintrust::Models::PromptData::Prompt::Chat::Message::User, Braintrust::Models::PromptData::Prompt::Chat::Message::Assistant, Braintrust::Models::PromptData::Prompt::Chat::Message::Tool, Braintrust::Models::PromptData::Prompt::Chat::Message::Function, Braintrust::Models::PromptData::Prompt::Chat::Message::Fallback)]
-            #   def self.variants; end
+            # @!method self.variants
+            #   @return [Array(Braintrust::Models::PromptData::Prompt::Chat::Message::System, Braintrust::Models::PromptData::Prompt::Chat::Message::User, Braintrust::Models::PromptData::Prompt::Chat::Message::Assistant, Braintrust::Models::PromptData::Prompt::Chat::Message::Tool, Braintrust::Models::PromptData::Prompt::Chat::Message::Function, Braintrust::Models::PromptData::Prompt::Chat::Message::Fallback)]
           end
 
           # @see Braintrust::Models::PromptData::Prompt::Chat#type
@@ -540,17 +465,13 @@ module Braintrust
 
             CHAT = :chat
 
-            finalize!
-
-            # @!parse
-            #   # @return [Array<Symbol>]
-            #   def self.values; end
+            # @!method self.values
+            #   @return [Array<Symbol>]
           end
         end
 
-        # @!parse
-        #   # @return [Array(Braintrust::Models::PromptData::Prompt::Completion, Braintrust::Models::PromptData::Prompt::Chat)]
-        #   def self.variants; end
+        # @!method self.variants
+        #   @return [Array(Braintrust::Models::PromptData::Prompt::Completion, Braintrust::Models::PromptData::Prompt::Chat)]
       end
 
       module ToolFunction
@@ -571,13 +492,9 @@ module Braintrust
           #   @return [Symbol, Braintrust::Models::PromptData::ToolFunction::Function::Type]
           required :type, enum: -> { Braintrust::Models::PromptData::ToolFunction::Function::Type }
 
-          # @!parse
-          #   # @param id [String]
-          #   # @param type [Symbol, Braintrust::Models::PromptData::ToolFunction::Function::Type]
-          #   #
-          #   def initialize(id:, type:, **) = super
-
-          # def initialize: (Hash | Braintrust::Internal::Type::BaseModel) -> void
+          # @!method initialize(id:, type:)
+          #   @param id [String]
+          #   @param type [Symbol, Braintrust::Models::PromptData::ToolFunction::Function::Type]
 
           # @see Braintrust::Models::PromptData::ToolFunction::Function#type
           module Type
@@ -585,11 +502,8 @@ module Braintrust
 
             FUNCTION = :function
 
-            finalize!
-
-            # @!parse
-            #   # @return [Array<Symbol>]
-            #   def self.values; end
+            # @!method self.values
+            #   @return [Array<Symbol>]
           end
         end
 
@@ -604,13 +518,9 @@ module Braintrust
           #   @return [Symbol, Braintrust::Models::PromptData::ToolFunction::Global::Type]
           required :type, enum: -> { Braintrust::Models::PromptData::ToolFunction::Global::Type }
 
-          # @!parse
-          #   # @param name [String]
-          #   # @param type [Symbol, Braintrust::Models::PromptData::ToolFunction::Global::Type]
-          #   #
-          #   def initialize(name:, type:, **) = super
-
-          # def initialize: (Hash | Braintrust::Internal::Type::BaseModel) -> void
+          # @!method initialize(name:, type:)
+          #   @param name [String]
+          #   @param type [Symbol, Braintrust::Models::PromptData::ToolFunction::Global::Type]
 
           # @see Braintrust::Models::PromptData::ToolFunction::Global#type
           module Type
@@ -618,17 +528,13 @@ module Braintrust
 
             GLOBAL = :global
 
-            finalize!
-
-            # @!parse
-            #   # @return [Array<Symbol>]
-            #   def self.values; end
+            # @!method self.values
+            #   @return [Array<Symbol>]
           end
         end
 
-        # @!parse
-        #   # @return [Array(Braintrust::Models::PromptData::ToolFunction::Function, Braintrust::Models::PromptData::ToolFunction::Global)]
-        #   def self.variants; end
+        # @!method self.variants
+        #   @return [Array(Braintrust::Models::PromptData::ToolFunction::Function, Braintrust::Models::PromptData::ToolFunction::Global)]
       end
     end
   end

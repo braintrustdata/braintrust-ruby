@@ -44,29 +44,14 @@ module Braintrust
       #   @return [Array<String>, nil]
       optional :remove_member_users, Braintrust::Internal::Type::ArrayOf[String], nil?: true
 
-      # @!parse
-      #   # @param add_member_groups [Array<String>, nil]
-      #   # @param add_member_users [Array<String>, nil]
-      #   # @param description [String, nil]
-      #   # @param name [String, nil]
-      #   # @param remove_member_groups [Array<String>, nil]
-      #   # @param remove_member_users [Array<String>, nil]
-      #   # @param request_options [Braintrust::RequestOptions, Hash{Symbol=>Object}]
-      #   #
-      #   def initialize(
-      #     add_member_groups: nil,
-      #     add_member_users: nil,
-      #     description: nil,
-      #     name: nil,
-      #     remove_member_groups: nil,
-      #     remove_member_users: nil,
-      #     request_options: {},
-      #     **
-      #   )
-      #     super
-      #   end
-
-      # def initialize: (Hash | Braintrust::Internal::Type::BaseModel) -> void
+      # @!method initialize(add_member_groups: nil, add_member_users: nil, description: nil, name: nil, remove_member_groups: nil, remove_member_users: nil, request_options: {})
+      #   @param add_member_groups [Array<String>, nil]
+      #   @param add_member_users [Array<String>, nil]
+      #   @param description [String, nil]
+      #   @param name [String, nil]
+      #   @param remove_member_groups [Array<String>, nil]
+      #   @param remove_member_users [Array<String>, nil]
+      #   @param request_options [Braintrust::RequestOptions, Hash{Symbol=>Object}]
     end
   end
 end

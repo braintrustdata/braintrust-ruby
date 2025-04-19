@@ -24,15 +24,11 @@ module Braintrust
       #   @return [String, nil]
       optional :preview, String, nil?: true
 
-      # @!parse
-      #   # @param bundle_id [String]
-      #   # @param location [Braintrust::Models::CodeBundle::Location::Experiment, Braintrust::Models::CodeBundle::Location::Function]
-      #   # @param runtime_context [Braintrust::Models::CodeBundle::RuntimeContext]
-      #   # @param preview [String, nil]
-      #   #
-      #   def initialize(bundle_id:, location:, runtime_context:, preview: nil, **) = super
-
-      # def initialize: (Hash | Braintrust::Internal::Type::BaseModel) -> void
+      # @!method initialize(bundle_id:, location:, runtime_context:, preview: nil)
+      #   @param bundle_id [String]
+      #   @param location [Braintrust::Models::CodeBundle::Location::Experiment, Braintrust::Models::CodeBundle::Location::Function]
+      #   @param runtime_context [Braintrust::Models::CodeBundle::RuntimeContext]
+      #   @param preview [String, nil]
 
       # @see Braintrust::Models::CodeBundle#location
       module Location
@@ -58,14 +54,10 @@ module Braintrust
           #   @return [Symbol, Braintrust::Models::CodeBundle::Location::Experiment::Type]
           required :type, enum: -> { Braintrust::Models::CodeBundle::Location::Experiment::Type }
 
-          # @!parse
-          #   # @param eval_name [String]
-          #   # @param position [Braintrust::Models::CodeBundle::Location::Experiment::Position::Type, Braintrust::Models::CodeBundle::Location::Experiment::Position::Scorer]
-          #   # @param type [Symbol, Braintrust::Models::CodeBundle::Location::Experiment::Type]
-          #   #
-          #   def initialize(eval_name:, position:, type:, **) = super
-
-          # def initialize: (Hash | Braintrust::Internal::Type::BaseModel) -> void
+          # @!method initialize(eval_name:, position:, type:)
+          #   @param eval_name [String]
+          #   @param position [Braintrust::Models::CodeBundle::Location::Experiment::Position::Type, Braintrust::Models::CodeBundle::Location::Experiment::Position::Scorer]
+          #   @param type [Symbol, Braintrust::Models::CodeBundle::Location::Experiment::Type]
 
           # @see Braintrust::Models::CodeBundle::Location::Experiment#position
           module Position
@@ -81,12 +73,8 @@ module Braintrust
               #   @return [Symbol, Braintrust::Models::CodeBundle::Location::Experiment::Position::Type::Type]
               required :type, enum: -> { Braintrust::Models::CodeBundle::Location::Experiment::Position::Type::Type }
 
-              # @!parse
-              #   # @param type [Symbol, Braintrust::Models::CodeBundle::Location::Experiment::Position::Type::Type]
-              #   #
-              #   def initialize(type:, **) = super
-
-              # def initialize: (Hash | Braintrust::Internal::Type::BaseModel) -> void
+              # @!method initialize(type:)
+              #   @param type [Symbol, Braintrust::Models::CodeBundle::Location::Experiment::Position::Type::Type]
 
               # @see Braintrust::Models::CodeBundle::Location::Experiment::Position::Type#type
               module Type
@@ -94,11 +82,8 @@ module Braintrust
 
                 TASK = :task
 
-                finalize!
-
-                # @!parse
-                #   # @return [Array<Symbol>]
-                #   def self.values; end
+                # @!method self.values
+                #   @return [Array<Symbol>]
               end
             end
 
@@ -113,13 +98,9 @@ module Braintrust
               #   @return [Symbol, Braintrust::Models::CodeBundle::Location::Experiment::Position::Scorer::Type]
               required :type, enum: -> { Braintrust::Models::CodeBundle::Location::Experiment::Position::Scorer::Type }
 
-              # @!parse
-              #   # @param index [Integer]
-              #   # @param type [Symbol, Braintrust::Models::CodeBundle::Location::Experiment::Position::Scorer::Type]
-              #   #
-              #   def initialize(index:, type:, **) = super
-
-              # def initialize: (Hash | Braintrust::Internal::Type::BaseModel) -> void
+              # @!method initialize(index:, type:)
+              #   @param index [Integer]
+              #   @param type [Symbol, Braintrust::Models::CodeBundle::Location::Experiment::Position::Scorer::Type]
 
               # @see Braintrust::Models::CodeBundle::Location::Experiment::Position::Scorer#type
               module Type
@@ -127,17 +108,13 @@ module Braintrust
 
                 SCORER = :scorer
 
-                finalize!
-
-                # @!parse
-                #   # @return [Array<Symbol>]
-                #   def self.values; end
+                # @!method self.values
+                #   @return [Array<Symbol>]
               end
             end
 
-            # @!parse
-            #   # @return [Array(Braintrust::Models::CodeBundle::Location::Experiment::Position::Type, Braintrust::Models::CodeBundle::Location::Experiment::Position::Scorer)]
-            #   def self.variants; end
+            # @!method self.variants
+            #   @return [Array(Braintrust::Models::CodeBundle::Location::Experiment::Position::Type, Braintrust::Models::CodeBundle::Location::Experiment::Position::Scorer)]
           end
 
           # @see Braintrust::Models::CodeBundle::Location::Experiment#type
@@ -146,11 +123,8 @@ module Braintrust
 
             EXPERIMENT = :experiment
 
-            finalize!
-
-            # @!parse
-            #   # @return [Array<Symbol>]
-            #   def self.values; end
+            # @!method self.values
+            #   @return [Array<Symbol>]
           end
         end
 
@@ -165,13 +139,9 @@ module Braintrust
           #   @return [Symbol, Braintrust::Models::CodeBundle::Location::Function::Type]
           required :type, enum: -> { Braintrust::Models::CodeBundle::Location::Function::Type }
 
-          # @!parse
-          #   # @param index [Integer]
-          #   # @param type [Symbol, Braintrust::Models::CodeBundle::Location::Function::Type]
-          #   #
-          #   def initialize(index:, type:, **) = super
-
-          # def initialize: (Hash | Braintrust::Internal::Type::BaseModel) -> void
+          # @!method initialize(index:, type:)
+          #   @param index [Integer]
+          #   @param type [Symbol, Braintrust::Models::CodeBundle::Location::Function::Type]
 
           # @see Braintrust::Models::CodeBundle::Location::Function#type
           module Type
@@ -179,17 +149,13 @@ module Braintrust
 
             FUNCTION = :function
 
-            finalize!
-
-            # @!parse
-            #   # @return [Array<Symbol>]
-            #   def self.values; end
+            # @!method self.values
+            #   @return [Array<Symbol>]
           end
         end
 
-        # @!parse
-        #   # @return [Array(Braintrust::Models::CodeBundle::Location::Experiment, Braintrust::Models::CodeBundle::Location::Function)]
-        #   def self.variants; end
+        # @!method self.variants
+        #   @return [Array(Braintrust::Models::CodeBundle::Location::Experiment, Braintrust::Models::CodeBundle::Location::Function)]
       end
 
       # @see Braintrust::Models::CodeBundle#runtime_context
@@ -204,13 +170,9 @@ module Braintrust
         #   @return [String]
         required :version, String
 
-        # @!parse
-        #   # @param runtime [Symbol, Braintrust::Models::CodeBundle::RuntimeContext::Runtime]
-        #   # @param version [String]
-        #   #
-        #   def initialize(runtime:, version:, **) = super
-
-        # def initialize: (Hash | Braintrust::Internal::Type::BaseModel) -> void
+        # @!method initialize(runtime:, version:)
+        #   @param runtime [Symbol, Braintrust::Models::CodeBundle::RuntimeContext::Runtime]
+        #   @param version [String]
 
         # @see Braintrust::Models::CodeBundle::RuntimeContext#runtime
         module Runtime
@@ -219,11 +181,8 @@ module Braintrust
           NODE = :node
           PYTHON = :python
 
-          finalize!
-
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   def self.values; end
+          # @!method self.values
+          #   @return [Array<Symbol>]
         end
       end
     end

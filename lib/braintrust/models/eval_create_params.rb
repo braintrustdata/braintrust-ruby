@@ -134,49 +134,24 @@ module Braintrust
       #   @return [Float, nil]
       optional :trial_count, Float, nil?: true
 
-      # @!parse
-      #   # @param data [Braintrust::Models::EvalCreateParams::Data::DatasetID, Braintrust::Models::EvalCreateParams::Data::ProjectDatasetName, Braintrust::Models::EvalCreateParams::Data::DatasetRows]
-      #   # @param project_id [String]
-      #   # @param scores [Array<Braintrust::Models::EvalCreateParams::Score::FunctionID, Braintrust::Models::EvalCreateParams::Score::ProjectSlug, Braintrust::Models::EvalCreateParams::Score::GlobalFunction, Braintrust::Models::EvalCreateParams::Score::PromptSessionID, Braintrust::Models::EvalCreateParams::Score::InlineCode, Braintrust::Models::EvalCreateParams::Score::InlinePrompt>]
-      #   # @param task [Braintrust::Models::EvalCreateParams::Task::FunctionID, Braintrust::Models::EvalCreateParams::Task::ProjectSlug, Braintrust::Models::EvalCreateParams::Task::GlobalFunction, Braintrust::Models::EvalCreateParams::Task::PromptSessionID, Braintrust::Models::EvalCreateParams::Task::InlineCode, Braintrust::Models::EvalCreateParams::Task::InlinePrompt]
-      #   # @param base_experiment_id [String, nil]
-      #   # @param base_experiment_name [String, nil]
-      #   # @param experiment_name [String]
-      #   # @param git_metadata_settings [Braintrust::Models::EvalCreateParams::GitMetadataSettings, nil]
-      #   # @param is_public [Boolean, nil]
-      #   # @param max_concurrency [Float, nil]
-      #   # @param metadata [Hash{Symbol=>Object, nil}]
-      #   # @param parent [Braintrust::Models::EvalCreateParams::Parent::SpanParentStruct, String]
-      #   # @param repo_info [Braintrust::Models::RepoInfo, nil]
-      #   # @param stream [Boolean]
-      #   # @param timeout [Float, nil]
-      #   # @param trial_count [Float, nil]
-      #   # @param request_options [Braintrust::RequestOptions, Hash{Symbol=>Object}]
-      #   #
-      #   def initialize(
-      #     data:,
-      #     project_id:,
-      #     scores:,
-      #     task:,
-      #     base_experiment_id: nil,
-      #     base_experiment_name: nil,
-      #     experiment_name: nil,
-      #     git_metadata_settings: nil,
-      #     is_public: nil,
-      #     max_concurrency: nil,
-      #     metadata: nil,
-      #     parent: nil,
-      #     repo_info: nil,
-      #     stream: nil,
-      #     timeout: nil,
-      #     trial_count: nil,
-      #     request_options: {},
-      #     **
-      #   )
-      #     super
-      #   end
-
-      # def initialize: (Hash | Braintrust::Internal::Type::BaseModel) -> void
+      # @!method initialize(data:, project_id:, scores:, task:, base_experiment_id: nil, base_experiment_name: nil, experiment_name: nil, git_metadata_settings: nil, is_public: nil, max_concurrency: nil, metadata: nil, parent: nil, repo_info: nil, stream: nil, timeout: nil, trial_count: nil, request_options: {})
+      #   @param data [Braintrust::Models::EvalCreateParams::Data::DatasetID, Braintrust::Models::EvalCreateParams::Data::ProjectDatasetName, Braintrust::Models::EvalCreateParams::Data::DatasetRows]
+      #   @param project_id [String]
+      #   @param scores [Array<Braintrust::Models::EvalCreateParams::Score::FunctionID, Braintrust::Models::EvalCreateParams::Score::ProjectSlug, Braintrust::Models::EvalCreateParams::Score::GlobalFunction, Braintrust::Models::EvalCreateParams::Score::PromptSessionID, Braintrust::Models::EvalCreateParams::Score::InlineCode, Braintrust::Models::EvalCreateParams::Score::InlinePrompt>]
+      #   @param task [Braintrust::Models::EvalCreateParams::Task::FunctionID, Braintrust::Models::EvalCreateParams::Task::ProjectSlug, Braintrust::Models::EvalCreateParams::Task::GlobalFunction, Braintrust::Models::EvalCreateParams::Task::PromptSessionID, Braintrust::Models::EvalCreateParams::Task::InlineCode, Braintrust::Models::EvalCreateParams::Task::InlinePrompt]
+      #   @param base_experiment_id [String, nil]
+      #   @param base_experiment_name [String, nil]
+      #   @param experiment_name [String]
+      #   @param git_metadata_settings [Braintrust::Models::EvalCreateParams::GitMetadataSettings, nil]
+      #   @param is_public [Boolean, nil]
+      #   @param max_concurrency [Float, nil]
+      #   @param metadata [Hash{Symbol=>Object, nil}]
+      #   @param parent [Braintrust::Models::EvalCreateParams::Parent::SpanParentStruct, String]
+      #   @param repo_info [Braintrust::Models::RepoInfo, nil]
+      #   @param stream [Boolean]
+      #   @param timeout [Float, nil]
+      #   @param trial_count [Float, nil]
+      #   @param request_options [Braintrust::RequestOptions, Hash{Symbol=>Object}]
 
       # The dataset to use
       module Data
@@ -204,15 +179,11 @@ module Braintrust
                    Braintrust::Internal::Type::HashOf[Braintrust::Internal::Type::Unknown, nil?: true],
                    nil?: true
 
-          # @!parse
-          #   # Dataset id
-          #   #
-          #   # @param dataset_id [String]
-          #   # @param _internal_btql [Hash{Symbol=>Object, nil}, nil]
-          #   #
-          #   def initialize(dataset_id:, _internal_btql: nil, **) = super
-
-          # def initialize: (Hash | Braintrust::Internal::Type::BaseModel) -> void
+          # @!method initialize(dataset_id:, _internal_btql: nil)
+          #   Dataset id
+          #
+          #   @param dataset_id [String]
+          #   @param _internal_btql [Hash{Symbol=>Object, nil}, nil]
         end
 
         class ProjectDatasetName < Braintrust::Internal::Type::BaseModel
@@ -233,16 +204,12 @@ module Braintrust
                    Braintrust::Internal::Type::HashOf[Braintrust::Internal::Type::Unknown, nil?: true],
                    nil?: true
 
-          # @!parse
-          #   # Project and dataset name
-          #   #
-          #   # @param dataset_name [String]
-          #   # @param project_name [String]
-          #   # @param _internal_btql [Hash{Symbol=>Object, nil}, nil]
-          #   #
-          #   def initialize(dataset_name:, project_name:, _internal_btql: nil, **) = super
-
-          # def initialize: (Hash | Braintrust::Internal::Type::BaseModel) -> void
+          # @!method initialize(dataset_name:, project_name:, _internal_btql: nil)
+          #   Project and dataset name
+          #
+          #   @param dataset_name [String]
+          #   @param project_name [String]
+          #   @param _internal_btql [Hash{Symbol=>Object, nil}, nil]
         end
 
         class DatasetRows < Braintrust::Internal::Type::BaseModel
@@ -251,19 +218,14 @@ module Braintrust
           #   @return [Array<Object, nil>]
           required :data, Braintrust::Internal::Type::ArrayOf[Braintrust::Internal::Type::Unknown, nil?: true]
 
-          # @!parse
-          #   # Dataset rows
-          #   #
-          #   # @param data [Array<Object, nil>]
-          #   #
-          #   def initialize(data:, **) = super
-
-          # def initialize: (Hash | Braintrust::Internal::Type::BaseModel) -> void
+          # @!method initialize(data:)
+          #   Dataset rows
+          #
+          #   @param data [Array<Object, nil>]
         end
 
-        # @!parse
-        #   # @return [Array(Braintrust::Models::EvalCreateParams::Data::DatasetID, Braintrust::Models::EvalCreateParams::Data::ProjectDatasetName, Braintrust::Models::EvalCreateParams::Data::DatasetRows)]
-        #   def self.variants; end
+        # @!method self.variants
+        #   @return [Array(Braintrust::Models::EvalCreateParams::Data::DatasetID, Braintrust::Models::EvalCreateParams::Data::ProjectDatasetName, Braintrust::Models::EvalCreateParams::Data::DatasetRows)]
       end
 
       # The function to evaluate
@@ -305,15 +267,11 @@ module Braintrust
           #   # @return [String]
           #   attr_writer :version
 
-          # @!parse
-          #   # Function id
-          #   #
-          #   # @param function_id [String]
-          #   # @param version [String]
-          #   #
-          #   def initialize(function_id:, version: nil, **) = super
-
-          # def initialize: (Hash | Braintrust::Internal::Type::BaseModel) -> void
+          # @!method initialize(function_id:, version: nil)
+          #   Function id
+          #
+          #   @param function_id [String]
+          #   @param version [String]
         end
 
         class ProjectSlug < Braintrust::Internal::Type::BaseModel
@@ -339,16 +297,12 @@ module Braintrust
           #   # @return [String]
           #   attr_writer :version
 
-          # @!parse
-          #   # Project name and slug
-          #   #
-          #   # @param project_name [String]
-          #   # @param slug [String]
-          #   # @param version [String]
-          #   #
-          #   def initialize(project_name:, slug:, version: nil, **) = super
-
-          # def initialize: (Hash | Braintrust::Internal::Type::BaseModel) -> void
+          # @!method initialize(project_name:, slug:, version: nil)
+          #   Project name and slug
+          #
+          #   @param project_name [String]
+          #   @param slug [String]
+          #   @param version [String]
         end
 
         class GlobalFunction < Braintrust::Internal::Type::BaseModel
@@ -359,14 +313,10 @@ module Braintrust
           #   @return [String]
           required :global_function, String
 
-          # @!parse
-          #   # Global function name
-          #   #
-          #   # @param global_function [String]
-          #   #
-          #   def initialize(global_function:, **) = super
-
-          # def initialize: (Hash | Braintrust::Internal::Type::BaseModel) -> void
+          # @!method initialize(global_function:)
+          #   Global function name
+          #
+          #   @param global_function [String]
         end
 
         class PromptSessionID < Braintrust::Internal::Type::BaseModel
@@ -392,16 +342,12 @@ module Braintrust
           #   # @return [String]
           #   attr_writer :version
 
-          # @!parse
-          #   # Prompt session id
-          #   #
-          #   # @param prompt_session_function_id [String]
-          #   # @param prompt_session_id [String]
-          #   # @param version [String]
-          #   #
-          #   def initialize(prompt_session_function_id:, prompt_session_id:, version: nil, **) = super
-
-          # def initialize: (Hash | Braintrust::Internal::Type::BaseModel) -> void
+          # @!method initialize(prompt_session_function_id:, prompt_session_id:, version: nil)
+          #   Prompt session id
+          #
+          #   @param prompt_session_function_id [String]
+          #   @param prompt_session_id [String]
+          #   @param version [String]
         end
 
         class InlineCode < Braintrust::Internal::Type::BaseModel
@@ -422,16 +368,12 @@ module Braintrust
           #   @return [String, nil]
           optional :name, String, nil?: true
 
-          # @!parse
-          #   # Inline code function
-          #   #
-          #   # @param code [String]
-          #   # @param inline_context [Braintrust::Models::EvalCreateParams::Score::InlineCode::InlineContext]
-          #   # @param name [String, nil]
-          #   #
-          #   def initialize(code:, inline_context:, name: nil, **) = super
-
-          # def initialize: (Hash | Braintrust::Internal::Type::BaseModel) -> void
+          # @!method initialize(code:, inline_context:, name: nil)
+          #   Inline code function
+          #
+          #   @param code [String]
+          #   @param inline_context [Braintrust::Models::EvalCreateParams::Score::InlineCode::InlineContext]
+          #   @param name [String, nil]
 
           # @see Braintrust::Models::EvalCreateParams::Score::InlineCode#inline_context
           class InlineContext < Braintrust::Internal::Type::BaseModel
@@ -446,13 +388,9 @@ module Braintrust
             #   @return [String]
             required :version, String
 
-            # @!parse
-            #   # @param runtime [Symbol, Braintrust::Models::EvalCreateParams::Score::InlineCode::InlineContext::Runtime]
-            #   # @param version [String]
-            #   #
-            #   def initialize(runtime:, version:, **) = super
-
-            # def initialize: (Hash | Braintrust::Internal::Type::BaseModel) -> void
+            # @!method initialize(runtime:, version:)
+            #   @param runtime [Symbol, Braintrust::Models::EvalCreateParams::Score::InlineCode::InlineContext::Runtime]
+            #   @param version [String]
 
             # @see Braintrust::Models::EvalCreateParams::Score::InlineCode::InlineContext#runtime
             module Runtime
@@ -461,11 +399,8 @@ module Braintrust
               NODE = :node
               PYTHON = :python
 
-              finalize!
-
-              # @!parse
-              #   # @return [Array<Symbol>]
-              #   def self.values; end
+              # @!method self.values
+              #   @return [Array<Symbol>]
             end
           end
         end
@@ -483,20 +418,15 @@ module Braintrust
           #   @return [String, nil]
           optional :name, String, nil?: true
 
-          # @!parse
-          #   # Inline prompt definition
-          #   #
-          #   # @param inline_prompt [Braintrust::Models::PromptData, nil]
-          #   # @param name [String, nil]
-          #   #
-          #   def initialize(inline_prompt:, name: nil, **) = super
-
-          # def initialize: (Hash | Braintrust::Internal::Type::BaseModel) -> void
+          # @!method initialize(inline_prompt:, name: nil)
+          #   Inline prompt definition
+          #
+          #   @param inline_prompt [Braintrust::Models::PromptData, nil]
+          #   @param name [String, nil]
         end
 
-        # @!parse
-        #   # @return [Array(Braintrust::Models::EvalCreateParams::Score::FunctionID, Braintrust::Models::EvalCreateParams::Score::ProjectSlug, Braintrust::Models::EvalCreateParams::Score::GlobalFunction, Braintrust::Models::EvalCreateParams::Score::PromptSessionID, Braintrust::Models::EvalCreateParams::Score::InlineCode, Braintrust::Models::EvalCreateParams::Score::InlinePrompt)]
-        #   def self.variants; end
+        # @!method self.variants
+        #   @return [Array(Braintrust::Models::EvalCreateParams::Score::FunctionID, Braintrust::Models::EvalCreateParams::Score::ProjectSlug, Braintrust::Models::EvalCreateParams::Score::GlobalFunction, Braintrust::Models::EvalCreateParams::Score::PromptSessionID, Braintrust::Models::EvalCreateParams::Score::InlineCode, Braintrust::Models::EvalCreateParams::Score::InlinePrompt)]
       end
 
       # The function to evaluate
@@ -538,15 +468,11 @@ module Braintrust
           #   # @return [String]
           #   attr_writer :version
 
-          # @!parse
-          #   # Function id
-          #   #
-          #   # @param function_id [String]
-          #   # @param version [String]
-          #   #
-          #   def initialize(function_id:, version: nil, **) = super
-
-          # def initialize: (Hash | Braintrust::Internal::Type::BaseModel) -> void
+          # @!method initialize(function_id:, version: nil)
+          #   Function id
+          #
+          #   @param function_id [String]
+          #   @param version [String]
         end
 
         class ProjectSlug < Braintrust::Internal::Type::BaseModel
@@ -572,16 +498,12 @@ module Braintrust
           #   # @return [String]
           #   attr_writer :version
 
-          # @!parse
-          #   # Project name and slug
-          #   #
-          #   # @param project_name [String]
-          #   # @param slug [String]
-          #   # @param version [String]
-          #   #
-          #   def initialize(project_name:, slug:, version: nil, **) = super
-
-          # def initialize: (Hash | Braintrust::Internal::Type::BaseModel) -> void
+          # @!method initialize(project_name:, slug:, version: nil)
+          #   Project name and slug
+          #
+          #   @param project_name [String]
+          #   @param slug [String]
+          #   @param version [String]
         end
 
         class GlobalFunction < Braintrust::Internal::Type::BaseModel
@@ -592,14 +514,10 @@ module Braintrust
           #   @return [String]
           required :global_function, String
 
-          # @!parse
-          #   # Global function name
-          #   #
-          #   # @param global_function [String]
-          #   #
-          #   def initialize(global_function:, **) = super
-
-          # def initialize: (Hash | Braintrust::Internal::Type::BaseModel) -> void
+          # @!method initialize(global_function:)
+          #   Global function name
+          #
+          #   @param global_function [String]
         end
 
         class PromptSessionID < Braintrust::Internal::Type::BaseModel
@@ -625,16 +543,12 @@ module Braintrust
           #   # @return [String]
           #   attr_writer :version
 
-          # @!parse
-          #   # Prompt session id
-          #   #
-          #   # @param prompt_session_function_id [String]
-          #   # @param prompt_session_id [String]
-          #   # @param version [String]
-          #   #
-          #   def initialize(prompt_session_function_id:, prompt_session_id:, version: nil, **) = super
-
-          # def initialize: (Hash | Braintrust::Internal::Type::BaseModel) -> void
+          # @!method initialize(prompt_session_function_id:, prompt_session_id:, version: nil)
+          #   Prompt session id
+          #
+          #   @param prompt_session_function_id [String]
+          #   @param prompt_session_id [String]
+          #   @param version [String]
         end
 
         class InlineCode < Braintrust::Internal::Type::BaseModel
@@ -655,16 +569,12 @@ module Braintrust
           #   @return [String, nil]
           optional :name, String, nil?: true
 
-          # @!parse
-          #   # Inline code function
-          #   #
-          #   # @param code [String]
-          #   # @param inline_context [Braintrust::Models::EvalCreateParams::Task::InlineCode::InlineContext]
-          #   # @param name [String, nil]
-          #   #
-          #   def initialize(code:, inline_context:, name: nil, **) = super
-
-          # def initialize: (Hash | Braintrust::Internal::Type::BaseModel) -> void
+          # @!method initialize(code:, inline_context:, name: nil)
+          #   Inline code function
+          #
+          #   @param code [String]
+          #   @param inline_context [Braintrust::Models::EvalCreateParams::Task::InlineCode::InlineContext]
+          #   @param name [String, nil]
 
           # @see Braintrust::Models::EvalCreateParams::Task::InlineCode#inline_context
           class InlineContext < Braintrust::Internal::Type::BaseModel
@@ -679,13 +589,9 @@ module Braintrust
             #   @return [String]
             required :version, String
 
-            # @!parse
-            #   # @param runtime [Symbol, Braintrust::Models::EvalCreateParams::Task::InlineCode::InlineContext::Runtime]
-            #   # @param version [String]
-            #   #
-            #   def initialize(runtime:, version:, **) = super
-
-            # def initialize: (Hash | Braintrust::Internal::Type::BaseModel) -> void
+            # @!method initialize(runtime:, version:)
+            #   @param runtime [Symbol, Braintrust::Models::EvalCreateParams::Task::InlineCode::InlineContext::Runtime]
+            #   @param version [String]
 
             # @see Braintrust::Models::EvalCreateParams::Task::InlineCode::InlineContext#runtime
             module Runtime
@@ -694,11 +600,8 @@ module Braintrust
               NODE = :node
               PYTHON = :python
 
-              finalize!
-
-              # @!parse
-              #   # @return [Array<Symbol>]
-              #   def self.values; end
+              # @!method self.values
+              #   @return [Array<Symbol>]
             end
           end
         end
@@ -716,20 +619,15 @@ module Braintrust
           #   @return [String, nil]
           optional :name, String, nil?: true
 
-          # @!parse
-          #   # Inline prompt definition
-          #   #
-          #   # @param inline_prompt [Braintrust::Models::PromptData, nil]
-          #   # @param name [String, nil]
-          #   #
-          #   def initialize(inline_prompt:, name: nil, **) = super
-
-          # def initialize: (Hash | Braintrust::Internal::Type::BaseModel) -> void
+          # @!method initialize(inline_prompt:, name: nil)
+          #   Inline prompt definition
+          #
+          #   @param inline_prompt [Braintrust::Models::PromptData, nil]
+          #   @param name [String, nil]
         end
 
-        # @!parse
-        #   # @return [Array(Braintrust::Models::EvalCreateParams::Task::FunctionID, Braintrust::Models::EvalCreateParams::Task::ProjectSlug, Braintrust::Models::EvalCreateParams::Task::GlobalFunction, Braintrust::Models::EvalCreateParams::Task::PromptSessionID, Braintrust::Models::EvalCreateParams::Task::InlineCode, Braintrust::Models::EvalCreateParams::Task::InlinePrompt)]
-        #   def self.variants; end
+        # @!method self.variants
+        #   @return [Array(Braintrust::Models::EvalCreateParams::Task::FunctionID, Braintrust::Models::EvalCreateParams::Task::ProjectSlug, Braintrust::Models::EvalCreateParams::Task::GlobalFunction, Braintrust::Models::EvalCreateParams::Task::PromptSessionID, Braintrust::Models::EvalCreateParams::Task::InlineCode, Braintrust::Models::EvalCreateParams::Task::InlinePrompt)]
       end
 
       class GitMetadataSettings < Braintrust::Internal::Type::BaseModel
@@ -748,16 +646,12 @@ module Braintrust
         #   # @return [Array<Symbol, Braintrust::Models::EvalCreateParams::GitMetadataSettings::Field>]
         #   attr_writer :fields
 
-        # @!parse
-        #   # Optional settings for collecting git metadata. By default, will collect all git
-        #   # metadata fields allowed in org-level settings.
-        #   #
-        #   # @param collect [Symbol, Braintrust::Models::EvalCreateParams::GitMetadataSettings::Collect]
-        #   # @param fields [Array<Symbol, Braintrust::Models::EvalCreateParams::GitMetadataSettings::Field>]
-        #   #
-        #   def initialize(collect:, fields: nil, **) = super
-
-        # def initialize: (Hash | Braintrust::Internal::Type::BaseModel) -> void
+        # @!method initialize(collect:, fields: nil)
+        #   Optional settings for collecting git metadata. By default, will collect all git
+        #   metadata fields allowed in org-level settings.
+        #
+        #   @param collect [Symbol, Braintrust::Models::EvalCreateParams::GitMetadataSettings::Collect]
+        #   @param fields [Array<Symbol, Braintrust::Models::EvalCreateParams::GitMetadataSettings::Field>]
 
         # @see Braintrust::Models::EvalCreateParams::GitMetadataSettings#collect
         module Collect
@@ -767,11 +661,8 @@ module Braintrust
           NONE = :none
           SOME = :some
 
-          finalize!
-
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   def self.values; end
+          # @!method self.values
+          #   @return [Array<Symbol>]
         end
 
         module Field
@@ -787,11 +678,8 @@ module Braintrust
           COMMIT_TIME = :commit_time
           GIT_DIFF = :git_diff
 
-          finalize!
-
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   def self.values; end
+          # @!method self.values
+          #   @return [Array<Symbol>]
         end
       end
 
@@ -834,17 +722,13 @@ module Braintrust
                    -> { Braintrust::Models::EvalCreateParams::Parent::SpanParentStruct::RowIDs },
                    nil?: true
 
-          # @!parse
-          #   # Span parent properties
-          #   #
-          #   # @param object_id_ [String]
-          #   # @param object_type [Symbol, Braintrust::Models::EvalCreateParams::Parent::SpanParentStruct::ObjectType]
-          #   # @param propagated_event [Hash{Symbol=>Object, nil}, nil]
-          #   # @param row_ids [Braintrust::Models::EvalCreateParams::Parent::SpanParentStruct::RowIDs, nil]
-          #   #
-          #   def initialize(object_id_:, object_type:, propagated_event: nil, row_ids: nil, **) = super
-
-          # def initialize: (Hash | Braintrust::Internal::Type::BaseModel) -> void
+          # @!method initialize(object_id_:, object_type:, propagated_event: nil, row_ids: nil)
+          #   Span parent properties
+          #
+          #   @param object_id_ [String]
+          #   @param object_type [Symbol, Braintrust::Models::EvalCreateParams::Parent::SpanParentStruct::ObjectType]
+          #   @param propagated_event [Hash{Symbol=>Object, nil}, nil]
+          #   @param row_ids [Braintrust::Models::EvalCreateParams::Parent::SpanParentStruct::RowIDs, nil]
 
           # @see Braintrust::Models::EvalCreateParams::Parent::SpanParentStruct#object_type
           module ObjectType
@@ -854,11 +738,8 @@ module Braintrust
             EXPERIMENT = :experiment
             PLAYGROUND_LOGS = :playground_logs
 
-            finalize!
-
-            # @!parse
-            #   # @return [Array<Symbol>]
-            #   def self.values; end
+            # @!method self.values
+            #   @return [Array<Symbol>]
           end
 
           # @see Braintrust::Models::EvalCreateParams::Parent::SpanParentStruct#row_ids
@@ -881,22 +762,17 @@ module Braintrust
             #   @return [String]
             required :span_id, String
 
-            # @!parse
-            #   # Identifiers for the row to to log a subspan under
-            #   #
-            #   # @param id [String]
-            #   # @param root_span_id [String]
-            #   # @param span_id [String]
-            #   #
-            #   def initialize(id:, root_span_id:, span_id:, **) = super
-
-            # def initialize: (Hash | Braintrust::Internal::Type::BaseModel) -> void
+            # @!method initialize(id:, root_span_id:, span_id:)
+            #   Identifiers for the row to to log a subspan under
+            #
+            #   @param id [String]
+            #   @param root_span_id [String]
+            #   @param span_id [String]
           end
         end
 
-        # @!parse
-        #   # @return [Array(Braintrust::Models::EvalCreateParams::Parent::SpanParentStruct, String)]
-        #   def self.variants; end
+        # @!method self.variants
+        #   @return [Array(Braintrust::Models::EvalCreateParams::Parent::SpanParentStruct, String)]
       end
     end
   end

@@ -43,18 +43,14 @@ module Braintrust
       #   @return [String, nil]
       optional :description, String, nil?: true
 
-      # @!parse
-      #   # @param name [String]
-      #   # @param project_id [String]
-      #   # @param score_type [Symbol, Braintrust::Models::ProjectScoreType]
-      #   # @param categories [Array<Braintrust::Models::ProjectScoreCategory>, Hash{Symbol=>Float}, Array<String>, nil]
-      #   # @param config [Braintrust::Models::ProjectScoreConfig, nil]
-      #   # @param description [String, nil]
-      #   # @param request_options [Braintrust::RequestOptions, Hash{Symbol=>Object}]
-      #   #
-      #   def initialize(name:, project_id:, score_type:, categories: nil, config: nil, description: nil, request_options: {}, **) = super
-
-      # def initialize: (Hash | Braintrust::Internal::Type::BaseModel) -> void
+      # @!method initialize(name:, project_id:, score_type:, categories: nil, config: nil, description: nil, request_options: {})
+      #   @param name [String]
+      #   @param project_id [String]
+      #   @param score_type [Symbol, Braintrust::Models::ProjectScoreType]
+      #   @param categories [Array<Braintrust::Models::ProjectScoreCategory>, Hash{Symbol=>Float}, Array<String>, nil]
+      #   @param config [Braintrust::Models::ProjectScoreConfig, nil]
+      #   @param description [String, nil]
+      #   @param request_options [Braintrust::RequestOptions, Hash{Symbol=>Object}]
 
       # For categorical-type project scores, the list of all categories
       module Categories
@@ -69,9 +65,8 @@ module Braintrust
         # For minimum-type project scores, the list of included scores
         variant -> { Braintrust::Models::ProjectScoreReplaceParams::Categories::StringArray }
 
-        # @!parse
-        #   # @return [Array(Array<Braintrust::Models::ProjectScoreCategory>, Hash{Symbol=>Float}, Array<String>)]
-        #   def self.variants; end
+        # @!method self.variants
+        #   @return [Array(Array<Braintrust::Models::ProjectScoreCategory>, Hash{Symbol=>Float}, Array<String>)]
 
         ProjectScoreCategoryArray =
           Braintrust::Internal::Type::ArrayOf[-> { Braintrust::Models::ProjectScoreCategory }]

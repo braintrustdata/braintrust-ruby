@@ -18,14 +18,10 @@ module Braintrust
       #   @return [Symbol, Braintrust::Models::ChatCompletionMessageToolCall::Type]
       required :type, enum: -> { Braintrust::Models::ChatCompletionMessageToolCall::Type }
 
-      # @!parse
-      #   # @param id [String]
-      #   # @param function [Braintrust::Models::ChatCompletionMessageToolCall::Function]
-      #   # @param type [Symbol, Braintrust::Models::ChatCompletionMessageToolCall::Type]
-      #   #
-      #   def initialize(id:, function:, type:, **) = super
-
-      # def initialize: (Hash | Braintrust::Internal::Type::BaseModel) -> void
+      # @!method initialize(id:, function:, type:)
+      #   @param id [String]
+      #   @param function [Braintrust::Models::ChatCompletionMessageToolCall::Function]
+      #   @param type [Symbol, Braintrust::Models::ChatCompletionMessageToolCall::Type]
 
       # @see Braintrust::Models::ChatCompletionMessageToolCall#function
       class Function < Braintrust::Internal::Type::BaseModel
@@ -39,13 +35,9 @@ module Braintrust
         #   @return [String]
         required :name, String
 
-        # @!parse
-        #   # @param arguments [String]
-        #   # @param name [String]
-        #   #
-        #   def initialize(arguments:, name:, **) = super
-
-        # def initialize: (Hash | Braintrust::Internal::Type::BaseModel) -> void
+        # @!method initialize(arguments:, name:)
+        #   @param arguments [String]
+        #   @param name [String]
       end
 
       # @see Braintrust::Models::ChatCompletionMessageToolCall#type
@@ -54,11 +46,8 @@ module Braintrust
 
         FUNCTION = :function
 
-        finalize!
-
-        # @!parse
-        #   # @return [Array<Symbol>]
-        #   def self.values; end
+        # @!method self.values
+        #   @return [Array<Symbol>]
       end
     end
   end

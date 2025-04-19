@@ -20,14 +20,10 @@ module Braintrust
       #   @return [String, nil]
       optional :value, String, nil?: true
 
-      # @!parse
-      #   # @param name [String]
-      #   # @param value [String, nil]
-      #   # @param request_options [Braintrust::RequestOptions, Hash{Symbol=>Object}]
-      #   #
-      #   def initialize(name:, value: nil, request_options: {}, **) = super
-
-      # def initialize: (Hash | Braintrust::Internal::Type::BaseModel) -> void
+      # @!method initialize(name:, value: nil, request_options: {})
+      #   @param name [String]
+      #   @param value [String, nil]
+      #   @param request_options [Braintrust::RequestOptions, Hash{Symbol=>Object}]
     end
   end
 end

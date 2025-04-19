@@ -31,15 +31,11 @@ module Braintrust
                Braintrust::Internal::Type::ArrayOf[Braintrust::Internal::Type::Unknown, nil?: true],
                nil?: true
 
-      # @!parse
-      #   # @param filter [Array<Object, nil>, nil]
-      #   # @param match [Array<Object, nil>, nil]
-      #   # @param sort [Array<Object, nil>, nil]
-      #   # @param tag [Array<Object, nil>, nil]
-      #   #
-      #   def initialize(filter: nil, match: nil, sort: nil, tag: nil, **) = super
-
-      # def initialize: (Hash | Braintrust::Internal::Type::BaseModel) -> void
+      # @!method initialize(filter: nil, match: nil, sort: nil, tag: nil)
+      #   @param filter [Array<Object, nil>, nil]
+      #   @param match [Array<Object, nil>, nil]
+      #   @param sort [Array<Object, nil>, nil]
+      #   @param tag [Array<Object, nil>, nil]
     end
   end
 end

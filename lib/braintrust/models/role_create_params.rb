@@ -45,27 +45,13 @@ module Braintrust
       #   @return [String, nil]
       optional :org_name, String, nil?: true
 
-      # @!parse
-      #   # @param name [String]
-      #   # @param description [String, nil]
-      #   # @param member_permissions [Array<Braintrust::Models::RoleCreateParams::MemberPermission>, nil]
-      #   # @param member_roles [Array<String>, nil]
-      #   # @param org_name [String, nil]
-      #   # @param request_options [Braintrust::RequestOptions, Hash{Symbol=>Object}]
-      #   #
-      #   def initialize(
-      #     name:,
-      #     description: nil,
-      #     member_permissions: nil,
-      #     member_roles: nil,
-      #     org_name: nil,
-      #     request_options: {},
-      #     **
-      #   )
-      #     super
-      #   end
-
-      # def initialize: (Hash | Braintrust::Internal::Type::BaseModel) -> void
+      # @!method initialize(name:, description: nil, member_permissions: nil, member_roles: nil, org_name: nil, request_options: {})
+      #   @param name [String]
+      #   @param description [String, nil]
+      #   @param member_permissions [Array<Braintrust::Models::RoleCreateParams::MemberPermission>, nil]
+      #   @param member_roles [Array<String>, nil]
+      #   @param org_name [String, nil]
+      #   @param request_options [Braintrust::RequestOptions, Hash{Symbol=>Object}]
 
       class MemberPermission < Braintrust::Internal::Type::BaseModel
         # @!attribute permission
@@ -83,13 +69,9 @@ module Braintrust
         #   @return [Symbol, Braintrust::Models::ACLObjectType, nil]
         optional :restrict_object_type, enum: -> { Braintrust::Models::ACLObjectType }, nil?: true
 
-        # @!parse
-        #   # @param permission [Symbol, Braintrust::Models::Permission]
-        #   # @param restrict_object_type [Symbol, Braintrust::Models::ACLObjectType, nil]
-        #   #
-        #   def initialize(permission:, restrict_object_type: nil, **) = super
-
-        # def initialize: (Hash | Braintrust::Internal::Type::BaseModel) -> void
+        # @!method initialize(permission:, restrict_object_type: nil)
+        #   @param permission [Symbol, Braintrust::Models::Permission]
+        #   @param restrict_object_type [Symbol, Braintrust::Models::ACLObjectType, nil]
       end
     end
   end

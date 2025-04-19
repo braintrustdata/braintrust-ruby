@@ -55,31 +55,15 @@ module Braintrust
       #   @return [String, nil]
       optional :user_id, String, nil?: true
 
-      # @!parse
-      #   # @param object_id_ [String]
-      #   # @param object_type [Symbol, Braintrust::Models::ACLObjectType]
-      #   # @param group_id [String, nil]
-      #   # @param permission [Symbol, Braintrust::Models::Permission, nil]
-      #   # @param restrict_object_type [Symbol, Braintrust::Models::ACLObjectType, nil]
-      #   # @param role_id [String, nil]
-      #   # @param user_id [String, nil]
-      #   # @param request_options [Braintrust::RequestOptions, Hash{Symbol=>Object}]
-      #   #
-      #   def initialize(
-      #     object_id_:,
-      #     object_type:,
-      #     group_id: nil,
-      #     permission: nil,
-      #     restrict_object_type: nil,
-      #     role_id: nil,
-      #     user_id: nil,
-      #     request_options: {},
-      #     **
-      #   )
-      #     super
-      #   end
-
-      # def initialize: (Hash | Braintrust::Internal::Type::BaseModel) -> void
+      # @!method initialize(object_id_:, object_type:, group_id: nil, permission: nil, restrict_object_type: nil, role_id: nil, user_id: nil, request_options: {})
+      #   @param object_id_ [String]
+      #   @param object_type [Symbol, Braintrust::Models::ACLObjectType]
+      #   @param group_id [String, nil]
+      #   @param permission [Symbol, Braintrust::Models::Permission, nil]
+      #   @param restrict_object_type [Symbol, Braintrust::Models::ACLObjectType, nil]
+      #   @param role_id [String, nil]
+      #   @param user_id [String, nil]
+      #   @param request_options [Braintrust::RequestOptions, Hash{Symbol=>Object}]
     end
   end
 end

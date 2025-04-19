@@ -43,19 +43,15 @@ module Braintrust
       #   # @return [Float]
       #   attr_writer :diff
 
-      # @!parse
-      #   # Summary of a metric's performance
-      #   #
-      #   # @param improvements [Integer]
-      #   # @param metric [Float]
-      #   # @param name [String]
-      #   # @param regressions [Integer]
-      #   # @param unit [String]
-      #   # @param diff [Float]
-      #   #
-      #   def initialize(improvements:, metric:, name:, regressions:, unit:, diff: nil, **) = super
-
-      # def initialize: (Hash | Braintrust::Internal::Type::BaseModel) -> void
+      # @!method initialize(improvements:, metric:, name:, regressions:, unit:, diff: nil)
+      #   Summary of a metric's performance
+      #
+      #   @param improvements [Integer]
+      #   @param metric [Float]
+      #   @param name [String]
+      #   @param regressions [Integer]
+      #   @param unit [String]
+      #   @param diff [Float]
     end
   end
 end

@@ -58,33 +58,16 @@ module Braintrust
       #   @return [String, nil]
       optional :user_id, String, nil?: true
 
-      # @!parse
-      #   # @param id [String]
-      #   # @param name [String]
-      #   # @param project_id [String]
-      #   # @param url [String]
-      #   # @param created [Time, nil]
-      #   # @param deleted_at [Time, nil]
-      #   # @param description [String, nil]
-      #   # @param post_message [Boolean, nil]
-      #   # @param user_id [String, nil]
-      #   #
-      #   def initialize(
-      #     id:,
-      #     name:,
-      #     project_id:,
-      #     url:,
-      #     created: nil,
-      #     deleted_at: nil,
-      #     description: nil,
-      #     post_message: nil,
-      #     user_id: nil,
-      #     **
-      #   )
-      #     super
-      #   end
-
-      # def initialize: (Hash | Braintrust::Internal::Type::BaseModel) -> void
+      # @!method initialize(id:, name:, project_id:, url:, created: nil, deleted_at: nil, description: nil, post_message: nil, user_id: nil)
+      #   @param id [String]
+      #   @param name [String]
+      #   @param project_id [String]
+      #   @param url [String]
+      #   @param created [Time, nil]
+      #   @param deleted_at [Time, nil]
+      #   @param description [String, nil]
+      #   @param post_message [Boolean, nil]
+      #   @param user_id [String, nil]
     end
   end
 end

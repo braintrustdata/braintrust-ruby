@@ -102,41 +102,20 @@ module Braintrust
       #   @return [Array<String>, nil]
       optional :tags, Braintrust::Internal::Type::ArrayOf[String], nil?: true
 
-      # @!parse
-      #   # @param id [String]
-      #   # @param _xact_id [String]
-      #   # @param created [Time]
-      #   # @param dataset_id [String]
-      #   # @param project_id [String]
-      #   # @param root_span_id [String]
-      #   # @param span_id [String]
-      #   # @param expected [Object]
-      #   # @param input [Object]
-      #   # @param is_root [Boolean, nil]
-      #   # @param metadata [Braintrust::Models::DatasetEvent::Metadata, nil]
-      #   # @param origin [Braintrust::Models::ObjectReference, nil]
-      #   # @param tags [Array<String>, nil]
-      #   #
-      #   def initialize(
-      #     id:,
-      #     _xact_id:,
-      #     created:,
-      #     dataset_id:,
-      #     project_id:,
-      #     root_span_id:,
-      #     span_id:,
-      #     expected: nil,
-      #     input: nil,
-      #     is_root: nil,
-      #     metadata: nil,
-      #     origin: nil,
-      #     tags: nil,
-      #     **
-      #   )
-      #     super
-      #   end
-
-      # def initialize: (Hash | Braintrust::Internal::Type::BaseModel) -> void
+      # @!method initialize(id:, _xact_id:, created:, dataset_id:, project_id:, root_span_id:, span_id:, expected: nil, input: nil, is_root: nil, metadata: nil, origin: nil, tags: nil)
+      #   @param id [String]
+      #   @param _xact_id [String]
+      #   @param created [Time]
+      #   @param dataset_id [String]
+      #   @param project_id [String]
+      #   @param root_span_id [String]
+      #   @param span_id [String]
+      #   @param expected [Object]
+      #   @param input [Object]
+      #   @param is_root [Boolean, nil]
+      #   @param metadata [Braintrust::Models::DatasetEvent::Metadata, nil]
+      #   @param origin [Braintrust::Models::ObjectReference, nil]
+      #   @param tags [Array<String>, nil]
 
       # @see Braintrust::Models::DatasetEvent#metadata
       class Metadata < Braintrust::Internal::Type::BaseModel
@@ -146,18 +125,14 @@ module Braintrust
         #   @return [String, nil]
         optional :model, String, nil?: true
 
-        # @!parse
-        #   # A dictionary with additional data about the test example, model outputs, or just
-        #   # about anything else that's relevant, that you can use to help find and analyze
-        #   # examples later. For example, you could log the `prompt`, example's `id`, or
-        #   # anything else that would be useful to slice/dice later. The values in `metadata`
-        #   # can be any JSON-serializable type, but its keys must be strings
-        #   #
-        #   # @param model [String, nil]
-        #   #
-        #   def initialize(model: nil, **) = super
-
-        # def initialize: (Hash | Braintrust::Internal::Type::BaseModel) -> void
+        # @!method initialize(model: nil)
+        #   A dictionary with additional data about the test example, model outputs, or just
+        #   about anything else that's relevant, that you can use to help find and analyze
+        #   examples later. For example, you could log the `prompt`, example's `id`, or
+        #   anything else that would be useful to slice/dice later. The values in `metadata`
+        #   can be any JSON-serializable type, but its keys must be strings
+        #
+        #   @param model [String, nil]
       end
     end
   end

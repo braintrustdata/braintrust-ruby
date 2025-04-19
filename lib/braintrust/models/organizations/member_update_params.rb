@@ -43,16 +43,12 @@ module Braintrust
                  -> { Braintrust::Models::Organizations::MemberUpdateParams::RemoveUsers },
                  nil?: true
 
-        # @!parse
-        #   # @param invite_users [Braintrust::Models::Organizations::MemberUpdateParams::InviteUsers, nil]
-        #   # @param org_id [String, nil]
-        #   # @param org_name [String, nil]
-        #   # @param remove_users [Braintrust::Models::Organizations::MemberUpdateParams::RemoveUsers, nil]
-        #   # @param request_options [Braintrust::RequestOptions, Hash{Symbol=>Object}]
-        #   #
-        #   def initialize(invite_users: nil, org_id: nil, org_name: nil, remove_users: nil, request_options: {}, **) = super
-
-        # def initialize: (Hash | Braintrust::Internal::Type::BaseModel) -> void
+        # @!method initialize(invite_users: nil, org_id: nil, org_name: nil, remove_users: nil, request_options: {})
+        #   @param invite_users [Braintrust::Models::Organizations::MemberUpdateParams::InviteUsers, nil]
+        #   @param org_id [String, nil]
+        #   @param org_name [String, nil]
+        #   @param remove_users [Braintrust::Models::Organizations::MemberUpdateParams::RemoveUsers, nil]
+        #   @param request_options [Braintrust::RequestOptions, Hash{Symbol=>Object}]
 
         class InviteUsers < Braintrust::Internal::Type::BaseModel
           # @!attribute emails
@@ -97,31 +93,16 @@ module Braintrust
           #   @return [Boolean, nil]
           optional :send_invite_emails, Braintrust::Internal::Type::Boolean, nil?: true
 
-          # @!parse
-          #   # Users to invite to the organization
-          #   #
-          #   # @param emails [Array<String>, nil]
-          #   # @param group_id [String, nil]
-          #   # @param group_ids [Array<String>, nil]
-          #   # @param group_name [String, nil]
-          #   # @param group_names [Array<String>, nil]
-          #   # @param ids [Array<String>, nil]
-          #   # @param send_invite_emails [Boolean, nil]
-          #   #
-          #   def initialize(
-          #     emails: nil,
-          #     group_id: nil,
-          #     group_ids: nil,
-          #     group_name: nil,
-          #     group_names: nil,
-          #     ids: nil,
-          #     send_invite_emails: nil,
-          #     **
-          #   )
-          #     super
-          #   end
-
-          # def initialize: (Hash | Braintrust::Internal::Type::BaseModel) -> void
+          # @!method initialize(emails: nil, group_id: nil, group_ids: nil, group_name: nil, group_names: nil, ids: nil, send_invite_emails: nil)
+          #   Users to invite to the organization
+          #
+          #   @param emails [Array<String>, nil]
+          #   @param group_id [String, nil]
+          #   @param group_ids [Array<String>, nil]
+          #   @param group_name [String, nil]
+          #   @param group_names [Array<String>, nil]
+          #   @param ids [Array<String>, nil]
+          #   @param send_invite_emails [Boolean, nil]
         end
 
         class RemoveUsers < Braintrust::Internal::Type::BaseModel
@@ -137,15 +118,11 @@ module Braintrust
           #   @return [Array<String>, nil]
           optional :ids, Braintrust::Internal::Type::ArrayOf[String], nil?: true
 
-          # @!parse
-          #   # Users to remove from the organization
-          #   #
-          #   # @param emails [Array<String>, nil]
-          #   # @param ids [Array<String>, nil]
-          #   #
-          #   def initialize(emails: nil, ids: nil, **) = super
-
-          # def initialize: (Hash | Braintrust::Internal::Type::BaseModel) -> void
+          # @!method initialize(emails: nil, ids: nil)
+          #   Users to remove from the organization
+          #
+          #   @param emails [Array<String>, nil]
+          #   @param ids [Array<String>, nil]
         end
       end
     end

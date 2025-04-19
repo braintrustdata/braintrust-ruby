@@ -85,41 +85,20 @@ module Braintrust
       #   @return [Array<String>, nil]
       optional :tags, Braintrust::Internal::Type::ArrayOf[String], nil?: true
 
-      # @!parse
-      #   # @param id [String]
-      #   # @param _xact_id [String]
-      #   # @param log_id [Symbol, Braintrust::Models::Prompt::LogID]
-      #   # @param name [String]
-      #   # @param org_id [String]
-      #   # @param project_id [String]
-      #   # @param slug [String]
-      #   # @param created [Time, nil]
-      #   # @param description [String, nil]
-      #   # @param function_type [Symbol, Braintrust::Models::Prompt::FunctionType, nil]
-      #   # @param metadata [Hash{Symbol=>Object, nil}, nil]
-      #   # @param prompt_data [Braintrust::Models::PromptData, nil]
-      #   # @param tags [Array<String>, nil]
-      #   #
-      #   def initialize(
-      #     id:,
-      #     _xact_id:,
-      #     log_id:,
-      #     name:,
-      #     org_id:,
-      #     project_id:,
-      #     slug:,
-      #     created: nil,
-      #     description: nil,
-      #     function_type: nil,
-      #     metadata: nil,
-      #     prompt_data: nil,
-      #     tags: nil,
-      #     **
-      #   )
-      #     super
-      #   end
-
-      # def initialize: (Hash | Braintrust::Internal::Type::BaseModel) -> void
+      # @!method initialize(id:, _xact_id:, log_id:, name:, org_id:, project_id:, slug:, created: nil, description: nil, function_type: nil, metadata: nil, prompt_data: nil, tags: nil)
+      #   @param id [String]
+      #   @param _xact_id [String]
+      #   @param log_id [Symbol, Braintrust::Models::Prompt::LogID]
+      #   @param name [String]
+      #   @param org_id [String]
+      #   @param project_id [String]
+      #   @param slug [String]
+      #   @param created [Time, nil]
+      #   @param description [String, nil]
+      #   @param function_type [Symbol, Braintrust::Models::Prompt::FunctionType, nil]
+      #   @param metadata [Hash{Symbol=>Object, nil}, nil]
+      #   @param prompt_data [Braintrust::Models::PromptData, nil]
+      #   @param tags [Array<String>, nil]
 
       # A literal 'p' which identifies the object as a project prompt
       #
@@ -129,11 +108,8 @@ module Braintrust
 
         P = :p
 
-        finalize!
-
-        # @!parse
-        #   # @return [Array<Symbol>]
-        #   def self.values; end
+        # @!method self.values
+        #   @return [Array<Symbol>]
       end
 
       # @see Braintrust::Models::Prompt#function_type
@@ -145,11 +121,8 @@ module Braintrust
         TASK = :task
         TOOL = :tool
 
-        finalize!
-
-        # @!parse
-        #   # @return [Array<Symbol>]
-        #   def self.values; end
+        # @!method self.values
+        #   @return [Array<Symbol>]
       end
     end
   end

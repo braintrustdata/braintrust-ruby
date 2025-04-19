@@ -16,13 +16,9 @@ module Braintrust
         required :feedback,
                  -> { Braintrust::Internal::Type::ArrayOf[Braintrust::Models::FeedbackProjectLogsItem] }
 
-        # @!parse
-        #   # @param feedback [Array<Braintrust::Models::FeedbackProjectLogsItem>]
-        #   # @param request_options [Braintrust::RequestOptions, Hash{Symbol=>Object}]
-        #   #
-        #   def initialize(feedback:, request_options: {}, **) = super
-
-        # def initialize: (Hash | Braintrust::Internal::Type::BaseModel) -> void
+        # @!method initialize(feedback:, request_options: {})
+        #   @param feedback [Array<Braintrust::Models::FeedbackProjectLogsItem>]
+        #   @param request_options [Braintrust::RequestOptions, Hash{Symbol=>Object}]
       end
     end
   end

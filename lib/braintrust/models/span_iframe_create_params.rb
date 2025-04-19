@@ -39,17 +39,13 @@ module Braintrust
       #   @return [Boolean, nil]
       optional :post_message, Braintrust::Internal::Type::Boolean, nil?: true
 
-      # @!parse
-      #   # @param name [String]
-      #   # @param project_id [String]
-      #   # @param url [String]
-      #   # @param description [String, nil]
-      #   # @param post_message [Boolean, nil]
-      #   # @param request_options [Braintrust::RequestOptions, Hash{Symbol=>Object}]
-      #   #
-      #   def initialize(name:, project_id:, url:, description: nil, post_message: nil, request_options: {}, **) = super
-
-      # def initialize: (Hash | Braintrust::Internal::Type::BaseModel) -> void
+      # @!method initialize(name:, project_id:, url:, description: nil, post_message: nil, request_options: {})
+      #   @param name [String]
+      #   @param project_id [String]
+      #   @param url [String]
+      #   @param description [String, nil]
+      #   @param post_message [Boolean, nil]
+      #   @param request_options [Braintrust::RequestOptions, Hash{Symbol=>Object}]
     end
   end
 end

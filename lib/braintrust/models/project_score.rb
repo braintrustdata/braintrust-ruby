@@ -62,38 +62,20 @@ module Braintrust
       #   @return [String, nil]
       optional :position, String, nil?: true
 
-      # @!parse
-      #   # A project score is a user-configured score, which can be manually-labeled
-      #   # through the UI
-      #   #
-      #   # @param id [String]
-      #   # @param name [String]
-      #   # @param project_id [String]
-      #   # @param score_type [Symbol, Braintrust::Models::ProjectScoreType]
-      #   # @param user_id [String]
-      #   # @param categories [Array<Braintrust::Models::ProjectScoreCategory>, Hash{Symbol=>Float}, Array<String>, nil]
-      #   # @param config [Braintrust::Models::ProjectScoreConfig, nil]
-      #   # @param created [Time, nil]
-      #   # @param description [String, nil]
-      #   # @param position [String, nil]
-      #   #
-      #   def initialize(
-      #     id:,
-      #     name:,
-      #     project_id:,
-      #     score_type:,
-      #     user_id:,
-      #     categories: nil,
-      #     config: nil,
-      #     created: nil,
-      #     description: nil,
-      #     position: nil,
-      #     **
-      #   )
-      #     super
-      #   end
-
-      # def initialize: (Hash | Braintrust::Internal::Type::BaseModel) -> void
+      # @!method initialize(id:, name:, project_id:, score_type:, user_id:, categories: nil, config: nil, created: nil, description: nil, position: nil)
+      #   A project score is a user-configured score, which can be manually-labeled
+      #   through the UI
+      #
+      #   @param id [String]
+      #   @param name [String]
+      #   @param project_id [String]
+      #   @param score_type [Symbol, Braintrust::Models::ProjectScoreType]
+      #   @param user_id [String]
+      #   @param categories [Array<Braintrust::Models::ProjectScoreCategory>, Hash{Symbol=>Float}, Array<String>, nil]
+      #   @param config [Braintrust::Models::ProjectScoreConfig, nil]
+      #   @param created [Time, nil]
+      #   @param description [String, nil]
+      #   @param position [String, nil]
 
       # For categorical-type project scores, the list of all categories
       #
@@ -110,9 +92,8 @@ module Braintrust
         # For minimum-type project scores, the list of included scores
         variant -> { Braintrust::Models::ProjectScore::Categories::StringArray }
 
-        # @!parse
-        #   # @return [Array(Array<Braintrust::Models::ProjectScoreCategory>, Hash{Symbol=>Float}, Array<String>)]
-        #   def self.variants; end
+        # @!method self.variants
+        #   @return [Array(Array<Braintrust::Models::ProjectScoreCategory>, Hash{Symbol=>Float}, Array<String>)]
 
         ProjectScoreCategoryArray =
           Braintrust::Internal::Type::ArrayOf[-> { Braintrust::Models::ProjectScoreCategory }]

@@ -179,6 +179,7 @@ module Braintrust
         def deconstruct_keys(keys); end
 
         class << self
+          # @api private
           sig { params(model: Braintrust::Internal::Type::BaseModel).returns(Braintrust::Internal::AnyHash) }
           def walk(model); end
         end

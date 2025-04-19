@@ -18,14 +18,10 @@ module Braintrust
       #   @return [Braintrust::Models::OnlineScoreConfig, nil]
       optional :online, -> { Braintrust::Models::OnlineScoreConfig }, nil?: true
 
-      # @!parse
-      #   # @param destination [String, nil]
-      #   # @param multi_select [Boolean, nil]
-      #   # @param online [Braintrust::Models::OnlineScoreConfig, nil]
-      #   #
-      #   def initialize(destination: nil, multi_select: nil, online: nil, **) = super
-
-      # def initialize: (Hash | Braintrust::Internal::Type::BaseModel) -> void
+      # @!method initialize(destination: nil, multi_select: nil, online: nil)
+      #   @param destination [String, nil]
+      #   @param multi_select [Boolean, nil]
+      #   @param online [Braintrust::Models::OnlineScoreConfig, nil]
     end
   end
 end

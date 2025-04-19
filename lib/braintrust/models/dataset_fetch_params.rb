@@ -79,16 +79,12 @@ module Braintrust
       #   # @return [String]
       #   attr_writer :version
 
-      # @!parse
-      #   # @param limit [Integer, nil]
-      #   # @param max_root_span_id [String]
-      #   # @param max_xact_id [String]
-      #   # @param version [String]
-      #   # @param request_options [Braintrust::RequestOptions, Hash{Symbol=>Object}]
-      #   #
-      #   def initialize(limit: nil, max_root_span_id: nil, max_xact_id: nil, version: nil, request_options: {}, **) = super
-
-      # def initialize: (Hash | Braintrust::Internal::Type::BaseModel) -> void
+      # @!method initialize(limit: nil, max_root_span_id: nil, max_xact_id: nil, version: nil, request_options: {})
+      #   @param limit [Integer, nil]
+      #   @param max_root_span_id [String]
+      #   @param max_xact_id [String]
+      #   @param version [String]
+      #   @param request_options [Braintrust::RequestOptions, Hash{Symbol=>Object}]
     end
   end
 end

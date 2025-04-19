@@ -80,33 +80,16 @@ module Braintrust
       #   # @return [String]
       #   attr_writer :version
 
-      # @!parse
-      #   # @param expected [Object]
-      #   # @param input [Object]
-      #   # @param messages [Array<Braintrust::Models::FunctionInvokeParams::Message::System, Braintrust::Models::FunctionInvokeParams::Message::User, Braintrust::Models::FunctionInvokeParams::Message::Assistant, Braintrust::Models::FunctionInvokeParams::Message::Tool, Braintrust::Models::FunctionInvokeParams::Message::Function, Braintrust::Models::FunctionInvokeParams::Message::Fallback>]
-      #   # @param metadata [Hash{Symbol=>Object, nil}, nil]
-      #   # @param mode [Symbol, Braintrust::Models::FunctionInvokeParams::Mode, nil]
-      #   # @param parent [Braintrust::Models::FunctionInvokeParams::Parent::SpanParentStruct, String]
-      #   # @param stream [Boolean, nil]
-      #   # @param version [String]
-      #   # @param request_options [Braintrust::RequestOptions, Hash{Symbol=>Object}]
-      #   #
-      #   def initialize(
-      #     expected: nil,
-      #     input: nil,
-      #     messages: nil,
-      #     metadata: nil,
-      #     mode: nil,
-      #     parent: nil,
-      #     stream: nil,
-      #     version: nil,
-      #     request_options: {},
-      #     **
-      #   )
-      #     super
-      #   end
-
-      # def initialize: (Hash | Braintrust::Internal::Type::BaseModel) -> void
+      # @!method initialize(expected: nil, input: nil, messages: nil, metadata: nil, mode: nil, parent: nil, stream: nil, version: nil, request_options: {})
+      #   @param expected [Object]
+      #   @param input [Object]
+      #   @param messages [Array<Braintrust::Models::FunctionInvokeParams::Message::System, Braintrust::Models::FunctionInvokeParams::Message::User, Braintrust::Models::FunctionInvokeParams::Message::Assistant, Braintrust::Models::FunctionInvokeParams::Message::Tool, Braintrust::Models::FunctionInvokeParams::Message::Function, Braintrust::Models::FunctionInvokeParams::Message::Fallback>]
+      #   @param metadata [Hash{Symbol=>Object, nil}, nil]
+      #   @param mode [Symbol, Braintrust::Models::FunctionInvokeParams::Mode, nil]
+      #   @param parent [Braintrust::Models::FunctionInvokeParams::Parent::SpanParentStruct, String]
+      #   @param stream [Boolean, nil]
+      #   @param version [String]
+      #   @param request_options [Braintrust::RequestOptions, Hash{Symbol=>Object}]
 
       module Message
         extend Braintrust::Internal::Type::Union
@@ -147,14 +130,10 @@ module Braintrust
           #   # @return [String]
           #   attr_writer :name
 
-          # @!parse
-          #   # @param role [Symbol, Braintrust::Models::FunctionInvokeParams::Message::System::Role]
-          #   # @param content [String]
-          #   # @param name [String]
-          #   #
-          #   def initialize(role:, content: nil, name: nil, **) = super
-
-          # def initialize: (Hash | Braintrust::Internal::Type::BaseModel) -> void
+          # @!method initialize(role:, content: nil, name: nil)
+          #   @param role [Symbol, Braintrust::Models::FunctionInvokeParams::Message::System::Role]
+          #   @param content [String]
+          #   @param name [String]
 
           # @see Braintrust::Models::FunctionInvokeParams::Message::System#role
           module Role
@@ -162,11 +141,8 @@ module Braintrust
 
             SYSTEM = :system
 
-            finalize!
-
-            # @!parse
-            #   # @return [Array<Symbol>]
-            #   def self.values; end
+            # @!method self.values
+            #   @return [Array<Symbol>]
           end
         end
 
@@ -194,14 +170,10 @@ module Braintrust
           #   # @return [String]
           #   attr_writer :name
 
-          # @!parse
-          #   # @param role [Symbol, Braintrust::Models::FunctionInvokeParams::Message::User::Role]
-          #   # @param content [String, Array<Braintrust::Models::ChatCompletionContentPartText, Braintrust::Models::ChatCompletionContentPartImage>]
-          #   # @param name [String]
-          #   #
-          #   def initialize(role:, content: nil, name: nil, **) = super
-
-          # def initialize: (Hash | Braintrust::Internal::Type::BaseModel) -> void
+          # @!method initialize(role:, content: nil, name: nil)
+          #   @param role [Symbol, Braintrust::Models::FunctionInvokeParams::Message::User::Role]
+          #   @param content [String, Array<Braintrust::Models::ChatCompletionContentPartText, Braintrust::Models::ChatCompletionContentPartImage>]
+          #   @param name [String]
 
           # @see Braintrust::Models::FunctionInvokeParams::Message::User#role
           module Role
@@ -209,11 +181,8 @@ module Braintrust
 
             USER = :user
 
-            finalize!
-
-            # @!parse
-            #   # @return [Array<Symbol>]
-            #   def self.values; end
+            # @!method self.values
+            #   @return [Array<Symbol>]
           end
 
           # @see Braintrust::Models::FunctionInvokeParams::Message::User#content
@@ -231,14 +200,12 @@ module Braintrust
 
               variant -> { Braintrust::Models::ChatCompletionContentPartImage }
 
-              # @!parse
-              #   # @return [Array(Braintrust::Models::ChatCompletionContentPartText, Braintrust::Models::ChatCompletionContentPartImage)]
-              #   def self.variants; end
+              # @!method self.variants
+              #   @return [Array(Braintrust::Models::ChatCompletionContentPartText, Braintrust::Models::ChatCompletionContentPartImage)]
             end
 
-            # @!parse
-            #   # @return [Array(String, Array<Braintrust::Models::ChatCompletionContentPartText, Braintrust::Models::ChatCompletionContentPartImage>)]
-            #   def self.variants; end
+            # @!method self.variants
+            #   @return [Array(String, Array<Braintrust::Models::ChatCompletionContentPartText, Braintrust::Models::ChatCompletionContentPartImage>)]
 
             Nested2DArray =
               Braintrust::Internal::Type::ArrayOf[union: -> { Braintrust::Models::FunctionInvokeParams::Message::User::Content::Array }]
@@ -275,16 +242,12 @@ module Braintrust
                    -> { Braintrust::Internal::Type::ArrayOf[Braintrust::Models::ChatCompletionMessageToolCall] },
                    nil?: true
 
-          # @!parse
-          #   # @param role [Symbol, Braintrust::Models::FunctionInvokeParams::Message::Assistant::Role]
-          #   # @param content [String, nil]
-          #   # @param function_call [Braintrust::Models::FunctionInvokeParams::Message::Assistant::FunctionCall, nil]
-          #   # @param name [String, nil]
-          #   # @param tool_calls [Array<Braintrust::Models::ChatCompletionMessageToolCall>, nil]
-          #   #
-          #   def initialize(role:, content: nil, function_call: nil, name: nil, tool_calls: nil, **) = super
-
-          # def initialize: (Hash | Braintrust::Internal::Type::BaseModel) -> void
+          # @!method initialize(role:, content: nil, function_call: nil, name: nil, tool_calls: nil)
+          #   @param role [Symbol, Braintrust::Models::FunctionInvokeParams::Message::Assistant::Role]
+          #   @param content [String, nil]
+          #   @param function_call [Braintrust::Models::FunctionInvokeParams::Message::Assistant::FunctionCall, nil]
+          #   @param name [String, nil]
+          #   @param tool_calls [Array<Braintrust::Models::ChatCompletionMessageToolCall>, nil]
 
           # @see Braintrust::Models::FunctionInvokeParams::Message::Assistant#role
           module Role
@@ -292,11 +255,8 @@ module Braintrust
 
             ASSISTANT = :assistant
 
-            finalize!
-
-            # @!parse
-            #   # @return [Array<Symbol>]
-            #   def self.values; end
+            # @!method self.values
+            #   @return [Array<Symbol>]
           end
 
           # @see Braintrust::Models::FunctionInvokeParams::Message::Assistant#function_call
@@ -311,13 +271,9 @@ module Braintrust
             #   @return [String]
             required :name, String
 
-            # @!parse
-            #   # @param arguments [String]
-            #   # @param name [String]
-            #   #
-            #   def initialize(arguments:, name:, **) = super
-
-            # def initialize: (Hash | Braintrust::Internal::Type::BaseModel) -> void
+            # @!method initialize(arguments:, name:)
+            #   @param arguments [String]
+            #   @param name [String]
           end
         end
 
@@ -345,14 +301,10 @@ module Braintrust
           #   # @return [String]
           #   attr_writer :tool_call_id
 
-          # @!parse
-          #   # @param role [Symbol, Braintrust::Models::FunctionInvokeParams::Message::Tool::Role]
-          #   # @param content [String]
-          #   # @param tool_call_id [String]
-          #   #
-          #   def initialize(role:, content: nil, tool_call_id: nil, **) = super
-
-          # def initialize: (Hash | Braintrust::Internal::Type::BaseModel) -> void
+          # @!method initialize(role:, content: nil, tool_call_id: nil)
+          #   @param role [Symbol, Braintrust::Models::FunctionInvokeParams::Message::Tool::Role]
+          #   @param content [String]
+          #   @param tool_call_id [String]
 
           # @see Braintrust::Models::FunctionInvokeParams::Message::Tool#role
           module Role
@@ -360,11 +312,8 @@ module Braintrust
 
             TOOL = :tool
 
-            finalize!
-
-            # @!parse
-            #   # @return [Array<Symbol>]
-            #   def self.values; end
+            # @!method self.values
+            #   @return [Array<Symbol>]
           end
         end
 
@@ -388,14 +337,10 @@ module Braintrust
           #   # @return [String]
           #   attr_writer :content
 
-          # @!parse
-          #   # @param name [String]
-          #   # @param role [Symbol, Braintrust::Models::FunctionInvokeParams::Message::Function::Role]
-          #   # @param content [String]
-          #   #
-          #   def initialize(name:, role:, content: nil, **) = super
-
-          # def initialize: (Hash | Braintrust::Internal::Type::BaseModel) -> void
+          # @!method initialize(name:, role:, content: nil)
+          #   @param name [String]
+          #   @param role [Symbol, Braintrust::Models::FunctionInvokeParams::Message::Function::Role]
+          #   @param content [String]
 
           # @see Braintrust::Models::FunctionInvokeParams::Message::Function#role
           module Role
@@ -403,11 +348,8 @@ module Braintrust
 
             FUNCTION = :function
 
-            finalize!
-
-            # @!parse
-            #   # @return [Array<Symbol>]
-            #   def self.values; end
+            # @!method self.values
+            #   @return [Array<Symbol>]
           end
         end
 
@@ -422,13 +364,9 @@ module Braintrust
           #   @return [String, nil]
           optional :content, String, nil?: true
 
-          # @!parse
-          #   # @param role [Symbol, Braintrust::Models::FunctionInvokeParams::Message::Fallback::Role]
-          #   # @param content [String, nil]
-          #   #
-          #   def initialize(role:, content: nil, **) = super
-
-          # def initialize: (Hash | Braintrust::Internal::Type::BaseModel) -> void
+          # @!method initialize(role:, content: nil)
+          #   @param role [Symbol, Braintrust::Models::FunctionInvokeParams::Message::Fallback::Role]
+          #   @param content [String, nil]
 
           # @see Braintrust::Models::FunctionInvokeParams::Message::Fallback#role
           module Role
@@ -436,17 +374,13 @@ module Braintrust
 
             MODEL = :model
 
-            finalize!
-
-            # @!parse
-            #   # @return [Array<Symbol>]
-            #   def self.values; end
+            # @!method self.values
+            #   @return [Array<Symbol>]
           end
         end
 
-        # @!parse
-        #   # @return [Array(Braintrust::Models::FunctionInvokeParams::Message::System, Braintrust::Models::FunctionInvokeParams::Message::User, Braintrust::Models::FunctionInvokeParams::Message::Assistant, Braintrust::Models::FunctionInvokeParams::Message::Tool, Braintrust::Models::FunctionInvokeParams::Message::Function, Braintrust::Models::FunctionInvokeParams::Message::Fallback)]
-        #   def self.variants; end
+        # @!method self.variants
+        #   @return [Array(Braintrust::Models::FunctionInvokeParams::Message::System, Braintrust::Models::FunctionInvokeParams::Message::User, Braintrust::Models::FunctionInvokeParams::Message::Assistant, Braintrust::Models::FunctionInvokeParams::Message::Tool, Braintrust::Models::FunctionInvokeParams::Message::Function, Braintrust::Models::FunctionInvokeParams::Message::Fallback)]
       end
 
       # The mode format of the returned value (defaults to 'auto')
@@ -456,11 +390,8 @@ module Braintrust
         AUTO = :auto
         PARALLEL = :parallel
 
-        finalize!
-
-        # @!parse
-        #   # @return [Array<Symbol>]
-        #   def self.values; end
+        # @!method self.values
+        #   @return [Array<Symbol>]
       end
 
       # Options for tracing the function call
@@ -502,17 +433,13 @@ module Braintrust
                    -> { Braintrust::Models::FunctionInvokeParams::Parent::SpanParentStruct::RowIDs },
                    nil?: true
 
-          # @!parse
-          #   # Span parent properties
-          #   #
-          #   # @param object_id_ [String]
-          #   # @param object_type [Symbol, Braintrust::Models::FunctionInvokeParams::Parent::SpanParentStruct::ObjectType]
-          #   # @param propagated_event [Hash{Symbol=>Object, nil}, nil]
-          #   # @param row_ids [Braintrust::Models::FunctionInvokeParams::Parent::SpanParentStruct::RowIDs, nil]
-          #   #
-          #   def initialize(object_id_:, object_type:, propagated_event: nil, row_ids: nil, **) = super
-
-          # def initialize: (Hash | Braintrust::Internal::Type::BaseModel) -> void
+          # @!method initialize(object_id_:, object_type:, propagated_event: nil, row_ids: nil)
+          #   Span parent properties
+          #
+          #   @param object_id_ [String]
+          #   @param object_type [Symbol, Braintrust::Models::FunctionInvokeParams::Parent::SpanParentStruct::ObjectType]
+          #   @param propagated_event [Hash{Symbol=>Object, nil}, nil]
+          #   @param row_ids [Braintrust::Models::FunctionInvokeParams::Parent::SpanParentStruct::RowIDs, nil]
 
           # @see Braintrust::Models::FunctionInvokeParams::Parent::SpanParentStruct#object_type
           module ObjectType
@@ -522,11 +449,8 @@ module Braintrust
             EXPERIMENT = :experiment
             PLAYGROUND_LOGS = :playground_logs
 
-            finalize!
-
-            # @!parse
-            #   # @return [Array<Symbol>]
-            #   def self.values; end
+            # @!method self.values
+            #   @return [Array<Symbol>]
           end
 
           # @see Braintrust::Models::FunctionInvokeParams::Parent::SpanParentStruct#row_ids
@@ -549,22 +473,17 @@ module Braintrust
             #   @return [String]
             required :span_id, String
 
-            # @!parse
-            #   # Identifiers for the row to to log a subspan under
-            #   #
-            #   # @param id [String]
-            #   # @param root_span_id [String]
-            #   # @param span_id [String]
-            #   #
-            #   def initialize(id:, root_span_id:, span_id:, **) = super
-
-            # def initialize: (Hash | Braintrust::Internal::Type::BaseModel) -> void
+            # @!method initialize(id:, root_span_id:, span_id:)
+            #   Identifiers for the row to to log a subspan under
+            #
+            #   @param id [String]
+            #   @param root_span_id [String]
+            #   @param span_id [String]
           end
         end
 
-        # @!parse
-        #   # @return [Array(Braintrust::Models::FunctionInvokeParams::Parent::SpanParentStruct, String)]
-        #   def self.variants; end
+        # @!method self.variants
+        #   @return [Array(Braintrust::Models::FunctionInvokeParams::Parent::SpanParentStruct, String)]
       end
     end
   end

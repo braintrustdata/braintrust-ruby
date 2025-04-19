@@ -47,31 +47,16 @@ module Braintrust
       #   @return [Hash{Symbol=>Braintrust::Models::ScoreSummary}, nil]
       optional :scores, -> { Braintrust::Internal::Type::HashOf[Braintrust::Models::ScoreSummary] }, nil?: true
 
-      # @!parse
-      #   # Summary of an experiment
-      #   #
-      #   # @param experiment_name [String]
-      #   # @param experiment_url [String]
-      #   # @param project_name [String]
-      #   # @param project_url [String]
-      #   # @param comparison_experiment_name [String, nil]
-      #   # @param metrics [Hash{Symbol=>Braintrust::Models::MetricSummary}, nil]
-      #   # @param scores [Hash{Symbol=>Braintrust::Models::ScoreSummary}, nil]
-      #   #
-      #   def initialize(
-      #     experiment_name:,
-      #     experiment_url:,
-      #     project_name:,
-      #     project_url:,
-      #     comparison_experiment_name: nil,
-      #     metrics: nil,
-      #     scores: nil,
-      #     **
-      #   )
-      #     super
-      #   end
-
-      # def initialize: (Hash | Braintrust::Internal::Type::BaseModel) -> void
+      # @!method initialize(experiment_name:, experiment_url:, project_name:, project_url:, comparison_experiment_name: nil, metrics: nil, scores: nil)
+      #   Summary of an experiment
+      #
+      #   @param experiment_name [String]
+      #   @param experiment_url [String]
+      #   @param project_name [String]
+      #   @param project_url [String]
+      #   @param comparison_experiment_name [String, nil]
+      #   @param metrics [Hash{Symbol=>Braintrust::Models::MetricSummary}, nil]
+      #   @param scores [Hash{Symbol=>Braintrust::Models::ScoreSummary}, nil]
     end
   end
 end

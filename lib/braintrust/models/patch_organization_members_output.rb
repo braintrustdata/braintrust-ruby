@@ -21,14 +21,10 @@ module Braintrust
       #   @return [String, nil]
       optional :send_email_error, String, nil?: true
 
-      # @!parse
-      #   # @param org_id [String]
-      #   # @param status [Symbol, Braintrust::Models::PatchOrganizationMembersOutput::Status]
-      #   # @param send_email_error [String, nil]
-      #   #
-      #   def initialize(org_id:, status:, send_email_error: nil, **) = super
-
-      # def initialize: (Hash | Braintrust::Internal::Type::BaseModel) -> void
+      # @!method initialize(org_id:, status:, send_email_error: nil)
+      #   @param org_id [String]
+      #   @param status [Symbol, Braintrust::Models::PatchOrganizationMembersOutput::Status]
+      #   @param send_email_error [String, nil]
 
       # @see Braintrust::Models::PatchOrganizationMembersOutput#status
       module Status
@@ -36,11 +32,8 @@ module Braintrust
 
         SUCCESS = :success
 
-        finalize!
-
-        # @!parse
-        #   # @return [Array<Symbol>]
-        #   def self.values; end
+        # @!method self.values
+        #   @return [Array<Symbol>]
       end
     end
   end

@@ -20,14 +20,10 @@ module Braintrust
       #   @return [Symbol, Braintrust::Models::ACLObjectType]
       required :object_type, enum: -> { Braintrust::Models::ACLObjectType }
 
-      # @!parse
-      #   # @param object_id_ [String]
-      #   # @param object_type [Symbol, Braintrust::Models::ACLObjectType]
-      #   # @param request_options [Braintrust::RequestOptions, Hash{Symbol=>Object}]
-      #   #
-      #   def initialize(object_id_:, object_type:, request_options: {}, **) = super
-
-      # def initialize: (Hash | Braintrust::Internal::Type::BaseModel) -> void
+      # @!method initialize(object_id_:, object_type:, request_options: {})
+      #   @param object_id_ [String]
+      #   @param object_type [Symbol, Braintrust::Models::ACLObjectType]
+      #   @param request_options [Braintrust::RequestOptions, Hash{Symbol=>Object}]
     end
   end
 end
