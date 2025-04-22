@@ -216,9 +216,9 @@ module Braintrust
         #
         #   @option req [Symbol, nil] :unwrap
         #
-        #   @option req [Class, nil] :page
+        #   @option req [Class<Braintrust::Internal::Type::BasePage>, nil] :page
         #
-        #   @option req [Class, nil] :stream
+        #   @option req [Class<Braintrust::Internal::Type::BaseStream>, nil] :stream
         #
         #   @option req [Braintrust::Internal::Type::Converter, Class, nil] :model
         #
@@ -417,9 +417,9 @@ module Braintrust
         #
         # @param unwrap [Symbol, nil]
         #
-        # @param page [Class, nil]
+        # @param page [Class<Braintrust::Internal::Type::BasePage>, nil]
         #
-        # @param stream [Class, nil]
+        # @param stream [Class<Braintrust::Internal::Type::BaseStream>, nil]
         #
         # @param model [Braintrust::Internal::Type::Converter, Class, nil]
         #
