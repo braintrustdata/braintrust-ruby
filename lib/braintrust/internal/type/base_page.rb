@@ -19,7 +19,7 @@ module Braintrust
         # @api public
         #
         # @raise [Braintrust::Errors::APIError]
-        # @return [Braintrust::Internal::Type::BasePage]
+        # @return [self]
         def next_page = (raise NotImplementedError)
 
         # @api public

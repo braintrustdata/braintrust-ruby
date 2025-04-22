@@ -25,7 +25,7 @@ module Braintrust
       end
 
       # @raise [Braintrust::HTTP::Error]
-      # @return [Braintrust::Internal::ListObjects]
+      # @return [self]
       def next_page
         unless next_page?
           message = "No more pages available. Please check #next_page? before calling ##{__method__}"
