@@ -394,7 +394,7 @@ module Braintrust
 
         # Create a new instance of a model.
         #
-        # @param data [Hash{Symbol=>Object}, Braintrust::Internal::Type::BaseModel]
+        # @param data [Hash{Symbol=>Object}, self]
         def initialize(data = {})
           case Braintrust::Internal::Util.coerce_hash(data)
           in Hash => coerced

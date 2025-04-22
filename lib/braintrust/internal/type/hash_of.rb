@@ -28,6 +28,8 @@ module Braintrust
         #   @option spec [Proc] :union
         #
         #   @option spec [Boolean] :"nil?"
+        #
+        # @return [Braintrust::Internal::Type::HashOf]
         def self.[](...) = new(...)
 
         # @api public
