@@ -214,7 +214,7 @@ module Braintrust
         #
         #   @option req [Object, nil] :body
         #
-        #   @option req [Symbol, nil] :unwrap
+        #   @option req [Symbol, Integer, Array<Symbol, Integer>, Proc, nil] :unwrap
         #
         #   @option req [Class<Braintrust::Internal::Type::BasePage>, nil] :page
         #
@@ -415,7 +415,7 @@ module Braintrust
         #
         # @param body [Object, nil]
         #
-        # @param unwrap [Symbol, nil]
+        # @param unwrap [Symbol, Integer, Array<Symbol, Integer>, Proc, nil]
         #
         # @param page [Class<Braintrust::Internal::Type::BasePage>, nil]
         #
