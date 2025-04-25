@@ -3,115 +3,108 @@
 require_relative "test_helper"
 
 class BraintrustTest < Minitest::Test
+  include WebMock::API
+
+  class << self
+    def test_order = :random
+
+    def run_one_method(...) = Minitest::Runnable.run_one_method(...)
+  end
+
+  def before_all
+    super
+    WebMock.enable!
+  end
+
   def setup
+    super
     Thread.current.thread_variable_set(:mock_sleep, [])
   end
 
   def teardown
     Thread.current.thread_variable_set(:mock_sleep, nil)
+    WebMock.reset!
+    super
   end
 
-  class MockRequester
-    # @return [Integer]
-    attr_reader :response_code
-
-    # @return [Hash{String=>String}]
-    attr_reader :response_headers
-
-    # @return [Object]
-    attr_reader :response_data
-
-    # @return [Array<Hash{Symbol=>Object}>]
-    attr_accessor :attempts
-
-    # @param response_code [Integer]
-    # @param response_headers [Hash{String=>String}]
-    # @param response_data [Object]
-    def initialize(response_code, response_headers, response_data)
-      @response_code = response_code
-      @response_headers = response_headers
-      @response_data = JSON.fast_generate(response_data)
-      @attempts = []
-    end
-
-    # @param req [Hash{Symbol=>Object}]
-    def execute(req)
-      # Deep copy the request because it is mutated on each retry.
-      attempts.push(Marshal.load(Marshal.dump(req)))
-      headers = {"content-type" => "application/json", **response_headers}
-      [response_code, headers, response_data.grapheme_clusters]
-    end
+  def after_all
+    WebMock.disable!
+    super
   end
 
   def test_client_default_request_default_retry_attempts
-    braintrust = Braintrust::Client.new(base_url: "http://localhost:4010", api_key: "My API Key")
-    requester = MockRequester.new(500, {}, {})
-    braintrust.requester = requester
+    stub_request(:post, "http://localhost/v1/project").to_return_json(status: 500, body: {})
+
+    braintrust = Braintrust::Client.new(base_url: "http://localhost", api_key: "My API Key")
 
     assert_raises(Braintrust::Errors::InternalServerError) do
       braintrust.projects.create(name: "x")
     end
 
-    assert_equal(3, requester.attempts.length)
+    assert_requested(:any, /./, times: 3)
   end
 
   def test_client_given_request_default_retry_attempts
-    braintrust =
-      Braintrust::Client.new(base_url: "http://localhost:4010", api_key: "My API Key", max_retries: 3)
-    requester = MockRequester.new(500, {}, {})
-    braintrust.requester = requester
+    stub_request(:post, "http://localhost/v1/project").to_return_json(status: 500, body: {})
+
+    braintrust = Braintrust::Client.new(base_url: "http://localhost", api_key: "My API Key", max_retries: 3)
 
     assert_raises(Braintrust::Errors::InternalServerError) do
       braintrust.projects.create(name: "x")
     end
 
-    assert_equal(4, requester.attempts.length)
+    assert_requested(:any, /./, times: 4)
   end
 
   def test_client_default_request_given_retry_attempts
-    braintrust = Braintrust::Client.new(base_url: "http://localhost:4010", api_key: "My API Key")
-    requester = MockRequester.new(500, {}, {})
-    braintrust.requester = requester
+    stub_request(:post, "http://localhost/v1/project").to_return_json(status: 500, body: {})
+
+    braintrust = Braintrust::Client.new(base_url: "http://localhost", api_key: "My API Key")
 
     assert_raises(Braintrust::Errors::InternalServerError) do
       braintrust.projects.create(name: "x", request_options: {max_retries: 3})
     end
 
-    assert_equal(4, requester.attempts.length)
+    assert_requested(:any, /./, times: 4)
   end
 
   def test_client_given_request_given_retry_attempts
-    braintrust =
-      Braintrust::Client.new(base_url: "http://localhost:4010", api_key: "My API Key", max_retries: 3)
-    requester = MockRequester.new(500, {}, {})
-    braintrust.requester = requester
+    stub_request(:post, "http://localhost/v1/project").to_return_json(status: 500, body: {})
+
+    braintrust = Braintrust::Client.new(base_url: "http://localhost", api_key: "My API Key", max_retries: 3)
 
     assert_raises(Braintrust::Errors::InternalServerError) do
       braintrust.projects.create(name: "x", request_options: {max_retries: 4})
     end
 
-    assert_equal(5, requester.attempts.length)
+    assert_requested(:any, /./, times: 5)
   end
 
   def test_client_retry_after_seconds
-    braintrust =
-      Braintrust::Client.new(base_url: "http://localhost:4010", api_key: "My API Key", max_retries: 1)
-    requester = MockRequester.new(500, {"retry-after" => "1.3"}, {})
-    braintrust.requester = requester
+    stub_request(:post, "http://localhost/v1/project").to_return_json(
+      status: 500,
+      headers: {"retry-after" => "1.3"},
+      body: {}
+    )
+
+    braintrust = Braintrust::Client.new(base_url: "http://localhost", api_key: "My API Key", max_retries: 1)
 
     assert_raises(Braintrust::Errors::InternalServerError) do
       braintrust.projects.create(name: "x")
     end
 
-    assert_equal(2, requester.attempts.length)
+    assert_requested(:any, /./, times: 2)
     assert_equal(1.3, Thread.current.thread_variable_get(:mock_sleep).last)
   end
 
   def test_client_retry_after_date
-    braintrust =
-      Braintrust::Client.new(base_url: "http://localhost:4010", api_key: "My API Key", max_retries: 1)
-    requester = MockRequester.new(500, {"retry-after" => (Time.now + 10).httpdate}, {})
-    braintrust.requester = requester
+    stub_request(:post, "http://localhost/v1/project").to_return_json(
+      status: 500,
+      headers: {"retry-after" => (Time.now + 10).httpdate},
+      body: {}
+    )
+
+    braintrust = Braintrust::Client.new(base_url: "http://localhost", api_key: "My API Key", max_retries: 1)
 
     assert_raises(Braintrust::Errors::InternalServerError) do
       Thread.current.thread_variable_set(:time_now, Time.now)
@@ -119,44 +112,45 @@ class BraintrustTest < Minitest::Test
       Thread.current.thread_variable_set(:time_now, nil)
     end
 
-    assert_equal(2, requester.attempts.length)
+    assert_requested(:any, /./, times: 2)
     assert_in_delta(10, Thread.current.thread_variable_get(:mock_sleep).last, 1.0)
   end
 
   def test_client_retry_after_ms
-    braintrust =
-      Braintrust::Client.new(base_url: "http://localhost:4010", api_key: "My API Key", max_retries: 1)
-    requester = MockRequester.new(500, {"retry-after-ms" => "1300"}, {})
-    braintrust.requester = requester
+    stub_request(:post, "http://localhost/v1/project").to_return_json(
+      status: 500,
+      headers: {"retry-after-ms" => "1300"},
+      body: {}
+    )
+
+    braintrust = Braintrust::Client.new(base_url: "http://localhost", api_key: "My API Key", max_retries: 1)
 
     assert_raises(Braintrust::Errors::InternalServerError) do
       braintrust.projects.create(name: "x")
     end
 
-    assert_equal(2, requester.attempts.length)
+    assert_requested(:any, /./, times: 2)
     assert_equal(1.3, Thread.current.thread_variable_get(:mock_sleep).last)
   end
 
   def test_retry_count_header
-    braintrust = Braintrust::Client.new(base_url: "http://localhost:4010", api_key: "My API Key")
-    requester = MockRequester.new(500, {}, {})
-    braintrust.requester = requester
+    stub_request(:post, "http://localhost/v1/project").to_return_json(status: 500, body: {})
+
+    braintrust = Braintrust::Client.new(base_url: "http://localhost", api_key: "My API Key")
 
     assert_raises(Braintrust::Errors::InternalServerError) do
       braintrust.projects.create(name: "x")
     end
 
-    retry_count_headers = requester.attempts.map do
-      _1.fetch(:headers).fetch("x-stainless-retry-count")
+    3.times do
+      assert_requested(:any, /./, headers: {"x-stainless-retry-count" => _1})
     end
-
-    assert_equal(%w[0 1 2], retry_count_headers)
   end
 
   def test_omit_retry_count_header
-    braintrust = Braintrust::Client.new(base_url: "http://localhost:4010", api_key: "My API Key")
-    requester = MockRequester.new(500, {}, {})
-    braintrust.requester = requester
+    stub_request(:post, "http://localhost/v1/project").to_return_json(status: 500, body: {})
+
+    braintrust = Braintrust::Client.new(base_url: "http://localhost", api_key: "My API Key")
 
     assert_raises(Braintrust::Errors::InternalServerError) do
       braintrust.projects.create(
@@ -165,17 +159,15 @@ class BraintrustTest < Minitest::Test
       )
     end
 
-    retry_count_headers = requester.attempts.map do
-      _1.fetch(:headers).fetch("x-stainless-retry-count", nil)
+    assert_requested(:any, /./, times: 3) do
+      refute_includes(_1.headers.keys.map(&:downcase), "x-stainless-retry-count")
     end
-
-    assert_equal([nil, nil, nil], retry_count_headers)
   end
 
   def test_overwrite_retry_count_header
-    braintrust = Braintrust::Client.new(base_url: "http://localhost:4010", api_key: "My API Key")
-    requester = MockRequester.new(500, {}, {})
-    braintrust.requester = requester
+    stub_request(:post, "http://localhost/v1/project").to_return_json(status: 500, body: {})
+
+    braintrust = Braintrust::Client.new(base_url: "http://localhost", api_key: "My API Key")
 
     assert_raises(Braintrust::Errors::InternalServerError) do
       braintrust.projects.create(
@@ -184,50 +176,74 @@ class BraintrustTest < Minitest::Test
       )
     end
 
-    retry_count_headers = requester.attempts.map do
-      _1.fetch(:headers).fetch("x-stainless-retry-count")
-    end
-
-    assert_equal(%w[42 42 42], retry_count_headers)
+    assert_requested(:any, /./, headers: {"x-stainless-retry-count" => "42"}, times: 3)
   end
 
   def test_client_redirect_307
-    braintrust = Braintrust::Client.new(base_url: "http://localhost:4010", api_key: "My API Key")
-    requester = MockRequester.new(307, {"location" => "/redirected"}, {})
-    braintrust.requester = requester
+    stub_request(:post, "http://localhost/v1/project").to_return_json(
+      status: 307,
+      headers: {"location" => "/redirected"},
+      body: {}
+    )
+    stub_request(:any, "http://localhost/redirected").to_return(
+      status: 307,
+      headers: {"location" => "/redirected"}
+    )
+
+    braintrust = Braintrust::Client.new(base_url: "http://localhost", api_key: "My API Key")
 
     assert_raises(Braintrust::Errors::APIConnectionError) do
       braintrust.projects.create(name: "x", request_options: {extra_headers: {}})
     end
 
-    assert_equal("/redirected", requester.attempts.last.fetch(:url).path)
-    assert_equal(requester.attempts.first.fetch(:method), requester.attempts.last.fetch(:method))
-    assert_equal(requester.attempts.first.fetch(:body), requester.attempts.last.fetch(:body))
-    assert_equal(
-      requester.attempts.first.fetch(:headers)["content-type"],
-      requester.attempts.last.fetch(:headers)["content-type"]
-    )
+    recorded, = WebMock::RequestRegistry.instance.requested_signatures.hash.first
+
+    assert_requested(:any, "http://localhost/redirected", times: Braintrust::Client::MAX_REDIRECTS) do
+      assert_equal(recorded.method, _1.method)
+      assert_equal(recorded.body, _1.body)
+      assert_equal(
+        recorded.headers.transform_keys(&:downcase).fetch("content-type"),
+        _1.headers.transform_keys(&:downcase).fetch("content-type")
+      )
+    end
   end
 
   def test_client_redirect_303
-    braintrust = Braintrust::Client.new(base_url: "http://localhost:4010", api_key: "My API Key")
-    requester = MockRequester.new(303, {"location" => "/redirected"}, {})
-    braintrust.requester = requester
+    stub_request(:post, "http://localhost/v1/project").to_return_json(
+      status: 303,
+      headers: {"location" => "/redirected"},
+      body: {}
+    )
+    stub_request(:get, "http://localhost/redirected").to_return(
+      status: 303,
+      headers: {"location" => "/redirected"}
+    )
+
+    braintrust = Braintrust::Client.new(base_url: "http://localhost", api_key: "My API Key")
 
     assert_raises(Braintrust::Errors::APIConnectionError) do
       braintrust.projects.create(name: "x", request_options: {extra_headers: {}})
     end
 
-    assert_equal("/redirected", requester.attempts.last.fetch(:url).path)
-    assert_equal(:get, requester.attempts.last.fetch(:method))
-    assert_nil(requester.attempts.last.fetch(:body))
-    assert_nil(requester.attempts.last.fetch(:headers)["content-type"])
+    assert_requested(:get, "http://localhost/redirected", times: Braintrust::Client::MAX_REDIRECTS) do
+      headers = _1.headers.keys.map(&:downcase)
+      refute_includes(headers, "content-type")
+      assert_nil(_1.body)
+    end
   end
 
   def test_client_redirect_auth_keep_same_origin
-    braintrust = Braintrust::Client.new(base_url: "http://localhost:4010", api_key: "My API Key")
-    requester = MockRequester.new(307, {"location" => "/redirected"}, {})
-    braintrust.requester = requester
+    stub_request(:post, "http://localhost/v1/project").to_return_json(
+      status: 307,
+      headers: {"location" => "/redirected"},
+      body: {}
+    )
+    stub_request(:any, "http://localhost/redirected").to_return(
+      status: 307,
+      headers: {"location" => "/redirected"}
+    )
+
+    braintrust = Braintrust::Client.new(base_url: "http://localhost", api_key: "My API Key")
 
     assert_raises(Braintrust::Errors::APIConnectionError) do
       braintrust.projects.create(
@@ -236,16 +252,28 @@ class BraintrustTest < Minitest::Test
       )
     end
 
-    assert_equal(
-      requester.attempts.first.fetch(:headers)["authorization"],
-      requester.attempts.last.fetch(:headers)["authorization"]
-    )
+    recorded, = WebMock::RequestRegistry.instance.requested_signatures.hash.first
+    auth_header = recorded.headers.transform_keys(&:downcase).fetch("authorization")
+
+    assert_equal("Bearer xyz", auth_header)
+    assert_requested(:any, "http://localhost/redirected", times: Braintrust::Client::MAX_REDIRECTS) do
+      auth_header = _1.headers.transform_keys(&:downcase).fetch("authorization")
+      assert_equal("Bearer xyz", auth_header)
+    end
   end
 
   def test_client_redirect_auth_strip_cross_origin
-    braintrust = Braintrust::Client.new(base_url: "http://localhost:4010", api_key: "My API Key")
-    requester = MockRequester.new(307, {"location" => "https://example.com/redirected"}, {})
-    braintrust.requester = requester
+    stub_request(:post, "http://localhost/v1/project").to_return_json(
+      status: 307,
+      headers: {"location" => "https://example.com/redirected"},
+      body: {}
+    )
+    stub_request(:any, "https://example.com/redirected").to_return(
+      status: 307,
+      headers: {"location" => "https://example.com/redirected"}
+    )
+
+    braintrust = Braintrust::Client.new(base_url: "http://localhost", api_key: "My API Key")
 
     assert_raises(Braintrust::Errors::APIConnectionError) do
       braintrust.projects.create(
@@ -254,17 +282,22 @@ class BraintrustTest < Minitest::Test
       )
     end
 
-    assert_nil(requester.attempts.last.fetch(:headers)["authorization"])
+    assert_requested(:any, "https://example.com/redirected", times: Braintrust::Client::MAX_REDIRECTS) do
+      headers = _1.headers.keys.map(&:downcase)
+      refute_includes(headers, "authorization")
+    end
   end
 
   def test_default_headers
-    braintrust = Braintrust::Client.new(base_url: "http://localhost:4010", api_key: "My API Key")
-    requester = MockRequester.new(200, {}, {})
-    braintrust.requester = requester
-    braintrust.projects.create(name: "x")
-    headers = requester.attempts.first.fetch(:headers)
+    stub_request(:post, "http://localhost/v1/project").to_return_json(status: 200, body: {})
 
-    refute_empty(headers["accept"])
-    refute_empty(headers["content-type"])
+    braintrust = Braintrust::Client.new(base_url: "http://localhost", api_key: "My API Key")
+
+    braintrust.projects.create(name: "x")
+
+    assert_requested(:any, /./) do |req|
+      headers = req.headers.transform_keys(&:downcase).fetch_values("accept", "content-type")
+      headers.each { refute_empty(_1) }
+    end
   end
 end
