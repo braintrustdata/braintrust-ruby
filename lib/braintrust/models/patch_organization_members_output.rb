@@ -22,9 +22,15 @@ module Braintrust
       optional :send_email_error, String, nil?: true
 
       # @!method initialize(org_id:, status:, send_email_error: nil)
-      #   @param org_id [String]
+      #   Some parameter documentations has been truncated, see
+      #   {Braintrust::Models::PatchOrganizationMembersOutput} for more details.
+      #
+      #   @param org_id [String] The id of the org that was modified.
+      #
       #   @param status [Symbol, Braintrust::Models::PatchOrganizationMembersOutput::Status]
-      #   @param send_email_error [String, nil]
+      #
+      #   @param send_email_error [String, nil] If invite emails failed to send for some reason, the patch operation will still
+      #   ...
 
       # @see Braintrust::Models::PatchOrganizationMembersOutput#status
       module Status

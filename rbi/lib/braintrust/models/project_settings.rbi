@@ -25,8 +25,14 @@ module Braintrust
         )
           .returns(T.attached_class)
       end
-      def self.new(baseline_experiment_id: nil, comparison_key: nil, span_field_order: nil); end
-
+      def self.new(
+        # The id of the experiment to use as the default baseline for comparisons
+        baseline_experiment_id: nil,
+        # The key used to join two experiments (defaults to `input`)
+        comparison_key: nil,
+        # The order of the fields to display in the trace view
+        span_field_order: nil
+      ); end
       sig do
         override
           .returns(

@@ -11,7 +11,11 @@ module Braintrust
       required :row_ids, Braintrust::Internal::Type::ArrayOf[String]
 
       # @!method initialize(row_ids:)
-      #   @param row_ids [Array<String>]
+      #   Some parameter documentations has been truncated, see
+      #   {Braintrust::Models::InsertEventsResponse} for more details.
+      #
+      #   @param row_ids [Array<String>] The ids of all rows that were inserted, aligning one-to-one with the rows provid
+      #   ...
     end
   end
 end

@@ -53,12 +53,24 @@ module Braintrust
           .returns(T.attached_class)
       end
       def self.new(
+        # The id of the object the ACL applies to
         object_id_:,
+        # The object type that the ACL applies to
         object_type:,
+        # Id of the group the ACL applies to. Exactly one of `user_id` and `group_id` will
+        # be provided
         group_id: nil,
+        # Permission the ACL grants. Exactly one of `permission` and `role_id` will be
+        # provided
         permission: nil,
+        # When setting a permission directly, optionally restricts the permission grant to
+        # just the specified object type. Cannot be set alongside a `role_id`.
         restrict_object_type: nil,
+        # Id of the role the ACL grants. Exactly one of `permission` and `role_id` will be
+        # provided
         role_id: nil,
+        # Id of the user the ACL applies to. Exactly one of `user_id` and `group_id` will
+        # be provided
         user_id: nil,
         request_options: {}
       ); end

@@ -29,8 +29,14 @@ module Braintrust
         )
           .returns(T.attached_class)
       end
-      def self.new(metadata: nil, name: nil, secret: nil, type: nil, request_options: {}); end
-
+      def self.new(
+        metadata: nil,
+        # Name of the AI secret
+        name: nil,
+        secret: nil,
+        type: nil,
+        request_options: {}
+      ); end
       sig do
         override
           .returns(

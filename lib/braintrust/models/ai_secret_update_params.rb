@@ -32,9 +32,13 @@ module Braintrust
 
       # @!method initialize(metadata: nil, name: nil, secret: nil, type: nil, request_options: {})
       #   @param metadata [Hash{Symbol=>Object, nil}, nil]
-      #   @param name [String, nil]
+      #
+      #   @param name [String, nil] Name of the AI secret
+      #
       #   @param secret [String, nil]
+      #
       #   @param type [String, nil]
+      #
       #   @param request_options [Braintrust::RequestOptions, Hash{Symbol=>Object}]
     end
   end

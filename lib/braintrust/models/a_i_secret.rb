@@ -51,14 +51,21 @@ module Braintrust
       optional :updated_at, Time, nil?: true
 
       # @!method initialize(id:, name:, org_id:, created: nil, metadata: nil, preview_secret: nil, type: nil, updated_at: nil)
-      #   @param id [String]
-      #   @param name [String]
-      #   @param org_id [String]
-      #   @param created [Time, nil]
+      #   @param id [String] Unique identifier for the AI secret
+      #
+      #   @param name [String] Name of the AI secret
+      #
+      #   @param org_id [String] Unique identifier for the organization
+      #
+      #   @param created [Time, nil] Date of AI secret creation
+      #
       #   @param metadata [Hash{Symbol=>Object, nil}, nil]
+      #
       #   @param preview_secret [String, nil]
+      #
       #   @param type [String, nil]
-      #   @param updated_at [Time, nil]
+      #
+      #   @param updated_at [Time, nil] Date of last AI secret update
     end
   end
 end

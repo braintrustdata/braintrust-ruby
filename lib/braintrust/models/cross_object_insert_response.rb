@@ -28,9 +28,11 @@ module Braintrust
                nil?: true
 
       # @!method initialize(dataset: nil, experiment: nil, project_logs: nil)
-      #   @param dataset [Hash{Symbol=>Braintrust::Models::InsertEventsResponse}, nil]
-      #   @param experiment [Hash{Symbol=>Braintrust::Models::InsertEventsResponse}, nil]
-      #   @param project_logs [Hash{Symbol=>Braintrust::Models::InsertEventsResponse}, nil]
+      #   @param dataset [Hash{Symbol=>Braintrust::Models::InsertEventsResponse}, nil] A mapping from dataset id to row ids for inserted `events`
+      #
+      #   @param experiment [Hash{Symbol=>Braintrust::Models::InsertEventsResponse}, nil] A mapping from experiment id to row ids for inserted `events`
+      #
+      #   @param project_logs [Hash{Symbol=>Braintrust::Models::InsertEventsResponse}, nil] A mapping from project id to row ids for inserted `events`
     end
   end
 end

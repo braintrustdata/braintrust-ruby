@@ -25,9 +25,11 @@ module Braintrust
                nil?: true
 
       # @!method initialize(baseline_experiment_id: nil, comparison_key: nil, span_field_order: nil)
-      #   @param baseline_experiment_id [String, nil]
-      #   @param comparison_key [String, nil]
-      #   @param span_field_order [Array<Braintrust::Models::ProjectSettings::SpanFieldOrder>, nil]
+      #   @param baseline_experiment_id [String, nil] The id of the experiment to use as the default baseline for comparisons
+      #
+      #   @param comparison_key [String, nil] The key used to join two experiments (defaults to `input`)
+      #
+      #   @param span_field_order [Array<Braintrust::Models::ProjectSettings::SpanFieldOrder>, nil] The order of the fields to display in the trace view
 
       class SpanFieldOrder < Braintrust::Internal::Type::BaseModel
         # @!attribute column_id

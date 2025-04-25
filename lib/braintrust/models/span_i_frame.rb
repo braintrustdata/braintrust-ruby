@@ -59,15 +59,27 @@ module Braintrust
       optional :user_id, String, nil?: true
 
       # @!method initialize(id:, name:, project_id:, url:, created: nil, deleted_at: nil, description: nil, post_message: nil, user_id: nil)
-      #   @param id [String]
-      #   @param name [String]
-      #   @param project_id [String]
-      #   @param url [String]
-      #   @param created [Time, nil]
-      #   @param deleted_at [Time, nil]
-      #   @param description [String, nil]
-      #   @param post_message [Boolean, nil]
-      #   @param user_id [String, nil]
+      #   Some parameter documentations has been truncated, see
+      #   {Braintrust::Models::SpanIFrame} for more details.
+      #
+      #   @param id [String] Unique identifier for the span iframe
+      #
+      #   @param name [String] Name of the span iframe
+      #
+      #   @param project_id [String] Unique identifier for the project that the span iframe belongs under
+      #
+      #   @param url [String] URL to embed the project viewer in an iframe
+      #
+      #   @param created [Time, nil] Date of span iframe creation
+      #
+      #   @param deleted_at [Time, nil] Date of span iframe deletion, or null if the span iframe is still active
+      #
+      #   @param description [String, nil] Textual description of the span iframe
+      #
+      #   @param post_message [Boolean, nil] Whether to post messages to the iframe containing the span's data. This is usefu
+      #   ...
+      #
+      #   @param user_id [String, nil] Identifies the user who created the span iframe
     end
   end
 end

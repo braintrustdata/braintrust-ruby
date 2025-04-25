@@ -65,14 +65,26 @@ module Braintrust
       optional :view_type, enum: -> { Braintrust::Models::ViewType }, nil?: true
 
       # @!method initialize(object_id_:, object_type:, ending_before: nil, ids: nil, limit: nil, starting_after: nil, view_name: nil, view_type: nil, request_options: {})
-      #   @param object_id_ [String]
-      #   @param object_type [Symbol, Braintrust::Models::ACLObjectType]
-      #   @param ending_before [String]
-      #   @param ids [String, Array<String>]
-      #   @param limit [Integer, nil]
-      #   @param starting_after [String]
-      #   @param view_name [String]
-      #   @param view_type [Symbol, Braintrust::Models::ViewType, nil]
+      #   Some parameter documentations has been truncated, see
+      #   {Braintrust::Models::ViewListParams} for more details.
+      #
+      #   @param object_id_ [String] The id of the object the ACL applies to
+      #
+      #   @param object_type [Symbol, Braintrust::Models::ACLObjectType] The object type that the ACL applies to
+      #
+      #   @param ending_before [String] Pagination cursor id. ...
+      #
+      #   @param ids [String, Array<String>] Filter search results to a particular set of object IDs. To specify a list of ID
+      #   ...
+      #
+      #   @param limit [Integer, nil] Limit the number of objects to return
+      #
+      #   @param starting_after [String] Pagination cursor id. ...
+      #
+      #   @param view_name [String] Name of the view to search for
+      #
+      #   @param view_type [Symbol, Braintrust::Models::ViewType, nil] Type of table that the view corresponds to.
+      #
       #   @param request_options [Braintrust::RequestOptions, Hash{Symbol=>Object}]
 
       # Filter search results to a particular set of object IDs. To specify a list of

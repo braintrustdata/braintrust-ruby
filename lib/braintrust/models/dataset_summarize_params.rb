@@ -15,7 +15,12 @@ module Braintrust
       optional :summarize_data, Braintrust::Internal::Type::Boolean, nil?: true
 
       # @!method initialize(summarize_data: nil, request_options: {})
-      #   @param summarize_data [Boolean, nil]
+      #   Some parameter documentations has been truncated, see
+      #   {Braintrust::Models::DatasetSummarizeParams} for more details.
+      #
+      #   @param summarize_data [Boolean, nil] Whether to summarize the data. If false (or omitted), only the metadata will be
+      #   ...
+      #
       #   @param request_options [Braintrust::RequestOptions, Hash{Symbol=>Object}]
     end
   end

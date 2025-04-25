@@ -24,8 +24,15 @@ module Braintrust
       optional :summarize_scores, Braintrust::Internal::Type::Boolean, nil?: true
 
       # @!method initialize(comparison_experiment_id: nil, summarize_scores: nil, request_options: {})
-      #   @param comparison_experiment_id [String]
-      #   @param summarize_scores [Boolean, nil]
+      #   Some parameter documentations has been truncated, see
+      #   {Braintrust::Models::ExperimentSummarizeParams} for more details.
+      #
+      #   @param comparison_experiment_id [String] The experiment to compare against, if summarizing scores and metrics. If omitted
+      #   ...
+      #
+      #   @param summarize_scores [Boolean, nil] Whether to summarize the scores and metrics. If false (or omitted), only the met
+      #   ...
+      #
       #   @param request_options [Braintrust::RequestOptions, Hash{Symbol=>Object}]
     end
   end

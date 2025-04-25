@@ -57,15 +57,17 @@ module Braintrust
           .returns(T.attached_class)
       end
       def self.new(
+        # Textual description of the prompt
         description: nil,
         function_data: nil,
+        # Name of the prompt
         name: nil,
+        # The prompt, model, and its parameters
         prompt_data: nil,
+        # A list of tags for the prompt
         tags: nil,
         request_options: {}
-      )
-      end
-
+      ); end
       sig do
         override
           .returns(

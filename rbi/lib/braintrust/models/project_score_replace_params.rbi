@@ -60,16 +60,19 @@ module Braintrust
           .returns(T.attached_class)
       end
       def self.new(
+        # Name of the project score
         name:,
+        # Unique identifier for the project that the project score belongs under
         project_id:,
+        # The type of the configured score
         score_type:,
+        # For categorical-type project scores, the list of all categories
         categories: nil,
         config: nil,
+        # Textual description of the project score
         description: nil,
         request_options: {}
-      )
-      end
-
+      ); end
       sig do
         override
           .returns(

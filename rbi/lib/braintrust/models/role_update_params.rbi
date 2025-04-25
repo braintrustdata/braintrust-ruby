@@ -47,11 +47,17 @@ module Braintrust
           .returns(T.attached_class)
       end
       def self.new(
+        # A list of permissions to add to the role
         add_member_permissions: nil,
+        # A list of role IDs to add to the role's inheriting-from set
         add_member_roles: nil,
+        # Textual description of the role
         description: nil,
+        # Name of the role
         name: nil,
+        # A list of permissions to remove from the role
         remove_member_permissions: nil,
+        # A list of role IDs to remove from the role's inheriting-from set
         remove_member_roles: nil,
         request_options: {}
       ); end
@@ -90,8 +96,15 @@ module Braintrust
           )
             .returns(T.attached_class)
         end
-        def self.new(permission:, restrict_object_type: nil); end
-
+        def self.new(
+          # Each permission permits a certain type of operation on an object in the system
+          #
+          # Permissions can be assigned to to objects on an individual basis, or grouped
+          # into roles
+          permission:,
+          # The object type that the ACL applies to
+          restrict_object_type: nil
+        ); end
         sig do
           override
             .returns(
@@ -123,8 +136,15 @@ module Braintrust
           )
             .returns(T.attached_class)
         end
-        def self.new(permission:, restrict_object_type: nil); end
-
+        def self.new(
+          # Each permission permits a certain type of operation on an object in the system
+          #
+          # Permissions can be assigned to to objects on an individual basis, or grouped
+          # into roles
+          permission:,
+          # The object type that the ACL applies to
+          restrict_object_type: nil
+        ); end
         sig do
           override
             .returns(

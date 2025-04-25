@@ -34,8 +34,18 @@ module Braintrust
         )
           .returns(T.attached_class)
       end
-      def self.new(id:, _xact_id:, object_id_:, object_type:, created: nil); end
-
+      def self.new(
+        # ID of the original event.
+        id:,
+        # Transaction ID of the original event.
+        _xact_id:,
+        # ID of the object the event is originating from.
+        object_id_:,
+        # Type of the object the event is originating from.
+        object_type:,
+        # Created timestamp of the original event. Used to help sort in the UI
+        created: nil
+      ); end
       sig do
         override
           .returns(

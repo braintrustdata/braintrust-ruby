@@ -122,13 +122,22 @@ module Braintrust
           .returns(T.attached_class)
       end
       def self.new(
+        # The expected output of the function
         expected: nil,
+        # Argument to the function, which can be any JSON serializable value
         input: nil,
+        # If the function is an LLM, additional messages to pass along to it
         messages: nil,
+        # Any relevant metadata
         metadata: nil,
+        # The mode format of the returned value (defaults to 'auto')
         mode: nil,
+        # Options for tracing the function call
         parent: nil,
+        # Whether to stream the response. If true, results will be returned in the
+        # Braintrust SSE format.
         stream: nil,
+        # The version of the function
         version: nil,
         request_options: {}
       ); end
@@ -657,8 +666,15 @@ module Braintrust
             )
               .returns(T.attached_class)
           end
-          def self.new(object_id_:, object_type:, propagated_event: nil, row_ids: nil); end
-
+          def self.new(
+            # The id of the container object you are logging to
+            object_id_:,
+            object_type:,
+            # Include these properties in every span created under this parent
+            propagated_event: nil,
+            # Identifiers for the row to to log a subspan under
+            row_ids: nil
+          ); end
           sig do
             override
               .returns(
@@ -719,8 +735,14 @@ module Braintrust
 
             # Identifiers for the row to to log a subspan under
             sig { params(id: String, root_span_id: String, span_id: String).returns(T.attached_class) }
-            def self.new(id:, root_span_id:, span_id:); end
-
+            def self.new(
+              # The id of the row
+              id:,
+              # The root_span_id of the row
+              root_span_id:,
+              # The span_id of the row
+              span_id:
+            ); end
             sig { override.returns({id: String, root_span_id: String, span_id: String}) }
             def to_hash; end
           end

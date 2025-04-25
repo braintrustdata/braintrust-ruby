@@ -40,12 +40,17 @@ module Braintrust
       optional :used, Time, nil?: true
 
       # @!method initialize(id:, name:, object_id_:, object_type:, created: nil, used: nil)
-      #   @param id [String]
-      #   @param name [String]
-      #   @param object_id_ [String]
-      #   @param object_type [Symbol, Braintrust::Models::EnvVar::ObjectType]
-      #   @param created [Time, nil]
-      #   @param used [Time, nil]
+      #   @param id [String] Unique identifier for the environment variable
+      #
+      #   @param name [String] The name of the environment variable
+      #
+      #   @param object_id_ [String] The id of the object the environment variable is scoped for
+      #
+      #   @param object_type [Symbol, Braintrust::Models::EnvVar::ObjectType] The type of the object the environment variable is scoped for
+      #
+      #   @param created [Time, nil] Date of environment variable creation
+      #
+      #   @param used [Time, nil] Date the environment variable was last used
 
       # The type of the object the environment variable is scoped for
       #

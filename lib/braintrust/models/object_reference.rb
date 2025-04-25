@@ -36,11 +36,15 @@ module Braintrust
       # @!method initialize(id:, _xact_id:, object_id_:, object_type:, created: nil)
       #   Indicates the event was copied from another object.
       #
-      #   @param id [String]
-      #   @param _xact_id [String]
-      #   @param object_id_ [String]
-      #   @param object_type [Symbol, Braintrust::Models::ObjectReference::ObjectType]
-      #   @param created [String, nil]
+      #   @param id [String] ID of the original event.
+      #
+      #   @param _xact_id [String] Transaction ID of the original event.
+      #
+      #   @param object_id_ [String] ID of the object the event is originating from.
+      #
+      #   @param object_type [Symbol, Braintrust::Models::ObjectReference::ObjectType] Type of the object the event is originating from.
+      #
+      #   @param created [String, nil] Created timestamp of the original event. Used to help sort in the UI
 
       # Type of the object the event is originating from.
       #

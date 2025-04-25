@@ -36,11 +36,15 @@ module Braintrust
       # @!method initialize(improvements:, name:, regressions:, score:, diff: nil)
       #   Summary of a score's performance
       #
-      #   @param improvements [Integer]
-      #   @param name [String]
-      #   @param regressions [Integer]
-      #   @param score [Float]
-      #   @param diff [Float]
+      #   @param improvements [Integer] Number of improvements in the score
+      #
+      #   @param name [String] Name of the score
+      #
+      #   @param regressions [Integer] Number of regressions in the score
+      #
+      #   @param score [Float] Average score across all examples
+      #
+      #   @param diff [Float] Difference in score between the current and comparison experiment
     end
   end
 end

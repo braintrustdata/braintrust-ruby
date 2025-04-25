@@ -11,7 +11,7 @@ module Braintrust
       required :objects, -> { Braintrust::Internal::Type::ArrayOf[Braintrust::Models::EnvVar] }
 
       # @!method initialize(objects:)
-      #   @param objects [Array<Braintrust::Models::EnvVar>]
+      #   @param objects [Array<Braintrust::Models::EnvVar>] A list of env_var objects
     end
   end
 end

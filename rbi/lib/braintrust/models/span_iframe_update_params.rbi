@@ -33,8 +33,18 @@ module Braintrust
         )
           .returns(T.attached_class)
       end
-      def self.new(description: nil, name: nil, post_message: nil, url: nil, request_options: {}); end
-
+      def self.new(
+        # Textual description of the span iframe
+        description: nil,
+        # Name of the span iframe
+        name: nil,
+        # Whether to post messages to the iframe containing the span's data. This is
+        # useful when you want to render more data than fits in the URL.
+        post_message: nil,
+        # URL to embed the project viewer in an iframe
+        url: nil,
+        request_options: {}
+      ); end
       sig do
         override
           .returns(

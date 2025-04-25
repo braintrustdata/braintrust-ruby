@@ -47,8 +47,21 @@ module Braintrust
         )
           .returns(T.attached_class)
       end
-      def self.new(id:, name:, org_id:, created: nil, deleted_at: nil, settings: nil, user_id: nil); end
-
+      def self.new(
+        # Unique identifier for the project
+        id:,
+        # Name of the project
+        name:,
+        # Unique id for the organization that the project belongs under
+        org_id:,
+        # Date of project creation
+        created: nil,
+        # Date of project deletion, or null if the project is still active
+        deleted_at: nil,
+        settings: nil,
+        # Identifies the user who created the project
+        user_id: nil
+      ); end
       sig do
         override
           .returns(

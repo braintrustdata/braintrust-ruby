@@ -17,8 +17,11 @@ module Braintrust
         )
           .returns(T.attached_class)
       end
-      def self.new(events:, request_options: {}); end
-
+      def self.new(
+        # A list of experiment events to insert
+        events:,
+        request_options: {}
+      ); end
       sig do
         override
           .returns(

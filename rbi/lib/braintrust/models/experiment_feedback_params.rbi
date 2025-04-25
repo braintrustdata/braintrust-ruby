@@ -17,8 +17,11 @@ module Braintrust
         )
           .returns(T.attached_class)
       end
-      def self.new(feedback:, request_options: {}); end
-
+      def self.new(
+        # A list of experiment feedback items
+        feedback:,
+        request_options: {}
+      ); end
       sig do
         override
           .returns(

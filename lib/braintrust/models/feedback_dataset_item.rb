@@ -40,11 +40,21 @@ module Braintrust
       optional :tags, Braintrust::Internal::Type::ArrayOf[String], nil?: true
 
       # @!method initialize(id:, comment: nil, metadata: nil, source: nil, tags: nil)
-      #   @param id [String]
-      #   @param comment [String, nil]
-      #   @param metadata [Hash{Symbol=>Object, nil}, nil]
-      #   @param source [Symbol, Braintrust::Models::FeedbackDatasetItem::Source, nil]
-      #   @param tags [Array<String>, nil]
+      #   Some parameter documentations has been truncated, see
+      #   {Braintrust::Models::FeedbackDatasetItem} for more details.
+      #
+      #   @param id [String] The id of the dataset event to log feedback for. This is the row `id` returned b
+      #   ...
+      #
+      #   @param comment [String, nil] An optional comment string to log about the dataset event
+      #
+      #   @param metadata [Hash{Symbol=>Object, nil}, nil] A dictionary with additional data about the feedback. If you have a `user_id`, y
+      #   ...
+      #
+      #   @param source [Symbol, Braintrust::Models::FeedbackDatasetItem::Source, nil] The source of the feedback. Must be one of "external" (default), "app", or "api"
+      #   ...
+      #
+      #   @param tags [Array<String>, nil] A list of tags to log
 
       # The source of the feedback. Must be one of "external" (default), "app", or "api"
       #

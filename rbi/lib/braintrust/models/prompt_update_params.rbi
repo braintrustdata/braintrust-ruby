@@ -40,9 +40,19 @@ module Braintrust
         )
           .returns(T.attached_class)
       end
-      def self.new(description: nil, name: nil, prompt_data: nil, slug: nil, tags: nil, request_options: {})
-      end
-
+      def self.new(
+        # Textual description of the prompt
+        description: nil,
+        # Name of the prompt
+        name: nil,
+        # The prompt, model, and its parameters
+        prompt_data: nil,
+        # Unique identifier for the prompt
+        slug: nil,
+        # A list of tags for the prompt
+        tags: nil,
+        request_options: {}
+      ); end
       sig do
         override
           .returns(

@@ -41,11 +41,21 @@ module Braintrust
       optional :type, String, nil?: true
 
       # @!method initialize(name:, metadata: nil, org_name: nil, secret: nil, type: nil, request_options: {})
-      #   @param name [String]
+      #   Some parameter documentations has been truncated, see
+      #   {Braintrust::Models::AISecretReplaceParams} for more details.
+      #
+      #   @param name [String] Name of the AI secret
+      #
       #   @param metadata [Hash{Symbol=>Object, nil}, nil]
-      #   @param org_name [String, nil]
-      #   @param secret [String, nil]
+      #
+      #   @param org_name [String, nil] For nearly all users, this parameter should be unnecessary. But in the rare case
+      #   ...
+      #
+      #   @param secret [String, nil] Secret value. If omitted in a PUT request, the existing secret value will be lef
+      #   ...
+      #
       #   @param type [String, nil]
+      #
       #   @param request_options [Braintrust::RequestOptions, Hash{Symbol=>Object}]
     end
   end

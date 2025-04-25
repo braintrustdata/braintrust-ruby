@@ -9,12 +9,18 @@ module Braintrust
       #
       # @overload create(name:, project_id:, score_type:, categories: nil, config: nil, description: nil, request_options: {})
       #
-      # @param name [String]
-      # @param project_id [String]
-      # @param score_type [Symbol, Braintrust::Models::ProjectScoreType]
-      # @param categories [Array<Braintrust::Models::ProjectScoreCategory>, Hash{Symbol=>Float}, Array<String>, nil]
+      # @param name [String] Name of the project score
+      #
+      # @param project_id [String] Unique identifier for the project that the project score belongs under
+      #
+      # @param score_type [Symbol, Braintrust::Models::ProjectScoreType] The type of the configured score
+      #
+      # @param categories [Array<Braintrust::Models::ProjectScoreCategory>, Hash{Symbol=>Float}, Array<String>, nil] For categorical-type project scores, the list of all categories
+      #
       # @param config [Braintrust::Models::ProjectScoreConfig, nil]
-      # @param description [String, nil]
+      #
+      # @param description [String, nil] Textual description of the project score
+      #
       # @param request_options [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil]
       #
       # @return [Braintrust::Models::ProjectScore]
@@ -35,7 +41,8 @@ module Braintrust
       #
       # @overload retrieve(project_score_id, request_options: {})
       #
-      # @param project_score_id [String]
+      # @param project_score_id [String] ProjectScore id
+      #
       # @param request_options [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil]
       #
       # @return [Braintrust::Models::ProjectScore]
@@ -56,12 +63,18 @@ module Braintrust
       #
       # @overload update(project_score_id, categories: nil, config: nil, description: nil, name: nil, score_type: nil, request_options: {})
       #
-      # @param project_score_id [String]
-      # @param categories [Array<Braintrust::Models::ProjectScoreCategory>, Hash{Symbol=>Float}, Array<String>, nil]
+      # @param project_score_id [String] ProjectScore id
+      #
+      # @param categories [Array<Braintrust::Models::ProjectScoreCategory>, Hash{Symbol=>Float}, Array<String>, nil] For categorical-type project scores, the list of all categories
+      #
       # @param config [Braintrust::Models::ProjectScoreConfig, nil]
-      # @param description [String, nil]
-      # @param name [String, nil]
-      # @param score_type [Symbol, Braintrust::Models::ProjectScoreType, nil]
+      #
+      # @param description [String, nil] Textual description of the project score
+      #
+      # @param name [String, nil] Name of the project score
+      #
+      # @param score_type [Symbol, Braintrust::Models::ProjectScoreType, nil] The type of the configured score
+      #
       # @param request_options [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil]
       #
       # @return [Braintrust::Models::ProjectScore]
@@ -78,20 +91,33 @@ module Braintrust
         )
       end
 
+      # Some parameter documentations has been truncated, see
+      # {Braintrust::Models::ProjectScoreListParams} for more details.
+      #
       # List out all project_scores. The project_scores are sorted by creation date,
       # with the most recently-created project_scores coming first
       #
       # @overload list(ending_before: nil, ids: nil, limit: nil, org_name: nil, project_id: nil, project_name: nil, project_score_name: nil, score_type: nil, starting_after: nil, request_options: {})
       #
-      # @param ending_before [String]
-      # @param ids [String, Array<String>]
-      # @param limit [Integer, nil]
-      # @param org_name [String]
-      # @param project_id [String]
-      # @param project_name [String]
-      # @param project_score_name [String]
-      # @param score_type [Symbol, Braintrust::Models::ProjectScoreType, Array<Symbol, Braintrust::Models::ProjectScoreType>]
-      # @param starting_after [String]
+      # @param ending_before [String] Pagination cursor id. ...
+      #
+      # @param ids [String, Array<String>] Filter search results to a particular set of object IDs. To specify a list of ID
+      # ...
+      #
+      # @param limit [Integer, nil] Limit the number of objects to return
+      #
+      # @param org_name [String] Filter search results to within a particular organization
+      #
+      # @param project_id [String] Project id
+      #
+      # @param project_name [String] Name of the project to search for
+      #
+      # @param project_score_name [String] Name of the project_score to search for
+      #
+      # @param score_type [Symbol, Braintrust::Models::ProjectScoreType, Array<Symbol, Braintrust::Models::ProjectScoreType>] The type of the configured score
+      #
+      # @param starting_after [String] Pagination cursor id. ...
+      #
       # @param request_options [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil]
       #
       # @return [Braintrust::Internal::ListObjects<Braintrust::Models::ProjectScore>]
@@ -113,7 +139,8 @@ module Braintrust
       #
       # @overload delete(project_score_id, request_options: {})
       #
-      # @param project_score_id [String]
+      # @param project_score_id [String] ProjectScore id
+      #
       # @param request_options [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil]
       #
       # @return [Braintrust::Models::ProjectScore]
@@ -134,12 +161,18 @@ module Braintrust
       #
       # @overload replace(name:, project_id:, score_type:, categories: nil, config: nil, description: nil, request_options: {})
       #
-      # @param name [String]
-      # @param project_id [String]
-      # @param score_type [Symbol, Braintrust::Models::ProjectScoreType]
-      # @param categories [Array<Braintrust::Models::ProjectScoreCategory>, Hash{Symbol=>Float}, Array<String>, nil]
+      # @param name [String] Name of the project score
+      #
+      # @param project_id [String] Unique identifier for the project that the project score belongs under
+      #
+      # @param score_type [Symbol, Braintrust::Models::ProjectScoreType] The type of the configured score
+      #
+      # @param categories [Array<Braintrust::Models::ProjectScoreCategory>, Hash{Symbol=>Float}, Array<String>, nil] For categorical-type project scores, the list of all categories
+      #
       # @param config [Braintrust::Models::ProjectScoreConfig, nil]
-      # @param description [String, nil]
+      #
+      # @param description [String, nil] Textual description of the project score
+      #
       # @param request_options [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil]
       #
       # @return [Braintrust::Models::ProjectScore]

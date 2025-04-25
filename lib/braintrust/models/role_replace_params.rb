@@ -45,11 +45,20 @@ module Braintrust
       optional :org_name, String, nil?: true
 
       # @!method initialize(name:, description: nil, member_permissions: nil, member_roles: nil, org_name: nil, request_options: {})
-      #   @param name [String]
-      #   @param description [String, nil]
-      #   @param member_permissions [Array<Braintrust::Models::RoleReplaceParams::MemberPermission>, nil]
-      #   @param member_roles [Array<String>, nil]
-      #   @param org_name [String, nil]
+      #   Some parameter documentations has been truncated, see
+      #   {Braintrust::Models::RoleReplaceParams} for more details.
+      #
+      #   @param name [String] Name of the role
+      #
+      #   @param description [String, nil] Textual description of the role
+      #
+      #   @param member_permissions [Array<Braintrust::Models::RoleReplaceParams::MemberPermission>, nil] (permission, restrict_object_type) tuples which belong to this role
+      #
+      #   @param member_roles [Array<String>, nil] Ids of the roles this role inherits from ...
+      #
+      #   @param org_name [String, nil] For nearly all users, this parameter should be unnecessary. But in the rare case
+      #   ...
+      #
       #   @param request_options [Braintrust::RequestOptions, Hash{Symbol=>Object}]
 
       class MemberPermission < Braintrust::Internal::Type::BaseModel
@@ -69,8 +78,13 @@ module Braintrust
         optional :restrict_object_type, enum: -> { Braintrust::Models::ACLObjectType }, nil?: true
 
         # @!method initialize(permission:, restrict_object_type: nil)
-        #   @param permission [Symbol, Braintrust::Models::Permission]
-        #   @param restrict_object_type [Symbol, Braintrust::Models::ACLObjectType, nil]
+        #   Some parameter documentations has been truncated, see
+        #   {Braintrust::Models::RoleReplaceParams::MemberPermission} for more details.
+        #
+        #   @param permission [Symbol, Braintrust::Models::Permission] Each permission permits a certain type of operation on an object in the system
+        #   ...
+        #
+        #   @param restrict_object_type [Symbol, Braintrust::Models::ACLObjectType, nil] The object type that the ACL applies to
       end
     end
   end

@@ -22,8 +22,14 @@ module Braintrust
       optional :org_name, String, nil?: true
 
       # @!method initialize(name:, org_name: nil, request_options: {})
-      #   @param name [String]
-      #   @param org_name [String, nil]
+      #   Some parameter documentations has been truncated, see
+      #   {Braintrust::Models::ProjectCreateParams} for more details.
+      #
+      #   @param name [String] Name of the project
+      #
+      #   @param org_name [String, nil] For nearly all users, this parameter should be unnecessary. But in the rare case
+      #   ...
+      #
       #   @param request_options [Braintrust::RequestOptions, Hash{Symbol=>Object}]
     end
   end

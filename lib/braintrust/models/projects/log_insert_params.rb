@@ -15,7 +15,8 @@ module Braintrust
         required :events, -> { Braintrust::Internal::Type::ArrayOf[Braintrust::Models::InsertProjectLogsEvent] }
 
         # @!method initialize(events:, request_options: {})
-        #   @param events [Array<Braintrust::Models::InsertProjectLogsEvent>]
+        #   @param events [Array<Braintrust::Models::InsertProjectLogsEvent>] A list of project logs events to insert
+        #
         #   @param request_options [Braintrust::RequestOptions, Hash{Symbol=>Object}]
       end
     end

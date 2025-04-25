@@ -34,10 +34,14 @@ module Braintrust
                nil?: true
 
       # @!method initialize(name:, project_id:, description: nil, metadata: nil, request_options: {})
-      #   @param name [String]
-      #   @param project_id [String]
-      #   @param description [String, nil]
-      #   @param metadata [Hash{Symbol=>Object, nil}, nil]
+      #   @param name [String] Name of the dataset. Within a project, dataset names are unique
+      #
+      #   @param project_id [String] Unique identifier for the project that the dataset belongs under
+      #
+      #   @param description [String, nil] Textual description of the dataset
+      #
+      #   @param metadata [Hash{Symbol=>Object, nil}, nil] User-controlled metadata about the dataset
+      #
       #   @param request_options [Braintrust::RequestOptions, Hash{Symbol=>Object}]
     end
   end

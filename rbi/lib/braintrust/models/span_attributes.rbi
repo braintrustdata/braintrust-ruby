@@ -16,8 +16,12 @@ module Braintrust
         params(name: T.nilable(String), type: T.nilable(Braintrust::Models::SpanType::OrSymbol))
           .returns(T.attached_class)
       end
-      def self.new(name: nil, type: nil); end
-
+      def self.new(
+        # Name of the span, for display purposes only
+        name: nil,
+        # Type of the span, for display purposes only
+        type: nil
+      ); end
       sig { override.returns({name: T.nilable(String), type: T.nilable(Braintrust::Models::SpanType::OrSymbol)}) }
       def to_hash; end
     end

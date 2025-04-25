@@ -29,8 +29,17 @@ module Braintrust
         )
           .returns(T.attached_class)
       end
-      def self.new(comparison_experiment_id: nil, summarize_scores: nil, request_options: {}); end
-
+      def self.new(
+        # The experiment to compare against, if summarizing scores and metrics. If
+        # omitted, will fall back to the `base_exp_id` stored in the experiment metadata,
+        # and then to the most recent experiment run in the same project. Must pass
+        # `summarize_scores=true` for this id to be used
+        comparison_experiment_id: nil,
+        # Whether to summarize the scores and metrics. If false (or omitted), only the
+        # metadata will be returned.
+        summarize_scores: nil,
+        request_options: {}
+      ); end
       sig do
         override
           .returns(

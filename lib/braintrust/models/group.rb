@@ -63,20 +63,31 @@ module Braintrust
       optional :user_id, String, nil?: true
 
       # @!method initialize(id:, name:, org_id:, created: nil, deleted_at: nil, description: nil, member_groups: nil, member_users: nil, user_id: nil)
+      #   Some parameter documentations has been truncated, see
+      #   {Braintrust::Models::Group} for more details.
+      #
       #   A group is a collection of users which can be assigned an ACL
       #
       #   Groups can consist of individual users, as well as a set of groups they inherit
       #   from
       #
-      #   @param id [String]
-      #   @param name [String]
-      #   @param org_id [String]
-      #   @param created [Time, nil]
-      #   @param deleted_at [Time, nil]
-      #   @param description [String, nil]
-      #   @param member_groups [Array<String>, nil]
-      #   @param member_users [Array<String>, nil]
-      #   @param user_id [String, nil]
+      #   @param id [String] Unique identifier for the group
+      #
+      #   @param name [String] Name of the group
+      #
+      #   @param org_id [String] Unique id for the organization that the group belongs under ...
+      #
+      #   @param created [Time, nil] Date of group creation
+      #
+      #   @param deleted_at [Time, nil] Date of group deletion, or null if the group is still active
+      #
+      #   @param description [String, nil] Textual description of the group
+      #
+      #   @param member_groups [Array<String>, nil] Ids of the groups this group inherits from ...
+      #
+      #   @param member_users [Array<String>, nil] Ids of users which belong to this group
+      #
+      #   @param user_id [String, nil] Identifies the user who created the group
     end
   end
 end

@@ -63,19 +63,32 @@ module Braintrust
       optional :position, String, nil?: true
 
       # @!method initialize(id:, name:, project_id:, score_type:, user_id:, categories: nil, config: nil, created: nil, description: nil, position: nil)
+      #   Some parameter documentations has been truncated, see
+      #   {Braintrust::Models::ProjectScore} for more details.
+      #
       #   A project score is a user-configured score, which can be manually-labeled
       #   through the UI
       #
-      #   @param id [String]
-      #   @param name [String]
-      #   @param project_id [String]
-      #   @param score_type [Symbol, Braintrust::Models::ProjectScoreType]
+      #   @param id [String] Unique identifier for the project score
+      #
+      #   @param name [String] Name of the project score
+      #
+      #   @param project_id [String] Unique identifier for the project that the project score belongs under
+      #
+      #   @param score_type [Symbol, Braintrust::Models::ProjectScoreType] The type of the configured score
+      #
       #   @param user_id [String]
-      #   @param categories [Array<Braintrust::Models::ProjectScoreCategory>, Hash{Symbol=>Float}, Array<String>, nil]
+      #
+      #   @param categories [Array<Braintrust::Models::ProjectScoreCategory>, Hash{Symbol=>Float}, Array<String>, nil] For categorical-type project scores, the list of all categories
+      #
       #   @param config [Braintrust::Models::ProjectScoreConfig, nil]
-      #   @param created [Time, nil]
-      #   @param description [String, nil]
-      #   @param position [String, nil]
+      #
+      #   @param created [Time, nil] Date of project score creation
+      #
+      #   @param description [String, nil] Textual description of the project score
+      #
+      #   @param position [String, nil] An optional LexoRank-based string that sets the sort position for the score in t
+      #   ...
 
       # For categorical-type project scores, the list of all categories
       #

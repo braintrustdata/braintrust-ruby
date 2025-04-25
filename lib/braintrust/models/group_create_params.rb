@@ -43,11 +43,20 @@ module Braintrust
       optional :org_name, String, nil?: true
 
       # @!method initialize(name:, description: nil, member_groups: nil, member_users: nil, org_name: nil, request_options: {})
-      #   @param name [String]
-      #   @param description [String, nil]
-      #   @param member_groups [Array<String>, nil]
-      #   @param member_users [Array<String>, nil]
-      #   @param org_name [String, nil]
+      #   Some parameter documentations has been truncated, see
+      #   {Braintrust::Models::GroupCreateParams} for more details.
+      #
+      #   @param name [String] Name of the group
+      #
+      #   @param description [String, nil] Textual description of the group
+      #
+      #   @param member_groups [Array<String>, nil] Ids of the groups this group inherits from ...
+      #
+      #   @param member_users [Array<String>, nil] Ids of users which belong to this group
+      #
+      #   @param org_name [String, nil] For nearly all users, this parameter should be unnecessary. But in the rare case
+      #   ...
+      #
       #   @param request_options [Braintrust::RequestOptions, Hash{Symbol=>Object}]
     end
   end

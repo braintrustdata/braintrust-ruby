@@ -50,13 +50,20 @@ module Braintrust
       optional :view_type, enum: -> { Braintrust::Models::ViewUpdateParams::ViewType }, nil?: true
 
       # @!method initialize(object_id_:, object_type:, name: nil, options: nil, user_id: nil, view_data: nil, view_type: nil, request_options: {})
-      #   @param object_id_ [String]
-      #   @param object_type [Symbol, Braintrust::Models::ACLObjectType]
-      #   @param name [String, nil]
-      #   @param options [Braintrust::Models::ViewOptions, nil]
-      #   @param user_id [String, nil]
-      #   @param view_data [Braintrust::Models::ViewData, nil]
-      #   @param view_type [Symbol, Braintrust::Models::ViewUpdateParams::ViewType, nil]
+      #   @param object_id_ [String] The id of the object the view applies to
+      #
+      #   @param object_type [Symbol, Braintrust::Models::ACLObjectType] The object type that the ACL applies to
+      #
+      #   @param name [String, nil] Name of the view
+      #
+      #   @param options [Braintrust::Models::ViewOptions, nil] Options for the view in the app
+      #
+      #   @param user_id [String, nil] Identifies the user who created the view
+      #
+      #   @param view_data [Braintrust::Models::ViewData, nil] The view definition
+      #
+      #   @param view_type [Symbol, Braintrust::Models::ViewUpdateParams::ViewType, nil] Type of table that the view corresponds to.
+      #
       #   @param request_options [Braintrust::RequestOptions, Hash{Symbol=>Object}]
 
       # Type of table that the view corresponds to.

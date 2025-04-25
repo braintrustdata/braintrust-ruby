@@ -39,11 +39,20 @@ module Braintrust
       optional :object_type, enum: -> { Braintrust::Models::EnvVarObjectType }
 
       # @!method initialize(env_var_name: nil, ids: nil, limit: nil, object_id_: nil, object_type: nil, request_options: {})
-      #   @param env_var_name [String]
-      #   @param ids [String, Array<String>]
-      #   @param limit [Integer, nil]
-      #   @param object_id_ [String]
-      #   @param object_type [Symbol, Braintrust::Models::EnvVarObjectType]
+      #   Some parameter documentations has been truncated, see
+      #   {Braintrust::Models::EnvVarListParams} for more details.
+      #
+      #   @param env_var_name [String] Name of the env_var to search for
+      #
+      #   @param ids [String, Array<String>] Filter search results to a particular set of object IDs. To specify a list of ID
+      #   ...
+      #
+      #   @param limit [Integer, nil] Limit the number of objects to return
+      #
+      #   @param object_id_ [String] The id of the object the environment variable is scoped for
+      #
+      #   @param object_type [Symbol, Braintrust::Models::EnvVarObjectType] The type of the object the environment variable is scoped for
+      #
       #   @param request_options [Braintrust::RequestOptions, Hash{Symbol=>Object}]
 
       # Filter search results to a particular set of object IDs. To specify a list of

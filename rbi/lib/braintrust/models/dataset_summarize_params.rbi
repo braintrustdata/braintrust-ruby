@@ -18,8 +18,12 @@ module Braintrust
         )
           .returns(T.attached_class)
       end
-      def self.new(summarize_data: nil, request_options: {}); end
-
+      def self.new(
+        # Whether to summarize the data. If false (or omitted), only the metadata will be
+        # returned.
+        summarize_data: nil,
+        request_options: {}
+      ); end
       sig do
         override.returns({summarize_data: T.nilable(T::Boolean), request_options: Braintrust::RequestOptions})
       end

@@ -28,9 +28,12 @@ module Braintrust
       optional :name, String, nil?: true
 
       # @!method initialize(description: nil, metadata: nil, name: nil, request_options: {})
-      #   @param description [String, nil]
-      #   @param metadata [Hash{Symbol=>Object, nil}, nil]
-      #   @param name [String, nil]
+      #   @param description [String, nil] Textual description of the dataset
+      #
+      #   @param metadata [Hash{Symbol=>Object, nil}, nil] User-controlled metadata about the dataset
+      #
+      #   @param name [String, nil] Name of the dataset. Within a project, dataset names are unique
+      #
       #   @param request_options [Braintrust::RequestOptions, Hash{Symbol=>Object}]
     end
   end

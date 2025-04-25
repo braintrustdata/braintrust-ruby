@@ -68,20 +68,31 @@ module Braintrust
       optional :user_id, String, nil?: true
 
       # @!method initialize(id:, name:, created: nil, deleted_at: nil, description: nil, member_permissions: nil, member_roles: nil, org_id: nil, user_id: nil)
+      #   Some parameter documentations has been truncated, see {Braintrust::Models::Role}
+      #   for more details.
+      #
       #   A role is a collection of permissions which can be granted as part of an ACL
       #
       #   Roles can consist of individual permissions, as well as a set of roles they
       #   inherit from
       #
-      #   @param id [String]
-      #   @param name [String]
-      #   @param created [Time, nil]
-      #   @param deleted_at [Time, nil]
-      #   @param description [String, nil]
-      #   @param member_permissions [Array<Braintrust::Models::Role::MemberPermission>, nil]
-      #   @param member_roles [Array<String>, nil]
-      #   @param org_id [String, nil]
-      #   @param user_id [String, nil]
+      #   @param id [String] Unique identifier for the role
+      #
+      #   @param name [String] Name of the role
+      #
+      #   @param created [Time, nil] Date of role creation
+      #
+      #   @param deleted_at [Time, nil] Date of role deletion, or null if the role is still active
+      #
+      #   @param description [String, nil] Textual description of the role
+      #
+      #   @param member_permissions [Array<Braintrust::Models::Role::MemberPermission>, nil] (permission, restrict_object_type) tuples which belong to this role
+      #
+      #   @param member_roles [Array<String>, nil] Ids of the roles this role inherits from ...
+      #
+      #   @param org_id [String, nil] Unique id for the organization that the role belongs under ...
+      #
+      #   @param user_id [String, nil] Identifies the user who created the role
 
       class MemberPermission < Braintrust::Internal::Type::BaseModel
         # @!attribute permission
@@ -100,8 +111,13 @@ module Braintrust
         optional :restrict_object_type, enum: -> { Braintrust::Models::ACLObjectType }, nil?: true
 
         # @!method initialize(permission:, restrict_object_type: nil)
-        #   @param permission [Symbol, Braintrust::Models::Permission]
-        #   @param restrict_object_type [Symbol, Braintrust::Models::ACLObjectType, nil]
+        #   Some parameter documentations has been truncated, see
+        #   {Braintrust::Models::Role::MemberPermission} for more details.
+        #
+        #   @param permission [Symbol, Braintrust::Models::Permission] Each permission permits a certain type of operation on an object in the system
+        #   ...
+        #
+        #   @param restrict_object_type [Symbol, Braintrust::Models::ACLObjectType, nil] The object type that the ACL applies to
       end
     end
   end

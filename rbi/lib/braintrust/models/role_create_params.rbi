@@ -45,15 +45,23 @@ module Braintrust
           .returns(T.attached_class)
       end
       def self.new(
+        # Name of the role
         name:,
+        # Textual description of the role
         description: nil,
+        # (permission, restrict_object_type) tuples which belong to this role
         member_permissions: nil,
+        # Ids of the roles this role inherits from
+        #
+        # An inheriting role has all the permissions contained in its member roles, as
+        # well as all of their inherited permissions
         member_roles: nil,
+        # For nearly all users, this parameter should be unnecessary. But in the rare case
+        # that your API key belongs to multiple organizations, you may specify the name of
+        # the organization the role belongs in.
         org_name: nil,
         request_options: {}
-      )
-      end
-
+      ); end
       sig do
         override
           .returns(
@@ -88,8 +96,15 @@ module Braintrust
           )
             .returns(T.attached_class)
         end
-        def self.new(permission:, restrict_object_type: nil); end
-
+        def self.new(
+          # Each permission permits a certain type of operation on an object in the system
+          #
+          # Permissions can be assigned to to objects on an individual basis, or grouped
+          # into roles
+          permission:,
+          # The object type that the ACL applies to
+          restrict_object_type: nil
+        ); end
         sig do
           override
             .returns(

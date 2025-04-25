@@ -46,17 +46,20 @@ module Braintrust
           .returns(T.attached_class)
       end
       def self.new(
+        # Unique identifier for the AI secret
         id:,
+        # Name of the AI secret
         name:,
+        # Unique identifier for the organization
         org_id:,
+        # Date of AI secret creation
         created: nil,
         metadata: nil,
         preview_secret: nil,
         type: nil,
+        # Date of last AI secret update
         updated_at: nil
-      )
-      end
-
+      ); end
       sig do
         override
           .returns(

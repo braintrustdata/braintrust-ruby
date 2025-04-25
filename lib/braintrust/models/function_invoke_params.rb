@@ -60,14 +60,26 @@ module Braintrust
       optional :version, String
 
       # @!method initialize(expected: nil, input: nil, messages: nil, metadata: nil, mode: nil, parent: nil, stream: nil, version: nil, request_options: {})
-      #   @param expected [Object]
-      #   @param input [Object]
-      #   @param messages [Array<Braintrust::Models::FunctionInvokeParams::Message::System, Braintrust::Models::FunctionInvokeParams::Message::User, Braintrust::Models::FunctionInvokeParams::Message::Assistant, Braintrust::Models::FunctionInvokeParams::Message::Tool, Braintrust::Models::FunctionInvokeParams::Message::Function, Braintrust::Models::FunctionInvokeParams::Message::Fallback>]
-      #   @param metadata [Hash{Symbol=>Object, nil}, nil]
-      #   @param mode [Symbol, Braintrust::Models::FunctionInvokeParams::Mode, nil]
-      #   @param parent [Braintrust::Models::FunctionInvokeParams::Parent::SpanParentStruct, String]
-      #   @param stream [Boolean, nil]
-      #   @param version [String]
+      #   Some parameter documentations has been truncated, see
+      #   {Braintrust::Models::FunctionInvokeParams} for more details.
+      #
+      #   @param expected [Object] The expected output of the function
+      #
+      #   @param input [Object] Argument to the function, which can be any JSON serializable value
+      #
+      #   @param messages [Array<Braintrust::Models::FunctionInvokeParams::Message::System, Braintrust::Models::FunctionInvokeParams::Message::User, Braintrust::Models::FunctionInvokeParams::Message::Assistant, Braintrust::Models::FunctionInvokeParams::Message::Tool, Braintrust::Models::FunctionInvokeParams::Message::Function, Braintrust::Models::FunctionInvokeParams::Message::Fallback>] If the function is an LLM, additional messages to pass along to it
+      #
+      #   @param metadata [Hash{Symbol=>Object, nil}, nil] Any relevant metadata
+      #
+      #   @param mode [Symbol, Braintrust::Models::FunctionInvokeParams::Mode, nil] The mode format of the returned value (defaults to 'auto')
+      #
+      #   @param parent [Braintrust::Models::FunctionInvokeParams::Parent::SpanParentStruct, String] Options for tracing the function call
+      #
+      #   @param stream [Boolean, nil] Whether to stream the response. If true, results will be returned in the Braintr
+      #   ...
+      #
+      #   @param version [String] The version of the function
+      #
       #   @param request_options [Braintrust::RequestOptions, Hash{Symbol=>Object}]
 
       module Message
@@ -387,10 +399,13 @@ module Braintrust
           # @!method initialize(object_id_:, object_type:, propagated_event: nil, row_ids: nil)
           #   Span parent properties
           #
-          #   @param object_id_ [String]
+          #   @param object_id_ [String] The id of the container object you are logging to
+          #
           #   @param object_type [Symbol, Braintrust::Models::FunctionInvokeParams::Parent::SpanParentStruct::ObjectType]
-          #   @param propagated_event [Hash{Symbol=>Object, nil}, nil]
-          #   @param row_ids [Braintrust::Models::FunctionInvokeParams::Parent::SpanParentStruct::RowIDs, nil]
+          #
+          #   @param propagated_event [Hash{Symbol=>Object, nil}, nil] Include these properties in every span created under this parent
+          #
+          #   @param row_ids [Braintrust::Models::FunctionInvokeParams::Parent::SpanParentStruct::RowIDs, nil] Identifiers for the row to to log a subspan under
 
           # @see Braintrust::Models::FunctionInvokeParams::Parent::SpanParentStruct#object_type
           module ObjectType
@@ -427,9 +442,11 @@ module Braintrust
             # @!method initialize(id:, root_span_id:, span_id:)
             #   Identifiers for the row to to log a subspan under
             #
-            #   @param id [String]
-            #   @param root_span_id [String]
-            #   @param span_id [String]
+            #   @param id [String] The id of the row
+            #
+            #   @param root_span_id [String] The root_span_id of the row
+            #
+            #   @param span_id [String] The span_id of the row
           end
         end
 

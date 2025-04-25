@@ -9,10 +9,14 @@ module Braintrust
       #
       # @overload create(name:, project_id:, color: nil, description: nil, request_options: {})
       #
-      # @param name [String]
-      # @param project_id [String]
-      # @param color [String, nil]
-      # @param description [String, nil]
+      # @param name [String] Name of the project tag
+      #
+      # @param project_id [String] Unique identifier for the project that the project tag belongs under
+      #
+      # @param color [String, nil] Color of the tag for the UI
+      #
+      # @param description [String, nil] Textual description of the project tag
+      #
       # @param request_options [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil]
       #
       # @return [Braintrust::Models::ProjectTag]
@@ -33,7 +37,8 @@ module Braintrust
       #
       # @overload retrieve(project_tag_id, request_options: {})
       #
-      # @param project_tag_id [String]
+      # @param project_tag_id [String] ProjectTag id
+      #
       # @param request_options [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil]
       #
       # @return [Braintrust::Models::ProjectTag]
@@ -54,10 +59,14 @@ module Braintrust
       #
       # @overload update(project_tag_id, color: nil, description: nil, name: nil, request_options: {})
       #
-      # @param project_tag_id [String]
-      # @param color [String, nil]
-      # @param description [String, nil]
-      # @param name [String, nil]
+      # @param project_tag_id [String] ProjectTag id
+      #
+      # @param color [String, nil] Color of the tag for the UI
+      #
+      # @param description [String, nil] Textual description of the project tag
+      #
+      # @param name [String, nil] Name of the project tag
+      #
       # @param request_options [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil]
       #
       # @return [Braintrust::Models::ProjectTag]
@@ -74,19 +83,31 @@ module Braintrust
         )
       end
 
+      # Some parameter documentations has been truncated, see
+      # {Braintrust::Models::ProjectTagListParams} for more details.
+      #
       # List out all project_tags. The project_tags are sorted by creation date, with
       # the most recently-created project_tags coming first
       #
       # @overload list(ending_before: nil, ids: nil, limit: nil, org_name: nil, project_id: nil, project_name: nil, project_tag_name: nil, starting_after: nil, request_options: {})
       #
-      # @param ending_before [String]
-      # @param ids [String, Array<String>]
-      # @param limit [Integer, nil]
-      # @param org_name [String]
-      # @param project_id [String]
-      # @param project_name [String]
-      # @param project_tag_name [String]
-      # @param starting_after [String]
+      # @param ending_before [String] Pagination cursor id. ...
+      #
+      # @param ids [String, Array<String>] Filter search results to a particular set of object IDs. To specify a list of ID
+      # ...
+      #
+      # @param limit [Integer, nil] Limit the number of objects to return
+      #
+      # @param org_name [String] Filter search results to within a particular organization
+      #
+      # @param project_id [String] Project id
+      #
+      # @param project_name [String] Name of the project to search for
+      #
+      # @param project_tag_name [String] Name of the project_tag to search for
+      #
+      # @param starting_after [String] Pagination cursor id. ...
+      #
       # @param request_options [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil]
       #
       # @return [Braintrust::Internal::ListObjects<Braintrust::Models::ProjectTag>]
@@ -108,7 +129,8 @@ module Braintrust
       #
       # @overload delete(project_tag_id, request_options: {})
       #
-      # @param project_tag_id [String]
+      # @param project_tag_id [String] ProjectTag id
+      #
       # @param request_options [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil]
       #
       # @return [Braintrust::Models::ProjectTag]
@@ -129,10 +151,14 @@ module Braintrust
       #
       # @overload replace(name:, project_id:, color: nil, description: nil, request_options: {})
       #
-      # @param name [String]
-      # @param project_id [String]
-      # @param color [String, nil]
-      # @param description [String, nil]
+      # @param name [String] Name of the project tag
+      #
+      # @param project_id [String] Unique identifier for the project that the project tag belongs under
+      #
+      # @param color [String, nil] Color of the tag for the UI
+      #
+      # @param description [String, nil] Textual description of the project tag
+      #
       # @param request_options [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil]
       #
       # @return [Braintrust::Models::ProjectTag]
