@@ -18,8 +18,9 @@ module Braintrust
       # @!method initialize(name: nil, type: nil)
       #   Human-identifying attributes of the span, such as name, type, etc.
       #
-      #   @param name [String, nil]
-      #   @param type [Symbol, Braintrust::Models::SpanType, nil]
+      #   @param name [String, nil] Name of the span, for display purposes only
+      #
+      #   @param type [Symbol, Braintrust::Models::SpanType, nil] Type of the span, for display purposes only
     end
   end
 end

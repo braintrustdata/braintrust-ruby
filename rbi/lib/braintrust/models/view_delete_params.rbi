@@ -22,8 +22,13 @@ module Braintrust
         )
           .returns(T.attached_class)
       end
-      def self.new(object_id_:, object_type:, request_options: {}); end
-
+      def self.new(
+        # The id of the object the view applies to
+        object_id_:,
+        # The object type that the ACL applies to
+        object_type:,
+        request_options: {}
+      ); end
       sig do
         override
           .returns(

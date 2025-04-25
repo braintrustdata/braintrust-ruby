@@ -102,22 +102,41 @@ module Braintrust
       optional :tags, Braintrust::Internal::Type::ArrayOf[String], nil?: true
 
       # @!method initialize(id:, _xact_id:, function_data:, log_id:, name:, org_id:, project_id:, slug:, created: nil, description: nil, function_schema: nil, function_type: nil, metadata: nil, origin: nil, prompt_data: nil, tags: nil)
-      #   @param id [String]
-      #   @param _xact_id [String]
+      #   Some parameter documentations has been truncated, see
+      #   {Braintrust::Models::Function} for more details.
+      #
+      #   @param id [String] Unique identifier for the prompt
+      #
+      #   @param _xact_id [String] The transaction id of an event is unique to the network operation that processed
+      #   ...
+      #
       #   @param function_data [Braintrust::Models::Function::FunctionData::Prompt, Braintrust::Models::Function::FunctionData::Code, Braintrust::Models::Function::FunctionData::Global]
-      #   @param log_id [Symbol, Braintrust::Models::Function::LogID]
-      #   @param name [String]
-      #   @param org_id [String]
-      #   @param project_id [String]
-      #   @param slug [String]
-      #   @param created [Time, nil]
-      #   @param description [String, nil]
-      #   @param function_schema [Braintrust::Models::Function::FunctionSchema, nil]
+      #
+      #   @param log_id [Symbol, Braintrust::Models::Function::LogID] A literal 'p' which identifies the object as a project prompt
+      #
+      #   @param name [String] Name of the prompt
+      #
+      #   @param org_id [String] Unique identifier for the organization
+      #
+      #   @param project_id [String] Unique identifier for the project that the prompt belongs under
+      #
+      #   @param slug [String] Unique identifier for the prompt
+      #
+      #   @param created [Time, nil] Date of prompt creation
+      #
+      #   @param description [String, nil] Textual description of the prompt
+      #
+      #   @param function_schema [Braintrust::Models::Function::FunctionSchema, nil] JSON schema for the function's parameters and return type
+      #
       #   @param function_type [Symbol, Braintrust::Models::Function::FunctionType, nil]
-      #   @param metadata [Hash{Symbol=>Object, nil}, nil]
+      #
+      #   @param metadata [Hash{Symbol=>Object, nil}, nil] User-controlled metadata about the prompt
+      #
       #   @param origin [Braintrust::Models::Function::Origin, nil]
-      #   @param prompt_data [Braintrust::Models::PromptData, nil]
-      #   @param tags [Array<String>, nil]
+      #
+      #   @param prompt_data [Braintrust::Models::PromptData, nil] The prompt, model, and its parameters
+      #
+      #   @param tags [Array<String>, nil] A list of tags for the prompt
 
       # @see Braintrust::Models::Function#function_data
       module FunctionData
@@ -364,9 +383,15 @@ module Braintrust
         optional :internal, Braintrust::Internal::Type::Boolean, nil?: true
 
         # @!method initialize(object_id_:, object_type:, internal: nil)
-        #   @param object_id_ [String]
-        #   @param object_type [Symbol, Braintrust::Models::ACLObjectType]
-        #   @param internal [Boolean, nil]
+        #   Some parameter documentations has been truncated, see
+        #   {Braintrust::Models::Function::Origin} for more details.
+        #
+        #   @param object_id_ [String] Id of the object the function is originating from
+        #
+        #   @param object_type [Symbol, Braintrust::Models::ACLObjectType] The object type that the ACL applies to
+        #
+        #   @param internal [Boolean, nil] The function exists for internal purposes and should not be displayed in the lis
+        #   ...
       end
     end
   end

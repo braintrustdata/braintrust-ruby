@@ -38,8 +38,20 @@ module Braintrust
         )
           .returns(T.attached_class)
       end
-      def self.new(id:, avatar_url: nil, created: nil, email: nil, family_name: nil, given_name: nil); end
-
+      def self.new(
+        # Unique identifier for the user
+        id:,
+        # URL of the user's Avatar image
+        avatar_url: nil,
+        # Date of user creation
+        created: nil,
+        # The user's email
+        email: nil,
+        # Family name of the user
+        family_name: nil,
+        # Given name of the user
+        given_name: nil
+      ); end
       sig do
         override
           .returns(

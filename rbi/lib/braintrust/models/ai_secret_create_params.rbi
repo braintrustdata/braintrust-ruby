@@ -38,8 +38,20 @@ module Braintrust
         )
           .returns(T.attached_class)
       end
-      def self.new(name:, metadata: nil, org_name: nil, secret: nil, type: nil, request_options: {}); end
-
+      def self.new(
+        # Name of the AI secret
+        name:,
+        metadata: nil,
+        # For nearly all users, this parameter should be unnecessary. But in the rare case
+        # that your API key belongs to multiple organizations, you may specify the name of
+        # the organization the AI Secret belongs in.
+        org_name: nil,
+        # Secret value. If omitted in a PUT request, the existing secret value will be
+        # left intact, not replaced with null.
+        secret: nil,
+        type: nil,
+        request_options: {}
+      ); end
       sig do
         override
           .returns(

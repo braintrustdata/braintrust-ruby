@@ -32,10 +32,14 @@ module Braintrust
       optional :value, String, nil?: true
 
       # @!method initialize(name:, object_id_:, object_type:, value: nil, request_options: {})
-      #   @param name [String]
-      #   @param object_id_ [String]
-      #   @param object_type [Symbol, Braintrust::Models::EnvVarCreateParams::ObjectType]
-      #   @param value [String, nil]
+      #   @param name [String] The name of the environment variable
+      #
+      #   @param object_id_ [String] The id of the object the environment variable is scoped for
+      #
+      #   @param object_type [Symbol, Braintrust::Models::EnvVarCreateParams::ObjectType] The type of the object the environment variable is scoped for
+      #
+      #   @param value [String, nil] The value of the environment variable. Will be encrypted at rest.
+      #
       #   @param request_options [Braintrust::RequestOptions, Hash{Symbol=>Object}]
 
       # The type of the object the environment variable is scoped for

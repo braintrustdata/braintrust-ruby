@@ -18,8 +18,9 @@ module Braintrust
       # @!method initialize(name:, value:)
       #   For categorical-type project scores, defines a single category
       #
-      #   @param name [String]
-      #   @param value [Float]
+      #   @param name [String] Name of the category
+      #
+      #   @param value [Float] Numerical value of the category. Must be between 0 and 1, inclusive
     end
   end
 end

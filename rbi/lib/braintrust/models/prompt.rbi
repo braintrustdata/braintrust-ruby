@@ -79,18 +79,33 @@ module Braintrust
           .returns(T.attached_class)
       end
       def self.new(
+        # Unique identifier for the prompt
         id:,
+        # The transaction id of an event is unique to the network operation that processed
+        # the event insertion. Transaction ids are monotonically increasing over time and
+        # can be used to retrieve a versioned snapshot of the prompt (see the `version`
+        # parameter)
         _xact_id:,
+        # A literal 'p' which identifies the object as a project prompt
         log_id:,
+        # Name of the prompt
         name:,
+        # Unique identifier for the organization
         org_id:,
+        # Unique identifier for the project that the prompt belongs under
         project_id:,
+        # Unique identifier for the prompt
         slug:,
+        # Date of prompt creation
         created: nil,
+        # Textual description of the prompt
         description: nil,
         function_type: nil,
+        # User-controlled metadata about the prompt
         metadata: nil,
+        # The prompt, model, and its parameters
         prompt_data: nil,
+        # A list of tags for the prompt
         tags: nil
       ); end
       sig do

@@ -14,7 +14,8 @@ module Braintrust
       required :feedback, -> { Braintrust::Internal::Type::ArrayOf[Braintrust::Models::FeedbackExperimentItem] }
 
       # @!method initialize(feedback:, request_options: {})
-      #   @param feedback [Array<Braintrust::Models::FeedbackExperimentItem>]
+      #   @param feedback [Array<Braintrust::Models::FeedbackExperimentItem>] A list of experiment feedback items
+      #
       #   @param request_options [Braintrust::RequestOptions, Hash{Symbol=>Object}]
     end
   end

@@ -31,8 +31,18 @@ module Braintrust
         params(improvements: Integer, name: String, regressions: Integer, score: Float, diff: Float)
           .returns(T.attached_class)
       end
-      def self.new(improvements:, name:, regressions:, score:, diff: nil); end
-
+      def self.new(
+        # Number of improvements in the score
+        improvements:,
+        # Name of the score
+        name:,
+        # Number of regressions in the score
+        regressions:,
+        # Average score across all examples
+        score:,
+        # Difference in score between the current and comparison experiment
+        diff: nil
+      ); end
       sig do
         override.returns(
           {

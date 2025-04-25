@@ -53,12 +53,22 @@ module Braintrust
       optional :starting_after, String
 
       # @!method initialize(api_key_name: nil, ending_before: nil, ids: nil, limit: nil, org_name: nil, starting_after: nil, request_options: {})
-      #   @param api_key_name [String]
-      #   @param ending_before [String]
-      #   @param ids [String, Array<String>]
-      #   @param limit [Integer, nil]
-      #   @param org_name [String]
-      #   @param starting_after [String]
+      #   Some parameter documentations has been truncated, see
+      #   {Braintrust::Models::APIKeyListParams} for more details.
+      #
+      #   @param api_key_name [String] Name of the api_key to search for
+      #
+      #   @param ending_before [String] Pagination cursor id. ...
+      #
+      #   @param ids [String, Array<String>] Filter search results to a particular set of object IDs. To specify a list of ID
+      #   ...
+      #
+      #   @param limit [Integer, nil] Limit the number of objects to return
+      #
+      #   @param org_name [String] Filter search results to within a particular organization
+      #
+      #   @param starting_after [String] Pagination cursor id. ...
+      #
       #   @param request_options [Braintrust::RequestOptions, Hash{Symbol=>Object}]
 
       # Filter search results to a particular set of object IDs. To specify a list of

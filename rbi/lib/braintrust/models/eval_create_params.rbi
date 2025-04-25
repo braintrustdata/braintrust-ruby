@@ -195,21 +195,48 @@ module Braintrust
           .returns(T.attached_class)
       end
       def self.new(
+        # The dataset to use
         data:,
+        # Unique identifier for the project to run the eval in
         project_id:,
+        # The functions to score the eval on
         scores:,
+        # The function to evaluate
         task:,
+        # An optional experiment id to use as a base. If specified, the new experiment
+        # will be summarized and compared to this experiment.
         base_experiment_id: nil,
+        # An optional experiment name to use as a base. If specified, the new experiment
+        # will be summarized and compared to this experiment.
         base_experiment_name: nil,
+        # An optional name for the experiment created by this eval. If it conflicts with
+        # an existing experiment, it will be suffixed with a unique identifier.
         experiment_name: nil,
+        # Optional settings for collecting git metadata. By default, will collect all git
+        # metadata fields allowed in org-level settings.
         git_metadata_settings: nil,
+        # Whether the experiment should be public. Defaults to false.
         is_public: nil,
+        # The maximum number of tasks/scorers that will be run concurrently. Defaults to
+        # undefined, in which case there is no max concurrency.
         max_concurrency: nil,
+        # Optional experiment-level metadata to store about the evaluation. You can later
+        # use this to slice & dice across experiments.
         metadata: nil,
+        # Options for tracing the evaluation
         parent: nil,
+        # Metadata about the state of the repo when the experiment was created
         repo_info: nil,
+        # Whether to stream the results of the eval. If true, the request will return two
+        # events: one to indicate the experiment has started, and another upon completion.
+        # If false, the request will return the evaluation's summary upon completion.
         stream: nil,
+        # The maximum duration, in milliseconds, to run the evaluation. Defaults to
+        # undefined, in which case there is no timeout.
         timeout: nil,
+        # The number of times to run the evaluator per input. This is useful for
+        # evaluating applications that have non-deterministic behavior and gives you both
+        # a stronger aggregate measure and a sense of the variance in the results.
         trial_count: nil,
         request_options: {}
       ); end
@@ -361,8 +388,12 @@ module Braintrust
 
           # Function id
           sig { params(function_id: String, version: String).returns(T.attached_class) }
-          def self.new(function_id:, version: nil); end
-
+          def self.new(
+            # The ID of the function
+            function_id:,
+            # The version of the function
+            version: nil
+          ); end
           sig { override.returns({function_id: String, version: String}) }
           def to_hash; end
         end
@@ -385,8 +416,14 @@ module Braintrust
 
           # Project name and slug
           sig { params(project_name: String, slug: String, version: String).returns(T.attached_class) }
-          def self.new(project_name:, slug:, version: nil); end
-
+          def self.new(
+            # The name of the project containing the function
+            project_name:,
+            # The slug of the function
+            slug:,
+            # The version of the function
+            version: nil
+          ); end
           sig { override.returns({project_name: String, slug: String, version: String}) }
           def to_hash; end
         end
@@ -399,8 +436,11 @@ module Braintrust
 
           # Global function name
           sig { params(global_function: String).returns(T.attached_class) }
-          def self.new(global_function:); end
-
+          def self.new(
+            # The name of the global function. Currently, the global namespace includes the
+            # functions in autoevals
+            global_function:
+          ); end
           sig { override.returns({global_function: String}) }
           def to_hash; end
         end
@@ -426,8 +466,14 @@ module Braintrust
             params(prompt_session_function_id: String, prompt_session_id: String, version: String)
               .returns(T.attached_class)
           end
-          def self.new(prompt_session_function_id:, prompt_session_id:, version: nil); end
-
+          def self.new(
+            # The ID of the function in the prompt session
+            prompt_session_function_id:,
+            # The ID of the prompt session
+            prompt_session_id:,
+            # The version of the function
+            version: nil
+          ); end
           sig do
             override.returns({prompt_session_function_id: String, prompt_session_id: String, version: String})
           end
@@ -469,8 +515,13 @@ module Braintrust
             )
               .returns(T.attached_class)
           end
-          def self.new(code:, inline_context:, name: nil); end
-
+          def self.new(
+            # The inline code to execute
+            code:,
+            inline_context:,
+            # The name of the inline code function
+            name: nil
+          ); end
           sig do
             override
               .returns(
@@ -561,8 +612,12 @@ module Braintrust
             )
               .returns(T.attached_class)
           end
-          def self.new(inline_prompt:, name: nil); end
-
+          def self.new(
+            # The prompt, model, and its parameters
+            inline_prompt:,
+            # The name of the inline prompt
+            name: nil
+          ); end
           sig { override.returns({inline_prompt: T.nilable(Braintrust::Models::PromptData), name: T.nilable(String)}) }
           def to_hash; end
         end
@@ -594,8 +649,12 @@ module Braintrust
 
           # Function id
           sig { params(function_id: String, version: String).returns(T.attached_class) }
-          def self.new(function_id:, version: nil); end
-
+          def self.new(
+            # The ID of the function
+            function_id:,
+            # The version of the function
+            version: nil
+          ); end
           sig { override.returns({function_id: String, version: String}) }
           def to_hash; end
         end
@@ -618,8 +677,14 @@ module Braintrust
 
           # Project name and slug
           sig { params(project_name: String, slug: String, version: String).returns(T.attached_class) }
-          def self.new(project_name:, slug:, version: nil); end
-
+          def self.new(
+            # The name of the project containing the function
+            project_name:,
+            # The slug of the function
+            slug:,
+            # The version of the function
+            version: nil
+          ); end
           sig { override.returns({project_name: String, slug: String, version: String}) }
           def to_hash; end
         end
@@ -632,8 +697,11 @@ module Braintrust
 
           # Global function name
           sig { params(global_function: String).returns(T.attached_class) }
-          def self.new(global_function:); end
-
+          def self.new(
+            # The name of the global function. Currently, the global namespace includes the
+            # functions in autoevals
+            global_function:
+          ); end
           sig { override.returns({global_function: String}) }
           def to_hash; end
         end
@@ -659,8 +727,14 @@ module Braintrust
             params(prompt_session_function_id: String, prompt_session_id: String, version: String)
               .returns(T.attached_class)
           end
-          def self.new(prompt_session_function_id:, prompt_session_id:, version: nil); end
-
+          def self.new(
+            # The ID of the function in the prompt session
+            prompt_session_function_id:,
+            # The ID of the prompt session
+            prompt_session_id:,
+            # The version of the function
+            version: nil
+          ); end
           sig do
             override.returns({prompt_session_function_id: String, prompt_session_id: String, version: String})
           end
@@ -702,8 +776,13 @@ module Braintrust
             )
               .returns(T.attached_class)
           end
-          def self.new(code:, inline_context:, name: nil); end
-
+          def self.new(
+            # The inline code to execute
+            code:,
+            inline_context:,
+            # The name of the inline code function
+            name: nil
+          ); end
           sig do
             override
               .returns(
@@ -791,8 +870,12 @@ module Braintrust
             )
               .returns(T.attached_class)
           end
-          def self.new(inline_prompt:, name: nil); end
-
+          def self.new(
+            # The prompt, model, and its parameters
+            inline_prompt:,
+            # The name of the inline prompt
+            name: nil
+          ); end
           sig { override.returns({inline_prompt: T.nilable(Braintrust::Models::PromptData), name: T.nilable(String)}) }
           def to_hash; end
         end
@@ -931,8 +1014,15 @@ module Braintrust
             )
               .returns(T.attached_class)
           end
-          def self.new(object_id_:, object_type:, propagated_event: nil, row_ids: nil); end
-
+          def self.new(
+            # The id of the container object you are logging to
+            object_id_:,
+            object_type:,
+            # Include these properties in every span created under this parent
+            propagated_event: nil,
+            # Identifiers for the row to to log a subspan under
+            row_ids: nil
+          ); end
           sig do
             override
               .returns(
@@ -993,8 +1083,14 @@ module Braintrust
 
             # Identifiers for the row to to log a subspan under
             sig { params(id: String, root_span_id: String, span_id: String).returns(T.attached_class) }
-            def self.new(id:, root_span_id:, span_id:); end
-
+            def self.new(
+              # The id of the row
+              id:,
+              # The root_span_id of the row
+              root_span_id:,
+              # The span_id of the row
+              span_id:
+            ); end
             sig { override.returns({id: String, root_span_id: String, span_id: String}) }
             def to_hash; end
           end

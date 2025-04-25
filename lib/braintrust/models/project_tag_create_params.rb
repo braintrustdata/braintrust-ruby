@@ -32,10 +32,14 @@ module Braintrust
       optional :description, String, nil?: true
 
       # @!method initialize(name:, project_id:, color: nil, description: nil, request_options: {})
-      #   @param name [String]
-      #   @param project_id [String]
-      #   @param color [String, nil]
-      #   @param description [String, nil]
+      #   @param name [String] Name of the project tag
+      #
+      #   @param project_id [String] Unique identifier for the project that the project tag belongs under
+      #
+      #   @param color [String, nil] Color of the tag for the UI
+      #
+      #   @param description [String, nil] Textual description of the project tag
+      #
       #   @param request_options [Braintrust::RequestOptions, Hash{Symbol=>Object}]
     end
   end

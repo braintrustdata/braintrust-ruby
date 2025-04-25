@@ -51,15 +51,19 @@ module Braintrust
           .returns(T.attached_class)
       end
       def self.new(
+        # Name of the env_var to search for
         env_var_name: nil,
+        # Filter search results to a particular set of object IDs. To specify a list of
+        # IDs, include the query param multiple times
         ids: nil,
+        # Limit the number of objects to return
         limit: nil,
+        # The id of the object the environment variable is scoped for
         object_id_: nil,
+        # The type of the object the environment variable is scoped for
         object_type: nil,
         request_options: {}
-      )
-      end
-
+      ); end
       sig do
         override
           .returns(

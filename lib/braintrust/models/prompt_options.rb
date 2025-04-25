@@ -111,17 +111,29 @@ module Braintrust
 
           # @!method initialize(frequency_penalty: nil, function_call: nil, max_completion_tokens: nil, max_tokens: nil, n: nil, presence_penalty: nil, reasoning_effort: nil, response_format: nil, stop: nil, temperature: nil, tool_choice: nil, top_p: nil, use_cache: nil)
           #   @param frequency_penalty [Float]
+          #
           #   @param function_call [Symbol, Braintrust::Models::PromptOptions::Params::OpenAIModelParams::FunctionCall::Function, Braintrust::Models::PromptOptions::Params::OpenAIModelParams::FunctionCall]
-          #   @param max_completion_tokens [Float]
+          #
+          #   @param max_completion_tokens [Float] The successor to max_tokens
+          #
           #   @param max_tokens [Float]
+          #
           #   @param n [Float]
+          #
           #   @param presence_penalty [Float]
+          #
           #   @param reasoning_effort [Symbol, Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ReasoningEffort]
+          #
           #   @param response_format [Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ResponseFormat::JsonObject, Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ResponseFormat::JsonSchema, Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ResponseFormat::Text, nil]
+          #
           #   @param stop [Array<String>]
+          #
           #   @param temperature [Float]
+          #
           #   @param tool_choice [Symbol, Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ToolChoice::Function, Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ToolChoice]
+          #
           #   @param top_p [Float]
+          #
           #   @param use_cache [Boolean]
 
           # @see Braintrust::Models::PromptOptions::Params::OpenAIModelParams#function_call
@@ -399,11 +411,17 @@ module Braintrust
 
           # @!method initialize(max_tokens:, temperature:, max_tokens_to_sample: nil, stop_sequences: nil, top_k: nil, top_p: nil, use_cache: nil)
           #   @param max_tokens [Float]
+          #
           #   @param temperature [Float]
-          #   @param max_tokens_to_sample [Float]
+          #
+          #   @param max_tokens_to_sample [Float] This is a legacy parameter that should not be used.
+          #
           #   @param stop_sequences [Array<String>]
+          #
           #   @param top_k [Float]
+          #
           #   @param top_p [Float]
+          #
           #   @param use_cache [Boolean]
         end
 

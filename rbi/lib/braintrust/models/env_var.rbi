@@ -38,8 +38,20 @@ module Braintrust
         )
           .returns(T.attached_class)
       end
-      def self.new(id:, name:, object_id_:, object_type:, created: nil, used: nil); end
-
+      def self.new(
+        # Unique identifier for the environment variable
+        id:,
+        # The name of the environment variable
+        name:,
+        # The id of the object the environment variable is scoped for
+        object_id_:,
+        # The type of the object the environment variable is scoped for
+        object_type:,
+        # Date of environment variable creation
+        created: nil,
+        # Date the environment variable was last used
+        used: nil
+      ); end
       sig do
         override
           .returns(

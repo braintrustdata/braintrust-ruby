@@ -4,14 +4,23 @@ module Braintrust
   module Resources
     class Organizations
       class Members
+        # Some parameter documentations has been truncated, see
+        # {Braintrust::Models::Organizations::MemberUpdateParams} for more details.
+        #
         # Modify organization membership
         #
         # @overload update(invite_users: nil, org_id: nil, org_name: nil, remove_users: nil, request_options: {})
         #
-        # @param invite_users [Braintrust::Models::Organizations::MemberUpdateParams::InviteUsers, nil]
-        # @param org_id [String, nil]
-        # @param org_name [String, nil]
-        # @param remove_users [Braintrust::Models::Organizations::MemberUpdateParams::RemoveUsers, nil]
+        # @param invite_users [Braintrust::Models::Organizations::MemberUpdateParams::InviteUsers, nil] Users to invite to the organization
+        #
+        # @param org_id [String, nil] For nearly all users, this parameter should be unnecessary. But in the rare case
+        # ...
+        #
+        # @param org_name [String, nil] For nearly all users, this parameter should be unnecessary. But in the rare case
+        # ...
+        #
+        # @param remove_users [Braintrust::Models::Organizations::MemberUpdateParams::RemoveUsers, nil] Users to remove from the organization
+        #
         # @param request_options [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil]
         #
         # @return [Braintrust::Models::PatchOrganizationMembersOutput]

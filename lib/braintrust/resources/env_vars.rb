@@ -8,10 +8,14 @@ module Braintrust
       #
       # @overload create(name:, object_id_:, object_type:, value: nil, request_options: {})
       #
-      # @param name [String]
-      # @param object_id_ [String]
-      # @param object_type [Symbol, Braintrust::Models::EnvVarCreateParams::ObjectType]
-      # @param value [String, nil]
+      # @param name [String] The name of the environment variable
+      #
+      # @param object_id_ [String] The id of the object the environment variable is scoped for
+      #
+      # @param object_type [Symbol, Braintrust::Models::EnvVarCreateParams::ObjectType] The type of the object the environment variable is scoped for
+      #
+      # @param value [String, nil] The value of the environment variable. Will be encrypted at rest.
+      #
       # @param request_options [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil]
       #
       # @return [Braintrust::Models::EnvVar]
@@ -32,7 +36,8 @@ module Braintrust
       #
       # @overload retrieve(env_var_id, request_options: {})
       #
-      # @param env_var_id [String]
+      # @param env_var_id [String] EnvVar id
+      #
       # @param request_options [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil]
       #
       # @return [Braintrust::Models::EnvVar]
@@ -53,9 +58,12 @@ module Braintrust
       #
       # @overload update(env_var_id, name:, value: nil, request_options: {})
       #
-      # @param env_var_id [String]
-      # @param name [String]
-      # @param value [String, nil]
+      # @param env_var_id [String] EnvVar id
+      #
+      # @param name [String] The name of the environment variable
+      #
+      # @param value [String, nil] The value of the environment variable. Will be encrypted at rest.
+      #
       # @param request_options [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil]
       #
       # @return [Braintrust::Models::EnvVar]
@@ -72,16 +80,25 @@ module Braintrust
         )
       end
 
+      # Some parameter documentations has been truncated, see
+      # {Braintrust::Models::EnvVarListParams} for more details.
+      #
       # List out all env_vars. The env_vars are sorted by creation date, with the most
       # recently-created env_vars coming first
       #
       # @overload list(env_var_name: nil, ids: nil, limit: nil, object_id_: nil, object_type: nil, request_options: {})
       #
-      # @param env_var_name [String]
-      # @param ids [String, Array<String>]
-      # @param limit [Integer, nil]
-      # @param object_id_ [String]
-      # @param object_type [Symbol, Braintrust::Models::EnvVarObjectType]
+      # @param env_var_name [String] Name of the env_var to search for
+      #
+      # @param ids [String, Array<String>] Filter search results to a particular set of object IDs. To specify a list of ID
+      # ...
+      #
+      # @param limit [Integer, nil] Limit the number of objects to return
+      #
+      # @param object_id_ [String] The id of the object the environment variable is scoped for
+      #
+      # @param object_type [Symbol, Braintrust::Models::EnvVarObjectType] The type of the object the environment variable is scoped for
+      #
       # @param request_options [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil]
       #
       # @return [Braintrust::Models::EnvVarListResponse]
@@ -102,7 +119,8 @@ module Braintrust
       #
       # @overload delete(env_var_id, request_options: {})
       #
-      # @param env_var_id [String]
+      # @param env_var_id [String] EnvVar id
+      #
       # @param request_options [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil]
       #
       # @return [Braintrust::Models::EnvVar]
@@ -123,10 +141,14 @@ module Braintrust
       #
       # @overload replace(name:, object_id_:, object_type:, value: nil, request_options: {})
       #
-      # @param name [String]
-      # @param object_id_ [String]
-      # @param object_type [Symbol, Braintrust::Models::EnvVarReplaceParams::ObjectType]
-      # @param value [String, nil]
+      # @param name [String] The name of the environment variable
+      #
+      # @param object_id_ [String] The id of the object the environment variable is scoped for
+      #
+      # @param object_type [Symbol, Braintrust::Models::EnvVarReplaceParams::ObjectType] The type of the object the environment variable is scoped for
+      #
+      # @param value [String, nil] The value of the environment variable. Will be encrypted at rest.
+      #
       # @param request_options [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil]
       #
       # @return [Braintrust::Models::EnvVar]

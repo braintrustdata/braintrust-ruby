@@ -36,13 +36,12 @@ module Braintrust
       def self.new(
         api_url: nil,
         is_universal_api: nil,
+        # Name of the organization
         name: nil,
         proxy_url: nil,
         realtime_url: nil,
         request_options: {}
-      )
-      end
-
+      ); end
       sig do
         override
           .returns(

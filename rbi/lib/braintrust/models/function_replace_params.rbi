@@ -93,14 +93,21 @@ module Braintrust
       end
       def self.new(
         function_data:,
+        # Name of the prompt
         name:,
+        # Unique identifier for the project that the prompt belongs under
         project_id:,
+        # Unique identifier for the prompt
         slug:,
+        # Textual description of the prompt
         description: nil,
+        # JSON schema for the function's parameters and return type
         function_schema: nil,
         function_type: nil,
         origin: nil,
+        # The prompt, model, and its parameters
         prompt_data: nil,
+        # A list of tags for the prompt
         tags: nil,
         request_options: {}
       ); end
@@ -514,8 +521,15 @@ module Braintrust
           )
             .returns(T.attached_class)
         end
-        def self.new(object_id_:, object_type:, internal: nil); end
-
+        def self.new(
+          # Id of the object the function is originating from
+          object_id_:,
+          # The object type that the ACL applies to
+          object_type:,
+          # The function exists for internal purposes and should not be displayed in the
+          # list of functions.
+          internal: nil
+        ); end
         sig do
           override
             .returns(

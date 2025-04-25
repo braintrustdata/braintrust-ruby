@@ -10,7 +10,8 @@ module Braintrust
       #
       # @overload retrieve(organization_id, request_options: {})
       #
-      # @param organization_id [String]
+      # @param organization_id [String] Organization id
+      #
       # @param request_options [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil]
       #
       # @return [Braintrust::Models::Organization]
@@ -31,12 +32,18 @@ module Braintrust
       #
       # @overload update(organization_id, api_url: nil, is_universal_api: nil, name: nil, proxy_url: nil, realtime_url: nil, request_options: {})
       #
-      # @param organization_id [String]
+      # @param organization_id [String] Organization id
+      #
       # @param api_url [String, nil]
+      #
       # @param is_universal_api [Boolean, nil]
-      # @param name [String, nil]
+      #
+      # @param name [String, nil] Name of the organization
+      #
       # @param proxy_url [String, nil]
+      #
       # @param realtime_url [String, nil]
+      #
       # @param request_options [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil]
       #
       # @return [Braintrust::Models::Organization]
@@ -53,16 +60,25 @@ module Braintrust
         )
       end
 
+      # Some parameter documentations has been truncated, see
+      # {Braintrust::Models::OrganizationListParams} for more details.
+      #
       # List out all organizations. The organizations are sorted by creation date, with
       # the most recently-created organizations coming first
       #
       # @overload list(ending_before: nil, ids: nil, limit: nil, org_name: nil, starting_after: nil, request_options: {})
       #
-      # @param ending_before [String]
-      # @param ids [String, Array<String>]
-      # @param limit [Integer, nil]
-      # @param org_name [String]
-      # @param starting_after [String]
+      # @param ending_before [String] Pagination cursor id. ...
+      #
+      # @param ids [String, Array<String>] Filter search results to a particular set of object IDs. To specify a list of ID
+      # ...
+      #
+      # @param limit [Integer, nil] Limit the number of objects to return
+      #
+      # @param org_name [String] Filter search results to within a particular organization
+      #
+      # @param starting_after [String] Pagination cursor id. ...
+      #
       # @param request_options [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil]
       #
       # @return [Braintrust::Internal::ListObjects<Braintrust::Models::Organization>]
@@ -84,7 +100,8 @@ module Braintrust
       #
       # @overload delete(organization_id, request_options: {})
       #
-      # @param organization_id [String]
+      # @param organization_id [String] Organization id
+      #
       # @param request_options [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil]
       #
       # @return [Braintrust::Models::Organization]

@@ -66,15 +66,25 @@ module Braintrust
 
       # @!method initialize(function_data:, name:, project_id:, slug:, description: nil, function_schema: nil, function_type: nil, origin: nil, prompt_data: nil, tags: nil, request_options: {})
       #   @param function_data [Braintrust::Models::FunctionCreateParams::FunctionData::Prompt, Braintrust::Models::FunctionCreateParams::FunctionData::Code, Braintrust::Models::FunctionCreateParams::FunctionData::Global]
-      #   @param name [String]
-      #   @param project_id [String]
-      #   @param slug [String]
-      #   @param description [String, nil]
-      #   @param function_schema [Braintrust::Models::FunctionCreateParams::FunctionSchema, nil]
+      #
+      #   @param name [String] Name of the prompt
+      #
+      #   @param project_id [String] Unique identifier for the project that the prompt belongs under
+      #
+      #   @param slug [String] Unique identifier for the prompt
+      #
+      #   @param description [String, nil] Textual description of the prompt
+      #
+      #   @param function_schema [Braintrust::Models::FunctionCreateParams::FunctionSchema, nil] JSON schema for the function's parameters and return type
+      #
       #   @param function_type [Symbol, Braintrust::Models::FunctionCreateParams::FunctionType, nil]
+      #
       #   @param origin [Braintrust::Models::FunctionCreateParams::Origin, nil]
-      #   @param prompt_data [Braintrust::Models::PromptData, nil]
-      #   @param tags [Array<String>, nil]
+      #
+      #   @param prompt_data [Braintrust::Models::PromptData, nil] The prompt, model, and its parameters
+      #
+      #   @param tags [Array<String>, nil] A list of tags for the prompt
+      #
       #   @param request_options [Braintrust::RequestOptions, Hash{Symbol=>Object}]
 
       module FunctionData
@@ -308,9 +318,15 @@ module Braintrust
         optional :internal, Braintrust::Internal::Type::Boolean, nil?: true
 
         # @!method initialize(object_id_:, object_type:, internal: nil)
-        #   @param object_id_ [String]
-        #   @param object_type [Symbol, Braintrust::Models::ACLObjectType]
-        #   @param internal [Boolean, nil]
+        #   Some parameter documentations has been truncated, see
+        #   {Braintrust::Models::FunctionCreateParams::Origin} for more details.
+        #
+        #   @param object_id_ [String] Id of the object the function is originating from
+        #
+        #   @param object_type [Symbol, Braintrust::Models::ACLObjectType] The object type that the ACL applies to
+        #
+        #   @param internal [Boolean, nil] The function exists for internal purposes and should not be displayed in the lis
+        #   ...
       end
     end
   end

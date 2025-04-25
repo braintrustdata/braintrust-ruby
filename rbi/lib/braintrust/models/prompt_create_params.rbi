@@ -50,12 +50,18 @@ module Braintrust
           .returns(T.attached_class)
       end
       def self.new(
+        # Name of the prompt
         name:,
+        # Unique identifier for the project that the prompt belongs under
         project_id:,
+        # Unique identifier for the prompt
         slug:,
+        # Textual description of the prompt
         description: nil,
         function_type: nil,
+        # The prompt, model, and its parameters
         prompt_data: nil,
+        # A list of tags for the prompt
         tags: nil,
         request_options: {}
       ); end

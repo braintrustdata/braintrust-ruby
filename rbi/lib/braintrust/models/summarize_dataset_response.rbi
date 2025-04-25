@@ -39,8 +39,18 @@ module Braintrust
         )
           .returns(T.attached_class)
       end
-      def self.new(dataset_name:, dataset_url:, project_name:, project_url:, data_summary: nil); end
-
+      def self.new(
+        # Name of the dataset
+        dataset_name:,
+        # URL to the dataset's page in the Braintrust app
+        dataset_url:,
+        # Name of the project that the dataset belongs to
+        project_name:,
+        # URL to the project's page in the Braintrust app
+        project_url:,
+        # Summary of a dataset's data
+        data_summary: nil
+      ); end
       sig do
         override
           .returns(

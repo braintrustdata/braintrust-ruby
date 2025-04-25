@@ -59,17 +59,29 @@ module Braintrust
       optional :tag, String, nil?: true
 
       # @!method initialize(author_email: nil, author_name: nil, branch: nil, commit: nil, commit_message: nil, commit_time: nil, dirty: nil, git_diff: nil, tag: nil)
+      #   Some parameter documentations has been truncated, see
+      #   {Braintrust::Models::RepoInfo} for more details.
+      #
       #   Metadata about the state of the repo when the experiment was created
       #
-      #   @param author_email [String, nil]
-      #   @param author_name [String, nil]
-      #   @param branch [String, nil]
-      #   @param commit [String, nil]
-      #   @param commit_message [String, nil]
-      #   @param commit_time [String, nil]
-      #   @param dirty [Boolean, nil]
-      #   @param git_diff [String, nil]
-      #   @param tag [String, nil]
+      #   @param author_email [String, nil] Email of the author of the most recent commit
+      #
+      #   @param author_name [String, nil] Name of the author of the most recent commit
+      #
+      #   @param branch [String, nil] Name of the branch the most recent commit belongs to
+      #
+      #   @param commit [String, nil] SHA of most recent commit
+      #
+      #   @param commit_message [String, nil] Most recent commit message
+      #
+      #   @param commit_time [String, nil] Time of the most recent commit
+      #
+      #   @param dirty [Boolean, nil] Whether or not the repo had uncommitted changes when snapshotted
+      #
+      #   @param git_diff [String, nil] If the repo was dirty when run, this includes the diff between the current state
+      #   ...
+      #
+      #   @param tag [String, nil] Name of the tag on the most recent commit
     end
   end
 end

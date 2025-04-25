@@ -54,13 +54,27 @@ module Braintrust
       optional :tags, Braintrust::Internal::Type::ArrayOf[String], nil?: true
 
       # @!method initialize(id:, comment: nil, expected: nil, metadata: nil, scores: nil, source: nil, tags: nil)
-      #   @param id [String]
-      #   @param comment [String, nil]
-      #   @param expected [Object]
-      #   @param metadata [Hash{Symbol=>Object, nil}, nil]
-      #   @param scores [Hash{Symbol=>Float, nil}, nil]
-      #   @param source [Symbol, Braintrust::Models::FeedbackExperimentItem::Source, nil]
-      #   @param tags [Array<String>, nil]
+      #   Some parameter documentations has been truncated, see
+      #   {Braintrust::Models::FeedbackExperimentItem} for more details.
+      #
+      #   @param id [String] The id of the experiment event to log feedback for. This is the row `id` returne
+      #   ...
+      #
+      #   @param comment [String, nil] An optional comment string to log about the experiment event
+      #
+      #   @param expected [Object] The ground truth value (an arbitrary, JSON serializable object) that you'd compa
+      #   ...
+      #
+      #   @param metadata [Hash{Symbol=>Object, nil}, nil] A dictionary with additional data about the feedback. If you have a `user_id`, y
+      #   ...
+      #
+      #   @param scores [Hash{Symbol=>Float, nil}, nil] A dictionary of numeric values (between 0 and 1) to log. These scores will be me
+      #   ...
+      #
+      #   @param source [Symbol, Braintrust::Models::FeedbackExperimentItem::Source, nil] The source of the feedback. Must be one of "external" (default), "app", or "api"
+      #   ...
+      #
+      #   @param tags [Array<String>, nil] A list of tags to log
 
       # The source of the feedback. Must be one of "external" (default), "app", or "api"
       #

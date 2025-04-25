@@ -78,15 +78,24 @@ module Braintrust
           .returns(T.attached_class)
       end
       def self.new(
+        # Unique identifier for the project score
         id:,
+        # Name of the project score
         name:,
+        # Unique identifier for the project that the project score belongs under
         project_id:,
+        # The type of the configured score
         score_type:,
         user_id:,
+        # For categorical-type project scores, the list of all categories
         categories: nil,
         config: nil,
+        # Date of project score creation
         created: nil,
+        # Textual description of the project score
         description: nil,
+        # An optional LexoRank-based string that sets the sort position for the score in
+        # the UI
         position: nil
       ); end
       sig do

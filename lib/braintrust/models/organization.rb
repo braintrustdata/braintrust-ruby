@@ -42,12 +42,18 @@ module Braintrust
       optional :realtime_url, String, nil?: true
 
       # @!method initialize(id:, name:, api_url: nil, created: nil, is_universal_api: nil, proxy_url: nil, realtime_url: nil)
-      #   @param id [String]
-      #   @param name [String]
+      #   @param id [String] Unique identifier for the organization
+      #
+      #   @param name [String] Name of the organization
+      #
       #   @param api_url [String, nil]
-      #   @param created [Time, nil]
+      #
+      #   @param created [Time, nil] Date of organization creation
+      #
       #   @param is_universal_api [Boolean, nil]
+      #
       #   @param proxy_url [String, nil]
+      #
       #   @param realtime_url [String, nil]
     end
   end

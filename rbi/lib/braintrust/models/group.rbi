@@ -63,14 +63,28 @@ module Braintrust
           .returns(T.attached_class)
       end
       def self.new(
+        # Unique identifier for the group
         id:,
+        # Name of the group
         name:,
+        # Unique id for the organization that the group belongs under
+        #
+        # It is forbidden to change the org after creating a group
         org_id:,
+        # Date of group creation
         created: nil,
+        # Date of group deletion, or null if the group is still active
         deleted_at: nil,
+        # Textual description of the group
         description: nil,
+        # Ids of the groups this group inherits from
+        #
+        # An inheriting group has all the users contained in its member groups, as well as
+        # all of their inherited users
         member_groups: nil,
+        # Ids of users which belong to this group
         member_users: nil,
+        # Identifies the user who created the group
         user_id: nil
       ); end
       sig do

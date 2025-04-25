@@ -53,12 +53,22 @@ module Braintrust
       optional :starting_after, String
 
       # @!method initialize(object_id_:, object_type:, ending_before: nil, ids: nil, limit: nil, starting_after: nil, request_options: {})
-      #   @param object_id_ [String]
-      #   @param object_type [Symbol, Braintrust::Models::ACLObjectType]
-      #   @param ending_before [String]
-      #   @param ids [String, Array<String>]
-      #   @param limit [Integer, nil]
-      #   @param starting_after [String]
+      #   Some parameter documentations has been truncated, see
+      #   {Braintrust::Models::ACLListParams} for more details.
+      #
+      #   @param object_id_ [String] The id of the object the ACL applies to
+      #
+      #   @param object_type [Symbol, Braintrust::Models::ACLObjectType] The object type that the ACL applies to
+      #
+      #   @param ending_before [String] Pagination cursor id. ...
+      #
+      #   @param ids [String, Array<String>] Filter search results to a particular set of object IDs. To specify a list of ID
+      #   ...
+      #
+      #   @param limit [Integer, nil] Limit the number of objects to return
+      #
+      #   @param starting_after [String] Pagination cursor id. ...
+      #
       #   @param request_options [Braintrust::RequestOptions, Hash{Symbol=>Object}]
 
       # Filter search results to a particular set of object IDs. To specify a list of

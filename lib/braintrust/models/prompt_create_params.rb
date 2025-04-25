@@ -49,13 +49,20 @@ module Braintrust
       optional :tags, Braintrust::Internal::Type::ArrayOf[String], nil?: true
 
       # @!method initialize(name:, project_id:, slug:, description: nil, function_type: nil, prompt_data: nil, tags: nil, request_options: {})
-      #   @param name [String]
-      #   @param project_id [String]
-      #   @param slug [String]
-      #   @param description [String, nil]
+      #   @param name [String] Name of the prompt
+      #
+      #   @param project_id [String] Unique identifier for the project that the prompt belongs under
+      #
+      #   @param slug [String] Unique identifier for the prompt
+      #
+      #   @param description [String, nil] Textual description of the prompt
+      #
       #   @param function_type [Symbol, Braintrust::Models::PromptCreateParams::FunctionType, nil]
-      #   @param prompt_data [Braintrust::Models::PromptData, nil]
-      #   @param tags [Array<String>, nil]
+      #
+      #   @param prompt_data [Braintrust::Models::PromptData, nil] The prompt, model, and its parameters
+      #
+      #   @param tags [Array<String>, nil] A list of tags for the prompt
+      #
       #   @param request_options [Braintrust::RequestOptions, Hash{Symbol=>Object}]
 
       module FunctionType

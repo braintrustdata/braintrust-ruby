@@ -102,15 +102,37 @@ module Braintrust
           .returns(T.attached_class)
       end
       def self.new(
+        # Pagination cursor id.
+        #
+        # For example, if the initial item in the last page you fetched had an id of
+        # `foo`, pass `ending_before=foo` to fetch the previous page. Note: you may only
+        # pass one of `starting_after` and `ending_before`
         ending_before: nil,
+        # Name of the function to search for
         function_name: nil,
+        # Filter search results to a particular set of object IDs. To specify a list of
+        # IDs, include the query param multiple times
         ids: nil,
+        # Limit the number of objects to return
         limit: nil,
+        # Filter search results to within a particular organization
         org_name: nil,
+        # Project id
         project_id: nil,
+        # Name of the project to search for
         project_name: nil,
+        # Retrieve prompt with a specific slug
         slug: nil,
+        # Pagination cursor id.
+        #
+        # For example, if the final item in the last page you fetched had an id of `foo`,
+        # pass `starting_after=foo` to fetch the next page. Note: you may only pass one of
+        # `starting_after` and `ending_before`
         starting_after: nil,
+        # Retrieve prompt at a specific version.
+        #
+        # The version id can either be a transaction id (e.g. '1000192656880881099') or a
+        # version identifier (e.g. '81cd05ee665fdfb3').
         version: nil,
         request_options: {}
       ); end

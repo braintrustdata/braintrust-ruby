@@ -26,9 +26,12 @@ module Braintrust
 
       # @!method initialize(bundle_id:, location:, runtime_context:, preview: nil)
       #   @param bundle_id [String]
+      #
       #   @param location [Braintrust::Models::CodeBundle::Location::Experiment, Braintrust::Models::CodeBundle::Location::Function]
+      #
       #   @param runtime_context [Braintrust::Models::CodeBundle::RuntimeContext]
-      #   @param preview [String, nil]
+      #
+      #   @param preview [String, nil] A preview of the code
 
       # @see Braintrust::Models::CodeBundle#location
       module Location

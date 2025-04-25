@@ -14,7 +14,8 @@ module Braintrust
       required :events, -> { Braintrust::Internal::Type::ArrayOf[Braintrust::Models::InsertDatasetEvent] }
 
       # @!method initialize(events:, request_options: {})
-      #   @param events [Array<Braintrust::Models::InsertDatasetEvent>]
+      #   @param events [Array<Braintrust::Models::InsertDatasetEvent>] A list of dataset events to insert
+      #
       #   @param request_options [Braintrust::RequestOptions, Hash{Symbol=>Object}]
     end
   end

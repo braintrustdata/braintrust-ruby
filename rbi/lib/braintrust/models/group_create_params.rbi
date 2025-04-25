@@ -43,15 +43,23 @@ module Braintrust
           .returns(T.attached_class)
       end
       def self.new(
+        # Name of the group
         name:,
+        # Textual description of the group
         description: nil,
+        # Ids of the groups this group inherits from
+        #
+        # An inheriting group has all the users contained in its member groups, as well as
+        # all of their inherited users
         member_groups: nil,
+        # Ids of users which belong to this group
         member_users: nil,
+        # For nearly all users, this parameter should be unnecessary. But in the rare case
+        # that your API key belongs to multiple organizations, you may specify the name of
+        # the organization the group belongs in.
         org_name: nil,
         request_options: {}
-      )
-      end
-
+      ); end
       sig do
         override
           .returns(

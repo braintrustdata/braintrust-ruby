@@ -20,8 +20,10 @@ module Braintrust
       required :object_type, enum: -> { Braintrust::Models::ACLObjectType }
 
       # @!method initialize(object_id_:, object_type:, request_options: {})
-      #   @param object_id_ [String]
-      #   @param object_type [Symbol, Braintrust::Models::ACLObjectType]
+      #   @param object_id_ [String] The id of the object the view applies to
+      #
+      #   @param object_type [Symbol, Braintrust::Models::ACLObjectType] The object type that the ACL applies to
+      #
       #   @param request_options [Braintrust::RequestOptions, Hash{Symbol=>Object}]
     end
   end

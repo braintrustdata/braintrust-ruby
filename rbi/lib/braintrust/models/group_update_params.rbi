@@ -43,11 +43,17 @@ module Braintrust
           .returns(T.attached_class)
       end
       def self.new(
+        # A list of group IDs to add to the group's inheriting-from set
         add_member_groups: nil,
+        # A list of user IDs to add to the group
         add_member_users: nil,
+        # Textual description of the group
         description: nil,
+        # Name of the group
         name: nil,
+        # A list of group IDs to remove from the group's inheriting-from set
         remove_member_groups: nil,
+        # A list of user IDs to remove from the group
         remove_member_users: nil,
         request_options: {}
       ); end

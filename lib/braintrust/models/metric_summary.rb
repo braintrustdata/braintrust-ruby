@@ -42,12 +42,17 @@ module Braintrust
       # @!method initialize(improvements:, metric:, name:, regressions:, unit:, diff: nil)
       #   Summary of a metric's performance
       #
-      #   @param improvements [Integer]
-      #   @param metric [Float]
-      #   @param name [String]
-      #   @param regressions [Integer]
-      #   @param unit [String]
-      #   @param diff [Float]
+      #   @param improvements [Integer] Number of improvements in the metric
+      #
+      #   @param metric [Float] Average metric across all examples
+      #
+      #   @param name [String] Name of the metric
+      #
+      #   @param regressions [Integer] Number of regressions in the metric
+      #
+      #   @param unit [String] Unit label for the metric
+      #
+      #   @param diff [Float] Difference in metric between the current and comparison experiment
     end
   end
 end

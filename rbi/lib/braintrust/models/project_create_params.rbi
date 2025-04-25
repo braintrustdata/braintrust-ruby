@@ -24,8 +24,15 @@ module Braintrust
         )
           .returns(T.attached_class)
       end
-      def self.new(name:, org_name: nil, request_options: {}); end
-
+      def self.new(
+        # Name of the project
+        name:,
+        # For nearly all users, this parameter should be unnecessary. But in the rare case
+        # that your API key belongs to multiple organizations, you may specify the name of
+        # the organization the project belongs in.
+        org_name: nil,
+        request_options: {}
+      ); end
       sig do
         override.returns(
           {

@@ -59,13 +59,21 @@ module Braintrust
           .returns(T.attached_class)
       end
       def self.new(
+        # Name of the view
         name:,
+        # The id of the object the view applies to
         object_id_:,
+        # The object type that the ACL applies to
         object_type:,
+        # Type of table that the view corresponds to.
         view_type:,
+        # Date of role deletion, or null if the role is still active
         deleted_at: nil,
+        # Options for the view in the app
         options: nil,
+        # Identifies the user who created the view
         user_id: nil,
+        # The view definition
         view_data: nil,
         request_options: {}
       ); end
