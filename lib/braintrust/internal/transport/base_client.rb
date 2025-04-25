@@ -153,7 +153,7 @@ module Braintrust
 
         # @api private
         # @return [Braintrust::Internal::Transport::PooledNetRequester]
-        attr_accessor :requester
+        attr_reader :requester
 
         # @api private
         #
