@@ -67,10 +67,19 @@ module Braintrust
       optional :version, String
 
       # @!method initialize(limit: nil, max_root_span_id: nil, max_xact_id: nil, version: nil, request_options: {})
-      #   @param limit [Integer, nil]
-      #   @param max_root_span_id [String]
-      #   @param max_xact_id [String]
-      #   @param version [String]
+      #   Some parameter documentations has been truncated, see
+      #   {Braintrust::Models::DatasetFetchParams} for more details.
+      #
+      #   @param limit [Integer, nil] limit the number of traces fetched ...
+      #
+      #   @param max_root_span_id [String] DEPRECATION NOTICE: The manually-constructed pagination cursor is deprecated in
+      #   ...
+      #
+      #   @param max_xact_id [String] DEPRECATION NOTICE: The manually-constructed pagination cursor is deprecated in
+      #   ...
+      #
+      #   @param version [String] Retrieve a snapshot of events from a past time ...
+      #
       #   @param request_options [Braintrust::RequestOptions, Hash{Symbol=>Object}]
     end
   end

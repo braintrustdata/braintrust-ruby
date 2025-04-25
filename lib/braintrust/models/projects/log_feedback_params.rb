@@ -16,7 +16,8 @@ module Braintrust
                  -> { Braintrust::Internal::Type::ArrayOf[Braintrust::Models::FeedbackProjectLogsItem] }
 
         # @!method initialize(feedback:, request_options: {})
-        #   @param feedback [Array<Braintrust::Models::FeedbackProjectLogsItem>]
+        #   @param feedback [Array<Braintrust::Models::FeedbackProjectLogsItem>] A list of project logs feedback items
+        #
         #   @param request_options [Braintrust::RequestOptions, Hash{Symbol=>Object}]
       end
     end

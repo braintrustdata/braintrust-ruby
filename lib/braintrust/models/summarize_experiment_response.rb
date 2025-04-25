@@ -50,13 +50,19 @@ module Braintrust
       # @!method initialize(experiment_name:, experiment_url:, project_name:, project_url:, comparison_experiment_name: nil, metrics: nil, scores: nil)
       #   Summary of an experiment
       #
-      #   @param experiment_name [String]
-      #   @param experiment_url [String]
-      #   @param project_name [String]
-      #   @param project_url [String]
-      #   @param comparison_experiment_name [String, nil]
-      #   @param metrics [Hash{Symbol=>Braintrust::Models::MetricSummary}, nil]
-      #   @param scores [Hash{Symbol=>Braintrust::Models::ScoreSummary}, nil]
+      #   @param experiment_name [String] Name of the experiment
+      #
+      #   @param experiment_url [String] URL to the experiment's page in the Braintrust app
+      #
+      #   @param project_name [String] Name of the project that the experiment belongs to
+      #
+      #   @param project_url [String] URL to the project's page in the Braintrust app
+      #
+      #   @param comparison_experiment_name [String, nil] The experiment which scores are baselined against
+      #
+      #   @param metrics [Hash{Symbol=>Braintrust::Models::MetricSummary}, nil] Summary of the experiment's metrics
+      #
+      #   @param scores [Hash{Symbol=>Braintrust::Models::ScoreSummary}, nil] Summary of the experiment's scores
     end
   end
 end

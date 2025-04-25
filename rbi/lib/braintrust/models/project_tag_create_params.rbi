@@ -32,8 +32,17 @@ module Braintrust
         )
           .returns(T.attached_class)
       end
-      def self.new(name:, project_id:, color: nil, description: nil, request_options: {}); end
-
+      def self.new(
+        # Name of the project tag
+        name:,
+        # Unique identifier for the project that the project tag belongs under
+        project_id:,
+        # Color of the tag for the UI
+        color: nil,
+        # Textual description of the project tag
+        description: nil,
+        request_options: {}
+      ); end
       sig do
         override
           .returns(

@@ -43,8 +43,16 @@ module Braintrust
         )
           .returns(T.attached_class)
       end
-      def self.new(sampling_rate:, scorers:, apply_to_root_span: nil, apply_to_span_names: nil); end
-
+      def self.new(
+        # The sampling rate for online scoring
+        sampling_rate:,
+        # The list of scorers to use for online scoring
+        scorers:,
+        # Whether to trigger online scoring on the root span of each trace
+        apply_to_root_span: nil,
+        # Trigger online scoring on any spans with a name in this list
+        apply_to_span_names: nil
+      ); end
       sig do
         override
           .returns(

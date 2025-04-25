@@ -56,14 +56,24 @@ module Braintrust
           .returns(T.attached_class)
       end
       def self.new(
+        # Email of the author of the most recent commit
         author_email: nil,
+        # Name of the author of the most recent commit
         author_name: nil,
+        # Name of the branch the most recent commit belongs to
         branch: nil,
+        # SHA of most recent commit
         commit: nil,
+        # Most recent commit message
         commit_message: nil,
+        # Time of the most recent commit
         commit_time: nil,
+        # Whether or not the repo had uncommitted changes when snapshotted
         dirty: nil,
+        # If the repo was dirty when run, this includes the diff between the current state
+        # of the repo and the most recent commit.
         git_diff: nil,
+        # Name of the tag on the most recent commit
         tag: nil
       ); end
       sig do

@@ -45,13 +45,19 @@ module Braintrust
       optional :user_id, String, nil?: true
 
       # @!method initialize(id:, name:, org_id:, created: nil, deleted_at: nil, settings: nil, user_id: nil)
-      #   @param id [String]
-      #   @param name [String]
-      #   @param org_id [String]
-      #   @param created [Time, nil]
-      #   @param deleted_at [Time, nil]
+      #   @param id [String] Unique identifier for the project
+      #
+      #   @param name [String] Name of the project
+      #
+      #   @param org_id [String] Unique id for the organization that the project belongs under
+      #
+      #   @param created [Time, nil] Date of project creation
+      #
+      #   @param deleted_at [Time, nil] Date of project deletion, or null if the project is still active
+      #
       #   @param settings [Braintrust::Models::ProjectSettings, nil]
-      #   @param user_id [String, nil]
+      #
+      #   @param user_id [String, nil] Identifies the user who created the project
     end
   end
 end

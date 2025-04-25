@@ -118,22 +118,50 @@ module Braintrust
       optional :trial_count, Float, nil?: true
 
       # @!method initialize(data:, project_id:, scores:, task:, base_experiment_id: nil, base_experiment_name: nil, experiment_name: nil, git_metadata_settings: nil, is_public: nil, max_concurrency: nil, metadata: nil, parent: nil, repo_info: nil, stream: nil, timeout: nil, trial_count: nil, request_options: {})
-      #   @param data [Braintrust::Models::EvalCreateParams::Data::DatasetID, Braintrust::Models::EvalCreateParams::Data::ProjectDatasetName, Braintrust::Models::EvalCreateParams::Data::DatasetRows]
-      #   @param project_id [String]
-      #   @param scores [Array<Braintrust::Models::EvalCreateParams::Score::FunctionID, Braintrust::Models::EvalCreateParams::Score::ProjectSlug, Braintrust::Models::EvalCreateParams::Score::GlobalFunction, Braintrust::Models::EvalCreateParams::Score::PromptSessionID, Braintrust::Models::EvalCreateParams::Score::InlineCode, Braintrust::Models::EvalCreateParams::Score::InlinePrompt>]
-      #   @param task [Braintrust::Models::EvalCreateParams::Task::FunctionID, Braintrust::Models::EvalCreateParams::Task::ProjectSlug, Braintrust::Models::EvalCreateParams::Task::GlobalFunction, Braintrust::Models::EvalCreateParams::Task::PromptSessionID, Braintrust::Models::EvalCreateParams::Task::InlineCode, Braintrust::Models::EvalCreateParams::Task::InlinePrompt]
-      #   @param base_experiment_id [String, nil]
-      #   @param base_experiment_name [String, nil]
-      #   @param experiment_name [String]
-      #   @param git_metadata_settings [Braintrust::Models::EvalCreateParams::GitMetadataSettings, nil]
-      #   @param is_public [Boolean, nil]
-      #   @param max_concurrency [Float, nil]
-      #   @param metadata [Hash{Symbol=>Object, nil}]
-      #   @param parent [Braintrust::Models::EvalCreateParams::Parent::SpanParentStruct, String]
-      #   @param repo_info [Braintrust::Models::RepoInfo, nil]
-      #   @param stream [Boolean]
-      #   @param timeout [Float, nil]
-      #   @param trial_count [Float, nil]
+      #   Some parameter documentations has been truncated, see
+      #   {Braintrust::Models::EvalCreateParams} for more details.
+      #
+      #   @param data [Braintrust::Models::EvalCreateParams::Data::DatasetID, Braintrust::Models::EvalCreateParams::Data::ProjectDatasetName, Braintrust::Models::EvalCreateParams::Data::DatasetRows] The dataset to use
+      #
+      #   @param project_id [String] Unique identifier for the project to run the eval in
+      #
+      #   @param scores [Array<Braintrust::Models::EvalCreateParams::Score::FunctionID, Braintrust::Models::EvalCreateParams::Score::ProjectSlug, Braintrust::Models::EvalCreateParams::Score::GlobalFunction, Braintrust::Models::EvalCreateParams::Score::PromptSessionID, Braintrust::Models::EvalCreateParams::Score::InlineCode, Braintrust::Models::EvalCreateParams::Score::InlinePrompt>] The functions to score the eval on
+      #
+      #   @param task [Braintrust::Models::EvalCreateParams::Task::FunctionID, Braintrust::Models::EvalCreateParams::Task::ProjectSlug, Braintrust::Models::EvalCreateParams::Task::GlobalFunction, Braintrust::Models::EvalCreateParams::Task::PromptSessionID, Braintrust::Models::EvalCreateParams::Task::InlineCode, Braintrust::Models::EvalCreateParams::Task::InlinePrompt] The function to evaluate
+      #
+      #   @param base_experiment_id [String, nil] An optional experiment id to use as a base. If specified, the new experiment wil
+      #   ...
+      #
+      #   @param base_experiment_name [String, nil] An optional experiment name to use as a base. If specified, the new experiment w
+      #   ...
+      #
+      #   @param experiment_name [String] An optional name for the experiment created by this eval. If it conflicts with a
+      #   ...
+      #
+      #   @param git_metadata_settings [Braintrust::Models::EvalCreateParams::GitMetadataSettings, nil] Optional settings for collecting git metadata. By default, will collect all git
+      #   ...
+      #
+      #   @param is_public [Boolean, nil] Whether the experiment should be public. Defaults to false.
+      #
+      #   @param max_concurrency [Float, nil] The maximum number of tasks/scorers that will be run concurrently. Defaults to u
+      #   ...
+      #
+      #   @param metadata [Hash{Symbol=>Object, nil}] Optional experiment-level metadata to store about the evaluation. You can later
+      #   ...
+      #
+      #   @param parent [Braintrust::Models::EvalCreateParams::Parent::SpanParentStruct, String] Options for tracing the evaluation
+      #
+      #   @param repo_info [Braintrust::Models::RepoInfo, nil] Metadata about the state of the repo when the experiment was created
+      #
+      #   @param stream [Boolean] Whether to stream the results of the eval. If true, the request will return two
+      #   ...
+      #
+      #   @param timeout [Float, nil] The maximum duration, in milliseconds, to run the evaluation. Defaults to undefi
+      #   ...
+      #
+      #   @param trial_count [Float, nil] The number of times to run the evaluator per input. This is useful for evaluatin
+      #   ...
+      #
       #   @param request_options [Braintrust::RequestOptions, Hash{Symbol=>Object}]
 
       # The dataset to use
@@ -249,8 +277,9 @@ module Braintrust
           # @!method initialize(function_id:, version: nil)
           #   Function id
           #
-          #   @param function_id [String]
-          #   @param version [String]
+          #   @param function_id [String] The ID of the function
+          #
+          #   @param version [String] The version of the function
         end
 
         class ProjectSlug < Braintrust::Internal::Type::BaseModel
@@ -275,9 +304,11 @@ module Braintrust
           # @!method initialize(project_name:, slug:, version: nil)
           #   Project name and slug
           #
-          #   @param project_name [String]
-          #   @param slug [String]
-          #   @param version [String]
+          #   @param project_name [String] The name of the project containing the function
+          #
+          #   @param slug [String] The slug of the function
+          #
+          #   @param version [String] The version of the function
         end
 
         class GlobalFunction < Braintrust::Internal::Type::BaseModel
@@ -289,9 +320,13 @@ module Braintrust
           required :global_function, String
 
           # @!method initialize(global_function:)
+          #   Some parameter documentations has been truncated, see
+          #   {Braintrust::Models::EvalCreateParams::Score::GlobalFunction} for more details.
+          #
           #   Global function name
           #
-          #   @param global_function [String]
+          #   @param global_function [String] The name of the global function. Currently, the global namespace includes the fu
+          #   ...
         end
 
         class PromptSessionID < Braintrust::Internal::Type::BaseModel
@@ -316,9 +351,11 @@ module Braintrust
           # @!method initialize(prompt_session_function_id:, prompt_session_id:, version: nil)
           #   Prompt session id
           #
-          #   @param prompt_session_function_id [String]
-          #   @param prompt_session_id [String]
-          #   @param version [String]
+          #   @param prompt_session_function_id [String] The ID of the function in the prompt session
+          #
+          #   @param prompt_session_id [String] The ID of the prompt session
+          #
+          #   @param version [String] The version of the function
         end
 
         class InlineCode < Braintrust::Internal::Type::BaseModel
@@ -342,9 +379,11 @@ module Braintrust
           # @!method initialize(code:, inline_context:, name: nil)
           #   Inline code function
           #
-          #   @param code [String]
+          #   @param code [String] The inline code to execute
+          #
           #   @param inline_context [Braintrust::Models::EvalCreateParams::Score::InlineCode::InlineContext]
-          #   @param name [String, nil]
+          #
+          #   @param name [String, nil] The name of the inline code function
 
           # @see Braintrust::Models::EvalCreateParams::Score::InlineCode#inline_context
           class InlineContext < Braintrust::Internal::Type::BaseModel
@@ -392,8 +431,9 @@ module Braintrust
           # @!method initialize(inline_prompt:, name: nil)
           #   Inline prompt definition
           #
-          #   @param inline_prompt [Braintrust::Models::PromptData, nil]
-          #   @param name [String, nil]
+          #   @param inline_prompt [Braintrust::Models::PromptData, nil] The prompt, model, and its parameters
+          #
+          #   @param name [String, nil] The name of the inline prompt
         end
 
         # @!method self.variants
@@ -438,8 +478,9 @@ module Braintrust
           # @!method initialize(function_id:, version: nil)
           #   Function id
           #
-          #   @param function_id [String]
-          #   @param version [String]
+          #   @param function_id [String] The ID of the function
+          #
+          #   @param version [String] The version of the function
         end
 
         class ProjectSlug < Braintrust::Internal::Type::BaseModel
@@ -464,9 +505,11 @@ module Braintrust
           # @!method initialize(project_name:, slug:, version: nil)
           #   Project name and slug
           #
-          #   @param project_name [String]
-          #   @param slug [String]
-          #   @param version [String]
+          #   @param project_name [String] The name of the project containing the function
+          #
+          #   @param slug [String] The slug of the function
+          #
+          #   @param version [String] The version of the function
         end
 
         class GlobalFunction < Braintrust::Internal::Type::BaseModel
@@ -478,9 +521,13 @@ module Braintrust
           required :global_function, String
 
           # @!method initialize(global_function:)
+          #   Some parameter documentations has been truncated, see
+          #   {Braintrust::Models::EvalCreateParams::Task::GlobalFunction} for more details.
+          #
           #   Global function name
           #
-          #   @param global_function [String]
+          #   @param global_function [String] The name of the global function. Currently, the global namespace includes the fu
+          #   ...
         end
 
         class PromptSessionID < Braintrust::Internal::Type::BaseModel
@@ -505,9 +552,11 @@ module Braintrust
           # @!method initialize(prompt_session_function_id:, prompt_session_id:, version: nil)
           #   Prompt session id
           #
-          #   @param prompt_session_function_id [String]
-          #   @param prompt_session_id [String]
-          #   @param version [String]
+          #   @param prompt_session_function_id [String] The ID of the function in the prompt session
+          #
+          #   @param prompt_session_id [String] The ID of the prompt session
+          #
+          #   @param version [String] The version of the function
         end
 
         class InlineCode < Braintrust::Internal::Type::BaseModel
@@ -531,9 +580,11 @@ module Braintrust
           # @!method initialize(code:, inline_context:, name: nil)
           #   Inline code function
           #
-          #   @param code [String]
+          #   @param code [String] The inline code to execute
+          #
           #   @param inline_context [Braintrust::Models::EvalCreateParams::Task::InlineCode::InlineContext]
-          #   @param name [String, nil]
+          #
+          #   @param name [String, nil] The name of the inline code function
 
           # @see Braintrust::Models::EvalCreateParams::Task::InlineCode#inline_context
           class InlineContext < Braintrust::Internal::Type::BaseModel
@@ -581,8 +632,9 @@ module Braintrust
           # @!method initialize(inline_prompt:, name: nil)
           #   Inline prompt definition
           #
-          #   @param inline_prompt [Braintrust::Models::PromptData, nil]
-          #   @param name [String, nil]
+          #   @param inline_prompt [Braintrust::Models::PromptData, nil] The prompt, model, and its parameters
+          #
+          #   @param name [String, nil] The name of the inline prompt
         end
 
         # @!method self.variants
@@ -680,10 +732,13 @@ module Braintrust
           # @!method initialize(object_id_:, object_type:, propagated_event: nil, row_ids: nil)
           #   Span parent properties
           #
-          #   @param object_id_ [String]
+          #   @param object_id_ [String] The id of the container object you are logging to
+          #
           #   @param object_type [Symbol, Braintrust::Models::EvalCreateParams::Parent::SpanParentStruct::ObjectType]
-          #   @param propagated_event [Hash{Symbol=>Object, nil}, nil]
-          #   @param row_ids [Braintrust::Models::EvalCreateParams::Parent::SpanParentStruct::RowIDs, nil]
+          #
+          #   @param propagated_event [Hash{Symbol=>Object, nil}, nil] Include these properties in every span created under this parent
+          #
+          #   @param row_ids [Braintrust::Models::EvalCreateParams::Parent::SpanParentStruct::RowIDs, nil] Identifiers for the row to to log a subspan under
 
           # @see Braintrust::Models::EvalCreateParams::Parent::SpanParentStruct#object_type
           module ObjectType
@@ -720,9 +775,11 @@ module Braintrust
             # @!method initialize(id:, root_span_id:, span_id:)
             #   Identifiers for the row to to log a subspan under
             #
-            #   @param id [String]
-            #   @param root_span_id [String]
-            #   @param span_id [String]
+            #   @param id [String] The id of the row
+            #
+            #   @param root_span_id [String] The root_span_id of the row
+            #
+            #   @param span_id [String] The span_id of the row
           end
         end
 

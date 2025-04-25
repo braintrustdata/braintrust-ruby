@@ -39,12 +39,17 @@ module Braintrust
       optional :user_id, String, nil?: true
 
       # @!method initialize(id:, name:, preview_name:, created: nil, org_id: nil, user_id: nil)
-      #   @param id [String]
-      #   @param name [String]
+      #   @param id [String] Unique identifier for the api key
+      #
+      #   @param name [String] Name of the api key
+      #
       #   @param preview_name [String]
-      #   @param created [Time, nil]
-      #   @param org_id [String, nil]
-      #   @param user_id [String, nil]
+      #
+      #   @param created [Time, nil] Date of api key creation
+      #
+      #   @param org_id [String, nil] Unique identifier for the organization
+      #
+      #   @param user_id [String, nil] Unique identifier for the user
     end
   end
 end

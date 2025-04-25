@@ -59,13 +59,24 @@ module Braintrust
           .returns(T.attached_class)
       end
       def self.new(
+        # Id of default base experiment to compare against when viewing this experiment
         base_exp_id: nil,
+        # Identifier of the linked dataset, or null if the experiment is not linked to a
+        # dataset
         dataset_id: nil,
+        # Version number of the linked dataset the experiment was run against. This can be
+        # used to reproduce the experiment after the dataset has been modified.
         dataset_version: nil,
+        # Textual description of the experiment
         description: nil,
+        # User-controlled metadata about the experiment
         metadata: nil,
+        # Name of the experiment. Within a project, experiment names are unique
         name: nil,
+        # Whether or not the experiment is public. Public experiments can be viewed by
+        # anybody inside or outside the organization
         public: nil,
+        # Metadata about the state of the repo when the experiment was created
         repo_info: nil,
         request_options: {}
       ); end

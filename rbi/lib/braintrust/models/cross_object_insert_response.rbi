@@ -23,8 +23,14 @@ module Braintrust
         )
           .returns(T.attached_class)
       end
-      def self.new(dataset: nil, experiment: nil, project_logs: nil); end
-
+      def self.new(
+        # A mapping from dataset id to row ids for inserted `events`
+        dataset: nil,
+        # A mapping from experiment id to row ids for inserted `events`
+        experiment: nil,
+        # A mapping from project id to row ids for inserted `events`
+        project_logs: nil
+      ); end
       sig do
         override
           .returns(

@@ -80,16 +80,30 @@ module Braintrust
       optional :version, String
 
       # @!method initialize(ending_before: nil, ids: nil, limit: nil, org_name: nil, project_id: nil, project_name: nil, prompt_name: nil, slug: nil, starting_after: nil, version: nil, request_options: {})
-      #   @param ending_before [String]
-      #   @param ids [String, Array<String>]
-      #   @param limit [Integer, nil]
-      #   @param org_name [String]
-      #   @param project_id [String]
-      #   @param project_name [String]
-      #   @param prompt_name [String]
-      #   @param slug [String]
-      #   @param starting_after [String]
-      #   @param version [String]
+      #   Some parameter documentations has been truncated, see
+      #   {Braintrust::Models::PromptListParams} for more details.
+      #
+      #   @param ending_before [String] Pagination cursor id. ...
+      #
+      #   @param ids [String, Array<String>] Filter search results to a particular set of object IDs. To specify a list of ID
+      #   ...
+      #
+      #   @param limit [Integer, nil] Limit the number of objects to return
+      #
+      #   @param org_name [String] Filter search results to within a particular organization
+      #
+      #   @param project_id [String] Project id
+      #
+      #   @param project_name [String] Name of the project to search for
+      #
+      #   @param prompt_name [String] Name of the prompt to search for
+      #
+      #   @param slug [String] Retrieve prompt with a specific slug
+      #
+      #   @param starting_after [String] Pagination cursor id. ...
+      #
+      #   @param version [String] Retrieve prompt at a specific version. ...
+      #
       #   @param request_options [Braintrust::RequestOptions, Hash{Symbol=>Object}]
 
       # Filter search results to a particular set of object IDs. To specify a list of

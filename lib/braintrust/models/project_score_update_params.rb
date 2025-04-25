@@ -37,11 +37,16 @@ module Braintrust
       optional :score_type, enum: -> { Braintrust::Models::ProjectScoreType }, nil?: true
 
       # @!method initialize(categories: nil, config: nil, description: nil, name: nil, score_type: nil, request_options: {})
-      #   @param categories [Array<Braintrust::Models::ProjectScoreCategory>, Hash{Symbol=>Float}, Array<String>, nil]
+      #   @param categories [Array<Braintrust::Models::ProjectScoreCategory>, Hash{Symbol=>Float}, Array<String>, nil] For categorical-type project scores, the list of all categories
+      #
       #   @param config [Braintrust::Models::ProjectScoreConfig, nil]
-      #   @param description [String, nil]
-      #   @param name [String, nil]
-      #   @param score_type [Symbol, Braintrust::Models::ProjectScoreType, nil]
+      #
+      #   @param description [String, nil] Textual description of the project score
+      #
+      #   @param name [String, nil] Name of the project score
+      #
+      #   @param score_type [Symbol, Braintrust::Models::ProjectScoreType, nil] The type of the configured score
+      #
       #   @param request_options [Braintrust::RequestOptions, Hash{Symbol=>Object}]
 
       # For categorical-type project scores, the list of all categories

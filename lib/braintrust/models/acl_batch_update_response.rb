@@ -34,8 +34,14 @@ module Braintrust
       required :removed_acls, -> { Braintrust::Internal::Type::ArrayOf[Braintrust::Models::ACL] }
 
       # @!method initialize(added_acls:, removed_acls:)
-      #   @param added_acls [Array<Braintrust::Models::ACL>]
-      #   @param removed_acls [Array<Braintrust::Models::ACL>]
+      #   Some parameter documentations has been truncated, see
+      #   {Braintrust::Models::ACLBatchUpdateResponse} for more details.
+      #
+      #   @param added_acls [Array<Braintrust::Models::ACL>] An ACL grants a certain permission or role to a certain user or group on an obje
+      #   ...
+      #
+      #   @param removed_acls [Array<Braintrust::Models::ACL>] An ACL grants a certain permission or role to a certain user or group on an obje
+      #   ...
     end
   end
 end

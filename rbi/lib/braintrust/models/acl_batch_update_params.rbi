@@ -44,8 +44,31 @@ module Braintrust
         )
           .returns(T.attached_class)
       end
-      def self.new(add_acls: nil, remove_acls: nil, request_options: {}); end
-
+      def self.new(
+        # An ACL grants a certain permission or role to a certain user or group on an
+        # object.
+        #
+        # ACLs are inherited across the object hierarchy. So for example, if a user has
+        # read permissions on a project, they will also have read permissions on any
+        # experiment, dataset, etc. created within that project.
+        #
+        # To restrict a grant to a particular sub-object, you may specify
+        # `restrict_object_type` in the ACL, as part of a direct permission grant or as
+        # part of a role.
+        add_acls: nil,
+        # An ACL grants a certain permission or role to a certain user or group on an
+        # object.
+        #
+        # ACLs are inherited across the object hierarchy. So for example, if a user has
+        # read permissions on a project, they will also have read permissions on any
+        # experiment, dataset, etc. created within that project.
+        #
+        # To restrict a grant to a particular sub-object, you may specify
+        # `restrict_object_type` in the ACL, as part of a direct permission grant or as
+        # part of a role.
+        remove_acls: nil,
+        request_options: {}
+      ); end
       sig do
         override
           .returns(
@@ -115,12 +138,24 @@ module Braintrust
             .returns(T.attached_class)
         end
         def self.new(
+          # The id of the object the ACL applies to
           object_id_:,
+          # The object type that the ACL applies to
           object_type:,
+          # Id of the group the ACL applies to. Exactly one of `user_id` and `group_id` will
+          # be provided
           group_id: nil,
+          # Permission the ACL grants. Exactly one of `permission` and `role_id` will be
+          # provided
           permission: nil,
+          # When setting a permission directly, optionally restricts the permission grant to
+          # just the specified object type. Cannot be set alongside a `role_id`.
           restrict_object_type: nil,
+          # Id of the role the ACL grants. Exactly one of `permission` and `role_id` will be
+          # provided
           role_id: nil,
+          # Id of the user the ACL applies to. Exactly one of `user_id` and `group_id` will
+          # be provided
           user_id: nil
         ); end
         sig do
@@ -197,12 +232,24 @@ module Braintrust
             .returns(T.attached_class)
         end
         def self.new(
+          # The id of the object the ACL applies to
           object_id_:,
+          # The object type that the ACL applies to
           object_type:,
+          # Id of the group the ACL applies to. Exactly one of `user_id` and `group_id` will
+          # be provided
           group_id: nil,
+          # Permission the ACL grants. Exactly one of `permission` and `role_id` will be
+          # provided
           permission: nil,
+          # When setting a permission directly, optionally restricts the permission grant to
+          # just the specified object type. Cannot be set alongside a `role_id`.
           restrict_object_type: nil,
+          # Id of the role the ACL grants. Exactly one of `permission` and `role_id` will be
+          # provided
           role_id: nil,
+          # Id of the user the ACL applies to. Exactly one of `user_id` and `group_id` will
+          # be provided
           user_id: nil
         ); end
         sig do

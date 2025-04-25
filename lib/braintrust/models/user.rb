@@ -40,12 +40,17 @@ module Braintrust
       optional :given_name, String, nil?: true
 
       # @!method initialize(id:, avatar_url: nil, created: nil, email: nil, family_name: nil, given_name: nil)
-      #   @param id [String]
-      #   @param avatar_url [String, nil]
-      #   @param created [Time, nil]
-      #   @param email [String, nil]
-      #   @param family_name [String, nil]
-      #   @param given_name [String, nil]
+      #   @param id [String] Unique identifier for the user
+      #
+      #   @param avatar_url [String, nil] URL of the user's Avatar image
+      #
+      #   @param created [Time, nil] Date of user creation
+      #
+      #   @param email [String, nil] The user's email
+      #
+      #   @param family_name [String, nil] Family name of the user
+      #
+      #   @param given_name [String, nil] Given name of the user
     end
   end
 end

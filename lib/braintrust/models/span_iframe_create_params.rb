@@ -39,11 +39,20 @@ module Braintrust
       optional :post_message, Braintrust::Internal::Type::Boolean, nil?: true
 
       # @!method initialize(name:, project_id:, url:, description: nil, post_message: nil, request_options: {})
-      #   @param name [String]
-      #   @param project_id [String]
-      #   @param url [String]
-      #   @param description [String, nil]
-      #   @param post_message [Boolean, nil]
+      #   Some parameter documentations has been truncated, see
+      #   {Braintrust::Models::SpanIframeCreateParams} for more details.
+      #
+      #   @param name [String] Name of the span iframe
+      #
+      #   @param project_id [String] Unique identifier for the project that the span iframe belongs under
+      #
+      #   @param url [String] URL to embed the project viewer in an iframe
+      #
+      #   @param description [String, nil] Textual description of the span iframe
+      #
+      #   @param post_message [Boolean, nil] Whether to post messages to the iframe containing the span's data. This is usefu
+      #   ...
+      #
       #   @param request_options [Braintrust::RequestOptions, Hash{Symbol=>Object}]
     end
   end

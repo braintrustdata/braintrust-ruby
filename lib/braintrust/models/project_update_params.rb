@@ -21,8 +21,14 @@ module Braintrust
       optional :settings, -> { Braintrust::Models::ProjectSettings }, nil?: true
 
       # @!method initialize(name: nil, settings: nil, request_options: {})
-      #   @param name [String, nil]
-      #   @param settings [Braintrust::Models::ProjectSettings, nil]
+      #   Some parameter documentations has been truncated, see
+      #   {Braintrust::Models::ProjectUpdateParams} for more details.
+      #
+      #   @param name [String, nil] Name of the project
+      #
+      #   @param settings [Braintrust::Models::ProjectSettings, nil] Project settings. Patch operations replace all settings, so make sure you includ
+      #   ...
+      #
       #   @param request_options [Braintrust::RequestOptions, Hash{Symbol=>Object}]
     end
   end

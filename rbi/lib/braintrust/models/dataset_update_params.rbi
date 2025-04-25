@@ -27,8 +27,15 @@ module Braintrust
         )
           .returns(T.attached_class)
       end
-      def self.new(description: nil, metadata: nil, name: nil, request_options: {}); end
-
+      def self.new(
+        # Textual description of the dataset
+        description: nil,
+        # User-controlled metadata about the dataset
+        metadata: nil,
+        # Name of the dataset. Within a project, dataset names are unique
+        name: nil,
+        request_options: {}
+      ); end
       sig do
         override
           .returns(

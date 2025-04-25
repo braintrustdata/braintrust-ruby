@@ -3,16 +3,26 @@
 module Braintrust
   module Resources
     class AISecrets
+      # Some parameter documentations has been truncated, see
+      # {Braintrust::Models::AISecretCreateParams} for more details.
+      #
       # Create a new ai_secret. If there is an existing ai_secret with the same name as
       # the one specified in the request, will return the existing ai_secret unmodified
       #
       # @overload create(name:, metadata: nil, org_name: nil, secret: nil, type: nil, request_options: {})
       #
-      # @param name [String]
+      # @param name [String] Name of the AI secret
+      #
       # @param metadata [Hash{Symbol=>Object, nil}, nil]
-      # @param org_name [String, nil]
-      # @param secret [String, nil]
+      #
+      # @param org_name [String, nil] For nearly all users, this parameter should be unnecessary. But in the rare case
+      # ...
+      #
+      # @param secret [String, nil] Secret value. If omitted in a PUT request, the existing secret value will be lef
+      # ...
+      #
       # @param type [String, nil]
+      #
       # @param request_options [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil]
       #
       # @return [Braintrust::Models::AISecret]
@@ -33,7 +43,8 @@ module Braintrust
       #
       # @overload retrieve(ai_secret_id, request_options: {})
       #
-      # @param ai_secret_id [String]
+      # @param ai_secret_id [String] AiSecret id
+      #
       # @param request_options [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil]
       #
       # @return [Braintrust::Models::AISecret]
@@ -54,11 +65,16 @@ module Braintrust
       #
       # @overload update(ai_secret_id, metadata: nil, name: nil, secret: nil, type: nil, request_options: {})
       #
-      # @param ai_secret_id [String]
+      # @param ai_secret_id [String] AiSecret id
+      #
       # @param metadata [Hash{Symbol=>Object, nil}, nil]
-      # @param name [String, nil]
+      #
+      # @param name [String, nil] Name of the AI secret
+      #
       # @param secret [String, nil]
+      #
       # @param type [String, nil]
+      #
       # @param request_options [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil]
       #
       # @return [Braintrust::Models::AISecret]
@@ -75,18 +91,29 @@ module Braintrust
         )
       end
 
+      # Some parameter documentations has been truncated, see
+      # {Braintrust::Models::AISecretListParams} for more details.
+      #
       # List out all ai_secrets. The ai_secrets are sorted by creation date, with the
       # most recently-created ai_secrets coming first
       #
       # @overload list(ai_secret_name: nil, ai_secret_type: nil, ending_before: nil, ids: nil, limit: nil, org_name: nil, starting_after: nil, request_options: {})
       #
-      # @param ai_secret_name [String]
+      # @param ai_secret_name [String] Name of the ai_secret to search for
+      #
       # @param ai_secret_type [String, Array<String>]
-      # @param ending_before [String]
-      # @param ids [String, Array<String>]
-      # @param limit [Integer, nil]
-      # @param org_name [String]
-      # @param starting_after [String]
+      #
+      # @param ending_before [String] Pagination cursor id. ...
+      #
+      # @param ids [String, Array<String>] Filter search results to a particular set of object IDs. To specify a list of ID
+      # ...
+      #
+      # @param limit [Integer, nil] Limit the number of objects to return
+      #
+      # @param org_name [String] Filter search results to within a particular organization
+      #
+      # @param starting_after [String] Pagination cursor id. ...
+      #
       # @param request_options [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil]
       #
       # @return [Braintrust::Internal::ListObjects<Braintrust::Models::AISecret>]
@@ -108,7 +135,8 @@ module Braintrust
       #
       # @overload delete(ai_secret_id, request_options: {})
       #
-      # @param ai_secret_id [String]
+      # @param ai_secret_id [String] AiSecret id
+      #
       # @param request_options [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil]
       #
       # @return [Braintrust::Models::AISecret]
@@ -123,12 +151,18 @@ module Braintrust
         )
       end
 
+      # Some parameter documentations has been truncated, see
+      # {Braintrust::Models::AISecretFindAndDeleteParams} for more details.
+      #
       # Delete a single ai_secret
       #
       # @overload find_and_delete(name:, org_name: nil, request_options: {})
       #
-      # @param name [String]
-      # @param org_name [String, nil]
+      # @param name [String] Name of the AI secret
+      #
+      # @param org_name [String, nil] For nearly all users, this parameter should be unnecessary. But in the rare case
+      # ...
+      #
       # @param request_options [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil]
       #
       # @return [Braintrust::Models::AISecret]
@@ -145,17 +179,27 @@ module Braintrust
         )
       end
 
+      # Some parameter documentations has been truncated, see
+      # {Braintrust::Models::AISecretReplaceParams} for more details.
+      #
       # Create or replace ai_secret. If there is an existing ai_secret with the same
       # name as the one specified in the request, will replace the existing ai_secret
       # with the provided fields
       #
       # @overload replace(name:, metadata: nil, org_name: nil, secret: nil, type: nil, request_options: {})
       #
-      # @param name [String]
+      # @param name [String] Name of the AI secret
+      #
       # @param metadata [Hash{Symbol=>Object, nil}, nil]
-      # @param org_name [String, nil]
-      # @param secret [String, nil]
+      #
+      # @param org_name [String, nil] For nearly all users, this parameter should be unnecessary. But in the rare case
+      # ...
+      #
+      # @param secret [String, nil] Secret value. If omitted in a PUT request, the existing secret value will be lef
+      # ...
+      #
       # @param type [String, nil]
+      #
       # @param request_options [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil]
       #
       # @return [Braintrust::Models::AISecret]

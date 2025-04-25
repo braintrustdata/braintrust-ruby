@@ -37,11 +37,16 @@ module Braintrust
       optional :tags, Braintrust::Internal::Type::ArrayOf[String], nil?: true
 
       # @!method initialize(description: nil, function_data: nil, name: nil, prompt_data: nil, tags: nil, request_options: {})
-      #   @param description [String, nil]
+      #   @param description [String, nil] Textual description of the prompt
+      #
       #   @param function_data [Braintrust::Models::FunctionUpdateParams::FunctionData::Prompt, Braintrust::Models::FunctionUpdateParams::FunctionData::Code, Braintrust::Models::FunctionUpdateParams::FunctionData::Global, nil]
-      #   @param name [String, nil]
-      #   @param prompt_data [Braintrust::Models::PromptData, nil]
-      #   @param tags [Array<String>, nil]
+      #
+      #   @param name [String, nil] Name of the prompt
+      #
+      #   @param prompt_data [Braintrust::Models::PromptData, nil] The prompt, model, and its parameters
+      #
+      #   @param tags [Array<String>, nil] A list of tags for the prompt
+      #
       #   @param request_options [Braintrust::RequestOptions, Hash{Symbol=>Object}]
 
       module FunctionData

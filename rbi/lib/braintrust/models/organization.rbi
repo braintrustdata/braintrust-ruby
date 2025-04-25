@@ -40,16 +40,17 @@ module Braintrust
           .returns(T.attached_class)
       end
       def self.new(
+        # Unique identifier for the organization
         id:,
+        # Name of the organization
         name:,
         api_url: nil,
+        # Date of organization creation
         created: nil,
         is_universal_api: nil,
         proxy_url: nil,
         realtime_url: nil
-      )
-      end
-
+      ); end
       sig do
         override
           .returns(

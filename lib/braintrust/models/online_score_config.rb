@@ -29,10 +29,13 @@ module Braintrust
       optional :apply_to_span_names, Braintrust::Internal::Type::ArrayOf[String], nil?: true
 
       # @!method initialize(sampling_rate:, scorers:, apply_to_root_span: nil, apply_to_span_names: nil)
-      #   @param sampling_rate [Float]
-      #   @param scorers [Array<Braintrust::Models::OnlineScoreConfig::Scorer::Function, Braintrust::Models::OnlineScoreConfig::Scorer::Global>]
-      #   @param apply_to_root_span [Boolean, nil]
-      #   @param apply_to_span_names [Array<String>, nil]
+      #   @param sampling_rate [Float] The sampling rate for online scoring
+      #
+      #   @param scorers [Array<Braintrust::Models::OnlineScoreConfig::Scorer::Function, Braintrust::Models::OnlineScoreConfig::Scorer::Global>] The list of scorers to use for online scoring
+      #
+      #   @param apply_to_root_span [Boolean, nil] Whether to trigger online scoring on the root span of each trace
+      #
+      #   @param apply_to_span_names [Array<String>, nil] Trigger online scoring on any spans with a name in this list
 
       module Scorer
         extend Braintrust::Internal::Type::Union

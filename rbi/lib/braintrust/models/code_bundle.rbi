@@ -44,8 +44,13 @@ module Braintrust
         )
           .returns(T.attached_class)
       end
-      def self.new(bundle_id:, location:, runtime_context:, preview: nil); end
-
+      def self.new(
+        bundle_id:,
+        location:,
+        runtime_context:,
+        # A preview of the code
+        preview: nil
+      ); end
       sig do
         override
           .returns(

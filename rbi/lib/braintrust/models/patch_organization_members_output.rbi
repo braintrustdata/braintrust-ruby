@@ -23,8 +23,14 @@ module Braintrust
         )
           .returns(T.attached_class)
       end
-      def self.new(org_id:, status:, send_email_error: nil); end
-
+      def self.new(
+        # The id of the org that was modified.
+        org_id:,
+        status:,
+        # If invite emails failed to send for some reason, the patch operation will still
+        # complete, but we will return an error message here
+        send_email_error: nil
+      ); end
       sig do
         override
           .returns(

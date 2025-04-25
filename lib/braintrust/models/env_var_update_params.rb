@@ -20,8 +20,10 @@ module Braintrust
       optional :value, String, nil?: true
 
       # @!method initialize(name:, value: nil, request_options: {})
-      #   @param name [String]
-      #   @param value [String, nil]
+      #   @param name [String] The name of the environment variable
+      #
+      #   @param value [String, nil] The value of the environment variable. Will be encrypted at rest.
+      #
       #   @param request_options [Braintrust::RequestOptions, Hash{Symbol=>Object}]
     end
   end

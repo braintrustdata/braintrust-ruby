@@ -54,14 +54,21 @@ module Braintrust
       optional :user_id, String, nil?: true
 
       # @!method initialize(id:, name:, project_id:, created: nil, deleted_at: nil, description: nil, metadata: nil, user_id: nil)
-      #   @param id [String]
-      #   @param name [String]
-      #   @param project_id [String]
-      #   @param created [Time, nil]
-      #   @param deleted_at [Time, nil]
-      #   @param description [String, nil]
-      #   @param metadata [Hash{Symbol=>Object, nil}, nil]
-      #   @param user_id [String, nil]
+      #   @param id [String] Unique identifier for the dataset
+      #
+      #   @param name [String] Name of the dataset. Within a project, dataset names are unique
+      #
+      #   @param project_id [String] Unique identifier for the project that the dataset belongs under
+      #
+      #   @param created [Time, nil] Date of dataset creation
+      #
+      #   @param deleted_at [Time, nil] Date of dataset deletion, or null if the dataset is still active
+      #
+      #   @param description [String, nil] Textual description of the dataset
+      #
+      #   @param metadata [Hash{Symbol=>Object, nil}, nil] User-controlled metadata about the dataset
+      #
+      #   @param user_id [String, nil] Identifies the user who created the dataset
     end
   end
 end

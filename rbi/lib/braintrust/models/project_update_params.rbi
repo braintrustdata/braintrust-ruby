@@ -28,8 +28,14 @@ module Braintrust
         )
           .returns(T.attached_class)
       end
-      def self.new(name: nil, settings: nil, request_options: {}); end
-
+      def self.new(
+        # Name of the project
+        name: nil,
+        # Project settings. Patch operations replace all settings, so make sure you
+        # include all settings you want to keep.
+        settings: nil,
+        request_options: {}
+      ); end
       sig do
         override
           .returns(

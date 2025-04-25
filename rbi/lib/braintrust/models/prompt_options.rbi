@@ -251,6 +251,7 @@ module Braintrust
           def self.new(
             frequency_penalty: nil,
             function_call: nil,
+            # The successor to max_tokens
             max_completion_tokens: nil,
             max_tokens: nil,
             n: nil,
@@ -756,6 +757,7 @@ module Braintrust
           def self.new(
             max_tokens:,
             temperature:,
+            # This is a legacy parameter that should not be used.
             max_tokens_to_sample: nil,
             stop_sequences: nil,
             top_k: nil,

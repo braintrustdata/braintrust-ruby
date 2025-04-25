@@ -9,8 +9,10 @@ module Braintrust
 
       # Summary of a dataset's data
       sig { params(total_records: Integer).returns(T.attached_class) }
-      def self.new(total_records:); end
-
+      def self.new(
+        # Total number of records in the dataset
+        total_records:
+      ); end
       sig { override.returns({total_records: Integer}) }
       def to_hash; end
     end

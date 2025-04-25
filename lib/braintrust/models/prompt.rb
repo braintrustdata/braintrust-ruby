@@ -86,19 +86,35 @@ module Braintrust
       optional :tags, Braintrust::Internal::Type::ArrayOf[String], nil?: true
 
       # @!method initialize(id:, _xact_id:, log_id:, name:, org_id:, project_id:, slug:, created: nil, description: nil, function_type: nil, metadata: nil, prompt_data: nil, tags: nil)
-      #   @param id [String]
-      #   @param _xact_id [String]
-      #   @param log_id [Symbol, Braintrust::Models::Prompt::LogID]
-      #   @param name [String]
-      #   @param org_id [String]
-      #   @param project_id [String]
-      #   @param slug [String]
-      #   @param created [Time, nil]
-      #   @param description [String, nil]
+      #   Some parameter documentations has been truncated, see
+      #   {Braintrust::Models::Prompt} for more details.
+      #
+      #   @param id [String] Unique identifier for the prompt
+      #
+      #   @param _xact_id [String] The transaction id of an event is unique to the network operation that processed
+      #   ...
+      #
+      #   @param log_id [Symbol, Braintrust::Models::Prompt::LogID] A literal 'p' which identifies the object as a project prompt
+      #
+      #   @param name [String] Name of the prompt
+      #
+      #   @param org_id [String] Unique identifier for the organization
+      #
+      #   @param project_id [String] Unique identifier for the project that the prompt belongs under
+      #
+      #   @param slug [String] Unique identifier for the prompt
+      #
+      #   @param created [Time, nil] Date of prompt creation
+      #
+      #   @param description [String, nil] Textual description of the prompt
+      #
       #   @param function_type [Symbol, Braintrust::Models::Prompt::FunctionType, nil]
-      #   @param metadata [Hash{Symbol=>Object, nil}, nil]
-      #   @param prompt_data [Braintrust::Models::PromptData, nil]
-      #   @param tags [Array<String>, nil]
+      #
+      #   @param metadata [Hash{Symbol=>Object, nil}, nil] User-controlled metadata about the prompt
+      #
+      #   @param prompt_data [Braintrust::Models::PromptData, nil] The prompt, model, and its parameters
+      #
+      #   @param tags [Array<String>, nil] A list of tags for the prompt
 
       # A literal 'p' which identifies the object as a project prompt
       #

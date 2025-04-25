@@ -42,8 +42,20 @@ module Braintrust
         )
           .returns(T.attached_class)
       end
-      def self.new(improvements:, metric:, name:, regressions:, unit:, diff: nil); end
-
+      def self.new(
+        # Number of improvements in the metric
+        improvements:,
+        # Average metric across all examples
+        metric:,
+        # Name of the metric
+        name:,
+        # Number of regressions in the metric
+        regressions:,
+        # Unit label for the metric
+        unit:,
+        # Difference in metric between the current and comparison experiment
+        diff: nil
+      ); end
       sig do
         override
           .returns(

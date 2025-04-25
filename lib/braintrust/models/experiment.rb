@@ -93,20 +93,39 @@ module Braintrust
       optional :user_id, String, nil?: true
 
       # @!method initialize(id:, name:, project_id:, public:, base_exp_id: nil, commit: nil, created: nil, dataset_id: nil, dataset_version: nil, deleted_at: nil, description: nil, metadata: nil, repo_info: nil, user_id: nil)
-      #   @param id [String]
-      #   @param name [String]
-      #   @param project_id [String]
-      #   @param public [Boolean]
-      #   @param base_exp_id [String, nil]
-      #   @param commit [String, nil]
-      #   @param created [Time, nil]
-      #   @param dataset_id [String, nil]
-      #   @param dataset_version [String, nil]
-      #   @param deleted_at [Time, nil]
-      #   @param description [String, nil]
-      #   @param metadata [Hash{Symbol=>Object, nil}, nil]
-      #   @param repo_info [Braintrust::Models::RepoInfo, nil]
-      #   @param user_id [String, nil]
+      #   Some parameter documentations has been truncated, see
+      #   {Braintrust::Models::Experiment} for more details.
+      #
+      #   @param id [String] Unique identifier for the experiment
+      #
+      #   @param name [String] Name of the experiment. Within a project, experiment names are unique
+      #
+      #   @param project_id [String] Unique identifier for the project that the experiment belongs under
+      #
+      #   @param public [Boolean] Whether or not the experiment is public. Public experiments can be viewed by any
+      #   ...
+      #
+      #   @param base_exp_id [String, nil] Id of default base experiment to compare against when viewing this experiment
+      #
+      #   @param commit [String, nil] Commit, taken directly from `repo_info.commit`
+      #
+      #   @param created [Time, nil] Date of experiment creation
+      #
+      #   @param dataset_id [String, nil] Identifier of the linked dataset, or null if the experiment is not linked to a d
+      #   ...
+      #
+      #   @param dataset_version [String, nil] Version number of the linked dataset the experiment was run against. This can be
+      #   ...
+      #
+      #   @param deleted_at [Time, nil] Date of experiment deletion, or null if the experiment is still active
+      #
+      #   @param description [String, nil] Textual description of the experiment
+      #
+      #   @param metadata [Hash{Symbol=>Object, nil}, nil] User-controlled metadata about the experiment
+      #
+      #   @param repo_info [Braintrust::Models::RepoInfo, nil] Metadata about the state of the repo when the experiment was created
+      #
+      #   @param user_id [String, nil] Identifies the user who created the experiment
     end
   end
 end

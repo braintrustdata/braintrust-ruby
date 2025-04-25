@@ -56,14 +56,22 @@ module Braintrust
       optional :view_data, -> { Braintrust::Models::ViewData }, nil?: true
 
       # @!method initialize(name:, object_id_:, object_type:, view_type:, deleted_at: nil, options: nil, user_id: nil, view_data: nil, request_options: {})
-      #   @param name [String]
-      #   @param object_id_ [String]
-      #   @param object_type [Symbol, Braintrust::Models::ACLObjectType]
-      #   @param view_type [Symbol, Braintrust::Models::ViewReplaceParams::ViewType, nil]
-      #   @param deleted_at [Time, nil]
-      #   @param options [Braintrust::Models::ViewOptions, nil]
-      #   @param user_id [String, nil]
-      #   @param view_data [Braintrust::Models::ViewData, nil]
+      #   @param name [String] Name of the view
+      #
+      #   @param object_id_ [String] The id of the object the view applies to
+      #
+      #   @param object_type [Symbol, Braintrust::Models::ACLObjectType] The object type that the ACL applies to
+      #
+      #   @param view_type [Symbol, Braintrust::Models::ViewReplaceParams::ViewType, nil] Type of table that the view corresponds to.
+      #
+      #   @param deleted_at [Time, nil] Date of role deletion, or null if the role is still active
+      #
+      #   @param options [Braintrust::Models::ViewOptions, nil] Options for the view in the app
+      #
+      #   @param user_id [String, nil] Identifies the user who created the view
+      #
+      #   @param view_data [Braintrust::Models::ViewData, nil] The view definition
+      #
       #   @param request_options [Braintrust::RequestOptions, Hash{Symbol=>Object}]
 
       # Type of table that the view corresponds to.

@@ -42,8 +42,21 @@ module Braintrust
         )
           .returns(T.attached_class)
       end
-      def self.new(id:, key:, name:, preview_name:, created: nil, org_id: nil, user_id: nil); end
-
+      def self.new(
+        # Unique identifier for the api key
+        id:,
+        # The raw API key. It will only be exposed this one time
+        key:,
+        # Name of the api key
+        name:,
+        preview_name:,
+        # Date of api key creation
+        created: nil,
+        # Unique identifier for the organization
+        org_id: nil,
+        # Unique identifier for the user
+        user_id: nil
+      ); end
       sig do
         override
           .returns(

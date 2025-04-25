@@ -45,12 +45,19 @@ module Braintrust
           .returns(T.attached_class)
       end
       def self.new(
+        # Name of the experiment
         experiment_name:,
+        # URL to the experiment's page in the Braintrust app
         experiment_url:,
+        # Name of the project that the experiment belongs to
         project_name:,
+        # URL to the project's page in the Braintrust app
         project_url:,
+        # The experiment which scores are baselined against
         comparison_experiment_name: nil,
+        # Summary of the experiment's metrics
         metrics: nil,
+        # Summary of the experiment's scores
         scores: nil
       ); end
       sig do

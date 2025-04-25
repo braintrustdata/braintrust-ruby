@@ -63,9 +63,23 @@ module Braintrust
           )
             .returns(T.attached_class)
         end
-        def self.new(invite_users: nil, org_id: nil, org_name: nil, remove_users: nil, request_options: {})
-        end
-
+        def self.new(
+          # Users to invite to the organization
+          invite_users: nil,
+          # For nearly all users, this parameter should be unnecessary. But in the rare case
+          # that your API key belongs to multiple organizations, or in case you want to
+          # explicitly assert the organization you are modifying, you may specify the id of
+          # the organization.
+          org_id: nil,
+          # For nearly all users, this parameter should be unnecessary. But in the rare case
+          # that your API key belongs to multiple organizations, or in case you want to
+          # explicitly assert the organization you are modifying, you may specify the name
+          # of the organization.
+          org_name: nil,
+          # Users to remove from the organization
+          remove_users: nil,
+          request_options: {}
+        ); end
         sig do
           override
             .returns(
@@ -123,12 +137,19 @@ module Braintrust
               .returns(T.attached_class)
           end
           def self.new(
+            # Emails of users to invite
             emails: nil,
+            # Singular form of group_ids
             group_id: nil,
+            # Optional list of group ids to add newly-invited users to.
             group_ids: nil,
+            # Singular form of group_names
             group_name: nil,
+            # Optional list of group names to add newly-invited users to.
             group_names: nil,
+            # Ids of existing users to invite
             ids: nil,
+            # If true, send invite emails to the users who wore actually added
             send_invite_emails: nil
           ); end
           sig do
@@ -164,8 +185,12 @@ module Braintrust
               ids: T.nilable(T::Array[String])
             ).returns(T.attached_class)
           end
-          def self.new(emails: nil, ids: nil); end
-
+          def self.new(
+            # Emails of users to remove
+            emails: nil,
+            # Ids of users to remove
+            ids: nil
+          ); end
           sig { override.returns({emails: T.nilable(T::Array[String]), ids: T.nilable(T::Array[String])}) }
           def to_hash; end
         end

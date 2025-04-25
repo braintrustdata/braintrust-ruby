@@ -44,12 +44,18 @@ module Braintrust
       optional :remove_member_users, Braintrust::Internal::Type::ArrayOf[String], nil?: true
 
       # @!method initialize(add_member_groups: nil, add_member_users: nil, description: nil, name: nil, remove_member_groups: nil, remove_member_users: nil, request_options: {})
-      #   @param add_member_groups [Array<String>, nil]
-      #   @param add_member_users [Array<String>, nil]
-      #   @param description [String, nil]
-      #   @param name [String, nil]
-      #   @param remove_member_groups [Array<String>, nil]
-      #   @param remove_member_users [Array<String>, nil]
+      #   @param add_member_groups [Array<String>, nil] A list of group IDs to add to the group's inheriting-from set
+      #
+      #   @param add_member_users [Array<String>, nil] A list of user IDs to add to the group
+      #
+      #   @param description [String, nil] Textual description of the group
+      #
+      #   @param name [String, nil] Name of the group
+      #
+      #   @param remove_member_groups [Array<String>, nil] A list of group IDs to remove from the group's inheriting-from set
+      #
+      #   @param remove_member_users [Array<String>, nil] A list of user IDs to remove from the group
+      #
       #   @param request_options [Braintrust::RequestOptions, Hash{Symbol=>Object}]
     end
   end

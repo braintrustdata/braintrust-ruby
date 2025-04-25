@@ -3,13 +3,19 @@
 module Braintrust
   module Resources
     class APIKeys
+      # Some parameter documentations has been truncated, see
+      # {Braintrust::Models::APIKeyCreateParams} for more details.
+      #
       # Create a new api_key. It is possible to have multiple API keys with the same
       # name. There is no de-duplication
       #
       # @overload create(name:, org_name: nil, request_options: {})
       #
-      # @param name [String]
-      # @param org_name [String, nil]
+      # @param name [String] Name of the api key. Does not have to be unique
+      #
+      # @param org_name [String, nil] For nearly all users, this parameter should be unnecessary. But in the rare case
+      # ...
+      #
       # @param request_options [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil]
       #
       # @return [Braintrust::Models::CreateAPIKeyOutput]
@@ -30,7 +36,8 @@ module Braintrust
       #
       # @overload retrieve(api_key_id, request_options: {})
       #
-      # @param api_key_id [String]
+      # @param api_key_id [String] ApiKey id
+      #
       # @param request_options [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil]
       #
       # @return [Braintrust::Models::APIKey]
@@ -45,17 +52,27 @@ module Braintrust
         )
       end
 
+      # Some parameter documentations has been truncated, see
+      # {Braintrust::Models::APIKeyListParams} for more details.
+      #
       # List out all api_keys. The api_keys are sorted by creation date, with the most
       # recently-created api_keys coming first
       #
       # @overload list(api_key_name: nil, ending_before: nil, ids: nil, limit: nil, org_name: nil, starting_after: nil, request_options: {})
       #
-      # @param api_key_name [String]
-      # @param ending_before [String]
-      # @param ids [String, Array<String>]
-      # @param limit [Integer, nil]
-      # @param org_name [String]
-      # @param starting_after [String]
+      # @param api_key_name [String] Name of the api_key to search for
+      #
+      # @param ending_before [String] Pagination cursor id. ...
+      #
+      # @param ids [String, Array<String>] Filter search results to a particular set of object IDs. To specify a list of ID
+      # ...
+      #
+      # @param limit [Integer, nil] Limit the number of objects to return
+      #
+      # @param org_name [String] Filter search results to within a particular organization
+      #
+      # @param starting_after [String] Pagination cursor id. ...
+      #
       # @param request_options [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil]
       #
       # @return [Braintrust::Internal::ListObjects<Braintrust::Models::APIKey>]
@@ -77,7 +94,8 @@ module Braintrust
       #
       # @overload delete(api_key_id, request_options: {})
       #
-      # @param api_key_id [String]
+      # @param api_key_id [String] ApiKey id
+      #
       # @param request_options [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil]
       #
       # @return [Braintrust::Models::APIKey]

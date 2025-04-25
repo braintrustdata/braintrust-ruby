@@ -21,8 +21,15 @@ module Braintrust
         )
           .returns(T.attached_class)
       end
-      def self.new(events:, cursor: nil); end
-
+      def self.new(
+        # A list of fetched events
+        events:,
+        # Pagination cursor
+        #
+        # Pass this string directly as the `cursor` param to your next fetch request to
+        # get the next page of results. Not provided if the returned result set is empty.
+        cursor: nil
+      ); end
       sig { override.returns({events: T::Array[Braintrust::Models::ExperimentEvent], cursor: T.nilable(String)}) }
       def to_hash; end
     end

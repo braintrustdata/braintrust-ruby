@@ -19,8 +19,12 @@ module Braintrust
       optional :cursor, String, nil?: true
 
       # @!method initialize(events:, cursor: nil)
-      #   @param events [Array<Braintrust::Models::DatasetEvent>]
-      #   @param cursor [String, nil]
+      #   Some parameter documentations has been truncated, see
+      #   {Braintrust::Models::FetchDatasetEventsResponse} for more details.
+      #
+      #   @param events [Array<Braintrust::Models::DatasetEvent>] A list of fetched events
+      #
+      #   @param cursor [String, nil] Pagination cursor ...
     end
   end
 end

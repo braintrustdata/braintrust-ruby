@@ -65,14 +65,26 @@ module Braintrust
       optional :starting_after, String
 
       # @!method initialize(dataset_name: nil, ending_before: nil, ids: nil, limit: nil, org_name: nil, project_id: nil, project_name: nil, starting_after: nil, request_options: {})
-      #   @param dataset_name [String]
-      #   @param ending_before [String]
-      #   @param ids [String, Array<String>]
-      #   @param limit [Integer, nil]
-      #   @param org_name [String]
-      #   @param project_id [String]
-      #   @param project_name [String]
-      #   @param starting_after [String]
+      #   Some parameter documentations has been truncated, see
+      #   {Braintrust::Models::DatasetListParams} for more details.
+      #
+      #   @param dataset_name [String] Name of the dataset to search for
+      #
+      #   @param ending_before [String] Pagination cursor id. ...
+      #
+      #   @param ids [String, Array<String>] Filter search results to a particular set of object IDs. To specify a list of ID
+      #   ...
+      #
+      #   @param limit [Integer, nil] Limit the number of objects to return
+      #
+      #   @param org_name [String] Filter search results to within a particular organization
+      #
+      #   @param project_id [String] Project id
+      #
+      #   @param project_name [String] Name of the project to search for
+      #
+      #   @param starting_after [String] Pagination cursor id. ...
+      #
       #   @param request_options [Braintrust::RequestOptions, Hash{Symbol=>Object}]
 
       # Filter search results to a particular set of object IDs. To specify a list of

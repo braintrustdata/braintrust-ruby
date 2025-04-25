@@ -43,10 +43,19 @@ module Braintrust
                  nil?: true
 
         # @!method initialize(invite_users: nil, org_id: nil, org_name: nil, remove_users: nil, request_options: {})
-        #   @param invite_users [Braintrust::Models::Organizations::MemberUpdateParams::InviteUsers, nil]
-        #   @param org_id [String, nil]
-        #   @param org_name [String, nil]
-        #   @param remove_users [Braintrust::Models::Organizations::MemberUpdateParams::RemoveUsers, nil]
+        #   Some parameter documentations has been truncated, see
+        #   {Braintrust::Models::Organizations::MemberUpdateParams} for more details.
+        #
+        #   @param invite_users [Braintrust::Models::Organizations::MemberUpdateParams::InviteUsers, nil] Users to invite to the organization
+        #
+        #   @param org_id [String, nil] For nearly all users, this parameter should be unnecessary. But in the rare case
+        #   ...
+        #
+        #   @param org_name [String, nil] For nearly all users, this parameter should be unnecessary. But in the rare case
+        #   ...
+        #
+        #   @param remove_users [Braintrust::Models::Organizations::MemberUpdateParams::RemoveUsers, nil] Users to remove from the organization
+        #
         #   @param request_options [Braintrust::RequestOptions, Hash{Symbol=>Object}]
 
         class InviteUsers < Braintrust::Internal::Type::BaseModel
@@ -95,13 +104,19 @@ module Braintrust
           # @!method initialize(emails: nil, group_id: nil, group_ids: nil, group_name: nil, group_names: nil, ids: nil, send_invite_emails: nil)
           #   Users to invite to the organization
           #
-          #   @param emails [Array<String>, nil]
-          #   @param group_id [String, nil]
-          #   @param group_ids [Array<String>, nil]
-          #   @param group_name [String, nil]
-          #   @param group_names [Array<String>, nil]
-          #   @param ids [Array<String>, nil]
-          #   @param send_invite_emails [Boolean, nil]
+          #   @param emails [Array<String>, nil] Emails of users to invite
+          #
+          #   @param group_id [String, nil] Singular form of group_ids
+          #
+          #   @param group_ids [Array<String>, nil] Optional list of group ids to add newly-invited users to.
+          #
+          #   @param group_name [String, nil] Singular form of group_names
+          #
+          #   @param group_names [Array<String>, nil] Optional list of group names to add newly-invited users to.
+          #
+          #   @param ids [Array<String>, nil] Ids of existing users to invite
+          #
+          #   @param send_invite_emails [Boolean, nil] If true, send invite emails to the users who wore actually added
         end
 
         class RemoveUsers < Braintrust::Internal::Type::BaseModel
@@ -120,8 +135,9 @@ module Braintrust
           # @!method initialize(emails: nil, ids: nil)
           #   Users to remove from the organization
           #
-          #   @param emails [Array<String>, nil]
-          #   @param ids [Array<String>, nil]
+          #   @param emails [Array<String>, nil] Emails of users to remove
+          #
+          #   @param ids [Array<String>, nil] Ids of users to remove
         end
       end
     end

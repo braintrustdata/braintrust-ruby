@@ -32,8 +32,17 @@ module Braintrust
         )
           .returns(T.attached_class)
       end
-      def self.new(name:, object_id_:, object_type:, value: nil, request_options: {}); end
-
+      def self.new(
+        # The name of the environment variable
+        name:,
+        # The id of the object the environment variable is scoped for
+        object_id_:,
+        # The type of the object the environment variable is scoped for
+        object_type:,
+        # The value of the environment variable. Will be encrypted at rest.
+        value: nil,
+        request_options: {}
+      ); end
       sig do
         override
           .returns(

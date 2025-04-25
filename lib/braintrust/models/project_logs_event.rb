@@ -165,27 +165,61 @@ module Braintrust
       optional :tags, Braintrust::Internal::Type::ArrayOf[String], nil?: true
 
       # @!method initialize(id:, _xact_id:, created:, log_id:, org_id:, project_id:, root_span_id:, span_id:, context: nil, error: nil, expected: nil, input: nil, is_root: nil, metadata: nil, metrics: nil, origin: nil, output: nil, scores: nil, span_attributes: nil, span_parents: nil, tags: nil)
-      #   @param id [String]
-      #   @param _xact_id [String]
-      #   @param created [Time]
-      #   @param log_id [Symbol, Braintrust::Models::ProjectLogsEvent::LogID]
-      #   @param org_id [String]
-      #   @param project_id [String]
-      #   @param root_span_id [String]
-      #   @param span_id [String]
-      #   @param context [Braintrust::Models::ProjectLogsEvent::Context, nil]
-      #   @param error [Object]
-      #   @param expected [Object]
-      #   @param input [Object]
-      #   @param is_root [Boolean, nil]
-      #   @param metadata [Braintrust::Models::ProjectLogsEvent::Metadata, nil]
-      #   @param metrics [Braintrust::Models::ProjectLogsEvent::Metrics, nil]
-      #   @param origin [Braintrust::Models::ObjectReference, nil]
-      #   @param output [Object]
-      #   @param scores [Hash{Symbol=>Float, nil}, nil]
-      #   @param span_attributes [Braintrust::Models::SpanAttributes, nil]
-      #   @param span_parents [Array<String>, nil]
-      #   @param tags [Array<String>, nil]
+      #   Some parameter documentations has been truncated, see
+      #   {Braintrust::Models::ProjectLogsEvent} for more details.
+      #
+      #   @param id [String] A unique identifier for the project logs event. If you don't provide one, BrainT
+      #   ...
+      #
+      #   @param _xact_id [String] The transaction id of an event is unique to the network operation that processed
+      #   ...
+      #
+      #   @param created [Time] The timestamp the project logs event was created
+      #
+      #   @param log_id [Symbol, Braintrust::Models::ProjectLogsEvent::LogID] A literal 'g' which identifies the log as a project log
+      #
+      #   @param org_id [String] Unique id for the organization that the project belongs under
+      #
+      #   @param project_id [String] Unique identifier for the project
+      #
+      #   @param root_span_id [String] A unique identifier for the trace this project logs event belongs to
+      #
+      #   @param span_id [String] A unique identifier used to link different project logs events together as part
+      #   ...
+      #
+      #   @param context [Braintrust::Models::ProjectLogsEvent::Context, nil] Context is additional information about the code that produced the project logs
+      #   ...
+      #
+      #   @param error [Object] The error that occurred, if any.
+      #
+      #   @param expected [Object] The ground truth value (an arbitrary, JSON serializable object) that you'd compa
+      #   ...
+      #
+      #   @param input [Object] The arguments that uniquely define a user input (an arbitrary, JSON serializable
+      #   ...
+      #
+      #   @param is_root [Boolean, nil] Whether this span is a root span
+      #
+      #   @param metadata [Braintrust::Models::ProjectLogsEvent::Metadata, nil] A dictionary with additional data about the test example, model outputs, or just
+      #   ...
+      #
+      #   @param metrics [Braintrust::Models::ProjectLogsEvent::Metrics, nil] Metrics are numerical measurements tracking the execution of the code that produ
+      #   ...
+      #
+      #   @param origin [Braintrust::Models::ObjectReference, nil] Indicates the event was copied from another object.
+      #
+      #   @param output [Object] The output of your application, including post-processing (an arbitrary, JSON se
+      #   ...
+      #
+      #   @param scores [Hash{Symbol=>Float, nil}, nil] A dictionary of numeric values (between 0 and 1) to log. The scores should give
+      #   ...
+      #
+      #   @param span_attributes [Braintrust::Models::SpanAttributes, nil] Human-identifying attributes of the span, such as name, type, etc.
+      #
+      #   @param span_parents [Array<String>, nil] An array of the parent `span_ids` of this project logs event. This should be emp
+      #   ...
+      #
+      #   @param tags [Array<String>, nil] A list of tags to log
 
       # A literal 'g' which identifies the log as a project log
       #
@@ -225,9 +259,11 @@ module Braintrust
         #   `caller_*` attributes to track the location in code which produced the project
         #   logs event
         #
-        #   @param caller_filename [String, nil]
-        #   @param caller_functionname [String, nil]
-        #   @param caller_lineno [Integer, nil]
+        #   @param caller_filename [String, nil] Name of the file in code where the project logs event was created
+        #
+        #   @param caller_functionname [String, nil] The function in code which created the project logs event
+        #
+        #   @param caller_lineno [Integer, nil] Line of code where the project logs event was created
       end
 
       # @see Braintrust::Models::ProjectLogsEvent#metadata
@@ -245,7 +281,7 @@ module Braintrust
         #   anything else that would be useful to slice/dice later. The values in `metadata`
         #   can be any JSON-serializable type, but its keys must be strings
         #
-        #   @param model [String, nil]
+        #   @param model [String, nil] The model used for this example
       end
 
       # @see Braintrust::Models::ProjectLogsEvent#metrics
@@ -303,18 +339,32 @@ module Braintrust
         optional :tokens, Integer, nil?: true
 
         # @!method initialize(caller_filename: nil, caller_functionname: nil, caller_lineno: nil, completion_tokens: nil, end_: nil, prompt_tokens: nil, start: nil, tokens: nil)
+        #   Some parameter documentations has been truncated, see
+        #   {Braintrust::Models::ProjectLogsEvent::Metrics} for more details.
+        #
         #   Metrics are numerical measurements tracking the execution of the code that
         #   produced the project logs event. Use "start" and "end" to track the time span
         #   over which the project logs event was produced
         #
-        #   @param caller_filename [Object]
-        #   @param caller_functionname [Object]
-        #   @param caller_lineno [Object]
-        #   @param completion_tokens [Integer, nil]
-        #   @param end_ [Float, nil]
-        #   @param prompt_tokens [Integer, nil]
-        #   @param start [Float, nil]
-        #   @param tokens [Integer, nil]
+        #   @param caller_filename [Object] This metric is deprecated
+        #
+        #   @param caller_functionname [Object] This metric is deprecated
+        #
+        #   @param caller_lineno [Object] This metric is deprecated
+        #
+        #   @param completion_tokens [Integer, nil] The number of tokens in the completion generated by the model (only set if this
+        #   ...
+        #
+        #   @param end_ [Float, nil] A unix timestamp recording when the section of code which produced the project l
+        #   ...
+        #
+        #   @param prompt_tokens [Integer, nil] The number of tokens in the prompt used to generate the project logs event (only
+        #   ...
+        #
+        #   @param start [Float, nil] A unix timestamp recording when the section of code which produced the project l
+        #   ...
+        #
+        #   @param tokens [Integer, nil] The total number of tokens in the input and output of the project logs event.
       end
     end
   end

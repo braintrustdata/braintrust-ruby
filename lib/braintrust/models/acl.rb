@@ -69,6 +69,9 @@ module Braintrust
       optional :user_id, String, nil?: true
 
       # @!method initialize(id:, _object_org_id:, object_id_:, object_type:, created: nil, group_id: nil, permission: nil, restrict_object_type: nil, role_id: nil, user_id: nil)
+      #   Some parameter documentations has been truncated, see {Braintrust::Models::ACL}
+      #   for more details.
+      #
       #   An ACL grants a certain permission or role to a certain user or group on an
       #   object.
       #
@@ -80,16 +83,30 @@ module Braintrust
       #   `restrict_object_type` in the ACL, as part of a direct permission grant or as
       #   part of a role.
       #
-      #   @param id [String]
-      #   @param _object_org_id [String]
-      #   @param object_id_ [String]
-      #   @param object_type [Symbol, Braintrust::Models::ACLObjectType]
-      #   @param created [Time, nil]
-      #   @param group_id [String, nil]
-      #   @param permission [Symbol, Braintrust::Models::Permission, nil]
-      #   @param restrict_object_type [Symbol, Braintrust::Models::ACLObjectType, nil]
-      #   @param role_id [String, nil]
-      #   @param user_id [String, nil]
+      #   @param id [String] Unique identifier for the acl
+      #
+      #   @param _object_org_id [String] The organization the ACL's referred object belongs to
+      #
+      #   @param object_id_ [String] The id of the object the ACL applies to
+      #
+      #   @param object_type [Symbol, Braintrust::Models::ACLObjectType] The object type that the ACL applies to
+      #
+      #   @param created [Time, nil] Date of acl creation
+      #
+      #   @param group_id [String, nil] Id of the group the ACL applies to. Exactly one of `user_id` and `group_id` will
+      #   ...
+      #
+      #   @param permission [Symbol, Braintrust::Models::Permission, nil] Permission the ACL grants. Exactly one of `permission` and `role_id` will be pro
+      #   ...
+      #
+      #   @param restrict_object_type [Symbol, Braintrust::Models::ACLObjectType, nil] When setting a permission directly, optionally restricts the permission grant to
+      #   ...
+      #
+      #   @param role_id [String, nil] Id of the role the ACL grants. Exactly one of `permission` and `role_id` will be
+      #   ...
+      #
+      #   @param user_id [String, nil] Id of the user the ACL applies to. Exactly one of `user_id` and `group_id` will
+      #   ...
     end
   end
 end

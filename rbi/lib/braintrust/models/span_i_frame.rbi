@@ -55,14 +55,24 @@ module Braintrust
           .returns(T.attached_class)
       end
       def self.new(
+        # Unique identifier for the span iframe
         id:,
+        # Name of the span iframe
         name:,
+        # Unique identifier for the project that the span iframe belongs under
         project_id:,
+        # URL to embed the project viewer in an iframe
         url:,
+        # Date of span iframe creation
         created: nil,
+        # Date of span iframe deletion, or null if the span iframe is still active
         deleted_at: nil,
+        # Textual description of the span iframe
         description: nil,
+        # Whether to post messages to the iframe containing the span's data. This is
+        # useful when you want to render more data than fits in the URL.
         post_message: nil,
+        # Identifies the user who created the span iframe
         user_id: nil
       ); end
       sig do
