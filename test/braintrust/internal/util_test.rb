@@ -200,8 +200,12 @@ class Braintrust::Test::UtilFormDataEncodingTest < Minitest::Test
     file = Pathname(__FILE__)
     headers = {"content-type" => "multipart/form-data"}
     cases = {
+      "abc" => "abc",
       StringIO.new("abc") => "abc",
-      file => /^class Braintrust/
+      Braintrust::FilePart.new("abc") => "abc",
+      Braintrust::FilePart.new(StringIO.new("abc")) => "abc",
+      file => /^class Braintrust/,
+      Braintrust::FilePart.new(file) => /^class Braintrust/
     }
     cases.each do |body, val|
       encoded = Braintrust::Internal::Util.encode_content(headers, body)
@@ -219,7 +223,13 @@ class Braintrust::Test::UtilFormDataEncodingTest < Minitest::Test
       {a: 2, b: nil} => {"a" => "2", "b" => "null"},
       {a: 2, b: [1, 2, 3]} => {"a" => "2", "b" => "1"},
       {strio: StringIO.new("a")} => {"strio" => "a"},
-      {pathname: Pathname(__FILE__)} => {"pathname" => -> { _1.read in /^class Braintrust/ }}
+      {strio: Braintrust::FilePart.new("a")} => {"strio" => "a"},
+      {pathname: Pathname(__FILE__)} => {"pathname" => -> { _1.read in /^class Braintrust/ }},
+      {pathname: Braintrust::FilePart.new(Pathname(__FILE__))} => {
+        "pathname" => -> {
+          _1.read in /^class Braintrust/
+        }
+      }
     }
     cases.each do |body, testcase|
       encoded = Braintrust::Internal::Util.encode_content(headers, body)
