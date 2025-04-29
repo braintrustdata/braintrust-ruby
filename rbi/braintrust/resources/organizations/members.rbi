@@ -15,7 +15,7 @@ module Braintrust
             remove_users: T.nilable(
               T.any(Braintrust::Models::Organizations::MemberUpdateParams::RemoveUsers, Braintrust::Internal::AnyHash)
             ),
-            request_options: T.nilable(T.any(Braintrust::RequestOptions, Braintrust::Internal::AnyHash))
+            request_options: Braintrust::RequestOpts
           )
             .returns(Braintrust::Models::PatchOrganizationMembersOutput)
         end

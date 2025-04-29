@@ -12,7 +12,7 @@ module Braintrust
           org_name: T.nilable(String),
           secret: T.nilable(String),
           type: T.nilable(String),
-          request_options: T.nilable(T.any(Braintrust::RequestOptions, Braintrust::Internal::AnyHash))
+          request_options: Braintrust::RequestOpts
         )
           .returns(Braintrust::Models::AISecret)
       end
@@ -32,10 +32,7 @@ module Braintrust
       ); end
       # Get an ai_secret object by its id
       sig do
-        params(
-          ai_secret_id: String,
-          request_options: T.nilable(T.any(Braintrust::RequestOptions, Braintrust::Internal::AnyHash))
-        )
+        params(ai_secret_id: String, request_options: Braintrust::RequestOpts)
           .returns(Braintrust::Models::AISecret)
       end
       def retrieve(
@@ -53,7 +50,7 @@ module Braintrust
           name: T.nilable(String),
           secret: T.nilable(String),
           type: T.nilable(String),
-          request_options: T.nilable(T.any(Braintrust::RequestOptions, Braintrust::Internal::AnyHash))
+          request_options: Braintrust::RequestOpts
         )
           .returns(Braintrust::Models::AISecret)
       end
@@ -78,7 +75,7 @@ module Braintrust
           limit: T.nilable(Integer),
           org_name: String,
           starting_after: String,
-          request_options: T.nilable(T.any(Braintrust::RequestOptions, Braintrust::Internal::AnyHash))
+          request_options: Braintrust::RequestOpts
         )
           .returns(Braintrust::Internal::ListObjects[Braintrust::Models::AISecret])
       end
@@ -109,10 +106,7 @@ module Braintrust
       ); end
       # Delete an ai_secret object by its id
       sig do
-        params(
-          ai_secret_id: String,
-          request_options: T.nilable(T.any(Braintrust::RequestOptions, Braintrust::Internal::AnyHash))
-        )
+        params(ai_secret_id: String, request_options: Braintrust::RequestOpts)
           .returns(Braintrust::Models::AISecret)
       end
       def delete(
@@ -122,11 +116,7 @@ module Braintrust
       ); end
       # Delete a single ai_secret
       sig do
-        params(
-          name: String,
-          org_name: T.nilable(String),
-          request_options: T.nilable(T.any(Braintrust::RequestOptions, Braintrust::Internal::AnyHash))
-        )
+        params(name: String, org_name: T.nilable(String), request_options: Braintrust::RequestOpts)
           .returns(Braintrust::Models::AISecret)
       end
       def find_and_delete(
@@ -148,7 +138,7 @@ module Braintrust
           org_name: T.nilable(String),
           secret: T.nilable(String),
           type: T.nilable(String),
-          request_options: T.nilable(T.any(Braintrust::RequestOptions, Braintrust::Internal::AnyHash))
+          request_options: Braintrust::RequestOpts
         )
           .returns(Braintrust::Models::AISecret)
       end

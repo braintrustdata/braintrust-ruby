@@ -23,7 +23,7 @@ module Braintrust
           origin: T.nilable(T.any(Braintrust::Models::FunctionCreateParams::Origin, Braintrust::Internal::AnyHash)),
           prompt_data: T.nilable(T.any(Braintrust::Models::PromptData, Braintrust::Internal::AnyHash)),
           tags: T.nilable(T::Array[String]),
-          request_options: T.nilable(T.any(Braintrust::RequestOptions, Braintrust::Internal::AnyHash))
+          request_options: Braintrust::RequestOpts
         )
           .returns(Braintrust::Models::Function)
       end
@@ -49,11 +49,7 @@ module Braintrust
       ); end
       # Get a function object by its id
       sig do
-        params(
-          function_id: String,
-          request_options: T.nilable(T.any(Braintrust::RequestOptions, Braintrust::Internal::AnyHash))
-        )
-          .returns(Braintrust::Models::Function)
+        params(function_id: String, request_options: Braintrust::RequestOpts).returns(Braintrust::Models::Function)
       end
       def retrieve(
         # Function id
@@ -78,7 +74,7 @@ module Braintrust
           name: T.nilable(String),
           prompt_data: T.nilable(T.any(Braintrust::Models::PromptData, Braintrust::Internal::AnyHash)),
           tags: T.nilable(T::Array[String]),
-          request_options: T.nilable(T.any(Braintrust::RequestOptions, Braintrust::Internal::AnyHash))
+          request_options: Braintrust::RequestOpts
         )
           .returns(Braintrust::Models::Function)
       end
@@ -110,7 +106,7 @@ module Braintrust
           slug: String,
           starting_after: String,
           version: String,
-          request_options: T.nilable(T.any(Braintrust::RequestOptions, Braintrust::Internal::AnyHash))
+          request_options: Braintrust::RequestOpts
         )
           .returns(Braintrust::Internal::ListObjects[Braintrust::Models::Function])
       end
@@ -151,11 +147,7 @@ module Braintrust
       ); end
       # Delete a function object by its id
       sig do
-        params(
-          function_id: String,
-          request_options: T.nilable(T.any(Braintrust::RequestOptions, Braintrust::Internal::AnyHash))
-        )
-          .returns(Braintrust::Models::Function)
+        params(function_id: String, request_options: Braintrust::RequestOpts).returns(Braintrust::Models::Function)
       end
       def delete(
         # Function id
@@ -188,7 +180,7 @@ module Braintrust
           ),
           stream: T.nilable(T::Boolean),
           version: String,
-          request_options: T.nilable(T.any(Braintrust::RequestOptions, Braintrust::Internal::AnyHash))
+          request_options: Braintrust::RequestOpts
         )
           .returns(T.nilable(T.anything))
       end
@@ -234,7 +226,7 @@ module Braintrust
           origin: T.nilable(T.any(Braintrust::Models::FunctionReplaceParams::Origin, Braintrust::Internal::AnyHash)),
           prompt_data: T.nilable(T.any(Braintrust::Models::PromptData, Braintrust::Internal::AnyHash)),
           tags: T.nilable(T::Array[String]),
-          request_options: T.nilable(T.any(Braintrust::RequestOptions, Braintrust::Internal::AnyHash))
+          request_options: Braintrust::RequestOpts
         )
           .returns(Braintrust::Models::Function)
       end

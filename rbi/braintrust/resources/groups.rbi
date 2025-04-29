@@ -12,7 +12,7 @@ module Braintrust
           member_groups: T.nilable(T::Array[String]),
           member_users: T.nilable(T::Array[String]),
           org_name: T.nilable(String),
-          request_options: T.nilable(T.any(Braintrust::RequestOptions, Braintrust::Internal::AnyHash))
+          request_options: Braintrust::RequestOpts
         )
           .returns(Braintrust::Models::Group)
       end
@@ -35,13 +35,7 @@ module Braintrust
         request_options: {}
       ); end
       # Get a group object by its id
-      sig do
-        params(
-          group_id: String,
-          request_options: T.nilable(T.any(Braintrust::RequestOptions, Braintrust::Internal::AnyHash))
-        )
-          .returns(Braintrust::Models::Group)
-      end
+      sig { params(group_id: String, request_options: Braintrust::RequestOpts).returns(Braintrust::Models::Group) }
       def retrieve(
         # Group id
         group_id,
@@ -59,7 +53,7 @@ module Braintrust
           name: T.nilable(String),
           remove_member_groups: T.nilable(T::Array[String]),
           remove_member_users: T.nilable(T::Array[String]),
-          request_options: T.nilable(T.any(Braintrust::RequestOptions, Braintrust::Internal::AnyHash))
+          request_options: Braintrust::RequestOpts
         )
           .returns(Braintrust::Models::Group)
       end
@@ -90,7 +84,7 @@ module Braintrust
           limit: T.nilable(Integer),
           org_name: String,
           starting_after: String,
-          request_options: T.nilable(T.any(Braintrust::RequestOptions, Braintrust::Internal::AnyHash))
+          request_options: Braintrust::RequestOpts
         )
           .returns(Braintrust::Internal::ListObjects[Braintrust::Models::Group])
       end
@@ -119,13 +113,7 @@ module Braintrust
         request_options: {}
       ); end
       # Delete a group object by its id
-      sig do
-        params(
-          group_id: String,
-          request_options: T.nilable(T.any(Braintrust::RequestOptions, Braintrust::Internal::AnyHash))
-        )
-          .returns(Braintrust::Models::Group)
-      end
+      sig { params(group_id: String, request_options: Braintrust::RequestOpts).returns(Braintrust::Models::Group) }
       def delete(
         # Group id
         group_id,
@@ -141,7 +129,7 @@ module Braintrust
           member_groups: T.nilable(T::Array[String]),
           member_users: T.nilable(T::Array[String]),
           org_name: T.nilable(String),
-          request_options: T.nilable(T.any(Braintrust::RequestOptions, Braintrust::Internal::AnyHash))
+          request_options: Braintrust::RequestOpts
         )
           .returns(Braintrust::Models::Group)
       end

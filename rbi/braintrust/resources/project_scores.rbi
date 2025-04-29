@@ -20,7 +20,7 @@ module Braintrust
           ),
           config: T.nilable(T.any(Braintrust::Models::ProjectScoreConfig, Braintrust::Internal::AnyHash)),
           description: T.nilable(String),
-          request_options: T.nilable(T.any(Braintrust::RequestOptions, Braintrust::Internal::AnyHash))
+          request_options: Braintrust::RequestOpts
         )
           .returns(Braintrust::Models::ProjectScore)
       end
@@ -40,10 +40,7 @@ module Braintrust
       ); end
       # Get a project_score object by its id
       sig do
-        params(
-          project_score_id: String,
-          request_options: T.nilable(T.any(Braintrust::RequestOptions, Braintrust::Internal::AnyHash))
-        )
+        params(project_score_id: String, request_options: Braintrust::RequestOpts)
           .returns(Braintrust::Models::ProjectScore)
       end
       def retrieve(
@@ -68,7 +65,7 @@ module Braintrust
           description: T.nilable(String),
           name: T.nilable(String),
           score_type: T.nilable(Braintrust::Models::ProjectScoreType::OrSymbol),
-          request_options: T.nilable(T.any(Braintrust::RequestOptions, Braintrust::Internal::AnyHash))
+          request_options: Braintrust::RequestOpts
         )
           .returns(Braintrust::Models::ProjectScore)
       end
@@ -102,7 +99,7 @@ module Braintrust
             T::Array[Braintrust::Models::ProjectScoreType::OrSymbol]
           ),
           starting_after: String,
-          request_options: T.nilable(T.any(Braintrust::RequestOptions, Braintrust::Internal::AnyHash))
+          request_options: Braintrust::RequestOpts
         )
           .returns(Braintrust::Internal::ListObjects[Braintrust::Models::ProjectScore])
       end
@@ -138,10 +135,7 @@ module Braintrust
       ); end
       # Delete a project_score object by its id
       sig do
-        params(
-          project_score_id: String,
-          request_options: T.nilable(T.any(Braintrust::RequestOptions, Braintrust::Internal::AnyHash))
-        )
+        params(project_score_id: String, request_options: Braintrust::RequestOpts)
           .returns(Braintrust::Models::ProjectScore)
       end
       def delete(
@@ -166,7 +160,7 @@ module Braintrust
           ),
           config: T.nilable(T.any(Braintrust::Models::ProjectScoreConfig, Braintrust::Internal::AnyHash)),
           description: T.nilable(String),
-          request_options: T.nilable(T.any(Braintrust::RequestOptions, Braintrust::Internal::AnyHash))
+          request_options: Braintrust::RequestOpts
         )
           .returns(Braintrust::Models::ProjectScore)
       end

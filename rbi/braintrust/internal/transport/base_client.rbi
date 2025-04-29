@@ -35,7 +35,7 @@ module Braintrust
               page: T.nilable(T::Class[Braintrust::Internal::Type::BasePage[Braintrust::Internal::Type::BaseModel]]),
               stream: T.nilable(T::Class[T.anything]),
               model: T.nilable(Braintrust::Internal::Type::Converter::Input),
-              options: T.nilable(T.any(Braintrust::RequestOptions, Braintrust::Internal::AnyHash))
+              options: T.nilable(Braintrust::RequestOpts)
             }
           end
 
@@ -188,7 +188,7 @@ module Braintrust
             page: T.nilable(T::Class[Braintrust::Internal::Type::BasePage[Braintrust::Internal::Type::BaseModel]]),
             stream: T.nilable(T::Class[T.anything]),
             model: T.nilable(Braintrust::Internal::Type::Converter::Input),
-            options: T.nilable(T.any(Braintrust::RequestOptions, Braintrust::Internal::AnyHash))
+            options: T.nilable(Braintrust::RequestOpts)
           )
             .returns(T.anything)
         end
