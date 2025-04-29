@@ -45,18 +45,11 @@ module Braintrust
 
         def self?.variants: -> [::Array[Braintrust::Models::ProjectScoreCategory], ::Hash[Symbol, Float], ::Array[String]]
 
-        type project_score_category_array =
-          ::Array[Braintrust::Models::ProjectScoreCategory]
+        ProjectScoreCategoryArray: Braintrust::Internal::Type::Converter
 
-        ProjectScoreCategoryArray: project_score_category_array
+        FloatMap: Braintrust::Internal::Type::Converter
 
-        type float_map = ::Hash[Symbol, Float]
-
-        FloatMap: float_map
-
-        type string_array = ::Array[String]
-
-        StringArray: string_array
+        StringArray: Braintrust::Internal::Type::Converter
       end
     end
   end

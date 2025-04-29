@@ -76,9 +76,7 @@ module Braintrust
 
         def self?.variants: -> [String, ::Array[String]]
 
-        type string_array = ::Array[String]
-
-        StringArray: string_array
+        StringArray: Braintrust::Internal::Type::Converter
       end
 
       type family_name = String | ::Array[String]
@@ -88,9 +86,7 @@ module Braintrust
 
         def self?.variants: -> [String, ::Array[String]]
 
-        type string_array = ::Array[String]
-
-        StringArray: string_array
+        StringArray: Braintrust::Internal::Type::Converter
       end
 
       type given_name = String | ::Array[String]
@@ -100,9 +96,7 @@ module Braintrust
 
         def self?.variants: -> [String, ::Array[String]]
 
-        type string_array = ::Array[String]
-
-        StringArray: string_array
+        StringArray: Braintrust::Internal::Type::Converter
       end
 
       type ids = String | ::Array[String]
@@ -112,9 +106,7 @@ module Braintrust
 
         def self?.variants: -> [String, ::Array[String]]
 
-        type string_array = ::Array[String]
-
-        StringArray: string_array
+        StringArray: Braintrust::Internal::Type::Converter
       end
     end
   end

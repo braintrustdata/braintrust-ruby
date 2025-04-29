@@ -251,6 +251,7 @@ module Braintrust
                 # @!method self.variants
                 #   @return [Array(String, Array<Braintrust::Models::ChatCompletionContentPartText, Braintrust::Models::ChatCompletionContentPartImage>)]
 
+                # @type [Braintrust::Internal::Type::Converter]
                 Nested2DArray =
                   Braintrust::Internal::Type::ArrayOf[union: -> { Braintrust::Models::PromptData::Prompt::Chat::Message::User::Content::Array }]
               end
