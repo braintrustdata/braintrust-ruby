@@ -12,7 +12,7 @@ module Braintrust
           project_id: String,
           description: T.nilable(String),
           metadata: T.nilable(T::Hash[Symbol, T.nilable(T.anything)]),
-          request_options: T.nilable(T.any(Braintrust::RequestOptions, Braintrust::Internal::AnyHash))
+          request_options: Braintrust::RequestOpts
         )
           .returns(Braintrust::Models::Dataset)
       end
@@ -28,13 +28,7 @@ module Braintrust
         request_options: {}
       ); end
       # Get a dataset object by its id
-      sig do
-        params(
-          dataset_id: String,
-          request_options: T.nilable(T.any(Braintrust::RequestOptions, Braintrust::Internal::AnyHash))
-        )
-          .returns(Braintrust::Models::Dataset)
-      end
+      sig { params(dataset_id: String, request_options: Braintrust::RequestOpts).returns(Braintrust::Models::Dataset) }
       def retrieve(
         # Dataset id
         dataset_id,
@@ -49,7 +43,7 @@ module Braintrust
           description: T.nilable(String),
           metadata: T.nilable(T::Hash[Symbol, T.nilable(T.anything)]),
           name: T.nilable(String),
-          request_options: T.nilable(T.any(Braintrust::RequestOptions, Braintrust::Internal::AnyHash))
+          request_options: Braintrust::RequestOpts
         )
           .returns(Braintrust::Models::Dataset)
       end
@@ -76,7 +70,7 @@ module Braintrust
           project_id: String,
           project_name: String,
           starting_after: String,
-          request_options: T.nilable(T.any(Braintrust::RequestOptions, Braintrust::Internal::AnyHash))
+          request_options: Braintrust::RequestOpts
         )
           .returns(Braintrust::Internal::ListObjects[Braintrust::Models::Dataset])
       end
@@ -109,13 +103,7 @@ module Braintrust
         request_options: {}
       ); end
       # Delete a dataset object by its id
-      sig do
-        params(
-          dataset_id: String,
-          request_options: T.nilable(T.any(Braintrust::RequestOptions, Braintrust::Internal::AnyHash))
-        )
-          .returns(Braintrust::Models::Dataset)
-      end
+      sig { params(dataset_id: String, request_options: Braintrust::RequestOpts).returns(Braintrust::Models::Dataset) }
       def delete(
         # Dataset id
         dataset_id,
@@ -126,7 +114,7 @@ module Braintrust
         params(
           dataset_id: String,
           feedback: T::Array[T.any(Braintrust::Models::FeedbackDatasetItem, Braintrust::Internal::AnyHash)],
-          request_options: T.nilable(T.any(Braintrust::RequestOptions, Braintrust::Internal::AnyHash))
+          request_options: Braintrust::RequestOpts
         )
           .returns(Braintrust::Models::FeedbackResponseSchema)
       end
@@ -147,7 +135,7 @@ module Braintrust
           max_root_span_id: String,
           max_xact_id: String,
           version: String,
-          request_options: T.nilable(T.any(Braintrust::RequestOptions, Braintrust::Internal::AnyHash))
+          request_options: Braintrust::RequestOpts
         )
           .returns(Braintrust::Models::FetchDatasetEventsResponse)
       end
@@ -210,7 +198,7 @@ module Braintrust
           max_root_span_id: T.nilable(String),
           max_xact_id: T.nilable(String),
           version: T.nilable(String),
-          request_options: T.nilable(T.any(Braintrust::RequestOptions, Braintrust::Internal::AnyHash))
+          request_options: Braintrust::RequestOpts
         )
           .returns(Braintrust::Models::FetchDatasetEventsResponse)
       end
@@ -273,7 +261,7 @@ module Braintrust
         params(
           dataset_id: String,
           events: T::Array[T.any(Braintrust::Models::InsertDatasetEvent, Braintrust::Internal::AnyHash)],
-          request_options: T.nilable(T.any(Braintrust::RequestOptions, Braintrust::Internal::AnyHash))
+          request_options: Braintrust::RequestOpts
         )
           .returns(Braintrust::Models::InsertEventsResponse)
       end
@@ -289,7 +277,7 @@ module Braintrust
         params(
           dataset_id: String,
           summarize_data: T.nilable(T::Boolean),
-          request_options: T.nilable(T.any(Braintrust::RequestOptions, Braintrust::Internal::AnyHash))
+          request_options: Braintrust::RequestOpts
         )
           .returns(Braintrust::Models::SummarizeDatasetResponse)
       end

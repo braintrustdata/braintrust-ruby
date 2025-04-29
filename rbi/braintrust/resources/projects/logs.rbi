@@ -9,7 +9,7 @@ module Braintrust
           params(
             project_id: String,
             feedback: T::Array[T.any(Braintrust::Models::FeedbackProjectLogsItem, Braintrust::Internal::AnyHash)],
-            request_options: T.nilable(T.any(Braintrust::RequestOptions, Braintrust::Internal::AnyHash))
+            request_options: Braintrust::RequestOpts
           )
             .returns(Braintrust::Models::FeedbackResponseSchema)
         end
@@ -30,7 +30,7 @@ module Braintrust
             max_root_span_id: String,
             max_xact_id: String,
             version: String,
-            request_options: T.nilable(T.any(Braintrust::RequestOptions, Braintrust::Internal::AnyHash))
+            request_options: Braintrust::RequestOpts
           )
             .returns(Braintrust::Models::FetchProjectLogsEventsResponse)
         end
@@ -93,7 +93,7 @@ module Braintrust
             max_root_span_id: T.nilable(String),
             max_xact_id: T.nilable(String),
             version: T.nilable(String),
-            request_options: T.nilable(T.any(Braintrust::RequestOptions, Braintrust::Internal::AnyHash))
+            request_options: Braintrust::RequestOpts
           )
             .returns(Braintrust::Models::FetchProjectLogsEventsResponse)
         end
@@ -156,7 +156,7 @@ module Braintrust
           params(
             project_id: String,
             events: T::Array[T.any(Braintrust::Models::InsertProjectLogsEvent, Braintrust::Internal::AnyHash)],
-            request_options: T.nilable(T.any(Braintrust::RequestOptions, Braintrust::Internal::AnyHash))
+            request_options: Braintrust::RequestOpts
           )
             .returns(Braintrust::Models::InsertEventsResponse)
         end

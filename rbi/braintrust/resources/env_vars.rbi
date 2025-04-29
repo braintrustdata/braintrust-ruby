@@ -11,7 +11,7 @@ module Braintrust
           object_id_: String,
           object_type: Braintrust::Models::EnvVarCreateParams::ObjectType::OrSymbol,
           value: T.nilable(String),
-          request_options: T.nilable(T.any(Braintrust::RequestOptions, Braintrust::Internal::AnyHash))
+          request_options: Braintrust::RequestOpts
         )
           .returns(Braintrust::Models::EnvVar)
       end
@@ -27,13 +27,7 @@ module Braintrust
         request_options: {}
       ); end
       # Get an env_var object by its id
-      sig do
-        params(
-          env_var_id: String,
-          request_options: T.nilable(T.any(Braintrust::RequestOptions, Braintrust::Internal::AnyHash))
-        )
-          .returns(Braintrust::Models::EnvVar)
-      end
+      sig { params(env_var_id: String, request_options: Braintrust::RequestOpts).returns(Braintrust::Models::EnvVar) }
       def retrieve(
         # EnvVar id
         env_var_id,
@@ -47,7 +41,7 @@ module Braintrust
           env_var_id: String,
           name: String,
           value: T.nilable(String),
-          request_options: T.nilable(T.any(Braintrust::RequestOptions, Braintrust::Internal::AnyHash))
+          request_options: Braintrust::RequestOpts
         )
           .returns(Braintrust::Models::EnvVar)
       end
@@ -69,7 +63,7 @@ module Braintrust
           limit: T.nilable(Integer),
           object_id_: String,
           object_type: Braintrust::Models::EnvVarObjectType::OrSymbol,
-          request_options: T.nilable(T.any(Braintrust::RequestOptions, Braintrust::Internal::AnyHash))
+          request_options: Braintrust::RequestOpts
         )
           .returns(Braintrust::Models::EnvVarListResponse)
       end
@@ -88,13 +82,7 @@ module Braintrust
         request_options: {}
       ); end
       # Delete an env_var object by its id
-      sig do
-        params(
-          env_var_id: String,
-          request_options: T.nilable(T.any(Braintrust::RequestOptions, Braintrust::Internal::AnyHash))
-        )
-          .returns(Braintrust::Models::EnvVar)
-      end
+      sig { params(env_var_id: String, request_options: Braintrust::RequestOpts).returns(Braintrust::Models::EnvVar) }
       def delete(
         # EnvVar id
         env_var_id,
@@ -109,7 +97,7 @@ module Braintrust
           object_id_: String,
           object_type: Braintrust::Models::EnvVarReplaceParams::ObjectType::OrSymbol,
           value: T.nilable(String),
-          request_options: T.nilable(T.any(Braintrust::RequestOptions, Braintrust::Internal::AnyHash))
+          request_options: Braintrust::RequestOpts
         )
           .returns(Braintrust::Models::EnvVar)
       end

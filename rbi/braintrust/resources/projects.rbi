@@ -9,11 +9,7 @@ module Braintrust
       # Create a new project. If there is an existing project with the same name as the
       # one specified in the request, will return the existing project unmodified
       sig do
-        params(
-          name: String,
-          org_name: T.nilable(String),
-          request_options: T.nilable(T.any(Braintrust::RequestOptions, Braintrust::Internal::AnyHash))
-        )
+        params(name: String, org_name: T.nilable(String), request_options: Braintrust::RequestOpts)
           .returns(Braintrust::Models::Project)
       end
       def create(
@@ -26,13 +22,7 @@ module Braintrust
         request_options: {}
       ); end
       # Get a project object by its id
-      sig do
-        params(
-          project_id: String,
-          request_options: T.nilable(T.any(Braintrust::RequestOptions, Braintrust::Internal::AnyHash))
-        )
-          .returns(Braintrust::Models::Project)
-      end
+      sig { params(project_id: String, request_options: Braintrust::RequestOpts).returns(Braintrust::Models::Project) }
       def retrieve(
         # Project id
         project_id,
@@ -46,7 +36,7 @@ module Braintrust
           project_id: String,
           name: T.nilable(String),
           settings: T.nilable(T.any(Braintrust::Models::ProjectSettings, Braintrust::Internal::AnyHash)),
-          request_options: T.nilable(T.any(Braintrust::RequestOptions, Braintrust::Internal::AnyHash))
+          request_options: Braintrust::RequestOpts
         )
           .returns(Braintrust::Models::Project)
       end
@@ -70,7 +60,7 @@ module Braintrust
           org_name: String,
           project_name: String,
           starting_after: String,
-          request_options: T.nilable(T.any(Braintrust::RequestOptions, Braintrust::Internal::AnyHash))
+          request_options: Braintrust::RequestOpts
         )
           .returns(Braintrust::Internal::ListObjects[Braintrust::Models::Project])
       end
@@ -99,13 +89,7 @@ module Braintrust
         request_options: {}
       ); end
       # Delete a project object by its id
-      sig do
-        params(
-          project_id: String,
-          request_options: T.nilable(T.any(Braintrust::RequestOptions, Braintrust::Internal::AnyHash))
-        )
-          .returns(Braintrust::Models::Project)
-      end
+      sig { params(project_id: String, request_options: Braintrust::RequestOpts).returns(Braintrust::Models::Project) }
       def delete(
         # Project id
         project_id,

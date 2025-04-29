@@ -13,7 +13,7 @@ module Braintrust
           url: String,
           description: T.nilable(String),
           post_message: T.nilable(T::Boolean),
-          request_options: T.nilable(T.any(Braintrust::RequestOptions, Braintrust::Internal::AnyHash))
+          request_options: Braintrust::RequestOpts
         )
           .returns(Braintrust::Models::SpanIFrame)
       end
@@ -33,10 +33,7 @@ module Braintrust
       ); end
       # Get a span_iframe object by its id
       sig do
-        params(
-          span_iframe_id: String,
-          request_options: T.nilable(T.any(Braintrust::RequestOptions, Braintrust::Internal::AnyHash))
-        )
+        params(span_iframe_id: String, request_options: Braintrust::RequestOpts)
           .returns(Braintrust::Models::SpanIFrame)
       end
       def retrieve(
@@ -54,7 +51,7 @@ module Braintrust
           name: T.nilable(String),
           post_message: T.nilable(T::Boolean),
           url: T.nilable(String),
-          request_options: T.nilable(T.any(Braintrust::RequestOptions, Braintrust::Internal::AnyHash))
+          request_options: Braintrust::RequestOpts
         )
           .returns(Braintrust::Models::SpanIFrame)
       end
@@ -82,7 +79,7 @@ module Braintrust
           org_name: String,
           span_iframe_name: String,
           starting_after: String,
-          request_options: T.nilable(T.any(Braintrust::RequestOptions, Braintrust::Internal::AnyHash))
+          request_options: Braintrust::RequestOpts
         )
           .returns(Braintrust::Internal::ListObjects[Braintrust::Models::SpanIFrame])
       end
@@ -112,10 +109,7 @@ module Braintrust
       ); end
       # Delete a span_iframe object by its id
       sig do
-        params(
-          span_iframe_id: String,
-          request_options: T.nilable(T.any(Braintrust::RequestOptions, Braintrust::Internal::AnyHash))
-        )
+        params(span_iframe_id: String, request_options: Braintrust::RequestOpts)
           .returns(Braintrust::Models::SpanIFrame)
       end
       def delete(
@@ -133,7 +127,7 @@ module Braintrust
           url: String,
           description: T.nilable(String),
           post_message: T.nilable(T::Boolean),
-          request_options: T.nilable(T.any(Braintrust::RequestOptions, Braintrust::Internal::AnyHash))
+          request_options: Braintrust::RequestOpts
         )
           .returns(Braintrust::Models::SpanIFrame)
       end
