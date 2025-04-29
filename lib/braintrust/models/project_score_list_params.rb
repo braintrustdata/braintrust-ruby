@@ -107,6 +107,7 @@ module Braintrust
         # @!method self.variants
         #   @return [Array(String, Array<String>)]
 
+        # @type [Braintrust::Internal::Type::Converter]
         StringArray = Braintrust::Internal::Type::ArrayOf[String]
       end
 
@@ -123,6 +124,7 @@ module Braintrust
         # @!method self.variants
         #   @return [Array(Symbol, Braintrust::Models::ProjectScoreType, Array<Symbol, Braintrust::Models::ProjectScoreType>)]
 
+        # @type [Braintrust::Internal::Type::Converter]
         ProjectScoreTypeArray =
           Braintrust::Internal::Type::ArrayOf[enum: -> { Braintrust::Models::ProjectScoreType }]
       end

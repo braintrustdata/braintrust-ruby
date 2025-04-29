@@ -166,10 +166,7 @@ module Braintrust
 
             def self?.variants: -> [String, ::Array[Braintrust::Models::FunctionInvokeParams::Message::User::Content::array]]
 
-            type nested2_d_array =
-              ::Array[Braintrust::Models::FunctionInvokeParams::Message::User::Content::array]
-
-            Nested2DArray: nested2_d_array
+            Nested2DArray: Braintrust::Internal::Type::Converter
           end
         end
 
