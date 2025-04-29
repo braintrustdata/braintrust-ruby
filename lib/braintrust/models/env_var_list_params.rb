@@ -67,6 +67,7 @@ module Braintrust
         # @!method self.variants
         #   @return [Array(String, Array<String>)]
 
+        # @type [Braintrust::Internal::Type::Converter]
         StringArray = Braintrust::Internal::Type::ArrayOf[String]
       end
     end

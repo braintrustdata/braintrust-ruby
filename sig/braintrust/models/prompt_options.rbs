@@ -259,9 +259,7 @@ module Braintrust
 
                   def self?.variants: -> [::Hash[Symbol, top?], String]
 
-                  type object_map = ::Hash[Symbol, top?]
-
-                  ObjectMap: object_map
+                  ObjectMap: Braintrust::Internal::Type::Converter
                 end
               end
 

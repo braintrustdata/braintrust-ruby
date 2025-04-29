@@ -73,11 +73,14 @@ module Braintrust
         # @!method self.variants
         #   @return [Array(Array<Braintrust::Models::ProjectScoreCategory>, Hash{Symbol=>Float}, Array<String>)]
 
+        # @type [Braintrust::Internal::Type::Converter]
         ProjectScoreCategoryArray =
           Braintrust::Internal::Type::ArrayOf[-> { Braintrust::Models::ProjectScoreCategory }]
 
+        # @type [Braintrust::Internal::Type::Converter]
         FloatMap = Braintrust::Internal::Type::HashOf[Float]
 
+        # @type [Braintrust::Internal::Type::Converter]
         StringArray = Braintrust::Internal::Type::ArrayOf[String]
       end
     end

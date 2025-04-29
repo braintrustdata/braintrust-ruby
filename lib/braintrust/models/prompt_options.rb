@@ -267,6 +267,7 @@ module Braintrust
                   # @!method self.variants
                   #   @return [Array(Hash{Symbol=>Object, nil}, String)]
 
+                  # @type [Braintrust::Internal::Type::Converter]
                   ObjectMap = Braintrust::Internal::Type::HashOf[Braintrust::Internal::Type::Unknown,
                                                                  nil?: true]
                 end
