@@ -12,7 +12,7 @@ module Braintrust
           project_id: String,
           color: T.nilable(String),
           description: T.nilable(String),
-          request_options: T.nilable(T.any(Braintrust::RequestOptions, Braintrust::Internal::AnyHash))
+          request_options: Braintrust::RequestOpts
         )
           .returns(Braintrust::Models::ProjectTag)
       end
@@ -29,10 +29,7 @@ module Braintrust
       ); end
       # Get a project_tag object by its id
       sig do
-        params(
-          project_tag_id: String,
-          request_options: T.nilable(T.any(Braintrust::RequestOptions, Braintrust::Internal::AnyHash))
-        )
+        params(project_tag_id: String, request_options: Braintrust::RequestOpts)
           .returns(Braintrust::Models::ProjectTag)
       end
       def retrieve(
@@ -49,7 +46,7 @@ module Braintrust
           color: T.nilable(String),
           description: T.nilable(String),
           name: T.nilable(String),
-          request_options: T.nilable(T.any(Braintrust::RequestOptions, Braintrust::Internal::AnyHash))
+          request_options: Braintrust::RequestOpts
         )
           .returns(Braintrust::Models::ProjectTag)
       end
@@ -76,7 +73,7 @@ module Braintrust
           project_name: String,
           project_tag_name: String,
           starting_after: String,
-          request_options: T.nilable(T.any(Braintrust::RequestOptions, Braintrust::Internal::AnyHash))
+          request_options: Braintrust::RequestOpts
         )
           .returns(Braintrust::Internal::ListObjects[Braintrust::Models::ProjectTag])
       end
@@ -110,10 +107,7 @@ module Braintrust
       ); end
       # Delete a project_tag object by its id
       sig do
-        params(
-          project_tag_id: String,
-          request_options: T.nilable(T.any(Braintrust::RequestOptions, Braintrust::Internal::AnyHash))
-        )
+        params(project_tag_id: String, request_options: Braintrust::RequestOpts)
           .returns(Braintrust::Models::ProjectTag)
       end
       def delete(
@@ -130,7 +124,7 @@ module Braintrust
           project_id: String,
           color: T.nilable(String),
           description: T.nilable(String),
-          request_options: T.nilable(T.any(Braintrust::RequestOptions, Braintrust::Internal::AnyHash))
+          request_options: Braintrust::RequestOpts
         )
           .returns(Braintrust::Models::ProjectTag)
       end

@@ -54,7 +54,7 @@ module Braintrust
           stream: T::Boolean,
           timeout: T.nilable(Float),
           trial_count: T.nilable(Float),
-          request_options: T.nilable(T.any(Braintrust::RequestOptions, Braintrust::Internal::AnyHash))
+          request_options: Braintrust::RequestOpts
         )
           .returns(Braintrust::Models::SummarizeExperimentResponse)
       end

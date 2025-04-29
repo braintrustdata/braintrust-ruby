@@ -6,7 +6,7 @@ module Braintrust
       # @api private
       module RequestParameters
         # Options to specify HTTP behaviour for this request.
-        sig { returns(T.any(Braintrust::RequestOptions, Braintrust::Internal::AnyHash)) }
+        sig { returns(Braintrust::RequestOpts) }
         attr_accessor :request_options
 
         # @api private

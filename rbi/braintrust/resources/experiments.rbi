@@ -18,7 +18,7 @@ module Braintrust
           name: T.nilable(String),
           public: T.nilable(T::Boolean),
           repo_info: T.nilable(T.any(Braintrust::Models::RepoInfo, Braintrust::Internal::AnyHash)),
-          request_options: T.nilable(T.any(Braintrust::RequestOptions, Braintrust::Internal::AnyHash))
+          request_options: Braintrust::RequestOpts
         )
           .returns(Braintrust::Models::Experiment)
       end
@@ -53,10 +53,7 @@ module Braintrust
       ); end
       # Get an experiment object by its id
       sig do
-        params(
-          experiment_id: String,
-          request_options: T.nilable(T.any(Braintrust::RequestOptions, Braintrust::Internal::AnyHash))
-        )
+        params(experiment_id: String, request_options: Braintrust::RequestOpts)
           .returns(Braintrust::Models::Experiment)
       end
       def retrieve(
@@ -78,7 +75,7 @@ module Braintrust
           name: T.nilable(String),
           public: T.nilable(T::Boolean),
           repo_info: T.nilable(T.any(Braintrust::Models::RepoInfo, Braintrust::Internal::AnyHash)),
-          request_options: T.nilable(T.any(Braintrust::RequestOptions, Braintrust::Internal::AnyHash))
+          request_options: Braintrust::RequestOpts
         )
           .returns(Braintrust::Models::Experiment)
       end
@@ -118,7 +115,7 @@ module Braintrust
           project_id: String,
           project_name: String,
           starting_after: String,
-          request_options: T.nilable(T.any(Braintrust::RequestOptions, Braintrust::Internal::AnyHash))
+          request_options: Braintrust::RequestOpts
         )
           .returns(Braintrust::Internal::ListObjects[Braintrust::Models::Experiment])
       end
@@ -152,10 +149,7 @@ module Braintrust
       ); end
       # Delete an experiment object by its id
       sig do
-        params(
-          experiment_id: String,
-          request_options: T.nilable(T.any(Braintrust::RequestOptions, Braintrust::Internal::AnyHash))
-        )
+        params(experiment_id: String, request_options: Braintrust::RequestOpts)
           .returns(Braintrust::Models::Experiment)
       end
       def delete(
@@ -168,7 +162,7 @@ module Braintrust
         params(
           experiment_id: String,
           feedback: T::Array[T.any(Braintrust::Models::FeedbackExperimentItem, Braintrust::Internal::AnyHash)],
-          request_options: T.nilable(T.any(Braintrust::RequestOptions, Braintrust::Internal::AnyHash))
+          request_options: Braintrust::RequestOpts
         )
           .returns(Braintrust::Models::FeedbackResponseSchema)
       end
@@ -189,7 +183,7 @@ module Braintrust
           max_root_span_id: String,
           max_xact_id: String,
           version: String,
-          request_options: T.nilable(T.any(Braintrust::RequestOptions, Braintrust::Internal::AnyHash))
+          request_options: Braintrust::RequestOpts
         )
           .returns(Braintrust::Models::FetchExperimentEventsResponse)
       end
@@ -252,7 +246,7 @@ module Braintrust
           max_root_span_id: T.nilable(String),
           max_xact_id: T.nilable(String),
           version: T.nilable(String),
-          request_options: T.nilable(T.any(Braintrust::RequestOptions, Braintrust::Internal::AnyHash))
+          request_options: Braintrust::RequestOpts
         )
           .returns(Braintrust::Models::FetchExperimentEventsResponse)
       end
@@ -315,7 +309,7 @@ module Braintrust
         params(
           experiment_id: String,
           events: T::Array[T.any(Braintrust::Models::InsertExperimentEvent, Braintrust::Internal::AnyHash)],
-          request_options: T.nilable(T.any(Braintrust::RequestOptions, Braintrust::Internal::AnyHash))
+          request_options: Braintrust::RequestOpts
         )
           .returns(Braintrust::Models::InsertEventsResponse)
       end
@@ -332,7 +326,7 @@ module Braintrust
           experiment_id: String,
           comparison_experiment_id: String,
           summarize_scores: T.nilable(T::Boolean),
-          request_options: T.nilable(T.any(Braintrust::RequestOptions, Braintrust::Internal::AnyHash))
+          request_options: Braintrust::RequestOpts
         )
           .returns(Braintrust::Models::SummarizeExperimentResponse)
       end

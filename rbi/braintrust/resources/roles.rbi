@@ -14,7 +14,7 @@ module Braintrust
           ),
           member_roles: T.nilable(T::Array[String]),
           org_name: T.nilable(String),
-          request_options: T.nilable(T.any(Braintrust::RequestOptions, Braintrust::Internal::AnyHash))
+          request_options: Braintrust::RequestOpts
         )
           .returns(Braintrust::Models::Role)
       end
@@ -37,13 +37,7 @@ module Braintrust
         request_options: {}
       ); end
       # Get a role object by its id
-      sig do
-        params(
-          role_id: String,
-          request_options: T.nilable(T.any(Braintrust::RequestOptions, Braintrust::Internal::AnyHash))
-        )
-          .returns(Braintrust::Models::Role)
-      end
+      sig { params(role_id: String, request_options: Braintrust::RequestOpts).returns(Braintrust::Models::Role) }
       def retrieve(
         # Role id
         role_id,
@@ -65,7 +59,7 @@ module Braintrust
             T::Array[T.any(Braintrust::Models::RoleUpdateParams::RemoveMemberPermission, Braintrust::Internal::AnyHash)]
           ),
           remove_member_roles: T.nilable(T::Array[String]),
-          request_options: T.nilable(T.any(Braintrust::RequestOptions, Braintrust::Internal::AnyHash))
+          request_options: Braintrust::RequestOpts
         )
           .returns(Braintrust::Models::Role)
       end
@@ -96,7 +90,7 @@ module Braintrust
           org_name: String,
           role_name: String,
           starting_after: String,
-          request_options: T.nilable(T.any(Braintrust::RequestOptions, Braintrust::Internal::AnyHash))
+          request_options: Braintrust::RequestOpts
         )
           .returns(Braintrust::Internal::ListObjects[Braintrust::Models::Role])
       end
@@ -125,13 +119,7 @@ module Braintrust
         request_options: {}
       ); end
       # Delete a role object by its id
-      sig do
-        params(
-          role_id: String,
-          request_options: T.nilable(T.any(Braintrust::RequestOptions, Braintrust::Internal::AnyHash))
-        )
-          .returns(Braintrust::Models::Role)
-      end
+      sig { params(role_id: String, request_options: Braintrust::RequestOpts).returns(Braintrust::Models::Role) }
       def delete(
         # Role id
         role_id,
@@ -149,7 +137,7 @@ module Braintrust
           ),
           member_roles: T.nilable(T::Array[String]),
           org_name: T.nilable(String),
-          request_options: T.nilable(T.any(Braintrust::RequestOptions, Braintrust::Internal::AnyHash))
+          request_options: Braintrust::RequestOpts
         )
           .returns(Braintrust::Models::Role)
       end

@@ -6,11 +6,7 @@ module Braintrust
       # Create a new api_key. It is possible to have multiple API keys with the same
       # name. There is no de-duplication
       sig do
-        params(
-          name: String,
-          org_name: T.nilable(String),
-          request_options: T.nilable(T.any(Braintrust::RequestOptions, Braintrust::Internal::AnyHash))
-        )
+        params(name: String, org_name: T.nilable(String), request_options: Braintrust::RequestOpts)
           .returns(Braintrust::Models::CreateAPIKeyOutput)
       end
       def create(
@@ -23,13 +19,7 @@ module Braintrust
         request_options: {}
       ); end
       # Get an api_key object by its id
-      sig do
-        params(
-          api_key_id: String,
-          request_options: T.nilable(T.any(Braintrust::RequestOptions, Braintrust::Internal::AnyHash))
-        )
-          .returns(Braintrust::Models::APIKey)
-      end
+      sig { params(api_key_id: String, request_options: Braintrust::RequestOpts).returns(Braintrust::Models::APIKey) }
       def retrieve(
         # ApiKey id
         api_key_id,
@@ -45,7 +35,7 @@ module Braintrust
           limit: T.nilable(Integer),
           org_name: String,
           starting_after: String,
-          request_options: T.nilable(T.any(Braintrust::RequestOptions, Braintrust::Internal::AnyHash))
+          request_options: Braintrust::RequestOpts
         )
           .returns(Braintrust::Internal::ListObjects[Braintrust::Models::APIKey])
       end
@@ -74,13 +64,7 @@ module Braintrust
         request_options: {}
       ); end
       # Delete an api_key object by its id
-      sig do
-        params(
-          api_key_id: String,
-          request_options: T.nilable(T.any(Braintrust::RequestOptions, Braintrust::Internal::AnyHash))
-        )
-          .returns(Braintrust::Models::APIKey)
-      end
+      sig { params(api_key_id: String, request_options: Braintrust::RequestOpts).returns(Braintrust::Models::APIKey) }
       def delete(
         # ApiKey id
         api_key_id,

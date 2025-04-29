@@ -8,10 +8,7 @@ module Braintrust
 
       # Get an organization object by its id
       sig do
-        params(
-          organization_id: String,
-          request_options: T.nilable(T.any(Braintrust::RequestOptions, Braintrust::Internal::AnyHash))
-        )
+        params(organization_id: String, request_options: Braintrust::RequestOpts)
           .returns(Braintrust::Models::Organization)
       end
       def retrieve(
@@ -30,7 +27,7 @@ module Braintrust
           name: T.nilable(String),
           proxy_url: T.nilable(String),
           realtime_url: T.nilable(String),
-          request_options: T.nilable(T.any(Braintrust::RequestOptions, Braintrust::Internal::AnyHash))
+          request_options: Braintrust::RequestOpts
         )
           .returns(Braintrust::Models::Organization)
       end
@@ -54,7 +51,7 @@ module Braintrust
           limit: T.nilable(Integer),
           org_name: String,
           starting_after: String,
-          request_options: T.nilable(T.any(Braintrust::RequestOptions, Braintrust::Internal::AnyHash))
+          request_options: Braintrust::RequestOpts
         )
           .returns(Braintrust::Internal::ListObjects[Braintrust::Models::Organization])
       end
@@ -82,10 +79,7 @@ module Braintrust
       ); end
       # Delete an organization object by its id
       sig do
-        params(
-          organization_id: String,
-          request_options: T.nilable(T.any(Braintrust::RequestOptions, Braintrust::Internal::AnyHash))
-        )
+        params(organization_id: String, request_options: Braintrust::RequestOpts)
           .returns(Braintrust::Models::Organization)
       end
       def delete(

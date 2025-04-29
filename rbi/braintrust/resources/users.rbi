@@ -4,13 +4,7 @@ module Braintrust
   module Resources
     class Users
       # Get a user object by its id
-      sig do
-        params(
-          user_id: String,
-          request_options: T.nilable(T.any(Braintrust::RequestOptions, Braintrust::Internal::AnyHash))
-        )
-          .returns(Braintrust::Models::User)
-      end
+      sig { params(user_id: String, request_options: Braintrust::RequestOpts).returns(Braintrust::Models::User) }
       def retrieve(
         # User id
         user_id,
@@ -28,7 +22,7 @@ module Braintrust
           limit: T.nilable(Integer),
           org_name: String,
           starting_after: String,
-          request_options: T.nilable(T.any(Braintrust::RequestOptions, Braintrust::Internal::AnyHash))
+          request_options: Braintrust::RequestOpts
         )
           .returns(Braintrust::Internal::ListObjects[Braintrust::Models::User])
       end
