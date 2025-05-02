@@ -1,0 +1,5 @@
+module Braintrust
+  module Models
+    FunctionInvokeResponse: Braintrust::Internal::Type::Converter
+  end
+end
