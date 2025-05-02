@@ -63,8 +63,8 @@ module Braintrust
         super
 
         case page_data
-        in {objects: Array | nil => objects}
-          @objects = objects&.map { Braintrust::Internal::Type::Converter.coerce(@model, _1) }
+        in {objects: Array => objects}
+          @objects = objects.map { Braintrust::Internal::Type::Converter.coerce(@model, _1) }
         else
         end
       end
