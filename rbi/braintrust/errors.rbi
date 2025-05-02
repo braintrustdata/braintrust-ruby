@@ -137,7 +137,7 @@ module Braintrust
     end
 
     class InternalServerError < Braintrust::Errors::APIStatusError
-      HTTP_STATUS = T.let((500..), T::Range[Integer])
+      HTTP_STATUS = T.let(500.., T::Range[Integer])
     end
   end
 end

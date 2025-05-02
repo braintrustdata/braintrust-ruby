@@ -11,7 +11,7 @@ require "rubocop/rake_task"
 tapioca = "sorbet/tapioca"
 ignore_file = ".ignore"
 
-CLEAN.push(*%w[.idea/ .ruby-lsp/ .yardoc/ doc/], *FileList["*.gem"], ignore_file)
+CLEAN.push(*%w[.idea/ .ruby-lsp/ .yardoc/ doc/ Gemfile.lock], *FileList["*.gem"], ignore_file)
 
 CLOBBER.push(*%w[sorbet/rbi/annotations/ sorbet/rbi/gems/], tapioca)
 
@@ -31,7 +31,7 @@ multitask(:test) do
     .map { "require_relative(#{_1.dump});" }
     .join
 
-  ruby(*%w[-e], rb, verbose: false) { fail unless _1 }
+  ruby(*%w[-w -e], rb, verbose: false) { fail unless _1 }
 end
 
 rubo_find = %w[find ./lib ./test ./rbi -type f -and ( -name *.rb -or -name *.rbi ) -print0]
