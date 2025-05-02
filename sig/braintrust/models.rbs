@@ -1,0 +1,339 @@
+module Braintrust
+  class ACL = Braintrust::Models::ACL
+
+  class ACLBatchUpdateParams = Braintrust::Models::ACLBatchUpdateParams
+
+  class ACLBatchUpdateResponse = Braintrust::Models::ACLBatchUpdateResponse
+
+  class ACLCreateParams = Braintrust::Models::ACLCreateParams
+
+  class ACLDeleteParams = Braintrust::Models::ACLDeleteParams
+
+  class ACLFindAndDeleteParams = Braintrust::Models::ACLFindAndDeleteParams
+
+  class ACLListParams = Braintrust::Models::ACLListParams
+
+  module ACLObjectType = Braintrust::Models::ACLObjectType
+
+  class ACLRetrieveParams = Braintrust::Models::ACLRetrieveParams
+
+  class AISecret = Braintrust::Models::AISecret
+
+  class AISecretCreateParams = Braintrust::Models::AISecretCreateParams
+
+  class AISecretDeleteParams = Braintrust::Models::AISecretDeleteParams
+
+  class AISecretFindAndDeleteParams = Braintrust::Models::AISecretFindAndDeleteParams
+
+  class AISecretListParams = Braintrust::Models::AISecretListParams
+
+  class AISecretReplaceParams = Braintrust::Models::AISecretReplaceParams
+
+  class AISecretRetrieveParams = Braintrust::Models::AISecretRetrieveParams
+
+  class AISecretUpdateParams = Braintrust::Models::AISecretUpdateParams
+
+  class APIKey = Braintrust::Models::APIKey
+
+  class APIKeyCreateParams = Braintrust::Models::APIKeyCreateParams
+
+  class APIKeyDeleteParams = Braintrust::Models::APIKeyDeleteParams
+
+  class APIKeyListParams = Braintrust::Models::APIKeyListParams
+
+  class APIKeyRetrieveParams = Braintrust::Models::APIKeyRetrieveParams
+
+  class ChatCompletionContentPartImage = Braintrust::Models::ChatCompletionContentPartImage
+
+  class ChatCompletionContentPartText = Braintrust::Models::ChatCompletionContentPartText
+
+  class ChatCompletionMessageToolCall = Braintrust::Models::ChatCompletionMessageToolCall
+
+  class CodeBundle = Braintrust::Models::CodeBundle
+
+  class CreateAPIKeyOutput = Braintrust::Models::CreateAPIKeyOutput
+
+  class CrossObjectInsertResponse = Braintrust::Models::CrossObjectInsertResponse
+
+  class Dataset = Braintrust::Models::Dataset
+
+  class DatasetCreateParams = Braintrust::Models::DatasetCreateParams
+
+  class DatasetDeleteParams = Braintrust::Models::DatasetDeleteParams
+
+  class DatasetEvent = Braintrust::Models::DatasetEvent
+
+  class DatasetFeedbackParams = Braintrust::Models::DatasetFeedbackParams
+
+  class DatasetFetchParams = Braintrust::Models::DatasetFetchParams
+
+  class DatasetFetchPostParams = Braintrust::Models::DatasetFetchPostParams
+
+  class DatasetInsertParams = Braintrust::Models::DatasetInsertParams
+
+  class DatasetListParams = Braintrust::Models::DatasetListParams
+
+  class DatasetRetrieveParams = Braintrust::Models::DatasetRetrieveParams
+
+  class DatasetSummarizeParams = Braintrust::Models::DatasetSummarizeParams
+
+  class DatasetUpdateParams = Braintrust::Models::DatasetUpdateParams
+
+  class DataSummary = Braintrust::Models::DataSummary
+
+  class EnvVar = Braintrust::Models::EnvVar
+
+  class EnvVarCreateParams = Braintrust::Models::EnvVarCreateParams
+
+  class EnvVarDeleteParams = Braintrust::Models::EnvVarDeleteParams
+
+  class EnvVarListParams = Braintrust::Models::EnvVarListParams
+
+  module EnvVarObjectType = Braintrust::Models::EnvVarObjectType
+
+  class EnvVarReplaceParams = Braintrust::Models::EnvVarReplaceParams
+
+  class EnvVarRetrieveParams = Braintrust::Models::EnvVarRetrieveParams
+
+  class EnvVarUpdateParams = Braintrust::Models::EnvVarUpdateParams
+
+  class EvalCreateParams = Braintrust::Models::EvalCreateParams
+
+  class Experiment = Braintrust::Models::Experiment
+
+  class ExperimentCreateParams = Braintrust::Models::ExperimentCreateParams
+
+  class ExperimentDeleteParams = Braintrust::Models::ExperimentDeleteParams
+
+  class ExperimentEvent = Braintrust::Models::ExperimentEvent
+
+  class ExperimentFeedbackParams = Braintrust::Models::ExperimentFeedbackParams
+
+  class ExperimentFetchParams = Braintrust::Models::ExperimentFetchParams
+
+  class ExperimentFetchPostParams = Braintrust::Models::ExperimentFetchPostParams
+
+  class ExperimentInsertParams = Braintrust::Models::ExperimentInsertParams
+
+  class ExperimentListParams = Braintrust::Models::ExperimentListParams
+
+  class ExperimentRetrieveParams = Braintrust::Models::ExperimentRetrieveParams
+
+  class ExperimentSummarizeParams = Braintrust::Models::ExperimentSummarizeParams
+
+  class ExperimentUpdateParams = Braintrust::Models::ExperimentUpdateParams
+
+  class FeedbackDatasetItem = Braintrust::Models::FeedbackDatasetItem
+
+  class FeedbackExperimentItem = Braintrust::Models::FeedbackExperimentItem
+
+  class FeedbackProjectLogsItem = Braintrust::Models::FeedbackProjectLogsItem
+
+  class FeedbackResponseSchema = Braintrust::Models::FeedbackResponseSchema
+
+  class FetchDatasetEventsResponse = Braintrust::Models::FetchDatasetEventsResponse
+
+  class FetchExperimentEventsResponse = Braintrust::Models::FetchExperimentEventsResponse
+
+  class FetchProjectLogsEventsResponse = Braintrust::Models::FetchProjectLogsEventsResponse
+
+  class Function = Braintrust::Models::Function
+
+  class FunctionCreateParams = Braintrust::Models::FunctionCreateParams
+
+  class FunctionDeleteParams = Braintrust::Models::FunctionDeleteParams
+
+  class FunctionInvokeParams = Braintrust::Models::FunctionInvokeParams
+
+  class FunctionListParams = Braintrust::Models::FunctionListParams
+
+  class FunctionReplaceParams = Braintrust::Models::FunctionReplaceParams
+
+  class FunctionRetrieveParams = Braintrust::Models::FunctionRetrieveParams
+
+  class FunctionUpdateParams = Braintrust::Models::FunctionUpdateParams
+
+  class Group = Braintrust::Models::Group
+
+  class GroupCreateParams = Braintrust::Models::GroupCreateParams
+
+  class GroupDeleteParams = Braintrust::Models::GroupDeleteParams
+
+  class GroupListParams = Braintrust::Models::GroupListParams
+
+  class GroupReplaceParams = Braintrust::Models::GroupReplaceParams
+
+  class GroupRetrieveParams = Braintrust::Models::GroupRetrieveParams
+
+  class GroupUpdateParams = Braintrust::Models::GroupUpdateParams
+
+  class InsertDatasetEvent = Braintrust::Models::InsertDatasetEvent
+
+  class InsertEventsResponse = Braintrust::Models::InsertEventsResponse
+
+  class InsertExperimentEvent = Braintrust::Models::InsertExperimentEvent
+
+  class InsertProjectLogsEvent = Braintrust::Models::InsertProjectLogsEvent
+
+  class MetricSummary = Braintrust::Models::MetricSummary
+
+  class ObjectReference = Braintrust::Models::ObjectReference
+
+  class OnlineScoreConfig = Braintrust::Models::OnlineScoreConfig
+
+  class Organization = Braintrust::Models::Organization
+
+  class OrganizationDeleteParams = Braintrust::Models::OrganizationDeleteParams
+
+  class OrganizationListParams = Braintrust::Models::OrganizationListParams
+
+  class OrganizationRetrieveParams = Braintrust::Models::OrganizationRetrieveParams
+
+  module Organizations = Braintrust::Models::Organizations
+
+  class OrganizationUpdateParams = Braintrust::Models::OrganizationUpdateParams
+
+  class PatchOrganizationMembersOutput = Braintrust::Models::PatchOrganizationMembersOutput
+
+  module Permission = Braintrust::Models::Permission
+
+  class Project = Braintrust::Models::Project
+
+  class ProjectCreateParams = Braintrust::Models::ProjectCreateParams
+
+  class ProjectDeleteParams = Braintrust::Models::ProjectDeleteParams
+
+  class ProjectListParams = Braintrust::Models::ProjectListParams
+
+  class ProjectLogsEvent = Braintrust::Models::ProjectLogsEvent
+
+  class ProjectRetrieveParams = Braintrust::Models::ProjectRetrieveParams
+
+  module Projects = Braintrust::Models::Projects
+
+  class ProjectScore = Braintrust::Models::ProjectScore
+
+  class ProjectScoreCategory = Braintrust::Models::ProjectScoreCategory
+
+  class ProjectScoreConfig = Braintrust::Models::ProjectScoreConfig
+
+  class ProjectScoreCreateParams = Braintrust::Models::ProjectScoreCreateParams
+
+  class ProjectScoreDeleteParams = Braintrust::Models::ProjectScoreDeleteParams
+
+  class ProjectScoreListParams = Braintrust::Models::ProjectScoreListParams
+
+  class ProjectScoreReplaceParams = Braintrust::Models::ProjectScoreReplaceParams
+
+  class ProjectScoreRetrieveParams = Braintrust::Models::ProjectScoreRetrieveParams
+
+  module ProjectScoreType = Braintrust::Models::ProjectScoreType
+
+  class ProjectScoreUpdateParams = Braintrust::Models::ProjectScoreUpdateParams
+
+  class ProjectSettings = Braintrust::Models::ProjectSettings
+
+  class ProjectTag = Braintrust::Models::ProjectTag
+
+  class ProjectTagCreateParams = Braintrust::Models::ProjectTagCreateParams
+
+  class ProjectTagDeleteParams = Braintrust::Models::ProjectTagDeleteParams
+
+  class ProjectTagListParams = Braintrust::Models::ProjectTagListParams
+
+  class ProjectTagReplaceParams = Braintrust::Models::ProjectTagReplaceParams
+
+  class ProjectTagRetrieveParams = Braintrust::Models::ProjectTagRetrieveParams
+
+  class ProjectTagUpdateParams = Braintrust::Models::ProjectTagUpdateParams
+
+  class ProjectUpdateParams = Braintrust::Models::ProjectUpdateParams
+
+  class Prompt = Braintrust::Models::Prompt
+
+  class PromptCreateParams = Braintrust::Models::PromptCreateParams
+
+  class PromptData = Braintrust::Models::PromptData
+
+  class PromptDeleteParams = Braintrust::Models::PromptDeleteParams
+
+  class PromptListParams = Braintrust::Models::PromptListParams
+
+  class PromptOptions = Braintrust::Models::PromptOptions
+
+  class PromptReplaceParams = Braintrust::Models::PromptReplaceParams
+
+  class PromptRetrieveParams = Braintrust::Models::PromptRetrieveParams
+
+  class PromptUpdateParams = Braintrust::Models::PromptUpdateParams
+
+  class RepoInfo = Braintrust::Models::RepoInfo
+
+  class Role = Braintrust::Models::Role
+
+  class RoleCreateParams = Braintrust::Models::RoleCreateParams
+
+  class RoleDeleteParams = Braintrust::Models::RoleDeleteParams
+
+  class RoleListParams = Braintrust::Models::RoleListParams
+
+  class RoleReplaceParams = Braintrust::Models::RoleReplaceParams
+
+  class RoleRetrieveParams = Braintrust::Models::RoleRetrieveParams
+
+  class RoleUpdateParams = Braintrust::Models::RoleUpdateParams
+
+  class ScoreSummary = Braintrust::Models::ScoreSummary
+
+  class SpanAttributes = Braintrust::Models::SpanAttributes
+
+  class SpanIFrame = Braintrust::Models::SpanIFrame
+
+  class SpanIframeCreateParams = Braintrust::Models::SpanIframeCreateParams
+
+  class SpanIframeDeleteParams = Braintrust::Models::SpanIframeDeleteParams
+
+  class SpanIframeListParams = Braintrust::Models::SpanIframeListParams
+
+  class SpanIframeReplaceParams = Braintrust::Models::SpanIframeReplaceParams
+
+  class SpanIframeRetrieveParams = Braintrust::Models::SpanIframeRetrieveParams
+
+  class SpanIframeUpdateParams = Braintrust::Models::SpanIframeUpdateParams
+
+  module SpanType = Braintrust::Models::SpanType
+
+  class SummarizeDatasetResponse = Braintrust::Models::SummarizeDatasetResponse
+
+  class SummarizeExperimentResponse = Braintrust::Models::SummarizeExperimentResponse
+
+  class TopLevelHelloWorldParams = Braintrust::Models::TopLevelHelloWorldParams
+
+  class User = Braintrust::Models::User
+
+  class UserListParams = Braintrust::Models::UserListParams
+
+  class UserRetrieveParams = Braintrust::Models::UserRetrieveParams
+
+  class View = Braintrust::Models::View
+
+  class ViewCreateParams = Braintrust::Models::ViewCreateParams
+
+  class ViewData = Braintrust::Models::ViewData
+
+  class ViewDataSearch = Braintrust::Models::ViewDataSearch
+
+  class ViewDeleteParams = Braintrust::Models::ViewDeleteParams
+
+  class ViewListParams = Braintrust::Models::ViewListParams
+
+  class ViewOptions = Braintrust::Models::ViewOptions
+
+  class ViewReplaceParams = Braintrust::Models::ViewReplaceParams
+
+  class ViewRetrieveParams = Braintrust::Models::ViewRetrieveParams
+
+  module ViewType = Braintrust::Models::ViewType
+
+  class ViewUpdateParams = Braintrust::Models::ViewUpdateParams
+end
