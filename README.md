@@ -29,7 +29,7 @@ require "bundler/setup"
 require "braintrust"
 
 braintrust = Braintrust::Client.new(
-  api_key: "My API Key" # defaults to ENV["BRAINTRUST_API_KEY"]
+  api_key: ENV["BRAINTRUST_API_KEY"] # This is the default and can be omitted
 )
 
 project = braintrust.projects.create(name: "foobar")
