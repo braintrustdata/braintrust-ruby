@@ -7,9 +7,9 @@ module Braintrust
         object_type: Braintrust::Models::acl_object_type,
         view_type: Braintrust::Models::ViewCreateParams::view_type?,
         deleted_at: Time?,
-        options: Braintrust::Models::ViewOptions?,
+        options: Braintrust::ViewOptions?,
         user_id: String?,
-        view_data: Braintrust::Models::ViewData?
+        view_data: Braintrust::ViewData?
       }
       & Braintrust::Internal::Type::request_parameters
 
@@ -27,11 +27,11 @@ module Braintrust
 
       attr_accessor deleted_at: Time?
 
-      attr_accessor options: Braintrust::Models::ViewOptions?
+      attr_accessor options: Braintrust::ViewOptions?
 
       attr_accessor user_id: String?
 
-      attr_accessor view_data: Braintrust::Models::ViewData?
+      attr_accessor view_data: Braintrust::ViewData?
 
       def initialize: (
         name: String,
@@ -39,13 +39,11 @@ module Braintrust
         object_type: Braintrust::Models::acl_object_type,
         view_type: Braintrust::Models::ViewCreateParams::view_type?,
         ?deleted_at: Time?,
-        ?options: Braintrust::Models::ViewOptions?,
+        ?options: Braintrust::ViewOptions?,
         ?user_id: String?,
-        ?view_data: Braintrust::Models::ViewData?,
+        ?view_data: Braintrust::ViewData?,
         ?request_options: Braintrust::request_opts
       ) -> void
-
-      def to_hash: -> Braintrust::Models::view_create_params
 
       type view_type =
         :projects

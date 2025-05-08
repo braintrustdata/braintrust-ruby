@@ -13,27 +13,27 @@ class Braintrust::Test::Resources::FunctionsTest < Braintrust::Test::ResourceTes
       )
 
     assert_pattern do
-      response => Braintrust::Models::Function
+      response => Braintrust::Function
     end
 
     assert_pattern do
       response => {
         id: String,
         _xact_id: String,
-        function_data: Braintrust::Models::Function::FunctionData,
-        log_id: Braintrust::Models::Function::LogID,
+        function_data: Braintrust::Function::FunctionData,
+        log_id: Braintrust::Function::LogID,
         name: String,
         org_id: String,
         project_id: String,
         slug: String,
         created: Time | nil,
         description: String | nil,
-        function_schema: Braintrust::Models::Function::FunctionSchema | nil,
-        function_type: Braintrust::Models::Function::FunctionType | nil,
+        function_schema: Braintrust::Function::FunctionSchema | nil,
+        function_type: Braintrust::Function::FunctionType | nil,
         metadata: ^(Braintrust::Internal::Type::HashOf[Braintrust::Internal::Type::Unknown,
                                                        nil?: true]) | nil,
-        origin: Braintrust::Models::Function::Origin | nil,
-        prompt_data: Braintrust::Models::PromptData | nil,
+        origin: Braintrust::Function::Origin | nil,
+        prompt_data: Braintrust::PromptData | nil,
         tags: ^(Braintrust::Internal::Type::ArrayOf[String]) | nil
       }
     end
@@ -43,27 +43,27 @@ class Braintrust::Test::Resources::FunctionsTest < Braintrust::Test::ResourceTes
     response = @braintrust.functions.retrieve("182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e")
 
     assert_pattern do
-      response => Braintrust::Models::Function
+      response => Braintrust::Function
     end
 
     assert_pattern do
       response => {
         id: String,
         _xact_id: String,
-        function_data: Braintrust::Models::Function::FunctionData,
-        log_id: Braintrust::Models::Function::LogID,
+        function_data: Braintrust::Function::FunctionData,
+        log_id: Braintrust::Function::LogID,
         name: String,
         org_id: String,
         project_id: String,
         slug: String,
         created: Time | nil,
         description: String | nil,
-        function_schema: Braintrust::Models::Function::FunctionSchema | nil,
-        function_type: Braintrust::Models::Function::FunctionType | nil,
+        function_schema: Braintrust::Function::FunctionSchema | nil,
+        function_type: Braintrust::Function::FunctionType | nil,
         metadata: ^(Braintrust::Internal::Type::HashOf[Braintrust::Internal::Type::Unknown,
                                                        nil?: true]) | nil,
-        origin: Braintrust::Models::Function::Origin | nil,
-        prompt_data: Braintrust::Models::PromptData | nil,
+        origin: Braintrust::Function::Origin | nil,
+        prompt_data: Braintrust::PromptData | nil,
         tags: ^(Braintrust::Internal::Type::ArrayOf[String]) | nil
       }
     end
@@ -73,27 +73,27 @@ class Braintrust::Test::Resources::FunctionsTest < Braintrust::Test::ResourceTes
     response = @braintrust.functions.update("182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e")
 
     assert_pattern do
-      response => Braintrust::Models::Function
+      response => Braintrust::Function
     end
 
     assert_pattern do
       response => {
         id: String,
         _xact_id: String,
-        function_data: Braintrust::Models::Function::FunctionData,
-        log_id: Braintrust::Models::Function::LogID,
+        function_data: Braintrust::Function::FunctionData,
+        log_id: Braintrust::Function::LogID,
         name: String,
         org_id: String,
         project_id: String,
         slug: String,
         created: Time | nil,
         description: String | nil,
-        function_schema: Braintrust::Models::Function::FunctionSchema | nil,
-        function_type: Braintrust::Models::Function::FunctionType | nil,
+        function_schema: Braintrust::Function::FunctionSchema | nil,
+        function_type: Braintrust::Function::FunctionType | nil,
         metadata: ^(Braintrust::Internal::Type::HashOf[Braintrust::Internal::Type::Unknown,
                                                        nil?: true]) | nil,
-        origin: Braintrust::Models::Function::Origin | nil,
-        prompt_data: Braintrust::Models::PromptData | nil,
+        origin: Braintrust::Function::Origin | nil,
+        prompt_data: Braintrust::PromptData | nil,
         tags: ^(Braintrust::Internal::Type::ArrayOf[String]) | nil
       }
     end
@@ -110,27 +110,27 @@ class Braintrust::Test::Resources::FunctionsTest < Braintrust::Test::ResourceTes
     return if row.nil?
 
     assert_pattern do
-      row => Braintrust::Models::Function
+      row => Braintrust::Function
     end
 
     assert_pattern do
       row => {
         id: String,
         _xact_id: String,
-        function_data: Braintrust::Models::Function::FunctionData,
-        log_id: Braintrust::Models::Function::LogID,
+        function_data: Braintrust::Function::FunctionData,
+        log_id: Braintrust::Function::LogID,
         name: String,
         org_id: String,
         project_id: String,
         slug: String,
         created: Time | nil,
         description: String | nil,
-        function_schema: Braintrust::Models::Function::FunctionSchema | nil,
-        function_type: Braintrust::Models::Function::FunctionType | nil,
+        function_schema: Braintrust::Function::FunctionSchema | nil,
+        function_type: Braintrust::Function::FunctionType | nil,
         metadata: ^(Braintrust::Internal::Type::HashOf[Braintrust::Internal::Type::Unknown,
                                                        nil?: true]) | nil,
-        origin: Braintrust::Models::Function::Origin | nil,
-        prompt_data: Braintrust::Models::PromptData | nil,
+        origin: Braintrust::Function::Origin | nil,
+        prompt_data: Braintrust::PromptData | nil,
         tags: ^(Braintrust::Internal::Type::ArrayOf[String]) | nil
       }
     end
@@ -140,27 +140,27 @@ class Braintrust::Test::Resources::FunctionsTest < Braintrust::Test::ResourceTes
     response = @braintrust.functions.delete("182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e")
 
     assert_pattern do
-      response => Braintrust::Models::Function
+      response => Braintrust::Function
     end
 
     assert_pattern do
       response => {
         id: String,
         _xact_id: String,
-        function_data: Braintrust::Models::Function::FunctionData,
-        log_id: Braintrust::Models::Function::LogID,
+        function_data: Braintrust::Function::FunctionData,
+        log_id: Braintrust::Function::LogID,
         name: String,
         org_id: String,
         project_id: String,
         slug: String,
         created: Time | nil,
         description: String | nil,
-        function_schema: Braintrust::Models::Function::FunctionSchema | nil,
-        function_type: Braintrust::Models::Function::FunctionType | nil,
+        function_schema: Braintrust::Function::FunctionSchema | nil,
+        function_type: Braintrust::Function::FunctionType | nil,
         metadata: ^(Braintrust::Internal::Type::HashOf[Braintrust::Internal::Type::Unknown,
                                                        nil?: true]) | nil,
-        origin: Braintrust::Models::Function::Origin | nil,
-        prompt_data: Braintrust::Models::PromptData | nil,
+        origin: Braintrust::Function::Origin | nil,
+        prompt_data: Braintrust::PromptData | nil,
         tags: ^(Braintrust::Internal::Type::ArrayOf[String]) | nil
       }
     end
@@ -184,27 +184,27 @@ class Braintrust::Test::Resources::FunctionsTest < Braintrust::Test::ResourceTes
       )
 
     assert_pattern do
-      response => Braintrust::Models::Function
+      response => Braintrust::Function
     end
 
     assert_pattern do
       response => {
         id: String,
         _xact_id: String,
-        function_data: Braintrust::Models::Function::FunctionData,
-        log_id: Braintrust::Models::Function::LogID,
+        function_data: Braintrust::Function::FunctionData,
+        log_id: Braintrust::Function::LogID,
         name: String,
         org_id: String,
         project_id: String,
         slug: String,
         created: Time | nil,
         description: String | nil,
-        function_schema: Braintrust::Models::Function::FunctionSchema | nil,
-        function_type: Braintrust::Models::Function::FunctionType | nil,
+        function_schema: Braintrust::Function::FunctionSchema | nil,
+        function_type: Braintrust::Function::FunctionType | nil,
         metadata: ^(Braintrust::Internal::Type::HashOf[Braintrust::Internal::Type::Unknown,
                                                        nil?: true]) | nil,
-        origin: Braintrust::Models::Function::Origin | nil,
-        prompt_data: Braintrust::Models::PromptData | nil,
+        origin: Braintrust::Function::Origin | nil,
+        prompt_data: Braintrust::PromptData | nil,
         tags: ^(Braintrust::Internal::Type::ArrayOf[String]) | nil
       }
     end

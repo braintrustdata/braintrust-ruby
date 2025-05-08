@@ -6,8 +6,6 @@ module Braintrust
       attr_accessor row_ids: ::Array[String]
 
       def initialize: (row_ids: ::Array[String]) -> void
-
-      def to_hash: -> Braintrust::Models::insert_events_response
     end
   end
 end

@@ -17,8 +17,6 @@ module Braintrust
         ?value: String?,
         ?request_options: Braintrust::request_opts
       ) -> void
-
-      def to_hash: -> Braintrust::Models::env_var_update_params
     end
   end
 end

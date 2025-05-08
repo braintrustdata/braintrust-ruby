@@ -35,8 +35,6 @@ module Braintrust
         ?created: Time?,
         ?description: String?
       ) -> void
-
-      def to_hash: -> Braintrust::Models::project_tag
     end
   end
 end

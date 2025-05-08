@@ -15,7 +15,7 @@ module Braintrust
     }
 
   class RequestOptions < Braintrust::Internal::Type::BaseModel
-    def self.validate!: (self | ::Hash[Symbol, top] opts) -> void
+    def self.validate!: (Braintrust::request_opts opts) -> void
 
     attr_accessor idempotency_key: String?
 

@@ -4,22 +4,22 @@ module Braintrust
       def create: (
         data: Braintrust::Models::EvalCreateParams::data,
         project_id: String,
-        scores: ::Array[Braintrust::Models::EvalCreateParams::score],
+        scores: ::Array[Braintrust::EvalCreateParams::score],
         task: Braintrust::Models::EvalCreateParams::task,
         ?base_experiment_id: String?,
         ?base_experiment_name: String?,
         ?experiment_name: String,
-        ?git_metadata_settings: Braintrust::Models::EvalCreateParams::GitMetadataSettings?,
+        ?git_metadata_settings: Braintrust::EvalCreateParams::GitMetadataSettings?,
         ?is_public: bool?,
         ?max_concurrency: Float?,
         ?metadata: ::Hash[Symbol, top?],
         ?parent: Braintrust::Models::EvalCreateParams::parent,
-        ?repo_info: Braintrust::Models::RepoInfo?,
+        ?repo_info: Braintrust::RepoInfo?,
         ?stream: bool,
         ?timeout: Float?,
         ?trial_count: Float?,
         ?request_options: Braintrust::request_opts
-      ) -> Braintrust::Models::SummarizeExperimentResponse
+      ) -> Braintrust::SummarizeExperimentResponse
 
       def initialize: (client: Braintrust::Client) -> void
     end

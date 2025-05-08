@@ -12,9 +12,8 @@ module Braintrust
           member_groups: T.nilable(T::Array[String]),
           member_users: T.nilable(T::Array[String]),
           org_name: T.nilable(String),
-          request_options: Braintrust::RequestOpts
-        )
-          .returns(Braintrust::Models::Group)
+          request_options: Braintrust::RequestOptions::OrHash
+        ).returns(Braintrust::Group)
       end
       def create(
         # Name of the group
@@ -33,14 +32,23 @@ module Braintrust
         # the organization the group belongs in.
         org_name: nil,
         request_options: {}
-      ); end
+      )
+      end
+
       # Get a group object by its id
-      sig { params(group_id: String, request_options: Braintrust::RequestOpts).returns(Braintrust::Models::Group) }
+      sig do
+        params(
+          group_id: String,
+          request_options: Braintrust::RequestOptions::OrHash
+        ).returns(Braintrust::Group)
+      end
       def retrieve(
         # Group id
         group_id,
         request_options: {}
-      ); end
+      )
+      end
+
       # Partially update a group object. Specify the fields to update in the payload.
       # Any object-type fields will be deep-merged with existing content. Currently we
       # do not support removing fields or setting them to null.
@@ -53,9 +61,8 @@ module Braintrust
           name: T.nilable(String),
           remove_member_groups: T.nilable(T::Array[String]),
           remove_member_users: T.nilable(T::Array[String]),
-          request_options: Braintrust::RequestOpts
-        )
-          .returns(Braintrust::Models::Group)
+          request_options: Braintrust::RequestOptions::OrHash
+        ).returns(Braintrust::Group)
       end
       def update(
         # Group id
@@ -73,7 +80,9 @@ module Braintrust
         # A list of user IDs to remove from the group
         remove_member_users: nil,
         request_options: {}
-      ); end
+      )
+      end
+
       # List out all groups. The groups are sorted by creation date, with the most
       # recently-created groups coming first
       sig do
@@ -84,9 +93,8 @@ module Braintrust
           limit: T.nilable(Integer),
           org_name: String,
           starting_after: String,
-          request_options: Braintrust::RequestOpts
-        )
-          .returns(Braintrust::Internal::ListObjects[Braintrust::Models::Group])
+          request_options: Braintrust::RequestOptions::OrHash
+        ).returns(Braintrust::Internal::ListObjects[Braintrust::Group])
       end
       def list(
         # Pagination cursor id.
@@ -111,14 +119,23 @@ module Braintrust
         # `starting_after` and `ending_before`
         starting_after: nil,
         request_options: {}
-      ); end
+      )
+      end
+
       # Delete a group object by its id
-      sig { params(group_id: String, request_options: Braintrust::RequestOpts).returns(Braintrust::Models::Group) }
+      sig do
+        params(
+          group_id: String,
+          request_options: Braintrust::RequestOptions::OrHash
+        ).returns(Braintrust::Group)
+      end
       def delete(
         # Group id
         group_id,
         request_options: {}
-      ); end
+      )
+      end
+
       # Create or replace group. If there is an existing group with the same name as the
       # one specified in the request, will replace the existing group with the provided
       # fields
@@ -129,9 +146,8 @@ module Braintrust
           member_groups: T.nilable(T::Array[String]),
           member_users: T.nilable(T::Array[String]),
           org_name: T.nilable(String),
-          request_options: Braintrust::RequestOpts
-        )
-          .returns(Braintrust::Models::Group)
+          request_options: Braintrust::RequestOptions::OrHash
+        ).returns(Braintrust::Group)
       end
       def replace(
         # Name of the group
@@ -150,10 +166,13 @@ module Braintrust
         # the organization the group belongs in.
         org_name: nil,
         request_options: {}
-      ); end
+      )
+      end
+
       # @api private
       sig { params(client: Braintrust::Client).returns(T.attached_class) }
-      def self.new(client:); end
+      def self.new(client:)
+      end
     end
   end
 end

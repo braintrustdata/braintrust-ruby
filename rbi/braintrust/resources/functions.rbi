@@ -8,24 +8,25 @@ module Braintrust
       # unmodified
       sig do
         params(
-          function_data: T.any(
-            Braintrust::Models::FunctionCreateParams::FunctionData::Prompt,
-            Braintrust::Internal::AnyHash,
-            Braintrust::Models::FunctionCreateParams::FunctionData::Code,
-            Braintrust::Models::FunctionCreateParams::FunctionData::Global
-          ),
+          function_data:
+            T.any(
+              Braintrust::FunctionCreateParams::FunctionData::Prompt::OrHash,
+              Braintrust::FunctionCreateParams::FunctionData::Code::OrHash,
+              Braintrust::FunctionCreateParams::FunctionData::Global::OrHash
+            ),
           name: String,
           project_id: String,
           slug: String,
           description: T.nilable(String),
-          function_schema: T.nilable(T.any(Braintrust::Models::FunctionCreateParams::FunctionSchema, Braintrust::Internal::AnyHash)),
-          function_type: T.nilable(Braintrust::Models::FunctionCreateParams::FunctionType::OrSymbol),
-          origin: T.nilable(T.any(Braintrust::Models::FunctionCreateParams::Origin, Braintrust::Internal::AnyHash)),
-          prompt_data: T.nilable(T.any(Braintrust::Models::PromptData, Braintrust::Internal::AnyHash)),
+          function_schema:
+            T.nilable(Braintrust::FunctionCreateParams::FunctionSchema::OrHash),
+          function_type:
+            T.nilable(Braintrust::FunctionCreateParams::FunctionType::OrSymbol),
+          origin: T.nilable(Braintrust::FunctionCreateParams::Origin::OrHash),
+          prompt_data: T.nilable(Braintrust::PromptData::OrHash),
           tags: T.nilable(T::Array[String]),
-          request_options: Braintrust::RequestOpts
-        )
-          .returns(Braintrust::Models::Function)
+          request_options: Braintrust::RequestOptions::OrHash
+        ).returns(Braintrust::Function)
       end
       def create(
         function_data:,
@@ -46,16 +47,23 @@ module Braintrust
         # A list of tags for the prompt
         tags: nil,
         request_options: {}
-      ); end
+      )
+      end
+
       # Get a function object by its id
       sig do
-        params(function_id: String, request_options: Braintrust::RequestOpts).returns(Braintrust::Models::Function)
+        params(
+          function_id: String,
+          request_options: Braintrust::RequestOptions::OrHash
+        ).returns(Braintrust::Function)
       end
       def retrieve(
         # Function id
         function_id,
         request_options: {}
-      ); end
+      )
+      end
+
       # Partially update a function object. Specify the fields to update in the payload.
       # Any object-type fields will be deep-merged with existing content. Currently we
       # do not support removing fields or setting them to null.
@@ -63,20 +71,19 @@ module Braintrust
         params(
           function_id: String,
           description: T.nilable(String),
-          function_data: T.nilable(
-            T.any(
-              Braintrust::Models::FunctionUpdateParams::FunctionData::Prompt,
-              Braintrust::Internal::AnyHash,
-              Braintrust::Models::FunctionUpdateParams::FunctionData::Code,
-              Braintrust::Models::FunctionUpdateParams::FunctionData::Global
-            )
-          ),
+          function_data:
+            T.nilable(
+              T.any(
+                Braintrust::FunctionUpdateParams::FunctionData::Prompt::OrHash,
+                Braintrust::FunctionUpdateParams::FunctionData::Code::OrHash,
+                Braintrust::FunctionUpdateParams::FunctionData::Global::OrHash
+              )
+            ),
           name: T.nilable(String),
-          prompt_data: T.nilable(T.any(Braintrust::Models::PromptData, Braintrust::Internal::AnyHash)),
+          prompt_data: T.nilable(Braintrust::PromptData::OrHash),
           tags: T.nilable(T::Array[String]),
-          request_options: Braintrust::RequestOpts
-        )
-          .returns(Braintrust::Models::Function)
+          request_options: Braintrust::RequestOptions::OrHash
+        ).returns(Braintrust::Function)
       end
       def update(
         # Function id
@@ -91,7 +98,9 @@ module Braintrust
         # A list of tags for the prompt
         tags: nil,
         request_options: {}
-      ); end
+      )
+      end
+
       # List out all functions. The functions are sorted by creation date, with the most
       # recently-created functions coming first
       sig do
@@ -106,9 +115,8 @@ module Braintrust
           slug: String,
           starting_after: String,
           version: String,
-          request_options: Braintrust::RequestOpts
-        )
-          .returns(Braintrust::Internal::ListObjects[Braintrust::Models::Function])
+          request_options: Braintrust::RequestOptions::OrHash
+        ).returns(Braintrust::Internal::ListObjects[Braintrust::Function])
       end
       def list(
         # Pagination cursor id.
@@ -144,45 +152,51 @@ module Braintrust
         # version identifier (e.g. '81cd05ee665fdfb3').
         version: nil,
         request_options: {}
-      ); end
+      )
+      end
+
       # Delete a function object by its id
       sig do
-        params(function_id: String, request_options: Braintrust::RequestOpts).returns(Braintrust::Models::Function)
+        params(
+          function_id: String,
+          request_options: Braintrust::RequestOptions::OrHash
+        ).returns(Braintrust::Function)
       end
       def delete(
         # Function id
         function_id,
         request_options: {}
-      ); end
+      )
+      end
+
       # Invoke a function.
       sig do
         params(
           function_id: String,
           expected: T.anything,
           input: T.anything,
-          messages: T::Array[
-            T.any(
-              Braintrust::Models::FunctionInvokeParams::Message::System,
-              Braintrust::Internal::AnyHash,
-              Braintrust::Models::FunctionInvokeParams::Message::User,
-              Braintrust::Models::FunctionInvokeParams::Message::Assistant,
-              Braintrust::Models::FunctionInvokeParams::Message::Tool,
-              Braintrust::Models::FunctionInvokeParams::Message::Function,
-              Braintrust::Models::FunctionInvokeParams::Message::Fallback
-            )
-          ],
+          messages:
+            T::Array[
+              T.any(
+                Braintrust::FunctionInvokeParams::Message::System::OrHash,
+                Braintrust::FunctionInvokeParams::Message::User::OrHash,
+                Braintrust::FunctionInvokeParams::Message::Assistant::OrHash,
+                Braintrust::FunctionInvokeParams::Message::Tool::OrHash,
+                Braintrust::FunctionInvokeParams::Message::Function::OrHash,
+                Braintrust::FunctionInvokeParams::Message::Fallback::OrHash
+              )
+            ],
           metadata: T.nilable(T::Hash[Symbol, T.nilable(T.anything)]),
-          mode: T.nilable(Braintrust::Models::FunctionInvokeParams::Mode::OrSymbol),
-          parent: T.any(
-            Braintrust::Models::FunctionInvokeParams::Parent::SpanParentStruct,
-            Braintrust::Internal::AnyHash,
-            String
-          ),
+          mode: T.nilable(Braintrust::FunctionInvokeParams::Mode::OrSymbol),
+          parent:
+            T.any(
+              Braintrust::FunctionInvokeParams::Parent::SpanParentStruct::OrHash,
+              String
+            ),
           stream: T.nilable(T::Boolean),
           version: String,
-          request_options: Braintrust::RequestOpts
-        )
-          .returns(T.nilable(T.anything))
+          request_options: Braintrust::RequestOptions::OrHash
+        ).returns(T.nilable(T.anything))
       end
       def invoke(
         # Function id
@@ -205,30 +219,37 @@ module Braintrust
         # The version of the function
         version: nil,
         request_options: {}
-      ); end
+      )
+      end
+
       # Create or replace function. If there is an existing function in the project with
       # the same slug as the one specified in the request, will replace the existing
       # function with the provided fields
       sig do
         params(
-          function_data: T.any(
-            Braintrust::Models::FunctionReplaceParams::FunctionData::Prompt,
-            Braintrust::Internal::AnyHash,
-            Braintrust::Models::FunctionReplaceParams::FunctionData::Code,
-            Braintrust::Models::FunctionReplaceParams::FunctionData::Global
-          ),
+          function_data:
+            T.any(
+              Braintrust::FunctionReplaceParams::FunctionData::Prompt::OrHash,
+              Braintrust::FunctionReplaceParams::FunctionData::Code::OrHash,
+              Braintrust::FunctionReplaceParams::FunctionData::Global::OrHash
+            ),
           name: String,
           project_id: String,
           slug: String,
           description: T.nilable(String),
-          function_schema: T.nilable(T.any(Braintrust::Models::FunctionReplaceParams::FunctionSchema, Braintrust::Internal::AnyHash)),
-          function_type: T.nilable(Braintrust::Models::FunctionReplaceParams::FunctionType::OrSymbol),
-          origin: T.nilable(T.any(Braintrust::Models::FunctionReplaceParams::Origin, Braintrust::Internal::AnyHash)),
-          prompt_data: T.nilable(T.any(Braintrust::Models::PromptData, Braintrust::Internal::AnyHash)),
+          function_schema:
+            T.nilable(
+              Braintrust::FunctionReplaceParams::FunctionSchema::OrHash
+            ),
+          function_type:
+            T.nilable(
+              Braintrust::FunctionReplaceParams::FunctionType::OrSymbol
+            ),
+          origin: T.nilable(Braintrust::FunctionReplaceParams::Origin::OrHash),
+          prompt_data: T.nilable(Braintrust::PromptData::OrHash),
           tags: T.nilable(T::Array[String]),
-          request_options: Braintrust::RequestOpts
-        )
-          .returns(Braintrust::Models::Function)
+          request_options: Braintrust::RequestOptions::OrHash
+        ).returns(Braintrust::Function)
       end
       def replace(
         function_data:,
@@ -249,10 +270,13 @@ module Braintrust
         # A list of tags for the prompt
         tags: nil,
         request_options: {}
-      ); end
+      )
+      end
+
       # @api private
       sig { params(client: Braintrust::Client).returns(T.attached_class) }
-      def self.new(client:); end
+      def self.new(client:)
+      end
     end
   end
 end

@@ -12,8 +12,8 @@ module Braintrust
         expected: top,
         input: top,
         is_root: bool?,
-        metadata: Braintrust::Models::DatasetEvent::Metadata?,
-        origin: Braintrust::Models::ObjectReference?,
+        metadata: Braintrust::DatasetEvent::Metadata?,
+        origin: Braintrust::ObjectReference?,
         tags: ::Array[String]?
       }
 
@@ -42,9 +42,9 @@ module Braintrust
 
       attr_accessor is_root: bool?
 
-      attr_accessor metadata: Braintrust::Models::DatasetEvent::Metadata?
+      attr_accessor metadata: Braintrust::DatasetEvent::Metadata?
 
-      attr_accessor origin: Braintrust::Models::ObjectReference?
+      attr_accessor origin: Braintrust::ObjectReference?
 
       attr_accessor tags: ::Array[String]?
 
@@ -59,12 +59,10 @@ module Braintrust
         ?expected: top,
         ?input: top,
         ?is_root: bool?,
-        ?metadata: Braintrust::Models::DatasetEvent::Metadata?,
-        ?origin: Braintrust::Models::ObjectReference?,
+        ?metadata: Braintrust::DatasetEvent::Metadata?,
+        ?origin: Braintrust::ObjectReference?,
         ?tags: ::Array[String]?
       ) -> void
-
-      def to_hash: -> Braintrust::Models::dataset_event
 
       type metadata = { model: String? }
 
@@ -72,8 +70,6 @@ module Braintrust
         attr_accessor model: String?
 
         def initialize: (?model: String?) -> void
-
-        def to_hash: -> Braintrust::Models::DatasetEvent::metadata
       end
     end
   end

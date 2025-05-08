@@ -3,6 +3,9 @@
 module Braintrust
   module Models
     class DatasetEvent < Braintrust::Internal::Type::BaseModel
+      OrHash =
+        T.type_alias { T.any(T.self_type, Braintrust::Internal::AnyHash) }
+
       # A unique identifier for the dataset event. If you don't provide one, BrainTrust
       # will generate one for you
       sig { returns(String) }
@@ -63,22 +66,23 @@ module Braintrust
       # examples later. For example, you could log the `prompt`, example's `id`, or
       # anything else that would be useful to slice/dice later. The values in `metadata`
       # can be any JSON-serializable type, but its keys must be strings
-      sig { returns(T.nilable(Braintrust::Models::DatasetEvent::Metadata)) }
+      sig { returns(T.nilable(Braintrust::DatasetEvent::Metadata)) }
       attr_reader :metadata
 
       sig do
         params(
-          metadata: T.nilable(T.any(Braintrust::Models::DatasetEvent::Metadata, Braintrust::Internal::AnyHash))
-        )
-          .void
+          metadata: T.nilable(Braintrust::DatasetEvent::Metadata::OrHash)
+        ).void
       end
       attr_writer :metadata
 
       # Indicates the event was copied from another object.
-      sig { returns(T.nilable(Braintrust::Models::ObjectReference)) }
+      sig { returns(T.nilable(Braintrust::ObjectReference)) }
       attr_reader :origin
 
-      sig { params(origin: T.nilable(T.any(Braintrust::Models::ObjectReference, Braintrust::Internal::AnyHash))).void }
+      sig do
+        params(origin: T.nilable(Braintrust::ObjectReference::OrHash)).void
+      end
       attr_writer :origin
 
       # A list of tags to log
@@ -97,11 +101,10 @@ module Braintrust
           expected: T.anything,
           input: T.anything,
           is_root: T.nilable(T::Boolean),
-          metadata: T.nilable(T.any(Braintrust::Models::DatasetEvent::Metadata, Braintrust::Internal::AnyHash)),
-          origin: T.nilable(T.any(Braintrust::Models::ObjectReference, Braintrust::Internal::AnyHash)),
+          metadata: T.nilable(Braintrust::DatasetEvent::Metadata::OrHash),
+          origin: T.nilable(Braintrust::ObjectReference::OrHash),
           tags: T.nilable(T::Array[String])
-        )
-          .returns(T.attached_class)
+        ).returns(T.attached_class)
       end
       def self.new(
         # A unique identifier for the dataset event. If you don't provide one, BrainTrust
@@ -143,30 +146,35 @@ module Braintrust
         origin: nil,
         # A list of tags to log
         tags: nil
-      ); end
-      sig do
-        override
-          .returns(
-            {
-              id: String,
-              _xact_id: String,
-              created: Time,
-              dataset_id: String,
-              project_id: String,
-              root_span_id: String,
-              span_id: String,
-              expected: T.anything,
-              input: T.anything,
-              is_root: T.nilable(T::Boolean),
-              metadata: T.nilable(Braintrust::Models::DatasetEvent::Metadata),
-              origin: T.nilable(Braintrust::Models::ObjectReference),
-              tags: T.nilable(T::Array[String])
-            }
-          )
+      )
       end
-      def to_hash; end
+
+      sig do
+        override.returns(
+          {
+            id: String,
+            _xact_id: String,
+            created: Time,
+            dataset_id: String,
+            project_id: String,
+            root_span_id: String,
+            span_id: String,
+            expected: T.anything,
+            input: T.anything,
+            is_root: T.nilable(T::Boolean),
+            metadata: T.nilable(Braintrust::DatasetEvent::Metadata),
+            origin: T.nilable(Braintrust::ObjectReference),
+            tags: T.nilable(T::Array[String])
+          }
+        )
+      end
+      def to_hash
+      end
 
       class Metadata < Braintrust::Internal::Type::BaseModel
+        OrHash =
+          T.type_alias { T.any(T.self_type, Braintrust::Internal::AnyHash) }
+
         # The model used for this example
         sig { returns(T.nilable(String)) }
         attr_accessor :model
@@ -180,9 +188,12 @@ module Braintrust
         def self.new(
           # The model used for this example
           model: nil
-        ); end
-        sig { override.returns({model: T.nilable(String)}) }
-        def to_hash; end
+        )
+        end
+
+        sig { override.returns({ model: T.nilable(String) }) }
+        def to_hash
+        end
       end
     end
   end

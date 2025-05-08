@@ -11,14 +11,14 @@ module Braintrust
         ?metadata: ::Hash[Symbol, top?]?,
         ?name: String?,
         ?public: bool?,
-        ?repo_info: Braintrust::Models::RepoInfo?,
+        ?repo_info: Braintrust::RepoInfo?,
         ?request_options: Braintrust::request_opts
-      ) -> Braintrust::Models::Experiment
+      ) -> Braintrust::Experiment
 
       def retrieve: (
         String experiment_id,
         ?request_options: Braintrust::request_opts
-      ) -> Braintrust::Models::Experiment
+      ) -> Braintrust::Experiment
 
       def update: (
         String experiment_id,
@@ -29,9 +29,9 @@ module Braintrust
         ?metadata: ::Hash[Symbol, top?]?,
         ?name: String?,
         ?public: bool?,
-        ?repo_info: Braintrust::Models::RepoInfo?,
+        ?repo_info: Braintrust::RepoInfo?,
         ?request_options: Braintrust::request_opts
-      ) -> Braintrust::Models::Experiment
+      ) -> Braintrust::Experiment
 
       def list: (
         ?ending_before: String,
@@ -43,18 +43,18 @@ module Braintrust
         ?project_name: String,
         ?starting_after: String,
         ?request_options: Braintrust::request_opts
-      ) -> Braintrust::Internal::ListObjects[Braintrust::Models::Experiment]
+      ) -> Braintrust::Internal::ListObjects[Braintrust::Experiment]
 
       def delete: (
         String experiment_id,
         ?request_options: Braintrust::request_opts
-      ) -> Braintrust::Models::Experiment
+      ) -> Braintrust::Experiment
 
       def feedback: (
         String experiment_id,
-        feedback: ::Array[Braintrust::Models::FeedbackExperimentItem],
+        feedback: ::Array[Braintrust::FeedbackExperimentItem],
         ?request_options: Braintrust::request_opts
-      ) -> Braintrust::Models::FeedbackResponseSchema
+      ) -> Braintrust::FeedbackResponseSchema
 
       def fetch: (
         String experiment_id,
@@ -63,7 +63,7 @@ module Braintrust
         ?max_xact_id: String,
         ?version: String,
         ?request_options: Braintrust::request_opts
-      ) -> Braintrust::Models::FetchExperimentEventsResponse
+      ) -> Braintrust::FetchExperimentEventsResponse
 
       def fetch_post: (
         String experiment_id,
@@ -73,20 +73,20 @@ module Braintrust
         ?max_xact_id: String?,
         ?version: String?,
         ?request_options: Braintrust::request_opts
-      ) -> Braintrust::Models::FetchExperimentEventsResponse
+      ) -> Braintrust::FetchExperimentEventsResponse
 
       def insert: (
         String experiment_id,
-        events: ::Array[Braintrust::Models::InsertExperimentEvent],
+        events: ::Array[Braintrust::InsertExperimentEvent],
         ?request_options: Braintrust::request_opts
-      ) -> Braintrust::Models::InsertEventsResponse
+      ) -> Braintrust::InsertEventsResponse
 
       def summarize: (
         String experiment_id,
         ?comparison_experiment_id: String,
         ?summarize_scores: bool?,
         ?request_options: Braintrust::request_opts
-      ) -> Braintrust::Models::SummarizeExperimentResponse
+      ) -> Braintrust::SummarizeExperimentResponse
 
       def initialize: (client: Braintrust::Client) -> void
     end

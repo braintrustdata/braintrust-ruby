@@ -6,6 +6,9 @@ module Braintrust
       extend Braintrust::Internal::Type::RequestParameters::Converter
       include Braintrust::Internal::Type::RequestParameters
 
+      OrHash =
+        T.type_alias { T.any(T.self_type, Braintrust::Internal::AnyHash) }
+
       # Name of the prompt
       sig { returns(String) }
       attr_accessor :name
@@ -22,14 +25,20 @@ module Braintrust
       sig { returns(T.nilable(String)) }
       attr_accessor :description
 
-      sig { returns(T.nilable(Braintrust::Models::PromptReplaceParams::FunctionType::OrSymbol)) }
+      sig do
+        returns(
+          T.nilable(Braintrust::PromptReplaceParams::FunctionType::OrSymbol)
+        )
+      end
       attr_accessor :function_type
 
       # The prompt, model, and its parameters
-      sig { returns(T.nilable(Braintrust::Models::PromptData)) }
+      sig { returns(T.nilable(Braintrust::PromptData)) }
       attr_reader :prompt_data
 
-      sig { params(prompt_data: T.nilable(T.any(Braintrust::Models::PromptData, Braintrust::Internal::AnyHash))).void }
+      sig do
+        params(prompt_data: T.nilable(Braintrust::PromptData::OrHash)).void
+      end
       attr_writer :prompt_data
 
       # A list of tags for the prompt
@@ -42,12 +51,12 @@ module Braintrust
           project_id: String,
           slug: String,
           description: T.nilable(String),
-          function_type: T.nilable(Braintrust::Models::PromptReplaceParams::FunctionType::OrSymbol),
-          prompt_data: T.nilable(T.any(Braintrust::Models::PromptData, Braintrust::Internal::AnyHash)),
+          function_type:
+            T.nilable(Braintrust::PromptReplaceParams::FunctionType::OrSymbol),
+          prompt_data: T.nilable(Braintrust::PromptData::OrHash),
           tags: T.nilable(T::Array[String]),
-          request_options: T.any(Braintrust::RequestOptions, Braintrust::Internal::AnyHash)
-        )
-          .returns(T.attached_class)
+          request_options: Braintrust::RequestOptions::OrHash
+        ).returns(T.attached_class)
       end
       def self.new(
         # Name of the prompt
@@ -64,37 +73,68 @@ module Braintrust
         # A list of tags for the prompt
         tags: nil,
         request_options: {}
-      ); end
-      sig do
-        override
-          .returns(
-            {
-              name: String,
-              project_id: String,
-              slug: String,
-              description: T.nilable(String),
-              function_type: T.nilable(Braintrust::Models::PromptReplaceParams::FunctionType::OrSymbol),
-              prompt_data: T.nilable(Braintrust::Models::PromptData),
-              tags: T.nilable(T::Array[String]),
-              request_options: Braintrust::RequestOptions
-            }
-          )
+      )
       end
-      def to_hash; end
+
+      sig do
+        override.returns(
+          {
+            name: String,
+            project_id: String,
+            slug: String,
+            description: T.nilable(String),
+            function_type:
+              T.nilable(
+                Braintrust::PromptReplaceParams::FunctionType::OrSymbol
+              ),
+            prompt_data: T.nilable(Braintrust::PromptData),
+            tags: T.nilable(T::Array[String]),
+            request_options: Braintrust::RequestOptions
+          }
+        )
+      end
+      def to_hash
+      end
 
       module FunctionType
         extend Braintrust::Internal::Type::Enum
 
-        TaggedSymbol = T.type_alias { T.all(Symbol, Braintrust::Models::PromptReplaceParams::FunctionType) }
+        TaggedSymbol =
+          T.type_alias do
+            T.all(Symbol, Braintrust::PromptReplaceParams::FunctionType)
+          end
         OrSymbol = T.type_alias { T.any(Symbol, String) }
 
-        LLM = T.let(:llm, Braintrust::Models::PromptReplaceParams::FunctionType::TaggedSymbol)
-        SCORER = T.let(:scorer, Braintrust::Models::PromptReplaceParams::FunctionType::TaggedSymbol)
-        TASK = T.let(:task, Braintrust::Models::PromptReplaceParams::FunctionType::TaggedSymbol)
-        TOOL = T.let(:tool, Braintrust::Models::PromptReplaceParams::FunctionType::TaggedSymbol)
+        LLM =
+          T.let(
+            :llm,
+            Braintrust::PromptReplaceParams::FunctionType::TaggedSymbol
+          )
+        SCORER =
+          T.let(
+            :scorer,
+            Braintrust::PromptReplaceParams::FunctionType::TaggedSymbol
+          )
+        TASK =
+          T.let(
+            :task,
+            Braintrust::PromptReplaceParams::FunctionType::TaggedSymbol
+          )
+        TOOL =
+          T.let(
+            :tool,
+            Braintrust::PromptReplaceParams::FunctionType::TaggedSymbol
+          )
 
-        sig { override.returns(T::Array[Braintrust::Models::PromptReplaceParams::FunctionType::TaggedSymbol]) }
-        def self.values; end
+        sig do
+          override.returns(
+            T::Array[
+              Braintrust::PromptReplaceParams::FunctionType::TaggedSymbol
+            ]
+          )
+        end
+        def self.values
+        end
       end
     end
   end

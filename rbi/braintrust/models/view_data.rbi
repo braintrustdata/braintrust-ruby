@@ -3,21 +3,29 @@
 module Braintrust
   module Models
     class ViewData < Braintrust::Internal::Type::BaseModel
-      sig { returns(T.nilable(Braintrust::Models::ViewDataSearch)) }
+      OrHash =
+        T.type_alias { T.any(T.self_type, Braintrust::Internal::AnyHash) }
+
+      sig { returns(T.nilable(Braintrust::ViewDataSearch)) }
       attr_reader :search
 
-      sig { params(search: T.nilable(T.any(Braintrust::Models::ViewDataSearch, Braintrust::Internal::AnyHash))).void }
+      sig { params(search: T.nilable(Braintrust::ViewDataSearch::OrHash)).void }
       attr_writer :search
 
       # The view definition
       sig do
-        params(search: T.nilable(T.any(Braintrust::Models::ViewDataSearch, Braintrust::Internal::AnyHash)))
-          .returns(T.attached_class)
+        params(search: T.nilable(Braintrust::ViewDataSearch::OrHash)).returns(
+          T.attached_class
+        )
       end
-      def self.new(search: nil); end
+      def self.new(search: nil)
+      end
 
-      sig { override.returns({search: T.nilable(Braintrust::Models::ViewDataSearch)}) }
-      def to_hash; end
+      sig do
+        override.returns({ search: T.nilable(Braintrust::ViewDataSearch) })
+      end
+      def to_hash
+      end
     end
   end
 end

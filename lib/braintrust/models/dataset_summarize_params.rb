@@ -19,7 +19,6 @@ module Braintrust
       #   {Braintrust::Models::DatasetSummarizeParams} for more details.
       #
       #   @param summarize_data [Boolean, nil] Whether to summarize the data. If false (or omitted), only the metadata will be
-      #   ...
       #
       #   @param request_options [Braintrust::RequestOptions, Hash{Symbol=>Object}]
     end

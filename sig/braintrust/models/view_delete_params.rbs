@@ -17,8 +17,6 @@ module Braintrust
         object_type: Braintrust::Models::acl_object_type,
         ?request_options: Braintrust::request_opts
       ) -> void
-
-      def to_hash: -> Braintrust::Models::view_delete_params
     end
   end
 end

@@ -4,7 +4,7 @@ module Braintrust
       def retrieve: (
         String user_id,
         ?request_options: Braintrust::request_opts
-      ) -> Braintrust::Models::User
+      ) -> Braintrust::User
 
       def list: (
         ?email: Braintrust::Models::UserListParams::email,
@@ -16,7 +16,7 @@ module Braintrust
         ?org_name: String,
         ?starting_after: String,
         ?request_options: Braintrust::request_opts
-      ) -> Braintrust::Internal::ListObjects[Braintrust::Models::User]
+      ) -> Braintrust::Internal::ListObjects[Braintrust::User]
 
       def initialize: (client: Braintrust::Client) -> void
     end

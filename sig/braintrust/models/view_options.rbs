@@ -31,8 +31,6 @@ module Braintrust
         ?layout: String?,
         ?row_height: String?
       ) -> void
-
-      def to_hash: -> Braintrust::Models::view_options
     end
   end
 end

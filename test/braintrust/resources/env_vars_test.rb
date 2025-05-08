@@ -12,7 +12,7 @@ class Braintrust::Test::Resources::EnvVarsTest < Braintrust::Test::ResourceTest
       )
 
     assert_pattern do
-      response => Braintrust::Models::EnvVar
+      response => Braintrust::EnvVar
     end
 
     assert_pattern do
@@ -20,7 +20,7 @@ class Braintrust::Test::Resources::EnvVarsTest < Braintrust::Test::ResourceTest
         id: String,
         name: String,
         object_id_: String,
-        object_type: Braintrust::Models::EnvVar::ObjectType,
+        object_type: Braintrust::EnvVar::ObjectType,
         created: Time | nil,
         used: Time | nil
       }
@@ -31,7 +31,7 @@ class Braintrust::Test::Resources::EnvVarsTest < Braintrust::Test::ResourceTest
     response = @braintrust.env_vars.retrieve("182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e")
 
     assert_pattern do
-      response => Braintrust::Models::EnvVar
+      response => Braintrust::EnvVar
     end
 
     assert_pattern do
@@ -39,7 +39,7 @@ class Braintrust::Test::Resources::EnvVarsTest < Braintrust::Test::ResourceTest
         id: String,
         name: String,
         object_id_: String,
-        object_type: Braintrust::Models::EnvVar::ObjectType,
+        object_type: Braintrust::EnvVar::ObjectType,
         created: Time | nil,
         used: Time | nil
       }
@@ -50,7 +50,7 @@ class Braintrust::Test::Resources::EnvVarsTest < Braintrust::Test::ResourceTest
     response = @braintrust.env_vars.update("182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e", name: "name")
 
     assert_pattern do
-      response => Braintrust::Models::EnvVar
+      response => Braintrust::EnvVar
     end
 
     assert_pattern do
@@ -58,7 +58,7 @@ class Braintrust::Test::Resources::EnvVarsTest < Braintrust::Test::ResourceTest
         id: String,
         name: String,
         object_id_: String,
-        object_type: Braintrust::Models::EnvVar::ObjectType,
+        object_type: Braintrust::EnvVar::ObjectType,
         created: Time | nil,
         used: Time | nil
       }
@@ -74,7 +74,7 @@ class Braintrust::Test::Resources::EnvVarsTest < Braintrust::Test::ResourceTest
 
     assert_pattern do
       response => {
-        objects: ^(Braintrust::Internal::Type::ArrayOf[Braintrust::Models::EnvVar])
+        objects: ^(Braintrust::Internal::Type::ArrayOf[Braintrust::EnvVar])
       }
     end
   end
@@ -83,7 +83,7 @@ class Braintrust::Test::Resources::EnvVarsTest < Braintrust::Test::ResourceTest
     response = @braintrust.env_vars.delete("182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e")
 
     assert_pattern do
-      response => Braintrust::Models::EnvVar
+      response => Braintrust::EnvVar
     end
 
     assert_pattern do
@@ -91,7 +91,7 @@ class Braintrust::Test::Resources::EnvVarsTest < Braintrust::Test::ResourceTest
         id: String,
         name: String,
         object_id_: String,
-        object_type: Braintrust::Models::EnvVar::ObjectType,
+        object_type: Braintrust::EnvVar::ObjectType,
         created: Time | nil,
         used: Time | nil
       }
@@ -107,7 +107,7 @@ class Braintrust::Test::Resources::EnvVarsTest < Braintrust::Test::ResourceTest
       )
 
     assert_pattern do
-      response => Braintrust::Models::EnvVar
+      response => Braintrust::EnvVar
     end
 
     assert_pattern do
@@ -115,7 +115,7 @@ class Braintrust::Test::Resources::EnvVarsTest < Braintrust::Test::ResourceTest
         id: String,
         name: String,
         object_id_: String,
-        object_type: Braintrust::Models::EnvVar::ObjectType,
+        object_type: Braintrust::EnvVar::ObjectType,
         created: Time | nil,
         used: Time | nil
       }

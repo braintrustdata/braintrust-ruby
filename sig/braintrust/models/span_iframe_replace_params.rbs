@@ -32,8 +32,6 @@ module Braintrust
         ?post_message: bool?,
         ?request_options: Braintrust::request_opts
       ) -> void
-
-      def to_hash: -> Braintrust::Models::span_iframe_replace_params
     end
   end
 end

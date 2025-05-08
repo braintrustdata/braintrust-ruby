@@ -16,8 +16,8 @@ module Braintrust
       # @!attribute object_type
       #   The object type that the ACL applies to
       #
-      #   @return [Symbol, Braintrust::Models::ACLObjectType]
-      required :object_type, enum: -> { Braintrust::Models::ACLObjectType }
+      #   @return [Symbol, Braintrust::ACLObjectType]
+      required :object_type, enum: -> { Braintrust::ACLObjectType }
 
       # @!attribute ending_before
       #   Pagination cursor id.
@@ -34,7 +34,7 @@ module Braintrust
       #   IDs, include the query param multiple times
       #
       #   @return [String, Array<String>, nil]
-      optional :ids, union: -> { Braintrust::Models::ACLListParams::IDs }
+      optional :ids, union: -> { Braintrust::ACLListParams::IDs }
 
       # @!attribute limit
       #   Limit the number of objects to return
@@ -58,16 +58,15 @@ module Braintrust
       #
       #   @param object_id_ [String] The id of the object the ACL applies to
       #
-      #   @param object_type [Symbol, Braintrust::Models::ACLObjectType] The object type that the ACL applies to
+      #   @param object_type [Symbol, Braintrust::ACLObjectType] The object type that the ACL applies to
       #
-      #   @param ending_before [String] Pagination cursor id. ...
+      #   @param ending_before [String] Pagination cursor id.
       #
       #   @param ids [String, Array<String>] Filter search results to a particular set of object IDs. To specify a list of ID
-      #   ...
       #
       #   @param limit [Integer, nil] Limit the number of objects to return
       #
-      #   @param starting_after [String] Pagination cursor id. ...
+      #   @param starting_after [String] Pagination cursor id.
       #
       #   @param request_options [Braintrust::RequestOptions, Hash{Symbol=>Object}]
 
@@ -78,7 +77,7 @@ module Braintrust
 
         variant String
 
-        variant -> { Braintrust::Models::ACLListParams::IDs::StringArray }
+        variant -> { Braintrust::ACLListParams::IDs::StringArray }
 
         # @!method self.variants
         #   @return [Array(String, Array<String>)]

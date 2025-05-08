@@ -6,6 +6,9 @@ module Braintrust
       extend Braintrust::Internal::Type::RequestParameters::Converter
       include Braintrust::Internal::Type::RequestParameters
 
+      OrHash =
+        T.type_alias { T.any(T.self_type, Braintrust::Internal::AnyHash) }
+
       # Whether to summarize the data. If false (or omitted), only the metadata will be
       # returned.
       sig { returns(T.nilable(T::Boolean)) }
@@ -14,20 +17,27 @@ module Braintrust
       sig do
         params(
           summarize_data: T.nilable(T::Boolean),
-          request_options: T.any(Braintrust::RequestOptions, Braintrust::Internal::AnyHash)
-        )
-          .returns(T.attached_class)
+          request_options: Braintrust::RequestOptions::OrHash
+        ).returns(T.attached_class)
       end
       def self.new(
         # Whether to summarize the data. If false (or omitted), only the metadata will be
         # returned.
         summarize_data: nil,
         request_options: {}
-      ); end
-      sig do
-        override.returns({summarize_data: T.nilable(T::Boolean), request_options: Braintrust::RequestOptions})
+      )
       end
-      def to_hash; end
+
+      sig do
+        override.returns(
+          {
+            summarize_data: T.nilable(T::Boolean),
+            request_options: Braintrust::RequestOptions
+          }
+        )
+      end
+      def to_hash
+      end
     end
   end
 end

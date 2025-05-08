@@ -3,6 +3,9 @@
 module Braintrust
   module Models
     class ProjectTag < Braintrust::Internal::Type::BaseModel
+      OrHash =
+        T.type_alias { T.any(T.self_type, Braintrust::Internal::AnyHash) }
+
       # Unique identifier for the project tag
       sig { returns(String) }
       attr_accessor :id
@@ -41,8 +44,7 @@ module Braintrust
           color: T.nilable(String),
           created: T.nilable(Time),
           description: T.nilable(String)
-        )
-          .returns(T.attached_class)
+        ).returns(T.attached_class)
       end
       def self.new(
         # Unique identifier for the project tag
@@ -58,22 +60,24 @@ module Braintrust
         created: nil,
         # Textual description of the project tag
         description: nil
-      ); end
-      sig do
-        override
-          .returns(
-            {
-              id: String,
-              name: String,
-              project_id: String,
-              user_id: String,
-              color: T.nilable(String),
-              created: T.nilable(Time),
-              description: T.nilable(String)
-            }
-          )
+      )
       end
-      def to_hash; end
+
+      sig do
+        override.returns(
+          {
+            id: String,
+            name: String,
+            project_id: String,
+            user_id: String,
+            color: T.nilable(String),
+            created: T.nilable(Time),
+            description: T.nilable(String)
+          }
+        )
+      end
+      def to_hash
+      end
     end
   end
 end

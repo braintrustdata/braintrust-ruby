@@ -8,12 +8,12 @@ class Braintrust::Test::Resources::Projects::LogsTest < Braintrust::Test::Resour
       @braintrust.projects.logs.feedback("182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e", feedback: [{id: "id"}])
 
     assert_pattern do
-      response => Braintrust::Models::FeedbackResponseSchema
+      response => Braintrust::FeedbackResponseSchema
     end
 
     assert_pattern do
       response => {
-        status: Braintrust::Models::FeedbackResponseSchema::Status
+        status: Braintrust::FeedbackResponseSchema::Status
       }
     end
   end
@@ -22,12 +22,12 @@ class Braintrust::Test::Resources::Projects::LogsTest < Braintrust::Test::Resour
     response = @braintrust.projects.logs.fetch("182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e")
 
     assert_pattern do
-      response => Braintrust::Models::FetchProjectLogsEventsResponse
+      response => Braintrust::FetchProjectLogsEventsResponse
     end
 
     assert_pattern do
       response => {
-        events: ^(Braintrust::Internal::Type::ArrayOf[Braintrust::Models::ProjectLogsEvent]),
+        events: ^(Braintrust::Internal::Type::ArrayOf[Braintrust::ProjectLogsEvent]),
         cursor: String | nil
       }
     end
@@ -37,12 +37,12 @@ class Braintrust::Test::Resources::Projects::LogsTest < Braintrust::Test::Resour
     response = @braintrust.projects.logs.fetch_post("182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e")
 
     assert_pattern do
-      response => Braintrust::Models::FetchProjectLogsEventsResponse
+      response => Braintrust::FetchProjectLogsEventsResponse
     end
 
     assert_pattern do
       response => {
-        events: ^(Braintrust::Internal::Type::ArrayOf[Braintrust::Models::ProjectLogsEvent]),
+        events: ^(Braintrust::Internal::Type::ArrayOf[Braintrust::ProjectLogsEvent]),
         cursor: String | nil
       }
     end
@@ -52,7 +52,7 @@ class Braintrust::Test::Resources::Projects::LogsTest < Braintrust::Test::Resour
     response = @braintrust.projects.logs.insert("182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e", events: [{}])
 
     assert_pattern do
-      response => Braintrust::Models::InsertEventsResponse
+      response => Braintrust::InsertEventsResponse
     end
 
     assert_pattern do

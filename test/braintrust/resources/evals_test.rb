@@ -13,7 +13,7 @@ class Braintrust::Test::Resources::EvalsTest < Braintrust::Test::ResourceTest
       )
 
     assert_pattern do
-      response => Braintrust::Models::SummarizeExperimentResponse
+      response => Braintrust::SummarizeExperimentResponse
     end
 
     assert_pattern do
@@ -23,8 +23,8 @@ class Braintrust::Test::Resources::EvalsTest < Braintrust::Test::ResourceTest
         project_name: String,
         project_url: String,
         comparison_experiment_name: String | nil,
-        metrics: ^(Braintrust::Internal::Type::HashOf[Braintrust::Models::MetricSummary]) | nil,
-        scores: ^(Braintrust::Internal::Type::HashOf[Braintrust::Models::ScoreSummary]) | nil
+        metrics: ^(Braintrust::Internal::Type::HashOf[Braintrust::MetricSummary]) | nil,
+        scores: ^(Braintrust::Internal::Type::HashOf[Braintrust::ScoreSummary]) | nil
       }
     end
   end

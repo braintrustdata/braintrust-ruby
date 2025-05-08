@@ -7,17 +7,18 @@ module Braintrust
         # Modify organization membership
         sig do
           params(
-            invite_users: T.nilable(
-              T.any(Braintrust::Models::Organizations::MemberUpdateParams::InviteUsers, Braintrust::Internal::AnyHash)
-            ),
+            invite_users:
+              T.nilable(
+                Braintrust::Organizations::MemberUpdateParams::InviteUsers::OrHash
+              ),
             org_id: T.nilable(String),
             org_name: T.nilable(String),
-            remove_users: T.nilable(
-              T.any(Braintrust::Models::Organizations::MemberUpdateParams::RemoveUsers, Braintrust::Internal::AnyHash)
-            ),
-            request_options: Braintrust::RequestOpts
-          )
-            .returns(Braintrust::Models::PatchOrganizationMembersOutput)
+            remove_users:
+              T.nilable(
+                Braintrust::Organizations::MemberUpdateParams::RemoveUsers::OrHash
+              ),
+            request_options: Braintrust::RequestOptions::OrHash
+          ).returns(Braintrust::PatchOrganizationMembersOutput)
         end
         def update(
           # Users to invite to the organization
@@ -35,10 +36,13 @@ module Braintrust
           # Users to remove from the organization
           remove_users: nil,
           request_options: {}
-        ); end
+        )
+        end
+
         # @api private
         sig { params(client: Braintrust::Client).returns(T.attached_class) }
-        def self.new(client:); end
+        def self.new(client:)
+        end
       end
     end
   end

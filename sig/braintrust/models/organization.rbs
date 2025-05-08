@@ -35,8 +35,6 @@ module Braintrust
         ?proxy_url: String?,
         ?realtime_url: String?
       ) -> void
-
-      def to_hash: -> Braintrust::Models::organization
     end
   end
 end

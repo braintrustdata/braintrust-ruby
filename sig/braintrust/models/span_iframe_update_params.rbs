@@ -23,8 +23,6 @@ module Braintrust
         ?url: String?,
         ?request_options: Braintrust::request_opts
       ) -> void
-
-      def to_hash: -> Braintrust::Models::span_iframe_update_params
     end
   end
 end

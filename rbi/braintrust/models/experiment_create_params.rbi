@@ -6,6 +6,9 @@ module Braintrust
       extend Braintrust::Internal::Type::RequestParameters::Converter
       include Braintrust::Internal::Type::RequestParameters
 
+      OrHash =
+        T.type_alias { T.any(T.self_type, Braintrust::Internal::AnyHash) }
+
       # Unique identifier for the project that the experiment belongs under
       sig { returns(String) }
       attr_accessor :project_id
@@ -49,10 +52,10 @@ module Braintrust
       attr_accessor :public
 
       # Metadata about the state of the repo when the experiment was created
-      sig { returns(T.nilable(Braintrust::Models::RepoInfo)) }
+      sig { returns(T.nilable(Braintrust::RepoInfo)) }
       attr_reader :repo_info
 
-      sig { params(repo_info: T.nilable(T.any(Braintrust::Models::RepoInfo, Braintrust::Internal::AnyHash))).void }
+      sig { params(repo_info: T.nilable(Braintrust::RepoInfo::OrHash)).void }
       attr_writer :repo_info
 
       sig do
@@ -66,10 +69,9 @@ module Braintrust
           metadata: T.nilable(T::Hash[Symbol, T.nilable(T.anything)]),
           name: T.nilable(String),
           public: T.nilable(T::Boolean),
-          repo_info: T.nilable(T.any(Braintrust::Models::RepoInfo, Braintrust::Internal::AnyHash)),
-          request_options: T.any(Braintrust::RequestOptions, Braintrust::Internal::AnyHash)
-        )
-          .returns(T.attached_class)
+          repo_info: T.nilable(Braintrust::RepoInfo::OrHash),
+          request_options: Braintrust::RequestOptions::OrHash
+        ).returns(T.attached_class)
       end
       def self.new(
         # Unique identifier for the project that the experiment belongs under
@@ -99,26 +101,28 @@ module Braintrust
         # Metadata about the state of the repo when the experiment was created
         repo_info: nil,
         request_options: {}
-      ); end
-      sig do
-        override
-          .returns(
-            {
-              project_id: String,
-              base_exp_id: T.nilable(String),
-              dataset_id: T.nilable(String),
-              dataset_version: T.nilable(String),
-              description: T.nilable(String),
-              ensure_new: T.nilable(T::Boolean),
-              metadata: T.nilable(T::Hash[Symbol, T.nilable(T.anything)]),
-              name: T.nilable(String),
-              public: T.nilable(T::Boolean),
-              repo_info: T.nilable(Braintrust::Models::RepoInfo),
-              request_options: Braintrust::RequestOptions
-            }
-          )
+      )
       end
-      def to_hash; end
+
+      sig do
+        override.returns(
+          {
+            project_id: String,
+            base_exp_id: T.nilable(String),
+            dataset_id: T.nilable(String),
+            dataset_version: T.nilable(String),
+            description: T.nilable(String),
+            ensure_new: T.nilable(T::Boolean),
+            metadata: T.nilable(T::Hash[Symbol, T.nilable(T.anything)]),
+            name: T.nilable(String),
+            public: T.nilable(T::Boolean),
+            repo_info: T.nilable(Braintrust::RepoInfo),
+            request_options: Braintrust::RequestOptions
+          }
+        )
+      end
+      def to_hash
+      end
     end
   end
 end

@@ -6,6 +6,9 @@ module Braintrust
       extend Braintrust::Internal::Type::RequestParameters::Converter
       include Braintrust::Internal::Type::RequestParameters
 
+      OrHash =
+        T.type_alias { T.any(T.self_type, Braintrust::Internal::AnyHash) }
+
       # Name of the group
       sig { returns(String) }
       attr_accessor :name
@@ -38,9 +41,8 @@ module Braintrust
           member_groups: T.nilable(T::Array[String]),
           member_users: T.nilable(T::Array[String]),
           org_name: T.nilable(String),
-          request_options: T.any(Braintrust::RequestOptions, Braintrust::Internal::AnyHash)
-        )
-          .returns(T.attached_class)
+          request_options: Braintrust::RequestOptions::OrHash
+        ).returns(T.attached_class)
       end
       def self.new(
         # Name of the group
@@ -59,21 +61,23 @@ module Braintrust
         # the organization the group belongs in.
         org_name: nil,
         request_options: {}
-      ); end
-      sig do
-        override
-          .returns(
-            {
-              name: String,
-              description: T.nilable(String),
-              member_groups: T.nilable(T::Array[String]),
-              member_users: T.nilable(T::Array[String]),
-              org_name: T.nilable(String),
-              request_options: Braintrust::RequestOptions
-            }
-          )
+      )
       end
-      def to_hash; end
+
+      sig do
+        override.returns(
+          {
+            name: String,
+            description: T.nilable(String),
+            member_groups: T.nilable(T::Array[String]),
+            member_users: T.nilable(T::Array[String]),
+            org_name: T.nilable(String),
+            request_options: Braintrust::RequestOptions
+          }
+        )
+      end
+      def to_hash
+      end
     end
   end
 end

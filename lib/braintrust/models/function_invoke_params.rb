@@ -22,9 +22,9 @@ module Braintrust
       # @!attribute messages
       #   If the function is an LLM, additional messages to pass along to it
       #
-      #   @return [Array<Braintrust::Models::FunctionInvokeParams::Message::System, Braintrust::Models::FunctionInvokeParams::Message::User, Braintrust::Models::FunctionInvokeParams::Message::Assistant, Braintrust::Models::FunctionInvokeParams::Message::Tool, Braintrust::Models::FunctionInvokeParams::Message::Function, Braintrust::Models::FunctionInvokeParams::Message::Fallback>, nil]
+      #   @return [Array<Braintrust::FunctionInvokeParams::Message::System, Braintrust::FunctionInvokeParams::Message::User, Braintrust::FunctionInvokeParams::Message::Assistant, Braintrust::FunctionInvokeParams::Message::Tool, Braintrust::FunctionInvokeParams::Message::Function, Braintrust::FunctionInvokeParams::Message::Fallback>, nil]
       optional :messages,
-               -> { Braintrust::Internal::Type::ArrayOf[union: Braintrust::Models::FunctionInvokeParams::Message] }
+               -> { Braintrust::Internal::Type::ArrayOf[union: Braintrust::FunctionInvokeParams::Message] }
 
       # @!attribute metadata
       #   Any relevant metadata
@@ -37,14 +37,14 @@ module Braintrust
       # @!attribute mode
       #   The mode format of the returned value (defaults to 'auto')
       #
-      #   @return [Symbol, Braintrust::Models::FunctionInvokeParams::Mode, nil]
-      optional :mode, enum: -> { Braintrust::Models::FunctionInvokeParams::Mode }, nil?: true
+      #   @return [Symbol, Braintrust::FunctionInvokeParams::Mode, nil]
+      optional :mode, enum: -> { Braintrust::FunctionInvokeParams::Mode }, nil?: true
 
       # @!attribute parent
       #   Options for tracing the function call
       #
-      #   @return [Braintrust::Models::FunctionInvokeParams::Parent::SpanParentStruct, String, nil]
-      optional :parent, union: -> { Braintrust::Models::FunctionInvokeParams::Parent }
+      #   @return [Braintrust::FunctionInvokeParams::Parent::SpanParentStruct, String, nil]
+      optional :parent, union: -> { Braintrust::FunctionInvokeParams::Parent }
 
       # @!attribute stream
       #   Whether to stream the response. If true, results will be returned in the
@@ -67,16 +67,15 @@ module Braintrust
       #
       #   @param input [Object] Argument to the function, which can be any JSON serializable value
       #
-      #   @param messages [Array<Braintrust::Models::FunctionInvokeParams::Message::System, Braintrust::Models::FunctionInvokeParams::Message::User, Braintrust::Models::FunctionInvokeParams::Message::Assistant, Braintrust::Models::FunctionInvokeParams::Message::Tool, Braintrust::Models::FunctionInvokeParams::Message::Function, Braintrust::Models::FunctionInvokeParams::Message::Fallback>] If the function is an LLM, additional messages to pass along to it
+      #   @param messages [Array<Braintrust::FunctionInvokeParams::Message::System, Braintrust::FunctionInvokeParams::Message::User, Braintrust::FunctionInvokeParams::Message::Assistant, Braintrust::FunctionInvokeParams::Message::Tool, Braintrust::FunctionInvokeParams::Message::Function, Braintrust::FunctionInvokeParams::Message::Fallback>] If the function is an LLM, additional messages to pass along to it
       #
       #   @param metadata [Hash{Symbol=>Object, nil}, nil] Any relevant metadata
       #
-      #   @param mode [Symbol, Braintrust::Models::FunctionInvokeParams::Mode, nil] The mode format of the returned value (defaults to 'auto')
+      #   @param mode [Symbol, Braintrust::FunctionInvokeParams::Mode, nil] The mode format of the returned value (defaults to 'auto')
       #
-      #   @param parent [Braintrust::Models::FunctionInvokeParams::Parent::SpanParentStruct, String] Options for tracing the function call
+      #   @param parent [Braintrust::FunctionInvokeParams::Parent::SpanParentStruct, String] Options for tracing the function call
       #
       #   @param stream [Boolean, nil] Whether to stream the response. If true, results will be returned in the Braintr
-      #   ...
       #
       #   @param version [String] The version of the function
       #
@@ -85,23 +84,23 @@ module Braintrust
       module Message
         extend Braintrust::Internal::Type::Union
 
-        variant -> { Braintrust::Models::FunctionInvokeParams::Message::System }
+        variant -> { Braintrust::FunctionInvokeParams::Message::System }
 
-        variant -> { Braintrust::Models::FunctionInvokeParams::Message::User }
+        variant -> { Braintrust::FunctionInvokeParams::Message::User }
 
-        variant -> { Braintrust::Models::FunctionInvokeParams::Message::Assistant }
+        variant -> { Braintrust::FunctionInvokeParams::Message::Assistant }
 
-        variant -> { Braintrust::Models::FunctionInvokeParams::Message::Tool }
+        variant -> { Braintrust::FunctionInvokeParams::Message::Tool }
 
-        variant -> { Braintrust::Models::FunctionInvokeParams::Message::Function }
+        variant -> { Braintrust::FunctionInvokeParams::Message::Function }
 
-        variant -> { Braintrust::Models::FunctionInvokeParams::Message::Fallback }
+        variant -> { Braintrust::FunctionInvokeParams::Message::Fallback }
 
         class System < Braintrust::Internal::Type::BaseModel
           # @!attribute role
           #
-          #   @return [Symbol, Braintrust::Models::FunctionInvokeParams::Message::System::Role]
-          required :role, enum: -> { Braintrust::Models::FunctionInvokeParams::Message::System::Role }
+          #   @return [Symbol, Braintrust::FunctionInvokeParams::Message::System::Role]
+          required :role, enum: -> { Braintrust::FunctionInvokeParams::Message::System::Role }
 
           # @!attribute content
           #
@@ -114,11 +113,11 @@ module Braintrust
           optional :name, String
 
           # @!method initialize(role:, content: nil, name: nil)
-          #   @param role [Symbol, Braintrust::Models::FunctionInvokeParams::Message::System::Role]
+          #   @param role [Symbol, Braintrust::FunctionInvokeParams::Message::System::Role]
           #   @param content [String]
           #   @param name [String]
 
-          # @see Braintrust::Models::FunctionInvokeParams::Message::System#role
+          # @see Braintrust::FunctionInvokeParams::Message::System#role
           module Role
             extend Braintrust::Internal::Type::Enum
 
@@ -132,13 +131,13 @@ module Braintrust
         class User < Braintrust::Internal::Type::BaseModel
           # @!attribute role
           #
-          #   @return [Symbol, Braintrust::Models::FunctionInvokeParams::Message::User::Role]
-          required :role, enum: -> { Braintrust::Models::FunctionInvokeParams::Message::User::Role }
+          #   @return [Symbol, Braintrust::FunctionInvokeParams::Message::User::Role]
+          required :role, enum: -> { Braintrust::FunctionInvokeParams::Message::User::Role }
 
           # @!attribute content
           #
-          #   @return [String, Array<Braintrust::Models::ChatCompletionContentPartText, Braintrust::Models::ChatCompletionContentPartImage>, nil]
-          optional :content, union: -> { Braintrust::Models::FunctionInvokeParams::Message::User::Content }
+          #   @return [String, Array<Braintrust::ChatCompletionContentPartText, Braintrust::ChatCompletionContentPartImage>, nil]
+          optional :content, union: -> { Braintrust::FunctionInvokeParams::Message::User::Content }
 
           # @!attribute name
           #
@@ -146,11 +145,11 @@ module Braintrust
           optional :name, String
 
           # @!method initialize(role:, content: nil, name: nil)
-          #   @param role [Symbol, Braintrust::Models::FunctionInvokeParams::Message::User::Role]
-          #   @param content [String, Array<Braintrust::Models::ChatCompletionContentPartText, Braintrust::Models::ChatCompletionContentPartImage>]
+          #   @param role [Symbol, Braintrust::FunctionInvokeParams::Message::User::Role]
+          #   @param content [String, Array<Braintrust::ChatCompletionContentPartText, Braintrust::ChatCompletionContentPartImage>]
           #   @param name [String]
 
-          # @see Braintrust::Models::FunctionInvokeParams::Message::User#role
+          # @see Braintrust::FunctionInvokeParams::Message::User#role
           module Role
             extend Braintrust::Internal::Type::Enum
 
@@ -160,39 +159,41 @@ module Braintrust
             #   @return [Array<Symbol>]
           end
 
-          # @see Braintrust::Models::FunctionInvokeParams::Message::User#content
+          # @see Braintrust::FunctionInvokeParams::Message::User#content
           module Content
             extend Braintrust::Internal::Type::Union
 
             variant String
 
-            variant -> { Braintrust::Models::FunctionInvokeParams::Message::User::Content::Nested2DArray }
+            variant -> { Braintrust::FunctionInvokeParams::Message::User::Content::Nested2DArray }
 
             module Array
               extend Braintrust::Internal::Type::Union
 
-              variant -> { Braintrust::Models::ChatCompletionContentPartText }
+              variant -> { Braintrust::ChatCompletionContentPartText }
 
-              variant -> { Braintrust::Models::ChatCompletionContentPartImage }
+              variant -> { Braintrust::ChatCompletionContentPartImage }
 
               # @!method self.variants
-              #   @return [Array(Braintrust::Models::ChatCompletionContentPartText, Braintrust::Models::ChatCompletionContentPartImage)]
+              #   @return [Array(Braintrust::ChatCompletionContentPartText, Braintrust::ChatCompletionContentPartImage)]
             end
 
             # @!method self.variants
-            #   @return [Array(String, Array<Braintrust::Models::ChatCompletionContentPartText, Braintrust::Models::ChatCompletionContentPartImage>)]
+            #   @return [Array(String, Array<Braintrust::ChatCompletionContentPartText, Braintrust::ChatCompletionContentPartImage>)]
 
             # @type [Braintrust::Internal::Type::Converter]
             Nested2DArray =
-              Braintrust::Internal::Type::ArrayOf[union: -> { Braintrust::Models::FunctionInvokeParams::Message::User::Content::Array }]
+              Braintrust::Internal::Type::ArrayOf[union: -> {
+                Braintrust::FunctionInvokeParams::Message::User::Content::Array
+              }]
           end
         end
 
         class Assistant < Braintrust::Internal::Type::BaseModel
           # @!attribute role
           #
-          #   @return [Symbol, Braintrust::Models::FunctionInvokeParams::Message::Assistant::Role]
-          required :role, enum: -> { Braintrust::Models::FunctionInvokeParams::Message::Assistant::Role }
+          #   @return [Symbol, Braintrust::FunctionInvokeParams::Message::Assistant::Role]
+          required :role, enum: -> { Braintrust::FunctionInvokeParams::Message::Assistant::Role }
 
           # @!attribute content
           #
@@ -201,9 +202,9 @@ module Braintrust
 
           # @!attribute function_call
           #
-          #   @return [Braintrust::Models::FunctionInvokeParams::Message::Assistant::FunctionCall, nil]
+          #   @return [Braintrust::FunctionInvokeParams::Message::Assistant::FunctionCall, nil]
           optional :function_call,
-                   -> { Braintrust::Models::FunctionInvokeParams::Message::Assistant::FunctionCall },
+                   -> { Braintrust::FunctionInvokeParams::Message::Assistant::FunctionCall },
                    nil?: true
 
           # @!attribute name
@@ -213,19 +214,19 @@ module Braintrust
 
           # @!attribute tool_calls
           #
-          #   @return [Array<Braintrust::Models::ChatCompletionMessageToolCall>, nil]
+          #   @return [Array<Braintrust::ChatCompletionMessageToolCall>, nil]
           optional :tool_calls,
-                   -> { Braintrust::Internal::Type::ArrayOf[Braintrust::Models::ChatCompletionMessageToolCall] },
+                   -> { Braintrust::Internal::Type::ArrayOf[Braintrust::ChatCompletionMessageToolCall] },
                    nil?: true
 
           # @!method initialize(role:, content: nil, function_call: nil, name: nil, tool_calls: nil)
-          #   @param role [Symbol, Braintrust::Models::FunctionInvokeParams::Message::Assistant::Role]
+          #   @param role [Symbol, Braintrust::FunctionInvokeParams::Message::Assistant::Role]
           #   @param content [String, nil]
-          #   @param function_call [Braintrust::Models::FunctionInvokeParams::Message::Assistant::FunctionCall, nil]
+          #   @param function_call [Braintrust::FunctionInvokeParams::Message::Assistant::FunctionCall, nil]
           #   @param name [String, nil]
-          #   @param tool_calls [Array<Braintrust::Models::ChatCompletionMessageToolCall>, nil]
+          #   @param tool_calls [Array<Braintrust::ChatCompletionMessageToolCall>, nil]
 
-          # @see Braintrust::Models::FunctionInvokeParams::Message::Assistant#role
+          # @see Braintrust::FunctionInvokeParams::Message::Assistant#role
           module Role
             extend Braintrust::Internal::Type::Enum
 
@@ -235,7 +236,7 @@ module Braintrust
             #   @return [Array<Symbol>]
           end
 
-          # @see Braintrust::Models::FunctionInvokeParams::Message::Assistant#function_call
+          # @see Braintrust::FunctionInvokeParams::Message::Assistant#function_call
           class FunctionCall < Braintrust::Internal::Type::BaseModel
             # @!attribute arguments
             #
@@ -256,8 +257,8 @@ module Braintrust
         class Tool < Braintrust::Internal::Type::BaseModel
           # @!attribute role
           #
-          #   @return [Symbol, Braintrust::Models::FunctionInvokeParams::Message::Tool::Role]
-          required :role, enum: -> { Braintrust::Models::FunctionInvokeParams::Message::Tool::Role }
+          #   @return [Symbol, Braintrust::FunctionInvokeParams::Message::Tool::Role]
+          required :role, enum: -> { Braintrust::FunctionInvokeParams::Message::Tool::Role }
 
           # @!attribute content
           #
@@ -270,11 +271,11 @@ module Braintrust
           optional :tool_call_id, String
 
           # @!method initialize(role:, content: nil, tool_call_id: nil)
-          #   @param role [Symbol, Braintrust::Models::FunctionInvokeParams::Message::Tool::Role]
+          #   @param role [Symbol, Braintrust::FunctionInvokeParams::Message::Tool::Role]
           #   @param content [String]
           #   @param tool_call_id [String]
 
-          # @see Braintrust::Models::FunctionInvokeParams::Message::Tool#role
+          # @see Braintrust::FunctionInvokeParams::Message::Tool#role
           module Role
             extend Braintrust::Internal::Type::Enum
 
@@ -293,8 +294,8 @@ module Braintrust
 
           # @!attribute role
           #
-          #   @return [Symbol, Braintrust::Models::FunctionInvokeParams::Message::Function::Role]
-          required :role, enum: -> { Braintrust::Models::FunctionInvokeParams::Message::Function::Role }
+          #   @return [Symbol, Braintrust::FunctionInvokeParams::Message::Function::Role]
+          required :role, enum: -> { Braintrust::FunctionInvokeParams::Message::Function::Role }
 
           # @!attribute content
           #
@@ -303,10 +304,10 @@ module Braintrust
 
           # @!method initialize(name:, role:, content: nil)
           #   @param name [String]
-          #   @param role [Symbol, Braintrust::Models::FunctionInvokeParams::Message::Function::Role]
+          #   @param role [Symbol, Braintrust::FunctionInvokeParams::Message::Function::Role]
           #   @param content [String]
 
-          # @see Braintrust::Models::FunctionInvokeParams::Message::Function#role
+          # @see Braintrust::FunctionInvokeParams::Message::Function#role
           module Role
             extend Braintrust::Internal::Type::Enum
 
@@ -320,8 +321,8 @@ module Braintrust
         class Fallback < Braintrust::Internal::Type::BaseModel
           # @!attribute role
           #
-          #   @return [Symbol, Braintrust::Models::FunctionInvokeParams::Message::Fallback::Role]
-          required :role, enum: -> { Braintrust::Models::FunctionInvokeParams::Message::Fallback::Role }
+          #   @return [Symbol, Braintrust::FunctionInvokeParams::Message::Fallback::Role]
+          required :role, enum: -> { Braintrust::FunctionInvokeParams::Message::Fallback::Role }
 
           # @!attribute content
           #
@@ -329,10 +330,10 @@ module Braintrust
           optional :content, String, nil?: true
 
           # @!method initialize(role:, content: nil)
-          #   @param role [Symbol, Braintrust::Models::FunctionInvokeParams::Message::Fallback::Role]
+          #   @param role [Symbol, Braintrust::FunctionInvokeParams::Message::Fallback::Role]
           #   @param content [String, nil]
 
-          # @see Braintrust::Models::FunctionInvokeParams::Message::Fallback#role
+          # @see Braintrust::FunctionInvokeParams::Message::Fallback#role
           module Role
             extend Braintrust::Internal::Type::Enum
 
@@ -344,7 +345,7 @@ module Braintrust
         end
 
         # @!method self.variants
-        #   @return [Array(Braintrust::Models::FunctionInvokeParams::Message::System, Braintrust::Models::FunctionInvokeParams::Message::User, Braintrust::Models::FunctionInvokeParams::Message::Assistant, Braintrust::Models::FunctionInvokeParams::Message::Tool, Braintrust::Models::FunctionInvokeParams::Message::Function, Braintrust::Models::FunctionInvokeParams::Message::Fallback)]
+        #   @return [Array(Braintrust::FunctionInvokeParams::Message::System, Braintrust::FunctionInvokeParams::Message::User, Braintrust::FunctionInvokeParams::Message::Assistant, Braintrust::FunctionInvokeParams::Message::Tool, Braintrust::FunctionInvokeParams::Message::Function, Braintrust::FunctionInvokeParams::Message::Fallback)]
       end
 
       # The mode format of the returned value (defaults to 'auto')
@@ -363,7 +364,7 @@ module Braintrust
         extend Braintrust::Internal::Type::Union
 
         # Span parent properties
-        variant -> { Braintrust::Models::FunctionInvokeParams::Parent::SpanParentStruct }
+        variant -> { Braintrust::FunctionInvokeParams::Parent::SpanParentStruct }
 
         # The parent's span identifier, created by calling `.export()` on a span
         variant String
@@ -377,9 +378,11 @@ module Braintrust
 
           # @!attribute object_type
           #
-          #   @return [Symbol, Braintrust::Models::FunctionInvokeParams::Parent::SpanParentStruct::ObjectType]
+          #   @return [Symbol, Braintrust::FunctionInvokeParams::Parent::SpanParentStruct::ObjectType]
           required :object_type,
-                   enum: -> { Braintrust::Models::FunctionInvokeParams::Parent::SpanParentStruct::ObjectType }
+                   enum: -> {
+                     Braintrust::FunctionInvokeParams::Parent::SpanParentStruct::ObjectType
+                   }
 
           # @!attribute propagated_event
           #   Include these properties in every span created under this parent
@@ -392,9 +395,11 @@ module Braintrust
           # @!attribute row_ids
           #   Identifiers for the row to to log a subspan under
           #
-          #   @return [Braintrust::Models::FunctionInvokeParams::Parent::SpanParentStruct::RowIDs, nil]
+          #   @return [Braintrust::FunctionInvokeParams::Parent::SpanParentStruct::RowIDs, nil]
           optional :row_ids,
-                   -> { Braintrust::Models::FunctionInvokeParams::Parent::SpanParentStruct::RowIDs },
+                   -> {
+                     Braintrust::FunctionInvokeParams::Parent::SpanParentStruct::RowIDs
+                   },
                    nil?: true
 
           # @!method initialize(object_id_:, object_type:, propagated_event: nil, row_ids: nil)
@@ -402,13 +407,13 @@ module Braintrust
           #
           #   @param object_id_ [String] The id of the container object you are logging to
           #
-          #   @param object_type [Symbol, Braintrust::Models::FunctionInvokeParams::Parent::SpanParentStruct::ObjectType]
+          #   @param object_type [Symbol, Braintrust::FunctionInvokeParams::Parent::SpanParentStruct::ObjectType]
           #
           #   @param propagated_event [Hash{Symbol=>Object, nil}, nil] Include these properties in every span created under this parent
           #
-          #   @param row_ids [Braintrust::Models::FunctionInvokeParams::Parent::SpanParentStruct::RowIDs, nil] Identifiers for the row to to log a subspan under
+          #   @param row_ids [Braintrust::FunctionInvokeParams::Parent::SpanParentStruct::RowIDs, nil] Identifiers for the row to to log a subspan under
 
-          # @see Braintrust::Models::FunctionInvokeParams::Parent::SpanParentStruct#object_type
+          # @see Braintrust::FunctionInvokeParams::Parent::SpanParentStruct#object_type
           module ObjectType
             extend Braintrust::Internal::Type::Enum
 
@@ -420,7 +425,7 @@ module Braintrust
             #   @return [Array<Symbol>]
           end
 
-          # @see Braintrust::Models::FunctionInvokeParams::Parent::SpanParentStruct#row_ids
+          # @see Braintrust::FunctionInvokeParams::Parent::SpanParentStruct#row_ids
           class RowIDs < Braintrust::Internal::Type::BaseModel
             # @!attribute id
             #   The id of the row
@@ -452,7 +457,7 @@ module Braintrust
         end
 
         # @!method self.variants
-        #   @return [Array(Braintrust::Models::FunctionInvokeParams::Parent::SpanParentStruct, String)]
+        #   @return [Array(Braintrust::FunctionInvokeParams::Parent::SpanParentStruct, String)]
       end
     end
   end

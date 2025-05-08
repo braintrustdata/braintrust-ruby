@@ -3,6 +3,9 @@
 module Braintrust
   module Models
     class SummarizeDatasetResponse < Braintrust::Internal::Type::BaseModel
+      OrHash =
+        T.type_alias { T.any(T.self_type, Braintrust::Internal::AnyHash) }
+
       # Name of the dataset
       sig { returns(String) }
       attr_accessor :dataset_name
@@ -20,11 +23,11 @@ module Braintrust
       attr_accessor :project_url
 
       # Summary of a dataset's data
-      sig { returns(T.nilable(Braintrust::Models::DataSummary)) }
+      sig { returns(T.nilable(Braintrust::DataSummary)) }
       attr_reader :data_summary
 
       sig do
-        params(data_summary: T.nilable(T.any(Braintrust::Models::DataSummary, Braintrust::Internal::AnyHash))).void
+        params(data_summary: T.nilable(Braintrust::DataSummary::OrHash)).void
       end
       attr_writer :data_summary
 
@@ -35,9 +38,8 @@ module Braintrust
           dataset_url: String,
           project_name: String,
           project_url: String,
-          data_summary: T.nilable(T.any(Braintrust::Models::DataSummary, Braintrust::Internal::AnyHash))
-        )
-          .returns(T.attached_class)
+          data_summary: T.nilable(Braintrust::DataSummary::OrHash)
+        ).returns(T.attached_class)
       end
       def self.new(
         # Name of the dataset
@@ -50,20 +52,22 @@ module Braintrust
         project_url:,
         # Summary of a dataset's data
         data_summary: nil
-      ); end
-      sig do
-        override
-          .returns(
-            {
-              dataset_name: String,
-              dataset_url: String,
-              project_name: String,
-              project_url: String,
-              data_summary: T.nilable(Braintrust::Models::DataSummary)
-            }
-          )
+      )
       end
-      def to_hash; end
+
+      sig do
+        override.returns(
+          {
+            dataset_name: String,
+            dataset_url: String,
+            project_name: String,
+            project_url: String,
+            data_summary: T.nilable(Braintrust::DataSummary)
+          }
+        )
+      end
+      def to_hash
+      end
     end
   end
 end

@@ -3,6 +3,9 @@
 module Braintrust
   module Models
     class Project < Braintrust::Internal::Type::BaseModel
+      OrHash =
+        T.type_alias { T.any(T.self_type, Braintrust::Internal::AnyHash) }
+
       # Unique identifier for the project
       sig { returns(String) }
       attr_accessor :id
@@ -23,11 +26,11 @@ module Braintrust
       sig { returns(T.nilable(Time)) }
       attr_accessor :deleted_at
 
-      sig { returns(T.nilable(Braintrust::Models::ProjectSettings)) }
+      sig { returns(T.nilable(Braintrust::ProjectSettings)) }
       attr_reader :settings
 
       sig do
-        params(settings: T.nilable(T.any(Braintrust::Models::ProjectSettings, Braintrust::Internal::AnyHash))).void
+        params(settings: T.nilable(Braintrust::ProjectSettings::OrHash)).void
       end
       attr_writer :settings
 
@@ -42,10 +45,9 @@ module Braintrust
           org_id: String,
           created: T.nilable(Time),
           deleted_at: T.nilable(Time),
-          settings: T.nilable(T.any(Braintrust::Models::ProjectSettings, Braintrust::Internal::AnyHash)),
+          settings: T.nilable(Braintrust::ProjectSettings::OrHash),
           user_id: T.nilable(String)
-        )
-          .returns(T.attached_class)
+        ).returns(T.attached_class)
       end
       def self.new(
         # Unique identifier for the project
@@ -61,22 +63,24 @@ module Braintrust
         settings: nil,
         # Identifies the user who created the project
         user_id: nil
-      ); end
-      sig do
-        override
-          .returns(
-            {
-              id: String,
-              name: String,
-              org_id: String,
-              created: T.nilable(Time),
-              deleted_at: T.nilable(Time),
-              settings: T.nilable(Braintrust::Models::ProjectSettings),
-              user_id: T.nilable(String)
-            }
-          )
+      )
       end
-      def to_hash; end
+
+      sig do
+        override.returns(
+          {
+            id: String,
+            name: String,
+            org_id: String,
+            created: T.nilable(Time),
+            deleted_at: T.nilable(Time),
+            settings: T.nilable(Braintrust::ProjectSettings),
+            user_id: T.nilable(String)
+          }
+        )
+      end
+      def to_hash
+      end
     end
   end
 end

@@ -81,17 +81,14 @@ module Braintrust
       #   {Braintrust::Models::DatasetFetchPostParams} for more details.
       #
       #   @param cursor [String, nil] An opaque string to be used as a cursor for the next page of results, in order f
-      #   ...
       #
-      #   @param limit [Integer, nil] limit the number of traces fetched ...
+      #   @param limit [Integer, nil] limit the number of traces fetched
       #
       #   @param max_root_span_id [String, nil] DEPRECATION NOTICE: The manually-constructed pagination cursor is deprecated in
-      #   ...
       #
       #   @param max_xact_id [String, nil] DEPRECATION NOTICE: The manually-constructed pagination cursor is deprecated in
-      #   ...
       #
-      #   @param version [String, nil] Retrieve a snapshot of events from a past time ...
+      #   @param version [String, nil] Retrieve a snapshot of events from a past time
       #
       #   @param request_options [Braintrust::RequestOptions, Hash{Symbol=>Object}]
     end

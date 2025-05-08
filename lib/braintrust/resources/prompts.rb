@@ -17,24 +17,24 @@ module Braintrust
       #
       # @param description [String, nil] Textual description of the prompt
       #
-      # @param function_type [Symbol, Braintrust::Models::PromptCreateParams::FunctionType, nil]
+      # @param function_type [Symbol, Braintrust::PromptCreateParams::FunctionType, nil]
       #
-      # @param prompt_data [Braintrust::Models::PromptData, nil] The prompt, model, and its parameters
+      # @param prompt_data [Braintrust::PromptData, nil] The prompt, model, and its parameters
       #
       # @param tags [Array<String>, nil] A list of tags for the prompt
       #
       # @param request_options [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Braintrust::Models::Prompt]
+      # @return [Braintrust::Prompt]
       #
       # @see Braintrust::Models::PromptCreateParams
       def create(params)
-        parsed, options = Braintrust::Models::PromptCreateParams.dump_request(params)
+        parsed, options = Braintrust::PromptCreateParams.dump_request(params)
         @client.request(
           method: :post,
           path: "v1/prompt",
           body: parsed,
-          model: Braintrust::Models::Prompt,
+          model: Braintrust::Prompt,
           options: options
         )
       end
@@ -47,14 +47,14 @@ module Braintrust
       #
       # @param request_options [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Braintrust::Models::Prompt]
+      # @return [Braintrust::Prompt]
       #
       # @see Braintrust::Models::PromptRetrieveParams
       def retrieve(prompt_id, params = {})
         @client.request(
           method: :get,
           path: ["v1/prompt/%1$s", prompt_id],
-          model: Braintrust::Models::Prompt,
+          model: Braintrust::Prompt,
           options: params[:request_options]
         )
       end
@@ -71,7 +71,7 @@ module Braintrust
       #
       # @param name [String, nil] Name of the prompt
       #
-      # @param prompt_data [Braintrust::Models::PromptData, nil] The prompt, model, and its parameters
+      # @param prompt_data [Braintrust::PromptData, nil] The prompt, model, and its parameters
       #
       # @param slug [String, nil] Unique identifier for the prompt
       #
@@ -79,16 +79,16 @@ module Braintrust
       #
       # @param request_options [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Braintrust::Models::Prompt]
+      # @return [Braintrust::Prompt]
       #
       # @see Braintrust::Models::PromptUpdateParams
       def update(prompt_id, params = {})
-        parsed, options = Braintrust::Models::PromptUpdateParams.dump_request(params)
+        parsed, options = Braintrust::PromptUpdateParams.dump_request(params)
         @client.request(
           method: :patch,
           path: ["v1/prompt/%1$s", prompt_id],
           body: parsed,
-          model: Braintrust::Models::Prompt,
+          model: Braintrust::Prompt,
           options: options
         )
       end
@@ -101,10 +101,9 @@ module Braintrust
       #
       # @overload list(ending_before: nil, ids: nil, limit: nil, org_name: nil, project_id: nil, project_name: nil, prompt_name: nil, slug: nil, starting_after: nil, version: nil, request_options: {})
       #
-      # @param ending_before [String] Pagination cursor id. ...
+      # @param ending_before [String] Pagination cursor id.
       #
       # @param ids [String, Array<String>] Filter search results to a particular set of object IDs. To specify a list of ID
-      # ...
       #
       # @param limit [Integer, nil] Limit the number of objects to return
       #
@@ -118,23 +117,23 @@ module Braintrust
       #
       # @param slug [String] Retrieve prompt with a specific slug
       #
-      # @param starting_after [String] Pagination cursor id. ...
+      # @param starting_after [String] Pagination cursor id.
       #
-      # @param version [String] Retrieve prompt at a specific version. ...
+      # @param version [String] Retrieve prompt at a specific version.
       #
       # @param request_options [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Braintrust::Internal::ListObjects<Braintrust::Models::Prompt>]
+      # @return [Braintrust::Internal::ListObjects<Braintrust::Prompt>]
       #
       # @see Braintrust::Models::PromptListParams
       def list(params = {})
-        parsed, options = Braintrust::Models::PromptListParams.dump_request(params)
+        parsed, options = Braintrust::PromptListParams.dump_request(params)
         @client.request(
           method: :get,
           path: "v1/prompt",
           query: parsed,
           page: Braintrust::Internal::ListObjects,
-          model: Braintrust::Models::Prompt,
+          model: Braintrust::Prompt,
           options: options
         )
       end
@@ -147,14 +146,14 @@ module Braintrust
       #
       # @param request_options [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Braintrust::Models::Prompt]
+      # @return [Braintrust::Prompt]
       #
       # @see Braintrust::Models::PromptDeleteParams
       def delete(prompt_id, params = {})
         @client.request(
           method: :delete,
           path: ["v1/prompt/%1$s", prompt_id],
-          model: Braintrust::Models::Prompt,
+          model: Braintrust::Prompt,
           options: params[:request_options]
         )
       end
@@ -173,24 +172,24 @@ module Braintrust
       #
       # @param description [String, nil] Textual description of the prompt
       #
-      # @param function_type [Symbol, Braintrust::Models::PromptReplaceParams::FunctionType, nil]
+      # @param function_type [Symbol, Braintrust::PromptReplaceParams::FunctionType, nil]
       #
-      # @param prompt_data [Braintrust::Models::PromptData, nil] The prompt, model, and its parameters
+      # @param prompt_data [Braintrust::PromptData, nil] The prompt, model, and its parameters
       #
       # @param tags [Array<String>, nil] A list of tags for the prompt
       #
       # @param request_options [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Braintrust::Models::Prompt]
+      # @return [Braintrust::Prompt]
       #
       # @see Braintrust::Models::PromptReplaceParams
       def replace(params)
-        parsed, options = Braintrust::Models::PromptReplaceParams.dump_request(params)
+        parsed, options = Braintrust::PromptReplaceParams.dump_request(params)
         @client.request(
           method: :put,
           path: "v1/prompt",
           body: parsed,
-          model: Braintrust::Models::Prompt,
+          model: Braintrust::Prompt,
           options: options
         )
       end

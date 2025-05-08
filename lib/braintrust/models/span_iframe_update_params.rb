@@ -41,7 +41,6 @@ module Braintrust
       #   @param name [String, nil] Name of the span iframe
       #
       #   @param post_message [Boolean, nil] Whether to post messages to the iframe containing the span's data. This is usefu
-      #   ...
       #
       #   @param url [String, nil] URL to embed the project viewer in an iframe
       #

@@ -12,8 +12,6 @@ module Braintrust
         ?name: String?,
         ?type: Braintrust::Models::span_type?
       ) -> void
-
-      def to_hash: -> Braintrust::Models::span_attributes
     end
   end
 end

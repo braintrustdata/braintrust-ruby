@@ -5,12 +5,12 @@ module Braintrust
         name: String,
         ?org_name: String?,
         ?request_options: Braintrust::request_opts
-      ) -> Braintrust::Models::CreateAPIKeyOutput
+      ) -> Braintrust::CreateAPIKeyOutput
 
       def retrieve: (
         String api_key_id,
         ?request_options: Braintrust::request_opts
-      ) -> Braintrust::Models::APIKey
+      ) -> Braintrust::APIKey
 
       def list: (
         ?api_key_name: String,
@@ -20,12 +20,12 @@ module Braintrust
         ?org_name: String,
         ?starting_after: String,
         ?request_options: Braintrust::request_opts
-      ) -> Braintrust::Internal::ListObjects[Braintrust::Models::APIKey]
+      ) -> Braintrust::Internal::ListObjects[Braintrust::APIKey]
 
       def delete: (
         String api_key_id,
         ?request_options: Braintrust::request_opts
-      ) -> Braintrust::Models::APIKey
+      ) -> Braintrust::APIKey
 
       def initialize: (client: Braintrust::Client) -> void
     end

@@ -29,8 +29,6 @@ module Braintrust
         ?request_options: Braintrust::request_opts
       ) -> void
 
-      def to_hash: -> Braintrust::Models::env_var_replace_params
-
       type object_type = :organization | :project | :function
 
       module ObjectType

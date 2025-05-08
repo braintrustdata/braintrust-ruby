@@ -3,6 +3,9 @@
 module Braintrust
   module Models
     class ViewDataSearch < Braintrust::Internal::Type::BaseModel
+      OrHash =
+        T.type_alias { T.any(T.self_type, Braintrust::Internal::AnyHash) }
+
       sig { returns(T.nilable(T::Array[T.nilable(T.anything)])) }
       attr_accessor :filter
 
@@ -21,23 +24,23 @@ module Braintrust
           match: T.nilable(T::Array[T.nilable(T.anything)]),
           sort: T.nilable(T::Array[T.nilable(T.anything)]),
           tag: T.nilable(T::Array[T.nilable(T.anything)])
-        )
-          .returns(T.attached_class)
+        ).returns(T.attached_class)
       end
-      def self.new(filter: nil, match: nil, sort: nil, tag: nil); end
+      def self.new(filter: nil, match: nil, sort: nil, tag: nil)
+      end
 
       sig do
-        override
-          .returns(
-            {
-              filter: T.nilable(T::Array[T.nilable(T.anything)]),
-              match: T.nilable(T::Array[T.nilable(T.anything)]),
-              sort: T.nilable(T::Array[T.nilable(T.anything)]),
-              tag: T.nilable(T::Array[T.nilable(T.anything)])
-            }
-          )
+        override.returns(
+          {
+            filter: T.nilable(T::Array[T.nilable(T.anything)]),
+            match: T.nilable(T::Array[T.nilable(T.anything)]),
+            sort: T.nilable(T::Array[T.nilable(T.anything)]),
+            tag: T.nilable(T::Array[T.nilable(T.anything)])
+          }
+        )
       end
-      def to_hash; end
+      def to_hash
+      end
     end
   end
 end

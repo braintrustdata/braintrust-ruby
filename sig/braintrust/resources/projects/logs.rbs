@@ -4,9 +4,9 @@ module Braintrust
       class Logs
         def feedback: (
           String project_id,
-          feedback: ::Array[Braintrust::Models::FeedbackProjectLogsItem],
+          feedback: ::Array[Braintrust::FeedbackProjectLogsItem],
           ?request_options: Braintrust::request_opts
-        ) -> Braintrust::Models::FeedbackResponseSchema
+        ) -> Braintrust::FeedbackResponseSchema
 
         def fetch: (
           String project_id,
@@ -15,7 +15,7 @@ module Braintrust
           ?max_xact_id: String,
           ?version: String,
           ?request_options: Braintrust::request_opts
-        ) -> Braintrust::Models::FetchProjectLogsEventsResponse
+        ) -> Braintrust::FetchProjectLogsEventsResponse
 
         def fetch_post: (
           String project_id,
@@ -25,13 +25,13 @@ module Braintrust
           ?max_xact_id: String?,
           ?version: String?,
           ?request_options: Braintrust::request_opts
-        ) -> Braintrust::Models::FetchProjectLogsEventsResponse
+        ) -> Braintrust::FetchProjectLogsEventsResponse
 
         def insert: (
           String project_id,
-          events: ::Array[Braintrust::Models::InsertProjectLogsEvent],
+          events: ::Array[Braintrust::InsertProjectLogsEvent],
           ?request_options: Braintrust::request_opts
-        ) -> Braintrust::Models::InsertEventsResponse
+        ) -> Braintrust::InsertEventsResponse
 
         def initialize: (client: Braintrust::Client) -> void
       end

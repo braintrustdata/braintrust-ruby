@@ -3,6 +3,9 @@
 module Braintrust
   module Models
     class User < Braintrust::Internal::Type::BaseModel
+      OrHash =
+        T.type_alias { T.any(T.self_type, Braintrust::Internal::AnyHash) }
+
       # Unique identifier for the user
       sig { returns(String) }
       attr_accessor :id
@@ -35,8 +38,7 @@ module Braintrust
           email: T.nilable(String),
           family_name: T.nilable(String),
           given_name: T.nilable(String)
-        )
-          .returns(T.attached_class)
+        ).returns(T.attached_class)
       end
       def self.new(
         # Unique identifier for the user
@@ -51,21 +53,23 @@ module Braintrust
         family_name: nil,
         # Given name of the user
         given_name: nil
-      ); end
-      sig do
-        override
-          .returns(
-            {
-              id: String,
-              avatar_url: T.nilable(String),
-              created: T.nilable(Time),
-              email: T.nilable(String),
-              family_name: T.nilable(String),
-              given_name: T.nilable(String)
-            }
-          )
+      )
       end
-      def to_hash; end
+
+      sig do
+        override.returns(
+          {
+            id: String,
+            avatar_url: T.nilable(String),
+            created: T.nilable(Time),
+            email: T.nilable(String),
+            family_name: T.nilable(String),
+            given_name: T.nilable(String)
+          }
+        )
+      end
+      def to_hash
+      end
     end
   end
 end

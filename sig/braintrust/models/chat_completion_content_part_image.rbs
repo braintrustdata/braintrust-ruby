@@ -2,43 +2,39 @@ module Braintrust
   module Models
     type chat_completion_content_part_image =
       {
-        image_url: Braintrust::Models::ChatCompletionContentPartImage::ImageURL,
-        type: Braintrust::Models::ChatCompletionContentPartImage::type_
+        image_url: Braintrust::ChatCompletionContentPartImage::ImageURL,
+        type: Braintrust::ChatCompletionContentPartImage::type_
       }
 
     class ChatCompletionContentPartImage < Braintrust::Internal::Type::BaseModel
-      attr_accessor image_url: Braintrust::Models::ChatCompletionContentPartImage::ImageURL
+      attr_accessor image_url: Braintrust::ChatCompletionContentPartImage::ImageURL
 
-      attr_accessor type: Braintrust::Models::ChatCompletionContentPartImage::type_
+      attr_accessor type: Braintrust::ChatCompletionContentPartImage::type_
 
       def initialize: (
-        image_url: Braintrust::Models::ChatCompletionContentPartImage::ImageURL,
-        type: Braintrust::Models::ChatCompletionContentPartImage::type_
+        image_url: Braintrust::ChatCompletionContentPartImage::ImageURL,
+        type: Braintrust::ChatCompletionContentPartImage::type_
       ) -> void
-
-      def to_hash: -> Braintrust::Models::chat_completion_content_part_image
 
       type image_url =
         {
           url: String,
-          detail: Braintrust::Models::ChatCompletionContentPartImage::ImageURL::detail
+          detail: Braintrust::ChatCompletionContentPartImage::ImageURL::detail
         }
 
       class ImageURL < Braintrust::Internal::Type::BaseModel
         attr_accessor url: String
 
-        attr_reader detail: Braintrust::Models::ChatCompletionContentPartImage::ImageURL::detail?
+        attr_reader detail: Braintrust::ChatCompletionContentPartImage::ImageURL::detail?
 
         def detail=: (
-          Braintrust::Models::ChatCompletionContentPartImage::ImageURL::detail
-        ) -> Braintrust::Models::ChatCompletionContentPartImage::ImageURL::detail
+          Braintrust::ChatCompletionContentPartImage::ImageURL::detail
+        ) -> Braintrust::ChatCompletionContentPartImage::ImageURL::detail
 
         def initialize: (
           url: String,
-          ?detail: Braintrust::Models::ChatCompletionContentPartImage::ImageURL::detail
+          ?detail: Braintrust::ChatCompletionContentPartImage::ImageURL::detail
         ) -> void
-
-        def to_hash: -> Braintrust::Models::ChatCompletionContentPartImage::image_url
 
         type detail = :auto | :low | :high
 
@@ -49,7 +45,7 @@ module Braintrust
           LOW: :low
           HIGH: :high
 
-          def self?.values: -> ::Array[Braintrust::Models::ChatCompletionContentPartImage::ImageURL::detail]
+          def self?.values: -> ::Array[Braintrust::ChatCompletionContentPartImage::ImageURL::detail]
         end
       end
 
@@ -60,7 +56,7 @@ module Braintrust
 
         IMAGE_URL: :image_url
 
-        def self?.values: -> ::Array[Braintrust::Models::ChatCompletionContentPartImage::type_]
+        def self?.values: -> ::Array[Braintrust::ChatCompletionContentPartImage::type_]
       end
     end
   end

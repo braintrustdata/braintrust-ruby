@@ -22,8 +22,8 @@ module Braintrust
       # @!attribute object_type
       #   The type of the object the environment variable is scoped for
       #
-      #   @return [Symbol, Braintrust::Models::EnvVarReplaceParams::ObjectType]
-      required :object_type, enum: -> { Braintrust::Models::EnvVarReplaceParams::ObjectType }
+      #   @return [Symbol, Braintrust::EnvVarReplaceParams::ObjectType]
+      required :object_type, enum: -> { Braintrust::EnvVarReplaceParams::ObjectType }
 
       # @!attribute value
       #   The value of the environment variable. Will be encrypted at rest.
@@ -36,7 +36,7 @@ module Braintrust
       #
       #   @param object_id_ [String] The id of the object the environment variable is scoped for
       #
-      #   @param object_type [Symbol, Braintrust::Models::EnvVarReplaceParams::ObjectType] The type of the object the environment variable is scoped for
+      #   @param object_type [Symbol, Braintrust::EnvVarReplaceParams::ObjectType] The type of the object the environment variable is scoped for
       #
       #   @param value [String, nil] The value of the environment variable. Will be encrypted at rest.
       #

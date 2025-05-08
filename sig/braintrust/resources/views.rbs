@@ -7,30 +7,30 @@ module Braintrust
         object_type: Braintrust::Models::acl_object_type,
         view_type: Braintrust::Models::ViewCreateParams::view_type?,
         ?deleted_at: Time?,
-        ?options: Braintrust::Models::ViewOptions?,
+        ?options: Braintrust::ViewOptions?,
         ?user_id: String?,
-        ?view_data: Braintrust::Models::ViewData?,
+        ?view_data: Braintrust::ViewData?,
         ?request_options: Braintrust::request_opts
-      ) -> Braintrust::Models::View
+      ) -> Braintrust::View
 
       def retrieve: (
         String view_id,
         object_id_: String,
         object_type: Braintrust::Models::acl_object_type,
         ?request_options: Braintrust::request_opts
-      ) -> Braintrust::Models::View
+      ) -> Braintrust::View
 
       def update: (
         String view_id,
         object_id_: String,
         object_type: Braintrust::Models::acl_object_type,
         ?name: String?,
-        ?options: Braintrust::Models::ViewOptions?,
+        ?options: Braintrust::ViewOptions?,
         ?user_id: String?,
-        ?view_data: Braintrust::Models::ViewData?,
+        ?view_data: Braintrust::ViewData?,
         ?view_type: Braintrust::Models::ViewUpdateParams::view_type?,
         ?request_options: Braintrust::request_opts
-      ) -> Braintrust::Models::View
+      ) -> Braintrust::View
 
       def list: (
         object_id_: String,
@@ -42,14 +42,14 @@ module Braintrust
         ?view_name: String,
         ?view_type: Braintrust::Models::view_type?,
         ?request_options: Braintrust::request_opts
-      ) -> Braintrust::Internal::ListObjects[Braintrust::Models::View]
+      ) -> Braintrust::Internal::ListObjects[Braintrust::View]
 
       def delete: (
         String view_id,
         object_id_: String,
         object_type: Braintrust::Models::acl_object_type,
         ?request_options: Braintrust::request_opts
-      ) -> Braintrust::Models::View
+      ) -> Braintrust::View
 
       def replace: (
         name: String,
@@ -57,11 +57,11 @@ module Braintrust
         object_type: Braintrust::Models::acl_object_type,
         view_type: Braintrust::Models::ViewReplaceParams::view_type?,
         ?deleted_at: Time?,
-        ?options: Braintrust::Models::ViewOptions?,
+        ?options: Braintrust::ViewOptions?,
         ?user_id: String?,
-        ?view_data: Braintrust::Models::ViewData?,
+        ?view_data: Braintrust::ViewData?,
         ?request_options: Braintrust::request_opts
-      ) -> Braintrust::Models::View
+      ) -> Braintrust::View
 
       def initialize: (client: Braintrust::Client) -> void
     end

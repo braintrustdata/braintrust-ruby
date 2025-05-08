@@ -67,14 +67,12 @@ module Braintrust
         ?request_options: Braintrust::request_opts
       ) -> void
 
-      def to_hash: -> Braintrust::Models::user_list_params
-
       type email = String | ::Array[String]
 
       module Email
         extend Braintrust::Internal::Type::Union
 
-        def self?.variants: -> [String, ::Array[String]]
+        def self?.variants: -> ::Array[Braintrust::Models::UserListParams::email]
 
         StringArray: Braintrust::Internal::Type::Converter
       end
@@ -84,7 +82,7 @@ module Braintrust
       module FamilyName
         extend Braintrust::Internal::Type::Union
 
-        def self?.variants: -> [String, ::Array[String]]
+        def self?.variants: -> ::Array[Braintrust::Models::UserListParams::family_name]
 
         StringArray: Braintrust::Internal::Type::Converter
       end
@@ -94,7 +92,7 @@ module Braintrust
       module GivenName
         extend Braintrust::Internal::Type::Union
 
-        def self?.variants: -> [String, ::Array[String]]
+        def self?.variants: -> ::Array[Braintrust::Models::UserListParams::given_name]
 
         StringArray: Braintrust::Internal::Type::Converter
       end
@@ -104,7 +102,7 @@ module Braintrust
       module IDs
         extend Braintrust::Internal::Type::Union
 
-        def self?.variants: -> [String, ::Array[String]]
+        def self?.variants: -> ::Array[Braintrust::Models::UserListParams::ids]
 
         StringArray: Braintrust::Internal::Type::Converter
       end

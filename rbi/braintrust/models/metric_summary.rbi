@@ -3,6 +3,9 @@
 module Braintrust
   module Models
     class MetricSummary < Braintrust::Internal::Type::BaseModel
+      OrHash =
+        T.type_alias { T.any(T.self_type, Braintrust::Internal::AnyHash) }
+
       # Number of improvements in the metric
       sig { returns(Integer) }
       attr_accessor :improvements
@@ -39,8 +42,7 @@ module Braintrust
           regressions: Integer,
           unit: String,
           diff: Float
-        )
-          .returns(T.attached_class)
+        ).returns(T.attached_class)
       end
       def self.new(
         # Number of improvements in the metric
@@ -55,21 +57,23 @@ module Braintrust
         unit:,
         # Difference in metric between the current and comparison experiment
         diff: nil
-      ); end
-      sig do
-        override
-          .returns(
-            {
-              improvements: Integer,
-              metric: Float,
-              name: String,
-              regressions: Integer,
-              unit: String,
-              diff: Float
-            }
-          )
+      )
       end
-      def to_hash; end
+
+      sig do
+        override.returns(
+          {
+            improvements: Integer,
+            metric: Float,
+            name: String,
+            regressions: Integer,
+            unit: String,
+            diff: Float
+          }
+        )
+      end
+      def to_hash
+      end
     end
   end
 end

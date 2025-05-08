@@ -7,17 +7,26 @@ module Braintrust
         extend Braintrust::Internal::Type::RequestParameters::Converter
         include Braintrust::Internal::Type::RequestParameters
 
+        OrHash =
+          T.type_alias { T.any(T.self_type, Braintrust::Internal::AnyHash) }
+
         # Users to invite to the organization
-        sig { returns(T.nilable(Braintrust::Models::Organizations::MemberUpdateParams::InviteUsers)) }
+        sig do
+          returns(
+            T.nilable(
+              Braintrust::Organizations::MemberUpdateParams::InviteUsers
+            )
+          )
+        end
         attr_reader :invite_users
 
         sig do
           params(
-            invite_users: T.nilable(
-              T.any(Braintrust::Models::Organizations::MemberUpdateParams::InviteUsers, Braintrust::Internal::AnyHash)
-            )
-          )
-            .void
+            invite_users:
+              T.nilable(
+                Braintrust::Organizations::MemberUpdateParams::InviteUsers::OrHash
+              )
+          ).void
         end
         attr_writer :invite_users
 
@@ -36,32 +45,39 @@ module Braintrust
         attr_accessor :org_name
 
         # Users to remove from the organization
-        sig { returns(T.nilable(Braintrust::Models::Organizations::MemberUpdateParams::RemoveUsers)) }
+        sig do
+          returns(
+            T.nilable(
+              Braintrust::Organizations::MemberUpdateParams::RemoveUsers
+            )
+          )
+        end
         attr_reader :remove_users
 
         sig do
           params(
-            remove_users: T.nilable(
-              T.any(Braintrust::Models::Organizations::MemberUpdateParams::RemoveUsers, Braintrust::Internal::AnyHash)
-            )
-          )
-            .void
+            remove_users:
+              T.nilable(
+                Braintrust::Organizations::MemberUpdateParams::RemoveUsers::OrHash
+              )
+          ).void
         end
         attr_writer :remove_users
 
         sig do
           params(
-            invite_users: T.nilable(
-              T.any(Braintrust::Models::Organizations::MemberUpdateParams::InviteUsers, Braintrust::Internal::AnyHash)
-            ),
+            invite_users:
+              T.nilable(
+                Braintrust::Organizations::MemberUpdateParams::InviteUsers::OrHash
+              ),
             org_id: T.nilable(String),
             org_name: T.nilable(String),
-            remove_users: T.nilable(
-              T.any(Braintrust::Models::Organizations::MemberUpdateParams::RemoveUsers, Braintrust::Internal::AnyHash)
-            ),
-            request_options: T.any(Braintrust::RequestOptions, Braintrust::Internal::AnyHash)
-          )
-            .returns(T.attached_class)
+            remove_users:
+              T.nilable(
+                Braintrust::Organizations::MemberUpdateParams::RemoveUsers::OrHash
+              ),
+            request_options: Braintrust::RequestOptions::OrHash
+          ).returns(T.attached_class)
         end
         def self.new(
           # Users to invite to the organization
@@ -79,22 +95,33 @@ module Braintrust
           # Users to remove from the organization
           remove_users: nil,
           request_options: {}
-        ); end
-        sig do
-          override
-            .returns(
-              {
-                invite_users: T.nilable(Braintrust::Models::Organizations::MemberUpdateParams::InviteUsers),
-                org_id: T.nilable(String),
-                org_name: T.nilable(String),
-                remove_users: T.nilable(Braintrust::Models::Organizations::MemberUpdateParams::RemoveUsers),
-                request_options: Braintrust::RequestOptions
-              }
-            )
+        )
         end
-        def to_hash; end
+
+        sig do
+          override.returns(
+            {
+              invite_users:
+                T.nilable(
+                  Braintrust::Organizations::MemberUpdateParams::InviteUsers
+                ),
+              org_id: T.nilable(String),
+              org_name: T.nilable(String),
+              remove_users:
+                T.nilable(
+                  Braintrust::Organizations::MemberUpdateParams::RemoveUsers
+                ),
+              request_options: Braintrust::RequestOptions
+            }
+          )
+        end
+        def to_hash
+        end
 
         class InviteUsers < Braintrust::Internal::Type::BaseModel
+          OrHash =
+            T.type_alias { T.any(T.self_type, Braintrust::Internal::AnyHash) }
+
           # Emails of users to invite
           sig { returns(T.nilable(T::Array[String])) }
           attr_accessor :emails
@@ -133,8 +160,7 @@ module Braintrust
               group_names: T.nilable(T::Array[String]),
               ids: T.nilable(T::Array[String]),
               send_invite_emails: T.nilable(T::Boolean)
-            )
-              .returns(T.attached_class)
+            ).returns(T.attached_class)
           end
           def self.new(
             # Emails of users to invite
@@ -151,25 +177,30 @@ module Braintrust
             ids: nil,
             # If true, send invite emails to the users who wore actually added
             send_invite_emails: nil
-          ); end
-          sig do
-            override
-              .returns(
-                {
-                  emails: T.nilable(T::Array[String]),
-                  group_id: T.nilable(String),
-                  group_ids: T.nilable(T::Array[String]),
-                  group_name: T.nilable(String),
-                  group_names: T.nilable(T::Array[String]),
-                  ids: T.nilable(T::Array[String]),
-                  send_invite_emails: T.nilable(T::Boolean)
-                }
-              )
+          )
           end
-          def to_hash; end
+
+          sig do
+            override.returns(
+              {
+                emails: T.nilable(T::Array[String]),
+                group_id: T.nilable(String),
+                group_ids: T.nilable(T::Array[String]),
+                group_name: T.nilable(String),
+                group_names: T.nilable(T::Array[String]),
+                ids: T.nilable(T::Array[String]),
+                send_invite_emails: T.nilable(T::Boolean)
+              }
+            )
+          end
+          def to_hash
+          end
         end
 
         class RemoveUsers < Braintrust::Internal::Type::BaseModel
+          OrHash =
+            T.type_alias { T.any(T.self_type, Braintrust::Internal::AnyHash) }
+
           # Emails of users to remove
           sig { returns(T.nilable(T::Array[String])) }
           attr_accessor :emails
@@ -190,9 +221,19 @@ module Braintrust
             emails: nil,
             # Ids of users to remove
             ids: nil
-          ); end
-          sig { override.returns({emails: T.nilable(T::Array[String]), ids: T.nilable(T::Array[String])}) }
-          def to_hash; end
+          )
+          end
+
+          sig do
+            override.returns(
+              {
+                emails: T.nilable(T::Array[String]),
+                ids: T.nilable(T::Array[String])
+              }
+            )
+          end
+          def to_hash
+          end
         end
       end
     end

@@ -50,12 +50,11 @@ module Braintrust
       #
       #   @param description [String, nil] Textual description of the group
       #
-      #   @param member_groups [Array<String>, nil] Ids of the groups this group inherits from ...
+      #   @param member_groups [Array<String>, nil] Ids of the groups this group inherits from
       #
       #   @param member_users [Array<String>, nil] Ids of users which belong to this group
       #
       #   @param org_name [String, nil] For nearly all users, this parameter should be unnecessary. But in the rare case
-      #   ...
       #
       #   @param request_options [Braintrust::RequestOptions, Hash{Symbol=>Object}]
     end

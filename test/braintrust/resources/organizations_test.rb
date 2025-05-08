@@ -7,7 +7,7 @@ class Braintrust::Test::Resources::OrganizationsTest < Braintrust::Test::Resourc
     response = @braintrust.organizations.retrieve("182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e")
 
     assert_pattern do
-      response => Braintrust::Models::Organization
+      response => Braintrust::Organization
     end
 
     assert_pattern do
@@ -27,7 +27,7 @@ class Braintrust::Test::Resources::OrganizationsTest < Braintrust::Test::Resourc
     response = @braintrust.organizations.update("182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e")
 
     assert_pattern do
-      response => Braintrust::Models::Organization
+      response => Braintrust::Organization
     end
 
     assert_pattern do
@@ -54,7 +54,7 @@ class Braintrust::Test::Resources::OrganizationsTest < Braintrust::Test::Resourc
     return if row.nil?
 
     assert_pattern do
-      row => Braintrust::Models::Organization
+      row => Braintrust::Organization
     end
 
     assert_pattern do
@@ -74,7 +74,7 @@ class Braintrust::Test::Resources::OrganizationsTest < Braintrust::Test::Resourc
     response = @braintrust.organizations.delete("182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e")
 
     assert_pattern do
-      response => Braintrust::Models::Organization
+      response => Braintrust::Organization
     end
 
     assert_pattern do

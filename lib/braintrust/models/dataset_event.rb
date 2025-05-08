@@ -79,14 +79,14 @@ module Braintrust
       #   anything else that would be useful to slice/dice later. The values in `metadata`
       #   can be any JSON-serializable type, but its keys must be strings
       #
-      #   @return [Braintrust::Models::DatasetEvent::Metadata, nil]
-      optional :metadata, -> { Braintrust::Models::DatasetEvent::Metadata }, nil?: true
+      #   @return [Braintrust::DatasetEvent::Metadata, nil]
+      optional :metadata, -> { Braintrust::DatasetEvent::Metadata }, nil?: true
 
       # @!attribute origin
       #   Indicates the event was copied from another object.
       #
-      #   @return [Braintrust::Models::ObjectReference, nil]
-      optional :origin, -> { Braintrust::Models::ObjectReference }, nil?: true
+      #   @return [Braintrust::ObjectReference, nil]
+      optional :origin, -> { Braintrust::ObjectReference }, nil?: true
 
       # @!attribute tags
       #   A list of tags to log
@@ -95,14 +95,12 @@ module Braintrust
       optional :tags, Braintrust::Internal::Type::ArrayOf[String], nil?: true
 
       # @!method initialize(id:, _xact_id:, created:, dataset_id:, project_id:, root_span_id:, span_id:, expected: nil, input: nil, is_root: nil, metadata: nil, origin: nil, tags: nil)
-      #   Some parameter documentations has been truncated, see
-      #   {Braintrust::Models::DatasetEvent} for more details.
+      #   Some parameter documentations has been truncated, see {Braintrust::DatasetEvent}
+      #   for more details.
       #
       #   @param id [String] A unique identifier for the dataset event. If you don't provide one, BrainTrust
-      #   ...
       #
       #   @param _xact_id [String] The transaction id of an event is unique to the network operation that processed
-      #   ...
       #
       #   @param created [Time] The timestamp the dataset event was created
       #
@@ -113,24 +111,20 @@ module Braintrust
       #   @param root_span_id [String] A unique identifier for the trace this dataset event belongs to
       #
       #   @param span_id [String] A unique identifier used to link different dataset events together as part of a
-      #   ...
       #
       #   @param expected [Object] The output of your application, including post-processing (an arbitrary, JSON se
-      #   ...
       #
       #   @param input [Object] The argument that uniquely define an input case (an arbitrary, JSON serializable
-      #   ...
       #
       #   @param is_root [Boolean, nil] Whether this span is a root span
       #
-      #   @param metadata [Braintrust::Models::DatasetEvent::Metadata, nil] A dictionary with additional data about the test example, model outputs, or just
-      #   ...
+      #   @param metadata [Braintrust::DatasetEvent::Metadata, nil] A dictionary with additional data about the test example, model outputs, or just
       #
-      #   @param origin [Braintrust::Models::ObjectReference, nil] Indicates the event was copied from another object.
+      #   @param origin [Braintrust::ObjectReference, nil] Indicates the event was copied from another object.
       #
       #   @param tags [Array<String>, nil] A list of tags to log
 
-      # @see Braintrust::Models::DatasetEvent#metadata
+      # @see Braintrust::DatasetEvent#metadata
       class Metadata < Braintrust::Internal::Type::BaseModel
         # @!attribute model
         #   The model used for this example

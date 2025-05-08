@@ -3,6 +3,9 @@
 module Braintrust
   module Models
     class FeedbackProjectLogsItem < Braintrust::Internal::Type::BaseModel
+      OrHash =
+        T.type_alias { T.any(T.self_type, Braintrust::Internal::AnyHash) }
+
       # The id of the project logs event to log feedback for. This is the row `id`
       # returned by `POST /v1/project_logs/{project_id}/insert`
       sig { returns(String) }
@@ -33,7 +36,11 @@ module Braintrust
       attr_accessor :scores
 
       # The source of the feedback. Must be one of "external" (default), "app", or "api"
-      sig { returns(T.nilable(Braintrust::Models::FeedbackProjectLogsItem::Source::OrSymbol)) }
+      sig do
+        returns(
+          T.nilable(Braintrust::FeedbackProjectLogsItem::Source::OrSymbol)
+        )
+      end
       attr_accessor :source
 
       # A list of tags to log
@@ -47,10 +54,10 @@ module Braintrust
           expected: T.anything,
           metadata: T.nilable(T::Hash[Symbol, T.nilable(T.anything)]),
           scores: T.nilable(T::Hash[Symbol, T.nilable(Float)]),
-          source: T.nilable(Braintrust::Models::FeedbackProjectLogsItem::Source::OrSymbol),
+          source:
+            T.nilable(Braintrust::FeedbackProjectLogsItem::Source::OrSymbol),
           tags: T.nilable(T::Array[String])
-        )
-          .returns(T.attached_class)
+        ).returns(T.attached_class)
       end
       def self.new(
         # The id of the project logs event to log feedback for. This is the row `id`
@@ -73,36 +80,53 @@ module Braintrust
         source: nil,
         # A list of tags to log
         tags: nil
-      ); end
-      sig do
-        override
-          .returns(
-            {
-              id: String,
-              comment: T.nilable(String),
-              expected: T.anything,
-              metadata: T.nilable(T::Hash[Symbol, T.nilable(T.anything)]),
-              scores: T.nilable(T::Hash[Symbol, T.nilable(Float)]),
-              source: T.nilable(Braintrust::Models::FeedbackProjectLogsItem::Source::OrSymbol),
-              tags: T.nilable(T::Array[String])
-            }
-          )
+      )
       end
-      def to_hash; end
+
+      sig do
+        override.returns(
+          {
+            id: String,
+            comment: T.nilable(String),
+            expected: T.anything,
+            metadata: T.nilable(T::Hash[Symbol, T.nilable(T.anything)]),
+            scores: T.nilable(T::Hash[Symbol, T.nilable(Float)]),
+            source:
+              T.nilable(Braintrust::FeedbackProjectLogsItem::Source::OrSymbol),
+            tags: T.nilable(T::Array[String])
+          }
+        )
+      end
+      def to_hash
+      end
 
       # The source of the feedback. Must be one of "external" (default), "app", or "api"
       module Source
         extend Braintrust::Internal::Type::Enum
 
-        TaggedSymbol = T.type_alias { T.all(Symbol, Braintrust::Models::FeedbackProjectLogsItem::Source) }
+        TaggedSymbol =
+          T.type_alias do
+            T.all(Symbol, Braintrust::FeedbackProjectLogsItem::Source)
+          end
         OrSymbol = T.type_alias { T.any(Symbol, String) }
 
-        APP = T.let(:app, Braintrust::Models::FeedbackProjectLogsItem::Source::TaggedSymbol)
-        API = T.let(:api, Braintrust::Models::FeedbackProjectLogsItem::Source::TaggedSymbol)
-        EXTERNAL = T.let(:external, Braintrust::Models::FeedbackProjectLogsItem::Source::TaggedSymbol)
+        APP =
+          T.let(:app, Braintrust::FeedbackProjectLogsItem::Source::TaggedSymbol)
+        API =
+          T.let(:api, Braintrust::FeedbackProjectLogsItem::Source::TaggedSymbol)
+        EXTERNAL =
+          T.let(
+            :external,
+            Braintrust::FeedbackProjectLogsItem::Source::TaggedSymbol
+          )
 
-        sig { override.returns(T::Array[Braintrust::Models::FeedbackProjectLogsItem::Source::TaggedSymbol]) }
-        def self.values; end
+        sig do
+          override.returns(
+            T::Array[Braintrust::FeedbackProjectLogsItem::Source::TaggedSymbol]
+          )
+        end
+        def self.values
+        end
       end
     end
   end

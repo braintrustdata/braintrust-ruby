@@ -10,13 +10,13 @@ module Braintrust
 
       # @!attribute location
       #
-      #   @return [Braintrust::Models::CodeBundle::Location::Experiment, Braintrust::Models::CodeBundle::Location::Function]
-      required :location, union: -> { Braintrust::Models::CodeBundle::Location }
+      #   @return [Braintrust::CodeBundle::Location::Experiment, Braintrust::CodeBundle::Location::Function]
+      required :location, union: -> { Braintrust::CodeBundle::Location }
 
       # @!attribute runtime_context
       #
-      #   @return [Braintrust::Models::CodeBundle::RuntimeContext]
-      required :runtime_context, -> { Braintrust::Models::CodeBundle::RuntimeContext }
+      #   @return [Braintrust::CodeBundle::RuntimeContext]
+      required :runtime_context, -> { Braintrust::CodeBundle::RuntimeContext }
 
       # @!attribute preview
       #   A preview of the code
@@ -27,19 +27,19 @@ module Braintrust
       # @!method initialize(bundle_id:, location:, runtime_context:, preview: nil)
       #   @param bundle_id [String]
       #
-      #   @param location [Braintrust::Models::CodeBundle::Location::Experiment, Braintrust::Models::CodeBundle::Location::Function]
+      #   @param location [Braintrust::CodeBundle::Location::Experiment, Braintrust::CodeBundle::Location::Function]
       #
-      #   @param runtime_context [Braintrust::Models::CodeBundle::RuntimeContext]
+      #   @param runtime_context [Braintrust::CodeBundle::RuntimeContext]
       #
       #   @param preview [String, nil] A preview of the code
 
-      # @see Braintrust::Models::CodeBundle#location
+      # @see Braintrust::CodeBundle#location
       module Location
         extend Braintrust::Internal::Type::Union
 
-        variant -> { Braintrust::Models::CodeBundle::Location::Experiment }
+        variant -> { Braintrust::CodeBundle::Location::Experiment }
 
-        variant -> { Braintrust::Models::CodeBundle::Location::Function }
+        variant -> { Braintrust::CodeBundle::Location::Function }
 
         class Experiment < Braintrust::Internal::Type::BaseModel
           # @!attribute eval_name
@@ -49,37 +49,37 @@ module Braintrust
 
           # @!attribute position
           #
-          #   @return [Braintrust::Models::CodeBundle::Location::Experiment::Position::Type, Braintrust::Models::CodeBundle::Location::Experiment::Position::Scorer]
-          required :position, union: -> { Braintrust::Models::CodeBundle::Location::Experiment::Position }
+          #   @return [Braintrust::CodeBundle::Location::Experiment::Position::Type, Braintrust::CodeBundle::Location::Experiment::Position::Scorer]
+          required :position, union: -> { Braintrust::CodeBundle::Location::Experiment::Position }
 
           # @!attribute type
           #
-          #   @return [Symbol, Braintrust::Models::CodeBundle::Location::Experiment::Type]
-          required :type, enum: -> { Braintrust::Models::CodeBundle::Location::Experiment::Type }
+          #   @return [Symbol, Braintrust::CodeBundle::Location::Experiment::Type]
+          required :type, enum: -> { Braintrust::CodeBundle::Location::Experiment::Type }
 
           # @!method initialize(eval_name:, position:, type:)
           #   @param eval_name [String]
-          #   @param position [Braintrust::Models::CodeBundle::Location::Experiment::Position::Type, Braintrust::Models::CodeBundle::Location::Experiment::Position::Scorer]
-          #   @param type [Symbol, Braintrust::Models::CodeBundle::Location::Experiment::Type]
+          #   @param position [Braintrust::CodeBundle::Location::Experiment::Position::Type, Braintrust::CodeBundle::Location::Experiment::Position::Scorer]
+          #   @param type [Symbol, Braintrust::CodeBundle::Location::Experiment::Type]
 
-          # @see Braintrust::Models::CodeBundle::Location::Experiment#position
+          # @see Braintrust::CodeBundle::Location::Experiment#position
           module Position
             extend Braintrust::Internal::Type::Union
 
-            variant -> { Braintrust::Models::CodeBundle::Location::Experiment::Position::Type }
+            variant -> { Braintrust::CodeBundle::Location::Experiment::Position::Type }
 
-            variant -> { Braintrust::Models::CodeBundle::Location::Experiment::Position::Scorer }
+            variant -> { Braintrust::CodeBundle::Location::Experiment::Position::Scorer }
 
             class Type < Braintrust::Internal::Type::BaseModel
               # @!attribute type
               #
-              #   @return [Symbol, Braintrust::Models::CodeBundle::Location::Experiment::Position::Type::Type]
-              required :type, enum: -> { Braintrust::Models::CodeBundle::Location::Experiment::Position::Type::Type }
+              #   @return [Symbol, Braintrust::CodeBundle::Location::Experiment::Position::Type::Type]
+              required :type, enum: -> { Braintrust::CodeBundle::Location::Experiment::Position::Type::Type }
 
               # @!method initialize(type:)
-              #   @param type [Symbol, Braintrust::Models::CodeBundle::Location::Experiment::Position::Type::Type]
+              #   @param type [Symbol, Braintrust::CodeBundle::Location::Experiment::Position::Type::Type]
 
-              # @see Braintrust::Models::CodeBundle::Location::Experiment::Position::Type#type
+              # @see Braintrust::CodeBundle::Location::Experiment::Position::Type#type
               module Type
                 extend Braintrust::Internal::Type::Enum
 
@@ -98,14 +98,17 @@ module Braintrust
 
               # @!attribute type
               #
-              #   @return [Symbol, Braintrust::Models::CodeBundle::Location::Experiment::Position::Scorer::Type]
-              required :type, enum: -> { Braintrust::Models::CodeBundle::Location::Experiment::Position::Scorer::Type }
+              #   @return [Symbol, Braintrust::CodeBundle::Location::Experiment::Position::Scorer::Type]
+              required :type,
+                       enum: -> {
+                         Braintrust::CodeBundle::Location::Experiment::Position::Scorer::Type
+                       }
 
               # @!method initialize(index:, type:)
               #   @param index [Integer]
-              #   @param type [Symbol, Braintrust::Models::CodeBundle::Location::Experiment::Position::Scorer::Type]
+              #   @param type [Symbol, Braintrust::CodeBundle::Location::Experiment::Position::Scorer::Type]
 
-              # @see Braintrust::Models::CodeBundle::Location::Experiment::Position::Scorer#type
+              # @see Braintrust::CodeBundle::Location::Experiment::Position::Scorer#type
               module Type
                 extend Braintrust::Internal::Type::Enum
 
@@ -117,10 +120,10 @@ module Braintrust
             end
 
             # @!method self.variants
-            #   @return [Array(Braintrust::Models::CodeBundle::Location::Experiment::Position::Type, Braintrust::Models::CodeBundle::Location::Experiment::Position::Scorer)]
+            #   @return [Array(Braintrust::CodeBundle::Location::Experiment::Position::Type, Braintrust::CodeBundle::Location::Experiment::Position::Scorer)]
           end
 
-          # @see Braintrust::Models::CodeBundle::Location::Experiment#type
+          # @see Braintrust::CodeBundle::Location::Experiment#type
           module Type
             extend Braintrust::Internal::Type::Enum
 
@@ -139,14 +142,14 @@ module Braintrust
 
           # @!attribute type
           #
-          #   @return [Symbol, Braintrust::Models::CodeBundle::Location::Function::Type]
-          required :type, enum: -> { Braintrust::Models::CodeBundle::Location::Function::Type }
+          #   @return [Symbol, Braintrust::CodeBundle::Location::Function::Type]
+          required :type, enum: -> { Braintrust::CodeBundle::Location::Function::Type }
 
           # @!method initialize(index:, type:)
           #   @param index [Integer]
-          #   @param type [Symbol, Braintrust::Models::CodeBundle::Location::Function::Type]
+          #   @param type [Symbol, Braintrust::CodeBundle::Location::Function::Type]
 
-          # @see Braintrust::Models::CodeBundle::Location::Function#type
+          # @see Braintrust::CodeBundle::Location::Function#type
           module Type
             extend Braintrust::Internal::Type::Enum
 
@@ -158,15 +161,15 @@ module Braintrust
         end
 
         # @!method self.variants
-        #   @return [Array(Braintrust::Models::CodeBundle::Location::Experiment, Braintrust::Models::CodeBundle::Location::Function)]
+        #   @return [Array(Braintrust::CodeBundle::Location::Experiment, Braintrust::CodeBundle::Location::Function)]
       end
 
-      # @see Braintrust::Models::CodeBundle#runtime_context
+      # @see Braintrust::CodeBundle#runtime_context
       class RuntimeContext < Braintrust::Internal::Type::BaseModel
         # @!attribute runtime
         #
-        #   @return [Symbol, Braintrust::Models::CodeBundle::RuntimeContext::Runtime]
-        required :runtime, enum: -> { Braintrust::Models::CodeBundle::RuntimeContext::Runtime }
+        #   @return [Symbol, Braintrust::CodeBundle::RuntimeContext::Runtime]
+        required :runtime, enum: -> { Braintrust::CodeBundle::RuntimeContext::Runtime }
 
         # @!attribute version
         #
@@ -174,10 +177,10 @@ module Braintrust
         required :version, String
 
         # @!method initialize(runtime:, version:)
-        #   @param runtime [Symbol, Braintrust::Models::CodeBundle::RuntimeContext::Runtime]
+        #   @param runtime [Symbol, Braintrust::CodeBundle::RuntimeContext::Runtime]
         #   @param version [String]
 
-        # @see Braintrust::Models::CodeBundle::RuntimeContext#runtime
+        # @see Braintrust::CodeBundle::RuntimeContext#runtime
         module Runtime
           extend Braintrust::Internal::Type::Enum
 

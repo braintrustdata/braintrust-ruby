@@ -39,8 +39,6 @@ module Braintrust
         ?metadata: ::Hash[Symbol, top?]?,
         ?user_id: String?
       ) -> void
-
-      def to_hash: -> Braintrust::Models::dataset
     end
   end
 end

@@ -30,8 +30,8 @@ module Braintrust
       # @!attribute data_summary
       #   Summary of a dataset's data
       #
-      #   @return [Braintrust::Models::DataSummary, nil]
-      optional :data_summary, -> { Braintrust::Models::DataSummary }, nil?: true
+      #   @return [Braintrust::DataSummary, nil]
+      optional :data_summary, -> { Braintrust::DataSummary }, nil?: true
 
       # @!method initialize(dataset_name:, dataset_url:, project_name:, project_url:, data_summary: nil)
       #   Summary of a dataset
@@ -44,7 +44,7 @@ module Braintrust
       #
       #   @param project_url [String] URL to the project's page in the Braintrust app
       #
-      #   @param data_summary [Braintrust::Models::DataSummary, nil] Summary of a dataset's data
+      #   @param data_summary [Braintrust::DataSummary, nil] Summary of a dataset's data
     end
   end
 end

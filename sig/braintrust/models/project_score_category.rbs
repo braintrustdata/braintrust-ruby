@@ -8,8 +8,6 @@ module Braintrust
       attr_accessor value: Float
 
       def initialize: (name: String, value: Float) -> void
-
-      def to_hash: -> Braintrust::Models::project_score_category
     end
   end
 end

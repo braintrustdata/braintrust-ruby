@@ -6,12 +6,15 @@ module Braintrust
       extend Braintrust::Internal::Type::RequestParameters::Converter
       include Braintrust::Internal::Type::RequestParameters
 
+      OrHash =
+        T.type_alias { T.any(T.self_type, Braintrust::Internal::AnyHash) }
+
       sig do
         returns(
           T.any(
-            Braintrust::Models::FunctionCreateParams::FunctionData::Prompt,
-            Braintrust::Models::FunctionCreateParams::FunctionData::Code,
-            Braintrust::Models::FunctionCreateParams::FunctionData::Global
+            Braintrust::FunctionCreateParams::FunctionData::Prompt,
+            Braintrust::FunctionCreateParams::FunctionData::Code,
+            Braintrust::FunctionCreateParams::FunctionData::Global
           )
         )
       end
@@ -34,36 +37,43 @@ module Braintrust
       attr_accessor :description
 
       # JSON schema for the function's parameters and return type
-      sig { returns(T.nilable(Braintrust::Models::FunctionCreateParams::FunctionSchema)) }
+      sig do
+        returns(T.nilable(Braintrust::FunctionCreateParams::FunctionSchema))
+      end
       attr_reader :function_schema
 
       sig do
         params(
-          function_schema: T.nilable(T.any(Braintrust::Models::FunctionCreateParams::FunctionSchema, Braintrust::Internal::AnyHash))
-        )
-          .void
+          function_schema:
+            T.nilable(Braintrust::FunctionCreateParams::FunctionSchema::OrHash)
+        ).void
       end
       attr_writer :function_schema
 
-      sig { returns(T.nilable(Braintrust::Models::FunctionCreateParams::FunctionType::OrSymbol)) }
+      sig do
+        returns(
+          T.nilable(Braintrust::FunctionCreateParams::FunctionType::OrSymbol)
+        )
+      end
       attr_accessor :function_type
 
-      sig { returns(T.nilable(Braintrust::Models::FunctionCreateParams::Origin)) }
+      sig { returns(T.nilable(Braintrust::FunctionCreateParams::Origin)) }
       attr_reader :origin
 
       sig do
         params(
-          origin: T.nilable(T.any(Braintrust::Models::FunctionCreateParams::Origin, Braintrust::Internal::AnyHash))
-        )
-          .void
+          origin: T.nilable(Braintrust::FunctionCreateParams::Origin::OrHash)
+        ).void
       end
       attr_writer :origin
 
       # The prompt, model, and its parameters
-      sig { returns(T.nilable(Braintrust::Models::PromptData)) }
+      sig { returns(T.nilable(Braintrust::PromptData)) }
       attr_reader :prompt_data
 
-      sig { params(prompt_data: T.nilable(T.any(Braintrust::Models::PromptData, Braintrust::Internal::AnyHash))).void }
+      sig do
+        params(prompt_data: T.nilable(Braintrust::PromptData::OrHash)).void
+      end
       attr_writer :prompt_data
 
       # A list of tags for the prompt
@@ -72,24 +82,25 @@ module Braintrust
 
       sig do
         params(
-          function_data: T.any(
-            Braintrust::Models::FunctionCreateParams::FunctionData::Prompt,
-            Braintrust::Internal::AnyHash,
-            Braintrust::Models::FunctionCreateParams::FunctionData::Code,
-            Braintrust::Models::FunctionCreateParams::FunctionData::Global
-          ),
+          function_data:
+            T.any(
+              Braintrust::FunctionCreateParams::FunctionData::Prompt::OrHash,
+              Braintrust::FunctionCreateParams::FunctionData::Code::OrHash,
+              Braintrust::FunctionCreateParams::FunctionData::Global::OrHash
+            ),
           name: String,
           project_id: String,
           slug: String,
           description: T.nilable(String),
-          function_schema: T.nilable(T.any(Braintrust::Models::FunctionCreateParams::FunctionSchema, Braintrust::Internal::AnyHash)),
-          function_type: T.nilable(Braintrust::Models::FunctionCreateParams::FunctionType::OrSymbol),
-          origin: T.nilable(T.any(Braintrust::Models::FunctionCreateParams::Origin, Braintrust::Internal::AnyHash)),
-          prompt_data: T.nilable(T.any(Braintrust::Models::PromptData, Braintrust::Internal::AnyHash)),
+          function_schema:
+            T.nilable(Braintrust::FunctionCreateParams::FunctionSchema::OrHash),
+          function_type:
+            T.nilable(Braintrust::FunctionCreateParams::FunctionType::OrSymbol),
+          origin: T.nilable(Braintrust::FunctionCreateParams::Origin::OrHash),
+          prompt_data: T.nilable(Braintrust::PromptData::OrHash),
           tags: T.nilable(T::Array[String]),
-          request_options: T.any(Braintrust::RequestOptions, Braintrust::Internal::AnyHash)
-        )
-          .returns(T.attached_class)
+          request_options: Braintrust::RequestOptions::OrHash
+        ).returns(T.attached_class)
       end
       def self.new(
         function_data:,
@@ -110,200 +121,302 @@ module Braintrust
         # A list of tags for the prompt
         tags: nil,
         request_options: {}
-      ); end
-      sig do
-        override
-          .returns(
-            {
-              function_data: T.any(
-                Braintrust::Models::FunctionCreateParams::FunctionData::Prompt,
-                Braintrust::Models::FunctionCreateParams::FunctionData::Code,
-                Braintrust::Models::FunctionCreateParams::FunctionData::Global
-              ),
-              name: String,
-              project_id: String,
-              slug: String,
-              description: T.nilable(String),
-              function_schema: T.nilable(Braintrust::Models::FunctionCreateParams::FunctionSchema),
-              function_type: T.nilable(Braintrust::Models::FunctionCreateParams::FunctionType::OrSymbol),
-              origin: T.nilable(Braintrust::Models::FunctionCreateParams::Origin),
-              prompt_data: T.nilable(Braintrust::Models::PromptData),
-              tags: T.nilable(T::Array[String]),
-              request_options: Braintrust::RequestOptions
-            }
-          )
+      )
       end
-      def to_hash; end
+
+      sig do
+        override.returns(
+          {
+            function_data:
+              T.any(
+                Braintrust::FunctionCreateParams::FunctionData::Prompt,
+                Braintrust::FunctionCreateParams::FunctionData::Code,
+                Braintrust::FunctionCreateParams::FunctionData::Global
+              ),
+            name: String,
+            project_id: String,
+            slug: String,
+            description: T.nilable(String),
+            function_schema:
+              T.nilable(Braintrust::FunctionCreateParams::FunctionSchema),
+            function_type:
+              T.nilable(
+                Braintrust::FunctionCreateParams::FunctionType::OrSymbol
+              ),
+            origin: T.nilable(Braintrust::FunctionCreateParams::Origin),
+            prompt_data: T.nilable(Braintrust::PromptData),
+            tags: T.nilable(T::Array[String]),
+            request_options: Braintrust::RequestOptions
+          }
+        )
+      end
+      def to_hash
+      end
 
       module FunctionData
         extend Braintrust::Internal::Type::Union
 
+        Variants =
+          T.type_alias do
+            T.any(
+              Braintrust::FunctionCreateParams::FunctionData::Prompt,
+              Braintrust::FunctionCreateParams::FunctionData::Code,
+              Braintrust::FunctionCreateParams::FunctionData::Global
+            )
+          end
+
         class Prompt < Braintrust::Internal::Type::BaseModel
-          sig { returns(Braintrust::Models::FunctionCreateParams::FunctionData::Prompt::Type::OrSymbol) }
+          OrHash =
+            T.type_alias { T.any(T.self_type, Braintrust::Internal::AnyHash) }
+
+          sig do
+            returns(
+              Braintrust::FunctionCreateParams::FunctionData::Prompt::Type::OrSymbol
+            )
+          end
           attr_accessor :type
 
           sig do
-            params(type: Braintrust::Models::FunctionCreateParams::FunctionData::Prompt::Type::OrSymbol)
-              .returns(T.attached_class)
+            params(
+              type:
+                Braintrust::FunctionCreateParams::FunctionData::Prompt::Type::OrSymbol
+            ).returns(T.attached_class)
           end
-          def self.new(type:); end
+          def self.new(type:)
+          end
 
-          sig { override.returns({type: Braintrust::Models::FunctionCreateParams::FunctionData::Prompt::Type::OrSymbol}) }
-          def to_hash; end
+          sig do
+            override.returns(
+              {
+                type:
+                  Braintrust::FunctionCreateParams::FunctionData::Prompt::Type::OrSymbol
+              }
+            )
+          end
+          def to_hash
+          end
 
           module Type
             extend Braintrust::Internal::Type::Enum
 
             TaggedSymbol =
-              T.type_alias { T.all(Symbol, Braintrust::Models::FunctionCreateParams::FunctionData::Prompt::Type) }
+              T.type_alias do
+                T.all(
+                  Symbol,
+                  Braintrust::FunctionCreateParams::FunctionData::Prompt::Type
+                )
+              end
             OrSymbol = T.type_alias { T.any(Symbol, String) }
 
             PROMPT =
-              T.let(:prompt, Braintrust::Models::FunctionCreateParams::FunctionData::Prompt::Type::TaggedSymbol)
+              T.let(
+                :prompt,
+                Braintrust::FunctionCreateParams::FunctionData::Prompt::Type::TaggedSymbol
+              )
 
             sig do
-              override
-                .returns(T::Array[Braintrust::Models::FunctionCreateParams::FunctionData::Prompt::Type::TaggedSymbol])
+              override.returns(
+                T::Array[
+                  Braintrust::FunctionCreateParams::FunctionData::Prompt::Type::TaggedSymbol
+                ]
+              )
             end
-            def self.values; end
+            def self.values
+            end
           end
         end
 
         class Code < Braintrust::Internal::Type::BaseModel
+          OrHash =
+            T.type_alias { T.any(T.self_type, Braintrust::Internal::AnyHash) }
+
           sig do
             returns(
               T.any(
-                Braintrust::Models::FunctionCreateParams::FunctionData::Code::Data::Bundle,
-                Braintrust::Models::FunctionCreateParams::FunctionData::Code::Data::Inline
+                Braintrust::FunctionCreateParams::FunctionData::Code::Data::Bundle,
+                Braintrust::FunctionCreateParams::FunctionData::Code::Data::Inline
               )
             )
           end
           attr_accessor :data
 
-          sig { returns(Braintrust::Models::FunctionCreateParams::FunctionData::Code::Type::OrSymbol) }
+          sig do
+            returns(
+              Braintrust::FunctionCreateParams::FunctionData::Code::Type::OrSymbol
+            )
+          end
           attr_accessor :type
 
           sig do
             params(
-              data: T.any(
-                Braintrust::Models::FunctionCreateParams::FunctionData::Code::Data::Bundle,
-                Braintrust::Internal::AnyHash,
-                Braintrust::Models::FunctionCreateParams::FunctionData::Code::Data::Inline
-              ),
-              type: Braintrust::Models::FunctionCreateParams::FunctionData::Code::Type::OrSymbol
-            )
-              .returns(T.attached_class)
+              data:
+                T.any(
+                  Braintrust::FunctionCreateParams::FunctionData::Code::Data::Bundle::OrHash,
+                  Braintrust::FunctionCreateParams::FunctionData::Code::Data::Inline::OrHash
+                ),
+              type:
+                Braintrust::FunctionCreateParams::FunctionData::Code::Type::OrSymbol
+            ).returns(T.attached_class)
           end
-          def self.new(data:, type:); end
+          def self.new(data:, type:)
+          end
 
           sig do
-            override
-              .returns(
-                {
-                  data: T.any(
-                    Braintrust::Models::FunctionCreateParams::FunctionData::Code::Data::Bundle,
-                    Braintrust::Models::FunctionCreateParams::FunctionData::Code::Data::Inline
+            override.returns(
+              {
+                data:
+                  T.any(
+                    Braintrust::FunctionCreateParams::FunctionData::Code::Data::Bundle,
+                    Braintrust::FunctionCreateParams::FunctionData::Code::Data::Inline
                   ),
-                  type: Braintrust::Models::FunctionCreateParams::FunctionData::Code::Type::OrSymbol
-                }
-              )
+                type:
+                  Braintrust::FunctionCreateParams::FunctionData::Code::Type::OrSymbol
+              }
+            )
           end
-          def to_hash; end
+          def to_hash
+          end
 
           module Data
             extend Braintrust::Internal::Type::Union
 
+            Variants =
+              T.type_alias do
+                T.any(
+                  Braintrust::FunctionCreateParams::FunctionData::Code::Data::Bundle,
+                  Braintrust::FunctionCreateParams::FunctionData::Code::Data::Inline
+                )
+              end
+
             class Bundle < Braintrust::Models::CodeBundle
-              sig { returns(Braintrust::Models::FunctionCreateParams::FunctionData::Code::Data::Bundle::Type::OrSymbol) }
+              OrHash =
+                T.type_alias do
+                  T.any(T.self_type, Braintrust::Internal::AnyHash)
+                end
+
+              sig do
+                returns(
+                  Braintrust::FunctionCreateParams::FunctionData::Code::Data::Bundle::Type::OrSymbol
+                )
+              end
               attr_accessor :type
 
               sig do
-                params(type: Braintrust::Models::FunctionCreateParams::FunctionData::Code::Data::Bundle::Type::OrSymbol)
-                  .returns(T.attached_class)
+                params(
+                  type:
+                    Braintrust::FunctionCreateParams::FunctionData::Code::Data::Bundle::Type::OrSymbol
+                ).returns(T.attached_class)
               end
-              def self.new(type:); end
+              def self.new(type:)
+              end
 
               sig do
-                override
-                  .returns(
-                    {type: Braintrust::Models::FunctionCreateParams::FunctionData::Code::Data::Bundle::Type::OrSymbol}
-                  )
+                override.returns(
+                  {
+                    type:
+                      Braintrust::FunctionCreateParams::FunctionData::Code::Data::Bundle::Type::OrSymbol
+                  }
+                )
               end
-              def to_hash; end
+              def to_hash
+              end
 
               module Type
                 extend Braintrust::Internal::Type::Enum
 
                 TaggedSymbol =
-                  T.type_alias { T.all(Symbol, Braintrust::Models::FunctionCreateParams::FunctionData::Code::Data::Bundle::Type) }
+                  T.type_alias do
+                    T.all(
+                      Symbol,
+                      Braintrust::FunctionCreateParams::FunctionData::Code::Data::Bundle::Type
+                    )
+                  end
                 OrSymbol = T.type_alias { T.any(Symbol, String) }
 
                 BUNDLE =
                   T.let(
                     :bundle,
-                    Braintrust::Models::FunctionCreateParams::FunctionData::Code::Data::Bundle::Type::TaggedSymbol
+                    Braintrust::FunctionCreateParams::FunctionData::Code::Data::Bundle::Type::TaggedSymbol
                   )
 
                 sig do
-                  override
-                    .returns(
-                      T::Array[Braintrust::Models::FunctionCreateParams::FunctionData::Code::Data::Bundle::Type::TaggedSymbol]
-                    )
+                  override.returns(
+                    T::Array[
+                      Braintrust::FunctionCreateParams::FunctionData::Code::Data::Bundle::Type::TaggedSymbol
+                    ]
+                  )
                 end
-                def self.values; end
+                def self.values
+                end
               end
             end
 
             class Inline < Braintrust::Internal::Type::BaseModel
+              OrHash =
+                T.type_alias do
+                  T.any(T.self_type, Braintrust::Internal::AnyHash)
+                end
+
               sig { returns(String) }
               attr_accessor :code
 
-              sig { returns(Braintrust::Models::FunctionCreateParams::FunctionData::Code::Data::Inline::RuntimeContext) }
+              sig do
+                returns(
+                  Braintrust::FunctionCreateParams::FunctionData::Code::Data::Inline::RuntimeContext
+                )
+              end
               attr_reader :runtime_context
 
               sig do
                 params(
-                  runtime_context: T.any(
-                    Braintrust::Models::FunctionCreateParams::FunctionData::Code::Data::Inline::RuntimeContext,
-                    Braintrust::Internal::AnyHash
-                  )
-                )
-                  .void
+                  runtime_context:
+                    Braintrust::FunctionCreateParams::FunctionData::Code::Data::Inline::RuntimeContext::OrHash
+                ).void
               end
               attr_writer :runtime_context
 
-              sig { returns(Braintrust::Models::FunctionCreateParams::FunctionData::Code::Data::Inline::Type::OrSymbol) }
+              sig do
+                returns(
+                  Braintrust::FunctionCreateParams::FunctionData::Code::Data::Inline::Type::OrSymbol
+                )
+              end
               attr_accessor :type
 
               sig do
                 params(
                   code: String,
-                  runtime_context: T.any(
-                    Braintrust::Models::FunctionCreateParams::FunctionData::Code::Data::Inline::RuntimeContext,
-                    Braintrust::Internal::AnyHash
-                  ),
-                  type: Braintrust::Models::FunctionCreateParams::FunctionData::Code::Data::Inline::Type::OrSymbol
-                )
-                  .returns(T.attached_class)
+                  runtime_context:
+                    Braintrust::FunctionCreateParams::FunctionData::Code::Data::Inline::RuntimeContext::OrHash,
+                  type:
+                    Braintrust::FunctionCreateParams::FunctionData::Code::Data::Inline::Type::OrSymbol
+                ).returns(T.attached_class)
               end
-              def self.new(code:, runtime_context:, type:); end
+              def self.new(code:, runtime_context:, type:)
+              end
 
               sig do
-                override
-                  .returns(
-                    {
-                      code: String,
-                      runtime_context: Braintrust::Models::FunctionCreateParams::FunctionData::Code::Data::Inline::RuntimeContext,
-                      type: Braintrust::Models::FunctionCreateParams::FunctionData::Code::Data::Inline::Type::OrSymbol
-                    }
-                  )
+                override.returns(
+                  {
+                    code: String,
+                    runtime_context:
+                      Braintrust::FunctionCreateParams::FunctionData::Code::Data::Inline::RuntimeContext,
+                    type:
+                      Braintrust::FunctionCreateParams::FunctionData::Code::Data::Inline::Type::OrSymbol
+                  }
+                )
               end
-              def to_hash; end
+              def to_hash
+              end
 
               class RuntimeContext < Braintrust::Internal::Type::BaseModel
+                OrHash =
+                  T.type_alias do
+                    T.any(T.self_type, Braintrust::Internal::AnyHash)
+                  end
+
                 sig do
                   returns(
-                    Braintrust::Models::FunctionCreateParams::FunctionData::Code::Data::Inline::RuntimeContext::Runtime::OrSymbol
+                    Braintrust::FunctionCreateParams::FunctionData::Code::Data::Inline::RuntimeContext::Runtime::OrSymbol
                   )
                 end
                 attr_accessor :runtime
@@ -313,53 +426,58 @@ module Braintrust
 
                 sig do
                   params(
-                    runtime: Braintrust::Models::FunctionCreateParams::FunctionData::Code::Data::Inline::RuntimeContext::Runtime::OrSymbol,
+                    runtime:
+                      Braintrust::FunctionCreateParams::FunctionData::Code::Data::Inline::RuntimeContext::Runtime::OrSymbol,
                     version: String
-                  )
-                    .returns(T.attached_class)
+                  ).returns(T.attached_class)
                 end
-                def self.new(runtime:, version:); end
+                def self.new(runtime:, version:)
+                end
 
                 sig do
-                  override
-                    .returns(
-                      {
-                        runtime: Braintrust::Models::FunctionCreateParams::FunctionData::Code::Data::Inline::RuntimeContext::Runtime::OrSymbol,
-                        version: String
-                      }
-                    )
+                  override.returns(
+                    {
+                      runtime:
+                        Braintrust::FunctionCreateParams::FunctionData::Code::Data::Inline::RuntimeContext::Runtime::OrSymbol,
+                      version: String
+                    }
+                  )
                 end
-                def to_hash; end
+                def to_hash
+                end
 
                 module Runtime
                   extend Braintrust::Internal::Type::Enum
 
                   TaggedSymbol =
                     T.type_alias do
-                      T.all(Symbol, Braintrust::Models::FunctionCreateParams::FunctionData::Code::Data::Inline::RuntimeContext::Runtime)
+                      T.all(
+                        Symbol,
+                        Braintrust::FunctionCreateParams::FunctionData::Code::Data::Inline::RuntimeContext::Runtime
+                      )
                     end
                   OrSymbol = T.type_alias { T.any(Symbol, String) }
 
                   NODE =
                     T.let(
                       :node,
-                      Braintrust::Models::FunctionCreateParams::FunctionData::Code::Data::Inline::RuntimeContext::Runtime::TaggedSymbol
+                      Braintrust::FunctionCreateParams::FunctionData::Code::Data::Inline::RuntimeContext::Runtime::TaggedSymbol
                     )
                   PYTHON =
                     T.let(
                       :python,
-                      Braintrust::Models::FunctionCreateParams::FunctionData::Code::Data::Inline::RuntimeContext::Runtime::TaggedSymbol
+                      Braintrust::FunctionCreateParams::FunctionData::Code::Data::Inline::RuntimeContext::Runtime::TaggedSymbol
                     )
 
                   sig do
-                    override
-                      .returns(
-                        T::Array[
-                          Braintrust::Models::FunctionCreateParams::FunctionData::Code::Data::Inline::RuntimeContext::Runtime::TaggedSymbol
-                        ]
-                      )
+                    override.returns(
+                      T::Array[
+                        Braintrust::FunctionCreateParams::FunctionData::Code::Data::Inline::RuntimeContext::Runtime::TaggedSymbol
+                      ]
+                    )
                   end
-                  def self.values; end
+                  def self.values
+                  end
                 end
               end
 
@@ -367,100 +485,152 @@ module Braintrust
                 extend Braintrust::Internal::Type::Enum
 
                 TaggedSymbol =
-                  T.type_alias { T.all(Symbol, Braintrust::Models::FunctionCreateParams::FunctionData::Code::Data::Inline::Type) }
+                  T.type_alias do
+                    T.all(
+                      Symbol,
+                      Braintrust::FunctionCreateParams::FunctionData::Code::Data::Inline::Type
+                    )
+                  end
                 OrSymbol = T.type_alias { T.any(Symbol, String) }
 
                 INLINE =
                   T.let(
                     :inline,
-                    Braintrust::Models::FunctionCreateParams::FunctionData::Code::Data::Inline::Type::TaggedSymbol
+                    Braintrust::FunctionCreateParams::FunctionData::Code::Data::Inline::Type::TaggedSymbol
                   )
 
                 sig do
-                  override
-                    .returns(
-                      T::Array[Braintrust::Models::FunctionCreateParams::FunctionData::Code::Data::Inline::Type::TaggedSymbol]
-                    )
+                  override.returns(
+                    T::Array[
+                      Braintrust::FunctionCreateParams::FunctionData::Code::Data::Inline::Type::TaggedSymbol
+                    ]
+                  )
                 end
-                def self.values; end
+                def self.values
+                end
               end
             end
 
             sig do
-              override
-                .returns(
-                  [Braintrust::Models::FunctionCreateParams::FunctionData::Code::Data::Bundle, Braintrust::Models::FunctionCreateParams::FunctionData::Code::Data::Inline]
-                )
+              override.returns(
+                T::Array[
+                  Braintrust::FunctionCreateParams::FunctionData::Code::Data::Variants
+                ]
+              )
             end
-            def self.variants; end
+            def self.variants
+            end
           end
 
           module Type
             extend Braintrust::Internal::Type::Enum
 
             TaggedSymbol =
-              T.type_alias { T.all(Symbol, Braintrust::Models::FunctionCreateParams::FunctionData::Code::Type) }
+              T.type_alias do
+                T.all(
+                  Symbol,
+                  Braintrust::FunctionCreateParams::FunctionData::Code::Type
+                )
+              end
             OrSymbol = T.type_alias { T.any(Symbol, String) }
 
-            CODE = T.let(:code, Braintrust::Models::FunctionCreateParams::FunctionData::Code::Type::TaggedSymbol)
+            CODE =
+              T.let(
+                :code,
+                Braintrust::FunctionCreateParams::FunctionData::Code::Type::TaggedSymbol
+              )
 
             sig do
-              override
-                .returns(T::Array[Braintrust::Models::FunctionCreateParams::FunctionData::Code::Type::TaggedSymbol])
+              override.returns(
+                T::Array[
+                  Braintrust::FunctionCreateParams::FunctionData::Code::Type::TaggedSymbol
+                ]
+              )
             end
-            def self.values; end
+            def self.values
+            end
           end
         end
 
         class Global < Braintrust::Internal::Type::BaseModel
+          OrHash =
+            T.type_alias { T.any(T.self_type, Braintrust::Internal::AnyHash) }
+
           sig { returns(String) }
           attr_accessor :name
 
-          sig { returns(Braintrust::Models::FunctionCreateParams::FunctionData::Global::Type::OrSymbol) }
+          sig do
+            returns(
+              Braintrust::FunctionCreateParams::FunctionData::Global::Type::OrSymbol
+            )
+          end
           attr_accessor :type
 
           sig do
-            params(name: String, type: Braintrust::Models::FunctionCreateParams::FunctionData::Global::Type::OrSymbol)
-              .returns(T.attached_class)
+            params(
+              name: String,
+              type:
+                Braintrust::FunctionCreateParams::FunctionData::Global::Type::OrSymbol
+            ).returns(T.attached_class)
           end
-          def self.new(name:, type:); end
+          def self.new(name:, type:)
+          end
 
           sig do
-            override
-              .returns(
-                {name: String, type: Braintrust::Models::FunctionCreateParams::FunctionData::Global::Type::OrSymbol}
-              )
+            override.returns(
+              {
+                name: String,
+                type:
+                  Braintrust::FunctionCreateParams::FunctionData::Global::Type::OrSymbol
+              }
+            )
           end
-          def to_hash; end
+          def to_hash
+          end
 
           module Type
             extend Braintrust::Internal::Type::Enum
 
             TaggedSymbol =
-              T.type_alias { T.all(Symbol, Braintrust::Models::FunctionCreateParams::FunctionData::Global::Type) }
+              T.type_alias do
+                T.all(
+                  Symbol,
+                  Braintrust::FunctionCreateParams::FunctionData::Global::Type
+                )
+              end
             OrSymbol = T.type_alias { T.any(Symbol, String) }
 
             GLOBAL =
-              T.let(:global, Braintrust::Models::FunctionCreateParams::FunctionData::Global::Type::TaggedSymbol)
+              T.let(
+                :global,
+                Braintrust::FunctionCreateParams::FunctionData::Global::Type::TaggedSymbol
+              )
 
             sig do
-              override
-                .returns(T::Array[Braintrust::Models::FunctionCreateParams::FunctionData::Global::Type::TaggedSymbol])
+              override.returns(
+                T::Array[
+                  Braintrust::FunctionCreateParams::FunctionData::Global::Type::TaggedSymbol
+                ]
+              )
             end
-            def self.values; end
+            def self.values
+            end
           end
         end
 
         sig do
-          override
-            .returns(
-              [Braintrust::Models::FunctionCreateParams::FunctionData::Prompt, Braintrust::Models::FunctionCreateParams::FunctionData::Code, Braintrust::Models::FunctionCreateParams::FunctionData::Global]
-            )
+          override.returns(
+            T::Array[Braintrust::FunctionCreateParams::FunctionData::Variants]
+          )
         end
-        def self.variants; end
+        def self.variants
+        end
       end
 
       class FunctionSchema < Braintrust::Internal::Type::BaseModel
+        OrHash =
+          T.type_alias { T.any(T.self_type, Braintrust::Internal::AnyHash) }
+
         sig { returns(T.nilable(T.anything)) }
         attr_reader :parameters
 
@@ -474,35 +644,72 @@ module Braintrust
         attr_writer :returns
 
         # JSON schema for the function's parameters and return type
-        sig { params(parameters: T.anything, returns: T.anything).returns(T.attached_class) }
-        def self.new(parameters: nil, returns: nil); end
+        sig do
+          params(parameters: T.anything, returns: T.anything).returns(
+            T.attached_class
+          )
+        end
+        def self.new(parameters: nil, returns: nil)
+        end
 
-        sig { override.returns({parameters: T.anything, returns: T.anything}) }
-        def to_hash; end
+        sig do
+          override.returns({ parameters: T.anything, returns: T.anything })
+        end
+        def to_hash
+        end
       end
 
       module FunctionType
         extend Braintrust::Internal::Type::Enum
 
-        TaggedSymbol = T.type_alias { T.all(Symbol, Braintrust::Models::FunctionCreateParams::FunctionType) }
+        TaggedSymbol =
+          T.type_alias do
+            T.all(Symbol, Braintrust::FunctionCreateParams::FunctionType)
+          end
         OrSymbol = T.type_alias { T.any(Symbol, String) }
 
-        LLM = T.let(:llm, Braintrust::Models::FunctionCreateParams::FunctionType::TaggedSymbol)
-        SCORER = T.let(:scorer, Braintrust::Models::FunctionCreateParams::FunctionType::TaggedSymbol)
-        TASK = T.let(:task, Braintrust::Models::FunctionCreateParams::FunctionType::TaggedSymbol)
-        TOOL = T.let(:tool, Braintrust::Models::FunctionCreateParams::FunctionType::TaggedSymbol)
+        LLM =
+          T.let(
+            :llm,
+            Braintrust::FunctionCreateParams::FunctionType::TaggedSymbol
+          )
+        SCORER =
+          T.let(
+            :scorer,
+            Braintrust::FunctionCreateParams::FunctionType::TaggedSymbol
+          )
+        TASK =
+          T.let(
+            :task,
+            Braintrust::FunctionCreateParams::FunctionType::TaggedSymbol
+          )
+        TOOL =
+          T.let(
+            :tool,
+            Braintrust::FunctionCreateParams::FunctionType::TaggedSymbol
+          )
 
-        sig { override.returns(T::Array[Braintrust::Models::FunctionCreateParams::FunctionType::TaggedSymbol]) }
-        def self.values; end
+        sig do
+          override.returns(
+            T::Array[
+              Braintrust::FunctionCreateParams::FunctionType::TaggedSymbol
+            ]
+          )
+        end
+        def self.values
+        end
       end
 
       class Origin < Braintrust::Internal::Type::BaseModel
+        OrHash =
+          T.type_alias { T.any(T.self_type, Braintrust::Internal::AnyHash) }
+
         # Id of the object the function is originating from
         sig { returns(String) }
         attr_accessor :object_id_
 
         # The object type that the ACL applies to
-        sig { returns(Braintrust::Models::ACLObjectType::OrSymbol) }
+        sig { returns(Braintrust::ACLObjectType::OrSymbol) }
         attr_accessor :object_type
 
         # The function exists for internal purposes and should not be displayed in the
@@ -513,10 +720,9 @@ module Braintrust
         sig do
           params(
             object_id_: String,
-            object_type: Braintrust::Models::ACLObjectType::OrSymbol,
+            object_type: Braintrust::ACLObjectType::OrSymbol,
             internal: T.nilable(T::Boolean)
-          )
-            .returns(T.attached_class)
+          ).returns(T.attached_class)
         end
         def self.new(
           # Id of the object the function is originating from
@@ -526,14 +732,20 @@ module Braintrust
           # The function exists for internal purposes and should not be displayed in the
           # list of functions.
           internal: nil
-        ); end
-        sig do
-          override
-            .returns(
-              {object_id_: String, object_type: Braintrust::Models::ACLObjectType::OrSymbol, internal: T.nilable(T::Boolean)}
-            )
+        )
         end
-        def to_hash; end
+
+        sig do
+          override.returns(
+            {
+              object_id_: String,
+              object_type: Braintrust::ACLObjectType::OrSymbol,
+              internal: T.nilable(T::Boolean)
+            }
+          )
+        end
+        def to_hash
+        end
       end
     end
   end

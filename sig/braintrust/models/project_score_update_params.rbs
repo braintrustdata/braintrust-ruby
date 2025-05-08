@@ -3,7 +3,7 @@ module Braintrust
     type project_score_update_params =
       {
         categories: Braintrust::Models::ProjectScoreUpdateParams::categories?,
-        config: Braintrust::Models::ProjectScoreConfig?,
+        config: Braintrust::ProjectScoreConfig?,
         description: String?,
         name: String?,
         score_type: Braintrust::Models::project_score_type?
@@ -16,7 +16,7 @@ module Braintrust
 
       attr_accessor categories: Braintrust::Models::ProjectScoreUpdateParams::categories?
 
-      attr_accessor config: Braintrust::Models::ProjectScoreConfig?
+      attr_accessor config: Braintrust::ProjectScoreConfig?
 
       attr_accessor description: String?
 
@@ -26,24 +26,22 @@ module Braintrust
 
       def initialize: (
         ?categories: Braintrust::Models::ProjectScoreUpdateParams::categories?,
-        ?config: Braintrust::Models::ProjectScoreConfig?,
+        ?config: Braintrust::ProjectScoreConfig?,
         ?description: String?,
         ?name: String?,
         ?score_type: Braintrust::Models::project_score_type?,
         ?request_options: Braintrust::request_opts
       ) -> void
 
-      def to_hash: -> Braintrust::Models::project_score_update_params
-
       type categories =
-        ::Array[Braintrust::Models::ProjectScoreCategory]
+        ::Array[Braintrust::ProjectScoreCategory]
         | ::Hash[Symbol, Float]
         | ::Array[String]
 
       module Categories
         extend Braintrust::Internal::Type::Union
 
-        def self?.variants: -> [::Array[Braintrust::Models::ProjectScoreCategory], ::Hash[Symbol, Float], ::Array[String]]
+        def self?.variants: -> ::Array[Braintrust::Models::ProjectScoreUpdateParams::categories]
 
         ProjectScoreCategoryArray: Braintrust::Internal::Type::Converter
 

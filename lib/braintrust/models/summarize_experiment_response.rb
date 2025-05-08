@@ -36,16 +36,14 @@ module Braintrust
       # @!attribute metrics
       #   Summary of the experiment's metrics
       #
-      #   @return [Hash{Symbol=>Braintrust::Models::MetricSummary}, nil]
-      optional :metrics,
-               -> { Braintrust::Internal::Type::HashOf[Braintrust::Models::MetricSummary] },
-               nil?: true
+      #   @return [Hash{Symbol=>Braintrust::MetricSummary}, nil]
+      optional :metrics, -> { Braintrust::Internal::Type::HashOf[Braintrust::MetricSummary] }, nil?: true
 
       # @!attribute scores
       #   Summary of the experiment's scores
       #
-      #   @return [Hash{Symbol=>Braintrust::Models::ScoreSummary}, nil]
-      optional :scores, -> { Braintrust::Internal::Type::HashOf[Braintrust::Models::ScoreSummary] }, nil?: true
+      #   @return [Hash{Symbol=>Braintrust::ScoreSummary}, nil]
+      optional :scores, -> { Braintrust::Internal::Type::HashOf[Braintrust::ScoreSummary] }, nil?: true
 
       # @!method initialize(experiment_name:, experiment_url:, project_name:, project_url:, comparison_experiment_name: nil, metrics: nil, scores: nil)
       #   Summary of an experiment
@@ -60,9 +58,9 @@ module Braintrust
       #
       #   @param comparison_experiment_name [String, nil] The experiment which scores are baselined against
       #
-      #   @param metrics [Hash{Symbol=>Braintrust::Models::MetricSummary}, nil] Summary of the experiment's metrics
+      #   @param metrics [Hash{Symbol=>Braintrust::MetricSummary}, nil] Summary of the experiment's metrics
       #
-      #   @param scores [Hash{Symbol=>Braintrust::Models::ScoreSummary}, nil] Summary of the experiment's scores
+      #   @param scores [Hash{Symbol=>Braintrust::ScoreSummary}, nil] Summary of the experiment's scores
     end
   end
 end

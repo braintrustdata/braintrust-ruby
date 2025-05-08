@@ -6,6 +6,9 @@ module Braintrust
       extend Braintrust::Internal::Type::RequestParameters::Converter
       include Braintrust::Internal::Type::RequestParameters
 
+      OrHash =
+        T.type_alias { T.any(T.self_type, Braintrust::Internal::AnyHash) }
+
       # Textual description of the prompt
       sig { returns(T.nilable(String)) }
       attr_accessor :description
@@ -15,10 +18,12 @@ module Braintrust
       attr_accessor :name
 
       # The prompt, model, and its parameters
-      sig { returns(T.nilable(Braintrust::Models::PromptData)) }
+      sig { returns(T.nilable(Braintrust::PromptData)) }
       attr_reader :prompt_data
 
-      sig { params(prompt_data: T.nilable(T.any(Braintrust::Models::PromptData, Braintrust::Internal::AnyHash))).void }
+      sig do
+        params(prompt_data: T.nilable(Braintrust::PromptData::OrHash)).void
+      end
       attr_writer :prompt_data
 
       # Unique identifier for the prompt
@@ -33,12 +38,11 @@ module Braintrust
         params(
           description: T.nilable(String),
           name: T.nilable(String),
-          prompt_data: T.nilable(T.any(Braintrust::Models::PromptData, Braintrust::Internal::AnyHash)),
+          prompt_data: T.nilable(Braintrust::PromptData::OrHash),
           slug: T.nilable(String),
           tags: T.nilable(T::Array[String]),
-          request_options: T.any(Braintrust::RequestOptions, Braintrust::Internal::AnyHash)
-        )
-          .returns(T.attached_class)
+          request_options: Braintrust::RequestOptions::OrHash
+        ).returns(T.attached_class)
       end
       def self.new(
         # Textual description of the prompt
@@ -52,21 +56,23 @@ module Braintrust
         # A list of tags for the prompt
         tags: nil,
         request_options: {}
-      ); end
-      sig do
-        override
-          .returns(
-            {
-              description: T.nilable(String),
-              name: T.nilable(String),
-              prompt_data: T.nilable(Braintrust::Models::PromptData),
-              slug: T.nilable(String),
-              tags: T.nilable(T::Array[String]),
-              request_options: Braintrust::RequestOptions
-            }
-          )
+      )
       end
-      def to_hash; end
+
+      sig do
+        override.returns(
+          {
+            description: T.nilable(String),
+            name: T.nilable(String),
+            prompt_data: T.nilable(Braintrust::PromptData),
+            slug: T.nilable(String),
+            tags: T.nilable(T::Array[String]),
+            request_options: Braintrust::RequestOptions
+          }
+        )
+      end
+      def to_hash
+      end
     end
   end
 end

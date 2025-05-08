@@ -7,25 +7,25 @@ module Braintrust
         slug: String,
         ?description: String?,
         ?function_type: Braintrust::Models::PromptCreateParams::function_type?,
-        ?prompt_data: Braintrust::Models::PromptData?,
+        ?prompt_data: Braintrust::PromptData?,
         ?tags: ::Array[String]?,
         ?request_options: Braintrust::request_opts
-      ) -> Braintrust::Models::Prompt
+      ) -> Braintrust::Prompt
 
       def retrieve: (
         String prompt_id,
         ?request_options: Braintrust::request_opts
-      ) -> Braintrust::Models::Prompt
+      ) -> Braintrust::Prompt
 
       def update: (
         String prompt_id,
         ?description: String?,
         ?name: String?,
-        ?prompt_data: Braintrust::Models::PromptData?,
+        ?prompt_data: Braintrust::PromptData?,
         ?slug: String?,
         ?tags: ::Array[String]?,
         ?request_options: Braintrust::request_opts
-      ) -> Braintrust::Models::Prompt
+      ) -> Braintrust::Prompt
 
       def list: (
         ?ending_before: String,
@@ -39,12 +39,12 @@ module Braintrust
         ?starting_after: String,
         ?version: String,
         ?request_options: Braintrust::request_opts
-      ) -> Braintrust::Internal::ListObjects[Braintrust::Models::Prompt]
+      ) -> Braintrust::Internal::ListObjects[Braintrust::Prompt]
 
       def delete: (
         String prompt_id,
         ?request_options: Braintrust::request_opts
-      ) -> Braintrust::Models::Prompt
+      ) -> Braintrust::Prompt
 
       def replace: (
         name: String,
@@ -52,10 +52,10 @@ module Braintrust
         slug: String,
         ?description: String?,
         ?function_type: Braintrust::Models::PromptReplaceParams::function_type?,
-        ?prompt_data: Braintrust::Models::PromptData?,
+        ?prompt_data: Braintrust::PromptData?,
         ?tags: ::Array[String]?,
         ?request_options: Braintrust::request_opts
-      ) -> Braintrust::Models::Prompt
+      ) -> Braintrust::Prompt
 
       def initialize: (client: Braintrust::Client) -> void
     end

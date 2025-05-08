@@ -6,6 +6,9 @@ module Braintrust
       extend Braintrust::Internal::Type::RequestParameters::Converter
       include Braintrust::Internal::Type::RequestParameters
 
+      OrHash =
+        T.type_alias { T.any(T.self_type, Braintrust::Internal::AnyHash) }
+
       # Pagination cursor id.
       #
       # For example, if the initial item in the last page you fetched had an id of
@@ -62,8 +65,8 @@ module Braintrust
         returns(
           T.nilable(
             T.any(
-              Braintrust::Models::ProjectScoreType::OrSymbol,
-              T::Array[Braintrust::Models::ProjectScoreType::OrSymbol]
+              Braintrust::ProjectScoreType::OrSymbol,
+              T::Array[Braintrust::ProjectScoreType::OrSymbol]
             )
           )
         )
@@ -72,12 +75,12 @@ module Braintrust
 
       sig do
         params(
-          score_type: T.any(
-            Braintrust::Models::ProjectScoreType::OrSymbol,
-            T::Array[Braintrust::Models::ProjectScoreType::OrSymbol]
-          )
-        )
-          .void
+          score_type:
+            T.any(
+              Braintrust::ProjectScoreType::OrSymbol,
+              T::Array[Braintrust::ProjectScoreType::OrSymbol]
+            )
+        ).void
       end
       attr_writer :score_type
 
@@ -101,14 +104,14 @@ module Braintrust
           project_id: String,
           project_name: String,
           project_score_name: String,
-          score_type: T.any(
-            Braintrust::Models::ProjectScoreType::OrSymbol,
-            T::Array[Braintrust::Models::ProjectScoreType::OrSymbol]
-          ),
+          score_type:
+            T.any(
+              Braintrust::ProjectScoreType::OrSymbol,
+              T::Array[Braintrust::ProjectScoreType::OrSymbol]
+            ),
           starting_after: String,
-          request_options: T.any(Braintrust::RequestOptions, Braintrust::Internal::AnyHash)
-        )
-          .returns(T.attached_class)
+          request_options: Braintrust::RequestOptions::OrHash
+        ).returns(T.attached_class)
       end
       def self.new(
         # Pagination cursor id.
@@ -139,58 +142,79 @@ module Braintrust
         # `starting_after` and `ending_before`
         starting_after: nil,
         request_options: {}
-      ); end
-      sig do
-        override
-          .returns(
-            {
-              ending_before: String,
-              ids: T.any(String, T::Array[String]),
-              limit: T.nilable(Integer),
-              org_name: String,
-              project_id: String,
-              project_name: String,
-              project_score_name: String,
-              score_type: T.any(
-                Braintrust::Models::ProjectScoreType::OrSymbol,
-                T::Array[Braintrust::Models::ProjectScoreType::OrSymbol]
-              ),
-              starting_after: String,
-              request_options: Braintrust::RequestOptions
-            }
-          )
+      )
       end
-      def to_hash; end
+
+      sig do
+        override.returns(
+          {
+            ending_before: String,
+            ids: T.any(String, T::Array[String]),
+            limit: T.nilable(Integer),
+            org_name: String,
+            project_id: String,
+            project_name: String,
+            project_score_name: String,
+            score_type:
+              T.any(
+                Braintrust::ProjectScoreType::OrSymbol,
+                T::Array[Braintrust::ProjectScoreType::OrSymbol]
+              ),
+            starting_after: String,
+            request_options: Braintrust::RequestOptions
+          }
+        )
+      end
+      def to_hash
+      end
 
       # Filter search results to a particular set of object IDs. To specify a list of
       # IDs, include the query param multiple times
       module IDs
         extend Braintrust::Internal::Type::Union
 
-        sig { override.returns([String, T::Array[String]]) }
-        def self.variants; end
+        Variants = T.type_alias { T.any(String, T::Array[String]) }
 
-        StringArray = T.let(
-          Braintrust::Internal::Type::ArrayOf[String],
-          Braintrust::Internal::Type::Converter
-        )
+        sig do
+          override.returns(
+            T::Array[Braintrust::ProjectScoreListParams::IDs::Variants]
+          )
+        end
+        def self.variants
+        end
+
+        StringArray =
+          T.let(
+            Braintrust::Internal::Type::ArrayOf[String],
+            Braintrust::Internal::Type::Converter
+          )
       end
 
       # The type of the configured score
       module ScoreType
         extend Braintrust::Internal::Type::Union
 
-        sig do
-          override
-            .returns(
-              [Braintrust::Models::ProjectScoreType::TaggedSymbol, T::Array[Braintrust::Models::ProjectScoreType::TaggedSymbol]]
+        Variants =
+          T.type_alias do
+            T.any(
+              Braintrust::ProjectScoreType::TaggedSymbol,
+              T::Array[Braintrust::ProjectScoreType::TaggedSymbol]
             )
+          end
+
+        sig do
+          override.returns(
+            T::Array[Braintrust::ProjectScoreListParams::ScoreType::Variants]
+          )
         end
-        def self.variants; end
+        def self.variants
+        end
 
         ProjectScoreTypeArray =
           T.let(
-            Braintrust::Internal::Type::ArrayOf[enum: Braintrust::Models::ProjectScoreType],
+            Braintrust::Internal::Type::ArrayOf[
+              enum: Braintrust::ProjectScoreType
+            ],
             Braintrust::Internal::Type::Converter
           )
       end

@@ -72,8 +72,8 @@ module Braintrust
       # @!attribute repo_info
       #   Metadata about the state of the repo when the experiment was created
       #
-      #   @return [Braintrust::Models::RepoInfo, nil]
-      optional :repo_info, -> { Braintrust::Models::RepoInfo }, nil?: true
+      #   @return [Braintrust::RepoInfo, nil]
+      optional :repo_info, -> { Braintrust::RepoInfo }, nil?: true
 
       # @!method initialize(project_id:, base_exp_id: nil, dataset_id: nil, dataset_version: nil, description: nil, ensure_new: nil, metadata: nil, name: nil, public: nil, repo_info: nil, request_options: {})
       #   Some parameter documentations has been truncated, see
@@ -84,24 +84,20 @@ module Braintrust
       #   @param base_exp_id [String, nil] Id of default base experiment to compare against when viewing this experiment
       #
       #   @param dataset_id [String, nil] Identifier of the linked dataset, or null if the experiment is not linked to a d
-      #   ...
       #
       #   @param dataset_version [String, nil] Version number of the linked dataset the experiment was run against. This can be
-      #   ...
       #
       #   @param description [String, nil] Textual description of the experiment
       #
       #   @param ensure_new [Boolean, nil] Normally, creating an experiment with the same name as an existing experiment wi
-      #   ...
       #
       #   @param metadata [Hash{Symbol=>Object, nil}, nil] User-controlled metadata about the experiment
       #
       #   @param name [String, nil] Name of the experiment. Within a project, experiment names are unique
       #
       #   @param public [Boolean, nil] Whether or not the experiment is public. Public experiments can be viewed by any
-      #   ...
       #
-      #   @param repo_info [Braintrust::Models::RepoInfo, nil] Metadata about the state of the repo when the experiment was created
+      #   @param repo_info [Braintrust::RepoInfo, nil] Metadata about the state of the repo when the experiment was created
       #
       #   @param request_options [Braintrust::RequestOptions, Hash{Symbol=>Object}]
     end
