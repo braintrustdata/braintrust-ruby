@@ -23,8 +23,6 @@ module Braintrust
         ?sort: ::Array[top?]?,
         ?tag: ::Array[top?]?
       ) -> void
-
-      def to_hash: -> Braintrust::Models::view_data_search
     end
   end
 end

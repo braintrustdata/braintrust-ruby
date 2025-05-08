@@ -17,37 +17,33 @@ module Braintrust
       # @param base_exp_id [String, nil] Id of default base experiment to compare against when viewing this experiment
       #
       # @param dataset_id [String, nil] Identifier of the linked dataset, or null if the experiment is not linked to a d
-      # ...
       #
       # @param dataset_version [String, nil] Version number of the linked dataset the experiment was run against. This can be
-      # ...
       #
       # @param description [String, nil] Textual description of the experiment
       #
       # @param ensure_new [Boolean, nil] Normally, creating an experiment with the same name as an existing experiment wi
-      # ...
       #
       # @param metadata [Hash{Symbol=>Object, nil}, nil] User-controlled metadata about the experiment
       #
       # @param name [String, nil] Name of the experiment. Within a project, experiment names are unique
       #
       # @param public [Boolean, nil] Whether or not the experiment is public. Public experiments can be viewed by any
-      # ...
       #
-      # @param repo_info [Braintrust::Models::RepoInfo, nil] Metadata about the state of the repo when the experiment was created
+      # @param repo_info [Braintrust::RepoInfo, nil] Metadata about the state of the repo when the experiment was created
       #
       # @param request_options [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Braintrust::Models::Experiment]
+      # @return [Braintrust::Experiment]
       #
       # @see Braintrust::Models::ExperimentCreateParams
       def create(params)
-        parsed, options = Braintrust::Models::ExperimentCreateParams.dump_request(params)
+        parsed, options = Braintrust::ExperimentCreateParams.dump_request(params)
         @client.request(
           method: :post,
           path: "v1/experiment",
           body: parsed,
-          model: Braintrust::Models::Experiment,
+          model: Braintrust::Experiment,
           options: options
         )
       end
@@ -60,14 +56,14 @@ module Braintrust
       #
       # @param request_options [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Braintrust::Models::Experiment]
+      # @return [Braintrust::Experiment]
       #
       # @see Braintrust::Models::ExperimentRetrieveParams
       def retrieve(experiment_id, params = {})
         @client.request(
           method: :get,
           path: ["v1/experiment/%1$s", experiment_id],
-          model: Braintrust::Models::Experiment,
+          model: Braintrust::Experiment,
           options: params[:request_options]
         )
       end
@@ -86,10 +82,8 @@ module Braintrust
       # @param base_exp_id [String, nil] Id of default base experiment to compare against when viewing this experiment
       #
       # @param dataset_id [String, nil] Identifier of the linked dataset, or null if the experiment is not linked to a d
-      # ...
       #
       # @param dataset_version [String, nil] Version number of the linked dataset the experiment was run against. This can be
-      # ...
       #
       # @param description [String, nil] Textual description of the experiment
       #
@@ -98,22 +92,21 @@ module Braintrust
       # @param name [String, nil] Name of the experiment. Within a project, experiment names are unique
       #
       # @param public [Boolean, nil] Whether or not the experiment is public. Public experiments can be viewed by any
-      # ...
       #
-      # @param repo_info [Braintrust::Models::RepoInfo, nil] Metadata about the state of the repo when the experiment was created
+      # @param repo_info [Braintrust::RepoInfo, nil] Metadata about the state of the repo when the experiment was created
       #
       # @param request_options [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Braintrust::Models::Experiment]
+      # @return [Braintrust::Experiment]
       #
       # @see Braintrust::Models::ExperimentUpdateParams
       def update(experiment_id, params = {})
-        parsed, options = Braintrust::Models::ExperimentUpdateParams.dump_request(params)
+        parsed, options = Braintrust::ExperimentUpdateParams.dump_request(params)
         @client.request(
           method: :patch,
           path: ["v1/experiment/%1$s", experiment_id],
           body: parsed,
-          model: Braintrust::Models::Experiment,
+          model: Braintrust::Experiment,
           options: options
         )
       end
@@ -126,12 +119,11 @@ module Braintrust
       #
       # @overload list(ending_before: nil, experiment_name: nil, ids: nil, limit: nil, org_name: nil, project_id: nil, project_name: nil, starting_after: nil, request_options: {})
       #
-      # @param ending_before [String] Pagination cursor id. ...
+      # @param ending_before [String] Pagination cursor id.
       #
       # @param experiment_name [String] Name of the experiment to search for
       #
       # @param ids [String, Array<String>] Filter search results to a particular set of object IDs. To specify a list of ID
-      # ...
       #
       # @param limit [Integer, nil] Limit the number of objects to return
       #
@@ -141,21 +133,21 @@ module Braintrust
       #
       # @param project_name [String] Name of the project to search for
       #
-      # @param starting_after [String] Pagination cursor id. ...
+      # @param starting_after [String] Pagination cursor id.
       #
       # @param request_options [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Braintrust::Internal::ListObjects<Braintrust::Models::Experiment>]
+      # @return [Braintrust::Internal::ListObjects<Braintrust::Experiment>]
       #
       # @see Braintrust::Models::ExperimentListParams
       def list(params = {})
-        parsed, options = Braintrust::Models::ExperimentListParams.dump_request(params)
+        parsed, options = Braintrust::ExperimentListParams.dump_request(params)
         @client.request(
           method: :get,
           path: "v1/experiment",
           query: parsed,
           page: Braintrust::Internal::ListObjects,
-          model: Braintrust::Models::Experiment,
+          model: Braintrust::Experiment,
           options: options
         )
       end
@@ -168,14 +160,14 @@ module Braintrust
       #
       # @param request_options [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Braintrust::Models::Experiment]
+      # @return [Braintrust::Experiment]
       #
       # @see Braintrust::Models::ExperimentDeleteParams
       def delete(experiment_id, params = {})
         @client.request(
           method: :delete,
           path: ["v1/experiment/%1$s", experiment_id],
-          model: Braintrust::Models::Experiment,
+          model: Braintrust::Experiment,
           options: params[:request_options]
         )
       end
@@ -186,20 +178,20 @@ module Braintrust
       #
       # @param experiment_id [String] Experiment id
       #
-      # @param feedback [Array<Braintrust::Models::FeedbackExperimentItem>] A list of experiment feedback items
+      # @param feedback [Array<Braintrust::FeedbackExperimentItem>] A list of experiment feedback items
       #
       # @param request_options [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Braintrust::Models::FeedbackResponseSchema]
+      # @return [Braintrust::FeedbackResponseSchema]
       #
       # @see Braintrust::Models::ExperimentFeedbackParams
       def feedback(experiment_id, params)
-        parsed, options = Braintrust::Models::ExperimentFeedbackParams.dump_request(params)
+        parsed, options = Braintrust::ExperimentFeedbackParams.dump_request(params)
         @client.request(
           method: :post,
           path: ["v1/experiment/%1$s/feedback", experiment_id],
           body: parsed,
-          model: Braintrust::Models::FeedbackResponseSchema,
+          model: Braintrust::FeedbackResponseSchema,
           options: options
         )
       end
@@ -215,28 +207,26 @@ module Braintrust
       #
       # @param experiment_id [String] Experiment id
       #
-      # @param limit [Integer, nil] limit the number of traces fetched ...
+      # @param limit [Integer, nil] limit the number of traces fetched
       #
       # @param max_root_span_id [String] DEPRECATION NOTICE: The manually-constructed pagination cursor is deprecated in
-      # ...
       #
       # @param max_xact_id [String] DEPRECATION NOTICE: The manually-constructed pagination cursor is deprecated in
-      # ...
       #
-      # @param version [String] Retrieve a snapshot of events from a past time ...
+      # @param version [String] Retrieve a snapshot of events from a past time
       #
       # @param request_options [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Braintrust::Models::FetchExperimentEventsResponse]
+      # @return [Braintrust::FetchExperimentEventsResponse]
       #
       # @see Braintrust::Models::ExperimentFetchParams
       def fetch(experiment_id, params = {})
-        parsed, options = Braintrust::Models::ExperimentFetchParams.dump_request(params)
+        parsed, options = Braintrust::ExperimentFetchParams.dump_request(params)
         @client.request(
           method: :get,
           path: ["v1/experiment/%1$s/fetch", experiment_id],
           query: parsed,
-          model: Braintrust::Models::FetchExperimentEventsResponse,
+          model: Braintrust::FetchExperimentEventsResponse,
           options: options
         )
       end
@@ -253,30 +243,27 @@ module Braintrust
       # @param experiment_id [String] Experiment id
       #
       # @param cursor [String, nil] An opaque string to be used as a cursor for the next page of results, in order f
-      # ...
       #
-      # @param limit [Integer, nil] limit the number of traces fetched ...
+      # @param limit [Integer, nil] limit the number of traces fetched
       #
       # @param max_root_span_id [String, nil] DEPRECATION NOTICE: The manually-constructed pagination cursor is deprecated in
-      # ...
       #
       # @param max_xact_id [String, nil] DEPRECATION NOTICE: The manually-constructed pagination cursor is deprecated in
-      # ...
       #
-      # @param version [String, nil] Retrieve a snapshot of events from a past time ...
+      # @param version [String, nil] Retrieve a snapshot of events from a past time
       #
       # @param request_options [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Braintrust::Models::FetchExperimentEventsResponse]
+      # @return [Braintrust::FetchExperimentEventsResponse]
       #
       # @see Braintrust::Models::ExperimentFetchPostParams
       def fetch_post(experiment_id, params = {})
-        parsed, options = Braintrust::Models::ExperimentFetchPostParams.dump_request(params)
+        parsed, options = Braintrust::ExperimentFetchPostParams.dump_request(params)
         @client.request(
           method: :post,
           path: ["v1/experiment/%1$s/fetch", experiment_id],
           body: parsed,
-          model: Braintrust::Models::FetchExperimentEventsResponse,
+          model: Braintrust::FetchExperimentEventsResponse,
           options: options
         )
       end
@@ -287,20 +274,20 @@ module Braintrust
       #
       # @param experiment_id [String] Experiment id
       #
-      # @param events [Array<Braintrust::Models::InsertExperimentEvent>] A list of experiment events to insert
+      # @param events [Array<Braintrust::InsertExperimentEvent>] A list of experiment events to insert
       #
       # @param request_options [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Braintrust::Models::InsertEventsResponse]
+      # @return [Braintrust::InsertEventsResponse]
       #
       # @see Braintrust::Models::ExperimentInsertParams
       def insert(experiment_id, params)
-        parsed, options = Braintrust::Models::ExperimentInsertParams.dump_request(params)
+        parsed, options = Braintrust::ExperimentInsertParams.dump_request(params)
         @client.request(
           method: :post,
           path: ["v1/experiment/%1$s/insert", experiment_id],
           body: parsed,
-          model: Braintrust::Models::InsertEventsResponse,
+          model: Braintrust::InsertEventsResponse,
           options: options
         )
       end
@@ -315,23 +302,21 @@ module Braintrust
       # @param experiment_id [String] Experiment id
       #
       # @param comparison_experiment_id [String] The experiment to compare against, if summarizing scores and metrics. If omitted
-      # ...
       #
       # @param summarize_scores [Boolean, nil] Whether to summarize the scores and metrics. If false (or omitted), only the met
-      # ...
       #
       # @param request_options [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Braintrust::Models::SummarizeExperimentResponse]
+      # @return [Braintrust::SummarizeExperimentResponse]
       #
       # @see Braintrust::Models::ExperimentSummarizeParams
       def summarize(experiment_id, params = {})
-        parsed, options = Braintrust::Models::ExperimentSummarizeParams.dump_request(params)
+        parsed, options = Braintrust::ExperimentSummarizeParams.dump_request(params)
         @client.request(
           method: :get,
           path: ["v1/experiment/%1$s/summarize", experiment_id],
           query: parsed,
-          model: Braintrust::Models::SummarizeExperimentResponse,
+          model: Braintrust::SummarizeExperimentResponse,
           options: options
         )
       end

@@ -13,7 +13,7 @@ class Braintrust::Test::Resources::ViewsTest < Braintrust::Test::ResourceTest
       )
 
     assert_pattern do
-      response => Braintrust::Models::View
+      response => Braintrust::View
     end
 
     assert_pattern do
@@ -21,13 +21,13 @@ class Braintrust::Test::Resources::ViewsTest < Braintrust::Test::ResourceTest
         id: String,
         name: String,
         object_id_: String,
-        object_type: Braintrust::Models::ACLObjectType,
-        view_type: Braintrust::Models::View::ViewType | nil,
+        object_type: Braintrust::ACLObjectType,
+        view_type: Braintrust::View::ViewType | nil,
         created: Time | nil,
         deleted_at: Time | nil,
-        options: Braintrust::Models::ViewOptions | nil,
+        options: Braintrust::ViewOptions | nil,
         user_id: String | nil,
-        view_data: Braintrust::Models::ViewData | nil
+        view_data: Braintrust::ViewData | nil
       }
     end
   end
@@ -41,7 +41,7 @@ class Braintrust::Test::Resources::ViewsTest < Braintrust::Test::ResourceTest
       )
 
     assert_pattern do
-      response => Braintrust::Models::View
+      response => Braintrust::View
     end
 
     assert_pattern do
@@ -49,13 +49,13 @@ class Braintrust::Test::Resources::ViewsTest < Braintrust::Test::ResourceTest
         id: String,
         name: String,
         object_id_: String,
-        object_type: Braintrust::Models::ACLObjectType,
-        view_type: Braintrust::Models::View::ViewType | nil,
+        object_type: Braintrust::ACLObjectType,
+        view_type: Braintrust::View::ViewType | nil,
         created: Time | nil,
         deleted_at: Time | nil,
-        options: Braintrust::Models::ViewOptions | nil,
+        options: Braintrust::ViewOptions | nil,
         user_id: String | nil,
-        view_data: Braintrust::Models::ViewData | nil
+        view_data: Braintrust::ViewData | nil
       }
     end
   end
@@ -69,7 +69,7 @@ class Braintrust::Test::Resources::ViewsTest < Braintrust::Test::ResourceTest
       )
 
     assert_pattern do
-      response => Braintrust::Models::View
+      response => Braintrust::View
     end
 
     assert_pattern do
@@ -77,13 +77,13 @@ class Braintrust::Test::Resources::ViewsTest < Braintrust::Test::ResourceTest
         id: String,
         name: String,
         object_id_: String,
-        object_type: Braintrust::Models::ACLObjectType,
-        view_type: Braintrust::Models::View::ViewType | nil,
+        object_type: Braintrust::ACLObjectType,
+        view_type: Braintrust::View::ViewType | nil,
         created: Time | nil,
         deleted_at: Time | nil,
-        options: Braintrust::Models::ViewOptions | nil,
+        options: Braintrust::ViewOptions | nil,
         user_id: String | nil,
-        view_data: Braintrust::Models::ViewData | nil
+        view_data: Braintrust::ViewData | nil
       }
     end
   end
@@ -100,7 +100,7 @@ class Braintrust::Test::Resources::ViewsTest < Braintrust::Test::ResourceTest
     return if row.nil?
 
     assert_pattern do
-      row => Braintrust::Models::View
+      row => Braintrust::View
     end
 
     assert_pattern do
@@ -108,13 +108,13 @@ class Braintrust::Test::Resources::ViewsTest < Braintrust::Test::ResourceTest
         id: String,
         name: String,
         object_id_: String,
-        object_type: Braintrust::Models::ACLObjectType,
-        view_type: Braintrust::Models::View::ViewType | nil,
+        object_type: Braintrust::ACLObjectType,
+        view_type: Braintrust::View::ViewType | nil,
         created: Time | nil,
         deleted_at: Time | nil,
-        options: Braintrust::Models::ViewOptions | nil,
+        options: Braintrust::ViewOptions | nil,
         user_id: String | nil,
-        view_data: Braintrust::Models::ViewData | nil
+        view_data: Braintrust::ViewData | nil
       }
     end
   end
@@ -128,7 +128,7 @@ class Braintrust::Test::Resources::ViewsTest < Braintrust::Test::ResourceTest
       )
 
     assert_pattern do
-      response => Braintrust::Models::View
+      response => Braintrust::View
     end
 
     assert_pattern do
@@ -136,13 +136,13 @@ class Braintrust::Test::Resources::ViewsTest < Braintrust::Test::ResourceTest
         id: String,
         name: String,
         object_id_: String,
-        object_type: Braintrust::Models::ACLObjectType,
-        view_type: Braintrust::Models::View::ViewType | nil,
+        object_type: Braintrust::ACLObjectType,
+        view_type: Braintrust::View::ViewType | nil,
         created: Time | nil,
         deleted_at: Time | nil,
-        options: Braintrust::Models::ViewOptions | nil,
+        options: Braintrust::ViewOptions | nil,
         user_id: String | nil,
-        view_data: Braintrust::Models::ViewData | nil
+        view_data: Braintrust::ViewData | nil
       }
     end
   end
@@ -157,7 +157,7 @@ class Braintrust::Test::Resources::ViewsTest < Braintrust::Test::ResourceTest
       )
 
     assert_pattern do
-      response => Braintrust::Models::View
+      response => Braintrust::View
     end
 
     assert_pattern do
@@ -165,13 +165,13 @@ class Braintrust::Test::Resources::ViewsTest < Braintrust::Test::ResourceTest
         id: String,
         name: String,
         object_id_: String,
-        object_type: Braintrust::Models::ACLObjectType,
-        view_type: Braintrust::Models::View::ViewType | nil,
+        object_type: Braintrust::ACLObjectType,
+        view_type: Braintrust::View::ViewType | nil,
         created: Time | nil,
         deleted_at: Time | nil,
-        options: Braintrust::Models::ViewOptions | nil,
+        options: Braintrust::ViewOptions | nil,
         user_id: String | nil,
-        view_data: Braintrust::Models::ViewData | nil
+        view_data: Braintrust::ViewData | nil
       }
     end
   end

@@ -19,16 +19,16 @@ module Braintrust
       #
       # @param request_options [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Braintrust::Models::ProjectTag]
+      # @return [Braintrust::ProjectTag]
       #
       # @see Braintrust::Models::ProjectTagCreateParams
       def create(params)
-        parsed, options = Braintrust::Models::ProjectTagCreateParams.dump_request(params)
+        parsed, options = Braintrust::ProjectTagCreateParams.dump_request(params)
         @client.request(
           method: :post,
           path: "v1/project_tag",
           body: parsed,
-          model: Braintrust::Models::ProjectTag,
+          model: Braintrust::ProjectTag,
           options: options
         )
       end
@@ -41,14 +41,14 @@ module Braintrust
       #
       # @param request_options [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Braintrust::Models::ProjectTag]
+      # @return [Braintrust::ProjectTag]
       #
       # @see Braintrust::Models::ProjectTagRetrieveParams
       def retrieve(project_tag_id, params = {})
         @client.request(
           method: :get,
           path: ["v1/project_tag/%1$s", project_tag_id],
-          model: Braintrust::Models::ProjectTag,
+          model: Braintrust::ProjectTag,
           options: params[:request_options]
         )
       end
@@ -69,16 +69,16 @@ module Braintrust
       #
       # @param request_options [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Braintrust::Models::ProjectTag]
+      # @return [Braintrust::ProjectTag]
       #
       # @see Braintrust::Models::ProjectTagUpdateParams
       def update(project_tag_id, params = {})
-        parsed, options = Braintrust::Models::ProjectTagUpdateParams.dump_request(params)
+        parsed, options = Braintrust::ProjectTagUpdateParams.dump_request(params)
         @client.request(
           method: :patch,
           path: ["v1/project_tag/%1$s", project_tag_id],
           body: parsed,
-          model: Braintrust::Models::ProjectTag,
+          model: Braintrust::ProjectTag,
           options: options
         )
       end
@@ -91,10 +91,9 @@ module Braintrust
       #
       # @overload list(ending_before: nil, ids: nil, limit: nil, org_name: nil, project_id: nil, project_name: nil, project_tag_name: nil, starting_after: nil, request_options: {})
       #
-      # @param ending_before [String] Pagination cursor id. ...
+      # @param ending_before [String] Pagination cursor id.
       #
       # @param ids [String, Array<String>] Filter search results to a particular set of object IDs. To specify a list of ID
-      # ...
       #
       # @param limit [Integer, nil] Limit the number of objects to return
       #
@@ -106,21 +105,21 @@ module Braintrust
       #
       # @param project_tag_name [String] Name of the project_tag to search for
       #
-      # @param starting_after [String] Pagination cursor id. ...
+      # @param starting_after [String] Pagination cursor id.
       #
       # @param request_options [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Braintrust::Internal::ListObjects<Braintrust::Models::ProjectTag>]
+      # @return [Braintrust::Internal::ListObjects<Braintrust::ProjectTag>]
       #
       # @see Braintrust::Models::ProjectTagListParams
       def list(params = {})
-        parsed, options = Braintrust::Models::ProjectTagListParams.dump_request(params)
+        parsed, options = Braintrust::ProjectTagListParams.dump_request(params)
         @client.request(
           method: :get,
           path: "v1/project_tag",
           query: parsed,
           page: Braintrust::Internal::ListObjects,
-          model: Braintrust::Models::ProjectTag,
+          model: Braintrust::ProjectTag,
           options: options
         )
       end
@@ -133,14 +132,14 @@ module Braintrust
       #
       # @param request_options [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Braintrust::Models::ProjectTag]
+      # @return [Braintrust::ProjectTag]
       #
       # @see Braintrust::Models::ProjectTagDeleteParams
       def delete(project_tag_id, params = {})
         @client.request(
           method: :delete,
           path: ["v1/project_tag/%1$s", project_tag_id],
-          model: Braintrust::Models::ProjectTag,
+          model: Braintrust::ProjectTag,
           options: params[:request_options]
         )
       end
@@ -161,16 +160,16 @@ module Braintrust
       #
       # @param request_options [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Braintrust::Models::ProjectTag]
+      # @return [Braintrust::ProjectTag]
       #
       # @see Braintrust::Models::ProjectTagReplaceParams
       def replace(params)
-        parsed, options = Braintrust::Models::ProjectTagReplaceParams.dump_request(params)
+        parsed, options = Braintrust::ProjectTagReplaceParams.dump_request(params)
         @client.request(
           method: :put,
           path: "v1/project_tag",
           body: parsed,
-          model: Braintrust::Models::ProjectTag,
+          model: Braintrust::ProjectTag,
           options: options
         )
       end

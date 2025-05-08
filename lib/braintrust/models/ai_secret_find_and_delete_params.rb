@@ -28,7 +28,6 @@ module Braintrust
       #   @param name [String] Name of the AI secret
       #
       #   @param org_name [String, nil] For nearly all users, this parameter should be unnecessary. But in the rare case
-      #   ...
       #
       #   @param request_options [Braintrust::RequestOptions, Hash{Symbol=>Object}]
     end

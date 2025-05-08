@@ -7,7 +7,7 @@ module Braintrust
         slug: String,
         description: String?,
         function_type: Braintrust::Models::PromptReplaceParams::function_type?,
-        prompt_data: Braintrust::Models::PromptData?,
+        prompt_data: Braintrust::PromptData?,
         tags: ::Array[String]?
       }
       & Braintrust::Internal::Type::request_parameters
@@ -26,7 +26,7 @@ module Braintrust
 
       attr_accessor function_type: Braintrust::Models::PromptReplaceParams::function_type?
 
-      attr_accessor prompt_data: Braintrust::Models::PromptData?
+      attr_accessor prompt_data: Braintrust::PromptData?
 
       attr_accessor tags: ::Array[String]?
 
@@ -36,12 +36,10 @@ module Braintrust
         slug: String,
         ?description: String?,
         ?function_type: Braintrust::Models::PromptReplaceParams::function_type?,
-        ?prompt_data: Braintrust::Models::PromptData?,
+        ?prompt_data: Braintrust::PromptData?,
         ?tags: ::Array[String]?,
         ?request_options: Braintrust::request_opts
       ) -> void
-
-      def to_hash: -> Braintrust::Models::prompt_replace_params
 
       type function_type = :llm | :scorer | :task | :tool
 

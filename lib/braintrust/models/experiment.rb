@@ -83,8 +83,8 @@ module Braintrust
       # @!attribute repo_info
       #   Metadata about the state of the repo when the experiment was created
       #
-      #   @return [Braintrust::Models::RepoInfo, nil]
-      optional :repo_info, -> { Braintrust::Models::RepoInfo }, nil?: true
+      #   @return [Braintrust::RepoInfo, nil]
+      optional :repo_info, -> { Braintrust::RepoInfo }, nil?: true
 
       # @!attribute user_id
       #   Identifies the user who created the experiment
@@ -93,8 +93,8 @@ module Braintrust
       optional :user_id, String, nil?: true
 
       # @!method initialize(id:, name:, project_id:, public:, base_exp_id: nil, commit: nil, created: nil, dataset_id: nil, dataset_version: nil, deleted_at: nil, description: nil, metadata: nil, repo_info: nil, user_id: nil)
-      #   Some parameter documentations has been truncated, see
-      #   {Braintrust::Models::Experiment} for more details.
+      #   Some parameter documentations has been truncated, see {Braintrust::Experiment}
+      #   for more details.
       #
       #   @param id [String] Unique identifier for the experiment
       #
@@ -103,7 +103,6 @@ module Braintrust
       #   @param project_id [String] Unique identifier for the project that the experiment belongs under
       #
       #   @param public [Boolean] Whether or not the experiment is public. Public experiments can be viewed by any
-      #   ...
       #
       #   @param base_exp_id [String, nil] Id of default base experiment to compare against when viewing this experiment
       #
@@ -112,10 +111,8 @@ module Braintrust
       #   @param created [Time, nil] Date of experiment creation
       #
       #   @param dataset_id [String, nil] Identifier of the linked dataset, or null if the experiment is not linked to a d
-      #   ...
       #
       #   @param dataset_version [String, nil] Version number of the linked dataset the experiment was run against. This can be
-      #   ...
       #
       #   @param deleted_at [Time, nil] Date of experiment deletion, or null if the experiment is still active
       #
@@ -123,7 +120,7 @@ module Braintrust
       #
       #   @param metadata [Hash{Symbol=>Object, nil}, nil] User-controlled metadata about the experiment
       #
-      #   @param repo_info [Braintrust::Models::RepoInfo, nil] Metadata about the state of the repo when the experiment was created
+      #   @param repo_info [Braintrust::RepoInfo, nil] Metadata about the state of the repo when the experiment was created
       #
       #   @param user_id [String, nil] Identifies the user who created the experiment
     end

@@ -15,25 +15,24 @@ module Braintrust
       #
       # @param description [String, nil] Textual description of the group
       #
-      # @param member_groups [Array<String>, nil] Ids of the groups this group inherits from ...
+      # @param member_groups [Array<String>, nil] Ids of the groups this group inherits from
       #
       # @param member_users [Array<String>, nil] Ids of users which belong to this group
       #
       # @param org_name [String, nil] For nearly all users, this parameter should be unnecessary. But in the rare case
-      # ...
       #
       # @param request_options [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Braintrust::Models::Group]
+      # @return [Braintrust::Group]
       #
       # @see Braintrust::Models::GroupCreateParams
       def create(params)
-        parsed, options = Braintrust::Models::GroupCreateParams.dump_request(params)
+        parsed, options = Braintrust::GroupCreateParams.dump_request(params)
         @client.request(
           method: :post,
           path: "v1/group",
           body: parsed,
-          model: Braintrust::Models::Group,
+          model: Braintrust::Group,
           options: options
         )
       end
@@ -46,14 +45,14 @@ module Braintrust
       #
       # @param request_options [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Braintrust::Models::Group]
+      # @return [Braintrust::Group]
       #
       # @see Braintrust::Models::GroupRetrieveParams
       def retrieve(group_id, params = {})
         @client.request(
           method: :get,
           path: ["v1/group/%1$s", group_id],
-          model: Braintrust::Models::Group,
+          model: Braintrust::Group,
           options: params[:request_options]
         )
       end
@@ -80,16 +79,16 @@ module Braintrust
       #
       # @param request_options [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Braintrust::Models::Group]
+      # @return [Braintrust::Group]
       #
       # @see Braintrust::Models::GroupUpdateParams
       def update(group_id, params = {})
-        parsed, options = Braintrust::Models::GroupUpdateParams.dump_request(params)
+        parsed, options = Braintrust::GroupUpdateParams.dump_request(params)
         @client.request(
           method: :patch,
           path: ["v1/group/%1$s", group_id],
           body: parsed,
-          model: Braintrust::Models::Group,
+          model: Braintrust::Group,
           options: options
         )
       end
@@ -102,32 +101,31 @@ module Braintrust
       #
       # @overload list(ending_before: nil, group_name: nil, ids: nil, limit: nil, org_name: nil, starting_after: nil, request_options: {})
       #
-      # @param ending_before [String] Pagination cursor id. ...
+      # @param ending_before [String] Pagination cursor id.
       #
       # @param group_name [String] Name of the group to search for
       #
       # @param ids [String, Array<String>] Filter search results to a particular set of object IDs. To specify a list of ID
-      # ...
       #
       # @param limit [Integer, nil] Limit the number of objects to return
       #
       # @param org_name [String] Filter search results to within a particular organization
       #
-      # @param starting_after [String] Pagination cursor id. ...
+      # @param starting_after [String] Pagination cursor id.
       #
       # @param request_options [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Braintrust::Internal::ListObjects<Braintrust::Models::Group>]
+      # @return [Braintrust::Internal::ListObjects<Braintrust::Group>]
       #
       # @see Braintrust::Models::GroupListParams
       def list(params = {})
-        parsed, options = Braintrust::Models::GroupListParams.dump_request(params)
+        parsed, options = Braintrust::GroupListParams.dump_request(params)
         @client.request(
           method: :get,
           path: "v1/group",
           query: parsed,
           page: Braintrust::Internal::ListObjects,
-          model: Braintrust::Models::Group,
+          model: Braintrust::Group,
           options: options
         )
       end
@@ -140,14 +138,14 @@ module Braintrust
       #
       # @param request_options [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Braintrust::Models::Group]
+      # @return [Braintrust::Group]
       #
       # @see Braintrust::Models::GroupDeleteParams
       def delete(group_id, params = {})
         @client.request(
           method: :delete,
           path: ["v1/group/%1$s", group_id],
-          model: Braintrust::Models::Group,
+          model: Braintrust::Group,
           options: params[:request_options]
         )
       end
@@ -165,25 +163,24 @@ module Braintrust
       #
       # @param description [String, nil] Textual description of the group
       #
-      # @param member_groups [Array<String>, nil] Ids of the groups this group inherits from ...
+      # @param member_groups [Array<String>, nil] Ids of the groups this group inherits from
       #
       # @param member_users [Array<String>, nil] Ids of users which belong to this group
       #
       # @param org_name [String, nil] For nearly all users, this parameter should be unnecessary. But in the rare case
-      # ...
       #
       # @param request_options [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Braintrust::Models::Group]
+      # @return [Braintrust::Group]
       #
       # @see Braintrust::Models::GroupReplaceParams
       def replace(params)
-        parsed, options = Braintrust::Models::GroupReplaceParams.dump_request(params)
+        parsed, options = Braintrust::GroupReplaceParams.dump_request(params)
         @client.request(
           method: :put,
           path: "v1/group",
           body: parsed,
-          model: Braintrust::Models::Group,
+          model: Braintrust::Group,
           options: options
         )
       end

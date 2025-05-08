@@ -59,8 +59,8 @@ module Braintrust
       optional :tag, String, nil?: true
 
       # @!method initialize(author_email: nil, author_name: nil, branch: nil, commit: nil, commit_message: nil, commit_time: nil, dirty: nil, git_diff: nil, tag: nil)
-      #   Some parameter documentations has been truncated, see
-      #   {Braintrust::Models::RepoInfo} for more details.
+      #   Some parameter documentations has been truncated, see {Braintrust::RepoInfo} for
+      #   more details.
       #
       #   Metadata about the state of the repo when the experiment was created
       #
@@ -79,7 +79,6 @@ module Braintrust
       #   @param dirty [Boolean, nil] Whether or not the repo had uncommitted changes when snapshotted
       #
       #   @param git_diff [String, nil] If the repo was dirty when run, this includes the diff between the current state
-      #   ...
       #
       #   @param tag [String, nil] Name of the tag on the most recent commit
     end

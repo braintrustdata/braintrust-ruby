@@ -7,7 +7,7 @@ class Braintrust::Test::Resources::ProjectsTest < Braintrust::Test::ResourceTest
     response = @braintrust.projects.create(name: "x")
 
     assert_pattern do
-      response => Braintrust::Models::Project
+      response => Braintrust::Project
     end
 
     assert_pattern do
@@ -17,7 +17,7 @@ class Braintrust::Test::Resources::ProjectsTest < Braintrust::Test::ResourceTest
         org_id: String,
         created: Time | nil,
         deleted_at: Time | nil,
-        settings: Braintrust::Models::ProjectSettings | nil,
+        settings: Braintrust::ProjectSettings | nil,
         user_id: String | nil
       }
     end
@@ -27,7 +27,7 @@ class Braintrust::Test::Resources::ProjectsTest < Braintrust::Test::ResourceTest
     response = @braintrust.projects.retrieve("182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e")
 
     assert_pattern do
-      response => Braintrust::Models::Project
+      response => Braintrust::Project
     end
 
     assert_pattern do
@@ -37,7 +37,7 @@ class Braintrust::Test::Resources::ProjectsTest < Braintrust::Test::ResourceTest
         org_id: String,
         created: Time | nil,
         deleted_at: Time | nil,
-        settings: Braintrust::Models::ProjectSettings | nil,
+        settings: Braintrust::ProjectSettings | nil,
         user_id: String | nil
       }
     end
@@ -47,7 +47,7 @@ class Braintrust::Test::Resources::ProjectsTest < Braintrust::Test::ResourceTest
     response = @braintrust.projects.update("182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e")
 
     assert_pattern do
-      response => Braintrust::Models::Project
+      response => Braintrust::Project
     end
 
     assert_pattern do
@@ -57,7 +57,7 @@ class Braintrust::Test::Resources::ProjectsTest < Braintrust::Test::ResourceTest
         org_id: String,
         created: Time | nil,
         deleted_at: Time | nil,
-        settings: Braintrust::Models::ProjectSettings | nil,
+        settings: Braintrust::ProjectSettings | nil,
         user_id: String | nil
       }
     end
@@ -74,7 +74,7 @@ class Braintrust::Test::Resources::ProjectsTest < Braintrust::Test::ResourceTest
     return if row.nil?
 
     assert_pattern do
-      row => Braintrust::Models::Project
+      row => Braintrust::Project
     end
 
     assert_pattern do
@@ -84,7 +84,7 @@ class Braintrust::Test::Resources::ProjectsTest < Braintrust::Test::ResourceTest
         org_id: String,
         created: Time | nil,
         deleted_at: Time | nil,
-        settings: Braintrust::Models::ProjectSettings | nil,
+        settings: Braintrust::ProjectSettings | nil,
         user_id: String | nil
       }
     end
@@ -94,7 +94,7 @@ class Braintrust::Test::Resources::ProjectsTest < Braintrust::Test::ResourceTest
     response = @braintrust.projects.delete("182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e")
 
     assert_pattern do
-      response => Braintrust::Models::Project
+      response => Braintrust::Project
     end
 
     assert_pattern do
@@ -104,7 +104,7 @@ class Braintrust::Test::Resources::ProjectsTest < Braintrust::Test::ResourceTest
         org_id: String,
         created: Time | nil,
         deleted_at: Time | nil,
-        settings: Braintrust::Models::ProjectSettings | nil,
+        settings: Braintrust::ProjectSettings | nil,
         user_id: String | nil
       }
     end

@@ -22,7 +22,7 @@ module Braintrust
       #   IDs, include the query param multiple times
       #
       #   @return [String, Array<String>, nil]
-      optional :ids, union: -> { Braintrust::Models::ProjectScoreListParams::IDs }
+      optional :ids, union: -> { Braintrust::ProjectScoreListParams::IDs }
 
       # @!attribute limit
       #   Limit the number of objects to return
@@ -57,8 +57,8 @@ module Braintrust
       # @!attribute score_type
       #   The type of the configured score
       #
-      #   @return [Symbol, Braintrust::Models::ProjectScoreType, Array<Symbol, Braintrust::Models::ProjectScoreType>, nil]
-      optional :score_type, union: -> { Braintrust::Models::ProjectScoreListParams::ScoreType }
+      #   @return [Symbol, Braintrust::ProjectScoreType, Array<Symbol, Braintrust::ProjectScoreType>, nil]
+      optional :score_type, union: -> { Braintrust::ProjectScoreListParams::ScoreType }
 
       # @!attribute starting_after
       #   Pagination cursor id.
@@ -74,10 +74,9 @@ module Braintrust
       #   Some parameter documentations has been truncated, see
       #   {Braintrust::Models::ProjectScoreListParams} for more details.
       #
-      #   @param ending_before [String] Pagination cursor id. ...
+      #   @param ending_before [String] Pagination cursor id.
       #
       #   @param ids [String, Array<String>] Filter search results to a particular set of object IDs. To specify a list of ID
-      #   ...
       #
       #   @param limit [Integer, nil] Limit the number of objects to return
       #
@@ -89,9 +88,9 @@ module Braintrust
       #
       #   @param project_score_name [String] Name of the project_score to search for
       #
-      #   @param score_type [Symbol, Braintrust::Models::ProjectScoreType, Array<Symbol, Braintrust::Models::ProjectScoreType>] The type of the configured score
+      #   @param score_type [Symbol, Braintrust::ProjectScoreType, Array<Symbol, Braintrust::ProjectScoreType>] The type of the configured score
       #
-      #   @param starting_after [String] Pagination cursor id. ...
+      #   @param starting_after [String] Pagination cursor id.
       #
       #   @param request_options [Braintrust::RequestOptions, Hash{Symbol=>Object}]
 
@@ -102,7 +101,7 @@ module Braintrust
 
         variant String
 
-        variant -> { Braintrust::Models::ProjectScoreListParams::IDs::StringArray }
+        variant -> { Braintrust::ProjectScoreListParams::IDs::StringArray }
 
         # @!method self.variants
         #   @return [Array(String, Array<String>)]
@@ -116,17 +115,16 @@ module Braintrust
         extend Braintrust::Internal::Type::Union
 
         # The type of the configured score
-        variant enum: -> { Braintrust::Models::ProjectScoreType }
+        variant enum: -> { Braintrust::ProjectScoreType }
 
         # The type of the configured score
-        variant -> { Braintrust::Models::ProjectScoreListParams::ScoreType::ProjectScoreTypeArray }
+        variant -> { Braintrust::ProjectScoreListParams::ScoreType::ProjectScoreTypeArray }
 
         # @!method self.variants
-        #   @return [Array(Symbol, Braintrust::Models::ProjectScoreType, Array<Symbol, Braintrust::Models::ProjectScoreType>)]
+        #   @return [Array(Symbol, Braintrust::ProjectScoreType, Array<Symbol, Braintrust::ProjectScoreType>)]
 
         # @type [Braintrust::Internal::Type::Converter]
-        ProjectScoreTypeArray =
-          Braintrust::Internal::Type::ArrayOf[enum: -> { Braintrust::Models::ProjectScoreType }]
+        ProjectScoreTypeArray = Braintrust::Internal::Type::ArrayOf[enum: -> { Braintrust::ProjectScoreType }]
       end
     end
   end

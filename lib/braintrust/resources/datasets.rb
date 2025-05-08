@@ -19,16 +19,16 @@ module Braintrust
       #
       # @param request_options [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Braintrust::Models::Dataset]
+      # @return [Braintrust::Dataset]
       #
       # @see Braintrust::Models::DatasetCreateParams
       def create(params)
-        parsed, options = Braintrust::Models::DatasetCreateParams.dump_request(params)
+        parsed, options = Braintrust::DatasetCreateParams.dump_request(params)
         @client.request(
           method: :post,
           path: "v1/dataset",
           body: parsed,
-          model: Braintrust::Models::Dataset,
+          model: Braintrust::Dataset,
           options: options
         )
       end
@@ -41,14 +41,14 @@ module Braintrust
       #
       # @param request_options [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Braintrust::Models::Dataset]
+      # @return [Braintrust::Dataset]
       #
       # @see Braintrust::Models::DatasetRetrieveParams
       def retrieve(dataset_id, params = {})
         @client.request(
           method: :get,
           path: ["v1/dataset/%1$s", dataset_id],
-          model: Braintrust::Models::Dataset,
+          model: Braintrust::Dataset,
           options: params[:request_options]
         )
       end
@@ -69,16 +69,16 @@ module Braintrust
       #
       # @param request_options [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Braintrust::Models::Dataset]
+      # @return [Braintrust::Dataset]
       #
       # @see Braintrust::Models::DatasetUpdateParams
       def update(dataset_id, params = {})
-        parsed, options = Braintrust::Models::DatasetUpdateParams.dump_request(params)
+        parsed, options = Braintrust::DatasetUpdateParams.dump_request(params)
         @client.request(
           method: :patch,
           path: ["v1/dataset/%1$s", dataset_id],
           body: parsed,
-          model: Braintrust::Models::Dataset,
+          model: Braintrust::Dataset,
           options: options
         )
       end
@@ -93,10 +93,9 @@ module Braintrust
       #
       # @param dataset_name [String] Name of the dataset to search for
       #
-      # @param ending_before [String] Pagination cursor id. ...
+      # @param ending_before [String] Pagination cursor id.
       #
       # @param ids [String, Array<String>] Filter search results to a particular set of object IDs. To specify a list of ID
-      # ...
       #
       # @param limit [Integer, nil] Limit the number of objects to return
       #
@@ -106,21 +105,21 @@ module Braintrust
       #
       # @param project_name [String] Name of the project to search for
       #
-      # @param starting_after [String] Pagination cursor id. ...
+      # @param starting_after [String] Pagination cursor id.
       #
       # @param request_options [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Braintrust::Internal::ListObjects<Braintrust::Models::Dataset>]
+      # @return [Braintrust::Internal::ListObjects<Braintrust::Dataset>]
       #
       # @see Braintrust::Models::DatasetListParams
       def list(params = {})
-        parsed, options = Braintrust::Models::DatasetListParams.dump_request(params)
+        parsed, options = Braintrust::DatasetListParams.dump_request(params)
         @client.request(
           method: :get,
           path: "v1/dataset",
           query: parsed,
           page: Braintrust::Internal::ListObjects,
-          model: Braintrust::Models::Dataset,
+          model: Braintrust::Dataset,
           options: options
         )
       end
@@ -133,14 +132,14 @@ module Braintrust
       #
       # @param request_options [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Braintrust::Models::Dataset]
+      # @return [Braintrust::Dataset]
       #
       # @see Braintrust::Models::DatasetDeleteParams
       def delete(dataset_id, params = {})
         @client.request(
           method: :delete,
           path: ["v1/dataset/%1$s", dataset_id],
-          model: Braintrust::Models::Dataset,
+          model: Braintrust::Dataset,
           options: params[:request_options]
         )
       end
@@ -151,20 +150,20 @@ module Braintrust
       #
       # @param dataset_id [String] Dataset id
       #
-      # @param feedback [Array<Braintrust::Models::FeedbackDatasetItem>] A list of dataset feedback items
+      # @param feedback [Array<Braintrust::FeedbackDatasetItem>] A list of dataset feedback items
       #
       # @param request_options [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Braintrust::Models::FeedbackResponseSchema]
+      # @return [Braintrust::FeedbackResponseSchema]
       #
       # @see Braintrust::Models::DatasetFeedbackParams
       def feedback(dataset_id, params)
-        parsed, options = Braintrust::Models::DatasetFeedbackParams.dump_request(params)
+        parsed, options = Braintrust::DatasetFeedbackParams.dump_request(params)
         @client.request(
           method: :post,
           path: ["v1/dataset/%1$s/feedback", dataset_id],
           body: parsed,
-          model: Braintrust::Models::FeedbackResponseSchema,
+          model: Braintrust::FeedbackResponseSchema,
           options: options
         )
       end
@@ -180,28 +179,26 @@ module Braintrust
       #
       # @param dataset_id [String] Dataset id
       #
-      # @param limit [Integer, nil] limit the number of traces fetched ...
+      # @param limit [Integer, nil] limit the number of traces fetched
       #
       # @param max_root_span_id [String] DEPRECATION NOTICE: The manually-constructed pagination cursor is deprecated in
-      # ...
       #
       # @param max_xact_id [String] DEPRECATION NOTICE: The manually-constructed pagination cursor is deprecated in
-      # ...
       #
-      # @param version [String] Retrieve a snapshot of events from a past time ...
+      # @param version [String] Retrieve a snapshot of events from a past time
       #
       # @param request_options [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Braintrust::Models::FetchDatasetEventsResponse]
+      # @return [Braintrust::FetchDatasetEventsResponse]
       #
       # @see Braintrust::Models::DatasetFetchParams
       def fetch(dataset_id, params = {})
-        parsed, options = Braintrust::Models::DatasetFetchParams.dump_request(params)
+        parsed, options = Braintrust::DatasetFetchParams.dump_request(params)
         @client.request(
           method: :get,
           path: ["v1/dataset/%1$s/fetch", dataset_id],
           query: parsed,
-          model: Braintrust::Models::FetchDatasetEventsResponse,
+          model: Braintrust::FetchDatasetEventsResponse,
           options: options
         )
       end
@@ -218,30 +215,27 @@ module Braintrust
       # @param dataset_id [String] Dataset id
       #
       # @param cursor [String, nil] An opaque string to be used as a cursor for the next page of results, in order f
-      # ...
       #
-      # @param limit [Integer, nil] limit the number of traces fetched ...
+      # @param limit [Integer, nil] limit the number of traces fetched
       #
       # @param max_root_span_id [String, nil] DEPRECATION NOTICE: The manually-constructed pagination cursor is deprecated in
-      # ...
       #
       # @param max_xact_id [String, nil] DEPRECATION NOTICE: The manually-constructed pagination cursor is deprecated in
-      # ...
       #
-      # @param version [String, nil] Retrieve a snapshot of events from a past time ...
+      # @param version [String, nil] Retrieve a snapshot of events from a past time
       #
       # @param request_options [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Braintrust::Models::FetchDatasetEventsResponse]
+      # @return [Braintrust::FetchDatasetEventsResponse]
       #
       # @see Braintrust::Models::DatasetFetchPostParams
       def fetch_post(dataset_id, params = {})
-        parsed, options = Braintrust::Models::DatasetFetchPostParams.dump_request(params)
+        parsed, options = Braintrust::DatasetFetchPostParams.dump_request(params)
         @client.request(
           method: :post,
           path: ["v1/dataset/%1$s/fetch", dataset_id],
           body: parsed,
-          model: Braintrust::Models::FetchDatasetEventsResponse,
+          model: Braintrust::FetchDatasetEventsResponse,
           options: options
         )
       end
@@ -252,20 +246,20 @@ module Braintrust
       #
       # @param dataset_id [String] Dataset id
       #
-      # @param events [Array<Braintrust::Models::InsertDatasetEvent>] A list of dataset events to insert
+      # @param events [Array<Braintrust::InsertDatasetEvent>] A list of dataset events to insert
       #
       # @param request_options [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Braintrust::Models::InsertEventsResponse]
+      # @return [Braintrust::InsertEventsResponse]
       #
       # @see Braintrust::Models::DatasetInsertParams
       def insert(dataset_id, params)
-        parsed, options = Braintrust::Models::DatasetInsertParams.dump_request(params)
+        parsed, options = Braintrust::DatasetInsertParams.dump_request(params)
         @client.request(
           method: :post,
           path: ["v1/dataset/%1$s/insert", dataset_id],
           body: parsed,
-          model: Braintrust::Models::InsertEventsResponse,
+          model: Braintrust::InsertEventsResponse,
           options: options
         )
       end
@@ -280,20 +274,19 @@ module Braintrust
       # @param dataset_id [String] Dataset id
       #
       # @param summarize_data [Boolean, nil] Whether to summarize the data. If false (or omitted), only the metadata will be
-      # ...
       #
       # @param request_options [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Braintrust::Models::SummarizeDatasetResponse]
+      # @return [Braintrust::SummarizeDatasetResponse]
       #
       # @see Braintrust::Models::DatasetSummarizeParams
       def summarize(dataset_id, params = {})
-        parsed, options = Braintrust::Models::DatasetSummarizeParams.dump_request(params)
+        parsed, options = Braintrust::DatasetSummarizeParams.dump_request(params)
         @client.request(
           method: :get,
           path: ["v1/dataset/%1$s/summarize", dataset_id],
           query: parsed,
-          model: Braintrust::Models::SummarizeDatasetResponse,
+          model: Braintrust::SummarizeDatasetResponse,
           options: options
         )
       end

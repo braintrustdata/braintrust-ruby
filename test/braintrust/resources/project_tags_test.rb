@@ -8,7 +8,7 @@ class Braintrust::Test::Resources::ProjectTagsTest < Braintrust::Test::ResourceT
       @braintrust.project_tags.create(name: "name", project_id: "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e")
 
     assert_pattern do
-      response => Braintrust::Models::ProjectTag
+      response => Braintrust::ProjectTag
     end
 
     assert_pattern do
@@ -28,7 +28,7 @@ class Braintrust::Test::Resources::ProjectTagsTest < Braintrust::Test::ResourceT
     response = @braintrust.project_tags.retrieve("182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e")
 
     assert_pattern do
-      response => Braintrust::Models::ProjectTag
+      response => Braintrust::ProjectTag
     end
 
     assert_pattern do
@@ -48,7 +48,7 @@ class Braintrust::Test::Resources::ProjectTagsTest < Braintrust::Test::ResourceT
     response = @braintrust.project_tags.update("182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e")
 
     assert_pattern do
-      response => Braintrust::Models::ProjectTag
+      response => Braintrust::ProjectTag
     end
 
     assert_pattern do
@@ -75,7 +75,7 @@ class Braintrust::Test::Resources::ProjectTagsTest < Braintrust::Test::ResourceT
     return if row.nil?
 
     assert_pattern do
-      row => Braintrust::Models::ProjectTag
+      row => Braintrust::ProjectTag
     end
 
     assert_pattern do
@@ -95,7 +95,7 @@ class Braintrust::Test::Resources::ProjectTagsTest < Braintrust::Test::ResourceT
     response = @braintrust.project_tags.delete("182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e")
 
     assert_pattern do
-      response => Braintrust::Models::ProjectTag
+      response => Braintrust::ProjectTag
     end
 
     assert_pattern do
@@ -116,7 +116,7 @@ class Braintrust::Test::Resources::ProjectTagsTest < Braintrust::Test::ResourceT
       @braintrust.project_tags.replace(name: "name", project_id: "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e")
 
     assert_pattern do
-      response => Braintrust::Models::ProjectTag
+      response => Braintrust::ProjectTag
     end
 
     assert_pattern do

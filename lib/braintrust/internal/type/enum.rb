@@ -17,13 +17,13 @@ module Braintrust
       # values safely.
       #
       # @example
-      #   # `acl_object_type` is a `Braintrust::Models::ACLObjectType`
+      #   # `acl_object_type` is a `Braintrust::ACLObjectType`
       #   case acl_object_type
-      #   when Braintrust::Models::ACLObjectType::ORGANIZATION
+      #   when Braintrust::ACLObjectType::ORGANIZATION
       #     # ...
-      #   when Braintrust::Models::ACLObjectType::PROJECT
+      #   when Braintrust::ACLObjectType::PROJECT
       #     # ...
-      #   when Braintrust::Models::ACLObjectType::EXPERIMENT
+      #   when Braintrust::ACLObjectType::EXPERIMENT
       #     # ...
       #   else
       #     puts(acl_object_type)

@@ -3,6 +3,9 @@
 module Braintrust
   module Models
     class Dataset < Braintrust::Internal::Type::BaseModel
+      OrHash =
+        T.type_alias { T.any(T.self_type, Braintrust::Internal::AnyHash) }
+
       # Unique identifier for the dataset
       sig { returns(String) }
       attr_accessor :id
@@ -45,8 +48,7 @@ module Braintrust
           description: T.nilable(String),
           metadata: T.nilable(T::Hash[Symbol, T.nilable(T.anything)]),
           user_id: T.nilable(String)
-        )
-          .returns(T.attached_class)
+        ).returns(T.attached_class)
       end
       def self.new(
         # Unique identifier for the dataset
@@ -65,23 +67,25 @@ module Braintrust
         metadata: nil,
         # Identifies the user who created the dataset
         user_id: nil
-      ); end
-      sig do
-        override
-          .returns(
-            {
-              id: String,
-              name: String,
-              project_id: String,
-              created: T.nilable(Time),
-              deleted_at: T.nilable(Time),
-              description: T.nilable(String),
-              metadata: T.nilable(T::Hash[Symbol, T.nilable(T.anything)]),
-              user_id: T.nilable(String)
-            }
-          )
+      )
       end
-      def to_hash; end
+
+      sig do
+        override.returns(
+          {
+            id: String,
+            name: String,
+            project_id: String,
+            created: T.nilable(Time),
+            deleted_at: T.nilable(Time),
+            description: T.nilable(String),
+            metadata: T.nilable(T::Hash[Symbol, T.nilable(T.anything)]),
+            user_id: T.nilable(String)
+          }
+        )
+      end
+      def to_hash
+      end
     end
   end
 end

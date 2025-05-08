@@ -7,7 +7,7 @@ class Braintrust::Test::Resources::GroupsTest < Braintrust::Test::ResourceTest
     response = @braintrust.groups.create(name: "x")
 
     assert_pattern do
-      response => Braintrust::Models::Group
+      response => Braintrust::Group
     end
 
     assert_pattern do
@@ -29,7 +29,7 @@ class Braintrust::Test::Resources::GroupsTest < Braintrust::Test::ResourceTest
     response = @braintrust.groups.retrieve("182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e")
 
     assert_pattern do
-      response => Braintrust::Models::Group
+      response => Braintrust::Group
     end
 
     assert_pattern do
@@ -51,7 +51,7 @@ class Braintrust::Test::Resources::GroupsTest < Braintrust::Test::ResourceTest
     response = @braintrust.groups.update("182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e")
 
     assert_pattern do
-      response => Braintrust::Models::Group
+      response => Braintrust::Group
     end
 
     assert_pattern do
@@ -80,7 +80,7 @@ class Braintrust::Test::Resources::GroupsTest < Braintrust::Test::ResourceTest
     return if row.nil?
 
     assert_pattern do
-      row => Braintrust::Models::Group
+      row => Braintrust::Group
     end
 
     assert_pattern do
@@ -102,7 +102,7 @@ class Braintrust::Test::Resources::GroupsTest < Braintrust::Test::ResourceTest
     response = @braintrust.groups.delete("182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e")
 
     assert_pattern do
-      response => Braintrust::Models::Group
+      response => Braintrust::Group
     end
 
     assert_pattern do
@@ -124,7 +124,7 @@ class Braintrust::Test::Resources::GroupsTest < Braintrust::Test::ResourceTest
     response = @braintrust.groups.replace(name: "x")
 
     assert_pattern do
-      response => Braintrust::Models::Group
+      response => Braintrust::Group
     end
 
     assert_pattern do

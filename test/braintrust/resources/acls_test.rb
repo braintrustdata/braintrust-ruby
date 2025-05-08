@@ -8,7 +8,7 @@ class Braintrust::Test::Resources::ACLsTest < Braintrust::Test::ResourceTest
       @braintrust.acls.create(object_id_: "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e", object_type: :organization)
 
     assert_pattern do
-      response => Braintrust::Models::ACL
+      response => Braintrust::ACL
     end
 
     assert_pattern do
@@ -16,11 +16,11 @@ class Braintrust::Test::Resources::ACLsTest < Braintrust::Test::ResourceTest
         id: String,
         _object_org_id: String,
         object_id_: String,
-        object_type: Braintrust::Models::ACLObjectType,
+        object_type: Braintrust::ACLObjectType,
         created: Time | nil,
         group_id: String | nil,
-        permission: Braintrust::Models::Permission | nil,
-        restrict_object_type: Braintrust::Models::ACLObjectType | nil,
+        permission: Braintrust::Permission | nil,
+        restrict_object_type: Braintrust::ACLObjectType | nil,
         role_id: String | nil,
         user_id: String | nil
       }
@@ -31,7 +31,7 @@ class Braintrust::Test::Resources::ACLsTest < Braintrust::Test::ResourceTest
     response = @braintrust.acls.retrieve("182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e")
 
     assert_pattern do
-      response => Braintrust::Models::ACL
+      response => Braintrust::ACL
     end
 
     assert_pattern do
@@ -39,11 +39,11 @@ class Braintrust::Test::Resources::ACLsTest < Braintrust::Test::ResourceTest
         id: String,
         _object_org_id: String,
         object_id_: String,
-        object_type: Braintrust::Models::ACLObjectType,
+        object_type: Braintrust::ACLObjectType,
         created: Time | nil,
         group_id: String | nil,
-        permission: Braintrust::Models::Permission | nil,
-        restrict_object_type: Braintrust::Models::ACLObjectType | nil,
+        permission: Braintrust::Permission | nil,
+        restrict_object_type: Braintrust::ACLObjectType | nil,
         role_id: String | nil,
         user_id: String | nil
       }
@@ -62,7 +62,7 @@ class Braintrust::Test::Resources::ACLsTest < Braintrust::Test::ResourceTest
     return if row.nil?
 
     assert_pattern do
-      row => Braintrust::Models::ACL
+      row => Braintrust::ACL
     end
 
     assert_pattern do
@@ -70,11 +70,11 @@ class Braintrust::Test::Resources::ACLsTest < Braintrust::Test::ResourceTest
         id: String,
         _object_org_id: String,
         object_id_: String,
-        object_type: Braintrust::Models::ACLObjectType,
+        object_type: Braintrust::ACLObjectType,
         created: Time | nil,
         group_id: String | nil,
-        permission: Braintrust::Models::Permission | nil,
-        restrict_object_type: Braintrust::Models::ACLObjectType | nil,
+        permission: Braintrust::Permission | nil,
+        restrict_object_type: Braintrust::ACLObjectType | nil,
         role_id: String | nil,
         user_id: String | nil
       }
@@ -85,7 +85,7 @@ class Braintrust::Test::Resources::ACLsTest < Braintrust::Test::ResourceTest
     response = @braintrust.acls.delete("182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e")
 
     assert_pattern do
-      response => Braintrust::Models::ACL
+      response => Braintrust::ACL
     end
 
     assert_pattern do
@@ -93,11 +93,11 @@ class Braintrust::Test::Resources::ACLsTest < Braintrust::Test::ResourceTest
         id: String,
         _object_org_id: String,
         object_id_: String,
-        object_type: Braintrust::Models::ACLObjectType,
+        object_type: Braintrust::ACLObjectType,
         created: Time | nil,
         group_id: String | nil,
-        permission: Braintrust::Models::Permission | nil,
-        restrict_object_type: Braintrust::Models::ACLObjectType | nil,
+        permission: Braintrust::Permission | nil,
+        restrict_object_type: Braintrust::ACLObjectType | nil,
         role_id: String | nil,
         user_id: String | nil
       }
@@ -108,13 +108,13 @@ class Braintrust::Test::Resources::ACLsTest < Braintrust::Test::ResourceTest
     response = @braintrust.acls.batch_update
 
     assert_pattern do
-      response => Braintrust::Models::ACLBatchUpdateResponse
+      response => Braintrust::ACLBatchUpdateResponse
     end
 
     assert_pattern do
       response => {
-        added_acls: ^(Braintrust::Internal::Type::ArrayOf[Braintrust::Models::ACL]),
-        removed_acls: ^(Braintrust::Internal::Type::ArrayOf[Braintrust::Models::ACL])
+        added_acls: ^(Braintrust::Internal::Type::ArrayOf[Braintrust::ACL]),
+        removed_acls: ^(Braintrust::Internal::Type::ArrayOf[Braintrust::ACL])
       }
     end
   end
@@ -127,7 +127,7 @@ class Braintrust::Test::Resources::ACLsTest < Braintrust::Test::ResourceTest
       )
 
     assert_pattern do
-      response => Braintrust::Models::ACL
+      response => Braintrust::ACL
     end
 
     assert_pattern do
@@ -135,11 +135,11 @@ class Braintrust::Test::Resources::ACLsTest < Braintrust::Test::ResourceTest
         id: String,
         _object_org_id: String,
         object_id_: String,
-        object_type: Braintrust::Models::ACLObjectType,
+        object_type: Braintrust::ACLObjectType,
         created: Time | nil,
         group_id: String | nil,
-        permission: Braintrust::Models::Permission | nil,
-        restrict_object_type: Braintrust::Models::ACLObjectType | nil,
+        permission: Braintrust::Permission | nil,
+        restrict_object_type: Braintrust::ACLObjectType | nil,
         role_id: String | nil,
         user_id: String | nil
       }

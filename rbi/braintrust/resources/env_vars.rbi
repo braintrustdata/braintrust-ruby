@@ -9,11 +9,10 @@ module Braintrust
         params(
           name: String,
           object_id_: String,
-          object_type: Braintrust::Models::EnvVarCreateParams::ObjectType::OrSymbol,
+          object_type: Braintrust::EnvVarCreateParams::ObjectType::OrSymbol,
           value: T.nilable(String),
-          request_options: Braintrust::RequestOpts
-        )
-          .returns(Braintrust::Models::EnvVar)
+          request_options: Braintrust::RequestOptions::OrHash
+        ).returns(Braintrust::EnvVar)
       end
       def create(
         # The name of the environment variable
@@ -25,14 +24,23 @@ module Braintrust
         # The value of the environment variable. Will be encrypted at rest.
         value: nil,
         request_options: {}
-      ); end
+      )
+      end
+
       # Get an env_var object by its id
-      sig { params(env_var_id: String, request_options: Braintrust::RequestOpts).returns(Braintrust::Models::EnvVar) }
+      sig do
+        params(
+          env_var_id: String,
+          request_options: Braintrust::RequestOptions::OrHash
+        ).returns(Braintrust::EnvVar)
+      end
       def retrieve(
         # EnvVar id
         env_var_id,
         request_options: {}
-      ); end
+      )
+      end
+
       # Partially update an env_var object. Specify the fields to update in the payload.
       # Any object-type fields will be deep-merged with existing content. Currently we
       # do not support removing fields or setting them to null.
@@ -41,9 +49,8 @@ module Braintrust
           env_var_id: String,
           name: String,
           value: T.nilable(String),
-          request_options: Braintrust::RequestOpts
-        )
-          .returns(Braintrust::Models::EnvVar)
+          request_options: Braintrust::RequestOptions::OrHash
+        ).returns(Braintrust::EnvVar)
       end
       def update(
         # EnvVar id
@@ -53,7 +60,9 @@ module Braintrust
         # The value of the environment variable. Will be encrypted at rest.
         value: nil,
         request_options: {}
-      ); end
+      )
+      end
+
       # List out all env_vars. The env_vars are sorted by creation date, with the most
       # recently-created env_vars coming first
       sig do
@@ -62,10 +71,9 @@ module Braintrust
           ids: T.any(String, T::Array[String]),
           limit: T.nilable(Integer),
           object_id_: String,
-          object_type: Braintrust::Models::EnvVarObjectType::OrSymbol,
-          request_options: Braintrust::RequestOpts
-        )
-          .returns(Braintrust::Models::EnvVarListResponse)
+          object_type: Braintrust::EnvVarObjectType::OrSymbol,
+          request_options: Braintrust::RequestOptions::OrHash
+        ).returns(Braintrust::Models::EnvVarListResponse)
       end
       def list(
         # Name of the env_var to search for
@@ -80,14 +88,23 @@ module Braintrust
         # The type of the object the environment variable is scoped for
         object_type: nil,
         request_options: {}
-      ); end
+      )
+      end
+
       # Delete an env_var object by its id
-      sig { params(env_var_id: String, request_options: Braintrust::RequestOpts).returns(Braintrust::Models::EnvVar) }
+      sig do
+        params(
+          env_var_id: String,
+          request_options: Braintrust::RequestOptions::OrHash
+        ).returns(Braintrust::EnvVar)
+      end
       def delete(
         # EnvVar id
         env_var_id,
         request_options: {}
-      ); end
+      )
+      end
+
       # Create or replace env_var. If there is an existing env_var with the same name as
       # the one specified in the request, will replace the existing env_var with the
       # provided fields
@@ -95,11 +112,10 @@ module Braintrust
         params(
           name: String,
           object_id_: String,
-          object_type: Braintrust::Models::EnvVarReplaceParams::ObjectType::OrSymbol,
+          object_type: Braintrust::EnvVarReplaceParams::ObjectType::OrSymbol,
           value: T.nilable(String),
-          request_options: Braintrust::RequestOpts
-        )
-          .returns(Braintrust::Models::EnvVar)
+          request_options: Braintrust::RequestOptions::OrHash
+        ).returns(Braintrust::EnvVar)
       end
       def replace(
         # The name of the environment variable
@@ -111,10 +127,13 @@ module Braintrust
         # The value of the environment variable. Will be encrypted at rest.
         value: nil,
         request_options: {}
-      ); end
+      )
+      end
+
       # @api private
       sig { params(client: Braintrust::Client).returns(T.attached_class) }
-      def self.new(client:); end
+      def self.new(client:)
+      end
     end
   end
 end

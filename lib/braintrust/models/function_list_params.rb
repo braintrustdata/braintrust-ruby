@@ -28,7 +28,7 @@ module Braintrust
       #   IDs, include the query param multiple times
       #
       #   @return [String, Array<String>, nil]
-      optional :ids, union: -> { Braintrust::Models::FunctionListParams::IDs }
+      optional :ids, union: -> { Braintrust::FunctionListParams::IDs }
 
       # @!attribute limit
       #   Limit the number of objects to return
@@ -83,12 +83,11 @@ module Braintrust
       #   Some parameter documentations has been truncated, see
       #   {Braintrust::Models::FunctionListParams} for more details.
       #
-      #   @param ending_before [String] Pagination cursor id. ...
+      #   @param ending_before [String] Pagination cursor id.
       #
       #   @param function_name [String] Name of the function to search for
       #
       #   @param ids [String, Array<String>] Filter search results to a particular set of object IDs. To specify a list of ID
-      #   ...
       #
       #   @param limit [Integer, nil] Limit the number of objects to return
       #
@@ -100,9 +99,9 @@ module Braintrust
       #
       #   @param slug [String] Retrieve prompt with a specific slug
       #
-      #   @param starting_after [String] Pagination cursor id. ...
+      #   @param starting_after [String] Pagination cursor id.
       #
-      #   @param version [String] Retrieve prompt at a specific version. ...
+      #   @param version [String] Retrieve prompt at a specific version.
       #
       #   @param request_options [Braintrust::RequestOptions, Hash{Symbol=>Object}]
 
@@ -113,7 +112,7 @@ module Braintrust
 
         variant String
 
-        variant -> { Braintrust::Models::FunctionListParams::IDs::StringArray }
+        variant -> { Braintrust::FunctionListParams::IDs::StringArray }
 
         # @!method self.variants
         #   @return [Array(String, Array<String>)]

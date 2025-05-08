@@ -12,7 +12,7 @@ module Braintrust
       #   for more than one email
       #
       #   @return [String, Array<String>, nil]
-      optional :email, union: -> { Braintrust::Models::UserListParams::Email }
+      optional :email, union: -> { Braintrust::UserListParams::Email }
 
       # @!attribute ending_before
       #   Pagination cursor id.
@@ -29,21 +29,21 @@ module Braintrust
       #   filter for more than one family name
       #
       #   @return [String, Array<String>, nil]
-      optional :family_name, union: -> { Braintrust::Models::UserListParams::FamilyName }
+      optional :family_name, union: -> { Braintrust::UserListParams::FamilyName }
 
       # @!attribute given_name
       #   Given name of the user to search for. You may pass the param multiple times to
       #   filter for more than one given name
       #
       #   @return [String, Array<String>, nil]
-      optional :given_name, union: -> { Braintrust::Models::UserListParams::GivenName }
+      optional :given_name, union: -> { Braintrust::UserListParams::GivenName }
 
       # @!attribute ids
       #   Filter search results to a particular set of object IDs. To specify a list of
       #   IDs, include the query param multiple times
       #
       #   @return [String, Array<String>, nil]
-      optional :ids, union: -> { Braintrust::Models::UserListParams::IDs }
+      optional :ids, union: -> { Braintrust::UserListParams::IDs }
 
       # @!attribute limit
       #   Limit the number of objects to return
@@ -72,24 +72,20 @@ module Braintrust
       #   {Braintrust::Models::UserListParams} for more details.
       #
       #   @param email [String, Array<String>] Email of the user to search for. You may pass the param multiple times to filter
-      #   ...
       #
-      #   @param ending_before [String] Pagination cursor id. ...
+      #   @param ending_before [String] Pagination cursor id.
       #
       #   @param family_name [String, Array<String>] Family name of the user to search for. You may pass the param multiple times to
-      #   ...
       #
       #   @param given_name [String, Array<String>] Given name of the user to search for. You may pass the param multiple times to f
-      #   ...
       #
       #   @param ids [String, Array<String>] Filter search results to a particular set of object IDs. To specify a list of ID
-      #   ...
       #
       #   @param limit [Integer, nil] Limit the number of objects to return
       #
       #   @param org_name [String] Filter search results to within a particular organization
       #
-      #   @param starting_after [String] Pagination cursor id. ...
+      #   @param starting_after [String] Pagination cursor id.
       #
       #   @param request_options [Braintrust::RequestOptions, Hash{Symbol=>Object}]
 
@@ -100,7 +96,7 @@ module Braintrust
 
         variant String
 
-        variant -> { Braintrust::Models::UserListParams::Email::StringArray }
+        variant -> { Braintrust::UserListParams::Email::StringArray }
 
         # @!method self.variants
         #   @return [Array(String, Array<String>)]
@@ -116,7 +112,7 @@ module Braintrust
 
         variant String
 
-        variant -> { Braintrust::Models::UserListParams::FamilyName::StringArray }
+        variant -> { Braintrust::UserListParams::FamilyName::StringArray }
 
         # @!method self.variants
         #   @return [Array(String, Array<String>)]
@@ -132,7 +128,7 @@ module Braintrust
 
         variant String
 
-        variant -> { Braintrust::Models::UserListParams::GivenName::StringArray }
+        variant -> { Braintrust::UserListParams::GivenName::StringArray }
 
         # @!method self.variants
         #   @return [Array(String, Array<String>)]
@@ -148,7 +144,7 @@ module Braintrust
 
         variant String
 
-        variant -> { Braintrust::Models::UserListParams::IDs::StringArray }
+        variant -> { Braintrust::UserListParams::IDs::StringArray }
 
         # @!method self.variants
         #   @return [Array(String, Array<String>)]

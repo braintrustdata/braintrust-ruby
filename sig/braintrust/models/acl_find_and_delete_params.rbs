@@ -40,8 +40,6 @@ module Braintrust
         ?user_id: String?,
         ?request_options: Braintrust::request_opts
       ) -> void
-
-      def to_hash: -> Braintrust::Models::acl_find_and_delete_params
     end
   end
 end

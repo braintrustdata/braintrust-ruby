@@ -22,7 +22,7 @@ module Braintrust
       #   IDs, include the query param multiple times
       #
       #   @return [String, Array<String>, nil]
-      optional :ids, union: -> { Braintrust::Models::SpanIframeListParams::IDs }
+      optional :ids, union: -> { Braintrust::SpanIframeListParams::IDs }
 
       # @!attribute limit
       #   Limit the number of objects to return
@@ -56,10 +56,9 @@ module Braintrust
       #   Some parameter documentations has been truncated, see
       #   {Braintrust::Models::SpanIframeListParams} for more details.
       #
-      #   @param ending_before [String] Pagination cursor id. ...
+      #   @param ending_before [String] Pagination cursor id.
       #
       #   @param ids [String, Array<String>] Filter search results to a particular set of object IDs. To specify a list of ID
-      #   ...
       #
       #   @param limit [Integer, nil] Limit the number of objects to return
       #
@@ -67,7 +66,7 @@ module Braintrust
       #
       #   @param span_iframe_name [String] Name of the span_iframe to search for
       #
-      #   @param starting_after [String] Pagination cursor id. ...
+      #   @param starting_after [String] Pagination cursor id.
       #
       #   @param request_options [Braintrust::RequestOptions, Hash{Symbol=>Object}]
 
@@ -78,7 +77,7 @@ module Braintrust
 
         variant String
 
-        variant -> { Braintrust::Models::SpanIframeListParams::IDs::StringArray }
+        variant -> { Braintrust::SpanIframeListParams::IDs::StringArray }
 
         # @!method self.variants
         #   @return [Array(String, Array<String>)]

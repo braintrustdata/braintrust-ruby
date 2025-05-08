@@ -18,7 +18,7 @@ module Braintrust
       #   IDs, include the query param multiple times
       #
       #   @return [String, Array<String>, nil]
-      optional :ids, union: -> { Braintrust::Models::EnvVarListParams::IDs }
+      optional :ids, union: -> { Braintrust::EnvVarListParams::IDs }
 
       # @!attribute limit
       #   Limit the number of objects to return
@@ -35,8 +35,8 @@ module Braintrust
       # @!attribute object_type
       #   The type of the object the environment variable is scoped for
       #
-      #   @return [Symbol, Braintrust::Models::EnvVarObjectType, nil]
-      optional :object_type, enum: -> { Braintrust::Models::EnvVarObjectType }
+      #   @return [Symbol, Braintrust::EnvVarObjectType, nil]
+      optional :object_type, enum: -> { Braintrust::EnvVarObjectType }
 
       # @!method initialize(env_var_name: nil, ids: nil, limit: nil, object_id_: nil, object_type: nil, request_options: {})
       #   Some parameter documentations has been truncated, see
@@ -45,13 +45,12 @@ module Braintrust
       #   @param env_var_name [String] Name of the env_var to search for
       #
       #   @param ids [String, Array<String>] Filter search results to a particular set of object IDs. To specify a list of ID
-      #   ...
       #
       #   @param limit [Integer, nil] Limit the number of objects to return
       #
       #   @param object_id_ [String] The id of the object the environment variable is scoped for
       #
-      #   @param object_type [Symbol, Braintrust::Models::EnvVarObjectType] The type of the object the environment variable is scoped for
+      #   @param object_type [Symbol, Braintrust::EnvVarObjectType] The type of the object the environment variable is scoped for
       #
       #   @param request_options [Braintrust::RequestOptions, Hash{Symbol=>Object}]
 
@@ -62,7 +61,7 @@ module Braintrust
 
         variant String
 
-        variant -> { Braintrust::Models::EnvVarListParams::IDs::StringArray }
+        variant -> { Braintrust::EnvVarListParams::IDs::StringArray }
 
         # @!method self.variants
         #   @return [Array(String, Array<String>)]

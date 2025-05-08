@@ -6,21 +6,23 @@ module Braintrust
       extend Braintrust::Internal::Type::RequestParameters::Converter
       include Braintrust::Internal::Type::RequestParameters
 
+      OrHash =
+        T.type_alias { T.any(T.self_type, Braintrust::Internal::AnyHash) }
+
       # The id of the object the ACL applies to
       sig { returns(String) }
       attr_accessor :object_id_
 
       # The object type that the ACL applies to
-      sig { returns(Braintrust::Models::ACLObjectType::OrSymbol) }
+      sig { returns(Braintrust::ACLObjectType::OrSymbol) }
       attr_accessor :object_type
 
       sig do
         params(
           object_id_: String,
-          object_type: Braintrust::Models::ACLObjectType::OrSymbol,
-          request_options: T.any(Braintrust::RequestOptions, Braintrust::Internal::AnyHash)
-        )
-          .returns(T.attached_class)
+          object_type: Braintrust::ACLObjectType::OrSymbol,
+          request_options: Braintrust::RequestOptions::OrHash
+        ).returns(T.attached_class)
       end
       def self.new(
         # The id of the object the ACL applies to
@@ -28,18 +30,20 @@ module Braintrust
         # The object type that the ACL applies to
         object_type:,
         request_options: {}
-      ); end
-      sig do
-        override
-          .returns(
-            {
-              object_id_: String,
-              object_type: Braintrust::Models::ACLObjectType::OrSymbol,
-              request_options: Braintrust::RequestOptions
-            }
-          )
+      )
       end
-      def to_hash; end
+
+      sig do
+        override.returns(
+          {
+            object_id_: String,
+            object_type: Braintrust::ACLObjectType::OrSymbol,
+            request_options: Braintrust::RequestOptions
+          }
+        )
+      end
+      def to_hash
+      end
     end
   end
 end

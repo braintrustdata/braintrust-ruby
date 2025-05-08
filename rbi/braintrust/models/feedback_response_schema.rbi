@@ -3,25 +3,50 @@
 module Braintrust
   module Models
     class FeedbackResponseSchema < Braintrust::Internal::Type::BaseModel
-      sig { returns(Braintrust::Models::FeedbackResponseSchema::Status::TaggedSymbol) }
+      OrHash =
+        T.type_alias { T.any(T.self_type, Braintrust::Internal::AnyHash) }
+
+      sig { returns(Braintrust::FeedbackResponseSchema::Status::TaggedSymbol) }
       attr_accessor :status
 
-      sig { params(status: Braintrust::Models::FeedbackResponseSchema::Status::OrSymbol).returns(T.attached_class) }
-      def self.new(status:); end
+      sig do
+        params(
+          status: Braintrust::FeedbackResponseSchema::Status::OrSymbol
+        ).returns(T.attached_class)
+      end
+      def self.new(status:)
+      end
 
-      sig { override.returns({status: Braintrust::Models::FeedbackResponseSchema::Status::TaggedSymbol}) }
-      def to_hash; end
+      sig do
+        override.returns(
+          { status: Braintrust::FeedbackResponseSchema::Status::TaggedSymbol }
+        )
+      end
+      def to_hash
+      end
 
       module Status
         extend Braintrust::Internal::Type::Enum
 
-        TaggedSymbol = T.type_alias { T.all(Symbol, Braintrust::Models::FeedbackResponseSchema::Status) }
+        TaggedSymbol =
+          T.type_alias do
+            T.all(Symbol, Braintrust::FeedbackResponseSchema::Status)
+          end
         OrSymbol = T.type_alias { T.any(Symbol, String) }
 
-        SUCCESS = T.let(:success, Braintrust::Models::FeedbackResponseSchema::Status::TaggedSymbol)
+        SUCCESS =
+          T.let(
+            :success,
+            Braintrust::FeedbackResponseSchema::Status::TaggedSymbol
+          )
 
-        sig { override.returns(T::Array[Braintrust::Models::FeedbackResponseSchema::Status::TaggedSymbol]) }
-        def self.values; end
+        sig do
+          override.returns(
+            T::Array[Braintrust::FeedbackResponseSchema::Status::TaggedSymbol]
+          )
+        end
+        def self.values
+        end
       end
     end
   end

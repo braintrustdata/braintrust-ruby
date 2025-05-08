@@ -3,6 +3,9 @@
 module Braintrust
   module Models
     class CreateAPIKeyOutput < Braintrust::Internal::Type::BaseModel
+      OrHash =
+        T.type_alias { T.any(T.self_type, Braintrust::Internal::AnyHash) }
+
       # Unique identifier for the api key
       sig { returns(String) }
       attr_accessor :id
@@ -39,8 +42,7 @@ module Braintrust
           created: T.nilable(Time),
           org_id: T.nilable(String),
           user_id: T.nilable(String)
-        )
-          .returns(T.attached_class)
+        ).returns(T.attached_class)
       end
       def self.new(
         # Unique identifier for the api key
@@ -56,22 +58,24 @@ module Braintrust
         org_id: nil,
         # Unique identifier for the user
         user_id: nil
-      ); end
-      sig do
-        override
-          .returns(
-            {
-              id: String,
-              key: String,
-              name: String,
-              preview_name: String,
-              created: T.nilable(Time),
-              org_id: T.nilable(String),
-              user_id: T.nilable(String)
-            }
-          )
+      )
       end
-      def to_hash; end
+
+      sig do
+        override.returns(
+          {
+            id: String,
+            key: String,
+            name: String,
+            preview_name: String,
+            created: T.nilable(Time),
+            org_id: T.nilable(String),
+            user_id: T.nilable(String)
+          }
+        )
+      end
+      def to_hash
+      end
     end
   end
 end

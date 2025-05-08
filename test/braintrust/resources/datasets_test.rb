@@ -7,7 +7,7 @@ class Braintrust::Test::Resources::DatasetsTest < Braintrust::Test::ResourceTest
     response = @braintrust.datasets.create(name: "x", project_id: "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e")
 
     assert_pattern do
-      response => Braintrust::Models::Dataset
+      response => Braintrust::Dataset
     end
 
     assert_pattern do
@@ -29,7 +29,7 @@ class Braintrust::Test::Resources::DatasetsTest < Braintrust::Test::ResourceTest
     response = @braintrust.datasets.retrieve("182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e")
 
     assert_pattern do
-      response => Braintrust::Models::Dataset
+      response => Braintrust::Dataset
     end
 
     assert_pattern do
@@ -51,7 +51,7 @@ class Braintrust::Test::Resources::DatasetsTest < Braintrust::Test::ResourceTest
     response = @braintrust.datasets.update("182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e")
 
     assert_pattern do
-      response => Braintrust::Models::Dataset
+      response => Braintrust::Dataset
     end
 
     assert_pattern do
@@ -80,7 +80,7 @@ class Braintrust::Test::Resources::DatasetsTest < Braintrust::Test::ResourceTest
     return if row.nil?
 
     assert_pattern do
-      row => Braintrust::Models::Dataset
+      row => Braintrust::Dataset
     end
 
     assert_pattern do
@@ -102,7 +102,7 @@ class Braintrust::Test::Resources::DatasetsTest < Braintrust::Test::ResourceTest
     response = @braintrust.datasets.delete("182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e")
 
     assert_pattern do
-      response => Braintrust::Models::Dataset
+      response => Braintrust::Dataset
     end
 
     assert_pattern do
@@ -124,12 +124,12 @@ class Braintrust::Test::Resources::DatasetsTest < Braintrust::Test::ResourceTest
     response = @braintrust.datasets.feedback("182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e", feedback: [{id: "id"}])
 
     assert_pattern do
-      response => Braintrust::Models::FeedbackResponseSchema
+      response => Braintrust::FeedbackResponseSchema
     end
 
     assert_pattern do
       response => {
-        status: Braintrust::Models::FeedbackResponseSchema::Status
+        status: Braintrust::FeedbackResponseSchema::Status
       }
     end
   end
@@ -138,12 +138,12 @@ class Braintrust::Test::Resources::DatasetsTest < Braintrust::Test::ResourceTest
     response = @braintrust.datasets.fetch("182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e")
 
     assert_pattern do
-      response => Braintrust::Models::FetchDatasetEventsResponse
+      response => Braintrust::FetchDatasetEventsResponse
     end
 
     assert_pattern do
       response => {
-        events: ^(Braintrust::Internal::Type::ArrayOf[Braintrust::Models::DatasetEvent]),
+        events: ^(Braintrust::Internal::Type::ArrayOf[Braintrust::DatasetEvent]),
         cursor: String | nil
       }
     end
@@ -153,12 +153,12 @@ class Braintrust::Test::Resources::DatasetsTest < Braintrust::Test::ResourceTest
     response = @braintrust.datasets.fetch_post("182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e")
 
     assert_pattern do
-      response => Braintrust::Models::FetchDatasetEventsResponse
+      response => Braintrust::FetchDatasetEventsResponse
     end
 
     assert_pattern do
       response => {
-        events: ^(Braintrust::Internal::Type::ArrayOf[Braintrust::Models::DatasetEvent]),
+        events: ^(Braintrust::Internal::Type::ArrayOf[Braintrust::DatasetEvent]),
         cursor: String | nil
       }
     end
@@ -168,7 +168,7 @@ class Braintrust::Test::Resources::DatasetsTest < Braintrust::Test::ResourceTest
     response = @braintrust.datasets.insert("182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e", events: [{}])
 
     assert_pattern do
-      response => Braintrust::Models::InsertEventsResponse
+      response => Braintrust::InsertEventsResponse
     end
 
     assert_pattern do
@@ -182,7 +182,7 @@ class Braintrust::Test::Resources::DatasetsTest < Braintrust::Test::ResourceTest
     response = @braintrust.datasets.summarize("182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e")
 
     assert_pattern do
-      response => Braintrust::Models::SummarizeDatasetResponse
+      response => Braintrust::SummarizeDatasetResponse
     end
 
     assert_pattern do
@@ -191,7 +191,7 @@ class Braintrust::Test::Resources::DatasetsTest < Braintrust::Test::ResourceTest
         dataset_url: String,
         project_name: String,
         project_url: String,
-        data_summary: Braintrust::Models::DataSummary | nil
+        data_summary: Braintrust::DataSummary | nil
       }
     end
   end

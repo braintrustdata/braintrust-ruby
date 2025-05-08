@@ -49,10 +49,8 @@ module Braintrust
       #   @param metadata [Hash{Symbol=>Object, nil}, nil]
       #
       #   @param org_name [String, nil] For nearly all users, this parameter should be unnecessary. But in the rare case
-      #   ...
       #
       #   @param secret [String, nil] Secret value. If omitted in a PUT request, the existing secret value will be lef
-      #   ...
       #
       #   @param type [String, nil]
       #

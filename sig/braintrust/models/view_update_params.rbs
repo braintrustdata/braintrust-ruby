@@ -5,9 +5,9 @@ module Braintrust
         object_id_: String,
         object_type: Braintrust::Models::acl_object_type,
         name: String?,
-        options: Braintrust::Models::ViewOptions?,
+        options: Braintrust::ViewOptions?,
         user_id: String?,
-        view_data: Braintrust::Models::ViewData?,
+        view_data: Braintrust::ViewData?,
         view_type: Braintrust::Models::ViewUpdateParams::view_type?
       }
       & Braintrust::Internal::Type::request_parameters
@@ -22,11 +22,11 @@ module Braintrust
 
       attr_accessor name: String?
 
-      attr_accessor options: Braintrust::Models::ViewOptions?
+      attr_accessor options: Braintrust::ViewOptions?
 
       attr_accessor user_id: String?
 
-      attr_accessor view_data: Braintrust::Models::ViewData?
+      attr_accessor view_data: Braintrust::ViewData?
 
       attr_accessor view_type: Braintrust::Models::ViewUpdateParams::view_type?
 
@@ -34,14 +34,12 @@ module Braintrust
         object_id_: String,
         object_type: Braintrust::Models::acl_object_type,
         ?name: String?,
-        ?options: Braintrust::Models::ViewOptions?,
+        ?options: Braintrust::ViewOptions?,
         ?user_id: String?,
-        ?view_data: Braintrust::Models::ViewData?,
+        ?view_data: Braintrust::ViewData?,
         ?view_type: Braintrust::Models::ViewUpdateParams::view_type?,
         ?request_options: Braintrust::request_opts
       ) -> void
-
-      def to_hash: -> Braintrust::Models::view_update_params
 
       type view_type =
         :projects

@@ -6,6 +6,9 @@ module Braintrust
       extend Braintrust::Internal::Type::RequestParameters::Converter
       include Braintrust::Internal::Type::RequestParameters
 
+      OrHash =
+        T.type_alias { T.any(T.self_type, Braintrust::Internal::AnyHash) }
+
       # A list of group IDs to add to the group's inheriting-from set
       sig { returns(T.nilable(T::Array[String])) }
       attr_accessor :add_member_groups
@@ -38,9 +41,8 @@ module Braintrust
           name: T.nilable(String),
           remove_member_groups: T.nilable(T::Array[String]),
           remove_member_users: T.nilable(T::Array[String]),
-          request_options: T.any(Braintrust::RequestOptions, Braintrust::Internal::AnyHash)
-        )
-          .returns(T.attached_class)
+          request_options: Braintrust::RequestOptions::OrHash
+        ).returns(T.attached_class)
       end
       def self.new(
         # A list of group IDs to add to the group's inheriting-from set
@@ -56,22 +58,24 @@ module Braintrust
         # A list of user IDs to remove from the group
         remove_member_users: nil,
         request_options: {}
-      ); end
-      sig do
-        override
-          .returns(
-            {
-              add_member_groups: T.nilable(T::Array[String]),
-              add_member_users: T.nilable(T::Array[String]),
-              description: T.nilable(String),
-              name: T.nilable(String),
-              remove_member_groups: T.nilable(T::Array[String]),
-              remove_member_users: T.nilable(T::Array[String]),
-              request_options: Braintrust::RequestOptions
-            }
-          )
+      )
       end
-      def to_hash; end
+
+      sig do
+        override.returns(
+          {
+            add_member_groups: T.nilable(T::Array[String]),
+            add_member_users: T.nilable(T::Array[String]),
+            description: T.nilable(String),
+            name: T.nilable(String),
+            remove_member_groups: T.nilable(T::Array[String]),
+            remove_member_users: T.nilable(T::Array[String]),
+            request_options: Braintrust::RequestOptions
+          }
+        )
+      end
+      def to_hash
+      end
     end
   end
 end

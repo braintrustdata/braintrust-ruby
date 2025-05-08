@@ -17,8 +17,8 @@ module Braintrust
       #   Project settings. Patch operations replace all settings, so make sure you
       #   include all settings you want to keep.
       #
-      #   @return [Braintrust::Models::ProjectSettings, nil]
-      optional :settings, -> { Braintrust::Models::ProjectSettings }, nil?: true
+      #   @return [Braintrust::ProjectSettings, nil]
+      optional :settings, -> { Braintrust::ProjectSettings }, nil?: true
 
       # @!method initialize(name: nil, settings: nil, request_options: {})
       #   Some parameter documentations has been truncated, see
@@ -26,8 +26,7 @@ module Braintrust
       #
       #   @param name [String, nil] Name of the project
       #
-      #   @param settings [Braintrust::Models::ProjectSettings, nil] Project settings. Patch operations replace all settings, so make sure you includ
-      #   ...
+      #   @param settings [Braintrust::ProjectSettings, nil] Project settings. Patch operations replace all settings, so make sure you includ
       #
       #   @param request_options [Braintrust::RequestOptions, Hash{Symbol=>Object}]
     end

@@ -33,8 +33,6 @@ module Braintrust
         unit: String,
         ?diff: Float
       ) -> void
-
-      def to_hash: -> Braintrust::Models::metric_summary
     end
   end
 end

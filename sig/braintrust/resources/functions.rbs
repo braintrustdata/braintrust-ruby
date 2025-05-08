@@ -7,28 +7,28 @@ module Braintrust
         project_id: String,
         slug: String,
         ?description: String?,
-        ?function_schema: Braintrust::Models::FunctionCreateParams::FunctionSchema?,
+        ?function_schema: Braintrust::FunctionCreateParams::FunctionSchema?,
         ?function_type: Braintrust::Models::FunctionCreateParams::function_type?,
-        ?origin: Braintrust::Models::FunctionCreateParams::Origin?,
-        ?prompt_data: Braintrust::Models::PromptData?,
+        ?origin: Braintrust::FunctionCreateParams::Origin?,
+        ?prompt_data: Braintrust::PromptData?,
         ?tags: ::Array[String]?,
         ?request_options: Braintrust::request_opts
-      ) -> Braintrust::Models::Function
+      ) -> Braintrust::Function
 
       def retrieve: (
         String function_id,
         ?request_options: Braintrust::request_opts
-      ) -> Braintrust::Models::Function
+      ) -> Braintrust::Function
 
       def update: (
         String function_id,
         ?description: String?,
         ?function_data: Braintrust::Models::FunctionUpdateParams::function_data?,
         ?name: String?,
-        ?prompt_data: Braintrust::Models::PromptData?,
+        ?prompt_data: Braintrust::PromptData?,
         ?tags: ::Array[String]?,
         ?request_options: Braintrust::request_opts
-      ) -> Braintrust::Models::Function
+      ) -> Braintrust::Function
 
       def list: (
         ?ending_before: String,
@@ -42,18 +42,18 @@ module Braintrust
         ?starting_after: String,
         ?version: String,
         ?request_options: Braintrust::request_opts
-      ) -> Braintrust::Internal::ListObjects[Braintrust::Models::Function]
+      ) -> Braintrust::Internal::ListObjects[Braintrust::Function]
 
       def delete: (
         String function_id,
         ?request_options: Braintrust::request_opts
-      ) -> Braintrust::Models::Function
+      ) -> Braintrust::Function
 
       def invoke: (
         String function_id,
         ?expected: top,
         ?input: top,
-        ?messages: ::Array[Braintrust::Models::FunctionInvokeParams::message],
+        ?messages: ::Array[Braintrust::FunctionInvokeParams::message],
         ?metadata: ::Hash[Symbol, top?]?,
         ?mode: Braintrust::Models::FunctionInvokeParams::mode?,
         ?parent: Braintrust::Models::FunctionInvokeParams::parent,
@@ -68,13 +68,13 @@ module Braintrust
         project_id: String,
         slug: String,
         ?description: String?,
-        ?function_schema: Braintrust::Models::FunctionReplaceParams::FunctionSchema?,
+        ?function_schema: Braintrust::FunctionReplaceParams::FunctionSchema?,
         ?function_type: Braintrust::Models::FunctionReplaceParams::function_type?,
-        ?origin: Braintrust::Models::FunctionReplaceParams::Origin?,
-        ?prompt_data: Braintrust::Models::PromptData?,
+        ?origin: Braintrust::FunctionReplaceParams::Origin?,
+        ?prompt_data: Braintrust::PromptData?,
         ?tags: ::Array[String]?,
         ?request_options: Braintrust::request_opts
-      ) -> Braintrust::Models::Function
+      ) -> Braintrust::Function
 
       def initialize: (client: Braintrust::Client) -> void
     end

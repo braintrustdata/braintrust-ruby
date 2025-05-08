@@ -3,6 +3,9 @@
 module Braintrust
   module Models
     class SpanIFrame < Braintrust::Internal::Type::BaseModel
+      OrHash =
+        T.type_alias { T.any(T.self_type, Braintrust::Internal::AnyHash) }
+
       # Unique identifier for the span iframe
       sig { returns(String) }
       attr_accessor :id
@@ -51,8 +54,7 @@ module Braintrust
           description: T.nilable(String),
           post_message: T.nilable(T::Boolean),
           user_id: T.nilable(String)
-        )
-          .returns(T.attached_class)
+        ).returns(T.attached_class)
       end
       def self.new(
         # Unique identifier for the span iframe
@@ -74,24 +76,26 @@ module Braintrust
         post_message: nil,
         # Identifies the user who created the span iframe
         user_id: nil
-      ); end
-      sig do
-        override
-          .returns(
-            {
-              id: String,
-              name: String,
-              project_id: String,
-              url: String,
-              created: T.nilable(Time),
-              deleted_at: T.nilable(Time),
-              description: T.nilable(String),
-              post_message: T.nilable(T::Boolean),
-              user_id: T.nilable(String)
-            }
-          )
+      )
       end
-      def to_hash; end
+
+      sig do
+        override.returns(
+          {
+            id: String,
+            name: String,
+            project_id: String,
+            url: String,
+            created: T.nilable(Time),
+            deleted_at: T.nilable(Time),
+            description: T.nilable(String),
+            post_message: T.nilable(T::Boolean),
+            user_id: T.nilable(String)
+          }
+        )
+      end
+      def to_hash
+      end
     end
   end
 end

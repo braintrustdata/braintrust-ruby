@@ -7,7 +7,7 @@ class Braintrust::Test::Resources::UsersTest < Braintrust::Test::ResourceTest
     response = @braintrust.users.retrieve("182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e")
 
     assert_pattern do
-      response => Braintrust::Models::User
+      response => Braintrust::User
     end
 
     assert_pattern do
@@ -33,7 +33,7 @@ class Braintrust::Test::Resources::UsersTest < Braintrust::Test::ResourceTest
     return if row.nil?
 
     assert_pattern do
-      row => Braintrust::Models::User
+      row => Braintrust::User
     end
 
     assert_pattern do

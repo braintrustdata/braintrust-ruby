@@ -7,7 +7,7 @@ class Braintrust::Test::Resources::RolesTest < Braintrust::Test::ResourceTest
     response = @braintrust.roles.create(name: "x")
 
     assert_pattern do
-      response => Braintrust::Models::Role
+      response => Braintrust::Role
     end
 
     assert_pattern do
@@ -17,7 +17,7 @@ class Braintrust::Test::Resources::RolesTest < Braintrust::Test::ResourceTest
         created: Time | nil,
         deleted_at: Time | nil,
         description: String | nil,
-        member_permissions: ^(Braintrust::Internal::Type::ArrayOf[Braintrust::Models::Role::MemberPermission]) | nil,
+        member_permissions: ^(Braintrust::Internal::Type::ArrayOf[Braintrust::Role::MemberPermission]) | nil,
         member_roles: ^(Braintrust::Internal::Type::ArrayOf[String]) | nil,
         org_id: String | nil,
         user_id: String | nil
@@ -29,7 +29,7 @@ class Braintrust::Test::Resources::RolesTest < Braintrust::Test::ResourceTest
     response = @braintrust.roles.retrieve("182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e")
 
     assert_pattern do
-      response => Braintrust::Models::Role
+      response => Braintrust::Role
     end
 
     assert_pattern do
@@ -39,7 +39,7 @@ class Braintrust::Test::Resources::RolesTest < Braintrust::Test::ResourceTest
         created: Time | nil,
         deleted_at: Time | nil,
         description: String | nil,
-        member_permissions: ^(Braintrust::Internal::Type::ArrayOf[Braintrust::Models::Role::MemberPermission]) | nil,
+        member_permissions: ^(Braintrust::Internal::Type::ArrayOf[Braintrust::Role::MemberPermission]) | nil,
         member_roles: ^(Braintrust::Internal::Type::ArrayOf[String]) | nil,
         org_id: String | nil,
         user_id: String | nil
@@ -51,7 +51,7 @@ class Braintrust::Test::Resources::RolesTest < Braintrust::Test::ResourceTest
     response = @braintrust.roles.update("182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e")
 
     assert_pattern do
-      response => Braintrust::Models::Role
+      response => Braintrust::Role
     end
 
     assert_pattern do
@@ -61,7 +61,7 @@ class Braintrust::Test::Resources::RolesTest < Braintrust::Test::ResourceTest
         created: Time | nil,
         deleted_at: Time | nil,
         description: String | nil,
-        member_permissions: ^(Braintrust::Internal::Type::ArrayOf[Braintrust::Models::Role::MemberPermission]) | nil,
+        member_permissions: ^(Braintrust::Internal::Type::ArrayOf[Braintrust::Role::MemberPermission]) | nil,
         member_roles: ^(Braintrust::Internal::Type::ArrayOf[String]) | nil,
         org_id: String | nil,
         user_id: String | nil
@@ -80,7 +80,7 @@ class Braintrust::Test::Resources::RolesTest < Braintrust::Test::ResourceTest
     return if row.nil?
 
     assert_pattern do
-      row => Braintrust::Models::Role
+      row => Braintrust::Role
     end
 
     assert_pattern do
@@ -90,7 +90,7 @@ class Braintrust::Test::Resources::RolesTest < Braintrust::Test::ResourceTest
         created: Time | nil,
         deleted_at: Time | nil,
         description: String | nil,
-        member_permissions: ^(Braintrust::Internal::Type::ArrayOf[Braintrust::Models::Role::MemberPermission]) | nil,
+        member_permissions: ^(Braintrust::Internal::Type::ArrayOf[Braintrust::Role::MemberPermission]) | nil,
         member_roles: ^(Braintrust::Internal::Type::ArrayOf[String]) | nil,
         org_id: String | nil,
         user_id: String | nil
@@ -102,7 +102,7 @@ class Braintrust::Test::Resources::RolesTest < Braintrust::Test::ResourceTest
     response = @braintrust.roles.delete("182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e")
 
     assert_pattern do
-      response => Braintrust::Models::Role
+      response => Braintrust::Role
     end
 
     assert_pattern do
@@ -112,7 +112,7 @@ class Braintrust::Test::Resources::RolesTest < Braintrust::Test::ResourceTest
         created: Time | nil,
         deleted_at: Time | nil,
         description: String | nil,
-        member_permissions: ^(Braintrust::Internal::Type::ArrayOf[Braintrust::Models::Role::MemberPermission]) | nil,
+        member_permissions: ^(Braintrust::Internal::Type::ArrayOf[Braintrust::Role::MemberPermission]) | nil,
         member_roles: ^(Braintrust::Internal::Type::ArrayOf[String]) | nil,
         org_id: String | nil,
         user_id: String | nil
@@ -124,7 +124,7 @@ class Braintrust::Test::Resources::RolesTest < Braintrust::Test::ResourceTest
     response = @braintrust.roles.replace(name: "x")
 
     assert_pattern do
-      response => Braintrust::Models::Role
+      response => Braintrust::Role
     end
 
     assert_pattern do
@@ -134,7 +134,7 @@ class Braintrust::Test::Resources::RolesTest < Braintrust::Test::ResourceTest
         created: Time | nil,
         deleted_at: Time | nil,
         description: String | nil,
-        member_permissions: ^(Braintrust::Internal::Type::ArrayOf[Braintrust::Models::Role::MemberPermission]) | nil,
+        member_permissions: ^(Braintrust::Internal::Type::ArrayOf[Braintrust::Role::MemberPermission]) | nil,
         member_roles: ^(Braintrust::Internal::Type::ArrayOf[String]) | nil,
         org_id: String | nil,
         user_id: String | nil

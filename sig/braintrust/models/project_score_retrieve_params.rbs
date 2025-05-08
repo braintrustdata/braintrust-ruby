@@ -8,8 +8,6 @@ module Braintrust
       include Braintrust::Internal::Type::RequestParameters
 
       def initialize: (?request_options: Braintrust::request_opts) -> void
-
-      def to_hash: -> Braintrust::Models::project_score_retrieve_params
     end
   end
 end

@@ -12,7 +12,7 @@ class Braintrust::Test::Resources::SpanIframesTest < Braintrust::Test::ResourceT
       )
 
     assert_pattern do
-      response => Braintrust::Models::SpanIFrame
+      response => Braintrust::SpanIFrame
     end
 
     assert_pattern do
@@ -34,7 +34,7 @@ class Braintrust::Test::Resources::SpanIframesTest < Braintrust::Test::ResourceT
     response = @braintrust.span_iframes.retrieve("182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e")
 
     assert_pattern do
-      response => Braintrust::Models::SpanIFrame
+      response => Braintrust::SpanIFrame
     end
 
     assert_pattern do
@@ -56,7 +56,7 @@ class Braintrust::Test::Resources::SpanIframesTest < Braintrust::Test::ResourceT
     response = @braintrust.span_iframes.update("182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e")
 
     assert_pattern do
-      response => Braintrust::Models::SpanIFrame
+      response => Braintrust::SpanIFrame
     end
 
     assert_pattern do
@@ -85,7 +85,7 @@ class Braintrust::Test::Resources::SpanIframesTest < Braintrust::Test::ResourceT
     return if row.nil?
 
     assert_pattern do
-      row => Braintrust::Models::SpanIFrame
+      row => Braintrust::SpanIFrame
     end
 
     assert_pattern do
@@ -107,7 +107,7 @@ class Braintrust::Test::Resources::SpanIframesTest < Braintrust::Test::ResourceT
     response = @braintrust.span_iframes.delete("182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e")
 
     assert_pattern do
-      response => Braintrust::Models::SpanIFrame
+      response => Braintrust::SpanIFrame
     end
 
     assert_pattern do
@@ -134,7 +134,7 @@ class Braintrust::Test::Resources::SpanIframesTest < Braintrust::Test::ResourceT
       )
 
     assert_pattern do
-      response => Braintrust::Models::SpanIFrame
+      response => Braintrust::SpanIFrame
     end
 
     assert_pattern do

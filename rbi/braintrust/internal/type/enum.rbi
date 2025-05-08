@@ -19,17 +19,25 @@ module Braintrust
         include Braintrust::Internal::Type::Converter
 
         # All of the valid Symbol values for this enum.
-        sig { overridable.returns(T::Array[T.any(NilClass, T::Boolean, Integer, Float, Symbol)]) }
-        def values; end
+        sig do
+          overridable.returns(
+            T::Array[T.any(NilClass, T::Boolean, Integer, Float, Symbol)]
+          )
+        end
+        def values
+        end
 
         sig { params(other: T.anything).returns(T::Boolean) }
-        def ===(other); end
+        def ===(other)
+        end
 
         sig { params(other: T.anything).returns(T::Boolean) }
-        def ==(other); end
+        def ==(other)
+        end
 
         sig { returns(Integer) }
-        def hash; end
+        def hash
+        end
 
         # @api private
         #
@@ -43,19 +51,25 @@ module Braintrust
             )
             .returns(T.any(Symbol, T.anything))
         end
-        def coerce(value, state:); end
+        def coerce(value, state:)
+        end
 
         # @api private
         sig do
           override
-            .params(value: T.any(Symbol, T.anything), state: Braintrust::Internal::Type::Converter::DumpState)
+            .params(
+              value: T.any(Symbol, T.anything),
+              state: Braintrust::Internal::Type::Converter::DumpState
+            )
             .returns(T.any(Symbol, T.anything))
         end
-        def dump(value, state:); end
+        def dump(value, state:)
+        end
 
         # @api private
         sig { params(depth: Integer).returns(String) }
-        def inspect(depth: 0); end
+        def inspect(depth: 0)
+        end
       end
     end
   end

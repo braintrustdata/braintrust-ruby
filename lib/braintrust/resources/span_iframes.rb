@@ -21,20 +21,19 @@ module Braintrust
       # @param description [String, nil] Textual description of the span iframe
       #
       # @param post_message [Boolean, nil] Whether to post messages to the iframe containing the span's data. This is usefu
-      # ...
       #
       # @param request_options [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Braintrust::Models::SpanIFrame]
+      # @return [Braintrust::SpanIFrame]
       #
       # @see Braintrust::Models::SpanIframeCreateParams
       def create(params)
-        parsed, options = Braintrust::Models::SpanIframeCreateParams.dump_request(params)
+        parsed, options = Braintrust::SpanIframeCreateParams.dump_request(params)
         @client.request(
           method: :post,
           path: "v1/span_iframe",
           body: parsed,
-          model: Braintrust::Models::SpanIFrame,
+          model: Braintrust::SpanIFrame,
           options: options
         )
       end
@@ -47,14 +46,14 @@ module Braintrust
       #
       # @param request_options [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Braintrust::Models::SpanIFrame]
+      # @return [Braintrust::SpanIFrame]
       #
       # @see Braintrust::Models::SpanIframeRetrieveParams
       def retrieve(span_iframe_id, params = {})
         @client.request(
           method: :get,
           path: ["v1/span_iframe/%1$s", span_iframe_id],
-          model: Braintrust::Models::SpanIFrame,
+          model: Braintrust::SpanIFrame,
           options: params[:request_options]
         )
       end
@@ -75,22 +74,21 @@ module Braintrust
       # @param name [String, nil] Name of the span iframe
       #
       # @param post_message [Boolean, nil] Whether to post messages to the iframe containing the span's data. This is usefu
-      # ...
       #
       # @param url [String, nil] URL to embed the project viewer in an iframe
       #
       # @param request_options [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Braintrust::Models::SpanIFrame]
+      # @return [Braintrust::SpanIFrame]
       #
       # @see Braintrust::Models::SpanIframeUpdateParams
       def update(span_iframe_id, params = {})
-        parsed, options = Braintrust::Models::SpanIframeUpdateParams.dump_request(params)
+        parsed, options = Braintrust::SpanIframeUpdateParams.dump_request(params)
         @client.request(
           method: :patch,
           path: ["v1/span_iframe/%1$s", span_iframe_id],
           body: parsed,
-          model: Braintrust::Models::SpanIFrame,
+          model: Braintrust::SpanIFrame,
           options: options
         )
       end
@@ -103,10 +101,9 @@ module Braintrust
       #
       # @overload list(ending_before: nil, ids: nil, limit: nil, org_name: nil, span_iframe_name: nil, starting_after: nil, request_options: {})
       #
-      # @param ending_before [String] Pagination cursor id. ...
+      # @param ending_before [String] Pagination cursor id.
       #
       # @param ids [String, Array<String>] Filter search results to a particular set of object IDs. To specify a list of ID
-      # ...
       #
       # @param limit [Integer, nil] Limit the number of objects to return
       #
@@ -114,21 +111,21 @@ module Braintrust
       #
       # @param span_iframe_name [String] Name of the span_iframe to search for
       #
-      # @param starting_after [String] Pagination cursor id. ...
+      # @param starting_after [String] Pagination cursor id.
       #
       # @param request_options [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Braintrust::Internal::ListObjects<Braintrust::Models::SpanIFrame>]
+      # @return [Braintrust::Internal::ListObjects<Braintrust::SpanIFrame>]
       #
       # @see Braintrust::Models::SpanIframeListParams
       def list(params = {})
-        parsed, options = Braintrust::Models::SpanIframeListParams.dump_request(params)
+        parsed, options = Braintrust::SpanIframeListParams.dump_request(params)
         @client.request(
           method: :get,
           path: "v1/span_iframe",
           query: parsed,
           page: Braintrust::Internal::ListObjects,
-          model: Braintrust::Models::SpanIFrame,
+          model: Braintrust::SpanIFrame,
           options: options
         )
       end
@@ -141,14 +138,14 @@ module Braintrust
       #
       # @param request_options [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Braintrust::Models::SpanIFrame]
+      # @return [Braintrust::SpanIFrame]
       #
       # @see Braintrust::Models::SpanIframeDeleteParams
       def delete(span_iframe_id, params = {})
         @client.request(
           method: :delete,
           path: ["v1/span_iframe/%1$s", span_iframe_id],
-          model: Braintrust::Models::SpanIFrame,
+          model: Braintrust::SpanIFrame,
           options: params[:request_options]
         )
       end
@@ -171,20 +168,19 @@ module Braintrust
       # @param description [String, nil] Textual description of the span iframe
       #
       # @param post_message [Boolean, nil] Whether to post messages to the iframe containing the span's data. This is usefu
-      # ...
       #
       # @param request_options [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Braintrust::Models::SpanIFrame]
+      # @return [Braintrust::SpanIFrame]
       #
       # @see Braintrust::Models::SpanIframeReplaceParams
       def replace(params)
-        parsed, options = Braintrust::Models::SpanIframeReplaceParams.dump_request(params)
+        parsed, options = Braintrust::SpanIframeReplaceParams.dump_request(params)
         @client.request(
           method: :put,
           path: "v1/span_iframe",
           body: parsed,
-          model: Braintrust::Models::SpanIFrame,
+          model: Braintrust::SpanIFrame,
           options: options
         )
       end

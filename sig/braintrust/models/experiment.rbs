@@ -14,7 +14,7 @@ module Braintrust
         deleted_at: Time?,
         description: String?,
         metadata: ::Hash[Symbol, top?]?,
-        repo_info: Braintrust::Models::RepoInfo?,
+        repo_info: Braintrust::RepoInfo?,
         user_id: String?
       }
 
@@ -43,7 +43,7 @@ module Braintrust
 
       attr_accessor metadata: ::Hash[Symbol, top?]?
 
-      attr_accessor repo_info: Braintrust::Models::RepoInfo?
+      attr_accessor repo_info: Braintrust::RepoInfo?
 
       attr_accessor user_id: String?
 
@@ -60,11 +60,9 @@ module Braintrust
         ?deleted_at: Time?,
         ?description: String?,
         ?metadata: ::Hash[Symbol, top?]?,
-        ?repo_info: Braintrust::Models::RepoInfo?,
+        ?repo_info: Braintrust::RepoInfo?,
         ?user_id: String?
       ) -> void
-
-      def to_hash: -> Braintrust::Models::experiment
     end
   end
 end

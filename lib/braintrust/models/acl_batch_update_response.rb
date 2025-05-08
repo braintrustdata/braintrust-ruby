@@ -15,8 +15,8 @@ module Braintrust
       #   `restrict_object_type` in the ACL, as part of a direct permission grant or as
       #   part of a role.
       #
-      #   @return [Array<Braintrust::Models::ACL>]
-      required :added_acls, -> { Braintrust::Internal::Type::ArrayOf[Braintrust::Models::ACL] }
+      #   @return [Array<Braintrust::ACL>]
+      required :added_acls, -> { Braintrust::Internal::Type::ArrayOf[Braintrust::ACL] }
 
       # @!attribute removed_acls
       #   An ACL grants a certain permission or role to a certain user or group on an
@@ -30,18 +30,16 @@ module Braintrust
       #   `restrict_object_type` in the ACL, as part of a direct permission grant or as
       #   part of a role.
       #
-      #   @return [Array<Braintrust::Models::ACL>]
-      required :removed_acls, -> { Braintrust::Internal::Type::ArrayOf[Braintrust::Models::ACL] }
+      #   @return [Array<Braintrust::ACL>]
+      required :removed_acls, -> { Braintrust::Internal::Type::ArrayOf[Braintrust::ACL] }
 
       # @!method initialize(added_acls:, removed_acls:)
       #   Some parameter documentations has been truncated, see
-      #   {Braintrust::Models::ACLBatchUpdateResponse} for more details.
+      #   {Braintrust::ACLBatchUpdateResponse} for more details.
       #
-      #   @param added_acls [Array<Braintrust::Models::ACL>] An ACL grants a certain permission or role to a certain user or group on an obje
-      #   ...
+      #   @param added_acls [Array<Braintrust::ACL>] An ACL grants a certain permission or role to a certain user or group on an obje
       #
-      #   @param removed_acls [Array<Braintrust::Models::ACL>] An ACL grants a certain permission or role to a certain user or group on an obje
-      #   ...
+      #   @param removed_acls [Array<Braintrust::ACL>] An ACL grants a certain permission or role to a certain user or group on an obje
     end
   end
 end

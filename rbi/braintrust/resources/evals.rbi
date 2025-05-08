@@ -11,52 +11,54 @@ module Braintrust
       # [Evals guide](https://www.braintrust.dev/docs/guides/evals).
       sig do
         params(
-          data: T.any(
-            Braintrust::Models::EvalCreateParams::Data::DatasetID,
-            Braintrust::Internal::AnyHash,
-            Braintrust::Models::EvalCreateParams::Data::ProjectDatasetName,
-            Braintrust::Models::EvalCreateParams::Data::DatasetRows
-          ),
-          project_id: String,
-          scores: T::Array[
+          data:
             T.any(
-              Braintrust::Models::EvalCreateParams::Score::FunctionID,
-              Braintrust::Internal::AnyHash,
-              Braintrust::Models::EvalCreateParams::Score::ProjectSlug,
-              Braintrust::Models::EvalCreateParams::Score::GlobalFunction,
-              Braintrust::Models::EvalCreateParams::Score::PromptSessionID,
-              Braintrust::Models::EvalCreateParams::Score::InlineCode,
-              Braintrust::Models::EvalCreateParams::Score::InlinePrompt
-            )
-          ],
-          task: T.any(
-            Braintrust::Models::EvalCreateParams::Task::FunctionID,
-            Braintrust::Internal::AnyHash,
-            Braintrust::Models::EvalCreateParams::Task::ProjectSlug,
-            Braintrust::Models::EvalCreateParams::Task::GlobalFunction,
-            Braintrust::Models::EvalCreateParams::Task::PromptSessionID,
-            Braintrust::Models::EvalCreateParams::Task::InlineCode,
-            Braintrust::Models::EvalCreateParams::Task::InlinePrompt
-          ),
+              Braintrust::EvalCreateParams::Data::DatasetID::OrHash,
+              Braintrust::EvalCreateParams::Data::ProjectDatasetName::OrHash,
+              Braintrust::EvalCreateParams::Data::DatasetRows::OrHash
+            ),
+          project_id: String,
+          scores:
+            T::Array[
+              T.any(
+                Braintrust::EvalCreateParams::Score::FunctionID::OrHash,
+                Braintrust::EvalCreateParams::Score::ProjectSlug::OrHash,
+                Braintrust::EvalCreateParams::Score::GlobalFunction::OrHash,
+                Braintrust::EvalCreateParams::Score::PromptSessionID::OrHash,
+                Braintrust::EvalCreateParams::Score::InlineCode::OrHash,
+                Braintrust::EvalCreateParams::Score::InlinePrompt::OrHash
+              )
+            ],
+          task:
+            T.any(
+              Braintrust::EvalCreateParams::Task::FunctionID::OrHash,
+              Braintrust::EvalCreateParams::Task::ProjectSlug::OrHash,
+              Braintrust::EvalCreateParams::Task::GlobalFunction::OrHash,
+              Braintrust::EvalCreateParams::Task::PromptSessionID::OrHash,
+              Braintrust::EvalCreateParams::Task::InlineCode::OrHash,
+              Braintrust::EvalCreateParams::Task::InlinePrompt::OrHash
+            ),
           base_experiment_id: T.nilable(String),
           base_experiment_name: T.nilable(String),
           experiment_name: String,
-          git_metadata_settings: T.nilable(T.any(Braintrust::Models::EvalCreateParams::GitMetadataSettings, Braintrust::Internal::AnyHash)),
+          git_metadata_settings:
+            T.nilable(
+              Braintrust::EvalCreateParams::GitMetadataSettings::OrHash
+            ),
           is_public: T.nilable(T::Boolean),
           max_concurrency: T.nilable(Float),
           metadata: T::Hash[Symbol, T.nilable(T.anything)],
-          parent: T.any(
-            Braintrust::Models::EvalCreateParams::Parent::SpanParentStruct,
-            Braintrust::Internal::AnyHash,
-            String
-          ),
-          repo_info: T.nilable(T.any(Braintrust::Models::RepoInfo, Braintrust::Internal::AnyHash)),
+          parent:
+            T.any(
+              Braintrust::EvalCreateParams::Parent::SpanParentStruct::OrHash,
+              String
+            ),
+          repo_info: T.nilable(Braintrust::RepoInfo::OrHash),
           stream: T::Boolean,
           timeout: T.nilable(Float),
           trial_count: T.nilable(Float),
-          request_options: Braintrust::RequestOpts
-        )
-          .returns(Braintrust::Models::SummarizeExperimentResponse)
+          request_options: Braintrust::RequestOptions::OrHash
+        ).returns(Braintrust::SummarizeExperimentResponse)
       end
       def create(
         # The dataset to use
@@ -103,10 +105,13 @@ module Braintrust
         # a stronger aggregate measure and a sense of the variance in the results.
         trial_count: nil,
         request_options: {}
-      ); end
+      )
+      end
+
       # @api private
       sig { params(client: Braintrust::Client).returns(T.attached_class) }
-      def self.new(client:); end
+      def self.new(client:)
+      end
     end
   end
 end

@@ -2,8 +2,8 @@ module Braintrust
   module Models
     type acl_batch_update_params =
       {
-        add_acls: ::Array[Braintrust::Models::ACLBatchUpdateParams::AddACL]?,
-        remove_acls: ::Array[Braintrust::Models::ACLBatchUpdateParams::RemoveACL]?
+        add_acls: ::Array[Braintrust::ACLBatchUpdateParams::AddACL]?,
+        remove_acls: ::Array[Braintrust::ACLBatchUpdateParams::RemoveACL]?
       }
       & Braintrust::Internal::Type::request_parameters
 
@@ -11,17 +11,15 @@ module Braintrust
       extend Braintrust::Internal::Type::RequestParameters::Converter
       include Braintrust::Internal::Type::RequestParameters
 
-      attr_accessor add_acls: ::Array[Braintrust::Models::ACLBatchUpdateParams::AddACL]?
+      attr_accessor add_acls: ::Array[Braintrust::ACLBatchUpdateParams::AddACL]?
 
-      attr_accessor remove_acls: ::Array[Braintrust::Models::ACLBatchUpdateParams::RemoveACL]?
+      attr_accessor remove_acls: ::Array[Braintrust::ACLBatchUpdateParams::RemoveACL]?
 
       def initialize: (
-        ?add_acls: ::Array[Braintrust::Models::ACLBatchUpdateParams::AddACL]?,
-        ?remove_acls: ::Array[Braintrust::Models::ACLBatchUpdateParams::RemoveACL]?,
+        ?add_acls: ::Array[Braintrust::ACLBatchUpdateParams::AddACL]?,
+        ?remove_acls: ::Array[Braintrust::ACLBatchUpdateParams::RemoveACL]?,
         ?request_options: Braintrust::request_opts
       ) -> void
-
-      def to_hash: -> Braintrust::Models::acl_batch_update_params
 
       type add_acl =
         {
@@ -58,8 +56,6 @@ module Braintrust
           ?role_id: String?,
           ?user_id: String?
         ) -> void
-
-        def to_hash: -> Braintrust::Models::ACLBatchUpdateParams::add_acl
       end
 
       type remove_acl =
@@ -97,8 +93,6 @@ module Braintrust
           ?role_id: String?,
           ?user_id: String?
         ) -> void
-
-        def to_hash: -> Braintrust::Models::ACLBatchUpdateParams::remove_acl
       end
     end
   end

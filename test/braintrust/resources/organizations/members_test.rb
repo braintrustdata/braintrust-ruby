@@ -7,13 +7,13 @@ class Braintrust::Test::Resources::Organizations::MembersTest < Braintrust::Test
     response = @braintrust.organizations.members.update
 
     assert_pattern do
-      response => Braintrust::Models::PatchOrganizationMembersOutput
+      response => Braintrust::PatchOrganizationMembersOutput
     end
 
     assert_pattern do
       response => {
         org_id: String,
-        status: Braintrust::Models::PatchOrganizationMembersOutput::Status,
+        status: Braintrust::PatchOrganizationMembersOutput::Status,
         send_email_error: String | nil
       }
     end

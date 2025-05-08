@@ -28,10 +28,8 @@ module Braintrust
       #   {Braintrust::Models::ExperimentSummarizeParams} for more details.
       #
       #   @param comparison_experiment_id [String] The experiment to compare against, if summarizing scores and metrics. If omitted
-      #   ...
       #
       #   @param summarize_scores [Boolean, nil] Whether to summarize the scores and metrics. If false (or omitted), only the met
-      #   ...
       #
       #   @param request_options [Braintrust::RequestOptions, Hash{Symbol=>Object}]
     end

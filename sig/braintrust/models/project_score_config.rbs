@@ -4,7 +4,7 @@ module Braintrust
       {
         destination: String?,
         multi_select: bool?,
-        online: Braintrust::Models::OnlineScoreConfig?
+        online: Braintrust::OnlineScoreConfig?
       }
 
     class ProjectScoreConfig < Braintrust::Internal::Type::BaseModel
@@ -12,15 +12,13 @@ module Braintrust
 
       attr_accessor multi_select: bool?
 
-      attr_accessor online: Braintrust::Models::OnlineScoreConfig?
+      attr_accessor online: Braintrust::OnlineScoreConfig?
 
       def initialize: (
         ?destination: String?,
         ?multi_select: bool?,
-        ?online: Braintrust::Models::OnlineScoreConfig?
+        ?online: Braintrust::OnlineScoreConfig?
       ) -> void
-
-      def to_hash: -> Braintrust::Models::project_score_config
     end
   end
 end

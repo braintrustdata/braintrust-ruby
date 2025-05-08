@@ -3,6 +3,9 @@
 module Braintrust
   module Models
     class DataSummary < Braintrust::Internal::Type::BaseModel
+      OrHash =
+        T.type_alias { T.any(T.self_type, Braintrust::Internal::AnyHash) }
+
       # Total number of records in the dataset
       sig { returns(Integer) }
       attr_accessor :total_records
@@ -12,9 +15,12 @@ module Braintrust
       def self.new(
         # Total number of records in the dataset
         total_records:
-      ); end
-      sig { override.returns({total_records: Integer}) }
-      def to_hash; end
+      )
+      end
+
+      sig { override.returns({ total_records: Integer }) }
+      def to_hash
+      end
     end
   end
 end

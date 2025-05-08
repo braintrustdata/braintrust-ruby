@@ -17,10 +17,9 @@ module Braintrust
           metadata: T.nilable(T::Hash[Symbol, T.nilable(T.anything)]),
           name: T.nilable(String),
           public: T.nilable(T::Boolean),
-          repo_info: T.nilable(T.any(Braintrust::Models::RepoInfo, Braintrust::Internal::AnyHash)),
-          request_options: Braintrust::RequestOpts
-        )
-          .returns(Braintrust::Models::Experiment)
+          repo_info: T.nilable(Braintrust::RepoInfo::OrHash),
+          request_options: Braintrust::RequestOptions::OrHash
+        ).returns(Braintrust::Experiment)
       end
       def create(
         # Unique identifier for the project that the experiment belongs under
@@ -50,17 +49,23 @@ module Braintrust
         # Metadata about the state of the repo when the experiment was created
         repo_info: nil,
         request_options: {}
-      ); end
+      )
+      end
+
       # Get an experiment object by its id
       sig do
-        params(experiment_id: String, request_options: Braintrust::RequestOpts)
-          .returns(Braintrust::Models::Experiment)
+        params(
+          experiment_id: String,
+          request_options: Braintrust::RequestOptions::OrHash
+        ).returns(Braintrust::Experiment)
       end
       def retrieve(
         # Experiment id
         experiment_id,
         request_options: {}
-      ); end
+      )
+      end
+
       # Partially update an experiment object. Specify the fields to update in the
       # payload. Any object-type fields will be deep-merged with existing content.
       # Currently we do not support removing fields or setting them to null.
@@ -74,10 +79,9 @@ module Braintrust
           metadata: T.nilable(T::Hash[Symbol, T.nilable(T.anything)]),
           name: T.nilable(String),
           public: T.nilable(T::Boolean),
-          repo_info: T.nilable(T.any(Braintrust::Models::RepoInfo, Braintrust::Internal::AnyHash)),
-          request_options: Braintrust::RequestOpts
-        )
-          .returns(Braintrust::Models::Experiment)
+          repo_info: T.nilable(Braintrust::RepoInfo::OrHash),
+          request_options: Braintrust::RequestOptions::OrHash
+        ).returns(Braintrust::Experiment)
       end
       def update(
         # Experiment id
@@ -102,7 +106,9 @@ module Braintrust
         # Metadata about the state of the repo when the experiment was created
         repo_info: nil,
         request_options: {}
-      ); end
+      )
+      end
+
       # List out all experiments. The experiments are sorted by creation date, with the
       # most recently-created experiments coming first
       sig do
@@ -115,9 +121,8 @@ module Braintrust
           project_id: String,
           project_name: String,
           starting_after: String,
-          request_options: Braintrust::RequestOpts
-        )
-          .returns(Braintrust::Internal::ListObjects[Braintrust::Models::Experiment])
+          request_options: Braintrust::RequestOptions::OrHash
+        ).returns(Braintrust::Internal::ListObjects[Braintrust::Experiment])
       end
       def list(
         # Pagination cursor id.
@@ -146,25 +151,30 @@ module Braintrust
         # `starting_after` and `ending_before`
         starting_after: nil,
         request_options: {}
-      ); end
+      )
+      end
+
       # Delete an experiment object by its id
       sig do
-        params(experiment_id: String, request_options: Braintrust::RequestOpts)
-          .returns(Braintrust::Models::Experiment)
+        params(
+          experiment_id: String,
+          request_options: Braintrust::RequestOptions::OrHash
+        ).returns(Braintrust::Experiment)
       end
       def delete(
         # Experiment id
         experiment_id,
         request_options: {}
-      ); end
+      )
+      end
+
       # Log feedback for a set of experiment events
       sig do
         params(
           experiment_id: String,
-          feedback: T::Array[T.any(Braintrust::Models::FeedbackExperimentItem, Braintrust::Internal::AnyHash)],
-          request_options: Braintrust::RequestOpts
-        )
-          .returns(Braintrust::Models::FeedbackResponseSchema)
+          feedback: T::Array[Braintrust::FeedbackExperimentItem::OrHash],
+          request_options: Braintrust::RequestOptions::OrHash
+        ).returns(Braintrust::FeedbackResponseSchema)
       end
       def feedback(
         # Experiment id
@@ -172,7 +182,9 @@ module Braintrust
         # A list of experiment feedback items
         feedback:,
         request_options: {}
-      ); end
+      )
+      end
+
       # Fetch the events in an experiment. Equivalent to the POST form of the same path,
       # but with the parameters in the URL query rather than in the request body. For
       # more complex queries, use the `POST /btql` endpoint.
@@ -183,9 +195,8 @@ module Braintrust
           max_root_span_id: String,
           max_xact_id: String,
           version: String,
-          request_options: Braintrust::RequestOpts
-        )
-          .returns(Braintrust::Models::FetchExperimentEventsResponse)
+          request_options: Braintrust::RequestOptions::OrHash
+        ).returns(Braintrust::FetchExperimentEventsResponse)
       end
       def fetch(
         # Experiment id
@@ -234,7 +245,9 @@ module Braintrust
         # that exact fetch.
         version: nil,
         request_options: {}
-      ); end
+      )
+      end
+
       # Fetch the events in an experiment. Equivalent to the GET form of the same path,
       # but with the parameters in the request body rather than in the URL query. For
       # more complex queries, use the `POST /btql` endpoint.
@@ -246,9 +259,8 @@ module Braintrust
           max_root_span_id: T.nilable(String),
           max_xact_id: T.nilable(String),
           version: T.nilable(String),
-          request_options: Braintrust::RequestOpts
-        )
-          .returns(Braintrust::Models::FetchExperimentEventsResponse)
+          request_options: Braintrust::RequestOptions::OrHash
+        ).returns(Braintrust::FetchExperimentEventsResponse)
       end
       def fetch_post(
         # Experiment id
@@ -303,15 +315,16 @@ module Braintrust
         # that exact fetch.
         version: nil,
         request_options: {}
-      ); end
+      )
+      end
+
       # Insert a set of events into the experiment
       sig do
         params(
           experiment_id: String,
-          events: T::Array[T.any(Braintrust::Models::InsertExperimentEvent, Braintrust::Internal::AnyHash)],
-          request_options: Braintrust::RequestOpts
-        )
-          .returns(Braintrust::Models::InsertEventsResponse)
+          events: T::Array[Braintrust::InsertExperimentEvent::OrHash],
+          request_options: Braintrust::RequestOptions::OrHash
+        ).returns(Braintrust::InsertEventsResponse)
       end
       def insert(
         # Experiment id
@@ -319,16 +332,17 @@ module Braintrust
         # A list of experiment events to insert
         events:,
         request_options: {}
-      ); end
+      )
+      end
+
       # Summarize experiment
       sig do
         params(
           experiment_id: String,
           comparison_experiment_id: String,
           summarize_scores: T.nilable(T::Boolean),
-          request_options: Braintrust::RequestOpts
-        )
-          .returns(Braintrust::Models::SummarizeExperimentResponse)
+          request_options: Braintrust::RequestOptions::OrHash
+        ).returns(Braintrust::SummarizeExperimentResponse)
       end
       def summarize(
         # Experiment id
@@ -342,10 +356,13 @@ module Braintrust
         # metadata will be returned.
         summarize_scores: nil,
         request_options: {}
-      ); end
+      )
+      end
+
       # @api private
       sig { params(client: Braintrust::Client).returns(T.attached_class) }
-      def self.new(client:); end
+      def self.new(client:)
+      end
     end
   end
 end

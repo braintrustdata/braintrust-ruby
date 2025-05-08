@@ -5,22 +5,22 @@ module Braintrust
         id: String,
         _xact_id: String,
         created: Time,
-        log_id: Braintrust::Models::ProjectLogsEvent::log_id,
+        log_id: Braintrust::ProjectLogsEvent::log_id,
         org_id: String,
         project_id: String,
         root_span_id: String,
         span_id: String,
-        context: Braintrust::Models::ProjectLogsEvent::Context?,
+        context: Braintrust::ProjectLogsEvent::Context?,
         error: top,
         expected: top,
         input: top,
         is_root: bool?,
-        metadata: Braintrust::Models::ProjectLogsEvent::Metadata?,
-        metrics: Braintrust::Models::ProjectLogsEvent::Metrics?,
-        origin: Braintrust::Models::ObjectReference?,
+        metadata: Braintrust::ProjectLogsEvent::Metadata?,
+        metrics: Braintrust::ProjectLogsEvent::Metrics?,
+        origin: Braintrust::ObjectReference?,
         output: top,
         scores: ::Hash[Symbol, Float?]?,
-        span_attributes: Braintrust::Models::SpanAttributes?,
+        span_attributes: Braintrust::SpanAttributes?,
         span_parents: ::Array[String]?,
         tags: ::Array[String]?
       }
@@ -32,7 +32,7 @@ module Braintrust
 
       attr_accessor created: Time
 
-      attr_accessor log_id: Braintrust::Models::ProjectLogsEvent::log_id
+      attr_accessor log_id: Braintrust::ProjectLogsEvent::log_id
 
       attr_accessor org_id: String
 
@@ -42,7 +42,7 @@ module Braintrust
 
       attr_accessor span_id: String
 
-      attr_accessor context: Braintrust::Models::ProjectLogsEvent::Context?
+      attr_accessor context: Braintrust::ProjectLogsEvent::Context?
 
       attr_reader error: top?
 
@@ -58,11 +58,11 @@ module Braintrust
 
       attr_accessor is_root: bool?
 
-      attr_accessor metadata: Braintrust::Models::ProjectLogsEvent::Metadata?
+      attr_accessor metadata: Braintrust::ProjectLogsEvent::Metadata?
 
-      attr_accessor metrics: Braintrust::Models::ProjectLogsEvent::Metrics?
+      attr_accessor metrics: Braintrust::ProjectLogsEvent::Metrics?
 
-      attr_accessor origin: Braintrust::Models::ObjectReference?
+      attr_accessor origin: Braintrust::ObjectReference?
 
       attr_reader output: top?
 
@@ -70,7 +70,7 @@ module Braintrust
 
       attr_accessor scores: ::Hash[Symbol, Float?]?
 
-      attr_accessor span_attributes: Braintrust::Models::SpanAttributes?
+      attr_accessor span_attributes: Braintrust::SpanAttributes?
 
       attr_accessor span_parents: ::Array[String]?
 
@@ -80,27 +80,25 @@ module Braintrust
         id: String,
         _xact_id: String,
         created: Time,
-        log_id: Braintrust::Models::ProjectLogsEvent::log_id,
+        log_id: Braintrust::ProjectLogsEvent::log_id,
         org_id: String,
         project_id: String,
         root_span_id: String,
         span_id: String,
-        ?context: Braintrust::Models::ProjectLogsEvent::Context?,
+        ?context: Braintrust::ProjectLogsEvent::Context?,
         ?error: top,
         ?expected: top,
         ?input: top,
         ?is_root: bool?,
-        ?metadata: Braintrust::Models::ProjectLogsEvent::Metadata?,
-        ?metrics: Braintrust::Models::ProjectLogsEvent::Metrics?,
-        ?origin: Braintrust::Models::ObjectReference?,
+        ?metadata: Braintrust::ProjectLogsEvent::Metadata?,
+        ?metrics: Braintrust::ProjectLogsEvent::Metrics?,
+        ?origin: Braintrust::ObjectReference?,
         ?output: top,
         ?scores: ::Hash[Symbol, Float?]?,
-        ?span_attributes: Braintrust::Models::SpanAttributes?,
+        ?span_attributes: Braintrust::SpanAttributes?,
         ?span_parents: ::Array[String]?,
         ?tags: ::Array[String]?
       ) -> void
-
-      def to_hash: -> Braintrust::Models::project_logs_event
 
       type log_id = :g
 
@@ -109,7 +107,7 @@ module Braintrust
 
         G: :g
 
-        def self?.values: -> ::Array[Braintrust::Models::ProjectLogsEvent::log_id]
+        def self?.values: -> ::Array[Braintrust::ProjectLogsEvent::log_id]
       end
 
       type context =
@@ -131,8 +129,6 @@ module Braintrust
           ?caller_functionname: String?,
           ?caller_lineno: Integer?
         ) -> void
-
-        def to_hash: -> Braintrust::Models::ProjectLogsEvent::context
       end
 
       type metadata = { model: String? }
@@ -141,8 +137,6 @@ module Braintrust
         attr_accessor model: String?
 
         def initialize: (?model: String?) -> void
-
-        def to_hash: -> Braintrust::Models::ProjectLogsEvent::metadata
       end
 
       type metrics =
@@ -190,8 +184,6 @@ module Braintrust
           ?start: Float?,
           ?tokens: Integer?
         ) -> void
-
-        def to_hash: -> Braintrust::Models::ProjectLogsEvent::metrics
       end
     end
   end

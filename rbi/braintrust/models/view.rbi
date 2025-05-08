@@ -3,6 +3,9 @@
 module Braintrust
   module Models
     class View < Braintrust::Internal::Type::BaseModel
+      OrHash =
+        T.type_alias { T.any(T.self_type, Braintrust::Internal::AnyHash) }
+
       # Unique identifier for the view
       sig { returns(String) }
       attr_accessor :id
@@ -16,11 +19,11 @@ module Braintrust
       attr_accessor :object_id_
 
       # The object type that the ACL applies to
-      sig { returns(Braintrust::Models::ACLObjectType::TaggedSymbol) }
+      sig { returns(Braintrust::ACLObjectType::TaggedSymbol) }
       attr_accessor :object_type
 
       # Type of table that the view corresponds to.
-      sig { returns(T.nilable(Braintrust::Models::View::ViewType::TaggedSymbol)) }
+      sig { returns(T.nilable(Braintrust::View::ViewType::TaggedSymbol)) }
       attr_accessor :view_type
 
       # Date of view creation
@@ -32,10 +35,10 @@ module Braintrust
       attr_accessor :deleted_at
 
       # Options for the view in the app
-      sig { returns(T.nilable(Braintrust::Models::ViewOptions)) }
+      sig { returns(T.nilable(Braintrust::ViewOptions)) }
       attr_reader :options
 
-      sig { params(options: T.nilable(T.any(Braintrust::Models::ViewOptions, Braintrust::Internal::AnyHash))).void }
+      sig { params(options: T.nilable(Braintrust::ViewOptions::OrHash)).void }
       attr_writer :options
 
       # Identifies the user who created the view
@@ -43,10 +46,10 @@ module Braintrust
       attr_accessor :user_id
 
       # The view definition
-      sig { returns(T.nilable(Braintrust::Models::ViewData)) }
+      sig { returns(T.nilable(Braintrust::ViewData)) }
       attr_reader :view_data
 
-      sig { params(view_data: T.nilable(T.any(Braintrust::Models::ViewData, Braintrust::Internal::AnyHash))).void }
+      sig { params(view_data: T.nilable(Braintrust::ViewData::OrHash)).void }
       attr_writer :view_data
 
       sig do
@@ -54,15 +57,14 @@ module Braintrust
           id: String,
           name: String,
           object_id_: String,
-          object_type: Braintrust::Models::ACLObjectType::OrSymbol,
-          view_type: T.nilable(Braintrust::Models::View::ViewType::OrSymbol),
+          object_type: Braintrust::ACLObjectType::OrSymbol,
+          view_type: T.nilable(Braintrust::View::ViewType::OrSymbol),
           created: T.nilable(Time),
           deleted_at: T.nilable(Time),
-          options: T.nilable(T.any(Braintrust::Models::ViewOptions, Braintrust::Internal::AnyHash)),
+          options: T.nilable(Braintrust::ViewOptions::OrHash),
           user_id: T.nilable(String),
-          view_data: T.nilable(T.any(Braintrust::Models::ViewData, Braintrust::Internal::AnyHash))
-        )
-          .returns(T.attached_class)
+          view_data: T.nilable(Braintrust::ViewData::OrHash)
+        ).returns(T.attached_class)
       end
       def self.new(
         # Unique identifier for the view
@@ -85,47 +87,57 @@ module Braintrust
         user_id: nil,
         # The view definition
         view_data: nil
-      ); end
-      sig do
-        override
-          .returns(
-            {
-              id: String,
-              name: String,
-              object_id_: String,
-              object_type: Braintrust::Models::ACLObjectType::TaggedSymbol,
-              view_type: T.nilable(Braintrust::Models::View::ViewType::TaggedSymbol),
-              created: T.nilable(Time),
-              deleted_at: T.nilable(Time),
-              options: T.nilable(Braintrust::Models::ViewOptions),
-              user_id: T.nilable(String),
-              view_data: T.nilable(Braintrust::Models::ViewData)
-            }
-          )
+      )
       end
-      def to_hash; end
+
+      sig do
+        override.returns(
+          {
+            id: String,
+            name: String,
+            object_id_: String,
+            object_type: Braintrust::ACLObjectType::TaggedSymbol,
+            view_type: T.nilable(Braintrust::View::ViewType::TaggedSymbol),
+            created: T.nilable(Time),
+            deleted_at: T.nilable(Time),
+            options: T.nilable(Braintrust::ViewOptions),
+            user_id: T.nilable(String),
+            view_data: T.nilable(Braintrust::ViewData)
+          }
+        )
+      end
+      def to_hash
+      end
 
       # Type of table that the view corresponds to.
       module ViewType
         extend Braintrust::Internal::Type::Enum
 
-        TaggedSymbol = T.type_alias { T.all(Symbol, Braintrust::Models::View::ViewType) }
+        TaggedSymbol =
+          T.type_alias { T.all(Symbol, Braintrust::View::ViewType) }
         OrSymbol = T.type_alias { T.any(Symbol, String) }
 
-        PROJECTS = T.let(:projects, Braintrust::Models::View::ViewType::TaggedSymbol)
-        EXPERIMENTS = T.let(:experiments, Braintrust::Models::View::ViewType::TaggedSymbol)
-        EXPERIMENT = T.let(:experiment, Braintrust::Models::View::ViewType::TaggedSymbol)
-        PLAYGROUNDS = T.let(:playgrounds, Braintrust::Models::View::ViewType::TaggedSymbol)
-        PLAYGROUND = T.let(:playground, Braintrust::Models::View::ViewType::TaggedSymbol)
-        DATASETS = T.let(:datasets, Braintrust::Models::View::ViewType::TaggedSymbol)
-        DATASET = T.let(:dataset, Braintrust::Models::View::ViewType::TaggedSymbol)
-        PROMPTS = T.let(:prompts, Braintrust::Models::View::ViewType::TaggedSymbol)
-        TOOLS = T.let(:tools, Braintrust::Models::View::ViewType::TaggedSymbol)
-        SCORERS = T.let(:scorers, Braintrust::Models::View::ViewType::TaggedSymbol)
-        LOGS = T.let(:logs, Braintrust::Models::View::ViewType::TaggedSymbol)
+        PROJECTS = T.let(:projects, Braintrust::View::ViewType::TaggedSymbol)
+        EXPERIMENTS =
+          T.let(:experiments, Braintrust::View::ViewType::TaggedSymbol)
+        EXPERIMENT =
+          T.let(:experiment, Braintrust::View::ViewType::TaggedSymbol)
+        PLAYGROUNDS =
+          T.let(:playgrounds, Braintrust::View::ViewType::TaggedSymbol)
+        PLAYGROUND =
+          T.let(:playground, Braintrust::View::ViewType::TaggedSymbol)
+        DATASETS = T.let(:datasets, Braintrust::View::ViewType::TaggedSymbol)
+        DATASET = T.let(:dataset, Braintrust::View::ViewType::TaggedSymbol)
+        PROMPTS = T.let(:prompts, Braintrust::View::ViewType::TaggedSymbol)
+        TOOLS = T.let(:tools, Braintrust::View::ViewType::TaggedSymbol)
+        SCORERS = T.let(:scorers, Braintrust::View::ViewType::TaggedSymbol)
+        LOGS = T.let(:logs, Braintrust::View::ViewType::TaggedSymbol)
 
-        sig { override.returns(T::Array[Braintrust::Models::View::ViewType::TaggedSymbol]) }
-        def self.values; end
+        sig do
+          override.returns(T::Array[Braintrust::View::ViewType::TaggedSymbol])
+        end
+        def self.values
+        end
       end
     end
   end

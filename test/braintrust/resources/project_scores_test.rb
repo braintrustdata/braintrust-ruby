@@ -12,7 +12,7 @@ class Braintrust::Test::Resources::ProjectScoresTest < Braintrust::Test::Resourc
       )
 
     assert_pattern do
-      response => Braintrust::Models::ProjectScore
+      response => Braintrust::ProjectScore
     end
 
     assert_pattern do
@@ -20,10 +20,10 @@ class Braintrust::Test::Resources::ProjectScoresTest < Braintrust::Test::Resourc
         id: String,
         name: String,
         project_id: String,
-        score_type: Braintrust::Models::ProjectScoreType,
+        score_type: Braintrust::ProjectScoreType,
         user_id: String,
-        categories: Braintrust::Models::ProjectScore::Categories | nil,
-        config: Braintrust::Models::ProjectScoreConfig | nil,
+        categories: Braintrust::ProjectScore::Categories | nil,
+        config: Braintrust::ProjectScoreConfig | nil,
         created: Time | nil,
         description: String | nil,
         position: String | nil
@@ -35,7 +35,7 @@ class Braintrust::Test::Resources::ProjectScoresTest < Braintrust::Test::Resourc
     response = @braintrust.project_scores.retrieve("182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e")
 
     assert_pattern do
-      response => Braintrust::Models::ProjectScore
+      response => Braintrust::ProjectScore
     end
 
     assert_pattern do
@@ -43,10 +43,10 @@ class Braintrust::Test::Resources::ProjectScoresTest < Braintrust::Test::Resourc
         id: String,
         name: String,
         project_id: String,
-        score_type: Braintrust::Models::ProjectScoreType,
+        score_type: Braintrust::ProjectScoreType,
         user_id: String,
-        categories: Braintrust::Models::ProjectScore::Categories | nil,
-        config: Braintrust::Models::ProjectScoreConfig | nil,
+        categories: Braintrust::ProjectScore::Categories | nil,
+        config: Braintrust::ProjectScoreConfig | nil,
         created: Time | nil,
         description: String | nil,
         position: String | nil
@@ -58,7 +58,7 @@ class Braintrust::Test::Resources::ProjectScoresTest < Braintrust::Test::Resourc
     response = @braintrust.project_scores.update("182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e")
 
     assert_pattern do
-      response => Braintrust::Models::ProjectScore
+      response => Braintrust::ProjectScore
     end
 
     assert_pattern do
@@ -66,10 +66,10 @@ class Braintrust::Test::Resources::ProjectScoresTest < Braintrust::Test::Resourc
         id: String,
         name: String,
         project_id: String,
-        score_type: Braintrust::Models::ProjectScoreType,
+        score_type: Braintrust::ProjectScoreType,
         user_id: String,
-        categories: Braintrust::Models::ProjectScore::Categories | nil,
-        config: Braintrust::Models::ProjectScoreConfig | nil,
+        categories: Braintrust::ProjectScore::Categories | nil,
+        config: Braintrust::ProjectScoreConfig | nil,
         created: Time | nil,
         description: String | nil,
         position: String | nil
@@ -88,7 +88,7 @@ class Braintrust::Test::Resources::ProjectScoresTest < Braintrust::Test::Resourc
     return if row.nil?
 
     assert_pattern do
-      row => Braintrust::Models::ProjectScore
+      row => Braintrust::ProjectScore
     end
 
     assert_pattern do
@@ -96,10 +96,10 @@ class Braintrust::Test::Resources::ProjectScoresTest < Braintrust::Test::Resourc
         id: String,
         name: String,
         project_id: String,
-        score_type: Braintrust::Models::ProjectScoreType,
+        score_type: Braintrust::ProjectScoreType,
         user_id: String,
-        categories: Braintrust::Models::ProjectScore::Categories | nil,
-        config: Braintrust::Models::ProjectScoreConfig | nil,
+        categories: Braintrust::ProjectScore::Categories | nil,
+        config: Braintrust::ProjectScoreConfig | nil,
         created: Time | nil,
         description: String | nil,
         position: String | nil
@@ -111,7 +111,7 @@ class Braintrust::Test::Resources::ProjectScoresTest < Braintrust::Test::Resourc
     response = @braintrust.project_scores.delete("182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e")
 
     assert_pattern do
-      response => Braintrust::Models::ProjectScore
+      response => Braintrust::ProjectScore
     end
 
     assert_pattern do
@@ -119,10 +119,10 @@ class Braintrust::Test::Resources::ProjectScoresTest < Braintrust::Test::Resourc
         id: String,
         name: String,
         project_id: String,
-        score_type: Braintrust::Models::ProjectScoreType,
+        score_type: Braintrust::ProjectScoreType,
         user_id: String,
-        categories: Braintrust::Models::ProjectScore::Categories | nil,
-        config: Braintrust::Models::ProjectScoreConfig | nil,
+        categories: Braintrust::ProjectScore::Categories | nil,
+        config: Braintrust::ProjectScoreConfig | nil,
         created: Time | nil,
         description: String | nil,
         position: String | nil
@@ -139,7 +139,7 @@ class Braintrust::Test::Resources::ProjectScoresTest < Braintrust::Test::Resourc
       )
 
     assert_pattern do
-      response => Braintrust::Models::ProjectScore
+      response => Braintrust::ProjectScore
     end
 
     assert_pattern do
@@ -147,10 +147,10 @@ class Braintrust::Test::Resources::ProjectScoresTest < Braintrust::Test::Resourc
         id: String,
         name: String,
         project_id: String,
-        score_type: Braintrust::Models::ProjectScoreType,
+        score_type: Braintrust::ProjectScoreType,
         user_id: String,
-        categories: Braintrust::Models::ProjectScore::Categories | nil,
-        config: Braintrust::Models::ProjectScoreConfig | nil,
+        categories: Braintrust::ProjectScore::Categories | nil,
+        config: Braintrust::ProjectScoreConfig | nil,
         created: Time | nil,
         description: String | nil,
         position: String | nil

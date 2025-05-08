@@ -6,6 +6,9 @@ module Braintrust
       extend Braintrust::Internal::Type::RequestParameters::Converter
       include Braintrust::Internal::Type::RequestParameters
 
+      OrHash =
+        T.type_alias { T.any(T.self_type, Braintrust::Internal::AnyHash) }
+
       sig { returns(T.nilable(String)) }
       attr_accessor :api_url
 
@@ -29,9 +32,8 @@ module Braintrust
           name: T.nilable(String),
           proxy_url: T.nilable(String),
           realtime_url: T.nilable(String),
-          request_options: T.any(Braintrust::RequestOptions, Braintrust::Internal::AnyHash)
-        )
-          .returns(T.attached_class)
+          request_options: Braintrust::RequestOptions::OrHash
+        ).returns(T.attached_class)
       end
       def self.new(
         api_url: nil,
@@ -41,21 +43,23 @@ module Braintrust
         proxy_url: nil,
         realtime_url: nil,
         request_options: {}
-      ); end
-      sig do
-        override
-          .returns(
-            {
-              api_url: T.nilable(String),
-              is_universal_api: T.nilable(T::Boolean),
-              name: T.nilable(String),
-              proxy_url: T.nilable(String),
-              realtime_url: T.nilable(String),
-              request_options: Braintrust::RequestOptions
-            }
-          )
+      )
       end
-      def to_hash; end
+
+      sig do
+        override.returns(
+          {
+            api_url: T.nilable(String),
+            is_universal_api: T.nilable(T::Boolean),
+            name: T.nilable(String),
+            proxy_url: T.nilable(String),
+            realtime_url: T.nilable(String),
+            request_options: Braintrust::RequestOptions
+          }
+        )
+      end
+      def to_hash
+      end
     end
   end
 end

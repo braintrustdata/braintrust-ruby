@@ -3,6 +3,9 @@
 module Braintrust
   module Models
     class Experiment < Braintrust::Internal::Type::BaseModel
+      OrHash =
+        T.type_alias { T.any(T.self_type, Braintrust::Internal::AnyHash) }
+
       # Unique identifier for the experiment
       sig { returns(String) }
       attr_accessor :id
@@ -55,10 +58,10 @@ module Braintrust
       attr_accessor :metadata
 
       # Metadata about the state of the repo when the experiment was created
-      sig { returns(T.nilable(Braintrust::Models::RepoInfo)) }
+      sig { returns(T.nilable(Braintrust::RepoInfo)) }
       attr_reader :repo_info
 
-      sig { params(repo_info: T.nilable(T.any(Braintrust::Models::RepoInfo, Braintrust::Internal::AnyHash))).void }
+      sig { params(repo_info: T.nilable(Braintrust::RepoInfo::OrHash)).void }
       attr_writer :repo_info
 
       # Identifies the user who created the experiment
@@ -79,10 +82,9 @@ module Braintrust
           deleted_at: T.nilable(Time),
           description: T.nilable(String),
           metadata: T.nilable(T::Hash[Symbol, T.nilable(T.anything)]),
-          repo_info: T.nilable(T.any(Braintrust::Models::RepoInfo, Braintrust::Internal::AnyHash)),
+          repo_info: T.nilable(Braintrust::RepoInfo::OrHash),
           user_id: T.nilable(String)
-        )
-          .returns(T.attached_class)
+        ).returns(T.attached_class)
       end
       def self.new(
         # Unique identifier for the experiment
@@ -116,29 +118,31 @@ module Braintrust
         repo_info: nil,
         # Identifies the user who created the experiment
         user_id: nil
-      ); end
-      sig do
-        override
-          .returns(
-            {
-              id: String,
-              name: String,
-              project_id: String,
-              public: T::Boolean,
-              base_exp_id: T.nilable(String),
-              commit: T.nilable(String),
-              created: T.nilable(Time),
-              dataset_id: T.nilable(String),
-              dataset_version: T.nilable(String),
-              deleted_at: T.nilable(Time),
-              description: T.nilable(String),
-              metadata: T.nilable(T::Hash[Symbol, T.nilable(T.anything)]),
-              repo_info: T.nilable(Braintrust::Models::RepoInfo),
-              user_id: T.nilable(String)
-            }
-          )
+      )
       end
-      def to_hash; end
+
+      sig do
+        override.returns(
+          {
+            id: String,
+            name: String,
+            project_id: String,
+            public: T::Boolean,
+            base_exp_id: T.nilable(String),
+            commit: T.nilable(String),
+            created: T.nilable(Time),
+            dataset_id: T.nilable(String),
+            dataset_version: T.nilable(String),
+            deleted_at: T.nilable(Time),
+            description: T.nilable(String),
+            metadata: T.nilable(T::Hash[Symbol, T.nilable(T.anything)]),
+            repo_info: T.nilable(Braintrust::RepoInfo),
+            user_id: T.nilable(String)
+          }
+        )
+      end
+      def to_hash
+      end
     end
   end
 end

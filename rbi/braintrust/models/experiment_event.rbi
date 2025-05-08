@@ -3,6 +3,9 @@
 module Braintrust
   module Models
     class ExperimentEvent < Braintrust::Internal::Type::BaseModel
+      OrHash =
+        T.type_alias { T.any(T.self_type, Braintrust::Internal::AnyHash) }
+
       # A unique identifier for the experiment event. If you don't provide one,
       # BrainTrust will generate one for you
       sig { returns(String) }
@@ -42,14 +45,13 @@ module Braintrust
       # event. It is essentially the textual counterpart to `metrics`. Use the
       # `caller_*` attributes to track the location in code which produced the
       # experiment event
-      sig { returns(T.nilable(Braintrust::Models::ExperimentEvent::Context)) }
+      sig { returns(T.nilable(Braintrust::ExperimentEvent::Context)) }
       attr_reader :context
 
       sig do
         params(
-          context: T.nilable(T.any(Braintrust::Models::ExperimentEvent::Context, Braintrust::Internal::AnyHash))
-        )
-          .void
+          context: T.nilable(Braintrust::ExperimentEvent::Context::OrHash)
+        ).void
       end
       attr_writer :context
 
@@ -93,36 +95,36 @@ module Braintrust
       # examples later. For example, you could log the `prompt`, example's `id`, or
       # anything else that would be useful to slice/dice later. The values in `metadata`
       # can be any JSON-serializable type, but its keys must be strings
-      sig { returns(T.nilable(Braintrust::Models::ExperimentEvent::Metadata)) }
+      sig { returns(T.nilable(Braintrust::ExperimentEvent::Metadata)) }
       attr_reader :metadata
 
       sig do
         params(
-          metadata: T.nilable(T.any(Braintrust::Models::ExperimentEvent::Metadata, Braintrust::Internal::AnyHash))
-        )
-          .void
+          metadata: T.nilable(Braintrust::ExperimentEvent::Metadata::OrHash)
+        ).void
       end
       attr_writer :metadata
 
       # Metrics are numerical measurements tracking the execution of the code that
       # produced the experiment event. Use "start" and "end" to track the time span over
       # which the experiment event was produced
-      sig { returns(T.nilable(Braintrust::Models::ExperimentEvent::Metrics)) }
+      sig { returns(T.nilable(Braintrust::ExperimentEvent::Metrics)) }
       attr_reader :metrics
 
       sig do
         params(
-          metrics: T.nilable(T.any(Braintrust::Models::ExperimentEvent::Metrics, Braintrust::Internal::AnyHash))
-        )
-          .void
+          metrics: T.nilable(Braintrust::ExperimentEvent::Metrics::OrHash)
+        ).void
       end
       attr_writer :metrics
 
       # Indicates the event was copied from another object.
-      sig { returns(T.nilable(Braintrust::Models::ObjectReference)) }
+      sig { returns(T.nilable(Braintrust::ObjectReference)) }
       attr_reader :origin
 
-      sig { params(origin: T.nilable(T.any(Braintrust::Models::ObjectReference, Braintrust::Internal::AnyHash))).void }
+      sig do
+        params(origin: T.nilable(Braintrust::ObjectReference::OrHash)).void
+      end
       attr_writer :origin
 
       # The output of your application, including post-processing (an arbitrary, JSON
@@ -148,14 +150,13 @@ module Braintrust
       attr_accessor :scores
 
       # Human-identifying attributes of the span, such as name, type, etc.
-      sig { returns(T.nilable(Braintrust::Models::SpanAttributes)) }
+      sig { returns(T.nilable(Braintrust::SpanAttributes)) }
       attr_reader :span_attributes
 
       sig do
         params(
-          span_attributes: T.nilable(T.any(Braintrust::Models::SpanAttributes, Braintrust::Internal::AnyHash))
-        )
-          .void
+          span_attributes: T.nilable(Braintrust::SpanAttributes::OrHash)
+        ).void
       end
       attr_writer :span_attributes
 
@@ -178,21 +179,20 @@ module Braintrust
           project_id: String,
           root_span_id: String,
           span_id: String,
-          context: T.nilable(T.any(Braintrust::Models::ExperimentEvent::Context, Braintrust::Internal::AnyHash)),
+          context: T.nilable(Braintrust::ExperimentEvent::Context::OrHash),
           error: T.anything,
           expected: T.anything,
           input: T.anything,
           is_root: T.nilable(T::Boolean),
-          metadata: T.nilable(T.any(Braintrust::Models::ExperimentEvent::Metadata, Braintrust::Internal::AnyHash)),
-          metrics: T.nilable(T.any(Braintrust::Models::ExperimentEvent::Metrics, Braintrust::Internal::AnyHash)),
-          origin: T.nilable(T.any(Braintrust::Models::ObjectReference, Braintrust::Internal::AnyHash)),
+          metadata: T.nilable(Braintrust::ExperimentEvent::Metadata::OrHash),
+          metrics: T.nilable(Braintrust::ExperimentEvent::Metrics::OrHash),
+          origin: T.nilable(Braintrust::ObjectReference::OrHash),
           output: T.anything,
           scores: T.nilable(T::Hash[Symbol, T.nilable(Float)]),
-          span_attributes: T.nilable(T.any(Braintrust::Models::SpanAttributes, Braintrust::Internal::AnyHash)),
+          span_attributes: T.nilable(Braintrust::SpanAttributes::OrHash),
           span_parents: T.nilable(T::Array[String]),
           tags: T.nilable(T::Array[String])
-        )
-          .returns(T.attached_class)
+        ).returns(T.attached_class)
       end
       def self.new(
         # A unique identifier for the experiment event. If you don't provide one,
@@ -274,37 +274,42 @@ module Braintrust
         span_parents: nil,
         # A list of tags to log
         tags: nil
-      ); end
-      sig do
-        override
-          .returns(
-            {
-              id: String,
-              _xact_id: String,
-              created: Time,
-              experiment_id: String,
-              project_id: String,
-              root_span_id: String,
-              span_id: String,
-              context: T.nilable(Braintrust::Models::ExperimentEvent::Context),
-              error: T.anything,
-              expected: T.anything,
-              input: T.anything,
-              is_root: T.nilable(T::Boolean),
-              metadata: T.nilable(Braintrust::Models::ExperimentEvent::Metadata),
-              metrics: T.nilable(Braintrust::Models::ExperimentEvent::Metrics),
-              origin: T.nilable(Braintrust::Models::ObjectReference),
-              output: T.anything,
-              scores: T.nilable(T::Hash[Symbol, T.nilable(Float)]),
-              span_attributes: T.nilable(Braintrust::Models::SpanAttributes),
-              span_parents: T.nilable(T::Array[String]),
-              tags: T.nilable(T::Array[String])
-            }
-          )
+      )
       end
-      def to_hash; end
+
+      sig do
+        override.returns(
+          {
+            id: String,
+            _xact_id: String,
+            created: Time,
+            experiment_id: String,
+            project_id: String,
+            root_span_id: String,
+            span_id: String,
+            context: T.nilable(Braintrust::ExperimentEvent::Context),
+            error: T.anything,
+            expected: T.anything,
+            input: T.anything,
+            is_root: T.nilable(T::Boolean),
+            metadata: T.nilable(Braintrust::ExperimentEvent::Metadata),
+            metrics: T.nilable(Braintrust::ExperimentEvent::Metrics),
+            origin: T.nilable(Braintrust::ObjectReference),
+            output: T.anything,
+            scores: T.nilable(T::Hash[Symbol, T.nilable(Float)]),
+            span_attributes: T.nilable(Braintrust::SpanAttributes),
+            span_parents: T.nilable(T::Array[String]),
+            tags: T.nilable(T::Array[String])
+          }
+        )
+      end
+      def to_hash
+      end
 
       class Context < Braintrust::Internal::Type::BaseModel
+        OrHash =
+          T.type_alias { T.any(T.self_type, Braintrust::Internal::AnyHash) }
+
         # Name of the file in code where the experiment event was created
         sig { returns(T.nilable(String)) }
         attr_accessor :caller_filename
@@ -326,8 +331,7 @@ module Braintrust
             caller_filename: T.nilable(String),
             caller_functionname: T.nilable(String),
             caller_lineno: T.nilable(Integer)
-          )
-            .returns(T.attached_class)
+          ).returns(T.attached_class)
         end
         def self.new(
           # Name of the file in code where the experiment event was created
@@ -336,21 +340,26 @@ module Braintrust
           caller_functionname: nil,
           # Line of code where the experiment event was created
           caller_lineno: nil
-        ); end
-        sig do
-          override
-            .returns(
-              {
-                caller_filename: T.nilable(String),
-                caller_functionname: T.nilable(String),
-                caller_lineno: T.nilable(Integer)
-              }
-            )
+        )
         end
-        def to_hash; end
+
+        sig do
+          override.returns(
+            {
+              caller_filename: T.nilable(String),
+              caller_functionname: T.nilable(String),
+              caller_lineno: T.nilable(Integer)
+            }
+          )
+        end
+        def to_hash
+        end
       end
 
       class Metadata < Braintrust::Internal::Type::BaseModel
+        OrHash =
+          T.type_alias { T.any(T.self_type, Braintrust::Internal::AnyHash) }
+
         # The model used for this example
         sig { returns(T.nilable(String)) }
         attr_accessor :model
@@ -364,12 +373,18 @@ module Braintrust
         def self.new(
           # The model used for this example
           model: nil
-        ); end
-        sig { override.returns({model: T.nilable(String)}) }
-        def to_hash; end
+        )
+        end
+
+        sig { override.returns({ model: T.nilable(String) }) }
+        def to_hash
+        end
       end
 
       class Metrics < Braintrust::Internal::Type::BaseModel
+        OrHash =
+          T.type_alias { T.any(T.self_type, Braintrust::Internal::AnyHash) }
+
         # This metric is deprecated
         sig { returns(T.nilable(T.anything)) }
         attr_reader :caller_filename
@@ -428,8 +443,7 @@ module Braintrust
             prompt_tokens: T.nilable(Integer),
             start: T.nilable(Float),
             tokens: T.nilable(Integer)
-          )
-            .returns(T.attached_class)
+          ).returns(T.attached_class)
         end
         def self.new(
           # This metric is deprecated
@@ -452,23 +466,25 @@ module Braintrust
           start: nil,
           # The total number of tokens in the input and output of the experiment event.
           tokens: nil
-        ); end
-        sig do
-          override
-            .returns(
-              {
-                caller_filename: T.anything,
-                caller_functionname: T.anything,
-                caller_lineno: T.anything,
-                completion_tokens: T.nilable(Integer),
-                end_: T.nilable(Float),
-                prompt_tokens: T.nilable(Integer),
-                start: T.nilable(Float),
-                tokens: T.nilable(Integer)
-              }
-            )
+        )
         end
-        def to_hash; end
+
+        sig do
+          override.returns(
+            {
+              caller_filename: T.anything,
+              caller_functionname: T.anything,
+              caller_lineno: T.anything,
+              completion_tokens: T.nilable(Integer),
+              end_: T.nilable(Float),
+              prompt_tokens: T.nilable(Integer),
+              start: T.nilable(Float),
+              tokens: T.nilable(Integer)
+            }
+          )
+        end
+        def to_hash
+        end
       end
     end
   end

@@ -8,12 +8,12 @@ module Braintrust
         ?description: String?,
         ?post_message: bool?,
         ?request_options: Braintrust::request_opts
-      ) -> Braintrust::Models::SpanIFrame
+      ) -> Braintrust::SpanIFrame
 
       def retrieve: (
         String span_iframe_id,
         ?request_options: Braintrust::request_opts
-      ) -> Braintrust::Models::SpanIFrame
+      ) -> Braintrust::SpanIFrame
 
       def update: (
         String span_iframe_id,
@@ -22,7 +22,7 @@ module Braintrust
         ?post_message: bool?,
         ?url: String?,
         ?request_options: Braintrust::request_opts
-      ) -> Braintrust::Models::SpanIFrame
+      ) -> Braintrust::SpanIFrame
 
       def list: (
         ?ending_before: String,
@@ -32,12 +32,12 @@ module Braintrust
         ?span_iframe_name: String,
         ?starting_after: String,
         ?request_options: Braintrust::request_opts
-      ) -> Braintrust::Internal::ListObjects[Braintrust::Models::SpanIFrame]
+      ) -> Braintrust::Internal::ListObjects[Braintrust::SpanIFrame]
 
       def delete: (
         String span_iframe_id,
         ?request_options: Braintrust::request_opts
-      ) -> Braintrust::Models::SpanIFrame
+      ) -> Braintrust::SpanIFrame
 
       def replace: (
         name: String,
@@ -46,7 +46,7 @@ module Braintrust
         ?description: String?,
         ?post_message: bool?,
         ?request_options: Braintrust::request_opts
-      ) -> Braintrust::Models::SpanIFrame
+      ) -> Braintrust::SpanIFrame
 
       def initialize: (client: Braintrust::Client) -> void
     end

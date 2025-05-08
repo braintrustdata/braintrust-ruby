@@ -3,6 +3,9 @@
 module Braintrust
   module Models
     class OnlineScoreConfig < Braintrust::Internal::Type::BaseModel
+      OrHash =
+        T.type_alias { T.any(T.self_type, Braintrust::Internal::AnyHash) }
+
       # The sampling rate for online scoring
       sig { returns(Float) }
       attr_accessor :sampling_rate
@@ -12,8 +15,8 @@ module Braintrust
         returns(
           T::Array[
             T.any(
-              Braintrust::Models::OnlineScoreConfig::Scorer::Function,
-              Braintrust::Models::OnlineScoreConfig::Scorer::Global
+              Braintrust::OnlineScoreConfig::Scorer::Function,
+              Braintrust::OnlineScoreConfig::Scorer::Global
             )
           ]
         )
@@ -31,17 +34,16 @@ module Braintrust
       sig do
         params(
           sampling_rate: Float,
-          scorers: T::Array[
-            T.any(
-              Braintrust::Models::OnlineScoreConfig::Scorer::Function,
-              Braintrust::Internal::AnyHash,
-              Braintrust::Models::OnlineScoreConfig::Scorer::Global
-            )
-          ],
+          scorers:
+            T::Array[
+              T.any(
+                Braintrust::OnlineScoreConfig::Scorer::Function::OrHash,
+                Braintrust::OnlineScoreConfig::Scorer::Global::OrHash
+              )
+            ],
           apply_to_root_span: T.nilable(T::Boolean),
           apply_to_span_names: T.nilable(T::Array[String])
-        )
-          .returns(T.attached_class)
+        ).returns(T.attached_class)
       end
       def self.new(
         # The sampling rate for online scoring
@@ -52,101 +54,178 @@ module Braintrust
         apply_to_root_span: nil,
         # Trigger online scoring on any spans with a name in this list
         apply_to_span_names: nil
-      ); end
+      )
+      end
+
       sig do
-        override
-          .returns(
-            {
-              sampling_rate: Float,
-              scorers: T::Array[
+        override.returns(
+          {
+            sampling_rate: Float,
+            scorers:
+              T::Array[
                 T.any(
-                  Braintrust::Models::OnlineScoreConfig::Scorer::Function,
-                  Braintrust::Models::OnlineScoreConfig::Scorer::Global
+                  Braintrust::OnlineScoreConfig::Scorer::Function,
+                  Braintrust::OnlineScoreConfig::Scorer::Global
                 )
               ],
-              apply_to_root_span: T.nilable(T::Boolean),
-              apply_to_span_names: T.nilable(T::Array[String])
-            }
-          )
+            apply_to_root_span: T.nilable(T::Boolean),
+            apply_to_span_names: T.nilable(T::Array[String])
+          }
+        )
       end
-      def to_hash; end
+      def to_hash
+      end
 
       module Scorer
         extend Braintrust::Internal::Type::Union
 
+        Variants =
+          T.type_alias do
+            T.any(
+              Braintrust::OnlineScoreConfig::Scorer::Function,
+              Braintrust::OnlineScoreConfig::Scorer::Global
+            )
+          end
+
         class Function < Braintrust::Internal::Type::BaseModel
+          OrHash =
+            T.type_alias { T.any(T.self_type, Braintrust::Internal::AnyHash) }
+
           sig { returns(String) }
           attr_accessor :id
 
-          sig { returns(Braintrust::Models::OnlineScoreConfig::Scorer::Function::Type::OrSymbol) }
+          sig do
+            returns(
+              Braintrust::OnlineScoreConfig::Scorer::Function::Type::OrSymbol
+            )
+          end
           attr_accessor :type
 
           sig do
-            params(id: String, type: Braintrust::Models::OnlineScoreConfig::Scorer::Function::Type::OrSymbol)
-              .returns(T.attached_class)
+            params(
+              id: String,
+              type:
+                Braintrust::OnlineScoreConfig::Scorer::Function::Type::OrSymbol
+            ).returns(T.attached_class)
           end
-          def self.new(id:, type:); end
+          def self.new(id:, type:)
+          end
 
           sig do
-            override
-              .returns({id: String, type: Braintrust::Models::OnlineScoreConfig::Scorer::Function::Type::OrSymbol})
+            override.returns(
+              {
+                id: String,
+                type:
+                  Braintrust::OnlineScoreConfig::Scorer::Function::Type::OrSymbol
+              }
+            )
           end
-          def to_hash; end
+          def to_hash
+          end
 
           module Type
             extend Braintrust::Internal::Type::Enum
 
             TaggedSymbol =
-              T.type_alias { T.all(Symbol, Braintrust::Models::OnlineScoreConfig::Scorer::Function::Type) }
+              T.type_alias do
+                T.all(
+                  Symbol,
+                  Braintrust::OnlineScoreConfig::Scorer::Function::Type
+                )
+              end
             OrSymbol = T.type_alias { T.any(Symbol, String) }
 
-            FUNCTION = T.let(:function, Braintrust::Models::OnlineScoreConfig::Scorer::Function::Type::TaggedSymbol)
+            FUNCTION =
+              T.let(
+                :function,
+                Braintrust::OnlineScoreConfig::Scorer::Function::Type::TaggedSymbol
+              )
 
-            sig { override.returns(T::Array[Braintrust::Models::OnlineScoreConfig::Scorer::Function::Type::TaggedSymbol]) }
-            def self.values; end
+            sig do
+              override.returns(
+                T::Array[
+                  Braintrust::OnlineScoreConfig::Scorer::Function::Type::TaggedSymbol
+                ]
+              )
+            end
+            def self.values
+            end
           end
         end
 
         class Global < Braintrust::Internal::Type::BaseModel
+          OrHash =
+            T.type_alias { T.any(T.self_type, Braintrust::Internal::AnyHash) }
+
           sig { returns(String) }
           attr_accessor :name
 
-          sig { returns(Braintrust::Models::OnlineScoreConfig::Scorer::Global::Type::OrSymbol) }
+          sig do
+            returns(
+              Braintrust::OnlineScoreConfig::Scorer::Global::Type::OrSymbol
+            )
+          end
           attr_accessor :type
 
           sig do
-            params(name: String, type: Braintrust::Models::OnlineScoreConfig::Scorer::Global::Type::OrSymbol)
-              .returns(T.attached_class)
+            params(
+              name: String,
+              type:
+                Braintrust::OnlineScoreConfig::Scorer::Global::Type::OrSymbol
+            ).returns(T.attached_class)
           end
-          def self.new(name:, type:); end
+          def self.new(name:, type:)
+          end
 
           sig do
-            override
-              .returns({name: String, type: Braintrust::Models::OnlineScoreConfig::Scorer::Global::Type::OrSymbol})
+            override.returns(
+              {
+                name: String,
+                type:
+                  Braintrust::OnlineScoreConfig::Scorer::Global::Type::OrSymbol
+              }
+            )
           end
-          def to_hash; end
+          def to_hash
+          end
 
           module Type
             extend Braintrust::Internal::Type::Enum
 
             TaggedSymbol =
-              T.type_alias { T.all(Symbol, Braintrust::Models::OnlineScoreConfig::Scorer::Global::Type) }
+              T.type_alias do
+                T.all(
+                  Symbol,
+                  Braintrust::OnlineScoreConfig::Scorer::Global::Type
+                )
+              end
             OrSymbol = T.type_alias { T.any(Symbol, String) }
 
-            GLOBAL = T.let(:global, Braintrust::Models::OnlineScoreConfig::Scorer::Global::Type::TaggedSymbol)
+            GLOBAL =
+              T.let(
+                :global,
+                Braintrust::OnlineScoreConfig::Scorer::Global::Type::TaggedSymbol
+              )
 
-            sig { override.returns(T::Array[Braintrust::Models::OnlineScoreConfig::Scorer::Global::Type::TaggedSymbol]) }
-            def self.values; end
+            sig do
+              override.returns(
+                T::Array[
+                  Braintrust::OnlineScoreConfig::Scorer::Global::Type::TaggedSymbol
+                ]
+              )
+            end
+            def self.values
+            end
           end
         end
 
         sig do
-          override
-            .returns(
-              [Braintrust::Models::OnlineScoreConfig::Scorer::Function, Braintrust::Models::OnlineScoreConfig::Scorer::Global]
-            )
+          override.returns(
+            T::Array[Braintrust::OnlineScoreConfig::Scorer::Variants]
+          )
         end
-        def self.variants; end
+        def self.variants
+        end
       end
     end
   end

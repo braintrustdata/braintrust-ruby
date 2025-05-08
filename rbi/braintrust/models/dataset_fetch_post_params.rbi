@@ -6,6 +6,9 @@ module Braintrust
       extend Braintrust::Internal::Type::RequestParameters::Converter
       include Braintrust::Internal::Type::RequestParameters
 
+      OrHash =
+        T.type_alias { T.any(T.self_type, Braintrust::Internal::AnyHash) }
+
       # An opaque string to be used as a cursor for the next page of results, in order
       # from latest to earliest.
       #
@@ -72,9 +75,8 @@ module Braintrust
           max_root_span_id: T.nilable(String),
           max_xact_id: T.nilable(String),
           version: T.nilable(String),
-          request_options: T.any(Braintrust::RequestOptions, Braintrust::Internal::AnyHash)
-        )
-          .returns(T.attached_class)
+          request_options: Braintrust::RequestOptions::OrHash
+        ).returns(T.attached_class)
       end
       def self.new(
         # An opaque string to be used as a cursor for the next page of results, in order
@@ -127,21 +129,23 @@ module Braintrust
         # that exact fetch.
         version: nil,
         request_options: {}
-      ); end
-      sig do
-        override
-          .returns(
-            {
-              cursor: T.nilable(String),
-              limit: T.nilable(Integer),
-              max_root_span_id: T.nilable(String),
-              max_xact_id: T.nilable(String),
-              version: T.nilable(String),
-              request_options: Braintrust::RequestOptions
-            }
-          )
+      )
       end
-      def to_hash; end
+
+      sig do
+        override.returns(
+          {
+            cursor: T.nilable(String),
+            limit: T.nilable(Integer),
+            max_root_span_id: T.nilable(String),
+            max_xact_id: T.nilable(String),
+            version: T.nilable(String),
+            request_options: Braintrust::RequestOptions
+          }
+        )
+      end
+      def to_hash
+      end
     end
   end
 end

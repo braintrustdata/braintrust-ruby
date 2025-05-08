@@ -35,8 +35,8 @@ module Braintrust
 
       # @!attribute settings
       #
-      #   @return [Braintrust::Models::ProjectSettings, nil]
-      optional :settings, -> { Braintrust::Models::ProjectSettings }, nil?: true
+      #   @return [Braintrust::ProjectSettings, nil]
+      optional :settings, -> { Braintrust::ProjectSettings }, nil?: true
 
       # @!attribute user_id
       #   Identifies the user who created the project
@@ -55,7 +55,7 @@ module Braintrust
       #
       #   @param deleted_at [Time, nil] Date of project deletion, or null if the project is still active
       #
-      #   @param settings [Braintrust::Models::ProjectSettings, nil]
+      #   @param settings [Braintrust::ProjectSettings, nil]
       #
       #   @param user_id [String, nil] Identifies the user who created the project
     end

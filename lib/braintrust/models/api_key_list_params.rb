@@ -28,7 +28,7 @@ module Braintrust
       #   IDs, include the query param multiple times
       #
       #   @return [String, Array<String>, nil]
-      optional :ids, union: -> { Braintrust::Models::APIKeyListParams::IDs }
+      optional :ids, union: -> { Braintrust::APIKeyListParams::IDs }
 
       # @!attribute limit
       #   Limit the number of objects to return
@@ -58,16 +58,15 @@ module Braintrust
       #
       #   @param api_key_name [String] Name of the api_key to search for
       #
-      #   @param ending_before [String] Pagination cursor id. ...
+      #   @param ending_before [String] Pagination cursor id.
       #
       #   @param ids [String, Array<String>] Filter search results to a particular set of object IDs. To specify a list of ID
-      #   ...
       #
       #   @param limit [Integer, nil] Limit the number of objects to return
       #
       #   @param org_name [String] Filter search results to within a particular organization
       #
-      #   @param starting_after [String] Pagination cursor id. ...
+      #   @param starting_after [String] Pagination cursor id.
       #
       #   @param request_options [Braintrust::RequestOptions, Hash{Symbol=>Object}]
 
@@ -78,7 +77,7 @@ module Braintrust
 
         variant String
 
-        variant -> { Braintrust::Models::APIKeyListParams::IDs::StringArray }
+        variant -> { Braintrust::APIKeyListParams::IDs::StringArray }
 
         # @!method self.variants
         #   @return [Array(String, Array<String>)]

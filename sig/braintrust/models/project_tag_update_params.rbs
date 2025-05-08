@@ -20,8 +20,6 @@ module Braintrust
         ?name: String?,
         ?request_options: Braintrust::request_opts
       ) -> void
-
-      def to_hash: -> Braintrust::Models::project_tag_update_params
     end
   end
 end

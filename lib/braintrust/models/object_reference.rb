@@ -24,8 +24,8 @@ module Braintrust
       # @!attribute object_type
       #   Type of the object the event is originating from.
       #
-      #   @return [Symbol, Braintrust::Models::ObjectReference::ObjectType]
-      required :object_type, enum: -> { Braintrust::Models::ObjectReference::ObjectType }
+      #   @return [Symbol, Braintrust::ObjectReference::ObjectType]
+      required :object_type, enum: -> { Braintrust::ObjectReference::ObjectType }
 
       # @!attribute created
       #   Created timestamp of the original event. Used to help sort in the UI
@@ -42,13 +42,13 @@ module Braintrust
       #
       #   @param object_id_ [String] ID of the object the event is originating from.
       #
-      #   @param object_type [Symbol, Braintrust::Models::ObjectReference::ObjectType] Type of the object the event is originating from.
+      #   @param object_type [Symbol, Braintrust::ObjectReference::ObjectType] Type of the object the event is originating from.
       #
       #   @param created [String, nil] Created timestamp of the original event. Used to help sort in the UI
 
       # Type of the object the event is originating from.
       #
-      # @see Braintrust::Models::ObjectReference#object_type
+      # @see Braintrust::ObjectReference#object_type
       module ObjectType
         extend Braintrust::Internal::Type::Enum
 

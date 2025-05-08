@@ -3,6 +3,9 @@
 module Braintrust
   module Models
     class AISecret < Braintrust::Internal::Type::BaseModel
+      OrHash =
+        T.type_alias { T.any(T.self_type, Braintrust::Internal::AnyHash) }
+
       # Unique identifier for the AI secret
       sig { returns(String) }
       attr_accessor :id
@@ -42,8 +45,7 @@ module Braintrust
           preview_secret: T.nilable(String),
           type: T.nilable(String),
           updated_at: T.nilable(Time)
-        )
-          .returns(T.attached_class)
+        ).returns(T.attached_class)
       end
       def self.new(
         # Unique identifier for the AI secret
@@ -59,23 +61,25 @@ module Braintrust
         type: nil,
         # Date of last AI secret update
         updated_at: nil
-      ); end
-      sig do
-        override
-          .returns(
-            {
-              id: String,
-              name: String,
-              org_id: String,
-              created: T.nilable(Time),
-              metadata: T.nilable(T::Hash[Symbol, T.nilable(T.anything)]),
-              preview_secret: T.nilable(String),
-              type: T.nilable(String),
-              updated_at: T.nilable(Time)
-            }
-          )
+      )
       end
-      def to_hash; end
+
+      sig do
+        override.returns(
+          {
+            id: String,
+            name: String,
+            org_id: String,
+            created: T.nilable(Time),
+            metadata: T.nilable(T::Hash[Symbol, T.nilable(T.anything)]),
+            preview_secret: T.nilable(String),
+            type: T.nilable(String),
+            updated_at: T.nilable(Time)
+          }
+        )
+      end
+      def to_hash
+      end
     end
   end
 end

@@ -6,6 +6,9 @@ module Braintrust
       extend Braintrust::Internal::Type::RequestParameters::Converter
       include Braintrust::Internal::Type::RequestParameters
 
+      OrHash =
+        T.type_alias { T.any(T.self_type, Braintrust::Internal::AnyHash) }
+
       sig { returns(T.nilable(T::Hash[Symbol, T.nilable(T.anything)])) }
       attr_accessor :metadata
 
@@ -25,9 +28,8 @@ module Braintrust
           name: T.nilable(String),
           secret: T.nilable(String),
           type: T.nilable(String),
-          request_options: T.any(Braintrust::RequestOptions, Braintrust::Internal::AnyHash)
-        )
-          .returns(T.attached_class)
+          request_options: Braintrust::RequestOptions::OrHash
+        ).returns(T.attached_class)
       end
       def self.new(
         metadata: nil,
@@ -36,20 +38,22 @@ module Braintrust
         secret: nil,
         type: nil,
         request_options: {}
-      ); end
-      sig do
-        override
-          .returns(
-            {
-              metadata: T.nilable(T::Hash[Symbol, T.nilable(T.anything)]),
-              name: T.nilable(String),
-              secret: T.nilable(String),
-              type: T.nilable(String),
-              request_options: Braintrust::RequestOptions
-            }
-          )
+      )
       end
-      def to_hash; end
+
+      sig do
+        override.returns(
+          {
+            metadata: T.nilable(T::Hash[Symbol, T.nilable(T.anything)]),
+            name: T.nilable(String),
+            secret: T.nilable(String),
+            type: T.nilable(String),
+            request_options: Braintrust::RequestOptions
+          }
+        )
+      end
+      def to_hash
+      end
     end
   end
 end

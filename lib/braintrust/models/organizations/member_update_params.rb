@@ -11,10 +11,8 @@ module Braintrust
         # @!attribute invite_users
         #   Users to invite to the organization
         #
-        #   @return [Braintrust::Models::Organizations::MemberUpdateParams::InviteUsers, nil]
-        optional :invite_users,
-                 -> { Braintrust::Models::Organizations::MemberUpdateParams::InviteUsers },
-                 nil?: true
+        #   @return [Braintrust::Organizations::MemberUpdateParams::InviteUsers, nil]
+        optional :invite_users, -> { Braintrust::Organizations::MemberUpdateParams::InviteUsers }, nil?: true
 
         # @!attribute org_id
         #   For nearly all users, this parameter should be unnecessary. But in the rare case
@@ -37,24 +35,20 @@ module Braintrust
         # @!attribute remove_users
         #   Users to remove from the organization
         #
-        #   @return [Braintrust::Models::Organizations::MemberUpdateParams::RemoveUsers, nil]
-        optional :remove_users,
-                 -> { Braintrust::Models::Organizations::MemberUpdateParams::RemoveUsers },
-                 nil?: true
+        #   @return [Braintrust::Organizations::MemberUpdateParams::RemoveUsers, nil]
+        optional :remove_users, -> { Braintrust::Organizations::MemberUpdateParams::RemoveUsers }, nil?: true
 
         # @!method initialize(invite_users: nil, org_id: nil, org_name: nil, remove_users: nil, request_options: {})
         #   Some parameter documentations has been truncated, see
         #   {Braintrust::Models::Organizations::MemberUpdateParams} for more details.
         #
-        #   @param invite_users [Braintrust::Models::Organizations::MemberUpdateParams::InviteUsers, nil] Users to invite to the organization
+        #   @param invite_users [Braintrust::Organizations::MemberUpdateParams::InviteUsers, nil] Users to invite to the organization
         #
         #   @param org_id [String, nil] For nearly all users, this parameter should be unnecessary. But in the rare case
-        #   ...
         #
         #   @param org_name [String, nil] For nearly all users, this parameter should be unnecessary. But in the rare case
-        #   ...
         #
-        #   @param remove_users [Braintrust::Models::Organizations::MemberUpdateParams::RemoveUsers, nil] Users to remove from the organization
+        #   @param remove_users [Braintrust::Organizations::MemberUpdateParams::RemoveUsers, nil] Users to remove from the organization
         #
         #   @param request_options [Braintrust::RequestOptions, Hash{Symbol=>Object}]
 

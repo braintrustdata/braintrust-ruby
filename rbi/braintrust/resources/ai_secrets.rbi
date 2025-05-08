@@ -12,9 +12,8 @@ module Braintrust
           org_name: T.nilable(String),
           secret: T.nilable(String),
           type: T.nilable(String),
-          request_options: Braintrust::RequestOpts
-        )
-          .returns(Braintrust::Models::AISecret)
+          request_options: Braintrust::RequestOptions::OrHash
+        ).returns(Braintrust::AISecret)
       end
       def create(
         # Name of the AI secret
@@ -29,17 +28,23 @@ module Braintrust
         secret: nil,
         type: nil,
         request_options: {}
-      ); end
+      )
+      end
+
       # Get an ai_secret object by its id
       sig do
-        params(ai_secret_id: String, request_options: Braintrust::RequestOpts)
-          .returns(Braintrust::Models::AISecret)
+        params(
+          ai_secret_id: String,
+          request_options: Braintrust::RequestOptions::OrHash
+        ).returns(Braintrust::AISecret)
       end
       def retrieve(
         # AiSecret id
         ai_secret_id,
         request_options: {}
-      ); end
+      )
+      end
+
       # Partially update an ai_secret object. Specify the fields to update in the
       # payload. Any object-type fields will be deep-merged with existing content.
       # Currently we do not support removing fields or setting them to null.
@@ -50,9 +55,8 @@ module Braintrust
           name: T.nilable(String),
           secret: T.nilable(String),
           type: T.nilable(String),
-          request_options: Braintrust::RequestOpts
-        )
-          .returns(Braintrust::Models::AISecret)
+          request_options: Braintrust::RequestOptions::OrHash
+        ).returns(Braintrust::AISecret)
       end
       def update(
         # AiSecret id
@@ -63,7 +67,9 @@ module Braintrust
         secret: nil,
         type: nil,
         request_options: {}
-      ); end
+      )
+      end
+
       # List out all ai_secrets. The ai_secrets are sorted by creation date, with the
       # most recently-created ai_secrets coming first
       sig do
@@ -75,9 +81,8 @@ module Braintrust
           limit: T.nilable(Integer),
           org_name: String,
           starting_after: String,
-          request_options: Braintrust::RequestOpts
-        )
-          .returns(Braintrust::Internal::ListObjects[Braintrust::Models::AISecret])
+          request_options: Braintrust::RequestOptions::OrHash
+        ).returns(Braintrust::Internal::ListObjects[Braintrust::AISecret])
       end
       def list(
         # Name of the ai_secret to search for
@@ -103,21 +108,30 @@ module Braintrust
         # `starting_after` and `ending_before`
         starting_after: nil,
         request_options: {}
-      ); end
+      )
+      end
+
       # Delete an ai_secret object by its id
       sig do
-        params(ai_secret_id: String, request_options: Braintrust::RequestOpts)
-          .returns(Braintrust::Models::AISecret)
+        params(
+          ai_secret_id: String,
+          request_options: Braintrust::RequestOptions::OrHash
+        ).returns(Braintrust::AISecret)
       end
       def delete(
         # AiSecret id
         ai_secret_id,
         request_options: {}
-      ); end
+      )
+      end
+
       # Delete a single ai_secret
       sig do
-        params(name: String, org_name: T.nilable(String), request_options: Braintrust::RequestOpts)
-          .returns(Braintrust::Models::AISecret)
+        params(
+          name: String,
+          org_name: T.nilable(String),
+          request_options: Braintrust::RequestOptions::OrHash
+        ).returns(Braintrust::AISecret)
       end
       def find_and_delete(
         # Name of the AI secret
@@ -127,7 +141,9 @@ module Braintrust
         # the organization the AI Secret belongs in.
         org_name: nil,
         request_options: {}
-      ); end
+      )
+      end
+
       # Create or replace ai_secret. If there is an existing ai_secret with the same
       # name as the one specified in the request, will replace the existing ai_secret
       # with the provided fields
@@ -138,9 +154,8 @@ module Braintrust
           org_name: T.nilable(String),
           secret: T.nilable(String),
           type: T.nilable(String),
-          request_options: Braintrust::RequestOpts
-        )
-          .returns(Braintrust::Models::AISecret)
+          request_options: Braintrust::RequestOptions::OrHash
+        ).returns(Braintrust::AISecret)
       end
       def replace(
         # Name of the AI secret
@@ -155,10 +170,13 @@ module Braintrust
         secret: nil,
         type: nil,
         request_options: {}
-      ); end
+      )
+      end
+
       # @api private
       sig { params(client: Braintrust::Client).returns(T.attached_class) }
-      def self.new(client:); end
+      def self.new(client:)
+      end
     end
   end
 end

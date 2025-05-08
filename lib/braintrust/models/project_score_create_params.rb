@@ -22,19 +22,19 @@ module Braintrust
       # @!attribute score_type
       #   The type of the configured score
       #
-      #   @return [Symbol, Braintrust::Models::ProjectScoreType]
-      required :score_type, enum: -> { Braintrust::Models::ProjectScoreType }
+      #   @return [Symbol, Braintrust::ProjectScoreType]
+      required :score_type, enum: -> { Braintrust::ProjectScoreType }
 
       # @!attribute categories
       #   For categorical-type project scores, the list of all categories
       #
-      #   @return [Array<Braintrust::Models::ProjectScoreCategory>, Hash{Symbol=>Float}, Array<String>, nil]
-      optional :categories, union: -> { Braintrust::Models::ProjectScoreCreateParams::Categories }, nil?: true
+      #   @return [Array<Braintrust::ProjectScoreCategory>, Hash{Symbol=>Float}, Array<String>, nil]
+      optional :categories, union: -> { Braintrust::ProjectScoreCreateParams::Categories }, nil?: true
 
       # @!attribute config
       #
-      #   @return [Braintrust::Models::ProjectScoreConfig, nil]
-      optional :config, -> { Braintrust::Models::ProjectScoreConfig }, nil?: true
+      #   @return [Braintrust::ProjectScoreConfig, nil]
+      optional :config, -> { Braintrust::ProjectScoreConfig }, nil?: true
 
       # @!attribute description
       #   Textual description of the project score
@@ -47,11 +47,11 @@ module Braintrust
       #
       #   @param project_id [String] Unique identifier for the project that the project score belongs under
       #
-      #   @param score_type [Symbol, Braintrust::Models::ProjectScoreType] The type of the configured score
+      #   @param score_type [Symbol, Braintrust::ProjectScoreType] The type of the configured score
       #
-      #   @param categories [Array<Braintrust::Models::ProjectScoreCategory>, Hash{Symbol=>Float}, Array<String>, nil] For categorical-type project scores, the list of all categories
+      #   @param categories [Array<Braintrust::ProjectScoreCategory>, Hash{Symbol=>Float}, Array<String>, nil] For categorical-type project scores, the list of all categories
       #
-      #   @param config [Braintrust::Models::ProjectScoreConfig, nil]
+      #   @param config [Braintrust::ProjectScoreConfig, nil]
       #
       #   @param description [String, nil] Textual description of the project score
       #
@@ -62,20 +62,21 @@ module Braintrust
         extend Braintrust::Internal::Type::Union
 
         # For categorical-type project scores, the list of all categories
-        variant -> { Braintrust::Models::ProjectScoreCreateParams::Categories::ProjectScoreCategoryArray }
+        variant -> { Braintrust::ProjectScoreCreateParams::Categories::ProjectScoreCategoryArray }
 
         # For weighted-type project scores, the weights of each score
-        variant -> { Braintrust::Models::ProjectScoreCreateParams::Categories::FloatMap }
+        variant -> { Braintrust::ProjectScoreCreateParams::Categories::FloatMap }
 
         # For minimum-type project scores, the list of included scores
-        variant -> { Braintrust::Models::ProjectScoreCreateParams::Categories::StringArray }
+        variant -> { Braintrust::ProjectScoreCreateParams::Categories::StringArray }
 
         # @!method self.variants
-        #   @return [Array(Array<Braintrust::Models::ProjectScoreCategory>, Hash{Symbol=>Float}, Array<String>)]
+        #   @return [Array(Array<Braintrust::ProjectScoreCategory>, Hash{Symbol=>Float}, Array<String>)]
 
         # @type [Braintrust::Internal::Type::Converter]
-        ProjectScoreCategoryArray =
-          Braintrust::Internal::Type::ArrayOf[-> { Braintrust::Models::ProjectScoreCategory }]
+        ProjectScoreCategoryArray = Braintrust::Internal::Type::ArrayOf[-> {
+          Braintrust::ProjectScoreCategory
+        }]
 
         # @type [Braintrust::Internal::Type::Converter]
         FloatMap = Braintrust::Internal::Type::HashOf[Float]

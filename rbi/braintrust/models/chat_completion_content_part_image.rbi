@@ -3,96 +3,156 @@
 module Braintrust
   module Models
     class ChatCompletionContentPartImage < Braintrust::Internal::Type::BaseModel
-      sig { returns(Braintrust::Models::ChatCompletionContentPartImage::ImageURL) }
+      OrHash =
+        T.type_alias { T.any(T.self_type, Braintrust::Internal::AnyHash) }
+
+      sig { returns(Braintrust::ChatCompletionContentPartImage::ImageURL) }
       attr_reader :image_url
 
       sig do
         params(
-          image_url: T.any(Braintrust::Models::ChatCompletionContentPartImage::ImageURL, Braintrust::Internal::AnyHash)
-        )
-          .void
+          image_url:
+            Braintrust::ChatCompletionContentPartImage::ImageURL::OrHash
+        ).void
       end
       attr_writer :image_url
 
-      sig { returns(Braintrust::Models::ChatCompletionContentPartImage::Type::OrSymbol) }
+      sig do
+        returns(Braintrust::ChatCompletionContentPartImage::Type::OrSymbol)
+      end
       attr_accessor :type
 
       sig do
         params(
-          image_url: T.any(Braintrust::Models::ChatCompletionContentPartImage::ImageURL, Braintrust::Internal::AnyHash),
-          type: Braintrust::Models::ChatCompletionContentPartImage::Type::OrSymbol
-        )
-          .returns(T.attached_class)
+          image_url:
+            Braintrust::ChatCompletionContentPartImage::ImageURL::OrHash,
+          type: Braintrust::ChatCompletionContentPartImage::Type::OrSymbol
+        ).returns(T.attached_class)
       end
-      def self.new(image_url:, type:); end
+      def self.new(image_url:, type:)
+      end
 
       sig do
-        override
-          .returns(
-            {
-              image_url: Braintrust::Models::ChatCompletionContentPartImage::ImageURL,
-              type: Braintrust::Models::ChatCompletionContentPartImage::Type::OrSymbol
-            }
-          )
+        override.returns(
+          {
+            image_url: Braintrust::ChatCompletionContentPartImage::ImageURL,
+            type: Braintrust::ChatCompletionContentPartImage::Type::OrSymbol
+          }
+        )
       end
-      def to_hash; end
+      def to_hash
+      end
 
       class ImageURL < Braintrust::Internal::Type::BaseModel
+        OrHash =
+          T.type_alias { T.any(T.self_type, Braintrust::Internal::AnyHash) }
+
         sig { returns(String) }
         attr_accessor :url
 
-        sig { returns(T.nilable(Braintrust::Models::ChatCompletionContentPartImage::ImageURL::Detail::OrSymbol)) }
+        sig do
+          returns(
+            T.nilable(
+              Braintrust::ChatCompletionContentPartImage::ImageURL::Detail::OrSymbol
+            )
+          )
+        end
         attr_reader :detail
 
-        sig { params(detail: Braintrust::Models::ChatCompletionContentPartImage::ImageURL::Detail::OrSymbol).void }
+        sig do
+          params(
+            detail:
+              Braintrust::ChatCompletionContentPartImage::ImageURL::Detail::OrSymbol
+          ).void
+        end
         attr_writer :detail
 
         sig do
           params(
             url: String,
-            detail: Braintrust::Models::ChatCompletionContentPartImage::ImageURL::Detail::OrSymbol
-          )
-            .returns(T.attached_class)
+            detail:
+              Braintrust::ChatCompletionContentPartImage::ImageURL::Detail::OrSymbol
+          ).returns(T.attached_class)
         end
-        def self.new(url:, detail: nil); end
+        def self.new(url:, detail: nil)
+        end
 
         sig do
-          override
-            .returns(
-              {url: String, detail: Braintrust::Models::ChatCompletionContentPartImage::ImageURL::Detail::OrSymbol}
-            )
+          override.returns(
+            {
+              url: String,
+              detail:
+                Braintrust::ChatCompletionContentPartImage::ImageURL::Detail::OrSymbol
+            }
+          )
         end
-        def to_hash; end
+        def to_hash
+        end
 
         module Detail
           extend Braintrust::Internal::Type::Enum
 
           TaggedSymbol =
-            T.type_alias { T.all(Symbol, Braintrust::Models::ChatCompletionContentPartImage::ImageURL::Detail) }
+            T.type_alias do
+              T.all(
+                Symbol,
+                Braintrust::ChatCompletionContentPartImage::ImageURL::Detail
+              )
+            end
           OrSymbol = T.type_alias { T.any(Symbol, String) }
 
-          AUTO = T.let(:auto, Braintrust::Models::ChatCompletionContentPartImage::ImageURL::Detail::TaggedSymbol)
-          LOW = T.let(:low, Braintrust::Models::ChatCompletionContentPartImage::ImageURL::Detail::TaggedSymbol)
-          HIGH = T.let(:high, Braintrust::Models::ChatCompletionContentPartImage::ImageURL::Detail::TaggedSymbol)
+          AUTO =
+            T.let(
+              :auto,
+              Braintrust::ChatCompletionContentPartImage::ImageURL::Detail::TaggedSymbol
+            )
+          LOW =
+            T.let(
+              :low,
+              Braintrust::ChatCompletionContentPartImage::ImageURL::Detail::TaggedSymbol
+            )
+          HIGH =
+            T.let(
+              :high,
+              Braintrust::ChatCompletionContentPartImage::ImageURL::Detail::TaggedSymbol
+            )
 
           sig do
-            override
-              .returns(T::Array[Braintrust::Models::ChatCompletionContentPartImage::ImageURL::Detail::TaggedSymbol])
+            override.returns(
+              T::Array[
+                Braintrust::ChatCompletionContentPartImage::ImageURL::Detail::TaggedSymbol
+              ]
+            )
           end
-          def self.values; end
+          def self.values
+          end
         end
       end
 
       module Type
         extend Braintrust::Internal::Type::Enum
 
-        TaggedSymbol = T.type_alias { T.all(Symbol, Braintrust::Models::ChatCompletionContentPartImage::Type) }
+        TaggedSymbol =
+          T.type_alias do
+            T.all(Symbol, Braintrust::ChatCompletionContentPartImage::Type)
+          end
         OrSymbol = T.type_alias { T.any(Symbol, String) }
 
-        IMAGE_URL = T.let(:image_url, Braintrust::Models::ChatCompletionContentPartImage::Type::TaggedSymbol)
+        IMAGE_URL =
+          T.let(
+            :image_url,
+            Braintrust::ChatCompletionContentPartImage::Type::TaggedSymbol
+          )
 
-        sig { override.returns(T::Array[Braintrust::Models::ChatCompletionContentPartImage::Type::TaggedSymbol]) }
-        def self.values; end
+        sig do
+          override.returns(
+            T::Array[
+              Braintrust::ChatCompletionContentPartImage::Type::TaggedSymbol
+            ]
+          )
+        end
+        def self.values
+        end
       end
     end
   end

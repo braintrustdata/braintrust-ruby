@@ -8,14 +8,18 @@ module Braintrust
 
       # Get an organization object by its id
       sig do
-        params(organization_id: String, request_options: Braintrust::RequestOpts)
-          .returns(Braintrust::Models::Organization)
+        params(
+          organization_id: String,
+          request_options: Braintrust::RequestOptions::OrHash
+        ).returns(Braintrust::Organization)
       end
       def retrieve(
         # Organization id
         organization_id,
         request_options: {}
-      ); end
+      )
+      end
+
       # Partially update an organization object. Specify the fields to update in the
       # payload. Any object-type fields will be deep-merged with existing content.
       # Currently we do not support removing fields or setting them to null.
@@ -27,9 +31,8 @@ module Braintrust
           name: T.nilable(String),
           proxy_url: T.nilable(String),
           realtime_url: T.nilable(String),
-          request_options: Braintrust::RequestOpts
-        )
-          .returns(Braintrust::Models::Organization)
+          request_options: Braintrust::RequestOptions::OrHash
+        ).returns(Braintrust::Organization)
       end
       def update(
         # Organization id
@@ -41,7 +44,9 @@ module Braintrust
         proxy_url: nil,
         realtime_url: nil,
         request_options: {}
-      ); end
+      )
+      end
+
       # List out all organizations. The organizations are sorted by creation date, with
       # the most recently-created organizations coming first
       sig do
@@ -51,9 +56,8 @@ module Braintrust
           limit: T.nilable(Integer),
           org_name: String,
           starting_after: String,
-          request_options: Braintrust::RequestOpts
-        )
-          .returns(Braintrust::Internal::ListObjects[Braintrust::Models::Organization])
+          request_options: Braintrust::RequestOptions::OrHash
+        ).returns(Braintrust::Internal::ListObjects[Braintrust::Organization])
       end
       def list(
         # Pagination cursor id.
@@ -76,20 +80,27 @@ module Braintrust
         # `starting_after` and `ending_before`
         starting_after: nil,
         request_options: {}
-      ); end
+      )
+      end
+
       # Delete an organization object by its id
       sig do
-        params(organization_id: String, request_options: Braintrust::RequestOpts)
-          .returns(Braintrust::Models::Organization)
+        params(
+          organization_id: String,
+          request_options: Braintrust::RequestOptions::OrHash
+        ).returns(Braintrust::Organization)
       end
       def delete(
         # Organization id
         organization_id,
         request_options: {}
-      ); end
+      )
+      end
+
       # @api private
       sig { params(client: Braintrust::Client).returns(T.attached_class) }
-      def self.new(client:); end
+      def self.new(client:)
+      end
     end
   end
 end

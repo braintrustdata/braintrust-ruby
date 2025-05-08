@@ -3,6 +3,9 @@
 module Braintrust
   module Models
     class SummarizeExperimentResponse < Braintrust::Internal::Type::BaseModel
+      OrHash =
+        T.type_alias { T.any(T.self_type, Braintrust::Internal::AnyHash) }
+
       # Name of the experiment
       sig { returns(String) }
       attr_accessor :experiment_name
@@ -24,11 +27,11 @@ module Braintrust
       attr_accessor :comparison_experiment_name
 
       # Summary of the experiment's metrics
-      sig { returns(T.nilable(T::Hash[Symbol, Braintrust::Models::MetricSummary])) }
+      sig { returns(T.nilable(T::Hash[Symbol, Braintrust::MetricSummary])) }
       attr_accessor :metrics
 
       # Summary of the experiment's scores
-      sig { returns(T.nilable(T::Hash[Symbol, Braintrust::Models::ScoreSummary])) }
+      sig { returns(T.nilable(T::Hash[Symbol, Braintrust::ScoreSummary])) }
       attr_accessor :scores
 
       # Summary of an experiment
@@ -39,10 +42,10 @@ module Braintrust
           project_name: String,
           project_url: String,
           comparison_experiment_name: T.nilable(String),
-          metrics: T.nilable(T::Hash[Symbol, T.any(Braintrust::Models::MetricSummary, Braintrust::Internal::AnyHash)]),
-          scores: T.nilable(T::Hash[Symbol, T.any(Braintrust::Models::ScoreSummary, Braintrust::Internal::AnyHash)])
-        )
-          .returns(T.attached_class)
+          metrics:
+            T.nilable(T::Hash[Symbol, Braintrust::MetricSummary::OrHash]),
+          scores: T.nilable(T::Hash[Symbol, Braintrust::ScoreSummary::OrHash])
+        ).returns(T.attached_class)
       end
       def self.new(
         # Name of the experiment
@@ -59,22 +62,24 @@ module Braintrust
         metrics: nil,
         # Summary of the experiment's scores
         scores: nil
-      ); end
-      sig do
-        override
-          .returns(
-            {
-              experiment_name: String,
-              experiment_url: String,
-              project_name: String,
-              project_url: String,
-              comparison_experiment_name: T.nilable(String),
-              metrics: T.nilable(T::Hash[Symbol, Braintrust::Models::MetricSummary]),
-              scores: T.nilable(T::Hash[Symbol, Braintrust::Models::ScoreSummary])
-            }
-          )
+      )
       end
-      def to_hash; end
+
+      sig do
+        override.returns(
+          {
+            experiment_name: String,
+            experiment_url: String,
+            project_name: String,
+            project_url: String,
+            comparison_experiment_name: T.nilable(String),
+            metrics: T.nilable(T::Hash[Symbol, Braintrust::MetricSummary]),
+            scores: T.nilable(T::Hash[Symbol, Braintrust::ScoreSummary])
+          }
+        )
+      end
+      def to_hash
+      end
     end
   end
 end
