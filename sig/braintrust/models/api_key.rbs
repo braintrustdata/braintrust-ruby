@@ -31,8 +31,6 @@ module Braintrust
         ?org_id: String?,
         ?user_id: String?
       ) -> void
-
-      def to_hash: -> Braintrust::Models::api_key
     end
   end
 end

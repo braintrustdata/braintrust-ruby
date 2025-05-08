@@ -69,14 +69,12 @@ module Braintrust
         ?request_options: Braintrust::request_opts
       ) -> void
 
-      def to_hash: -> Braintrust::Models::project_score_list_params
-
       type ids = String | ::Array[String]
 
       module IDs
         extend Braintrust::Internal::Type::Union
 
-        def self?.variants: -> [String, ::Array[String]]
+        def self?.variants: -> ::Array[Braintrust::Models::ProjectScoreListParams::ids]
 
         StringArray: Braintrust::Internal::Type::Converter
       end
@@ -88,7 +86,7 @@ module Braintrust
       module ScoreType
         extend Braintrust::Internal::Type::Union
 
-        def self?.variants: -> [Braintrust::Models::project_score_type, ::Array[Braintrust::Models::project_score_type]]
+        def self?.variants: -> ::Array[Braintrust::Models::ProjectScoreListParams::score_type]
 
         ProjectScoreTypeArray: Braintrust::Internal::Type::Converter
       end

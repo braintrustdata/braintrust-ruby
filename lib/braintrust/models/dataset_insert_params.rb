@@ -10,11 +10,11 @@ module Braintrust
       # @!attribute events
       #   A list of dataset events to insert
       #
-      #   @return [Array<Braintrust::Models::InsertDatasetEvent>]
-      required :events, -> { Braintrust::Internal::Type::ArrayOf[Braintrust::Models::InsertDatasetEvent] }
+      #   @return [Array<Braintrust::InsertDatasetEvent>]
+      required :events, -> { Braintrust::Internal::Type::ArrayOf[Braintrust::InsertDatasetEvent] }
 
       # @!method initialize(events:, request_options: {})
-      #   @param events [Array<Braintrust::Models::InsertDatasetEvent>] A list of dataset events to insert
+      #   @param events [Array<Braintrust::InsertDatasetEvent>] A list of dataset events to insert
       #
       #   @param request_options [Braintrust::RequestOptions, Hash{Symbol=>Object}]
     end

@@ -6,6 +6,9 @@ module Braintrust
       extend Braintrust::Internal::Type::RequestParameters::Converter
       include Braintrust::Internal::Type::RequestParameters
 
+      OrHash =
+        T.type_alias { T.any(T.self_type, Braintrust::Internal::AnyHash) }
+
       # Textual description of the span iframe
       sig { returns(T.nilable(String)) }
       attr_accessor :description
@@ -29,9 +32,8 @@ module Braintrust
           name: T.nilable(String),
           post_message: T.nilable(T::Boolean),
           url: T.nilable(String),
-          request_options: T.any(Braintrust::RequestOptions, Braintrust::Internal::AnyHash)
-        )
-          .returns(T.attached_class)
+          request_options: Braintrust::RequestOptions::OrHash
+        ).returns(T.attached_class)
       end
       def self.new(
         # Textual description of the span iframe
@@ -44,20 +46,22 @@ module Braintrust
         # URL to embed the project viewer in an iframe
         url: nil,
         request_options: {}
-      ); end
-      sig do
-        override
-          .returns(
-            {
-              description: T.nilable(String),
-              name: T.nilable(String),
-              post_message: T.nilable(T::Boolean),
-              url: T.nilable(String),
-              request_options: Braintrust::RequestOptions
-            }
-          )
+      )
       end
-      def to_hash; end
+
+      sig do
+        override.returns(
+          {
+            description: T.nilable(String),
+            name: T.nilable(String),
+            post_message: T.nilable(T::Boolean),
+            url: T.nilable(String),
+            request_options: Braintrust::RequestOptions
+          }
+        )
+      end
+      def to_hash
+      end
     end
   end
 end

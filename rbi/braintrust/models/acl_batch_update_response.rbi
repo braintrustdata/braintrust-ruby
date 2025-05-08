@@ -3,6 +3,9 @@
 module Braintrust
   module Models
     class ACLBatchUpdateResponse < Braintrust::Internal::Type::BaseModel
+      OrHash =
+        T.type_alias { T.any(T.self_type, Braintrust::Internal::AnyHash) }
+
       # An ACL grants a certain permission or role to a certain user or group on an
       # object.
       #
@@ -13,7 +16,7 @@ module Braintrust
       # To restrict a grant to a particular sub-object, you may specify
       # `restrict_object_type` in the ACL, as part of a direct permission grant or as
       # part of a role.
-      sig { returns(T::Array[Braintrust::Models::ACL]) }
+      sig { returns(T::Array[Braintrust::ACL]) }
       attr_accessor :added_acls
 
       # An ACL grants a certain permission or role to a certain user or group on an
@@ -26,15 +29,14 @@ module Braintrust
       # To restrict a grant to a particular sub-object, you may specify
       # `restrict_object_type` in the ACL, as part of a direct permission grant or as
       # part of a role.
-      sig { returns(T::Array[Braintrust::Models::ACL]) }
+      sig { returns(T::Array[Braintrust::ACL]) }
       attr_accessor :removed_acls
 
       sig do
         params(
-          added_acls: T::Array[T.any(Braintrust::Models::ACL, Braintrust::Internal::AnyHash)],
-          removed_acls: T::Array[T.any(Braintrust::Models::ACL, Braintrust::Internal::AnyHash)]
-        )
-          .returns(T.attached_class)
+          added_acls: T::Array[Braintrust::ACL::OrHash],
+          removed_acls: T::Array[Braintrust::ACL::OrHash]
+        ).returns(T.attached_class)
       end
       def self.new(
         # An ACL grants a certain permission or role to a certain user or group on an
@@ -59,12 +61,19 @@ module Braintrust
         # `restrict_object_type` in the ACL, as part of a direct permission grant or as
         # part of a role.
         removed_acls:
-      ); end
-      sig do
-        override
-          .returns({added_acls: T::Array[Braintrust::Models::ACL], removed_acls: T::Array[Braintrust::Models::ACL]})
+      )
       end
-      def to_hash; end
+
+      sig do
+        override.returns(
+          {
+            added_acls: T::Array[Braintrust::ACL],
+            removed_acls: T::Array[Braintrust::ACL]
+          }
+        )
+      end
+      def to_hash
+      end
     end
   end
 end

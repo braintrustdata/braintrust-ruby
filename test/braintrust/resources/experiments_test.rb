@@ -7,7 +7,7 @@ class Braintrust::Test::Resources::ExperimentsTest < Braintrust::Test::ResourceT
     response = @braintrust.experiments.create(project_id: "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e")
 
     assert_pattern do
-      response => Braintrust::Models::Experiment
+      response => Braintrust::Experiment
     end
 
     assert_pattern do
@@ -25,7 +25,7 @@ class Braintrust::Test::Resources::ExperimentsTest < Braintrust::Test::ResourceT
         description: String | nil,
         metadata: ^(Braintrust::Internal::Type::HashOf[Braintrust::Internal::Type::Unknown,
                                                        nil?: true]) | nil,
-        repo_info: Braintrust::Models::RepoInfo | nil,
+        repo_info: Braintrust::RepoInfo | nil,
         user_id: String | nil
       }
     end
@@ -35,7 +35,7 @@ class Braintrust::Test::Resources::ExperimentsTest < Braintrust::Test::ResourceT
     response = @braintrust.experiments.retrieve("182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e")
 
     assert_pattern do
-      response => Braintrust::Models::Experiment
+      response => Braintrust::Experiment
     end
 
     assert_pattern do
@@ -53,7 +53,7 @@ class Braintrust::Test::Resources::ExperimentsTest < Braintrust::Test::ResourceT
         description: String | nil,
         metadata: ^(Braintrust::Internal::Type::HashOf[Braintrust::Internal::Type::Unknown,
                                                        nil?: true]) | nil,
-        repo_info: Braintrust::Models::RepoInfo | nil,
+        repo_info: Braintrust::RepoInfo | nil,
         user_id: String | nil
       }
     end
@@ -63,7 +63,7 @@ class Braintrust::Test::Resources::ExperimentsTest < Braintrust::Test::ResourceT
     response = @braintrust.experiments.update("182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e")
 
     assert_pattern do
-      response => Braintrust::Models::Experiment
+      response => Braintrust::Experiment
     end
 
     assert_pattern do
@@ -81,7 +81,7 @@ class Braintrust::Test::Resources::ExperimentsTest < Braintrust::Test::ResourceT
         description: String | nil,
         metadata: ^(Braintrust::Internal::Type::HashOf[Braintrust::Internal::Type::Unknown,
                                                        nil?: true]) | nil,
-        repo_info: Braintrust::Models::RepoInfo | nil,
+        repo_info: Braintrust::RepoInfo | nil,
         user_id: String | nil
       }
     end
@@ -98,7 +98,7 @@ class Braintrust::Test::Resources::ExperimentsTest < Braintrust::Test::ResourceT
     return if row.nil?
 
     assert_pattern do
-      row => Braintrust::Models::Experiment
+      row => Braintrust::Experiment
     end
 
     assert_pattern do
@@ -116,7 +116,7 @@ class Braintrust::Test::Resources::ExperimentsTest < Braintrust::Test::ResourceT
         description: String | nil,
         metadata: ^(Braintrust::Internal::Type::HashOf[Braintrust::Internal::Type::Unknown,
                                                        nil?: true]) | nil,
-        repo_info: Braintrust::Models::RepoInfo | nil,
+        repo_info: Braintrust::RepoInfo | nil,
         user_id: String | nil
       }
     end
@@ -126,7 +126,7 @@ class Braintrust::Test::Resources::ExperimentsTest < Braintrust::Test::ResourceT
     response = @braintrust.experiments.delete("182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e")
 
     assert_pattern do
-      response => Braintrust::Models::Experiment
+      response => Braintrust::Experiment
     end
 
     assert_pattern do
@@ -144,7 +144,7 @@ class Braintrust::Test::Resources::ExperimentsTest < Braintrust::Test::ResourceT
         description: String | nil,
         metadata: ^(Braintrust::Internal::Type::HashOf[Braintrust::Internal::Type::Unknown,
                                                        nil?: true]) | nil,
-        repo_info: Braintrust::Models::RepoInfo | nil,
+        repo_info: Braintrust::RepoInfo | nil,
         user_id: String | nil
       }
     end
@@ -155,12 +155,12 @@ class Braintrust::Test::Resources::ExperimentsTest < Braintrust::Test::ResourceT
       @braintrust.experiments.feedback("182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e", feedback: [{id: "id"}])
 
     assert_pattern do
-      response => Braintrust::Models::FeedbackResponseSchema
+      response => Braintrust::FeedbackResponseSchema
     end
 
     assert_pattern do
       response => {
-        status: Braintrust::Models::FeedbackResponseSchema::Status
+        status: Braintrust::FeedbackResponseSchema::Status
       }
     end
   end
@@ -169,12 +169,12 @@ class Braintrust::Test::Resources::ExperimentsTest < Braintrust::Test::ResourceT
     response = @braintrust.experiments.fetch("182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e")
 
     assert_pattern do
-      response => Braintrust::Models::FetchExperimentEventsResponse
+      response => Braintrust::FetchExperimentEventsResponse
     end
 
     assert_pattern do
       response => {
-        events: ^(Braintrust::Internal::Type::ArrayOf[Braintrust::Models::ExperimentEvent]),
+        events: ^(Braintrust::Internal::Type::ArrayOf[Braintrust::ExperimentEvent]),
         cursor: String | nil
       }
     end
@@ -184,12 +184,12 @@ class Braintrust::Test::Resources::ExperimentsTest < Braintrust::Test::ResourceT
     response = @braintrust.experiments.fetch_post("182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e")
 
     assert_pattern do
-      response => Braintrust::Models::FetchExperimentEventsResponse
+      response => Braintrust::FetchExperimentEventsResponse
     end
 
     assert_pattern do
       response => {
-        events: ^(Braintrust::Internal::Type::ArrayOf[Braintrust::Models::ExperimentEvent]),
+        events: ^(Braintrust::Internal::Type::ArrayOf[Braintrust::ExperimentEvent]),
         cursor: String | nil
       }
     end
@@ -199,7 +199,7 @@ class Braintrust::Test::Resources::ExperimentsTest < Braintrust::Test::ResourceT
     response = @braintrust.experiments.insert("182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e", events: [{}])
 
     assert_pattern do
-      response => Braintrust::Models::InsertEventsResponse
+      response => Braintrust::InsertEventsResponse
     end
 
     assert_pattern do
@@ -213,7 +213,7 @@ class Braintrust::Test::Resources::ExperimentsTest < Braintrust::Test::ResourceT
     response = @braintrust.experiments.summarize("182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e")
 
     assert_pattern do
-      response => Braintrust::Models::SummarizeExperimentResponse
+      response => Braintrust::SummarizeExperimentResponse
     end
 
     assert_pattern do
@@ -223,8 +223,8 @@ class Braintrust::Test::Resources::ExperimentsTest < Braintrust::Test::ResourceT
         project_name: String,
         project_url: String,
         comparison_experiment_name: String | nil,
-        metrics: ^(Braintrust::Internal::Type::HashOf[Braintrust::Models::MetricSummary]) | nil,
-        scores: ^(Braintrust::Internal::Type::HashOf[Braintrust::Models::ScoreSummary]) | nil
+        metrics: ^(Braintrust::Internal::Type::HashOf[Braintrust::MetricSummary]) | nil,
+        scores: ^(Braintrust::Internal::Type::HashOf[Braintrust::ScoreSummary]) | nil
       }
     end
   end

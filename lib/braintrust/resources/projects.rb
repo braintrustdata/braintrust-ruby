@@ -17,20 +17,19 @@ module Braintrust
       # @param name [String] Name of the project
       #
       # @param org_name [String, nil] For nearly all users, this parameter should be unnecessary. But in the rare case
-      # ...
       #
       # @param request_options [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Braintrust::Models::Project]
+      # @return [Braintrust::Project]
       #
       # @see Braintrust::Models::ProjectCreateParams
       def create(params)
-        parsed, options = Braintrust::Models::ProjectCreateParams.dump_request(params)
+        parsed, options = Braintrust::ProjectCreateParams.dump_request(params)
         @client.request(
           method: :post,
           path: "v1/project",
           body: parsed,
-          model: Braintrust::Models::Project,
+          model: Braintrust::Project,
           options: options
         )
       end
@@ -43,14 +42,14 @@ module Braintrust
       #
       # @param request_options [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Braintrust::Models::Project]
+      # @return [Braintrust::Project]
       #
       # @see Braintrust::Models::ProjectRetrieveParams
       def retrieve(project_id, params = {})
         @client.request(
           method: :get,
           path: ["v1/project/%1$s", project_id],
-          model: Braintrust::Models::Project,
+          model: Braintrust::Project,
           options: params[:request_options]
         )
       end
@@ -68,21 +67,20 @@ module Braintrust
       #
       # @param name [String, nil] Name of the project
       #
-      # @param settings [Braintrust::Models::ProjectSettings, nil] Project settings. Patch operations replace all settings, so make sure you includ
-      # ...
+      # @param settings [Braintrust::ProjectSettings, nil] Project settings. Patch operations replace all settings, so make sure you includ
       #
       # @param request_options [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Braintrust::Models::Project]
+      # @return [Braintrust::Project]
       #
       # @see Braintrust::Models::ProjectUpdateParams
       def update(project_id, params = {})
-        parsed, options = Braintrust::Models::ProjectUpdateParams.dump_request(params)
+        parsed, options = Braintrust::ProjectUpdateParams.dump_request(params)
         @client.request(
           method: :patch,
           path: ["v1/project/%1$s", project_id],
           body: parsed,
-          model: Braintrust::Models::Project,
+          model: Braintrust::Project,
           options: options
         )
       end
@@ -95,10 +93,9 @@ module Braintrust
       #
       # @overload list(ending_before: nil, ids: nil, limit: nil, org_name: nil, project_name: nil, starting_after: nil, request_options: {})
       #
-      # @param ending_before [String] Pagination cursor id. ...
+      # @param ending_before [String] Pagination cursor id.
       #
       # @param ids [String, Array<String>] Filter search results to a particular set of object IDs. To specify a list of ID
-      # ...
       #
       # @param limit [Integer, nil] Limit the number of objects to return
       #
@@ -106,21 +103,21 @@ module Braintrust
       #
       # @param project_name [String] Name of the project to search for
       #
-      # @param starting_after [String] Pagination cursor id. ...
+      # @param starting_after [String] Pagination cursor id.
       #
       # @param request_options [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Braintrust::Internal::ListObjects<Braintrust::Models::Project>]
+      # @return [Braintrust::Internal::ListObjects<Braintrust::Project>]
       #
       # @see Braintrust::Models::ProjectListParams
       def list(params = {})
-        parsed, options = Braintrust::Models::ProjectListParams.dump_request(params)
+        parsed, options = Braintrust::ProjectListParams.dump_request(params)
         @client.request(
           method: :get,
           path: "v1/project",
           query: parsed,
           page: Braintrust::Internal::ListObjects,
-          model: Braintrust::Models::Project,
+          model: Braintrust::Project,
           options: options
         )
       end
@@ -133,14 +130,14 @@ module Braintrust
       #
       # @param request_options [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Braintrust::Models::Project]
+      # @return [Braintrust::Project]
       #
       # @see Braintrust::Models::ProjectDeleteParams
       def delete(project_id, params = {})
         @client.request(
           method: :delete,
           path: ["v1/project/%1$s", project_id],
-          model: Braintrust::Models::Project,
+          model: Braintrust::Project,
           options: params[:request_options]
         )
       end

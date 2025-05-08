@@ -6,7 +6,7 @@ module Braintrust
       def retrieve: (
         String organization_id,
         ?request_options: Braintrust::request_opts
-      ) -> Braintrust::Models::Organization
+      ) -> Braintrust::Organization
 
       def update: (
         String organization_id,
@@ -16,7 +16,7 @@ module Braintrust
         ?proxy_url: String?,
         ?realtime_url: String?,
         ?request_options: Braintrust::request_opts
-      ) -> Braintrust::Models::Organization
+      ) -> Braintrust::Organization
 
       def list: (
         ?ending_before: String,
@@ -25,12 +25,12 @@ module Braintrust
         ?org_name: String,
         ?starting_after: String,
         ?request_options: Braintrust::request_opts
-      ) -> Braintrust::Internal::ListObjects[Braintrust::Models::Organization]
+      ) -> Braintrust::Internal::ListObjects[Braintrust::Organization]
 
       def delete: (
         String organization_id,
         ?request_options: Braintrust::request_opts
-      ) -> Braintrust::Models::Organization
+      ) -> Braintrust::Organization
 
       def initialize: (client: Braintrust::Client) -> void
     end

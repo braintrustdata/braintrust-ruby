@@ -6,12 +6,15 @@ module Braintrust
       extend Braintrust::Internal::Type::RequestParameters::Converter
       include Braintrust::Internal::Type::RequestParameters
 
+      OrHash =
+        T.type_alias { T.any(T.self_type, Braintrust::Internal::AnyHash) }
+
       # The id of the object the ACL applies to
       sig { returns(String) }
       attr_accessor :object_id_
 
       # The object type that the ACL applies to
-      sig { returns(Braintrust::Models::ACLObjectType::OrSymbol) }
+      sig { returns(Braintrust::ACLObjectType::OrSymbol) }
       attr_accessor :object_type
 
       # Pagination cursor id.
@@ -56,22 +59,21 @@ module Braintrust
       attr_writer :view_name
 
       # Type of table that the view corresponds to.
-      sig { returns(T.nilable(Braintrust::Models::ViewType::OrSymbol)) }
+      sig { returns(T.nilable(Braintrust::ViewType::OrSymbol)) }
       attr_accessor :view_type
 
       sig do
         params(
           object_id_: String,
-          object_type: Braintrust::Models::ACLObjectType::OrSymbol,
+          object_type: Braintrust::ACLObjectType::OrSymbol,
           ending_before: String,
           ids: T.any(String, T::Array[String]),
           limit: T.nilable(Integer),
           starting_after: String,
           view_name: String,
-          view_type: T.nilable(Braintrust::Models::ViewType::OrSymbol),
-          request_options: T.any(Braintrust::RequestOptions, Braintrust::Internal::AnyHash)
-        )
-          .returns(T.attached_class)
+          view_type: T.nilable(Braintrust::ViewType::OrSymbol),
+          request_options: Braintrust::RequestOptions::OrHash
+        ).returns(T.attached_class)
       end
       def self.new(
         # The id of the object the ACL applies to
@@ -100,37 +102,45 @@ module Braintrust
         # Type of table that the view corresponds to.
         view_type: nil,
         request_options: {}
-      ); end
-      sig do
-        override
-          .returns(
-            {
-              object_id_: String,
-              object_type: Braintrust::Models::ACLObjectType::OrSymbol,
-              ending_before: String,
-              ids: T.any(String, T::Array[String]),
-              limit: T.nilable(Integer),
-              starting_after: String,
-              view_name: String,
-              view_type: T.nilable(Braintrust::Models::ViewType::OrSymbol),
-              request_options: Braintrust::RequestOptions
-            }
-          )
+      )
       end
-      def to_hash; end
+
+      sig do
+        override.returns(
+          {
+            object_id_: String,
+            object_type: Braintrust::ACLObjectType::OrSymbol,
+            ending_before: String,
+            ids: T.any(String, T::Array[String]),
+            limit: T.nilable(Integer),
+            starting_after: String,
+            view_name: String,
+            view_type: T.nilable(Braintrust::ViewType::OrSymbol),
+            request_options: Braintrust::RequestOptions
+          }
+        )
+      end
+      def to_hash
+      end
 
       # Filter search results to a particular set of object IDs. To specify a list of
       # IDs, include the query param multiple times
       module IDs
         extend Braintrust::Internal::Type::Union
 
-        sig { override.returns([String, T::Array[String]]) }
-        def self.variants; end
+        Variants = T.type_alias { T.any(String, T::Array[String]) }
 
-        StringArray = T.let(
-          Braintrust::Internal::Type::ArrayOf[String],
-          Braintrust::Internal::Type::Converter
-        )
+        sig do
+          override.returns(T::Array[Braintrust::ViewListParams::IDs::Variants])
+        end
+        def self.variants
+        end
+
+        StringArray =
+          T.let(
+            Braintrust::Internal::Type::ArrayOf[String],
+            Braintrust::Internal::Type::Converter
+          )
       end
     end
   end

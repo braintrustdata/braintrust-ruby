@@ -2,21 +2,19 @@ module Braintrust
   module Models
     module Projects
       type log_feedback_params =
-        { feedback: ::Array[Braintrust::Models::FeedbackProjectLogsItem] }
+        { feedback: ::Array[Braintrust::FeedbackProjectLogsItem] }
         & Braintrust::Internal::Type::request_parameters
 
       class LogFeedbackParams < Braintrust::Internal::Type::BaseModel
         extend Braintrust::Internal::Type::RequestParameters::Converter
         include Braintrust::Internal::Type::RequestParameters
 
-        attr_accessor feedback: ::Array[Braintrust::Models::FeedbackProjectLogsItem]
+        attr_accessor feedback: ::Array[Braintrust::FeedbackProjectLogsItem]
 
         def initialize: (
-          feedback: ::Array[Braintrust::Models::FeedbackProjectLogsItem],
+          feedback: ::Array[Braintrust::FeedbackProjectLogsItem],
           ?request_options: Braintrust::request_opts
         ) -> void
-
-        def to_hash: -> Braintrust::Models::Projects::log_feedback_params
       end
     end
   end

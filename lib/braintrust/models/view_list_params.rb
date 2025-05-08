@@ -16,8 +16,8 @@ module Braintrust
       # @!attribute object_type
       #   The object type that the ACL applies to
       #
-      #   @return [Symbol, Braintrust::Models::ACLObjectType]
-      required :object_type, enum: -> { Braintrust::Models::ACLObjectType }
+      #   @return [Symbol, Braintrust::ACLObjectType]
+      required :object_type, enum: -> { Braintrust::ACLObjectType }
 
       # @!attribute ending_before
       #   Pagination cursor id.
@@ -34,7 +34,7 @@ module Braintrust
       #   IDs, include the query param multiple times
       #
       #   @return [String, Array<String>, nil]
-      optional :ids, union: -> { Braintrust::Models::ViewListParams::IDs }
+      optional :ids, union: -> { Braintrust::ViewListParams::IDs }
 
       # @!attribute limit
       #   Limit the number of objects to return
@@ -61,8 +61,8 @@ module Braintrust
       # @!attribute view_type
       #   Type of table that the view corresponds to.
       #
-      #   @return [Symbol, Braintrust::Models::ViewType, nil]
-      optional :view_type, enum: -> { Braintrust::Models::ViewType }, nil?: true
+      #   @return [Symbol, Braintrust::ViewType, nil]
+      optional :view_type, enum: -> { Braintrust::ViewType }, nil?: true
 
       # @!method initialize(object_id_:, object_type:, ending_before: nil, ids: nil, limit: nil, starting_after: nil, view_name: nil, view_type: nil, request_options: {})
       #   Some parameter documentations has been truncated, see
@@ -70,20 +70,19 @@ module Braintrust
       #
       #   @param object_id_ [String] The id of the object the ACL applies to
       #
-      #   @param object_type [Symbol, Braintrust::Models::ACLObjectType] The object type that the ACL applies to
+      #   @param object_type [Symbol, Braintrust::ACLObjectType] The object type that the ACL applies to
       #
-      #   @param ending_before [String] Pagination cursor id. ...
+      #   @param ending_before [String] Pagination cursor id.
       #
       #   @param ids [String, Array<String>] Filter search results to a particular set of object IDs. To specify a list of ID
-      #   ...
       #
       #   @param limit [Integer, nil] Limit the number of objects to return
       #
-      #   @param starting_after [String] Pagination cursor id. ...
+      #   @param starting_after [String] Pagination cursor id.
       #
       #   @param view_name [String] Name of the view to search for
       #
-      #   @param view_type [Symbol, Braintrust::Models::ViewType, nil] Type of table that the view corresponds to.
+      #   @param view_type [Symbol, Braintrust::ViewType, nil] Type of table that the view corresponds to.
       #
       #   @param request_options [Braintrust::RequestOptions, Hash{Symbol=>Object}]
 
@@ -94,7 +93,7 @@ module Braintrust
 
         variant String
 
-        variant -> { Braintrust::Models::ViewListParams::IDs::StringArray }
+        variant -> { Braintrust::ViewListParams::IDs::StringArray }
 
         # @!method self.variants
         #   @return [Array(String, Array<String>)]

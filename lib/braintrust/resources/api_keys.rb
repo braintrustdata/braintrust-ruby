@@ -14,20 +14,19 @@ module Braintrust
       # @param name [String] Name of the api key. Does not have to be unique
       #
       # @param org_name [String, nil] For nearly all users, this parameter should be unnecessary. But in the rare case
-      # ...
       #
       # @param request_options [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Braintrust::Models::CreateAPIKeyOutput]
+      # @return [Braintrust::CreateAPIKeyOutput]
       #
       # @see Braintrust::Models::APIKeyCreateParams
       def create(params)
-        parsed, options = Braintrust::Models::APIKeyCreateParams.dump_request(params)
+        parsed, options = Braintrust::APIKeyCreateParams.dump_request(params)
         @client.request(
           method: :post,
           path: "v1/api_key",
           body: parsed,
-          model: Braintrust::Models::CreateAPIKeyOutput,
+          model: Braintrust::CreateAPIKeyOutput,
           options: options
         )
       end
@@ -40,14 +39,14 @@ module Braintrust
       #
       # @param request_options [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Braintrust::Models::APIKey]
+      # @return [Braintrust::APIKey]
       #
       # @see Braintrust::Models::APIKeyRetrieveParams
       def retrieve(api_key_id, params = {})
         @client.request(
           method: :get,
           path: ["v1/api_key/%1$s", api_key_id],
-          model: Braintrust::Models::APIKey,
+          model: Braintrust::APIKey,
           options: params[:request_options]
         )
       end
@@ -62,30 +61,29 @@ module Braintrust
       #
       # @param api_key_name [String] Name of the api_key to search for
       #
-      # @param ending_before [String] Pagination cursor id. ...
+      # @param ending_before [String] Pagination cursor id.
       #
       # @param ids [String, Array<String>] Filter search results to a particular set of object IDs. To specify a list of ID
-      # ...
       #
       # @param limit [Integer, nil] Limit the number of objects to return
       #
       # @param org_name [String] Filter search results to within a particular organization
       #
-      # @param starting_after [String] Pagination cursor id. ...
+      # @param starting_after [String] Pagination cursor id.
       #
       # @param request_options [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Braintrust::Internal::ListObjects<Braintrust::Models::APIKey>]
+      # @return [Braintrust::Internal::ListObjects<Braintrust::APIKey>]
       #
       # @see Braintrust::Models::APIKeyListParams
       def list(params = {})
-        parsed, options = Braintrust::Models::APIKeyListParams.dump_request(params)
+        parsed, options = Braintrust::APIKeyListParams.dump_request(params)
         @client.request(
           method: :get,
           path: "v1/api_key",
           query: parsed,
           page: Braintrust::Internal::ListObjects,
-          model: Braintrust::Models::APIKey,
+          model: Braintrust::APIKey,
           options: options
         )
       end
@@ -98,14 +96,14 @@ module Braintrust
       #
       # @param request_options [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Braintrust::Models::APIKey]
+      # @return [Braintrust::APIKey]
       #
       # @see Braintrust::Models::APIKeyDeleteParams
       def delete(api_key_id, params = {})
         @client.request(
           method: :delete,
           path: ["v1/api_key/%1$s", api_key_id],
-          model: Braintrust::Models::APIKey,
+          model: Braintrust::APIKey,
           options: params[:request_options]
         )
       end

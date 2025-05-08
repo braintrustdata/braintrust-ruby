@@ -12,22 +12,22 @@ module Braintrust
       #
       # @param object_id_ [String] The id of the object the environment variable is scoped for
       #
-      # @param object_type [Symbol, Braintrust::Models::EnvVarCreateParams::ObjectType] The type of the object the environment variable is scoped for
+      # @param object_type [Symbol, Braintrust::EnvVarCreateParams::ObjectType] The type of the object the environment variable is scoped for
       #
       # @param value [String, nil] The value of the environment variable. Will be encrypted at rest.
       #
       # @param request_options [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Braintrust::Models::EnvVar]
+      # @return [Braintrust::EnvVar]
       #
       # @see Braintrust::Models::EnvVarCreateParams
       def create(params)
-        parsed, options = Braintrust::Models::EnvVarCreateParams.dump_request(params)
+        parsed, options = Braintrust::EnvVarCreateParams.dump_request(params)
         @client.request(
           method: :post,
           path: "v1/env_var",
           body: parsed,
-          model: Braintrust::Models::EnvVar,
+          model: Braintrust::EnvVar,
           options: options
         )
       end
@@ -40,14 +40,14 @@ module Braintrust
       #
       # @param request_options [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Braintrust::Models::EnvVar]
+      # @return [Braintrust::EnvVar]
       #
       # @see Braintrust::Models::EnvVarRetrieveParams
       def retrieve(env_var_id, params = {})
         @client.request(
           method: :get,
           path: ["v1/env_var/%1$s", env_var_id],
-          model: Braintrust::Models::EnvVar,
+          model: Braintrust::EnvVar,
           options: params[:request_options]
         )
       end
@@ -66,16 +66,16 @@ module Braintrust
       #
       # @param request_options [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Braintrust::Models::EnvVar]
+      # @return [Braintrust::EnvVar]
       #
       # @see Braintrust::Models::EnvVarUpdateParams
       def update(env_var_id, params)
-        parsed, options = Braintrust::Models::EnvVarUpdateParams.dump_request(params)
+        parsed, options = Braintrust::EnvVarUpdateParams.dump_request(params)
         @client.request(
           method: :patch,
           path: ["v1/env_var/%1$s", env_var_id],
           body: parsed,
-          model: Braintrust::Models::EnvVar,
+          model: Braintrust::EnvVar,
           options: options
         )
       end
@@ -91,13 +91,12 @@ module Braintrust
       # @param env_var_name [String] Name of the env_var to search for
       #
       # @param ids [String, Array<String>] Filter search results to a particular set of object IDs. To specify a list of ID
-      # ...
       #
       # @param limit [Integer, nil] Limit the number of objects to return
       #
       # @param object_id_ [String] The id of the object the environment variable is scoped for
       #
-      # @param object_type [Symbol, Braintrust::Models::EnvVarObjectType] The type of the object the environment variable is scoped for
+      # @param object_type [Symbol, Braintrust::EnvVarObjectType] The type of the object the environment variable is scoped for
       #
       # @param request_options [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil]
       #
@@ -105,7 +104,7 @@ module Braintrust
       #
       # @see Braintrust::Models::EnvVarListParams
       def list(params = {})
-        parsed, options = Braintrust::Models::EnvVarListParams.dump_request(params)
+        parsed, options = Braintrust::EnvVarListParams.dump_request(params)
         @client.request(
           method: :get,
           path: "v1/env_var",
@@ -123,14 +122,14 @@ module Braintrust
       #
       # @param request_options [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Braintrust::Models::EnvVar]
+      # @return [Braintrust::EnvVar]
       #
       # @see Braintrust::Models::EnvVarDeleteParams
       def delete(env_var_id, params = {})
         @client.request(
           method: :delete,
           path: ["v1/env_var/%1$s", env_var_id],
-          model: Braintrust::Models::EnvVar,
+          model: Braintrust::EnvVar,
           options: params[:request_options]
         )
       end
@@ -145,22 +144,22 @@ module Braintrust
       #
       # @param object_id_ [String] The id of the object the environment variable is scoped for
       #
-      # @param object_type [Symbol, Braintrust::Models::EnvVarReplaceParams::ObjectType] The type of the object the environment variable is scoped for
+      # @param object_type [Symbol, Braintrust::EnvVarReplaceParams::ObjectType] The type of the object the environment variable is scoped for
       #
       # @param value [String, nil] The value of the environment variable. Will be encrypted at rest.
       #
       # @param request_options [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Braintrust::Models::EnvVar]
+      # @return [Braintrust::EnvVar]
       #
       # @see Braintrust::Models::EnvVarReplaceParams
       def replace(params)
-        parsed, options = Braintrust::Models::EnvVarReplaceParams.dump_request(params)
+        parsed, options = Braintrust::EnvVarReplaceParams.dump_request(params)
         @client.request(
           method: :put,
           path: "v1/env_var",
           body: parsed,
-          model: Braintrust::Models::EnvVar,
+          model: Braintrust::EnvVar,
           options: options
         )
       end

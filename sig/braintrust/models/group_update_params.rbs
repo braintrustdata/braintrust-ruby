@@ -36,8 +36,6 @@ module Braintrust
         ?remove_member_users: ::Array[String]?,
         ?request_options: Braintrust::request_opts
       ) -> void
-
-      def to_hash: -> Braintrust::Models::group_update_params
     end
   end
 end

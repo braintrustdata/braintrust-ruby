@@ -11,14 +11,14 @@ module Braintrust
       #
       # @param request_options [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Braintrust::Models::User]
+      # @return [Braintrust::User]
       #
       # @see Braintrust::Models::UserRetrieveParams
       def retrieve(user_id, params = {})
         @client.request(
           method: :get,
           path: ["v1/user/%1$s", user_id],
-          model: Braintrust::Models::User,
+          model: Braintrust::User,
           options: params[:request_options]
         )
       end
@@ -32,38 +32,34 @@ module Braintrust
       # @overload list(email: nil, ending_before: nil, family_name: nil, given_name: nil, ids: nil, limit: nil, org_name: nil, starting_after: nil, request_options: {})
       #
       # @param email [String, Array<String>] Email of the user to search for. You may pass the param multiple times to filter
-      # ...
       #
-      # @param ending_before [String] Pagination cursor id. ...
+      # @param ending_before [String] Pagination cursor id.
       #
       # @param family_name [String, Array<String>] Family name of the user to search for. You may pass the param multiple times to
-      # ...
       #
       # @param given_name [String, Array<String>] Given name of the user to search for. You may pass the param multiple times to f
-      # ...
       #
       # @param ids [String, Array<String>] Filter search results to a particular set of object IDs. To specify a list of ID
-      # ...
       #
       # @param limit [Integer, nil] Limit the number of objects to return
       #
       # @param org_name [String] Filter search results to within a particular organization
       #
-      # @param starting_after [String] Pagination cursor id. ...
+      # @param starting_after [String] Pagination cursor id.
       #
       # @param request_options [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Braintrust::Internal::ListObjects<Braintrust::Models::User>]
+      # @return [Braintrust::Internal::ListObjects<Braintrust::User>]
       #
       # @see Braintrust::Models::UserListParams
       def list(params = {})
-        parsed, options = Braintrust::Models::UserListParams.dump_request(params)
+        parsed, options = Braintrust::UserListParams.dump_request(params)
         @client.request(
           method: :get,
           path: "v1/user",
           query: parsed,
           page: Braintrust::Internal::ListObjects,
-          model: Braintrust::Models::User,
+          model: Braintrust::User,
           options: options
         )
       end

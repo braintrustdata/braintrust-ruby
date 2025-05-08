@@ -6,6 +6,9 @@ module Braintrust
       extend Braintrust::Internal::Type::RequestParameters::Converter
       include Braintrust::Internal::Type::RequestParameters
 
+      OrHash =
+        T.type_alias { T.any(T.self_type, Braintrust::Internal::AnyHash) }
+
       # limit the number of traces fetched
       #
       # Fetch queries may be paginated if the total result size is expected to be large
@@ -72,9 +75,8 @@ module Braintrust
           max_root_span_id: String,
           max_xact_id: String,
           version: String,
-          request_options: T.any(Braintrust::RequestOptions, Braintrust::Internal::AnyHash)
-        )
-          .returns(T.attached_class)
+          request_options: Braintrust::RequestOptions::OrHash
+        ).returns(T.attached_class)
       end
       def self.new(
         # limit the number of traces fetched
@@ -121,20 +123,22 @@ module Braintrust
         # that exact fetch.
         version: nil,
         request_options: {}
-      ); end
-      sig do
-        override
-          .returns(
-            {
-              limit: T.nilable(Integer),
-              max_root_span_id: String,
-              max_xact_id: String,
-              version: String,
-              request_options: Braintrust::RequestOptions
-            }
-          )
+      )
       end
-      def to_hash; end
+
+      sig do
+        override.returns(
+          {
+            limit: T.nilable(Integer),
+            max_root_span_id: String,
+            max_xact_id: String,
+            version: String,
+            request_options: Braintrust::RequestOptions
+          }
+        )
+      end
+      def to_hash
+      end
     end
   end
 end

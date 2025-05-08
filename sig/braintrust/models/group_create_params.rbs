@@ -32,8 +32,6 @@ module Braintrust
         ?org_name: String?,
         ?request_options: Braintrust::request_opts
       ) -> void
-
-      def to_hash: -> Braintrust::Models::group_create_params
     end
   end
 end

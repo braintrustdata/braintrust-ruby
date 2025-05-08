@@ -193,9 +193,9 @@ Sorbet's typed enums require sub-classing of the [`T::Enum` class](https://sorbe
 Since this library does not depend on `sorbet-runtime`, it uses a [`T.all` intersection type](https://sorbet.org/docs/intersection-types) with a ruby primitive type to construct a "tagged alias" instead.
 
 ```ruby
-module Braintrust::Models::ACLObjectType
+module Braintrust::ACLObjectType
   # This alias aids language service driven navigation.
-  TaggedSymbol = T.type_alias { T.all(Symbol, Braintrust::Models::ACLObjectType) }
+  TaggedSymbol = T.type_alias { T.all(Symbol, Braintrust::ACLObjectType) }
 end
 ```
 

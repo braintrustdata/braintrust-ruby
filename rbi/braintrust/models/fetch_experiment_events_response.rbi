@@ -3,8 +3,11 @@
 module Braintrust
   module Models
     class FetchExperimentEventsResponse < Braintrust::Internal::Type::BaseModel
+      OrHash =
+        T.type_alias { T.any(T.self_type, Braintrust::Internal::AnyHash) }
+
       # A list of fetched events
-      sig { returns(T::Array[Braintrust::Models::ExperimentEvent]) }
+      sig { returns(T::Array[Braintrust::ExperimentEvent]) }
       attr_accessor :events
 
       # Pagination cursor
@@ -16,10 +19,9 @@ module Braintrust
 
       sig do
         params(
-          events: T::Array[T.any(Braintrust::Models::ExperimentEvent, Braintrust::Internal::AnyHash)],
+          events: T::Array[Braintrust::ExperimentEvent::OrHash],
           cursor: T.nilable(String)
-        )
-          .returns(T.attached_class)
+        ).returns(T.attached_class)
       end
       def self.new(
         # A list of fetched events
@@ -29,9 +31,19 @@ module Braintrust
         # Pass this string directly as the `cursor` param to your next fetch request to
         # get the next page of results. Not provided if the returned result set is empty.
         cursor: nil
-      ); end
-      sig { override.returns({events: T::Array[Braintrust::Models::ExperimentEvent], cursor: T.nilable(String)}) }
-      def to_hash; end
+      )
+      end
+
+      sig do
+        override.returns(
+          {
+            events: T::Array[Braintrust::ExperimentEvent],
+            cursor: T.nilable(String)
+          }
+        )
+      end
+      def to_hash
+      end
     end
   end
 end

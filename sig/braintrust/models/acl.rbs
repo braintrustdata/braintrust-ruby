@@ -47,8 +47,6 @@ module Braintrust
         ?role_id: String?,
         ?user_id: String?
       ) -> void
-
-      def to_hash: -> Braintrust::Models::acl
     end
   end
 end

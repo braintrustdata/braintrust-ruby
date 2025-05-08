@@ -3,6 +3,9 @@
 module Braintrust
   module Models
     class ScoreSummary < Braintrust::Internal::Type::BaseModel
+      OrHash =
+        T.type_alias { T.any(T.self_type, Braintrust::Internal::AnyHash) }
+
       # Number of improvements in the score
       sig { returns(Integer) }
       attr_accessor :improvements
@@ -28,8 +31,13 @@ module Braintrust
 
       # Summary of a score's performance
       sig do
-        params(improvements: Integer, name: String, regressions: Integer, score: Float, diff: Float)
-          .returns(T.attached_class)
+        params(
+          improvements: Integer,
+          name: String,
+          regressions: Integer,
+          score: Float,
+          diff: Float
+        ).returns(T.attached_class)
       end
       def self.new(
         # Number of improvements in the score
@@ -42,7 +50,9 @@ module Braintrust
         score:,
         # Difference in score between the current and comparison experiment
         diff: nil
-      ); end
+      )
+      end
+
       sig do
         override.returns(
           {
@@ -54,7 +64,8 @@ module Braintrust
           }
         )
       end
-      def to_hash; end
+      def to_hash
+      end
     end
   end
 end

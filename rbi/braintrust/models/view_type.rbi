@@ -6,23 +6,24 @@ module Braintrust
     module ViewType
       extend Braintrust::Internal::Type::Enum
 
-      TaggedSymbol = T.type_alias { T.all(Symbol, Braintrust::Models::ViewType) }
+      TaggedSymbol = T.type_alias { T.all(Symbol, Braintrust::ViewType) }
       OrSymbol = T.type_alias { T.any(Symbol, String) }
 
-      PROJECTS = T.let(:projects, Braintrust::Models::ViewType::TaggedSymbol)
-      EXPERIMENTS = T.let(:experiments, Braintrust::Models::ViewType::TaggedSymbol)
-      EXPERIMENT = T.let(:experiment, Braintrust::Models::ViewType::TaggedSymbol)
-      PLAYGROUNDS = T.let(:playgrounds, Braintrust::Models::ViewType::TaggedSymbol)
-      PLAYGROUND = T.let(:playground, Braintrust::Models::ViewType::TaggedSymbol)
-      DATASETS = T.let(:datasets, Braintrust::Models::ViewType::TaggedSymbol)
-      DATASET = T.let(:dataset, Braintrust::Models::ViewType::TaggedSymbol)
-      PROMPTS = T.let(:prompts, Braintrust::Models::ViewType::TaggedSymbol)
-      TOOLS = T.let(:tools, Braintrust::Models::ViewType::TaggedSymbol)
-      SCORERS = T.let(:scorers, Braintrust::Models::ViewType::TaggedSymbol)
-      LOGS = T.let(:logs, Braintrust::Models::ViewType::TaggedSymbol)
+      PROJECTS = T.let(:projects, Braintrust::ViewType::TaggedSymbol)
+      EXPERIMENTS = T.let(:experiments, Braintrust::ViewType::TaggedSymbol)
+      EXPERIMENT = T.let(:experiment, Braintrust::ViewType::TaggedSymbol)
+      PLAYGROUNDS = T.let(:playgrounds, Braintrust::ViewType::TaggedSymbol)
+      PLAYGROUND = T.let(:playground, Braintrust::ViewType::TaggedSymbol)
+      DATASETS = T.let(:datasets, Braintrust::ViewType::TaggedSymbol)
+      DATASET = T.let(:dataset, Braintrust::ViewType::TaggedSymbol)
+      PROMPTS = T.let(:prompts, Braintrust::ViewType::TaggedSymbol)
+      TOOLS = T.let(:tools, Braintrust::ViewType::TaggedSymbol)
+      SCORERS = T.let(:scorers, Braintrust::ViewType::TaggedSymbol)
+      LOGS = T.let(:logs, Braintrust::ViewType::TaggedSymbol)
 
-      sig { override.returns(T::Array[Braintrust::Models::ViewType::TaggedSymbol]) }
-      def self.values; end
+      sig { override.returns(T::Array[Braintrust::ViewType::TaggedSymbol]) }
+      def self.values
+      end
     end
   end
 end

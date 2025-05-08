@@ -1,19 +1,17 @@
 module Braintrust
   module Models
     type fetch_experiment_events_response =
-      { events: ::Array[Braintrust::Models::ExperimentEvent], cursor: String? }
+      { events: ::Array[Braintrust::ExperimentEvent], cursor: String? }
 
     class FetchExperimentEventsResponse < Braintrust::Internal::Type::BaseModel
-      attr_accessor events: ::Array[Braintrust::Models::ExperimentEvent]
+      attr_accessor events: ::Array[Braintrust::ExperimentEvent]
 
       attr_accessor cursor: String?
 
       def initialize: (
-        events: ::Array[Braintrust::Models::ExperimentEvent],
+        events: ::Array[Braintrust::ExperimentEvent],
         ?cursor: String?
       ) -> void
-
-      def to_hash: -> Braintrust::Models::fetch_experiment_events_response
     end
   end
 end

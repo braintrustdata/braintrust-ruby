@@ -10,19 +10,19 @@ module Braintrust
         params(
           name: String,
           project_id: String,
-          score_type: Braintrust::Models::ProjectScoreType::OrSymbol,
-          categories: T.nilable(
-            T.any(
-              T::Array[T.any(Braintrust::Models::ProjectScoreCategory, Braintrust::Internal::AnyHash)],
-              T::Hash[Symbol, Float],
-              T::Array[String]
-            )
-          ),
-          config: T.nilable(T.any(Braintrust::Models::ProjectScoreConfig, Braintrust::Internal::AnyHash)),
+          score_type: Braintrust::ProjectScoreType::OrSymbol,
+          categories:
+            T.nilable(
+              T.any(
+                T::Array[Braintrust::ProjectScoreCategory::OrHash],
+                T::Hash[Symbol, Float],
+                T::Array[String]
+              )
+            ),
+          config: T.nilable(Braintrust::ProjectScoreConfig::OrHash),
           description: T.nilable(String),
-          request_options: Braintrust::RequestOpts
-        )
-          .returns(Braintrust::Models::ProjectScore)
+          request_options: Braintrust::RequestOptions::OrHash
+        ).returns(Braintrust::ProjectScore)
       end
       def create(
         # Name of the project score
@@ -37,37 +37,43 @@ module Braintrust
         # Textual description of the project score
         description: nil,
         request_options: {}
-      ); end
+      )
+      end
+
       # Get a project_score object by its id
       sig do
-        params(project_score_id: String, request_options: Braintrust::RequestOpts)
-          .returns(Braintrust::Models::ProjectScore)
+        params(
+          project_score_id: String,
+          request_options: Braintrust::RequestOptions::OrHash
+        ).returns(Braintrust::ProjectScore)
       end
       def retrieve(
         # ProjectScore id
         project_score_id,
         request_options: {}
-      ); end
+      )
+      end
+
       # Partially update a project_score object. Specify the fields to update in the
       # payload. Any object-type fields will be deep-merged with existing content.
       # Currently we do not support removing fields or setting them to null.
       sig do
         params(
           project_score_id: String,
-          categories: T.nilable(
-            T.any(
-              T::Array[T.any(Braintrust::Models::ProjectScoreCategory, Braintrust::Internal::AnyHash)],
-              T::Hash[Symbol, Float],
-              T::Array[String]
-            )
-          ),
-          config: T.nilable(T.any(Braintrust::Models::ProjectScoreConfig, Braintrust::Internal::AnyHash)),
+          categories:
+            T.nilable(
+              T.any(
+                T::Array[Braintrust::ProjectScoreCategory::OrHash],
+                T::Hash[Symbol, Float],
+                T::Array[String]
+              )
+            ),
+          config: T.nilable(Braintrust::ProjectScoreConfig::OrHash),
           description: T.nilable(String),
           name: T.nilable(String),
-          score_type: T.nilable(Braintrust::Models::ProjectScoreType::OrSymbol),
-          request_options: Braintrust::RequestOpts
-        )
-          .returns(Braintrust::Models::ProjectScore)
+          score_type: T.nilable(Braintrust::ProjectScoreType::OrSymbol),
+          request_options: Braintrust::RequestOptions::OrHash
+        ).returns(Braintrust::ProjectScore)
       end
       def update(
         # ProjectScore id
@@ -82,7 +88,9 @@ module Braintrust
         # The type of the configured score
         score_type: nil,
         request_options: {}
-      ); end
+      )
+      end
+
       # List out all project_scores. The project_scores are sorted by creation date,
       # with the most recently-created project_scores coming first
       sig do
@@ -94,14 +102,14 @@ module Braintrust
           project_id: String,
           project_name: String,
           project_score_name: String,
-          score_type: T.any(
-            Braintrust::Models::ProjectScoreType::OrSymbol,
-            T::Array[Braintrust::Models::ProjectScoreType::OrSymbol]
-          ),
+          score_type:
+            T.any(
+              Braintrust::ProjectScoreType::OrSymbol,
+              T::Array[Braintrust::ProjectScoreType::OrSymbol]
+            ),
           starting_after: String,
-          request_options: Braintrust::RequestOpts
-        )
-          .returns(Braintrust::Internal::ListObjects[Braintrust::Models::ProjectScore])
+          request_options: Braintrust::RequestOptions::OrHash
+        ).returns(Braintrust::Internal::ListObjects[Braintrust::ProjectScore])
       end
       def list(
         # Pagination cursor id.
@@ -132,17 +140,23 @@ module Braintrust
         # `starting_after` and `ending_before`
         starting_after: nil,
         request_options: {}
-      ); end
+      )
+      end
+
       # Delete a project_score object by its id
       sig do
-        params(project_score_id: String, request_options: Braintrust::RequestOpts)
-          .returns(Braintrust::Models::ProjectScore)
+        params(
+          project_score_id: String,
+          request_options: Braintrust::RequestOptions::OrHash
+        ).returns(Braintrust::ProjectScore)
       end
       def delete(
         # ProjectScore id
         project_score_id,
         request_options: {}
-      ); end
+      )
+      end
+
       # Create or replace project_score. If there is an existing project_score in the
       # project with the same name as the one specified in the request, will replace the
       # existing project_score with the provided fields
@@ -150,19 +164,19 @@ module Braintrust
         params(
           name: String,
           project_id: String,
-          score_type: Braintrust::Models::ProjectScoreType::OrSymbol,
-          categories: T.nilable(
-            T.any(
-              T::Array[T.any(Braintrust::Models::ProjectScoreCategory, Braintrust::Internal::AnyHash)],
-              T::Hash[Symbol, Float],
-              T::Array[String]
-            )
-          ),
-          config: T.nilable(T.any(Braintrust::Models::ProjectScoreConfig, Braintrust::Internal::AnyHash)),
+          score_type: Braintrust::ProjectScoreType::OrSymbol,
+          categories:
+            T.nilable(
+              T.any(
+                T::Array[Braintrust::ProjectScoreCategory::OrHash],
+                T::Hash[Symbol, Float],
+                T::Array[String]
+              )
+            ),
+          config: T.nilable(Braintrust::ProjectScoreConfig::OrHash),
           description: T.nilable(String),
-          request_options: Braintrust::RequestOpts
-        )
-          .returns(Braintrust::Models::ProjectScore)
+          request_options: Braintrust::RequestOptions::OrHash
+        ).returns(Braintrust::ProjectScore)
       end
       def replace(
         # Name of the project score
@@ -177,10 +191,13 @@ module Braintrust
         # Textual description of the project score
         description: nil,
         request_options: {}
-      ); end
+      )
+      end
+
       # @api private
       sig { params(client: Braintrust::Client).returns(T.attached_class) }
-      def self.new(client:); end
+      def self.new(client:)
+      end
     end
   end
 end

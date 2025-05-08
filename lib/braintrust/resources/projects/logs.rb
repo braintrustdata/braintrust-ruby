@@ -10,20 +10,20 @@ module Braintrust
         #
         # @param project_id [String] Project id
         #
-        # @param feedback [Array<Braintrust::Models::FeedbackProjectLogsItem>] A list of project logs feedback items
+        # @param feedback [Array<Braintrust::FeedbackProjectLogsItem>] A list of project logs feedback items
         #
         # @param request_options [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil]
         #
-        # @return [Braintrust::Models::FeedbackResponseSchema]
+        # @return [Braintrust::FeedbackResponseSchema]
         #
         # @see Braintrust::Models::Projects::LogFeedbackParams
         def feedback(project_id, params)
-          parsed, options = Braintrust::Models::Projects::LogFeedbackParams.dump_request(params)
+          parsed, options = Braintrust::Projects::LogFeedbackParams.dump_request(params)
           @client.request(
             method: :post,
             path: ["v1/project_logs/%1$s/feedback", project_id],
             body: parsed,
-            model: Braintrust::Models::FeedbackResponseSchema,
+            model: Braintrust::FeedbackResponseSchema,
             options: options
           )
         end
@@ -39,28 +39,26 @@ module Braintrust
         #
         # @param project_id [String] Project id
         #
-        # @param limit [Integer, nil] limit the number of traces fetched ...
+        # @param limit [Integer, nil] limit the number of traces fetched
         #
         # @param max_root_span_id [String] DEPRECATION NOTICE: The manually-constructed pagination cursor is deprecated in
-        # ...
         #
         # @param max_xact_id [String] DEPRECATION NOTICE: The manually-constructed pagination cursor is deprecated in
-        # ...
         #
-        # @param version [String] Retrieve a snapshot of events from a past time ...
+        # @param version [String] Retrieve a snapshot of events from a past time
         #
         # @param request_options [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil]
         #
-        # @return [Braintrust::Models::FetchProjectLogsEventsResponse]
+        # @return [Braintrust::FetchProjectLogsEventsResponse]
         #
         # @see Braintrust::Models::Projects::LogFetchParams
         def fetch(project_id, params = {})
-          parsed, options = Braintrust::Models::Projects::LogFetchParams.dump_request(params)
+          parsed, options = Braintrust::Projects::LogFetchParams.dump_request(params)
           @client.request(
             method: :get,
             path: ["v1/project_logs/%1$s/fetch", project_id],
             query: parsed,
-            model: Braintrust::Models::FetchProjectLogsEventsResponse,
+            model: Braintrust::FetchProjectLogsEventsResponse,
             options: options
           )
         end
@@ -77,30 +75,27 @@ module Braintrust
         # @param project_id [String] Project id
         #
         # @param cursor [String, nil] An opaque string to be used as a cursor for the next page of results, in order f
-        # ...
         #
-        # @param limit [Integer, nil] limit the number of traces fetched ...
+        # @param limit [Integer, nil] limit the number of traces fetched
         #
         # @param max_root_span_id [String, nil] DEPRECATION NOTICE: The manually-constructed pagination cursor is deprecated in
-        # ...
         #
         # @param max_xact_id [String, nil] DEPRECATION NOTICE: The manually-constructed pagination cursor is deprecated in
-        # ...
         #
-        # @param version [String, nil] Retrieve a snapshot of events from a past time ...
+        # @param version [String, nil] Retrieve a snapshot of events from a past time
         #
         # @param request_options [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil]
         #
-        # @return [Braintrust::Models::FetchProjectLogsEventsResponse]
+        # @return [Braintrust::FetchProjectLogsEventsResponse]
         #
         # @see Braintrust::Models::Projects::LogFetchPostParams
         def fetch_post(project_id, params = {})
-          parsed, options = Braintrust::Models::Projects::LogFetchPostParams.dump_request(params)
+          parsed, options = Braintrust::Projects::LogFetchPostParams.dump_request(params)
           @client.request(
             method: :post,
             path: ["v1/project_logs/%1$s/fetch", project_id],
             body: parsed,
-            model: Braintrust::Models::FetchProjectLogsEventsResponse,
+            model: Braintrust::FetchProjectLogsEventsResponse,
             options: options
           )
         end
@@ -111,20 +106,20 @@ module Braintrust
         #
         # @param project_id [String] Project id
         #
-        # @param events [Array<Braintrust::Models::InsertProjectLogsEvent>] A list of project logs events to insert
+        # @param events [Array<Braintrust::InsertProjectLogsEvent>] A list of project logs events to insert
         #
         # @param request_options [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil]
         #
-        # @return [Braintrust::Models::InsertEventsResponse]
+        # @return [Braintrust::InsertEventsResponse]
         #
         # @see Braintrust::Models::Projects::LogInsertParams
         def insert(project_id, params)
-          parsed, options = Braintrust::Models::Projects::LogInsertParams.dump_request(params)
+          parsed, options = Braintrust::Projects::LogInsertParams.dump_request(params)
           @client.request(
             method: :post,
             path: ["v1/project_logs/%1$s/insert", project_id],
             body: parsed,
-            model: Braintrust::Models::InsertEventsResponse,
+            model: Braintrust::InsertEventsResponse,
             options: options
           )
         end

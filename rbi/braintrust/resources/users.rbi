@@ -4,12 +4,19 @@ module Braintrust
   module Resources
     class Users
       # Get a user object by its id
-      sig { params(user_id: String, request_options: Braintrust::RequestOpts).returns(Braintrust::Models::User) }
+      sig do
+        params(
+          user_id: String,
+          request_options: Braintrust::RequestOptions::OrHash
+        ).returns(Braintrust::User)
+      end
       def retrieve(
         # User id
         user_id,
         request_options: {}
-      ); end
+      )
+      end
+
       # List out all users. The users are sorted by creation date, with the most
       # recently-created users coming first
       sig do
@@ -22,9 +29,8 @@ module Braintrust
           limit: T.nilable(Integer),
           org_name: String,
           starting_after: String,
-          request_options: Braintrust::RequestOpts
-        )
-          .returns(Braintrust::Internal::ListObjects[Braintrust::Models::User])
+          request_options: Braintrust::RequestOptions::OrHash
+        ).returns(Braintrust::Internal::ListObjects[Braintrust::User])
       end
       def list(
         # Email of the user to search for. You may pass the param multiple times to filter
@@ -56,10 +62,13 @@ module Braintrust
         # `starting_after` and `ending_before`
         starting_after: nil,
         request_options: {}
-      ); end
+      )
+      end
+
       # @api private
       sig { params(client: Braintrust::Client).returns(T.attached_class) }
-      def self.new(client:); end
+      def self.new(client:)
+      end
     end
   end
 end

@@ -43,8 +43,6 @@ module Braintrust
         ?member_users: ::Array[String]?,
         ?user_id: String?
       ) -> void
-
-      def to_hash: -> Braintrust::Models::group
     end
   end
 end

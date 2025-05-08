@@ -6,6 +6,9 @@ module Braintrust
       extend Braintrust::Internal::Type::RequestParameters::Converter
       include Braintrust::Internal::Type::RequestParameters
 
+      OrHash =
+        T.type_alias { T.any(T.self_type, Braintrust::Internal::AnyHash) }
+
       # The name of the environment variable
       sig { returns(String) }
       attr_accessor :name
@@ -18,9 +21,8 @@ module Braintrust
         params(
           name: String,
           value: T.nilable(String),
-          request_options: T.any(Braintrust::RequestOptions, Braintrust::Internal::AnyHash)
-        )
-          .returns(T.attached_class)
+          request_options: Braintrust::RequestOptions::OrHash
+        ).returns(T.attached_class)
       end
       def self.new(
         # The name of the environment variable
@@ -28,7 +30,9 @@ module Braintrust
         # The value of the environment variable. Will be encrypted at rest.
         value: nil,
         request_options: {}
-      ); end
+      )
+      end
+
       sig do
         override.returns(
           {
@@ -38,7 +42,8 @@ module Braintrust
           }
         )
       end
-      def to_hash; end
+      def to_hash
+      end
     end
   end
 end

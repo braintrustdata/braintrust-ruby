@@ -28,8 +28,6 @@ module Braintrust
         ?metadata: ::Hash[Symbol, top?]?,
         ?request_options: Braintrust::request_opts
       ) -> void
-
-      def to_hash: -> Braintrust::Models::dataset_create_params
     end
   end
 end

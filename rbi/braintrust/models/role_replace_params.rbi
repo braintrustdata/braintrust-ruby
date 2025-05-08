@@ -6,6 +6,9 @@ module Braintrust
       extend Braintrust::Internal::Type::RequestParameters::Converter
       include Braintrust::Internal::Type::RequestParameters
 
+      OrHash =
+        T.type_alias { T.any(T.self_type, Braintrust::Internal::AnyHash) }
+
       # Name of the role
       sig { returns(String) }
       attr_accessor :name
@@ -15,7 +18,11 @@ module Braintrust
       attr_accessor :description
 
       # (permission, restrict_object_type) tuples which belong to this role
-      sig { returns(T.nilable(T::Array[Braintrust::Models::RoleReplaceParams::MemberPermission])) }
+      sig do
+        returns(
+          T.nilable(T::Array[Braintrust::RoleReplaceParams::MemberPermission])
+        )
+      end
       attr_accessor :member_permissions
 
       # Ids of the roles this role inherits from
@@ -35,14 +42,14 @@ module Braintrust
         params(
           name: String,
           description: T.nilable(String),
-          member_permissions: T.nilable(
-            T::Array[T.any(Braintrust::Models::RoleReplaceParams::MemberPermission, Braintrust::Internal::AnyHash)]
-          ),
+          member_permissions:
+            T.nilable(
+              T::Array[Braintrust::RoleReplaceParams::MemberPermission::OrHash]
+            ),
           member_roles: T.nilable(T::Array[String]),
           org_name: T.nilable(String),
-          request_options: T.any(Braintrust::RequestOptions, Braintrust::Internal::AnyHash)
-        )
-          .returns(T.attached_class)
+          request_options: Braintrust::RequestOptions::OrHash
+        ).returns(T.attached_class)
       end
       def self.new(
         # Name of the role
@@ -61,40 +68,47 @@ module Braintrust
         # the organization the role belongs in.
         org_name: nil,
         request_options: {}
-      ); end
-      sig do
-        override
-          .returns(
-            {
-              name: String,
-              description: T.nilable(String),
-              member_permissions: T.nilable(T::Array[Braintrust::Models::RoleReplaceParams::MemberPermission]),
-              member_roles: T.nilable(T::Array[String]),
-              org_name: T.nilable(String),
-              request_options: Braintrust::RequestOptions
-            }
-          )
+      )
       end
-      def to_hash; end
+
+      sig do
+        override.returns(
+          {
+            name: String,
+            description: T.nilable(String),
+            member_permissions:
+              T.nilable(
+                T::Array[Braintrust::RoleReplaceParams::MemberPermission]
+              ),
+            member_roles: T.nilable(T::Array[String]),
+            org_name: T.nilable(String),
+            request_options: Braintrust::RequestOptions
+          }
+        )
+      end
+      def to_hash
+      end
 
       class MemberPermission < Braintrust::Internal::Type::BaseModel
+        OrHash =
+          T.type_alias { T.any(T.self_type, Braintrust::Internal::AnyHash) }
+
         # Each permission permits a certain type of operation on an object in the system
         #
         # Permissions can be assigned to to objects on an individual basis, or grouped
         # into roles
-        sig { returns(Braintrust::Models::Permission::OrSymbol) }
+        sig { returns(Braintrust::Permission::OrSymbol) }
         attr_accessor :permission
 
         # The object type that the ACL applies to
-        sig { returns(T.nilable(Braintrust::Models::ACLObjectType::OrSymbol)) }
+        sig { returns(T.nilable(Braintrust::ACLObjectType::OrSymbol)) }
         attr_accessor :restrict_object_type
 
         sig do
           params(
-            permission: Braintrust::Models::Permission::OrSymbol,
-            restrict_object_type: T.nilable(Braintrust::Models::ACLObjectType::OrSymbol)
-          )
-            .returns(T.attached_class)
+            permission: Braintrust::Permission::OrSymbol,
+            restrict_object_type: T.nilable(Braintrust::ACLObjectType::OrSymbol)
+          ).returns(T.attached_class)
         end
         def self.new(
           # Each permission permits a certain type of operation on an object in the system
@@ -104,17 +118,20 @@ module Braintrust
           permission:,
           # The object type that the ACL applies to
           restrict_object_type: nil
-        ); end
-        sig do
-          override
-            .returns(
-              {
-                permission: Braintrust::Models::Permission::OrSymbol,
-                restrict_object_type: T.nilable(Braintrust::Models::ACLObjectType::OrSymbol)
-              }
-            )
+        )
         end
-        def to_hash; end
+
+        sig do
+          override.returns(
+            {
+              permission: Braintrust::Permission::OrSymbol,
+              restrict_object_type:
+                T.nilable(Braintrust::ACLObjectType::OrSymbol)
+            }
+          )
+        end
+        def to_hash
+        end
       end
     end
   end

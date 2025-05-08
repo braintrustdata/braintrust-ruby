@@ -29,8 +29,6 @@ module Braintrust
         score: Float,
         ?diff: Float
       ) -> void
-
-      def to_hash: -> Braintrust::Models::score_summary
     end
   end
 end

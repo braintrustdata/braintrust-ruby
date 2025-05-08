@@ -43,8 +43,6 @@ module Braintrust
         ?git_diff: String?,
         ?tag: String?
       ) -> void
-
-      def to_hash: -> Braintrust::Models::repo_info
     end
   end
 end

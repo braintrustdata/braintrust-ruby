@@ -7,7 +7,7 @@ module Braintrust
         org_id: String,
         created: Time?,
         deleted_at: Time?,
-        settings: Braintrust::Models::ProjectSettings?,
+        settings: Braintrust::ProjectSettings?,
         user_id: String?
       }
 
@@ -22,7 +22,7 @@ module Braintrust
 
       attr_accessor deleted_at: Time?
 
-      attr_accessor settings: Braintrust::Models::ProjectSettings?
+      attr_accessor settings: Braintrust::ProjectSettings?
 
       attr_accessor user_id: String?
 
@@ -32,11 +32,9 @@ module Braintrust
         org_id: String,
         ?created: Time?,
         ?deleted_at: Time?,
-        ?settings: Braintrust::Models::ProjectSettings?,
+        ?settings: Braintrust::ProjectSettings?,
         ?user_id: String?
       ) -> void
-
-      def to_hash: -> Braintrust::Models::project
     end
   end
 end

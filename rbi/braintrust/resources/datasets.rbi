@@ -12,9 +12,8 @@ module Braintrust
           project_id: String,
           description: T.nilable(String),
           metadata: T.nilable(T::Hash[Symbol, T.nilable(T.anything)]),
-          request_options: Braintrust::RequestOpts
-        )
-          .returns(Braintrust::Models::Dataset)
+          request_options: Braintrust::RequestOptions::OrHash
+        ).returns(Braintrust::Dataset)
       end
       def create(
         # Name of the dataset. Within a project, dataset names are unique
@@ -26,14 +25,23 @@ module Braintrust
         # User-controlled metadata about the dataset
         metadata: nil,
         request_options: {}
-      ); end
+      )
+      end
+
       # Get a dataset object by its id
-      sig { params(dataset_id: String, request_options: Braintrust::RequestOpts).returns(Braintrust::Models::Dataset) }
+      sig do
+        params(
+          dataset_id: String,
+          request_options: Braintrust::RequestOptions::OrHash
+        ).returns(Braintrust::Dataset)
+      end
       def retrieve(
         # Dataset id
         dataset_id,
         request_options: {}
-      ); end
+      )
+      end
+
       # Partially update a dataset object. Specify the fields to update in the payload.
       # Any object-type fields will be deep-merged with existing content. Currently we
       # do not support removing fields or setting them to null.
@@ -43,9 +51,8 @@ module Braintrust
           description: T.nilable(String),
           metadata: T.nilable(T::Hash[Symbol, T.nilable(T.anything)]),
           name: T.nilable(String),
-          request_options: Braintrust::RequestOpts
-        )
-          .returns(Braintrust::Models::Dataset)
+          request_options: Braintrust::RequestOptions::OrHash
+        ).returns(Braintrust::Dataset)
       end
       def update(
         # Dataset id
@@ -57,7 +64,9 @@ module Braintrust
         # Name of the dataset. Within a project, dataset names are unique
         name: nil,
         request_options: {}
-      ); end
+      )
+      end
+
       # List out all datasets. The datasets are sorted by creation date, with the most
       # recently-created datasets coming first
       sig do
@@ -70,9 +79,8 @@ module Braintrust
           project_id: String,
           project_name: String,
           starting_after: String,
-          request_options: Braintrust::RequestOpts
-        )
-          .returns(Braintrust::Internal::ListObjects[Braintrust::Models::Dataset])
+          request_options: Braintrust::RequestOptions::OrHash
+        ).returns(Braintrust::Internal::ListObjects[Braintrust::Dataset])
       end
       def list(
         # Name of the dataset to search for
@@ -101,22 +109,30 @@ module Braintrust
         # `starting_after` and `ending_before`
         starting_after: nil,
         request_options: {}
-      ); end
+      )
+      end
+
       # Delete a dataset object by its id
-      sig { params(dataset_id: String, request_options: Braintrust::RequestOpts).returns(Braintrust::Models::Dataset) }
+      sig do
+        params(
+          dataset_id: String,
+          request_options: Braintrust::RequestOptions::OrHash
+        ).returns(Braintrust::Dataset)
+      end
       def delete(
         # Dataset id
         dataset_id,
         request_options: {}
-      ); end
+      )
+      end
+
       # Log feedback for a set of dataset events
       sig do
         params(
           dataset_id: String,
-          feedback: T::Array[T.any(Braintrust::Models::FeedbackDatasetItem, Braintrust::Internal::AnyHash)],
-          request_options: Braintrust::RequestOpts
-        )
-          .returns(Braintrust::Models::FeedbackResponseSchema)
+          feedback: T::Array[Braintrust::FeedbackDatasetItem::OrHash],
+          request_options: Braintrust::RequestOptions::OrHash
+        ).returns(Braintrust::FeedbackResponseSchema)
       end
       def feedback(
         # Dataset id
@@ -124,7 +140,9 @@ module Braintrust
         # A list of dataset feedback items
         feedback:,
         request_options: {}
-      ); end
+      )
+      end
+
       # Fetch the events in a dataset. Equivalent to the POST form of the same path, but
       # with the parameters in the URL query rather than in the request body. For more
       # complex queries, use the `POST /btql` endpoint.
@@ -135,9 +153,8 @@ module Braintrust
           max_root_span_id: String,
           max_xact_id: String,
           version: String,
-          request_options: Braintrust::RequestOpts
-        )
-          .returns(Braintrust::Models::FetchDatasetEventsResponse)
+          request_options: Braintrust::RequestOptions::OrHash
+        ).returns(Braintrust::FetchDatasetEventsResponse)
       end
       def fetch(
         # Dataset id
@@ -186,7 +203,9 @@ module Braintrust
         # that exact fetch.
         version: nil,
         request_options: {}
-      ); end
+      )
+      end
+
       # Fetch the events in a dataset. Equivalent to the GET form of the same path, but
       # with the parameters in the request body rather than in the URL query. For more
       # complex queries, use the `POST /btql` endpoint.
@@ -198,9 +217,8 @@ module Braintrust
           max_root_span_id: T.nilable(String),
           max_xact_id: T.nilable(String),
           version: T.nilable(String),
-          request_options: Braintrust::RequestOpts
-        )
-          .returns(Braintrust::Models::FetchDatasetEventsResponse)
+          request_options: Braintrust::RequestOptions::OrHash
+        ).returns(Braintrust::FetchDatasetEventsResponse)
       end
       def fetch_post(
         # Dataset id
@@ -255,15 +273,16 @@ module Braintrust
         # that exact fetch.
         version: nil,
         request_options: {}
-      ); end
+      )
+      end
+
       # Insert a set of events into the dataset
       sig do
         params(
           dataset_id: String,
-          events: T::Array[T.any(Braintrust::Models::InsertDatasetEvent, Braintrust::Internal::AnyHash)],
-          request_options: Braintrust::RequestOpts
-        )
-          .returns(Braintrust::Models::InsertEventsResponse)
+          events: T::Array[Braintrust::InsertDatasetEvent::OrHash],
+          request_options: Braintrust::RequestOptions::OrHash
+        ).returns(Braintrust::InsertEventsResponse)
       end
       def insert(
         # Dataset id
@@ -271,15 +290,16 @@ module Braintrust
         # A list of dataset events to insert
         events:,
         request_options: {}
-      ); end
+      )
+      end
+
       # Summarize dataset
       sig do
         params(
           dataset_id: String,
           summarize_data: T.nilable(T::Boolean),
-          request_options: Braintrust::RequestOpts
-        )
-          .returns(Braintrust::Models::SummarizeDatasetResponse)
+          request_options: Braintrust::RequestOptions::OrHash
+        ).returns(Braintrust::SummarizeDatasetResponse)
       end
       def summarize(
         # Dataset id
@@ -288,10 +308,13 @@ module Braintrust
         # returned.
         summarize_data: nil,
         request_options: {}
-      ); end
+      )
+      end
+
       # @api private
       sig { params(client: Braintrust::Client).returns(T.attached_class) }
-      def self.new(client:); end
+      def self.new(client:)
+      end
     end
   end
 end

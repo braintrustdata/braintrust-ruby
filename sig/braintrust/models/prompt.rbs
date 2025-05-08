@@ -4,16 +4,16 @@ module Braintrust
       {
         id: String,
         _xact_id: String,
-        log_id: Braintrust::Models::Prompt::log_id,
+        log_id: Braintrust::Prompt::log_id,
         name: String,
         org_id: String,
         project_id: String,
         slug: String,
         created: Time?,
         description: String?,
-        function_type: Braintrust::Models::Prompt::function_type?,
+        function_type: Braintrust::Prompt::function_type?,
         metadata: ::Hash[Symbol, top?]?,
-        prompt_data: Braintrust::Models::PromptData?,
+        prompt_data: Braintrust::PromptData?,
         tags: ::Array[String]?
       }
 
@@ -22,7 +22,7 @@ module Braintrust
 
       attr_accessor _xact_id: String
 
-      attr_accessor log_id: Braintrust::Models::Prompt::log_id
+      attr_accessor log_id: Braintrust::Prompt::log_id
 
       attr_accessor name: String
 
@@ -36,31 +36,29 @@ module Braintrust
 
       attr_accessor description: String?
 
-      attr_accessor function_type: Braintrust::Models::Prompt::function_type?
+      attr_accessor function_type: Braintrust::Prompt::function_type?
 
       attr_accessor metadata: ::Hash[Symbol, top?]?
 
-      attr_accessor prompt_data: Braintrust::Models::PromptData?
+      attr_accessor prompt_data: Braintrust::PromptData?
 
       attr_accessor tags: ::Array[String]?
 
       def initialize: (
         id: String,
         _xact_id: String,
-        log_id: Braintrust::Models::Prompt::log_id,
+        log_id: Braintrust::Prompt::log_id,
         name: String,
         org_id: String,
         project_id: String,
         slug: String,
         ?created: Time?,
         ?description: String?,
-        ?function_type: Braintrust::Models::Prompt::function_type?,
+        ?function_type: Braintrust::Prompt::function_type?,
         ?metadata: ::Hash[Symbol, top?]?,
-        ?prompt_data: Braintrust::Models::PromptData?,
+        ?prompt_data: Braintrust::PromptData?,
         ?tags: ::Array[String]?
       ) -> void
-
-      def to_hash: -> Braintrust::Models::prompt
 
       type log_id = :p
 
@@ -69,7 +67,7 @@ module Braintrust
 
         P: :p
 
-        def self?.values: -> ::Array[Braintrust::Models::Prompt::log_id]
+        def self?.values: -> ::Array[Braintrust::Prompt::log_id]
       end
 
       type function_type = :llm | :scorer | :task | :tool
@@ -82,7 +80,7 @@ module Braintrust
         TASK: :task
         TOOL: :tool
 
-        def self?.values: -> ::Array[Braintrust::Models::Prompt::function_type]
+        def self?.values: -> ::Array[Braintrust::Prompt::function_type]
       end
     end
   end

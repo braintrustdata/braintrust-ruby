@@ -6,6 +6,9 @@ module Braintrust
       extend Braintrust::Internal::Type::RequestParameters::Converter
       include Braintrust::Internal::Type::RequestParameters
 
+      OrHash =
+        T.type_alias { T.any(T.self_type, Braintrust::Internal::AnyHash) }
+
       # Name of the project
       sig { returns(String) }
       attr_accessor :name
@@ -20,9 +23,8 @@ module Braintrust
         params(
           name: String,
           org_name: T.nilable(String),
-          request_options: T.any(Braintrust::RequestOptions, Braintrust::Internal::AnyHash)
-        )
-          .returns(T.attached_class)
+          request_options: Braintrust::RequestOptions::OrHash
+        ).returns(T.attached_class)
       end
       def self.new(
         # Name of the project
@@ -32,7 +34,9 @@ module Braintrust
         # the organization the project belongs in.
         org_name: nil,
         request_options: {}
-      ); end
+      )
+      end
+
       sig do
         override.returns(
           {
@@ -42,7 +46,8 @@ module Braintrust
           }
         )
       end
-      def to_hash; end
+      def to_hash
+      end
     end
   end
 end

@@ -43,8 +43,6 @@ module Braintrust
         ?post_message: bool?,
         ?user_id: String?
       ) -> void
-
-      def to_hash: -> Braintrust::Models::span_i_frame
     end
   end
 end

@@ -7,7 +7,7 @@ class Braintrust::Test::Resources::APIKeysTest < Braintrust::Test::ResourceTest
     response = @braintrust.api_keys.create(name: "name")
 
     assert_pattern do
-      response => Braintrust::Models::CreateAPIKeyOutput
+      response => Braintrust::CreateAPIKeyOutput
     end
 
     assert_pattern do
@@ -27,7 +27,7 @@ class Braintrust::Test::Resources::APIKeysTest < Braintrust::Test::ResourceTest
     response = @braintrust.api_keys.retrieve("182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e")
 
     assert_pattern do
-      response => Braintrust::Models::APIKey
+      response => Braintrust::APIKey
     end
 
     assert_pattern do
@@ -53,7 +53,7 @@ class Braintrust::Test::Resources::APIKeysTest < Braintrust::Test::ResourceTest
     return if row.nil?
 
     assert_pattern do
-      row => Braintrust::Models::APIKey
+      row => Braintrust::APIKey
     end
 
     assert_pattern do
@@ -72,7 +72,7 @@ class Braintrust::Test::Resources::APIKeysTest < Braintrust::Test::ResourceTest
     response = @braintrust.api_keys.delete("182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e")
 
     assert_pattern do
-      response => Braintrust::Models::APIKey
+      response => Braintrust::APIKey
     end
 
     assert_pattern do

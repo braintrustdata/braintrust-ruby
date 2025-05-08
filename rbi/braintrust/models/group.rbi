@@ -3,6 +3,9 @@
 module Braintrust
   module Models
     class Group < Braintrust::Internal::Type::BaseModel
+      OrHash =
+        T.type_alias { T.any(T.self_type, Braintrust::Internal::AnyHash) }
+
       # Unique identifier for the group
       sig { returns(String) }
       attr_accessor :id
@@ -59,8 +62,7 @@ module Braintrust
           member_groups: T.nilable(T::Array[String]),
           member_users: T.nilable(T::Array[String]),
           user_id: T.nilable(String)
-        )
-          .returns(T.attached_class)
+        ).returns(T.attached_class)
       end
       def self.new(
         # Unique identifier for the group
@@ -86,24 +88,26 @@ module Braintrust
         member_users: nil,
         # Identifies the user who created the group
         user_id: nil
-      ); end
-      sig do
-        override
-          .returns(
-            {
-              id: String,
-              name: String,
-              org_id: String,
-              created: T.nilable(Time),
-              deleted_at: T.nilable(Time),
-              description: T.nilable(String),
-              member_groups: T.nilable(T::Array[String]),
-              member_users: T.nilable(T::Array[String]),
-              user_id: T.nilable(String)
-            }
-          )
+      )
       end
-      def to_hash; end
+
+      sig do
+        override.returns(
+          {
+            id: String,
+            name: String,
+            org_id: String,
+            created: T.nilable(Time),
+            deleted_at: T.nilable(Time),
+            description: T.nilable(String),
+            member_groups: T.nilable(T::Array[String]),
+            member_users: T.nilable(T::Array[String]),
+            user_id: T.nilable(String)
+          }
+        )
+      end
+      def to_hash
+      end
     end
   end
 end

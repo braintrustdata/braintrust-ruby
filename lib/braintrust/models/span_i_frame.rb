@@ -59,8 +59,8 @@ module Braintrust
       optional :user_id, String, nil?: true
 
       # @!method initialize(id:, name:, project_id:, url:, created: nil, deleted_at: nil, description: nil, post_message: nil, user_id: nil)
-      #   Some parameter documentations has been truncated, see
-      #   {Braintrust::Models::SpanIFrame} for more details.
+      #   Some parameter documentations has been truncated, see {Braintrust::SpanIFrame}
+      #   for more details.
       #
       #   @param id [String] Unique identifier for the span iframe
       #
@@ -77,7 +77,6 @@ module Braintrust
       #   @param description [String, nil] Textual description of the span iframe
       #
       #   @param post_message [Boolean, nil] Whether to post messages to the iframe containing the span's data. This is usefu
-      #   ...
       #
       #   @param user_id [String, nil] Identifies the user who created the span iframe
     end

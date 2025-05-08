@@ -11,7 +11,7 @@ module Braintrust
         metadata: ::Hash[Symbol, top?]?,
         name: String?,
         public: bool?,
-        repo_info: Braintrust::Models::RepoInfo?
+        repo_info: Braintrust::RepoInfo?
       }
       & Braintrust::Internal::Type::request_parameters
 
@@ -37,7 +37,7 @@ module Braintrust
 
       attr_accessor public: bool?
 
-      attr_accessor repo_info: Braintrust::Models::RepoInfo?
+      attr_accessor repo_info: Braintrust::RepoInfo?
 
       def initialize: (
         project_id: String,
@@ -49,11 +49,9 @@ module Braintrust
         ?metadata: ::Hash[Symbol, top?]?,
         ?name: String?,
         ?public: bool?,
-        ?repo_info: Braintrust::Models::RepoInfo?,
+        ?repo_info: Braintrust::RepoInfo?,
         ?request_options: Braintrust::request_opts
       ) -> void
-
-      def to_hash: -> Braintrust::Models::experiment_create_params
     end
   end
 end

@@ -6,6 +6,9 @@ module Braintrust
       extend Braintrust::Internal::Type::RequestParameters::Converter
       include Braintrust::Internal::Type::RequestParameters
 
+      OrHash =
+        T.type_alias { T.any(T.self_type, Braintrust::Internal::AnyHash) }
+
       # Name of the dataset to search for
       sig { returns(T.nilable(String)) }
       attr_reader :dataset_name
@@ -78,9 +81,8 @@ module Braintrust
           project_id: String,
           project_name: String,
           starting_after: String,
-          request_options: T.any(Braintrust::RequestOptions, Braintrust::Internal::AnyHash)
-        )
-          .returns(T.attached_class)
+          request_options: Braintrust::RequestOptions::OrHash
+        ).returns(T.attached_class)
       end
       def self.new(
         # Name of the dataset to search for
@@ -109,37 +111,47 @@ module Braintrust
         # `starting_after` and `ending_before`
         starting_after: nil,
         request_options: {}
-      ); end
-      sig do
-        override
-          .returns(
-            {
-              dataset_name: String,
-              ending_before: String,
-              ids: T.any(String, T::Array[String]),
-              limit: T.nilable(Integer),
-              org_name: String,
-              project_id: String,
-              project_name: String,
-              starting_after: String,
-              request_options: Braintrust::RequestOptions
-            }
-          )
+      )
       end
-      def to_hash; end
+
+      sig do
+        override.returns(
+          {
+            dataset_name: String,
+            ending_before: String,
+            ids: T.any(String, T::Array[String]),
+            limit: T.nilable(Integer),
+            org_name: String,
+            project_id: String,
+            project_name: String,
+            starting_after: String,
+            request_options: Braintrust::RequestOptions
+          }
+        )
+      end
+      def to_hash
+      end
 
       # Filter search results to a particular set of object IDs. To specify a list of
       # IDs, include the query param multiple times
       module IDs
         extend Braintrust::Internal::Type::Union
 
-        sig { override.returns([String, T::Array[String]]) }
-        def self.variants; end
+        Variants = T.type_alias { T.any(String, T::Array[String]) }
 
-        StringArray = T.let(
-          Braintrust::Internal::Type::ArrayOf[String],
-          Braintrust::Internal::Type::Converter
-        )
+        sig do
+          override.returns(
+            T::Array[Braintrust::DatasetListParams::IDs::Variants]
+          )
+        end
+        def self.variants
+        end
+
+        StringArray =
+          T.let(
+            Braintrust::Internal::Type::ArrayOf[String],
+            Braintrust::Internal::Type::Converter
+          )
       end
     end
   end

@@ -45,11 +45,14 @@ module Braintrust
 
   APIKeyRetrieveParams = Braintrust::Models::APIKeyRetrieveParams
 
-  ChatCompletionContentPartImage = Braintrust::Models::ChatCompletionContentPartImage
+  ChatCompletionContentPartImage =
+    Braintrust::Models::ChatCompletionContentPartImage
 
-  ChatCompletionContentPartText = Braintrust::Models::ChatCompletionContentPartText
+  ChatCompletionContentPartText =
+    Braintrust::Models::ChatCompletionContentPartText
 
-  ChatCompletionMessageToolCall = Braintrust::Models::ChatCompletionMessageToolCall
+  ChatCompletionMessageToolCall =
+    Braintrust::Models::ChatCompletionMessageToolCall
 
   CodeBundle = Braintrust::Models::CodeBundle
 
@@ -135,9 +138,11 @@ module Braintrust
 
   FetchDatasetEventsResponse = Braintrust::Models::FetchDatasetEventsResponse
 
-  FetchExperimentEventsResponse = Braintrust::Models::FetchExperimentEventsResponse
+  FetchExperimentEventsResponse =
+    Braintrust::Models::FetchExperimentEventsResponse
 
-  FetchProjectLogsEventsResponse = Braintrust::Models::FetchProjectLogsEventsResponse
+  FetchProjectLogsEventsResponse =
+    Braintrust::Models::FetchProjectLogsEventsResponse
 
   Function = Braintrust::Models::Function
 
@@ -195,7 +200,8 @@ module Braintrust
 
   OrganizationUpdateParams = Braintrust::Models::OrganizationUpdateParams
 
-  PatchOrganizationMembersOutput = Braintrust::Models::PatchOrganizationMembersOutput
+  PatchOrganizationMembersOutput =
+    Braintrust::Models::PatchOrganizationMembersOutput
 
   Permission = Braintrust::Models::Permission
 

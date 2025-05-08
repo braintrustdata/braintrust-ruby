@@ -33,8 +33,6 @@ module Braintrust
           ?version: String?,
           ?request_options: Braintrust::request_opts
         ) -> void
-
-        def to_hash: -> Braintrust::Models::Projects::log_fetch_post_params
       end
     end
   end

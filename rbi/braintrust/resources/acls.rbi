@@ -8,15 +8,14 @@ module Braintrust
       sig do
         params(
           object_id_: String,
-          object_type: Braintrust::Models::ACLObjectType::OrSymbol,
+          object_type: Braintrust::ACLObjectType::OrSymbol,
           group_id: T.nilable(String),
-          permission: T.nilable(Braintrust::Models::Permission::OrSymbol),
-          restrict_object_type: T.nilable(Braintrust::Models::ACLObjectType::OrSymbol),
+          permission: T.nilable(Braintrust::Permission::OrSymbol),
+          restrict_object_type: T.nilable(Braintrust::ACLObjectType::OrSymbol),
           role_id: T.nilable(String),
           user_id: T.nilable(String),
-          request_options: Braintrust::RequestOpts
-        )
-          .returns(Braintrust::Models::ACL)
+          request_options: Braintrust::RequestOptions::OrHash
+        ).returns(Braintrust::ACL)
       end
       def create(
         # The id of the object the ACL applies to
@@ -39,27 +38,35 @@ module Braintrust
         # be provided
         user_id: nil,
         request_options: {}
-      ); end
+      )
+      end
+
       # Get an acl object by its id
-      sig { params(acl_id: String, request_options: Braintrust::RequestOpts).returns(Braintrust::Models::ACL) }
+      sig do
+        params(
+          acl_id: String,
+          request_options: Braintrust::RequestOptions::OrHash
+        ).returns(Braintrust::ACL)
+      end
       def retrieve(
         # Acl id
         acl_id,
         request_options: {}
-      ); end
+      )
+      end
+
       # List out all acls. The acls are sorted by creation date, with the most
       # recently-created acls coming first
       sig do
         params(
           object_id_: String,
-          object_type: Braintrust::Models::ACLObjectType::OrSymbol,
+          object_type: Braintrust::ACLObjectType::OrSymbol,
           ending_before: String,
           ids: T.any(String, T::Array[String]),
           limit: T.nilable(Integer),
           starting_after: String,
-          request_options: Braintrust::RequestOpts
-        )
-          .returns(Braintrust::Internal::ListObjects[Braintrust::Models::ACL])
+          request_options: Braintrust::RequestOptions::OrHash
+        ).returns(Braintrust::Internal::ListObjects[Braintrust::ACL])
       end
       def list(
         # The id of the object the ACL applies to
@@ -84,28 +91,38 @@ module Braintrust
         # `starting_after` and `ending_before`
         starting_after: nil,
         request_options: {}
-      ); end
+      )
+      end
+
       # Delete an acl object by its id
-      sig { params(acl_id: String, request_options: Braintrust::RequestOpts).returns(Braintrust::Models::ACL) }
+      sig do
+        params(
+          acl_id: String,
+          request_options: Braintrust::RequestOptions::OrHash
+        ).returns(Braintrust::ACL)
+      end
       def delete(
         # Acl id
         acl_id,
         request_options: {}
-      ); end
+      )
+      end
+
       # Batch update acls. This operation is idempotent, so adding acls which already
       # exist will have no effect, and removing acls which do not exist will have no
       # effect.
       sig do
         params(
-          add_acls: T.nilable(
-            T::Array[T.any(Braintrust::Models::ACLBatchUpdateParams::AddACL, Braintrust::Internal::AnyHash)]
-          ),
-          remove_acls: T.nilable(
-            T::Array[T.any(Braintrust::Models::ACLBatchUpdateParams::RemoveACL, Braintrust::Internal::AnyHash)]
-          ),
-          request_options: Braintrust::RequestOpts
-        )
-          .returns(Braintrust::Models::ACLBatchUpdateResponse)
+          add_acls:
+            T.nilable(
+              T::Array[Braintrust::ACLBatchUpdateParams::AddACL::OrHash]
+            ),
+          remove_acls:
+            T.nilable(
+              T::Array[Braintrust::ACLBatchUpdateParams::RemoveACL::OrHash]
+            ),
+          request_options: Braintrust::RequestOptions::OrHash
+        ).returns(Braintrust::ACLBatchUpdateResponse)
       end
       def batch_update(
         # An ACL grants a certain permission or role to a certain user or group on an
@@ -131,20 +148,21 @@ module Braintrust
         # part of a role.
         remove_acls: nil,
         request_options: {}
-      ); end
+      )
+      end
+
       # Delete a single acl
       sig do
         params(
           object_id_: String,
-          object_type: Braintrust::Models::ACLObjectType::OrSymbol,
+          object_type: Braintrust::ACLObjectType::OrSymbol,
           group_id: T.nilable(String),
-          permission: T.nilable(Braintrust::Models::Permission::OrSymbol),
-          restrict_object_type: T.nilable(Braintrust::Models::ACLObjectType::OrSymbol),
+          permission: T.nilable(Braintrust::Permission::OrSymbol),
+          restrict_object_type: T.nilable(Braintrust::ACLObjectType::OrSymbol),
           role_id: T.nilable(String),
           user_id: T.nilable(String),
-          request_options: Braintrust::RequestOpts
-        )
-          .returns(Braintrust::Models::ACL)
+          request_options: Braintrust::RequestOptions::OrHash
+        ).returns(Braintrust::ACL)
       end
       def find_and_delete(
         # The id of the object the ACL applies to
@@ -167,10 +185,13 @@ module Braintrust
         # be provided
         user_id: nil,
         request_options: {}
-      ); end
+      )
+      end
+
       # @api private
       sig { params(client: Braintrust::Client).returns(T.attached_class) }
-      def self.new(client:); end
+      def self.new(client:)
+      end
     end
   end
 end

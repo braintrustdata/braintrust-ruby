@@ -31,8 +31,6 @@ module Braintrust
         ?family_name: String?,
         ?given_name: String?
       ) -> void
-
-      def to_hash: -> Braintrust::Models::user
     end
   end
 end

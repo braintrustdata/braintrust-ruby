@@ -7,7 +7,7 @@ class Braintrust::Test::Resources::AISecretsTest < Braintrust::Test::ResourceTes
     response = @braintrust.ai_secrets.create(name: "name")
 
     assert_pattern do
-      response => Braintrust::Models::AISecret
+      response => Braintrust::AISecret
     end
 
     assert_pattern do
@@ -29,7 +29,7 @@ class Braintrust::Test::Resources::AISecretsTest < Braintrust::Test::ResourceTes
     response = @braintrust.ai_secrets.retrieve("182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e")
 
     assert_pattern do
-      response => Braintrust::Models::AISecret
+      response => Braintrust::AISecret
     end
 
     assert_pattern do
@@ -51,7 +51,7 @@ class Braintrust::Test::Resources::AISecretsTest < Braintrust::Test::ResourceTes
     response = @braintrust.ai_secrets.update("182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e")
 
     assert_pattern do
-      response => Braintrust::Models::AISecret
+      response => Braintrust::AISecret
     end
 
     assert_pattern do
@@ -80,7 +80,7 @@ class Braintrust::Test::Resources::AISecretsTest < Braintrust::Test::ResourceTes
     return if row.nil?
 
     assert_pattern do
-      row => Braintrust::Models::AISecret
+      row => Braintrust::AISecret
     end
 
     assert_pattern do
@@ -102,7 +102,7 @@ class Braintrust::Test::Resources::AISecretsTest < Braintrust::Test::ResourceTes
     response = @braintrust.ai_secrets.delete("182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e")
 
     assert_pattern do
-      response => Braintrust::Models::AISecret
+      response => Braintrust::AISecret
     end
 
     assert_pattern do
@@ -124,7 +124,7 @@ class Braintrust::Test::Resources::AISecretsTest < Braintrust::Test::ResourceTes
     response = @braintrust.ai_secrets.find_and_delete(name: "name")
 
     assert_pattern do
-      response => Braintrust::Models::AISecret
+      response => Braintrust::AISecret
     end
 
     assert_pattern do
@@ -146,7 +146,7 @@ class Braintrust::Test::Resources::AISecretsTest < Braintrust::Test::ResourceTes
     response = @braintrust.ai_secrets.replace(name: "name")
 
     assert_pattern do
-      response => Braintrust::Models::AISecret
+      response => Braintrust::AISecret
     end
 
     assert_pattern do

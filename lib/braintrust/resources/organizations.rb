@@ -14,14 +14,14 @@ module Braintrust
       #
       # @param request_options [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Braintrust::Models::Organization]
+      # @return [Braintrust::Organization]
       #
       # @see Braintrust::Models::OrganizationRetrieveParams
       def retrieve(organization_id, params = {})
         @client.request(
           method: :get,
           path: ["v1/organization/%1$s", organization_id],
-          model: Braintrust::Models::Organization,
+          model: Braintrust::Organization,
           options: params[:request_options]
         )
       end
@@ -46,16 +46,16 @@ module Braintrust
       #
       # @param request_options [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Braintrust::Models::Organization]
+      # @return [Braintrust::Organization]
       #
       # @see Braintrust::Models::OrganizationUpdateParams
       def update(organization_id, params = {})
-        parsed, options = Braintrust::Models::OrganizationUpdateParams.dump_request(params)
+        parsed, options = Braintrust::OrganizationUpdateParams.dump_request(params)
         @client.request(
           method: :patch,
           path: ["v1/organization/%1$s", organization_id],
           body: parsed,
-          model: Braintrust::Models::Organization,
+          model: Braintrust::Organization,
           options: options
         )
       end
@@ -68,30 +68,29 @@ module Braintrust
       #
       # @overload list(ending_before: nil, ids: nil, limit: nil, org_name: nil, starting_after: nil, request_options: {})
       #
-      # @param ending_before [String] Pagination cursor id. ...
+      # @param ending_before [String] Pagination cursor id.
       #
       # @param ids [String, Array<String>] Filter search results to a particular set of object IDs. To specify a list of ID
-      # ...
       #
       # @param limit [Integer, nil] Limit the number of objects to return
       #
       # @param org_name [String] Filter search results to within a particular organization
       #
-      # @param starting_after [String] Pagination cursor id. ...
+      # @param starting_after [String] Pagination cursor id.
       #
       # @param request_options [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Braintrust::Internal::ListObjects<Braintrust::Models::Organization>]
+      # @return [Braintrust::Internal::ListObjects<Braintrust::Organization>]
       #
       # @see Braintrust::Models::OrganizationListParams
       def list(params = {})
-        parsed, options = Braintrust::Models::OrganizationListParams.dump_request(params)
+        parsed, options = Braintrust::OrganizationListParams.dump_request(params)
         @client.request(
           method: :get,
           path: "v1/organization",
           query: parsed,
           page: Braintrust::Internal::ListObjects,
-          model: Braintrust::Models::Organization,
+          model: Braintrust::Organization,
           options: options
         )
       end
@@ -104,14 +103,14 @@ module Braintrust
       #
       # @param request_options [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Braintrust::Models::Organization]
+      # @return [Braintrust::Organization]
       #
       # @see Braintrust::Models::OrganizationDeleteParams
       def delete(organization_id, params = {})
         @client.request(
           method: :delete,
           path: ["v1/organization/%1$s", organization_id],
-          model: Braintrust::Models::Organization,
+          model: Braintrust::Organization,
           options: params[:request_options]
         )
       end

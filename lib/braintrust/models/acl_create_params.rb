@@ -16,8 +16,8 @@ module Braintrust
       # @!attribute object_type
       #   The object type that the ACL applies to
       #
-      #   @return [Symbol, Braintrust::Models::ACLObjectType]
-      required :object_type, enum: -> { Braintrust::Models::ACLObjectType }
+      #   @return [Symbol, Braintrust::ACLObjectType]
+      required :object_type, enum: -> { Braintrust::ACLObjectType }
 
       # @!attribute group_id
       #   Id of the group the ACL applies to. Exactly one of `user_id` and `group_id` will
@@ -30,15 +30,15 @@ module Braintrust
       #   Permission the ACL grants. Exactly one of `permission` and `role_id` will be
       #   provided
       #
-      #   @return [Symbol, Braintrust::Models::Permission, nil]
-      optional :permission, enum: -> { Braintrust::Models::Permission }, nil?: true
+      #   @return [Symbol, Braintrust::Permission, nil]
+      optional :permission, enum: -> { Braintrust::Permission }, nil?: true
 
       # @!attribute restrict_object_type
       #   When setting a permission directly, optionally restricts the permission grant to
       #   just the specified object type. Cannot be set alongside a `role_id`.
       #
-      #   @return [Symbol, Braintrust::Models::ACLObjectType, nil]
-      optional :restrict_object_type, enum: -> { Braintrust::Models::ACLObjectType }, nil?: true
+      #   @return [Symbol, Braintrust::ACLObjectType, nil]
+      optional :restrict_object_type, enum: -> { Braintrust::ACLObjectType }, nil?: true
 
       # @!attribute role_id
       #   Id of the role the ACL grants. Exactly one of `permission` and `role_id` will be
@@ -60,22 +60,17 @@ module Braintrust
       #
       #   @param object_id_ [String] The id of the object the ACL applies to
       #
-      #   @param object_type [Symbol, Braintrust::Models::ACLObjectType] The object type that the ACL applies to
+      #   @param object_type [Symbol, Braintrust::ACLObjectType] The object type that the ACL applies to
       #
       #   @param group_id [String, nil] Id of the group the ACL applies to. Exactly one of `user_id` and `group_id` will
-      #   ...
       #
-      #   @param permission [Symbol, Braintrust::Models::Permission, nil] Permission the ACL grants. Exactly one of `permission` and `role_id` will be pro
-      #   ...
+      #   @param permission [Symbol, Braintrust::Permission, nil] Permission the ACL grants. Exactly one of `permission` and `role_id` will be pro
       #
-      #   @param restrict_object_type [Symbol, Braintrust::Models::ACLObjectType, nil] When setting a permission directly, optionally restricts the permission grant to
-      #   ...
+      #   @param restrict_object_type [Symbol, Braintrust::ACLObjectType, nil] When setting a permission directly, optionally restricts the permission grant to
       #
       #   @param role_id [String, nil] Id of the role the ACL grants. Exactly one of `permission` and `role_id` will be
-      #   ...
       #
       #   @param user_id [String, nil] Id of the user the ACL applies to. Exactly one of `user_id` and `group_id` will
-      #   ...
       #
       #   @param request_options [Braintrust::RequestOptions, Hash{Symbol=>Object}]
     end

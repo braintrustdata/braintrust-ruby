@@ -3,6 +3,9 @@
 module Braintrust
   module Models
     class ProjectSettings < Braintrust::Internal::Type::BaseModel
+      OrHash =
+        T.type_alias { T.any(T.self_type, Braintrust::Internal::AnyHash) }
+
       # The id of the experiment to use as the default baseline for comparisons
       sig { returns(T.nilable(String)) }
       attr_accessor :baseline_experiment_id
@@ -12,18 +15,22 @@ module Braintrust
       attr_accessor :comparison_key
 
       # The order of the fields to display in the trace view
-      sig { returns(T.nilable(T::Array[Braintrust::Models::ProjectSettings::SpanFieldOrder])) }
+      sig do
+        returns(
+          T.nilable(T::Array[Braintrust::ProjectSettings::SpanFieldOrder])
+        )
+      end
       attr_accessor :span_field_order
 
       sig do
         params(
           baseline_experiment_id: T.nilable(String),
           comparison_key: T.nilable(String),
-          span_field_order: T.nilable(
-            T::Array[T.any(Braintrust::Models::ProjectSettings::SpanFieldOrder, Braintrust::Internal::AnyHash)]
-          )
-        )
-          .returns(T.attached_class)
+          span_field_order:
+            T.nilable(
+              T::Array[Braintrust::ProjectSettings::SpanFieldOrder::OrHash]
+            )
+        ).returns(T.attached_class)
       end
       def self.new(
         # The id of the experiment to use as the default baseline for comparisons
@@ -32,20 +39,26 @@ module Braintrust
         comparison_key: nil,
         # The order of the fields to display in the trace view
         span_field_order: nil
-      ); end
-      sig do
-        override
-          .returns(
-            {
-              baseline_experiment_id: T.nilable(String),
-              comparison_key: T.nilable(String),
-              span_field_order: T.nilable(T::Array[Braintrust::Models::ProjectSettings::SpanFieldOrder])
-            }
-          )
+      )
       end
-      def to_hash; end
+
+      sig do
+        override.returns(
+          {
+            baseline_experiment_id: T.nilable(String),
+            comparison_key: T.nilable(String),
+            span_field_order:
+              T.nilable(T::Array[Braintrust::ProjectSettings::SpanFieldOrder])
+          }
+        )
+      end
+      def to_hash
+      end
 
       class SpanFieldOrder < Braintrust::Internal::Type::BaseModel
+        OrHash =
+          T.type_alias { T.any(T.self_type, Braintrust::Internal::AnyHash) }
+
         sig { returns(String) }
         attr_accessor :column_id
 
@@ -55,7 +68,13 @@ module Braintrust
         sig { returns(String) }
         attr_accessor :position
 
-        sig { returns(T.nilable(Braintrust::Models::ProjectSettings::SpanFieldOrder::Layout::OrSymbol)) }
+        sig do
+          returns(
+            T.nilable(
+              Braintrust::ProjectSettings::SpanFieldOrder::Layout::OrSymbol
+            )
+          )
+        end
         attr_accessor :layout
 
         sig do
@@ -63,38 +82,60 @@ module Braintrust
             column_id: String,
             object_type: String,
             position: String,
-            layout: T.nilable(Braintrust::Models::ProjectSettings::SpanFieldOrder::Layout::OrSymbol)
-          )
-            .returns(T.attached_class)
+            layout:
+              T.nilable(
+                Braintrust::ProjectSettings::SpanFieldOrder::Layout::OrSymbol
+              )
+          ).returns(T.attached_class)
         end
-        def self.new(column_id:, object_type:, position:, layout: nil); end
+        def self.new(column_id:, object_type:, position:, layout: nil)
+        end
 
         sig do
-          override
-            .returns(
-              {
-                column_id: String,
-                object_type: String,
-                position: String,
-                layout: T.nilable(Braintrust::Models::ProjectSettings::SpanFieldOrder::Layout::OrSymbol)
-              }
-            )
+          override.returns(
+            {
+              column_id: String,
+              object_type: String,
+              position: String,
+              layout:
+                T.nilable(
+                  Braintrust::ProjectSettings::SpanFieldOrder::Layout::OrSymbol
+                )
+            }
+          )
         end
-        def to_hash; end
+        def to_hash
+        end
 
         module Layout
           extend Braintrust::Internal::Type::Enum
 
           TaggedSymbol =
-            T.type_alias { T.all(Symbol, Braintrust::Models::ProjectSettings::SpanFieldOrder::Layout) }
+            T.type_alias do
+              T.all(Symbol, Braintrust::ProjectSettings::SpanFieldOrder::Layout)
+            end
           OrSymbol = T.type_alias { T.any(Symbol, String) }
 
-          FULL = T.let(:full, Braintrust::Models::ProjectSettings::SpanFieldOrder::Layout::TaggedSymbol)
+          FULL =
+            T.let(
+              :full,
+              Braintrust::ProjectSettings::SpanFieldOrder::Layout::TaggedSymbol
+            )
           TWO_COLUMN =
-            T.let(:two_column, Braintrust::Models::ProjectSettings::SpanFieldOrder::Layout::TaggedSymbol)
+            T.let(
+              :two_column,
+              Braintrust::ProjectSettings::SpanFieldOrder::Layout::TaggedSymbol
+            )
 
-          sig { override.returns(T::Array[Braintrust::Models::ProjectSettings::SpanFieldOrder::Layout::TaggedSymbol]) }
-          def self.values; end
+          sig do
+            override.returns(
+              T::Array[
+                Braintrust::ProjectSettings::SpanFieldOrder::Layout::TaggedSymbol
+              ]
+            )
+          end
+          def self.values
+          end
         end
       end
     end

@@ -8,10 +8,9 @@ module Braintrust
         sig do
           params(
             project_id: String,
-            feedback: T::Array[T.any(Braintrust::Models::FeedbackProjectLogsItem, Braintrust::Internal::AnyHash)],
-            request_options: Braintrust::RequestOpts
-          )
-            .returns(Braintrust::Models::FeedbackResponseSchema)
+            feedback: T::Array[Braintrust::FeedbackProjectLogsItem::OrHash],
+            request_options: Braintrust::RequestOptions::OrHash
+          ).returns(Braintrust::FeedbackResponseSchema)
         end
         def feedback(
           # Project id
@@ -19,7 +18,9 @@ module Braintrust
           # A list of project logs feedback items
           feedback:,
           request_options: {}
-        ); end
+        )
+        end
+
         # Fetch the events in a project logs. Equivalent to the POST form of the same
         # path, but with the parameters in the URL query rather than in the request body.
         # For more complex queries, use the `POST /btql` endpoint.
@@ -30,9 +31,8 @@ module Braintrust
             max_root_span_id: String,
             max_xact_id: String,
             version: String,
-            request_options: Braintrust::RequestOpts
-          )
-            .returns(Braintrust::Models::FetchProjectLogsEventsResponse)
+            request_options: Braintrust::RequestOptions::OrHash
+          ).returns(Braintrust::FetchProjectLogsEventsResponse)
         end
         def fetch(
           # Project id
@@ -81,7 +81,9 @@ module Braintrust
           # that exact fetch.
           version: nil,
           request_options: {}
-        ); end
+        )
+        end
+
         # Fetch the events in a project logs. Equivalent to the GET form of the same path,
         # but with the parameters in the request body rather than in the URL query. For
         # more complex queries, use the `POST /btql` endpoint.
@@ -93,9 +95,8 @@ module Braintrust
             max_root_span_id: T.nilable(String),
             max_xact_id: T.nilable(String),
             version: T.nilable(String),
-            request_options: Braintrust::RequestOpts
-          )
-            .returns(Braintrust::Models::FetchProjectLogsEventsResponse)
+            request_options: Braintrust::RequestOptions::OrHash
+          ).returns(Braintrust::FetchProjectLogsEventsResponse)
         end
         def fetch_post(
           # Project id
@@ -150,15 +151,16 @@ module Braintrust
           # that exact fetch.
           version: nil,
           request_options: {}
-        ); end
+        )
+        end
+
         # Insert a set of events into the project logs
         sig do
           params(
             project_id: String,
-            events: T::Array[T.any(Braintrust::Models::InsertProjectLogsEvent, Braintrust::Internal::AnyHash)],
-            request_options: Braintrust::RequestOpts
-          )
-            .returns(Braintrust::Models::InsertEventsResponse)
+            events: T::Array[Braintrust::InsertProjectLogsEvent::OrHash],
+            request_options: Braintrust::RequestOptions::OrHash
+          ).returns(Braintrust::InsertEventsResponse)
         end
         def insert(
           # Project id
@@ -166,10 +168,13 @@ module Braintrust
           # A list of project logs events to insert
           events:,
           request_options: {}
-        ); end
+        )
+        end
+
         # @api private
         sig { params(client: Braintrust::Client).returns(T.attached_class) }
-        def self.new(client:); end
+        def self.new(client:)
+        end
       end
     end
   end

@@ -28,7 +28,7 @@ module Braintrust
       #   IDs, include the query param multiple times
       #
       #   @return [String, Array<String>, nil]
-      optional :ids, union: -> { Braintrust::Models::DatasetListParams::IDs }
+      optional :ids, union: -> { Braintrust::DatasetListParams::IDs }
 
       # @!attribute limit
       #   Limit the number of objects to return
@@ -70,10 +70,9 @@ module Braintrust
       #
       #   @param dataset_name [String] Name of the dataset to search for
       #
-      #   @param ending_before [String] Pagination cursor id. ...
+      #   @param ending_before [String] Pagination cursor id.
       #
       #   @param ids [String, Array<String>] Filter search results to a particular set of object IDs. To specify a list of ID
-      #   ...
       #
       #   @param limit [Integer, nil] Limit the number of objects to return
       #
@@ -83,7 +82,7 @@ module Braintrust
       #
       #   @param project_name [String] Name of the project to search for
       #
-      #   @param starting_after [String] Pagination cursor id. ...
+      #   @param starting_after [String] Pagination cursor id.
       #
       #   @param request_options [Braintrust::RequestOptions, Hash{Symbol=>Object}]
 
@@ -94,7 +93,7 @@ module Braintrust
 
         variant String
 
-        variant -> { Braintrust::Models::DatasetListParams::IDs::StringArray }
+        variant -> { Braintrust::DatasetListParams::IDs::StringArray }
 
         # @!method self.variants
         #   @return [Array(String, Array<String>)]

@@ -82,8 +82,8 @@ module Braintrust
       #   `caller_*` attributes to track the location in code which produced the
       #   experiment event
       #
-      #   @return [Braintrust::Models::InsertExperimentEvent::Context, nil]
-      optional :context, -> { Braintrust::Models::InsertExperimentEvent::Context }, nil?: true
+      #   @return [Braintrust::InsertExperimentEvent::Context, nil]
+      optional :context, -> { Braintrust::InsertExperimentEvent::Context }, nil?: true
 
       # @!attribute created
       #   The timestamp the experiment event was created
@@ -126,22 +126,22 @@ module Braintrust
       #   anything else that would be useful to slice/dice later. The values in `metadata`
       #   can be any JSON-serializable type, but its keys must be strings
       #
-      #   @return [Braintrust::Models::InsertExperimentEvent::Metadata, nil]
-      optional :metadata, -> { Braintrust::Models::InsertExperimentEvent::Metadata }, nil?: true
+      #   @return [Braintrust::InsertExperimentEvent::Metadata, nil]
+      optional :metadata, -> { Braintrust::InsertExperimentEvent::Metadata }, nil?: true
 
       # @!attribute metrics
       #   Metrics are numerical measurements tracking the execution of the code that
       #   produced the experiment event. Use "start" and "end" to track the time span over
       #   which the experiment event was produced
       #
-      #   @return [Braintrust::Models::InsertExperimentEvent::Metrics, nil]
-      optional :metrics, -> { Braintrust::Models::InsertExperimentEvent::Metrics }, nil?: true
+      #   @return [Braintrust::InsertExperimentEvent::Metrics, nil]
+      optional :metrics, -> { Braintrust::InsertExperimentEvent::Metrics }, nil?: true
 
       # @!attribute origin
       #   Indicates the event was copied from another object.
       #
-      #   @return [Braintrust::Models::ObjectReference, nil]
-      optional :origin, -> { Braintrust::Models::ObjectReference }, nil?: true
+      #   @return [Braintrust::ObjectReference, nil]
+      optional :origin, -> { Braintrust::ObjectReference }, nil?: true
 
       # @!attribute output
       #   The output of your application, including post-processing (an arbitrary, JSON
@@ -189,8 +189,8 @@ module Braintrust
       # @!attribute span_attributes
       #   Human-identifying attributes of the span, such as name, type, etc.
       #
-      #   @return [Braintrust::Models::SpanAttributes, nil]
-      optional :span_attributes, -> { Braintrust::Models::SpanAttributes }, nil?: true
+      #   @return [Braintrust::SpanAttributes, nil]
+      optional :span_attributes, -> { Braintrust::SpanAttributes }, nil?: true
 
       # @!attribute span_id
       #   Use `span_id`, `root_span_id`, and `span_parents` instead of `_parent_id`, which
@@ -240,66 +240,52 @@ module Braintrust
 
       # @!method initialize(id: nil, _is_merge: nil, _merge_paths: nil, _object_delete: nil, _parent_id: nil, context: nil, created: nil, error: nil, expected: nil, input: nil, metadata: nil, metrics: nil, origin: nil, output: nil, root_span_id: nil, scores: nil, span_attributes: nil, span_id: nil, span_parents: nil, tags: nil)
       #   Some parameter documentations has been truncated, see
-      #   {Braintrust::Models::InsertExperimentEvent} for more details.
+      #   {Braintrust::InsertExperimentEvent} for more details.
       #
       #   An experiment event
       #
       #   @param id [String, nil] A unique identifier for the experiment event. If you don't provide one, BrainTru
-      #   ...
       #
       #   @param _is_merge [Boolean, nil] The `_is_merge` field controls how the row is merged with any existing row with
-      #   ...
       #
       #   @param _merge_paths [Array<Array<String>>, nil] The `_merge_paths` field allows controlling the depth of the merge, when
-      #   `\_is_me ...
+      #   `\_is_me
       #
       #   @param _object_delete [Boolean, nil] Pass `_object_delete=true` to mark the experiment event deleted. Deleted events
-      #   ...
       #
       #   @param _parent_id [String, nil] DEPRECATED: The `_parent_id` field is deprecated and should not be used. Support
-      #   ...
       #
-      #   @param context [Braintrust::Models::InsertExperimentEvent::Context, nil] Context is additional information about the code that produced the experiment ev
-      #   ...
+      #   @param context [Braintrust::InsertExperimentEvent::Context, nil] Context is additional information about the code that produced the experiment ev
       #
       #   @param created [Time, nil] The timestamp the experiment event was created
       #
       #   @param error [Object] The error that occurred, if any.
       #
       #   @param expected [Object] The ground truth value (an arbitrary, JSON serializable object) that you'd compa
-      #   ...
       #
       #   @param input [Object] The arguments that uniquely define a test case (an arbitrary, JSON serializable
-      #   ...
       #
-      #   @param metadata [Braintrust::Models::InsertExperimentEvent::Metadata, nil] A dictionary with additional data about the test example, model outputs, or just
-      #   ...
+      #   @param metadata [Braintrust::InsertExperimentEvent::Metadata, nil] A dictionary with additional data about the test example, model outputs, or just
       #
-      #   @param metrics [Braintrust::Models::InsertExperimentEvent::Metrics, nil] Metrics are numerical measurements tracking the execution of the code that produ
-      #   ...
+      #   @param metrics [Braintrust::InsertExperimentEvent::Metrics, nil] Metrics are numerical measurements tracking the execution of the code that produ
       #
-      #   @param origin [Braintrust::Models::ObjectReference, nil] Indicates the event was copied from another object.
+      #   @param origin [Braintrust::ObjectReference, nil] Indicates the event was copied from another object.
       #
       #   @param output [Object] The output of your application, including post-processing (an arbitrary, JSON se
-      #   ...
       #
       #   @param root_span_id [String, nil] Use `span_id`, `root_span_id`, and `span_parents` instead of `_parent_id`, which
-      #   ...
       #
       #   @param scores [Hash{Symbol=>Float, nil}, nil] A dictionary of numeric values (between 0 and 1) to log. The scores should give
-      #   ...
       #
-      #   @param span_attributes [Braintrust::Models::SpanAttributes, nil] Human-identifying attributes of the span, such as name, type, etc.
+      #   @param span_attributes [Braintrust::SpanAttributes, nil] Human-identifying attributes of the span, such as name, type, etc.
       #
       #   @param span_id [String, nil] Use `span_id`, `root_span_id`, and `span_parents` instead of `_parent_id`, which
-      #   ...
       #
       #   @param span_parents [Array<String>, nil] Use `span_id`, `root_span_id`, and `span_parents` instead of `_parent_id`, which
-      #   ...
       #
       #   @param tags [Array<String>, nil] A list of tags to log
 
-      # @see Braintrust::Models::InsertExperimentEvent#context
+      # @see Braintrust::InsertExperimentEvent#context
       class Context < Braintrust::Internal::Type::BaseModel
         # @!attribute caller_filename
         #   Name of the file in code where the experiment event was created
@@ -332,7 +318,7 @@ module Braintrust
         #   @param caller_lineno [Integer, nil] Line of code where the experiment event was created
       end
 
-      # @see Braintrust::Models::InsertExperimentEvent#metadata
+      # @see Braintrust::InsertExperimentEvent#metadata
       class Metadata < Braintrust::Internal::Type::BaseModel
         # @!attribute model
         #   The model used for this example
@@ -350,7 +336,7 @@ module Braintrust
         #   @param model [String, nil] The model used for this example
       end
 
-      # @see Braintrust::Models::InsertExperimentEvent#metrics
+      # @see Braintrust::InsertExperimentEvent#metrics
       class Metrics < Braintrust::Internal::Type::BaseModel
         # @!attribute caller_filename
         #   This metric is deprecated
@@ -406,7 +392,7 @@ module Braintrust
 
         # @!method initialize(caller_filename: nil, caller_functionname: nil, caller_lineno: nil, completion_tokens: nil, end_: nil, prompt_tokens: nil, start: nil, tokens: nil)
         #   Some parameter documentations has been truncated, see
-        #   {Braintrust::Models::InsertExperimentEvent::Metrics} for more details.
+        #   {Braintrust::InsertExperimentEvent::Metrics} for more details.
         #
         #   Metrics are numerical measurements tracking the execution of the code that
         #   produced the experiment event. Use "start" and "end" to track the time span over
@@ -419,16 +405,12 @@ module Braintrust
         #   @param caller_lineno [Object] This metric is deprecated
         #
         #   @param completion_tokens [Integer, nil] The number of tokens in the completion generated by the model (only set if this
-        #   ...
         #
         #   @param end_ [Float, nil] A unix timestamp recording when the section of code which produced the experimen
-        #   ...
         #
         #   @param prompt_tokens [Integer, nil] The number of tokens in the prompt used to generate the experiment event (only s
-        #   ...
         #
         #   @param start [Float, nil] A unix timestamp recording when the section of code which produced the experimen
-        #   ...
         #
         #   @param tokens [Integer, nil] The total number of tokens in the input and output of the experiment event.
       end

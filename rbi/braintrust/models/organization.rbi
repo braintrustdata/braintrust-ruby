@@ -3,6 +3,9 @@
 module Braintrust
   module Models
     class Organization < Braintrust::Internal::Type::BaseModel
+      OrHash =
+        T.type_alias { T.any(T.self_type, Braintrust::Internal::AnyHash) }
+
       # Unique identifier for the organization
       sig { returns(String) }
       attr_accessor :id
@@ -36,8 +39,7 @@ module Braintrust
           is_universal_api: T.nilable(T::Boolean),
           proxy_url: T.nilable(String),
           realtime_url: T.nilable(String)
-        )
-          .returns(T.attached_class)
+        ).returns(T.attached_class)
       end
       def self.new(
         # Unique identifier for the organization
@@ -50,22 +52,24 @@ module Braintrust
         is_universal_api: nil,
         proxy_url: nil,
         realtime_url: nil
-      ); end
-      sig do
-        override
-          .returns(
-            {
-              id: String,
-              name: String,
-              api_url: T.nilable(String),
-              created: T.nilable(Time),
-              is_universal_api: T.nilable(T::Boolean),
-              proxy_url: T.nilable(String),
-              realtime_url: T.nilable(String)
-            }
-          )
+      )
       end
-      def to_hash; end
+
+      sig do
+        override.returns(
+          {
+            id: String,
+            name: String,
+            api_url: T.nilable(String),
+            created: T.nilable(Time),
+            is_universal_api: T.nilable(T::Boolean),
+            proxy_url: T.nilable(String),
+            realtime_url: T.nilable(String)
+          }
+        )
+      end
+      def to_hash
+      end
     end
   end
 end

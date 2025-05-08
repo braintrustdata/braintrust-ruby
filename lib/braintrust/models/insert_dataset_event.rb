@@ -103,14 +103,14 @@ module Braintrust
       #   anything else that would be useful to slice/dice later. The values in `metadata`
       #   can be any JSON-serializable type, but its keys must be strings
       #
-      #   @return [Braintrust::Models::InsertDatasetEvent::Metadata, nil]
-      optional :metadata, -> { Braintrust::Models::InsertDatasetEvent::Metadata }, nil?: true
+      #   @return [Braintrust::InsertDatasetEvent::Metadata, nil]
+      optional :metadata, -> { Braintrust::InsertDatasetEvent::Metadata }, nil?: true
 
       # @!attribute origin
       #   Indicates the event was copied from another object.
       #
-      #   @return [Braintrust::Models::ObjectReference, nil]
-      optional :origin, -> { Braintrust::Models::ObjectReference }, nil?: true
+      #   @return [Braintrust::ObjectReference, nil]
+      optional :origin, -> { Braintrust::ObjectReference }, nil?: true
 
       # @!attribute root_span_id
       #   Use `span_id`, `root_span_id`, and `span_parents` instead of `_parent_id`, which
@@ -180,50 +180,40 @@ module Braintrust
 
       # @!method initialize(id: nil, _is_merge: nil, _merge_paths: nil, _object_delete: nil, _parent_id: nil, created: nil, expected: nil, input: nil, metadata: nil, origin: nil, root_span_id: nil, span_id: nil, span_parents: nil, tags: nil)
       #   Some parameter documentations has been truncated, see
-      #   {Braintrust::Models::InsertDatasetEvent} for more details.
+      #   {Braintrust::InsertDatasetEvent} for more details.
       #
       #   A dataset event
       #
       #   @param id [String, nil] A unique identifier for the dataset event. If you don't provide one, BrainTrust
-      #   ...
       #
       #   @param _is_merge [Boolean, nil] The `_is_merge` field controls how the row is merged with any existing row with
-      #   ...
       #
       #   @param _merge_paths [Array<Array<String>>, nil] The `_merge_paths` field allows controlling the depth of the merge, when
-      #   `\_is_me ...
+      #   `\_is_me
       #
       #   @param _object_delete [Boolean, nil] Pass `_object_delete=true` to mark the dataset event deleted. Deleted events wil
-      #   ...
       #
       #   @param _parent_id [String, nil] DEPRECATED: The `_parent_id` field is deprecated and should not be used. Support
-      #   ...
       #
       #   @param created [Time, nil] The timestamp the dataset event was created
       #
       #   @param expected [Object] The output of your application, including post-processing (an arbitrary, JSON se
-      #   ...
       #
       #   @param input [Object] The argument that uniquely define an input case (an arbitrary, JSON serializable
-      #   ...
       #
-      #   @param metadata [Braintrust::Models::InsertDatasetEvent::Metadata, nil] A dictionary with additional data about the test example, model outputs, or just
-      #   ...
+      #   @param metadata [Braintrust::InsertDatasetEvent::Metadata, nil] A dictionary with additional data about the test example, model outputs, or just
       #
-      #   @param origin [Braintrust::Models::ObjectReference, nil] Indicates the event was copied from another object.
+      #   @param origin [Braintrust::ObjectReference, nil] Indicates the event was copied from another object.
       #
       #   @param root_span_id [String, nil] Use `span_id`, `root_span_id`, and `span_parents` instead of `_parent_id`, which
-      #   ...
       #
       #   @param span_id [String, nil] Use `span_id`, `root_span_id`, and `span_parents` instead of `_parent_id`, which
-      #   ...
       #
       #   @param span_parents [Array<String>, nil] Use `span_id`, `root_span_id`, and `span_parents` instead of `_parent_id`, which
-      #   ...
       #
       #   @param tags [Array<String>, nil] A list of tags to log
 
-      # @see Braintrust::Models::InsertDatasetEvent#metadata
+      # @see Braintrust::InsertDatasetEvent#metadata
       class Metadata < Braintrust::Internal::Type::BaseModel
         # @!attribute model
         #   The model used for this example

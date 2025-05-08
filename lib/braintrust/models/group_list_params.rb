@@ -28,7 +28,7 @@ module Braintrust
       #   IDs, include the query param multiple times
       #
       #   @return [String, Array<String>, nil]
-      optional :ids, union: -> { Braintrust::Models::GroupListParams::IDs }
+      optional :ids, union: -> { Braintrust::GroupListParams::IDs }
 
       # @!attribute limit
       #   Limit the number of objects to return
@@ -56,18 +56,17 @@ module Braintrust
       #   Some parameter documentations has been truncated, see
       #   {Braintrust::Models::GroupListParams} for more details.
       #
-      #   @param ending_before [String] Pagination cursor id. ...
+      #   @param ending_before [String] Pagination cursor id.
       #
       #   @param group_name [String] Name of the group to search for
       #
       #   @param ids [String, Array<String>] Filter search results to a particular set of object IDs. To specify a list of ID
-      #   ...
       #
       #   @param limit [Integer, nil] Limit the number of objects to return
       #
       #   @param org_name [String] Filter search results to within a particular organization
       #
-      #   @param starting_after [String] Pagination cursor id. ...
+      #   @param starting_after [String] Pagination cursor id.
       #
       #   @param request_options [Braintrust::RequestOptions, Hash{Symbol=>Object}]
 
@@ -78,7 +77,7 @@ module Braintrust
 
         variant String
 
-        variant -> { Braintrust::Models::GroupListParams::IDs::StringArray }
+        variant -> { Braintrust::GroupListParams::IDs::StringArray }
 
         # @!method self.variants
         #   @return [Array(String, Array<String>)]

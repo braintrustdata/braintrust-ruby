@@ -3,6 +3,9 @@
 module Braintrust
   module Models
     class ViewOptions < Braintrust::Internal::Type::BaseModel
+      OrHash =
+        T.type_alias { T.any(T.self_type, Braintrust::Internal::AnyHash) }
+
       sig { returns(T.nilable(T::Array[String])) }
       attr_accessor :column_order
 
@@ -30,8 +33,7 @@ module Braintrust
           grouping: T.nilable(String),
           layout: T.nilable(String),
           row_height: T.nilable(String)
-        )
-          .returns(T.attached_class)
+        ).returns(T.attached_class)
       end
       def self.new(
         column_order: nil,
@@ -44,19 +46,19 @@ module Braintrust
       end
 
       sig do
-        override
-          .returns(
-            {
-              column_order: T.nilable(T::Array[String]),
-              column_sizing: T.nilable(T::Hash[Symbol, Float]),
-              column_visibility: T.nilable(T::Hash[Symbol, T::Boolean]),
-              grouping: T.nilable(String),
-              layout: T.nilable(String),
-              row_height: T.nilable(String)
-            }
-          )
+        override.returns(
+          {
+            column_order: T.nilable(T::Array[String]),
+            column_sizing: T.nilable(T::Hash[Symbol, Float]),
+            column_visibility: T.nilable(T::Hash[Symbol, T::Boolean]),
+            grouping: T.nilable(String),
+            layout: T.nilable(String),
+            row_height: T.nilable(String)
+          }
+        )
       end
-      def to_hash; end
+      def to_hash
+      end
     end
   end
 end

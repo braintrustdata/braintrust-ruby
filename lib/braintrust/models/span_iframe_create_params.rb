@@ -51,7 +51,6 @@ module Braintrust
       #   @param description [String, nil] Textual description of the span iframe
       #
       #   @param post_message [Boolean, nil] Whether to post messages to the iframe containing the span's data. This is usefu
-      #   ...
       #
       #   @param request_options [Braintrust::RequestOptions, Hash{Symbol=>Object}]
     end

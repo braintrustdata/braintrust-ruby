@@ -10,11 +10,11 @@ module Braintrust
       # @!attribute events
       #   A list of experiment events to insert
       #
-      #   @return [Array<Braintrust::Models::InsertExperimentEvent>]
-      required :events, -> { Braintrust::Internal::Type::ArrayOf[Braintrust::Models::InsertExperimentEvent] }
+      #   @return [Array<Braintrust::InsertExperimentEvent>]
+      required :events, -> { Braintrust::Internal::Type::ArrayOf[Braintrust::InsertExperimentEvent] }
 
       # @!method initialize(events:, request_options: {})
-      #   @param events [Array<Braintrust::Models::InsertExperimentEvent>] A list of experiment events to insert
+      #   @param events [Array<Braintrust::InsertExperimentEvent>] A list of experiment events to insert
       #
       #   @param request_options [Braintrust::RequestOptions, Hash{Symbol=>Object}]
     end

@@ -6,6 +6,9 @@ module Braintrust
       extend Braintrust::Internal::Type::RequestParameters::Converter
       include Braintrust::Internal::Type::RequestParameters
 
+      OrHash =
+        T.type_alias { T.any(T.self_type, Braintrust::Internal::AnyHash) }
+
       # Name of the env_var to search for
       sig { returns(T.nilable(String)) }
       attr_reader :env_var_name
@@ -33,10 +36,10 @@ module Braintrust
       attr_writer :object_id_
 
       # The type of the object the environment variable is scoped for
-      sig { returns(T.nilable(Braintrust::Models::EnvVarObjectType::OrSymbol)) }
+      sig { returns(T.nilable(Braintrust::EnvVarObjectType::OrSymbol)) }
       attr_reader :object_type
 
-      sig { params(object_type: Braintrust::Models::EnvVarObjectType::OrSymbol).void }
+      sig { params(object_type: Braintrust::EnvVarObjectType::OrSymbol).void }
       attr_writer :object_type
 
       sig do
@@ -45,10 +48,9 @@ module Braintrust
           ids: T.any(String, T::Array[String]),
           limit: T.nilable(Integer),
           object_id_: String,
-          object_type: Braintrust::Models::EnvVarObjectType::OrSymbol,
-          request_options: T.any(Braintrust::RequestOptions, Braintrust::Internal::AnyHash)
-        )
-          .returns(T.attached_class)
+          object_type: Braintrust::EnvVarObjectType::OrSymbol,
+          request_options: Braintrust::RequestOptions::OrHash
+        ).returns(T.attached_class)
       end
       def self.new(
         # Name of the env_var to search for
@@ -63,34 +65,44 @@ module Braintrust
         # The type of the object the environment variable is scoped for
         object_type: nil,
         request_options: {}
-      ); end
-      sig do
-        override
-          .returns(
-            {
-              env_var_name: String,
-              ids: T.any(String, T::Array[String]),
-              limit: T.nilable(Integer),
-              object_id_: String,
-              object_type: Braintrust::Models::EnvVarObjectType::OrSymbol,
-              request_options: Braintrust::RequestOptions
-            }
-          )
+      )
       end
-      def to_hash; end
+
+      sig do
+        override.returns(
+          {
+            env_var_name: String,
+            ids: T.any(String, T::Array[String]),
+            limit: T.nilable(Integer),
+            object_id_: String,
+            object_type: Braintrust::EnvVarObjectType::OrSymbol,
+            request_options: Braintrust::RequestOptions
+          }
+        )
+      end
+      def to_hash
+      end
 
       # Filter search results to a particular set of object IDs. To specify a list of
       # IDs, include the query param multiple times
       module IDs
         extend Braintrust::Internal::Type::Union
 
-        sig { override.returns([String, T::Array[String]]) }
-        def self.variants; end
+        Variants = T.type_alias { T.any(String, T::Array[String]) }
 
-        StringArray = T.let(
-          Braintrust::Internal::Type::ArrayOf[String],
-          Braintrust::Internal::Type::Converter
-        )
+        sig do
+          override.returns(
+            T::Array[Braintrust::EnvVarListParams::IDs::Variants]
+          )
+        end
+        def self.variants
+        end
+
+        StringArray =
+          T.let(
+            Braintrust::Internal::Type::ArrayOf[String],
+            Braintrust::Internal::Type::Converter
+          )
       end
     end
   end

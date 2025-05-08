@@ -9,15 +9,15 @@ module Braintrust
         params(
           name: String,
           object_id_: String,
-          object_type: Braintrust::Models::ACLObjectType::OrSymbol,
-          view_type: T.nilable(Braintrust::Models::ViewCreateParams::ViewType::OrSymbol),
+          object_type: Braintrust::ACLObjectType::OrSymbol,
+          view_type:
+            T.nilable(Braintrust::ViewCreateParams::ViewType::OrSymbol),
           deleted_at: T.nilable(Time),
-          options: T.nilable(T.any(Braintrust::Models::ViewOptions, Braintrust::Internal::AnyHash)),
+          options: T.nilable(Braintrust::ViewOptions::OrHash),
           user_id: T.nilable(String),
-          view_data: T.nilable(T.any(Braintrust::Models::ViewData, Braintrust::Internal::AnyHash)),
-          request_options: Braintrust::RequestOpts
-        )
-          .returns(Braintrust::Models::View)
+          view_data: T.nilable(Braintrust::ViewData::OrHash),
+          request_options: Braintrust::RequestOptions::OrHash
+        ).returns(Braintrust::View)
       end
       def create(
         # Name of the view
@@ -37,16 +37,17 @@ module Braintrust
         # The view definition
         view_data: nil,
         request_options: {}
-      ); end
+      )
+      end
+
       # Get a view object by its id
       sig do
         params(
           view_id: String,
           object_id_: String,
-          object_type: Braintrust::Models::ACLObjectType::OrSymbol,
-          request_options: Braintrust::RequestOpts
-        )
-          .returns(Braintrust::Models::View)
+          object_type: Braintrust::ACLObjectType::OrSymbol,
+          request_options: Braintrust::RequestOptions::OrHash
+        ).returns(Braintrust::View)
       end
       def retrieve(
         # View id
@@ -56,7 +57,9 @@ module Braintrust
         # The object type that the ACL applies to
         object_type:,
         request_options: {}
-      ); end
+      )
+      end
+
       # Partially update a view object. Specify the fields to update in the payload. Any
       # object-type fields will be deep-merged with existing content. Currently we do
       # not support removing fields or setting them to null.
@@ -64,15 +67,15 @@ module Braintrust
         params(
           view_id: String,
           object_id_: String,
-          object_type: Braintrust::Models::ACLObjectType::OrSymbol,
+          object_type: Braintrust::ACLObjectType::OrSymbol,
           name: T.nilable(String),
-          options: T.nilable(T.any(Braintrust::Models::ViewOptions, Braintrust::Internal::AnyHash)),
+          options: T.nilable(Braintrust::ViewOptions::OrHash),
           user_id: T.nilable(String),
-          view_data: T.nilable(T.any(Braintrust::Models::ViewData, Braintrust::Internal::AnyHash)),
-          view_type: T.nilable(Braintrust::Models::ViewUpdateParams::ViewType::OrSymbol),
-          request_options: Braintrust::RequestOpts
-        )
-          .returns(Braintrust::Models::View)
+          view_data: T.nilable(Braintrust::ViewData::OrHash),
+          view_type:
+            T.nilable(Braintrust::ViewUpdateParams::ViewType::OrSymbol),
+          request_options: Braintrust::RequestOptions::OrHash
+        ).returns(Braintrust::View)
       end
       def update(
         # View id
@@ -92,22 +95,23 @@ module Braintrust
         # Type of table that the view corresponds to.
         view_type: nil,
         request_options: {}
-      ); end
+      )
+      end
+
       # List out all views. The views are sorted by creation date, with the most
       # recently-created views coming first
       sig do
         params(
           object_id_: String,
-          object_type: Braintrust::Models::ACLObjectType::OrSymbol,
+          object_type: Braintrust::ACLObjectType::OrSymbol,
           ending_before: String,
           ids: T.any(String, T::Array[String]),
           limit: T.nilable(Integer),
           starting_after: String,
           view_name: String,
-          view_type: T.nilable(Braintrust::Models::ViewType::OrSymbol),
-          request_options: Braintrust::RequestOpts
-        )
-          .returns(Braintrust::Internal::ListObjects[Braintrust::Models::View])
+          view_type: T.nilable(Braintrust::ViewType::OrSymbol),
+          request_options: Braintrust::RequestOptions::OrHash
+        ).returns(Braintrust::Internal::ListObjects[Braintrust::View])
       end
       def list(
         # The id of the object the ACL applies to
@@ -136,16 +140,17 @@ module Braintrust
         # Type of table that the view corresponds to.
         view_type: nil,
         request_options: {}
-      ); end
+      )
+      end
+
       # Delete a view object by its id
       sig do
         params(
           view_id: String,
           object_id_: String,
-          object_type: Braintrust::Models::ACLObjectType::OrSymbol,
-          request_options: Braintrust::RequestOpts
-        )
-          .returns(Braintrust::Models::View)
+          object_type: Braintrust::ACLObjectType::OrSymbol,
+          request_options: Braintrust::RequestOptions::OrHash
+        ).returns(Braintrust::View)
       end
       def delete(
         # View id
@@ -155,7 +160,9 @@ module Braintrust
         # The object type that the ACL applies to
         object_type:,
         request_options: {}
-      ); end
+      )
+      end
+
       # Create or replace view. If there is an existing view with the same name as the
       # one specified in the request, will replace the existing view with the provided
       # fields
@@ -163,15 +170,15 @@ module Braintrust
         params(
           name: String,
           object_id_: String,
-          object_type: Braintrust::Models::ACLObjectType::OrSymbol,
-          view_type: T.nilable(Braintrust::Models::ViewReplaceParams::ViewType::OrSymbol),
+          object_type: Braintrust::ACLObjectType::OrSymbol,
+          view_type:
+            T.nilable(Braintrust::ViewReplaceParams::ViewType::OrSymbol),
           deleted_at: T.nilable(Time),
-          options: T.nilable(T.any(Braintrust::Models::ViewOptions, Braintrust::Internal::AnyHash)),
+          options: T.nilable(Braintrust::ViewOptions::OrHash),
           user_id: T.nilable(String),
-          view_data: T.nilable(T.any(Braintrust::Models::ViewData, Braintrust::Internal::AnyHash)),
-          request_options: Braintrust::RequestOpts
-        )
-          .returns(Braintrust::Models::View)
+          view_data: T.nilable(Braintrust::ViewData::OrHash),
+          request_options: Braintrust::RequestOptions::OrHash
+        ).returns(Braintrust::View)
       end
       def replace(
         # Name of the view
@@ -191,10 +198,13 @@ module Braintrust
         # The view definition
         view_data: nil,
         request_options: {}
-      ); end
+      )
+      end
+
       # @api private
       sig { params(client: Braintrust::Client).returns(T.attached_class) }
-      def self.new(client:); end
+      def self.new(client:)
+      end
     end
   end
 end

@@ -19,8 +19,6 @@ module Braintrust
         ?summarize_scores: bool?,
         ?request_options: Braintrust::request_opts
       ) -> void
-
-      def to_hash: -> Braintrust::Models::experiment_summarize_params
     end
   end
 end
