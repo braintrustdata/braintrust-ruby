@@ -2,6 +2,8 @@ module Braintrust
   module Internal
     module Type
       module Converter
+        extend Braintrust::Internal::Util::SorbetRuntimeSupport
+
         type input = Braintrust::Internal::Type::Converter | Class
 
         type coerce_state =

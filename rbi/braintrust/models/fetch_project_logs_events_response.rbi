@@ -4,7 +4,12 @@ module Braintrust
   module Models
     class FetchProjectLogsEventsResponse < Braintrust::Internal::Type::BaseModel
       OrHash =
-        T.type_alias { T.any(T.self_type, Braintrust::Internal::AnyHash) }
+        T.type_alias do
+          T.any(
+            Braintrust::FetchProjectLogsEventsResponse,
+            Braintrust::Internal::AnyHash
+          )
+        end
 
       # A list of fetched events
       sig { returns(T::Array[Braintrust::ProjectLogsEvent]) }

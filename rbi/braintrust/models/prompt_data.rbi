@@ -4,7 +4,9 @@ module Braintrust
   module Models
     class PromptData < Braintrust::Internal::Type::BaseModel
       OrHash =
-        T.type_alias { T.any(T.self_type, Braintrust::Internal::AnyHash) }
+        T.type_alias do
+          T.any(Braintrust::PromptData, Braintrust::Internal::AnyHash)
+        end
 
       sig { returns(T.nilable(Braintrust::PromptOptions)) }
       attr_reader :options
@@ -117,7 +119,9 @@ module Braintrust
 
       class Origin < Braintrust::Internal::Type::BaseModel
         OrHash =
-          T.type_alias { T.any(T.self_type, Braintrust::Internal::AnyHash) }
+          T.type_alias do
+            T.any(Braintrust::PromptData::Origin, Braintrust::Internal::AnyHash)
+          end
 
         sig { returns(T.nilable(String)) }
         attr_reader :project_id
@@ -158,7 +162,9 @@ module Braintrust
 
       class Parser < Braintrust::Internal::Type::BaseModel
         OrHash =
-          T.type_alias { T.any(T.self_type, Braintrust::Internal::AnyHash) }
+          T.type_alias do
+            T.any(Braintrust::PromptData::Parser, Braintrust::Internal::AnyHash)
+          end
 
         sig { returns(T::Hash[Symbol, Float]) }
         attr_accessor :choice_scores
@@ -227,7 +233,12 @@ module Braintrust
 
         class Completion < Braintrust::Internal::Type::BaseModel
           OrHash =
-            T.type_alias { T.any(T.self_type, Braintrust::Internal::AnyHash) }
+            T.type_alias do
+              T.any(
+                Braintrust::PromptData::Prompt::Completion,
+                Braintrust::Internal::AnyHash
+              )
+            end
 
           sig { returns(String) }
           attr_accessor :content
@@ -286,7 +297,12 @@ module Braintrust
 
         class Chat < Braintrust::Internal::Type::BaseModel
           OrHash =
-            T.type_alias { T.any(T.self_type, Braintrust::Internal::AnyHash) }
+            T.type_alias do
+              T.any(
+                Braintrust::PromptData::Prompt::Chat,
+                Braintrust::Internal::AnyHash
+              )
+            end
 
           sig do
             returns(
@@ -373,7 +389,10 @@ module Braintrust
             class System < Braintrust::Internal::Type::BaseModel
               OrHash =
                 T.type_alias do
-                  T.any(T.self_type, Braintrust::Internal::AnyHash)
+                  T.any(
+                    Braintrust::PromptData::Prompt::Chat::Message::System,
+                    Braintrust::Internal::AnyHash
+                  )
                 end
 
               sig do
@@ -452,7 +471,10 @@ module Braintrust
             class User < Braintrust::Internal::Type::BaseModel
               OrHash =
                 T.type_alias do
-                  T.any(T.self_type, Braintrust::Internal::AnyHash)
+                  T.any(
+                    Braintrust::PromptData::Prompt::Chat::Message::User,
+                    Braintrust::Internal::AnyHash
+                  )
                 end
 
               sig do
@@ -634,7 +656,10 @@ module Braintrust
             class Assistant < Braintrust::Internal::Type::BaseModel
               OrHash =
                 T.type_alias do
-                  T.any(T.self_type, Braintrust::Internal::AnyHash)
+                  T.any(
+                    Braintrust::PromptData::Prompt::Chat::Message::Assistant,
+                    Braintrust::Internal::AnyHash
+                  )
                 end
 
               sig do
@@ -756,7 +781,10 @@ module Braintrust
               class FunctionCall < Braintrust::Internal::Type::BaseModel
                 OrHash =
                   T.type_alias do
-                    T.any(T.self_type, Braintrust::Internal::AnyHash)
+                    T.any(
+                      Braintrust::PromptData::Prompt::Chat::Message::Assistant::FunctionCall,
+                      Braintrust::Internal::AnyHash
+                    )
                   end
 
                 sig { returns(String) }
@@ -782,7 +810,10 @@ module Braintrust
             class Tool < Braintrust::Internal::Type::BaseModel
               OrHash =
                 T.type_alias do
-                  T.any(T.self_type, Braintrust::Internal::AnyHash)
+                  T.any(
+                    Braintrust::PromptData::Prompt::Chat::Message::Tool,
+                    Braintrust::Internal::AnyHash
+                  )
                 end
 
               sig do
@@ -861,7 +892,10 @@ module Braintrust
             class Function < Braintrust::Internal::Type::BaseModel
               OrHash =
                 T.type_alias do
-                  T.any(T.self_type, Braintrust::Internal::AnyHash)
+                  T.any(
+                    Braintrust::PromptData::Prompt::Chat::Message::Function,
+                    Braintrust::Internal::AnyHash
+                  )
                 end
 
               sig { returns(String) }
@@ -937,7 +971,10 @@ module Braintrust
             class Fallback < Braintrust::Internal::Type::BaseModel
               OrHash =
                 T.type_alias do
-                  T.any(T.self_type, Braintrust::Internal::AnyHash)
+                  T.any(
+                    Braintrust::PromptData::Prompt::Chat::Message::Fallback,
+                    Braintrust::Internal::AnyHash
+                  )
                 end
 
               sig do
@@ -1060,7 +1097,12 @@ module Braintrust
 
         class Function < Braintrust::Internal::Type::BaseModel
           OrHash =
-            T.type_alias { T.any(T.self_type, Braintrust::Internal::AnyHash) }
+            T.type_alias do
+              T.any(
+                Braintrust::PromptData::ToolFunction::Function,
+                Braintrust::Internal::AnyHash
+              )
+            end
 
           sig { returns(String) }
           attr_accessor :id
@@ -1126,7 +1168,12 @@ module Braintrust
 
         class Global < Braintrust::Internal::Type::BaseModel
           OrHash =
-            T.type_alias { T.any(T.self_type, Braintrust::Internal::AnyHash) }
+            T.type_alias do
+              T.any(
+                Braintrust::PromptData::ToolFunction::Global,
+                Braintrust::Internal::AnyHash
+              )
+            end
 
           sig { returns(String) }
           attr_accessor :name

@@ -4,7 +4,9 @@ module Braintrust
   module Models
     class SpanAttributes < Braintrust::Internal::Type::BaseModel
       OrHash =
-        T.type_alias { T.any(T.self_type, Braintrust::Internal::AnyHash) }
+        T.type_alias do
+          T.any(Braintrust::SpanAttributes, Braintrust::Internal::AnyHash)
+        end
 
       # Name of the span, for display purposes only
       sig { returns(T.nilable(String)) }

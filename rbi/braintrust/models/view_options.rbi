@@ -4,7 +4,9 @@ module Braintrust
   module Models
     class ViewOptions < Braintrust::Internal::Type::BaseModel
       OrHash =
-        T.type_alias { T.any(T.self_type, Braintrust::Internal::AnyHash) }
+        T.type_alias do
+          T.any(Braintrust::ViewOptions, Braintrust::Internal::AnyHash)
+        end
 
       sig { returns(T.nilable(T::Array[String])) }
       attr_accessor :column_order

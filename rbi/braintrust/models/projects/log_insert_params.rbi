@@ -8,7 +8,12 @@ module Braintrust
         include Braintrust::Internal::Type::RequestParameters
 
         OrHash =
-          T.type_alias { T.any(T.self_type, Braintrust::Internal::AnyHash) }
+          T.type_alias do
+            T.any(
+              Braintrust::Projects::LogInsertParams,
+              Braintrust::Internal::AnyHash
+            )
+          end
 
         # A list of project logs events to insert
         sig { returns(T::Array[Braintrust::InsertProjectLogsEvent]) }

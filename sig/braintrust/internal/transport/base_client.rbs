@@ -2,6 +2,8 @@ module Braintrust
   module Internal
     module Transport
       class BaseClient
+        extend Braintrust::Internal::Util::SorbetRuntimeSupport
+
         type request_components =
           {
             method: Symbol,
@@ -20,7 +22,6 @@ module Braintrust
             model: Braintrust::Internal::Type::Converter::input?,
             options: Braintrust::request_opts?
           }
-
         type request_input =
           {
             method: Symbol,

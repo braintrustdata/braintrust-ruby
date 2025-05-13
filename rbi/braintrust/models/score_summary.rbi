@@ -4,7 +4,9 @@ module Braintrust
   module Models
     class ScoreSummary < Braintrust::Internal::Type::BaseModel
       OrHash =
-        T.type_alias { T.any(T.self_type, Braintrust::Internal::AnyHash) }
+        T.type_alias do
+          T.any(Braintrust::ScoreSummary, Braintrust::Internal::AnyHash)
+        end
 
       # Number of improvements in the score
       sig { returns(Integer) }

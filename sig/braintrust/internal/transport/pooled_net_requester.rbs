@@ -2,6 +2,8 @@ module Braintrust
   module Internal
     module Transport
       class PooledNetRequester
+        extend Braintrust::Internal::Util::SorbetRuntimeSupport
+
         type request =
           {
             method: Symbol,

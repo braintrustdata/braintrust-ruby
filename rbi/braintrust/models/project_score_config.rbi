@@ -4,7 +4,9 @@ module Braintrust
   module Models
     class ProjectScoreConfig < Braintrust::Internal::Type::BaseModel
       OrHash =
-        T.type_alias { T.any(T.self_type, Braintrust::Internal::AnyHash) }
+        T.type_alias do
+          T.any(Braintrust::ProjectScoreConfig, Braintrust::Internal::AnyHash)
+        end
 
       sig { returns(T.nilable(String)) }
       attr_accessor :destination

@@ -5,10 +5,11 @@ module Braintrust
     module Type
       class BaseModel
         extend Braintrust::Internal::Type::Converter
+        extend Braintrust::Internal::Util::SorbetRuntimeSupport
 
         abstract!
 
-        KnownFieldShape =
+        KnownField =
           T.type_alias do
             {
               mode: T.nilable(Symbol),
@@ -18,19 +19,29 @@ module Braintrust
           end
 
         OrHash =
-          T.type_alias { T.any(T.self_type, Braintrust::Internal::AnyHash) }
+          T.type_alias do
+            T.any(
+              Braintrust::Internal::Type::BaseModel,
+              Braintrust::Internal::AnyHash
+            )
+          end
 
         class << self
           # @api private
           #
           # Assumes superclass fields are totally defined before fields are accessed /
           # defined on subclasses.
+          sig { params(child: T.self_type).void }
+          def inherited(child)
+          end
+
+          # @api private
           sig do
             returns(
               T::Hash[
                 Symbol,
                 T.all(
-                  Braintrust::Internal::Type::BaseModel::KnownFieldShape,
+                  Braintrust::Internal::Type::BaseModel::KnownField,
                   {
                     type_fn:
                       T.proc.returns(
@@ -50,7 +61,7 @@ module Braintrust
               T::Hash[
                 Symbol,
                 T.all(
-                  Braintrust::Internal::Type::BaseModel::KnownFieldShape,
+                  Braintrust::Internal::Type::BaseModel::KnownField,
                   { type: Braintrust::Internal::Type::Converter::Input }
                 )
               ]

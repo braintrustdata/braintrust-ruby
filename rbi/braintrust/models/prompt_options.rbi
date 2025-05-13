@@ -4,7 +4,9 @@ module Braintrust
   module Models
     class PromptOptions < Braintrust::Internal::Type::BaseModel
       OrHash =
-        T.type_alias { T.any(T.self_type, Braintrust::Internal::AnyHash) }
+        T.type_alias do
+          T.any(Braintrust::PromptOptions, Braintrust::Internal::AnyHash)
+        end
 
       sig { returns(T.nilable(String)) }
       attr_reader :model
@@ -99,7 +101,12 @@ module Braintrust
 
         class OpenAIModelParams < Braintrust::Internal::Type::BaseModel
           OrHash =
-            T.type_alias { T.any(T.self_type, Braintrust::Internal::AnyHash) }
+            T.type_alias do
+              T.any(
+                Braintrust::PromptOptions::Params::OpenAIModelParams,
+                Braintrust::Internal::AnyHash
+              )
+            end
 
           sig { returns(T.nilable(Float)) }
           attr_reader :frequency_penalty
@@ -335,7 +342,10 @@ module Braintrust
             class Function < Braintrust::Internal::Type::BaseModel
               OrHash =
                 T.type_alias do
-                  T.any(T.self_type, Braintrust::Internal::AnyHash)
+                  T.any(
+                    Braintrust::PromptOptions::Params::OpenAIModelParams::FunctionCall::Function,
+                    Braintrust::Internal::AnyHash
+                  )
                 end
 
               sig { returns(String) }
@@ -435,7 +445,10 @@ module Braintrust
             class JsonObject < Braintrust::Internal::Type::BaseModel
               OrHash =
                 T.type_alias do
-                  T.any(T.self_type, Braintrust::Internal::AnyHash)
+                  T.any(
+                    Braintrust::PromptOptions::Params::OpenAIModelParams::ResponseFormat::JsonObject,
+                    Braintrust::Internal::AnyHash
+                  )
                 end
 
               sig do
@@ -498,7 +511,10 @@ module Braintrust
             class JsonSchema < Braintrust::Internal::Type::BaseModel
               OrHash =
                 T.type_alias do
-                  T.any(T.self_type, Braintrust::Internal::AnyHash)
+                  T.any(
+                    Braintrust::PromptOptions::Params::OpenAIModelParams::ResponseFormat::JsonSchema,
+                    Braintrust::Internal::AnyHash
+                  )
                 end
 
               sig do
@@ -550,7 +566,10 @@ module Braintrust
               class JsonSchema < Braintrust::Internal::Type::BaseModel
                 OrHash =
                   T.type_alias do
-                    T.any(T.self_type, Braintrust::Internal::AnyHash)
+                    T.any(
+                      Braintrust::PromptOptions::Params::OpenAIModelParams::ResponseFormat::JsonSchema::JsonSchema,
+                      Braintrust::Internal::AnyHash
+                    )
                   end
 
                 sig { returns(String) }
@@ -670,7 +689,10 @@ module Braintrust
             class Text < Braintrust::Internal::Type::BaseModel
               OrHash =
                 T.type_alias do
-                  T.any(T.self_type, Braintrust::Internal::AnyHash)
+                  T.any(
+                    Braintrust::PromptOptions::Params::OpenAIModelParams::ResponseFormat::Text,
+                    Braintrust::Internal::AnyHash
+                  )
                 end
 
               sig do
@@ -755,7 +777,10 @@ module Braintrust
             class Function < Braintrust::Internal::Type::BaseModel
               OrHash =
                 T.type_alias do
-                  T.any(T.self_type, Braintrust::Internal::AnyHash)
+                  T.any(
+                    Braintrust::PromptOptions::Params::OpenAIModelParams::ToolChoice::Function,
+                    Braintrust::Internal::AnyHash
+                  )
                 end
 
               sig do
@@ -807,7 +832,10 @@ module Braintrust
               class Function < Braintrust::Internal::Type::BaseModel
                 OrHash =
                   T.type_alias do
-                    T.any(T.self_type, Braintrust::Internal::AnyHash)
+                    T.any(
+                      Braintrust::PromptOptions::Params::OpenAIModelParams::ToolChoice::Function::Function,
+                      Braintrust::Internal::AnyHash
+                    )
                   end
 
                 sig { returns(String) }
@@ -891,7 +919,12 @@ module Braintrust
 
         class AnthropicModelParams < Braintrust::Internal::Type::BaseModel
           OrHash =
-            T.type_alias { T.any(T.self_type, Braintrust::Internal::AnyHash) }
+            T.type_alias do
+              T.any(
+                Braintrust::PromptOptions::Params::AnthropicModelParams,
+                Braintrust::Internal::AnyHash
+              )
+            end
 
           sig { returns(Float) }
           attr_accessor :max_tokens
@@ -972,7 +1005,12 @@ module Braintrust
 
         class GoogleModelParams < Braintrust::Internal::Type::BaseModel
           OrHash =
-            T.type_alias { T.any(T.self_type, Braintrust::Internal::AnyHash) }
+            T.type_alias do
+              T.any(
+                Braintrust::PromptOptions::Params::GoogleModelParams,
+                Braintrust::Internal::AnyHash
+              )
+            end
 
           sig { returns(T.nilable(Float)) }
           attr_reader :max_output_tokens
@@ -1039,7 +1077,12 @@ module Braintrust
 
         class WindowAIModelParams < Braintrust::Internal::Type::BaseModel
           OrHash =
-            T.type_alias { T.any(T.self_type, Braintrust::Internal::AnyHash) }
+            T.type_alias do
+              T.any(
+                Braintrust::PromptOptions::Params::WindowAIModelParams,
+                Braintrust::Internal::AnyHash
+              )
+            end
 
           sig { returns(T.nilable(Float)) }
           attr_reader :temperature
@@ -1080,7 +1123,12 @@ module Braintrust
 
         class JsCompletionParams < Braintrust::Internal::Type::BaseModel
           OrHash =
-            T.type_alias { T.any(T.self_type, Braintrust::Internal::AnyHash) }
+            T.type_alias do
+              T.any(
+                Braintrust::PromptOptions::Params::JsCompletionParams,
+                Braintrust::Internal::AnyHash
+              )
+            end
 
           sig { returns(T.nilable(T::Boolean)) }
           attr_reader :use_cache

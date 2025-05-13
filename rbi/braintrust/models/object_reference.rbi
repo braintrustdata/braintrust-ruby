@@ -4,7 +4,9 @@ module Braintrust
   module Models
     class ObjectReference < Braintrust::Internal::Type::BaseModel
       OrHash =
-        T.type_alias { T.any(T.self_type, Braintrust::Internal::AnyHash) }
+        T.type_alias do
+          T.any(Braintrust::ObjectReference, Braintrust::Internal::AnyHash)
+        end
 
       # ID of the original event.
       sig { returns(String) }

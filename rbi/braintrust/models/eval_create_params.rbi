@@ -7,7 +7,9 @@ module Braintrust
       include Braintrust::Internal::Type::RequestParameters
 
       OrHash =
-        T.type_alias { T.any(T.self_type, Braintrust::Internal::AnyHash) }
+        T.type_alias do
+          T.any(Braintrust::EvalCreateParams, Braintrust::Internal::AnyHash)
+        end
 
       # The dataset to use
       sig do
@@ -326,7 +328,12 @@ module Braintrust
 
         class DatasetID < Braintrust::Internal::Type::BaseModel
           OrHash =
-            T.type_alias { T.any(T.self_type, Braintrust::Internal::AnyHash) }
+            T.type_alias do
+              T.any(
+                Braintrust::EvalCreateParams::Data::DatasetID,
+                Braintrust::Internal::AnyHash
+              )
+            end
 
           sig { returns(String) }
           attr_accessor :dataset_id
@@ -359,7 +366,12 @@ module Braintrust
 
         class ProjectDatasetName < Braintrust::Internal::Type::BaseModel
           OrHash =
-            T.type_alias { T.any(T.self_type, Braintrust::Internal::AnyHash) }
+            T.type_alias do
+              T.any(
+                Braintrust::EvalCreateParams::Data::ProjectDatasetName,
+                Braintrust::Internal::AnyHash
+              )
+            end
 
           sig { returns(String) }
           attr_accessor :dataset_name
@@ -397,7 +409,12 @@ module Braintrust
 
         class DatasetRows < Braintrust::Internal::Type::BaseModel
           OrHash =
-            T.type_alias { T.any(T.self_type, Braintrust::Internal::AnyHash) }
+            T.type_alias do
+              T.any(
+                Braintrust::EvalCreateParams::Data::DatasetRows,
+                Braintrust::Internal::AnyHash
+              )
+            end
 
           sig { returns(T::Array[T.nilable(T.anything)]) }
           attr_accessor :data
@@ -443,7 +460,12 @@ module Braintrust
 
         class FunctionID < Braintrust::Internal::Type::BaseModel
           OrHash =
-            T.type_alias { T.any(T.self_type, Braintrust::Internal::AnyHash) }
+            T.type_alias do
+              T.any(
+                Braintrust::EvalCreateParams::Score::FunctionID,
+                Braintrust::Internal::AnyHash
+              )
+            end
 
           # The ID of the function
           sig { returns(String) }
@@ -477,7 +499,12 @@ module Braintrust
 
         class ProjectSlug < Braintrust::Internal::Type::BaseModel
           OrHash =
-            T.type_alias { T.any(T.self_type, Braintrust::Internal::AnyHash) }
+            T.type_alias do
+              T.any(
+                Braintrust::EvalCreateParams::Score::ProjectSlug,
+                Braintrust::Internal::AnyHash
+              )
+            end
 
           # The name of the project containing the function
           sig { returns(String) }
@@ -521,7 +548,12 @@ module Braintrust
 
         class GlobalFunction < Braintrust::Internal::Type::BaseModel
           OrHash =
-            T.type_alias { T.any(T.self_type, Braintrust::Internal::AnyHash) }
+            T.type_alias do
+              T.any(
+                Braintrust::EvalCreateParams::Score::GlobalFunction,
+                Braintrust::Internal::AnyHash
+              )
+            end
 
           # The name of the global function. Currently, the global namespace includes the
           # functions in autoevals
@@ -544,7 +576,12 @@ module Braintrust
 
         class PromptSessionID < Braintrust::Internal::Type::BaseModel
           OrHash =
-            T.type_alias { T.any(T.self_type, Braintrust::Internal::AnyHash) }
+            T.type_alias do
+              T.any(
+                Braintrust::EvalCreateParams::Score::PromptSessionID,
+                Braintrust::Internal::AnyHash
+              )
+            end
 
           # The ID of the function in the prompt session
           sig { returns(String) }
@@ -594,7 +631,12 @@ module Braintrust
 
         class InlineCode < Braintrust::Internal::Type::BaseModel
           OrHash =
-            T.type_alias { T.any(T.self_type, Braintrust::Internal::AnyHash) }
+            T.type_alias do
+              T.any(
+                Braintrust::EvalCreateParams::Score::InlineCode,
+                Braintrust::Internal::AnyHash
+              )
+            end
 
           # The inline code to execute
           sig { returns(String) }
@@ -652,7 +694,12 @@ module Braintrust
 
           class InlineContext < Braintrust::Internal::Type::BaseModel
             OrHash =
-              T.type_alias { T.any(T.self_type, Braintrust::Internal::AnyHash) }
+              T.type_alias do
+                T.any(
+                  Braintrust::EvalCreateParams::Score::InlineCode::InlineContext,
+                  Braintrust::Internal::AnyHash
+                )
+              end
 
             sig do
               returns(
@@ -724,7 +771,12 @@ module Braintrust
 
         class InlinePrompt < Braintrust::Internal::Type::BaseModel
           OrHash =
-            T.type_alias { T.any(T.self_type, Braintrust::Internal::AnyHash) }
+            T.type_alias do
+              T.any(
+                Braintrust::EvalCreateParams::Score::InlinePrompt,
+                Braintrust::Internal::AnyHash
+              )
+            end
 
           # The prompt, model, and its parameters
           sig { returns(T.nilable(Braintrust::PromptData)) }
@@ -795,7 +847,12 @@ module Braintrust
 
         class FunctionID < Braintrust::Internal::Type::BaseModel
           OrHash =
-            T.type_alias { T.any(T.self_type, Braintrust::Internal::AnyHash) }
+            T.type_alias do
+              T.any(
+                Braintrust::EvalCreateParams::Task::FunctionID,
+                Braintrust::Internal::AnyHash
+              )
+            end
 
           # The ID of the function
           sig { returns(String) }
@@ -829,7 +886,12 @@ module Braintrust
 
         class ProjectSlug < Braintrust::Internal::Type::BaseModel
           OrHash =
-            T.type_alias { T.any(T.self_type, Braintrust::Internal::AnyHash) }
+            T.type_alias do
+              T.any(
+                Braintrust::EvalCreateParams::Task::ProjectSlug,
+                Braintrust::Internal::AnyHash
+              )
+            end
 
           # The name of the project containing the function
           sig { returns(String) }
@@ -873,7 +935,12 @@ module Braintrust
 
         class GlobalFunction < Braintrust::Internal::Type::BaseModel
           OrHash =
-            T.type_alias { T.any(T.self_type, Braintrust::Internal::AnyHash) }
+            T.type_alias do
+              T.any(
+                Braintrust::EvalCreateParams::Task::GlobalFunction,
+                Braintrust::Internal::AnyHash
+              )
+            end
 
           # The name of the global function. Currently, the global namespace includes the
           # functions in autoevals
@@ -896,7 +963,12 @@ module Braintrust
 
         class PromptSessionID < Braintrust::Internal::Type::BaseModel
           OrHash =
-            T.type_alias { T.any(T.self_type, Braintrust::Internal::AnyHash) }
+            T.type_alias do
+              T.any(
+                Braintrust::EvalCreateParams::Task::PromptSessionID,
+                Braintrust::Internal::AnyHash
+              )
+            end
 
           # The ID of the function in the prompt session
           sig { returns(String) }
@@ -946,7 +1018,12 @@ module Braintrust
 
         class InlineCode < Braintrust::Internal::Type::BaseModel
           OrHash =
-            T.type_alias { T.any(T.self_type, Braintrust::Internal::AnyHash) }
+            T.type_alias do
+              T.any(
+                Braintrust::EvalCreateParams::Task::InlineCode,
+                Braintrust::Internal::AnyHash
+              )
+            end
 
           # The inline code to execute
           sig { returns(String) }
@@ -1004,7 +1081,12 @@ module Braintrust
 
           class InlineContext < Braintrust::Internal::Type::BaseModel
             OrHash =
-              T.type_alias { T.any(T.self_type, Braintrust::Internal::AnyHash) }
+              T.type_alias do
+                T.any(
+                  Braintrust::EvalCreateParams::Task::InlineCode::InlineContext,
+                  Braintrust::Internal::AnyHash
+                )
+              end
 
             sig do
               returns(
@@ -1076,7 +1158,12 @@ module Braintrust
 
         class InlinePrompt < Braintrust::Internal::Type::BaseModel
           OrHash =
-            T.type_alias { T.any(T.self_type, Braintrust::Internal::AnyHash) }
+            T.type_alias do
+              T.any(
+                Braintrust::EvalCreateParams::Task::InlinePrompt,
+                Braintrust::Internal::AnyHash
+              )
+            end
 
           # The prompt, model, and its parameters
           sig { returns(T.nilable(Braintrust::PromptData)) }
@@ -1131,7 +1218,12 @@ module Braintrust
 
       class GitMetadataSettings < Braintrust::Internal::Type::BaseModel
         OrHash =
-          T.type_alias { T.any(T.self_type, Braintrust::Internal::AnyHash) }
+          T.type_alias do
+            T.any(
+              Braintrust::EvalCreateParams::GitMetadataSettings,
+              Braintrust::Internal::AnyHash
+            )
+          end
 
         sig do
           returns(
@@ -1314,7 +1406,12 @@ module Braintrust
 
         class SpanParentStruct < Braintrust::Internal::Type::BaseModel
           OrHash =
-            T.type_alias { T.any(T.self_type, Braintrust::Internal::AnyHash) }
+            T.type_alias do
+              T.any(
+                Braintrust::EvalCreateParams::Parent::SpanParentStruct,
+                Braintrust::Internal::AnyHash
+              )
+            end
 
           # The id of the container object you are logging to
           sig { returns(String) }
@@ -1435,7 +1532,12 @@ module Braintrust
 
           class RowIDs < Braintrust::Internal::Type::BaseModel
             OrHash =
-              T.type_alias { T.any(T.self_type, Braintrust::Internal::AnyHash) }
+              T.type_alias do
+                T.any(
+                  Braintrust::EvalCreateParams::Parent::SpanParentStruct::RowIDs,
+                  Braintrust::Internal::AnyHash
+                )
+              end
 
             # The id of the row
             sig { returns(String) }

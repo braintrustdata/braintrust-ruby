@@ -4,7 +4,12 @@ module Braintrust
   module Models
     class FeedbackProjectLogsItem < Braintrust::Internal::Type::BaseModel
       OrHash =
-        T.type_alias { T.any(T.self_type, Braintrust::Internal::AnyHash) }
+        T.type_alias do
+          T.any(
+            Braintrust::FeedbackProjectLogsItem,
+            Braintrust::Internal::AnyHash
+          )
+        end
 
       # The id of the project logs event to log feedback for. This is the row `id`
       # returned by `POST /v1/project_logs/{project_id}/insert`

@@ -7,7 +7,9 @@ module Braintrust
       include Braintrust::Internal::Type::RequestParameters
 
       OrHash =
-        T.type_alias { T.any(T.self_type, Braintrust::Internal::AnyHash) }
+        T.type_alias do
+          T.any(Braintrust::UserListParams, Braintrust::Internal::AnyHash)
+        end
 
       # Email of the user to search for. You may pass the param multiple times to filter
       # for more than one email

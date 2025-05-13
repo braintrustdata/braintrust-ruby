@@ -4,7 +4,12 @@ module Braintrust
   module Models
     class ChatCompletionContentPartText < Braintrust::Internal::Type::BaseModel
       OrHash =
-        T.type_alias { T.any(T.self_type, Braintrust::Internal::AnyHash) }
+        T.type_alias do
+          T.any(
+            Braintrust::ChatCompletionContentPartText,
+            Braintrust::Internal::AnyHash
+          )
+        end
 
       sig { returns(Braintrust::ChatCompletionContentPartText::Type::OrSymbol) }
       attr_accessor :type

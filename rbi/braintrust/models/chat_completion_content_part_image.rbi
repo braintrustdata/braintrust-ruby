@@ -4,7 +4,12 @@ module Braintrust
   module Models
     class ChatCompletionContentPartImage < Braintrust::Internal::Type::BaseModel
       OrHash =
-        T.type_alias { T.any(T.self_type, Braintrust::Internal::AnyHash) }
+        T.type_alias do
+          T.any(
+            Braintrust::ChatCompletionContentPartImage,
+            Braintrust::Internal::AnyHash
+          )
+        end
 
       sig { returns(Braintrust::ChatCompletionContentPartImage::ImageURL) }
       attr_reader :image_url
@@ -45,7 +50,12 @@ module Braintrust
 
       class ImageURL < Braintrust::Internal::Type::BaseModel
         OrHash =
-          T.type_alias { T.any(T.self_type, Braintrust::Internal::AnyHash) }
+          T.type_alias do
+            T.any(
+              Braintrust::ChatCompletionContentPartImage::ImageURL,
+              Braintrust::Internal::AnyHash
+            )
+          end
 
         sig { returns(String) }
         attr_accessor :url
