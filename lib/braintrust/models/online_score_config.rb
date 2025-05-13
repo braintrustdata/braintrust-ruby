@@ -98,6 +98,15 @@ module Braintrust
 
         # @!method self.variants
         #   @return [Array(Braintrust::OnlineScoreConfig::Scorer::Function, Braintrust::OnlineScoreConfig::Scorer::Global)]
+
+        define_sorbet_constant!(:Variants) do
+          T.type_alias do
+            T.any(
+              Braintrust::OnlineScoreConfig::Scorer::Function,
+              Braintrust::OnlineScoreConfig::Scorer::Global
+            )
+          end
+        end
       end
     end
   end

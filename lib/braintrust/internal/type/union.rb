@@ -6,6 +6,7 @@ module Braintrust
       # @api private
       module Union
         include Braintrust::Internal::Type::Converter
+        include Braintrust::Internal::Util::SorbetRuntimeSupport
 
         # @api private
         #

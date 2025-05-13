@@ -7,7 +7,9 @@ module Braintrust
       include Braintrust::Internal::Type::RequestParameters
 
       OrHash =
-        T.type_alias { T.any(T.self_type, Braintrust::Internal::AnyHash) }
+        T.type_alias do
+          T.any(Braintrust::FunctionInvokeParams, Braintrust::Internal::AnyHash)
+        end
 
       # The expected output of the function
       sig { returns(T.nilable(T.anything)) }
@@ -203,7 +205,12 @@ module Braintrust
 
         class System < Braintrust::Internal::Type::BaseModel
           OrHash =
-            T.type_alias { T.any(T.self_type, Braintrust::Internal::AnyHash) }
+            T.type_alias do
+              T.any(
+                Braintrust::FunctionInvokeParams::Message::System,
+                Braintrust::Internal::AnyHash
+              )
+            end
 
           sig do
             returns(
@@ -280,7 +287,12 @@ module Braintrust
 
         class User < Braintrust::Internal::Type::BaseModel
           OrHash =
-            T.type_alias { T.any(T.self_type, Braintrust::Internal::AnyHash) }
+            T.type_alias do
+              T.any(
+                Braintrust::FunctionInvokeParams::Message::User,
+                Braintrust::Internal::AnyHash
+              )
+            end
 
           sig do
             returns(
@@ -460,7 +472,12 @@ module Braintrust
 
         class Assistant < Braintrust::Internal::Type::BaseModel
           OrHash =
-            T.type_alias { T.any(T.self_type, Braintrust::Internal::AnyHash) }
+            T.type_alias do
+              T.any(
+                Braintrust::FunctionInvokeParams::Message::Assistant,
+                Braintrust::Internal::AnyHash
+              )
+            end
 
           sig do
             returns(
@@ -576,7 +593,12 @@ module Braintrust
 
           class FunctionCall < Braintrust::Internal::Type::BaseModel
             OrHash =
-              T.type_alias { T.any(T.self_type, Braintrust::Internal::AnyHash) }
+              T.type_alias do
+                T.any(
+                  Braintrust::FunctionInvokeParams::Message::Assistant::FunctionCall,
+                  Braintrust::Internal::AnyHash
+                )
+              end
 
             sig { returns(String) }
             attr_accessor :arguments
@@ -598,7 +620,12 @@ module Braintrust
 
         class Tool < Braintrust::Internal::Type::BaseModel
           OrHash =
-            T.type_alias { T.any(T.self_type, Braintrust::Internal::AnyHash) }
+            T.type_alias do
+              T.any(
+                Braintrust::FunctionInvokeParams::Message::Tool,
+                Braintrust::Internal::AnyHash
+              )
+            end
 
           sig do
             returns(
@@ -675,7 +702,12 @@ module Braintrust
 
         class Function < Braintrust::Internal::Type::BaseModel
           OrHash =
-            T.type_alias { T.any(T.self_type, Braintrust::Internal::AnyHash) }
+            T.type_alias do
+              T.any(
+                Braintrust::FunctionInvokeParams::Message::Function,
+                Braintrust::Internal::AnyHash
+              )
+            end
 
           sig { returns(String) }
           attr_accessor :name
@@ -749,7 +781,12 @@ module Braintrust
 
         class Fallback < Braintrust::Internal::Type::BaseModel
           OrHash =
-            T.type_alias { T.any(T.self_type, Braintrust::Internal::AnyHash) }
+            T.type_alias do
+              T.any(
+                Braintrust::FunctionInvokeParams::Message::Fallback,
+                Braintrust::Internal::AnyHash
+              )
+            end
 
           sig do
             returns(
@@ -858,7 +895,12 @@ module Braintrust
 
         class SpanParentStruct < Braintrust::Internal::Type::BaseModel
           OrHash =
-            T.type_alias { T.any(T.self_type, Braintrust::Internal::AnyHash) }
+            T.type_alias do
+              T.any(
+                Braintrust::FunctionInvokeParams::Parent::SpanParentStruct,
+                Braintrust::Internal::AnyHash
+              )
+            end
 
           # The id of the container object you are logging to
           sig { returns(String) }
@@ -979,7 +1021,12 @@ module Braintrust
 
           class RowIDs < Braintrust::Internal::Type::BaseModel
             OrHash =
-              T.type_alias { T.any(T.self_type, Braintrust::Internal::AnyHash) }
+              T.type_alias do
+                T.any(
+                  Braintrust::FunctionInvokeParams::Parent::SpanParentStruct::RowIDs,
+                  Braintrust::Internal::AnyHash
+                )
+              end
 
             # The id of the row
             sig { returns(String) }

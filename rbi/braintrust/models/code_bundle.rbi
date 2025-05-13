@@ -4,7 +4,9 @@ module Braintrust
   module Models
     class CodeBundle < Braintrust::Internal::Type::BaseModel
       OrHash =
-        T.type_alias { T.any(T.self_type, Braintrust::Internal::AnyHash) }
+        T.type_alias do
+          T.any(Braintrust::CodeBundle, Braintrust::Internal::AnyHash)
+        end
 
       sig { returns(String) }
       attr_accessor :bundle_id
@@ -84,7 +86,12 @@ module Braintrust
 
         class Experiment < Braintrust::Internal::Type::BaseModel
           OrHash =
-            T.type_alias { T.any(T.self_type, Braintrust::Internal::AnyHash) }
+            T.type_alias do
+              T.any(
+                Braintrust::CodeBundle::Location::Experiment,
+                Braintrust::Internal::AnyHash
+              )
+            end
 
           sig { returns(String) }
           attr_accessor :eval_name
@@ -151,7 +158,10 @@ module Braintrust
             class Type < Braintrust::Internal::Type::BaseModel
               OrHash =
                 T.type_alias do
-                  T.any(T.self_type, Braintrust::Internal::AnyHash)
+                  T.any(
+                    Braintrust::CodeBundle::Location::Experiment::Position::Type,
+                    Braintrust::Internal::AnyHash
+                  )
                 end
 
               sig do
@@ -214,7 +224,10 @@ module Braintrust
             class Scorer < Braintrust::Internal::Type::BaseModel
               OrHash =
                 T.type_alias do
-                  T.any(T.self_type, Braintrust::Internal::AnyHash)
+                  T.any(
+                    Braintrust::CodeBundle::Location::Experiment::Position::Scorer,
+                    Braintrust::Internal::AnyHash
+                  )
                 end
 
               sig { returns(Integer) }
@@ -322,7 +335,12 @@ module Braintrust
 
         class Function < Braintrust::Internal::Type::BaseModel
           OrHash =
-            T.type_alias { T.any(T.self_type, Braintrust::Internal::AnyHash) }
+            T.type_alias do
+              T.any(
+                Braintrust::CodeBundle::Location::Function,
+                Braintrust::Internal::AnyHash
+              )
+            end
 
           sig { returns(Integer) }
           attr_accessor :index
@@ -388,7 +406,12 @@ module Braintrust
 
       class RuntimeContext < Braintrust::Internal::Type::BaseModel
         OrHash =
-          T.type_alias { T.any(T.self_type, Braintrust::Internal::AnyHash) }
+          T.type_alias do
+            T.any(
+              Braintrust::CodeBundle::RuntimeContext,
+              Braintrust::Internal::AnyHash
+            )
+          end
 
         sig do
           returns(Braintrust::CodeBundle::RuntimeContext::Runtime::OrSymbol)

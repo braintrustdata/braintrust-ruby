@@ -4,7 +4,9 @@ module Braintrust
   module Models
     class ProjectTag < Braintrust::Internal::Type::BaseModel
       OrHash =
-        T.type_alias { T.any(T.self_type, Braintrust::Internal::AnyHash) }
+        T.type_alias do
+          T.any(Braintrust::ProjectTag, Braintrust::Internal::AnyHash)
+        end
 
       # Unique identifier for the project tag
       sig { returns(String) }

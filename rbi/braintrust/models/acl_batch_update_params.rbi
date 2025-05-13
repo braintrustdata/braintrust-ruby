@@ -7,7 +7,9 @@ module Braintrust
       include Braintrust::Internal::Type::RequestParameters
 
       OrHash =
-        T.type_alias { T.any(T.self_type, Braintrust::Internal::AnyHash) }
+        T.type_alias do
+          T.any(Braintrust::ACLBatchUpdateParams, Braintrust::Internal::AnyHash)
+        end
 
       # An ACL grants a certain permission or role to a certain user or group on an
       # object.
@@ -97,7 +99,12 @@ module Braintrust
 
       class AddACL < Braintrust::Internal::Type::BaseModel
         OrHash =
-          T.type_alias { T.any(T.self_type, Braintrust::Internal::AnyHash) }
+          T.type_alias do
+            T.any(
+              Braintrust::ACLBatchUpdateParams::AddACL,
+              Braintrust::Internal::AnyHash
+            )
+          end
 
         # The id of the object the ACL applies to
         sig { returns(String) }
@@ -197,7 +204,12 @@ module Braintrust
 
       class RemoveACL < Braintrust::Internal::Type::BaseModel
         OrHash =
-          T.type_alias { T.any(T.self_type, Braintrust::Internal::AnyHash) }
+          T.type_alias do
+            T.any(
+              Braintrust::ACLBatchUpdateParams::RemoveACL,
+              Braintrust::Internal::AnyHash
+            )
+          end
 
         # The id of the object the ACL applies to
         sig { returns(String) }

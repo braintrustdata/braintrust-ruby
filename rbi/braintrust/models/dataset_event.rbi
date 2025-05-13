@@ -4,7 +4,9 @@ module Braintrust
   module Models
     class DatasetEvent < Braintrust::Internal::Type::BaseModel
       OrHash =
-        T.type_alias { T.any(T.self_type, Braintrust::Internal::AnyHash) }
+        T.type_alias do
+          T.any(Braintrust::DatasetEvent, Braintrust::Internal::AnyHash)
+        end
 
       # A unique identifier for the dataset event. If you don't provide one, BrainTrust
       # will generate one for you
@@ -173,7 +175,12 @@ module Braintrust
 
       class Metadata < Braintrust::Internal::Type::BaseModel
         OrHash =
-          T.type_alias { T.any(T.self_type, Braintrust::Internal::AnyHash) }
+          T.type_alias do
+            T.any(
+              Braintrust::DatasetEvent::Metadata,
+              Braintrust::Internal::AnyHash
+            )
+          end
 
         # The model used for this example
         sig { returns(T.nilable(String)) }

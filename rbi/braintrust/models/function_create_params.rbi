@@ -7,7 +7,9 @@ module Braintrust
       include Braintrust::Internal::Type::RequestParameters
 
       OrHash =
-        T.type_alias { T.any(T.self_type, Braintrust::Internal::AnyHash) }
+        T.type_alias do
+          T.any(Braintrust::FunctionCreateParams, Braintrust::Internal::AnyHash)
+        end
 
       sig do
         returns(
@@ -167,7 +169,12 @@ module Braintrust
 
         class Prompt < Braintrust::Internal::Type::BaseModel
           OrHash =
-            T.type_alias { T.any(T.self_type, Braintrust::Internal::AnyHash) }
+            T.type_alias do
+              T.any(
+                Braintrust::FunctionCreateParams::FunctionData::Prompt,
+                Braintrust::Internal::AnyHash
+              )
+            end
 
           sig do
             returns(
@@ -228,7 +235,12 @@ module Braintrust
 
         class Code < Braintrust::Internal::Type::BaseModel
           OrHash =
-            T.type_alias { T.any(T.self_type, Braintrust::Internal::AnyHash) }
+            T.type_alias do
+              T.any(
+                Braintrust::FunctionCreateParams::FunctionData::Code,
+                Braintrust::Internal::AnyHash
+              )
+            end
 
           sig do
             returns(
@@ -291,7 +303,10 @@ module Braintrust
             class Bundle < Braintrust::Models::CodeBundle
               OrHash =
                 T.type_alias do
-                  T.any(T.self_type, Braintrust::Internal::AnyHash)
+                  T.any(
+                    Braintrust::FunctionCreateParams::FunctionData::Code::Data::Bundle,
+                    Braintrust::Internal::AnyHash
+                  )
                 end
 
               sig do
@@ -354,7 +369,10 @@ module Braintrust
             class Inline < Braintrust::Internal::Type::BaseModel
               OrHash =
                 T.type_alias do
-                  T.any(T.self_type, Braintrust::Internal::AnyHash)
+                  T.any(
+                    Braintrust::FunctionCreateParams::FunctionData::Code::Data::Inline,
+                    Braintrust::Internal::AnyHash
+                  )
                 end
 
               sig { returns(String) }
@@ -411,7 +429,10 @@ module Braintrust
               class RuntimeContext < Braintrust::Internal::Type::BaseModel
                 OrHash =
                   T.type_alias do
-                    T.any(T.self_type, Braintrust::Internal::AnyHash)
+                    T.any(
+                      Braintrust::FunctionCreateParams::FunctionData::Code::Data::Inline::RuntimeContext,
+                      Braintrust::Internal::AnyHash
+                    )
                   end
 
                 sig do
@@ -554,7 +575,12 @@ module Braintrust
 
         class Global < Braintrust::Internal::Type::BaseModel
           OrHash =
-            T.type_alias { T.any(T.self_type, Braintrust::Internal::AnyHash) }
+            T.type_alias do
+              T.any(
+                Braintrust::FunctionCreateParams::FunctionData::Global,
+                Braintrust::Internal::AnyHash
+              )
+            end
 
           sig { returns(String) }
           attr_accessor :name
@@ -629,7 +655,12 @@ module Braintrust
 
       class FunctionSchema < Braintrust::Internal::Type::BaseModel
         OrHash =
-          T.type_alias { T.any(T.self_type, Braintrust::Internal::AnyHash) }
+          T.type_alias do
+            T.any(
+              Braintrust::FunctionCreateParams::FunctionSchema,
+              Braintrust::Internal::AnyHash
+            )
+          end
 
         sig { returns(T.nilable(T.anything)) }
         attr_reader :parameters
@@ -702,7 +733,12 @@ module Braintrust
 
       class Origin < Braintrust::Internal::Type::BaseModel
         OrHash =
-          T.type_alias { T.any(T.self_type, Braintrust::Internal::AnyHash) }
+          T.type_alias do
+            T.any(
+              Braintrust::FunctionCreateParams::Origin,
+              Braintrust::Internal::AnyHash
+            )
+          end
 
         # Id of the object the function is originating from
         sig { returns(String) }

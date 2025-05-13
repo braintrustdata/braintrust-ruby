@@ -5,6 +5,8 @@ module Braintrust
     module Type
       # @api private
       module Converter
+        extend Braintrust::Internal::Util::SorbetRuntimeSupport
+
         Input =
           T.type_alias do
             T.any(Braintrust::Internal::Type::Converter, T::Class[T.anything])

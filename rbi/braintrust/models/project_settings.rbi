@@ -4,7 +4,9 @@ module Braintrust
   module Models
     class ProjectSettings < Braintrust::Internal::Type::BaseModel
       OrHash =
-        T.type_alias { T.any(T.self_type, Braintrust::Internal::AnyHash) }
+        T.type_alias do
+          T.any(Braintrust::ProjectSettings, Braintrust::Internal::AnyHash)
+        end
 
       # The id of the experiment to use as the default baseline for comparisons
       sig { returns(T.nilable(String)) }
@@ -57,7 +59,12 @@ module Braintrust
 
       class SpanFieldOrder < Braintrust::Internal::Type::BaseModel
         OrHash =
-          T.type_alias { T.any(T.self_type, Braintrust::Internal::AnyHash) }
+          T.type_alias do
+            T.any(
+              Braintrust::ProjectSettings::SpanFieldOrder,
+              Braintrust::Internal::AnyHash
+            )
+          end
 
         sig { returns(String) }
         attr_accessor :column_id

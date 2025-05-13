@@ -7,7 +7,9 @@ module Braintrust
       include Braintrust::Internal::Type::RequestParameters
 
       OrHash =
-        T.type_alias { T.any(T.self_type, Braintrust::Internal::AnyHash) }
+        T.type_alias do
+          T.any(Braintrust::FunctionUpdateParams, Braintrust::Internal::AnyHash)
+        end
 
       # Textual description of the prompt
       sig { returns(T.nilable(String)) }
@@ -110,7 +112,12 @@ module Braintrust
 
         class Prompt < Braintrust::Internal::Type::BaseModel
           OrHash =
-            T.type_alias { T.any(T.self_type, Braintrust::Internal::AnyHash) }
+            T.type_alias do
+              T.any(
+                Braintrust::FunctionUpdateParams::FunctionData::Prompt,
+                Braintrust::Internal::AnyHash
+              )
+            end
 
           sig do
             returns(
@@ -171,7 +178,12 @@ module Braintrust
 
         class Code < Braintrust::Internal::Type::BaseModel
           OrHash =
-            T.type_alias { T.any(T.self_type, Braintrust::Internal::AnyHash) }
+            T.type_alias do
+              T.any(
+                Braintrust::FunctionUpdateParams::FunctionData::Code,
+                Braintrust::Internal::AnyHash
+              )
+            end
 
           sig do
             returns(
@@ -234,7 +246,10 @@ module Braintrust
             class Bundle < Braintrust::Models::CodeBundle
               OrHash =
                 T.type_alias do
-                  T.any(T.self_type, Braintrust::Internal::AnyHash)
+                  T.any(
+                    Braintrust::FunctionUpdateParams::FunctionData::Code::Data::Bundle,
+                    Braintrust::Internal::AnyHash
+                  )
                 end
 
               sig do
@@ -297,7 +312,10 @@ module Braintrust
             class Inline < Braintrust::Internal::Type::BaseModel
               OrHash =
                 T.type_alias do
-                  T.any(T.self_type, Braintrust::Internal::AnyHash)
+                  T.any(
+                    Braintrust::FunctionUpdateParams::FunctionData::Code::Data::Inline,
+                    Braintrust::Internal::AnyHash
+                  )
                 end
 
               sig { returns(String) }
@@ -354,7 +372,10 @@ module Braintrust
               class RuntimeContext < Braintrust::Internal::Type::BaseModel
                 OrHash =
                   T.type_alias do
-                    T.any(T.self_type, Braintrust::Internal::AnyHash)
+                    T.any(
+                      Braintrust::FunctionUpdateParams::FunctionData::Code::Data::Inline::RuntimeContext,
+                      Braintrust::Internal::AnyHash
+                    )
                   end
 
                 sig do
@@ -497,7 +518,12 @@ module Braintrust
 
         class Global < Braintrust::Internal::Type::BaseModel
           OrHash =
-            T.type_alias { T.any(T.self_type, Braintrust::Internal::AnyHash) }
+            T.type_alias do
+              T.any(
+                Braintrust::FunctionUpdateParams::FunctionData::Global,
+                Braintrust::Internal::AnyHash
+              )
+            end
 
           sig { returns(String) }
           attr_accessor :name

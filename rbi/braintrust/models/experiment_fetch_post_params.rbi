@@ -7,7 +7,12 @@ module Braintrust
       include Braintrust::Internal::Type::RequestParameters
 
       OrHash =
-        T.type_alias { T.any(T.self_type, Braintrust::Internal::AnyHash) }
+        T.type_alias do
+          T.any(
+            Braintrust::ExperimentFetchPostParams,
+            Braintrust::Internal::AnyHash
+          )
+        end
 
       # An opaque string to be used as a cursor for the next page of results, in order
       # from latest to earliest.

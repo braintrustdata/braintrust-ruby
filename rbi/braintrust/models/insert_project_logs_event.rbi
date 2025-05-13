@@ -4,7 +4,12 @@ module Braintrust
   module Models
     class InsertProjectLogsEvent < Braintrust::Internal::Type::BaseModel
       OrHash =
-        T.type_alias { T.any(T.self_type, Braintrust::Internal::AnyHash) }
+        T.type_alias do
+          T.any(
+            Braintrust::InsertProjectLogsEvent,
+            Braintrust::Internal::AnyHash
+          )
+        end
 
       # A unique identifier for the project logs event. If you don't provide one,
       # BrainTrust will generate one for you
@@ -455,7 +460,12 @@ module Braintrust
 
       class Context < Braintrust::Internal::Type::BaseModel
         OrHash =
-          T.type_alias { T.any(T.self_type, Braintrust::Internal::AnyHash) }
+          T.type_alias do
+            T.any(
+              Braintrust::InsertProjectLogsEvent::Context,
+              Braintrust::Internal::AnyHash
+            )
+          end
 
         # Name of the file in code where the project logs event was created
         sig { returns(T.nilable(String)) }
@@ -505,7 +515,12 @@ module Braintrust
 
       class Metadata < Braintrust::Internal::Type::BaseModel
         OrHash =
-          T.type_alias { T.any(T.self_type, Braintrust::Internal::AnyHash) }
+          T.type_alias do
+            T.any(
+              Braintrust::InsertProjectLogsEvent::Metadata,
+              Braintrust::Internal::AnyHash
+            )
+          end
 
         # The model used for this example
         sig { returns(T.nilable(String)) }
@@ -530,7 +545,12 @@ module Braintrust
 
       class Metrics < Braintrust::Internal::Type::BaseModel
         OrHash =
-          T.type_alias { T.any(T.self_type, Braintrust::Internal::AnyHash) }
+          T.type_alias do
+            T.any(
+              Braintrust::InsertProjectLogsEvent::Metrics,
+              Braintrust::Internal::AnyHash
+            )
+          end
 
         # This metric is deprecated
         sig { returns(T.nilable(T.anything)) }

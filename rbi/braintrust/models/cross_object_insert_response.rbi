@@ -4,7 +4,12 @@ module Braintrust
   module Models
     class CrossObjectInsertResponse < Braintrust::Internal::Type::BaseModel
       OrHash =
-        T.type_alias { T.any(T.self_type, Braintrust::Internal::AnyHash) }
+        T.type_alias do
+          T.any(
+            Braintrust::CrossObjectInsertResponse,
+            Braintrust::Internal::AnyHash
+          )
+        end
 
       # A mapping from dataset id to row ids for inserted `events`
       sig do

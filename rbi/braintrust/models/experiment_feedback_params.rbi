@@ -7,7 +7,12 @@ module Braintrust
       include Braintrust::Internal::Type::RequestParameters
 
       OrHash =
-        T.type_alias { T.any(T.self_type, Braintrust::Internal::AnyHash) }
+        T.type_alias do
+          T.any(
+            Braintrust::ExperimentFeedbackParams,
+            Braintrust::Internal::AnyHash
+          )
+        end
 
       # A list of experiment feedback items
       sig { returns(T::Array[Braintrust::FeedbackExperimentItem]) }

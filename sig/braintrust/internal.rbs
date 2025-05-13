@@ -1,5 +1,7 @@
 module Braintrust
   module Internal
+    extend Braintrust::Internal::Util::SorbetRuntimeSupport
+
     OMIT: Object
   end
 end

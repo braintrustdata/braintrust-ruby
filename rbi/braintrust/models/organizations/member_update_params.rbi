@@ -8,7 +8,12 @@ module Braintrust
         include Braintrust::Internal::Type::RequestParameters
 
         OrHash =
-          T.type_alias { T.any(T.self_type, Braintrust::Internal::AnyHash) }
+          T.type_alias do
+            T.any(
+              Braintrust::Organizations::MemberUpdateParams,
+              Braintrust::Internal::AnyHash
+            )
+          end
 
         # Users to invite to the organization
         sig do
@@ -120,7 +125,12 @@ module Braintrust
 
         class InviteUsers < Braintrust::Internal::Type::BaseModel
           OrHash =
-            T.type_alias { T.any(T.self_type, Braintrust::Internal::AnyHash) }
+            T.type_alias do
+              T.any(
+                Braintrust::Organizations::MemberUpdateParams::InviteUsers,
+                Braintrust::Internal::AnyHash
+              )
+            end
 
           # Emails of users to invite
           sig { returns(T.nilable(T::Array[String])) }
@@ -199,7 +209,12 @@ module Braintrust
 
         class RemoveUsers < Braintrust::Internal::Type::BaseModel
           OrHash =
-            T.type_alias { T.any(T.self_type, Braintrust::Internal::AnyHash) }
+            T.type_alias do
+              T.any(
+                Braintrust::Organizations::MemberUpdateParams::RemoveUsers,
+                Braintrust::Internal::AnyHash
+              )
+            end
 
           # Emails of users to remove
           sig { returns(T.nilable(T::Array[String])) }

@@ -69,5 +69,9 @@ module Braintrust
     #   Returns a new instance of RequestOptions.
     #
     #   @param values [Hash{Symbol=>Object}]
+
+    define_sorbet_constant!(:OrHash) do
+      T.type_alias { T.any(Braintrust::RequestOptions, Braintrust::Internal::AnyHash) }
+    end
   end
 end

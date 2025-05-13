@@ -4,7 +4,9 @@ module Braintrust
   module Models
     class RepoInfo < Braintrust::Internal::Type::BaseModel
       OrHash =
-        T.type_alias { T.any(T.self_type, Braintrust::Internal::AnyHash) }
+        T.type_alias do
+          T.any(Braintrust::RepoInfo, Braintrust::Internal::AnyHash)
+        end
 
       # Email of the author of the most recent commit
       sig { returns(T.nilable(String)) }

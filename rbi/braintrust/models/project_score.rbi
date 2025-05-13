@@ -4,7 +4,9 @@ module Braintrust
   module Models
     class ProjectScore < Braintrust::Internal::Type::BaseModel
       OrHash =
-        T.type_alias { T.any(T.self_type, Braintrust::Internal::AnyHash) }
+        T.type_alias do
+          T.any(Braintrust::ProjectScore, Braintrust::Internal::AnyHash)
+        end
 
       # Unique identifier for the project score
       sig { returns(String) }
