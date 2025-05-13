@@ -7,7 +7,12 @@ module Braintrust
       include Braintrust::Internal::Type::RequestParameters
 
       OrHash =
-        T.type_alias { T.any(T.self_type, Braintrust::Internal::AnyHash) }
+        T.type_alias do
+          T.any(
+            Braintrust::ExperimentSummarizeParams,
+            Braintrust::Internal::AnyHash
+          )
+        end
 
       # The experiment to compare against, if summarizing scores and metrics. If
       # omitted, will fall back to the `base_exp_id` stored in the experiment metadata,

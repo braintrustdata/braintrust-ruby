@@ -7,7 +7,10 @@ module Braintrust
   # When making a request, you can pass an actual {RequestOptions} instance, or
   # simply pass a Hash with symbol keys matching the attributes on this class.
   class RequestOptions < Braintrust::Internal::Type::BaseModel
-    OrHash = T.type_alias { T.any(T.self_type, Braintrust::Internal::AnyHash) }
+    OrHash =
+      T.type_alias do
+        T.any(Braintrust::RequestOptions, Braintrust::Internal::AnyHash)
+      end
 
     # @api private
     sig { params(opts: Braintrust::RequestOptions::OrHash).void }

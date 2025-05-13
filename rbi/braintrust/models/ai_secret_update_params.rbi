@@ -7,7 +7,9 @@ module Braintrust
       include Braintrust::Internal::Type::RequestParameters
 
       OrHash =
-        T.type_alias { T.any(T.self_type, Braintrust::Internal::AnyHash) }
+        T.type_alias do
+          T.any(Braintrust::AISecretUpdateParams, Braintrust::Internal::AnyHash)
+        end
 
       sig { returns(T.nilable(T::Hash[Symbol, T.nilable(T.anything)])) }
       attr_accessor :metadata

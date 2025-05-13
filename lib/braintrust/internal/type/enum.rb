@@ -42,6 +42,7 @@ module Braintrust
       #   end
       module Enum
         include Braintrust::Internal::Type::Converter
+        include Braintrust::Internal::Util::SorbetRuntimeSupport
 
         # All of the valid Symbol values for this enum.
         #

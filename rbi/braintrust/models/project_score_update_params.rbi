@@ -7,7 +7,12 @@ module Braintrust
       include Braintrust::Internal::Type::RequestParameters
 
       OrHash =
-        T.type_alias { T.any(T.self_type, Braintrust::Internal::AnyHash) }
+        T.type_alias do
+          T.any(
+            Braintrust::ProjectScoreUpdateParams,
+            Braintrust::Internal::AnyHash
+          )
+        end
 
       # For categorical-type project scores, the list of all categories
       sig do

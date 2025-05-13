@@ -4,7 +4,9 @@ module Braintrust
   module Models
     class OnlineScoreConfig < Braintrust::Internal::Type::BaseModel
       OrHash =
-        T.type_alias { T.any(T.self_type, Braintrust::Internal::AnyHash) }
+        T.type_alias do
+          T.any(Braintrust::OnlineScoreConfig, Braintrust::Internal::AnyHash)
+        end
 
       # The sampling rate for online scoring
       sig { returns(Float) }
@@ -89,7 +91,12 @@ module Braintrust
 
         class Function < Braintrust::Internal::Type::BaseModel
           OrHash =
-            T.type_alias { T.any(T.self_type, Braintrust::Internal::AnyHash) }
+            T.type_alias do
+              T.any(
+                Braintrust::OnlineScoreConfig::Scorer::Function,
+                Braintrust::Internal::AnyHash
+              )
+            end
 
           sig { returns(String) }
           attr_accessor :id
@@ -155,7 +162,12 @@ module Braintrust
 
         class Global < Braintrust::Internal::Type::BaseModel
           OrHash =
-            T.type_alias { T.any(T.self_type, Braintrust::Internal::AnyHash) }
+            T.type_alias do
+              T.any(
+                Braintrust::OnlineScoreConfig::Scorer::Global,
+                Braintrust::Internal::AnyHash
+              )
+            end
 
           sig { returns(String) }
           attr_accessor :name

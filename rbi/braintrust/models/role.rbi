@@ -4,7 +4,7 @@ module Braintrust
   module Models
     class Role < Braintrust::Internal::Type::BaseModel
       OrHash =
-        T.type_alias { T.any(T.self_type, Braintrust::Internal::AnyHash) }
+        T.type_alias { T.any(Braintrust::Role, Braintrust::Internal::AnyHash) }
 
       # Unique identifier for the role
       sig { returns(String) }
@@ -119,7 +119,12 @@ module Braintrust
 
       class MemberPermission < Braintrust::Internal::Type::BaseModel
         OrHash =
-          T.type_alias { T.any(T.self_type, Braintrust::Internal::AnyHash) }
+          T.type_alias do
+            T.any(
+              Braintrust::Role::MemberPermission,
+              Braintrust::Internal::AnyHash
+            )
+          end
 
         # Each permission permits a certain type of operation on an object in the system
         #

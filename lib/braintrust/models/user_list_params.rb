@@ -101,6 +101,10 @@ module Braintrust
         # @!method self.variants
         #   @return [Array(String, Array<String>)]
 
+        define_sorbet_constant!(:Variants) do
+          T.type_alias { T.any(String, T::Array[String]) }
+        end
+
         # @type [Braintrust::Internal::Type::Converter]
         StringArray = Braintrust::Internal::Type::ArrayOf[String]
       end
@@ -116,6 +120,10 @@ module Braintrust
 
         # @!method self.variants
         #   @return [Array(String, Array<String>)]
+
+        define_sorbet_constant!(:Variants) do
+          T.type_alias { T.any(String, T::Array[String]) }
+        end
 
         # @type [Braintrust::Internal::Type::Converter]
         StringArray = Braintrust::Internal::Type::ArrayOf[String]
@@ -133,6 +141,10 @@ module Braintrust
         # @!method self.variants
         #   @return [Array(String, Array<String>)]
 
+        define_sorbet_constant!(:Variants) do
+          T.type_alias { T.any(String, T::Array[String]) }
+        end
+
         # @type [Braintrust::Internal::Type::Converter]
         StringArray = Braintrust::Internal::Type::ArrayOf[String]
       end
@@ -148,6 +160,10 @@ module Braintrust
 
         # @!method self.variants
         #   @return [Array(String, Array<String>)]
+
+        define_sorbet_constant!(:Variants) do
+          T.type_alias { T.any(String, T::Array[String]) }
+        end
 
         # @type [Braintrust::Internal::Type::Converter]
         StringArray = Braintrust::Internal::Type::ArrayOf[String]

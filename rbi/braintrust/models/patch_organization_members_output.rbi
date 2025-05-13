@@ -4,7 +4,12 @@ module Braintrust
   module Models
     class PatchOrganizationMembersOutput < Braintrust::Internal::Type::BaseModel
       OrHash =
-        T.type_alias { T.any(T.self_type, Braintrust::Internal::AnyHash) }
+        T.type_alias do
+          T.any(
+            Braintrust::PatchOrganizationMembersOutput,
+            Braintrust::Internal::AnyHash
+          )
+        end
 
       # The id of the org that was modified.
       sig { returns(String) }

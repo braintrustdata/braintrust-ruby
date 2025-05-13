@@ -7,7 +7,12 @@ module Braintrust
       include Braintrust::Internal::Type::RequestParameters
 
       OrHash =
-        T.type_alias { T.any(T.self_type, Braintrust::Internal::AnyHash) }
+        T.type_alias do
+          T.any(
+            Braintrust::ExperimentFetchParams,
+            Braintrust::Internal::AnyHash
+          )
+        end
 
       # limit the number of traces fetched
       #

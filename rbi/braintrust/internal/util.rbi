@@ -4,6 +4,8 @@ module Braintrust
   module Internal
     # @api private
     module Util
+      extend Braintrust::Internal::Util::SorbetRuntimeSupport
+
       # @api private
       sig { returns(Float) }
       def self.monotonic_secs
@@ -172,7 +174,7 @@ module Braintrust
         end
       end
 
-      ParsedUriShape =
+      ParsedUri =
         T.type_alias do
           {
             scheme: T.nilable(String),
@@ -187,7 +189,7 @@ module Braintrust
         # @api private
         sig do
           params(url: T.any(URI::Generic, String)).returns(
-            Braintrust::Internal::Util::ParsedUriShape
+            Braintrust::Internal::Util::ParsedUri
           )
         end
         def parse_uri(url)
@@ -195,7 +197,7 @@ module Braintrust
 
         # @api private
         sig do
-          params(parsed: Braintrust::Internal::Util::ParsedUriShape).returns(
+          params(parsed: Braintrust::Internal::Util::ParsedUri).returns(
             URI::Generic
           )
         end
@@ -205,8 +207,8 @@ module Braintrust
         # @api private
         sig do
           params(
-            lhs: Braintrust::Internal::Util::ParsedUriShape,
-            rhs: Braintrust::Internal::Util::ParsedUriShape
+            lhs: Braintrust::Internal::Util::ParsedUri,
+            rhs: Braintrust::Internal::Util::ParsedUri
           ).returns(URI::Generic)
         end
         def join_parsed_uri(lhs, rhs)
@@ -421,6 +423,27 @@ module Braintrust
           )
         end
         def decode_sse(lines)
+        end
+      end
+
+      # @api private
+      module SorbetRuntimeSupport
+        class MissingSorbetRuntimeError < ::RuntimeError
+        end
+
+        # @api private
+        sig { returns(T::Hash[Symbol, T.anything]) }
+        private def sorbet_runtime_constants
+        end
+
+        # @api private
+        sig { params(name: Symbol).void }
+        def const_missing(name)
+        end
+
+        # @api private
+        sig { params(name: Symbol, blk: T.proc.returns(T.anything)).void }
+        def define_sorbet_constant!(name, &blk)
         end
       end
     end

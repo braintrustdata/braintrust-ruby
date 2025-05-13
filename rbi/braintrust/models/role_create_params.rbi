@@ -7,7 +7,9 @@ module Braintrust
       include Braintrust::Internal::Type::RequestParameters
 
       OrHash =
-        T.type_alias { T.any(T.self_type, Braintrust::Internal::AnyHash) }
+        T.type_alias do
+          T.any(Braintrust::RoleCreateParams, Braintrust::Internal::AnyHash)
+        end
 
       # Name of the role
       sig { returns(String) }
@@ -91,7 +93,12 @@ module Braintrust
 
       class MemberPermission < Braintrust::Internal::Type::BaseModel
         OrHash =
-          T.type_alias { T.any(T.self_type, Braintrust::Internal::AnyHash) }
+          T.type_alias do
+            T.any(
+              Braintrust::RoleCreateParams::MemberPermission,
+              Braintrust::Internal::AnyHash
+            )
+          end
 
         # Each permission permits a certain type of operation on an object in the system
         #

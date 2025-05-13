@@ -3,6 +3,7 @@ module Braintrust
     module Type
       module Enum
         include Braintrust::Internal::Type::Converter
+        include Braintrust::Internal::Util::SorbetRuntimeSupport
 
         def self.values: -> ::Array[(nil | bool | Integer | Float | Symbol)]
 

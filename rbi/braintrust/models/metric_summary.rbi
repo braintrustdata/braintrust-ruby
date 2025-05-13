@@ -4,7 +4,9 @@ module Braintrust
   module Models
     class MetricSummary < Braintrust::Internal::Type::BaseModel
       OrHash =
-        T.type_alias { T.any(T.self_type, Braintrust::Internal::AnyHash) }
+        T.type_alias do
+          T.any(Braintrust::MetricSummary, Braintrust::Internal::AnyHash)
+        end
 
       # Number of improvements in the metric
       sig { returns(Integer) }

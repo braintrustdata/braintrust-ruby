@@ -232,6 +232,15 @@ module Braintrust
 
             # @!method self.variants
             #   @return [Array(Braintrust::FunctionReplaceParams::FunctionData::Code::Data::Bundle, Braintrust::FunctionReplaceParams::FunctionData::Code::Data::Inline)]
+
+            define_sorbet_constant!(:Variants) do
+              T.type_alias do
+                T.any(
+                  Braintrust::FunctionReplaceParams::FunctionData::Code::Data::Bundle,
+                  Braintrust::FunctionReplaceParams::FunctionData::Code::Data::Inline
+                )
+              end
+            end
           end
 
           # @see Braintrust::FunctionReplaceParams::FunctionData::Code#type
@@ -273,6 +282,16 @@ module Braintrust
 
         # @!method self.variants
         #   @return [Array(Braintrust::FunctionReplaceParams::FunctionData::Prompt, Braintrust::FunctionReplaceParams::FunctionData::Code, Braintrust::FunctionReplaceParams::FunctionData::Global)]
+
+        define_sorbet_constant!(:Variants) do
+          T.type_alias do
+            T.any(
+              Braintrust::FunctionReplaceParams::FunctionData::Prompt,
+              Braintrust::FunctionReplaceParams::FunctionData::Code,
+              Braintrust::FunctionReplaceParams::FunctionData::Global
+            )
+          end
+        end
       end
 
       class FunctionSchema < Braintrust::Internal::Type::BaseModel

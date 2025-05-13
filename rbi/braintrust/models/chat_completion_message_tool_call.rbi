@@ -4,7 +4,12 @@ module Braintrust
   module Models
     class ChatCompletionMessageToolCall < Braintrust::Internal::Type::BaseModel
       OrHash =
-        T.type_alias { T.any(T.self_type, Braintrust::Internal::AnyHash) }
+        T.type_alias do
+          T.any(
+            Braintrust::ChatCompletionMessageToolCall,
+            Braintrust::Internal::AnyHash
+          )
+        end
 
       sig { returns(String) }
       attr_accessor :id
@@ -46,7 +51,12 @@ module Braintrust
 
       class Function < Braintrust::Internal::Type::BaseModel
         OrHash =
-          T.type_alias { T.any(T.self_type, Braintrust::Internal::AnyHash) }
+          T.type_alias do
+            T.any(
+              Braintrust::ChatCompletionMessageToolCall::Function,
+              Braintrust::Internal::AnyHash
+            )
+          end
 
         sig { returns(String) }
         attr_accessor :arguments

@@ -3,6 +3,7 @@ module Braintrust
     module Type
       module Union
         include Braintrust::Internal::Type::Converter
+        include Braintrust::Internal::Util::SorbetRuntimeSupport
 
         private def self.known_variants: -> ::Array[[Symbol?, (^-> Braintrust::Internal::Type::Converter::input)]]
 

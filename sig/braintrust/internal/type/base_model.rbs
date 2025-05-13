@@ -3,9 +3,12 @@ module Braintrust
     module Type
       class BaseModel
         extend Braintrust::Internal::Type::Converter
+        extend Braintrust::Internal::Util::SorbetRuntimeSupport
 
         type known_field =
           { mode: (:coerce | :dump)?, required: bool, nilable: bool }
+
+        def self.inherited: (self child) -> void
 
         def self.known_fields: -> ::Hash[Symbol, (Braintrust::Internal::Type::BaseModel::known_field
         & { type_fn: (^-> Braintrust::Internal::Type::Converter::input) })]
@@ -58,10 +61,10 @@ module Braintrust
         def self.coerce: (
           Braintrust::Internal::Type::BaseModel | ::Hash[top, top] | top value,
           state: Braintrust::Internal::Type::Converter::coerce_state
-        ) -> (instance | top)
+        ) -> (self | top)
 
         def self.dump: (
-          instance | top value,
+          self | top value,
           state: Braintrust::Internal::Type::Converter::dump_state
         ) -> (::Hash[top, top] | top)
 

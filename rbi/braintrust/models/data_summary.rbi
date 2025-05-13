@@ -4,7 +4,9 @@ module Braintrust
   module Models
     class DataSummary < Braintrust::Internal::Type::BaseModel
       OrHash =
-        T.type_alias { T.any(T.self_type, Braintrust::Internal::AnyHash) }
+        T.type_alias do
+          T.any(Braintrust::DataSummary, Braintrust::Internal::AnyHash)
+        end
 
       # Total number of records in the dataset
       sig { returns(Integer) }

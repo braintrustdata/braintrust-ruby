@@ -5,9 +5,11 @@ module Braintrust
     module Transport
       # @api private
       class BaseClient
+        extend Braintrust::Internal::Util::SorbetRuntimeSupport
+
         abstract!
 
-        RequestComponentsShape =
+        RequestComponents =
           T.type_alias do
             {
               method: Symbol,
@@ -53,7 +55,7 @@ module Braintrust
             }
           end
 
-        RequestInputShape =
+        RequestInput =
           T.type_alias do
             {
               method: Symbol,
@@ -75,7 +77,7 @@ module Braintrust
           sig do
             params(
               req:
-                Braintrust::Internal::Transport::BaseClient::RequestComponentsShape
+                Braintrust::Internal::Transport::BaseClient::RequestComponents
             ).void
           end
           def validate!(req)
@@ -95,12 +97,10 @@ module Braintrust
           sig do
             params(
               request:
-                Braintrust::Internal::Transport::BaseClient::RequestInputShape,
+                Braintrust::Internal::Transport::BaseClient::RequestInput,
               status: Integer,
               response_headers: T.any(T::Hash[String, String], Net::HTTPHeader)
-            ).returns(
-              Braintrust::Internal::Transport::BaseClient::RequestInputShape
-            )
+            ).returns(Braintrust::Internal::Transport::BaseClient::RequestInput)
           end
           def follow_redirect(request, status:, response_headers:)
           end
@@ -168,12 +168,10 @@ module Braintrust
           overridable
             .params(
               req:
-                Braintrust::Internal::Transport::BaseClient::RequestComponentsShape,
+                Braintrust::Internal::Transport::BaseClient::RequestComponents,
               opts: Braintrust::Internal::AnyHash
             )
-            .returns(
-              Braintrust::Internal::Transport::BaseClient::RequestInputShape
-            )
+            .returns(Braintrust::Internal::Transport::BaseClient::RequestInput)
         end
         private def build_request(req, opts)
         end
@@ -191,8 +189,7 @@ module Braintrust
         # @api private
         sig do
           params(
-            request:
-              Braintrust::Internal::Transport::BaseClient::RequestInputShape,
+            request: Braintrust::Internal::Transport::BaseClient::RequestInput,
             redirect_count: Integer,
             retry_count: Integer,
             send_retry_header: T::Boolean

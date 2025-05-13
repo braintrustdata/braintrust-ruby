@@ -7,7 +7,9 @@ module Braintrust
       include Braintrust::Internal::Type::RequestParameters
 
       OrHash =
-        T.type_alias { T.any(T.self_type, Braintrust::Internal::AnyHash) }
+        T.type_alias do
+          T.any(Braintrust::APIKeyDeleteParams, Braintrust::Internal::AnyHash)
+        end
 
       sig do
         params(request_options: Braintrust::RequestOptions::OrHash).returns(
