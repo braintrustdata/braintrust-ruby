@@ -391,6 +391,14 @@ module Braintrust
         # @param keys [Array<Symbol>, nil]
         #
         # @return [Hash{Symbol=>Object}]
+        #
+        # @example
+        #   # `ai_secret` is a `Braintrust::AISecret`
+        #   ai_secret => {
+        #     id: id,
+        #     name: name,
+        #     org_id: org_id
+        #   }
         def deconstruct_keys(keys)
           (keys || self.class.known_fields.keys)
             .filter_map do |k|
