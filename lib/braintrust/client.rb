@@ -101,10 +101,10 @@ module Braintrust
     def initialize(
       api_key: ENV["BRAINTRUST_API_KEY"],
       base_url: ENV["BRAINTRUST_BASE_URL"],
-      max_retries: Braintrust::Client::DEFAULT_MAX_RETRIES,
-      timeout: Braintrust::Client::DEFAULT_TIMEOUT_IN_SECONDS,
-      initial_retry_delay: Braintrust::Client::DEFAULT_INITIAL_RETRY_DELAY,
-      max_retry_delay: Braintrust::Client::DEFAULT_MAX_RETRY_DELAY
+      max_retries: self.class::DEFAULT_MAX_RETRIES,
+      timeout: self.class::DEFAULT_TIMEOUT_IN_SECONDS,
+      initial_retry_delay: self.class::DEFAULT_INITIAL_RETRY_DELAY,
+      max_retry_delay: self.class::DEFAULT_MAX_RETRY_DELAY
     )
       base_url ||= "https://api.braintrust.dev"
 
