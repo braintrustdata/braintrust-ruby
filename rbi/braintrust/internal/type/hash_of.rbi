@@ -8,6 +8,7 @@ module Braintrust
       # Hash of items of a given type.
       class HashOf
         include Braintrust::Internal::Type::Converter
+        include Braintrust::Internal::Util::SorbetRuntimeSupport
 
         abstract!
 
@@ -61,6 +62,11 @@ module Braintrust
             .returns(T.any(Braintrust::Internal::AnyHash, T.anything))
         end
         def dump(value, state:)
+        end
+
+        # @api private
+        sig { returns(T.anything) }
+        def to_sorbet_type
         end
 
         # @api private

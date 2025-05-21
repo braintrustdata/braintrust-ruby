@@ -106,10 +106,6 @@ module Braintrust
         # @!method self.variants
         #   @return [Array(String, Array<String>)]
 
-        define_sorbet_constant!(:Variants) do
-          T.type_alias { T.any(String, T::Array[String]) }
-        end
-
         # @type [Braintrust::Internal::Type::Converter]
         StringArray = Braintrust::Internal::Type::ArrayOf[String]
       end
@@ -126,15 +122,6 @@ module Braintrust
 
         # @!method self.variants
         #   @return [Array(Symbol, Braintrust::ProjectScoreType, Array<Symbol, Braintrust::ProjectScoreType>)]
-
-        define_sorbet_constant!(:Variants) do
-          T.type_alias do
-            T.any(
-              Braintrust::ProjectScoreType::TaggedSymbol,
-              T::Array[Braintrust::ProjectScoreType::TaggedSymbol]
-            )
-          end
-        end
 
         # @type [Braintrust::Internal::Type::Converter]
         ProjectScoreTypeArray = Braintrust::Internal::Type::ArrayOf[enum: -> { Braintrust::ProjectScoreType }]

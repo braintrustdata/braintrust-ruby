@@ -225,16 +225,6 @@ module Braintrust
 
         # @!method self.variants
         #   @return [Array(Braintrust::EvalCreateParams::Data::DatasetID, Braintrust::EvalCreateParams::Data::ProjectDatasetName, Braintrust::EvalCreateParams::Data::DatasetRows)]
-
-        define_sorbet_constant!(:Variants) do
-          T.type_alias do
-            T.any(
-              Braintrust::EvalCreateParams::Data::DatasetID,
-              Braintrust::EvalCreateParams::Data::ProjectDatasetName,
-              Braintrust::EvalCreateParams::Data::DatasetRows
-            )
-          end
-        end
       end
 
       # The function to evaluate
@@ -437,19 +427,6 @@ module Braintrust
 
         # @!method self.variants
         #   @return [Array(Braintrust::EvalCreateParams::Score::FunctionID, Braintrust::EvalCreateParams::Score::ProjectSlug, Braintrust::EvalCreateParams::Score::GlobalFunction, Braintrust::EvalCreateParams::Score::PromptSessionID, Braintrust::EvalCreateParams::Score::InlineCode, Braintrust::EvalCreateParams::Score::InlinePrompt)]
-
-        define_sorbet_constant!(:Variants) do
-          T.type_alias do
-            T.any(
-              Braintrust::EvalCreateParams::Score::FunctionID,
-              Braintrust::EvalCreateParams::Score::ProjectSlug,
-              Braintrust::EvalCreateParams::Score::GlobalFunction,
-              Braintrust::EvalCreateParams::Score::PromptSessionID,
-              Braintrust::EvalCreateParams::Score::InlineCode,
-              Braintrust::EvalCreateParams::Score::InlinePrompt
-            )
-          end
-        end
       end
 
       # The function to evaluate
@@ -652,19 +629,6 @@ module Braintrust
 
         # @!method self.variants
         #   @return [Array(Braintrust::EvalCreateParams::Task::FunctionID, Braintrust::EvalCreateParams::Task::ProjectSlug, Braintrust::EvalCreateParams::Task::GlobalFunction, Braintrust::EvalCreateParams::Task::PromptSessionID, Braintrust::EvalCreateParams::Task::InlineCode, Braintrust::EvalCreateParams::Task::InlinePrompt)]
-
-        define_sorbet_constant!(:Variants) do
-          T.type_alias do
-            T.any(
-              Braintrust::EvalCreateParams::Task::FunctionID,
-              Braintrust::EvalCreateParams::Task::ProjectSlug,
-              Braintrust::EvalCreateParams::Task::GlobalFunction,
-              Braintrust::EvalCreateParams::Task::PromptSessionID,
-              Braintrust::EvalCreateParams::Task::InlineCode,
-              Braintrust::EvalCreateParams::Task::InlinePrompt
-            )
-          end
-        end
       end
 
       class GitMetadataSettings < Braintrust::Internal::Type::BaseModel
@@ -813,10 +777,6 @@ module Braintrust
 
         # @!method self.variants
         #   @return [Array(Braintrust::EvalCreateParams::Parent::SpanParentStruct, String)]
-
-        define_sorbet_constant!(:Variants) do
-          T.type_alias { T.any(Braintrust::EvalCreateParams::Parent::SpanParentStruct, String) }
-        end
       end
     end
   end

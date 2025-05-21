@@ -3,6 +3,7 @@ module Braintrust
     module Type
       class Unknown
         extend Braintrust::Internal::Type::Converter
+        extend Braintrust::Internal::Util::SorbetRuntimeSupport
 
         def self.===: (top other) -> bool
 
@@ -17,6 +18,8 @@ module Braintrust
           top value,
           state: Braintrust::Internal::Type::Converter::dump_state
         ) -> top
+
+        def self.to_sorbet_type: -> top
       end
     end
   end
