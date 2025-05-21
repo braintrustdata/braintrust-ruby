@@ -19,15 +19,7 @@ module Braintrust
       sig { returns(String) }
       attr_accessor :_xact_id
 
-      sig do
-        returns(
-          T.any(
-            Braintrust::Function::FunctionData::Prompt,
-            Braintrust::Function::FunctionData::Code,
-            Braintrust::Function::FunctionData::Global
-          )
-        )
-      end
+      sig { returns(Braintrust::Function::FunctionData::Variants) }
       attr_accessor :function_data
 
       # A literal 'p' which identifies the object as a project prompt
@@ -168,12 +160,7 @@ module Braintrust
           {
             id: String,
             _xact_id: String,
-            function_data:
-              T.any(
-                Braintrust::Function::FunctionData::Prompt,
-                Braintrust::Function::FunctionData::Code,
-                Braintrust::Function::FunctionData::Global
-              ),
+            function_data: Braintrust::Function::FunctionData::Variants,
             log_id: Braintrust::Function::LogID::TaggedSymbol,
             name: String,
             org_id: String,
@@ -278,12 +265,7 @@ module Braintrust
             end
 
           sig do
-            returns(
-              T.any(
-                Braintrust::Function::FunctionData::Code::Data::Bundle,
-                Braintrust::Function::FunctionData::Code::Data::Inline
-              )
-            )
+            returns(Braintrust::Function::FunctionData::Code::Data::Variants)
           end
           attr_accessor :data
 
@@ -310,11 +292,7 @@ module Braintrust
           sig do
             override.returns(
               {
-                data:
-                  T.any(
-                    Braintrust::Function::FunctionData::Code::Data::Bundle,
-                    Braintrust::Function::FunctionData::Code::Data::Inline
-                  ),
+                data: Braintrust::Function::FunctionData::Code::Data::Variants,
                 type:
                   Braintrust::Function::FunctionData::Code::Type::TaggedSymbol
               }

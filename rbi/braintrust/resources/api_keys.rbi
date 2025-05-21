@@ -43,7 +43,7 @@ module Braintrust
         params(
           api_key_name: String,
           ending_before: String,
-          ids: T.any(String, T::Array[String]),
+          ids: Braintrust::APIKeyListParams::IDs::Variants,
           limit: T.nilable(Integer),
           org_name: String,
           starting_after: String,

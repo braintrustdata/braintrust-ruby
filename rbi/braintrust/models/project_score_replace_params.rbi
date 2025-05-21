@@ -29,13 +29,7 @@ module Braintrust
       # For categorical-type project scores, the list of all categories
       sig do
         returns(
-          T.nilable(
-            T.any(
-              T::Array[Braintrust::ProjectScoreCategory],
-              T::Hash[Symbol, Float],
-              T::Array[String]
-            )
-          )
+          T.nilable(Braintrust::ProjectScoreReplaceParams::Categories::Variants)
         )
       end
       attr_accessor :categories
@@ -59,11 +53,7 @@ module Braintrust
           score_type: Braintrust::ProjectScoreType::OrSymbol,
           categories:
             T.nilable(
-              T.any(
-                T::Array[Braintrust::ProjectScoreCategory::OrHash],
-                T::Hash[Symbol, Float],
-                T::Array[String]
-              )
+              Braintrust::ProjectScoreReplaceParams::Categories::Variants
             ),
           config: T.nilable(Braintrust::ProjectScoreConfig::OrHash),
           description: T.nilable(String),
@@ -94,11 +84,7 @@ module Braintrust
             score_type: Braintrust::ProjectScoreType::OrSymbol,
             categories:
               T.nilable(
-                T.any(
-                  T::Array[Braintrust::ProjectScoreCategory],
-                  T::Hash[Symbol, Float],
-                  T::Array[String]
-                )
+                Braintrust::ProjectScoreReplaceParams::Categories::Variants
               ),
             config: T.nilable(Braintrust::ProjectScoreConfig),
             description: T.nilable(String),

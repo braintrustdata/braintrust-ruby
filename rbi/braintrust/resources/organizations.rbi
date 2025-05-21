@@ -52,7 +52,7 @@ module Braintrust
       sig do
         params(
           ending_before: String,
-          ids: T.any(String, T::Array[String]),
+          ids: Braintrust::OrganizationListParams::IDs::Variants,
           limit: T.nilable(Integer),
           org_name: String,
           starting_after: String,

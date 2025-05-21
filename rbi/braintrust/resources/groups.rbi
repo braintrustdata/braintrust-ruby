@@ -89,7 +89,7 @@ module Braintrust
         params(
           ending_before: String,
           group_name: String,
-          ids: T.any(String, T::Array[String]),
+          ids: Braintrust::GroupListParams::IDs::Variants,
           limit: T.nilable(Integer),
           org_name: String,
           starting_after: String,

@@ -87,7 +87,7 @@ module Braintrust
       sig do
         params(
           ending_before: String,
-          ids: T.any(String, T::Array[String]),
+          ids: Braintrust::PromptListParams::IDs::Variants,
           limit: T.nilable(Integer),
           org_name: String,
           project_id: String,

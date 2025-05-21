@@ -107,7 +107,7 @@ module Braintrust
         params(
           ending_before: String,
           function_name: String,
-          ids: T.any(String, T::Array[String]),
+          ids: Braintrust::FunctionListParams::IDs::Variants,
           limit: T.nilable(Integer),
           org_name: String,
           project_id: String,

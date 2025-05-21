@@ -105,7 +105,7 @@ module Braintrust
           object_id_: String,
           object_type: Braintrust::ACLObjectType::OrSymbol,
           ending_before: String,
-          ids: T.any(String, T::Array[String]),
+          ids: Braintrust::ViewListParams::IDs::Variants,
           limit: T.nilable(Integer),
           starting_after: String,
           view_name: String,

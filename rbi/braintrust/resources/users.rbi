@@ -21,11 +21,11 @@ module Braintrust
       # recently-created users coming first
       sig do
         params(
-          email: T.any(String, T::Array[String]),
+          email: Braintrust::UserListParams::Email::Variants,
           ending_before: String,
-          family_name: T.any(String, T::Array[String]),
-          given_name: T.any(String, T::Array[String]),
-          ids: T.any(String, T::Array[String]),
+          family_name: Braintrust::UserListParams::FamilyName::Variants,
+          given_name: Braintrust::UserListParams::GivenName::Variants,
+          ids: Braintrust::UserListParams::IDs::Variants,
           limit: T.nilable(Integer),
           org_name: String,
           starting_after: String,

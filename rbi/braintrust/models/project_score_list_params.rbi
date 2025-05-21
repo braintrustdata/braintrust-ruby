@@ -27,10 +27,14 @@ module Braintrust
 
       # Filter search results to a particular set of object IDs. To specify a list of
       # IDs, include the query param multiple times
-      sig { returns(T.nilable(T.any(String, T::Array[String]))) }
+      sig do
+        returns(T.nilable(Braintrust::ProjectScoreListParams::IDs::Variants))
+      end
       attr_reader :ids
 
-      sig { params(ids: T.any(String, T::Array[String])).void }
+      sig do
+        params(ids: Braintrust::ProjectScoreListParams::IDs::Variants).void
+      end
       attr_writer :ids
 
       # Limit the number of objects to return
@@ -68,23 +72,14 @@ module Braintrust
       # The type of the configured score
       sig do
         returns(
-          T.nilable(
-            T.any(
-              Braintrust::ProjectScoreType::OrSymbol,
-              T::Array[Braintrust::ProjectScoreType::OrSymbol]
-            )
-          )
+          T.nilable(Braintrust::ProjectScoreListParams::ScoreType::Variants)
         )
       end
       attr_reader :score_type
 
       sig do
         params(
-          score_type:
-            T.any(
-              Braintrust::ProjectScoreType::OrSymbol,
-              T::Array[Braintrust::ProjectScoreType::OrSymbol]
-            )
+          score_type: Braintrust::ProjectScoreListParams::ScoreType::Variants
         ).void
       end
       attr_writer :score_type
@@ -103,17 +98,13 @@ module Braintrust
       sig do
         params(
           ending_before: String,
-          ids: T.any(String, T::Array[String]),
+          ids: Braintrust::ProjectScoreListParams::IDs::Variants,
           limit: T.nilable(Integer),
           org_name: String,
           project_id: String,
           project_name: String,
           project_score_name: String,
-          score_type:
-            T.any(
-              Braintrust::ProjectScoreType::OrSymbol,
-              T::Array[Braintrust::ProjectScoreType::OrSymbol]
-            ),
+          score_type: Braintrust::ProjectScoreListParams::ScoreType::Variants,
           starting_after: String,
           request_options: Braintrust::RequestOptions::OrHash
         ).returns(T.attached_class)
@@ -154,17 +145,13 @@ module Braintrust
         override.returns(
           {
             ending_before: String,
-            ids: T.any(String, T::Array[String]),
+            ids: Braintrust::ProjectScoreListParams::IDs::Variants,
             limit: T.nilable(Integer),
             org_name: String,
             project_id: String,
             project_name: String,
             project_score_name: String,
-            score_type:
-              T.any(
-                Braintrust::ProjectScoreType::OrSymbol,
-                T::Array[Braintrust::ProjectScoreType::OrSymbol]
-              ),
+            score_type: Braintrust::ProjectScoreListParams::ScoreType::Variants,
             starting_after: String,
             request_options: Braintrust::RequestOptions
           }
