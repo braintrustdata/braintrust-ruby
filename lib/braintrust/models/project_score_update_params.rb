@@ -65,12 +65,6 @@ module Braintrust
         # @!method self.variants
         #   @return [Array(Array<Braintrust::ProjectScoreCategory>, Hash{Symbol=>Float}, Array<String>)]
 
-        define_sorbet_constant!(:Variants) do
-          T.type_alias do
-            T.any(T::Array[Braintrust::ProjectScoreCategory], T::Hash[Symbol, Float], T::Array[String])
-          end
-        end
-
         # @type [Braintrust::Internal::Type::Converter]
         ProjectScoreCategoryArray = Braintrust::Internal::Type::ArrayOf[-> {
           Braintrust::ProjectScoreCategory

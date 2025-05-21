@@ -8,6 +8,7 @@ module Braintrust
       # When we don't know what to expect for the value.
       class Unknown
         extend Braintrust::Internal::Type::Converter
+        extend Braintrust::Internal::Util::SorbetRuntimeSupport
 
         abstract!
 
@@ -42,6 +43,11 @@ module Braintrust
               .returns(T.anything)
           end
           def dump(value, state:)
+          end
+
+          # @api private
+          sig { returns(T.anything) }
+          def to_sorbet_type
           end
         end
       end

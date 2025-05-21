@@ -121,15 +121,6 @@ module Braintrust
 
             # @!method self.variants
             #   @return [Array(Braintrust::CodeBundle::Location::Experiment::Position::Type, Braintrust::CodeBundle::Location::Experiment::Position::Scorer)]
-
-            define_sorbet_constant!(:Variants) do
-              T.type_alias do
-                T.any(
-                  Braintrust::CodeBundle::Location::Experiment::Position::Type,
-                  Braintrust::CodeBundle::Location::Experiment::Position::Scorer
-                )
-              end
-            end
           end
 
           # @see Braintrust::CodeBundle::Location::Experiment#type
@@ -171,12 +162,6 @@ module Braintrust
 
         # @!method self.variants
         #   @return [Array(Braintrust::CodeBundle::Location::Experiment, Braintrust::CodeBundle::Location::Function)]
-
-        define_sorbet_constant!(:Variants) do
-          T.type_alias do
-            T.any(Braintrust::CodeBundle::Location::Experiment, Braintrust::CodeBundle::Location::Function)
-          end
-        end
       end
 
       # @see Braintrust::CodeBundle#runtime_context

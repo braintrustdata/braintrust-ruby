@@ -3,6 +3,7 @@ module Braintrust
     module Type
       class Boolean
         extend Braintrust::Internal::Type::Converter
+        extend Braintrust::Internal::Util::SorbetRuntimeSupport
 
         def self.===: (top other) -> bool
 
@@ -17,6 +18,8 @@ module Braintrust
           bool | top value,
           state: Braintrust::Internal::Type::Converter::dump_state
         ) -> (bool | top)
+
+        def self.to_sorbet_type: -> top
       end
     end
   end
