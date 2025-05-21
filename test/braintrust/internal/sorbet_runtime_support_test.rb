@@ -25,6 +25,7 @@ class Braintrust::Test::SorbetRuntimeSupportTest < Minitest::Test
     err = Braintrust::Internal::Util::SorbetRuntimeSupport::MissingSorbetRuntimeError
 
     assert_raises(err) { Braintrust::Internal::AnyHash }
+    assert_raises(err) { Braintrust::Internal::FileInput }
     assert_raises(err) { Braintrust::Internal::Type::Converter::Input }
     assert_raises(err) { Braintrust::Internal::Type::Converter::CoerceState }
     assert_raises(err) { Braintrust::Internal::Type::Converter::DumpState }

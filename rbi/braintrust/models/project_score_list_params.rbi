@@ -72,14 +72,23 @@ module Braintrust
       # The type of the configured score
       sig do
         returns(
-          T.nilable(Braintrust::ProjectScoreListParams::ScoreType::Variants)
+          T.nilable(
+            T.any(
+              Braintrust::ProjectScoreType::OrSymbol,
+              T::Array[Braintrust::ProjectScoreType::OrSymbol]
+            )
+          )
         )
       end
       attr_reader :score_type
 
       sig do
         params(
-          score_type: Braintrust::ProjectScoreListParams::ScoreType::Variants
+          score_type:
+            T.any(
+              Braintrust::ProjectScoreType::OrSymbol,
+              T::Array[Braintrust::ProjectScoreType::OrSymbol]
+            )
         ).void
       end
       attr_writer :score_type
@@ -104,7 +113,11 @@ module Braintrust
           project_id: String,
           project_name: String,
           project_score_name: String,
-          score_type: Braintrust::ProjectScoreListParams::ScoreType::Variants,
+          score_type:
+            T.any(
+              Braintrust::ProjectScoreType::OrSymbol,
+              T::Array[Braintrust::ProjectScoreType::OrSymbol]
+            ),
           starting_after: String,
           request_options: Braintrust::RequestOptions::OrHash
         ).returns(T.attached_class)
@@ -151,7 +164,11 @@ module Braintrust
             project_id: String,
             project_name: String,
             project_score_name: String,
-            score_type: Braintrust::ProjectScoreListParams::ScoreType::Variants,
+            score_type:
+              T.any(
+                Braintrust::ProjectScoreType::OrSymbol,
+                T::Array[Braintrust::ProjectScoreType::OrSymbol]
+              ),
             starting_after: String,
             request_options: Braintrust::RequestOptions
           }
