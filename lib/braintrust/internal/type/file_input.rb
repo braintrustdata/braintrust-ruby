@@ -89,6 +89,13 @@ module Braintrust
 
             value
           end
+
+          # @api private
+          #
+          # @return [Object]
+          def to_sorbet_type
+            T.any(Pathname, StringIO, IO, String, Braintrust::FilePart)
+          end
         end
       end
     end

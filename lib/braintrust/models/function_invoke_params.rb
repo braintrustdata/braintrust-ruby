@@ -176,28 +176,10 @@ module Braintrust
 
               # @!method self.variants
               #   @return [Array(Braintrust::ChatCompletionContentPartText, Braintrust::ChatCompletionContentPartImage)]
-
-              define_sorbet_constant!(:Variants) do
-                T.type_alias do
-                  T.any(Braintrust::ChatCompletionContentPartText, Braintrust::ChatCompletionContentPartImage)
-                end
-              end
             end
 
             # @!method self.variants
             #   @return [Array(String, Array<Braintrust::ChatCompletionContentPartText, Braintrust::ChatCompletionContentPartImage>)]
-
-            define_sorbet_constant!(:Variants) do
-              T.type_alias do
-                T.any(
-                  String,
-                  T::Array[T.any(
-                    Braintrust::ChatCompletionContentPartText,
-                    Braintrust::ChatCompletionContentPartImage
-                  )]
-                )
-              end
-            end
 
             # @type [Braintrust::Internal::Type::Converter]
             Nested2DArray =
@@ -364,19 +346,6 @@ module Braintrust
 
         # @!method self.variants
         #   @return [Array(Braintrust::FunctionInvokeParams::Message::System, Braintrust::FunctionInvokeParams::Message::User, Braintrust::FunctionInvokeParams::Message::Assistant, Braintrust::FunctionInvokeParams::Message::Tool, Braintrust::FunctionInvokeParams::Message::Function, Braintrust::FunctionInvokeParams::Message::Fallback)]
-
-        define_sorbet_constant!(:Variants) do
-          T.type_alias do
-            T.any(
-              Braintrust::FunctionInvokeParams::Message::System,
-              Braintrust::FunctionInvokeParams::Message::User,
-              Braintrust::FunctionInvokeParams::Message::Assistant,
-              Braintrust::FunctionInvokeParams::Message::Tool,
-              Braintrust::FunctionInvokeParams::Message::Function,
-              Braintrust::FunctionInvokeParams::Message::Fallback
-            )
-          end
-        end
       end
 
       # The mode format of the returned value (defaults to 'auto')
@@ -489,10 +458,6 @@ module Braintrust
 
         # @!method self.variants
         #   @return [Array(Braintrust::FunctionInvokeParams::Parent::SpanParentStruct, String)]
-
-        define_sorbet_constant!(:Variants) do
-          T.type_alias { T.any(Braintrust::FunctionInvokeParams::Parent::SpanParentStruct, String) }
-        end
       end
     end
   end

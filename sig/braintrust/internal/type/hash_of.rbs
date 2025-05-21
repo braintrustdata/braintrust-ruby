@@ -3,6 +3,7 @@ module Braintrust
     module Type
       class HashOf[Elem]
         include Braintrust::Internal::Type::Converter
+        include Braintrust::Internal::Util::SorbetRuntimeSupport
 
         def self.[]: (
           ::Hash[Symbol, top]
@@ -26,6 +27,8 @@ module Braintrust
           ::Hash[top, top] | top value,
           state: Braintrust::Internal::Type::Converter::dump_state
         ) -> (::Hash[Symbol, top] | top)
+
+        def to_sorbet_type: -> top
 
         def item_type: -> Elem
 

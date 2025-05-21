@@ -290,10 +290,6 @@ module Braintrust
                   # @!method self.variants
                   #   @return [Array(Hash{Symbol=>Object, nil}, String)]
 
-                  define_sorbet_constant!(:Variants) do
-                    T.type_alias { T.any(T::Hash[Symbol, T.nilable(T.anything)], String) }
-                  end
-
                   # @type [Braintrust::Internal::Type::Converter]
                   ObjectMap = Braintrust::Internal::Type::HashOf[Braintrust::Internal::Type::Unknown,
                                                                  nil?: true]
@@ -336,16 +332,6 @@ module Braintrust
 
             # @!method self.variants
             #   @return [Array(Braintrust::PromptOptions::Params::OpenAIModelParams::ResponseFormat::JsonObject, Braintrust::PromptOptions::Params::OpenAIModelParams::ResponseFormat::JsonSchema, Braintrust::PromptOptions::Params::OpenAIModelParams::ResponseFormat::Text)]
-
-            define_sorbet_constant!(:Variants) do
-              T.type_alias do
-                T.any(
-                  Braintrust::PromptOptions::Params::OpenAIModelParams::ResponseFormat::JsonObject,
-                  Braintrust::PromptOptions::Params::OpenAIModelParams::ResponseFormat::JsonSchema,
-                  Braintrust::PromptOptions::Params::OpenAIModelParams::ResponseFormat::Text
-                )
-              end
-            end
           end
 
           # @see Braintrust::PromptOptions::Params::OpenAIModelParams#tool_choice
@@ -546,18 +532,6 @@ module Braintrust
 
         # @!method self.variants
         #   @return [Array(Braintrust::PromptOptions::Params::OpenAIModelParams, Braintrust::PromptOptions::Params::AnthropicModelParams, Braintrust::PromptOptions::Params::GoogleModelParams, Braintrust::PromptOptions::Params::WindowAIModelParams, Braintrust::PromptOptions::Params::JsCompletionParams)]
-
-        define_sorbet_constant!(:Variants) do
-          T.type_alias do
-            T.any(
-              Braintrust::PromptOptions::Params::OpenAIModelParams,
-              Braintrust::PromptOptions::Params::AnthropicModelParams,
-              Braintrust::PromptOptions::Params::GoogleModelParams,
-              Braintrust::PromptOptions::Params::WindowAIModelParams,
-              Braintrust::PromptOptions::Params::JsCompletionParams
-            )
-          end
-        end
       end
     end
   end

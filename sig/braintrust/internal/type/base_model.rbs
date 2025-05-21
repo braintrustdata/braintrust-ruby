@@ -68,6 +68,8 @@ module Braintrust
           state: Braintrust::Internal::Type::Converter::dump_state
         ) -> (::Hash[top, top] | top)
 
+        def self.to_sorbet_type: -> top
+
         def self.recursively_to_h: (
           Braintrust::Internal::Type::BaseModel model,
           convert: bool

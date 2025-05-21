@@ -248,31 +248,10 @@ module Braintrust
 
                   # @!method self.variants
                   #   @return [Array(Braintrust::ChatCompletionContentPartText, Braintrust::ChatCompletionContentPartImage)]
-
-                  define_sorbet_constant!(:Variants) do
-                    T.type_alias do
-                      T.any(
-                        Braintrust::ChatCompletionContentPartText,
-                        Braintrust::ChatCompletionContentPartImage
-                      )
-                    end
-                  end
                 end
 
                 # @!method self.variants
                 #   @return [Array(String, Array<Braintrust::ChatCompletionContentPartText, Braintrust::ChatCompletionContentPartImage>)]
-
-                define_sorbet_constant!(:Variants) do
-                  T.type_alias do
-                    T.any(
-                      String,
-                      T::Array[T.any(
-                        Braintrust::ChatCompletionContentPartText,
-                        Braintrust::ChatCompletionContentPartImage
-                      )]
-                    )
-                  end
-                end
 
                 # @type [Braintrust::Internal::Type::Converter]
                 Nested2DArray =
@@ -439,19 +418,6 @@ module Braintrust
 
             # @!method self.variants
             #   @return [Array(Braintrust::PromptData::Prompt::Chat::Message::System, Braintrust::PromptData::Prompt::Chat::Message::User, Braintrust::PromptData::Prompt::Chat::Message::Assistant, Braintrust::PromptData::Prompt::Chat::Message::Tool, Braintrust::PromptData::Prompt::Chat::Message::Function, Braintrust::PromptData::Prompt::Chat::Message::Fallback)]
-
-            define_sorbet_constant!(:Variants) do
-              T.type_alias do
-                T.any(
-                  Braintrust::PromptData::Prompt::Chat::Message::System,
-                  Braintrust::PromptData::Prompt::Chat::Message::User,
-                  Braintrust::PromptData::Prompt::Chat::Message::Assistant,
-                  Braintrust::PromptData::Prompt::Chat::Message::Tool,
-                  Braintrust::PromptData::Prompt::Chat::Message::Function,
-                  Braintrust::PromptData::Prompt::Chat::Message::Fallback
-                )
-              end
-            end
           end
 
           # @see Braintrust::PromptData::Prompt::Chat#type
@@ -467,12 +433,6 @@ module Braintrust
 
         # @!method self.variants
         #   @return [Array(Braintrust::PromptData::Prompt::Completion, Braintrust::PromptData::Prompt::Chat)]
-
-        define_sorbet_constant!(:Variants) do
-          T.type_alias do
-            T.any(Braintrust::PromptData::Prompt::Completion, Braintrust::PromptData::Prompt::Chat)
-          end
-        end
       end
 
       module ToolFunction
@@ -536,15 +496,6 @@ module Braintrust
 
         # @!method self.variants
         #   @return [Array(Braintrust::PromptData::ToolFunction::Function, Braintrust::PromptData::ToolFunction::Global)]
-
-        define_sorbet_constant!(:Variants) do
-          T.type_alias do
-            T.any(
-              Braintrust::PromptData::ToolFunction::Function,
-              Braintrust::PromptData::ToolFunction::Global
-            )
-          end
-        end
       end
     end
   end

@@ -277,15 +277,6 @@ module Braintrust
 
             # @!method self.variants
             #   @return [Array(Braintrust::Function::FunctionData::Code::Data::Bundle, Braintrust::Function::FunctionData::Code::Data::Inline)]
-
-            define_sorbet_constant!(:Variants) do
-              T.type_alias do
-                T.any(
-                  Braintrust::Function::FunctionData::Code::Data::Bundle,
-                  Braintrust::Function::FunctionData::Code::Data::Inline
-                )
-              end
-            end
           end
 
           # @see Braintrust::Function::FunctionData::Code#type
@@ -327,16 +318,6 @@ module Braintrust
 
         # @!method self.variants
         #   @return [Array(Braintrust::Function::FunctionData::Prompt, Braintrust::Function::FunctionData::Code, Braintrust::Function::FunctionData::Global)]
-
-        define_sorbet_constant!(:Variants) do
-          T.type_alias do
-            T.any(
-              Braintrust::Function::FunctionData::Prompt,
-              Braintrust::Function::FunctionData::Code,
-              Braintrust::Function::FunctionData::Global
-            )
-          end
-        end
       end
 
       # A literal 'p' which identifies the object as a project prompt
