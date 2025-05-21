@@ -94,7 +94,11 @@ module Braintrust
           project_id: String,
           project_name: String,
           project_score_name: String,
-          score_type: Braintrust::ProjectScoreListParams::ScoreType::Variants,
+          score_type:
+            T.any(
+              Braintrust::ProjectScoreType::OrSymbol,
+              T::Array[Braintrust::ProjectScoreType::OrSymbol]
+            ),
           starting_after: String,
           request_options: Braintrust::RequestOptions::OrHash
         ).returns(Braintrust::Internal::ListObjects[Braintrust::ProjectScore])
