@@ -24,10 +24,12 @@ module Braintrust
 
       # Filter search results to a particular set of object IDs. To specify a list of
       # IDs, include the query param multiple times
-      sig { returns(T.nilable(T.any(String, T::Array[String]))) }
+      sig do
+        returns(T.nilable(Braintrust::SpanIframeListParams::IDs::Variants))
+      end
       attr_reader :ids
 
-      sig { params(ids: T.any(String, T::Array[String])).void }
+      sig { params(ids: Braintrust::SpanIframeListParams::IDs::Variants).void }
       attr_writer :ids
 
       # Limit the number of objects to return
@@ -62,7 +64,7 @@ module Braintrust
       sig do
         params(
           ending_before: String,
-          ids: T.any(String, T::Array[String]),
+          ids: Braintrust::SpanIframeListParams::IDs::Variants,
           limit: T.nilable(Integer),
           org_name: String,
           span_iframe_name: String,
@@ -100,7 +102,7 @@ module Braintrust
         override.returns(
           {
             ending_before: String,
-            ids: T.any(String, T::Array[String]),
+            ids: Braintrust::SpanIframeListParams::IDs::Variants,
             limit: T.nilable(Integer),
             org_name: String,
             span_iframe_name: String,

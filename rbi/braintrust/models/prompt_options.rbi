@@ -584,7 +584,7 @@ module Braintrust
                 sig do
                   returns(
                     T.nilable(
-                      T.any(T::Hash[Symbol, T.nilable(T.anything)], String)
+                      Braintrust::PromptOptions::Params::OpenAIModelParams::ResponseFormat::JsonSchema::JsonSchema::Schema::Variants
                     )
                   )
                 end
@@ -593,7 +593,7 @@ module Braintrust
                 sig do
                   params(
                     schema:
-                      T.any(T::Hash[Symbol, T.nilable(T.anything)], String)
+                      Braintrust::PromptOptions::Params::OpenAIModelParams::ResponseFormat::JsonSchema::JsonSchema::Schema::Variants
                   ).void
                 end
                 attr_writer :schema
@@ -606,7 +606,7 @@ module Braintrust
                     name: String,
                     description: String,
                     schema:
-                      T.any(T::Hash[Symbol, T.nilable(T.anything)], String),
+                      Braintrust::PromptOptions::Params::OpenAIModelParams::ResponseFormat::JsonSchema::JsonSchema::Schema::Variants,
                     strict: T.nilable(T::Boolean)
                   ).returns(T.attached_class)
                 end
@@ -619,7 +619,7 @@ module Braintrust
                       name: String,
                       description: String,
                       schema:
-                        T.any(T::Hash[Symbol, T.nilable(T.anything)], String),
+                        Braintrust::PromptOptions::Params::OpenAIModelParams::ResponseFormat::JsonSchema::JsonSchema::Schema::Variants,
                       strict: T.nilable(T::Boolean)
                     }
                   )

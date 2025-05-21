@@ -18,10 +18,18 @@ module Braintrust
       sig { params(ai_secret_name: String).void }
       attr_writer :ai_secret_name
 
-      sig { returns(T.nilable(T.any(String, T::Array[String]))) }
+      sig do
+        returns(
+          T.nilable(Braintrust::AISecretListParams::AISecretType::Variants)
+        )
+      end
       attr_reader :ai_secret_type
 
-      sig { params(ai_secret_type: T.any(String, T::Array[String])).void }
+      sig do
+        params(
+          ai_secret_type: Braintrust::AISecretListParams::AISecretType::Variants
+        ).void
+      end
       attr_writer :ai_secret_type
 
       # Pagination cursor id.
@@ -37,10 +45,10 @@ module Braintrust
 
       # Filter search results to a particular set of object IDs. To specify a list of
       # IDs, include the query param multiple times
-      sig { returns(T.nilable(T.any(String, T::Array[String]))) }
+      sig { returns(T.nilable(Braintrust::AISecretListParams::IDs::Variants)) }
       attr_reader :ids
 
-      sig { params(ids: T.any(String, T::Array[String])).void }
+      sig { params(ids: Braintrust::AISecretListParams::IDs::Variants).void }
       attr_writer :ids
 
       # Limit the number of objects to return
@@ -68,9 +76,10 @@ module Braintrust
       sig do
         params(
           ai_secret_name: String,
-          ai_secret_type: T.any(String, T::Array[String]),
+          ai_secret_type:
+            Braintrust::AISecretListParams::AISecretType::Variants,
           ending_before: String,
-          ids: T.any(String, T::Array[String]),
+          ids: Braintrust::AISecretListParams::IDs::Variants,
           limit: T.nilable(Integer),
           org_name: String,
           starting_after: String,
@@ -108,9 +117,10 @@ module Braintrust
         override.returns(
           {
             ai_secret_name: String,
-            ai_secret_type: T.any(String, T::Array[String]),
+            ai_secret_type:
+              Braintrust::AISecretListParams::AISecretType::Variants,
             ending_before: String,
-            ids: T.any(String, T::Array[String]),
+            ids: Braintrust::AISecretListParams::IDs::Variants,
             limit: T.nilable(Integer),
             org_name: String,
             starting_after: String,
