@@ -73,7 +73,7 @@ module Braintrust
         params(
           dataset_name: String,
           ending_before: String,
-          ids: T.any(String, T::Array[String]),
+          ids: Braintrust::DatasetListParams::IDs::Variants,
           limit: T.nilable(Integer),
           org_name: String,
           project_id: String,

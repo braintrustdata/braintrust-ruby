@@ -304,15 +304,7 @@ module Braintrust
           sig do
             returns(
               T.nilable(
-                T.any(
-                  String,
-                  T::Array[
-                    T.any(
-                      Braintrust::ChatCompletionContentPartText,
-                      Braintrust::ChatCompletionContentPartImage
-                    )
-                  ]
-                )
+                Braintrust::FunctionInvokeParams::Message::User::Content::Variants
               )
             )
           end
@@ -321,15 +313,7 @@ module Braintrust
           sig do
             params(
               content:
-                T.any(
-                  String,
-                  T::Array[
-                    T.any(
-                      Braintrust::ChatCompletionContentPartText::OrHash,
-                      Braintrust::ChatCompletionContentPartImage::OrHash
-                    )
-                  ]
-                )
+                Braintrust::FunctionInvokeParams::Message::User::Content::Variants
             ).void
           end
           attr_writer :content
@@ -345,15 +329,7 @@ module Braintrust
               role:
                 Braintrust::FunctionInvokeParams::Message::User::Role::OrSymbol,
               content:
-                T.any(
-                  String,
-                  T::Array[
-                    T.any(
-                      Braintrust::ChatCompletionContentPartText::OrHash,
-                      Braintrust::ChatCompletionContentPartImage::OrHash
-                    )
-                  ]
-                ),
+                Braintrust::FunctionInvokeParams::Message::User::Content::Variants,
               name: String
             ).returns(T.attached_class)
           end
@@ -366,15 +342,7 @@ module Braintrust
                 role:
                   Braintrust::FunctionInvokeParams::Message::User::Role::OrSymbol,
                 content:
-                  T.any(
-                    String,
-                    T::Array[
-                      T.any(
-                        Braintrust::ChatCompletionContentPartText,
-                        Braintrust::ChatCompletionContentPartImage
-                      )
-                    ]
-                  ),
+                  Braintrust::FunctionInvokeParams::Message::User::Content::Variants,
                 name: String
               }
             )
@@ -419,10 +387,7 @@ module Braintrust
                 T.any(
                   String,
                   T::Array[
-                    T.any(
-                      Braintrust::ChatCompletionContentPartText,
-                      Braintrust::ChatCompletionContentPartImage
-                    )
+                    Braintrust::FunctionInvokeParams::Message::User::Content::Array::Variants
                   ]
                 )
               end

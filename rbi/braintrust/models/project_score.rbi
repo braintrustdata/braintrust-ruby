@@ -28,17 +28,7 @@ module Braintrust
       attr_accessor :user_id
 
       # For categorical-type project scores, the list of all categories
-      sig do
-        returns(
-          T.nilable(
-            T.any(
-              T::Array[Braintrust::ProjectScoreCategory],
-              T::Hash[Symbol, Float],
-              T::Array[String]
-            )
-          )
-        )
-      end
+      sig { returns(T.nilable(Braintrust::ProjectScore::Categories::Variants)) }
       attr_accessor :categories
 
       sig { returns(T.nilable(Braintrust::ProjectScoreConfig)) }
@@ -71,14 +61,7 @@ module Braintrust
           project_id: String,
           score_type: Braintrust::ProjectScoreType::OrSymbol,
           user_id: String,
-          categories:
-            T.nilable(
-              T.any(
-                T::Array[Braintrust::ProjectScoreCategory::OrHash],
-                T::Hash[Symbol, Float],
-                T::Array[String]
-              )
-            ),
+          categories: T.nilable(Braintrust::ProjectScore::Categories::Variants),
           config: T.nilable(Braintrust::ProjectScoreConfig::OrHash),
           created: T.nilable(Time),
           description: T.nilable(String),
@@ -117,13 +100,7 @@ module Braintrust
             score_type: Braintrust::ProjectScoreType::TaggedSymbol,
             user_id: String,
             categories:
-              T.nilable(
-                T.any(
-                  T::Array[Braintrust::ProjectScoreCategory],
-                  T::Hash[Symbol, Float],
-                  T::Array[String]
-                )
-              ),
+              T.nilable(Braintrust::ProjectScore::Categories::Variants),
             config: T.nilable(Braintrust::ProjectScoreConfig),
             created: T.nilable(Time),
             description: T.nilable(String),

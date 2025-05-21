@@ -13,10 +13,10 @@ module Braintrust
 
       # Email of the user to search for. You may pass the param multiple times to filter
       # for more than one email
-      sig { returns(T.nilable(T.any(String, T::Array[String]))) }
+      sig { returns(T.nilable(Braintrust::UserListParams::Email::Variants)) }
       attr_reader :email
 
-      sig { params(email: T.any(String, T::Array[String])).void }
+      sig { params(email: Braintrust::UserListParams::Email::Variants).void }
       attr_writer :email
 
       # Pagination cursor id.
@@ -32,26 +32,36 @@ module Braintrust
 
       # Family name of the user to search for. You may pass the param multiple times to
       # filter for more than one family name
-      sig { returns(T.nilable(T.any(String, T::Array[String]))) }
+      sig do
+        returns(T.nilable(Braintrust::UserListParams::FamilyName::Variants))
+      end
       attr_reader :family_name
 
-      sig { params(family_name: T.any(String, T::Array[String])).void }
+      sig do
+        params(
+          family_name: Braintrust::UserListParams::FamilyName::Variants
+        ).void
+      end
       attr_writer :family_name
 
       # Given name of the user to search for. You may pass the param multiple times to
       # filter for more than one given name
-      sig { returns(T.nilable(T.any(String, T::Array[String]))) }
+      sig do
+        returns(T.nilable(Braintrust::UserListParams::GivenName::Variants))
+      end
       attr_reader :given_name
 
-      sig { params(given_name: T.any(String, T::Array[String])).void }
+      sig do
+        params(given_name: Braintrust::UserListParams::GivenName::Variants).void
+      end
       attr_writer :given_name
 
       # Filter search results to a particular set of object IDs. To specify a list of
       # IDs, include the query param multiple times
-      sig { returns(T.nilable(T.any(String, T::Array[String]))) }
+      sig { returns(T.nilable(Braintrust::UserListParams::IDs::Variants)) }
       attr_reader :ids
 
-      sig { params(ids: T.any(String, T::Array[String])).void }
+      sig { params(ids: Braintrust::UserListParams::IDs::Variants).void }
       attr_writer :ids
 
       # Limit the number of objects to return
@@ -78,11 +88,11 @@ module Braintrust
 
       sig do
         params(
-          email: T.any(String, T::Array[String]),
+          email: Braintrust::UserListParams::Email::Variants,
           ending_before: String,
-          family_name: T.any(String, T::Array[String]),
-          given_name: T.any(String, T::Array[String]),
-          ids: T.any(String, T::Array[String]),
+          family_name: Braintrust::UserListParams::FamilyName::Variants,
+          given_name: Braintrust::UserListParams::GivenName::Variants,
+          ids: Braintrust::UserListParams::IDs::Variants,
           limit: T.nilable(Integer),
           org_name: String,
           starting_after: String,
@@ -125,11 +135,11 @@ module Braintrust
       sig do
         override.returns(
           {
-            email: T.any(String, T::Array[String]),
+            email: Braintrust::UserListParams::Email::Variants,
             ending_before: String,
-            family_name: T.any(String, T::Array[String]),
-            given_name: T.any(String, T::Array[String]),
-            ids: T.any(String, T::Array[String]),
+            family_name: Braintrust::UserListParams::FamilyName::Variants,
+            given_name: Braintrust::UserListParams::GivenName::Variants,
+            ids: Braintrust::UserListParams::IDs::Variants,
             limit: T.nilable(Integer),
             org_name: String,
             starting_after: String,

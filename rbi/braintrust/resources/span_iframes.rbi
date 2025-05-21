@@ -80,7 +80,7 @@ module Braintrust
       sig do
         params(
           ending_before: String,
-          ids: T.any(String, T::Array[String]),
+          ids: Braintrust::SpanIframeListParams::IDs::Variants,
           limit: T.nilable(Integer),
           org_name: String,
           span_iframe_name: String,

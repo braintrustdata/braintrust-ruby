@@ -62,7 +62,7 @@ module Braintrust
           object_id_: String,
           object_type: Braintrust::ACLObjectType::OrSymbol,
           ending_before: String,
-          ids: T.any(String, T::Array[String]),
+          ids: Braintrust::ACLListParams::IDs::Variants,
           limit: T.nilable(Integer),
           starting_after: String,
           request_options: Braintrust::RequestOptions::OrHash

@@ -68,7 +68,7 @@ module Braintrust
       sig do
         params(
           env_var_name: String,
-          ids: T.any(String, T::Array[String]),
+          ids: Braintrust::EnvVarListParams::IDs::Variants,
           limit: T.nilable(Integer),
           object_id_: String,
           object_type: Braintrust::EnvVarObjectType::OrSymbol,

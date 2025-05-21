@@ -75,9 +75,10 @@ module Braintrust
       sig do
         params(
           ai_secret_name: String,
-          ai_secret_type: T.any(String, T::Array[String]),
+          ai_secret_type:
+            Braintrust::AISecretListParams::AISecretType::Variants,
           ending_before: String,
-          ids: T.any(String, T::Array[String]),
+          ids: Braintrust::AISecretListParams::IDs::Variants,
           limit: T.nilable(Integer),
           org_name: String,
           starting_after: String,

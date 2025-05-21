@@ -32,10 +32,10 @@ module Braintrust
 
       # Filter search results to a particular set of object IDs. To specify a list of
       # IDs, include the query param multiple times
-      sig { returns(T.nilable(T.any(String, T::Array[String]))) }
+      sig { returns(T.nilable(Braintrust::ACLListParams::IDs::Variants)) }
       attr_reader :ids
 
-      sig { params(ids: T.any(String, T::Array[String])).void }
+      sig { params(ids: Braintrust::ACLListParams::IDs::Variants).void }
       attr_writer :ids
 
       # Limit the number of objects to return
@@ -58,7 +58,7 @@ module Braintrust
           object_id_: String,
           object_type: Braintrust::ACLObjectType::OrSymbol,
           ending_before: String,
-          ids: T.any(String, T::Array[String]),
+          ids: Braintrust::ACLListParams::IDs::Variants,
           limit: T.nilable(Integer),
           starting_after: String,
           request_options: Braintrust::RequestOptions::OrHash
@@ -96,7 +96,7 @@ module Braintrust
             object_id_: String,
             object_type: Braintrust::ACLObjectType::OrSymbol,
             ending_before: String,
-            ids: T.any(String, T::Array[String]),
+            ids: Braintrust::ACLListParams::IDs::Variants,
             limit: T.nilable(Integer),
             starting_after: String,
             request_options: Braintrust::RequestOptions

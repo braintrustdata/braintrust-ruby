@@ -13,11 +13,7 @@ module Braintrust
           score_type: Braintrust::ProjectScoreType::OrSymbol,
           categories:
             T.nilable(
-              T.any(
-                T::Array[Braintrust::ProjectScoreCategory::OrHash],
-                T::Hash[Symbol, Float],
-                T::Array[String]
-              )
+              Braintrust::ProjectScoreCreateParams::Categories::Variants
             ),
           config: T.nilable(Braintrust::ProjectScoreConfig::OrHash),
           description: T.nilable(String),
@@ -62,11 +58,7 @@ module Braintrust
           project_score_id: String,
           categories:
             T.nilable(
-              T.any(
-                T::Array[Braintrust::ProjectScoreCategory::OrHash],
-                T::Hash[Symbol, Float],
-                T::Array[String]
-              )
+              Braintrust::ProjectScoreUpdateParams::Categories::Variants
             ),
           config: T.nilable(Braintrust::ProjectScoreConfig::OrHash),
           description: T.nilable(String),
@@ -96,17 +88,13 @@ module Braintrust
       sig do
         params(
           ending_before: String,
-          ids: T.any(String, T::Array[String]),
+          ids: Braintrust::ProjectScoreListParams::IDs::Variants,
           limit: T.nilable(Integer),
           org_name: String,
           project_id: String,
           project_name: String,
           project_score_name: String,
-          score_type:
-            T.any(
-              Braintrust::ProjectScoreType::OrSymbol,
-              T::Array[Braintrust::ProjectScoreType::OrSymbol]
-            ),
+          score_type: Braintrust::ProjectScoreListParams::ScoreType::Variants,
           starting_after: String,
           request_options: Braintrust::RequestOptions::OrHash
         ).returns(Braintrust::Internal::ListObjects[Braintrust::ProjectScore])
@@ -167,11 +155,7 @@ module Braintrust
           score_type: Braintrust::ProjectScoreType::OrSymbol,
           categories:
             T.nilable(
-              T.any(
-                T::Array[Braintrust::ProjectScoreCategory::OrHash],
-                T::Hash[Symbol, Float],
-                T::Array[String]
-              )
+              Braintrust::ProjectScoreReplaceParams::Categories::Variants
             ),
           config: T.nilable(Braintrust::ProjectScoreConfig::OrHash),
           description: T.nilable(String),
