@@ -3,7 +3,7 @@ module Braintrust
     type code_bundle =
       {
         bundle_id: String,
-        location: Braintrust::CodeBundle::location,
+        location: Braintrust::Models::CodeBundle::location,
         runtime_context: Braintrust::CodeBundle::RuntimeContext,
         preview: String?
       }
@@ -11,7 +11,7 @@ module Braintrust
     class CodeBundle < Braintrust::Internal::Type::BaseModel
       attr_accessor bundle_id: String
 
-      attr_accessor location: Braintrust::CodeBundle::location
+      attr_accessor location: Braintrust::Models::CodeBundle::location
 
       attr_accessor runtime_context: Braintrust::CodeBundle::RuntimeContext
 
@@ -19,10 +19,17 @@ module Braintrust
 
       def initialize: (
         bundle_id: String,
-        location: Braintrust::CodeBundle::location,
+        location: Braintrust::Models::CodeBundle::location,
         runtime_context: Braintrust::CodeBundle::RuntimeContext,
         ?preview: String?
       ) -> void
+
+      def to_hash: -> {
+        bundle_id: String,
+        location: Braintrust::Models::CodeBundle::location,
+        runtime_context: Braintrust::CodeBundle::RuntimeContext,
+        preview: String?
+      }
 
       type location =
         Braintrust::CodeBundle::Location::Experiment
@@ -34,22 +41,28 @@ module Braintrust
         type experiment =
           {
             eval_name: String,
-            position: Braintrust::CodeBundle::Location::Experiment::position,
-            type: Braintrust::CodeBundle::Location::Experiment::type_
+            position: Braintrust::Models::CodeBundle::Location::Experiment::position,
+            type: Braintrust::Models::CodeBundle::Location::Experiment::type_
           }
 
         class Experiment < Braintrust::Internal::Type::BaseModel
           attr_accessor eval_name: String
 
-          attr_accessor position: Braintrust::CodeBundle::Location::Experiment::position
+          attr_accessor position: Braintrust::Models::CodeBundle::Location::Experiment::position
 
-          attr_accessor type: Braintrust::CodeBundle::Location::Experiment::type_
+          attr_accessor type: Braintrust::Models::CodeBundle::Location::Experiment::type_
 
           def initialize: (
             eval_name: String,
-            position: Braintrust::CodeBundle::Location::Experiment::position,
-            type: Braintrust::CodeBundle::Location::Experiment::type_
+            position: Braintrust::Models::CodeBundle::Location::Experiment::position,
+            type: Braintrust::Models::CodeBundle::Location::Experiment::type_
           ) -> void
+
+          def to_hash: -> {
+            eval_name: String,
+            position: Braintrust::Models::CodeBundle::Location::Experiment::position,
+            type: Braintrust::Models::CodeBundle::Location::Experiment::type_
+          }
 
           type position =
             Braintrust::CodeBundle::Location::Experiment::Position::Type
@@ -60,15 +73,19 @@ module Braintrust
 
             type type_ =
               {
-                type: Braintrust::CodeBundle::Location::Experiment::Position::Type::type_
+                type: Braintrust::Models::CodeBundle::Location::Experiment::Position::Type::type_
               }
 
             class Type < Braintrust::Internal::Type::BaseModel
-              attr_accessor type: Braintrust::CodeBundle::Location::Experiment::Position::Type::type_
+              attr_accessor type: Braintrust::Models::CodeBundle::Location::Experiment::Position::Type::type_
 
               def initialize: (
-                type: Braintrust::CodeBundle::Location::Experiment::Position::Type::type_
+                type: Braintrust::Models::CodeBundle::Location::Experiment::Position::Type::type_
               ) -> void
+
+              def to_hash: -> {
+                type: Braintrust::Models::CodeBundle::Location::Experiment::Position::Type::type_
+              }
 
               type type_ = :task
 
@@ -77,25 +94,30 @@ module Braintrust
 
                 TASK: :task
 
-                def self?.values: -> ::Array[Braintrust::CodeBundle::Location::Experiment::Position::Type::type_]
+                def self?.values: -> ::Array[Braintrust::Models::CodeBundle::Location::Experiment::Position::Type::type_]
               end
             end
 
             type scorer =
               {
                 index: Integer,
-                type: Braintrust::CodeBundle::Location::Experiment::Position::Scorer::type_
+                type: Braintrust::Models::CodeBundle::Location::Experiment::Position::Scorer::type_
               }
 
             class Scorer < Braintrust::Internal::Type::BaseModel
               attr_accessor index: Integer
 
-              attr_accessor type: Braintrust::CodeBundle::Location::Experiment::Position::Scorer::type_
+              attr_accessor type: Braintrust::Models::CodeBundle::Location::Experiment::Position::Scorer::type_
 
               def initialize: (
                 index: Integer,
-                type: Braintrust::CodeBundle::Location::Experiment::Position::Scorer::type_
+                type: Braintrust::Models::CodeBundle::Location::Experiment::Position::Scorer::type_
               ) -> void
+
+              def to_hash: -> {
+                index: Integer,
+                type: Braintrust::Models::CodeBundle::Location::Experiment::Position::Scorer::type_
+              }
 
               type type_ = :scorer
 
@@ -104,11 +126,11 @@ module Braintrust
 
                 SCORER: :scorer
 
-                def self?.values: -> ::Array[Braintrust::CodeBundle::Location::Experiment::Position::Scorer::type_]
+                def self?.values: -> ::Array[Braintrust::Models::CodeBundle::Location::Experiment::Position::Scorer::type_]
               end
             end
 
-            def self?.variants: -> ::Array[Braintrust::CodeBundle::Location::Experiment::position]
+            def self?.variants: -> ::Array[Braintrust::Models::CodeBundle::Location::Experiment::position]
           end
 
           type type_ = :experiment
@@ -118,25 +140,30 @@ module Braintrust
 
             EXPERIMENT: :experiment
 
-            def self?.values: -> ::Array[Braintrust::CodeBundle::Location::Experiment::type_]
+            def self?.values: -> ::Array[Braintrust::Models::CodeBundle::Location::Experiment::type_]
           end
         end
 
         type function =
           {
             index: Integer,
-            type: Braintrust::CodeBundle::Location::Function::type_
+            type: Braintrust::Models::CodeBundle::Location::Function::type_
           }
 
         class Function < Braintrust::Internal::Type::BaseModel
           attr_accessor index: Integer
 
-          attr_accessor type: Braintrust::CodeBundle::Location::Function::type_
+          attr_accessor type: Braintrust::Models::CodeBundle::Location::Function::type_
 
           def initialize: (
             index: Integer,
-            type: Braintrust::CodeBundle::Location::Function::type_
+            type: Braintrust::Models::CodeBundle::Location::Function::type_
           ) -> void
+
+          def to_hash: -> {
+            index: Integer,
+            type: Braintrust::Models::CodeBundle::Location::Function::type_
+          }
 
           type type_ = :function
 
@@ -145,28 +172,33 @@ module Braintrust
 
             FUNCTION: :function
 
-            def self?.values: -> ::Array[Braintrust::CodeBundle::Location::Function::type_]
+            def self?.values: -> ::Array[Braintrust::Models::CodeBundle::Location::Function::type_]
           end
         end
 
-        def self?.variants: -> ::Array[Braintrust::CodeBundle::location]
+        def self?.variants: -> ::Array[Braintrust::Models::CodeBundle::location]
       end
 
       type runtime_context =
         {
-          runtime: Braintrust::CodeBundle::RuntimeContext::runtime,
+          runtime: Braintrust::Models::CodeBundle::RuntimeContext::runtime,
           version: String
         }
 
       class RuntimeContext < Braintrust::Internal::Type::BaseModel
-        attr_accessor runtime: Braintrust::CodeBundle::RuntimeContext::runtime
+        attr_accessor runtime: Braintrust::Models::CodeBundle::RuntimeContext::runtime
 
         attr_accessor version: String
 
         def initialize: (
-          runtime: Braintrust::CodeBundle::RuntimeContext::runtime,
+          runtime: Braintrust::Models::CodeBundle::RuntimeContext::runtime,
           version: String
         ) -> void
+
+        def to_hash: -> {
+          runtime: Braintrust::Models::CodeBundle::RuntimeContext::runtime,
+          version: String
+        }
 
         type runtime = :node | :python
 
@@ -176,7 +208,7 @@ module Braintrust
           NODE: :node
           PYTHON: :python
 
-          def self?.values: -> ::Array[Braintrust::CodeBundle::RuntimeContext::runtime]
+          def self?.values: -> ::Array[Braintrust::Models::CodeBundle::RuntimeContext::runtime]
         end
       end
     end

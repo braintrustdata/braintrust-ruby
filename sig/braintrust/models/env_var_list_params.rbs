@@ -45,6 +45,15 @@ module Braintrust
         ?request_options: Braintrust::request_opts
       ) -> void
 
+      def to_hash: -> {
+        env_var_name: String,
+        ids: Braintrust::Models::EnvVarListParams::ids,
+        limit: Integer?,
+        object_id_: String,
+        object_type: Braintrust::Models::env_var_object_type,
+        request_options: Braintrust::RequestOptions
+      }
+
       type ids = String | ::Array[String]
 
       module IDs

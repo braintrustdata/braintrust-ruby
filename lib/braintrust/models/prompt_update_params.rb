@@ -22,7 +22,7 @@ module Braintrust
       # @!attribute prompt_data
       #   The prompt, model, and its parameters
       #
-      #   @return [Braintrust::PromptData, nil]
+      #   @return [Braintrust::Models::PromptData, nil]
       optional :prompt_data, -> { Braintrust::PromptData }, nil?: true
 
       # @!attribute slug
@@ -42,7 +42,7 @@ module Braintrust
       #
       #   @param name [String, nil] Name of the prompt
       #
-      #   @param prompt_data [Braintrust::PromptData, nil] The prompt, model, and its parameters
+      #   @param prompt_data [Braintrust::Models::PromptData, nil] The prompt, model, and its parameters
       #
       #   @param slug [String, nil] Unique identifier for the prompt
       #

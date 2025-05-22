@@ -47,6 +47,19 @@ module Braintrust
         ?role_id: String?,
         ?user_id: String?
       ) -> void
+
+      def to_hash: -> {
+        id: String,
+        _object_org_id: String,
+        object_id_: String,
+        object_type: Braintrust::Models::acl_object_type,
+        created: Time?,
+        group_id: String?,
+        permission: Braintrust::Models::permission?,
+        restrict_object_type: Braintrust::Models::acl_object_type?,
+        role_id: String?,
+        user_id: String?
+      }
     end
   end
 end

@@ -77,7 +77,7 @@ module Braintrust
 
         variant String
 
-        variant -> { Braintrust::APIKeyListParams::IDs::StringArray }
+        variant -> { Braintrust::Models::APIKeyListParams::IDs::StringArray }
 
         # @!method self.variants
         #   @return [Array(String, Array<String>)]

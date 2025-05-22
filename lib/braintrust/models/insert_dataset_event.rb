@@ -103,13 +103,13 @@ module Braintrust
       #   anything else that would be useful to slice/dice later. The values in `metadata`
       #   can be any JSON-serializable type, but its keys must be strings
       #
-      #   @return [Braintrust::InsertDatasetEvent::Metadata, nil]
+      #   @return [Braintrust::Models::InsertDatasetEvent::Metadata, nil]
       optional :metadata, -> { Braintrust::InsertDatasetEvent::Metadata }, nil?: true
 
       # @!attribute origin
       #   Indicates the event was copied from another object.
       #
-      #   @return [Braintrust::ObjectReference, nil]
+      #   @return [Braintrust::Models::ObjectReference, nil]
       optional :origin, -> { Braintrust::ObjectReference }, nil?: true
 
       # @!attribute root_span_id
@@ -180,7 +180,7 @@ module Braintrust
 
       # @!method initialize(id: nil, _is_merge: nil, _merge_paths: nil, _object_delete: nil, _parent_id: nil, created: nil, expected: nil, input: nil, metadata: nil, origin: nil, root_span_id: nil, span_id: nil, span_parents: nil, tags: nil)
       #   Some parameter documentations has been truncated, see
-      #   {Braintrust::InsertDatasetEvent} for more details.
+      #   {Braintrust::Models::InsertDatasetEvent} for more details.
       #
       #   A dataset event
       #
@@ -201,9 +201,9 @@ module Braintrust
       #
       #   @param input [Object] The argument that uniquely define an input case (an arbitrary, JSON serializable
       #
-      #   @param metadata [Braintrust::InsertDatasetEvent::Metadata, nil] A dictionary with additional data about the test example, model outputs, or just
+      #   @param metadata [Braintrust::Models::InsertDatasetEvent::Metadata, nil] A dictionary with additional data about the test example, model outputs, or just
       #
-      #   @param origin [Braintrust::ObjectReference, nil] Indicates the event was copied from another object.
+      #   @param origin [Braintrust::Models::ObjectReference, nil] Indicates the event was copied from another object.
       #
       #   @param root_span_id [String, nil] Use `span_id`, `root_span_id`, and `span_parents` instead of `_parent_id`, which
       #
@@ -213,7 +213,7 @@ module Braintrust
       #
       #   @param tags [Array<String>, nil] A list of tags to log
 
-      # @see Braintrust::InsertDatasetEvent#metadata
+      # @see Braintrust::Models::InsertDatasetEvent#metadata
       class Metadata < Braintrust::Internal::Type::BaseModel
         # @!attribute model
         #   The model used for this example

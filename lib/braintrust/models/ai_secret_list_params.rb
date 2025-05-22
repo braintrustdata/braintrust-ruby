@@ -82,7 +82,7 @@ module Braintrust
 
         variant String
 
-        variant -> { Braintrust::AISecretListParams::AISecretType::StringArray }
+        variant -> { Braintrust::Models::AISecretListParams::AISecretType::StringArray }
 
         # @!method self.variants
         #   @return [Array(String, Array<String>)]
@@ -98,7 +98,7 @@ module Braintrust
 
         variant String
 
-        variant -> { Braintrust::AISecretListParams::IDs::StringArray }
+        variant -> { Braintrust::Models::AISecretListParams::IDs::StringArray }
 
         # @!method self.variants
         #   @return [Array(String, Array<String>)]

@@ -30,7 +30,7 @@ module Braintrust
       # @!attribute source
       #   The source of the feedback. Must be one of "external" (default), "app", or "api"
       #
-      #   @return [Symbol, Braintrust::FeedbackDatasetItem::Source, nil]
+      #   @return [Symbol, Braintrust::Models::FeedbackDatasetItem::Source, nil]
       optional :source, enum: -> { Braintrust::FeedbackDatasetItem::Source }, nil?: true
 
       # @!attribute tags
@@ -41,7 +41,7 @@ module Braintrust
 
       # @!method initialize(id:, comment: nil, metadata: nil, source: nil, tags: nil)
       #   Some parameter documentations has been truncated, see
-      #   {Braintrust::FeedbackDatasetItem} for more details.
+      #   {Braintrust::Models::FeedbackDatasetItem} for more details.
       #
       #   @param id [String] The id of the dataset event to log feedback for. This is the row `id` returned b
       #
@@ -49,13 +49,13 @@ module Braintrust
       #
       #   @param metadata [Hash{Symbol=>Object, nil}, nil] A dictionary with additional data about the feedback. If you have a `user_id`, y
       #
-      #   @param source [Symbol, Braintrust::FeedbackDatasetItem::Source, nil] The source of the feedback. Must be one of "external" (default), "app", or "api"
+      #   @param source [Symbol, Braintrust::Models::FeedbackDatasetItem::Source, nil] The source of the feedback. Must be one of "external" (default), "app", or "api"
       #
       #   @param tags [Array<String>, nil] A list of tags to log
 
       # The source of the feedback. Must be one of "external" (default), "app", or "api"
       #
-      # @see Braintrust::FeedbackDatasetItem#source
+      # @see Braintrust::Models::FeedbackDatasetItem#source
       module Source
         extend Braintrust::Internal::Type::Enum
 

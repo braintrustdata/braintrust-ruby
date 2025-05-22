@@ -5,27 +5,27 @@ module Braintrust
     class PromptData < Braintrust::Internal::Type::BaseModel
       # @!attribute options
       #
-      #   @return [Braintrust::PromptOptions, nil]
+      #   @return [Braintrust::Models::PromptOptions, nil]
       optional :options, -> { Braintrust::PromptOptions }, nil?: true
 
       # @!attribute origin
       #
-      #   @return [Braintrust::PromptData::Origin, nil]
+      #   @return [Braintrust::Models::PromptData::Origin, nil]
       optional :origin, -> { Braintrust::PromptData::Origin }, nil?: true
 
       # @!attribute parser
       #
-      #   @return [Braintrust::PromptData::Parser, nil]
+      #   @return [Braintrust::Models::PromptData::Parser, nil]
       optional :parser, -> { Braintrust::PromptData::Parser }, nil?: true
 
       # @!attribute prompt
       #
-      #   @return [Braintrust::PromptData::Prompt::Completion, Braintrust::PromptData::Prompt::Chat, nil]
+      #   @return [Braintrust::Models::PromptData::Prompt::Completion, Braintrust::Models::PromptData::Prompt::Chat, nil]
       optional :prompt, union: -> { Braintrust::PromptData::Prompt }, nil?: true
 
       # @!attribute tool_functions
       #
-      #   @return [Array<Braintrust::PromptData::ToolFunction::Function, Braintrust::PromptData::ToolFunction::Global>, nil]
+      #   @return [Array<Braintrust::Models::PromptData::ToolFunction::Function, Braintrust::Models::PromptData::ToolFunction::Global>, nil]
       optional :tool_functions,
                -> { Braintrust::Internal::Type::ArrayOf[union: Braintrust::PromptData::ToolFunction] },
                nil?: true
@@ -33,13 +33,13 @@ module Braintrust
       # @!method initialize(options: nil, origin: nil, parser: nil, prompt: nil, tool_functions: nil)
       #   The prompt, model, and its parameters
       #
-      #   @param options [Braintrust::PromptOptions, nil]
-      #   @param origin [Braintrust::PromptData::Origin, nil]
-      #   @param parser [Braintrust::PromptData::Parser, nil]
-      #   @param prompt [Braintrust::PromptData::Prompt::Completion, Braintrust::PromptData::Prompt::Chat, nil]
-      #   @param tool_functions [Array<Braintrust::PromptData::ToolFunction::Function, Braintrust::PromptData::ToolFunction::Global>, nil]
+      #   @param options [Braintrust::Models::PromptOptions, nil]
+      #   @param origin [Braintrust::Models::PromptData::Origin, nil]
+      #   @param parser [Braintrust::Models::PromptData::Parser, nil]
+      #   @param prompt [Braintrust::Models::PromptData::Prompt::Completion, Braintrust::Models::PromptData::Prompt::Chat, nil]
+      #   @param tool_functions [Array<Braintrust::Models::PromptData::ToolFunction::Function, Braintrust::Models::PromptData::ToolFunction::Global>, nil]
 
-      # @see Braintrust::PromptData#origin
+      # @see Braintrust::Models::PromptData#origin
       class Origin < Braintrust::Internal::Type::BaseModel
         # @!attribute project_id
         #
@@ -62,7 +62,7 @@ module Braintrust
         #   @param prompt_version [String]
       end
 
-      # @see Braintrust::PromptData#parser
+      # @see Braintrust::Models::PromptData#parser
       class Parser < Braintrust::Internal::Type::BaseModel
         # @!attribute choice_scores
         #
@@ -71,7 +71,7 @@ module Braintrust
 
         # @!attribute type
         #
-        #   @return [Symbol, Braintrust::PromptData::Parser::Type]
+        #   @return [Symbol, Braintrust::Models::PromptData::Parser::Type]
         required :type, enum: -> { Braintrust::PromptData::Parser::Type }
 
         # @!attribute use_cot
@@ -81,10 +81,10 @@ module Braintrust
 
         # @!method initialize(choice_scores:, type:, use_cot:)
         #   @param choice_scores [Hash{Symbol=>Float}]
-        #   @param type [Symbol, Braintrust::PromptData::Parser::Type]
+        #   @param type [Symbol, Braintrust::Models::PromptData::Parser::Type]
         #   @param use_cot [Boolean]
 
-        # @see Braintrust::PromptData::Parser#type
+        # @see Braintrust::Models::PromptData::Parser#type
         module Type
           extend Braintrust::Internal::Type::Enum
 
@@ -95,7 +95,7 @@ module Braintrust
         end
       end
 
-      # @see Braintrust::PromptData#prompt
+      # @see Braintrust::Models::PromptData#prompt
       module Prompt
         extend Braintrust::Internal::Type::Union
 
@@ -111,14 +111,14 @@ module Braintrust
 
           # @!attribute type
           #
-          #   @return [Symbol, Braintrust::PromptData::Prompt::Completion::Type]
+          #   @return [Symbol, Braintrust::Models::PromptData::Prompt::Completion::Type]
           required :type, enum: -> { Braintrust::PromptData::Prompt::Completion::Type }
 
           # @!method initialize(content:, type:)
           #   @param content [String]
-          #   @param type [Symbol, Braintrust::PromptData::Prompt::Completion::Type]
+          #   @param type [Symbol, Braintrust::Models::PromptData::Prompt::Completion::Type]
 
-          # @see Braintrust::PromptData::Prompt::Completion#type
+          # @see Braintrust::Models::PromptData::Prompt::Completion#type
           module Type
             extend Braintrust::Internal::Type::Enum
 
@@ -132,7 +132,7 @@ module Braintrust
         class Chat < Braintrust::Internal::Type::BaseModel
           # @!attribute messages
           #
-          #   @return [Array<Braintrust::PromptData::Prompt::Chat::Message::System, Braintrust::PromptData::Prompt::Chat::Message::User, Braintrust::PromptData::Prompt::Chat::Message::Assistant, Braintrust::PromptData::Prompt::Chat::Message::Tool, Braintrust::PromptData::Prompt::Chat::Message::Function, Braintrust::PromptData::Prompt::Chat::Message::Fallback>]
+          #   @return [Array<Braintrust::Models::PromptData::Prompt::Chat::Message::System, Braintrust::Models::PromptData::Prompt::Chat::Message::User, Braintrust::Models::PromptData::Prompt::Chat::Message::Assistant, Braintrust::Models::PromptData::Prompt::Chat::Message::Tool, Braintrust::Models::PromptData::Prompt::Chat::Message::Function, Braintrust::Models::PromptData::Prompt::Chat::Message::Fallback>]
           required :messages,
                    -> {
                      Braintrust::Internal::Type::ArrayOf[union: Braintrust::PromptData::Prompt::Chat::Message]
@@ -140,7 +140,7 @@ module Braintrust
 
           # @!attribute type
           #
-          #   @return [Symbol, Braintrust::PromptData::Prompt::Chat::Type]
+          #   @return [Symbol, Braintrust::Models::PromptData::Prompt::Chat::Type]
           required :type, enum: -> { Braintrust::PromptData::Prompt::Chat::Type }
 
           # @!attribute tools
@@ -149,8 +149,8 @@ module Braintrust
           optional :tools, String
 
           # @!method initialize(messages:, type:, tools: nil)
-          #   @param messages [Array<Braintrust::PromptData::Prompt::Chat::Message::System, Braintrust::PromptData::Prompt::Chat::Message::User, Braintrust::PromptData::Prompt::Chat::Message::Assistant, Braintrust::PromptData::Prompt::Chat::Message::Tool, Braintrust::PromptData::Prompt::Chat::Message::Function, Braintrust::PromptData::Prompt::Chat::Message::Fallback>]
-          #   @param type [Symbol, Braintrust::PromptData::Prompt::Chat::Type]
+          #   @param messages [Array<Braintrust::Models::PromptData::Prompt::Chat::Message::System, Braintrust::Models::PromptData::Prompt::Chat::Message::User, Braintrust::Models::PromptData::Prompt::Chat::Message::Assistant, Braintrust::Models::PromptData::Prompt::Chat::Message::Tool, Braintrust::Models::PromptData::Prompt::Chat::Message::Function, Braintrust::Models::PromptData::Prompt::Chat::Message::Fallback>]
+          #   @param type [Symbol, Braintrust::Models::PromptData::Prompt::Chat::Type]
           #   @param tools [String]
 
           module Message
@@ -171,7 +171,7 @@ module Braintrust
             class System < Braintrust::Internal::Type::BaseModel
               # @!attribute role
               #
-              #   @return [Symbol, Braintrust::PromptData::Prompt::Chat::Message::System::Role]
+              #   @return [Symbol, Braintrust::Models::PromptData::Prompt::Chat::Message::System::Role]
               required :role, enum: -> { Braintrust::PromptData::Prompt::Chat::Message::System::Role }
 
               # @!attribute content
@@ -185,11 +185,11 @@ module Braintrust
               optional :name, String
 
               # @!method initialize(role:, content: nil, name: nil)
-              #   @param role [Symbol, Braintrust::PromptData::Prompt::Chat::Message::System::Role]
+              #   @param role [Symbol, Braintrust::Models::PromptData::Prompt::Chat::Message::System::Role]
               #   @param content [String]
               #   @param name [String]
 
-              # @see Braintrust::PromptData::Prompt::Chat::Message::System#role
+              # @see Braintrust::Models::PromptData::Prompt::Chat::Message::System#role
               module Role
                 extend Braintrust::Internal::Type::Enum
 
@@ -203,12 +203,12 @@ module Braintrust
             class User < Braintrust::Internal::Type::BaseModel
               # @!attribute role
               #
-              #   @return [Symbol, Braintrust::PromptData::Prompt::Chat::Message::User::Role]
+              #   @return [Symbol, Braintrust::Models::PromptData::Prompt::Chat::Message::User::Role]
               required :role, enum: -> { Braintrust::PromptData::Prompt::Chat::Message::User::Role }
 
               # @!attribute content
               #
-              #   @return [String, Array<Braintrust::ChatCompletionContentPartText, Braintrust::ChatCompletionContentPartImage>, nil]
+              #   @return [String, Array<Braintrust::Models::ChatCompletionContentPartText, Braintrust::Models::ChatCompletionContentPartImage>, nil]
               optional :content, union: -> { Braintrust::PromptData::Prompt::Chat::Message::User::Content }
 
               # @!attribute name
@@ -217,11 +217,11 @@ module Braintrust
               optional :name, String
 
               # @!method initialize(role:, content: nil, name: nil)
-              #   @param role [Symbol, Braintrust::PromptData::Prompt::Chat::Message::User::Role]
-              #   @param content [String, Array<Braintrust::ChatCompletionContentPartText, Braintrust::ChatCompletionContentPartImage>]
+              #   @param role [Symbol, Braintrust::Models::PromptData::Prompt::Chat::Message::User::Role]
+              #   @param content [String, Array<Braintrust::Models::ChatCompletionContentPartText, Braintrust::Models::ChatCompletionContentPartImage>]
               #   @param name [String]
 
-              # @see Braintrust::PromptData::Prompt::Chat::Message::User#role
+              # @see Braintrust::Models::PromptData::Prompt::Chat::Message::User#role
               module Role
                 extend Braintrust::Internal::Type::Enum
 
@@ -231,13 +231,13 @@ module Braintrust
                 #   @return [Array<Symbol>]
               end
 
-              # @see Braintrust::PromptData::Prompt::Chat::Message::User#content
+              # @see Braintrust::Models::PromptData::Prompt::Chat::Message::User#content
               module Content
                 extend Braintrust::Internal::Type::Union
 
                 variant String
 
-                variant -> { Braintrust::PromptData::Prompt::Chat::Message::User::Content::Nested2DArray }
+                variant -> { Braintrust::Models::PromptData::Prompt::Chat::Message::User::Content::Nested2DArray }
 
                 module Array
                   extend Braintrust::Internal::Type::Union
@@ -247,11 +247,11 @@ module Braintrust
                   variant -> { Braintrust::ChatCompletionContentPartImage }
 
                   # @!method self.variants
-                  #   @return [Array(Braintrust::ChatCompletionContentPartText, Braintrust::ChatCompletionContentPartImage)]
+                  #   @return [Array(Braintrust::Models::ChatCompletionContentPartText, Braintrust::Models::ChatCompletionContentPartImage)]
                 end
 
                 # @!method self.variants
-                #   @return [Array(String, Array<Braintrust::ChatCompletionContentPartText, Braintrust::ChatCompletionContentPartImage>)]
+                #   @return [Array(String, Array<Braintrust::Models::ChatCompletionContentPartText, Braintrust::Models::ChatCompletionContentPartImage>)]
 
                 # @type [Braintrust::Internal::Type::Converter]
                 Nested2DArray =
@@ -264,7 +264,7 @@ module Braintrust
             class Assistant < Braintrust::Internal::Type::BaseModel
               # @!attribute role
               #
-              #   @return [Symbol, Braintrust::PromptData::Prompt::Chat::Message::Assistant::Role]
+              #   @return [Symbol, Braintrust::Models::PromptData::Prompt::Chat::Message::Assistant::Role]
               required :role, enum: -> { Braintrust::PromptData::Prompt::Chat::Message::Assistant::Role }
 
               # @!attribute content
@@ -274,7 +274,7 @@ module Braintrust
 
               # @!attribute function_call
               #
-              #   @return [Braintrust::PromptData::Prompt::Chat::Message::Assistant::FunctionCall, nil]
+              #   @return [Braintrust::Models::PromptData::Prompt::Chat::Message::Assistant::FunctionCall, nil]
               optional :function_call,
                        -> { Braintrust::PromptData::Prompt::Chat::Message::Assistant::FunctionCall },
                        nil?: true
@@ -286,19 +286,19 @@ module Braintrust
 
               # @!attribute tool_calls
               #
-              #   @return [Array<Braintrust::ChatCompletionMessageToolCall>, nil]
+              #   @return [Array<Braintrust::Models::ChatCompletionMessageToolCall>, nil]
               optional :tool_calls,
                        -> { Braintrust::Internal::Type::ArrayOf[Braintrust::ChatCompletionMessageToolCall] },
                        nil?: true
 
               # @!method initialize(role:, content: nil, function_call: nil, name: nil, tool_calls: nil)
-              #   @param role [Symbol, Braintrust::PromptData::Prompt::Chat::Message::Assistant::Role]
+              #   @param role [Symbol, Braintrust::Models::PromptData::Prompt::Chat::Message::Assistant::Role]
               #   @param content [String, nil]
-              #   @param function_call [Braintrust::PromptData::Prompt::Chat::Message::Assistant::FunctionCall, nil]
+              #   @param function_call [Braintrust::Models::PromptData::Prompt::Chat::Message::Assistant::FunctionCall, nil]
               #   @param name [String, nil]
-              #   @param tool_calls [Array<Braintrust::ChatCompletionMessageToolCall>, nil]
+              #   @param tool_calls [Array<Braintrust::Models::ChatCompletionMessageToolCall>, nil]
 
-              # @see Braintrust::PromptData::Prompt::Chat::Message::Assistant#role
+              # @see Braintrust::Models::PromptData::Prompt::Chat::Message::Assistant#role
               module Role
                 extend Braintrust::Internal::Type::Enum
 
@@ -308,7 +308,7 @@ module Braintrust
                 #   @return [Array<Symbol>]
               end
 
-              # @see Braintrust::PromptData::Prompt::Chat::Message::Assistant#function_call
+              # @see Braintrust::Models::PromptData::Prompt::Chat::Message::Assistant#function_call
               class FunctionCall < Braintrust::Internal::Type::BaseModel
                 # @!attribute arguments
                 #
@@ -329,7 +329,7 @@ module Braintrust
             class Tool < Braintrust::Internal::Type::BaseModel
               # @!attribute role
               #
-              #   @return [Symbol, Braintrust::PromptData::Prompt::Chat::Message::Tool::Role]
+              #   @return [Symbol, Braintrust::Models::PromptData::Prompt::Chat::Message::Tool::Role]
               required :role, enum: -> { Braintrust::PromptData::Prompt::Chat::Message::Tool::Role }
 
               # @!attribute content
@@ -343,11 +343,11 @@ module Braintrust
               optional :tool_call_id, String
 
               # @!method initialize(role:, content: nil, tool_call_id: nil)
-              #   @param role [Symbol, Braintrust::PromptData::Prompt::Chat::Message::Tool::Role]
+              #   @param role [Symbol, Braintrust::Models::PromptData::Prompt::Chat::Message::Tool::Role]
               #   @param content [String]
               #   @param tool_call_id [String]
 
-              # @see Braintrust::PromptData::Prompt::Chat::Message::Tool#role
+              # @see Braintrust::Models::PromptData::Prompt::Chat::Message::Tool#role
               module Role
                 extend Braintrust::Internal::Type::Enum
 
@@ -366,7 +366,7 @@ module Braintrust
 
               # @!attribute role
               #
-              #   @return [Symbol, Braintrust::PromptData::Prompt::Chat::Message::Function::Role]
+              #   @return [Symbol, Braintrust::Models::PromptData::Prompt::Chat::Message::Function::Role]
               required :role, enum: -> { Braintrust::PromptData::Prompt::Chat::Message::Function::Role }
 
               # @!attribute content
@@ -376,10 +376,10 @@ module Braintrust
 
               # @!method initialize(name:, role:, content: nil)
               #   @param name [String]
-              #   @param role [Symbol, Braintrust::PromptData::Prompt::Chat::Message::Function::Role]
+              #   @param role [Symbol, Braintrust::Models::PromptData::Prompt::Chat::Message::Function::Role]
               #   @param content [String]
 
-              # @see Braintrust::PromptData::Prompt::Chat::Message::Function#role
+              # @see Braintrust::Models::PromptData::Prompt::Chat::Message::Function#role
               module Role
                 extend Braintrust::Internal::Type::Enum
 
@@ -393,7 +393,7 @@ module Braintrust
             class Fallback < Braintrust::Internal::Type::BaseModel
               # @!attribute role
               #
-              #   @return [Symbol, Braintrust::PromptData::Prompt::Chat::Message::Fallback::Role]
+              #   @return [Symbol, Braintrust::Models::PromptData::Prompt::Chat::Message::Fallback::Role]
               required :role, enum: -> { Braintrust::PromptData::Prompt::Chat::Message::Fallback::Role }
 
               # @!attribute content
@@ -402,10 +402,10 @@ module Braintrust
               optional :content, String, nil?: true
 
               # @!method initialize(role:, content: nil)
-              #   @param role [Symbol, Braintrust::PromptData::Prompt::Chat::Message::Fallback::Role]
+              #   @param role [Symbol, Braintrust::Models::PromptData::Prompt::Chat::Message::Fallback::Role]
               #   @param content [String, nil]
 
-              # @see Braintrust::PromptData::Prompt::Chat::Message::Fallback#role
+              # @see Braintrust::Models::PromptData::Prompt::Chat::Message::Fallback#role
               module Role
                 extend Braintrust::Internal::Type::Enum
 
@@ -417,10 +417,10 @@ module Braintrust
             end
 
             # @!method self.variants
-            #   @return [Array(Braintrust::PromptData::Prompt::Chat::Message::System, Braintrust::PromptData::Prompt::Chat::Message::User, Braintrust::PromptData::Prompt::Chat::Message::Assistant, Braintrust::PromptData::Prompt::Chat::Message::Tool, Braintrust::PromptData::Prompt::Chat::Message::Function, Braintrust::PromptData::Prompt::Chat::Message::Fallback)]
+            #   @return [Array(Braintrust::Models::PromptData::Prompt::Chat::Message::System, Braintrust::Models::PromptData::Prompt::Chat::Message::User, Braintrust::Models::PromptData::Prompt::Chat::Message::Assistant, Braintrust::Models::PromptData::Prompt::Chat::Message::Tool, Braintrust::Models::PromptData::Prompt::Chat::Message::Function, Braintrust::Models::PromptData::Prompt::Chat::Message::Fallback)]
           end
 
-          # @see Braintrust::PromptData::Prompt::Chat#type
+          # @see Braintrust::Models::PromptData::Prompt::Chat#type
           module Type
             extend Braintrust::Internal::Type::Enum
 
@@ -432,7 +432,7 @@ module Braintrust
         end
 
         # @!method self.variants
-        #   @return [Array(Braintrust::PromptData::Prompt::Completion, Braintrust::PromptData::Prompt::Chat)]
+        #   @return [Array(Braintrust::Models::PromptData::Prompt::Completion, Braintrust::Models::PromptData::Prompt::Chat)]
       end
 
       module ToolFunction
@@ -450,14 +450,14 @@ module Braintrust
 
           # @!attribute type
           #
-          #   @return [Symbol, Braintrust::PromptData::ToolFunction::Function::Type]
+          #   @return [Symbol, Braintrust::Models::PromptData::ToolFunction::Function::Type]
           required :type, enum: -> { Braintrust::PromptData::ToolFunction::Function::Type }
 
           # @!method initialize(id:, type:)
           #   @param id [String]
-          #   @param type [Symbol, Braintrust::PromptData::ToolFunction::Function::Type]
+          #   @param type [Symbol, Braintrust::Models::PromptData::ToolFunction::Function::Type]
 
-          # @see Braintrust::PromptData::ToolFunction::Function#type
+          # @see Braintrust::Models::PromptData::ToolFunction::Function#type
           module Type
             extend Braintrust::Internal::Type::Enum
 
@@ -476,14 +476,14 @@ module Braintrust
 
           # @!attribute type
           #
-          #   @return [Symbol, Braintrust::PromptData::ToolFunction::Global::Type]
+          #   @return [Symbol, Braintrust::Models::PromptData::ToolFunction::Global::Type]
           required :type, enum: -> { Braintrust::PromptData::ToolFunction::Global::Type }
 
           # @!method initialize(name:, type:)
           #   @param name [String]
-          #   @param type [Symbol, Braintrust::PromptData::ToolFunction::Global::Type]
+          #   @param type [Symbol, Braintrust::Models::PromptData::ToolFunction::Global::Type]
 
-          # @see Braintrust::PromptData::ToolFunction::Global#type
+          # @see Braintrust::Models::PromptData::ToolFunction::Global#type
           module Type
             extend Braintrust::Internal::Type::Enum
 
@@ -495,7 +495,7 @@ module Braintrust
         end
 
         # @!method self.variants
-        #   @return [Array(Braintrust::PromptData::ToolFunction::Function, Braintrust::PromptData::ToolFunction::Global)]
+        #   @return [Array(Braintrust::Models::PromptData::ToolFunction::Function, Braintrust::Models::PromptData::ToolFunction::Global)]
       end
     end
   end

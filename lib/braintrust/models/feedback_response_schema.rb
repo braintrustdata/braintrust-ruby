@@ -5,13 +5,13 @@ module Braintrust
     class FeedbackResponseSchema < Braintrust::Internal::Type::BaseModel
       # @!attribute status
       #
-      #   @return [Symbol, Braintrust::FeedbackResponseSchema::Status]
+      #   @return [Symbol, Braintrust::Models::FeedbackResponseSchema::Status]
       required :status, enum: -> { Braintrust::FeedbackResponseSchema::Status }
 
       # @!method initialize(status:)
-      #   @param status [Symbol, Braintrust::FeedbackResponseSchema::Status]
+      #   @param status [Symbol, Braintrust::Models::FeedbackResponseSchema::Status]
 
-      # @see Braintrust::FeedbackResponseSchema#status
+      # @see Braintrust::Models::FeedbackResponseSchema#status
       module Status
         extend Braintrust::Internal::Type::Enum
 

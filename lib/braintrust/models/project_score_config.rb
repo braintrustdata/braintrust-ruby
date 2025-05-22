@@ -15,13 +15,13 @@ module Braintrust
 
       # @!attribute online
       #
-      #   @return [Braintrust::OnlineScoreConfig, nil]
+      #   @return [Braintrust::Models::OnlineScoreConfig, nil]
       optional :online, -> { Braintrust::OnlineScoreConfig }, nil?: true
 
       # @!method initialize(destination: nil, multi_select: nil, online: nil)
       #   @param destination [String, nil]
       #   @param multi_select [Boolean, nil]
-      #   @param online [Braintrust::OnlineScoreConfig, nil]
+      #   @param online [Braintrust::Models::OnlineScoreConfig, nil]
     end
   end
 end

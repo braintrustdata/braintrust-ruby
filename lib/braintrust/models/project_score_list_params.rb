@@ -57,7 +57,7 @@ module Braintrust
       # @!attribute score_type
       #   The type of the configured score
       #
-      #   @return [Symbol, Braintrust::ProjectScoreType, Array<Symbol, Braintrust::ProjectScoreType>, nil]
+      #   @return [Symbol, Braintrust::Models::ProjectScoreType, Array<Symbol, Braintrust::Models::ProjectScoreType>, nil]
       optional :score_type, union: -> { Braintrust::ProjectScoreListParams::ScoreType }
 
       # @!attribute starting_after
@@ -88,7 +88,7 @@ module Braintrust
       #
       #   @param project_score_name [String] Name of the project_score to search for
       #
-      #   @param score_type [Symbol, Braintrust::ProjectScoreType, Array<Symbol, Braintrust::ProjectScoreType>] The type of the configured score
+      #   @param score_type [Symbol, Braintrust::Models::ProjectScoreType, Array<Symbol, Braintrust::Models::ProjectScoreType>] The type of the configured score
       #
       #   @param starting_after [String] Pagination cursor id.
       #
@@ -101,7 +101,7 @@ module Braintrust
 
         variant String
 
-        variant -> { Braintrust::ProjectScoreListParams::IDs::StringArray }
+        variant -> { Braintrust::Models::ProjectScoreListParams::IDs::StringArray }
 
         # @!method self.variants
         #   @return [Array(String, Array<String>)]
@@ -118,10 +118,10 @@ module Braintrust
         variant enum: -> { Braintrust::ProjectScoreType }
 
         # The type of the configured score
-        variant -> { Braintrust::ProjectScoreListParams::ScoreType::ProjectScoreTypeArray }
+        variant -> { Braintrust::Models::ProjectScoreListParams::ScoreType::ProjectScoreTypeArray }
 
         # @!method self.variants
-        #   @return [Array(Symbol, Braintrust::ProjectScoreType, Array<Symbol, Braintrust::ProjectScoreType>)]
+        #   @return [Array(Symbol, Braintrust::Models::ProjectScoreType, Array<Symbol, Braintrust::Models::ProjectScoreType>)]
 
         # @type [Braintrust::Internal::Type::Converter]
         ProjectScoreTypeArray = Braintrust::Internal::Type::ArrayOf[enum: -> { Braintrust::ProjectScoreType }]

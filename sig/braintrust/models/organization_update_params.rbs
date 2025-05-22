@@ -32,6 +32,15 @@ module Braintrust
         ?realtime_url: String?,
         ?request_options: Braintrust::request_opts
       ) -> void
+
+      def to_hash: -> {
+        api_url: String?,
+        is_universal_api: bool?,
+        name: String?,
+        proxy_url: String?,
+        realtime_url: String?,
+        request_options: Braintrust::RequestOptions
+      }
     end
   end
 end

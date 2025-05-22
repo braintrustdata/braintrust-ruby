@@ -10,11 +10,11 @@ module Braintrust
         #
         # @param project_id [String] Project id
         #
-        # @param feedback [Array<Braintrust::FeedbackProjectLogsItem>] A list of project logs feedback items
+        # @param feedback [Array<Braintrust::Models::FeedbackProjectLogsItem>] A list of project logs feedback items
         #
         # @param request_options [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil]
         #
-        # @return [Braintrust::FeedbackResponseSchema]
+        # @return [Braintrust::Models::FeedbackResponseSchema]
         #
         # @see Braintrust::Models::Projects::LogFeedbackParams
         def feedback(project_id, params)
@@ -49,7 +49,7 @@ module Braintrust
         #
         # @param request_options [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil]
         #
-        # @return [Braintrust::FetchProjectLogsEventsResponse]
+        # @return [Braintrust::Models::FetchProjectLogsEventsResponse]
         #
         # @see Braintrust::Models::Projects::LogFetchParams
         def fetch(project_id, params = {})
@@ -86,7 +86,7 @@ module Braintrust
         #
         # @param request_options [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil]
         #
-        # @return [Braintrust::FetchProjectLogsEventsResponse]
+        # @return [Braintrust::Models::FetchProjectLogsEventsResponse]
         #
         # @see Braintrust::Models::Projects::LogFetchPostParams
         def fetch_post(project_id, params = {})
@@ -106,11 +106,11 @@ module Braintrust
         #
         # @param project_id [String] Project id
         #
-        # @param events [Array<Braintrust::InsertProjectLogsEvent>] A list of project logs events to insert
+        # @param events [Array<Braintrust::Models::InsertProjectLogsEvent>] A list of project logs events to insert
         #
         # @param request_options [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil]
         #
-        # @return [Braintrust::InsertEventsResponse]
+        # @return [Braintrust::Models::InsertEventsResponse]
         #
         # @see Braintrust::Models::Projects::LogInsertParams
         def insert(project_id, params)

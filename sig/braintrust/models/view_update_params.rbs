@@ -41,6 +41,17 @@ module Braintrust
         ?request_options: Braintrust::request_opts
       ) -> void
 
+      def to_hash: -> {
+        object_id_: String,
+        object_type: Braintrust::Models::acl_object_type,
+        name: String?,
+        options: Braintrust::ViewOptions?,
+        user_id: String?,
+        view_data: Braintrust::ViewData?,
+        view_type: Braintrust::Models::ViewUpdateParams::view_type?,
+        request_options: Braintrust::RequestOptions
+      }
+
       type view_type =
         :projects
         | :experiments

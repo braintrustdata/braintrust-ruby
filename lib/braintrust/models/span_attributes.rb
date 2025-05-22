@@ -12,7 +12,7 @@ module Braintrust
       # @!attribute type
       #   Type of the span, for display purposes only
       #
-      #   @return [Symbol, Braintrust::SpanType, nil]
+      #   @return [Symbol, Braintrust::Models::SpanType, nil]
       optional :type, enum: -> { Braintrust::SpanType }, nil?: true
 
       # @!method initialize(name: nil, type: nil)
@@ -20,7 +20,7 @@ module Braintrust
       #
       #   @param name [String, nil] Name of the span, for display purposes only
       #
-      #   @param type [Symbol, Braintrust::SpanType, nil] Type of the span, for display purposes only
+      #   @param type [Symbol, Braintrust::Models::SpanType, nil] Type of the span, for display purposes only
     end
   end
 end

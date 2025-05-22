@@ -7,7 +7,7 @@ module Braintrust
         expected: top,
         metadata: ::Hash[Symbol, top?]?,
         scores: ::Hash[Symbol, Float?]?,
-        source: Braintrust::FeedbackProjectLogsItem::source?,
+        source: Braintrust::Models::FeedbackProjectLogsItem::source?,
         tags: ::Array[String]?
       }
 
@@ -24,7 +24,7 @@ module Braintrust
 
       attr_accessor scores: ::Hash[Symbol, Float?]?
 
-      attr_accessor source: Braintrust::FeedbackProjectLogsItem::source?
+      attr_accessor source: Braintrust::Models::FeedbackProjectLogsItem::source?
 
       attr_accessor tags: ::Array[String]?
 
@@ -34,9 +34,19 @@ module Braintrust
         ?expected: top,
         ?metadata: ::Hash[Symbol, top?]?,
         ?scores: ::Hash[Symbol, Float?]?,
-        ?source: Braintrust::FeedbackProjectLogsItem::source?,
+        ?source: Braintrust::Models::FeedbackProjectLogsItem::source?,
         ?tags: ::Array[String]?
       ) -> void
+
+      def to_hash: -> {
+        id: String,
+        comment: String?,
+        expected: top,
+        metadata: ::Hash[Symbol, top?]?,
+        scores: ::Hash[Symbol, Float?]?,
+        source: Braintrust::Models::FeedbackProjectLogsItem::source?,
+        tags: ::Array[String]?
+      }
 
       type source = :app | :api | :external
 
@@ -47,7 +57,7 @@ module Braintrust
         API: :api
         EXTERNAL: :external
 
-        def self?.values: -> ::Array[Braintrust::FeedbackProjectLogsItem::source]
+        def self?.values: -> ::Array[Braintrust::Models::FeedbackProjectLogsItem::source]
       end
     end
   end

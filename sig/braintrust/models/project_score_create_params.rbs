@@ -37,6 +37,16 @@ module Braintrust
         ?request_options: Braintrust::request_opts
       ) -> void
 
+      def to_hash: -> {
+        name: String,
+        project_id: String,
+        score_type: Braintrust::Models::project_score_type,
+        categories: Braintrust::Models::ProjectScoreCreateParams::categories?,
+        config: Braintrust::ProjectScoreConfig?,
+        description: String?,
+        request_options: Braintrust::RequestOptions
+      }
+
       type categories =
         ::Array[Braintrust::ProjectScoreCategory]
         | ::Hash[Symbol, Float]

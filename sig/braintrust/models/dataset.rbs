@@ -39,6 +39,17 @@ module Braintrust
         ?metadata: ::Hash[Symbol, top?]?,
         ?user_id: String?
       ) -> void
+
+      def to_hash: -> {
+        id: String,
+        name: String,
+        project_id: String,
+        created: Time?,
+        deleted_at: Time?,
+        description: String?,
+        metadata: ::Hash[Symbol, top?]?,
+        user_id: String?
+      }
     end
   end
 end

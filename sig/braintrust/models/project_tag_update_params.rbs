@@ -20,6 +20,13 @@ module Braintrust
         ?name: String?,
         ?request_options: Braintrust::request_opts
       ) -> void
+
+      def to_hash: -> {
+        color: String?,
+        description: String?,
+        name: String?,
+        request_options: Braintrust::RequestOptions
+      }
     end
   end
 end

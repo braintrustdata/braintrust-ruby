@@ -35,6 +35,16 @@ module Braintrust
         ?metrics: ::Hash[Symbol, Braintrust::MetricSummary]?,
         ?scores: ::Hash[Symbol, Braintrust::ScoreSummary]?
       ) -> void
+
+      def to_hash: -> {
+        experiment_name: String,
+        experiment_url: String,
+        project_name: String,
+        project_url: String,
+        comparison_experiment_name: String?,
+        metrics: ::Hash[Symbol, Braintrust::MetricSummary]?,
+        scores: ::Hash[Symbol, Braintrust::ScoreSummary]?
+      }
     end
   end
 end

@@ -96,7 +96,7 @@ module Braintrust
 
         variant String
 
-        variant -> { Braintrust::UserListParams::Email::StringArray }
+        variant -> { Braintrust::Models::UserListParams::Email::StringArray }
 
         # @!method self.variants
         #   @return [Array(String, Array<String>)]
@@ -112,7 +112,7 @@ module Braintrust
 
         variant String
 
-        variant -> { Braintrust::UserListParams::FamilyName::StringArray }
+        variant -> { Braintrust::Models::UserListParams::FamilyName::StringArray }
 
         # @!method self.variants
         #   @return [Array(String, Array<String>)]
@@ -128,7 +128,7 @@ module Braintrust
 
         variant String
 
-        variant -> { Braintrust::UserListParams::GivenName::StringArray }
+        variant -> { Braintrust::Models::UserListParams::GivenName::StringArray }
 
         # @!method self.variants
         #   @return [Array(String, Array<String>)]
@@ -144,7 +144,7 @@ module Braintrust
 
         variant String
 
-        variant -> { Braintrust::UserListParams::IDs::StringArray }
+        variant -> { Braintrust::Models::UserListParams::IDs::StringArray }
 
         # @!method self.variants
         #   @return [Array(String, Array<String>)]

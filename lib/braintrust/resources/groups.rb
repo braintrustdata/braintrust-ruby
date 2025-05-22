@@ -23,7 +23,7 @@ module Braintrust
       #
       # @param request_options [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Braintrust::Group]
+      # @return [Braintrust::Models::Group]
       #
       # @see Braintrust::Models::GroupCreateParams
       def create(params)
@@ -45,7 +45,7 @@ module Braintrust
       #
       # @param request_options [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Braintrust::Group]
+      # @return [Braintrust::Models::Group]
       #
       # @see Braintrust::Models::GroupRetrieveParams
       def retrieve(group_id, params = {})
@@ -79,7 +79,7 @@ module Braintrust
       #
       # @param request_options [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Braintrust::Group]
+      # @return [Braintrust::Models::Group]
       #
       # @see Braintrust::Models::GroupUpdateParams
       def update(group_id, params = {})
@@ -115,7 +115,7 @@ module Braintrust
       #
       # @param request_options [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Braintrust::Internal::ListObjects<Braintrust::Group>]
+      # @return [Braintrust::Internal::ListObjects<Braintrust::Models::Group>]
       #
       # @see Braintrust::Models::GroupListParams
       def list(params = {})
@@ -138,7 +138,7 @@ module Braintrust
       #
       # @param request_options [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Braintrust::Group]
+      # @return [Braintrust::Models::Group]
       #
       # @see Braintrust::Models::GroupDeleteParams
       def delete(group_id, params = {})
@@ -171,7 +171,7 @@ module Braintrust
       #
       # @param request_options [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Braintrust::Group]
+      # @return [Braintrust::Models::Group]
       #
       # @see Braintrust::Models::GroupReplaceParams
       def replace(params)

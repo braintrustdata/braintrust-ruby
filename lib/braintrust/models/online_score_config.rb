@@ -12,7 +12,7 @@ module Braintrust
       # @!attribute scorers
       #   The list of scorers to use for online scoring
       #
-      #   @return [Array<Braintrust::OnlineScoreConfig::Scorer::Function, Braintrust::OnlineScoreConfig::Scorer::Global>]
+      #   @return [Array<Braintrust::Models::OnlineScoreConfig::Scorer::Function, Braintrust::Models::OnlineScoreConfig::Scorer::Global>]
       required :scorers,
                -> { Braintrust::Internal::Type::ArrayOf[union: Braintrust::OnlineScoreConfig::Scorer] }
 
@@ -31,7 +31,7 @@ module Braintrust
       # @!method initialize(sampling_rate:, scorers:, apply_to_root_span: nil, apply_to_span_names: nil)
       #   @param sampling_rate [Float] The sampling rate for online scoring
       #
-      #   @param scorers [Array<Braintrust::OnlineScoreConfig::Scorer::Function, Braintrust::OnlineScoreConfig::Scorer::Global>] The list of scorers to use for online scoring
+      #   @param scorers [Array<Braintrust::Models::OnlineScoreConfig::Scorer::Function, Braintrust::Models::OnlineScoreConfig::Scorer::Global>] The list of scorers to use for online scoring
       #
       #   @param apply_to_root_span [Boolean, nil] Whether to trigger online scoring on the root span of each trace
       #
@@ -52,14 +52,14 @@ module Braintrust
 
           # @!attribute type
           #
-          #   @return [Symbol, Braintrust::OnlineScoreConfig::Scorer::Function::Type]
+          #   @return [Symbol, Braintrust::Models::OnlineScoreConfig::Scorer::Function::Type]
           required :type, enum: -> { Braintrust::OnlineScoreConfig::Scorer::Function::Type }
 
           # @!method initialize(id:, type:)
           #   @param id [String]
-          #   @param type [Symbol, Braintrust::OnlineScoreConfig::Scorer::Function::Type]
+          #   @param type [Symbol, Braintrust::Models::OnlineScoreConfig::Scorer::Function::Type]
 
-          # @see Braintrust::OnlineScoreConfig::Scorer::Function#type
+          # @see Braintrust::Models::OnlineScoreConfig::Scorer::Function#type
           module Type
             extend Braintrust::Internal::Type::Enum
 
@@ -78,14 +78,14 @@ module Braintrust
 
           # @!attribute type
           #
-          #   @return [Symbol, Braintrust::OnlineScoreConfig::Scorer::Global::Type]
+          #   @return [Symbol, Braintrust::Models::OnlineScoreConfig::Scorer::Global::Type]
           required :type, enum: -> { Braintrust::OnlineScoreConfig::Scorer::Global::Type }
 
           # @!method initialize(name:, type:)
           #   @param name [String]
-          #   @param type [Symbol, Braintrust::OnlineScoreConfig::Scorer::Global::Type]
+          #   @param type [Symbol, Braintrust::Models::OnlineScoreConfig::Scorer::Global::Type]
 
-          # @see Braintrust::OnlineScoreConfig::Scorer::Global#type
+          # @see Braintrust::Models::OnlineScoreConfig::Scorer::Global#type
           module Type
             extend Braintrust::Internal::Type::Enum
 
@@ -97,7 +97,7 @@ module Braintrust
         end
 
         # @!method self.variants
-        #   @return [Array(Braintrust::OnlineScoreConfig::Scorer::Function, Braintrust::OnlineScoreConfig::Scorer::Global)]
+        #   @return [Array(Braintrust::Models::OnlineScoreConfig::Scorer::Function, Braintrust::Models::OnlineScoreConfig::Scorer::Global)]
       end
     end
   end

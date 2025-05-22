@@ -15,6 +15,11 @@ module Braintrust
         added_acls: ::Array[Braintrust::ACL],
         removed_acls: ::Array[Braintrust::ACL]
       ) -> void
+
+      def to_hash: -> {
+        added_acls: ::Array[Braintrust::ACL],
+        removed_acls: ::Array[Braintrust::ACL]
+      }
     end
   end
 end

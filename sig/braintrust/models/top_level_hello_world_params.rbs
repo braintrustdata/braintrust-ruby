@@ -8,6 +8,8 @@ module Braintrust
       include Braintrust::Internal::Type::RequestParameters
 
       def initialize: (?request_options: Braintrust::request_opts) -> void
+
+      def to_hash: -> { request_options: Braintrust::RequestOptions }
     end
   end
 end

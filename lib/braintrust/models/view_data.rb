@@ -5,13 +5,13 @@ module Braintrust
     class ViewData < Braintrust::Internal::Type::BaseModel
       # @!attribute search
       #
-      #   @return [Braintrust::ViewDataSearch, nil]
+      #   @return [Braintrust::Models::ViewDataSearch, nil]
       optional :search, -> { Braintrust::ViewDataSearch }, nil?: true
 
       # @!method initialize(search: nil)
       #   The view definition
       #
-      #   @param search [Braintrust::ViewDataSearch, nil]
+      #   @param search [Braintrust::Models::ViewDataSearch, nil]
     end
   end
 end

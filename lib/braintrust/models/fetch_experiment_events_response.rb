@@ -6,7 +6,7 @@ module Braintrust
       # @!attribute events
       #   A list of fetched events
       #
-      #   @return [Array<Braintrust::ExperimentEvent>]
+      #   @return [Array<Braintrust::Models::ExperimentEvent>]
       required :events, -> { Braintrust::Internal::Type::ArrayOf[Braintrust::ExperimentEvent] }
 
       # @!attribute cursor
@@ -20,9 +20,9 @@ module Braintrust
 
       # @!method initialize(events:, cursor: nil)
       #   Some parameter documentations has been truncated, see
-      #   {Braintrust::FetchExperimentEventsResponse} for more details.
+      #   {Braintrust::Models::FetchExperimentEventsResponse} for more details.
       #
-      #   @param events [Array<Braintrust::ExperimentEvent>] A list of fetched events
+      #   @param events [Array<Braintrust::Models::ExperimentEvent>] A list of fetched events
       #
       #   @param cursor [String, nil] Pagination cursor
     end

@@ -16,13 +16,13 @@ module Braintrust
       # @!attribute object_type
       #   The object type that the ACL applies to
       #
-      #   @return [Symbol, Braintrust::ACLObjectType]
+      #   @return [Symbol, Braintrust::Models::ACLObjectType]
       required :object_type, enum: -> { Braintrust::ACLObjectType }
 
       # @!method initialize(object_id_:, object_type:, request_options: {})
       #   @param object_id_ [String] The id of the object the ACL applies to
       #
-      #   @param object_type [Symbol, Braintrust::ACLObjectType] The object type that the ACL applies to
+      #   @param object_type [Symbol, Braintrust::Models::ACLObjectType] The object type that the ACL applies to
       #
       #   @param request_options [Braintrust::RequestOptions, Hash{Symbol=>Object}]
     end

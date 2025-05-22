@@ -43,6 +43,18 @@ module Braintrust
         ?post_message: bool?,
         ?user_id: String?
       ) -> void
+
+      def to_hash: -> {
+        id: String,
+        name: String,
+        project_id: String,
+        url: String,
+        created: Time?,
+        deleted_at: Time?,
+        description: String?,
+        post_message: bool?,
+        user_id: String?
+      }
     end
   end
 end

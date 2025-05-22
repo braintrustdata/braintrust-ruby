@@ -6,6 +6,8 @@ module Braintrust
       attr_accessor objects: ::Array[Braintrust::EnvVar]
 
       def initialize: (objects: ::Array[Braintrust::EnvVar]) -> void
+
+      def to_hash: -> { objects: ::Array[Braintrust::EnvVar] }
     end
   end
 end

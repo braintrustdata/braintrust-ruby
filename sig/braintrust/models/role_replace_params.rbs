@@ -33,6 +33,15 @@ module Braintrust
         ?request_options: Braintrust::request_opts
       ) -> void
 
+      def to_hash: -> {
+        name: String,
+        description: String?,
+        member_permissions: ::Array[Braintrust::RoleReplaceParams::MemberPermission]?,
+        member_roles: ::Array[String]?,
+        org_name: String?,
+        request_options: Braintrust::RequestOptions
+      }
+
       type member_permission =
         {
           permission: Braintrust::Models::permission,
@@ -48,6 +57,11 @@ module Braintrust
           permission: Braintrust::Models::permission,
           ?restrict_object_type: Braintrust::Models::acl_object_type?
         ) -> void
+
+        def to_hash: -> {
+          permission: Braintrust::Models::permission,
+          restrict_object_type: Braintrust::Models::acl_object_type?
+        }
       end
     end
   end

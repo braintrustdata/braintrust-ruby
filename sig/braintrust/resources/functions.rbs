@@ -53,7 +53,7 @@ module Braintrust
         String function_id,
         ?expected: top,
         ?input: top,
-        ?messages: ::Array[Braintrust::FunctionInvokeParams::message],
+        ?messages: ::Array[Braintrust::Models::FunctionInvokeParams::message],
         ?metadata: ::Hash[Symbol, top?]?,
         ?mode: Braintrust::Models::FunctionInvokeParams::mode?,
         ?parent: Braintrust::Models::FunctionInvokeParams::parent,

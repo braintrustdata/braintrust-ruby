@@ -19,7 +19,7 @@ module Braintrust
       #
       # @param request_options [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Braintrust::Dataset]
+      # @return [Braintrust::Models::Dataset]
       #
       # @see Braintrust::Models::DatasetCreateParams
       def create(params)
@@ -41,7 +41,7 @@ module Braintrust
       #
       # @param request_options [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Braintrust::Dataset]
+      # @return [Braintrust::Models::Dataset]
       #
       # @see Braintrust::Models::DatasetRetrieveParams
       def retrieve(dataset_id, params = {})
@@ -69,7 +69,7 @@ module Braintrust
       #
       # @param request_options [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Braintrust::Dataset]
+      # @return [Braintrust::Models::Dataset]
       #
       # @see Braintrust::Models::DatasetUpdateParams
       def update(dataset_id, params = {})
@@ -109,7 +109,7 @@ module Braintrust
       #
       # @param request_options [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Braintrust::Internal::ListObjects<Braintrust::Dataset>]
+      # @return [Braintrust::Internal::ListObjects<Braintrust::Models::Dataset>]
       #
       # @see Braintrust::Models::DatasetListParams
       def list(params = {})
@@ -132,7 +132,7 @@ module Braintrust
       #
       # @param request_options [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Braintrust::Dataset]
+      # @return [Braintrust::Models::Dataset]
       #
       # @see Braintrust::Models::DatasetDeleteParams
       def delete(dataset_id, params = {})
@@ -150,11 +150,11 @@ module Braintrust
       #
       # @param dataset_id [String] Dataset id
       #
-      # @param feedback [Array<Braintrust::FeedbackDatasetItem>] A list of dataset feedback items
+      # @param feedback [Array<Braintrust::Models::FeedbackDatasetItem>] A list of dataset feedback items
       #
       # @param request_options [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Braintrust::FeedbackResponseSchema]
+      # @return [Braintrust::Models::FeedbackResponseSchema]
       #
       # @see Braintrust::Models::DatasetFeedbackParams
       def feedback(dataset_id, params)
@@ -189,7 +189,7 @@ module Braintrust
       #
       # @param request_options [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Braintrust::FetchDatasetEventsResponse]
+      # @return [Braintrust::Models::FetchDatasetEventsResponse]
       #
       # @see Braintrust::Models::DatasetFetchParams
       def fetch(dataset_id, params = {})
@@ -226,7 +226,7 @@ module Braintrust
       #
       # @param request_options [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Braintrust::FetchDatasetEventsResponse]
+      # @return [Braintrust::Models::FetchDatasetEventsResponse]
       #
       # @see Braintrust::Models::DatasetFetchPostParams
       def fetch_post(dataset_id, params = {})
@@ -246,11 +246,11 @@ module Braintrust
       #
       # @param dataset_id [String] Dataset id
       #
-      # @param events [Array<Braintrust::InsertDatasetEvent>] A list of dataset events to insert
+      # @param events [Array<Braintrust::Models::InsertDatasetEvent>] A list of dataset events to insert
       #
       # @param request_options [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Braintrust::InsertEventsResponse]
+      # @return [Braintrust::Models::InsertEventsResponse]
       #
       # @see Braintrust::Models::DatasetInsertParams
       def insert(dataset_id, params)
@@ -277,7 +277,7 @@ module Braintrust
       #
       # @param request_options [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Braintrust::SummarizeDatasetResponse]
+      # @return [Braintrust::Models::SummarizeDatasetResponse]
       #
       # @see Braintrust::Models::DatasetSummarizeParams
       def summarize(dataset_id, params = {})

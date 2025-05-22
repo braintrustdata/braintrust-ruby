@@ -28,6 +28,14 @@ module Braintrust
         ?metadata: ::Hash[Symbol, top?]?,
         ?request_options: Braintrust::request_opts
       ) -> void
+
+      def to_hash: -> {
+        name: String,
+        project_id: String,
+        description: String?,
+        metadata: ::Hash[Symbol, top?]?,
+        request_options: Braintrust::RequestOptions
+      }
     end
   end
 end

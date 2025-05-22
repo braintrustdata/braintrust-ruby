@@ -15,7 +15,7 @@ module Braintrust
       #
       # @param description [String, nil] Textual description of the role
       #
-      # @param member_permissions [Array<Braintrust::RoleCreateParams::MemberPermission>, nil] (permission, restrict_object_type) tuples which belong to this role
+      # @param member_permissions [Array<Braintrust::Models::RoleCreateParams::MemberPermission>, nil] (permission, restrict_object_type) tuples which belong to this role
       #
       # @param member_roles [Array<String>, nil] Ids of the roles this role inherits from
       #
@@ -23,7 +23,7 @@ module Braintrust
       #
       # @param request_options [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Braintrust::Role]
+      # @return [Braintrust::Models::Role]
       #
       # @see Braintrust::Models::RoleCreateParams
       def create(params)
@@ -45,7 +45,7 @@ module Braintrust
       #
       # @param request_options [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Braintrust::Role]
+      # @return [Braintrust::Models::Role]
       #
       # @see Braintrust::Models::RoleRetrieveParams
       def retrieve(role_id, params = {})
@@ -65,7 +65,7 @@ module Braintrust
       #
       # @param role_id [String] Role id
       #
-      # @param add_member_permissions [Array<Braintrust::RoleUpdateParams::AddMemberPermission>, nil] A list of permissions to add to the role
+      # @param add_member_permissions [Array<Braintrust::Models::RoleUpdateParams::AddMemberPermission>, nil] A list of permissions to add to the role
       #
       # @param add_member_roles [Array<String>, nil] A list of role IDs to add to the role's inheriting-from set
       #
@@ -73,13 +73,13 @@ module Braintrust
       #
       # @param name [String, nil] Name of the role
       #
-      # @param remove_member_permissions [Array<Braintrust::RoleUpdateParams::RemoveMemberPermission>, nil] A list of permissions to remove from the role
+      # @param remove_member_permissions [Array<Braintrust::Models::RoleUpdateParams::RemoveMemberPermission>, nil] A list of permissions to remove from the role
       #
       # @param remove_member_roles [Array<String>, nil] A list of role IDs to remove from the role's inheriting-from set
       #
       # @param request_options [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Braintrust::Role]
+      # @return [Braintrust::Models::Role]
       #
       # @see Braintrust::Models::RoleUpdateParams
       def update(role_id, params = {})
@@ -115,7 +115,7 @@ module Braintrust
       #
       # @param request_options [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Braintrust::Internal::ListObjects<Braintrust::Role>]
+      # @return [Braintrust::Internal::ListObjects<Braintrust::Models::Role>]
       #
       # @see Braintrust::Models::RoleListParams
       def list(params = {})
@@ -138,7 +138,7 @@ module Braintrust
       #
       # @param request_options [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Braintrust::Role]
+      # @return [Braintrust::Models::Role]
       #
       # @see Braintrust::Models::RoleDeleteParams
       def delete(role_id, params = {})
@@ -163,7 +163,7 @@ module Braintrust
       #
       # @param description [String, nil] Textual description of the role
       #
-      # @param member_permissions [Array<Braintrust::RoleReplaceParams::MemberPermission>, nil] (permission, restrict_object_type) tuples which belong to this role
+      # @param member_permissions [Array<Braintrust::Models::RoleReplaceParams::MemberPermission>, nil] (permission, restrict_object_type) tuples which belong to this role
       #
       # @param member_roles [Array<String>, nil] Ids of the roles this role inherits from
       #
@@ -171,7 +171,7 @@ module Braintrust
       #
       # @param request_options [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Braintrust::Role]
+      # @return [Braintrust::Models::Role]
       #
       # @see Braintrust::Models::RoleReplaceParams
       def replace(params)

@@ -43,6 +43,18 @@ module Braintrust
         ?git_diff: String?,
         ?tag: String?
       ) -> void
+
+      def to_hash: -> {
+        author_email: String?,
+        author_name: String?,
+        branch: String?,
+        commit: String?,
+        commit_message: String?,
+        commit_time: String?,
+        dirty: bool?,
+        git_diff: String?,
+        tag: String?
+      }
     end
   end
 end

@@ -19,6 +19,12 @@ module Braintrust
         ?summarize_scores: bool?,
         ?request_options: Braintrust::request_opts
       ) -> void
+
+      def to_hash: -> {
+        comparison_experiment_id: String,
+        summarize_scores: bool?,
+        request_options: Braintrust::RequestOptions
+      }
     end
   end
 end

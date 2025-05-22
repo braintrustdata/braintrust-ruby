@@ -41,6 +41,17 @@ module Braintrust
         ?request_options: Braintrust::request_opts
       ) -> void
 
+      def to_hash: -> {
+        name: String,
+        project_id: String,
+        slug: String,
+        description: String?,
+        function_type: Braintrust::Models::PromptCreateParams::function_type?,
+        prompt_data: Braintrust::PromptData?,
+        tags: ::Array[String]?,
+        request_options: Braintrust::RequestOptions
+      }
+
       type function_type = :llm | :scorer | :task | :tool
 
       module FunctionType

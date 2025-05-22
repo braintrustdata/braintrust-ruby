@@ -13,6 +13,11 @@ module Braintrust
         ?summarize_data: bool?,
         ?request_options: Braintrust::request_opts
       ) -> void
+
+      def to_hash: -> {
+        summarize_data: bool?,
+        request_options: Braintrust::RequestOptions
+      }
     end
   end
 end

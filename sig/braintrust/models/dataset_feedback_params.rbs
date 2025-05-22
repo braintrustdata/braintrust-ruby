@@ -14,6 +14,11 @@ module Braintrust
         feedback: ::Array[Braintrust::FeedbackDatasetItem],
         ?request_options: Braintrust::request_opts
       ) -> void
+
+      def to_hash: -> {
+        feedback: ::Array[Braintrust::FeedbackDatasetItem],
+        request_options: Braintrust::RequestOptions
+      }
     end
   end
 end
