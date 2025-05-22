@@ -33,6 +33,15 @@ module Braintrust
         unit: String,
         ?diff: Float
       ) -> void
+
+      def to_hash: -> {
+        improvements: Integer,
+        metric: Float,
+        name: String,
+        regressions: Integer,
+        unit: String,
+        diff: Float
+      }
     end
   end
 end

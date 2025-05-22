@@ -79,13 +79,13 @@ module Braintrust
       #   anything else that would be useful to slice/dice later. The values in `metadata`
       #   can be any JSON-serializable type, but its keys must be strings
       #
-      #   @return [Braintrust::DatasetEvent::Metadata, nil]
+      #   @return [Braintrust::Models::DatasetEvent::Metadata, nil]
       optional :metadata, -> { Braintrust::DatasetEvent::Metadata }, nil?: true
 
       # @!attribute origin
       #   Indicates the event was copied from another object.
       #
-      #   @return [Braintrust::ObjectReference, nil]
+      #   @return [Braintrust::Models::ObjectReference, nil]
       optional :origin, -> { Braintrust::ObjectReference }, nil?: true
 
       # @!attribute tags
@@ -95,8 +95,8 @@ module Braintrust
       optional :tags, Braintrust::Internal::Type::ArrayOf[String], nil?: true
 
       # @!method initialize(id:, _xact_id:, created:, dataset_id:, project_id:, root_span_id:, span_id:, expected: nil, input: nil, is_root: nil, metadata: nil, origin: nil, tags: nil)
-      #   Some parameter documentations has been truncated, see {Braintrust::DatasetEvent}
-      #   for more details.
+      #   Some parameter documentations has been truncated, see
+      #   {Braintrust::Models::DatasetEvent} for more details.
       #
       #   @param id [String] A unique identifier for the dataset event. If you don't provide one, BrainTrust
       #
@@ -118,13 +118,13 @@ module Braintrust
       #
       #   @param is_root [Boolean, nil] Whether this span is a root span
       #
-      #   @param metadata [Braintrust::DatasetEvent::Metadata, nil] A dictionary with additional data about the test example, model outputs, or just
+      #   @param metadata [Braintrust::Models::DatasetEvent::Metadata, nil] A dictionary with additional data about the test example, model outputs, or just
       #
-      #   @param origin [Braintrust::ObjectReference, nil] Indicates the event was copied from another object.
+      #   @param origin [Braintrust::Models::ObjectReference, nil] Indicates the event was copied from another object.
       #
       #   @param tags [Array<String>, nil] A list of tags to log
 
-      # @see Braintrust::DatasetEvent#metadata
+      # @see Braintrust::Models::DatasetEvent#metadata
       class Metadata < Braintrust::Internal::Type::BaseModel
         # @!attribute model
         #   The model used for this example

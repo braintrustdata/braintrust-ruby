@@ -17,6 +17,12 @@ module Braintrust
         object_type: Braintrust::Models::acl_object_type,
         ?request_options: Braintrust::request_opts
       ) -> void
+
+      def to_hash: -> {
+        object_id_: String,
+        object_type: Braintrust::Models::acl_object_type,
+        request_options: Braintrust::RequestOptions
+      }
     end
   end
 end

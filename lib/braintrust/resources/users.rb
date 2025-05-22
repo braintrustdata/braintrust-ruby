@@ -11,7 +11,7 @@ module Braintrust
       #
       # @param request_options [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Braintrust::User]
+      # @return [Braintrust::Models::User]
       #
       # @see Braintrust::Models::UserRetrieveParams
       def retrieve(user_id, params = {})
@@ -49,7 +49,7 @@ module Braintrust
       #
       # @param request_options [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Braintrust::Internal::ListObjects<Braintrust::User>]
+      # @return [Braintrust::Internal::ListObjects<Braintrust::Models::User>]
       #
       # @see Braintrust::Models::UserListParams
       def list(params = {})

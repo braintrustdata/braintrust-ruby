@@ -35,6 +35,16 @@ module Braintrust
         ?proxy_url: String?,
         ?realtime_url: String?
       ) -> void
+
+      def to_hash: -> {
+        id: String,
+        name: String,
+        api_url: String?,
+        created: Time?,
+        is_universal_api: bool?,
+        proxy_url: String?,
+        realtime_url: String?
+      }
     end
   end
 end

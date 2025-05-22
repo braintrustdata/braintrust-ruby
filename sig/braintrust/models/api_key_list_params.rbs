@@ -49,6 +49,16 @@ module Braintrust
         ?request_options: Braintrust::request_opts
       ) -> void
 
+      def to_hash: -> {
+        api_key_name: String,
+        ending_before: String,
+        ids: Braintrust::Models::APIKeyListParams::ids,
+        limit: Integer?,
+        org_name: String,
+        starting_after: String,
+        request_options: Braintrust::RequestOptions
+      }
+
       type ids = String | ::Array[String]
 
       module IDs

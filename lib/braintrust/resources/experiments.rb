@@ -30,11 +30,11 @@ module Braintrust
       #
       # @param public [Boolean, nil] Whether or not the experiment is public. Public experiments can be viewed by any
       #
-      # @param repo_info [Braintrust::RepoInfo, nil] Metadata about the state of the repo when the experiment was created
+      # @param repo_info [Braintrust::Models::RepoInfo, nil] Metadata about the state of the repo when the experiment was created
       #
       # @param request_options [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Braintrust::Experiment]
+      # @return [Braintrust::Models::Experiment]
       #
       # @see Braintrust::Models::ExperimentCreateParams
       def create(params)
@@ -56,7 +56,7 @@ module Braintrust
       #
       # @param request_options [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Braintrust::Experiment]
+      # @return [Braintrust::Models::Experiment]
       #
       # @see Braintrust::Models::ExperimentRetrieveParams
       def retrieve(experiment_id, params = {})
@@ -93,11 +93,11 @@ module Braintrust
       #
       # @param public [Boolean, nil] Whether or not the experiment is public. Public experiments can be viewed by any
       #
-      # @param repo_info [Braintrust::RepoInfo, nil] Metadata about the state of the repo when the experiment was created
+      # @param repo_info [Braintrust::Models::RepoInfo, nil] Metadata about the state of the repo when the experiment was created
       #
       # @param request_options [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Braintrust::Experiment]
+      # @return [Braintrust::Models::Experiment]
       #
       # @see Braintrust::Models::ExperimentUpdateParams
       def update(experiment_id, params = {})
@@ -137,7 +137,7 @@ module Braintrust
       #
       # @param request_options [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Braintrust::Internal::ListObjects<Braintrust::Experiment>]
+      # @return [Braintrust::Internal::ListObjects<Braintrust::Models::Experiment>]
       #
       # @see Braintrust::Models::ExperimentListParams
       def list(params = {})
@@ -160,7 +160,7 @@ module Braintrust
       #
       # @param request_options [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Braintrust::Experiment]
+      # @return [Braintrust::Models::Experiment]
       #
       # @see Braintrust::Models::ExperimentDeleteParams
       def delete(experiment_id, params = {})
@@ -178,11 +178,11 @@ module Braintrust
       #
       # @param experiment_id [String] Experiment id
       #
-      # @param feedback [Array<Braintrust::FeedbackExperimentItem>] A list of experiment feedback items
+      # @param feedback [Array<Braintrust::Models::FeedbackExperimentItem>] A list of experiment feedback items
       #
       # @param request_options [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Braintrust::FeedbackResponseSchema]
+      # @return [Braintrust::Models::FeedbackResponseSchema]
       #
       # @see Braintrust::Models::ExperimentFeedbackParams
       def feedback(experiment_id, params)
@@ -217,7 +217,7 @@ module Braintrust
       #
       # @param request_options [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Braintrust::FetchExperimentEventsResponse]
+      # @return [Braintrust::Models::FetchExperimentEventsResponse]
       #
       # @see Braintrust::Models::ExperimentFetchParams
       def fetch(experiment_id, params = {})
@@ -254,7 +254,7 @@ module Braintrust
       #
       # @param request_options [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Braintrust::FetchExperimentEventsResponse]
+      # @return [Braintrust::Models::FetchExperimentEventsResponse]
       #
       # @see Braintrust::Models::ExperimentFetchPostParams
       def fetch_post(experiment_id, params = {})
@@ -274,11 +274,11 @@ module Braintrust
       #
       # @param experiment_id [String] Experiment id
       #
-      # @param events [Array<Braintrust::InsertExperimentEvent>] A list of experiment events to insert
+      # @param events [Array<Braintrust::Models::InsertExperimentEvent>] A list of experiment events to insert
       #
       # @param request_options [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Braintrust::InsertEventsResponse]
+      # @return [Braintrust::Models::InsertEventsResponse]
       #
       # @see Braintrust::Models::ExperimentInsertParams
       def insert(experiment_id, params)
@@ -307,7 +307,7 @@ module Braintrust
       #
       # @param request_options [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Braintrust::SummarizeExperimentResponse]
+      # @return [Braintrust::Models::SummarizeExperimentResponse]
       #
       # @see Braintrust::Models::ExperimentSummarizeParams
       def summarize(experiment_id, params = {})

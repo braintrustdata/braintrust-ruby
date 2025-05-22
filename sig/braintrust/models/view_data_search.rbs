@@ -23,6 +23,13 @@ module Braintrust
         ?sort: ::Array[top?]?,
         ?tag: ::Array[top?]?
       ) -> void
+
+      def to_hash: -> {
+        filter: ::Array[top?]?,
+        match: ::Array[top?]?,
+        sort: ::Array[top?]?,
+        tag: ::Array[top?]?
+      }
     end
   end
 end

@@ -3,7 +3,7 @@ module Braintrust
     type prompt_options =
       {
         model: String,
-        params: Braintrust::PromptOptions::params,
+        params: Braintrust::Models::PromptOptions::params,
         position: String
       }
 
@@ -12,11 +12,11 @@ module Braintrust
 
       def model=: (String) -> String
 
-      attr_reader params: Braintrust::PromptOptions::params?
+      attr_reader params: Braintrust::Models::PromptOptions::params?
 
       def params=: (
-        Braintrust::PromptOptions::params
-      ) -> Braintrust::PromptOptions::params
+        Braintrust::Models::PromptOptions::params
+      ) -> Braintrust::Models::PromptOptions::params
 
       attr_reader position: String?
 
@@ -24,9 +24,15 @@ module Braintrust
 
       def initialize: (
         ?model: String,
-        ?params: Braintrust::PromptOptions::params,
+        ?params: Braintrust::Models::PromptOptions::params,
         ?position: String
       ) -> void
+
+      def to_hash: -> {
+        model: String,
+        params: Braintrust::Models::PromptOptions::params,
+        position: String
+      }
 
       type params =
         Braintrust::PromptOptions::Params::OpenAIModelParams
@@ -41,16 +47,16 @@ module Braintrust
         type openai_model_params =
           {
             frequency_penalty: Float,
-            function_call: Braintrust::PromptOptions::Params::OpenAIModelParams::function_call,
+            function_call: Braintrust::Models::PromptOptions::Params::OpenAIModelParams::function_call,
             max_completion_tokens: Float,
             max_tokens: Float,
             n: Float,
             presence_penalty: Float,
-            reasoning_effort: Braintrust::PromptOptions::Params::OpenAIModelParams::reasoning_effort,
-            response_format: Braintrust::PromptOptions::Params::OpenAIModelParams::response_format?,
+            reasoning_effort: Braintrust::Models::PromptOptions::Params::OpenAIModelParams::reasoning_effort,
+            response_format: Braintrust::Models::PromptOptions::Params::OpenAIModelParams::response_format?,
             stop: ::Array[String],
             temperature: Float,
-            tool_choice: Braintrust::PromptOptions::Params::OpenAIModelParams::tool_choice,
+            tool_choice: Braintrust::Models::PromptOptions::Params::OpenAIModelParams::tool_choice,
             top_p: Float,
             use_cache: bool
           }
@@ -60,11 +66,11 @@ module Braintrust
 
           def frequency_penalty=: (Float) -> Float
 
-          attr_reader function_call: Braintrust::PromptOptions::Params::OpenAIModelParams::function_call?
+          attr_reader function_call: Braintrust::Models::PromptOptions::Params::OpenAIModelParams::function_call?
 
           def function_call=: (
-            Braintrust::PromptOptions::Params::OpenAIModelParams::function_call
-          ) -> Braintrust::PromptOptions::Params::OpenAIModelParams::function_call
+            Braintrust::Models::PromptOptions::Params::OpenAIModelParams::function_call
+          ) -> Braintrust::Models::PromptOptions::Params::OpenAIModelParams::function_call
 
           attr_reader max_completion_tokens: Float?
 
@@ -82,13 +88,13 @@ module Braintrust
 
           def presence_penalty=: (Float) -> Float
 
-          attr_reader reasoning_effort: Braintrust::PromptOptions::Params::OpenAIModelParams::reasoning_effort?
+          attr_reader reasoning_effort: Braintrust::Models::PromptOptions::Params::OpenAIModelParams::reasoning_effort?
 
           def reasoning_effort=: (
-            Braintrust::PromptOptions::Params::OpenAIModelParams::reasoning_effort
-          ) -> Braintrust::PromptOptions::Params::OpenAIModelParams::reasoning_effort
+            Braintrust::Models::PromptOptions::Params::OpenAIModelParams::reasoning_effort
+          ) -> Braintrust::Models::PromptOptions::Params::OpenAIModelParams::reasoning_effort
 
-          attr_accessor response_format: Braintrust::PromptOptions::Params::OpenAIModelParams::response_format?
+          attr_accessor response_format: Braintrust::Models::PromptOptions::Params::OpenAIModelParams::response_format?
 
           attr_reader stop: ::Array[String]?
 
@@ -98,11 +104,11 @@ module Braintrust
 
           def temperature=: (Float) -> Float
 
-          attr_reader tool_choice: Braintrust::PromptOptions::Params::OpenAIModelParams::tool_choice?
+          attr_reader tool_choice: Braintrust::Models::PromptOptions::Params::OpenAIModelParams::tool_choice?
 
           def tool_choice=: (
-            Braintrust::PromptOptions::Params::OpenAIModelParams::tool_choice
-          ) -> Braintrust::PromptOptions::Params::OpenAIModelParams::tool_choice
+            Braintrust::Models::PromptOptions::Params::OpenAIModelParams::tool_choice
+          ) -> Braintrust::Models::PromptOptions::Params::OpenAIModelParams::tool_choice
 
           attr_reader top_p: Float?
 
@@ -114,19 +120,35 @@ module Braintrust
 
           def initialize: (
             ?frequency_penalty: Float,
-            ?function_call: Braintrust::PromptOptions::Params::OpenAIModelParams::function_call,
+            ?function_call: Braintrust::Models::PromptOptions::Params::OpenAIModelParams::function_call,
             ?max_completion_tokens: Float,
             ?max_tokens: Float,
             ?n: Float,
             ?presence_penalty: Float,
-            ?reasoning_effort: Braintrust::PromptOptions::Params::OpenAIModelParams::reasoning_effort,
-            ?response_format: Braintrust::PromptOptions::Params::OpenAIModelParams::response_format?,
+            ?reasoning_effort: Braintrust::Models::PromptOptions::Params::OpenAIModelParams::reasoning_effort,
+            ?response_format: Braintrust::Models::PromptOptions::Params::OpenAIModelParams::response_format?,
             ?stop: ::Array[String],
             ?temperature: Float,
-            ?tool_choice: Braintrust::PromptOptions::Params::OpenAIModelParams::tool_choice,
+            ?tool_choice: Braintrust::Models::PromptOptions::Params::OpenAIModelParams::tool_choice,
             ?top_p: Float,
             ?use_cache: bool
           ) -> void
+
+          def to_hash: -> {
+            frequency_penalty: Float,
+            function_call: Braintrust::Models::PromptOptions::Params::OpenAIModelParams::function_call,
+            max_completion_tokens: Float,
+            max_tokens: Float,
+            n: Float,
+            presence_penalty: Float,
+            reasoning_effort: Braintrust::Models::PromptOptions::Params::OpenAIModelParams::reasoning_effort,
+            response_format: Braintrust::Models::PromptOptions::Params::OpenAIModelParams::response_format?,
+            stop: ::Array[String],
+            temperature: Float,
+            tool_choice: Braintrust::Models::PromptOptions::Params::OpenAIModelParams::tool_choice,
+            top_p: Float,
+            use_cache: bool
+          }
 
           type function_call =
             :auto
@@ -142,9 +164,11 @@ module Braintrust
               attr_accessor name: String
 
               def initialize: (name: String) -> void
+
+              def to_hash: -> { name: String }
             end
 
-            def self?.variants: -> ::Array[Braintrust::PromptOptions::Params::OpenAIModelParams::function_call]
+            def self?.variants: -> ::Array[Braintrust::Models::PromptOptions::Params::OpenAIModelParams::function_call]
 
             AUTO: :auto
             NONE: :none
@@ -159,7 +183,7 @@ module Braintrust
             MEDIUM: :medium
             HIGH: :high
 
-            def self?.values: -> ::Array[Braintrust::PromptOptions::Params::OpenAIModelParams::reasoning_effort]
+            def self?.values: -> ::Array[Braintrust::Models::PromptOptions::Params::OpenAIModelParams::reasoning_effort]
           end
 
           type response_format =
@@ -172,15 +196,19 @@ module Braintrust
 
             type json_object =
               {
-                type: Braintrust::PromptOptions::Params::OpenAIModelParams::ResponseFormat::JsonObject::type_
+                type: Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ResponseFormat::JsonObject::type_
               }
 
             class JsonObject < Braintrust::Internal::Type::BaseModel
-              attr_accessor type: Braintrust::PromptOptions::Params::OpenAIModelParams::ResponseFormat::JsonObject::type_
+              attr_accessor type: Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ResponseFormat::JsonObject::type_
 
               def initialize: (
-                type: Braintrust::PromptOptions::Params::OpenAIModelParams::ResponseFormat::JsonObject::type_
+                type: Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ResponseFormat::JsonObject::type_
               ) -> void
+
+              def to_hash: -> {
+                type: Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ResponseFormat::JsonObject::type_
+              }
 
               type type_ = :json_object
 
@@ -189,31 +217,36 @@ module Braintrust
 
                 JSON_OBJECT: :json_object
 
-                def self?.values: -> ::Array[Braintrust::PromptOptions::Params::OpenAIModelParams::ResponseFormat::JsonObject::type_]
+                def self?.values: -> ::Array[Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ResponseFormat::JsonObject::type_]
               end
             end
 
             type json_schema =
               {
                 json_schema: Braintrust::PromptOptions::Params::OpenAIModelParams::ResponseFormat::JsonSchema::JsonSchema,
-                type: Braintrust::PromptOptions::Params::OpenAIModelParams::ResponseFormat::JsonSchema::type_
+                type: Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ResponseFormat::JsonSchema::type_
               }
 
             class JsonSchema < Braintrust::Internal::Type::BaseModel
               attr_accessor json_schema: Braintrust::PromptOptions::Params::OpenAIModelParams::ResponseFormat::JsonSchema::JsonSchema
 
-              attr_accessor type: Braintrust::PromptOptions::Params::OpenAIModelParams::ResponseFormat::JsonSchema::type_
+              attr_accessor type: Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ResponseFormat::JsonSchema::type_
 
               def initialize: (
                 json_schema: Braintrust::PromptOptions::Params::OpenAIModelParams::ResponseFormat::JsonSchema::JsonSchema,
-                type: Braintrust::PromptOptions::Params::OpenAIModelParams::ResponseFormat::JsonSchema::type_
+                type: Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ResponseFormat::JsonSchema::type_
               ) -> void
+
+              def to_hash: -> {
+                json_schema: Braintrust::PromptOptions::Params::OpenAIModelParams::ResponseFormat::JsonSchema::JsonSchema,
+                type: Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ResponseFormat::JsonSchema::type_
+              }
 
               type json_schema =
                 {
                   name: String,
                   description: String,
-                  schema: Braintrust::PromptOptions::Params::OpenAIModelParams::ResponseFormat::JsonSchema::JsonSchema::schema,
+                  schema: Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ResponseFormat::JsonSchema::JsonSchema::schema,
                   strict: bool?
                 }
 
@@ -224,27 +257,34 @@ module Braintrust
 
                 def description=: (String) -> String
 
-                attr_reader schema: Braintrust::PromptOptions::Params::OpenAIModelParams::ResponseFormat::JsonSchema::JsonSchema::schema?
+                attr_reader schema: Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ResponseFormat::JsonSchema::JsonSchema::schema?
 
                 def schema=: (
-                  Braintrust::PromptOptions::Params::OpenAIModelParams::ResponseFormat::JsonSchema::JsonSchema::schema
-                ) -> Braintrust::PromptOptions::Params::OpenAIModelParams::ResponseFormat::JsonSchema::JsonSchema::schema
+                  Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ResponseFormat::JsonSchema::JsonSchema::schema
+                ) -> Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ResponseFormat::JsonSchema::JsonSchema::schema
 
                 attr_accessor strict: bool?
 
                 def initialize: (
                   name: String,
                   ?description: String,
-                  ?schema: Braintrust::PromptOptions::Params::OpenAIModelParams::ResponseFormat::JsonSchema::JsonSchema::schema,
+                  ?schema: Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ResponseFormat::JsonSchema::JsonSchema::schema,
                   ?strict: bool?
                 ) -> void
+
+                def to_hash: -> {
+                  name: String,
+                  description: String,
+                  schema: Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ResponseFormat::JsonSchema::JsonSchema::schema,
+                  strict: bool?
+                }
 
                 type schema = ::Hash[Symbol, top?] | String
 
                 module Schema
                   extend Braintrust::Internal::Type::Union
 
-                  def self?.variants: -> ::Array[Braintrust::PromptOptions::Params::OpenAIModelParams::ResponseFormat::JsonSchema::JsonSchema::schema]
+                  def self?.variants: -> ::Array[Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ResponseFormat::JsonSchema::JsonSchema::schema]
 
                   ObjectMap: Braintrust::Internal::Type::Converter
                 end
@@ -257,21 +297,25 @@ module Braintrust
 
                 JSON_SCHEMA: :json_schema
 
-                def self?.values: -> ::Array[Braintrust::PromptOptions::Params::OpenAIModelParams::ResponseFormat::JsonSchema::type_]
+                def self?.values: -> ::Array[Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ResponseFormat::JsonSchema::type_]
               end
             end
 
             type text =
               {
-                type: Braintrust::PromptOptions::Params::OpenAIModelParams::ResponseFormat::Text::type_
+                type: Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ResponseFormat::Text::type_
               }
 
             class Text < Braintrust::Internal::Type::BaseModel
-              attr_accessor type: Braintrust::PromptOptions::Params::OpenAIModelParams::ResponseFormat::Text::type_
+              attr_accessor type: Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ResponseFormat::Text::type_
 
               def initialize: (
-                type: Braintrust::PromptOptions::Params::OpenAIModelParams::ResponseFormat::Text::type_
+                type: Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ResponseFormat::Text::type_
               ) -> void
+
+              def to_hash: -> {
+                type: Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ResponseFormat::Text::type_
+              }
 
               type type_ = :text
 
@@ -280,11 +324,11 @@ module Braintrust
 
                 TEXT: :text
 
-                def self?.values: -> ::Array[Braintrust::PromptOptions::Params::OpenAIModelParams::ResponseFormat::Text::type_]
+                def self?.values: -> ::Array[Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ResponseFormat::Text::type_]
               end
             end
 
-            def self?.variants: -> ::Array[Braintrust::PromptOptions::Params::OpenAIModelParams::response_format]
+            def self?.variants: -> ::Array[Braintrust::Models::PromptOptions::Params::OpenAIModelParams::response_format]
           end
 
           type tool_choice =
@@ -299,18 +343,23 @@ module Braintrust
             type function =
               {
                 function: Braintrust::PromptOptions::Params::OpenAIModelParams::ToolChoice::Function::Function,
-                type: Braintrust::PromptOptions::Params::OpenAIModelParams::ToolChoice::Function::type_
+                type: Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ToolChoice::Function::type_
               }
 
             class Function < Braintrust::Internal::Type::BaseModel
               attr_accessor function: Braintrust::PromptOptions::Params::OpenAIModelParams::ToolChoice::Function::Function
 
-              attr_accessor type: Braintrust::PromptOptions::Params::OpenAIModelParams::ToolChoice::Function::type_
+              attr_accessor type: Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ToolChoice::Function::type_
 
               def initialize: (
                 function: Braintrust::PromptOptions::Params::OpenAIModelParams::ToolChoice::Function::Function,
-                type: Braintrust::PromptOptions::Params::OpenAIModelParams::ToolChoice::Function::type_
+                type: Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ToolChoice::Function::type_
               ) -> void
+
+              def to_hash: -> {
+                function: Braintrust::PromptOptions::Params::OpenAIModelParams::ToolChoice::Function::Function,
+                type: Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ToolChoice::Function::type_
+              }
 
               type function = { name: String }
 
@@ -318,6 +367,8 @@ module Braintrust
                 attr_accessor name: String
 
                 def initialize: (name: String) -> void
+
+                def to_hash: -> { name: String }
               end
 
               type type_ = :function
@@ -327,11 +378,11 @@ module Braintrust
 
                 FUNCTION: :function
 
-                def self?.values: -> ::Array[Braintrust::PromptOptions::Params::OpenAIModelParams::ToolChoice::Function::type_]
+                def self?.values: -> ::Array[Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ToolChoice::Function::type_]
               end
             end
 
-            def self?.variants: -> ::Array[Braintrust::PromptOptions::Params::OpenAIModelParams::tool_choice]
+            def self?.variants: -> ::Array[Braintrust::Models::PromptOptions::Params::OpenAIModelParams::tool_choice]
 
             AUTO: :auto
             NONE: :none
@@ -384,6 +435,16 @@ module Braintrust
             ?top_p: Float,
             ?use_cache: bool
           ) -> void
+
+          def to_hash: -> {
+            max_tokens: Float,
+            temperature: Float,
+            max_tokens_to_sample: Float,
+            stop_sequences: ::Array[String],
+            top_k: Float,
+            top_p: Float,
+            use_cache: bool
+          }
         end
 
         type google_model_params =
@@ -423,6 +484,14 @@ module Braintrust
             ?top_p: Float,
             ?use_cache: bool
           ) -> void
+
+          def to_hash: -> {
+            max_output_tokens: Float,
+            temperature: Float,
+            top_k: Float,
+            top_p: Float,
+            use_cache: bool
+          }
         end
 
         type window_ai_model_params =
@@ -446,6 +515,8 @@ module Braintrust
             ?top_k: Float,
             ?use_cache: bool
           ) -> void
+
+          def to_hash: -> { temperature: Float, top_k: Float, use_cache: bool }
         end
 
         type js_completion_params = { use_cache: bool }
@@ -456,9 +527,11 @@ module Braintrust
           def use_cache=: (bool) -> bool
 
           def initialize: (?use_cache: bool) -> void
+
+          def to_hash: -> { use_cache: bool }
         end
 
-        def self?.variants: -> ::Array[Braintrust::PromptOptions::params]
+        def self?.variants: -> ::Array[Braintrust::Models::PromptOptions::params]
       end
     end
   end

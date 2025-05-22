@@ -30,6 +30,14 @@ module Braintrust
           ?request_options: Braintrust::request_opts
         ) -> void
 
+        def to_hash: -> {
+          invite_users: Braintrust::Organizations::MemberUpdateParams::InviteUsers?,
+          org_id: String?,
+          org_name: String?,
+          remove_users: Braintrust::Organizations::MemberUpdateParams::RemoveUsers?,
+          request_options: Braintrust::RequestOptions
+        }
+
         type invite_users =
           {
             emails: ::Array[String]?,
@@ -65,6 +73,16 @@ module Braintrust
             ?ids: ::Array[String]?,
             ?send_invite_emails: bool?
           ) -> void
+
+          def to_hash: -> {
+            emails: ::Array[String]?,
+            group_id: String?,
+            group_ids: ::Array[String]?,
+            group_name: String?,
+            group_names: ::Array[String]?,
+            ids: ::Array[String]?,
+            send_invite_emails: bool?
+          }
         end
 
         type remove_users = { emails: ::Array[String]?, ids: ::Array[String]? }
@@ -78,6 +96,8 @@ module Braintrust
             ?emails: ::Array[String]?,
             ?ids: ::Array[String]?
           ) -> void
+
+          def to_hash: -> { emails: ::Array[String]?, ids: ::Array[String]? }
         end
       end
     end

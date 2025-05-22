@@ -83,7 +83,7 @@ module Braintrust
       # @!attribute repo_info
       #   Metadata about the state of the repo when the experiment was created
       #
-      #   @return [Braintrust::RepoInfo, nil]
+      #   @return [Braintrust::Models::RepoInfo, nil]
       optional :repo_info, -> { Braintrust::RepoInfo }, nil?: true
 
       # @!attribute user_id
@@ -93,8 +93,8 @@ module Braintrust
       optional :user_id, String, nil?: true
 
       # @!method initialize(id:, name:, project_id:, public:, base_exp_id: nil, commit: nil, created: nil, dataset_id: nil, dataset_version: nil, deleted_at: nil, description: nil, metadata: nil, repo_info: nil, user_id: nil)
-      #   Some parameter documentations has been truncated, see {Braintrust::Experiment}
-      #   for more details.
+      #   Some parameter documentations has been truncated, see
+      #   {Braintrust::Models::Experiment} for more details.
       #
       #   @param id [String] Unique identifier for the experiment
       #
@@ -120,7 +120,7 @@ module Braintrust
       #
       #   @param metadata [Hash{Symbol=>Object, nil}, nil] User-controlled metadata about the experiment
       #
-      #   @param repo_info [Braintrust::RepoInfo, nil] Metadata about the state of the repo when the experiment was created
+      #   @param repo_info [Braintrust::Models::RepoInfo, nil] Metadata about the state of the repo when the experiment was created
       #
       #   @param user_id [String, nil] Identifies the user who created the experiment
     end

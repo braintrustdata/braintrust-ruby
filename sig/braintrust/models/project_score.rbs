@@ -7,7 +7,7 @@ module Braintrust
         project_id: String,
         score_type: Braintrust::Models::project_score_type,
         user_id: String,
-        categories: Braintrust::ProjectScore::categories?,
+        categories: Braintrust::Models::ProjectScore::categories?,
         config: Braintrust::ProjectScoreConfig?,
         created: Time?,
         description: String?,
@@ -25,7 +25,7 @@ module Braintrust
 
       attr_accessor user_id: String
 
-      attr_accessor categories: Braintrust::ProjectScore::categories?
+      attr_accessor categories: Braintrust::Models::ProjectScore::categories?
 
       attr_accessor config: Braintrust::ProjectScoreConfig?
 
@@ -41,12 +41,25 @@ module Braintrust
         project_id: String,
         score_type: Braintrust::Models::project_score_type,
         user_id: String,
-        ?categories: Braintrust::ProjectScore::categories?,
+        ?categories: Braintrust::Models::ProjectScore::categories?,
         ?config: Braintrust::ProjectScoreConfig?,
         ?created: Time?,
         ?description: String?,
         ?position: String?
       ) -> void
+
+      def to_hash: -> {
+        id: String,
+        name: String,
+        project_id: String,
+        score_type: Braintrust::Models::project_score_type,
+        user_id: String,
+        categories: Braintrust::Models::ProjectScore::categories?,
+        config: Braintrust::ProjectScoreConfig?,
+        created: Time?,
+        description: String?,
+        position: String?
+      }
 
       type categories =
         ::Array[Braintrust::ProjectScoreCategory]
@@ -56,7 +69,7 @@ module Braintrust
       module Categories
         extend Braintrust::Internal::Type::Union
 
-        def self?.variants: -> ::Array[Braintrust::ProjectScore::categories]
+        def self?.variants: -> ::Array[Braintrust::Models::ProjectScore::categories]
 
         ProjectScoreCategoryArray: Braintrust::Internal::Type::Converter
 

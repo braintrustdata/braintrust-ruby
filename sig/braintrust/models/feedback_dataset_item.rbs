@@ -5,7 +5,7 @@ module Braintrust
         id: String,
         comment: String?,
         metadata: ::Hash[Symbol, top?]?,
-        source: Braintrust::FeedbackDatasetItem::source?,
+        source: Braintrust::Models::FeedbackDatasetItem::source?,
         tags: ::Array[String]?
       }
 
@@ -16,7 +16,7 @@ module Braintrust
 
       attr_accessor metadata: ::Hash[Symbol, top?]?
 
-      attr_accessor source: Braintrust::FeedbackDatasetItem::source?
+      attr_accessor source: Braintrust::Models::FeedbackDatasetItem::source?
 
       attr_accessor tags: ::Array[String]?
 
@@ -24,9 +24,17 @@ module Braintrust
         id: String,
         ?comment: String?,
         ?metadata: ::Hash[Symbol, top?]?,
-        ?source: Braintrust::FeedbackDatasetItem::source?,
+        ?source: Braintrust::Models::FeedbackDatasetItem::source?,
         ?tags: ::Array[String]?
       ) -> void
+
+      def to_hash: -> {
+        id: String,
+        comment: String?,
+        metadata: ::Hash[Symbol, top?]?,
+        source: Braintrust::Models::FeedbackDatasetItem::source?,
+        tags: ::Array[String]?
+      }
 
       type source = :app | :api | :external
 
@@ -37,7 +45,7 @@ module Braintrust
         API: :api
         EXTERNAL: :external
 
-        def self?.values: -> ::Array[Braintrust::FeedbackDatasetItem::source]
+        def self?.values: -> ::Array[Braintrust::Models::FeedbackDatasetItem::source]
       end
     end
   end

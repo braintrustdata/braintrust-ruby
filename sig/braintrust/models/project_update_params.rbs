@@ -17,6 +17,12 @@ module Braintrust
         ?settings: Braintrust::ProjectSettings?,
         ?request_options: Braintrust::request_opts
       ) -> void
+
+      def to_hash: -> {
+        name: String?,
+        settings: Braintrust::ProjectSettings?,
+        request_options: Braintrust::RequestOptions
+      }
     end
   end
 end

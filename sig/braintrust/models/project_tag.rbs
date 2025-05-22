@@ -35,6 +35,16 @@ module Braintrust
         ?created: Time?,
         ?description: String?
       ) -> void
+
+      def to_hash: -> {
+        id: String,
+        name: String,
+        project_id: String,
+        user_id: String,
+        color: String?,
+        created: Time?,
+        description: String?
+      }
     end
   end
 end

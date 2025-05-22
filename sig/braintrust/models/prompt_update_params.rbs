@@ -32,6 +32,15 @@ module Braintrust
         ?tags: ::Array[String]?,
         ?request_options: Braintrust::request_opts
       ) -> void
+
+      def to_hash: -> {
+        description: String?,
+        name: String?,
+        prompt_data: Braintrust::PromptData?,
+        slug: String?,
+        tags: ::Array[String]?,
+        request_options: Braintrust::RequestOptions
+      }
     end
   end
 end

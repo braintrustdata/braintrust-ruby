@@ -24,7 +24,7 @@ module Braintrust
       # @!attribute object_type
       #   The type of the object the environment variable is scoped for
       #
-      #   @return [Symbol, Braintrust::EnvVar::ObjectType]
+      #   @return [Symbol, Braintrust::Models::EnvVar::ObjectType]
       required :object_type, enum: -> { Braintrust::EnvVar::ObjectType }
 
       # @!attribute created
@@ -46,7 +46,7 @@ module Braintrust
       #
       #   @param object_id_ [String] The id of the object the environment variable is scoped for
       #
-      #   @param object_type [Symbol, Braintrust::EnvVar::ObjectType] The type of the object the environment variable is scoped for
+      #   @param object_type [Symbol, Braintrust::Models::EnvVar::ObjectType] The type of the object the environment variable is scoped for
       #
       #   @param created [Time, nil] Date of environment variable creation
       #
@@ -54,7 +54,7 @@ module Braintrust
 
       # The type of the object the environment variable is scoped for
       #
-      # @see Braintrust::EnvVar#object_type
+      # @see Braintrust::Models::EnvVar#object_type
       module ObjectType
         extend Braintrust::Internal::Type::Enum
 

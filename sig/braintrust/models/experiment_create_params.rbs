@@ -52,6 +52,20 @@ module Braintrust
         ?repo_info: Braintrust::RepoInfo?,
         ?request_options: Braintrust::request_opts
       ) -> void
+
+      def to_hash: -> {
+        project_id: String,
+        base_exp_id: String?,
+        dataset_id: String?,
+        dataset_version: String?,
+        description: String?,
+        ensure_new: bool?,
+        metadata: ::Hash[Symbol, top?]?,
+        name: String?,
+        public: bool?,
+        repo_info: Braintrust::RepoInfo?,
+        request_options: Braintrust::RequestOptions
+      }
     end
   end
 end

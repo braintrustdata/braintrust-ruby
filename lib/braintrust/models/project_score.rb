@@ -24,7 +24,7 @@ module Braintrust
       # @!attribute score_type
       #   The type of the configured score
       #
-      #   @return [Symbol, Braintrust::ProjectScoreType]
+      #   @return [Symbol, Braintrust::Models::ProjectScoreType]
       required :score_type, enum: -> { Braintrust::ProjectScoreType }
 
       # @!attribute user_id
@@ -35,12 +35,12 @@ module Braintrust
       # @!attribute categories
       #   For categorical-type project scores, the list of all categories
       #
-      #   @return [Array<Braintrust::ProjectScoreCategory>, Hash{Symbol=>Float}, Array<String>, nil]
+      #   @return [Array<Braintrust::Models::ProjectScoreCategory>, Hash{Symbol=>Float}, Array<String>, nil]
       optional :categories, union: -> { Braintrust::ProjectScore::Categories }, nil?: true
 
       # @!attribute config
       #
-      #   @return [Braintrust::ProjectScoreConfig, nil]
+      #   @return [Braintrust::Models::ProjectScoreConfig, nil]
       optional :config, -> { Braintrust::ProjectScoreConfig }, nil?: true
 
       # @!attribute created
@@ -63,8 +63,8 @@ module Braintrust
       optional :position, String, nil?: true
 
       # @!method initialize(id:, name:, project_id:, score_type:, user_id:, categories: nil, config: nil, created: nil, description: nil, position: nil)
-      #   Some parameter documentations has been truncated, see {Braintrust::ProjectScore}
-      #   for more details.
+      #   Some parameter documentations has been truncated, see
+      #   {Braintrust::Models::ProjectScore} for more details.
       #
       #   A project score is a user-configured score, which can be manually-labeled
       #   through the UI
@@ -75,13 +75,13 @@ module Braintrust
       #
       #   @param project_id [String] Unique identifier for the project that the project score belongs under
       #
-      #   @param score_type [Symbol, Braintrust::ProjectScoreType] The type of the configured score
+      #   @param score_type [Symbol, Braintrust::Models::ProjectScoreType] The type of the configured score
       #
       #   @param user_id [String]
       #
-      #   @param categories [Array<Braintrust::ProjectScoreCategory>, Hash{Symbol=>Float}, Array<String>, nil] For categorical-type project scores, the list of all categories
+      #   @param categories [Array<Braintrust::Models::ProjectScoreCategory>, Hash{Symbol=>Float}, Array<String>, nil] For categorical-type project scores, the list of all categories
       #
-      #   @param config [Braintrust::ProjectScoreConfig, nil]
+      #   @param config [Braintrust::Models::ProjectScoreConfig, nil]
       #
       #   @param created [Time, nil] Date of project score creation
       #
@@ -91,21 +91,21 @@ module Braintrust
 
       # For categorical-type project scores, the list of all categories
       #
-      # @see Braintrust::ProjectScore#categories
+      # @see Braintrust::Models::ProjectScore#categories
       module Categories
         extend Braintrust::Internal::Type::Union
 
         # For categorical-type project scores, the list of all categories
-        variant -> { Braintrust::ProjectScore::Categories::ProjectScoreCategoryArray }
+        variant -> { Braintrust::Models::ProjectScore::Categories::ProjectScoreCategoryArray }
 
         # For weighted-type project scores, the weights of each score
-        variant -> { Braintrust::ProjectScore::Categories::FloatMap }
+        variant -> { Braintrust::Models::ProjectScore::Categories::FloatMap }
 
         # For minimum-type project scores, the list of included scores
-        variant -> { Braintrust::ProjectScore::Categories::StringArray }
+        variant -> { Braintrust::Models::ProjectScore::Categories::StringArray }
 
         # @!method self.variants
-        #   @return [Array(Array<Braintrust::ProjectScoreCategory>, Hash{Symbol=>Float}, Array<String>)]
+        #   @return [Array(Array<Braintrust::Models::ProjectScoreCategory>, Hash{Symbol=>Float}, Array<String>)]
 
         # @type [Braintrust::Internal::Type::Converter]
         ProjectScoreCategoryArray = Braintrust::Internal::Type::ArrayOf[-> {

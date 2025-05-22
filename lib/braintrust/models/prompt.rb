@@ -21,7 +21,7 @@ module Braintrust
       # @!attribute log_id
       #   A literal 'p' which identifies the object as a project prompt
       #
-      #   @return [Symbol, Braintrust::Prompt::LogID]
+      #   @return [Symbol, Braintrust::Models::Prompt::LogID]
       required :log_id, enum: -> { Braintrust::Prompt::LogID }
 
       # @!attribute name
@@ -62,7 +62,7 @@ module Braintrust
 
       # @!attribute function_type
       #
-      #   @return [Symbol, Braintrust::Prompt::FunctionType, nil]
+      #   @return [Symbol, Braintrust::Models::Prompt::FunctionType, nil]
       optional :function_type, enum: -> { Braintrust::Prompt::FunctionType }, nil?: true
 
       # @!attribute metadata
@@ -76,7 +76,7 @@ module Braintrust
       # @!attribute prompt_data
       #   The prompt, model, and its parameters
       #
-      #   @return [Braintrust::PromptData, nil]
+      #   @return [Braintrust::Models::PromptData, nil]
       optional :prompt_data, -> { Braintrust::PromptData }, nil?: true
 
       # @!attribute tags
@@ -86,14 +86,14 @@ module Braintrust
       optional :tags, Braintrust::Internal::Type::ArrayOf[String], nil?: true
 
       # @!method initialize(id:, _xact_id:, log_id:, name:, org_id:, project_id:, slug:, created: nil, description: nil, function_type: nil, metadata: nil, prompt_data: nil, tags: nil)
-      #   Some parameter documentations has been truncated, see {Braintrust::Prompt} for
-      #   more details.
+      #   Some parameter documentations has been truncated, see
+      #   {Braintrust::Models::Prompt} for more details.
       #
       #   @param id [String] Unique identifier for the prompt
       #
       #   @param _xact_id [String] The transaction id of an event is unique to the network operation that processed
       #
-      #   @param log_id [Symbol, Braintrust::Prompt::LogID] A literal 'p' which identifies the object as a project prompt
+      #   @param log_id [Symbol, Braintrust::Models::Prompt::LogID] A literal 'p' which identifies the object as a project prompt
       #
       #   @param name [String] Name of the prompt
       #
@@ -107,17 +107,17 @@ module Braintrust
       #
       #   @param description [String, nil] Textual description of the prompt
       #
-      #   @param function_type [Symbol, Braintrust::Prompt::FunctionType, nil]
+      #   @param function_type [Symbol, Braintrust::Models::Prompt::FunctionType, nil]
       #
       #   @param metadata [Hash{Symbol=>Object, nil}, nil] User-controlled metadata about the prompt
       #
-      #   @param prompt_data [Braintrust::PromptData, nil] The prompt, model, and its parameters
+      #   @param prompt_data [Braintrust::Models::PromptData, nil] The prompt, model, and its parameters
       #
       #   @param tags [Array<String>, nil] A list of tags for the prompt
 
       # A literal 'p' which identifies the object as a project prompt
       #
-      # @see Braintrust::Prompt#log_id
+      # @see Braintrust::Models::Prompt#log_id
       module LogID
         extend Braintrust::Internal::Type::Enum
 
@@ -127,7 +127,7 @@ module Braintrust
         #   @return [Array<Symbol>]
       end
 
-      # @see Braintrust::Prompt#function_type
+      # @see Braintrust::Models::Prompt#function_type
       module FunctionType
         extend Braintrust::Internal::Type::Enum
 

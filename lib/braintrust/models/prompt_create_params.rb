@@ -33,13 +33,13 @@ module Braintrust
 
       # @!attribute function_type
       #
-      #   @return [Symbol, Braintrust::PromptCreateParams::FunctionType, nil]
+      #   @return [Symbol, Braintrust::Models::PromptCreateParams::FunctionType, nil]
       optional :function_type, enum: -> { Braintrust::PromptCreateParams::FunctionType }, nil?: true
 
       # @!attribute prompt_data
       #   The prompt, model, and its parameters
       #
-      #   @return [Braintrust::PromptData, nil]
+      #   @return [Braintrust::Models::PromptData, nil]
       optional :prompt_data, -> { Braintrust::PromptData }, nil?: true
 
       # @!attribute tags
@@ -57,9 +57,9 @@ module Braintrust
       #
       #   @param description [String, nil] Textual description of the prompt
       #
-      #   @param function_type [Symbol, Braintrust::PromptCreateParams::FunctionType, nil]
+      #   @param function_type [Symbol, Braintrust::Models::PromptCreateParams::FunctionType, nil]
       #
-      #   @param prompt_data [Braintrust::PromptData, nil] The prompt, model, and its parameters
+      #   @param prompt_data [Braintrust::Models::PromptData, nil] The prompt, model, and its parameters
       #
       #   @param tags [Array<String>, nil] A list of tags for the prompt
       #

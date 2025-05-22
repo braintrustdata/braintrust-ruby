@@ -6,6 +6,8 @@ module Braintrust
       attr_accessor row_ids: ::Array[String]
 
       def initialize: (row_ids: ::Array[String]) -> void
+
+      def to_hash: -> { row_ids: ::Array[String] }
     end
   end
 end

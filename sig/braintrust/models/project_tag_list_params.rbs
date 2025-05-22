@@ -61,6 +61,18 @@ module Braintrust
         ?request_options: Braintrust::request_opts
       ) -> void
 
+      def to_hash: -> {
+        ending_before: String,
+        ids: Braintrust::Models::ProjectTagListParams::ids,
+        limit: Integer?,
+        org_name: String,
+        project_id: String,
+        project_name: String,
+        project_tag_name: String,
+        starting_after: String,
+        request_options: Braintrust::RequestOptions
+      }
+
       type ids = String | ::Array[String]
 
       module IDs

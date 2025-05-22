@@ -4,7 +4,7 @@ module Braintrust
       {
         id: String,
         function: Braintrust::ChatCompletionMessageToolCall::Function,
-        type: Braintrust::ChatCompletionMessageToolCall::type_
+        type: Braintrust::Models::ChatCompletionMessageToolCall::type_
       }
 
     class ChatCompletionMessageToolCall < Braintrust::Internal::Type::BaseModel
@@ -12,13 +12,19 @@ module Braintrust
 
       attr_accessor function: Braintrust::ChatCompletionMessageToolCall::Function
 
-      attr_accessor type: Braintrust::ChatCompletionMessageToolCall::type_
+      attr_accessor type: Braintrust::Models::ChatCompletionMessageToolCall::type_
 
       def initialize: (
         id: String,
         function: Braintrust::ChatCompletionMessageToolCall::Function,
-        type: Braintrust::ChatCompletionMessageToolCall::type_
+        type: Braintrust::Models::ChatCompletionMessageToolCall::type_
       ) -> void
+
+      def to_hash: -> {
+        id: String,
+        function: Braintrust::ChatCompletionMessageToolCall::Function,
+        type: Braintrust::Models::ChatCompletionMessageToolCall::type_
+      }
 
       type function = { arguments: String, name: String }
 
@@ -28,6 +34,8 @@ module Braintrust
         attr_accessor name: String
 
         def initialize: (arguments: String, name: String) -> void
+
+        def to_hash: -> { arguments: String, name: String }
       end
 
       type type_ = :function
@@ -37,7 +45,7 @@ module Braintrust
 
         FUNCTION: :function
 
-        def self?.values: -> ::Array[Braintrust::ChatCompletionMessageToolCall::type_]
+        def self?.values: -> ::Array[Braintrust::Models::ChatCompletionMessageToolCall::type_]
       end
     end
   end

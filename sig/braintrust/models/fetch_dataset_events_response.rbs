@@ -12,6 +12,11 @@ module Braintrust
         events: ::Array[Braintrust::DatasetEvent],
         ?cursor: String?
       ) -> void
+
+      def to_hash: -> {
+        events: ::Array[Braintrust::DatasetEvent],
+        cursor: String?
+      }
     end
   end
 end

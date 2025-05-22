@@ -15,6 +15,11 @@ module Braintrust
           events: ::Array[Braintrust::InsertProjectLogsEvent],
           ?request_options: Braintrust::request_opts
         ) -> void
+
+        def to_hash: -> {
+          events: ::Array[Braintrust::InsertProjectLogsEvent],
+          request_options: Braintrust::RequestOptions
+        }
       end
     end
   end

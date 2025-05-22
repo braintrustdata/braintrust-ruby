@@ -11,7 +11,7 @@ module Braintrust
 
       # @!attribute status
       #
-      #   @return [Symbol, Braintrust::PatchOrganizationMembersOutput::Status]
+      #   @return [Symbol, Braintrust::Models::PatchOrganizationMembersOutput::Status]
       required :status, enum: -> { Braintrust::PatchOrganizationMembersOutput::Status }
 
       # @!attribute send_email_error
@@ -23,15 +23,15 @@ module Braintrust
 
       # @!method initialize(org_id:, status:, send_email_error: nil)
       #   Some parameter documentations has been truncated, see
-      #   {Braintrust::PatchOrganizationMembersOutput} for more details.
+      #   {Braintrust::Models::PatchOrganizationMembersOutput} for more details.
       #
       #   @param org_id [String] The id of the org that was modified.
       #
-      #   @param status [Symbol, Braintrust::PatchOrganizationMembersOutput::Status]
+      #   @param status [Symbol, Braintrust::Models::PatchOrganizationMembersOutput::Status]
       #
       #   @param send_email_error [String, nil] If invite emails failed to send for some reason, the patch operation will still
 
-      # @see Braintrust::PatchOrganizationMembersOutput#status
+      # @see Braintrust::Models::PatchOrganizationMembersOutput#status
       module Status
         extend Braintrust::Internal::Type::Enum
 

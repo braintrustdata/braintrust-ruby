@@ -72,7 +72,7 @@ module Braintrust
       # @!attribute repo_info
       #   Metadata about the state of the repo when the experiment was created
       #
-      #   @return [Braintrust::RepoInfo, nil]
+      #   @return [Braintrust::Models::RepoInfo, nil]
       optional :repo_info, -> { Braintrust::RepoInfo }, nil?: true
 
       # @!method initialize(project_id:, base_exp_id: nil, dataset_id: nil, dataset_version: nil, description: nil, ensure_new: nil, metadata: nil, name: nil, public: nil, repo_info: nil, request_options: {})
@@ -97,7 +97,7 @@ module Braintrust
       #
       #   @param public [Boolean, nil] Whether or not the experiment is public. Public experiments can be viewed by any
       #
-      #   @param repo_info [Braintrust::RepoInfo, nil] Metadata about the state of the repo when the experiment was created
+      #   @param repo_info [Braintrust::Models::RepoInfo, nil] Metadata about the state of the repo when the experiment was created
       #
       #   @param request_options [Braintrust::RequestOptions, Hash{Symbol=>Object}]
     end

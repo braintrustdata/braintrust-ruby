@@ -16,7 +16,7 @@ module Braintrust
       # @!attribute object_type
       #   The object type that the ACL applies to
       #
-      #   @return [Symbol, Braintrust::ACLObjectType]
+      #   @return [Symbol, Braintrust::Models::ACLObjectType]
       required :object_type, enum: -> { Braintrust::ACLObjectType }
 
       # @!attribute ending_before
@@ -58,7 +58,7 @@ module Braintrust
       #
       #   @param object_id_ [String] The id of the object the ACL applies to
       #
-      #   @param object_type [Symbol, Braintrust::ACLObjectType] The object type that the ACL applies to
+      #   @param object_type [Symbol, Braintrust::Models::ACLObjectType] The object type that the ACL applies to
       #
       #   @param ending_before [String] Pagination cursor id.
       #
@@ -77,7 +77,7 @@ module Braintrust
 
         variant String
 
-        variant -> { Braintrust::ACLListParams::IDs::StringArray }
+        variant -> { Braintrust::Models::ACLListParams::IDs::StringArray }
 
         # @!method self.variants
         #   @return [Array(String, Array<String>)]

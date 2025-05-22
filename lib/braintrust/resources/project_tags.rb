@@ -19,7 +19,7 @@ module Braintrust
       #
       # @param request_options [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Braintrust::ProjectTag]
+      # @return [Braintrust::Models::ProjectTag]
       #
       # @see Braintrust::Models::ProjectTagCreateParams
       def create(params)
@@ -41,7 +41,7 @@ module Braintrust
       #
       # @param request_options [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Braintrust::ProjectTag]
+      # @return [Braintrust::Models::ProjectTag]
       #
       # @see Braintrust::Models::ProjectTagRetrieveParams
       def retrieve(project_tag_id, params = {})
@@ -69,7 +69,7 @@ module Braintrust
       #
       # @param request_options [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Braintrust::ProjectTag]
+      # @return [Braintrust::Models::ProjectTag]
       #
       # @see Braintrust::Models::ProjectTagUpdateParams
       def update(project_tag_id, params = {})
@@ -109,7 +109,7 @@ module Braintrust
       #
       # @param request_options [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Braintrust::Internal::ListObjects<Braintrust::ProjectTag>]
+      # @return [Braintrust::Internal::ListObjects<Braintrust::Models::ProjectTag>]
       #
       # @see Braintrust::Models::ProjectTagListParams
       def list(params = {})
@@ -132,7 +132,7 @@ module Braintrust
       #
       # @param request_options [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Braintrust::ProjectTag]
+      # @return [Braintrust::Models::ProjectTag]
       #
       # @see Braintrust::Models::ProjectTagDeleteParams
       def delete(project_tag_id, params = {})
@@ -160,7 +160,7 @@ module Braintrust
       #
       # @param request_options [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Braintrust::ProjectTag]
+      # @return [Braintrust::Models::ProjectTag]
       #
       # @see Braintrust::Models::ProjectTagReplaceParams
       def replace(params)

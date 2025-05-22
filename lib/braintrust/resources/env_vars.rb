@@ -12,13 +12,13 @@ module Braintrust
       #
       # @param object_id_ [String] The id of the object the environment variable is scoped for
       #
-      # @param object_type [Symbol, Braintrust::EnvVarCreateParams::ObjectType] The type of the object the environment variable is scoped for
+      # @param object_type [Symbol, Braintrust::Models::EnvVarCreateParams::ObjectType] The type of the object the environment variable is scoped for
       #
       # @param value [String, nil] The value of the environment variable. Will be encrypted at rest.
       #
       # @param request_options [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Braintrust::EnvVar]
+      # @return [Braintrust::Models::EnvVar]
       #
       # @see Braintrust::Models::EnvVarCreateParams
       def create(params)
@@ -40,7 +40,7 @@ module Braintrust
       #
       # @param request_options [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Braintrust::EnvVar]
+      # @return [Braintrust::Models::EnvVar]
       #
       # @see Braintrust::Models::EnvVarRetrieveParams
       def retrieve(env_var_id, params = {})
@@ -66,7 +66,7 @@ module Braintrust
       #
       # @param request_options [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Braintrust::EnvVar]
+      # @return [Braintrust::Models::EnvVar]
       #
       # @see Braintrust::Models::EnvVarUpdateParams
       def update(env_var_id, params)
@@ -96,7 +96,7 @@ module Braintrust
       #
       # @param object_id_ [String] The id of the object the environment variable is scoped for
       #
-      # @param object_type [Symbol, Braintrust::EnvVarObjectType] The type of the object the environment variable is scoped for
+      # @param object_type [Symbol, Braintrust::Models::EnvVarObjectType] The type of the object the environment variable is scoped for
       #
       # @param request_options [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil]
       #
@@ -122,7 +122,7 @@ module Braintrust
       #
       # @param request_options [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Braintrust::EnvVar]
+      # @return [Braintrust::Models::EnvVar]
       #
       # @see Braintrust::Models::EnvVarDeleteParams
       def delete(env_var_id, params = {})
@@ -144,13 +144,13 @@ module Braintrust
       #
       # @param object_id_ [String] The id of the object the environment variable is scoped for
       #
-      # @param object_type [Symbol, Braintrust::EnvVarReplaceParams::ObjectType] The type of the object the environment variable is scoped for
+      # @param object_type [Symbol, Braintrust::Models::EnvVarReplaceParams::ObjectType] The type of the object the environment variable is scoped for
       #
       # @param value [String, nil] The value of the environment variable. Will be encrypted at rest.
       #
       # @param request_options [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Braintrust::EnvVar]
+      # @return [Braintrust::Models::EnvVar]
       #
       # @see Braintrust::Models::EnvVarReplaceParams
       def replace(params)

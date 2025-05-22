@@ -14,7 +14,7 @@ module Braintrust
       #
       # @param request_options [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Braintrust::Organization]
+      # @return [Braintrust::Models::Organization]
       #
       # @see Braintrust::Models::OrganizationRetrieveParams
       def retrieve(organization_id, params = {})
@@ -46,7 +46,7 @@ module Braintrust
       #
       # @param request_options [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Braintrust::Organization]
+      # @return [Braintrust::Models::Organization]
       #
       # @see Braintrust::Models::OrganizationUpdateParams
       def update(organization_id, params = {})
@@ -80,7 +80,7 @@ module Braintrust
       #
       # @param request_options [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Braintrust::Internal::ListObjects<Braintrust::Organization>]
+      # @return [Braintrust::Internal::ListObjects<Braintrust::Models::Organization>]
       #
       # @see Braintrust::Models::OrganizationListParams
       def list(params = {})
@@ -103,7 +103,7 @@ module Braintrust
       #
       # @param request_options [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Braintrust::Organization]
+      # @return [Braintrust::Models::Organization]
       #
       # @see Braintrust::Models::OrganizationDeleteParams
       def delete(organization_id, params = {})

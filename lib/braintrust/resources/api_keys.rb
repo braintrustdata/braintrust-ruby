@@ -17,7 +17,7 @@ module Braintrust
       #
       # @param request_options [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Braintrust::CreateAPIKeyOutput]
+      # @return [Braintrust::Models::CreateAPIKeyOutput]
       #
       # @see Braintrust::Models::APIKeyCreateParams
       def create(params)
@@ -39,7 +39,7 @@ module Braintrust
       #
       # @param request_options [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Braintrust::APIKey]
+      # @return [Braintrust::Models::APIKey]
       #
       # @see Braintrust::Models::APIKeyRetrieveParams
       def retrieve(api_key_id, params = {})
@@ -73,7 +73,7 @@ module Braintrust
       #
       # @param request_options [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Braintrust::Internal::ListObjects<Braintrust::APIKey>]
+      # @return [Braintrust::Internal::ListObjects<Braintrust::Models::APIKey>]
       #
       # @see Braintrust::Models::APIKeyListParams
       def list(params = {})
@@ -96,7 +96,7 @@ module Braintrust
       #
       # @param request_options [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Braintrust::APIKey]
+      # @return [Braintrust::Models::APIKey]
       #
       # @see Braintrust::Models::APIKeyDeleteParams
       def delete(api_key_id, params = {})

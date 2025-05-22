@@ -11,11 +11,11 @@ module Braintrust
         # @!attribute events
         #   A list of project logs events to insert
         #
-        #   @return [Array<Braintrust::InsertProjectLogsEvent>]
+        #   @return [Array<Braintrust::Models::InsertProjectLogsEvent>]
         required :events, -> { Braintrust::Internal::Type::ArrayOf[Braintrust::InsertProjectLogsEvent] }
 
         # @!method initialize(events:, request_options: {})
-        #   @param events [Array<Braintrust::InsertProjectLogsEvent>] A list of project logs events to insert
+        #   @param events [Array<Braintrust::Models::InsertProjectLogsEvent>] A list of project logs events to insert
         #
         #   @param request_options [Braintrust::RequestOptions, Hash{Symbol=>Object}]
       end

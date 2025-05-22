@@ -6,6 +6,8 @@ module Braintrust
       attr_accessor total_records: Integer
 
       def initialize: (total_records: Integer) -> void
+
+      def to_hash: -> { total_records: Integer }
     end
   end
 end
