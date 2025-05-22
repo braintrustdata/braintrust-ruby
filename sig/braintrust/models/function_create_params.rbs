@@ -53,6 +53,20 @@ module Braintrust
         ?request_options: Braintrust::request_opts
       ) -> void
 
+      def to_hash: -> {
+        function_data: Braintrust::Models::FunctionCreateParams::function_data,
+        name: String,
+        project_id: String,
+        slug: String,
+        description: String?,
+        function_schema: Braintrust::FunctionCreateParams::FunctionSchema?,
+        function_type: Braintrust::Models::FunctionCreateParams::function_type?,
+        origin: Braintrust::FunctionCreateParams::Origin?,
+        prompt_data: Braintrust::PromptData?,
+        tags: ::Array[String]?,
+        request_options: Braintrust::RequestOptions
+      }
+
       type function_data =
         Braintrust::FunctionCreateParams::FunctionData::Prompt
         | Braintrust::FunctionCreateParams::FunctionData::Code
@@ -63,15 +77,19 @@ module Braintrust
 
         type prompt =
           {
-            type: Braintrust::FunctionCreateParams::FunctionData::Prompt::type_
+            type: Braintrust::Models::FunctionCreateParams::FunctionData::Prompt::type_
           }
 
         class Prompt < Braintrust::Internal::Type::BaseModel
-          attr_accessor type: Braintrust::FunctionCreateParams::FunctionData::Prompt::type_
+          attr_accessor type: Braintrust::Models::FunctionCreateParams::FunctionData::Prompt::type_
 
           def initialize: (
-            type: Braintrust::FunctionCreateParams::FunctionData::Prompt::type_
+            type: Braintrust::Models::FunctionCreateParams::FunctionData::Prompt::type_
           ) -> void
+
+          def to_hash: -> {
+            type: Braintrust::Models::FunctionCreateParams::FunctionData::Prompt::type_
+          }
 
           type type_ = :prompt
 
@@ -80,25 +98,30 @@ module Braintrust
 
             PROMPT: :prompt
 
-            def self?.values: -> ::Array[Braintrust::FunctionCreateParams::FunctionData::Prompt::type_]
+            def self?.values: -> ::Array[Braintrust::Models::FunctionCreateParams::FunctionData::Prompt::type_]
           end
         end
 
         type code =
           {
-            data: Braintrust::FunctionCreateParams::FunctionData::Code::data,
-            type: Braintrust::FunctionCreateParams::FunctionData::Code::type_
+            data: Braintrust::Models::FunctionCreateParams::FunctionData::Code::data,
+            type: Braintrust::Models::FunctionCreateParams::FunctionData::Code::type_
           }
 
         class Code < Braintrust::Internal::Type::BaseModel
-          attr_accessor data: Braintrust::FunctionCreateParams::FunctionData::Code::data
+          attr_accessor data: Braintrust::Models::FunctionCreateParams::FunctionData::Code::data
 
-          attr_accessor type: Braintrust::FunctionCreateParams::FunctionData::Code::type_
+          attr_accessor type: Braintrust::Models::FunctionCreateParams::FunctionData::Code::type_
 
           def initialize: (
-            data: Braintrust::FunctionCreateParams::FunctionData::Code::data,
-            type: Braintrust::FunctionCreateParams::FunctionData::Code::type_
+            data: Braintrust::Models::FunctionCreateParams::FunctionData::Code::data,
+            type: Braintrust::Models::FunctionCreateParams::FunctionData::Code::type_
           ) -> void
+
+          def to_hash: -> {
+            data: Braintrust::Models::FunctionCreateParams::FunctionData::Code::data,
+            type: Braintrust::Models::FunctionCreateParams::FunctionData::Code::type_
+          }
 
           type data =
             Braintrust::FunctionCreateParams::FunctionData::Code::Data::Bundle
@@ -109,19 +132,23 @@ module Braintrust
 
             type bundle =
               {
-                type: Braintrust::FunctionCreateParams::FunctionData::Code::Data::Bundle::type_
+                type: Braintrust::Models::FunctionCreateParams::FunctionData::Code::Data::Bundle::type_
               }
 
             class Bundle < Braintrust::Models::CodeBundle
-              def `type`: -> Braintrust::FunctionCreateParams::FunctionData::Code::Data::Bundle::type_
+              def `type`: -> Braintrust::Models::FunctionCreateParams::FunctionData::Code::Data::Bundle::type_
 
               def type=: (
-                Braintrust::FunctionCreateParams::FunctionData::Code::Data::Bundle::type_ _
-              ) -> Braintrust::FunctionCreateParams::FunctionData::Code::Data::Bundle::type_
+                Braintrust::Models::FunctionCreateParams::FunctionData::Code::Data::Bundle::type_ _
+              ) -> Braintrust::Models::FunctionCreateParams::FunctionData::Code::Data::Bundle::type_
 
               def initialize: (
-                type: Braintrust::FunctionCreateParams::FunctionData::Code::Data::Bundle::type_
+                type: Braintrust::Models::FunctionCreateParams::FunctionData::Code::Data::Bundle::type_
               ) -> void
+
+              def to_hash: -> {
+                type: Braintrust::Models::FunctionCreateParams::FunctionData::Code::Data::Bundle::type_
+              }
 
               type type_ = :bundle
 
@@ -130,7 +157,7 @@ module Braintrust
 
                 BUNDLE: :bundle
 
-                def self?.values: -> ::Array[Braintrust::FunctionCreateParams::FunctionData::Code::Data::Bundle::type_]
+                def self?.values: -> ::Array[Braintrust::Models::FunctionCreateParams::FunctionData::Code::Data::Bundle::type_]
               end
             end
 
@@ -138,7 +165,7 @@ module Braintrust
               {
                 code: String,
                 runtime_context: Braintrust::FunctionCreateParams::FunctionData::Code::Data::Inline::RuntimeContext,
-                type: Braintrust::FunctionCreateParams::FunctionData::Code::Data::Inline::type_
+                type: Braintrust::Models::FunctionCreateParams::FunctionData::Code::Data::Inline::type_
               }
 
             class Inline < Braintrust::Internal::Type::BaseModel
@@ -146,29 +173,40 @@ module Braintrust
 
               attr_accessor runtime_context: Braintrust::FunctionCreateParams::FunctionData::Code::Data::Inline::RuntimeContext
 
-              attr_accessor type: Braintrust::FunctionCreateParams::FunctionData::Code::Data::Inline::type_
+              attr_accessor type: Braintrust::Models::FunctionCreateParams::FunctionData::Code::Data::Inline::type_
 
               def initialize: (
                 code: String,
                 runtime_context: Braintrust::FunctionCreateParams::FunctionData::Code::Data::Inline::RuntimeContext,
-                type: Braintrust::FunctionCreateParams::FunctionData::Code::Data::Inline::type_
+                type: Braintrust::Models::FunctionCreateParams::FunctionData::Code::Data::Inline::type_
               ) -> void
+
+              def to_hash: -> {
+                code: String,
+                runtime_context: Braintrust::FunctionCreateParams::FunctionData::Code::Data::Inline::RuntimeContext,
+                type: Braintrust::Models::FunctionCreateParams::FunctionData::Code::Data::Inline::type_
+              }
 
               type runtime_context =
                 {
-                  runtime: Braintrust::FunctionCreateParams::FunctionData::Code::Data::Inline::RuntimeContext::runtime,
+                  runtime: Braintrust::Models::FunctionCreateParams::FunctionData::Code::Data::Inline::RuntimeContext::runtime,
                   version: String
                 }
 
               class RuntimeContext < Braintrust::Internal::Type::BaseModel
-                attr_accessor runtime: Braintrust::FunctionCreateParams::FunctionData::Code::Data::Inline::RuntimeContext::runtime
+                attr_accessor runtime: Braintrust::Models::FunctionCreateParams::FunctionData::Code::Data::Inline::RuntimeContext::runtime
 
                 attr_accessor version: String
 
                 def initialize: (
-                  runtime: Braintrust::FunctionCreateParams::FunctionData::Code::Data::Inline::RuntimeContext::runtime,
+                  runtime: Braintrust::Models::FunctionCreateParams::FunctionData::Code::Data::Inline::RuntimeContext::runtime,
                   version: String
                 ) -> void
+
+                def to_hash: -> {
+                  runtime: Braintrust::Models::FunctionCreateParams::FunctionData::Code::Data::Inline::RuntimeContext::runtime,
+                  version: String
+                }
 
                 type runtime = :node | :python
 
@@ -178,7 +216,7 @@ module Braintrust
                   NODE: :node
                   PYTHON: :python
 
-                  def self?.values: -> ::Array[Braintrust::FunctionCreateParams::FunctionData::Code::Data::Inline::RuntimeContext::runtime]
+                  def self?.values: -> ::Array[Braintrust::Models::FunctionCreateParams::FunctionData::Code::Data::Inline::RuntimeContext::runtime]
                 end
               end
 
@@ -189,11 +227,11 @@ module Braintrust
 
                 INLINE: :inline
 
-                def self?.values: -> ::Array[Braintrust::FunctionCreateParams::FunctionData::Code::Data::Inline::type_]
+                def self?.values: -> ::Array[Braintrust::Models::FunctionCreateParams::FunctionData::Code::Data::Inline::type_]
               end
             end
 
-            def self?.variants: -> ::Array[Braintrust::FunctionCreateParams::FunctionData::Code::data]
+            def self?.variants: -> ::Array[Braintrust::Models::FunctionCreateParams::FunctionData::Code::data]
           end
 
           type type_ = :code
@@ -203,25 +241,30 @@ module Braintrust
 
             CODE: :code
 
-            def self?.values: -> ::Array[Braintrust::FunctionCreateParams::FunctionData::Code::type_]
+            def self?.values: -> ::Array[Braintrust::Models::FunctionCreateParams::FunctionData::Code::type_]
           end
         end
 
         type global =
           {
             name: String,
-            type: Braintrust::FunctionCreateParams::FunctionData::Global::type_
+            type: Braintrust::Models::FunctionCreateParams::FunctionData::Global::type_
           }
 
         class Global < Braintrust::Internal::Type::BaseModel
           attr_accessor name: String
 
-          attr_accessor type: Braintrust::FunctionCreateParams::FunctionData::Global::type_
+          attr_accessor type: Braintrust::Models::FunctionCreateParams::FunctionData::Global::type_
 
           def initialize: (
             name: String,
-            type: Braintrust::FunctionCreateParams::FunctionData::Global::type_
+            type: Braintrust::Models::FunctionCreateParams::FunctionData::Global::type_
           ) -> void
+
+          def to_hash: -> {
+            name: String,
+            type: Braintrust::Models::FunctionCreateParams::FunctionData::Global::type_
+          }
 
           type type_ = :global
 
@@ -230,7 +273,7 @@ module Braintrust
 
             GLOBAL: :global
 
-            def self?.values: -> ::Array[Braintrust::FunctionCreateParams::FunctionData::Global::type_]
+            def self?.values: -> ::Array[Braintrust::Models::FunctionCreateParams::FunctionData::Global::type_]
           end
         end
 
@@ -249,6 +292,8 @@ module Braintrust
         def returns=: (top) -> top
 
         def initialize: (?parameters: top, ?returns: top) -> void
+
+        def to_hash: -> { parameters: top, returns: top }
       end
 
       type function_type = :llm | :scorer | :task | :tool
@@ -283,6 +328,12 @@ module Braintrust
           object_type: Braintrust::Models::acl_object_type,
           ?internal: bool?
         ) -> void
+
+        def to_hash: -> {
+          object_id_: String,
+          object_type: Braintrust::Models::acl_object_type,
+          internal: bool?
+        }
       end
     end
   end

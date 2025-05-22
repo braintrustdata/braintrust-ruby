@@ -20,7 +20,7 @@ module Braintrust
       #
       # @param request_options [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Braintrust::Project]
+      # @return [Braintrust::Models::Project]
       #
       # @see Braintrust::Models::ProjectCreateParams
       def create(params)
@@ -42,7 +42,7 @@ module Braintrust
       #
       # @param request_options [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Braintrust::Project]
+      # @return [Braintrust::Models::Project]
       #
       # @see Braintrust::Models::ProjectRetrieveParams
       def retrieve(project_id, params = {})
@@ -67,11 +67,11 @@ module Braintrust
       #
       # @param name [String, nil] Name of the project
       #
-      # @param settings [Braintrust::ProjectSettings, nil] Project settings. Patch operations replace all settings, so make sure you includ
+      # @param settings [Braintrust::Models::ProjectSettings, nil] Project settings. Patch operations replace all settings, so make sure you includ
       #
       # @param request_options [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Braintrust::Project]
+      # @return [Braintrust::Models::Project]
       #
       # @see Braintrust::Models::ProjectUpdateParams
       def update(project_id, params = {})
@@ -107,7 +107,7 @@ module Braintrust
       #
       # @param request_options [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Braintrust::Internal::ListObjects<Braintrust::Project>]
+      # @return [Braintrust::Internal::ListObjects<Braintrust::Models::Project>]
       #
       # @see Braintrust::Models::ProjectListParams
       def list(params = {})
@@ -130,7 +130,7 @@ module Braintrust
       #
       # @param request_options [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Braintrust::Project]
+      # @return [Braintrust::Models::Project]
       #
       # @see Braintrust::Models::ProjectDeleteParams
       def delete(project_id, params = {})

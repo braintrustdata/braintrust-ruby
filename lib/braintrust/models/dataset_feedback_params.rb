@@ -10,11 +10,11 @@ module Braintrust
       # @!attribute feedback
       #   A list of dataset feedback items
       #
-      #   @return [Array<Braintrust::FeedbackDatasetItem>]
+      #   @return [Array<Braintrust::Models::FeedbackDatasetItem>]
       required :feedback, -> { Braintrust::Internal::Type::ArrayOf[Braintrust::FeedbackDatasetItem] }
 
       # @!method initialize(feedback:, request_options: {})
-      #   @param feedback [Array<Braintrust::FeedbackDatasetItem>] A list of dataset feedback items
+      #   @param feedback [Array<Braintrust::Models::FeedbackDatasetItem>] A list of dataset feedback items
       #
       #   @param request_options [Braintrust::RequestOptions, Hash{Symbol=>Object}]
     end

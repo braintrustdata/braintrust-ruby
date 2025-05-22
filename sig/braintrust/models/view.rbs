@@ -6,7 +6,7 @@ module Braintrust
         name: String,
         object_id_: String,
         object_type: Braintrust::Models::acl_object_type,
-        view_type: Braintrust::View::view_type?,
+        view_type: Braintrust::Models::View::view_type?,
         created: Time?,
         deleted_at: Time?,
         options: Braintrust::ViewOptions?,
@@ -23,7 +23,7 @@ module Braintrust
 
       attr_accessor object_type: Braintrust::Models::acl_object_type
 
-      attr_accessor view_type: Braintrust::View::view_type?
+      attr_accessor view_type: Braintrust::Models::View::view_type?
 
       attr_accessor created: Time?
 
@@ -40,13 +40,26 @@ module Braintrust
         name: String,
         object_id_: String,
         object_type: Braintrust::Models::acl_object_type,
-        view_type: Braintrust::View::view_type?,
+        view_type: Braintrust::Models::View::view_type?,
         ?created: Time?,
         ?deleted_at: Time?,
         ?options: Braintrust::ViewOptions?,
         ?user_id: String?,
         ?view_data: Braintrust::ViewData?
       ) -> void
+
+      def to_hash: -> {
+        id: String,
+        name: String,
+        object_id_: String,
+        object_type: Braintrust::Models::acl_object_type,
+        view_type: Braintrust::Models::View::view_type?,
+        created: Time?,
+        deleted_at: Time?,
+        options: Braintrust::ViewOptions?,
+        user_id: String?,
+        view_data: Braintrust::ViewData?
+      }
 
       type view_type =
         :projects
@@ -76,7 +89,7 @@ module Braintrust
         SCORERS: :scorers
         LOGS: :logs
 
-        def self?.values: -> ::Array[Braintrust::View::view_type]
+        def self?.values: -> ::Array[Braintrust::Models::View::view_type]
       end
     end
   end

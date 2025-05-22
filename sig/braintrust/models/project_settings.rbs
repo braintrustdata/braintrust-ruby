@@ -20,12 +20,18 @@ module Braintrust
         ?span_field_order: ::Array[Braintrust::ProjectSettings::SpanFieldOrder]?
       ) -> void
 
+      def to_hash: -> {
+        baseline_experiment_id: String?,
+        comparison_key: String?,
+        span_field_order: ::Array[Braintrust::ProjectSettings::SpanFieldOrder]?
+      }
+
       type span_field_order =
         {
           column_id: String,
           object_type: String,
           position: String,
-          layout: Braintrust::ProjectSettings::SpanFieldOrder::layout?
+          layout: Braintrust::Models::ProjectSettings::SpanFieldOrder::layout?
         }
 
       class SpanFieldOrder < Braintrust::Internal::Type::BaseModel
@@ -35,14 +41,21 @@ module Braintrust
 
         attr_accessor position: String
 
-        attr_accessor layout: Braintrust::ProjectSettings::SpanFieldOrder::layout?
+        attr_accessor layout: Braintrust::Models::ProjectSettings::SpanFieldOrder::layout?
 
         def initialize: (
           column_id: String,
           object_type: String,
           position: String,
-          ?layout: Braintrust::ProjectSettings::SpanFieldOrder::layout?
+          ?layout: Braintrust::Models::ProjectSettings::SpanFieldOrder::layout?
         ) -> void
+
+        def to_hash: -> {
+          column_id: String,
+          object_type: String,
+          position: String,
+          layout: Braintrust::Models::ProjectSettings::SpanFieldOrder::layout?
+        }
 
         type layout = :full | :two_column
 
@@ -52,7 +65,7 @@ module Braintrust
           FULL: :full
           TWO_COLUMN: :two_column
 
-          def self?.values: -> ::Array[Braintrust::ProjectSettings::SpanFieldOrder::layout]
+          def self?.values: -> ::Array[Braintrust::Models::ProjectSettings::SpanFieldOrder::layout]
         end
       end
     end

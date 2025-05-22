@@ -18,7 +18,7 @@ module Braintrust
       # @!attribute span_field_order
       #   The order of the fields to display in the trace view
       #
-      #   @return [Array<Braintrust::ProjectSettings::SpanFieldOrder>, nil]
+      #   @return [Array<Braintrust::Models::ProjectSettings::SpanFieldOrder>, nil]
       optional :span_field_order,
                -> { Braintrust::Internal::Type::ArrayOf[Braintrust::ProjectSettings::SpanFieldOrder] },
                api_name: :spanFieldOrder,
@@ -29,7 +29,7 @@ module Braintrust
       #
       #   @param comparison_key [String, nil] The key used to join two experiments (defaults to `input`)
       #
-      #   @param span_field_order [Array<Braintrust::ProjectSettings::SpanFieldOrder>, nil] The order of the fields to display in the trace view
+      #   @param span_field_order [Array<Braintrust::Models::ProjectSettings::SpanFieldOrder>, nil] The order of the fields to display in the trace view
 
       class SpanFieldOrder < Braintrust::Internal::Type::BaseModel
         # @!attribute column_id
@@ -49,16 +49,16 @@ module Braintrust
 
         # @!attribute layout
         #
-        #   @return [Symbol, Braintrust::ProjectSettings::SpanFieldOrder::Layout, nil]
+        #   @return [Symbol, Braintrust::Models::ProjectSettings::SpanFieldOrder::Layout, nil]
         optional :layout, enum: -> { Braintrust::ProjectSettings::SpanFieldOrder::Layout }, nil?: true
 
         # @!method initialize(column_id:, object_type:, position:, layout: nil)
         #   @param column_id [String]
         #   @param object_type [String]
         #   @param position [String]
-        #   @param layout [Symbol, Braintrust::ProjectSettings::SpanFieldOrder::Layout, nil]
+        #   @param layout [Symbol, Braintrust::Models::ProjectSettings::SpanFieldOrder::Layout, nil]
 
-        # @see Braintrust::ProjectSettings::SpanFieldOrder#layout
+        # @see Braintrust::Models::ProjectSettings::SpanFieldOrder#layout
         module Layout
           extend Braintrust::Internal::Type::Enum
 

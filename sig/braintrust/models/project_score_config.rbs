@@ -19,6 +19,12 @@ module Braintrust
         ?multi_select: bool?,
         ?online: Braintrust::OnlineScoreConfig?
       ) -> void
+
+      def to_hash: -> {
+        destination: String?,
+        multi_select: bool?,
+        online: Braintrust::OnlineScoreConfig?
+      }
     end
   end
 end

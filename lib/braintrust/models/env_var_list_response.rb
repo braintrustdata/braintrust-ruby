@@ -7,11 +7,11 @@ module Braintrust
       # @!attribute objects
       #   A list of env_var objects
       #
-      #   @return [Array<Braintrust::EnvVar>]
+      #   @return [Array<Braintrust::Models::EnvVar>]
       required :objects, -> { Braintrust::Internal::Type::ArrayOf[Braintrust::EnvVar] }
 
       # @!method initialize(objects:)
-      #   @param objects [Array<Braintrust::EnvVar>] A list of env_var objects
+      #   @param objects [Array<Braintrust::Models::EnvVar>] A list of env_var objects
     end
   end
 end

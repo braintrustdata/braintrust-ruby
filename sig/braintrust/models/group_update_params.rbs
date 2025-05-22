@@ -36,6 +36,16 @@ module Braintrust
         ?remove_member_users: ::Array[String]?,
         ?request_options: Braintrust::request_opts
       ) -> void
+
+      def to_hash: -> {
+        add_member_groups: ::Array[String]?,
+        add_member_users: ::Array[String]?,
+        description: String?,
+        name: String?,
+        remove_member_groups: ::Array[String]?,
+        remove_member_users: ::Array[String]?,
+        request_options: Braintrust::RequestOptions
+      }
     end
   end
 end

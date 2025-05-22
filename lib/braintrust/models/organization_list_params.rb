@@ -69,7 +69,7 @@ module Braintrust
 
         variant String
 
-        variant -> { Braintrust::OrganizationListParams::IDs::StringArray }
+        variant -> { Braintrust::Models::OrganizationListParams::IDs::StringArray }
 
         # @!method self.variants
         #   @return [Array(String, Array<String>)]

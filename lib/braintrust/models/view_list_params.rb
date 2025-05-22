@@ -16,7 +16,7 @@ module Braintrust
       # @!attribute object_type
       #   The object type that the ACL applies to
       #
-      #   @return [Symbol, Braintrust::ACLObjectType]
+      #   @return [Symbol, Braintrust::Models::ACLObjectType]
       required :object_type, enum: -> { Braintrust::ACLObjectType }
 
       # @!attribute ending_before
@@ -61,7 +61,7 @@ module Braintrust
       # @!attribute view_type
       #   Type of table that the view corresponds to.
       #
-      #   @return [Symbol, Braintrust::ViewType, nil]
+      #   @return [Symbol, Braintrust::Models::ViewType, nil]
       optional :view_type, enum: -> { Braintrust::ViewType }, nil?: true
 
       # @!method initialize(object_id_:, object_type:, ending_before: nil, ids: nil, limit: nil, starting_after: nil, view_name: nil, view_type: nil, request_options: {})
@@ -70,7 +70,7 @@ module Braintrust
       #
       #   @param object_id_ [String] The id of the object the ACL applies to
       #
-      #   @param object_type [Symbol, Braintrust::ACLObjectType] The object type that the ACL applies to
+      #   @param object_type [Symbol, Braintrust::Models::ACLObjectType] The object type that the ACL applies to
       #
       #   @param ending_before [String] Pagination cursor id.
       #
@@ -82,7 +82,7 @@ module Braintrust
       #
       #   @param view_name [String] Name of the view to search for
       #
-      #   @param view_type [Symbol, Braintrust::ViewType, nil] Type of table that the view corresponds to.
+      #   @param view_type [Symbol, Braintrust::Models::ViewType, nil] Type of table that the view corresponds to.
       #
       #   @param request_options [Braintrust::RequestOptions, Hash{Symbol=>Object}]
 
@@ -93,7 +93,7 @@ module Braintrust
 
         variant String
 
-        variant -> { Braintrust::ViewListParams::IDs::StringArray }
+        variant -> { Braintrust::Models::ViewListParams::IDs::StringArray }
 
         # @!method self.variants
         #   @return [Array(String, Array<String>)]

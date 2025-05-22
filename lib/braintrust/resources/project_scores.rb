@@ -13,17 +13,17 @@ module Braintrust
       #
       # @param project_id [String] Unique identifier for the project that the project score belongs under
       #
-      # @param score_type [Symbol, Braintrust::ProjectScoreType] The type of the configured score
+      # @param score_type [Symbol, Braintrust::Models::ProjectScoreType] The type of the configured score
       #
-      # @param categories [Array<Braintrust::ProjectScoreCategory>, Hash{Symbol=>Float}, Array<String>, nil] For categorical-type project scores, the list of all categories
+      # @param categories [Array<Braintrust::Models::ProjectScoreCategory>, Hash{Symbol=>Float}, Array<String>, nil] For categorical-type project scores, the list of all categories
       #
-      # @param config [Braintrust::ProjectScoreConfig, nil]
+      # @param config [Braintrust::Models::ProjectScoreConfig, nil]
       #
       # @param description [String, nil] Textual description of the project score
       #
       # @param request_options [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Braintrust::ProjectScore]
+      # @return [Braintrust::Models::ProjectScore]
       #
       # @see Braintrust::Models::ProjectScoreCreateParams
       def create(params)
@@ -45,7 +45,7 @@ module Braintrust
       #
       # @param request_options [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Braintrust::ProjectScore]
+      # @return [Braintrust::Models::ProjectScore]
       #
       # @see Braintrust::Models::ProjectScoreRetrieveParams
       def retrieve(project_score_id, params = {})
@@ -65,19 +65,19 @@ module Braintrust
       #
       # @param project_score_id [String] ProjectScore id
       #
-      # @param categories [Array<Braintrust::ProjectScoreCategory>, Hash{Symbol=>Float}, Array<String>, nil] For categorical-type project scores, the list of all categories
+      # @param categories [Array<Braintrust::Models::ProjectScoreCategory>, Hash{Symbol=>Float}, Array<String>, nil] For categorical-type project scores, the list of all categories
       #
-      # @param config [Braintrust::ProjectScoreConfig, nil]
+      # @param config [Braintrust::Models::ProjectScoreConfig, nil]
       #
       # @param description [String, nil] Textual description of the project score
       #
       # @param name [String, nil] Name of the project score
       #
-      # @param score_type [Symbol, Braintrust::ProjectScoreType, nil] The type of the configured score
+      # @param score_type [Symbol, Braintrust::Models::ProjectScoreType, nil] The type of the configured score
       #
       # @param request_options [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Braintrust::ProjectScore]
+      # @return [Braintrust::Models::ProjectScore]
       #
       # @see Braintrust::Models::ProjectScoreUpdateParams
       def update(project_score_id, params = {})
@@ -113,13 +113,13 @@ module Braintrust
       #
       # @param project_score_name [String] Name of the project_score to search for
       #
-      # @param score_type [Symbol, Braintrust::ProjectScoreType, Array<Symbol, Braintrust::ProjectScoreType>] The type of the configured score
+      # @param score_type [Symbol, Braintrust::Models::ProjectScoreType, Array<Symbol, Braintrust::Models::ProjectScoreType>] The type of the configured score
       #
       # @param starting_after [String] Pagination cursor id.
       #
       # @param request_options [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Braintrust::Internal::ListObjects<Braintrust::ProjectScore>]
+      # @return [Braintrust::Internal::ListObjects<Braintrust::Models::ProjectScore>]
       #
       # @see Braintrust::Models::ProjectScoreListParams
       def list(params = {})
@@ -142,7 +142,7 @@ module Braintrust
       #
       # @param request_options [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Braintrust::ProjectScore]
+      # @return [Braintrust::Models::ProjectScore]
       #
       # @see Braintrust::Models::ProjectScoreDeleteParams
       def delete(project_score_id, params = {})
@@ -164,17 +164,17 @@ module Braintrust
       #
       # @param project_id [String] Unique identifier for the project that the project score belongs under
       #
-      # @param score_type [Symbol, Braintrust::ProjectScoreType] The type of the configured score
+      # @param score_type [Symbol, Braintrust::Models::ProjectScoreType] The type of the configured score
       #
-      # @param categories [Array<Braintrust::ProjectScoreCategory>, Hash{Symbol=>Float}, Array<String>, nil] For categorical-type project scores, the list of all categories
+      # @param categories [Array<Braintrust::Models::ProjectScoreCategory>, Hash{Symbol=>Float}, Array<String>, nil] For categorical-type project scores, the list of all categories
       #
-      # @param config [Braintrust::ProjectScoreConfig, nil]
+      # @param config [Braintrust::Models::ProjectScoreConfig, nil]
       #
       # @param description [String, nil] Textual description of the project score
       #
       # @param request_options [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Braintrust::ProjectScore]
+      # @return [Braintrust::Models::ProjectScore]
       #
       # @see Braintrust::Models::ProjectScoreReplaceParams
       def replace(params)

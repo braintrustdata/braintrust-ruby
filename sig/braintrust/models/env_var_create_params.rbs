@@ -29,6 +29,14 @@ module Braintrust
         ?request_options: Braintrust::request_opts
       ) -> void
 
+      def to_hash: -> {
+        name: String,
+        object_id_: String,
+        object_type: Braintrust::Models::EnvVarCreateParams::object_type,
+        value: String?,
+        request_options: Braintrust::RequestOptions
+      }
+
       type object_type = :organization | :project | :function
 
       module ObjectType

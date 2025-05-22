@@ -12,21 +12,21 @@ module Braintrust
       #
       # @param object_id_ [String] The id of the object the view applies to
       #
-      # @param object_type [Symbol, Braintrust::ACLObjectType] The object type that the ACL applies to
+      # @param object_type [Symbol, Braintrust::Models::ACLObjectType] The object type that the ACL applies to
       #
-      # @param view_type [Symbol, Braintrust::ViewCreateParams::ViewType, nil] Type of table that the view corresponds to.
+      # @param view_type [Symbol, Braintrust::Models::ViewCreateParams::ViewType, nil] Type of table that the view corresponds to.
       #
       # @param deleted_at [Time, nil] Date of role deletion, or null if the role is still active
       #
-      # @param options [Braintrust::ViewOptions, nil] Options for the view in the app
+      # @param options [Braintrust::Models::ViewOptions, nil] Options for the view in the app
       #
       # @param user_id [String, nil] Identifies the user who created the view
       #
-      # @param view_data [Braintrust::ViewData, nil] The view definition
+      # @param view_data [Braintrust::Models::ViewData, nil] The view definition
       #
       # @param request_options [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Braintrust::View]
+      # @return [Braintrust::Models::View]
       #
       # @see Braintrust::Models::ViewCreateParams
       def create(params)
@@ -48,11 +48,11 @@ module Braintrust
       #
       # @param object_id_ [String] The id of the object the ACL applies to
       #
-      # @param object_type [Symbol, Braintrust::ACLObjectType] The object type that the ACL applies to
+      # @param object_type [Symbol, Braintrust::Models::ACLObjectType] The object type that the ACL applies to
       #
       # @param request_options [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Braintrust::View]
+      # @return [Braintrust::Models::View]
       #
       # @see Braintrust::Models::ViewRetrieveParams
       def retrieve(view_id, params)
@@ -76,21 +76,21 @@ module Braintrust
       #
       # @param object_id_ [String] The id of the object the view applies to
       #
-      # @param object_type [Symbol, Braintrust::ACLObjectType] The object type that the ACL applies to
+      # @param object_type [Symbol, Braintrust::Models::ACLObjectType] The object type that the ACL applies to
       #
       # @param name [String, nil] Name of the view
       #
-      # @param options [Braintrust::ViewOptions, nil] Options for the view in the app
+      # @param options [Braintrust::Models::ViewOptions, nil] Options for the view in the app
       #
       # @param user_id [String, nil] Identifies the user who created the view
       #
-      # @param view_data [Braintrust::ViewData, nil] The view definition
+      # @param view_data [Braintrust::Models::ViewData, nil] The view definition
       #
-      # @param view_type [Symbol, Braintrust::ViewUpdateParams::ViewType, nil] Type of table that the view corresponds to.
+      # @param view_type [Symbol, Braintrust::Models::ViewUpdateParams::ViewType, nil] Type of table that the view corresponds to.
       #
       # @param request_options [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Braintrust::View]
+      # @return [Braintrust::Models::View]
       #
       # @see Braintrust::Models::ViewUpdateParams
       def update(view_id, params)
@@ -114,7 +114,7 @@ module Braintrust
       #
       # @param object_id_ [String] The id of the object the ACL applies to
       #
-      # @param object_type [Symbol, Braintrust::ACLObjectType] The object type that the ACL applies to
+      # @param object_type [Symbol, Braintrust::Models::ACLObjectType] The object type that the ACL applies to
       #
       # @param ending_before [String] Pagination cursor id.
       #
@@ -126,11 +126,11 @@ module Braintrust
       #
       # @param view_name [String] Name of the view to search for
       #
-      # @param view_type [Symbol, Braintrust::ViewType, nil] Type of table that the view corresponds to.
+      # @param view_type [Symbol, Braintrust::Models::ViewType, nil] Type of table that the view corresponds to.
       #
       # @param request_options [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Braintrust::Internal::ListObjects<Braintrust::View>]
+      # @return [Braintrust::Internal::ListObjects<Braintrust::Models::View>]
       #
       # @see Braintrust::Models::ViewListParams
       def list(params)
@@ -153,11 +153,11 @@ module Braintrust
       #
       # @param object_id_ [String] The id of the object the view applies to
       #
-      # @param object_type [Symbol, Braintrust::ACLObjectType] The object type that the ACL applies to
+      # @param object_type [Symbol, Braintrust::Models::ACLObjectType] The object type that the ACL applies to
       #
       # @param request_options [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Braintrust::View]
+      # @return [Braintrust::Models::View]
       #
       # @see Braintrust::Models::ViewDeleteParams
       def delete(view_id, params)
@@ -181,21 +181,21 @@ module Braintrust
       #
       # @param object_id_ [String] The id of the object the view applies to
       #
-      # @param object_type [Symbol, Braintrust::ACLObjectType] The object type that the ACL applies to
+      # @param object_type [Symbol, Braintrust::Models::ACLObjectType] The object type that the ACL applies to
       #
-      # @param view_type [Symbol, Braintrust::ViewReplaceParams::ViewType, nil] Type of table that the view corresponds to.
+      # @param view_type [Symbol, Braintrust::Models::ViewReplaceParams::ViewType, nil] Type of table that the view corresponds to.
       #
       # @param deleted_at [Time, nil] Date of role deletion, or null if the role is still active
       #
-      # @param options [Braintrust::ViewOptions, nil] Options for the view in the app
+      # @param options [Braintrust::Models::ViewOptions, nil] Options for the view in the app
       #
       # @param user_id [String, nil] Identifies the user who created the view
       #
-      # @param view_data [Braintrust::ViewData, nil] The view definition
+      # @param view_data [Braintrust::Models::ViewData, nil] The view definition
       #
       # @param request_options [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Braintrust::View]
+      # @return [Braintrust::Models::View]
       #
       # @see Braintrust::Models::ViewReplaceParams
       def replace(params)

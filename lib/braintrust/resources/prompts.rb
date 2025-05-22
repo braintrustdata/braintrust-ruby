@@ -17,15 +17,15 @@ module Braintrust
       #
       # @param description [String, nil] Textual description of the prompt
       #
-      # @param function_type [Symbol, Braintrust::PromptCreateParams::FunctionType, nil]
+      # @param function_type [Symbol, Braintrust::Models::PromptCreateParams::FunctionType, nil]
       #
-      # @param prompt_data [Braintrust::PromptData, nil] The prompt, model, and its parameters
+      # @param prompt_data [Braintrust::Models::PromptData, nil] The prompt, model, and its parameters
       #
       # @param tags [Array<String>, nil] A list of tags for the prompt
       #
       # @param request_options [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Braintrust::Prompt]
+      # @return [Braintrust::Models::Prompt]
       #
       # @see Braintrust::Models::PromptCreateParams
       def create(params)
@@ -47,7 +47,7 @@ module Braintrust
       #
       # @param request_options [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Braintrust::Prompt]
+      # @return [Braintrust::Models::Prompt]
       #
       # @see Braintrust::Models::PromptRetrieveParams
       def retrieve(prompt_id, params = {})
@@ -71,7 +71,7 @@ module Braintrust
       #
       # @param name [String, nil] Name of the prompt
       #
-      # @param prompt_data [Braintrust::PromptData, nil] The prompt, model, and its parameters
+      # @param prompt_data [Braintrust::Models::PromptData, nil] The prompt, model, and its parameters
       #
       # @param slug [String, nil] Unique identifier for the prompt
       #
@@ -79,7 +79,7 @@ module Braintrust
       #
       # @param request_options [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Braintrust::Prompt]
+      # @return [Braintrust::Models::Prompt]
       #
       # @see Braintrust::Models::PromptUpdateParams
       def update(prompt_id, params = {})
@@ -123,7 +123,7 @@ module Braintrust
       #
       # @param request_options [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Braintrust::Internal::ListObjects<Braintrust::Prompt>]
+      # @return [Braintrust::Internal::ListObjects<Braintrust::Models::Prompt>]
       #
       # @see Braintrust::Models::PromptListParams
       def list(params = {})
@@ -146,7 +146,7 @@ module Braintrust
       #
       # @param request_options [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Braintrust::Prompt]
+      # @return [Braintrust::Models::Prompt]
       #
       # @see Braintrust::Models::PromptDeleteParams
       def delete(prompt_id, params = {})
@@ -172,15 +172,15 @@ module Braintrust
       #
       # @param description [String, nil] Textual description of the prompt
       #
-      # @param function_type [Symbol, Braintrust::PromptReplaceParams::FunctionType, nil]
+      # @param function_type [Symbol, Braintrust::Models::PromptReplaceParams::FunctionType, nil]
       #
-      # @param prompt_data [Braintrust::PromptData, nil] The prompt, model, and its parameters
+      # @param prompt_data [Braintrust::Models::PromptData, nil] The prompt, model, and its parameters
       #
       # @param tags [Array<String>, nil] A list of tags for the prompt
       #
       # @param request_options [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Braintrust::Prompt]
+      # @return [Braintrust::Models::Prompt]
       #
       # @see Braintrust::Models::PromptReplaceParams
       def replace(params)

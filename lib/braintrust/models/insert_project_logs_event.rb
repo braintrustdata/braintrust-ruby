@@ -82,7 +82,7 @@ module Braintrust
       #   `caller_*` attributes to track the location in code which produced the project
       #   logs event
       #
-      #   @return [Braintrust::InsertProjectLogsEvent::Context, nil]
+      #   @return [Braintrust::Models::InsertProjectLogsEvent::Context, nil]
       optional :context, -> { Braintrust::InsertProjectLogsEvent::Context }, nil?: true
 
       # @!attribute created
@@ -122,7 +122,7 @@ module Braintrust
       #   anything else that would be useful to slice/dice later. The values in `metadata`
       #   can be any JSON-serializable type, but its keys must be strings
       #
-      #   @return [Braintrust::InsertProjectLogsEvent::Metadata, nil]
+      #   @return [Braintrust::Models::InsertProjectLogsEvent::Metadata, nil]
       optional :metadata, -> { Braintrust::InsertProjectLogsEvent::Metadata }, nil?: true
 
       # @!attribute metrics
@@ -130,13 +130,13 @@ module Braintrust
       #   produced the project logs event. Use "start" and "end" to track the time span
       #   over which the project logs event was produced
       #
-      #   @return [Braintrust::InsertProjectLogsEvent::Metrics, nil]
+      #   @return [Braintrust::Models::InsertProjectLogsEvent::Metrics, nil]
       optional :metrics, -> { Braintrust::InsertProjectLogsEvent::Metrics }, nil?: true
 
       # @!attribute origin
       #   Indicates the event was copied from another object.
       #
-      #   @return [Braintrust::ObjectReference, nil]
+      #   @return [Braintrust::Models::ObjectReference, nil]
       optional :origin, -> { Braintrust::ObjectReference }, nil?: true
 
       # @!attribute output
@@ -185,7 +185,7 @@ module Braintrust
       # @!attribute span_attributes
       #   Human-identifying attributes of the span, such as name, type, etc.
       #
-      #   @return [Braintrust::SpanAttributes, nil]
+      #   @return [Braintrust::Models::SpanAttributes, nil]
       optional :span_attributes, -> { Braintrust::SpanAttributes }, nil?: true
 
       # @!attribute span_id
@@ -236,7 +236,7 @@ module Braintrust
 
       # @!method initialize(id: nil, _is_merge: nil, _merge_paths: nil, _object_delete: nil, _parent_id: nil, context: nil, created: nil, error: nil, expected: nil, input: nil, metadata: nil, metrics: nil, origin: nil, output: nil, root_span_id: nil, scores: nil, span_attributes: nil, span_id: nil, span_parents: nil, tags: nil)
       #   Some parameter documentations has been truncated, see
-      #   {Braintrust::InsertProjectLogsEvent} for more details.
+      #   {Braintrust::Models::InsertProjectLogsEvent} for more details.
       #
       #   A project logs event
       #
@@ -251,7 +251,7 @@ module Braintrust
       #
       #   @param _parent_id [String, nil] DEPRECATED: The `_parent_id` field is deprecated and should not be used. Support
       #
-      #   @param context [Braintrust::InsertProjectLogsEvent::Context, nil] Context is additional information about the code that produced the project logs
+      #   @param context [Braintrust::Models::InsertProjectLogsEvent::Context, nil] Context is additional information about the code that produced the project logs
       #
       #   @param created [Time, nil] The timestamp the project logs event was created
       #
@@ -261,11 +261,11 @@ module Braintrust
       #
       #   @param input [Object] The arguments that uniquely define a user input (an arbitrary, JSON serializable
       #
-      #   @param metadata [Braintrust::InsertProjectLogsEvent::Metadata, nil] A dictionary with additional data about the test example, model outputs, or just
+      #   @param metadata [Braintrust::Models::InsertProjectLogsEvent::Metadata, nil] A dictionary with additional data about the test example, model outputs, or just
       #
-      #   @param metrics [Braintrust::InsertProjectLogsEvent::Metrics, nil] Metrics are numerical measurements tracking the execution of the code that produ
+      #   @param metrics [Braintrust::Models::InsertProjectLogsEvent::Metrics, nil] Metrics are numerical measurements tracking the execution of the code that produ
       #
-      #   @param origin [Braintrust::ObjectReference, nil] Indicates the event was copied from another object.
+      #   @param origin [Braintrust::Models::ObjectReference, nil] Indicates the event was copied from another object.
       #
       #   @param output [Object] The output of your application, including post-processing (an arbitrary, JSON se
       #
@@ -273,7 +273,7 @@ module Braintrust
       #
       #   @param scores [Hash{Symbol=>Float, nil}, nil] A dictionary of numeric values (between 0 and 1) to log. The scores should give
       #
-      #   @param span_attributes [Braintrust::SpanAttributes, nil] Human-identifying attributes of the span, such as name, type, etc.
+      #   @param span_attributes [Braintrust::Models::SpanAttributes, nil] Human-identifying attributes of the span, such as name, type, etc.
       #
       #   @param span_id [String, nil] Use `span_id`, `root_span_id`, and `span_parents` instead of `_parent_id`, which
       #
@@ -281,7 +281,7 @@ module Braintrust
       #
       #   @param tags [Array<String>, nil] A list of tags to log
 
-      # @see Braintrust::InsertProjectLogsEvent#context
+      # @see Braintrust::Models::InsertProjectLogsEvent#context
       class Context < Braintrust::Internal::Type::BaseModel
         # @!attribute caller_filename
         #   Name of the file in code where the project logs event was created
@@ -314,7 +314,7 @@ module Braintrust
         #   @param caller_lineno [Integer, nil] Line of code where the project logs event was created
       end
 
-      # @see Braintrust::InsertProjectLogsEvent#metadata
+      # @see Braintrust::Models::InsertProjectLogsEvent#metadata
       class Metadata < Braintrust::Internal::Type::BaseModel
         # @!attribute model
         #   The model used for this example
@@ -332,7 +332,7 @@ module Braintrust
         #   @param model [String, nil] The model used for this example
       end
 
-      # @see Braintrust::InsertProjectLogsEvent#metrics
+      # @see Braintrust::Models::InsertProjectLogsEvent#metrics
       class Metrics < Braintrust::Internal::Type::BaseModel
         # @!attribute caller_filename
         #   This metric is deprecated
@@ -388,7 +388,7 @@ module Braintrust
 
         # @!method initialize(caller_filename: nil, caller_functionname: nil, caller_lineno: nil, completion_tokens: nil, end_: nil, prompt_tokens: nil, start: nil, tokens: nil)
         #   Some parameter documentations has been truncated, see
-        #   {Braintrust::InsertProjectLogsEvent::Metrics} for more details.
+        #   {Braintrust::Models::InsertProjectLogsEvent::Metrics} for more details.
         #
         #   Metrics are numerical measurements tracking the execution of the code that
         #   produced the project logs event. Use "start" and "end" to track the time span

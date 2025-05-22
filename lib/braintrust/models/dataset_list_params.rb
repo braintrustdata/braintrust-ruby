@@ -93,7 +93,7 @@ module Braintrust
 
         variant String
 
-        variant -> { Braintrust::DatasetListParams::IDs::StringArray }
+        variant -> { Braintrust::Models::DatasetListParams::IDs::StringArray }
 
         # @!method self.variants
         #   @return [Array(String, Array<String>)]

@@ -63,6 +63,23 @@ module Braintrust
         ?repo_info: Braintrust::RepoInfo?,
         ?user_id: String?
       ) -> void
+
+      def to_hash: -> {
+        id: String,
+        name: String,
+        project_id: String,
+        public: bool,
+        base_exp_id: String?,
+        commit: String?,
+        created: Time?,
+        dataset_id: String?,
+        dataset_version: String?,
+        deleted_at: Time?,
+        description: String?,
+        metadata: ::Hash[Symbol, top?]?,
+        repo_info: Braintrust::RepoInfo?,
+        user_id: String?
+      }
     end
   end
 end

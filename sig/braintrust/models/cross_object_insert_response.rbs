@@ -19,6 +19,12 @@ module Braintrust
         ?experiment: ::Hash[Symbol, Braintrust::InsertEventsResponse]?,
         ?project_logs: ::Hash[Symbol, Braintrust::InsertEventsResponse]?
       ) -> void
+
+      def to_hash: -> {
+        dataset: ::Hash[Symbol, Braintrust::InsertEventsResponse]?,
+        experiment: ::Hash[Symbol, Braintrust::InsertEventsResponse]?,
+        project_logs: ::Hash[Symbol, Braintrust::InsertEventsResponse]?
+      }
     end
   end
 end

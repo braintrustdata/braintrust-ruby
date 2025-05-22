@@ -77,7 +77,7 @@ module Braintrust
 
         variant String
 
-        variant -> { Braintrust::SpanIframeListParams::IDs::StringArray }
+        variant -> { Braintrust::Models::SpanIframeListParams::IDs::StringArray }
 
         # @!method self.variants
         #   @return [Array(String, Array<String>)]

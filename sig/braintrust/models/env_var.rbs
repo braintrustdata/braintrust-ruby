@@ -5,7 +5,7 @@ module Braintrust
         id: String,
         name: String,
         object_id_: String,
-        object_type: Braintrust::EnvVar::object_type,
+        object_type: Braintrust::Models::EnvVar::object_type,
         created: Time?,
         used: Time?
       }
@@ -17,7 +17,7 @@ module Braintrust
 
       attr_accessor object_id_: String
 
-      attr_accessor object_type: Braintrust::EnvVar::object_type
+      attr_accessor object_type: Braintrust::Models::EnvVar::object_type
 
       attr_accessor created: Time?
 
@@ -27,10 +27,19 @@ module Braintrust
         id: String,
         name: String,
         object_id_: String,
-        object_type: Braintrust::EnvVar::object_type,
+        object_type: Braintrust::Models::EnvVar::object_type,
         ?created: Time?,
         ?used: Time?
       ) -> void
+
+      def to_hash: -> {
+        id: String,
+        name: String,
+        object_id_: String,
+        object_type: Braintrust::Models::EnvVar::object_type,
+        created: Time?,
+        used: Time?
+      }
 
       type object_type = :organization | :project | :function
 
@@ -41,7 +50,7 @@ module Braintrust
         PROJECT: :project
         FUNCTION: :function
 
-        def self?.values: -> ::Array[Braintrust::EnvVar::object_type]
+        def self?.values: -> ::Array[Braintrust::Models::EnvVar::object_type]
       end
     end
   end

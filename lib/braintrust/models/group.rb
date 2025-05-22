@@ -63,8 +63,8 @@ module Braintrust
       optional :user_id, String, nil?: true
 
       # @!method initialize(id:, name:, org_id:, created: nil, deleted_at: nil, description: nil, member_groups: nil, member_users: nil, user_id: nil)
-      #   Some parameter documentations has been truncated, see {Braintrust::Group} for
-      #   more details.
+      #   Some parameter documentations has been truncated, see
+      #   {Braintrust::Models::Group} for more details.
       #
       #   A group is a collection of users which can be assigned an ACL
       #

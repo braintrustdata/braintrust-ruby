@@ -55,6 +55,18 @@ module Braintrust
         ?request_options: Braintrust::request_opts
       ) -> void
 
+      def to_hash: -> {
+        object_id_: String,
+        object_type: Braintrust::Models::acl_object_type,
+        ending_before: String,
+        ids: Braintrust::Models::ViewListParams::ids,
+        limit: Integer?,
+        starting_after: String,
+        view_name: String,
+        view_type: Braintrust::Models::view_type?,
+        request_options: Braintrust::RequestOptions
+      }
+
       type ids = String | ::Array[String]
 
       module IDs

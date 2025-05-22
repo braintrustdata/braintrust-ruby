@@ -44,7 +44,7 @@ module Braintrust
       # @!attribute source
       #   The source of the feedback. Must be one of "external" (default), "app", or "api"
       #
-      #   @return [Symbol, Braintrust::FeedbackProjectLogsItem::Source, nil]
+      #   @return [Symbol, Braintrust::Models::FeedbackProjectLogsItem::Source, nil]
       optional :source, enum: -> { Braintrust::FeedbackProjectLogsItem::Source }, nil?: true
 
       # @!attribute tags
@@ -55,7 +55,7 @@ module Braintrust
 
       # @!method initialize(id:, comment: nil, expected: nil, metadata: nil, scores: nil, source: nil, tags: nil)
       #   Some parameter documentations has been truncated, see
-      #   {Braintrust::FeedbackProjectLogsItem} for more details.
+      #   {Braintrust::Models::FeedbackProjectLogsItem} for more details.
       #
       #   @param id [String] The id of the project logs event to log feedback for. This is the row `id` retur
       #
@@ -67,13 +67,13 @@ module Braintrust
       #
       #   @param scores [Hash{Symbol=>Float, nil}, nil] A dictionary of numeric values (between 0 and 1) to log. These scores will be me
       #
-      #   @param source [Symbol, Braintrust::FeedbackProjectLogsItem::Source, nil] The source of the feedback. Must be one of "external" (default), "app", or "api"
+      #   @param source [Symbol, Braintrust::Models::FeedbackProjectLogsItem::Source, nil] The source of the feedback. Must be one of "external" (default), "app", or "api"
       #
       #   @param tags [Array<String>, nil] A list of tags to log
 
       # The source of the feedback. Must be one of "external" (default), "app", or "api"
       #
-      # @see Braintrust::FeedbackProjectLogsItem#source
+      # @see Braintrust::Models::FeedbackProjectLogsItem#source
       module Source
         extend Braintrust::Internal::Type::Enum
 

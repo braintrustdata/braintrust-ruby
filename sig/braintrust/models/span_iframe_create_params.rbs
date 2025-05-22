@@ -32,6 +32,15 @@ module Braintrust
         ?post_message: bool?,
         ?request_options: Braintrust::request_opts
       ) -> void
+
+      def to_hash: -> {
+        name: String,
+        project_id: String,
+        url: String,
+        description: String?,
+        post_message: bool?,
+        request_options: Braintrust::RequestOptions
+      }
     end
   end
 end

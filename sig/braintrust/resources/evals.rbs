@@ -4,7 +4,7 @@ module Braintrust
       def create: (
         data: Braintrust::Models::EvalCreateParams::data,
         project_id: String,
-        scores: ::Array[Braintrust::EvalCreateParams::score],
+        scores: ::Array[Braintrust::Models::EvalCreateParams::score],
         task: Braintrust::Models::EvalCreateParams::task,
         ?base_experiment_id: String?,
         ?base_experiment_name: String?,

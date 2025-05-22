@@ -27,6 +27,14 @@ module Braintrust
         project_url: String,
         ?data_summary: Braintrust::DataSummary?
       ) -> void
+
+      def to_hash: -> {
+        dataset_name: String,
+        dataset_url: String,
+        project_name: String,
+        project_url: String,
+        data_summary: Braintrust::DataSummary?
+      }
     end
   end
 end

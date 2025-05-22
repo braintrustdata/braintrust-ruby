@@ -5,7 +5,7 @@ module Braintrust
         id: String,
         _xact_id: String,
         created: Time,
-        log_id: Braintrust::ProjectLogsEvent::log_id,
+        log_id: Braintrust::Models::ProjectLogsEvent::log_id,
         org_id: String,
         project_id: String,
         root_span_id: String,
@@ -32,7 +32,7 @@ module Braintrust
 
       attr_accessor created: Time
 
-      attr_accessor log_id: Braintrust::ProjectLogsEvent::log_id
+      attr_accessor log_id: Braintrust::Models::ProjectLogsEvent::log_id
 
       attr_accessor org_id: String
 
@@ -80,7 +80,7 @@ module Braintrust
         id: String,
         _xact_id: String,
         created: Time,
-        log_id: Braintrust::ProjectLogsEvent::log_id,
+        log_id: Braintrust::Models::ProjectLogsEvent::log_id,
         org_id: String,
         project_id: String,
         root_span_id: String,
@@ -100,6 +100,30 @@ module Braintrust
         ?tags: ::Array[String]?
       ) -> void
 
+      def to_hash: -> {
+        id: String,
+        _xact_id: String,
+        created: Time,
+        log_id: Braintrust::Models::ProjectLogsEvent::log_id,
+        org_id: String,
+        project_id: String,
+        root_span_id: String,
+        span_id: String,
+        context: Braintrust::ProjectLogsEvent::Context?,
+        error: top,
+        expected: top,
+        input: top,
+        is_root: bool?,
+        metadata: Braintrust::ProjectLogsEvent::Metadata?,
+        metrics: Braintrust::ProjectLogsEvent::Metrics?,
+        origin: Braintrust::ObjectReference?,
+        output: top,
+        scores: ::Hash[Symbol, Float?]?,
+        span_attributes: Braintrust::SpanAttributes?,
+        span_parents: ::Array[String]?,
+        tags: ::Array[String]?
+      }
+
       type log_id = :g
 
       module LogID
@@ -107,7 +131,7 @@ module Braintrust
 
         G: :g
 
-        def self?.values: -> ::Array[Braintrust::ProjectLogsEvent::log_id]
+        def self?.values: -> ::Array[Braintrust::Models::ProjectLogsEvent::log_id]
       end
 
       type context =
@@ -129,6 +153,12 @@ module Braintrust
           ?caller_functionname: String?,
           ?caller_lineno: Integer?
         ) -> void
+
+        def to_hash: -> {
+          caller_filename: String?,
+          caller_functionname: String?,
+          caller_lineno: Integer?
+        }
       end
 
       type metadata = { model: String? }
@@ -137,6 +167,8 @@ module Braintrust
         attr_accessor model: String?
 
         def initialize: (?model: String?) -> void
+
+        def to_hash: -> { model: String? }
       end
 
       type metrics =
@@ -184,6 +216,17 @@ module Braintrust
           ?start: Float?,
           ?tokens: Integer?
         ) -> void
+
+        def to_hash: -> {
+          caller_filename: top,
+          caller_functionname: top,
+          caller_lineno: top,
+          completion_tokens: Integer?,
+          end_: Float?,
+          prompt_tokens: Integer?,
+          start: Float?,
+          tokens: Integer?
+        }
       end
     end
   end

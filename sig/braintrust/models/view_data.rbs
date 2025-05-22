@@ -6,6 +6,8 @@ module Braintrust
       attr_accessor search: Braintrust::ViewDataSearch?
 
       def initialize: (?search: Braintrust::ViewDataSearch?) -> void
+
+      def to_hash: -> { search: Braintrust::ViewDataSearch? }
     end
   end
 end

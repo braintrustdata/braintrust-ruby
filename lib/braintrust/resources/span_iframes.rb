@@ -24,7 +24,7 @@ module Braintrust
       #
       # @param request_options [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Braintrust::SpanIFrame]
+      # @return [Braintrust::Models::SpanIFrame]
       #
       # @see Braintrust::Models::SpanIframeCreateParams
       def create(params)
@@ -46,7 +46,7 @@ module Braintrust
       #
       # @param request_options [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Braintrust::SpanIFrame]
+      # @return [Braintrust::Models::SpanIFrame]
       #
       # @see Braintrust::Models::SpanIframeRetrieveParams
       def retrieve(span_iframe_id, params = {})
@@ -79,7 +79,7 @@ module Braintrust
       #
       # @param request_options [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Braintrust::SpanIFrame]
+      # @return [Braintrust::Models::SpanIFrame]
       #
       # @see Braintrust::Models::SpanIframeUpdateParams
       def update(span_iframe_id, params = {})
@@ -115,7 +115,7 @@ module Braintrust
       #
       # @param request_options [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Braintrust::Internal::ListObjects<Braintrust::SpanIFrame>]
+      # @return [Braintrust::Internal::ListObjects<Braintrust::Models::SpanIFrame>]
       #
       # @see Braintrust::Models::SpanIframeListParams
       def list(params = {})
@@ -138,7 +138,7 @@ module Braintrust
       #
       # @param request_options [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Braintrust::SpanIFrame]
+      # @return [Braintrust::Models::SpanIFrame]
       #
       # @see Braintrust::Models::SpanIframeDeleteParams
       def delete(span_iframe_id, params = {})
@@ -171,7 +171,7 @@ module Braintrust
       #
       # @param request_options [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Braintrust::SpanIFrame]
+      # @return [Braintrust::Models::SpanIFrame]
       #
       # @see Braintrust::Models::SpanIframeReplaceParams
       def replace(params)

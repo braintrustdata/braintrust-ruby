@@ -96,6 +96,29 @@ module Braintrust
         ?tags: ::Array[String]?
       ) -> void
 
+      def to_hash: -> {
+        id: String,
+        _xact_id: String,
+        created: Time,
+        experiment_id: String,
+        project_id: String,
+        root_span_id: String,
+        span_id: String,
+        context: Braintrust::ExperimentEvent::Context?,
+        error: top,
+        expected: top,
+        input: top,
+        is_root: bool?,
+        metadata: Braintrust::ExperimentEvent::Metadata?,
+        metrics: Braintrust::ExperimentEvent::Metrics?,
+        origin: Braintrust::ObjectReference?,
+        output: top,
+        scores: ::Hash[Symbol, Float?]?,
+        span_attributes: Braintrust::SpanAttributes?,
+        span_parents: ::Array[String]?,
+        tags: ::Array[String]?
+      }
+
       type context =
         {
           caller_filename: String?,
@@ -115,6 +138,12 @@ module Braintrust
           ?caller_functionname: String?,
           ?caller_lineno: Integer?
         ) -> void
+
+        def to_hash: -> {
+          caller_filename: String?,
+          caller_functionname: String?,
+          caller_lineno: Integer?
+        }
       end
 
       type metadata = { model: String? }
@@ -123,6 +152,8 @@ module Braintrust
         attr_accessor model: String?
 
         def initialize: (?model: String?) -> void
+
+        def to_hash: -> { model: String? }
       end
 
       type metrics =
@@ -170,6 +201,17 @@ module Braintrust
           ?start: Float?,
           ?tokens: Integer?
         ) -> void
+
+        def to_hash: -> {
+          caller_filename: top,
+          caller_functionname: top,
+          caller_lineno: top,
+          completion_tokens: Integer?,
+          end_: Float?,
+          prompt_tokens: Integer?,
+          start: Float?,
+          tokens: Integer?
+        }
       end
     end
   end

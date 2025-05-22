@@ -35,7 +35,7 @@ module Braintrust
       # @!attribute object_type
       #   The type of the object the environment variable is scoped for
       #
-      #   @return [Symbol, Braintrust::EnvVarObjectType, nil]
+      #   @return [Symbol, Braintrust::Models::EnvVarObjectType, nil]
       optional :object_type, enum: -> { Braintrust::EnvVarObjectType }
 
       # @!method initialize(env_var_name: nil, ids: nil, limit: nil, object_id_: nil, object_type: nil, request_options: {})
@@ -50,7 +50,7 @@ module Braintrust
       #
       #   @param object_id_ [String] The id of the object the environment variable is scoped for
       #
-      #   @param object_type [Symbol, Braintrust::EnvVarObjectType] The type of the object the environment variable is scoped for
+      #   @param object_type [Symbol, Braintrust::Models::EnvVarObjectType] The type of the object the environment variable is scoped for
       #
       #   @param request_options [Braintrust::RequestOptions, Hash{Symbol=>Object}]
 
@@ -61,7 +61,7 @@ module Braintrust
 
         variant String
 
-        variant -> { Braintrust::EnvVarListParams::IDs::StringArray }
+        variant -> { Braintrust::Models::EnvVarListParams::IDs::StringArray }
 
         # @!method self.variants
         #   @return [Array(String, Array<String>)]

@@ -23,7 +23,7 @@ module Braintrust
       #
       # @param request_options [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Braintrust::AISecret]
+      # @return [Braintrust::Models::AISecret]
       #
       # @see Braintrust::Models::AISecretCreateParams
       def create(params)
@@ -45,7 +45,7 @@ module Braintrust
       #
       # @param request_options [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Braintrust::AISecret]
+      # @return [Braintrust::Models::AISecret]
       #
       # @see Braintrust::Models::AISecretRetrieveParams
       def retrieve(ai_secret_id, params = {})
@@ -75,7 +75,7 @@ module Braintrust
       #
       # @param request_options [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Braintrust::AISecret]
+      # @return [Braintrust::Models::AISecret]
       #
       # @see Braintrust::Models::AISecretUpdateParams
       def update(ai_secret_id, params = {})
@@ -113,7 +113,7 @@ module Braintrust
       #
       # @param request_options [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Braintrust::Internal::ListObjects<Braintrust::AISecret>]
+      # @return [Braintrust::Internal::ListObjects<Braintrust::Models::AISecret>]
       #
       # @see Braintrust::Models::AISecretListParams
       def list(params = {})
@@ -136,7 +136,7 @@ module Braintrust
       #
       # @param request_options [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Braintrust::AISecret]
+      # @return [Braintrust::Models::AISecret]
       #
       # @see Braintrust::Models::AISecretDeleteParams
       def delete(ai_secret_id, params = {})
@@ -161,7 +161,7 @@ module Braintrust
       #
       # @param request_options [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Braintrust::AISecret]
+      # @return [Braintrust::Models::AISecret]
       #
       # @see Braintrust::Models::AISecretFindAndDeleteParams
       def find_and_delete(params)
@@ -196,7 +196,7 @@ module Braintrust
       #
       # @param request_options [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Braintrust::AISecret]
+      # @return [Braintrust::Models::AISecret]
       #
       # @see Braintrust::Models::AISecretReplaceParams
       def replace(params)

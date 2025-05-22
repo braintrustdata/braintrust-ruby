@@ -10,20 +10,20 @@ module Braintrust
 
       # @!attribute function
       #
-      #   @return [Braintrust::ChatCompletionMessageToolCall::Function]
+      #   @return [Braintrust::Models::ChatCompletionMessageToolCall::Function]
       required :function, -> { Braintrust::ChatCompletionMessageToolCall::Function }
 
       # @!attribute type
       #
-      #   @return [Symbol, Braintrust::ChatCompletionMessageToolCall::Type]
+      #   @return [Symbol, Braintrust::Models::ChatCompletionMessageToolCall::Type]
       required :type, enum: -> { Braintrust::ChatCompletionMessageToolCall::Type }
 
       # @!method initialize(id:, function:, type:)
       #   @param id [String]
-      #   @param function [Braintrust::ChatCompletionMessageToolCall::Function]
-      #   @param type [Symbol, Braintrust::ChatCompletionMessageToolCall::Type]
+      #   @param function [Braintrust::Models::ChatCompletionMessageToolCall::Function]
+      #   @param type [Symbol, Braintrust::Models::ChatCompletionMessageToolCall::Type]
 
-      # @see Braintrust::ChatCompletionMessageToolCall#function
+      # @see Braintrust::Models::ChatCompletionMessageToolCall#function
       class Function < Braintrust::Internal::Type::BaseModel
         # @!attribute arguments
         #
@@ -40,7 +40,7 @@ module Braintrust
         #   @param name [String]
       end
 
-      # @see Braintrust::ChatCompletionMessageToolCall#type
+      # @see Braintrust::Models::ChatCompletionMessageToolCall#type
       module Type
         extend Braintrust::Internal::Type::Enum
 
