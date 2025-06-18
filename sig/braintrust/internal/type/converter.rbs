@@ -8,8 +8,10 @@ module Braintrust
 
         type coerce_state =
           {
-            strictness: bool | :strong,
+            translate_names: bool,
+            strictness: bool,
             exactness: { yes: Integer, no: Integer, maybe: Integer },
+            error: Class,
             branched: Integer
           }
 
@@ -36,6 +38,10 @@ module Braintrust
           | ^-> Braintrust::Internal::Type::Converter::input
           | Braintrust::Internal::Type::Converter::input spec
         ) -> (^-> top)
+
+        def self.new_coerce_state: (
+          ?translate_names: bool
+        ) -> Braintrust::Internal::Type::Converter::coerce_state
 
         def self.coerce: (
           Braintrust::Internal::Type::Converter::input target,
