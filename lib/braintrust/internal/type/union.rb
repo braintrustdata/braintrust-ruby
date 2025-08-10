@@ -12,20 +12,20 @@ module Braintrust
         #
         # All of the specified variant info for this union.
         #
-        # @return [Array<Array(Symbol, Proc)>]
+        # @return [Array<Array(Symbol, Proc, Hash{Symbol=>Object})>]
         private def known_variants = (@known_variants ||= [])
 
         # @api private
         #
-        # @return [Array<Array(Symbol, Object)>]
+        # @return [Array<Array(Symbol, Object, Hash{Symbol=>Object})>]
         protected def derefed_variants
-          known_variants.map { |key, variant_fn| [key, variant_fn.call] }
+          known_variants.map { |key, variant_fn, meta| [key, variant_fn.call, meta] }
         end
 
         # All of the specified variants for this union.
         #
         # @return [Array<Object>]
-        def variants = derefed_variants.map(&:last)
+        def variants = derefed_variants.map { _2 }
 
         # @api private
         #
@@ -51,12 +51,13 @@ module Braintrust
         #
         #   @option spec [Boolean] :"nil?"
         private def variant(key, spec = nil)
+          meta = Braintrust::Internal::Type::Converter.meta_info(nil, spec)
           variant_info =
             case key
             in Symbol
-              [key, Braintrust::Internal::Type::Converter.type_info(spec)]
+              [key, Braintrust::Internal::Type::Converter.type_info(spec), meta]
             in Proc | Braintrust::Internal::Type::Converter | Class | Hash
-              [nil, Braintrust::Internal::Type::Converter.type_info(key)]
+              [nil, Braintrust::Internal::Type::Converter.type_info(key), meta]
             end
 
           known_variants << variant_info
@@ -79,7 +80,8 @@ module Braintrust
             return nil if key == Braintrust::Internal::OMIT
 
             key = key.to_sym if key.is_a?(String)
-            known_variants.find { |k,| k == key }&.last&.call
+            _, found = known_variants.find { |k,| k == key }
+            found&.call
           else
             nil
           end
