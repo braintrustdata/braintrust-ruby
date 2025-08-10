@@ -16,7 +16,8 @@ module Braintrust
             T::Array[
               [
                 T.nilable(Symbol),
-                T.proc.returns(Braintrust::Internal::Type::Converter::Input)
+                T.proc.returns(Braintrust::Internal::Type::Converter::Input),
+                Braintrust::Internal::AnyHash
               ]
             ]
           )
@@ -25,7 +26,13 @@ module Braintrust
         end
 
         # @api private
-        sig { returns(T::Array[[T.nilable(Symbol), T.anything]]) }
+        sig do
+          returns(
+            T::Array[
+              [T.nilable(Symbol), T.anything, Braintrust::Internal::AnyHash]
+            ]
+          )
+        end
         protected def derefed_variants
         end
 
