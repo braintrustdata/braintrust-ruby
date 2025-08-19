@@ -379,10 +379,7 @@ module Braintrust
           # @!attribute object_type
           #
           #   @return [Symbol, Braintrust::Models::FunctionInvokeParams::Parent::SpanParentStruct::ObjectType]
-          required :object_type,
-                   enum: -> {
-                     Braintrust::FunctionInvokeParams::Parent::SpanParentStruct::ObjectType
-                   }
+          required :object_type, enum: -> { Braintrust::FunctionInvokeParams::Parent::SpanParentStruct::ObjectType }
 
           # @!attribute propagated_event
           #   Include these properties in every span created under this parent

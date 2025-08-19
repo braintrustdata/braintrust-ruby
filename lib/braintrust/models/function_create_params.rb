@@ -143,10 +143,7 @@ module Braintrust
               # @!attribute type
               #
               #   @return [Symbol, Braintrust::Models::FunctionCreateParams::FunctionData::Code::Data::Bundle::Type]
-              required :type,
-                       enum: -> {
-                         Braintrust::FunctionCreateParams::FunctionData::Code::Data::Bundle::Type
-                       }
+              required :type, enum: -> { Braintrust::FunctionCreateParams::FunctionData::Code::Data::Bundle::Type }
 
               # @!method initialize(type:)
               #   @param type [Symbol, Braintrust::Models::FunctionCreateParams::FunctionData::Code::Data::Bundle::Type]
@@ -171,17 +168,12 @@ module Braintrust
               #
               #   @return [Braintrust::Models::FunctionCreateParams::FunctionData::Code::Data::Inline::RuntimeContext]
               required :runtime_context,
-                       -> {
-                         Braintrust::FunctionCreateParams::FunctionData::Code::Data::Inline::RuntimeContext
-                       }
+                       -> { Braintrust::FunctionCreateParams::FunctionData::Code::Data::Inline::RuntimeContext }
 
               # @!attribute type
               #
               #   @return [Symbol, Braintrust::Models::FunctionCreateParams::FunctionData::Code::Data::Inline::Type]
-              required :type,
-                       enum: -> {
-                         Braintrust::FunctionCreateParams::FunctionData::Code::Data::Inline::Type
-                       }
+              required :type, enum: -> { Braintrust::FunctionCreateParams::FunctionData::Code::Data::Inline::Type }
 
               # @!method initialize(code:, runtime_context:, type:)
               #   @param code [String]
@@ -194,9 +186,7 @@ module Braintrust
                 #
                 #   @return [Symbol, Braintrust::Models::FunctionCreateParams::FunctionData::Code::Data::Inline::RuntimeContext::Runtime]
                 required :runtime,
-                         enum: -> {
-                           Braintrust::FunctionCreateParams::FunctionData::Code::Data::Inline::RuntimeContext::Runtime
-                         }
+                         enum: -> { Braintrust::FunctionCreateParams::FunctionData::Code::Data::Inline::RuntimeContext::Runtime }
 
                 # @!attribute version
                 #

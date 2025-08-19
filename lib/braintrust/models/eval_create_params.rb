@@ -377,10 +377,7 @@ module Braintrust
             # @!attribute runtime
             #
             #   @return [Symbol, Braintrust::Models::EvalCreateParams::Score::InlineCode::InlineContext::Runtime]
-            required :runtime,
-                     enum: -> {
-                       Braintrust::EvalCreateParams::Score::InlineCode::InlineContext::Runtime
-                     }
+            required :runtime, enum: -> { Braintrust::EvalCreateParams::Score::InlineCode::InlineContext::Runtime }
 
             # @!attribute version
             #
@@ -579,10 +576,7 @@ module Braintrust
             # @!attribute runtime
             #
             #   @return [Symbol, Braintrust::Models::EvalCreateParams::Task::InlineCode::InlineContext::Runtime]
-            required :runtime,
-                     enum: -> {
-                       Braintrust::EvalCreateParams::Task::InlineCode::InlineContext::Runtime
-                     }
+            required :runtime, enum: -> { Braintrust::EvalCreateParams::Task::InlineCode::InlineContext::Runtime }
 
             # @!attribute version
             #
@@ -641,9 +635,7 @@ module Braintrust
         #
         #   @return [Array<Symbol, Braintrust::Models::EvalCreateParams::GitMetadataSettings::Field>, nil]
         optional :fields,
-                 -> {
-                   Braintrust::Internal::Type::ArrayOf[enum: Braintrust::EvalCreateParams::GitMetadataSettings::Field]
-                 }
+                 -> { Braintrust::Internal::Type::ArrayOf[enum: Braintrust::EvalCreateParams::GitMetadataSettings::Field] }
 
         # @!method initialize(collect:, fields: nil)
         #   Optional settings for collecting git metadata. By default, will collect all git
@@ -702,10 +694,7 @@ module Braintrust
           # @!attribute object_type
           #
           #   @return [Symbol, Braintrust::Models::EvalCreateParams::Parent::SpanParentStruct::ObjectType]
-          required :object_type,
-                   enum: -> {
-                     Braintrust::EvalCreateParams::Parent::SpanParentStruct::ObjectType
-                   }
+          required :object_type, enum: -> { Braintrust::EvalCreateParams::Parent::SpanParentStruct::ObjectType }
 
           # @!attribute propagated_event
           #   Include these properties in every span created under this parent

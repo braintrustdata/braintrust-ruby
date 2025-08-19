@@ -99,10 +99,7 @@ module Braintrust
               # @!attribute type
               #
               #   @return [Symbol, Braintrust::Models::CodeBundle::Location::Experiment::Position::Scorer::Type]
-              required :type,
-                       enum: -> {
-                         Braintrust::CodeBundle::Location::Experiment::Position::Scorer::Type
-                       }
+              required :type, enum: -> { Braintrust::CodeBundle::Location::Experiment::Position::Scorer::Type }
 
               # @!method initialize(index:, type:)
               #   @param index [Integer]
