@@ -218,10 +218,7 @@ module Braintrust
               # @!attribute runtime_context
               #
               #   @return [Braintrust::Models::Function::FunctionData::Code::Data::Inline::RuntimeContext]
-              required :runtime_context,
-                       -> {
-                         Braintrust::Function::FunctionData::Code::Data::Inline::RuntimeContext
-                       }
+              required :runtime_context, -> { Braintrust::Function::FunctionData::Code::Data::Inline::RuntimeContext }
 
               # @!attribute type
               #
@@ -239,9 +236,7 @@ module Braintrust
                 #
                 #   @return [Symbol, Braintrust::Models::Function::FunctionData::Code::Data::Inline::RuntimeContext::Runtime]
                 required :runtime,
-                         enum: -> {
-                           Braintrust::Function::FunctionData::Code::Data::Inline::RuntimeContext::Runtime
-                         }
+                         enum: -> { Braintrust::Function::FunctionData::Code::Data::Inline::RuntimeContext::Runtime }
 
                 # @!attribute version
                 #
