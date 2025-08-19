@@ -46,10 +46,7 @@ module Braintrust
           # @!attribute function_call
           #
           #   @return [Symbol, Braintrust::Models::PromptOptions::Params::OpenAIModelParams::FunctionCall::Function, Braintrust::Models::PromptOptions::Params::OpenAIModelParams::FunctionCall, nil]
-          optional :function_call,
-                   union: -> {
-                     Braintrust::PromptOptions::Params::OpenAIModelParams::FunctionCall
-                   }
+          optional :function_call, union: -> { Braintrust::PromptOptions::Params::OpenAIModelParams::FunctionCall }
 
           # @!attribute max_completion_tokens
           #   The successor to max_tokens
@@ -98,10 +95,7 @@ module Braintrust
           # @!attribute tool_choice
           #
           #   @return [Symbol, Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ToolChoice::Function, Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ToolChoice, nil]
-          optional :tool_choice,
-                   union: -> {
-                     Braintrust::PromptOptions::Params::OpenAIModelParams::ToolChoice
-                   }
+          optional :tool_choice, union: -> { Braintrust::PromptOptions::Params::OpenAIModelParams::ToolChoice }
 
           # @!attribute top_p
           #
@@ -207,9 +201,7 @@ module Braintrust
               #
               #   @return [Symbol, Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ResponseFormat::JsonObject::Type]
               required :type,
-                       enum: -> {
-                         Braintrust::PromptOptions::Params::OpenAIModelParams::ResponseFormat::JsonObject::Type
-                       }
+                       enum: -> { Braintrust::PromptOptions::Params::OpenAIModelParams::ResponseFormat::JsonObject::Type }
 
               # @!method initialize(type:)
               #   @param type [Symbol, Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ResponseFormat::JsonObject::Type]
@@ -230,17 +222,13 @@ module Braintrust
               #
               #   @return [Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ResponseFormat::JsonSchema::JsonSchema]
               required :json_schema,
-                       -> {
-                         Braintrust::PromptOptions::Params::OpenAIModelParams::ResponseFormat::JsonSchema::JsonSchema
-                       }
+                       -> { Braintrust::PromptOptions::Params::OpenAIModelParams::ResponseFormat::JsonSchema::JsonSchema }
 
               # @!attribute type
               #
               #   @return [Symbol, Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ResponseFormat::JsonSchema::Type]
               required :type,
-                       enum: -> {
-                         Braintrust::PromptOptions::Params::OpenAIModelParams::ResponseFormat::JsonSchema::Type
-                       }
+                       enum: -> { Braintrust::PromptOptions::Params::OpenAIModelParams::ResponseFormat::JsonSchema::Type }
 
               # @!method initialize(json_schema:, type:)
               #   @param json_schema [Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ResponseFormat::JsonSchema::JsonSchema]
@@ -262,9 +250,7 @@ module Braintrust
                 #
                 #   @return [Hash{Symbol=>Object, nil}, String, nil]
                 optional :schema,
-                         union: -> {
-                           Braintrust::PromptOptions::Params::OpenAIModelParams::ResponseFormat::JsonSchema::JsonSchema::Schema
-                         }
+                         union: -> { Braintrust::PromptOptions::Params::OpenAIModelParams::ResponseFormat::JsonSchema::JsonSchema::Schema }
 
                 # @!attribute strict
                 #
@@ -310,9 +296,7 @@ module Braintrust
               #
               #   @return [Symbol, Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ResponseFormat::Text::Type]
               required :type,
-                       enum: -> {
-                         Braintrust::PromptOptions::Params::OpenAIModelParams::ResponseFormat::Text::Type
-                       }
+                       enum: -> { Braintrust::PromptOptions::Params::OpenAIModelParams::ResponseFormat::Text::Type }
 
               # @!method initialize(type:)
               #   @param type [Symbol, Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ResponseFormat::Text::Type]
@@ -349,17 +333,13 @@ module Braintrust
               #
               #   @return [Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ToolChoice::Function::Function]
               required :function,
-                       -> {
-                         Braintrust::PromptOptions::Params::OpenAIModelParams::ToolChoice::Function::Function
-                       }
+                       -> { Braintrust::PromptOptions::Params::OpenAIModelParams::ToolChoice::Function::Function }
 
               # @!attribute type
               #
               #   @return [Symbol, Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ToolChoice::Function::Type]
               required :type,
-                       enum: -> {
-                         Braintrust::PromptOptions::Params::OpenAIModelParams::ToolChoice::Function::Type
-                       }
+                       enum: -> { Braintrust::PromptOptions::Params::OpenAIModelParams::ToolChoice::Function::Type }
 
               # @!method initialize(function:, type:)
               #   @param function [Braintrust::Models::PromptOptions::Params::OpenAIModelParams::ToolChoice::Function::Function]

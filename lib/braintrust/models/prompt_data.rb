@@ -134,9 +134,7 @@ module Braintrust
           #
           #   @return [Array<Braintrust::Models::PromptData::Prompt::Chat::Message::System, Braintrust::Models::PromptData::Prompt::Chat::Message::User, Braintrust::Models::PromptData::Prompt::Chat::Message::Assistant, Braintrust::Models::PromptData::Prompt::Chat::Message::Tool, Braintrust::Models::PromptData::Prompt::Chat::Message::Function, Braintrust::Models::PromptData::Prompt::Chat::Message::Fallback>]
           required :messages,
-                   -> {
-                     Braintrust::Internal::Type::ArrayOf[union: Braintrust::PromptData::Prompt::Chat::Message]
-                   }
+                   -> { Braintrust::Internal::Type::ArrayOf[union: Braintrust::PromptData::Prompt::Chat::Message] }
 
           # @!attribute type
           #
