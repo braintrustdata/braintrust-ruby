@@ -1,0 +1,46 @@
+module Braintrust
+  module Models
+    type prompt_update_params =
+      {
+        description: String?,
+        name: String?,
+        prompt_data: Braintrust::PromptData?,
+        slug: String?,
+        tags: ::Array[String]?
+      }
+      & Braintrust::Internal::Type::request_parameters
+
+    class PromptUpdateParams < Braintrust::Internal::Type::BaseModel
+      extend Braintrust::Internal::Type::RequestParameters::Converter
+      include Braintrust::Internal::Type::RequestParameters
+
+      attr_accessor description: String?
+
+      attr_accessor name: String?
+
+      attr_accessor prompt_data: Braintrust::PromptData?
+
+      attr_accessor slug: String?
+
+      attr_accessor tags: ::Array[String]?
+
+      def initialize: (
+        ?description: String?,
+        ?name: String?,
+        ?prompt_data: Braintrust::PromptData?,
+        ?slug: String?,
+        ?tags: ::Array[String]?,
+        ?request_options: Braintrust::request_opts
+      ) -> void
+
+      def to_hash: -> {
+        description: String?,
+        name: String?,
+        prompt_data: Braintrust::PromptData?,
+        slug: String?,
+        tags: ::Array[String]?,
+        request_options: Braintrust::RequestOptions
+      }
+    end
+  end
+end

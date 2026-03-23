@@ -2,84 +2,108 @@
 
 module Braintrust
   module Models
-    class View < BaseModel
-      # @!attribute [rw] id
+    class View < Braintrust::Internal::Type::BaseModel
+      # @!attribute id
       #   Unique identifier for the view
+      #
       #   @return [String]
       required :id, String
 
-      # @!attribute [rw] name_
+      # @!attribute name
       #   Name of the view
+      #
       #   @return [String]
-      required :name_, String
+      required :name, String
 
-      # @!attribute [rw] object_id_
+      # @!attribute object_id_
       #   The id of the object the view applies to
+      #
       #   @return [String]
-      required :object_id_, String
+      required :object_id_, String, api_name: :object_id
 
-      # @!attribute [rw] object_type
+      # @!attribute object_type
       #   The object type that the ACL applies to
-      #   One of the constants defined in {Braintrust::Models::View::ObjectType}
-      #   @return [Symbol]
-      required :object_type, enum: -> { Braintrust::Models::View::ObjectType }
+      #
+      #   @return [Symbol, Braintrust::Models::ACLObjectType]
+      required :object_type, enum: -> { Braintrust::ACLObjectType }
 
-      # @!attribute [rw] view_type
+      # @!attribute view_type
       #   Type of table that the view corresponds to.
-      #   One of the constants defined in {Braintrust::Models::View::ViewType}
-      #   @return [Symbol]
-      required :view_type, enum: -> { Braintrust::Models::View::ViewType }
+      #
+      #   @return [Symbol, Braintrust::Models::View::ViewType, nil]
+      required :view_type, enum: -> { Braintrust::View::ViewType }, nil?: true
 
-      # @!attribute [rw] created
+      # @!attribute created
       #   Date of view creation
-      #   @return [DateTime]
-      optional :created, DateTime
+      #
+      #   @return [Time, nil]
+      optional :created, Time, nil?: true
 
-      # @!attribute [rw] deleted_at
+      # @!attribute deleted_at
       #   Date of role deletion, or null if the role is still active
-      #   @return [DateTime]
-      optional :deleted_at, DateTime
+      #
+      #   @return [Time, nil]
+      optional :deleted_at, Time, nil?: true
 
-      # @!attribute [rw] options
+      # @!attribute options
       #   Options for the view in the app
-      #   @return [Braintrust::Models::ViewOptions]
-      optional :options, -> { Braintrust::Models::ViewOptions }
+      #
+      #   @return [Braintrust::Models::ViewOptions, nil]
+      optional :options, -> { Braintrust::ViewOptions }, nil?: true
 
-      # @!attribute [rw] user_id
+      # @!attribute user_id
       #   Identifies the user who created the view
-      #   @return [String]
-      optional :user_id, String
+      #
+      #   @return [String, nil]
+      optional :user_id, String, nil?: true
 
-      # @!attribute [rw] view_data
+      # @!attribute view_data
       #   The view definition
-      #   @return [Braintrust::Models::ViewData]
-      optional :view_data, -> { Braintrust::Models::ViewData }
+      #
+      #   @return [Braintrust::Models::ViewData, nil]
+      optional :view_data, -> { Braintrust::ViewData }, nil?: true
 
-      # The object type that the ACL applies to
-      class ObjectType < Braintrust::Enum
-        ORGANIZATION = :organization
-        PROJECT = :project
-        EXPERIMENT = :experiment
-        DATASET = :dataset
-        PROMPT = :prompt
-        PROMPT_SESSION = :prompt_session
-        GROUP = :group
-        ROLE = :role
-        ORG_MEMBER = :org_member
-        PROJECT_LOG = :project_log
-        ORG_PROJECT = :org_project
-      end
+      # @!method initialize(id:, name:, object_id_:, object_type:, view_type:, created: nil, deleted_at: nil, options: nil, user_id: nil, view_data: nil)
+      #   @param id [String] Unique identifier for the view
+      #
+      #   @param name [String] Name of the view
+      #
+      #   @param object_id_ [String] The id of the object the view applies to
+      #
+      #   @param object_type [Symbol, Braintrust::Models::ACLObjectType] The object type that the ACL applies to
+      #
+      #   @param view_type [Symbol, Braintrust::Models::View::ViewType, nil] Type of table that the view corresponds to.
+      #
+      #   @param created [Time, nil] Date of view creation
+      #
+      #   @param deleted_at [Time, nil] Date of role deletion, or null if the role is still active
+      #
+      #   @param options [Braintrust::Models::ViewOptions, nil] Options for the view in the app
+      #
+      #   @param user_id [String, nil] Identifies the user who created the view
+      #
+      #   @param view_data [Braintrust::Models::ViewData, nil] The view definition
 
       # Type of table that the view corresponds to.
-      class ViewType < Braintrust::Enum
+      #
+      # @see Braintrust::Models::View#view_type
+      module ViewType
+        extend Braintrust::Internal::Type::Enum
+
         PROJECTS = :projects
-        LOGS = :logs
         EXPERIMENTS = :experiments
-        DATASETS = :datasets
-        PROMPTS = :prompts
-        PLAYGROUNDS = :playgrounds
         EXPERIMENT = :experiment
+        PLAYGROUNDS = :playgrounds
+        PLAYGROUND = :playground
+        DATASETS = :datasets
         DATASET = :dataset
+        PROMPTS = :prompts
+        TOOLS = :tools
+        SCORERS = :scorers
+        LOGS = :logs
+
+        # @!method self.values
+        #   @return [Array<Symbol>]
       end
     end
   end

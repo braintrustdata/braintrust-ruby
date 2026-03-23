@@ -1,0 +1,79 @@
+module Braintrust
+  module Internal
+    module Type
+      module Converter
+        extend Braintrust::Internal::Util::SorbetRuntimeSupport
+
+        type input = Braintrust::Internal::Type::Converter | Class
+
+        type coerce_state =
+          {
+            translate_names: bool,
+            strictness: bool,
+            exactness: { yes: Integer, no: Integer, maybe: Integer },
+            error: Class,
+            branched: Integer
+          }
+
+        type dump_state = { can_retry: bool }
+
+        def coerce: (
+          top value,
+          state: Braintrust::Internal::Type::Converter::coerce_state
+        ) -> top
+
+        def dump: (
+          top value,
+          state: Braintrust::Internal::Type::Converter::dump_state
+        ) -> top
+
+        def inspect: (?depth: Integer) -> String
+
+        def self.type_info: (
+          {
+            const: (nil | bool | Integer | Float | Symbol)?,
+            enum: ^-> Braintrust::Internal::Type::Converter::input?,
+            union: ^-> Braintrust::Internal::Type::Converter::input?
+          }
+          | ^-> Braintrust::Internal::Type::Converter::input
+          | Braintrust::Internal::Type::Converter::input spec
+        ) -> (^-> top)
+
+        def self.meta_info: (
+          {
+            const: (nil | bool | Integer | Float | Symbol)?,
+            enum: ^-> Braintrust::Internal::Type::Converter::input?,
+            union: ^-> Braintrust::Internal::Type::Converter::input?
+          }
+          | ^-> Braintrust::Internal::Type::Converter::input
+          | Braintrust::Internal::Type::Converter::input type_info,
+          {
+            const: (nil | bool | Integer | Float | Symbol)?,
+            enum: ^-> Braintrust::Internal::Type::Converter::input?,
+            union: ^-> Braintrust::Internal::Type::Converter::input?
+          }
+          | ^-> Braintrust::Internal::Type::Converter::input
+          | Braintrust::Internal::Type::Converter::input spec
+        ) -> ::Hash[Symbol, top]
+
+        def self.new_coerce_state: (
+          ?translate_names: bool
+        ) -> Braintrust::Internal::Type::Converter::coerce_state
+
+        def self.coerce: (
+          Braintrust::Internal::Type::Converter::input target,
+          top value,
+          ?state: Braintrust::Internal::Type::Converter::coerce_state
+        ) -> top
+
+        def self.dump: (
+          Braintrust::Internal::Type::Converter::input target,
+          top value,
+          ?state: Braintrust::Internal::Type::Converter::dump_state
+        ) -> top
+
+        def self.inspect: (top target, depth: Integer) -> String
+      end
+    end
+  end
+end

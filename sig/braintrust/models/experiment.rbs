@@ -1,0 +1,85 @@
+module Braintrust
+  module Models
+    type experiment =
+      {
+        id: String,
+        name: String,
+        project_id: String,
+        public: bool,
+        base_exp_id: String?,
+        commit: String?,
+        created: Time?,
+        dataset_id: String?,
+        dataset_version: String?,
+        deleted_at: Time?,
+        description: String?,
+        metadata: ::Hash[Symbol, top?]?,
+        repo_info: Braintrust::RepoInfo?,
+        user_id: String?
+      }
+
+    class Experiment < Braintrust::Internal::Type::BaseModel
+      attr_accessor id: String
+
+      attr_accessor name: String
+
+      attr_accessor project_id: String
+
+      attr_accessor public: bool
+
+      attr_accessor base_exp_id: String?
+
+      attr_accessor commit: String?
+
+      attr_accessor created: Time?
+
+      attr_accessor dataset_id: String?
+
+      attr_accessor dataset_version: String?
+
+      attr_accessor deleted_at: Time?
+
+      attr_accessor description: String?
+
+      attr_accessor metadata: ::Hash[Symbol, top?]?
+
+      attr_accessor repo_info: Braintrust::RepoInfo?
+
+      attr_accessor user_id: String?
+
+      def initialize: (
+        id: String,
+        name: String,
+        project_id: String,
+        public: bool,
+        ?base_exp_id: String?,
+        ?commit: String?,
+        ?created: Time?,
+        ?dataset_id: String?,
+        ?dataset_version: String?,
+        ?deleted_at: Time?,
+        ?description: String?,
+        ?metadata: ::Hash[Symbol, top?]?,
+        ?repo_info: Braintrust::RepoInfo?,
+        ?user_id: String?
+      ) -> void
+
+      def to_hash: -> {
+        id: String,
+        name: String,
+        project_id: String,
+        public: bool,
+        base_exp_id: String?,
+        commit: String?,
+        created: Time?,
+        dataset_id: String?,
+        dataset_version: String?,
+        deleted_at: Time?,
+        description: String?,
+        metadata: ::Hash[Symbol, top?]?,
+        repo_info: Braintrust::RepoInfo?,
+        user_id: String?
+      }
+    end
+  end
+end

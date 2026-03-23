@@ -4,173 +4,131 @@ module Braintrust
   module Resources
     class Projects
       class Logs
-        def initialize(client:)
-          @client = client
-        end
-
         # Log feedback for a set of project logs events
         #
+        # @overload feedback(project_id, feedback:, request_options: {})
+        #
         # @param project_id [String] Project id
         #
-        # @param params [Hash] Attributes to send in this request.
-        # @option params [Array<Braintrust::Models::FeedbackProjectLogsItem>] :feedback A list of project logs feedback items
+        # @param feedback [Array<Braintrust::Models::FeedbackProjectLogsItem>] A list of project logs feedback items
         #
-        # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
+        # @param request_options [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil]
         #
         # @return [Braintrust::Models::FeedbackResponseSchema]
-        def feedback(project_id, params = {}, opts = {})
-          req = {}
-          req[:method] = :post
-          req[:path] = "/v1/project_logs/#{project_id}/feedback"
-          req[:body] = params
-          req[:model] = Braintrust::Models::FeedbackResponseSchema
-          @client.request(req, opts)
+        #
+        # @see Braintrust::Models::Projects::LogFeedbackParams
+        def feedback(project_id, params)
+          parsed, options = Braintrust::Projects::LogFeedbackParams.dump_request(params)
+          @client.request(
+            method: :post,
+            path: ["v1/project_logs/%1$s/feedback", project_id],
+            body: parsed,
+            model: Braintrust::FeedbackResponseSchema,
+            options: options
+          )
         end
 
+        # Some parameter documentations has been truncated, see
+        # {Braintrust::Models::Projects::LogFetchParams} for more details.
+        #
         # Fetch the events in a project logs. Equivalent to the POST form of the same
-        #   path, but with the parameters in the URL query rather than in the request body
+        # path, but with the parameters in the URL query rather than in the request body.
+        # For more complex queries, use the `POST /btql` endpoint.
+        #
+        # @overload fetch(project_id, limit: nil, max_root_span_id: nil, max_xact_id: nil, version: nil, request_options: {})
         #
         # @param project_id [String] Project id
         #
-        # @param params [Hash] Attributes to send in this request.
-        # @option params [Integer] :limit limit the number of traces fetched
+        # @param limit [Integer, nil] limit the number of traces fetched
         #
-        #   Fetch queries may be paginated if the total result size is expected to be large
-        #   (e.g. project_logs which accumulate over a long time). Note that fetch queries
-        #   only support pagination in descending time order (from latest to earliest
-        #   `_xact_id`. Furthermore, later pages may return rows which showed up in earlier
-        #   pages, except with an earlier `_xact_id`. This happens because pagination occurs
-        #   over the whole version history of the event log. You will most likely want to
-        #   exclude any such duplicate, outdated rows (by `id`) from your combined result
-        #   set.
+        # @param max_root_span_id [String] DEPRECATION NOTICE: The manually-constructed pagination cursor is deprecated in
         #
-        #   The `limit` parameter controls the number of full traces to return. So you may
-        #   end up with more individual rows than the specified limit if you are fetching
-        #   events containing traces.
-        # @option params [String] :max_root_span_id DEPRECATION NOTICE: The manually-constructed pagination cursor is deprecated in
-        #   favor of the explicit 'cursor' returned by object fetch requests. Please prefer
-        #   the 'cursor' argument going forwards.
+        # @param max_xact_id [String] DEPRECATION NOTICE: The manually-constructed pagination cursor is deprecated in
         #
-        #   Together, `max_xact_id` and `max_root_span_id` form a pagination cursor
+        # @param version [String] Retrieve a snapshot of events from a past time
         #
-        #   Since a paginated fetch query returns results in order from latest to earliest,
-        #   the cursor for the next page can be found as the row with the minimum (earliest)
-        #   value of the tuple `(_xact_id, root_span_id)`. See the documentation of `limit`
-        #   for an overview of paginating fetch queries.
-        # @option params [String] :max_xact_id DEPRECATION NOTICE: The manually-constructed pagination cursor is deprecated in
-        #   favor of the explicit 'cursor' returned by object fetch requests. Please prefer
-        #   the 'cursor' argument going forwards.
-        #
-        #   Together, `max_xact_id` and `max_root_span_id` form a pagination cursor
-        #
-        #   Since a paginated fetch query returns results in order from latest to earliest,
-        #   the cursor for the next page can be found as the row with the minimum (earliest)
-        #   value of the tuple `(_xact_id, root_span_id)`. See the documentation of `limit`
-        #   for an overview of paginating fetch queries.
-        # @option params [String] :version Retrieve a snapshot of events from a past time
-        #
-        #   The version id is essentially a filter on the latest event transaction id. You
-        #   can use the `max_xact_id` returned by a past fetch as the version to reproduce
-        #   that exact fetch.
-        #
-        # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
+        # @param request_options [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil]
         #
         # @return [Braintrust::Models::FetchProjectLogsEventsResponse]
-        def fetch(project_id, params = {}, opts = {})
-          req = {}
-          req[:method] = :get
-          req[:path] = "/v1/project_logs/#{project_id}/fetch"
-          req[:query] = params
-          req[:model] = Braintrust::Models::FetchProjectLogsEventsResponse
-          @client.request(req, opts)
+        #
+        # @see Braintrust::Models::Projects::LogFetchParams
+        def fetch(project_id, params = {})
+          parsed, options = Braintrust::Projects::LogFetchParams.dump_request(params)
+          @client.request(
+            method: :get,
+            path: ["v1/project_logs/%1$s/fetch", project_id],
+            query: parsed,
+            model: Braintrust::FetchProjectLogsEventsResponse,
+            options: options
+          )
         end
 
+        # Some parameter documentations has been truncated, see
+        # {Braintrust::Models::Projects::LogFetchPostParams} for more details.
+        #
         # Fetch the events in a project logs. Equivalent to the GET form of the same path,
-        #   but with the parameters in the request body rather than in the URL query
+        # but with the parameters in the request body rather than in the URL query. For
+        # more complex queries, use the `POST /btql` endpoint.
+        #
+        # @overload fetch_post(project_id, cursor: nil, limit: nil, max_root_span_id: nil, max_xact_id: nil, version: nil, request_options: {})
         #
         # @param project_id [String] Project id
         #
-        # @param params [Hash] Attributes to send in this request.
-        # @option params [String] :cursor An opaque string to be used as a cursor for the next page of results, in order
-        #   from latest to earliest.
+        # @param cursor [String, nil] An opaque string to be used as a cursor for the next page of results, in order f
         #
-        #   The string can be obtained directly from the `cursor` property of the previous
-        #   fetch query
-        # @option params [Array<Braintrust::Models::PathLookupFilter>] :filters NOTE: This parameter is deprecated and will be removed in a future revision.
-        #   Consider using the `/btql` endpoint
-        #   (https://www.braintrust.dev/docs/reference/btql) for more advanced filtering.
+        # @param limit [Integer, nil] limit the number of traces fetched
         #
-        #   A list of filters on the events to fetch. Currently, only path-lookup type
-        #   filters are supported.
-        # @option params [Integer] :limit limit the number of traces fetched
+        # @param max_root_span_id [String, nil] DEPRECATION NOTICE: The manually-constructed pagination cursor is deprecated in
         #
-        #   Fetch queries may be paginated if the total result size is expected to be large
-        #   (e.g. project_logs which accumulate over a long time). Note that fetch queries
-        #   only support pagination in descending time order (from latest to earliest
-        #   `_xact_id`. Furthermore, later pages may return rows which showed up in earlier
-        #   pages, except with an earlier `_xact_id`. This happens because pagination occurs
-        #   over the whole version history of the event log. You will most likely want to
-        #   exclude any such duplicate, outdated rows (by `id`) from your combined result
-        #   set.
+        # @param max_xact_id [String, nil] DEPRECATION NOTICE: The manually-constructed pagination cursor is deprecated in
         #
-        #   The `limit` parameter controls the number of full traces to return. So you may
-        #   end up with more individual rows than the specified limit if you are fetching
-        #   events containing traces.
-        # @option params [String] :max_root_span_id DEPRECATION NOTICE: The manually-constructed pagination cursor is deprecated in
-        #   favor of the explicit 'cursor' returned by object fetch requests. Please prefer
-        #   the 'cursor' argument going forwards.
+        # @param version [String, nil] Retrieve a snapshot of events from a past time
         #
-        #   Together, `max_xact_id` and `max_root_span_id` form a pagination cursor
-        #
-        #   Since a paginated fetch query returns results in order from latest to earliest,
-        #   the cursor for the next page can be found as the row with the minimum (earliest)
-        #   value of the tuple `(_xact_id, root_span_id)`. See the documentation of `limit`
-        #   for an overview of paginating fetch queries.
-        # @option params [String] :max_xact_id DEPRECATION NOTICE: The manually-constructed pagination cursor is deprecated in
-        #   favor of the explicit 'cursor' returned by object fetch requests. Please prefer
-        #   the 'cursor' argument going forwards.
-        #
-        #   Together, `max_xact_id` and `max_root_span_id` form a pagination cursor
-        #
-        #   Since a paginated fetch query returns results in order from latest to earliest,
-        #   the cursor for the next page can be found as the row with the minimum (earliest)
-        #   value of the tuple `(_xact_id, root_span_id)`. See the documentation of `limit`
-        #   for an overview of paginating fetch queries.
-        # @option params [String] :version Retrieve a snapshot of events from a past time
-        #
-        #   The version id is essentially a filter on the latest event transaction id. You
-        #   can use the `max_xact_id` returned by a past fetch as the version to reproduce
-        #   that exact fetch.
-        #
-        # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
+        # @param request_options [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil]
         #
         # @return [Braintrust::Models::FetchProjectLogsEventsResponse]
-        def fetch_post(project_id, params = {}, opts = {})
-          req = {}
-          req[:method] = :post
-          req[:path] = "/v1/project_logs/#{project_id}/fetch"
-          req[:body] = params
-          req[:model] = Braintrust::Models::FetchProjectLogsEventsResponse
-          @client.request(req, opts)
+        #
+        # @see Braintrust::Models::Projects::LogFetchPostParams
+        def fetch_post(project_id, params = {})
+          parsed, options = Braintrust::Projects::LogFetchPostParams.dump_request(params)
+          @client.request(
+            method: :post,
+            path: ["v1/project_logs/%1$s/fetch", project_id],
+            body: parsed,
+            model: Braintrust::FetchProjectLogsEventsResponse,
+            options: options
+          )
         end
 
         # Insert a set of events into the project logs
         #
+        # @overload insert(project_id, events:, request_options: {})
+        #
         # @param project_id [String] Project id
         #
-        # @param params [Hash] Attributes to send in this request.
-        # @option params [Array<Braintrust::Models::InsertProjectLogsEventMerge|Braintrust::Models::InsertProjectLogsEventReplace>] :events A list of project logs events to insert
+        # @param events [Array<Braintrust::Models::InsertProjectLogsEvent>] A list of project logs events to insert
         #
-        # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
+        # @param request_options [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil]
         #
         # @return [Braintrust::Models::InsertEventsResponse]
-        def insert(project_id, params = {}, opts = {})
-          req = {}
-          req[:method] = :post
-          req[:path] = "/v1/project_logs/#{project_id}/insert"
-          req[:body] = params
-          req[:model] = Braintrust::Models::InsertEventsResponse
-          @client.request(req, opts)
+        #
+        # @see Braintrust::Models::Projects::LogInsertParams
+        def insert(project_id, params)
+          parsed, options = Braintrust::Projects::LogInsertParams.dump_request(params)
+          @client.request(
+            method: :post,
+            path: ["v1/project_logs/%1$s/insert", project_id],
+            body: parsed,
+            model: Braintrust::InsertEventsResponse,
+            options: options
+          )
+        end
+
+        # @api private
+        #
+        # @param client [Braintrust::Client]
+        def initialize(client:)
+          @client = client
         end
       end
     end

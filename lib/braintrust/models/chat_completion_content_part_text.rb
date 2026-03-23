@@ -2,18 +2,29 @@
 
 module Braintrust
   module Models
-    class ChatCompletionContentPartText < BaseModel
-      # @!attribute [rw] type
-      #   One of the constants defined in {Braintrust::Models::ChatCompletionContentPartText::Type}
-      #   @return [Symbol]
-      required :type, enum: -> { Braintrust::Models::ChatCompletionContentPartText::Type }
+    class ChatCompletionContentPartText < Braintrust::Internal::Type::BaseModel
+      # @!attribute type
+      #
+      #   @return [Symbol, Braintrust::Models::ChatCompletionContentPartText::Type]
+      required :type, enum: -> { Braintrust::ChatCompletionContentPartText::Type }
 
-      # @!attribute [rw] text
-      #   @return [String]
+      # @!attribute text
+      #
+      #   @return [String, nil]
       optional :text, String
 
-      class Type < Braintrust::Enum
+      # @!method initialize(type:, text: nil)
+      #   @param type [Symbol, Braintrust::Models::ChatCompletionContentPartText::Type]
+      #   @param text [String]
+
+      # @see Braintrust::Models::ChatCompletionContentPartText#type
+      module Type
+        extend Braintrust::Internal::Type::Enum
+
         TEXT = :text
+
+        # @!method self.values
+        #   @return [Array<Symbol>]
       end
     end
   end

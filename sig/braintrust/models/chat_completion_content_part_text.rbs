@@ -1,0 +1,37 @@
+module Braintrust
+  module Models
+    type chat_completion_content_part_text =
+      {
+        type: Braintrust::Models::ChatCompletionContentPartText::type_,
+        text: String
+      }
+
+    class ChatCompletionContentPartText < Braintrust::Internal::Type::BaseModel
+      attr_accessor type: Braintrust::Models::ChatCompletionContentPartText::type_
+
+      attr_reader text: String?
+
+      def text=: (String) -> String
+
+      def initialize: (
+        type: Braintrust::Models::ChatCompletionContentPartText::type_,
+        ?text: String
+      ) -> void
+
+      def to_hash: -> {
+        type: Braintrust::Models::ChatCompletionContentPartText::type_,
+        text: String
+      }
+
+      type type_ = :text
+
+      module Type
+        extend Braintrust::Internal::Type::Enum
+
+        TEXT: :text
+
+        def self?.values: -> ::Array[Braintrust::Models::ChatCompletionContentPartText::type_]
+      end
+    end
+  end
+end

@@ -1,0 +1,233 @@
+module Braintrust
+  module Models
+    type project_logs_event =
+      {
+        id: String,
+        _xact_id: String,
+        created: Time,
+        log_id: Braintrust::Models::ProjectLogsEvent::log_id,
+        org_id: String,
+        project_id: String,
+        root_span_id: String,
+        span_id: String,
+        context: Braintrust::ProjectLogsEvent::Context?,
+        error: top,
+        expected: top,
+        input: top,
+        is_root: bool?,
+        metadata: Braintrust::ProjectLogsEvent::Metadata?,
+        metrics: Braintrust::ProjectLogsEvent::Metrics?,
+        origin: Braintrust::ObjectReference?,
+        output: top,
+        scores: ::Hash[Symbol, Float?]?,
+        span_attributes: Braintrust::SpanAttributes?,
+        span_parents: ::Array[String]?,
+        tags: ::Array[String]?
+      }
+
+    class ProjectLogsEvent < Braintrust::Internal::Type::BaseModel
+      attr_accessor id: String
+
+      attr_accessor _xact_id: String
+
+      attr_accessor created: Time
+
+      attr_accessor log_id: Braintrust::Models::ProjectLogsEvent::log_id
+
+      attr_accessor org_id: String
+
+      attr_accessor project_id: String
+
+      attr_accessor root_span_id: String
+
+      attr_accessor span_id: String
+
+      attr_accessor context: Braintrust::ProjectLogsEvent::Context?
+
+      attr_reader error: top?
+
+      def error=: (top) -> top
+
+      attr_reader expected: top?
+
+      def expected=: (top) -> top
+
+      attr_reader input: top?
+
+      def input=: (top) -> top
+
+      attr_accessor is_root: bool?
+
+      attr_accessor metadata: Braintrust::ProjectLogsEvent::Metadata?
+
+      attr_accessor metrics: Braintrust::ProjectLogsEvent::Metrics?
+
+      attr_accessor origin: Braintrust::ObjectReference?
+
+      attr_reader output: top?
+
+      def output=: (top) -> top
+
+      attr_accessor scores: ::Hash[Symbol, Float?]?
+
+      attr_accessor span_attributes: Braintrust::SpanAttributes?
+
+      attr_accessor span_parents: ::Array[String]?
+
+      attr_accessor tags: ::Array[String]?
+
+      def initialize: (
+        id: String,
+        _xact_id: String,
+        created: Time,
+        log_id: Braintrust::Models::ProjectLogsEvent::log_id,
+        org_id: String,
+        project_id: String,
+        root_span_id: String,
+        span_id: String,
+        ?context: Braintrust::ProjectLogsEvent::Context?,
+        ?error: top,
+        ?expected: top,
+        ?input: top,
+        ?is_root: bool?,
+        ?metadata: Braintrust::ProjectLogsEvent::Metadata?,
+        ?metrics: Braintrust::ProjectLogsEvent::Metrics?,
+        ?origin: Braintrust::ObjectReference?,
+        ?output: top,
+        ?scores: ::Hash[Symbol, Float?]?,
+        ?span_attributes: Braintrust::SpanAttributes?,
+        ?span_parents: ::Array[String]?,
+        ?tags: ::Array[String]?
+      ) -> void
+
+      def to_hash: -> {
+        id: String,
+        _xact_id: String,
+        created: Time,
+        log_id: Braintrust::Models::ProjectLogsEvent::log_id,
+        org_id: String,
+        project_id: String,
+        root_span_id: String,
+        span_id: String,
+        context: Braintrust::ProjectLogsEvent::Context?,
+        error: top,
+        expected: top,
+        input: top,
+        is_root: bool?,
+        metadata: Braintrust::ProjectLogsEvent::Metadata?,
+        metrics: Braintrust::ProjectLogsEvent::Metrics?,
+        origin: Braintrust::ObjectReference?,
+        output: top,
+        scores: ::Hash[Symbol, Float?]?,
+        span_attributes: Braintrust::SpanAttributes?,
+        span_parents: ::Array[String]?,
+        tags: ::Array[String]?
+      }
+
+      type log_id = :g
+
+      module LogID
+        extend Braintrust::Internal::Type::Enum
+
+        G: :g
+
+        def self?.values: -> ::Array[Braintrust::Models::ProjectLogsEvent::log_id]
+      end
+
+      type context =
+        {
+          caller_filename: String?,
+          caller_functionname: String?,
+          caller_lineno: Integer?
+        }
+
+      class Context < Braintrust::Internal::Type::BaseModel
+        attr_accessor caller_filename: String?
+
+        attr_accessor caller_functionname: String?
+
+        attr_accessor caller_lineno: Integer?
+
+        def initialize: (
+          ?caller_filename: String?,
+          ?caller_functionname: String?,
+          ?caller_lineno: Integer?
+        ) -> void
+
+        def to_hash: -> {
+          caller_filename: String?,
+          caller_functionname: String?,
+          caller_lineno: Integer?
+        }
+      end
+
+      type metadata = { model: String? }
+
+      class Metadata < Braintrust::Internal::Type::BaseModel
+        attr_accessor model: String?
+
+        def initialize: (?model: String?) -> void
+
+        def to_hash: -> { model: String? }
+      end
+
+      type metrics =
+        {
+          caller_filename: top,
+          caller_functionname: top,
+          caller_lineno: top,
+          completion_tokens: Integer?,
+          end_: Float?,
+          prompt_tokens: Integer?,
+          start: Float?,
+          tokens: Integer?
+        }
+
+      class Metrics < Braintrust::Internal::Type::BaseModel
+        attr_reader caller_filename: top?
+
+        def caller_filename=: (top) -> top
+
+        attr_reader caller_functionname: top?
+
+        def caller_functionname=: (top) -> top
+
+        attr_reader caller_lineno: top?
+
+        def caller_lineno=: (top) -> top
+
+        attr_accessor completion_tokens: Integer?
+
+        attr_accessor end_: Float?
+
+        attr_accessor prompt_tokens: Integer?
+
+        attr_accessor start: Float?
+
+        attr_accessor tokens: Integer?
+
+        def initialize: (
+          ?caller_filename: top,
+          ?caller_functionname: top,
+          ?caller_lineno: top,
+          ?completion_tokens: Integer?,
+          ?end_: Float?,
+          ?prompt_tokens: Integer?,
+          ?start: Float?,
+          ?tokens: Integer?
+        ) -> void
+
+        def to_hash: -> {
+          caller_filename: top,
+          caller_functionname: top,
+          caller_lineno: top,
+          completion_tokens: Integer?,
+          end_: Float?,
+          prompt_tokens: Integer?,
+          start: Float?,
+          tokens: Integer?
+        }
+      end
+    end
+  end
+end

@@ -1,0 +1,28 @@
+module Braintrust
+  module Models
+    type permission =
+      :create
+      | :read
+      | :update
+      | :delete
+      | :create_acls
+      | :read_acls
+      | :update_acls
+      | :delete_acls
+
+    module Permission
+      extend Braintrust::Internal::Type::Enum
+
+      CREATE: :create
+      READ: :read
+      UPDATE: :update
+      DELETE: :delete
+      CREATE_ACLS: :create_acls
+      READ_ACLS: :read_acls
+      UPDATE_ACLS: :update_acls
+      DELETE_ACLS: :delete_acls
+
+      def self?.values: -> ::Array[Braintrust::Models::permission]
+    end
+  end
+end

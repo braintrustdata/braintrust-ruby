@@ -1,0 +1,259 @@
+module Braintrust
+  module Models
+    type function_update_params =
+      {
+        description: String?,
+        function_data: Braintrust::Models::FunctionUpdateParams::function_data?,
+        name: String?,
+        prompt_data: Braintrust::PromptData?,
+        tags: ::Array[String]?
+      }
+      & Braintrust::Internal::Type::request_parameters
+
+    class FunctionUpdateParams < Braintrust::Internal::Type::BaseModel
+      extend Braintrust::Internal::Type::RequestParameters::Converter
+      include Braintrust::Internal::Type::RequestParameters
+
+      attr_accessor description: String?
+
+      attr_accessor function_data: Braintrust::Models::FunctionUpdateParams::function_data?
+
+      attr_accessor name: String?
+
+      attr_accessor prompt_data: Braintrust::PromptData?
+
+      attr_accessor tags: ::Array[String]?
+
+      def initialize: (
+        ?description: String?,
+        ?function_data: Braintrust::Models::FunctionUpdateParams::function_data?,
+        ?name: String?,
+        ?prompt_data: Braintrust::PromptData?,
+        ?tags: ::Array[String]?,
+        ?request_options: Braintrust::request_opts
+      ) -> void
+
+      def to_hash: -> {
+        description: String?,
+        function_data: Braintrust::Models::FunctionUpdateParams::function_data?,
+        name: String?,
+        prompt_data: Braintrust::PromptData?,
+        tags: ::Array[String]?,
+        request_options: Braintrust::RequestOptions
+      }
+
+      type function_data =
+        Braintrust::FunctionUpdateParams::FunctionData::Prompt
+        | Braintrust::FunctionUpdateParams::FunctionData::Code
+        | Braintrust::FunctionUpdateParams::FunctionData::Global
+
+      module FunctionData
+        extend Braintrust::Internal::Type::Union
+
+        type prompt =
+          {
+            type: Braintrust::Models::FunctionUpdateParams::FunctionData::Prompt::type_
+          }
+
+        class Prompt < Braintrust::Internal::Type::BaseModel
+          attr_accessor type: Braintrust::Models::FunctionUpdateParams::FunctionData::Prompt::type_
+
+          def initialize: (
+            type: Braintrust::Models::FunctionUpdateParams::FunctionData::Prompt::type_
+          ) -> void
+
+          def to_hash: -> {
+            type: Braintrust::Models::FunctionUpdateParams::FunctionData::Prompt::type_
+          }
+
+          type type_ = :prompt
+
+          module Type
+            extend Braintrust::Internal::Type::Enum
+
+            PROMPT: :prompt
+
+            def self?.values: -> ::Array[Braintrust::Models::FunctionUpdateParams::FunctionData::Prompt::type_]
+          end
+        end
+
+        type code =
+          {
+            data: Braintrust::Models::FunctionUpdateParams::FunctionData::Code::data,
+            type: Braintrust::Models::FunctionUpdateParams::FunctionData::Code::type_
+          }
+
+        class Code < Braintrust::Internal::Type::BaseModel
+          attr_accessor data: Braintrust::Models::FunctionUpdateParams::FunctionData::Code::data
+
+          attr_accessor type: Braintrust::Models::FunctionUpdateParams::FunctionData::Code::type_
+
+          def initialize: (
+            data: Braintrust::Models::FunctionUpdateParams::FunctionData::Code::data,
+            type: Braintrust::Models::FunctionUpdateParams::FunctionData::Code::type_
+          ) -> void
+
+          def to_hash: -> {
+            data: Braintrust::Models::FunctionUpdateParams::FunctionData::Code::data,
+            type: Braintrust::Models::FunctionUpdateParams::FunctionData::Code::type_
+          }
+
+          type data =
+            Braintrust::FunctionUpdateParams::FunctionData::Code::Data::Bundle
+            | Braintrust::FunctionUpdateParams::FunctionData::Code::Data::Inline
+
+          module Data
+            extend Braintrust::Internal::Type::Union
+
+            type bundle =
+              {
+                type: Braintrust::Models::FunctionUpdateParams::FunctionData::Code::Data::Bundle::type_
+              }
+
+            class Bundle < Braintrust::Models::CodeBundle
+              def `type`: -> Braintrust::Models::FunctionUpdateParams::FunctionData::Code::Data::Bundle::type_
+
+              def type=: (
+                Braintrust::Models::FunctionUpdateParams::FunctionData::Code::Data::Bundle::type_ _
+              ) -> Braintrust::Models::FunctionUpdateParams::FunctionData::Code::Data::Bundle::type_
+
+              def initialize: (
+                type: Braintrust::Models::FunctionUpdateParams::FunctionData::Code::Data::Bundle::type_
+              ) -> void
+
+              def to_hash: -> {
+                type: Braintrust::Models::FunctionUpdateParams::FunctionData::Code::Data::Bundle::type_
+              }
+
+              type type_ = :bundle
+
+              module Type
+                extend Braintrust::Internal::Type::Enum
+
+                BUNDLE: :bundle
+
+                def self?.values: -> ::Array[Braintrust::Models::FunctionUpdateParams::FunctionData::Code::Data::Bundle::type_]
+              end
+            end
+
+            type inline =
+              {
+                code: String,
+                runtime_context: Braintrust::FunctionUpdateParams::FunctionData::Code::Data::Inline::RuntimeContext,
+                type: Braintrust::Models::FunctionUpdateParams::FunctionData::Code::Data::Inline::type_
+              }
+
+            class Inline < Braintrust::Internal::Type::BaseModel
+              attr_accessor code: String
+
+              attr_accessor runtime_context: Braintrust::FunctionUpdateParams::FunctionData::Code::Data::Inline::RuntimeContext
+
+              attr_accessor type: Braintrust::Models::FunctionUpdateParams::FunctionData::Code::Data::Inline::type_
+
+              def initialize: (
+                code: String,
+                runtime_context: Braintrust::FunctionUpdateParams::FunctionData::Code::Data::Inline::RuntimeContext,
+                type: Braintrust::Models::FunctionUpdateParams::FunctionData::Code::Data::Inline::type_
+              ) -> void
+
+              def to_hash: -> {
+                code: String,
+                runtime_context: Braintrust::FunctionUpdateParams::FunctionData::Code::Data::Inline::RuntimeContext,
+                type: Braintrust::Models::FunctionUpdateParams::FunctionData::Code::Data::Inline::type_
+              }
+
+              type runtime_context =
+                {
+                  runtime: Braintrust::Models::FunctionUpdateParams::FunctionData::Code::Data::Inline::RuntimeContext::runtime,
+                  version: String
+                }
+
+              class RuntimeContext < Braintrust::Internal::Type::BaseModel
+                attr_accessor runtime: Braintrust::Models::FunctionUpdateParams::FunctionData::Code::Data::Inline::RuntimeContext::runtime
+
+                attr_accessor version: String
+
+                def initialize: (
+                  runtime: Braintrust::Models::FunctionUpdateParams::FunctionData::Code::Data::Inline::RuntimeContext::runtime,
+                  version: String
+                ) -> void
+
+                def to_hash: -> {
+                  runtime: Braintrust::Models::FunctionUpdateParams::FunctionData::Code::Data::Inline::RuntimeContext::runtime,
+                  version: String
+                }
+
+                type runtime = :node | :python
+
+                module Runtime
+                  extend Braintrust::Internal::Type::Enum
+
+                  NODE: :node
+                  PYTHON: :python
+
+                  def self?.values: -> ::Array[Braintrust::Models::FunctionUpdateParams::FunctionData::Code::Data::Inline::RuntimeContext::runtime]
+                end
+              end
+
+              type type_ = :inline
+
+              module Type
+                extend Braintrust::Internal::Type::Enum
+
+                INLINE: :inline
+
+                def self?.values: -> ::Array[Braintrust::Models::FunctionUpdateParams::FunctionData::Code::Data::Inline::type_]
+              end
+            end
+
+            def self?.variants: -> ::Array[Braintrust::Models::FunctionUpdateParams::FunctionData::Code::data]
+          end
+
+          type type_ = :code
+
+          module Type
+            extend Braintrust::Internal::Type::Enum
+
+            CODE: :code
+
+            def self?.values: -> ::Array[Braintrust::Models::FunctionUpdateParams::FunctionData::Code::type_]
+          end
+        end
+
+        type global =
+          {
+            name: String,
+            type: Braintrust::Models::FunctionUpdateParams::FunctionData::Global::type_
+          }
+
+        class Global < Braintrust::Internal::Type::BaseModel
+          attr_accessor name: String
+
+          attr_accessor type: Braintrust::Models::FunctionUpdateParams::FunctionData::Global::type_
+
+          def initialize: (
+            name: String,
+            type: Braintrust::Models::FunctionUpdateParams::FunctionData::Global::type_
+          ) -> void
+
+          def to_hash: -> {
+            name: String,
+            type: Braintrust::Models::FunctionUpdateParams::FunctionData::Global::type_
+          }
+
+          type type_ = :global
+
+          module Type
+            extend Braintrust::Internal::Type::Enum
+
+            GLOBAL: :global
+
+            def self?.values: -> ::Array[Braintrust::Models::FunctionUpdateParams::FunctionData::Global::type_]
+          end
+        end
+
+        def self?.variants: -> ::Array[Braintrust::Models::FunctionUpdateParams::function_data]
+      end
+    end
+  end
+end

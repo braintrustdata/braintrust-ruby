@@ -2,37 +2,59 @@
 
 module Braintrust
   module Models
-    class Organization < BaseModel
-      # @!attribute [rw] id
+    class Organization < Braintrust::Internal::Type::BaseModel
+      # @!attribute id
       #   Unique identifier for the organization
+      #
       #   @return [String]
       required :id, String
 
-      # @!attribute [rw] name_
+      # @!attribute name
       #   Name of the organization
+      #
       #   @return [String]
-      required :name_, String
+      required :name, String
 
-      # @!attribute [rw] api_url
-      #   @return [String]
-      optional :api_url, String
+      # @!attribute api_url
+      #
+      #   @return [String, nil]
+      optional :api_url, String, nil?: true
 
-      # @!attribute [rw] created
+      # @!attribute created
       #   Date of organization creation
-      #   @return [DateTime]
-      optional :created, DateTime
+      #
+      #   @return [Time, nil]
+      optional :created, Time, nil?: true
 
-      # @!attribute [rw] is_universal_api
-      #   @return [Boolean]
-      optional :is_universal_api, Braintrust::BooleanModel
+      # @!attribute is_universal_api
+      #
+      #   @return [Boolean, nil]
+      optional :is_universal_api, Braintrust::Internal::Type::Boolean, nil?: true
 
-      # @!attribute [rw] proxy_url
-      #   @return [String]
-      optional :proxy_url, String
+      # @!attribute proxy_url
+      #
+      #   @return [String, nil]
+      optional :proxy_url, String, nil?: true
 
-      # @!attribute [rw] realtime_url
-      #   @return [String]
-      optional :realtime_url, String
+      # @!attribute realtime_url
+      #
+      #   @return [String, nil]
+      optional :realtime_url, String, nil?: true
+
+      # @!method initialize(id:, name:, api_url: nil, created: nil, is_universal_api: nil, proxy_url: nil, realtime_url: nil)
+      #   @param id [String] Unique identifier for the organization
+      #
+      #   @param name [String] Name of the organization
+      #
+      #   @param api_url [String, nil]
+      #
+      #   @param created [Time, nil] Date of organization creation
+      #
+      #   @param is_universal_api [Boolean, nil]
+      #
+      #   @param proxy_url [String, nil]
+      #
+      #   @param realtime_url [String, nil]
     end
   end
 end

@@ -2,34 +2,63 @@
 
 require_relative "../../test_helper"
 
-class Braintrust::Test::Resources::LogsTest < Test::Unit::TestCase
-  def setup
-    @braintrust = Braintrust::Client.new(base_url: "http://localhost:4010", api_key: "My API Key")
-  end
-
+class Braintrust::Test::Resources::Projects::LogsTest < Braintrust::Test::ResourceTest
   def test_feedback_required_params
-    response = @braintrust.projects.logs.feedback(
-      "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-      {feedback: [{"id" => "id"}, {"id" => "id"}, {"id" => "id"}]}
-    )
-    assert_kind_of(Braintrust::Models::FeedbackResponseSchema, response)
+    response =
+      @braintrust.projects.logs.feedback("182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e", feedback: [{id: "id"}])
+
+    assert_pattern do
+      response => Braintrust::FeedbackResponseSchema
+    end
+
+    assert_pattern do
+      response => {
+        status: Braintrust::FeedbackResponseSchema::Status
+      }
+    end
   end
 
   def test_fetch
     response = @braintrust.projects.logs.fetch("182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e")
-    assert_kind_of(Braintrust::Models::FetchProjectLogsEventsResponse, response)
+
+    assert_pattern do
+      response => Braintrust::FetchProjectLogsEventsResponse
+    end
+
+    assert_pattern do
+      response => {
+        events: ^(Braintrust::Internal::Type::ArrayOf[Braintrust::ProjectLogsEvent]),
+        cursor: String | nil
+      }
+    end
   end
 
   def test_fetch_post
     response = @braintrust.projects.logs.fetch_post("182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e")
-    assert_kind_of(Braintrust::Models::FetchProjectLogsEventsResponse, response)
+
+    assert_pattern do
+      response => Braintrust::FetchProjectLogsEventsResponse
+    end
+
+    assert_pattern do
+      response => {
+        events: ^(Braintrust::Internal::Type::ArrayOf[Braintrust::ProjectLogsEvent]),
+        cursor: String | nil
+      }
+    end
   end
 
   def test_insert_required_params
-    response = @braintrust.projects.logs.insert(
-      "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-      {events: [{}, {}, {}]}
-    )
-    assert_kind_of(Braintrust::Models::InsertEventsResponse, response)
+    response = @braintrust.projects.logs.insert("182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e", events: [{}])
+
+    assert_pattern do
+      response => Braintrust::InsertEventsResponse
+    end
+
+    assert_pattern do
+      response => {
+        row_ids: ^(Braintrust::Internal::Type::ArrayOf[String])
+      }
+    end
   end
 end

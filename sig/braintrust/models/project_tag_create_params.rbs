@@ -1,0 +1,36 @@
+module Braintrust
+  module Models
+    type project_tag_create_params =
+      { name: String, project_id: String, color: String?, description: String? }
+      & Braintrust::Internal::Type::request_parameters
+
+    class ProjectTagCreateParams < Braintrust::Internal::Type::BaseModel
+      extend Braintrust::Internal::Type::RequestParameters::Converter
+      include Braintrust::Internal::Type::RequestParameters
+
+      attr_accessor name: String
+
+      attr_accessor project_id: String
+
+      attr_accessor color: String?
+
+      attr_accessor description: String?
+
+      def initialize: (
+        name: String,
+        project_id: String,
+        ?color: String?,
+        ?description: String?,
+        ?request_options: Braintrust::request_opts
+      ) -> void
+
+      def to_hash: -> {
+        name: String,
+        project_id: String,
+        color: String?,
+        description: String?,
+        request_options: Braintrust::RequestOptions
+      }
+    end
+  end
+end

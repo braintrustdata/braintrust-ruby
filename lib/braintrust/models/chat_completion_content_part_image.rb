@@ -2,35 +2,58 @@
 
 module Braintrust
   module Models
-    class ChatCompletionContentPartImage < BaseModel
-      # @!attribute [rw] image_url
+    class ChatCompletionContentPartImage < Braintrust::Internal::Type::BaseModel
+      # @!attribute image_url
+      #
       #   @return [Braintrust::Models::ChatCompletionContentPartImage::ImageURL]
-      required :image_url, -> { Braintrust::Models::ChatCompletionContentPartImage::ImageURL }
+      required :image_url, -> { Braintrust::ChatCompletionContentPartImage::ImageURL }
 
-      # @!attribute [rw] type
-      #   One of the constants defined in {Braintrust::Models::ChatCompletionContentPartImage::Type}
-      #   @return [Symbol]
-      required :type, enum: -> { Braintrust::Models::ChatCompletionContentPartImage::Type }
+      # @!attribute type
+      #
+      #   @return [Symbol, Braintrust::Models::ChatCompletionContentPartImage::Type]
+      required :type, enum: -> { Braintrust::ChatCompletionContentPartImage::Type }
 
-      class ImageURL < BaseModel
-        # @!attribute [rw] url
+      # @!method initialize(image_url:, type:)
+      #   @param image_url [Braintrust::Models::ChatCompletionContentPartImage::ImageURL]
+      #   @param type [Symbol, Braintrust::Models::ChatCompletionContentPartImage::Type]
+
+      # @see Braintrust::Models::ChatCompletionContentPartImage#image_url
+      class ImageURL < Braintrust::Internal::Type::BaseModel
+        # @!attribute url
+        #
         #   @return [String]
         required :url, String
 
-        # @!attribute [rw] detail
-        #   One of the constants defined in {Braintrust::Models::ChatCompletionContentPartImage::ImageURL::Detail}
-        #   @return [Symbol]
-        optional :detail, enum: -> { Braintrust::Models::ChatCompletionContentPartImage::ImageURL::Detail }
+        # @!attribute detail
+        #
+        #   @return [Symbol, Braintrust::Models::ChatCompletionContentPartImage::ImageURL::Detail, nil]
+        optional :detail, enum: -> { Braintrust::ChatCompletionContentPartImage::ImageURL::Detail }
 
-        class Detail < Braintrust::Enum
+        # @!method initialize(url:, detail: nil)
+        #   @param url [String]
+        #   @param detail [Symbol, Braintrust::Models::ChatCompletionContentPartImage::ImageURL::Detail]
+
+        # @see Braintrust::Models::ChatCompletionContentPartImage::ImageURL#detail
+        module Detail
+          extend Braintrust::Internal::Type::Enum
+
           AUTO = :auto
           LOW = :low
           HIGH = :high
+
+          # @!method self.values
+          #   @return [Array<Symbol>]
         end
       end
 
-      class Type < Braintrust::Enum
+      # @see Braintrust::Models::ChatCompletionContentPartImage#type
+      module Type
+        extend Braintrust::Internal::Type::Enum
+
         IMAGE_URL = :image_url
+
+        # @!method self.values
+        #   @return [Array<Symbol>]
       end
     end
   end

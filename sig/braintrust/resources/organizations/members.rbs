@@ -1,0 +1,17 @@
+module Braintrust
+  module Resources
+    class Organizations
+      class Members
+        def update: (
+          ?invite_users: Braintrust::Organizations::MemberUpdateParams::InviteUsers?,
+          ?org_id: String?,
+          ?org_name: String?,
+          ?remove_users: Braintrust::Organizations::MemberUpdateParams::RemoveUsers?,
+          ?request_options: Braintrust::request_opts
+        ) -> Braintrust::PatchOrganizationMembersOutput
+
+        def initialize: (client: Braintrust::Client) -> void
+      end
+    end
+  end
+end

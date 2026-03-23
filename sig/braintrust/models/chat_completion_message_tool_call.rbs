@@ -1,0 +1,52 @@
+module Braintrust
+  module Models
+    type chat_completion_message_tool_call =
+      {
+        id: String,
+        function: Braintrust::ChatCompletionMessageToolCall::Function,
+        type: Braintrust::Models::ChatCompletionMessageToolCall::type_
+      }
+
+    class ChatCompletionMessageToolCall < Braintrust::Internal::Type::BaseModel
+      attr_accessor id: String
+
+      attr_accessor function: Braintrust::ChatCompletionMessageToolCall::Function
+
+      attr_accessor type: Braintrust::Models::ChatCompletionMessageToolCall::type_
+
+      def initialize: (
+        id: String,
+        function: Braintrust::ChatCompletionMessageToolCall::Function,
+        type: Braintrust::Models::ChatCompletionMessageToolCall::type_
+      ) -> void
+
+      def to_hash: -> {
+        id: String,
+        function: Braintrust::ChatCompletionMessageToolCall::Function,
+        type: Braintrust::Models::ChatCompletionMessageToolCall::type_
+      }
+
+      type function = { arguments: String, name: String }
+
+      class Function < Braintrust::Internal::Type::BaseModel
+        attr_accessor arguments: String
+
+        attr_accessor name: String
+
+        def initialize: (arguments: String, name: String) -> void
+
+        def to_hash: -> { arguments: String, name: String }
+      end
+
+      type type_ = :function
+
+      module Type
+        extend Braintrust::Internal::Type::Enum
+
+        FUNCTION: :function
+
+        def self?.values: -> ::Array[Braintrust::Models::ChatCompletionMessageToolCall::type_]
+      end
+    end
+  end
+end

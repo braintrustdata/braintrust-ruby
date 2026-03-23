@@ -1,0 +1,73 @@
+module Braintrust
+  module Models
+    type project_list_params =
+      {
+        ending_before: String,
+        ids: Braintrust::Models::ProjectListParams::ids,
+        limit: Integer?,
+        org_name: String,
+        project_name: String,
+        starting_after: String
+      }
+      & Braintrust::Internal::Type::request_parameters
+
+    class ProjectListParams < Braintrust::Internal::Type::BaseModel
+      extend Braintrust::Internal::Type::RequestParameters::Converter
+      include Braintrust::Internal::Type::RequestParameters
+
+      attr_reader ending_before: String?
+
+      def ending_before=: (String) -> String
+
+      attr_reader ids: Braintrust::Models::ProjectListParams::ids?
+
+      def ids=: (
+        Braintrust::Models::ProjectListParams::ids
+      ) -> Braintrust::Models::ProjectListParams::ids
+
+      attr_accessor limit: Integer?
+
+      attr_reader org_name: String?
+
+      def org_name=: (String) -> String
+
+      attr_reader project_name: String?
+
+      def project_name=: (String) -> String
+
+      attr_reader starting_after: String?
+
+      def starting_after=: (String) -> String
+
+      def initialize: (
+        ?ending_before: String,
+        ?ids: Braintrust::Models::ProjectListParams::ids,
+        ?limit: Integer?,
+        ?org_name: String,
+        ?project_name: String,
+        ?starting_after: String,
+        ?request_options: Braintrust::request_opts
+      ) -> void
+
+      def to_hash: -> {
+        ending_before: String,
+        ids: Braintrust::Models::ProjectListParams::ids,
+        limit: Integer?,
+        org_name: String,
+        project_name: String,
+        starting_after: String,
+        request_options: Braintrust::RequestOptions
+      }
+
+      type ids = String | ::Array[String]
+
+      module IDs
+        extend Braintrust::Internal::Type::Union
+
+        def self?.variants: -> ::Array[Braintrust::Models::ProjectListParams::ids]
+
+        StringArray: Braintrust::Internal::Type::Converter
+      end
+    end
+  end
+end

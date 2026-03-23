@@ -1,0 +1,69 @@
+module Braintrust
+  module Models
+    type prompt_create_params =
+      {
+        name: String,
+        project_id: String,
+        slug: String,
+        description: String?,
+        function_type: Braintrust::Models::PromptCreateParams::function_type?,
+        prompt_data: Braintrust::PromptData?,
+        tags: ::Array[String]?
+      }
+      & Braintrust::Internal::Type::request_parameters
+
+    class PromptCreateParams < Braintrust::Internal::Type::BaseModel
+      extend Braintrust::Internal::Type::RequestParameters::Converter
+      include Braintrust::Internal::Type::RequestParameters
+
+      attr_accessor name: String
+
+      attr_accessor project_id: String
+
+      attr_accessor slug: String
+
+      attr_accessor description: String?
+
+      attr_accessor function_type: Braintrust::Models::PromptCreateParams::function_type?
+
+      attr_accessor prompt_data: Braintrust::PromptData?
+
+      attr_accessor tags: ::Array[String]?
+
+      def initialize: (
+        name: String,
+        project_id: String,
+        slug: String,
+        ?description: String?,
+        ?function_type: Braintrust::Models::PromptCreateParams::function_type?,
+        ?prompt_data: Braintrust::PromptData?,
+        ?tags: ::Array[String]?,
+        ?request_options: Braintrust::request_opts
+      ) -> void
+
+      def to_hash: -> {
+        name: String,
+        project_id: String,
+        slug: String,
+        description: String?,
+        function_type: Braintrust::Models::PromptCreateParams::function_type?,
+        prompt_data: Braintrust::PromptData?,
+        tags: ::Array[String]?,
+        request_options: Braintrust::RequestOptions
+      }
+
+      type function_type = :llm | :scorer | :task | :tool
+
+      module FunctionType
+        extend Braintrust::Internal::Type::Enum
+
+        LLM: :llm
+        SCORER: :scorer
+        TASK: :task
+        TOOL: :tool
+
+        def self?.values: -> ::Array[Braintrust::Models::PromptCreateParams::function_type]
+      end
+    end
+  end
+end

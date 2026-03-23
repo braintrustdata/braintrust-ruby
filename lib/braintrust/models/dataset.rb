@@ -2,46 +2,73 @@
 
 module Braintrust
   module Models
-    class Dataset < BaseModel
-      # @!attribute [rw] id
+    class Dataset < Braintrust::Internal::Type::BaseModel
+      # @!attribute id
       #   Unique identifier for the dataset
+      #
       #   @return [String]
       required :id, String
 
-      # @!attribute [rw] name_
+      # @!attribute name
       #   Name of the dataset. Within a project, dataset names are unique
+      #
       #   @return [String]
-      required :name_, String
+      required :name, String
 
-      # @!attribute [rw] project_id
+      # @!attribute project_id
       #   Unique identifier for the project that the dataset belongs under
+      #
       #   @return [String]
       required :project_id, String
 
-      # @!attribute [rw] created
+      # @!attribute created
       #   Date of dataset creation
-      #   @return [DateTime]
-      optional :created, DateTime
+      #
+      #   @return [Time, nil]
+      optional :created, Time, nil?: true
 
-      # @!attribute [rw] deleted_at
+      # @!attribute deleted_at
       #   Date of dataset deletion, or null if the dataset is still active
-      #   @return [DateTime]
-      optional :deleted_at, DateTime
+      #
+      #   @return [Time, nil]
+      optional :deleted_at, Time, nil?: true
 
-      # @!attribute [rw] description
+      # @!attribute description
       #   Textual description of the dataset
-      #   @return [String]
-      optional :description, String
+      #
+      #   @return [String, nil]
+      optional :description, String, nil?: true
 
-      # @!attribute [rw] metadata
+      # @!attribute metadata
       #   User-controlled metadata about the dataset
-      #   @return [Hash]
-      optional :metadata, Hash
+      #
+      #   @return [Hash{Symbol=>Object, nil}, nil]
+      optional :metadata,
+               Braintrust::Internal::Type::HashOf[Braintrust::Internal::Type::Unknown, nil?: true],
+               nil?: true
 
-      # @!attribute [rw] user_id
+      # @!attribute user_id
       #   Identifies the user who created the dataset
-      #   @return [String]
-      optional :user_id, String
+      #
+      #   @return [String, nil]
+      optional :user_id, String, nil?: true
+
+      # @!method initialize(id:, name:, project_id:, created: nil, deleted_at: nil, description: nil, metadata: nil, user_id: nil)
+      #   @param id [String] Unique identifier for the dataset
+      #
+      #   @param name [String] Name of the dataset. Within a project, dataset names are unique
+      #
+      #   @param project_id [String] Unique identifier for the project that the dataset belongs under
+      #
+      #   @param created [Time, nil] Date of dataset creation
+      #
+      #   @param deleted_at [Time, nil] Date of dataset deletion, or null if the dataset is still active
+      #
+      #   @param description [String, nil] Textual description of the dataset
+      #
+      #   @param metadata [Hash{Symbol=>Object, nil}, nil] User-controlled metadata about the dataset
+      #
+      #   @param user_id [String, nil] Identifies the user who created the dataset
     end
   end
 end

@@ -2,22 +2,40 @@
 
 module Braintrust
   module Models
-    class ViewDataSearch < BaseModel
-      # @!attribute [rw] filter
-      #   @return [Array<Object>]
-      optional :filter, Braintrust::ArrayOf.new(Braintrust::Unknown)
+    class ViewDataSearch < Braintrust::Internal::Type::BaseModel
+      # @!attribute filter
+      #
+      #   @return [Array<Object, nil>, nil]
+      optional :filter,
+               Braintrust::Internal::Type::ArrayOf[Braintrust::Internal::Type::Unknown, nil?: true],
+               nil?: true
 
-      # @!attribute [rw] match
-      #   @return [Array<Object>]
-      optional :match, Braintrust::ArrayOf.new(Braintrust::Unknown)
+      # @!attribute match
+      #
+      #   @return [Array<Object, nil>, nil]
+      optional :match,
+               Braintrust::Internal::Type::ArrayOf[Braintrust::Internal::Type::Unknown, nil?: true],
+               nil?: true
 
-      # @!attribute [rw] sort
-      #   @return [Array<Object>]
-      optional :sort, Braintrust::ArrayOf.new(Braintrust::Unknown)
+      # @!attribute sort
+      #
+      #   @return [Array<Object, nil>, nil]
+      optional :sort,
+               Braintrust::Internal::Type::ArrayOf[Braintrust::Internal::Type::Unknown, nil?: true],
+               nil?: true
 
-      # @!attribute [rw] tag
-      #   @return [Array<Object>]
-      optional :tag, Braintrust::ArrayOf.new(Braintrust::Unknown)
+      # @!attribute tag
+      #
+      #   @return [Array<Object, nil>, nil]
+      optional :tag,
+               Braintrust::Internal::Type::ArrayOf[Braintrust::Internal::Type::Unknown, nil?: true],
+               nil?: true
+
+      # @!method initialize(filter: nil, match: nil, sort: nil, tag: nil)
+      #   @param filter [Array<Object, nil>, nil]
+      #   @param match [Array<Object, nil>, nil]
+      #   @param sort [Array<Object, nil>, nil]
+      #   @param tag [Array<Object, nil>, nil]
     end
   end
 end

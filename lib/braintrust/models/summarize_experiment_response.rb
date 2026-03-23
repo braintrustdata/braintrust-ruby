@@ -2,41 +2,65 @@
 
 module Braintrust
   module Models
-    class SummarizeExperimentResponse < BaseModel
-      # @!attribute [rw] experiment_name
+    class SummarizeExperimentResponse < Braintrust::Internal::Type::BaseModel
+      # @!attribute experiment_name
       #   Name of the experiment
+      #
       #   @return [String]
       required :experiment_name, String
 
-      # @!attribute [rw] experiment_url
+      # @!attribute experiment_url
       #   URL to the experiment's page in the Braintrust app
+      #
       #   @return [String]
       required :experiment_url, String
 
-      # @!attribute [rw] project_name
+      # @!attribute project_name
       #   Name of the project that the experiment belongs to
+      #
       #   @return [String]
       required :project_name, String
 
-      # @!attribute [rw] project_url
+      # @!attribute project_url
       #   URL to the project's page in the Braintrust app
+      #
       #   @return [String]
       required :project_url, String
 
-      # @!attribute [rw] comparison_experiment_name
+      # @!attribute comparison_experiment_name
       #   The experiment which scores are baselined against
-      #   @return [String]
-      optional :comparison_experiment_name, String
+      #
+      #   @return [String, nil]
+      optional :comparison_experiment_name, String, nil?: true
 
-      # @!attribute [rw] metrics
+      # @!attribute metrics
       #   Summary of the experiment's metrics
-      #   @return [Hash]
-      optional :metrics, Hash
+      #
+      #   @return [Hash{Symbol=>Braintrust::Models::MetricSummary}, nil]
+      optional :metrics, -> { Braintrust::Internal::Type::HashOf[Braintrust::MetricSummary] }, nil?: true
 
-      # @!attribute [rw] scores
+      # @!attribute scores
       #   Summary of the experiment's scores
-      #   @return [Hash]
-      optional :scores, Hash
+      #
+      #   @return [Hash{Symbol=>Braintrust::Models::ScoreSummary}, nil]
+      optional :scores, -> { Braintrust::Internal::Type::HashOf[Braintrust::ScoreSummary] }, nil?: true
+
+      # @!method initialize(experiment_name:, experiment_url:, project_name:, project_url:, comparison_experiment_name: nil, metrics: nil, scores: nil)
+      #   Summary of an experiment
+      #
+      #   @param experiment_name [String] Name of the experiment
+      #
+      #   @param experiment_url [String] URL to the experiment's page in the Braintrust app
+      #
+      #   @param project_name [String] Name of the project that the experiment belongs to
+      #
+      #   @param project_url [String] URL to the project's page in the Braintrust app
+      #
+      #   @param comparison_experiment_name [String, nil] The experiment which scores are baselined against
+      #
+      #   @param metrics [Hash{Symbol=>Braintrust::Models::MetricSummary}, nil] Summary of the experiment's metrics
+      #
+      #   @param scores [Hash{Symbol=>Braintrust::Models::ScoreSummary}, nil] Summary of the experiment's scores
     end
   end
 end

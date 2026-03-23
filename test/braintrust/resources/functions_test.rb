@@ -2,57 +2,211 @@
 
 require_relative "../test_helper"
 
-class Braintrust::Test::Resources::FunctionsTest < Test::Unit::TestCase
-  def setup
-    @braintrust = Braintrust::Client.new(base_url: "http://localhost:4010", api_key: "My API Key")
-  end
-
+class Braintrust::Test::Resources::FunctionsTest < Braintrust::Test::ResourceTest
   def test_create_required_params
-    response = @braintrust.functions.create(
-      {
-        function_data: {"type" => "prompt"},
-        name: "name",
+    response =
+      @braintrust.functions.create(
+        function_data: {type: :prompt},
+        name: "x",
         project_id: "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-        slug: "slug"
+        slug: "x"
+      )
+
+    assert_pattern do
+      response => Braintrust::Function
+    end
+
+    assert_pattern do
+      response => {
+        id: String,
+        _xact_id: String,
+        function_data: Braintrust::Function::FunctionData,
+        log_id: Braintrust::Function::LogID,
+        name: String,
+        org_id: String,
+        project_id: String,
+        slug: String,
+        created: Time | nil,
+        description: String | nil,
+        function_schema: Braintrust::Function::FunctionSchema | nil,
+        function_type: Braintrust::Function::FunctionType | nil,
+        metadata: ^(Braintrust::Internal::Type::HashOf[Braintrust::Internal::Type::Unknown,
+                                                       nil?: true]) | nil,
+        origin: Braintrust::Function::Origin | nil,
+        prompt_data: Braintrust::PromptData | nil,
+        tags: ^(Braintrust::Internal::Type::ArrayOf[String]) | nil
       }
-    )
-    assert_kind_of(Braintrust::Models::Function, response)
+    end
   end
 
   def test_retrieve
     response = @braintrust.functions.retrieve("182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e")
-    assert_kind_of(Braintrust::Models::Function, response)
+
+    assert_pattern do
+      response => Braintrust::Function
+    end
+
+    assert_pattern do
+      response => {
+        id: String,
+        _xact_id: String,
+        function_data: Braintrust::Function::FunctionData,
+        log_id: Braintrust::Function::LogID,
+        name: String,
+        org_id: String,
+        project_id: String,
+        slug: String,
+        created: Time | nil,
+        description: String | nil,
+        function_schema: Braintrust::Function::FunctionSchema | nil,
+        function_type: Braintrust::Function::FunctionType | nil,
+        metadata: ^(Braintrust::Internal::Type::HashOf[Braintrust::Internal::Type::Unknown,
+                                                       nil?: true]) | nil,
+        origin: Braintrust::Function::Origin | nil,
+        prompt_data: Braintrust::PromptData | nil,
+        tags: ^(Braintrust::Internal::Type::ArrayOf[String]) | nil
+      }
+    end
   end
 
   def test_update
     response = @braintrust.functions.update("182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e")
-    assert_kind_of(Braintrust::Models::Function, response)
+
+    assert_pattern do
+      response => Braintrust::Function
+    end
+
+    assert_pattern do
+      response => {
+        id: String,
+        _xact_id: String,
+        function_data: Braintrust::Function::FunctionData,
+        log_id: Braintrust::Function::LogID,
+        name: String,
+        org_id: String,
+        project_id: String,
+        slug: String,
+        created: Time | nil,
+        description: String | nil,
+        function_schema: Braintrust::Function::FunctionSchema | nil,
+        function_type: Braintrust::Function::FunctionType | nil,
+        metadata: ^(Braintrust::Internal::Type::HashOf[Braintrust::Internal::Type::Unknown,
+                                                       nil?: true]) | nil,
+        origin: Braintrust::Function::Origin | nil,
+        prompt_data: Braintrust::PromptData | nil,
+        tags: ^(Braintrust::Internal::Type::ArrayOf[String]) | nil
+      }
+    end
   end
 
   def test_list
     response = @braintrust.functions.list
-    assert_kind_of(Braintrust::ListObjects, response)
+
+    assert_pattern do
+      response => Braintrust::Internal::ListObjects
+    end
+
+    row = response.to_enum.first
+    return if row.nil?
+
+    assert_pattern do
+      row => Braintrust::Function
+    end
+
+    assert_pattern do
+      row => {
+        id: String,
+        _xact_id: String,
+        function_data: Braintrust::Function::FunctionData,
+        log_id: Braintrust::Function::LogID,
+        name: String,
+        org_id: String,
+        project_id: String,
+        slug: String,
+        created: Time | nil,
+        description: String | nil,
+        function_schema: Braintrust::Function::FunctionSchema | nil,
+        function_type: Braintrust::Function::FunctionType | nil,
+        metadata: ^(Braintrust::Internal::Type::HashOf[Braintrust::Internal::Type::Unknown,
+                                                       nil?: true]) | nil,
+        origin: Braintrust::Function::Origin | nil,
+        prompt_data: Braintrust::PromptData | nil,
+        tags: ^(Braintrust::Internal::Type::ArrayOf[String]) | nil
+      }
+    end
   end
 
   def test_delete
     response = @braintrust.functions.delete("182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e")
-    assert_kind_of(Braintrust::Models::Function, response)
+
+    assert_pattern do
+      response => Braintrust::Function
+    end
+
+    assert_pattern do
+      response => {
+        id: String,
+        _xact_id: String,
+        function_data: Braintrust::Function::FunctionData,
+        log_id: Braintrust::Function::LogID,
+        name: String,
+        org_id: String,
+        project_id: String,
+        slug: String,
+        created: Time | nil,
+        description: String | nil,
+        function_schema: Braintrust::Function::FunctionSchema | nil,
+        function_type: Braintrust::Function::FunctionType | nil,
+        metadata: ^(Braintrust::Internal::Type::HashOf[Braintrust::Internal::Type::Unknown,
+                                                       nil?: true]) | nil,
+        origin: Braintrust::Function::Origin | nil,
+        prompt_data: Braintrust::PromptData | nil,
+        tags: ^(Braintrust::Internal::Type::ArrayOf[String]) | nil
+      }
+    end
   end
 
   def test_invoke
     response = @braintrust.functions.invoke("182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e")
-    refute_nil(Object, response)
+
+    assert_pattern do
+      response => Braintrust::Internal::Type::Unknown
+    end
   end
 
   def test_replace_required_params
-    response = @braintrust.functions.replace(
-      {
-        function_data: {"type" => "prompt"},
-        name: "name",
+    response =
+      @braintrust.functions.replace(
+        function_data: {type: :prompt},
+        name: "x",
         project_id: "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-        slug: "slug"
+        slug: "x"
+      )
+
+    assert_pattern do
+      response => Braintrust::Function
+    end
+
+    assert_pattern do
+      response => {
+        id: String,
+        _xact_id: String,
+        function_data: Braintrust::Function::FunctionData,
+        log_id: Braintrust::Function::LogID,
+        name: String,
+        org_id: String,
+        project_id: String,
+        slug: String,
+        created: Time | nil,
+        description: String | nil,
+        function_schema: Braintrust::Function::FunctionSchema | nil,
+        function_type: Braintrust::Function::FunctionType | nil,
+        metadata: ^(Braintrust::Internal::Type::HashOf[Braintrust::Internal::Type::Unknown,
+                                                       nil?: true]) | nil,
+        origin: Braintrust::Function::Origin | nil,
+        prompt_data: Braintrust::PromptData | nil,
+        tags: ^(Braintrust::Internal::Type::ArrayOf[String]) | nil
       }
-    )
-    assert_kind_of(Braintrust::Models::Function, response)
+    end
   end
 end

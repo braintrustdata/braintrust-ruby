@@ -1,0 +1,68 @@
+module Braintrust
+  module Models
+    type env_var_list_params =
+      {
+        env_var_name: String,
+        ids: Braintrust::Models::EnvVarListParams::ids,
+        limit: Integer?,
+        object_id_: String,
+        object_type: Braintrust::Models::env_var_object_type
+      }
+      & Braintrust::Internal::Type::request_parameters
+
+    class EnvVarListParams < Braintrust::Internal::Type::BaseModel
+      extend Braintrust::Internal::Type::RequestParameters::Converter
+      include Braintrust::Internal::Type::RequestParameters
+
+      attr_reader env_var_name: String?
+
+      def env_var_name=: (String) -> String
+
+      attr_reader ids: Braintrust::Models::EnvVarListParams::ids?
+
+      def ids=: (
+        Braintrust::Models::EnvVarListParams::ids
+      ) -> Braintrust::Models::EnvVarListParams::ids
+
+      attr_accessor limit: Integer?
+
+      attr_reader object_id_: String?
+
+      def object_id_=: (String) -> String
+
+      attr_reader object_type: Braintrust::Models::env_var_object_type?
+
+      def object_type=: (
+        Braintrust::Models::env_var_object_type
+      ) -> Braintrust::Models::env_var_object_type
+
+      def initialize: (
+        ?env_var_name: String,
+        ?ids: Braintrust::Models::EnvVarListParams::ids,
+        ?limit: Integer?,
+        ?object_id_: String,
+        ?object_type: Braintrust::Models::env_var_object_type,
+        ?request_options: Braintrust::request_opts
+      ) -> void
+
+      def to_hash: -> {
+        env_var_name: String,
+        ids: Braintrust::Models::EnvVarListParams::ids,
+        limit: Integer?,
+        object_id_: String,
+        object_type: Braintrust::Models::env_var_object_type,
+        request_options: Braintrust::RequestOptions
+      }
+
+      type ids = String | ::Array[String]
+
+      module IDs
+        extend Braintrust::Internal::Type::Union
+
+        def self?.variants: -> ::Array[Braintrust::Models::EnvVarListParams::ids]
+
+        StringArray: Braintrust::Internal::Type::Converter
+      end
+    end
+  end
+end

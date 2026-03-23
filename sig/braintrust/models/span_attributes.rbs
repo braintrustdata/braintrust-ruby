@@ -1,0 +1,19 @@
+module Braintrust
+  module Models
+    type span_attributes =
+      { name: String?, type: Braintrust::Models::span_type? }
+
+    class SpanAttributes < Braintrust::Internal::Type::BaseModel
+      attr_accessor name: String?
+
+      attr_accessor type: Braintrust::Models::span_type?
+
+      def initialize: (
+        ?name: String?,
+        ?type: Braintrust::Models::span_type?
+      ) -> void
+
+      def to_hash: -> { name: String?, type: Braintrust::Models::span_type? }
+    end
+  end
+end

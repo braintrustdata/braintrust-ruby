@@ -1,0 +1,22 @@
+module Braintrust
+  module Models
+    type fetch_project_logs_events_response =
+      { events: ::Array[Braintrust::ProjectLogsEvent], cursor: String? }
+
+    class FetchProjectLogsEventsResponse < Braintrust::Internal::Type::BaseModel
+      attr_accessor events: ::Array[Braintrust::ProjectLogsEvent]
+
+      attr_accessor cursor: String?
+
+      def initialize: (
+        events: ::Array[Braintrust::ProjectLogsEvent],
+        ?cursor: String?
+      ) -> void
+
+      def to_hash: -> {
+        events: ::Array[Braintrust::ProjectLogsEvent],
+        cursor: String?
+      }
+    end
+  end
+end

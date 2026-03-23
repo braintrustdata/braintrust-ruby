@@ -1,0 +1,82 @@
+module Braintrust
+  module Models
+    type role =
+      {
+        id: String,
+        name: String,
+        created: Time?,
+        deleted_at: Time?,
+        description: String?,
+        member_permissions: ::Array[Braintrust::Role::MemberPermission]?,
+        member_roles: ::Array[String]?,
+        org_id: String?,
+        user_id: String?
+      }
+
+    class Role < Braintrust::Internal::Type::BaseModel
+      attr_accessor id: String
+
+      attr_accessor name: String
+
+      attr_accessor created: Time?
+
+      attr_accessor deleted_at: Time?
+
+      attr_accessor description: String?
+
+      attr_accessor member_permissions: ::Array[Braintrust::Role::MemberPermission]?
+
+      attr_accessor member_roles: ::Array[String]?
+
+      attr_accessor org_id: String?
+
+      attr_accessor user_id: String?
+
+      def initialize: (
+        id: String,
+        name: String,
+        ?created: Time?,
+        ?deleted_at: Time?,
+        ?description: String?,
+        ?member_permissions: ::Array[Braintrust::Role::MemberPermission]?,
+        ?member_roles: ::Array[String]?,
+        ?org_id: String?,
+        ?user_id: String?
+      ) -> void
+
+      def to_hash: -> {
+        id: String,
+        name: String,
+        created: Time?,
+        deleted_at: Time?,
+        description: String?,
+        member_permissions: ::Array[Braintrust::Role::MemberPermission]?,
+        member_roles: ::Array[String]?,
+        org_id: String?,
+        user_id: String?
+      }
+
+      type member_permission =
+        {
+          permission: Braintrust::Models::permission,
+          restrict_object_type: Braintrust::Models::acl_object_type?
+        }
+
+      class MemberPermission < Braintrust::Internal::Type::BaseModel
+        attr_accessor permission: Braintrust::Models::permission
+
+        attr_accessor restrict_object_type: Braintrust::Models::acl_object_type?
+
+        def initialize: (
+          permission: Braintrust::Models::permission,
+          ?restrict_object_type: Braintrust::Models::acl_object_type?
+        ) -> void
+
+        def to_hash: -> {
+          permission: Braintrust::Models::permission,
+          restrict_object_type: Braintrust::Models::acl_object_type?
+        }
+      end
+    end
+  end
+end

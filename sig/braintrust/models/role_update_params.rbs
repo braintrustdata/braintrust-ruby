@@ -1,0 +1,95 @@
+module Braintrust
+  module Models
+    type role_update_params =
+      {
+        add_member_permissions: ::Array[Braintrust::RoleUpdateParams::AddMemberPermission]?,
+        add_member_roles: ::Array[String]?,
+        description: String?,
+        name: String?,
+        remove_member_permissions: ::Array[Braintrust::RoleUpdateParams::RemoveMemberPermission]?,
+        remove_member_roles: ::Array[String]?
+      }
+      & Braintrust::Internal::Type::request_parameters
+
+    class RoleUpdateParams < Braintrust::Internal::Type::BaseModel
+      extend Braintrust::Internal::Type::RequestParameters::Converter
+      include Braintrust::Internal::Type::RequestParameters
+
+      attr_accessor add_member_permissions: ::Array[Braintrust::RoleUpdateParams::AddMemberPermission]?
+
+      attr_accessor add_member_roles: ::Array[String]?
+
+      attr_accessor description: String?
+
+      attr_accessor name: String?
+
+      attr_accessor remove_member_permissions: ::Array[Braintrust::RoleUpdateParams::RemoveMemberPermission]?
+
+      attr_accessor remove_member_roles: ::Array[String]?
+
+      def initialize: (
+        ?add_member_permissions: ::Array[Braintrust::RoleUpdateParams::AddMemberPermission]?,
+        ?add_member_roles: ::Array[String]?,
+        ?description: String?,
+        ?name: String?,
+        ?remove_member_permissions: ::Array[Braintrust::RoleUpdateParams::RemoveMemberPermission]?,
+        ?remove_member_roles: ::Array[String]?,
+        ?request_options: Braintrust::request_opts
+      ) -> void
+
+      def to_hash: -> {
+        add_member_permissions: ::Array[Braintrust::RoleUpdateParams::AddMemberPermission]?,
+        add_member_roles: ::Array[String]?,
+        description: String?,
+        name: String?,
+        remove_member_permissions: ::Array[Braintrust::RoleUpdateParams::RemoveMemberPermission]?,
+        remove_member_roles: ::Array[String]?,
+        request_options: Braintrust::RequestOptions
+      }
+
+      type add_member_permission =
+        {
+          permission: Braintrust::Models::permission,
+          restrict_object_type: Braintrust::Models::acl_object_type?
+        }
+
+      class AddMemberPermission < Braintrust::Internal::Type::BaseModel
+        attr_accessor permission: Braintrust::Models::permission
+
+        attr_accessor restrict_object_type: Braintrust::Models::acl_object_type?
+
+        def initialize: (
+          permission: Braintrust::Models::permission,
+          ?restrict_object_type: Braintrust::Models::acl_object_type?
+        ) -> void
+
+        def to_hash: -> {
+          permission: Braintrust::Models::permission,
+          restrict_object_type: Braintrust::Models::acl_object_type?
+        }
+      end
+
+      type remove_member_permission =
+        {
+          permission: Braintrust::Models::permission,
+          restrict_object_type: Braintrust::Models::acl_object_type?
+        }
+
+      class RemoveMemberPermission < Braintrust::Internal::Type::BaseModel
+        attr_accessor permission: Braintrust::Models::permission
+
+        attr_accessor restrict_object_type: Braintrust::Models::acl_object_type?
+
+        def initialize: (
+          permission: Braintrust::Models::permission,
+          ?restrict_object_type: Braintrust::Models::acl_object_type?
+        ) -> void
+
+        def to_hash: -> {
+          permission: Braintrust::Models::permission,
+          restrict_object_type: Braintrust::Models::acl_object_type?
+        }
+      end
+    end
+  end
+end

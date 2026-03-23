@@ -1,0 +1,41 @@
+module Braintrust
+  module Models
+    type dataset_create_params =
+      {
+        name: String,
+        project_id: String,
+        description: String?,
+        metadata: ::Hash[Symbol, top?]?
+      }
+      & Braintrust::Internal::Type::request_parameters
+
+    class DatasetCreateParams < Braintrust::Internal::Type::BaseModel
+      extend Braintrust::Internal::Type::RequestParameters::Converter
+      include Braintrust::Internal::Type::RequestParameters
+
+      attr_accessor name: String
+
+      attr_accessor project_id: String
+
+      attr_accessor description: String?
+
+      attr_accessor metadata: ::Hash[Symbol, top?]?
+
+      def initialize: (
+        name: String,
+        project_id: String,
+        ?description: String?,
+        ?metadata: ::Hash[Symbol, top?]?,
+        ?request_options: Braintrust::request_opts
+      ) -> void
+
+      def to_hash: -> {
+        name: String,
+        project_id: String,
+        description: String?,
+        metadata: ::Hash[Symbol, top?]?,
+        request_options: Braintrust::RequestOptions
+      }
+    end
+  end
+end

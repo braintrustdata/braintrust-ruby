@@ -2,14 +2,23 @@
 
 module Braintrust
   module Models
-    class FeedbackResponseSchema < BaseModel
-      # @!attribute [rw] status
-      #   One of the constants defined in {Braintrust::Models::FeedbackResponseSchema::Status}
-      #   @return [Symbol]
-      required :status, enum: -> { Braintrust::Models::FeedbackResponseSchema::Status }
+    class FeedbackResponseSchema < Braintrust::Internal::Type::BaseModel
+      # @!attribute status
+      #
+      #   @return [Symbol, Braintrust::Models::FeedbackResponseSchema::Status]
+      required :status, enum: -> { Braintrust::FeedbackResponseSchema::Status }
 
-      class Status < Braintrust::Enum
+      # @!method initialize(status:)
+      #   @param status [Symbol, Braintrust::Models::FeedbackResponseSchema::Status]
+
+      # @see Braintrust::Models::FeedbackResponseSchema#status
+      module Status
+        extend Braintrust::Internal::Type::Enum
+
         SUCCESS = :success
+
+        # @!method self.values
+        #   @return [Array<Symbol>]
       end
     end
   end

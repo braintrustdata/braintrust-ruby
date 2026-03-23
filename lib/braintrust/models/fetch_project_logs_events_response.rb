@@ -2,18 +2,29 @@
 
 module Braintrust
   module Models
-    class FetchProjectLogsEventsResponse < BaseModel
-      # @!attribute [rw] events
+    class FetchProjectLogsEventsResponse < Braintrust::Internal::Type::BaseModel
+      # @!attribute events
       #   A list of fetched events
+      #
       #   @return [Array<Braintrust::Models::ProjectLogsEvent>]
-      required :events, Braintrust::ArrayOf.new(-> { Braintrust::Models::ProjectLogsEvent })
+      required :events, -> { Braintrust::Internal::Type::ArrayOf[Braintrust::ProjectLogsEvent] }
 
-      # @!attribute [rw] cursor
+      # @!attribute cursor
       #   Pagination cursor
       #
-      # Pass this string directly as the `cursor` param to your next fetch request to get the next page of results. Not provided if the returned result set is empty.
-      #   @return [String]
-      optional :cursor, String
+      #   Pass this string directly as the `cursor` param to your next fetch request to
+      #   get the next page of results. Not provided if the returned result set is empty.
+      #
+      #   @return [String, nil]
+      optional :cursor, String, nil?: true
+
+      # @!method initialize(events:, cursor: nil)
+      #   Some parameter documentations has been truncated, see
+      #   {Braintrust::Models::FetchProjectLogsEventsResponse} for more details.
+      #
+      #   @param events [Array<Braintrust::Models::ProjectLogsEvent>] A list of fetched events
+      #
+      #   @param cursor [String, nil] Pagination cursor
     end
   end
 end

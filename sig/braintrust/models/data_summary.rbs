@@ -1,0 +1,13 @@
+module Braintrust
+  module Models
+    type data_summary = { total_records: Integer }
+
+    class DataSummary < Braintrust::Internal::Type::BaseModel
+      attr_accessor total_records: Integer
+
+      def initialize: (total_records: Integer) -> void
+
+      def to_hash: -> { total_records: Integer }
+    end
+  end
+end

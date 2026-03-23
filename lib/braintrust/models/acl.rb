@@ -2,105 +2,106 @@
 
 module Braintrust
   module Models
-    class ACL < BaseModel
-      # @!attribute [rw] id
+    class ACL < Braintrust::Internal::Type::BaseModel
+      # @!attribute id
       #   Unique identifier for the acl
+      #
       #   @return [String]
       required :id, String
 
-      # @!attribute [rw] _object_org_id
+      # @!attribute _object_org_id
       #   The organization the ACL's referred object belongs to
+      #
       #   @return [String]
       required :_object_org_id, String
 
-      # @!attribute [rw] object_id_
+      # @!attribute object_id_
       #   The id of the object the ACL applies to
+      #
       #   @return [String]
-      required :object_id_, String
+      required :object_id_, String, api_name: :object_id
 
-      # @!attribute [rw] object_type
+      # @!attribute object_type
       #   The object type that the ACL applies to
-      #   One of the constants defined in {Braintrust::Models::ACL::ObjectType}
-      #   @return [Symbol]
-      required :object_type, enum: -> { Braintrust::Models::ACL::ObjectType }
+      #
+      #   @return [Symbol, Braintrust::Models::ACLObjectType]
+      required :object_type, enum: -> { Braintrust::ACLObjectType }
 
-      # @!attribute [rw] created
+      # @!attribute created
       #   Date of acl creation
-      #   @return [DateTime]
-      optional :created, DateTime
-
-      # @!attribute [rw] group_id
-      #   Id of the group the ACL applies to. Exactly one of `user_id` and `group_id` will be provided
-      #   @return [String]
-      optional :group_id, String
-
-      # @!attribute [rw] permission
-      #   Each permission permits a certain type of operation on an object in the system
       #
-      # Permissions can be assigned to to objects on an individual basis, or grouped into roles
-      #   One of the constants defined in {Braintrust::Models::ACL::Permission}
-      #   @return [Symbol]
-      optional :permission, enum: -> { Braintrust::Models::ACL::Permission }
+      #   @return [Time, nil]
+      optional :created, Time, nil?: true
 
-      # @!attribute [rw] restrict_object_type
-      #   The object type that the ACL applies to
-      #   One of the constants defined in {Braintrust::Models::ACL::RestrictObjectType}
-      #   @return [Symbol]
-      optional :restrict_object_type, enum: -> { Braintrust::Models::ACL::RestrictObjectType }
-
-      # @!attribute [rw] role_id
-      #   Id of the role the ACL grants. Exactly one of `permission` and `role_id` will be provided
-      #   @return [String]
-      optional :role_id, String
-
-      # @!attribute [rw] user_id
-      #   Id of the user the ACL applies to. Exactly one of `user_id` and `group_id` will be provided
-      #   @return [String]
-      optional :user_id, String
-
-      # The object type that the ACL applies to
-      class ObjectType < Braintrust::Enum
-        ORGANIZATION = :organization
-        PROJECT = :project
-        EXPERIMENT = :experiment
-        DATASET = :dataset
-        PROMPT = :prompt
-        PROMPT_SESSION = :prompt_session
-        GROUP = :group
-        ROLE = :role
-        ORG_MEMBER = :org_member
-        PROJECT_LOG = :project_log
-        ORG_PROJECT = :org_project
-      end
-
-      # Each permission permits a certain type of operation on an object in the system
+      # @!attribute group_id
+      #   Id of the group the ACL applies to. Exactly one of `user_id` and `group_id` will
+      #   be provided
       #
-      # Permissions can be assigned to to objects on an individual basis, or grouped into roles
-      class Permission < Braintrust::Enum
-        CREATE = :create
-        READ = :read
-        UPDATE = :update
-        DELETE = :delete
-        CREATE_ACLS = :create_acls
-        READ_ACLS = :read_acls
-        UPDATE_ACLS = :update_acls
-        DELETE_ACLS = :delete_acls
-      end
+      #   @return [String, nil]
+      optional :group_id, String, nil?: true
 
-      # The object type that the ACL applies to
-      class RestrictObjectType < Braintrust::Enum
-        ORGANIZATION = :organization
-        PROJECT = :project
-        EXPERIMENT = :experiment
-        DATASET = :dataset
-        PROMPT = :prompt
-        PROMPT_SESSION = :prompt_session
-        GROUP = :group
-        ROLE = :role
-        ORG_MEMBER = :org_member
-        PROJECT_LOG = :project_log
-        ORG_PROJECT = :org_project
-      end
+      # @!attribute permission
+      #   Permission the ACL grants. Exactly one of `permission` and `role_id` will be
+      #   provided
+      #
+      #   @return [Symbol, Braintrust::Models::Permission, nil]
+      optional :permission, enum: -> { Braintrust::Permission }, nil?: true
+
+      # @!attribute restrict_object_type
+      #   When setting a permission directly, optionally restricts the permission grant to
+      #   just the specified object type. Cannot be set alongside a `role_id`.
+      #
+      #   @return [Symbol, Braintrust::Models::ACLObjectType, nil]
+      optional :restrict_object_type, enum: -> { Braintrust::ACLObjectType }, nil?: true
+
+      # @!attribute role_id
+      #   Id of the role the ACL grants. Exactly one of `permission` and `role_id` will be
+      #   provided
+      #
+      #   @return [String, nil]
+      optional :role_id, String, nil?: true
+
+      # @!attribute user_id
+      #   Id of the user the ACL applies to. Exactly one of `user_id` and `group_id` will
+      #   be provided
+      #
+      #   @return [String, nil]
+      optional :user_id, String, nil?: true
+
+      # @!method initialize(id:, _object_org_id:, object_id_:, object_type:, created: nil, group_id: nil, permission: nil, restrict_object_type: nil, role_id: nil, user_id: nil)
+      #   Some parameter documentations has been truncated, see {Braintrust::Models::ACL}
+      #   for more details.
+      #
+      #   An ACL grants a certain permission or role to a certain user or group on an
+      #   object.
+      #
+      #   ACLs are inherited across the object hierarchy. So for example, if a user has
+      #   read permissions on a project, they will also have read permissions on any
+      #   experiment, dataset, etc. created within that project.
+      #
+      #   To restrict a grant to a particular sub-object, you may specify
+      #   `restrict_object_type` in the ACL, as part of a direct permission grant or as
+      #   part of a role.
+      #
+      #   @param id [String] Unique identifier for the acl
+      #
+      #   @param _object_org_id [String] The organization the ACL's referred object belongs to
+      #
+      #   @param object_id_ [String] The id of the object the ACL applies to
+      #
+      #   @param object_type [Symbol, Braintrust::Models::ACLObjectType] The object type that the ACL applies to
+      #
+      #   @param created [Time, nil] Date of acl creation
+      #
+      #   @param group_id [String, nil] Id of the group the ACL applies to. Exactly one of `user_id` and `group_id` will
+      #
+      #   @param permission [Symbol, Braintrust::Models::Permission, nil] Permission the ACL grants. Exactly one of `permission` and `role_id` will be pro
+      #
+      #   @param restrict_object_type [Symbol, Braintrust::Models::ACLObjectType, nil] When setting a permission directly, optionally restricts the permission grant to
+      #
+      #   @param role_id [String, nil] Id of the role the ACL grants. Exactly one of `permission` and `role_id` will be
+      #
+      #   @param user_id [String, nil] Id of the user the ACL applies to. Exactly one of `user_id` and `group_id` will
     end
   end
 end

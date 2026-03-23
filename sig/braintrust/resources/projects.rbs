@@ -1,0 +1,42 @@
+module Braintrust
+  module Resources
+    class Projects
+      attr_reader logs: Braintrust::Resources::Projects::Logs
+
+      def create: (
+        name: String,
+        ?org_name: String?,
+        ?request_options: Braintrust::request_opts
+      ) -> Braintrust::Project
+
+      def retrieve: (
+        String project_id,
+        ?request_options: Braintrust::request_opts
+      ) -> Braintrust::Project
+
+      def update: (
+        String project_id,
+        ?name: String?,
+        ?settings: Braintrust::ProjectSettings?,
+        ?request_options: Braintrust::request_opts
+      ) -> Braintrust::Project
+
+      def list: (
+        ?ending_before: String,
+        ?ids: Braintrust::Models::ProjectListParams::ids,
+        ?limit: Integer?,
+        ?org_name: String,
+        ?project_name: String,
+        ?starting_after: String,
+        ?request_options: Braintrust::request_opts
+      ) -> Braintrust::Internal::ListObjects[Braintrust::Project]
+
+      def delete: (
+        String project_id,
+        ?request_options: Braintrust::request_opts
+      ) -> Braintrust::Project
+
+      def initialize: (client: Braintrust::Client) -> void
+    end
+  end
+end

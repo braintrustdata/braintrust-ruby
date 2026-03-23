@@ -60,5 +60,11 @@
     }
   ],
   "release-type": "ruby",
-  "version-file": "lib/braintrust/version.rb"
+  "version-file": "lib/braintrust/version.rb",
+  "extra-files": [
+    {
+      "type": "ruby-readme",
+      "path": "README.md"
+    }
+  ]
 }

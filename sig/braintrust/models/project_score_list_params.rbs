@@ -1,0 +1,108 @@
+module Braintrust
+  module Models
+    type project_score_list_params =
+      {
+        ending_before: String,
+        ids: Braintrust::Models::ProjectScoreListParams::ids,
+        limit: Integer?,
+        org_name: String,
+        project_id: String,
+        project_name: String,
+        project_score_name: String,
+        score_type: Braintrust::Models::ProjectScoreListParams::score_type,
+        starting_after: String
+      }
+      & Braintrust::Internal::Type::request_parameters
+
+    class ProjectScoreListParams < Braintrust::Internal::Type::BaseModel
+      extend Braintrust::Internal::Type::RequestParameters::Converter
+      include Braintrust::Internal::Type::RequestParameters
+
+      attr_reader ending_before: String?
+
+      def ending_before=: (String) -> String
+
+      attr_reader ids: Braintrust::Models::ProjectScoreListParams::ids?
+
+      def ids=: (
+        Braintrust::Models::ProjectScoreListParams::ids
+      ) -> Braintrust::Models::ProjectScoreListParams::ids
+
+      attr_accessor limit: Integer?
+
+      attr_reader org_name: String?
+
+      def org_name=: (String) -> String
+
+      attr_reader project_id: String?
+
+      def project_id=: (String) -> String
+
+      attr_reader project_name: String?
+
+      def project_name=: (String) -> String
+
+      attr_reader project_score_name: String?
+
+      def project_score_name=: (String) -> String
+
+      attr_reader score_type: Braintrust::Models::ProjectScoreListParams::score_type?
+
+      def score_type=: (
+        Braintrust::Models::ProjectScoreListParams::score_type
+      ) -> Braintrust::Models::ProjectScoreListParams::score_type
+
+      attr_reader starting_after: String?
+
+      def starting_after=: (String) -> String
+
+      def initialize: (
+        ?ending_before: String,
+        ?ids: Braintrust::Models::ProjectScoreListParams::ids,
+        ?limit: Integer?,
+        ?org_name: String,
+        ?project_id: String,
+        ?project_name: String,
+        ?project_score_name: String,
+        ?score_type: Braintrust::Models::ProjectScoreListParams::score_type,
+        ?starting_after: String,
+        ?request_options: Braintrust::request_opts
+      ) -> void
+
+      def to_hash: -> {
+        ending_before: String,
+        ids: Braintrust::Models::ProjectScoreListParams::ids,
+        limit: Integer?,
+        org_name: String,
+        project_id: String,
+        project_name: String,
+        project_score_name: String,
+        score_type: Braintrust::Models::ProjectScoreListParams::score_type,
+        starting_after: String,
+        request_options: Braintrust::RequestOptions
+      }
+
+      type ids = String | ::Array[String]
+
+      module IDs
+        extend Braintrust::Internal::Type::Union
+
+        def self?.variants: -> ::Array[Braintrust::Models::ProjectScoreListParams::ids]
+
+        StringArray: Braintrust::Internal::Type::Converter
+      end
+
+      type score_type =
+        Braintrust::Models::project_score_type
+        | ::Array[Braintrust::Models::project_score_type]
+
+      module ScoreType
+        extend Braintrust::Internal::Type::Union
+
+        def self?.variants: -> ::Array[Braintrust::Models::ProjectScoreListParams::score_type]
+
+        ProjectScoreTypeArray: Braintrust::Internal::Type::Converter
+      end
+    end
+  end
+end

@@ -1,0 +1,68 @@
+module Braintrust
+  module Models
+    type project_score_replace_params =
+      {
+        name: String,
+        project_id: String,
+        score_type: Braintrust::Models::project_score_type,
+        categories: Braintrust::Models::ProjectScoreReplaceParams::categories?,
+        config: Braintrust::ProjectScoreConfig?,
+        description: String?
+      }
+      & Braintrust::Internal::Type::request_parameters
+
+    class ProjectScoreReplaceParams < Braintrust::Internal::Type::BaseModel
+      extend Braintrust::Internal::Type::RequestParameters::Converter
+      include Braintrust::Internal::Type::RequestParameters
+
+      attr_accessor name: String
+
+      attr_accessor project_id: String
+
+      attr_accessor score_type: Braintrust::Models::project_score_type
+
+      attr_accessor categories: Braintrust::Models::ProjectScoreReplaceParams::categories?
+
+      attr_accessor config: Braintrust::ProjectScoreConfig?
+
+      attr_accessor description: String?
+
+      def initialize: (
+        name: String,
+        project_id: String,
+        score_type: Braintrust::Models::project_score_type,
+        ?categories: Braintrust::Models::ProjectScoreReplaceParams::categories?,
+        ?config: Braintrust::ProjectScoreConfig?,
+        ?description: String?,
+        ?request_options: Braintrust::request_opts
+      ) -> void
+
+      def to_hash: -> {
+        name: String,
+        project_id: String,
+        score_type: Braintrust::Models::project_score_type,
+        categories: Braintrust::Models::ProjectScoreReplaceParams::categories?,
+        config: Braintrust::ProjectScoreConfig?,
+        description: String?,
+        request_options: Braintrust::RequestOptions
+      }
+
+      type categories =
+        ::Array[Braintrust::ProjectScoreCategory]
+        | ::Hash[Symbol, Float]
+        | ::Array[String]
+
+      module Categories
+        extend Braintrust::Internal::Type::Union
+
+        def self?.variants: -> ::Array[Braintrust::Models::ProjectScoreReplaceParams::categories]
+
+        ProjectScoreCategoryArray: Braintrust::Internal::Type::Converter
+
+        FloatMap: Braintrust::Internal::Type::Converter
+
+        StringArray: Braintrust::Internal::Type::Converter
+      end
+    end
+  end
+end

@@ -1,0 +1,73 @@
+module Braintrust
+  module Models
+    type project_settings =
+      {
+        baseline_experiment_id: String?,
+        comparison_key: String?,
+        span_field_order: ::Array[Braintrust::ProjectSettings::SpanFieldOrder]?
+      }
+
+    class ProjectSettings < Braintrust::Internal::Type::BaseModel
+      attr_accessor baseline_experiment_id: String?
+
+      attr_accessor comparison_key: String?
+
+      attr_accessor span_field_order: ::Array[Braintrust::ProjectSettings::SpanFieldOrder]?
+
+      def initialize: (
+        ?baseline_experiment_id: String?,
+        ?comparison_key: String?,
+        ?span_field_order: ::Array[Braintrust::ProjectSettings::SpanFieldOrder]?
+      ) -> void
+
+      def to_hash: -> {
+        baseline_experiment_id: String?,
+        comparison_key: String?,
+        span_field_order: ::Array[Braintrust::ProjectSettings::SpanFieldOrder]?
+      }
+
+      type span_field_order =
+        {
+          column_id: String,
+          object_type: String,
+          position: String,
+          layout: Braintrust::Models::ProjectSettings::SpanFieldOrder::layout?
+        }
+
+      class SpanFieldOrder < Braintrust::Internal::Type::BaseModel
+        attr_accessor column_id: String
+
+        attr_accessor object_type: String
+
+        attr_accessor position: String
+
+        attr_accessor layout: Braintrust::Models::ProjectSettings::SpanFieldOrder::layout?
+
+        def initialize: (
+          column_id: String,
+          object_type: String,
+          position: String,
+          ?layout: Braintrust::Models::ProjectSettings::SpanFieldOrder::layout?
+        ) -> void
+
+        def to_hash: -> {
+          column_id: String,
+          object_type: String,
+          position: String,
+          layout: Braintrust::Models::ProjectSettings::SpanFieldOrder::layout?
+        }
+
+        type layout = :full | :two_column
+
+        module Layout
+          extend Braintrust::Internal::Type::Enum
+
+          FULL: :full
+          TWO_COLUMN: :two_column
+
+          def self?.values: -> ::Array[Braintrust::Models::ProjectSettings::SpanFieldOrder::layout]
+        end
+      end
+    end
+  end
+end

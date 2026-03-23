@@ -1,0 +1,35 @@
+module Braintrust
+  module Models
+    type view_data_search =
+      {
+        filter: ::Array[top?]?,
+        match: ::Array[top?]?,
+        sort: ::Array[top?]?,
+        tag: ::Array[top?]?
+      }
+
+    class ViewDataSearch < Braintrust::Internal::Type::BaseModel
+      attr_accessor filter: ::Array[top?]?
+
+      attr_accessor match: ::Array[top?]?
+
+      attr_accessor sort: ::Array[top?]?
+
+      attr_accessor tag: ::Array[top?]?
+
+      def initialize: (
+        ?filter: ::Array[top?]?,
+        ?match: ::Array[top?]?,
+        ?sort: ::Array[top?]?,
+        ?tag: ::Array[top?]?
+      ) -> void
+
+      def to_hash: -> {
+        filter: ::Array[top?]?,
+        match: ::Array[top?]?,
+        sort: ::Array[top?]?,
+        tag: ::Array[top?]?
+      }
+    end
+  end
+end

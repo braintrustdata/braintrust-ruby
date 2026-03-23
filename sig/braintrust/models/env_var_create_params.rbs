@@ -1,0 +1,53 @@
+module Braintrust
+  module Models
+    type env_var_create_params =
+      {
+        name: String,
+        object_id_: String,
+        object_type: Braintrust::Models::EnvVarCreateParams::object_type,
+        value: String?
+      }
+      & Braintrust::Internal::Type::request_parameters
+
+    class EnvVarCreateParams < Braintrust::Internal::Type::BaseModel
+      extend Braintrust::Internal::Type::RequestParameters::Converter
+      include Braintrust::Internal::Type::RequestParameters
+
+      attr_accessor name: String
+
+      attr_accessor object_id_: String
+
+      attr_accessor object_type: Braintrust::Models::EnvVarCreateParams::object_type
+
+      attr_accessor value: String?
+
+      def initialize: (
+        name: String,
+        object_id_: String,
+        object_type: Braintrust::Models::EnvVarCreateParams::object_type,
+        ?value: String?,
+        ?request_options: Braintrust::request_opts
+      ) -> void
+
+      def to_hash: -> {
+        name: String,
+        object_id_: String,
+        object_type: Braintrust::Models::EnvVarCreateParams::object_type,
+        value: String?,
+        request_options: Braintrust::RequestOptions
+      }
+
+      type object_type = :organization | :project | :function
+
+      module ObjectType
+        extend Braintrust::Internal::Type::Enum
+
+        ORGANIZATION: :organization
+        PROJECT: :project
+        FUNCTION: :function
+
+        def self?.values: -> ::Array[Braintrust::Models::EnvVarCreateParams::object_type]
+      end
+    end
+  end
+end

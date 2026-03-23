@@ -1,0 +1,69 @@
+module Braintrust
+  module Models
+    type acl_list_params =
+      {
+        object_id_: String,
+        object_type: Braintrust::Models::acl_object_type,
+        ending_before: String,
+        ids: Braintrust::Models::ACLListParams::ids,
+        limit: Integer?,
+        starting_after: String
+      }
+      & Braintrust::Internal::Type::request_parameters
+
+    class ACLListParams < Braintrust::Internal::Type::BaseModel
+      extend Braintrust::Internal::Type::RequestParameters::Converter
+      include Braintrust::Internal::Type::RequestParameters
+
+      attr_accessor object_id_: String
+
+      attr_accessor object_type: Braintrust::Models::acl_object_type
+
+      attr_reader ending_before: String?
+
+      def ending_before=: (String) -> String
+
+      attr_reader ids: Braintrust::Models::ACLListParams::ids?
+
+      def ids=: (
+        Braintrust::Models::ACLListParams::ids
+      ) -> Braintrust::Models::ACLListParams::ids
+
+      attr_accessor limit: Integer?
+
+      attr_reader starting_after: String?
+
+      def starting_after=: (String) -> String
+
+      def initialize: (
+        object_id_: String,
+        object_type: Braintrust::Models::acl_object_type,
+        ?ending_before: String,
+        ?ids: Braintrust::Models::ACLListParams::ids,
+        ?limit: Integer?,
+        ?starting_after: String,
+        ?request_options: Braintrust::request_opts
+      ) -> void
+
+      def to_hash: -> {
+        object_id_: String,
+        object_type: Braintrust::Models::acl_object_type,
+        ending_before: String,
+        ids: Braintrust::Models::ACLListParams::ids,
+        limit: Integer?,
+        starting_after: String,
+        request_options: Braintrust::RequestOptions
+      }
+
+      type ids = String | ::Array[String]
+
+      module IDs
+        extend Braintrust::Internal::Type::Union
+
+        def self?.variants: -> ::Array[Braintrust::Models::ACLListParams::ids]
+
+        StringArray: Braintrust::Internal::Type::Converter
+      end
+    end
+  end
+end

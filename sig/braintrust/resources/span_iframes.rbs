@@ -1,0 +1,54 @@
+module Braintrust
+  module Resources
+    class SpanIframes
+      def create: (
+        name: String,
+        project_id: String,
+        url: String,
+        ?description: String?,
+        ?post_message: bool?,
+        ?request_options: Braintrust::request_opts
+      ) -> Braintrust::SpanIFrame
+
+      def retrieve: (
+        String span_iframe_id,
+        ?request_options: Braintrust::request_opts
+      ) -> Braintrust::SpanIFrame
+
+      def update: (
+        String span_iframe_id,
+        ?description: String?,
+        ?name: String?,
+        ?post_message: bool?,
+        ?url: String?,
+        ?request_options: Braintrust::request_opts
+      ) -> Braintrust::SpanIFrame
+
+      def list: (
+        ?ending_before: String,
+        ?ids: Braintrust::Models::SpanIframeListParams::ids,
+        ?limit: Integer?,
+        ?org_name: String,
+        ?span_iframe_name: String,
+        ?starting_after: String,
+        ?request_options: Braintrust::request_opts
+      ) -> Braintrust::Internal::ListObjects[Braintrust::SpanIFrame]
+
+      def delete: (
+        String span_iframe_id,
+        ?request_options: Braintrust::request_opts
+      ) -> Braintrust::SpanIFrame
+
+      def replace: (
+        name: String,
+        project_id: String,
+        url: String,
+        ?description: String?,
+        ?post_message: bool?,
+        ?request_options: Braintrust::request_opts
+      ) -> Braintrust::SpanIFrame
+
+      def initialize: (client: Braintrust::Client) -> void
+    end
+  end
+end

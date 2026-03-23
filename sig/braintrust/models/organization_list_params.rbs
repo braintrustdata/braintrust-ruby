@@ -1,0 +1,66 @@
+module Braintrust
+  module Models
+    type organization_list_params =
+      {
+        ending_before: String,
+        ids: Braintrust::Models::OrganizationListParams::ids,
+        limit: Integer?,
+        org_name: String,
+        starting_after: String
+      }
+      & Braintrust::Internal::Type::request_parameters
+
+    class OrganizationListParams < Braintrust::Internal::Type::BaseModel
+      extend Braintrust::Internal::Type::RequestParameters::Converter
+      include Braintrust::Internal::Type::RequestParameters
+
+      attr_reader ending_before: String?
+
+      def ending_before=: (String) -> String
+
+      attr_reader ids: Braintrust::Models::OrganizationListParams::ids?
+
+      def ids=: (
+        Braintrust::Models::OrganizationListParams::ids
+      ) -> Braintrust::Models::OrganizationListParams::ids
+
+      attr_accessor limit: Integer?
+
+      attr_reader org_name: String?
+
+      def org_name=: (String) -> String
+
+      attr_reader starting_after: String?
+
+      def starting_after=: (String) -> String
+
+      def initialize: (
+        ?ending_before: String,
+        ?ids: Braintrust::Models::OrganizationListParams::ids,
+        ?limit: Integer?,
+        ?org_name: String,
+        ?starting_after: String,
+        ?request_options: Braintrust::request_opts
+      ) -> void
+
+      def to_hash: -> {
+        ending_before: String,
+        ids: Braintrust::Models::OrganizationListParams::ids,
+        limit: Integer?,
+        org_name: String,
+        starting_after: String,
+        request_options: Braintrust::RequestOptions
+      }
+
+      type ids = String | ::Array[String]
+
+      module IDs
+        extend Braintrust::Internal::Type::Union
+
+        def self?.variants: -> ::Array[Braintrust::Models::OrganizationListParams::ids]
+
+        StringArray: Braintrust::Internal::Type::Converter
+      end
+    end
+  end
+end

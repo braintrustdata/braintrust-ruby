@@ -2,8 +2,5 @@
 
 require_relative "../test_helper"
 
-class Braintrust::Test::Resources::SharedTest < Test::Unit::TestCase
-  def setup
-    @braintrust = Braintrust::Client.new(base_url: "http://localhost:4010", api_key: "My API Key")
-  end
+class Braintrust::Test::Resources::SharedTest < Braintrust::Test::ResourceTest
 end

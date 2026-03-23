@@ -2,23 +2,26 @@
 
 module Braintrust
   module Models
-    class ProjectScoreConfig < BaseModel
-      # @!attribute [rw] destination
-      #   One of the constants defined in {Braintrust::Models::ProjectScoreConfig::Destination}
-      #   @return [Symbol]
-      optional :destination, enum: -> { Braintrust::Models::ProjectScoreConfig::Destination }
+    class ProjectScoreConfig < Braintrust::Internal::Type::BaseModel
+      # @!attribute destination
+      #
+      #   @return [String, nil]
+      optional :destination, String, nil?: true
 
-      # @!attribute [rw] multi_select
-      #   @return [Boolean]
-      optional :multi_select, Braintrust::BooleanModel
+      # @!attribute multi_select
+      #
+      #   @return [Boolean, nil]
+      optional :multi_select, Braintrust::Internal::Type::Boolean, nil?: true
 
-      # @!attribute [rw] online
-      #   @return [Braintrust::Models::OnlineScoreConfig]
-      optional :online, -> { Braintrust::Models::OnlineScoreConfig }
+      # @!attribute online
+      #
+      #   @return [Braintrust::Models::OnlineScoreConfig, nil]
+      optional :online, -> { Braintrust::OnlineScoreConfig }, nil?: true
 
-      class Destination < Braintrust::Enum
-        EXPECTED = :expected
-      end
+      # @!method initialize(destination: nil, multi_select: nil, online: nil)
+      #   @param destination [String, nil]
+      #   @param multi_select [Boolean, nil]
+      #   @param online [Braintrust::Models::OnlineScoreConfig, nil]
     end
   end
 end

@@ -1,0 +1,9 @@
+module Braintrust
+  module Internal
+    extend Braintrust::Internal::Util::SorbetRuntimeSupport
+
+    type file_input = Pathname | StringIO | IO | String | Braintrust::FilePart
+
+    OMIT: Object
+  end
+end

@@ -3,300 +3,299 @@
 module Braintrust
   module Resources
     class Datasets
-      def initialize(client:)
-        @client = client
-      end
-
       # Create a new dataset. If there is an existing dataset in the project with the
-      #   same name as the one specified in the request, will return the existing dataset
-      #   unmodified
+      # same name as the one specified in the request, will return the existing dataset
+      # unmodified
       #
-      # @param params [Hash] Attributes to send in this request.
-      # @option params [String] :name Name of the dataset. Within a project, dataset names are unique
-      # @option params [String] :project_id Unique identifier for the project that the dataset belongs under
-      # @option params [String] :description Textual description of the dataset
+      # @overload create(name:, project_id:, description: nil, metadata: nil, request_options: {})
       #
-      # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param name [String] Name of the dataset. Within a project, dataset names are unique
+      #
+      # @param project_id [String] Unique identifier for the project that the dataset belongs under
+      #
+      # @param description [String, nil] Textual description of the dataset
+      #
+      # @param metadata [Hash{Symbol=>Object, nil}, nil] User-controlled metadata about the dataset
+      #
+      # @param request_options [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil]
       #
       # @return [Braintrust::Models::Dataset]
-      def create(params = {}, opts = {})
-        req = {}
-        req[:method] = :post
-        req[:path] = "/v1/dataset"
-        req[:body] = params
-        req[:model] = Braintrust::Models::Dataset
-        @client.request(req, opts)
+      #
+      # @see Braintrust::Models::DatasetCreateParams
+      def create(params)
+        parsed, options = Braintrust::DatasetCreateParams.dump_request(params)
+        @client.request(
+          method: :post,
+          path: "v1/dataset",
+          body: parsed,
+          model: Braintrust::Dataset,
+          options: options
+        )
       end
 
       # Get a dataset object by its id
       #
+      # @overload retrieve(dataset_id, request_options: {})
+      #
       # @param dataset_id [String] Dataset id
-      # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
+      #
+      # @param request_options [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil]
       #
       # @return [Braintrust::Models::Dataset]
-      def retrieve(dataset_id, opts = {})
-        req = {}
-        req[:method] = :get
-        req[:path] = "/v1/dataset/#{dataset_id}"
-        req[:model] = Braintrust::Models::Dataset
-        @client.request(req, opts)
+      #
+      # @see Braintrust::Models::DatasetRetrieveParams
+      def retrieve(dataset_id, params = {})
+        @client.request(
+          method: :get,
+          path: ["v1/dataset/%1$s", dataset_id],
+          model: Braintrust::Dataset,
+          options: params[:request_options]
+        )
       end
 
       # Partially update a dataset object. Specify the fields to update in the payload.
-      #   Any object-type fields will be deep-merged with existing content. Currently we
-      #   do not support removing fields or setting them to null.
+      # Any object-type fields will be deep-merged with existing content. Currently we
+      # do not support removing fields or setting them to null.
+      #
+      # @overload update(dataset_id, description: nil, metadata: nil, name: nil, request_options: {})
       #
       # @param dataset_id [String] Dataset id
       #
-      # @param params [Hash] Attributes to send in this request.
-      # @option params [String] :description Textual description of the dataset
-      # @option params [Hash] :metadata User-controlled metadata about the dataset
-      # @option params [String] :name Name of the dataset. Within a project, dataset names are unique
+      # @param description [String, nil] Textual description of the dataset
       #
-      # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param metadata [Hash{Symbol=>Object, nil}, nil] User-controlled metadata about the dataset
+      #
+      # @param name [String, nil] Name of the dataset. Within a project, dataset names are unique
+      #
+      # @param request_options [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil]
       #
       # @return [Braintrust::Models::Dataset]
-      def update(dataset_id, params = {}, opts = {})
-        req = {}
-        req[:method] = :patch
-        req[:path] = "/v1/dataset/#{dataset_id}"
-        req[:body] = params
-        req[:model] = Braintrust::Models::Dataset
-        @client.request(req, opts)
+      #
+      # @see Braintrust::Models::DatasetUpdateParams
+      def update(dataset_id, params = {})
+        parsed, options = Braintrust::DatasetUpdateParams.dump_request(params)
+        @client.request(
+          method: :patch,
+          path: ["v1/dataset/%1$s", dataset_id],
+          body: parsed,
+          model: Braintrust::Dataset,
+          options: options
+        )
       end
 
+      # Some parameter documentations has been truncated, see
+      # {Braintrust::Models::DatasetListParams} for more details.
+      #
       # List out all datasets. The datasets are sorted by creation date, with the most
-      #   recently-created datasets coming first
+      # recently-created datasets coming first
       #
-      # @param params [Hash] Attributes to send in this request.
-      # @option params [String] :dataset_name Name of the dataset to search for
-      # @option params [String] :ending_before Pagination cursor id.
+      # @overload list(dataset_name: nil, ending_before: nil, ids: nil, limit: nil, org_name: nil, project_id: nil, project_name: nil, starting_after: nil, request_options: {})
       #
-      #   For example, if the initial item in the last page you fetched had an id of
-      #   `foo`, pass `ending_before=foo` to fetch the previous page. Note: you may only
-      #   pass one of `starting_after` and `ending_before`
-      # @option params [Array<String>|String] :ids Filter search results to a particular set of object IDs. To specify a list of
-      #   IDs, include the query param multiple times
-      # @option params [Integer] :limit Limit the number of objects to return
-      # @option params [String] :org_name Filter search results to within a particular organization
-      # @option params [String] :project_id Project id
-      # @option params [String] :project_name Name of the project to search for
-      # @option params [String] :starting_after Pagination cursor id.
+      # @param dataset_name [String] Name of the dataset to search for
       #
-      #   For example, if the final item in the last page you fetched had an id of `foo`,
-      #   pass `starting_after=foo` to fetch the next page. Note: you may only pass one of
-      #   `starting_after` and `ending_before`
+      # @param ending_before [String] Pagination cursor id.
       #
-      # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param ids [String, Array<String>] Filter search results to a particular set of object IDs. To specify a list of ID
       #
-      # @return [Braintrust::ListObjects<Braintrust::Models::Dataset>]
-      def list(params = {}, opts = {})
-        req = {}
-        req[:method] = :get
-        req[:path] = "/v1/dataset"
-        req[:query] = params
-        req[:page] = Braintrust::ListObjects
-        req[:model] = Braintrust::Models::Dataset
-        @client.request(req, opts)
+      # @param limit [Integer, nil] Limit the number of objects to return
+      #
+      # @param org_name [String] Filter search results to within a particular organization
+      #
+      # @param project_id [String] Project id
+      #
+      # @param project_name [String] Name of the project to search for
+      #
+      # @param starting_after [String] Pagination cursor id.
+      #
+      # @param request_options [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil]
+      #
+      # @return [Braintrust::Internal::ListObjects<Braintrust::Models::Dataset>]
+      #
+      # @see Braintrust::Models::DatasetListParams
+      def list(params = {})
+        parsed, options = Braintrust::DatasetListParams.dump_request(params)
+        @client.request(
+          method: :get,
+          path: "v1/dataset",
+          query: parsed,
+          page: Braintrust::Internal::ListObjects,
+          model: Braintrust::Dataset,
+          options: options
+        )
       end
 
       # Delete a dataset object by its id
       #
+      # @overload delete(dataset_id, request_options: {})
+      #
       # @param dataset_id [String] Dataset id
-      # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
+      #
+      # @param request_options [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil]
       #
       # @return [Braintrust::Models::Dataset]
-      def delete(dataset_id, opts = {})
-        req = {}
-        req[:method] = :delete
-        req[:path] = "/v1/dataset/#{dataset_id}"
-        req[:model] = Braintrust::Models::Dataset
-        @client.request(req, opts)
+      #
+      # @see Braintrust::Models::DatasetDeleteParams
+      def delete(dataset_id, params = {})
+        @client.request(
+          method: :delete,
+          path: ["v1/dataset/%1$s", dataset_id],
+          model: Braintrust::Dataset,
+          options: params[:request_options]
+        )
       end
 
       # Log feedback for a set of dataset events
       #
+      # @overload feedback(dataset_id, feedback:, request_options: {})
+      #
       # @param dataset_id [String] Dataset id
       #
-      # @param params [Hash] Attributes to send in this request.
-      # @option params [Array<Braintrust::Models::FeedbackDatasetItem>] :feedback A list of dataset feedback items
+      # @param feedback [Array<Braintrust::Models::FeedbackDatasetItem>] A list of dataset feedback items
       #
-      # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param request_options [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil]
       #
       # @return [Braintrust::Models::FeedbackResponseSchema]
-      def feedback(dataset_id, params = {}, opts = {})
-        req = {}
-        req[:method] = :post
-        req[:path] = "/v1/dataset/#{dataset_id}/feedback"
-        req[:body] = params
-        req[:model] = Braintrust::Models::FeedbackResponseSchema
-        @client.request(req, opts)
+      #
+      # @see Braintrust::Models::DatasetFeedbackParams
+      def feedback(dataset_id, params)
+        parsed, options = Braintrust::DatasetFeedbackParams.dump_request(params)
+        @client.request(
+          method: :post,
+          path: ["v1/dataset/%1$s/feedback", dataset_id],
+          body: parsed,
+          model: Braintrust::FeedbackResponseSchema,
+          options: options
+        )
       end
 
+      # Some parameter documentations has been truncated, see
+      # {Braintrust::Models::DatasetFetchParams} for more details.
+      #
       # Fetch the events in a dataset. Equivalent to the POST form of the same path, but
-      #   with the parameters in the URL query rather than in the request body
+      # with the parameters in the URL query rather than in the request body. For more
+      # complex queries, use the `POST /btql` endpoint.
+      #
+      # @overload fetch(dataset_id, limit: nil, max_root_span_id: nil, max_xact_id: nil, version: nil, request_options: {})
       #
       # @param dataset_id [String] Dataset id
       #
-      # @param params [Hash] Attributes to send in this request.
-      # @option params [Integer] :limit limit the number of traces fetched
+      # @param limit [Integer, nil] limit the number of traces fetched
       #
-      #   Fetch queries may be paginated if the total result size is expected to be large
-      #   (e.g. project_logs which accumulate over a long time). Note that fetch queries
-      #   only support pagination in descending time order (from latest to earliest
-      #   `_xact_id`. Furthermore, later pages may return rows which showed up in earlier
-      #   pages, except with an earlier `_xact_id`. This happens because pagination occurs
-      #   over the whole version history of the event log. You will most likely want to
-      #   exclude any such duplicate, outdated rows (by `id`) from your combined result
-      #   set.
+      # @param max_root_span_id [String] DEPRECATION NOTICE: The manually-constructed pagination cursor is deprecated in
       #
-      #   The `limit` parameter controls the number of full traces to return. So you may
-      #   end up with more individual rows than the specified limit if you are fetching
-      #   events containing traces.
-      # @option params [String] :max_root_span_id DEPRECATION NOTICE: The manually-constructed pagination cursor is deprecated in
-      #   favor of the explicit 'cursor' returned by object fetch requests. Please prefer
-      #   the 'cursor' argument going forwards.
+      # @param max_xact_id [String] DEPRECATION NOTICE: The manually-constructed pagination cursor is deprecated in
       #
-      #   Together, `max_xact_id` and `max_root_span_id` form a pagination cursor
+      # @param version [String] Retrieve a snapshot of events from a past time
       #
-      #   Since a paginated fetch query returns results in order from latest to earliest,
-      #   the cursor for the next page can be found as the row with the minimum (earliest)
-      #   value of the tuple `(_xact_id, root_span_id)`. See the documentation of `limit`
-      #   for an overview of paginating fetch queries.
-      # @option params [String] :max_xact_id DEPRECATION NOTICE: The manually-constructed pagination cursor is deprecated in
-      #   favor of the explicit 'cursor' returned by object fetch requests. Please prefer
-      #   the 'cursor' argument going forwards.
-      #
-      #   Together, `max_xact_id` and `max_root_span_id` form a pagination cursor
-      #
-      #   Since a paginated fetch query returns results in order from latest to earliest,
-      #   the cursor for the next page can be found as the row with the minimum (earliest)
-      #   value of the tuple `(_xact_id, root_span_id)`. See the documentation of `limit`
-      #   for an overview of paginating fetch queries.
-      # @option params [String] :version Retrieve a snapshot of events from a past time
-      #
-      #   The version id is essentially a filter on the latest event transaction id. You
-      #   can use the `max_xact_id` returned by a past fetch as the version to reproduce
-      #   that exact fetch.
-      #
-      # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param request_options [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil]
       #
       # @return [Braintrust::Models::FetchDatasetEventsResponse]
-      def fetch(dataset_id, params = {}, opts = {})
-        req = {}
-        req[:method] = :get
-        req[:path] = "/v1/dataset/#{dataset_id}/fetch"
-        req[:query] = params
-        req[:model] = Braintrust::Models::FetchDatasetEventsResponse
-        @client.request(req, opts)
+      #
+      # @see Braintrust::Models::DatasetFetchParams
+      def fetch(dataset_id, params = {})
+        parsed, options = Braintrust::DatasetFetchParams.dump_request(params)
+        @client.request(
+          method: :get,
+          path: ["v1/dataset/%1$s/fetch", dataset_id],
+          query: parsed,
+          model: Braintrust::FetchDatasetEventsResponse,
+          options: options
+        )
       end
 
+      # Some parameter documentations has been truncated, see
+      # {Braintrust::Models::DatasetFetchPostParams} for more details.
+      #
       # Fetch the events in a dataset. Equivalent to the GET form of the same path, but
-      #   with the parameters in the request body rather than in the URL query
+      # with the parameters in the request body rather than in the URL query. For more
+      # complex queries, use the `POST /btql` endpoint.
+      #
+      # @overload fetch_post(dataset_id, cursor: nil, limit: nil, max_root_span_id: nil, max_xact_id: nil, version: nil, request_options: {})
       #
       # @param dataset_id [String] Dataset id
       #
-      # @param params [Hash] Attributes to send in this request.
-      # @option params [String] :cursor An opaque string to be used as a cursor for the next page of results, in order
-      #   from latest to earliest.
+      # @param cursor [String, nil] An opaque string to be used as a cursor for the next page of results, in order f
       #
-      #   The string can be obtained directly from the `cursor` property of the previous
-      #   fetch query
-      # @option params [Array<Braintrust::Models::PathLookupFilter>] :filters NOTE: This parameter is deprecated and will be removed in a future revision.
-      #   Consider using the `/btql` endpoint
-      #   (https://www.braintrust.dev/docs/reference/btql) for more advanced filtering.
+      # @param limit [Integer, nil] limit the number of traces fetched
       #
-      #   A list of filters on the events to fetch. Currently, only path-lookup type
-      #   filters are supported.
-      # @option params [Integer] :limit limit the number of traces fetched
+      # @param max_root_span_id [String, nil] DEPRECATION NOTICE: The manually-constructed pagination cursor is deprecated in
       #
-      #   Fetch queries may be paginated if the total result size is expected to be large
-      #   (e.g. project_logs which accumulate over a long time). Note that fetch queries
-      #   only support pagination in descending time order (from latest to earliest
-      #   `_xact_id`. Furthermore, later pages may return rows which showed up in earlier
-      #   pages, except with an earlier `_xact_id`. This happens because pagination occurs
-      #   over the whole version history of the event log. You will most likely want to
-      #   exclude any such duplicate, outdated rows (by `id`) from your combined result
-      #   set.
+      # @param max_xact_id [String, nil] DEPRECATION NOTICE: The manually-constructed pagination cursor is deprecated in
       #
-      #   The `limit` parameter controls the number of full traces to return. So you may
-      #   end up with more individual rows than the specified limit if you are fetching
-      #   events containing traces.
-      # @option params [String] :max_root_span_id DEPRECATION NOTICE: The manually-constructed pagination cursor is deprecated in
-      #   favor of the explicit 'cursor' returned by object fetch requests. Please prefer
-      #   the 'cursor' argument going forwards.
+      # @param version [String, nil] Retrieve a snapshot of events from a past time
       #
-      #   Together, `max_xact_id` and `max_root_span_id` form a pagination cursor
-      #
-      #   Since a paginated fetch query returns results in order from latest to earliest,
-      #   the cursor for the next page can be found as the row with the minimum (earliest)
-      #   value of the tuple `(_xact_id, root_span_id)`. See the documentation of `limit`
-      #   for an overview of paginating fetch queries.
-      # @option params [String] :max_xact_id DEPRECATION NOTICE: The manually-constructed pagination cursor is deprecated in
-      #   favor of the explicit 'cursor' returned by object fetch requests. Please prefer
-      #   the 'cursor' argument going forwards.
-      #
-      #   Together, `max_xact_id` and `max_root_span_id` form a pagination cursor
-      #
-      #   Since a paginated fetch query returns results in order from latest to earliest,
-      #   the cursor for the next page can be found as the row with the minimum (earliest)
-      #   value of the tuple `(_xact_id, root_span_id)`. See the documentation of `limit`
-      #   for an overview of paginating fetch queries.
-      # @option params [String] :version Retrieve a snapshot of events from a past time
-      #
-      #   The version id is essentially a filter on the latest event transaction id. You
-      #   can use the `max_xact_id` returned by a past fetch as the version to reproduce
-      #   that exact fetch.
-      #
-      # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param request_options [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil]
       #
       # @return [Braintrust::Models::FetchDatasetEventsResponse]
-      def fetch_post(dataset_id, params = {}, opts = {})
-        req = {}
-        req[:method] = :post
-        req[:path] = "/v1/dataset/#{dataset_id}/fetch"
-        req[:body] = params
-        req[:model] = Braintrust::Models::FetchDatasetEventsResponse
-        @client.request(req, opts)
+      #
+      # @see Braintrust::Models::DatasetFetchPostParams
+      def fetch_post(dataset_id, params = {})
+        parsed, options = Braintrust::DatasetFetchPostParams.dump_request(params)
+        @client.request(
+          method: :post,
+          path: ["v1/dataset/%1$s/fetch", dataset_id],
+          body: parsed,
+          model: Braintrust::FetchDatasetEventsResponse,
+          options: options
+        )
       end
 
       # Insert a set of events into the dataset
       #
+      # @overload insert(dataset_id, events:, request_options: {})
+      #
       # @param dataset_id [String] Dataset id
       #
-      # @param params [Hash] Attributes to send in this request.
-      # @option params [Array<Braintrust::Models::InsertDatasetEventMerge|Braintrust::Models::InsertDatasetEventReplace>] :events A list of dataset events to insert
+      # @param events [Array<Braintrust::Models::InsertDatasetEvent>] A list of dataset events to insert
       #
-      # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param request_options [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil]
       #
       # @return [Braintrust::Models::InsertEventsResponse]
-      def insert(dataset_id, params = {}, opts = {})
-        req = {}
-        req[:method] = :post
-        req[:path] = "/v1/dataset/#{dataset_id}/insert"
-        req[:body] = params
-        req[:model] = Braintrust::Models::InsertEventsResponse
-        @client.request(req, opts)
+      #
+      # @see Braintrust::Models::DatasetInsertParams
+      def insert(dataset_id, params)
+        parsed, options = Braintrust::DatasetInsertParams.dump_request(params)
+        @client.request(
+          method: :post,
+          path: ["v1/dataset/%1$s/insert", dataset_id],
+          body: parsed,
+          model: Braintrust::InsertEventsResponse,
+          options: options
+        )
       end
 
+      # Some parameter documentations has been truncated, see
+      # {Braintrust::Models::DatasetSummarizeParams} for more details.
+      #
       # Summarize dataset
+      #
+      # @overload summarize(dataset_id, summarize_data: nil, request_options: {})
       #
       # @param dataset_id [String] Dataset id
       #
-      # @param params [Hash] Attributes to send in this request.
-      # @option params [Boolean] :summarize_data Whether to summarize the data. If false (or omitted), only the metadata will be
-      #   returned.
+      # @param summarize_data [Boolean, nil] Whether to summarize the data. If false (or omitted), only the metadata will be
       #
-      # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param request_options [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil]
       #
       # @return [Braintrust::Models::SummarizeDatasetResponse]
-      def summarize(dataset_id, params = {}, opts = {})
-        req = {}
-        req[:method] = :get
-        req[:path] = "/v1/dataset/#{dataset_id}/summarize"
-        req[:query] = params
-        req[:model] = Braintrust::Models::SummarizeDatasetResponse
-        @client.request(req, opts)
+      #
+      # @see Braintrust::Models::DatasetSummarizeParams
+      def summarize(dataset_id, params = {})
+        parsed, options = Braintrust::DatasetSummarizeParams.dump_request(params)
+        @client.request(
+          method: :get,
+          path: ["v1/dataset/%1$s/summarize", dataset_id],
+          query: parsed,
+          model: Braintrust::SummarizeDatasetResponse,
+          options: options
+        )
+      end
+
+      # @api private
+      #
+      # @param client [Braintrust::Client]
+      def initialize(client:)
+        @client = client
       end
     end
   end

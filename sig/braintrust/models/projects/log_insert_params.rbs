@@ -1,0 +1,26 @@
+module Braintrust
+  module Models
+    module Projects
+      type log_insert_params =
+        { events: ::Array[Braintrust::InsertProjectLogsEvent] }
+        & Braintrust::Internal::Type::request_parameters
+
+      class LogInsertParams < Braintrust::Internal::Type::BaseModel
+        extend Braintrust::Internal::Type::RequestParameters::Converter
+        include Braintrust::Internal::Type::RequestParameters
+
+        attr_accessor events: ::Array[Braintrust::InsertProjectLogsEvent]
+
+        def initialize: (
+          events: ::Array[Braintrust::InsertProjectLogsEvent],
+          ?request_options: Braintrust::request_opts
+        ) -> void
+
+        def to_hash: -> {
+          events: ::Array[Braintrust::InsertProjectLogsEvent],
+          request_options: Braintrust::RequestOptions
+        }
+      end
+    end
+  end
+end

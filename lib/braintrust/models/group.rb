@@ -2,55 +2,92 @@
 
 module Braintrust
   module Models
-    class Group < BaseModel
-      # @!attribute [rw] id
+    class Group < Braintrust::Internal::Type::BaseModel
+      # @!attribute id
       #   Unique identifier for the group
+      #
       #   @return [String]
       required :id, String
 
-      # @!attribute [rw] name_
+      # @!attribute name
       #   Name of the group
+      #
       #   @return [String]
-      required :name_, String
+      required :name, String
 
-      # @!attribute [rw] org_id
+      # @!attribute org_id
       #   Unique id for the organization that the group belongs under
       #
-      # It is forbidden to change the org after creating a group
+      #   It is forbidden to change the org after creating a group
+      #
       #   @return [String]
       required :org_id, String
 
-      # @!attribute [rw] created
+      # @!attribute created
       #   Date of group creation
-      #   @return [DateTime]
-      optional :created, DateTime
+      #
+      #   @return [Time, nil]
+      optional :created, Time, nil?: true
 
-      # @!attribute [rw] deleted_at
+      # @!attribute deleted_at
       #   Date of group deletion, or null if the group is still active
-      #   @return [DateTime]
-      optional :deleted_at, DateTime
+      #
+      #   @return [Time, nil]
+      optional :deleted_at, Time, nil?: true
 
-      # @!attribute [rw] description
+      # @!attribute description
       #   Textual description of the group
-      #   @return [String]
-      optional :description, String
+      #
+      #   @return [String, nil]
+      optional :description, String, nil?: true
 
-      # @!attribute [rw] member_groups
+      # @!attribute member_groups
       #   Ids of the groups this group inherits from
       #
-      # An inheriting group has all the users contained in its member groups, as well as all of their inherited users
-      #   @return [Array<String>]
-      optional :member_groups, Braintrust::ArrayOf.new(String)
+      #   An inheriting group has all the users contained in its member groups, as well as
+      #   all of their inherited users
+      #
+      #   @return [Array<String>, nil]
+      optional :member_groups, Braintrust::Internal::Type::ArrayOf[String], nil?: true
 
-      # @!attribute [rw] member_users
+      # @!attribute member_users
       #   Ids of users which belong to this group
-      #   @return [Array<String>]
-      optional :member_users, Braintrust::ArrayOf.new(String)
+      #
+      #   @return [Array<String>, nil]
+      optional :member_users, Braintrust::Internal::Type::ArrayOf[String], nil?: true
 
-      # @!attribute [rw] user_id
+      # @!attribute user_id
       #   Identifies the user who created the group
-      #   @return [String]
-      optional :user_id, String
+      #
+      #   @return [String, nil]
+      optional :user_id, String, nil?: true
+
+      # @!method initialize(id:, name:, org_id:, created: nil, deleted_at: nil, description: nil, member_groups: nil, member_users: nil, user_id: nil)
+      #   Some parameter documentations has been truncated, see
+      #   {Braintrust::Models::Group} for more details.
+      #
+      #   A group is a collection of users which can be assigned an ACL
+      #
+      #   Groups can consist of individual users, as well as a set of groups they inherit
+      #   from
+      #
+      #   @param id [String] Unique identifier for the group
+      #
+      #   @param name [String] Name of the group
+      #
+      #   @param org_id [String] Unique id for the organization that the group belongs under
+      #
+      #   @param created [Time, nil] Date of group creation
+      #
+      #   @param deleted_at [Time, nil] Date of group deletion, or null if the group is still active
+      #
+      #   @param description [String, nil] Textual description of the group
+      #
+      #   @param member_groups [Array<String>, nil] Ids of the groups this group inherits from
+      #
+      #   @param member_users [Array<String>, nil] Ids of users which belong to this group
+      #
+      #   @param user_id [String, nil] Identifies the user who created the group
     end
   end
 end

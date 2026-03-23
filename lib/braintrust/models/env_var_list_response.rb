@@ -2,11 +2,16 @@
 
 module Braintrust
   module Models
-    class EnvVarListResponse < BaseModel
-      # @!attribute [rw] objects
+    # @see Braintrust::Resources::EnvVars#list
+    class EnvVarListResponse < Braintrust::Internal::Type::BaseModel
+      # @!attribute objects
       #   A list of env_var objects
+      #
       #   @return [Array<Braintrust::Models::EnvVar>]
-      required :objects, Braintrust::ArrayOf.new(-> { Braintrust::Models::EnvVar })
+      required :objects, -> { Braintrust::Internal::Type::ArrayOf[Braintrust::EnvVar] }
+
+      # @!method initialize(objects:)
+      #   @param objects [Array<Braintrust::Models::EnvVar>] A list of env_var objects
     end
   end
 end

@@ -1,0 +1,56 @@
+module Braintrust
+  module Resources
+    class Groups
+      def create: (
+        name: String,
+        ?description: String?,
+        ?member_groups: ::Array[String]?,
+        ?member_users: ::Array[String]?,
+        ?org_name: String?,
+        ?request_options: Braintrust::request_opts
+      ) -> Braintrust::Group
+
+      def retrieve: (
+        String group_id,
+        ?request_options: Braintrust::request_opts
+      ) -> Braintrust::Group
+
+      def update: (
+        String group_id,
+        ?add_member_groups: ::Array[String]?,
+        ?add_member_users: ::Array[String]?,
+        ?description: String?,
+        ?name: String?,
+        ?remove_member_groups: ::Array[String]?,
+        ?remove_member_users: ::Array[String]?,
+        ?request_options: Braintrust::request_opts
+      ) -> Braintrust::Group
+
+      def list: (
+        ?ending_before: String,
+        ?group_name: String,
+        ?ids: Braintrust::Models::GroupListParams::ids,
+        ?limit: Integer?,
+        ?org_name: String,
+        ?starting_after: String,
+        ?request_options: Braintrust::request_opts
+      ) -> Braintrust::Internal::ListObjects[Braintrust::Group]
+
+      def delete: (
+        String group_id,
+        ?request_options: Braintrust::request_opts
+      ) -> Braintrust::Group
+
+      def replace: (
+        name: String,
+        ?description: String?,
+        ?member_groups: ::Array[String]?,
+        ?member_users: ::Array[String]?,
+        ?org_name: String?,
+        ?request_options: Braintrust::request_opts
+      ) -> Braintrust::Group
+
+      def initialize: (client: Braintrust::Client) -> void
+    end
+  end
+end

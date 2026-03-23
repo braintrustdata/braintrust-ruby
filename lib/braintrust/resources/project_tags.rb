@@ -3,138 +3,182 @@
 module Braintrust
   module Resources
     class ProjectTags
-      def initialize(client:)
-        @client = client
-      end
-
       # Create a new project_tag. If there is an existing project_tag in the project
-      #   with the same name as the one specified in the request, will return the existing
-      #   project_tag unmodified
+      # with the same name as the one specified in the request, will return the existing
+      # project_tag unmodified
       #
-      # @param params [Hash] Attributes to send in this request.
-      # @option params [String] :name Name of the project tag
-      # @option params [String] :project_id Unique identifier for the project that the project tag belongs under
-      # @option params [String] :color Color of the tag for the UI
-      # @option params [String] :description Textual description of the project tag
+      # @overload create(name:, project_id:, color: nil, description: nil, request_options: {})
       #
-      # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param name [String] Name of the project tag
+      #
+      # @param project_id [String] Unique identifier for the project that the project tag belongs under
+      #
+      # @param color [String, nil] Color of the tag for the UI
+      #
+      # @param description [String, nil] Textual description of the project tag
+      #
+      # @param request_options [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil]
       #
       # @return [Braintrust::Models::ProjectTag]
-      def create(params = {}, opts = {})
-        req = {}
-        req[:method] = :post
-        req[:path] = "/v1/project_tag"
-        req[:body] = params
-        req[:model] = Braintrust::Models::ProjectTag
-        @client.request(req, opts)
+      #
+      # @see Braintrust::Models::ProjectTagCreateParams
+      def create(params)
+        parsed, options = Braintrust::ProjectTagCreateParams.dump_request(params)
+        @client.request(
+          method: :post,
+          path: "v1/project_tag",
+          body: parsed,
+          model: Braintrust::ProjectTag,
+          options: options
+        )
       end
 
       # Get a project_tag object by its id
       #
+      # @overload retrieve(project_tag_id, request_options: {})
+      #
       # @param project_tag_id [String] ProjectTag id
-      # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
+      #
+      # @param request_options [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil]
       #
       # @return [Braintrust::Models::ProjectTag]
-      def retrieve(project_tag_id, opts = {})
-        req = {}
-        req[:method] = :get
-        req[:path] = "/v1/project_tag/#{project_tag_id}"
-        req[:model] = Braintrust::Models::ProjectTag
-        @client.request(req, opts)
+      #
+      # @see Braintrust::Models::ProjectTagRetrieveParams
+      def retrieve(project_tag_id, params = {})
+        @client.request(
+          method: :get,
+          path: ["v1/project_tag/%1$s", project_tag_id],
+          model: Braintrust::ProjectTag,
+          options: params[:request_options]
+        )
       end
 
       # Partially update a project_tag object. Specify the fields to update in the
-      #   payload. Any object-type fields will be deep-merged with existing content.
-      #   Currently we do not support removing fields or setting them to null.
+      # payload. Any object-type fields will be deep-merged with existing content.
+      # Currently we do not support removing fields or setting them to null.
+      #
+      # @overload update(project_tag_id, color: nil, description: nil, name: nil, request_options: {})
       #
       # @param project_tag_id [String] ProjectTag id
       #
-      # @param params [Hash] Attributes to send in this request.
-      # @option params [String] :color Color of the tag for the UI
-      # @option params [String] :description Textual description of the project tag
-      # @option params [String] :name Name of the project tag
+      # @param color [String, nil] Color of the tag for the UI
       #
-      # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param description [String, nil] Textual description of the project tag
+      #
+      # @param name [String, nil] Name of the project tag
+      #
+      # @param request_options [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil]
       #
       # @return [Braintrust::Models::ProjectTag]
-      def update(project_tag_id, params = {}, opts = {})
-        req = {}
-        req[:method] = :patch
-        req[:path] = "/v1/project_tag/#{project_tag_id}"
-        req[:body] = params
-        req[:model] = Braintrust::Models::ProjectTag
-        @client.request(req, opts)
+      #
+      # @see Braintrust::Models::ProjectTagUpdateParams
+      def update(project_tag_id, params = {})
+        parsed, options = Braintrust::ProjectTagUpdateParams.dump_request(params)
+        @client.request(
+          method: :patch,
+          path: ["v1/project_tag/%1$s", project_tag_id],
+          body: parsed,
+          model: Braintrust::ProjectTag,
+          options: options
+        )
       end
 
+      # Some parameter documentations has been truncated, see
+      # {Braintrust::Models::ProjectTagListParams} for more details.
+      #
       # List out all project_tags. The project_tags are sorted by creation date, with
-      #   the most recently-created project_tags coming first
+      # the most recently-created project_tags coming first
       #
-      # @param params [Hash] Attributes to send in this request.
-      # @option params [String] :ending_before Pagination cursor id.
+      # @overload list(ending_before: nil, ids: nil, limit: nil, org_name: nil, project_id: nil, project_name: nil, project_tag_name: nil, starting_after: nil, request_options: {})
       #
-      #   For example, if the initial item in the last page you fetched had an id of
-      #   `foo`, pass `ending_before=foo` to fetch the previous page. Note: you may only
-      #   pass one of `starting_after` and `ending_before`
-      # @option params [Array<String>|String] :ids Filter search results to a particular set of object IDs. To specify a list of
-      #   IDs, include the query param multiple times
-      # @option params [Integer] :limit Limit the number of objects to return
-      # @option params [String] :org_name Filter search results to within a particular organization
-      # @option params [String] :project_id Project id
-      # @option params [String] :project_name Name of the project to search for
-      # @option params [String] :project_tag_name Name of the project_tag to search for
-      # @option params [String] :starting_after Pagination cursor id.
+      # @param ending_before [String] Pagination cursor id.
       #
-      #   For example, if the final item in the last page you fetched had an id of `foo`,
-      #   pass `starting_after=foo` to fetch the next page. Note: you may only pass one of
-      #   `starting_after` and `ending_before`
+      # @param ids [String, Array<String>] Filter search results to a particular set of object IDs. To specify a list of ID
       #
-      # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param limit [Integer, nil] Limit the number of objects to return
       #
-      # @return [Braintrust::ListObjects<Braintrust::Models::ProjectTag>]
-      def list(params = {}, opts = {})
-        req = {}
-        req[:method] = :get
-        req[:path] = "/v1/project_tag"
-        req[:query] = params
-        req[:page] = Braintrust::ListObjects
-        req[:model] = Braintrust::Models::ProjectTag
-        @client.request(req, opts)
+      # @param org_name [String] Filter search results to within a particular organization
+      #
+      # @param project_id [String] Project id
+      #
+      # @param project_name [String] Name of the project to search for
+      #
+      # @param project_tag_name [String] Name of the project_tag to search for
+      #
+      # @param starting_after [String] Pagination cursor id.
+      #
+      # @param request_options [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil]
+      #
+      # @return [Braintrust::Internal::ListObjects<Braintrust::Models::ProjectTag>]
+      #
+      # @see Braintrust::Models::ProjectTagListParams
+      def list(params = {})
+        parsed, options = Braintrust::ProjectTagListParams.dump_request(params)
+        @client.request(
+          method: :get,
+          path: "v1/project_tag",
+          query: parsed,
+          page: Braintrust::Internal::ListObjects,
+          model: Braintrust::ProjectTag,
+          options: options
+        )
       end
 
       # Delete a project_tag object by its id
       #
+      # @overload delete(project_tag_id, request_options: {})
+      #
       # @param project_tag_id [String] ProjectTag id
-      # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
+      #
+      # @param request_options [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil]
       #
       # @return [Braintrust::Models::ProjectTag]
-      def delete(project_tag_id, opts = {})
-        req = {}
-        req[:method] = :delete
-        req[:path] = "/v1/project_tag/#{project_tag_id}"
-        req[:model] = Braintrust::Models::ProjectTag
-        @client.request(req, opts)
+      #
+      # @see Braintrust::Models::ProjectTagDeleteParams
+      def delete(project_tag_id, params = {})
+        @client.request(
+          method: :delete,
+          path: ["v1/project_tag/%1$s", project_tag_id],
+          model: Braintrust::ProjectTag,
+          options: params[:request_options]
+        )
       end
 
       # Create or replace project_tag. If there is an existing project_tag in the
-      #   project with the same name as the one specified in the request, will replace the
-      #   existing project_tag with the provided fields
+      # project with the same name as the one specified in the request, will replace the
+      # existing project_tag with the provided fields
       #
-      # @param params [Hash] Attributes to send in this request.
-      # @option params [String] :name Name of the project tag
-      # @option params [String] :project_id Unique identifier for the project that the project tag belongs under
-      # @option params [String] :color Color of the tag for the UI
-      # @option params [String] :description Textual description of the project tag
+      # @overload replace(name:, project_id:, color: nil, description: nil, request_options: {})
       #
-      # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param name [String] Name of the project tag
+      #
+      # @param project_id [String] Unique identifier for the project that the project tag belongs under
+      #
+      # @param color [String, nil] Color of the tag for the UI
+      #
+      # @param description [String, nil] Textual description of the project tag
+      #
+      # @param request_options [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil]
       #
       # @return [Braintrust::Models::ProjectTag]
-      def replace(params = {}, opts = {})
-        req = {}
-        req[:method] = :put
-        req[:path] = "/v1/project_tag"
-        req[:body] = params
-        req[:model] = Braintrust::Models::ProjectTag
-        @client.request(req, opts)
+      #
+      # @see Braintrust::Models::ProjectTagReplaceParams
+      def replace(params)
+        parsed, options = Braintrust::ProjectTagReplaceParams.dump_request(params)
+        @client.request(
+          method: :put,
+          path: "v1/project_tag",
+          body: parsed,
+          model: Braintrust::ProjectTag,
+          options: options
+        )
+      end
+
+      # @api private
+      #
+      # @param client [Braintrust::Client]
+      def initialize(client:)
+        @client = client
       end
     end
   end

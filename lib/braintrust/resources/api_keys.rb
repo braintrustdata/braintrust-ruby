@@ -3,90 +3,116 @@
 module Braintrust
   module Resources
     class APIKeys
-      def initialize(client:)
-        @client = client
-      end
-
+      # Some parameter documentations has been truncated, see
+      # {Braintrust::Models::APIKeyCreateParams} for more details.
+      #
       # Create a new api_key. It is possible to have multiple API keys with the same
-      #   name. There is no de-duplication
+      # name. There is no de-duplication
       #
-      # @param params [Hash] Attributes to send in this request.
-      # @option params [String] :name Name of the api key. Does not have to be unique
-      # @option params [String] :org_name For nearly all users, this parameter should be unnecessary. But in the rare case
-      #   that your API key belongs to multiple organizations, you may specify the name of
-      #   the organization the API key belongs in.
+      # @overload create(name:, org_name: nil, request_options: {})
       #
-      # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param name [String] Name of the api key. Does not have to be unique
+      #
+      # @param org_name [String, nil] For nearly all users, this parameter should be unnecessary. But in the rare case
+      #
+      # @param request_options [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil]
       #
       # @return [Braintrust::Models::CreateAPIKeyOutput]
-      def create(params = {}, opts = {})
-        req = {}
-        req[:method] = :post
-        req[:path] = "/v1/api_key"
-        req[:body] = params
-        req[:model] = Braintrust::Models::CreateAPIKeyOutput
-        @client.request(req, opts)
+      #
+      # @see Braintrust::Models::APIKeyCreateParams
+      def create(params)
+        parsed, options = Braintrust::APIKeyCreateParams.dump_request(params)
+        @client.request(
+          method: :post,
+          path: "v1/api_key",
+          body: parsed,
+          model: Braintrust::CreateAPIKeyOutput,
+          options: options
+        )
       end
 
       # Get an api_key object by its id
       #
+      # @overload retrieve(api_key_id, request_options: {})
+      #
       # @param api_key_id [String] ApiKey id
-      # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
+      #
+      # @param request_options [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil]
       #
       # @return [Braintrust::Models::APIKey]
-      def retrieve(api_key_id, opts = {})
-        req = {}
-        req[:method] = :get
-        req[:path] = "/v1/api_key/#{api_key_id}"
-        req[:model] = Braintrust::Models::APIKey
-        @client.request(req, opts)
+      #
+      # @see Braintrust::Models::APIKeyRetrieveParams
+      def retrieve(api_key_id, params = {})
+        @client.request(
+          method: :get,
+          path: ["v1/api_key/%1$s", api_key_id],
+          model: Braintrust::APIKey,
+          options: params[:request_options]
+        )
       end
 
+      # Some parameter documentations has been truncated, see
+      # {Braintrust::Models::APIKeyListParams} for more details.
+      #
       # List out all api_keys. The api_keys are sorted by creation date, with the most
-      #   recently-created api_keys coming first
+      # recently-created api_keys coming first
       #
-      # @param params [Hash] Attributes to send in this request.
-      # @option params [String] :api_key_name Name of the api_key to search for
-      # @option params [String] :ending_before Pagination cursor id.
+      # @overload list(api_key_name: nil, ending_before: nil, ids: nil, limit: nil, org_name: nil, starting_after: nil, request_options: {})
       #
-      #   For example, if the initial item in the last page you fetched had an id of
-      #   `foo`, pass `ending_before=foo` to fetch the previous page. Note: you may only
-      #   pass one of `starting_after` and `ending_before`
-      # @option params [Array<String>|String] :ids Filter search results to a particular set of object IDs. To specify a list of
-      #   IDs, include the query param multiple times
-      # @option params [Integer] :limit Limit the number of objects to return
-      # @option params [String] :org_name Filter search results to within a particular organization
-      # @option params [String] :starting_after Pagination cursor id.
+      # @param api_key_name [String] Name of the api_key to search for
       #
-      #   For example, if the final item in the last page you fetched had an id of `foo`,
-      #   pass `starting_after=foo` to fetch the next page. Note: you may only pass one of
-      #   `starting_after` and `ending_before`
+      # @param ending_before [String] Pagination cursor id.
       #
-      # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param ids [String, Array<String>] Filter search results to a particular set of object IDs. To specify a list of ID
       #
-      # @return [Braintrust::ListObjects<Braintrust::Models::APIKey>]
-      def list(params = {}, opts = {})
-        req = {}
-        req[:method] = :get
-        req[:path] = "/v1/api_key"
-        req[:query] = params
-        req[:page] = Braintrust::ListObjects
-        req[:model] = Braintrust::Models::APIKey
-        @client.request(req, opts)
+      # @param limit [Integer, nil] Limit the number of objects to return
+      #
+      # @param org_name [String] Filter search results to within a particular organization
+      #
+      # @param starting_after [String] Pagination cursor id.
+      #
+      # @param request_options [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil]
+      #
+      # @return [Braintrust::Internal::ListObjects<Braintrust::Models::APIKey>]
+      #
+      # @see Braintrust::Models::APIKeyListParams
+      def list(params = {})
+        parsed, options = Braintrust::APIKeyListParams.dump_request(params)
+        @client.request(
+          method: :get,
+          path: "v1/api_key",
+          query: parsed,
+          page: Braintrust::Internal::ListObjects,
+          model: Braintrust::APIKey,
+          options: options
+        )
       end
 
       # Delete an api_key object by its id
       #
+      # @overload delete(api_key_id, request_options: {})
+      #
       # @param api_key_id [String] ApiKey id
-      # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
+      #
+      # @param request_options [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil]
       #
       # @return [Braintrust::Models::APIKey]
-      def delete(api_key_id, opts = {})
-        req = {}
-        req[:method] = :delete
-        req[:path] = "/v1/api_key/#{api_key_id}"
-        req[:model] = Braintrust::Models::APIKey
-        @client.request(req, opts)
+      #
+      # @see Braintrust::Models::APIKeyDeleteParams
+      def delete(api_key_id, params = {})
+        @client.request(
+          method: :delete,
+          path: ["v1/api_key/%1$s", api_key_id],
+          model: Braintrust::APIKey,
+          options: params[:request_options]
+        )
+      end
+
+      # @api private
+      #
+      # @param client [Braintrust::Client]
+      def initialize(client:)
+        @client = client
       end
     end
   end

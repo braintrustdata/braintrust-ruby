@@ -1,0 +1,46 @@
+module Braintrust
+  module Models
+    type group_replace_params =
+      {
+        name: String,
+        description: String?,
+        member_groups: ::Array[String]?,
+        member_users: ::Array[String]?,
+        org_name: String?
+      }
+      & Braintrust::Internal::Type::request_parameters
+
+    class GroupReplaceParams < Braintrust::Internal::Type::BaseModel
+      extend Braintrust::Internal::Type::RequestParameters::Converter
+      include Braintrust::Internal::Type::RequestParameters
+
+      attr_accessor name: String
+
+      attr_accessor description: String?
+
+      attr_accessor member_groups: ::Array[String]?
+
+      attr_accessor member_users: ::Array[String]?
+
+      attr_accessor org_name: String?
+
+      def initialize: (
+        name: String,
+        ?description: String?,
+        ?member_groups: ::Array[String]?,
+        ?member_users: ::Array[String]?,
+        ?org_name: String?,
+        ?request_options: Braintrust::request_opts
+      ) -> void
+
+      def to_hash: -> {
+        name: String,
+        description: String?,
+        member_groups: ::Array[String]?,
+        member_users: ::Array[String]?,
+        org_name: String?,
+        request_options: Braintrust::RequestOptions
+      }
+    end
+  end
+end

@@ -1,0 +1,60 @@
+module Braintrust
+  module Resources
+    class ProjectScores
+      def create: (
+        name: String,
+        project_id: String,
+        score_type: Braintrust::Models::project_score_type,
+        ?categories: Braintrust::Models::ProjectScoreCreateParams::categories?,
+        ?config: Braintrust::ProjectScoreConfig?,
+        ?description: String?,
+        ?request_options: Braintrust::request_opts
+      ) -> Braintrust::ProjectScore
+
+      def retrieve: (
+        String project_score_id,
+        ?request_options: Braintrust::request_opts
+      ) -> Braintrust::ProjectScore
+
+      def update: (
+        String project_score_id,
+        ?categories: Braintrust::Models::ProjectScoreUpdateParams::categories?,
+        ?config: Braintrust::ProjectScoreConfig?,
+        ?description: String?,
+        ?name: String?,
+        ?score_type: Braintrust::Models::project_score_type?,
+        ?request_options: Braintrust::request_opts
+      ) -> Braintrust::ProjectScore
+
+      def list: (
+        ?ending_before: String,
+        ?ids: Braintrust::Models::ProjectScoreListParams::ids,
+        ?limit: Integer?,
+        ?org_name: String,
+        ?project_id: String,
+        ?project_name: String,
+        ?project_score_name: String,
+        ?score_type: Braintrust::Models::ProjectScoreListParams::score_type,
+        ?starting_after: String,
+        ?request_options: Braintrust::request_opts
+      ) -> Braintrust::Internal::ListObjects[Braintrust::ProjectScore]
+
+      def delete: (
+        String project_score_id,
+        ?request_options: Braintrust::request_opts
+      ) -> Braintrust::ProjectScore
+
+      def replace: (
+        name: String,
+        project_id: String,
+        score_type: Braintrust::Models::project_score_type,
+        ?categories: Braintrust::Models::ProjectScoreReplaceParams::categories?,
+        ?config: Braintrust::ProjectScoreConfig?,
+        ?description: String?,
+        ?request_options: Braintrust::request_opts
+      ) -> Braintrust::ProjectScore
+
+      def initialize: (client: Braintrust::Client) -> void
+    end
+  end
+end

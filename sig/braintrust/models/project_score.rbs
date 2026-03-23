@@ -1,0 +1,82 @@
+module Braintrust
+  module Models
+    type project_score =
+      {
+        id: String,
+        name: String,
+        project_id: String,
+        score_type: Braintrust::Models::project_score_type,
+        user_id: String,
+        categories: Braintrust::Models::ProjectScore::categories?,
+        config: Braintrust::ProjectScoreConfig?,
+        created: Time?,
+        description: String?,
+        position: String?
+      }
+
+    class ProjectScore < Braintrust::Internal::Type::BaseModel
+      attr_accessor id: String
+
+      attr_accessor name: String
+
+      attr_accessor project_id: String
+
+      attr_accessor score_type: Braintrust::Models::project_score_type
+
+      attr_accessor user_id: String
+
+      attr_accessor categories: Braintrust::Models::ProjectScore::categories?
+
+      attr_accessor config: Braintrust::ProjectScoreConfig?
+
+      attr_accessor created: Time?
+
+      attr_accessor description: String?
+
+      attr_accessor position: String?
+
+      def initialize: (
+        id: String,
+        name: String,
+        project_id: String,
+        score_type: Braintrust::Models::project_score_type,
+        user_id: String,
+        ?categories: Braintrust::Models::ProjectScore::categories?,
+        ?config: Braintrust::ProjectScoreConfig?,
+        ?created: Time?,
+        ?description: String?,
+        ?position: String?
+      ) -> void
+
+      def to_hash: -> {
+        id: String,
+        name: String,
+        project_id: String,
+        score_type: Braintrust::Models::project_score_type,
+        user_id: String,
+        categories: Braintrust::Models::ProjectScore::categories?,
+        config: Braintrust::ProjectScoreConfig?,
+        created: Time?,
+        description: String?,
+        position: String?
+      }
+
+      type categories =
+        ::Array[Braintrust::ProjectScoreCategory]
+        | ::Hash[Symbol, Float]
+        | ::Array[String]
+
+      module Categories
+        extend Braintrust::Internal::Type::Union
+
+        def self?.variants: -> ::Array[Braintrust::Models::ProjectScore::categories]
+
+        ProjectScoreCategoryArray: Braintrust::Internal::Type::Converter
+
+        FloatMap: Braintrust::Internal::Type::Converter
+
+        StringArray: Braintrust::Internal::Type::Converter
+      end
+    end
+  end
+end

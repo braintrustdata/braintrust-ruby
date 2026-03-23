@@ -1,0 +1,34 @@
+module Braintrust
+  module Models
+    type view_type =
+      :projects
+      | :experiments
+      | :experiment
+      | :playgrounds
+      | :playground
+      | :datasets
+      | :dataset
+      | :prompts
+      | :tools
+      | :scorers
+      | :logs
+
+    module ViewType
+      extend Braintrust::Internal::Type::Enum
+
+      PROJECTS: :projects
+      EXPERIMENTS: :experiments
+      EXPERIMENT: :experiment
+      PLAYGROUNDS: :playgrounds
+      PLAYGROUND: :playground
+      DATASETS: :datasets
+      DATASET: :dataset
+      PROMPTS: :prompts
+      TOOLS: :tools
+      SCORERS: :scorers
+      LOGS: :logs
+
+      def self?.values: -> ::Array[Braintrust::Models::view_type]
+    end
+  end
+end

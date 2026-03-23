@@ -1,0 +1,15 @@
+module Braintrust
+  module Models
+    type group_delete_params =
+      {  } & Braintrust::Internal::Type::request_parameters
+
+    class GroupDeleteParams < Braintrust::Internal::Type::BaseModel
+      extend Braintrust::Internal::Type::RequestParameters::Converter
+      include Braintrust::Internal::Type::RequestParameters
+
+      def initialize: (?request_options: Braintrust::request_opts) -> void
+
+      def to_hash: -> { request_options: Braintrust::RequestOptions }
+    end
+  end
+end

@@ -2,24 +2,30 @@
 
 require_relative "../test_helper"
 
-class Braintrust::Test::Resources::EvalsTest < Test::Unit::TestCase
-  def setup
-    @braintrust = Braintrust::Client.new(base_url: "http://localhost:4010", api_key: "My API Key")
-  end
-
+class Braintrust::Test::Resources::EvalsTest < Braintrust::Test::ResourceTest
   def test_create_required_params
-    response = @braintrust.evals.create(
-      {
-        data: {"dataset_id" => "dataset_id"},
+    response =
+      @braintrust.evals.create(
+        data: {dataset_id: "dataset_id"},
         project_id: "project_id",
-        scores: [
-          {"function_id" => "function_id"},
-          {"function_id" => "function_id"},
-          {"function_id" => "function_id"}
-        ],
-        task: {"function_id" => "function_id"}
+        scores: [{function_id: "function_id"}],
+        task: {function_id: "function_id"}
+      )
+
+    assert_pattern do
+      response => Braintrust::SummarizeExperimentResponse
+    end
+
+    assert_pattern do
+      response => {
+        experiment_name: String,
+        experiment_url: String,
+        project_name: String,
+        project_url: String,
+        comparison_experiment_name: String | nil,
+        metrics: ^(Braintrust::Internal::Type::HashOf[Braintrust::MetricSummary]) | nil,
+        scores: ^(Braintrust::Internal::Type::HashOf[Braintrust::ScoreSummary]) | nil
       }
-    )
-    assert_kind_of(Braintrust::Models::SummarizeExperimentResponse, response)
+    end
   end
 end

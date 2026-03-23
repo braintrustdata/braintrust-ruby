@@ -3,151 +3,202 @@
 module Braintrust
   module Resources
     class Prompts
-      def initialize(client:)
-        @client = client
-      end
-
       # Create a new prompt. If there is an existing prompt in the project with the same
-      #   slug as the one specified in the request, will return the existing prompt
-      #   unmodified
+      # slug as the one specified in the request, will return the existing prompt
+      # unmodified
       #
-      # @param params [Hash] Attributes to send in this request.
-      # @option params [String] :name Name of the prompt
-      # @option params [String] :project_id Unique identifier for the project that the prompt belongs under
-      # @option params [String] :slug Unique identifier for the prompt
-      # @option params [String] :description Textual description of the prompt
-      # @option params [Symbol] :function_type
-      # @option params [Braintrust::Models::PromptData] :prompt_data The prompt, model, and its parameters
-      # @option params [Array<String>] :tags A list of tags for the prompt
+      # @overload create(name:, project_id:, slug:, description: nil, function_type: nil, prompt_data: nil, tags: nil, request_options: {})
       #
-      # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param name [String] Name of the prompt
+      #
+      # @param project_id [String] Unique identifier for the project that the prompt belongs under
+      #
+      # @param slug [String] Unique identifier for the prompt
+      #
+      # @param description [String, nil] Textual description of the prompt
+      #
+      # @param function_type [Symbol, Braintrust::Models::PromptCreateParams::FunctionType, nil]
+      #
+      # @param prompt_data [Braintrust::Models::PromptData, nil] The prompt, model, and its parameters
+      #
+      # @param tags [Array<String>, nil] A list of tags for the prompt
+      #
+      # @param request_options [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil]
       #
       # @return [Braintrust::Models::Prompt]
-      def create(params = {}, opts = {})
-        req = {}
-        req[:method] = :post
-        req[:path] = "/v1/prompt"
-        req[:body] = params
-        req[:model] = Braintrust::Models::Prompt
-        @client.request(req, opts)
+      #
+      # @see Braintrust::Models::PromptCreateParams
+      def create(params)
+        parsed, options = Braintrust::PromptCreateParams.dump_request(params)
+        @client.request(
+          method: :post,
+          path: "v1/prompt",
+          body: parsed,
+          model: Braintrust::Prompt,
+          options: options
+        )
       end
 
       # Get a prompt object by its id
       #
+      # @overload retrieve(prompt_id, request_options: {})
+      #
       # @param prompt_id [String] Prompt id
-      # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
+      #
+      # @param request_options [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil]
       #
       # @return [Braintrust::Models::Prompt]
-      def retrieve(prompt_id, opts = {})
-        req = {}
-        req[:method] = :get
-        req[:path] = "/v1/prompt/#{prompt_id}"
-        req[:model] = Braintrust::Models::Prompt
-        @client.request(req, opts)
+      #
+      # @see Braintrust::Models::PromptRetrieveParams
+      def retrieve(prompt_id, params = {})
+        @client.request(
+          method: :get,
+          path: ["v1/prompt/%1$s", prompt_id],
+          model: Braintrust::Prompt,
+          options: params[:request_options]
+        )
       end
 
       # Partially update a prompt object. Specify the fields to update in the payload.
-      #   Any object-type fields will be deep-merged with existing content. Currently we
-      #   do not support removing fields or setting them to null.
+      # Any object-type fields will be deep-merged with existing content. Currently we
+      # do not support removing fields or setting them to null.
+      #
+      # @overload update(prompt_id, description: nil, name: nil, prompt_data: nil, slug: nil, tags: nil, request_options: {})
       #
       # @param prompt_id [String] Prompt id
       #
-      # @param params [Hash] Attributes to send in this request.
-      # @option params [String] :description Textual description of the prompt
-      # @option params [String] :name Name of the prompt
-      # @option params [Braintrust::Models::PromptData] :prompt_data The prompt, model, and its parameters
-      # @option params [String] :slug Unique identifier for the prompt
-      # @option params [Array<String>] :tags A list of tags for the prompt
+      # @param description [String, nil] Textual description of the prompt
       #
-      # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param name [String, nil] Name of the prompt
+      #
+      # @param prompt_data [Braintrust::Models::PromptData, nil] The prompt, model, and its parameters
+      #
+      # @param slug [String, nil] Unique identifier for the prompt
+      #
+      # @param tags [Array<String>, nil] A list of tags for the prompt
+      #
+      # @param request_options [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil]
       #
       # @return [Braintrust::Models::Prompt]
-      def update(prompt_id, params = {}, opts = {})
-        req = {}
-        req[:method] = :patch
-        req[:path] = "/v1/prompt/#{prompt_id}"
-        req[:body] = params
-        req[:model] = Braintrust::Models::Prompt
-        @client.request(req, opts)
+      #
+      # @see Braintrust::Models::PromptUpdateParams
+      def update(prompt_id, params = {})
+        parsed, options = Braintrust::PromptUpdateParams.dump_request(params)
+        @client.request(
+          method: :patch,
+          path: ["v1/prompt/%1$s", prompt_id],
+          body: parsed,
+          model: Braintrust::Prompt,
+          options: options
+        )
       end
 
+      # Some parameter documentations has been truncated, see
+      # {Braintrust::Models::PromptListParams} for more details.
+      #
       # List out all prompts. The prompts are sorted by creation date, with the most
-      #   recently-created prompts coming first
+      # recently-created prompts coming first
       #
-      # @param params [Hash] Attributes to send in this request.
-      # @option params [String] :ending_before Pagination cursor id.
+      # @overload list(ending_before: nil, ids: nil, limit: nil, org_name: nil, project_id: nil, project_name: nil, prompt_name: nil, slug: nil, starting_after: nil, version: nil, request_options: {})
       #
-      #   For example, if the initial item in the last page you fetched had an id of
-      #   `foo`, pass `ending_before=foo` to fetch the previous page. Note: you may only
-      #   pass one of `starting_after` and `ending_before`
-      # @option params [Array<String>|String] :ids Filter search results to a particular set of object IDs. To specify a list of
-      #   IDs, include the query param multiple times
-      # @option params [Integer] :limit Limit the number of objects to return
-      # @option params [String] :org_name Filter search results to within a particular organization
-      # @option params [String] :project_id Project id
-      # @option params [String] :project_name Name of the project to search for
-      # @option params [String] :prompt_name Name of the prompt to search for
-      # @option params [String] :slug Retrieve prompt with a specific slug
-      # @option params [String] :starting_after Pagination cursor id.
+      # @param ending_before [String] Pagination cursor id.
       #
-      #   For example, if the final item in the last page you fetched had an id of `foo`,
-      #   pass `starting_after=foo` to fetch the next page. Note: you may only pass one of
-      #   `starting_after` and `ending_before`
-      # @option params [String] :version Retrieve prompt at a specific version.
+      # @param ids [String, Array<String>] Filter search results to a particular set of object IDs. To specify a list of ID
       #
-      #   The version id can either be a transaction id (e.g. '1000192656880881099') or a
-      #   version identifier (e.g. '81cd05ee665fdfb3').
+      # @param limit [Integer, nil] Limit the number of objects to return
       #
-      # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param org_name [String] Filter search results to within a particular organization
       #
-      # @return [Braintrust::ListObjects<Braintrust::Models::Prompt>]
-      def list(params = {}, opts = {})
-        req = {}
-        req[:method] = :get
-        req[:path] = "/v1/prompt"
-        req[:query] = params
-        req[:page] = Braintrust::ListObjects
-        req[:model] = Braintrust::Models::Prompt
-        @client.request(req, opts)
+      # @param project_id [String] Project id
+      #
+      # @param project_name [String] Name of the project to search for
+      #
+      # @param prompt_name [String] Name of the prompt to search for
+      #
+      # @param slug [String] Retrieve prompt with a specific slug
+      #
+      # @param starting_after [String] Pagination cursor id.
+      #
+      # @param version [String] Retrieve prompt at a specific version.
+      #
+      # @param request_options [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil]
+      #
+      # @return [Braintrust::Internal::ListObjects<Braintrust::Models::Prompt>]
+      #
+      # @see Braintrust::Models::PromptListParams
+      def list(params = {})
+        parsed, options = Braintrust::PromptListParams.dump_request(params)
+        @client.request(
+          method: :get,
+          path: "v1/prompt",
+          query: parsed,
+          page: Braintrust::Internal::ListObjects,
+          model: Braintrust::Prompt,
+          options: options
+        )
       end
 
       # Delete a prompt object by its id
       #
+      # @overload delete(prompt_id, request_options: {})
+      #
       # @param prompt_id [String] Prompt id
-      # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
+      #
+      # @param request_options [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil]
       #
       # @return [Braintrust::Models::Prompt]
-      def delete(prompt_id, opts = {})
-        req = {}
-        req[:method] = :delete
-        req[:path] = "/v1/prompt/#{prompt_id}"
-        req[:model] = Braintrust::Models::Prompt
-        @client.request(req, opts)
+      #
+      # @see Braintrust::Models::PromptDeleteParams
+      def delete(prompt_id, params = {})
+        @client.request(
+          method: :delete,
+          path: ["v1/prompt/%1$s", prompt_id],
+          model: Braintrust::Prompt,
+          options: params[:request_options]
+        )
       end
 
       # Create or replace prompt. If there is an existing prompt in the project with the
-      #   same slug as the one specified in the request, will replace the existing prompt
-      #   with the provided fields
+      # same slug as the one specified in the request, will replace the existing prompt
+      # with the provided fields
       #
-      # @param params [Hash] Attributes to send in this request.
-      # @option params [String] :name Name of the prompt
-      # @option params [String] :project_id Unique identifier for the project that the prompt belongs under
-      # @option params [String] :slug Unique identifier for the prompt
-      # @option params [String] :description Textual description of the prompt
-      # @option params [Symbol] :function_type
-      # @option params [Braintrust::Models::PromptData] :prompt_data The prompt, model, and its parameters
-      # @option params [Array<String>] :tags A list of tags for the prompt
+      # @overload replace(name:, project_id:, slug:, description: nil, function_type: nil, prompt_data: nil, tags: nil, request_options: {})
       #
-      # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param name [String] Name of the prompt
+      #
+      # @param project_id [String] Unique identifier for the project that the prompt belongs under
+      #
+      # @param slug [String] Unique identifier for the prompt
+      #
+      # @param description [String, nil] Textual description of the prompt
+      #
+      # @param function_type [Symbol, Braintrust::Models::PromptReplaceParams::FunctionType, nil]
+      #
+      # @param prompt_data [Braintrust::Models::PromptData, nil] The prompt, model, and its parameters
+      #
+      # @param tags [Array<String>, nil] A list of tags for the prompt
+      #
+      # @param request_options [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil]
       #
       # @return [Braintrust::Models::Prompt]
-      def replace(params = {}, opts = {})
-        req = {}
-        req[:method] = :put
-        req[:path] = "/v1/prompt"
-        req[:body] = params
-        req[:model] = Braintrust::Models::Prompt
-        @client.request(req, opts)
+      #
+      # @see Braintrust::Models::PromptReplaceParams
+      def replace(params)
+        parsed, options = Braintrust::PromptReplaceParams.dump_request(params)
+        @client.request(
+          method: :put,
+          path: "v1/prompt",
+          body: parsed,
+          model: Braintrust::Prompt,
+          options: options
+        )
+      end
+
+      # @api private
+      #
+      # @param client [Braintrust::Client]
+      def initialize(client:)
+        @client = client
       end
     end
   end

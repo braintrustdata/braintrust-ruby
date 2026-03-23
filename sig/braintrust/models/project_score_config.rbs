@@ -1,0 +1,30 @@
+module Braintrust
+  module Models
+    type project_score_config =
+      {
+        destination: String?,
+        multi_select: bool?,
+        online: Braintrust::OnlineScoreConfig?
+      }
+
+    class ProjectScoreConfig < Braintrust::Internal::Type::BaseModel
+      attr_accessor destination: String?
+
+      attr_accessor multi_select: bool?
+
+      attr_accessor online: Braintrust::OnlineScoreConfig?
+
+      def initialize: (
+        ?destination: String?,
+        ?multi_select: bool?,
+        ?online: Braintrust::OnlineScoreConfig?
+      ) -> void
+
+      def to_hash: -> {
+        destination: String?,
+        multi_select: bool?,
+        online: Braintrust::OnlineScoreConfig?
+      }
+    end
+  end
+end

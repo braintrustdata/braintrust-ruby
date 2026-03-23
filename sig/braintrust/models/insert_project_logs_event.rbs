@@ -1,0 +1,218 @@
+module Braintrust
+  module Models
+    type insert_project_logs_event =
+      {
+        id: String?,
+        _is_merge: bool?,
+        _merge_paths: ::Array[::Array[String]]?,
+        _object_delete: bool?,
+        _parent_id: String?,
+        context: Braintrust::InsertProjectLogsEvent::Context?,
+        created: Time?,
+        error: top,
+        expected: top,
+        input: top,
+        metadata: Braintrust::InsertProjectLogsEvent::Metadata?,
+        metrics: Braintrust::InsertProjectLogsEvent::Metrics?,
+        origin: Braintrust::ObjectReference?,
+        output: top,
+        root_span_id: String?,
+        scores: ::Hash[Symbol, Float?]?,
+        span_attributes: Braintrust::SpanAttributes?,
+        span_id: String?,
+        span_parents: ::Array[String]?,
+        tags: ::Array[String]?
+      }
+
+    class InsertProjectLogsEvent < Braintrust::Internal::Type::BaseModel
+      attr_accessor id: String?
+
+      attr_accessor _is_merge: bool?
+
+      attr_accessor _merge_paths: ::Array[::Array[String]]?
+
+      attr_accessor _object_delete: bool?
+
+      attr_accessor _parent_id: String?
+
+      attr_accessor context: Braintrust::InsertProjectLogsEvent::Context?
+
+      attr_accessor created: Time?
+
+      attr_reader error: top?
+
+      def error=: (top) -> top
+
+      attr_reader expected: top?
+
+      def expected=: (top) -> top
+
+      attr_reader input: top?
+
+      def input=: (top) -> top
+
+      attr_accessor metadata: Braintrust::InsertProjectLogsEvent::Metadata?
+
+      attr_accessor metrics: Braintrust::InsertProjectLogsEvent::Metrics?
+
+      attr_accessor origin: Braintrust::ObjectReference?
+
+      attr_reader output: top?
+
+      def output=: (top) -> top
+
+      attr_accessor root_span_id: String?
+
+      attr_accessor scores: ::Hash[Symbol, Float?]?
+
+      attr_accessor span_attributes: Braintrust::SpanAttributes?
+
+      attr_accessor span_id: String?
+
+      attr_accessor span_parents: ::Array[String]?
+
+      attr_accessor tags: ::Array[String]?
+
+      def initialize: (
+        ?id: String?,
+        ?_is_merge: bool?,
+        ?_merge_paths: ::Array[::Array[String]]?,
+        ?_object_delete: bool?,
+        ?_parent_id: String?,
+        ?context: Braintrust::InsertProjectLogsEvent::Context?,
+        ?created: Time?,
+        ?error: top,
+        ?expected: top,
+        ?input: top,
+        ?metadata: Braintrust::InsertProjectLogsEvent::Metadata?,
+        ?metrics: Braintrust::InsertProjectLogsEvent::Metrics?,
+        ?origin: Braintrust::ObjectReference?,
+        ?output: top,
+        ?root_span_id: String?,
+        ?scores: ::Hash[Symbol, Float?]?,
+        ?span_attributes: Braintrust::SpanAttributes?,
+        ?span_id: String?,
+        ?span_parents: ::Array[String]?,
+        ?tags: ::Array[String]?
+      ) -> void
+
+      def to_hash: -> {
+        id: String?,
+        _is_merge: bool?,
+        _merge_paths: ::Array[::Array[String]]?,
+        _object_delete: bool?,
+        _parent_id: String?,
+        context: Braintrust::InsertProjectLogsEvent::Context?,
+        created: Time?,
+        error: top,
+        expected: top,
+        input: top,
+        metadata: Braintrust::InsertProjectLogsEvent::Metadata?,
+        metrics: Braintrust::InsertProjectLogsEvent::Metrics?,
+        origin: Braintrust::ObjectReference?,
+        output: top,
+        root_span_id: String?,
+        scores: ::Hash[Symbol, Float?]?,
+        span_attributes: Braintrust::SpanAttributes?,
+        span_id: String?,
+        span_parents: ::Array[String]?,
+        tags: ::Array[String]?
+      }
+
+      type context =
+        {
+          caller_filename: String?,
+          caller_functionname: String?,
+          caller_lineno: Integer?
+        }
+
+      class Context < Braintrust::Internal::Type::BaseModel
+        attr_accessor caller_filename: String?
+
+        attr_accessor caller_functionname: String?
+
+        attr_accessor caller_lineno: Integer?
+
+        def initialize: (
+          ?caller_filename: String?,
+          ?caller_functionname: String?,
+          ?caller_lineno: Integer?
+        ) -> void
+
+        def to_hash: -> {
+          caller_filename: String?,
+          caller_functionname: String?,
+          caller_lineno: Integer?
+        }
+      end
+
+      type metadata = { model: String? }
+
+      class Metadata < Braintrust::Internal::Type::BaseModel
+        attr_accessor model: String?
+
+        def initialize: (?model: String?) -> void
+
+        def to_hash: -> { model: String? }
+      end
+
+      type metrics =
+        {
+          caller_filename: top,
+          caller_functionname: top,
+          caller_lineno: top,
+          completion_tokens: Integer?,
+          end_: Float?,
+          prompt_tokens: Integer?,
+          start: Float?,
+          tokens: Integer?
+        }
+
+      class Metrics < Braintrust::Internal::Type::BaseModel
+        attr_reader caller_filename: top?
+
+        def caller_filename=: (top) -> top
+
+        attr_reader caller_functionname: top?
+
+        def caller_functionname=: (top) -> top
+
+        attr_reader caller_lineno: top?
+
+        def caller_lineno=: (top) -> top
+
+        attr_accessor completion_tokens: Integer?
+
+        attr_accessor end_: Float?
+
+        attr_accessor prompt_tokens: Integer?
+
+        attr_accessor start: Float?
+
+        attr_accessor tokens: Integer?
+
+        def initialize: (
+          ?caller_filename: top,
+          ?caller_functionname: top,
+          ?caller_lineno: top,
+          ?completion_tokens: Integer?,
+          ?end_: Float?,
+          ?prompt_tokens: Integer?,
+          ?start: Float?,
+          ?tokens: Integer?
+        ) -> void
+
+        def to_hash: -> {
+          caller_filename: top,
+          caller_functionname: top,
+          caller_lineno: top,
+          completion_tokens: Integer?,
+          end_: Float?,
+          prompt_tokens: Integer?,
+          start: Float?,
+          tokens: Integer?
+        }
+      end
+    end
+  end
+end

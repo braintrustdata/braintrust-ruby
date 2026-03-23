@@ -1,0 +1,63 @@
+module Braintrust
+  module Models
+    type project_score_update_params =
+      {
+        categories: Braintrust::Models::ProjectScoreUpdateParams::categories?,
+        config: Braintrust::ProjectScoreConfig?,
+        description: String?,
+        name: String?,
+        score_type: Braintrust::Models::project_score_type?
+      }
+      & Braintrust::Internal::Type::request_parameters
+
+    class ProjectScoreUpdateParams < Braintrust::Internal::Type::BaseModel
+      extend Braintrust::Internal::Type::RequestParameters::Converter
+      include Braintrust::Internal::Type::RequestParameters
+
+      attr_accessor categories: Braintrust::Models::ProjectScoreUpdateParams::categories?
+
+      attr_accessor config: Braintrust::ProjectScoreConfig?
+
+      attr_accessor description: String?
+
+      attr_accessor name: String?
+
+      attr_accessor score_type: Braintrust::Models::project_score_type?
+
+      def initialize: (
+        ?categories: Braintrust::Models::ProjectScoreUpdateParams::categories?,
+        ?config: Braintrust::ProjectScoreConfig?,
+        ?description: String?,
+        ?name: String?,
+        ?score_type: Braintrust::Models::project_score_type?,
+        ?request_options: Braintrust::request_opts
+      ) -> void
+
+      def to_hash: -> {
+        categories: Braintrust::Models::ProjectScoreUpdateParams::categories?,
+        config: Braintrust::ProjectScoreConfig?,
+        description: String?,
+        name: String?,
+        score_type: Braintrust::Models::project_score_type?,
+        request_options: Braintrust::RequestOptions
+      }
+
+      type categories =
+        ::Array[Braintrust::ProjectScoreCategory]
+        | ::Hash[Symbol, Float]
+        | ::Array[String]
+
+      module Categories
+        extend Braintrust::Internal::Type::Union
+
+        def self?.variants: -> ::Array[Braintrust::Models::ProjectScoreUpdateParams::categories]
+
+        ProjectScoreCategoryArray: Braintrust::Internal::Type::Converter
+
+        FloatMap: Braintrust::Internal::Type::Converter
+
+        StringArray: Braintrust::Internal::Type::Converter
+      end
+    end
+  end
+end

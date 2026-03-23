@@ -1,0 +1,61 @@
+module Braintrust
+  module Models
+    type experiment_update_params =
+      {
+        base_exp_id: String?,
+        dataset_id: String?,
+        dataset_version: String?,
+        description: String?,
+        metadata: ::Hash[Symbol, top?]?,
+        name: String?,
+        public: bool?,
+        repo_info: Braintrust::RepoInfo?
+      }
+      & Braintrust::Internal::Type::request_parameters
+
+    class ExperimentUpdateParams < Braintrust::Internal::Type::BaseModel
+      extend Braintrust::Internal::Type::RequestParameters::Converter
+      include Braintrust::Internal::Type::RequestParameters
+
+      attr_accessor base_exp_id: String?
+
+      attr_accessor dataset_id: String?
+
+      attr_accessor dataset_version: String?
+
+      attr_accessor description: String?
+
+      attr_accessor metadata: ::Hash[Symbol, top?]?
+
+      attr_accessor name: String?
+
+      attr_accessor public: bool?
+
+      attr_accessor repo_info: Braintrust::RepoInfo?
+
+      def initialize: (
+        ?base_exp_id: String?,
+        ?dataset_id: String?,
+        ?dataset_version: String?,
+        ?description: String?,
+        ?metadata: ::Hash[Symbol, top?]?,
+        ?name: String?,
+        ?public: bool?,
+        ?repo_info: Braintrust::RepoInfo?,
+        ?request_options: Braintrust::request_opts
+      ) -> void
+
+      def to_hash: -> {
+        base_exp_id: String?,
+        dataset_id: String?,
+        dataset_version: String?,
+        description: String?,
+        metadata: ::Hash[Symbol, top?]?,
+        name: String?,
+        public: bool?,
+        repo_info: Braintrust::RepoInfo?,
+        request_options: Braintrust::RequestOptions
+      }
+    end
+  end
+end

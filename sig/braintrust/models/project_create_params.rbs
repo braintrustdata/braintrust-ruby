@@ -1,0 +1,28 @@
+module Braintrust
+  module Models
+    type project_create_params =
+      { name: String, org_name: String? }
+      & Braintrust::Internal::Type::request_parameters
+
+    class ProjectCreateParams < Braintrust::Internal::Type::BaseModel
+      extend Braintrust::Internal::Type::RequestParameters::Converter
+      include Braintrust::Internal::Type::RequestParameters
+
+      attr_accessor name: String
+
+      attr_accessor org_name: String?
+
+      def initialize: (
+        name: String,
+        ?org_name: String?,
+        ?request_options: Braintrust::request_opts
+      ) -> void
+
+      def to_hash: -> {
+        name: String,
+        org_name: String?,
+        request_options: Braintrust::RequestOptions
+      }
+    end
+  end
+end

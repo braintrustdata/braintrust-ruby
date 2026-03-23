@@ -1,0 +1,24 @@
+module Braintrust
+  module Resources
+    class Users
+      def retrieve: (
+        String user_id,
+        ?request_options: Braintrust::request_opts
+      ) -> Braintrust::User
+
+      def list: (
+        ?email: Braintrust::Models::UserListParams::email,
+        ?ending_before: String,
+        ?family_name: Braintrust::Models::UserListParams::family_name,
+        ?given_name: Braintrust::Models::UserListParams::given_name,
+        ?ids: Braintrust::Models::UserListParams::ids,
+        ?limit: Integer?,
+        ?org_name: String,
+        ?starting_after: String,
+        ?request_options: Braintrust::request_opts
+      ) -> Braintrust::Internal::ListObjects[Braintrust::User]
+
+      def initialize: (client: Braintrust::Client) -> void
+    end
+  end
+end

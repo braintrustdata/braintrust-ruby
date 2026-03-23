@@ -1,0 +1,125 @@
+module Braintrust
+  module Models
+    type acl_batch_update_params =
+      {
+        add_acls: ::Array[Braintrust::ACLBatchUpdateParams::AddACL]?,
+        remove_acls: ::Array[Braintrust::ACLBatchUpdateParams::RemoveACL]?
+      }
+      & Braintrust::Internal::Type::request_parameters
+
+    class ACLBatchUpdateParams < Braintrust::Internal::Type::BaseModel
+      extend Braintrust::Internal::Type::RequestParameters::Converter
+      include Braintrust::Internal::Type::RequestParameters
+
+      attr_accessor add_acls: ::Array[Braintrust::ACLBatchUpdateParams::AddACL]?
+
+      attr_accessor remove_acls: ::Array[Braintrust::ACLBatchUpdateParams::RemoveACL]?
+
+      def initialize: (
+        ?add_acls: ::Array[Braintrust::ACLBatchUpdateParams::AddACL]?,
+        ?remove_acls: ::Array[Braintrust::ACLBatchUpdateParams::RemoveACL]?,
+        ?request_options: Braintrust::request_opts
+      ) -> void
+
+      def to_hash: -> {
+        add_acls: ::Array[Braintrust::ACLBatchUpdateParams::AddACL]?,
+        remove_acls: ::Array[Braintrust::ACLBatchUpdateParams::RemoveACL]?,
+        request_options: Braintrust::RequestOptions
+      }
+
+      type add_acl =
+        {
+          object_id_: String,
+          object_type: Braintrust::Models::acl_object_type,
+          group_id: String?,
+          permission: Braintrust::Models::permission?,
+          restrict_object_type: Braintrust::Models::acl_object_type?,
+          role_id: String?,
+          user_id: String?
+        }
+
+      class AddACL < Braintrust::Internal::Type::BaseModel
+        attr_accessor object_id_: String
+
+        attr_accessor object_type: Braintrust::Models::acl_object_type
+
+        attr_accessor group_id: String?
+
+        attr_accessor permission: Braintrust::Models::permission?
+
+        attr_accessor restrict_object_type: Braintrust::Models::acl_object_type?
+
+        attr_accessor role_id: String?
+
+        attr_accessor user_id: String?
+
+        def initialize: (
+          object_id_: String,
+          object_type: Braintrust::Models::acl_object_type,
+          ?group_id: String?,
+          ?permission: Braintrust::Models::permission?,
+          ?restrict_object_type: Braintrust::Models::acl_object_type?,
+          ?role_id: String?,
+          ?user_id: String?
+        ) -> void
+
+        def to_hash: -> {
+          object_id_: String,
+          object_type: Braintrust::Models::acl_object_type,
+          group_id: String?,
+          permission: Braintrust::Models::permission?,
+          restrict_object_type: Braintrust::Models::acl_object_type?,
+          role_id: String?,
+          user_id: String?
+        }
+      end
+
+      type remove_acl =
+        {
+          object_id_: String,
+          object_type: Braintrust::Models::acl_object_type,
+          group_id: String?,
+          permission: Braintrust::Models::permission?,
+          restrict_object_type: Braintrust::Models::acl_object_type?,
+          role_id: String?,
+          user_id: String?
+        }
+
+      class RemoveACL < Braintrust::Internal::Type::BaseModel
+        attr_accessor object_id_: String
+
+        attr_accessor object_type: Braintrust::Models::acl_object_type
+
+        attr_accessor group_id: String?
+
+        attr_accessor permission: Braintrust::Models::permission?
+
+        attr_accessor restrict_object_type: Braintrust::Models::acl_object_type?
+
+        attr_accessor role_id: String?
+
+        attr_accessor user_id: String?
+
+        def initialize: (
+          object_id_: String,
+          object_type: Braintrust::Models::acl_object_type,
+          ?group_id: String?,
+          ?permission: Braintrust::Models::permission?,
+          ?restrict_object_type: Braintrust::Models::acl_object_type?,
+          ?role_id: String?,
+          ?user_id: String?
+        ) -> void
+
+        def to_hash: -> {
+          object_id_: String,
+          object_type: Braintrust::Models::acl_object_type,
+          group_id: String?,
+          permission: Braintrust::Models::permission?,
+          restrict_object_type: Braintrust::Models::acl_object_type?,
+          role_id: String?,
+          user_id: String?
+        }
+      end
+    end
+  end
+end

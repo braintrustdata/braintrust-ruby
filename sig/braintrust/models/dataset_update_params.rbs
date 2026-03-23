@@ -1,0 +1,32 @@
+module Braintrust
+  module Models
+    type dataset_update_params =
+      { description: String?, metadata: ::Hash[Symbol, top?]?, name: String? }
+      & Braintrust::Internal::Type::request_parameters
+
+    class DatasetUpdateParams < Braintrust::Internal::Type::BaseModel
+      extend Braintrust::Internal::Type::RequestParameters::Converter
+      include Braintrust::Internal::Type::RequestParameters
+
+      attr_accessor description: String?
+
+      attr_accessor metadata: ::Hash[Symbol, top?]?
+
+      attr_accessor name: String?
+
+      def initialize: (
+        ?description: String?,
+        ?metadata: ::Hash[Symbol, top?]?,
+        ?name: String?,
+        ?request_options: Braintrust::request_opts
+      ) -> void
+
+      def to_hash: -> {
+        description: String?,
+        metadata: ::Hash[Symbol, top?]?,
+        name: String?,
+        request_options: Braintrust::RequestOptions
+      }
+    end
+  end
+end

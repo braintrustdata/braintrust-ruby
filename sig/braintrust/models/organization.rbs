@@ -1,0 +1,50 @@
+module Braintrust
+  module Models
+    type organization =
+      {
+        id: String,
+        name: String,
+        api_url: String?,
+        created: Time?,
+        is_universal_api: bool?,
+        proxy_url: String?,
+        realtime_url: String?
+      }
+
+    class Organization < Braintrust::Internal::Type::BaseModel
+      attr_accessor id: String
+
+      attr_accessor name: String
+
+      attr_accessor api_url: String?
+
+      attr_accessor created: Time?
+
+      attr_accessor is_universal_api: bool?
+
+      attr_accessor proxy_url: String?
+
+      attr_accessor realtime_url: String?
+
+      def initialize: (
+        id: String,
+        name: String,
+        ?api_url: String?,
+        ?created: Time?,
+        ?is_universal_api: bool?,
+        ?proxy_url: String?,
+        ?realtime_url: String?
+      ) -> void
+
+      def to_hash: -> {
+        id: String,
+        name: String,
+        api_url: String?,
+        created: Time?,
+        is_universal_api: bool?,
+        proxy_url: String?,
+        realtime_url: String?
+      }
+    end
+  end
+end

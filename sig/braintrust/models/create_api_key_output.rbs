@@ -1,0 +1,50 @@
+module Braintrust
+  module Models
+    type create_api_key_output =
+      {
+        id: String,
+        key: String,
+        name: String,
+        preview_name: String,
+        created: Time?,
+        org_id: String?,
+        user_id: String?
+      }
+
+    class CreateAPIKeyOutput < Braintrust::Internal::Type::BaseModel
+      attr_accessor id: String
+
+      attr_accessor key: String
+
+      attr_accessor name: String
+
+      attr_accessor preview_name: String
+
+      attr_accessor created: Time?
+
+      attr_accessor org_id: String?
+
+      attr_accessor user_id: String?
+
+      def initialize: (
+        id: String,
+        key: String,
+        name: String,
+        preview_name: String,
+        ?created: Time?,
+        ?org_id: String?,
+        ?user_id: String?
+      ) -> void
+
+      def to_hash: -> {
+        id: String,
+        key: String,
+        name: String,
+        preview_name: String,
+        created: Time?,
+        org_id: String?,
+        user_id: String?
+      }
+    end
+  end
+end

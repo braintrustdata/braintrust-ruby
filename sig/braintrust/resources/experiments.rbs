@@ -1,0 +1,94 @@
+module Braintrust
+  module Resources
+    class Experiments
+      def create: (
+        project_id: String,
+        ?base_exp_id: String?,
+        ?dataset_id: String?,
+        ?dataset_version: String?,
+        ?description: String?,
+        ?ensure_new: bool?,
+        ?metadata: ::Hash[Symbol, top?]?,
+        ?name: String?,
+        ?public: bool?,
+        ?repo_info: Braintrust::RepoInfo?,
+        ?request_options: Braintrust::request_opts
+      ) -> Braintrust::Experiment
+
+      def retrieve: (
+        String experiment_id,
+        ?request_options: Braintrust::request_opts
+      ) -> Braintrust::Experiment
+
+      def update: (
+        String experiment_id,
+        ?base_exp_id: String?,
+        ?dataset_id: String?,
+        ?dataset_version: String?,
+        ?description: String?,
+        ?metadata: ::Hash[Symbol, top?]?,
+        ?name: String?,
+        ?public: bool?,
+        ?repo_info: Braintrust::RepoInfo?,
+        ?request_options: Braintrust::request_opts
+      ) -> Braintrust::Experiment
+
+      def list: (
+        ?ending_before: String,
+        ?experiment_name: String,
+        ?ids: Braintrust::Models::ExperimentListParams::ids,
+        ?limit: Integer?,
+        ?org_name: String,
+        ?project_id: String,
+        ?project_name: String,
+        ?starting_after: String,
+        ?request_options: Braintrust::request_opts
+      ) -> Braintrust::Internal::ListObjects[Braintrust::Experiment]
+
+      def delete: (
+        String experiment_id,
+        ?request_options: Braintrust::request_opts
+      ) -> Braintrust::Experiment
+
+      def feedback: (
+        String experiment_id,
+        feedback: ::Array[Braintrust::FeedbackExperimentItem],
+        ?request_options: Braintrust::request_opts
+      ) -> Braintrust::FeedbackResponseSchema
+
+      def fetch: (
+        String experiment_id,
+        ?limit: Integer?,
+        ?max_root_span_id: String,
+        ?max_xact_id: String,
+        ?version: String,
+        ?request_options: Braintrust::request_opts
+      ) -> Braintrust::FetchExperimentEventsResponse
+
+      def fetch_post: (
+        String experiment_id,
+        ?cursor: String?,
+        ?limit: Integer?,
+        ?max_root_span_id: String?,
+        ?max_xact_id: String?,
+        ?version: String?,
+        ?request_options: Braintrust::request_opts
+      ) -> Braintrust::FetchExperimentEventsResponse
+
+      def insert: (
+        String experiment_id,
+        events: ::Array[Braintrust::InsertExperimentEvent],
+        ?request_options: Braintrust::request_opts
+      ) -> Braintrust::InsertEventsResponse
+
+      def summarize: (
+        String experiment_id,
+        ?comparison_experiment_id: String,
+        ?summarize_scores: bool?,
+        ?request_options: Braintrust::request_opts
+      ) -> Braintrust::SummarizeExperimentResponse
+
+      def initialize: (client: Braintrust::Client) -> void
+    end
+  end
+end

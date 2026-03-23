@@ -1,0 +1,660 @@
+module Braintrust
+  module Models
+    type eval_create_params =
+      {
+        data: Braintrust::Models::EvalCreateParams::data,
+        project_id: String,
+        scores: ::Array[Braintrust::Models::EvalCreateParams::score],
+        task: Braintrust::Models::EvalCreateParams::task,
+        base_experiment_id: String?,
+        base_experiment_name: String?,
+        experiment_name: String,
+        git_metadata_settings: Braintrust::EvalCreateParams::GitMetadataSettings?,
+        is_public: bool?,
+        max_concurrency: Float?,
+        metadata: ::Hash[Symbol, top?],
+        parent: Braintrust::Models::EvalCreateParams::parent,
+        repo_info: Braintrust::RepoInfo?,
+        stream: bool,
+        timeout: Float?,
+        trial_count: Float?
+      }
+      & Braintrust::Internal::Type::request_parameters
+
+    class EvalCreateParams < Braintrust::Internal::Type::BaseModel
+      extend Braintrust::Internal::Type::RequestParameters::Converter
+      include Braintrust::Internal::Type::RequestParameters
+
+      attr_accessor data: Braintrust::Models::EvalCreateParams::data
+
+      attr_accessor project_id: String
+
+      attr_accessor scores: ::Array[Braintrust::Models::EvalCreateParams::score]
+
+      attr_accessor task: Braintrust::Models::EvalCreateParams::task
+
+      attr_accessor base_experiment_id: String?
+
+      attr_accessor base_experiment_name: String?
+
+      attr_reader experiment_name: String?
+
+      def experiment_name=: (String) -> String
+
+      attr_accessor git_metadata_settings: Braintrust::EvalCreateParams::GitMetadataSettings?
+
+      attr_accessor is_public: bool?
+
+      attr_accessor max_concurrency: Float?
+
+      attr_reader metadata: ::Hash[Symbol, top?]?
+
+      def metadata=: (::Hash[Symbol, top?]) -> ::Hash[Symbol, top?]
+
+      attr_reader parent: Braintrust::Models::EvalCreateParams::parent?
+
+      def parent=: (
+        Braintrust::Models::EvalCreateParams::parent
+      ) -> Braintrust::Models::EvalCreateParams::parent
+
+      attr_accessor repo_info: Braintrust::RepoInfo?
+
+      attr_reader stream: bool?
+
+      def stream=: (bool) -> bool
+
+      attr_accessor timeout: Float?
+
+      attr_accessor trial_count: Float?
+
+      def initialize: (
+        data: Braintrust::Models::EvalCreateParams::data,
+        project_id: String,
+        scores: ::Array[Braintrust::Models::EvalCreateParams::score],
+        task: Braintrust::Models::EvalCreateParams::task,
+        ?base_experiment_id: String?,
+        ?base_experiment_name: String?,
+        ?experiment_name: String,
+        ?git_metadata_settings: Braintrust::EvalCreateParams::GitMetadataSettings?,
+        ?is_public: bool?,
+        ?max_concurrency: Float?,
+        ?metadata: ::Hash[Symbol, top?],
+        ?parent: Braintrust::Models::EvalCreateParams::parent,
+        ?repo_info: Braintrust::RepoInfo?,
+        ?stream: bool,
+        ?timeout: Float?,
+        ?trial_count: Float?,
+        ?request_options: Braintrust::request_opts
+      ) -> void
+
+      def to_hash: -> {
+        data: Braintrust::Models::EvalCreateParams::data,
+        project_id: String,
+        scores: ::Array[Braintrust::Models::EvalCreateParams::score],
+        task: Braintrust::Models::EvalCreateParams::task,
+        base_experiment_id: String?,
+        base_experiment_name: String?,
+        experiment_name: String,
+        git_metadata_settings: Braintrust::EvalCreateParams::GitMetadataSettings?,
+        is_public: bool?,
+        max_concurrency: Float?,
+        metadata: ::Hash[Symbol, top?],
+        parent: Braintrust::Models::EvalCreateParams::parent,
+        repo_info: Braintrust::RepoInfo?,
+        stream: bool,
+        timeout: Float?,
+        trial_count: Float?,
+        request_options: Braintrust::RequestOptions
+      }
+
+      type data =
+        Braintrust::EvalCreateParams::Data::DatasetID
+        | Braintrust::EvalCreateParams::Data::ProjectDatasetName
+        | Braintrust::EvalCreateParams::Data::DatasetRows
+
+      module Data
+        extend Braintrust::Internal::Type::Union
+
+        type dataset_id =
+          { dataset_id: String, _internal_btql: ::Hash[Symbol, top?]? }
+
+        class DatasetID < Braintrust::Internal::Type::BaseModel
+          attr_accessor dataset_id: String
+
+          attr_accessor _internal_btql: ::Hash[Symbol, top?]?
+
+          def initialize: (
+            dataset_id: String,
+            ?_internal_btql: ::Hash[Symbol, top?]?
+          ) -> void
+
+          def to_hash: -> {
+            dataset_id: String,
+            _internal_btql: ::Hash[Symbol, top?]?
+          }
+        end
+
+        type project_dataset_name =
+          {
+            dataset_name: String,
+            project_name: String,
+            _internal_btql: ::Hash[Symbol, top?]?
+          }
+
+        class ProjectDatasetName < Braintrust::Internal::Type::BaseModel
+          attr_accessor dataset_name: String
+
+          attr_accessor project_name: String
+
+          attr_accessor _internal_btql: ::Hash[Symbol, top?]?
+
+          def initialize: (
+            dataset_name: String,
+            project_name: String,
+            ?_internal_btql: ::Hash[Symbol, top?]?
+          ) -> void
+
+          def to_hash: -> {
+            dataset_name: String,
+            project_name: String,
+            _internal_btql: ::Hash[Symbol, top?]?
+          }
+        end
+
+        type dataset_rows = { data: ::Array[top?] }
+
+        class DatasetRows < Braintrust::Internal::Type::BaseModel
+          attr_accessor data: ::Array[top?]
+
+          def initialize: (data: ::Array[top?]) -> void
+
+          def to_hash: -> { data: ::Array[top?] }
+        end
+
+        def self?.variants: -> ::Array[Braintrust::Models::EvalCreateParams::data]
+      end
+
+      type score =
+        Braintrust::EvalCreateParams::Score::FunctionID
+        | Braintrust::EvalCreateParams::Score::ProjectSlug
+        | Braintrust::EvalCreateParams::Score::GlobalFunction
+        | Braintrust::EvalCreateParams::Score::PromptSessionID
+        | Braintrust::EvalCreateParams::Score::InlineCode
+        | Braintrust::EvalCreateParams::Score::InlinePrompt
+
+      module Score
+        extend Braintrust::Internal::Type::Union
+
+        type function_id = { function_id: String, version: String }
+
+        class FunctionID < Braintrust::Internal::Type::BaseModel
+          attr_accessor function_id: String
+
+          attr_reader version: String?
+
+          def version=: (String) -> String
+
+          def initialize: (function_id: String, ?version: String) -> void
+
+          def to_hash: -> { function_id: String, version: String }
+        end
+
+        type project_slug =
+          { project_name: String, slug: String, version: String }
+
+        class ProjectSlug < Braintrust::Internal::Type::BaseModel
+          attr_accessor project_name: String
+
+          attr_accessor slug: String
+
+          attr_reader version: String?
+
+          def version=: (String) -> String
+
+          def initialize: (
+            project_name: String,
+            slug: String,
+            ?version: String
+          ) -> void
+
+          def to_hash: -> {
+            project_name: String,
+            slug: String,
+            version: String
+          }
+        end
+
+        type global_function = { global_function: String }
+
+        class GlobalFunction < Braintrust::Internal::Type::BaseModel
+          attr_accessor global_function: String
+
+          def initialize: (global_function: String) -> void
+
+          def to_hash: -> { global_function: String }
+        end
+
+        type prompt_session_id =
+          {
+            prompt_session_function_id: String,
+            prompt_session_id: String,
+            version: String
+          }
+
+        class PromptSessionID < Braintrust::Internal::Type::BaseModel
+          attr_accessor prompt_session_function_id: String
+
+          attr_accessor prompt_session_id: String
+
+          attr_reader version: String?
+
+          def version=: (String) -> String
+
+          def initialize: (
+            prompt_session_function_id: String,
+            prompt_session_id: String,
+            ?version: String
+          ) -> void
+
+          def to_hash: -> {
+            prompt_session_function_id: String,
+            prompt_session_id: String,
+            version: String
+          }
+        end
+
+        type inline_code =
+          {
+            code: String,
+            inline_context: Braintrust::EvalCreateParams::Score::InlineCode::InlineContext,
+            name: String?
+          }
+
+        class InlineCode < Braintrust::Internal::Type::BaseModel
+          attr_accessor code: String
+
+          attr_accessor inline_context: Braintrust::EvalCreateParams::Score::InlineCode::InlineContext
+
+          attr_accessor name: String?
+
+          def initialize: (
+            code: String,
+            inline_context: Braintrust::EvalCreateParams::Score::InlineCode::InlineContext,
+            ?name: String?
+          ) -> void
+
+          def to_hash: -> {
+            code: String,
+            inline_context: Braintrust::EvalCreateParams::Score::InlineCode::InlineContext,
+            name: String?
+          }
+
+          type inline_context =
+            {
+              runtime: Braintrust::Models::EvalCreateParams::Score::InlineCode::InlineContext::runtime,
+              version: String
+            }
+
+          class InlineContext < Braintrust::Internal::Type::BaseModel
+            attr_accessor runtime: Braintrust::Models::EvalCreateParams::Score::InlineCode::InlineContext::runtime
+
+            attr_accessor version: String
+
+            def initialize: (
+              runtime: Braintrust::Models::EvalCreateParams::Score::InlineCode::InlineContext::runtime,
+              version: String
+            ) -> void
+
+            def to_hash: -> {
+              runtime: Braintrust::Models::EvalCreateParams::Score::InlineCode::InlineContext::runtime,
+              version: String
+            }
+
+            type runtime = :node | :python
+
+            module Runtime
+              extend Braintrust::Internal::Type::Enum
+
+              NODE: :node
+              PYTHON: :python
+
+              def self?.values: -> ::Array[Braintrust::Models::EvalCreateParams::Score::InlineCode::InlineContext::runtime]
+            end
+          end
+        end
+
+        type inline_prompt =
+          { inline_prompt: Braintrust::PromptData?, name: String? }
+
+        class InlinePrompt < Braintrust::Internal::Type::BaseModel
+          attr_accessor inline_prompt: Braintrust::PromptData?
+
+          attr_accessor name: String?
+
+          def initialize: (
+            inline_prompt: Braintrust::PromptData?,
+            ?name: String?
+          ) -> void
+
+          def to_hash: -> {
+            inline_prompt: Braintrust::PromptData?,
+            name: String?
+          }
+        end
+
+        def self?.variants: -> ::Array[Braintrust::Models::EvalCreateParams::score]
+      end
+
+      type task =
+        Braintrust::EvalCreateParams::Task::FunctionID
+        | Braintrust::EvalCreateParams::Task::ProjectSlug
+        | Braintrust::EvalCreateParams::Task::GlobalFunction
+        | Braintrust::EvalCreateParams::Task::PromptSessionID
+        | Braintrust::EvalCreateParams::Task::InlineCode
+        | Braintrust::EvalCreateParams::Task::InlinePrompt
+
+      module Task
+        extend Braintrust::Internal::Type::Union
+
+        type function_id = { function_id: String, version: String }
+
+        class FunctionID < Braintrust::Internal::Type::BaseModel
+          attr_accessor function_id: String
+
+          attr_reader version: String?
+
+          def version=: (String) -> String
+
+          def initialize: (function_id: String, ?version: String) -> void
+
+          def to_hash: -> { function_id: String, version: String }
+        end
+
+        type project_slug =
+          { project_name: String, slug: String, version: String }
+
+        class ProjectSlug < Braintrust::Internal::Type::BaseModel
+          attr_accessor project_name: String
+
+          attr_accessor slug: String
+
+          attr_reader version: String?
+
+          def version=: (String) -> String
+
+          def initialize: (
+            project_name: String,
+            slug: String,
+            ?version: String
+          ) -> void
+
+          def to_hash: -> {
+            project_name: String,
+            slug: String,
+            version: String
+          }
+        end
+
+        type global_function = { global_function: String }
+
+        class GlobalFunction < Braintrust::Internal::Type::BaseModel
+          attr_accessor global_function: String
+
+          def initialize: (global_function: String) -> void
+
+          def to_hash: -> { global_function: String }
+        end
+
+        type prompt_session_id =
+          {
+            prompt_session_function_id: String,
+            prompt_session_id: String,
+            version: String
+          }
+
+        class PromptSessionID < Braintrust::Internal::Type::BaseModel
+          attr_accessor prompt_session_function_id: String
+
+          attr_accessor prompt_session_id: String
+
+          attr_reader version: String?
+
+          def version=: (String) -> String
+
+          def initialize: (
+            prompt_session_function_id: String,
+            prompt_session_id: String,
+            ?version: String
+          ) -> void
+
+          def to_hash: -> {
+            prompt_session_function_id: String,
+            prompt_session_id: String,
+            version: String
+          }
+        end
+
+        type inline_code =
+          {
+            code: String,
+            inline_context: Braintrust::EvalCreateParams::Task::InlineCode::InlineContext,
+            name: String?
+          }
+
+        class InlineCode < Braintrust::Internal::Type::BaseModel
+          attr_accessor code: String
+
+          attr_accessor inline_context: Braintrust::EvalCreateParams::Task::InlineCode::InlineContext
+
+          attr_accessor name: String?
+
+          def initialize: (
+            code: String,
+            inline_context: Braintrust::EvalCreateParams::Task::InlineCode::InlineContext,
+            ?name: String?
+          ) -> void
+
+          def to_hash: -> {
+            code: String,
+            inline_context: Braintrust::EvalCreateParams::Task::InlineCode::InlineContext,
+            name: String?
+          }
+
+          type inline_context =
+            {
+              runtime: Braintrust::Models::EvalCreateParams::Task::InlineCode::InlineContext::runtime,
+              version: String
+            }
+
+          class InlineContext < Braintrust::Internal::Type::BaseModel
+            attr_accessor runtime: Braintrust::Models::EvalCreateParams::Task::InlineCode::InlineContext::runtime
+
+            attr_accessor version: String
+
+            def initialize: (
+              runtime: Braintrust::Models::EvalCreateParams::Task::InlineCode::InlineContext::runtime,
+              version: String
+            ) -> void
+
+            def to_hash: -> {
+              runtime: Braintrust::Models::EvalCreateParams::Task::InlineCode::InlineContext::runtime,
+              version: String
+            }
+
+            type runtime = :node | :python
+
+            module Runtime
+              extend Braintrust::Internal::Type::Enum
+
+              NODE: :node
+              PYTHON: :python
+
+              def self?.values: -> ::Array[Braintrust::Models::EvalCreateParams::Task::InlineCode::InlineContext::runtime]
+            end
+          end
+        end
+
+        type inline_prompt =
+          { inline_prompt: Braintrust::PromptData?, name: String? }
+
+        class InlinePrompt < Braintrust::Internal::Type::BaseModel
+          attr_accessor inline_prompt: Braintrust::PromptData?
+
+          attr_accessor name: String?
+
+          def initialize: (
+            inline_prompt: Braintrust::PromptData?,
+            ?name: String?
+          ) -> void
+
+          def to_hash: -> {
+            inline_prompt: Braintrust::PromptData?,
+            name: String?
+          }
+        end
+
+        def self?.variants: -> ::Array[Braintrust::Models::EvalCreateParams::task]
+      end
+
+      type git_metadata_settings =
+        {
+          collect: Braintrust::Models::EvalCreateParams::GitMetadataSettings::collect,
+          fields: ::Array[Braintrust::Models::EvalCreateParams::GitMetadataSettings::field]
+        }
+
+      class GitMetadataSettings < Braintrust::Internal::Type::BaseModel
+        attr_accessor collect: Braintrust::Models::EvalCreateParams::GitMetadataSettings::collect
+
+        attr_reader fields: ::Array[Braintrust::Models::EvalCreateParams::GitMetadataSettings::field]?
+
+        def fields=: (
+          ::Array[Braintrust::Models::EvalCreateParams::GitMetadataSettings::field]
+        ) -> ::Array[Braintrust::Models::EvalCreateParams::GitMetadataSettings::field]
+
+        def initialize: (
+          collect: Braintrust::Models::EvalCreateParams::GitMetadataSettings::collect,
+          ?fields: ::Array[Braintrust::Models::EvalCreateParams::GitMetadataSettings::field]
+        ) -> void
+
+        def to_hash: -> {
+          collect: Braintrust::Models::EvalCreateParams::GitMetadataSettings::collect,
+          fields: ::Array[Braintrust::Models::EvalCreateParams::GitMetadataSettings::field]
+        }
+
+        type collect = :all | :none | :some
+
+        module Collect
+          extend Braintrust::Internal::Type::Enum
+
+          ALL: :all
+          NONE: :none
+          SOME: :some
+
+          def self?.values: -> ::Array[Braintrust::Models::EvalCreateParams::GitMetadataSettings::collect]
+        end
+
+        type field =
+          :commit
+          | :branch
+          | :tag
+          | :dirty
+          | :author_name
+          | :author_email
+          | :commit_message
+          | :commit_time
+          | :git_diff
+
+        module Field
+          extend Braintrust::Internal::Type::Enum
+
+          COMMIT: :commit
+          BRANCH: :branch
+          TAG: :tag
+          DIRTY: :dirty
+          AUTHOR_NAME: :author_name
+          AUTHOR_EMAIL: :author_email
+          COMMIT_MESSAGE: :commit_message
+          COMMIT_TIME: :commit_time
+          GIT_DIFF: :git_diff
+
+          def self?.values: -> ::Array[Braintrust::Models::EvalCreateParams::GitMetadataSettings::field]
+        end
+      end
+
+      type parent =
+        Braintrust::EvalCreateParams::Parent::SpanParentStruct | String
+
+      module Parent
+        extend Braintrust::Internal::Type::Union
+
+        type span_parent_struct =
+          {
+            object_id_: String,
+            object_type: Braintrust::Models::EvalCreateParams::Parent::SpanParentStruct::object_type,
+            propagated_event: ::Hash[Symbol, top?]?,
+            row_ids: Braintrust::EvalCreateParams::Parent::SpanParentStruct::RowIDs?
+          }
+
+        class SpanParentStruct < Braintrust::Internal::Type::BaseModel
+          attr_accessor object_id_: String
+
+          attr_accessor object_type: Braintrust::Models::EvalCreateParams::Parent::SpanParentStruct::object_type
+
+          attr_accessor propagated_event: ::Hash[Symbol, top?]?
+
+          attr_accessor row_ids: Braintrust::EvalCreateParams::Parent::SpanParentStruct::RowIDs?
+
+          def initialize: (
+            object_id_: String,
+            object_type: Braintrust::Models::EvalCreateParams::Parent::SpanParentStruct::object_type,
+            ?propagated_event: ::Hash[Symbol, top?]?,
+            ?row_ids: Braintrust::EvalCreateParams::Parent::SpanParentStruct::RowIDs?
+          ) -> void
+
+          def to_hash: -> {
+            object_id_: String,
+            object_type: Braintrust::Models::EvalCreateParams::Parent::SpanParentStruct::object_type,
+            propagated_event: ::Hash[Symbol, top?]?,
+            row_ids: Braintrust::EvalCreateParams::Parent::SpanParentStruct::RowIDs?
+          }
+
+          type object_type = :project_logs | :experiment | :playground_logs
+
+          module ObjectType
+            extend Braintrust::Internal::Type::Enum
+
+            PROJECT_LOGS: :project_logs
+            EXPERIMENT: :experiment
+            PLAYGROUND_LOGS: :playground_logs
+
+            def self?.values: -> ::Array[Braintrust::Models::EvalCreateParams::Parent::SpanParentStruct::object_type]
+          end
+
+          type row_ids = { id: String, root_span_id: String, span_id: String }
+
+          class RowIDs < Braintrust::Internal::Type::BaseModel
+            attr_accessor id: String
+
+            attr_accessor root_span_id: String
+
+            attr_accessor span_id: String
+
+            def initialize: (
+              id: String,
+              root_span_id: String,
+              span_id: String
+            ) -> void
+
+            def to_hash: -> {
+              id: String,
+              root_span_id: String,
+              span_id: String
+            }
+          end
+        end
+
+        def self?.variants: -> ::Array[Braintrust::Models::EvalCreateParams::parent]
+      end
+    end
+  end
+end

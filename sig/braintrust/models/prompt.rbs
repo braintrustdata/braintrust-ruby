@@ -1,0 +1,103 @@
+module Braintrust
+  module Models
+    type prompt =
+      {
+        id: String,
+        _xact_id: String,
+        log_id: Braintrust::Models::Prompt::log_id,
+        name: String,
+        org_id: String,
+        project_id: String,
+        slug: String,
+        created: Time?,
+        description: String?,
+        function_type: Braintrust::Models::Prompt::function_type?,
+        metadata: ::Hash[Symbol, top?]?,
+        prompt_data: Braintrust::PromptData?,
+        tags: ::Array[String]?
+      }
+
+    class Prompt < Braintrust::Internal::Type::BaseModel
+      attr_accessor id: String
+
+      attr_accessor _xact_id: String
+
+      attr_accessor log_id: Braintrust::Models::Prompt::log_id
+
+      attr_accessor name: String
+
+      attr_accessor org_id: String
+
+      attr_accessor project_id: String
+
+      attr_accessor slug: String
+
+      attr_accessor created: Time?
+
+      attr_accessor description: String?
+
+      attr_accessor function_type: Braintrust::Models::Prompt::function_type?
+
+      attr_accessor metadata: ::Hash[Symbol, top?]?
+
+      attr_accessor prompt_data: Braintrust::PromptData?
+
+      attr_accessor tags: ::Array[String]?
+
+      def initialize: (
+        id: String,
+        _xact_id: String,
+        log_id: Braintrust::Models::Prompt::log_id,
+        name: String,
+        org_id: String,
+        project_id: String,
+        slug: String,
+        ?created: Time?,
+        ?description: String?,
+        ?function_type: Braintrust::Models::Prompt::function_type?,
+        ?metadata: ::Hash[Symbol, top?]?,
+        ?prompt_data: Braintrust::PromptData?,
+        ?tags: ::Array[String]?
+      ) -> void
+
+      def to_hash: -> {
+        id: String,
+        _xact_id: String,
+        log_id: Braintrust::Models::Prompt::log_id,
+        name: String,
+        org_id: String,
+        project_id: String,
+        slug: String,
+        created: Time?,
+        description: String?,
+        function_type: Braintrust::Models::Prompt::function_type?,
+        metadata: ::Hash[Symbol, top?]?,
+        prompt_data: Braintrust::PromptData?,
+        tags: ::Array[String]?
+      }
+
+      type log_id = :p
+
+      module LogID
+        extend Braintrust::Internal::Type::Enum
+
+        P: :p
+
+        def self?.values: -> ::Array[Braintrust::Models::Prompt::log_id]
+      end
+
+      type function_type = :llm | :scorer | :task | :tool
+
+      module FunctionType
+        extend Braintrust::Internal::Type::Enum
+
+        LLM: :llm
+        SCORER: :scorer
+        TASK: :task
+        TOOL: :tool
+
+        def self?.values: -> ::Array[Braintrust::Models::Prompt::function_type]
+      end
+    end
+  end
+end

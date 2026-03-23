@@ -3,182 +3,255 @@
 module Braintrust
   module Resources
     class Functions
-      def initialize(client:)
-        @client = client
-      end
-
       # Create a new function. If there is an existing function in the project with the
-      #   same slug as the one specified in the request, will return the existing function
-      #   unmodified
+      # same slug as the one specified in the request, will return the existing function
+      # unmodified
       #
-      # @param params [Hash] Attributes to send in this request.
-      # @option params [FunctionData::UnnamedTypeWithunionParent21|FunctionData::UnnamedTypeWithunionParent22|FunctionData::UnnamedTypeWithunionParent23] :function_data
-      # @option params [String] :name Name of the prompt
-      # @option params [String] :project_id Unique identifier for the project that the prompt belongs under
-      # @option params [String] :slug Unique identifier for the prompt
-      # @option params [String] :description Textual description of the prompt
-      # @option params [FunctionSchema] :function_schema JSON schema for the function's parameters and return type
-      # @option params [Symbol] :function_type
-      # @option params [Origin] :origin
-      # @option params [Braintrust::Models::PromptData] :prompt_data The prompt, model, and its parameters
-      # @option params [Array<String>] :tags A list of tags for the prompt
+      # @overload create(function_data:, name:, project_id:, slug:, description: nil, function_schema: nil, function_type: nil, origin: nil, prompt_data: nil, tags: nil, request_options: {})
       #
-      # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param function_data [Braintrust::Models::FunctionCreateParams::FunctionData::Prompt, Braintrust::Models::FunctionCreateParams::FunctionData::Code, Braintrust::Models::FunctionCreateParams::FunctionData::Global]
+      #
+      # @param name [String] Name of the prompt
+      #
+      # @param project_id [String] Unique identifier for the project that the prompt belongs under
+      #
+      # @param slug [String] Unique identifier for the prompt
+      #
+      # @param description [String, nil] Textual description of the prompt
+      #
+      # @param function_schema [Braintrust::Models::FunctionCreateParams::FunctionSchema, nil] JSON schema for the function's parameters and return type
+      #
+      # @param function_type [Symbol, Braintrust::Models::FunctionCreateParams::FunctionType, nil]
+      #
+      # @param origin [Braintrust::Models::FunctionCreateParams::Origin, nil]
+      #
+      # @param prompt_data [Braintrust::Models::PromptData, nil] The prompt, model, and its parameters
+      #
+      # @param tags [Array<String>, nil] A list of tags for the prompt
+      #
+      # @param request_options [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil]
       #
       # @return [Braintrust::Models::Function]
-      def create(params = {}, opts = {})
-        req = {}
-        req[:method] = :post
-        req[:path] = "/v1/function"
-        req[:body] = params
-        req[:model] = Braintrust::Models::Function
-        @client.request(req, opts)
+      #
+      # @see Braintrust::Models::FunctionCreateParams
+      def create(params)
+        parsed, options = Braintrust::FunctionCreateParams.dump_request(params)
+        @client.request(
+          method: :post,
+          path: "v1/function",
+          body: parsed,
+          model: Braintrust::Function,
+          options: options
+        )
       end
 
       # Get a function object by its id
       #
+      # @overload retrieve(function_id, request_options: {})
+      #
       # @param function_id [String] Function id
-      # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
+      #
+      # @param request_options [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil]
       #
       # @return [Braintrust::Models::Function]
-      def retrieve(function_id, opts = {})
-        req = {}
-        req[:method] = :get
-        req[:path] = "/v1/function/#{function_id}"
-        req[:model] = Braintrust::Models::Function
-        @client.request(req, opts)
+      #
+      # @see Braintrust::Models::FunctionRetrieveParams
+      def retrieve(function_id, params = {})
+        @client.request(
+          method: :get,
+          path: ["v1/function/%1$s", function_id],
+          model: Braintrust::Function,
+          options: params[:request_options]
+        )
       end
 
       # Partially update a function object. Specify the fields to update in the payload.
-      #   Any object-type fields will be deep-merged with existing content. Currently we
-      #   do not support removing fields or setting them to null.
+      # Any object-type fields will be deep-merged with existing content. Currently we
+      # do not support removing fields or setting them to null.
+      #
+      # @overload update(function_id, description: nil, function_data: nil, name: nil, prompt_data: nil, tags: nil, request_options: {})
       #
       # @param function_id [String] Function id
       #
-      # @param params [Hash] Attributes to send in this request.
-      # @option params [String] :description Textual description of the prompt
-      # @option params [FunctionData::UnnamedTypeWithunionParent24|FunctionData::UnnamedTypeWithunionParent25|FunctionData::UnnamedTypeWithunionParent26|FunctionData::UnnamedTypeWithunionParent27] :function_data
-      # @option params [String] :name Name of the prompt
-      # @option params [Braintrust::Models::PromptData] :prompt_data The prompt, model, and its parameters
-      # @option params [Array<String>] :tags A list of tags for the prompt
+      # @param description [String, nil] Textual description of the prompt
       #
-      # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param function_data [Braintrust::Models::FunctionUpdateParams::FunctionData::Prompt, Braintrust::Models::FunctionUpdateParams::FunctionData::Code, Braintrust::Models::FunctionUpdateParams::FunctionData::Global, nil]
+      #
+      # @param name [String, nil] Name of the prompt
+      #
+      # @param prompt_data [Braintrust::Models::PromptData, nil] The prompt, model, and its parameters
+      #
+      # @param tags [Array<String>, nil] A list of tags for the prompt
+      #
+      # @param request_options [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil]
       #
       # @return [Braintrust::Models::Function]
-      def update(function_id, params = {}, opts = {})
-        req = {}
-        req[:method] = :patch
-        req[:path] = "/v1/function/#{function_id}"
-        req[:body] = params
-        req[:model] = Braintrust::Models::Function
-        @client.request(req, opts)
+      #
+      # @see Braintrust::Models::FunctionUpdateParams
+      def update(function_id, params = {})
+        parsed, options = Braintrust::FunctionUpdateParams.dump_request(params)
+        @client.request(
+          method: :patch,
+          path: ["v1/function/%1$s", function_id],
+          body: parsed,
+          model: Braintrust::Function,
+          options: options
+        )
       end
 
+      # Some parameter documentations has been truncated, see
+      # {Braintrust::Models::FunctionListParams} for more details.
+      #
       # List out all functions. The functions are sorted by creation date, with the most
-      #   recently-created functions coming first
+      # recently-created functions coming first
       #
-      # @param params [Hash] Attributes to send in this request.
-      # @option params [String] :ending_before Pagination cursor id.
+      # @overload list(ending_before: nil, function_name: nil, ids: nil, limit: nil, org_name: nil, project_id: nil, project_name: nil, slug: nil, starting_after: nil, version: nil, request_options: {})
       #
-      #   For example, if the initial item in the last page you fetched had an id of
-      #   `foo`, pass `ending_before=foo` to fetch the previous page. Note: you may only
-      #   pass one of `starting_after` and `ending_before`
-      # @option params [String] :function_name Name of the function to search for
-      # @option params [Array<String>|String] :ids Filter search results to a particular set of object IDs. To specify a list of
-      #   IDs, include the query param multiple times
-      # @option params [Integer] :limit Limit the number of objects to return
-      # @option params [String] :org_name Filter search results to within a particular organization
-      # @option params [String] :project_id Project id
-      # @option params [String] :project_name Name of the project to search for
-      # @option params [String] :slug Retrieve prompt with a specific slug
-      # @option params [String] :starting_after Pagination cursor id.
+      # @param ending_before [String] Pagination cursor id.
       #
-      #   For example, if the final item in the last page you fetched had an id of `foo`,
-      #   pass `starting_after=foo` to fetch the next page. Note: you may only pass one of
-      #   `starting_after` and `ending_before`
-      # @option params [String] :version Retrieve prompt at a specific version.
+      # @param function_name [String] Name of the function to search for
       #
-      #   The version id can either be a transaction id (e.g. '1000192656880881099') or a
-      #   version identifier (e.g. '81cd05ee665fdfb3').
+      # @param ids [String, Array<String>] Filter search results to a particular set of object IDs. To specify a list of ID
       #
-      # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param limit [Integer, nil] Limit the number of objects to return
       #
-      # @return [Braintrust::ListObjects<Braintrust::Models::Function>]
-      def list(params = {}, opts = {})
-        req = {}
-        req[:method] = :get
-        req[:path] = "/v1/function"
-        req[:query] = params
-        req[:page] = Braintrust::ListObjects
-        req[:model] = Braintrust::Models::Function
-        @client.request(req, opts)
+      # @param org_name [String] Filter search results to within a particular organization
+      #
+      # @param project_id [String] Project id
+      #
+      # @param project_name [String] Name of the project to search for
+      #
+      # @param slug [String] Retrieve prompt with a specific slug
+      #
+      # @param starting_after [String] Pagination cursor id.
+      #
+      # @param version [String] Retrieve prompt at a specific version.
+      #
+      # @param request_options [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil]
+      #
+      # @return [Braintrust::Internal::ListObjects<Braintrust::Models::Function>]
+      #
+      # @see Braintrust::Models::FunctionListParams
+      def list(params = {})
+        parsed, options = Braintrust::FunctionListParams.dump_request(params)
+        @client.request(
+          method: :get,
+          path: "v1/function",
+          query: parsed,
+          page: Braintrust::Internal::ListObjects,
+          model: Braintrust::Function,
+          options: options
+        )
       end
 
       # Delete a function object by its id
       #
+      # @overload delete(function_id, request_options: {})
+      #
       # @param function_id [String] Function id
-      # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
+      #
+      # @param request_options [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil]
       #
       # @return [Braintrust::Models::Function]
-      def delete(function_id, opts = {})
-        req = {}
-        req[:method] = :delete
-        req[:path] = "/v1/function/#{function_id}"
-        req[:model] = Braintrust::Models::Function
-        @client.request(req, opts)
+      #
+      # @see Braintrust::Models::FunctionDeleteParams
+      def delete(function_id, params = {})
+        @client.request(
+          method: :delete,
+          path: ["v1/function/%1$s", function_id],
+          model: Braintrust::Function,
+          options: params[:request_options]
+        )
       end
 
+      # Some parameter documentations has been truncated, see
+      # {Braintrust::Models::FunctionInvokeParams} for more details.
+      #
       # Invoke a function.
+      #
+      # @overload invoke(function_id, expected: nil, input: nil, messages: nil, metadata: nil, mode: nil, parent: nil, stream: nil, version: nil, request_options: {})
       #
       # @param function_id [String] Function id
       #
-      # @param params [Hash] Attributes to send in this request.
-      # @option params [Object] :input Argument to the function, which can be any JSON serializable value
-      # @option params [Array<Message::UnnamedTypeWithunionParent28|Message::UnnamedTypeWithunionParent29|Message::UnnamedTypeWithunionParent30|Message::UnnamedTypeWithunionParent31|Message::UnnamedTypeWithunionParent32|Message::UnnamedTypeWithunionParent33>] :messages If the function is an LLM, additional messages to pass along to it
-      # @option params [Symbol] :mode The mode format of the returned value (defaults to 'auto')
-      # @option params [Parent::UnnamedTypeWithunionParent34|String] :parent Options for tracing the function call
-      # @option params [Boolean] :stream Whether to stream the response. If true, results will be returned in the
-      #   Braintrust SSE format.
-      # @option params [String] :version The version of the function
+      # @param expected [Object] The expected output of the function
       #
-      # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param input [Object] Argument to the function, which can be any JSON serializable value
       #
-      # @return [Object]
-      def invoke(function_id, params = {}, opts = {})
-        req = {}
-        req[:method] = :post
-        req[:path] = "/v1/function/#{function_id}/invoke"
-        req[:body] = params
-        req[:model] = Braintrust::Unknown
-        @client.request(req, opts)
+      # @param messages [Array<Braintrust::Models::FunctionInvokeParams::Message::System, Braintrust::Models::FunctionInvokeParams::Message::User, Braintrust::Models::FunctionInvokeParams::Message::Assistant, Braintrust::Models::FunctionInvokeParams::Message::Tool, Braintrust::Models::FunctionInvokeParams::Message::Function, Braintrust::Models::FunctionInvokeParams::Message::Fallback>] If the function is an LLM, additional messages to pass along to it
+      #
+      # @param metadata [Hash{Symbol=>Object, nil}, nil] Any relevant metadata
+      #
+      # @param mode [Symbol, Braintrust::Models::FunctionInvokeParams::Mode, nil] The mode format of the returned value (defaults to 'auto')
+      #
+      # @param parent [Braintrust::Models::FunctionInvokeParams::Parent::SpanParentStruct, String] Options for tracing the function call
+      #
+      # @param stream [Boolean, nil] Whether to stream the response. If true, results will be returned in the Braintr
+      #
+      # @param version [String] The version of the function
+      #
+      # @param request_options [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil]
+      #
+      # @return [Object, nil]
+      #
+      # @see Braintrust::Models::FunctionInvokeParams
+      def invoke(function_id, params = {})
+        parsed, options = Braintrust::FunctionInvokeParams.dump_request(params)
+        @client.request(
+          method: :post,
+          path: ["v1/function/%1$s/invoke", function_id],
+          body: parsed,
+          model: Braintrust::Internal::Type::Unknown,
+          options: options
+        )
       end
 
       # Create or replace function. If there is an existing function in the project with
-      #   the same slug as the one specified in the request, will replace the existing
-      #   function with the provided fields
+      # the same slug as the one specified in the request, will replace the existing
+      # function with the provided fields
       #
-      # @param params [Hash] Attributes to send in this request.
-      # @option params [FunctionData::UnnamedTypeWithunionParent35|FunctionData::UnnamedTypeWithunionParent36|FunctionData::UnnamedTypeWithunionParent37] :function_data
-      # @option params [String] :name Name of the prompt
-      # @option params [String] :project_id Unique identifier for the project that the prompt belongs under
-      # @option params [String] :slug Unique identifier for the prompt
-      # @option params [String] :description Textual description of the prompt
-      # @option params [FunctionSchema] :function_schema JSON schema for the function's parameters and return type
-      # @option params [Symbol] :function_type
-      # @option params [Origin] :origin
-      # @option params [Braintrust::Models::PromptData] :prompt_data The prompt, model, and its parameters
-      # @option params [Array<String>] :tags A list of tags for the prompt
+      # @overload replace(function_data:, name:, project_id:, slug:, description: nil, function_schema: nil, function_type: nil, origin: nil, prompt_data: nil, tags: nil, request_options: {})
       #
-      # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param function_data [Braintrust::Models::FunctionReplaceParams::FunctionData::Prompt, Braintrust::Models::FunctionReplaceParams::FunctionData::Code, Braintrust::Models::FunctionReplaceParams::FunctionData::Global]
+      #
+      # @param name [String] Name of the prompt
+      #
+      # @param project_id [String] Unique identifier for the project that the prompt belongs under
+      #
+      # @param slug [String] Unique identifier for the prompt
+      #
+      # @param description [String, nil] Textual description of the prompt
+      #
+      # @param function_schema [Braintrust::Models::FunctionReplaceParams::FunctionSchema, nil] JSON schema for the function's parameters and return type
+      #
+      # @param function_type [Symbol, Braintrust::Models::FunctionReplaceParams::FunctionType, nil]
+      #
+      # @param origin [Braintrust::Models::FunctionReplaceParams::Origin, nil]
+      #
+      # @param prompt_data [Braintrust::Models::PromptData, nil] The prompt, model, and its parameters
+      #
+      # @param tags [Array<String>, nil] A list of tags for the prompt
+      #
+      # @param request_options [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil]
       #
       # @return [Braintrust::Models::Function]
-      def replace(params = {}, opts = {})
-        req = {}
-        req[:method] = :put
-        req[:path] = "/v1/function"
-        req[:body] = params
-        req[:model] = Braintrust::Models::Function
-        @client.request(req, opts)
+      #
+      # @see Braintrust::Models::FunctionReplaceParams
+      def replace(params)
+        parsed, options = Braintrust::FunctionReplaceParams.dump_request(params)
+        @client.request(
+          method: :put,
+          path: "v1/function",
+          body: parsed,
+          model: Braintrust::Function,
+          options: options
+        )
+      end
+
+      # @api private
+      #
+      # @param client [Braintrust::Client]
+      def initialize(client:)
+        @client = client
       end
     end
   end

@@ -1,0 +1,73 @@
+module Braintrust
+  module Models
+    type span_iframe_list_params =
+      {
+        ending_before: String,
+        ids: Braintrust::Models::SpanIframeListParams::ids,
+        limit: Integer?,
+        org_name: String,
+        span_iframe_name: String,
+        starting_after: String
+      }
+      & Braintrust::Internal::Type::request_parameters
+
+    class SpanIframeListParams < Braintrust::Internal::Type::BaseModel
+      extend Braintrust::Internal::Type::RequestParameters::Converter
+      include Braintrust::Internal::Type::RequestParameters
+
+      attr_reader ending_before: String?
+
+      def ending_before=: (String) -> String
+
+      attr_reader ids: Braintrust::Models::SpanIframeListParams::ids?
+
+      def ids=: (
+        Braintrust::Models::SpanIframeListParams::ids
+      ) -> Braintrust::Models::SpanIframeListParams::ids
+
+      attr_accessor limit: Integer?
+
+      attr_reader org_name: String?
+
+      def org_name=: (String) -> String
+
+      attr_reader span_iframe_name: String?
+
+      def span_iframe_name=: (String) -> String
+
+      attr_reader starting_after: String?
+
+      def starting_after=: (String) -> String
+
+      def initialize: (
+        ?ending_before: String,
+        ?ids: Braintrust::Models::SpanIframeListParams::ids,
+        ?limit: Integer?,
+        ?org_name: String,
+        ?span_iframe_name: String,
+        ?starting_after: String,
+        ?request_options: Braintrust::request_opts
+      ) -> void
+
+      def to_hash: -> {
+        ending_before: String,
+        ids: Braintrust::Models::SpanIframeListParams::ids,
+        limit: Integer?,
+        org_name: String,
+        span_iframe_name: String,
+        starting_after: String,
+        request_options: Braintrust::RequestOptions
+      }
+
+      type ids = String | ::Array[String]
+
+      module IDs
+        extend Braintrust::Internal::Type::Union
+
+        def self?.variants: -> ::Array[Braintrust::Models::SpanIframeListParams::ids]
+
+        StringArray: Braintrust::Internal::Type::Converter
+      end
+    end
+  end
+end

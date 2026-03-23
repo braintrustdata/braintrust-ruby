@@ -1,0 +1,145 @@
+# typed: strong
+
+module Braintrust
+  module Models
+    class RoleReplaceParams < Braintrust::Internal::Type::BaseModel
+      extend Braintrust::Internal::Type::RequestParameters::Converter
+      include Braintrust::Internal::Type::RequestParameters
+
+      OrHash =
+        T.type_alias do
+          T.any(Braintrust::RoleReplaceParams, Braintrust::Internal::AnyHash)
+        end
+
+      # Name of the role
+      sig { returns(String) }
+      attr_accessor :name
+
+      # Textual description of the role
+      sig { returns(T.nilable(String)) }
+      attr_accessor :description
+
+      # (permission, restrict_object_type) tuples which belong to this role
+      sig do
+        returns(
+          T.nilable(T::Array[Braintrust::RoleReplaceParams::MemberPermission])
+        )
+      end
+      attr_accessor :member_permissions
+
+      # Ids of the roles this role inherits from
+      #
+      # An inheriting role has all the permissions contained in its member roles, as
+      # well as all of their inherited permissions
+      sig { returns(T.nilable(T::Array[String])) }
+      attr_accessor :member_roles
+
+      # For nearly all users, this parameter should be unnecessary. But in the rare case
+      # that your API key belongs to multiple organizations, you may specify the name of
+      # the organization the role belongs in.
+      sig { returns(T.nilable(String)) }
+      attr_accessor :org_name
+
+      sig do
+        params(
+          name: String,
+          description: T.nilable(String),
+          member_permissions:
+            T.nilable(
+              T::Array[Braintrust::RoleReplaceParams::MemberPermission::OrHash]
+            ),
+          member_roles: T.nilable(T::Array[String]),
+          org_name: T.nilable(String),
+          request_options: Braintrust::RequestOptions::OrHash
+        ).returns(T.attached_class)
+      end
+      def self.new(
+        # Name of the role
+        name:,
+        # Textual description of the role
+        description: nil,
+        # (permission, restrict_object_type) tuples which belong to this role
+        member_permissions: nil,
+        # Ids of the roles this role inherits from
+        #
+        # An inheriting role has all the permissions contained in its member roles, as
+        # well as all of their inherited permissions
+        member_roles: nil,
+        # For nearly all users, this parameter should be unnecessary. But in the rare case
+        # that your API key belongs to multiple organizations, you may specify the name of
+        # the organization the role belongs in.
+        org_name: nil,
+        request_options: {}
+      )
+      end
+
+      sig do
+        override.returns(
+          {
+            name: String,
+            description: T.nilable(String),
+            member_permissions:
+              T.nilable(
+                T::Array[Braintrust::RoleReplaceParams::MemberPermission]
+              ),
+            member_roles: T.nilable(T::Array[String]),
+            org_name: T.nilable(String),
+            request_options: Braintrust::RequestOptions
+          }
+        )
+      end
+      def to_hash
+      end
+
+      class MemberPermission < Braintrust::Internal::Type::BaseModel
+        OrHash =
+          T.type_alias do
+            T.any(
+              Braintrust::RoleReplaceParams::MemberPermission,
+              Braintrust::Internal::AnyHash
+            )
+          end
+
+        # Each permission permits a certain type of operation on an object in the system
+        #
+        # Permissions can be assigned to to objects on an individual basis, or grouped
+        # into roles
+        sig { returns(Braintrust::Permission::OrSymbol) }
+        attr_accessor :permission
+
+        # The object type that the ACL applies to
+        sig { returns(T.nilable(Braintrust::ACLObjectType::OrSymbol)) }
+        attr_accessor :restrict_object_type
+
+        sig do
+          params(
+            permission: Braintrust::Permission::OrSymbol,
+            restrict_object_type: T.nilable(Braintrust::ACLObjectType::OrSymbol)
+          ).returns(T.attached_class)
+        end
+        def self.new(
+          # Each permission permits a certain type of operation on an object in the system
+          #
+          # Permissions can be assigned to to objects on an individual basis, or grouped
+          # into roles
+          permission:,
+          # The object type that the ACL applies to
+          restrict_object_type: nil
+        )
+        end
+
+        sig do
+          override.returns(
+            {
+              permission: Braintrust::Permission::OrSymbol,
+              restrict_object_type:
+                T.nilable(Braintrust::ACLObjectType::OrSymbol)
+            }
+          )
+        end
+        def to_hash
+        end
+      end
+    end
+  end
+end

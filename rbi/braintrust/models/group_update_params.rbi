@@ -1,0 +1,83 @@
+# typed: strong
+
+module Braintrust
+  module Models
+    class GroupUpdateParams < Braintrust::Internal::Type::BaseModel
+      extend Braintrust::Internal::Type::RequestParameters::Converter
+      include Braintrust::Internal::Type::RequestParameters
+
+      OrHash =
+        T.type_alias do
+          T.any(Braintrust::GroupUpdateParams, Braintrust::Internal::AnyHash)
+        end
+
+      # A list of group IDs to add to the group's inheriting-from set
+      sig { returns(T.nilable(T::Array[String])) }
+      attr_accessor :add_member_groups
+
+      # A list of user IDs to add to the group
+      sig { returns(T.nilable(T::Array[String])) }
+      attr_accessor :add_member_users
+
+      # Textual description of the group
+      sig { returns(T.nilable(String)) }
+      attr_accessor :description
+
+      # Name of the group
+      sig { returns(T.nilable(String)) }
+      attr_accessor :name
+
+      # A list of group IDs to remove from the group's inheriting-from set
+      sig { returns(T.nilable(T::Array[String])) }
+      attr_accessor :remove_member_groups
+
+      # A list of user IDs to remove from the group
+      sig { returns(T.nilable(T::Array[String])) }
+      attr_accessor :remove_member_users
+
+      sig do
+        params(
+          add_member_groups: T.nilable(T::Array[String]),
+          add_member_users: T.nilable(T::Array[String]),
+          description: T.nilable(String),
+          name: T.nilable(String),
+          remove_member_groups: T.nilable(T::Array[String]),
+          remove_member_users: T.nilable(T::Array[String]),
+          request_options: Braintrust::RequestOptions::OrHash
+        ).returns(T.attached_class)
+      end
+      def self.new(
+        # A list of group IDs to add to the group's inheriting-from set
+        add_member_groups: nil,
+        # A list of user IDs to add to the group
+        add_member_users: nil,
+        # Textual description of the group
+        description: nil,
+        # Name of the group
+        name: nil,
+        # A list of group IDs to remove from the group's inheriting-from set
+        remove_member_groups: nil,
+        # A list of user IDs to remove from the group
+        remove_member_users: nil,
+        request_options: {}
+      )
+      end
+
+      sig do
+        override.returns(
+          {
+            add_member_groups: T.nilable(T::Array[String]),
+            add_member_users: T.nilable(T::Array[String]),
+            description: T.nilable(String),
+            name: T.nilable(String),
+            remove_member_groups: T.nilable(T::Array[String]),
+            remove_member_users: T.nilable(T::Array[String]),
+            request_options: Braintrust::RequestOptions
+          }
+        )
+      end
+      def to_hash
+      end
+    end
+  end
+end

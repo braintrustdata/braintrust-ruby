@@ -1,0 +1,123 @@
+module Braintrust
+  module Models
+    type user_list_params =
+      {
+        email: Braintrust::Models::UserListParams::email,
+        ending_before: String,
+        family_name: Braintrust::Models::UserListParams::family_name,
+        given_name: Braintrust::Models::UserListParams::given_name,
+        ids: Braintrust::Models::UserListParams::ids,
+        limit: Integer?,
+        org_name: String,
+        starting_after: String
+      }
+      & Braintrust::Internal::Type::request_parameters
+
+    class UserListParams < Braintrust::Internal::Type::BaseModel
+      extend Braintrust::Internal::Type::RequestParameters::Converter
+      include Braintrust::Internal::Type::RequestParameters
+
+      attr_reader email: Braintrust::Models::UserListParams::email?
+
+      def email=: (
+        Braintrust::Models::UserListParams::email
+      ) -> Braintrust::Models::UserListParams::email
+
+      attr_reader ending_before: String?
+
+      def ending_before=: (String) -> String
+
+      attr_reader family_name: Braintrust::Models::UserListParams::family_name?
+
+      def family_name=: (
+        Braintrust::Models::UserListParams::family_name
+      ) -> Braintrust::Models::UserListParams::family_name
+
+      attr_reader given_name: Braintrust::Models::UserListParams::given_name?
+
+      def given_name=: (
+        Braintrust::Models::UserListParams::given_name
+      ) -> Braintrust::Models::UserListParams::given_name
+
+      attr_reader ids: Braintrust::Models::UserListParams::ids?
+
+      def ids=: (
+        Braintrust::Models::UserListParams::ids
+      ) -> Braintrust::Models::UserListParams::ids
+
+      attr_accessor limit: Integer?
+
+      attr_reader org_name: String?
+
+      def org_name=: (String) -> String
+
+      attr_reader starting_after: String?
+
+      def starting_after=: (String) -> String
+
+      def initialize: (
+        ?email: Braintrust::Models::UserListParams::email,
+        ?ending_before: String,
+        ?family_name: Braintrust::Models::UserListParams::family_name,
+        ?given_name: Braintrust::Models::UserListParams::given_name,
+        ?ids: Braintrust::Models::UserListParams::ids,
+        ?limit: Integer?,
+        ?org_name: String,
+        ?starting_after: String,
+        ?request_options: Braintrust::request_opts
+      ) -> void
+
+      def to_hash: -> {
+        email: Braintrust::Models::UserListParams::email,
+        ending_before: String,
+        family_name: Braintrust::Models::UserListParams::family_name,
+        given_name: Braintrust::Models::UserListParams::given_name,
+        ids: Braintrust::Models::UserListParams::ids,
+        limit: Integer?,
+        org_name: String,
+        starting_after: String,
+        request_options: Braintrust::RequestOptions
+      }
+
+      type email = String | ::Array[String]
+
+      module Email
+        extend Braintrust::Internal::Type::Union
+
+        def self?.variants: -> ::Array[Braintrust::Models::UserListParams::email]
+
+        StringArray: Braintrust::Internal::Type::Converter
+      end
+
+      type family_name = String | ::Array[String]
+
+      module FamilyName
+        extend Braintrust::Internal::Type::Union
+
+        def self?.variants: -> ::Array[Braintrust::Models::UserListParams::family_name]
+
+        StringArray: Braintrust::Internal::Type::Converter
+      end
+
+      type given_name = String | ::Array[String]
+
+      module GivenName
+        extend Braintrust::Internal::Type::Union
+
+        def self?.variants: -> ::Array[Braintrust::Models::UserListParams::given_name]
+
+        StringArray: Braintrust::Internal::Type::Converter
+      end
+
+      type ids = String | ::Array[String]
+
+      module IDs
+        extend Braintrust::Internal::Type::Union
+
+        def self?.variants: -> ::Array[Braintrust::Models::UserListParams::ids]
+
+        StringArray: Braintrust::Internal::Type::Converter
+      end
+    end
+  end
+end

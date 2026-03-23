@@ -1,0 +1,18 @@
+module Braintrust
+  module Models
+    type span_type = :llm | :score | :function | :eval | :task | :tool
+
+    module SpanType
+      extend Braintrust::Internal::Type::Enum
+
+      LLM: :llm
+      SCORE: :score
+      FUNCTION: :function
+      EVAL: :eval
+      TASK: :task
+      TOOL: :tool
+
+      def self?.values: -> ::Array[Braintrust::Models::span_type]
+    end
+  end
+end

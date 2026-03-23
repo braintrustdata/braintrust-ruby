@@ -1,0 +1,47 @@
+module Braintrust
+  module Models
+    type metric_summary =
+      {
+        improvements: Integer,
+        metric: Float,
+        name: String,
+        regressions: Integer,
+        unit: String,
+        diff: Float
+      }
+
+    class MetricSummary < Braintrust::Internal::Type::BaseModel
+      attr_accessor improvements: Integer
+
+      attr_accessor metric: Float
+
+      attr_accessor name: String
+
+      attr_accessor regressions: Integer
+
+      attr_accessor unit: String
+
+      attr_reader diff: Float?
+
+      def diff=: (Float) -> Float
+
+      def initialize: (
+        improvements: Integer,
+        metric: Float,
+        name: String,
+        regressions: Integer,
+        unit: String,
+        ?diff: Float
+      ) -> void
+
+      def to_hash: -> {
+        improvements: Integer,
+        metric: Float,
+        name: String,
+        regressions: Integer,
+        unit: String,
+        diff: Float
+      }
+    end
+  end
+end

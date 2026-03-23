@@ -4,34 +4,42 @@ module Braintrust
   module Resources
     class Organizations
       class Members
-        def initialize(client:)
-          @client = client
-        end
-
+        # Some parameter documentations has been truncated, see
+        # {Braintrust::Models::Organizations::MemberUpdateParams} for more details.
+        #
         # Modify organization membership
         #
-        # @param params [Hash] Attributes to send in this request.
-        # @option params [InviteUsers] :invite_users Users to invite to the organization
-        # @option params [String] :org_id For nearly all users, this parameter should be unnecessary. But in the rare case
-        #   that your API key belongs to multiple organizations, or in case you want to
-        #   explicitly assert the organization you are modifying, you may specify the id of
-        #   the organization.
-        # @option params [String] :org_name For nearly all users, this parameter should be unnecessary. But in the rare case
-        #   that your API key belongs to multiple organizations, or in case you want to
-        #   explicitly assert the organization you are modifying, you may specify the name
-        #   of the organization.
-        # @option params [RemoveUsers] :remove_users Users to remove from the organization
+        # @overload update(invite_users: nil, org_id: nil, org_name: nil, remove_users: nil, request_options: {})
         #
-        # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
+        # @param invite_users [Braintrust::Models::Organizations::MemberUpdateParams::InviteUsers, nil] Users to invite to the organization
+        #
+        # @param org_id [String, nil] For nearly all users, this parameter should be unnecessary. But in the rare case
+        #
+        # @param org_name [String, nil] For nearly all users, this parameter should be unnecessary. But in the rare case
+        #
+        # @param remove_users [Braintrust::Models::Organizations::MemberUpdateParams::RemoveUsers, nil] Users to remove from the organization
+        #
+        # @param request_options [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil]
         #
         # @return [Braintrust::Models::PatchOrganizationMembersOutput]
-        def update(params = {}, opts = {})
-          req = {}
-          req[:method] = :patch
-          req[:path] = "/v1/organization/members"
-          req[:body] = params
-          req[:model] = Braintrust::Models::PatchOrganizationMembersOutput
-          @client.request(req, opts)
+        #
+        # @see Braintrust::Models::Organizations::MemberUpdateParams
+        def update(params = {})
+          parsed, options = Braintrust::Organizations::MemberUpdateParams.dump_request(params)
+          @client.request(
+            method: :patch,
+            path: "v1/organization/members",
+            body: parsed,
+            model: Braintrust::PatchOrganizationMembersOutput,
+            options: options
+          )
+        end
+
+        # @api private
+        #
+        # @param client [Braintrust::Client]
+        def initialize(client:)
+          @client = client
         end
       end
     end

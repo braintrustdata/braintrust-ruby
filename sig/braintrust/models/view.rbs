@@ -1,0 +1,96 @@
+module Braintrust
+  module Models
+    type view =
+      {
+        id: String,
+        name: String,
+        object_id_: String,
+        object_type: Braintrust::Models::acl_object_type,
+        view_type: Braintrust::Models::View::view_type?,
+        created: Time?,
+        deleted_at: Time?,
+        options: Braintrust::ViewOptions?,
+        user_id: String?,
+        view_data: Braintrust::ViewData?
+      }
+
+    class View < Braintrust::Internal::Type::BaseModel
+      attr_accessor id: String
+
+      attr_accessor name: String
+
+      attr_accessor object_id_: String
+
+      attr_accessor object_type: Braintrust::Models::acl_object_type
+
+      attr_accessor view_type: Braintrust::Models::View::view_type?
+
+      attr_accessor created: Time?
+
+      attr_accessor deleted_at: Time?
+
+      attr_accessor options: Braintrust::ViewOptions?
+
+      attr_accessor user_id: String?
+
+      attr_accessor view_data: Braintrust::ViewData?
+
+      def initialize: (
+        id: String,
+        name: String,
+        object_id_: String,
+        object_type: Braintrust::Models::acl_object_type,
+        view_type: Braintrust::Models::View::view_type?,
+        ?created: Time?,
+        ?deleted_at: Time?,
+        ?options: Braintrust::ViewOptions?,
+        ?user_id: String?,
+        ?view_data: Braintrust::ViewData?
+      ) -> void
+
+      def to_hash: -> {
+        id: String,
+        name: String,
+        object_id_: String,
+        object_type: Braintrust::Models::acl_object_type,
+        view_type: Braintrust::Models::View::view_type?,
+        created: Time?,
+        deleted_at: Time?,
+        options: Braintrust::ViewOptions?,
+        user_id: String?,
+        view_data: Braintrust::ViewData?
+      }
+
+      type view_type =
+        :projects
+        | :experiments
+        | :experiment
+        | :playgrounds
+        | :playground
+        | :datasets
+        | :dataset
+        | :prompts
+        | :tools
+        | :scorers
+        | :logs
+
+      module ViewType
+        extend Braintrust::Internal::Type::Enum
+
+        PROJECTS: :projects
+        EXPERIMENTS: :experiments
+        EXPERIMENT: :experiment
+        PLAYGROUNDS: :playgrounds
+        PLAYGROUND: :playground
+        DATASETS: :datasets
+        DATASET: :dataset
+        PROMPTS: :prompts
+        TOOLS: :tools
+        SCORERS: :scorers
+        LOGS: :logs
+
+        def self?.values: -> ::Array[Braintrust::Models::View::view_type]
+      end
+    end
+  end
+end

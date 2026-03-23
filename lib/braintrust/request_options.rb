@@ -1,84 +1,77 @@
 # frozen_string_literal: true
 
 module Braintrust
-  # Specify HTTP behaviour to use for a specific request. These options supplement or override those
-  # provided at the client level.
+  # Specify HTTP behaviour to use for a specific request. These options supplement
+  # or override those provided at the client level.
   #
-  # When making a request, you can pass an actual {RequestOptions} instance, or simply pass a Hash
-  # with symbol keys matching the attributes on this class.
-  class RequestOptions
-    # @!visibility private
-    def self.options
-      @options ||= []
-    end
-
-    # @!visibility private
-    def self.option(name)
-      define_method(name) { @_values[name] }
-      define_method("#{name}=") { |val| @_values[name] = val }
-      options.push(name)
-    end
-
-    # Returns a new instance of RequestOptions.
+  # When making a request, you can pass an actual {RequestOptions} instance, or
+  # simply pass a Hash with symbol keys matching the attributes on this class.
+  class RequestOptions < Braintrust::Internal::Type::BaseModel
+    # @api private
     #
-    # @param values [Hash{Symbol => Object}] initial option values to set on the instance.
-    def initialize(values = {})
-      @_values = values
+    # @param opts [Braintrust::RequestOptions, Hash{Symbol=>Object}]
+    #
+    # @raise [ArgumentError]
+    def self.validate!(opts)
+      case opts
+      in Braintrust::RequestOptions | Hash
+        opts.to_h.each_key do |k|
+          unless fields.include?(k)
+            raise ArgumentError.new("Request `opts` keys must be one of #{fields.keys}, got #{k.inspect}")
+          end
+        end
+      else
+        raise ArgumentError.new("Request `opts` must be a Hash or RequestOptions, got #{opts.inspect}")
+      end
     end
 
     # @!attribute idempotency_key
-    # Idempotency key to send with request and all associated retries. Will only be sent for write
-    #   requests.
-    # @return [String]
-    option :idempotency_key
-
-    # @!attribute extra_headers
-    # Extra headers to send with the request. These are `.merged`’d into any `extra_headers` given at the
-    #  client level.
-    # @return [Hash{String => String}]
-    option :extra_headers
+    #   Idempotency key to send with request and all associated retries. Will only be
+    #   sent for write requests.
+    #
+    #   @return [String, nil]
+    optional :idempotency_key, String
 
     # @!attribute extra_query
-    # Extra query params to send with the request. These are `.merge`’d into any `query` given at
-    #   the client level.
-    # @return [Hash{Symbol => Object}]
-    option :extra_query
+    #   Extra query params to send with the request. These are `.merge`’d into any
+    #   `query` given at the client level.
+    #
+    #   @return [Hash{String=>Array<String>, String, nil}, nil]
+    optional :extra_query, Braintrust::Internal::Type::HashOf[Braintrust::Internal::Type::ArrayOf[String]]
+
+    # @!attribute extra_headers
+    #   Extra headers to send with the request. These are `.merged`’d into any
+    #   `extra_headers` given at the client level.
+    #
+    #   @return [Hash{String=>String, nil}, nil]
+    optional :extra_headers, Braintrust::Internal::Type::HashOf[String, nil?: true]
 
     # @!attribute extra_body
-    # Extra data to send with the request. These are deep merged into any data generated as part
-    #   of the normal request.
-    # @return [Hash{Symbol => Object}]
-    option :extra_body
+    #   Extra data to send with the request. These are deep merged into any data
+    #   generated as part of the normal request.
+    #
+    #   @return [Object, nil]
+    optional :extra_body, Braintrust::Internal::Type::HashOf[Braintrust::Internal::Type::Unknown]
 
     # @!attribute max_retries
-    # Maximum number of retries to attempt after a failed initial request.
-    # @return [Integer]
-    option :max_retries
-
-    # Lookup an option previously set on this instance.
+    #   Maximum number of retries to attempt after a failed initial request.
     #
-    # @return [Object]
-    def [](key)
-      @_values[key]
-    end
+    #   @return [Integer, nil]
+    optional :max_retries, Integer
 
-    # Return a Hash containing the options set on this instance.
+    # @!attribute timeout
+    #   Request timeout in seconds.
     #
-    # @return [Hash{Symbol => Object}]
-    def to_h
-      @_values
-    end
+    #   @return [Float, nil]
+    optional :timeout, Float
 
-    alias_method :to_hash, :to_h
+    # @!method initialize(values = {})
+    #   Returns a new instance of RequestOptions.
+    #
+    #   @param values [Hash{Symbol=>Object}]
 
-    # @return [String]
-    def inspect
-      "#<Braintrust::RequestOptions:0x#{object_id.to_s(16)} #{@_values.inspect}>"
-    end
-
-    # @return [String]
-    def to_s
-      @_values.to_s
+    define_sorbet_constant!(:OrHash) do
+      T.type_alias { T.any(Braintrust::RequestOptions, Braintrust::Internal::AnyHash) }
     end
   end
 end

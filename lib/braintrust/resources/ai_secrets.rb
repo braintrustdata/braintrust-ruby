@@ -3,165 +3,218 @@
 module Braintrust
   module Resources
     class AISecrets
-      def initialize(client:)
-        @client = client
-      end
-
+      # Some parameter documentations has been truncated, see
+      # {Braintrust::Models::AISecretCreateParams} for more details.
+      #
       # Create a new ai_secret. If there is an existing ai_secret with the same name as
-      #   the one specified in the request, will return the existing ai_secret unmodified
+      # the one specified in the request, will return the existing ai_secret unmodified
       #
-      # @param params [Hash] Attributes to send in this request.
-      # @option params [String] :name Name of the AI secret
-      # @option params [Hash] :metadata
-      # @option params [String] :org_name For nearly all users, this parameter should be unnecessary. But in the rare case
-      #   that your API key belongs to multiple organizations, you may specify the name of
-      #   the organization the AI Secret belongs in.
-      # @option params [String] :secret Secret value. If omitted in a PUT request, the existing secret value will be
-      #   left intact, not replaced with null.
-      # @option params [String] :type
+      # @overload create(name:, metadata: nil, org_name: nil, secret: nil, type: nil, request_options: {})
       #
-      # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param name [String] Name of the AI secret
+      #
+      # @param metadata [Hash{Symbol=>Object, nil}, nil]
+      #
+      # @param org_name [String, nil] For nearly all users, this parameter should be unnecessary. But in the rare case
+      #
+      # @param secret [String, nil] Secret value. If omitted in a PUT request, the existing secret value will be lef
+      #
+      # @param type [String, nil]
+      #
+      # @param request_options [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil]
       #
       # @return [Braintrust::Models::AISecret]
-      def create(params = {}, opts = {})
-        req = {}
-        req[:method] = :post
-        req[:path] = "/v1/ai_secret"
-        req[:body] = params
-        req[:model] = Braintrust::Models::AISecret
-        @client.request(req, opts)
+      #
+      # @see Braintrust::Models::AISecretCreateParams
+      def create(params)
+        parsed, options = Braintrust::AISecretCreateParams.dump_request(params)
+        @client.request(
+          method: :post,
+          path: "v1/ai_secret",
+          body: parsed,
+          model: Braintrust::AISecret,
+          options: options
+        )
       end
 
       # Get an ai_secret object by its id
       #
+      # @overload retrieve(ai_secret_id, request_options: {})
+      #
       # @param ai_secret_id [String] AiSecret id
-      # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
+      #
+      # @param request_options [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil]
       #
       # @return [Braintrust::Models::AISecret]
-      def retrieve(ai_secret_id, opts = {})
-        req = {}
-        req[:method] = :get
-        req[:path] = "/v1/ai_secret/#{ai_secret_id}"
-        req[:model] = Braintrust::Models::AISecret
-        @client.request(req, opts)
+      #
+      # @see Braintrust::Models::AISecretRetrieveParams
+      def retrieve(ai_secret_id, params = {})
+        @client.request(
+          method: :get,
+          path: ["v1/ai_secret/%1$s", ai_secret_id],
+          model: Braintrust::AISecret,
+          options: params[:request_options]
+        )
       end
 
       # Partially update an ai_secret object. Specify the fields to update in the
-      #   payload. Any object-type fields will be deep-merged with existing content.
-      #   Currently we do not support removing fields or setting them to null.
+      # payload. Any object-type fields will be deep-merged with existing content.
+      # Currently we do not support removing fields or setting them to null.
+      #
+      # @overload update(ai_secret_id, metadata: nil, name: nil, secret: nil, type: nil, request_options: {})
       #
       # @param ai_secret_id [String] AiSecret id
       #
-      # @param params [Hash] Attributes to send in this request.
-      # @option params [Hash] :metadata
-      # @option params [String] :name Name of the AI secret
-      # @option params [String] :secret
-      # @option params [String] :type
+      # @param metadata [Hash{Symbol=>Object, nil}, nil]
       #
-      # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param name [String, nil] Name of the AI secret
+      #
+      # @param secret [String, nil]
+      #
+      # @param type [String, nil]
+      #
+      # @param request_options [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil]
       #
       # @return [Braintrust::Models::AISecret]
-      def update(ai_secret_id, params = {}, opts = {})
-        req = {}
-        req[:method] = :patch
-        req[:path] = "/v1/ai_secret/#{ai_secret_id}"
-        req[:body] = params
-        req[:model] = Braintrust::Models::AISecret
-        @client.request(req, opts)
+      #
+      # @see Braintrust::Models::AISecretUpdateParams
+      def update(ai_secret_id, params = {})
+        parsed, options = Braintrust::AISecretUpdateParams.dump_request(params)
+        @client.request(
+          method: :patch,
+          path: ["v1/ai_secret/%1$s", ai_secret_id],
+          body: parsed,
+          model: Braintrust::AISecret,
+          options: options
+        )
       end
 
+      # Some parameter documentations has been truncated, see
+      # {Braintrust::Models::AISecretListParams} for more details.
+      #
       # List out all ai_secrets. The ai_secrets are sorted by creation date, with the
-      #   most recently-created ai_secrets coming first
+      # most recently-created ai_secrets coming first
       #
-      # @param params [Hash] Attributes to send in this request.
-      # @option params [String] :ai_secret_name Name of the ai_secret to search for
-      # @option params [Array<String>|String] :ai_secret_type
-      # @option params [String] :ending_before Pagination cursor id.
+      # @overload list(ai_secret_name: nil, ai_secret_type: nil, ending_before: nil, ids: nil, limit: nil, org_name: nil, starting_after: nil, request_options: {})
       #
-      #   For example, if the initial item in the last page you fetched had an id of
-      #   `foo`, pass `ending_before=foo` to fetch the previous page. Note: you may only
-      #   pass one of `starting_after` and `ending_before`
-      # @option params [Array<String>|String] :ids Filter search results to a particular set of object IDs. To specify a list of
-      #   IDs, include the query param multiple times
-      # @option params [Integer] :limit Limit the number of objects to return
-      # @option params [String] :org_name Filter search results to within a particular organization
-      # @option params [String] :starting_after Pagination cursor id.
+      # @param ai_secret_name [String] Name of the ai_secret to search for
       #
-      #   For example, if the final item in the last page you fetched had an id of `foo`,
-      #   pass `starting_after=foo` to fetch the next page. Note: you may only pass one of
-      #   `starting_after` and `ending_before`
+      # @param ai_secret_type [String, Array<String>]
       #
-      # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param ending_before [String] Pagination cursor id.
       #
-      # @return [Braintrust::ListObjects<Braintrust::Models::AISecret>]
-      def list(params = {}, opts = {})
-        req = {}
-        req[:method] = :get
-        req[:path] = "/v1/ai_secret"
-        req[:query] = params
-        req[:page] = Braintrust::ListObjects
-        req[:model] = Braintrust::Models::AISecret
-        @client.request(req, opts)
+      # @param ids [String, Array<String>] Filter search results to a particular set of object IDs. To specify a list of ID
+      #
+      # @param limit [Integer, nil] Limit the number of objects to return
+      #
+      # @param org_name [String] Filter search results to within a particular organization
+      #
+      # @param starting_after [String] Pagination cursor id.
+      #
+      # @param request_options [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil]
+      #
+      # @return [Braintrust::Internal::ListObjects<Braintrust::Models::AISecret>]
+      #
+      # @see Braintrust::Models::AISecretListParams
+      def list(params = {})
+        parsed, options = Braintrust::AISecretListParams.dump_request(params)
+        @client.request(
+          method: :get,
+          path: "v1/ai_secret",
+          query: parsed,
+          page: Braintrust::Internal::ListObjects,
+          model: Braintrust::AISecret,
+          options: options
+        )
       end
 
       # Delete an ai_secret object by its id
       #
+      # @overload delete(ai_secret_id, request_options: {})
+      #
       # @param ai_secret_id [String] AiSecret id
-      # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
+      #
+      # @param request_options [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil]
       #
       # @return [Braintrust::Models::AISecret]
-      def delete(ai_secret_id, opts = {})
-        req = {}
-        req[:method] = :delete
-        req[:path] = "/v1/ai_secret/#{ai_secret_id}"
-        req[:model] = Braintrust::Models::AISecret
-        @client.request(req, opts)
+      #
+      # @see Braintrust::Models::AISecretDeleteParams
+      def delete(ai_secret_id, params = {})
+        @client.request(
+          method: :delete,
+          path: ["v1/ai_secret/%1$s", ai_secret_id],
+          model: Braintrust::AISecret,
+          options: params[:request_options]
+        )
       end
 
+      # Some parameter documentations has been truncated, see
+      # {Braintrust::Models::AISecretFindAndDeleteParams} for more details.
+      #
       # Delete a single ai_secret
       #
-      # @param params [Hash] Attributes to send in this request.
-      # @option params [String] :name Name of the AI secret
-      # @option params [String] :org_name For nearly all users, this parameter should be unnecessary. But in the rare case
-      #   that your API key belongs to multiple organizations, you may specify the name of
-      #   the organization the AI Secret belongs in.
+      # @overload find_and_delete(name:, org_name: nil, request_options: {})
       #
-      # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param name [String] Name of the AI secret
+      #
+      # @param org_name [String, nil] For nearly all users, this parameter should be unnecessary. But in the rare case
+      #
+      # @param request_options [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil]
       #
       # @return [Braintrust::Models::AISecret]
-      def find_and_delete(params = {}, opts = {})
-        req = {}
-        req[:method] = :delete
-        req[:path] = "/v1/ai_secret"
-        req[:body] = params
-        req[:model] = Braintrust::Models::AISecret
-        @client.request(req, opts)
+      #
+      # @see Braintrust::Models::AISecretFindAndDeleteParams
+      def find_and_delete(params)
+        parsed, options = Braintrust::AISecretFindAndDeleteParams.dump_request(params)
+        @client.request(
+          method: :delete,
+          path: "v1/ai_secret",
+          body: parsed,
+          model: Braintrust::AISecret,
+          options: options
+        )
       end
 
+      # Some parameter documentations has been truncated, see
+      # {Braintrust::Models::AISecretReplaceParams} for more details.
+      #
       # Create or replace ai_secret. If there is an existing ai_secret with the same
-      #   name as the one specified in the request, will replace the existing ai_secret
-      #   with the provided fields
+      # name as the one specified in the request, will replace the existing ai_secret
+      # with the provided fields
       #
-      # @param params [Hash] Attributes to send in this request.
-      # @option params [String] :name Name of the AI secret
-      # @option params [Hash] :metadata
-      # @option params [String] :org_name For nearly all users, this parameter should be unnecessary. But in the rare case
-      #   that your API key belongs to multiple organizations, you may specify the name of
-      #   the organization the AI Secret belongs in.
-      # @option params [String] :secret Secret value. If omitted in a PUT request, the existing secret value will be
-      #   left intact, not replaced with null.
-      # @option params [String] :type
+      # @overload replace(name:, metadata: nil, org_name: nil, secret: nil, type: nil, request_options: {})
       #
-      # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param name [String] Name of the AI secret
+      #
+      # @param metadata [Hash{Symbol=>Object, nil}, nil]
+      #
+      # @param org_name [String, nil] For nearly all users, this parameter should be unnecessary. But in the rare case
+      #
+      # @param secret [String, nil] Secret value. If omitted in a PUT request, the existing secret value will be lef
+      #
+      # @param type [String, nil]
+      #
+      # @param request_options [Braintrust::RequestOptions, Hash{Symbol=>Object}, nil]
       #
       # @return [Braintrust::Models::AISecret]
-      def replace(params = {}, opts = {})
-        req = {}
-        req[:method] = :put
-        req[:path] = "/v1/ai_secret"
-        req[:body] = params
-        req[:model] = Braintrust::Models::AISecret
-        @client.request(req, opts)
+      #
+      # @see Braintrust::Models::AISecretReplaceParams
+      def replace(params)
+        parsed, options = Braintrust::AISecretReplaceParams.dump_request(params)
+        @client.request(
+          method: :put,
+          path: "v1/ai_secret",
+          body: parsed,
+          model: Braintrust::AISecret,
+          options: options
+        )
+      end
+
+      # @api private
+      #
+      # @param client [Braintrust::Client]
+      def initialize(client:)
+        @client = client
       end
     end
   end

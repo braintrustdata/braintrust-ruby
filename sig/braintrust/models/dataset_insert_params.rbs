@@ -1,0 +1,24 @@
+module Braintrust
+  module Models
+    type dataset_insert_params =
+      { events: ::Array[Braintrust::InsertDatasetEvent] }
+      & Braintrust::Internal::Type::request_parameters
+
+    class DatasetInsertParams < Braintrust::Internal::Type::BaseModel
+      extend Braintrust::Internal::Type::RequestParameters::Converter
+      include Braintrust::Internal::Type::RequestParameters
+
+      attr_accessor events: ::Array[Braintrust::InsertDatasetEvent]
+
+      def initialize: (
+        events: ::Array[Braintrust::InsertDatasetEvent],
+        ?request_options: Braintrust::request_opts
+      ) -> void
+
+      def to_hash: -> {
+        events: ::Array[Braintrust::InsertDatasetEvent],
+        request_options: Braintrust::RequestOptions
+      }
+    end
+  end
+end

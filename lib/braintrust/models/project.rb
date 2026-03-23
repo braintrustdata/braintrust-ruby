@@ -2,40 +2,62 @@
 
 module Braintrust
   module Models
-    class Project < BaseModel
-      # @!attribute [rw] id
+    class Project < Braintrust::Internal::Type::BaseModel
+      # @!attribute id
       #   Unique identifier for the project
+      #
       #   @return [String]
       required :id, String
 
-      # @!attribute [rw] name_
+      # @!attribute name
       #   Name of the project
+      #
       #   @return [String]
-      required :name_, String
+      required :name, String
 
-      # @!attribute [rw] org_id
+      # @!attribute org_id
       #   Unique id for the organization that the project belongs under
+      #
       #   @return [String]
       required :org_id, String
 
-      # @!attribute [rw] created
+      # @!attribute created
       #   Date of project creation
-      #   @return [DateTime]
-      optional :created, DateTime
+      #
+      #   @return [Time, nil]
+      optional :created, Time, nil?: true
 
-      # @!attribute [rw] deleted_at
+      # @!attribute deleted_at
       #   Date of project deletion, or null if the project is still active
-      #   @return [DateTime]
-      optional :deleted_at, DateTime
+      #
+      #   @return [Time, nil]
+      optional :deleted_at, Time, nil?: true
 
-      # @!attribute [rw] settings
-      #   @return [Braintrust::Models::ProjectSettings]
-      optional :settings, -> { Braintrust::Models::ProjectSettings }
+      # @!attribute settings
+      #
+      #   @return [Braintrust::Models::ProjectSettings, nil]
+      optional :settings, -> { Braintrust::ProjectSettings }, nil?: true
 
-      # @!attribute [rw] user_id
+      # @!attribute user_id
       #   Identifies the user who created the project
-      #   @return [String]
-      optional :user_id, String
+      #
+      #   @return [String, nil]
+      optional :user_id, String, nil?: true
+
+      # @!method initialize(id:, name:, org_id:, created: nil, deleted_at: nil, settings: nil, user_id: nil)
+      #   @param id [String] Unique identifier for the project
+      #
+      #   @param name [String] Name of the project
+      #
+      #   @param org_id [String] Unique id for the organization that the project belongs under
+      #
+      #   @param created [Time, nil] Date of project creation
+      #
+      #   @param deleted_at [Time, nil] Date of project deletion, or null if the project is still active
+      #
+      #   @param settings [Braintrust::Models::ProjectSettings, nil]
+      #
+      #   @param user_id [String, nil] Identifies the user who created the project
     end
   end
 end

@@ -1,0 +1,68 @@
+module Braintrust
+  module Models
+    type role_create_params =
+      {
+        name: String,
+        description: String?,
+        member_permissions: ::Array[Braintrust::RoleCreateParams::MemberPermission]?,
+        member_roles: ::Array[String]?,
+        org_name: String?
+      }
+      & Braintrust::Internal::Type::request_parameters
+
+    class RoleCreateParams < Braintrust::Internal::Type::BaseModel
+      extend Braintrust::Internal::Type::RequestParameters::Converter
+      include Braintrust::Internal::Type::RequestParameters
+
+      attr_accessor name: String
+
+      attr_accessor description: String?
+
+      attr_accessor member_permissions: ::Array[Braintrust::RoleCreateParams::MemberPermission]?
+
+      attr_accessor member_roles: ::Array[String]?
+
+      attr_accessor org_name: String?
+
+      def initialize: (
+        name: String,
+        ?description: String?,
+        ?member_permissions: ::Array[Braintrust::RoleCreateParams::MemberPermission]?,
+        ?member_roles: ::Array[String]?,
+        ?org_name: String?,
+        ?request_options: Braintrust::request_opts
+      ) -> void
+
+      def to_hash: -> {
+        name: String,
+        description: String?,
+        member_permissions: ::Array[Braintrust::RoleCreateParams::MemberPermission]?,
+        member_roles: ::Array[String]?,
+        org_name: String?,
+        request_options: Braintrust::RequestOptions
+      }
+
+      type member_permission =
+        {
+          permission: Braintrust::Models::permission,
+          restrict_object_type: Braintrust::Models::acl_object_type?
+        }
+
+      class MemberPermission < Braintrust::Internal::Type::BaseModel
+        attr_accessor permission: Braintrust::Models::permission
+
+        attr_accessor restrict_object_type: Braintrust::Models::acl_object_type?
+
+        def initialize: (
+          permission: Braintrust::Models::permission,
+          ?restrict_object_type: Braintrust::Models::acl_object_type?
+        ) -> void
+
+        def to_hash: -> {
+          permission: Braintrust::Models::permission,
+          restrict_object_type: Braintrust::Models::acl_object_type?
+        }
+      end
+    end
+  end
+end

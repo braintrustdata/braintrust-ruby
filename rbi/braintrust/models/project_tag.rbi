@@ -1,0 +1,85 @@
+# typed: strong
+
+module Braintrust
+  module Models
+    class ProjectTag < Braintrust::Internal::Type::BaseModel
+      OrHash =
+        T.type_alias do
+          T.any(Braintrust::ProjectTag, Braintrust::Internal::AnyHash)
+        end
+
+      # Unique identifier for the project tag
+      sig { returns(String) }
+      attr_accessor :id
+
+      # Name of the project tag
+      sig { returns(String) }
+      attr_accessor :name
+
+      # Unique identifier for the project that the project tag belongs under
+      sig { returns(String) }
+      attr_accessor :project_id
+
+      sig { returns(String) }
+      attr_accessor :user_id
+
+      # Color of the tag for the UI
+      sig { returns(T.nilable(String)) }
+      attr_accessor :color
+
+      # Date of project tag creation
+      sig { returns(T.nilable(Time)) }
+      attr_accessor :created
+
+      # Textual description of the project tag
+      sig { returns(T.nilable(String)) }
+      attr_accessor :description
+
+      # A project tag is a user-configured tag for tracking and filtering your
+      # experiments, logs, and other data
+      sig do
+        params(
+          id: String,
+          name: String,
+          project_id: String,
+          user_id: String,
+          color: T.nilable(String),
+          created: T.nilable(Time),
+          description: T.nilable(String)
+        ).returns(T.attached_class)
+      end
+      def self.new(
+        # Unique identifier for the project tag
+        id:,
+        # Name of the project tag
+        name:,
+        # Unique identifier for the project that the project tag belongs under
+        project_id:,
+        user_id:,
+        # Color of the tag for the UI
+        color: nil,
+        # Date of project tag creation
+        created: nil,
+        # Textual description of the project tag
+        description: nil
+      )
+      end
+
+      sig do
+        override.returns(
+          {
+            id: String,
+            name: String,
+            project_id: String,
+            user_id: String,
+            color: T.nilable(String),
+            created: T.nilable(Time),
+            description: T.nilable(String)
+          }
+        )
+      end
+      def to_hash
+      end
+    end
+  end
+end

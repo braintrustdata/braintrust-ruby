@@ -2,36 +2,55 @@
 
 module Braintrust
   module Models
-    class User < BaseModel
-      # @!attribute [rw] id
+    class User < Braintrust::Internal::Type::BaseModel
+      # @!attribute id
       #   Unique identifier for the user
+      #
       #   @return [String]
       required :id, String
 
-      # @!attribute [rw] avatar_url
+      # @!attribute avatar_url
       #   URL of the user's Avatar image
-      #   @return [String]
-      optional :avatar_url, String
+      #
+      #   @return [String, nil]
+      optional :avatar_url, String, nil?: true
 
-      # @!attribute [rw] created
+      # @!attribute created
       #   Date of user creation
-      #   @return [DateTime]
-      optional :created, DateTime
+      #
+      #   @return [Time, nil]
+      optional :created, Time, nil?: true
 
-      # @!attribute [rw] email
+      # @!attribute email
       #   The user's email
-      #   @return [String]
-      optional :email, String
+      #
+      #   @return [String, nil]
+      optional :email, String, nil?: true
 
-      # @!attribute [rw] family_name
+      # @!attribute family_name
       #   Family name of the user
-      #   @return [String]
-      optional :family_name, String
+      #
+      #   @return [String, nil]
+      optional :family_name, String, nil?: true
 
-      # @!attribute [rw] given_name
+      # @!attribute given_name
       #   Given name of the user
-      #   @return [String]
-      optional :given_name, String
+      #
+      #   @return [String, nil]
+      optional :given_name, String, nil?: true
+
+      # @!method initialize(id:, avatar_url: nil, created: nil, email: nil, family_name: nil, given_name: nil)
+      #   @param id [String] Unique identifier for the user
+      #
+      #   @param avatar_url [String, nil] URL of the user's Avatar image
+      #
+      #   @param created [Time, nil] Date of user creation
+      #
+      #   @param email [String, nil] The user's email
+      #
+      #   @param family_name [String, nil] Family name of the user
+      #
+      #   @param given_name [String, nil] Given name of the user
     end
   end
 end

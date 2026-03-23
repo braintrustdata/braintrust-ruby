@@ -1,0 +1,55 @@
+module Braintrust
+  module Resources
+    class ACLs
+      def create: (
+        object_id_: String,
+        object_type: Braintrust::Models::acl_object_type,
+        ?group_id: String?,
+        ?permission: Braintrust::Models::permission?,
+        ?restrict_object_type: Braintrust::Models::acl_object_type?,
+        ?role_id: String?,
+        ?user_id: String?,
+        ?request_options: Braintrust::request_opts
+      ) -> Braintrust::ACL
+
+      def retrieve: (
+        String acl_id,
+        ?request_options: Braintrust::request_opts
+      ) -> Braintrust::ACL
+
+      def list: (
+        object_id_: String,
+        object_type: Braintrust::Models::acl_object_type,
+        ?ending_before: String,
+        ?ids: Braintrust::Models::ACLListParams::ids,
+        ?limit: Integer?,
+        ?starting_after: String,
+        ?request_options: Braintrust::request_opts
+      ) -> Braintrust::Internal::ListObjects[Braintrust::ACL]
+
+      def delete: (
+        String acl_id,
+        ?request_options: Braintrust::request_opts
+      ) -> Braintrust::ACL
+
+      def batch_update: (
+        ?add_acls: ::Array[Braintrust::ACLBatchUpdateParams::AddACL]?,
+        ?remove_acls: ::Array[Braintrust::ACLBatchUpdateParams::RemoveACL]?,
+        ?request_options: Braintrust::request_opts
+      ) -> Braintrust::ACLBatchUpdateResponse
+
+      def find_and_delete: (
+        object_id_: String,
+        object_type: Braintrust::Models::acl_object_type,
+        ?group_id: String?,
+        ?permission: Braintrust::Models::permission?,
+        ?restrict_object_type: Braintrust::Models::acl_object_type?,
+        ?role_id: String?,
+        ?user_id: String?,
+        ?request_options: Braintrust::request_opts
+      ) -> Braintrust::ACL
+
+      def initialize: (client: Braintrust::Client) -> void
+    end
+  end
+end

@@ -1,0 +1,114 @@
+# typed: strong
+
+module Braintrust
+  module Models
+    class ObjectReference < Braintrust::Internal::Type::BaseModel
+      OrHash =
+        T.type_alias do
+          T.any(Braintrust::ObjectReference, Braintrust::Internal::AnyHash)
+        end
+
+      # ID of the original event.
+      sig { returns(String) }
+      attr_accessor :id
+
+      # Transaction ID of the original event.
+      sig { returns(String) }
+      attr_accessor :_xact_id
+
+      # ID of the object the event is originating from.
+      sig { returns(String) }
+      attr_accessor :object_id_
+
+      # Type of the object the event is originating from.
+      sig { returns(Braintrust::ObjectReference::ObjectType::OrSymbol) }
+      attr_accessor :object_type
+
+      # Created timestamp of the original event. Used to help sort in the UI
+      sig { returns(T.nilable(String)) }
+      attr_accessor :created
+
+      # Indicates the event was copied from another object.
+      sig do
+        params(
+          id: String,
+          _xact_id: String,
+          object_id_: String,
+          object_type: Braintrust::ObjectReference::ObjectType::OrSymbol,
+          created: T.nilable(String)
+        ).returns(T.attached_class)
+      end
+      def self.new(
+        # ID of the original event.
+        id:,
+        # Transaction ID of the original event.
+        _xact_id:,
+        # ID of the object the event is originating from.
+        object_id_:,
+        # Type of the object the event is originating from.
+        object_type:,
+        # Created timestamp of the original event. Used to help sort in the UI
+        created: nil
+      )
+      end
+
+      sig do
+        override.returns(
+          {
+            id: String,
+            _xact_id: String,
+            object_id_: String,
+            object_type: Braintrust::ObjectReference::ObjectType::OrSymbol,
+            created: T.nilable(String)
+          }
+        )
+      end
+      def to_hash
+      end
+
+      # Type of the object the event is originating from.
+      module ObjectType
+        extend Braintrust::Internal::Type::Enum
+
+        TaggedSymbol =
+          T.type_alias do
+            T.all(Symbol, Braintrust::ObjectReference::ObjectType)
+          end
+        OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+        EXPERIMENT =
+          T.let(
+            :experiment,
+            Braintrust::ObjectReference::ObjectType::TaggedSymbol
+          )
+        DATASET =
+          T.let(:dataset, Braintrust::ObjectReference::ObjectType::TaggedSymbol)
+        PROMPT =
+          T.let(:prompt, Braintrust::ObjectReference::ObjectType::TaggedSymbol)
+        FUNCTION =
+          T.let(
+            :function,
+            Braintrust::ObjectReference::ObjectType::TaggedSymbol
+          )
+        PROMPT_SESSION =
+          T.let(
+            :prompt_session,
+            Braintrust::ObjectReference::ObjectType::TaggedSymbol
+          )
+        PROJECT_LOGS =
+          T.let(
+            :project_logs,
+            Braintrust::ObjectReference::ObjectType::TaggedSymbol
+          )
+
+        sig do
+          override.returns(
+            T::Array[Braintrust::ObjectReference::ObjectType::TaggedSymbol]
+          )
+        end
+        def self.values
+        end
+      end
+    end
+  end
+end

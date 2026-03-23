@@ -1,0 +1,24 @@
+module Braintrust
+  module Models
+    type dataset_feedback_params =
+      { feedback: ::Array[Braintrust::FeedbackDatasetItem] }
+      & Braintrust::Internal::Type::request_parameters
+
+    class DatasetFeedbackParams < Braintrust::Internal::Type::BaseModel
+      extend Braintrust::Internal::Type::RequestParameters::Converter
+      include Braintrust::Internal::Type::RequestParameters
+
+      attr_accessor feedback: ::Array[Braintrust::FeedbackDatasetItem]
+
+      def initialize: (
+        feedback: ::Array[Braintrust::FeedbackDatasetItem],
+        ?request_options: Braintrust::request_opts
+      ) -> void
+
+      def to_hash: -> {
+        feedback: ::Array[Braintrust::FeedbackDatasetItem],
+        request_options: Braintrust::RequestOptions
+      }
+    end
+  end
+end

@@ -2,6 +2,8 @@
 
 set -e
 
-cd "$(dirname "$0")/.."
+cd -- "$(dirname -- "$0")/.."
 
-# bundle exec srb tc
+echo "==> Running linters"
+
+exec -- bundle exec rake lint "$@"

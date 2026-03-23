@@ -1,0 +1,53 @@
+module Braintrust
+  module Resources
+    class ProjectTags
+      def create: (
+        name: String,
+        project_id: String,
+        ?color: String?,
+        ?description: String?,
+        ?request_options: Braintrust::request_opts
+      ) -> Braintrust::ProjectTag
+
+      def retrieve: (
+        String project_tag_id,
+        ?request_options: Braintrust::request_opts
+      ) -> Braintrust::ProjectTag
+
+      def update: (
+        String project_tag_id,
+        ?color: String?,
+        ?description: String?,
+        ?name: String?,
+        ?request_options: Braintrust::request_opts
+      ) -> Braintrust::ProjectTag
+
+      def list: (
+        ?ending_before: String,
+        ?ids: Braintrust::Models::ProjectTagListParams::ids,
+        ?limit: Integer?,
+        ?org_name: String,
+        ?project_id: String,
+        ?project_name: String,
+        ?project_tag_name: String,
+        ?starting_after: String,
+        ?request_options: Braintrust::request_opts
+      ) -> Braintrust::Internal::ListObjects[Braintrust::ProjectTag]
+
+      def delete: (
+        String project_tag_id,
+        ?request_options: Braintrust::request_opts
+      ) -> Braintrust::ProjectTag
+
+      def replace: (
+        name: String,
+        project_id: String,
+        ?color: String?,
+        ?description: String?,
+        ?request_options: Braintrust::request_opts
+      ) -> Braintrust::ProjectTag
+
+      def initialize: (client: Braintrust::Client) -> void
+    end
+  end
+end

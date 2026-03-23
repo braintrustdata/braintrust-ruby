@@ -1,0 +1,5 @@
+module Braintrust
+  module Models
+    class TopLevelHelloWorldResponse = String
+  end
+end

@@ -1,0 +1,55 @@
+module Braintrust
+  module Models
+    type dataset =
+      {
+        id: String,
+        name: String,
+        project_id: String,
+        created: Time?,
+        deleted_at: Time?,
+        description: String?,
+        metadata: ::Hash[Symbol, top?]?,
+        user_id: String?
+      }
+
+    class Dataset < Braintrust::Internal::Type::BaseModel
+      attr_accessor id: String
+
+      attr_accessor name: String
+
+      attr_accessor project_id: String
+
+      attr_accessor created: Time?
+
+      attr_accessor deleted_at: Time?
+
+      attr_accessor description: String?
+
+      attr_accessor metadata: ::Hash[Symbol, top?]?
+
+      attr_accessor user_id: String?
+
+      def initialize: (
+        id: String,
+        name: String,
+        project_id: String,
+        ?created: Time?,
+        ?deleted_at: Time?,
+        ?description: String?,
+        ?metadata: ::Hash[Symbol, top?]?,
+        ?user_id: String?
+      ) -> void
+
+      def to_hash: -> {
+        id: String,
+        name: String,
+        project_id: String,
+        created: Time?,
+        deleted_at: Time?,
+        description: String?,
+        metadata: ::Hash[Symbol, top?]?,
+        user_id: String?
+      }
+    end
+  end
+end

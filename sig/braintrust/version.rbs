@@ -1,0 +1,3 @@
+module Braintrust
+  VERSION: String
+end

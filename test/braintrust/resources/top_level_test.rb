@@ -2,13 +2,12 @@
 
 require_relative "../test_helper"
 
-class Braintrust::Test::Resources::TopLevelTest < Test::Unit::TestCase
-  def setup
-    @braintrust = Braintrust::Client.new(base_url: "http://localhost:4010", api_key: "My API Key")
-  end
-
+class Braintrust::Test::Resources::TopLevelTest < Braintrust::Test::ResourceTest
   def test_hello_world
     response = @braintrust.top_level.hello_world
-    assert_kind_of(String, response)
+
+    assert_pattern do
+      response => String
+    end
   end
 end
